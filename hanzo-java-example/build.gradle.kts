@@ -17,5 +17,5 @@ tasks.withType<JavaCompile>().configureEach {
 }
 
 application {
-    mainClass = "com.hanzo_ai.api.example.Main"
+    mainClass = "ai.hanzo.api.example.Main"
 }
