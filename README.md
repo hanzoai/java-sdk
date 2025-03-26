@@ -1,15 +1,25 @@
 # Hanzo Java API Library
 
+<!-- x-release-please-start-version -->
+
 [![Maven Central](https://img.shields.io/maven-central/v/com.hanzo_ai.api/hanzo-java)](https://central.sonatype.com/artifact/com.hanzo_ai.api/hanzo-java/0.0.1-alpha.0)
 [![javadoc](https://javadoc.io/badge2/com.hanzo_ai.api/hanzo-java/0.0.1-alpha.0/javadoc.svg)](https://javadoc.io/doc/com.hanzo_ai.api/hanzo-java/0.0.1-alpha.0)
+
+<!-- x-release-please-end -->
 
 The Hanzo Java SDK provides convenient access to the [Hanzo REST API](https://docs.hanzo.ai) from applications written in Java.
 
 It is generated with [Stainless](https://www.stainless.com/).
 
+<!-- x-release-please-start-version -->
+
 The REST API documentation can be found on [docs.hanzo.ai](https://docs.hanzo.ai). Javadocs are also available on [javadoc.io](https://javadoc.io/doc/com.hanzo_ai.api/hanzo-java/0.0.1-alpha.0).
 
+<!-- x-release-please-end -->
+
 ## Installation
+
+<!-- x-release-please-start-version -->
 
 ### Gradle
 
@@ -26,6 +36,8 @@ implementation("com.hanzo_ai.api:hanzo-java:0.0.1-alpha.0")
   <version>0.0.1-alpha.0</version>
 </dependency>
 ```
+
+<!-- x-release-please-end -->
 
 ## Requirements
 
@@ -548,4 +560,4 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/Hanzo-AI-java/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/hanzoai/java-sdk/issues) with questions, bugs, or suggestions.
