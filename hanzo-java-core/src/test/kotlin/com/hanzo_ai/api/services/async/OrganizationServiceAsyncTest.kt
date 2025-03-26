@@ -1,0 +1,194 @@
+// File generated from our OpenAPI spec by Stainless.
+
+package com.hanzo_ai.api.services.async
+
+import com.hanzo_ai.api.TestServerExtension
+import com.hanzo_ai.api.client.okhttp.HanzoOkHttpClientAsync
+import com.hanzo_ai.api.core.JsonValue
+import com.hanzo_ai.api.models.organization.OrgMember
+import com.hanzo_ai.api.models.organization.OrganizationAddMemberParams
+import com.hanzo_ai.api.models.organization.OrganizationCreateParams
+import com.hanzo_ai.api.models.organization.OrganizationDeleteMemberParams
+import com.hanzo_ai.api.models.organization.OrganizationDeleteParams
+import com.hanzo_ai.api.models.organization.OrganizationUpdateMemberParams
+import com.hanzo_ai.api.models.organization.OrganizationUpdateParams
+import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
+
+@ExtendWith(TestServerExtension::class)
+internal class OrganizationServiceAsyncTest {
+
+    @Disabled("skipped: tests are disabled for the time being")
+    @Test
+    fun create() {
+        val client =
+            HanzoOkHttpClientAsync.builder()
+                .baseUrl(TestServerExtension.BASE_URL)
+                .apiKey("My API Key")
+                .build()
+        val organizationServiceAsync = client.organization()
+
+        val organizationFuture =
+            organizationServiceAsync.create(
+                OrganizationCreateParams.builder()
+                    .organizationAlias("organization_alias")
+                    .budgetDuration("budget_duration")
+                    .budgetId("budget_id")
+                    .maxBudget(0.0)
+                    .maxParallelRequests(0L)
+                    .metadata(JsonValue.from(mapOf<String, Any>()))
+                    .modelMaxBudget(JsonValue.from(mapOf<String, Any>()))
+                    .addModel(JsonValue.from(mapOf<String, Any>()))
+                    .organizationId("organization_id")
+                    .rpmLimit(0L)
+                    .softBudget(0.0)
+                    .tpmLimit(0L)
+                    .build()
+            )
+
+        val organization = organizationFuture.get()
+        organization.validate()
+    }
+
+    @Disabled("skipped: tests are disabled for the time being")
+    @Test
+    fun update() {
+        val client =
+            HanzoOkHttpClientAsync.builder()
+                .baseUrl(TestServerExtension.BASE_URL)
+                .apiKey("My API Key")
+                .build()
+        val organizationServiceAsync = client.organization()
+
+        val organizationFuture =
+            organizationServiceAsync.update(
+                OrganizationUpdateParams.builder()
+                    .budgetId("budget_id")
+                    .metadata(JsonValue.from(mapOf<String, Any>()))
+                    .addModel("string")
+                    .organizationAlias("organization_alias")
+                    .organizationId("organization_id")
+                    .spend(0.0)
+                    .updatedBy("updated_by")
+                    .build()
+            )
+
+        val organization = organizationFuture.get()
+        organization.validate()
+    }
+
+    @Disabled("skipped: tests are disabled for the time being")
+    @Test
+    fun list() {
+        val client =
+            HanzoOkHttpClientAsync.builder()
+                .baseUrl(TestServerExtension.BASE_URL)
+                .apiKey("My API Key")
+                .build()
+        val organizationServiceAsync = client.organization()
+
+        val organizationsFuture = organizationServiceAsync.list()
+
+        val organizations = organizationsFuture.get()
+        organizations.forEach { it.validate() }
+    }
+
+    @Disabled("skipped: tests are disabled for the time being")
+    @Test
+    fun delete() {
+        val client =
+            HanzoOkHttpClientAsync.builder()
+                .baseUrl(TestServerExtension.BASE_URL)
+                .apiKey("My API Key")
+                .build()
+        val organizationServiceAsync = client.organization()
+
+        val organizationsFuture =
+            organizationServiceAsync.delete(
+                OrganizationDeleteParams.builder().addOrganizationId("string").build()
+            )
+
+        val organizations = organizationsFuture.get()
+        organizations.forEach { it.validate() }
+    }
+
+    @Disabled("skipped: tests are disabled for the time being")
+    @Test
+    fun addMember() {
+        val client =
+            HanzoOkHttpClientAsync.builder()
+                .baseUrl(TestServerExtension.BASE_URL)
+                .apiKey("My API Key")
+                .build()
+        val organizationServiceAsync = client.organization()
+
+        val responseFuture =
+            organizationServiceAsync.addMember(
+                OrganizationAddMemberParams.builder()
+                    .memberOfOrgMembers(
+                        listOf(
+                            OrgMember.builder()
+                                .role(OrgMember.Role.ORG_ADMIN)
+                                .userEmail("user_email")
+                                .userId("user_id")
+                                .build()
+                        )
+                    )
+                    .organizationId("organization_id")
+                    .maxBudgetInOrganization(0.0)
+                    .build()
+            )
+
+        val response = responseFuture.get()
+        response.validate()
+    }
+
+    @Disabled("skipped: tests are disabled for the time being")
+    @Test
+    fun deleteMember() {
+        val client =
+            HanzoOkHttpClientAsync.builder()
+                .baseUrl(TestServerExtension.BASE_URL)
+                .apiKey("My API Key")
+                .build()
+        val organizationServiceAsync = client.organization()
+
+        val responseFuture =
+            organizationServiceAsync.deleteMember(
+                OrganizationDeleteMemberParams.builder()
+                    .organizationId("organization_id")
+                    .userEmail("user_email")
+                    .userId("user_id")
+                    .build()
+            )
+
+        val response = responseFuture.get()
+        response.validate()
+    }
+
+    @Disabled("skipped: tests are disabled for the time being")
+    @Test
+    fun updateMember() {
+        val client =
+            HanzoOkHttpClientAsync.builder()
+                .baseUrl(TestServerExtension.BASE_URL)
+                .apiKey("My API Key")
+                .build()
+        val organizationServiceAsync = client.organization()
+
+        val responseFuture =
+            organizationServiceAsync.updateMember(
+                OrganizationUpdateMemberParams.builder()
+                    .organizationId("organization_id")
+                    .maxBudgetInOrganization(0.0)
+                    .role(OrganizationUpdateMemberParams.Role.PROXY_ADMIN)
+                    .userEmail("user_email")
+                    .userId("user_id")
+                    .build()
+            )
+
+        val response = responseFuture.get()
+        response.validate()
+    }
+}
