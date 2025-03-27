@@ -23,7 +23,7 @@ interface CohereService {
      */
     fun withRawResponse(): WithRawResponse
 
-    /** [Docs](https://docs.llm.ai/docs/pass_through/cohere) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
     fun create(params: CohereCreateParams): CohereCreateResponse =
         create(params, RequestOptions.none())
 
@@ -33,7 +33,7 @@ interface CohereService {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CohereCreateResponse
 
-    /** [Docs](https://docs.llm.ai/docs/pass_through/cohere) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
     fun retrieve(params: CohereRetrieveParams): CohereRetrieveResponse =
         retrieve(params, RequestOptions.none())
 
@@ -43,7 +43,7 @@ interface CohereService {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CohereRetrieveResponse
 
-    /** [Docs](https://docs.llm.ai/docs/pass_through/cohere) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
     fun update(params: CohereUpdateParams): CohereUpdateResponse =
         update(params, RequestOptions.none())
 
@@ -53,7 +53,7 @@ interface CohereService {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CohereUpdateResponse
 
-    /** [Docs](https://docs.llm.ai/docs/pass_through/cohere) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
     fun delete(params: CohereDeleteParams): CohereDeleteResponse =
         delete(params, RequestOptions.none())
 
@@ -63,7 +63,7 @@ interface CohereService {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CohereDeleteResponse
 
-    /** [Docs](https://docs.llm.ai/docs/pass_through/cohere) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
     fun modify(params: CohereModifyParams): CohereModifyResponse =
         modify(params, RequestOptions.none())
 

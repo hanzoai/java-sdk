@@ -11,7 +11,7 @@ import ai.hanzo.api.core.toImmutable
 import java.util.Objects
 import java.util.Optional
 
-/** [Docs](https://docs.llm.ai/docs/pass_through/google_ai_studio) */
+/** [Docs](https://docs.hanzo.ai/docs/pass_through/google_ai_studio) */
 class GeminiCreateParams
 private constructor(
     private val endpoint: String,
