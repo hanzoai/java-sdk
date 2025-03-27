@@ -24,7 +24,7 @@ interface GeminiServiceAsync {
      */
     fun withRawResponse(): WithRawResponse
 
-    /** [Docs](https://docs.llm.ai/docs/pass_through/google_ai_studio) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/google_ai_studio) */
     fun create(params: GeminiCreateParams): CompletableFuture<GeminiCreateResponse> =
         create(params, RequestOptions.none())
 
@@ -34,7 +34,7 @@ interface GeminiServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<GeminiCreateResponse>
 
-    /** [Docs](https://docs.llm.ai/docs/pass_through/google_ai_studio) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/google_ai_studio) */
     fun retrieve(params: GeminiRetrieveParams): CompletableFuture<GeminiRetrieveResponse> =
         retrieve(params, RequestOptions.none())
 
@@ -44,7 +44,7 @@ interface GeminiServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<GeminiRetrieveResponse>
 
-    /** [Docs](https://docs.llm.ai/docs/pass_through/google_ai_studio) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/google_ai_studio) */
     fun update(params: GeminiUpdateParams): CompletableFuture<GeminiUpdateResponse> =
         update(params, RequestOptions.none())
 
@@ -54,7 +54,7 @@ interface GeminiServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<GeminiUpdateResponse>
 
-    /** [Docs](https://docs.llm.ai/docs/pass_through/google_ai_studio) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/google_ai_studio) */
     fun delete(params: GeminiDeleteParams): CompletableFuture<GeminiDeleteResponse> =
         delete(params, RequestOptions.none())
 
@@ -64,7 +64,7 @@ interface GeminiServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<GeminiDeleteResponse>
 
-    /** [Docs](https://docs.llm.ai/docs/pass_through/google_ai_studio) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/google_ai_studio) */
     fun patch(params: GeminiPatchParams): CompletableFuture<GeminiPatchResponse> =
         patch(params, RequestOptions.none())
 

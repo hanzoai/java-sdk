@@ -26,7 +26,7 @@ interface LangfuseService {
     /**
      * Call Langfuse via LLM proxy. Works with Langfuse SDK.
      *
-     * [Docs](https://docs.llm.ai/docs/pass_through/langfuse)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
      */
     fun create(params: LangfuseCreateParams): LangfuseCreateResponse =
         create(params, RequestOptions.none())
@@ -40,7 +40,7 @@ interface LangfuseService {
     /**
      * Call Langfuse via LLM proxy. Works with Langfuse SDK.
      *
-     * [Docs](https://docs.llm.ai/docs/pass_through/langfuse)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
      */
     fun retrieve(params: LangfuseRetrieveParams): LangfuseRetrieveResponse =
         retrieve(params, RequestOptions.none())
@@ -54,7 +54,7 @@ interface LangfuseService {
     /**
      * Call Langfuse via LLM proxy. Works with Langfuse SDK.
      *
-     * [Docs](https://docs.llm.ai/docs/pass_through/langfuse)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
      */
     fun update(params: LangfuseUpdateParams): LangfuseUpdateResponse =
         update(params, RequestOptions.none())
@@ -68,7 +68,7 @@ interface LangfuseService {
     /**
      * Call Langfuse via LLM proxy. Works with Langfuse SDK.
      *
-     * [Docs](https://docs.llm.ai/docs/pass_through/langfuse)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
      */
     fun delete(params: LangfuseDeleteParams): LangfuseDeleteResponse =
         delete(params, RequestOptions.none())
@@ -82,7 +82,7 @@ interface LangfuseService {
     /**
      * Call Langfuse via LLM proxy. Works with Langfuse SDK.
      *
-     * [Docs](https://docs.llm.ai/docs/pass_through/langfuse)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
      */
     fun patch(params: LangfusePatchParams): LangfusePatchResponse =
         patch(params, RequestOptions.none())

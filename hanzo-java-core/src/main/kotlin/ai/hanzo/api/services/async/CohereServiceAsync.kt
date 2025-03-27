@@ -24,7 +24,7 @@ interface CohereServiceAsync {
      */
     fun withRawResponse(): WithRawResponse
 
-    /** [Docs](https://docs.llm.ai/docs/pass_through/cohere) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
     fun create(params: CohereCreateParams): CompletableFuture<CohereCreateResponse> =
         create(params, RequestOptions.none())
 
@@ -34,7 +34,7 @@ interface CohereServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CohereCreateResponse>
 
-    /** [Docs](https://docs.llm.ai/docs/pass_through/cohere) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
     fun retrieve(params: CohereRetrieveParams): CompletableFuture<CohereRetrieveResponse> =
         retrieve(params, RequestOptions.none())
 
@@ -44,7 +44,7 @@ interface CohereServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CohereRetrieveResponse>
 
-    /** [Docs](https://docs.llm.ai/docs/pass_through/cohere) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
     fun update(params: CohereUpdateParams): CompletableFuture<CohereUpdateResponse> =
         update(params, RequestOptions.none())
 
@@ -54,7 +54,7 @@ interface CohereServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CohereUpdateResponse>
 
-    /** [Docs](https://docs.llm.ai/docs/pass_through/cohere) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
     fun delete(params: CohereDeleteParams): CompletableFuture<CohereDeleteResponse> =
         delete(params, RequestOptions.none())
 
@@ -64,7 +64,7 @@ interface CohereServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CohereDeleteResponse>
 
-    /** [Docs](https://docs.llm.ai/docs/pass_through/cohere) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
     fun modify(params: CohereModifyParams): CompletableFuture<CohereModifyResponse> =
         modify(params, RequestOptions.none())
 
