@@ -27,7 +27,7 @@ interface LangfuseServiceAsync {
     /**
      * Call Langfuse via LLM proxy. Works with Langfuse SDK.
      *
-     * [Docs](https://docs.llm.ai/docs/pass_through/langfuse)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
      */
     fun create(params: LangfuseCreateParams): CompletableFuture<LangfuseCreateResponse> =
         create(params, RequestOptions.none())
@@ -41,7 +41,7 @@ interface LangfuseServiceAsync {
     /**
      * Call Langfuse via LLM proxy. Works with Langfuse SDK.
      *
-     * [Docs](https://docs.llm.ai/docs/pass_through/langfuse)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
      */
     fun retrieve(params: LangfuseRetrieveParams): CompletableFuture<LangfuseRetrieveResponse> =
         retrieve(params, RequestOptions.none())
@@ -55,7 +55,7 @@ interface LangfuseServiceAsync {
     /**
      * Call Langfuse via LLM proxy. Works with Langfuse SDK.
      *
-     * [Docs](https://docs.llm.ai/docs/pass_through/langfuse)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
      */
     fun update(params: LangfuseUpdateParams): CompletableFuture<LangfuseUpdateResponse> =
         update(params, RequestOptions.none())
@@ -69,7 +69,7 @@ interface LangfuseServiceAsync {
     /**
      * Call Langfuse via LLM proxy. Works with Langfuse SDK.
      *
-     * [Docs](https://docs.llm.ai/docs/pass_through/langfuse)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
      */
     fun delete(params: LangfuseDeleteParams): CompletableFuture<LangfuseDeleteResponse> =
         delete(params, RequestOptions.none())
@@ -83,7 +83,7 @@ interface LangfuseServiceAsync {
     /**
      * Call Langfuse via LLM proxy. Works with Langfuse SDK.
      *
-     * [Docs](https://docs.llm.ai/docs/pass_through/langfuse)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
      */
     fun patch(params: LangfusePatchParams): CompletableFuture<LangfusePatchResponse> =
         patch(params, RequestOptions.none())

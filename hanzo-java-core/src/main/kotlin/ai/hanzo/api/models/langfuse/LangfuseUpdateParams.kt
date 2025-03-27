@@ -14,7 +14,7 @@ import java.util.Optional
 /**
  * Call Langfuse via LLM proxy. Works with Langfuse SDK.
  *
- * [Docs](https://docs.llm.ai/docs/pass_through/langfuse)
+ * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
  */
 class LangfuseUpdateParams
 private constructor(

@@ -11,7 +11,7 @@ import ai.hanzo.api.core.toImmutable
 import java.util.Objects
 import java.util.Optional
 
-/** [Docs](https://docs.llm.ai/docs/pass_through/bedrock) */
+/** [Docs](https://docs.hanzo.ai/docs/pass_through/bedrock) */
 class BedrockCreateParams
 private constructor(
     private val endpoint: String,
