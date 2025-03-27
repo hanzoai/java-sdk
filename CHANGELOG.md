@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2025-03-27)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/hanzoai/java-sdk/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Chores
+
+* update SDK settings ([#6](https://github.com/hanzoai/java-sdk/issues/6)) ([db7f67a](https://github.com/hanzoai/java-sdk/commit/db7f67aaab4d79b434ee3f7e1e4c51dc37cfcd1c))
+
 ## 0.1.0-alpha.1 (2025-03-27)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/hanzoai/java-sdk/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
