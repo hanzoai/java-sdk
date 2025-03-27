@@ -23,7 +23,7 @@ interface AnthropicService {
      */
     fun withRawResponse(): WithRawResponse
 
-    /** [Docs](https://docs.llm.ai/docs/anthropic_completion) */
+    /** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
     fun create(params: AnthropicCreateParams): AnthropicCreateResponse =
         create(params, RequestOptions.none())
 
@@ -33,7 +33,7 @@ interface AnthropicService {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AnthropicCreateResponse
 
-    /** [Docs](https://docs.llm.ai/docs/anthropic_completion) */
+    /** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
     fun retrieve(params: AnthropicRetrieveParams): AnthropicRetrieveResponse =
         retrieve(params, RequestOptions.none())
 
@@ -43,7 +43,7 @@ interface AnthropicService {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AnthropicRetrieveResponse
 
-    /** [Docs](https://docs.llm.ai/docs/anthropic_completion) */
+    /** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
     fun update(params: AnthropicUpdateParams): AnthropicUpdateResponse =
         update(params, RequestOptions.none())
 
@@ -53,7 +53,7 @@ interface AnthropicService {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AnthropicUpdateResponse
 
-    /** [Docs](https://docs.llm.ai/docs/anthropic_completion) */
+    /** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
     fun delete(params: AnthropicDeleteParams): AnthropicDeleteResponse =
         delete(params, RequestOptions.none())
 
@@ -63,7 +63,7 @@ interface AnthropicService {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AnthropicDeleteResponse
 
-    /** [Docs](https://docs.llm.ai/docs/anthropic_completion) */
+    /** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
     fun modify(params: AnthropicModifyParams): AnthropicModifyResponse =
         modify(params, RequestOptions.none())
 

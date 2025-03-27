@@ -11,7 +11,7 @@ import ai.hanzo.api.core.toImmutable
 import java.util.Objects
 import java.util.Optional
 
-/** [Docs](https://docs.llm.ai/docs/anthropic_completion) */
+/** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
 class AnthropicDeleteParams
 private constructor(
     private val endpoint: String,

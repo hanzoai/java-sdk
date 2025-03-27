@@ -27,7 +27,7 @@ interface VertexAiServiceAsync {
     /**
      * Call LLM proxy via Vertex AI SDK.
      *
-     * [Docs](https://docs.llm.ai/docs/pass_through/vertex_ai)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/vertex_ai)
      */
     fun create(params: VertexAiCreateParams): CompletableFuture<VertexAiCreateResponse> =
         create(params, RequestOptions.none())
@@ -41,7 +41,7 @@ interface VertexAiServiceAsync {
     /**
      * Call LLM proxy via Vertex AI SDK.
      *
-     * [Docs](https://docs.llm.ai/docs/pass_through/vertex_ai)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/vertex_ai)
      */
     fun retrieve(params: VertexAiRetrieveParams): CompletableFuture<VertexAiRetrieveResponse> =
         retrieve(params, RequestOptions.none())
@@ -55,7 +55,7 @@ interface VertexAiServiceAsync {
     /**
      * Call LLM proxy via Vertex AI SDK.
      *
-     * [Docs](https://docs.llm.ai/docs/pass_through/vertex_ai)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/vertex_ai)
      */
     fun update(params: VertexAiUpdateParams): CompletableFuture<VertexAiUpdateResponse> =
         update(params, RequestOptions.none())
@@ -69,7 +69,7 @@ interface VertexAiServiceAsync {
     /**
      * Call LLM proxy via Vertex AI SDK.
      *
-     * [Docs](https://docs.llm.ai/docs/pass_through/vertex_ai)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/vertex_ai)
      */
     fun delete(params: VertexAiDeleteParams): CompletableFuture<VertexAiDeleteResponse> =
         delete(params, RequestOptions.none())
@@ -83,7 +83,7 @@ interface VertexAiServiceAsync {
     /**
      * Call LLM proxy via Vertex AI SDK.
      *
-     * [Docs](https://docs.llm.ai/docs/pass_through/vertex_ai)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/vertex_ai)
      */
     fun patch(params: VertexAiPatchParams): CompletableFuture<VertexAiPatchResponse> =
         patch(params, RequestOptions.none())

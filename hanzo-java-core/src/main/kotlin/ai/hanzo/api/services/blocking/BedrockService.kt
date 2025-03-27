@@ -23,7 +23,7 @@ interface BedrockService {
      */
     fun withRawResponse(): WithRawResponse
 
-    /** [Docs](https://docs.llm.ai/docs/pass_through/bedrock) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/bedrock) */
     fun create(params: BedrockCreateParams): BedrockCreateResponse =
         create(params, RequestOptions.none())
 
@@ -33,7 +33,7 @@ interface BedrockService {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): BedrockCreateResponse
 
-    /** [Docs](https://docs.llm.ai/docs/pass_through/bedrock) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/bedrock) */
     fun retrieve(params: BedrockRetrieveParams): BedrockRetrieveResponse =
         retrieve(params, RequestOptions.none())
 
@@ -43,7 +43,7 @@ interface BedrockService {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): BedrockRetrieveResponse
 
-    /** [Docs](https://docs.llm.ai/docs/pass_through/bedrock) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/bedrock) */
     fun update(params: BedrockUpdateParams): BedrockUpdateResponse =
         update(params, RequestOptions.none())
 
@@ -53,7 +53,7 @@ interface BedrockService {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): BedrockUpdateResponse
 
-    /** [Docs](https://docs.llm.ai/docs/pass_through/bedrock) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/bedrock) */
     fun delete(params: BedrockDeleteParams): BedrockDeleteResponse =
         delete(params, RequestOptions.none())
 
@@ -63,7 +63,7 @@ interface BedrockService {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): BedrockDeleteResponse
 
-    /** [Docs](https://docs.llm.ai/docs/pass_through/bedrock) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/bedrock) */
     fun patch(params: BedrockPatchParams): BedrockPatchResponse =
         patch(params, RequestOptions.none())
 

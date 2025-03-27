@@ -24,7 +24,7 @@ interface AnthropicServiceAsync {
      */
     fun withRawResponse(): WithRawResponse
 
-    /** [Docs](https://docs.llm.ai/docs/anthropic_completion) */
+    /** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
     fun create(params: AnthropicCreateParams): CompletableFuture<AnthropicCreateResponse> =
         create(params, RequestOptions.none())
 
@@ -34,7 +34,7 @@ interface AnthropicServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<AnthropicCreateResponse>
 
-    /** [Docs](https://docs.llm.ai/docs/anthropic_completion) */
+    /** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
     fun retrieve(params: AnthropicRetrieveParams): CompletableFuture<AnthropicRetrieveResponse> =
         retrieve(params, RequestOptions.none())
 
@@ -44,7 +44,7 @@ interface AnthropicServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<AnthropicRetrieveResponse>
 
-    /** [Docs](https://docs.llm.ai/docs/anthropic_completion) */
+    /** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
     fun update(params: AnthropicUpdateParams): CompletableFuture<AnthropicUpdateResponse> =
         update(params, RequestOptions.none())
 
@@ -54,7 +54,7 @@ interface AnthropicServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<AnthropicUpdateResponse>
 
-    /** [Docs](https://docs.llm.ai/docs/anthropic_completion) */
+    /** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
     fun delete(params: AnthropicDeleteParams): CompletableFuture<AnthropicDeleteResponse> =
         delete(params, RequestOptions.none())
 
@@ -64,7 +64,7 @@ interface AnthropicServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<AnthropicDeleteResponse>
 
-    /** [Docs](https://docs.llm.ai/docs/anthropic_completion) */
+    /** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
     fun modify(params: AnthropicModifyParams): CompletableFuture<AnthropicModifyResponse> =
         modify(params, RequestOptions.none())
 
