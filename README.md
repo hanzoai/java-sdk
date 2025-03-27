@@ -9,6 +9,8 @@
 
 The Hanzo Java SDK provides convenient access to the [Hanzo REST API](https://docs.hanzo.ai) from applications written in Java.
 
+The Hanzo Java SDK is similar to the Hanzo Kotlin SDK but with minor differences that make it more ergonomic for use in Java, such as `Optional` instead of nullable values, `Stream` instead of `Sequence`, and `CompletableFuture` instead of suspend functions.
+
 It is generated with [Stainless](https://www.stainless.com/).
 
 <!-- x-release-please-start-version -->
@@ -347,6 +349,20 @@ HanzoClient client = HanzoOkHttpClient.builder()
         "https://example.com", 8080
       )
     ))
+    .build();
+```
+
+### Environments
+
+The SDK sends requests to the production by default. To send requests to a different environment, configure the client like so:
+
+```java
+import ai.hanzo.api.client.HanzoClient;
+import ai.hanzo.api.client.okhttp.HanzoOkHttpClient;
+
+HanzoClient client = HanzoOkHttpClient.builder()
+    .fromEnv()
+    .sandbox()
     .build();
 ```
 
