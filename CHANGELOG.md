@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2025-03-29)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/hanzoai/java-sdk/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Features
+
+* **api:** api update ([#9](https://github.com/hanzoai/java-sdk/issues/9)) ([a0ab87a](https://github.com/hanzoai/java-sdk/commit/a0ab87ace8769fc2320a22cf1bd2d259ede567ae))
+
+
+### Bug Fixes
+
+* **client:** don't call `validate()` during deserialization if we don't have to ([#11](https://github.com/hanzoai/java-sdk/issues/11)) ([e5af84a](https://github.com/hanzoai/java-sdk/commit/e5af84a40d2f50556adcb9b54d088ff4482c81c7))
+
 ## 0.1.0-alpha.2 (2025-03-27)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/hanzoai/java-sdk/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
