@@ -82,7 +82,7 @@ internal class KeyServiceAsyncTest {
                 .build()
         val keyServiceAsync = client.key()
 
-        val keyFuture =
+        val keysFuture =
             keyServiceAsync.list(
                 KeyListParams.builder()
                     .includeTeamKeys(true)
@@ -96,8 +96,8 @@ internal class KeyServiceAsyncTest {
                     .build()
             )
 
-        val key = keyFuture.get()
-        key.validate()
+        val keys = keysFuture.get()
+        keys.validate()
     }
 
     @Disabled("skipped: tests are disabled for the time being")

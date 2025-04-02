@@ -40,10 +40,10 @@ internal class MessageServiceAsyncTest {
                 .build()
         val messageServiceAsync = client.threads().messages()
 
-        val messageFuture =
+        val messagesFuture =
             messageServiceAsync.list(MessageListParams.builder().threadId("thread_id").build())
 
-        val message = messageFuture.get()
-        message.validate()
+        val messages = messagesFuture.get()
+        messages.validate()
     }
 }
