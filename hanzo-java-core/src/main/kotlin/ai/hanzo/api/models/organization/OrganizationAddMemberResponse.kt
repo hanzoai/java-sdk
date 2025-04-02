@@ -266,6 +266,26 @@ private constructor(
         validated = true
     }
 
+    fun isValid(): Boolean =
+        try {
+            validate()
+            true
+        } catch (e: HanzoInvalidDataException) {
+            false
+        }
+
+    /**
+     * Returns a score indicating how many valid values are contained in this object recursively.
+     *
+     * Used for best match union deserialization.
+     */
+    @JvmSynthetic
+    internal fun validity(): Int =
+        (if (organizationId.asKnown().isPresent) 1 else 0) +
+            (updatedOrganizationMemberships.asKnown().getOrNull()?.sumOf { it.validity().toInt() }
+                ?: 0) +
+            (updatedUsers.asKnown().getOrNull()?.sumOf { it.validity().toInt() } ?: 0)
+
     /**
      * This is the table that track what organizations a user belongs to and users spend within the
      * organization
@@ -676,6 +696,31 @@ private constructor(
             validated = true
         }
 
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
+
+        /**
+         * Returns a score indicating how many valid values are contained in this object
+         * recursively.
+         *
+         * Used for best match union deserialization.
+         */
+        @JvmSynthetic
+        internal fun validity(): Int =
+            (if (createdAt.asKnown().isPresent) 1 else 0) +
+                (if (organizationId.asKnown().isPresent) 1 else 0) +
+                (if (updatedAt.asKnown().isPresent) 1 else 0) +
+                (if (userId.asKnown().isPresent) 1 else 0) +
+                (if (budgetId.asKnown().isPresent) 1 else 0) +
+                (llmBudgetTable.asKnown().getOrNull()?.validity() ?: 0) +
+                (if (spend.asKnown().isPresent) 1 else 0) +
+                (if (userRole.asKnown().isPresent) 1 else 0)
+
         /** Represents user-controllable params for a LLM_BudgetTable record */
         class LlmBudgetTable
         private constructor(
@@ -1059,6 +1104,29 @@ private constructor(
                 tpmLimit()
                 validated = true
             }
+
+            fun isValid(): Boolean =
+                try {
+                    validate()
+                    true
+                } catch (e: HanzoInvalidDataException) {
+                    false
+                }
+
+            /**
+             * Returns a score indicating how many valid values are contained in this object
+             * recursively.
+             *
+             * Used for best match union deserialization.
+             */
+            @JvmSynthetic
+            internal fun validity(): Int =
+                (if (budgetDuration.asKnown().isPresent) 1 else 0) +
+                    (if (maxBudget.asKnown().isPresent) 1 else 0) +
+                    (if (maxParallelRequests.asKnown().isPresent) 1 else 0) +
+                    (if (rpmLimit.asKnown().isPresent) 1 else 0) +
+                    (if (softBudget.asKnown().isPresent) 1 else 0) +
+                    (if (tpmLimit.asKnown().isPresent) 1 else 0)
 
             override fun equals(other: Any?): Boolean {
                 if (this === other) {
@@ -1768,6 +1836,37 @@ private constructor(
             validated = true
         }
 
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
+
+        /**
+         * Returns a score indicating how many valid values are contained in this object
+         * recursively.
+         *
+         * Used for best match union deserialization.
+         */
+        @JvmSynthetic
+        internal fun validity(): Int =
+            (if (userId.asKnown().isPresent) 1 else 0) +
+                (if (budgetDuration.asKnown().isPresent) 1 else 0) +
+                (if (budgetResetAt.asKnown().isPresent) 1 else 0) +
+                (if (maxBudget.asKnown().isPresent) 1 else 0) +
+                (models.asKnown().getOrNull()?.size ?: 0) +
+                (organizationMemberships.asKnown().getOrNull()?.sumOf { it.validity().toInt() }
+                    ?: 0) +
+                (if (rpmLimit.asKnown().isPresent) 1 else 0) +
+                (if (spend.asKnown().isPresent) 1 else 0) +
+                (if (ssoUserId.asKnown().isPresent) 1 else 0) +
+                (teams.asKnown().getOrNull()?.size ?: 0) +
+                (if (tpmLimit.asKnown().isPresent) 1 else 0) +
+                (if (userEmail.asKnown().isPresent) 1 else 0) +
+                (if (userRole.asKnown().isPresent) 1 else 0)
+
         /**
          * This is the table that track what organizations a user belongs to and users spend within
          * the organization
@@ -2194,6 +2293,31 @@ private constructor(
                 validated = true
             }
 
+            fun isValid(): Boolean =
+                try {
+                    validate()
+                    true
+                } catch (e: HanzoInvalidDataException) {
+                    false
+                }
+
+            /**
+             * Returns a score indicating how many valid values are contained in this object
+             * recursively.
+             *
+             * Used for best match union deserialization.
+             */
+            @JvmSynthetic
+            internal fun validity(): Int =
+                (if (createdAt.asKnown().isPresent) 1 else 0) +
+                    (if (organizationId.asKnown().isPresent) 1 else 0) +
+                    (if (updatedAt.asKnown().isPresent) 1 else 0) +
+                    (if (userId.asKnown().isPresent) 1 else 0) +
+                    (if (budgetId.asKnown().isPresent) 1 else 0) +
+                    (llmBudgetTable.asKnown().getOrNull()?.validity() ?: 0) +
+                    (if (spend.asKnown().isPresent) 1 else 0) +
+                    (if (userRole.asKnown().isPresent) 1 else 0)
+
             /** Represents user-controllable params for a LLM_BudgetTable record */
             class LlmBudgetTable
             private constructor(
@@ -2590,6 +2714,29 @@ private constructor(
                     tpmLimit()
                     validated = true
                 }
+
+                fun isValid(): Boolean =
+                    try {
+                        validate()
+                        true
+                    } catch (e: HanzoInvalidDataException) {
+                        false
+                    }
+
+                /**
+                 * Returns a score indicating how many valid values are contained in this object
+                 * recursively.
+                 *
+                 * Used for best match union deserialization.
+                 */
+                @JvmSynthetic
+                internal fun validity(): Int =
+                    (if (budgetDuration.asKnown().isPresent) 1 else 0) +
+                        (if (maxBudget.asKnown().isPresent) 1 else 0) +
+                        (if (maxParallelRequests.asKnown().isPresent) 1 else 0) +
+                        (if (rpmLimit.asKnown().isPresent) 1 else 0) +
+                        (if (softBudget.asKnown().isPresent) 1 else 0) +
+                        (if (tpmLimit.asKnown().isPresent) 1 else 0)
 
                 override fun equals(other: Any?): Boolean {
                     if (this === other) {
