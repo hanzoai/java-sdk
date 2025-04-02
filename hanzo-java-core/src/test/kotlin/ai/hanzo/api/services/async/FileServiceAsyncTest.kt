@@ -68,13 +68,13 @@ internal class FileServiceAsyncTest {
                 .build()
         val fileServiceAsync = client.files()
 
-        val fileFuture =
+        val filesFuture =
             fileServiceAsync.list(
                 FileListParams.builder().provider("provider").purpose("purpose").build()
             )
 
-        val file = fileFuture.get()
-        file.validate()
+        val files = filesFuture.get()
+        files.validate()
     }
 
     @Disabled("skipped: tests are disabled for the time being")

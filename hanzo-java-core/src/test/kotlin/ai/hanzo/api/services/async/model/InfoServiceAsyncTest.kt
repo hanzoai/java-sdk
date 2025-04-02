@@ -22,10 +22,10 @@ internal class InfoServiceAsyncTest {
                 .build()
         val infoServiceAsync = client.model().info()
 
-        val infoFuture =
+        val infosFuture =
             infoServiceAsync.list(InfoListParams.builder().llmModelId("llm_model_id").build())
 
-        val info = infoFuture.get()
-        info.validate()
+        val infos = infosFuture.get()
+        infos.validate()
     }
 }
