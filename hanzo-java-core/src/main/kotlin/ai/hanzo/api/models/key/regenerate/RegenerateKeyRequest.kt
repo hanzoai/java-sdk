@@ -1070,6 +1070,43 @@ private constructor(
         validated = true
     }
 
+    fun isValid(): Boolean =
+        try {
+            validate()
+            true
+        } catch (e: HanzoInvalidDataException) {
+            false
+        }
+
+    /**
+     * Returns a score indicating how many valid values are contained in this object recursively.
+     *
+     * Used for best match union deserialization.
+     */
+    @JvmSynthetic
+    internal fun validity(): Int =
+        (allowedCacheControls.asKnown().getOrNull()?.size ?: 0) +
+            (if (blocked.asKnown().isPresent) 1 else 0) +
+            (if (budgetDuration.asKnown().isPresent) 1 else 0) +
+            (if (budgetId.asKnown().isPresent) 1 else 0) +
+            (if (duration.asKnown().isPresent) 1 else 0) +
+            (enforcedParams.asKnown().getOrNull()?.size ?: 0) +
+            (guardrails.asKnown().getOrNull()?.size ?: 0) +
+            (if (key.asKnown().isPresent) 1 else 0) +
+            (if (keyAlias.asKnown().isPresent) 1 else 0) +
+            (if (maxBudget.asKnown().isPresent) 1 else 0) +
+            (if (maxParallelRequests.asKnown().isPresent) 1 else 0) +
+            (models.asKnown().getOrNull()?.size ?: 0) +
+            (if (newMasterKey.asKnown().isPresent) 1 else 0) +
+            (if (rpmLimit.asKnown().isPresent) 1 else 0) +
+            (if (sendInviteEmail.asKnown().isPresent) 1 else 0) +
+            (if (softBudget.asKnown().isPresent) 1 else 0) +
+            (if (spend.asKnown().isPresent) 1 else 0) +
+            (tags.asKnown().getOrNull()?.size ?: 0) +
+            (if (teamId.asKnown().isPresent) 1 else 0) +
+            (if (tpmLimit.asKnown().isPresent) 1 else 0) +
+            (if (userId.asKnown().isPresent) 1 else 0)
+
     override fun equals(other: Any?): Boolean {
         if (this === other) {
             return true

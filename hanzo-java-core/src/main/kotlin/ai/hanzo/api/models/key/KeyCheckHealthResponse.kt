@@ -159,10 +159,28 @@ private constructor(
             return@apply
         }
 
-        key()
+        key().ifPresent { it.validate() }
         loggingCallbacks().ifPresent { it.validate() }
         validated = true
     }
+
+    fun isValid(): Boolean =
+        try {
+            validate()
+            true
+        } catch (e: HanzoInvalidDataException) {
+            false
+        }
+
+    /**
+     * Returns a score indicating how many valid values are contained in this object recursively.
+     *
+     * Used for best match union deserialization.
+     */
+    @JvmSynthetic
+    internal fun validity(): Int =
+        (key.asKnown().getOrNull()?.validity() ?: 0) +
+            (loggingCallbacks.asKnown().getOrNull()?.validity() ?: 0)
 
     class Key @JsonCreator private constructor(private val value: JsonField<String>) : Enum {
 
@@ -247,6 +265,33 @@ private constructor(
          */
         fun asString(): String =
             _value().asString().orElseThrow { HanzoInvalidDataException("Value is not a String") }
+
+        private var validated: Boolean = false
+
+        fun validate(): Key = apply {
+            if (validated) {
+                return@apply
+            }
+
+            known()
+            validated = true
+        }
+
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
+
+        /**
+         * Returns a score indicating how many valid values are contained in this object
+         * recursively.
+         *
+         * Used for best match union deserialization.
+         */
+        @JvmSynthetic internal fun validity(): Int = if (value() == Value._UNKNOWN) 0 else 1
 
         override fun equals(other: Any?): Boolean {
             if (this === other) {
@@ -446,9 +491,29 @@ private constructor(
 
             callbacks()
             details()
-            status()
+            status().ifPresent { it.validate() }
             validated = true
         }
+
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
+
+        /**
+         * Returns a score indicating how many valid values are contained in this object
+         * recursively.
+         *
+         * Used for best match union deserialization.
+         */
+        @JvmSynthetic
+        internal fun validity(): Int =
+            (callbacks.asKnown().getOrNull()?.size ?: 0) +
+                (if (details.asKnown().isPresent) 1 else 0) +
+                (status.asKnown().getOrNull()?.validity() ?: 0)
 
         class Status @JsonCreator private constructor(private val value: JsonField<String>) : Enum {
 
@@ -538,6 +603,33 @@ private constructor(
                 _value().asString().orElseThrow {
                     HanzoInvalidDataException("Value is not a String")
                 }
+
+            private var validated: Boolean = false
+
+            fun validate(): Status = apply {
+                if (validated) {
+                    return@apply
+                }
+
+                known()
+                validated = true
+            }
+
+            fun isValid(): Boolean =
+                try {
+                    validate()
+                    true
+                } catch (e: HanzoInvalidDataException) {
+                    false
+                }
+
+            /**
+             * Returns a score indicating how many valid values are contained in this object
+             * recursively.
+             *
+             * Used for best match union deserialization.
+             */
+            @JvmSynthetic internal fun validity(): Int = if (value() == Value._UNKNOWN) 0 else 1
 
             override fun equals(other: Any?): Boolean {
                 if (this === other) {

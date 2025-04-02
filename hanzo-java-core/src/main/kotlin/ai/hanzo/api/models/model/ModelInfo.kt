@@ -461,11 +461,37 @@ private constructor(
         dbModel()
         teamId()
         teamPublicModelName()
-        tier()
+        tier().ifPresent { it.validate() }
         updatedAt()
         updatedBy()
         validated = true
     }
+
+    fun isValid(): Boolean =
+        try {
+            validate()
+            true
+        } catch (e: HanzoInvalidDataException) {
+            false
+        }
+
+    /**
+     * Returns a score indicating how many valid values are contained in this object recursively.
+     *
+     * Used for best match union deserialization.
+     */
+    @JvmSynthetic
+    internal fun validity(): Int =
+        (if (id.asKnown().isPresent) 1 else 0) +
+            (if (baseModel.asKnown().isPresent) 1 else 0) +
+            (if (createdAt.asKnown().isPresent) 1 else 0) +
+            (if (createdBy.asKnown().isPresent) 1 else 0) +
+            (if (dbModel.asKnown().isPresent) 1 else 0) +
+            (if (teamId.asKnown().isPresent) 1 else 0) +
+            (if (teamPublicModelName.asKnown().isPresent) 1 else 0) +
+            (tier.asKnown().getOrNull()?.validity() ?: 0) +
+            (if (updatedAt.asKnown().isPresent) 1 else 0) +
+            (if (updatedBy.asKnown().isPresent) 1 else 0)
 
     class Tier @JsonCreator private constructor(private val value: JsonField<String>) : Enum {
 
@@ -550,6 +576,33 @@ private constructor(
          */
         fun asString(): String =
             _value().asString().orElseThrow { HanzoInvalidDataException("Value is not a String") }
+
+        private var validated: Boolean = false
+
+        fun validate(): Tier = apply {
+            if (validated) {
+                return@apply
+            }
+
+            known()
+            validated = true
+        }
+
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
+
+        /**
+         * Returns a score indicating how many valid values are contained in this object
+         * recursively.
+         *
+         * Used for best match union deserialization.
+         */
+        @JvmSynthetic internal fun validity(): Int = if (value() == Value._UNKNOWN) 0 else 1
 
         override fun equals(other: Any?): Boolean {
             if (this === other) {
