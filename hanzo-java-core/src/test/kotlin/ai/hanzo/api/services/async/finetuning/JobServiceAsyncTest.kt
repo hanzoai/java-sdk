@@ -80,7 +80,7 @@ internal class JobServiceAsyncTest {
                 .build()
         val jobServiceAsync = client.fineTuning().jobs()
 
-        val jobFuture =
+        val jobsFuture =
             jobServiceAsync.list(
                 JobListParams.builder()
                     .customLlmProvider(JobListParams.CustomLlmProvider.OPENAI)
@@ -89,7 +89,7 @@ internal class JobServiceAsyncTest {
                     .build()
             )
 
-        val job = jobFuture.get()
-        job.validate()
+        val jobs = jobsFuture.get()
+        jobs.validate()
     }
 }
