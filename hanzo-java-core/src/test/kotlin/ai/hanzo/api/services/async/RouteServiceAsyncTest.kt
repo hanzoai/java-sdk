@@ -21,9 +21,9 @@ internal class RouteServiceAsyncTest {
                 .build()
         val routeServiceAsync = client.routes()
 
-        val routeFuture = routeServiceAsync.list()
+        val routesFuture = routeServiceAsync.list()
 
-        val route = routeFuture.get()
-        route.validate()
+        val routes = routesFuture.get()
+        routes.validate()
     }
 }

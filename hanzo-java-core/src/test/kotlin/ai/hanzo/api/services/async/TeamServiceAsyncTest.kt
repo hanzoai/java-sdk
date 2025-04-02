@@ -113,13 +113,13 @@ internal class TeamServiceAsyncTest {
                 .build()
         val teamServiceAsync = client.team()
 
-        val teamFuture =
+        val teamsFuture =
             teamServiceAsync.list(
                 TeamListParams.builder().organizationId("organization_id").userId("user_id").build()
             )
 
-        val team = teamFuture.get()
-        team.validate()
+        val teams = teamsFuture.get()
+        teams.validate()
     }
 
     @Disabled("skipped: tests are disabled for the time being")

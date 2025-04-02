@@ -118,7 +118,7 @@ internal class UserServiceAsyncTest {
                 .build()
         val userServiceAsync = client.user()
 
-        val userFuture =
+        val usersFuture =
             userServiceAsync.list(
                 UserListParams.builder()
                     .page(1L)
@@ -128,8 +128,8 @@ internal class UserServiceAsyncTest {
                     .build()
             )
 
-        val user = userFuture.get()
-        user.validate()
+        val users = usersFuture.get()
+        users.validate()
     }
 
     @Disabled("skipped: tests are disabled for the time being")
