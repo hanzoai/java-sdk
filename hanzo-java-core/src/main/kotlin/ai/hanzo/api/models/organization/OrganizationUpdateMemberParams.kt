@@ -682,11 +682,33 @@ private constructor(
 
             organizationId()
             maxBudgetInOrganization()
-            role()
+            role().ifPresent { it.validate() }
             userEmail()
             userId()
             validated = true
         }
+
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
+
+        /**
+         * Returns a score indicating how many valid values are contained in this object
+         * recursively.
+         *
+         * Used for best match union deserialization.
+         */
+        @JvmSynthetic
+        internal fun validity(): Int =
+            (if (organizationId.asKnown().isPresent) 1 else 0) +
+                (if (maxBudgetInOrganization.asKnown().isPresent) 1 else 0) +
+                (role.asKnown().getOrNull()?.validity() ?: 0) +
+                (if (userEmail.asKnown().isPresent) 1 else 0) +
+                (if (userId.asKnown().isPresent) 1 else 0)
 
         override fun equals(other: Any?): Boolean {
             if (this === other) {
@@ -831,6 +853,33 @@ private constructor(
          */
         fun asString(): String =
             _value().asString().orElseThrow { HanzoInvalidDataException("Value is not a String") }
+
+        private var validated: Boolean = false
+
+        fun validate(): Role = apply {
+            if (validated) {
+                return@apply
+            }
+
+            known()
+            validated = true
+        }
+
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
+
+        /**
+         * Returns a score indicating how many valid values are contained in this object
+         * recursively.
+         *
+         * Used for best match union deserialization.
+         */
+        @JvmSynthetic internal fun validity(): Int = if (value() == Value._UNKNOWN) 0 else 1
 
         override fun equals(other: Any?): Boolean {
             if (this === other) {

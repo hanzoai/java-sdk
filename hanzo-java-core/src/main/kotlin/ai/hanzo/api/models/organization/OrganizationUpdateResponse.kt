@@ -8,6 +8,7 @@ import ai.hanzo.api.core.ExcludeMissing
 import ai.hanzo.api.core.JsonField
 import ai.hanzo.api.core.JsonMissing
 import ai.hanzo.api.core.JsonValue
+import ai.hanzo.api.core.allMaxBy
 import ai.hanzo.api.core.checkKnown
 import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.getOrThrow
@@ -605,6 +606,34 @@ private constructor(
         validated = true
     }
 
+    fun isValid(): Boolean =
+        try {
+            validate()
+            true
+        } catch (e: HanzoInvalidDataException) {
+            false
+        }
+
+    /**
+     * Returns a score indicating how many valid values are contained in this object recursively.
+     *
+     * Used for best match union deserialization.
+     */
+    @JvmSynthetic
+    internal fun validity(): Int =
+        (if (budgetId.asKnown().isPresent) 1 else 0) +
+            (if (createdAt.asKnown().isPresent) 1 else 0) +
+            (if (createdBy.asKnown().isPresent) 1 else 0) +
+            (models.asKnown().getOrNull()?.size ?: 0) +
+            (if (updatedAt.asKnown().isPresent) 1 else 0) +
+            (if (updatedBy.asKnown().isPresent) 1 else 0) +
+            (llmBudgetTable.asKnown().getOrNull()?.validity() ?: 0) +
+            (members.asKnown().getOrNull()?.sumOf { it.validity().toInt() } ?: 0) +
+            (if (organizationAlias.asKnown().isPresent) 1 else 0) +
+            (if (organizationId.asKnown().isPresent) 1 else 0) +
+            (if (spend.asKnown().isPresent) 1 else 0) +
+            (teams.asKnown().getOrNull()?.sumOf { it.validity().toInt() } ?: 0)
+
     /** Represents user-controllable params for a LLM_BudgetTable record */
     class LlmBudgetTable
     private constructor(
@@ -970,6 +999,29 @@ private constructor(
             tpmLimit()
             validated = true
         }
+
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
+
+        /**
+         * Returns a score indicating how many valid values are contained in this object
+         * recursively.
+         *
+         * Used for best match union deserialization.
+         */
+        @JvmSynthetic
+        internal fun validity(): Int =
+            (if (budgetDuration.asKnown().isPresent) 1 else 0) +
+                (if (maxBudget.asKnown().isPresent) 1 else 0) +
+                (if (maxParallelRequests.asKnown().isPresent) 1 else 0) +
+                (if (rpmLimit.asKnown().isPresent) 1 else 0) +
+                (if (softBudget.asKnown().isPresent) 1 else 0) +
+                (if (tpmLimit.asKnown().isPresent) 1 else 0)
 
         override fun equals(other: Any?): Boolean {
             if (this === other) {
@@ -1396,6 +1448,31 @@ private constructor(
             validated = true
         }
 
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
+
+        /**
+         * Returns a score indicating how many valid values are contained in this object
+         * recursively.
+         *
+         * Used for best match union deserialization.
+         */
+        @JvmSynthetic
+        internal fun validity(): Int =
+            (if (createdAt.asKnown().isPresent) 1 else 0) +
+                (if (organizationId.asKnown().isPresent) 1 else 0) +
+                (if (updatedAt.asKnown().isPresent) 1 else 0) +
+                (if (userId.asKnown().isPresent) 1 else 0) +
+                (if (budgetId.asKnown().isPresent) 1 else 0) +
+                (llmBudgetTable.asKnown().getOrNull()?.validity() ?: 0) +
+                (if (spend.asKnown().isPresent) 1 else 0) +
+                (if (userRole.asKnown().isPresent) 1 else 0)
+
         /** Represents user-controllable params for a LLM_BudgetTable record */
         class LlmBudgetTable
         private constructor(
@@ -1779,6 +1856,29 @@ private constructor(
                 tpmLimit()
                 validated = true
             }
+
+            fun isValid(): Boolean =
+                try {
+                    validate()
+                    true
+                } catch (e: HanzoInvalidDataException) {
+                    false
+                }
+
+            /**
+             * Returns a score indicating how many valid values are contained in this object
+             * recursively.
+             *
+             * Used for best match union deserialization.
+             */
+            @JvmSynthetic
+            internal fun validity(): Int =
+                (if (budgetDuration.asKnown().isPresent) 1 else 0) +
+                    (if (maxBudget.asKnown().isPresent) 1 else 0) +
+                    (if (maxParallelRequests.asKnown().isPresent) 1 else 0) +
+                    (if (rpmLimit.asKnown().isPresent) 1 else 0) +
+                    (if (softBudget.asKnown().isPresent) 1 else 0) +
+                    (if (tpmLimit.asKnown().isPresent) 1 else 0)
 
             override fun equals(other: Any?): Boolean {
                 if (this === other) {
@@ -2692,6 +2792,41 @@ private constructor(
             validated = true
         }
 
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
+
+        /**
+         * Returns a score indicating how many valid values are contained in this object
+         * recursively.
+         *
+         * Used for best match union deserialization.
+         */
+        @JvmSynthetic
+        internal fun validity(): Int =
+            (if (teamId.asKnown().isPresent) 1 else 0) +
+                (admins.asKnown().getOrNull()?.size ?: 0) +
+                (if (blocked.asKnown().isPresent) 1 else 0) +
+                (if (budgetDuration.asKnown().isPresent) 1 else 0) +
+                (if (budgetResetAt.asKnown().isPresent) 1 else 0) +
+                (if (createdAt.asKnown().isPresent) 1 else 0) +
+                (llmModelTable.asKnown().getOrNull()?.validity() ?: 0) +
+                (if (maxBudget.asKnown().isPresent) 1 else 0) +
+                (if (maxParallelRequests.asKnown().isPresent) 1 else 0) +
+                (members.asKnown().getOrNull()?.size ?: 0) +
+                (membersWithRoles.asKnown().getOrNull()?.sumOf { it.validity().toInt() } ?: 0) +
+                (if (modelId.asKnown().isPresent) 1 else 0) +
+                (models.asKnown().getOrNull()?.size ?: 0) +
+                (if (organizationId.asKnown().isPresent) 1 else 0) +
+                (if (rpmLimit.asKnown().isPresent) 1 else 0) +
+                (if (spend.asKnown().isPresent) 1 else 0) +
+                (if (teamAlias.asKnown().isPresent) 1 else 0) +
+                (if (tpmLimit.asKnown().isPresent) 1 else 0)
+
         class LlmModelTable
         private constructor(
             private val createdBy: JsonField<String>,
@@ -2910,6 +3045,26 @@ private constructor(
                 validated = true
             }
 
+            fun isValid(): Boolean =
+                try {
+                    validate()
+                    true
+                } catch (e: HanzoInvalidDataException) {
+                    false
+                }
+
+            /**
+             * Returns a score indicating how many valid values are contained in this object
+             * recursively.
+             *
+             * Used for best match union deserialization.
+             */
+            @JvmSynthetic
+            internal fun validity(): Int =
+                (if (createdBy.asKnown().isPresent) 1 else 0) +
+                    (if (updatedBy.asKnown().isPresent) 1 else 0) +
+                    (modelAliases.asKnown().getOrNull()?.validity() ?: 0)
+
             @JsonDeserialize(using = ModelAliases.Deserializer::class)
             @JsonSerialize(using = ModelAliases.Serializer::class)
             class ModelAliases
@@ -2933,13 +3088,12 @@ private constructor(
 
                 fun _json(): Optional<JsonValue> = Optional.ofNullable(_json)
 
-                fun <T> accept(visitor: Visitor<T>): T {
-                    return when {
+                fun <T> accept(visitor: Visitor<T>): T =
+                    when {
                         jsonValue != null -> visitor.visitJsonValue(jsonValue)
                         string != null -> visitor.visitString(string)
                         else -> visitor.unknown(_json)
                     }
-                }
 
                 private var validated: Boolean = false
 
@@ -2957,6 +3111,32 @@ private constructor(
                     )
                     validated = true
                 }
+
+                fun isValid(): Boolean =
+                    try {
+                        validate()
+                        true
+                    } catch (e: HanzoInvalidDataException) {
+                        false
+                    }
+
+                /**
+                 * Returns a score indicating how many valid values are contained in this object
+                 * recursively.
+                 *
+                 * Used for best match union deserialization.
+                 */
+                @JvmSynthetic
+                internal fun validity(): Int =
+                    accept(
+                        object : Visitor<Int> {
+                            override fun visitJsonValue(jsonValue: JsonValue) = 1
+
+                            override fun visitString(string: String) = 1
+
+                            override fun unknown(json: JsonValue?) = 0
+                        }
+                    )
 
                 override fun equals(other: Any?): Boolean {
                     if (this === other) {
@@ -3014,14 +3194,28 @@ private constructor(
                     override fun ObjectCodec.deserialize(node: JsonNode): ModelAliases {
                         val json = JsonValue.fromJsonNode(node)
 
-                        tryDeserialize(node, jacksonTypeRef<JsonValue>())?.let {
-                            return ModelAliases(jsonValue = it, _json = json)
+                        val bestMatches =
+                            sequenceOf(
+                                    tryDeserialize(node, jacksonTypeRef<String>())?.let {
+                                        ModelAliases(string = it, _json = json)
+                                    },
+                                    tryDeserialize(node, jacksonTypeRef<JsonValue>())?.let {
+                                        ModelAliases(jsonValue = it, _json = json)
+                                    },
+                                )
+                                .filterNotNull()
+                                .allMaxBy { it.validity() }
+                                .toList()
+                        return when (bestMatches.size) {
+                            // This can happen if what we're deserializing is completely
+                            // incompatible with all the possible variants.
+                            0 -> ModelAliases(_json = json)
+                            1 -> bestMatches.single()
+                            // If there's more than one match with the highest validity, then use
+                            // the first completely valid match, or simply the first match if none
+                            // are completely valid.
+                            else -> bestMatches.firstOrNull { it.isValid() } ?: bestMatches.first()
                         }
-                        tryDeserialize(node, jacksonTypeRef<String>())?.let {
-                            return ModelAliases(string = it, _json = json)
-                        }
-
-                        return ModelAliases(_json = json)
                     }
                 }
 
