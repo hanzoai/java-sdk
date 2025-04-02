@@ -9,6 +9,7 @@ import ai.hanzo.api.core.JsonField
 import ai.hanzo.api.core.JsonMissing
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.Params
+import ai.hanzo.api.core.allMaxBy
 import ai.hanzo.api.core.checkKnown
 import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.getOrThrow
@@ -494,6 +495,26 @@ private constructor(
             modelName()
             validated = true
         }
+
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
+
+        /**
+         * Returns a score indicating how many valid values are contained in this object
+         * recursively.
+         *
+         * Used for best match union deserialization.
+         */
+        @JvmSynthetic
+        internal fun validity(): Int =
+            (llmParams.asKnown().getOrNull()?.validity() ?: 0) +
+                (modelInfo.asKnown().getOrNull()?.validity() ?: 0) +
+                (if (modelName.asKnown().isPresent) 1 else 0)
 
         override fun equals(other: Any?): Boolean {
             if (this === other) {
@@ -2031,6 +2052,55 @@ private constructor(
             validated = true
         }
 
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
+
+        /**
+         * Returns a score indicating how many valid values are contained in this object
+         * recursively.
+         *
+         * Used for best match union deserialization.
+         */
+        @JvmSynthetic
+        internal fun validity(): Int =
+            (if (model.asKnown().isPresent) 1 else 0) +
+                (if (apiBase.asKnown().isPresent) 1 else 0) +
+                (if (apiKey.asKnown().isPresent) 1 else 0) +
+                (if (apiVersion.asKnown().isPresent) 1 else 0) +
+                (if (awsAccessKeyId.asKnown().isPresent) 1 else 0) +
+                (if (awsRegionName.asKnown().isPresent) 1 else 0) +
+                (if (awsSecretAccessKey.asKnown().isPresent) 1 else 0) +
+                (if (budgetDuration.asKnown().isPresent) 1 else 0) +
+                (configurableClientsideAuthParams.asKnown().getOrNull()?.sumOf {
+                    it.validity().toInt()
+                } ?: 0) +
+                (if (customLlmProvider.asKnown().isPresent) 1 else 0) +
+                (if (inputCostPerSecond.asKnown().isPresent) 1 else 0) +
+                (if (inputCostPerToken.asKnown().isPresent) 1 else 0) +
+                (if (llmTraceId.asKnown().isPresent) 1 else 0) +
+                (if (maxBudget.asKnown().isPresent) 1 else 0) +
+                (if (maxFileSizeMb.asKnown().isPresent) 1 else 0) +
+                (if (maxRetries.asKnown().isPresent) 1 else 0) +
+                (if (mergeReasoningContentInChoices.asKnown().isPresent) 1 else 0) +
+                (if (organization.asKnown().isPresent) 1 else 0) +
+                (if (outputCostPerSecond.asKnown().isPresent) 1 else 0) +
+                (if (outputCostPerToken.asKnown().isPresent) 1 else 0) +
+                (if (regionName.asKnown().isPresent) 1 else 0) +
+                (if (rpm.asKnown().isPresent) 1 else 0) +
+                (streamTimeout.asKnown().getOrNull()?.validity() ?: 0) +
+                (timeout.asKnown().getOrNull()?.validity() ?: 0) +
+                (if (tpm.asKnown().isPresent) 1 else 0) +
+                (if (useInPassThrough.asKnown().isPresent) 1 else 0) +
+                (vertexCredentials.asKnown().getOrNull()?.validity() ?: 0) +
+                (if (vertexLocation.asKnown().isPresent) 1 else 0) +
+                (if (vertexProject.asKnown().isPresent) 1 else 0) +
+                (if (watsonxRegionName.asKnown().isPresent) 1 else 0)
+
         @JsonDeserialize(using = ConfigurableClientsideAuthParam.Deserializer::class)
         @JsonSerialize(using = ConfigurableClientsideAuthParam.Serializer::class)
         class ConfigurableClientsideAuthParam
@@ -2056,13 +2126,12 @@ private constructor(
 
             fun _json(): Optional<JsonValue> = Optional.ofNullable(_json)
 
-            fun <T> accept(visitor: Visitor<T>): T {
-                return when {
+            fun <T> accept(visitor: Visitor<T>): T =
+                when {
                     string != null -> visitor.visitString(string)
                     paramsCustomAuth != null -> visitor.visitParamsCustomAuth(paramsCustomAuth)
                     else -> visitor.unknown(_json)
                 }
-            }
 
             private var validated: Boolean = false
 
@@ -2084,6 +2153,34 @@ private constructor(
                 )
                 validated = true
             }
+
+            fun isValid(): Boolean =
+                try {
+                    validate()
+                    true
+                } catch (e: HanzoInvalidDataException) {
+                    false
+                }
+
+            /**
+             * Returns a score indicating how many valid values are contained in this object
+             * recursively.
+             *
+             * Used for best match union deserialization.
+             */
+            @JvmSynthetic
+            internal fun validity(): Int =
+                accept(
+                    object : Visitor<Int> {
+                        override fun visitString(string: String) = 1
+
+                        override fun visitParamsCustomAuth(
+                            paramsCustomAuth: ConfigurableClientsideParamsCustomAuth
+                        ) = paramsCustomAuth.validity()
+
+                        override fun unknown(json: JsonValue?) = 0
+                    }
+                )
 
             override fun equals(other: Any?): Boolean {
                 if (this === other) {
@@ -2154,20 +2251,35 @@ private constructor(
                 ): ConfigurableClientsideAuthParam {
                     val json = JsonValue.fromJsonNode(node)
 
-                    tryDeserialize(node, jacksonTypeRef<String>())?.let {
-                        return ConfigurableClientsideAuthParam(string = it, _json = json)
-                    }
-                    tryDeserialize(node, jacksonTypeRef<ConfigurableClientsideParamsCustomAuth>()) {
-                            it.validate()
-                        }
-                        ?.let {
-                            return ConfigurableClientsideAuthParam(
-                                paramsCustomAuth = it,
-                                _json = json,
+                    val bestMatches =
+                        sequenceOf(
+                                tryDeserialize(
+                                        node,
+                                        jacksonTypeRef<ConfigurableClientsideParamsCustomAuth>(),
+                                    )
+                                    ?.let {
+                                        ConfigurableClientsideAuthParam(
+                                            paramsCustomAuth = it,
+                                            _json = json,
+                                        )
+                                    },
+                                tryDeserialize(node, jacksonTypeRef<String>())?.let {
+                                    ConfigurableClientsideAuthParam(string = it, _json = json)
+                                },
                             )
-                        }
-
-                    return ConfigurableClientsideAuthParam(_json = json)
+                            .filterNotNull()
+                            .allMaxBy { it.validity() }
+                            .toList()
+                    return when (bestMatches.size) {
+                        // This can happen if what we're deserializing is completely incompatible
+                        // with all the possible variants (e.g. deserializing from array).
+                        0 -> ConfigurableClientsideAuthParam(_json = json)
+                        1 -> bestMatches.single()
+                        // If there's more than one match with the highest validity, then use the
+                        // first completely valid match, or simply the first match if none are
+                        // completely valid.
+                        else -> bestMatches.firstOrNull { it.isValid() } ?: bestMatches.first()
+                    }
                 }
             }
 
@@ -2216,13 +2328,12 @@ private constructor(
 
             fun _json(): Optional<JsonValue> = Optional.ofNullable(_json)
 
-            fun <T> accept(visitor: Visitor<T>): T {
-                return when {
+            fun <T> accept(visitor: Visitor<T>): T =
+                when {
                     number != null -> visitor.visitNumber(number)
                     string != null -> visitor.visitString(string)
                     else -> visitor.unknown(_json)
                 }
-            }
 
             private var validated: Boolean = false
 
@@ -2240,6 +2351,32 @@ private constructor(
                 )
                 validated = true
             }
+
+            fun isValid(): Boolean =
+                try {
+                    validate()
+                    true
+                } catch (e: HanzoInvalidDataException) {
+                    false
+                }
+
+            /**
+             * Returns a score indicating how many valid values are contained in this object
+             * recursively.
+             *
+             * Used for best match union deserialization.
+             */
+            @JvmSynthetic
+            internal fun validity(): Int =
+                accept(
+                    object : Visitor<Int> {
+                        override fun visitNumber(number: Double) = 1
+
+                        override fun visitString(string: String) = 1
+
+                        override fun unknown(json: JsonValue?) = 0
+                    }
+                )
 
             override fun equals(other: Any?): Boolean {
                 if (this === other) {
@@ -2296,14 +2433,28 @@ private constructor(
                 override fun ObjectCodec.deserialize(node: JsonNode): StreamTimeout {
                     val json = JsonValue.fromJsonNode(node)
 
-                    tryDeserialize(node, jacksonTypeRef<Double>())?.let {
-                        return StreamTimeout(number = it, _json = json)
+                    val bestMatches =
+                        sequenceOf(
+                                tryDeserialize(node, jacksonTypeRef<Double>())?.let {
+                                    StreamTimeout(number = it, _json = json)
+                                },
+                                tryDeserialize(node, jacksonTypeRef<String>())?.let {
+                                    StreamTimeout(string = it, _json = json)
+                                },
+                            )
+                            .filterNotNull()
+                            .allMaxBy { it.validity() }
+                            .toList()
+                    return when (bestMatches.size) {
+                        // This can happen if what we're deserializing is completely incompatible
+                        // with all the possible variants (e.g. deserializing from object).
+                        0 -> StreamTimeout(_json = json)
+                        1 -> bestMatches.single()
+                        // If there's more than one match with the highest validity, then use the
+                        // first completely valid match, or simply the first match if none are
+                        // completely valid.
+                        else -> bestMatches.firstOrNull { it.isValid() } ?: bestMatches.first()
                     }
-                    tryDeserialize(node, jacksonTypeRef<String>())?.let {
-                        return StreamTimeout(string = it, _json = json)
-                    }
-
-                    return StreamTimeout(_json = json)
                 }
             }
 
@@ -2347,13 +2498,12 @@ private constructor(
 
             fun _json(): Optional<JsonValue> = Optional.ofNullable(_json)
 
-            fun <T> accept(visitor: Visitor<T>): T {
-                return when {
+            fun <T> accept(visitor: Visitor<T>): T =
+                when {
                     number != null -> visitor.visitNumber(number)
                     string != null -> visitor.visitString(string)
                     else -> visitor.unknown(_json)
                 }
-            }
 
             private var validated: Boolean = false
 
@@ -2371,6 +2521,32 @@ private constructor(
                 )
                 validated = true
             }
+
+            fun isValid(): Boolean =
+                try {
+                    validate()
+                    true
+                } catch (e: HanzoInvalidDataException) {
+                    false
+                }
+
+            /**
+             * Returns a score indicating how many valid values are contained in this object
+             * recursively.
+             *
+             * Used for best match union deserialization.
+             */
+            @JvmSynthetic
+            internal fun validity(): Int =
+                accept(
+                    object : Visitor<Int> {
+                        override fun visitNumber(number: Double) = 1
+
+                        override fun visitString(string: String) = 1
+
+                        override fun unknown(json: JsonValue?) = 0
+                    }
+                )
 
             override fun equals(other: Any?): Boolean {
                 if (this === other) {
@@ -2427,14 +2603,28 @@ private constructor(
                 override fun ObjectCodec.deserialize(node: JsonNode): Timeout {
                     val json = JsonValue.fromJsonNode(node)
 
-                    tryDeserialize(node, jacksonTypeRef<Double>())?.let {
-                        return Timeout(number = it, _json = json)
+                    val bestMatches =
+                        sequenceOf(
+                                tryDeserialize(node, jacksonTypeRef<Double>())?.let {
+                                    Timeout(number = it, _json = json)
+                                },
+                                tryDeserialize(node, jacksonTypeRef<String>())?.let {
+                                    Timeout(string = it, _json = json)
+                                },
+                            )
+                            .filterNotNull()
+                            .allMaxBy { it.validity() }
+                            .toList()
+                    return when (bestMatches.size) {
+                        // This can happen if what we're deserializing is completely incompatible
+                        // with all the possible variants (e.g. deserializing from object).
+                        0 -> Timeout(_json = json)
+                        1 -> bestMatches.single()
+                        // If there's more than one match with the highest validity, then use the
+                        // first completely valid match, or simply the first match if none are
+                        // completely valid.
+                        else -> bestMatches.firstOrNull { it.isValid() } ?: bestMatches.first()
                     }
-                    tryDeserialize(node, jacksonTypeRef<String>())?.let {
-                        return Timeout(string = it, _json = json)
-                    }
-
-                    return Timeout(_json = json)
                 }
             }
 
@@ -2478,13 +2668,12 @@ private constructor(
 
             fun _json(): Optional<JsonValue> = Optional.ofNullable(_json)
 
-            fun <T> accept(visitor: Visitor<T>): T {
-                return when {
+            fun <T> accept(visitor: Visitor<T>): T =
+                when {
                     jsonValue != null -> visitor.visitJsonValue(jsonValue)
                     string != null -> visitor.visitString(string)
                     else -> visitor.unknown(_json)
                 }
-            }
 
             private var validated: Boolean = false
 
@@ -2502,6 +2691,32 @@ private constructor(
                 )
                 validated = true
             }
+
+            fun isValid(): Boolean =
+                try {
+                    validate()
+                    true
+                } catch (e: HanzoInvalidDataException) {
+                    false
+                }
+
+            /**
+             * Returns a score indicating how many valid values are contained in this object
+             * recursively.
+             *
+             * Used for best match union deserialization.
+             */
+            @JvmSynthetic
+            internal fun validity(): Int =
+                accept(
+                    object : Visitor<Int> {
+                        override fun visitJsonValue(jsonValue: JsonValue) = 1
+
+                        override fun visitString(string: String) = 1
+
+                        override fun unknown(json: JsonValue?) = 0
+                    }
+                )
 
             override fun equals(other: Any?): Boolean {
                 if (this === other) {
@@ -2560,14 +2775,28 @@ private constructor(
                 override fun ObjectCodec.deserialize(node: JsonNode): VertexCredentials {
                     val json = JsonValue.fromJsonNode(node)
 
-                    tryDeserialize(node, jacksonTypeRef<JsonValue>())?.let {
-                        return VertexCredentials(jsonValue = it, _json = json)
+                    val bestMatches =
+                        sequenceOf(
+                                tryDeserialize(node, jacksonTypeRef<String>())?.let {
+                                    VertexCredentials(string = it, _json = json)
+                                },
+                                tryDeserialize(node, jacksonTypeRef<JsonValue>())?.let {
+                                    VertexCredentials(jsonValue = it, _json = json)
+                                },
+                            )
+                            .filterNotNull()
+                            .allMaxBy { it.validity() }
+                            .toList()
+                    return when (bestMatches.size) {
+                        // This can happen if what we're deserializing is completely incompatible
+                        // with all the possible variants.
+                        0 -> VertexCredentials(_json = json)
+                        1 -> bestMatches.single()
+                        // If there's more than one match with the highest validity, then use the
+                        // first completely valid match, or simply the first match if none are
+                        // completely valid.
+                        else -> bestMatches.firstOrNull { it.isValid() } ?: bestMatches.first()
                     }
-                    tryDeserialize(node, jacksonTypeRef<String>())?.let {
-                        return VertexCredentials(string = it, _json = json)
-                    }
-
-                    return VertexCredentials(_json = json)
                 }
             }
 
