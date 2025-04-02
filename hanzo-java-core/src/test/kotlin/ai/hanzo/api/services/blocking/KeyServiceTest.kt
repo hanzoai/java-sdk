@@ -81,7 +81,7 @@ internal class KeyServiceTest {
                 .build()
         val keyService = client.key()
 
-        val key =
+        val keys =
             keyService.list(
                 KeyListParams.builder()
                     .includeTeamKeys(true)
@@ -95,7 +95,7 @@ internal class KeyServiceTest {
                     .build()
             )
 
-        key.validate()
+        keys.validate()
     }
 
     @Disabled("skipped: tests are disabled for the time being")
