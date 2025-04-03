@@ -168,6 +168,17 @@ private constructor(
         /** Alias for calling [Builder.llmChangedBy] with `llmChangedBy.orElse(null)`. */
         fun llmChangedBy(llmChangedBy: Optional<String>) = llmChangedBy(llmChangedBy.getOrNull())
 
+        /**
+         * Sets the entire request body.
+         *
+         * This is generally only useful if you are already constructing the body separately.
+         * Otherwise, it's more convenient to use the top-level setters instead:
+         * - [callbackName]
+         * - [callbackVars]
+         * - [callbackType]
+         */
+        fun body(body: Body) = apply { this.body = body.toBuilder() }
+
         fun callbackName(callbackName: String) = apply { body.callbackName(callbackName) }
 
         /**
@@ -352,7 +363,7 @@ private constructor(
             )
     }
 
-    @JvmSynthetic internal fun _body(): Body = body
+    fun _body(): Body = body
 
     fun _pathParam(index: Int): String =
         when (index) {

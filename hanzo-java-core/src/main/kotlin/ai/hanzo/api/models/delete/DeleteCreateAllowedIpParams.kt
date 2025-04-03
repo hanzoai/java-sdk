@@ -175,7 +175,7 @@ private constructor(
             )
     }
 
-    @JvmSynthetic internal fun _body(): IpAddress = ipAddress
+    fun _body(): IpAddress = ipAddress
 
     override fun _headers(): Headers = additionalHeaders
 
