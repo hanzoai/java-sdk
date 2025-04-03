@@ -199,7 +199,7 @@ private constructor(
             )
     }
 
-    @JvmSynthetic internal fun _body(): UpdateDeployment = updateDeployment
+    fun _body(): UpdateDeployment = updateDeployment
 
     fun _pathParam(index: Int): String =
         when (index) {

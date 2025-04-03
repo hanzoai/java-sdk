@@ -182,7 +182,7 @@ private constructor(
             )
     }
 
-    @JvmSynthetic internal fun _body(): PassThroughGenericEndpoint = passThroughGenericEndpoint
+    fun _body(): PassThroughGenericEndpoint = passThroughGenericEndpoint
 
     override fun _headers(): Headers = additionalHeaders
 

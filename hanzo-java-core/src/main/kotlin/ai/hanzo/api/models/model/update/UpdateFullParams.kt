@@ -177,7 +177,7 @@ private constructor(
             )
     }
 
-    @JvmSynthetic internal fun _body(): UpdateDeployment = updateDeployment
+    fun _body(): UpdateDeployment = updateDeployment
 
     override fun _headers(): Headers = additionalHeaders
 

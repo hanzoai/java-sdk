@@ -120,6 +120,17 @@ private constructor(
 
         fun provider(provider: String) = apply { this.provider = provider }
 
+        /**
+         * Sets the entire request body.
+         *
+         * This is generally only useful if you are already constructing the body separately.
+         * Otherwise, it's more convenient to use the top-level setters instead:
+         * - [file]
+         * - [purpose]
+         * - [customLlmProvider]
+         */
+        fun body(body: Body) = apply { this.body = body.toBuilder() }
+
         fun file(file: InputStream) = apply { body.file(file) }
 
         /**
@@ -281,8 +292,7 @@ private constructor(
             )
     }
 
-    @JvmSynthetic
-    internal fun _body(): Map<String, MultipartField<*>> =
+    fun _body(): Map<String, MultipartField<*>> =
         mapOf(
                 "file" to _file(),
                 "purpose" to _purpose(),
