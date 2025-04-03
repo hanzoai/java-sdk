@@ -140,6 +140,20 @@ private constructor(
             additionalQueryParams = organizationUpdateParams.additionalQueryParams.toBuilder()
         }
 
+        /**
+         * Sets the entire request body.
+         *
+         * This is generally only useful if you are already constructing the body separately.
+         * Otherwise, it's more convenient to use the top-level setters instead:
+         * - [budgetId]
+         * - [metadata]
+         * - [models]
+         * - [organizationAlias]
+         * - [organizationId]
+         * - etc.
+         */
+        fun body(body: Body) = apply { this.body = body.toBuilder() }
+
         fun budgetId(budgetId: String?) = apply { body.budgetId(budgetId) }
 
         /** Alias for calling [Builder.budgetId] with `budgetId.orElse(null)`. */
@@ -376,7 +390,7 @@ private constructor(
             )
     }
 
-    @JvmSynthetic internal fun _body(): Body = body
+    fun _body(): Body = body
 
     override fun _headers(): Headers = additionalHeaders
 

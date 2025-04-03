@@ -75,6 +75,15 @@ private constructor(
             additionalQueryParams = transcriptionCreateParams.additionalQueryParams.toBuilder()
         }
 
+        /**
+         * Sets the entire request body.
+         *
+         * This is generally only useful if you are already constructing the body separately.
+         * Otherwise, it's more convenient to use the top-level setters instead:
+         * - [file]
+         */
+        fun body(body: Body) = apply { this.body = body.toBuilder() }
+
         fun file(file: InputStream) = apply { body.file(file) }
 
         /**
@@ -208,8 +217,7 @@ private constructor(
             )
     }
 
-    @JvmSynthetic
-    internal fun _body(): Map<String, MultipartField<*>> = mapOf("file" to _file()).toImmutable()
+    fun _body(): Map<String, MultipartField<*>> = mapOf("file" to _file()).toImmutable()
 
     override fun _headers(): Headers = additionalHeaders
 

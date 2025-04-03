@@ -261,8 +261,7 @@ private constructor(
             )
     }
 
-    @JvmSynthetic
-    internal fun _body(): Optional<RegenerateKeyRequest> = Optional.ofNullable(regenerateKeyRequest)
+    fun _body(): Optional<RegenerateKeyRequest> = Optional.ofNullable(regenerateKeyRequest)
 
     fun _pathParam(index: Int): String =
         when (index) {

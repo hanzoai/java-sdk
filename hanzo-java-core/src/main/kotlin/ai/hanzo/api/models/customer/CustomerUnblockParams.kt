@@ -186,7 +186,7 @@ private constructor(
             )
     }
 
-    @JvmSynthetic internal fun _body(): BlockUsers = blockUsers
+    fun _body(): BlockUsers = blockUsers
 
     override fun _headers(): Headers = additionalHeaders
 
