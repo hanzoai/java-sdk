@@ -124,6 +124,16 @@ private constructor(
         /** Alias for calling [Builder.llmChangedBy] with `llmChangedBy.orElse(null)`. */
         fun llmChangedBy(llmChangedBy: Optional<String>) = llmChangedBy(llmChangedBy.getOrNull())
 
+        /**
+         * Sets the entire request body.
+         *
+         * This is generally only useful if you are already constructing the body separately.
+         * Otherwise, it's more convenient to use the top-level setters instead:
+         * - [keyAliases]
+         * - [keys]
+         */
+        fun body(body: Body) = apply { this.body = body.toBuilder() }
+
         fun keyAliases(keyAliases: List<String>?) = apply { body.keyAliases(keyAliases) }
 
         /** Alias for calling [Builder.keyAliases] with `keyAliases.orElse(null)`. */
@@ -297,7 +307,7 @@ private constructor(
             )
     }
 
-    @JvmSynthetic internal fun _body(): Body = body
+    fun _body(): Body = body
 
     override fun _headers(): Headers =
         Headers.builder()

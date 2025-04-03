@@ -82,6 +82,15 @@ private constructor(
             additionalQueryParams = budgetInfoParams.additionalQueryParams.toBuilder()
         }
 
+        /**
+         * Sets the entire request body.
+         *
+         * This is generally only useful if you are already constructing the body separately.
+         * Otherwise, it's more convenient to use the top-level setters instead:
+         * - [budgets]
+         */
+        fun body(body: Body) = apply { this.body = body.toBuilder() }
+
         fun budgets(budgets: List<String>) = apply { body.budgets(budgets) }
 
         /**
@@ -233,7 +242,7 @@ private constructor(
             BudgetInfoParams(body.build(), additionalHeaders.build(), additionalQueryParams.build())
     }
 
-    @JvmSynthetic internal fun _body(): Body = body
+    fun _body(): Body = body
 
     override fun _headers(): Headers = additionalHeaders
 
