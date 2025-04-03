@@ -188,7 +188,7 @@ private constructor(
             )
     }
 
-    @JvmSynthetic internal fun _body(): BudgetNew = budgetNew
+    fun _body(): BudgetNew = budgetNew
 
     override fun _headers(): Headers = additionalHeaders
 
