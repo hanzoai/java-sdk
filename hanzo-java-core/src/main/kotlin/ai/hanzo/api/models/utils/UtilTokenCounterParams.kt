@@ -329,14 +329,13 @@ private constructor(
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun messages(): Optional<List<JsonValue>> =
-            Optional.ofNullable(messages.getNullable("messages"))
+        fun messages(): Optional<List<JsonValue>> = messages.getOptional("messages")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun prompt(): Optional<String> = Optional.ofNullable(prompt.getNullable("prompt"))
+        fun prompt(): Optional<String> = prompt.getOptional("prompt")
 
         /**
          * Returns the raw JSON value of [model].

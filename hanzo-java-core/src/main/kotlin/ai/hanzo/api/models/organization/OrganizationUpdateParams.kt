@@ -443,7 +443,7 @@ private constructor(
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun budgetId(): Optional<String> = Optional.ofNullable(budgetId.getNullable("budget_id"))
+        fun budgetId(): Optional<String> = budgetId.getOptional("budget_id")
 
         @JsonProperty("metadata") @ExcludeMissing fun _metadata(): JsonValue = metadata
 
@@ -451,33 +451,32 @@ private constructor(
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun models(): Optional<List<String>> = Optional.ofNullable(models.getNullable("models"))
+        fun models(): Optional<List<String>> = models.getOptional("models")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
         fun organizationAlias(): Optional<String> =
-            Optional.ofNullable(organizationAlias.getNullable("organization_alias"))
+            organizationAlias.getOptional("organization_alias")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun organizationId(): Optional<String> =
-            Optional.ofNullable(organizationId.getNullable("organization_id"))
+        fun organizationId(): Optional<String> = organizationId.getOptional("organization_id")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun spend(): Optional<Double> = Optional.ofNullable(spend.getNullable("spend"))
+        fun spend(): Optional<Double> = spend.getOptional("spend")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun updatedBy(): Optional<String> = Optional.ofNullable(updatedBy.getNullable("updated_by"))
+        fun updatedBy(): Optional<String> = updatedBy.getOptional("updated_by")
 
         /**
          * Returns the raw JSON value of [budgetId].

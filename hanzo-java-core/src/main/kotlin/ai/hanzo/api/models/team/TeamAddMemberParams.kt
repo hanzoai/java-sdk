@@ -368,8 +368,7 @@ private constructor(
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun maxBudgetInTeam(): Optional<Double> =
-            Optional.ofNullable(maxBudgetInTeam.getNullable("max_budget_in_team"))
+        fun maxBudgetInTeam(): Optional<Double> = maxBudgetInTeam.getOptional("max_budget_in_team")
 
         /**
          * Returns the raw JSON value of [member].

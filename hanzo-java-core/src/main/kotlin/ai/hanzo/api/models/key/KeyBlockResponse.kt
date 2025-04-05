@@ -152,7 +152,7 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun token(): Optional<String> = Optional.ofNullable(token.getNullable("token"))
+    fun token(): Optional<String> = token.getOptional("token")
 
     @JsonProperty("aliases") @ExcludeMissing fun _aliases(): JsonValue = aliases
 
@@ -161,27 +161,25 @@ private constructor(
      *   server responded with an unexpected value).
      */
     fun allowedCacheControls(): Optional<List<JsonValue>> =
-        Optional.ofNullable(allowedCacheControls.getNullable("allowed_cache_controls"))
+        allowedCacheControls.getOptional("allowed_cache_controls")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun blocked(): Optional<Boolean> = Optional.ofNullable(blocked.getNullable("blocked"))
+    fun blocked(): Optional<Boolean> = blocked.getOptional("blocked")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun budgetDuration(): Optional<String> =
-        Optional.ofNullable(budgetDuration.getNullable("budget_duration"))
+    fun budgetDuration(): Optional<String> = budgetDuration.getOptional("budget_duration")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun budgetResetAt(): Optional<OffsetDateTime> =
-        Optional.ofNullable(budgetResetAt.getNullable("budget_reset_at"))
+    fun budgetResetAt(): Optional<OffsetDateTime> = budgetResetAt.getOptional("budget_reset_at")
 
     @JsonProperty("config") @ExcludeMissing fun _config(): JsonValue = config
 
@@ -189,32 +187,31 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun createdAt(): Optional<OffsetDateTime> =
-        Optional.ofNullable(createdAt.getNullable("created_at"))
+    fun createdAt(): Optional<OffsetDateTime> = createdAt.getOptional("created_at")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun createdBy(): Optional<String> = Optional.ofNullable(createdBy.getNullable("created_by"))
+    fun createdBy(): Optional<String> = createdBy.getOptional("created_by")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun expires(): Optional<Expires> = Optional.ofNullable(expires.getNullable("expires"))
+    fun expires(): Optional<Expires> = expires.getOptional("expires")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun keyAlias(): Optional<String> = Optional.ofNullable(keyAlias.getNullable("key_alias"))
+    fun keyAlias(): Optional<String> = keyAlias.getOptional("key_alias")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun keyName(): Optional<String> = Optional.ofNullable(keyName.getNullable("key_name"))
+    fun keyName(): Optional<String> = keyName.getOptional("key_name")
 
     @JsonProperty("llm_budget_table")
     @ExcludeMissing
@@ -224,14 +221,14 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun maxBudget(): Optional<Double> = Optional.ofNullable(maxBudget.getNullable("max_budget"))
+    fun maxBudget(): Optional<Double> = maxBudget.getOptional("max_budget")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
     fun maxParallelRequests(): Optional<Long> =
-        Optional.ofNullable(maxParallelRequests.getNullable("max_parallel_requests"))
+        maxParallelRequests.getOptional("max_parallel_requests")
 
     @JsonProperty("metadata") @ExcludeMissing fun _metadata(): JsonValue = metadata
 
@@ -245,13 +242,13 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun models(): Optional<List<JsonValue>> = Optional.ofNullable(models.getNullable("models"))
+    fun models(): Optional<List<JsonValue>> = models.getOptional("models")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun orgId(): Optional<String> = Optional.ofNullable(orgId.getNullable("org_id"))
+    fun orgId(): Optional<String> = orgId.getOptional("org_id")
 
     @JsonProperty("permissions") @ExcludeMissing fun _permissions(): JsonValue = permissions
 
@@ -259,51 +256,50 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun rpmLimit(): Optional<Long> = Optional.ofNullable(rpmLimit.getNullable("rpm_limit"))
+    fun rpmLimit(): Optional<Long> = rpmLimit.getOptional("rpm_limit")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
     fun softBudgetCooldown(): Optional<Boolean> =
-        Optional.ofNullable(softBudgetCooldown.getNullable("soft_budget_cooldown"))
+        softBudgetCooldown.getOptional("soft_budget_cooldown")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun spend(): Optional<Double> = Optional.ofNullable(spend.getNullable("spend"))
+    fun spend(): Optional<Double> = spend.getOptional("spend")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun teamId(): Optional<String> = Optional.ofNullable(teamId.getNullable("team_id"))
+    fun teamId(): Optional<String> = teamId.getOptional("team_id")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun tpmLimit(): Optional<Long> = Optional.ofNullable(tpmLimit.getNullable("tpm_limit"))
+    fun tpmLimit(): Optional<Long> = tpmLimit.getOptional("tpm_limit")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun updatedAt(): Optional<OffsetDateTime> =
-        Optional.ofNullable(updatedAt.getNullable("updated_at"))
+    fun updatedAt(): Optional<OffsetDateTime> = updatedAt.getOptional("updated_at")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun updatedBy(): Optional<String> = Optional.ofNullable(updatedBy.getNullable("updated_by"))
+    fun updatedBy(): Optional<String> = updatedBy.getOptional("updated_by")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun userId(): Optional<String> = Optional.ofNullable(userId.getNullable("user_id"))
+    fun userId(): Optional<String> = userId.getOptional("user_id")
 
     /**
      * Returns the raw JSON value of [token].

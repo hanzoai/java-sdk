@@ -70,64 +70,62 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun id(): Optional<String> = Optional.ofNullable(id.getNullable("id"))
+    fun id(): Optional<String> = id.getOptional("id")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun baseModel(): Optional<String> = Optional.ofNullable(baseModel.getNullable("base_model"))
+    fun baseModel(): Optional<String> = baseModel.getOptional("base_model")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun createdAt(): Optional<OffsetDateTime> =
-        Optional.ofNullable(createdAt.getNullable("created_at"))
+    fun createdAt(): Optional<OffsetDateTime> = createdAt.getOptional("created_at")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun createdBy(): Optional<String> = Optional.ofNullable(createdBy.getNullable("created_by"))
+    fun createdBy(): Optional<String> = createdBy.getOptional("created_by")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun dbModel(): Optional<Boolean> = Optional.ofNullable(dbModel.getNullable("db_model"))
+    fun dbModel(): Optional<Boolean> = dbModel.getOptional("db_model")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun teamId(): Optional<String> = Optional.ofNullable(teamId.getNullable("team_id"))
+    fun teamId(): Optional<String> = teamId.getOptional("team_id")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
     fun teamPublicModelName(): Optional<String> =
-        Optional.ofNullable(teamPublicModelName.getNullable("team_public_model_name"))
+        teamPublicModelName.getOptional("team_public_model_name")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun tier(): Optional<Tier> = Optional.ofNullable(tier.getNullable("tier"))
+    fun tier(): Optional<Tier> = tier.getOptional("tier")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun updatedAt(): Optional<OffsetDateTime> =
-        Optional.ofNullable(updatedAt.getNullable("updated_at"))
+    fun updatedAt(): Optional<OffsetDateTime> = updatedAt.getOptional("updated_at")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun updatedBy(): Optional<String> = Optional.ofNullable(updatedBy.getNullable("updated_by"))
+    fun updatedBy(): Optional<String> = updatedBy.getOptional("updated_by")
 
     /**
      * Returns the raw JSON value of [id].

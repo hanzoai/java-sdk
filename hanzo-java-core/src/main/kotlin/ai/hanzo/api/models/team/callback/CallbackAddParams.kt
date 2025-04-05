@@ -418,8 +418,7 @@ private constructor(
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun callbackType(): Optional<CallbackType> =
-            Optional.ofNullable(callbackType.getNullable("callback_type"))
+        fun callbackType(): Optional<CallbackType> = callbackType.getOptional("callback_type")
 
         /**
          * Returns the raw JSON value of [callbackName].
