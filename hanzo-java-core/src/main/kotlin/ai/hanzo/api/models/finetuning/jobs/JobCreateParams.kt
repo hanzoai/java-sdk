@@ -555,33 +555,31 @@ private constructor(
          *   server responded with an unexpected value).
          */
         fun hyperparameters(): Optional<Hyperparameters> =
-            Optional.ofNullable(hyperparameters.getNullable("hyperparameters"))
+            hyperparameters.getOptional("hyperparameters")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun integrations(): Optional<List<String>> =
-            Optional.ofNullable(integrations.getNullable("integrations"))
+        fun integrations(): Optional<List<String>> = integrations.getOptional("integrations")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun seed(): Optional<Long> = Optional.ofNullable(seed.getNullable("seed"))
+        fun seed(): Optional<Long> = seed.getOptional("seed")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun suffix(): Optional<String> = Optional.ofNullable(suffix.getNullable("suffix"))
+        fun suffix(): Optional<String> = suffix.getOptional("suffix")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun validationFile(): Optional<String> =
-            Optional.ofNullable(validationFile.getNullable("validation_file"))
+        fun validationFile(): Optional<String> = validationFile.getOptional("validation_file")
 
         /**
          * Returns the raw JSON value of [customLlmProvider].
@@ -1111,21 +1109,20 @@ private constructor(
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun batchSize(): Optional<BatchSize> =
-            Optional.ofNullable(batchSize.getNullable("batch_size"))
+        fun batchSize(): Optional<BatchSize> = batchSize.getOptional("batch_size")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
         fun learningRateMultiplier(): Optional<LearningRateMultiplier> =
-            Optional.ofNullable(learningRateMultiplier.getNullable("learning_rate_multiplier"))
+            learningRateMultiplier.getOptional("learning_rate_multiplier")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun nEpochs(): Optional<NEpochs> = Optional.ofNullable(nEpochs.getNullable("n_epochs"))
+        fun nEpochs(): Optional<NEpochs> = nEpochs.getOptional("n_epochs")
 
         /**
          * Returns the raw JSON value of [batchSize].

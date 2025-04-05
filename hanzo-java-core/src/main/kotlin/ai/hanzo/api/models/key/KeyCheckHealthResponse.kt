@@ -38,14 +38,14 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun key(): Optional<Key> = Optional.ofNullable(key.getNullable("key"))
+    fun key(): Optional<Key> = key.getOptional("key")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
     fun loggingCallbacks(): Optional<LoggingCallbacks> =
-        Optional.ofNullable(loggingCallbacks.getNullable("logging_callbacks"))
+        loggingCallbacks.getOptional("logging_callbacks")
 
     /**
      * Returns the raw JSON value of [key].
@@ -327,20 +327,19 @@ private constructor(
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun callbacks(): Optional<List<String>> =
-            Optional.ofNullable(callbacks.getNullable("callbacks"))
+        fun callbacks(): Optional<List<String>> = callbacks.getOptional("callbacks")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun details(): Optional<String> = Optional.ofNullable(details.getNullable("details"))
+        fun details(): Optional<String> = details.getOptional("details")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun status(): Optional<Status> = Optional.ofNullable(status.getNullable("status"))
+        fun status(): Optional<Status> = status.getOptional("status")
 
         /**
          * Returns the raw JSON value of [callbacks].

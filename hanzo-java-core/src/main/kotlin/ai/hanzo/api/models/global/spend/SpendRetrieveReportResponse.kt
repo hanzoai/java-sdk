@@ -123,13 +123,13 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun endTime(): Optional<EndTime> = Optional.ofNullable(endTime.getNullable("endTime"))
+    fun endTime(): Optional<EndTime> = endTime.getOptional("endTime")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun messages(): Optional<Messages> = Optional.ofNullable(messages.getNullable("messages"))
+    fun messages(): Optional<Messages> = messages.getOptional("messages")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type or is unexpectedly
@@ -141,38 +141,37 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun response(): Optional<Response> = Optional.ofNullable(response.getNullable("response"))
+    fun response(): Optional<Response> = response.getOptional("response")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun startTime(): Optional<StartTime> = Optional.ofNullable(startTime.getNullable("startTime"))
+    fun startTime(): Optional<StartTime> = startTime.getOptional("startTime")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun apiBase(): Optional<String> = Optional.ofNullable(apiBase.getNullable("api_base"))
+    fun apiBase(): Optional<String> = apiBase.getOptional("api_base")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun cacheHit(): Optional<String> = Optional.ofNullable(cacheHit.getNullable("cache_hit"))
+    fun cacheHit(): Optional<String> = cacheHit.getOptional("cache_hit")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun cacheKey(): Optional<String> = Optional.ofNullable(cacheKey.getNullable("cache_key"))
+    fun cacheKey(): Optional<String> = cacheKey.getOptional("cache_key")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun completionTokens(): Optional<Long> =
-        Optional.ofNullable(completionTokens.getNullable("completion_tokens"))
+    fun completionTokens(): Optional<Long> = completionTokens.getOptional("completion_tokens")
 
     @JsonProperty("metadata") @ExcludeMissing fun _metadata(): JsonValue = metadata
 
@@ -180,14 +179,13 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun model(): Optional<String> = Optional.ofNullable(model.getNullable("model"))
+    fun model(): Optional<String> = model.getOptional("model")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun promptTokens(): Optional<Long> =
-        Optional.ofNullable(promptTokens.getNullable("prompt_tokens"))
+    fun promptTokens(): Optional<Long> = promptTokens.getOptional("prompt_tokens")
 
     @JsonProperty("request_tags") @ExcludeMissing fun _requestTags(): JsonValue = requestTags
 
@@ -196,25 +194,25 @@ private constructor(
      *   server responded with an unexpected value).
      */
     fun requesterIpAddress(): Optional<String> =
-        Optional.ofNullable(requesterIpAddress.getNullable("requester_ip_address"))
+        requesterIpAddress.getOptional("requester_ip_address")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun spend(): Optional<Double> = Optional.ofNullable(spend.getNullable("spend"))
+    fun spend(): Optional<Double> = spend.getOptional("spend")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun totalTokens(): Optional<Long> = Optional.ofNullable(totalTokens.getNullable("total_tokens"))
+    fun totalTokens(): Optional<Long> = totalTokens.getOptional("total_tokens")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun user(): Optional<String> = Optional.ofNullable(user.getNullable("user"))
+    fun user(): Optional<String> = user.getOptional("user")
 
     /**
      * Returns the raw JSON value of [apiKey].
