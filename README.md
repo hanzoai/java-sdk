@@ -449,6 +449,20 @@ JsonValue complexValue = JsonValue.from(Map.of(
 ));
 ```
 
+Normally a `Builder` class's `build` method will throw [`IllegalStateException`](https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html) if any required parameter or property is unset.
+
+To forcibly omit a required parameter or property, pass [`JsonMissing`](hanzo-java-core/src/main/kotlin/ai/hanzo/api/core/Values.kt):
+
+```java
+import ai.hanzo.api.core.JsonMissing;
+import ai.hanzo.api.models.ClientGetHomeParams;
+import ai.hanzo.api.models.openai.OpenAICreateParams;
+
+ClientGetHomeParams params = OpenAICreateParams.builder()
+    .endpoint(JsonMissing.of())
+    .build();
+```
+
 ### Response properties
 
 To access undocumented response properties, call the `_additionalProperties()` method:
