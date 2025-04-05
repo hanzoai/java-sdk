@@ -66,8 +66,7 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun budgetDuration(): Optional<String> =
-        Optional.ofNullable(budgetDuration.getNullable("budget_duration"))
+    fun budgetDuration(): Optional<String> = budgetDuration.getOptional("budget_duration")
 
     /**
      * The unique budget id.
@@ -75,7 +74,7 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun budgetId(): Optional<String> = Optional.ofNullable(budgetId.getNullable("budget_id"))
+    fun budgetId(): Optional<String> = budgetId.getOptional("budget_id")
 
     /**
      * Requests will fail if this budget (in USD) is exceeded.
@@ -83,7 +82,7 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun maxBudget(): Optional<Double> = Optional.ofNullable(maxBudget.getNullable("max_budget"))
+    fun maxBudget(): Optional<Double> = maxBudget.getOptional("max_budget")
 
     /**
      * Max concurrent requests allowed for this budget id.
@@ -92,7 +91,7 @@ private constructor(
      *   server responded with an unexpected value).
      */
     fun maxParallelRequests(): Optional<Long> =
-        Optional.ofNullable(maxParallelRequests.getNullable("max_parallel_requests"))
+        maxParallelRequests.getOptional("max_parallel_requests")
 
     /**
      * Max budget for each model (e.g. {'gpt-4o': {'max_budget': '0.0000001', 'budget_duration':
@@ -101,8 +100,7 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun modelMaxBudget(): Optional<ModelMaxBudget> =
-        Optional.ofNullable(modelMaxBudget.getNullable("model_max_budget"))
+    fun modelMaxBudget(): Optional<ModelMaxBudget> = modelMaxBudget.getOptional("model_max_budget")
 
     /**
      * Max requests per minute, allowed for this budget id.
@@ -110,7 +108,7 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun rpmLimit(): Optional<Long> = Optional.ofNullable(rpmLimit.getNullable("rpm_limit"))
+    fun rpmLimit(): Optional<Long> = rpmLimit.getOptional("rpm_limit")
 
     /**
      * Requests will NOT fail if this is exceeded. Will fire alerting though.
@@ -118,7 +116,7 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun softBudget(): Optional<Double> = Optional.ofNullable(softBudget.getNullable("soft_budget"))
+    fun softBudget(): Optional<Double> = softBudget.getOptional("soft_budget")
 
     /**
      * Max tokens per minute, allowed for this budget id.
@@ -126,7 +124,7 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun tpmLimit(): Optional<Long> = Optional.ofNullable(tpmLimit.getNullable("tpm_limit"))
+    fun tpmLimit(): Optional<Long> = tpmLimit.getOptional("tpm_limit")
 
     /**
      * Returns the raw JSON value of [budgetDuration].

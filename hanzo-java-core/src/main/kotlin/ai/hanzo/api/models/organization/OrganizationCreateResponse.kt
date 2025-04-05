@@ -117,14 +117,13 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun organizationAlias(): Optional<String> =
-        Optional.ofNullable(organizationAlias.getNullable("organization_alias"))
+    fun organizationAlias(): Optional<String> = organizationAlias.getOptional("organization_alias")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun spend(): Optional<Double> = Optional.ofNullable(spend.getNullable("spend"))
+    fun spend(): Optional<Double> = spend.getOptional("spend")
 
     /**
      * Returns the raw JSON value of [budgetId].

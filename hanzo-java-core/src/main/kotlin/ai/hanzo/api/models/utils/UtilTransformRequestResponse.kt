@@ -43,14 +43,14 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun error(): Optional<String> = Optional.ofNullable(error.getNullable("error"))
+    fun error(): Optional<String> = error.getOptional("error")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
     fun rawRequestApiBase(): Optional<String> =
-        Optional.ofNullable(rawRequestApiBase.getNullable("raw_request_api_base"))
+        rawRequestApiBase.getOptional("raw_request_api_base")
 
     @JsonProperty("raw_request_body")
     @ExcludeMissing

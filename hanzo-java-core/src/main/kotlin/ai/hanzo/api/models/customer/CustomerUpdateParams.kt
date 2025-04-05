@@ -491,39 +491,38 @@ private constructor(
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun alias(): Optional<String> = Optional.ofNullable(alias.getNullable("alias"))
+        fun alias(): Optional<String> = alias.getOptional("alias")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
         fun allowedModelRegion(): Optional<AllowedModelRegion> =
-            Optional.ofNullable(allowedModelRegion.getNullable("allowed_model_region"))
+            allowedModelRegion.getOptional("allowed_model_region")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun blocked(): Optional<Boolean> = Optional.ofNullable(blocked.getNullable("blocked"))
+        fun blocked(): Optional<Boolean> = blocked.getOptional("blocked")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun budgetId(): Optional<String> = Optional.ofNullable(budgetId.getNullable("budget_id"))
+        fun budgetId(): Optional<String> = budgetId.getOptional("budget_id")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun defaultModel(): Optional<String> =
-            Optional.ofNullable(defaultModel.getNullable("default_model"))
+        fun defaultModel(): Optional<String> = defaultModel.getOptional("default_model")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun maxBudget(): Optional<Double> = Optional.ofNullable(maxBudget.getNullable("max_budget"))
+        fun maxBudget(): Optional<Double> = maxBudget.getOptional("max_budget")
 
         /**
          * Returns the raw JSON value of [userId].

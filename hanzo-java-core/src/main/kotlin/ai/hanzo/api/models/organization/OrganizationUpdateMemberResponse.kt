@@ -96,7 +96,7 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun budgetId(): Optional<String> = Optional.ofNullable(budgetId.getNullable("budget_id"))
+    fun budgetId(): Optional<String> = budgetId.getOptional("budget_id")
 
     /**
      * Represents user-controllable params for a LLM_BudgetTable record
@@ -104,14 +104,13 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun llmBudgetTable(): Optional<LlmBudgetTable> =
-        Optional.ofNullable(llmBudgetTable.getNullable("llm_budget_table"))
+    fun llmBudgetTable(): Optional<LlmBudgetTable> = llmBudgetTable.getOptional("llm_budget_table")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun spend(): Optional<Double> = Optional.ofNullable(spend.getNullable("spend"))
+    fun spend(): Optional<Double> = spend.getOptional("spend")
 
     @JsonProperty("user") @ExcludeMissing fun _user(): JsonValue = user
 
@@ -119,7 +118,7 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun userRole(): Optional<String> = Optional.ofNullable(userRole.getNullable("user_role"))
+    fun userRole(): Optional<String> = userRole.getOptional("user_role")
 
     /**
      * Returns the raw JSON value of [createdAt].
@@ -484,21 +483,20 @@ private constructor(
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun budgetDuration(): Optional<String> =
-            Optional.ofNullable(budgetDuration.getNullable("budget_duration"))
+        fun budgetDuration(): Optional<String> = budgetDuration.getOptional("budget_duration")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun maxBudget(): Optional<Double> = Optional.ofNullable(maxBudget.getNullable("max_budget"))
+        fun maxBudget(): Optional<Double> = maxBudget.getOptional("max_budget")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
         fun maxParallelRequests(): Optional<Long> =
-            Optional.ofNullable(maxParallelRequests.getNullable("max_parallel_requests"))
+            maxParallelRequests.getOptional("max_parallel_requests")
 
         @JsonProperty("model_max_budget")
         @ExcludeMissing
@@ -508,20 +506,19 @@ private constructor(
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun rpmLimit(): Optional<Long> = Optional.ofNullable(rpmLimit.getNullable("rpm_limit"))
+        fun rpmLimit(): Optional<Long> = rpmLimit.getOptional("rpm_limit")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun softBudget(): Optional<Double> =
-            Optional.ofNullable(softBudget.getNullable("soft_budget"))
+        fun softBudget(): Optional<Double> = softBudget.getOptional("soft_budget")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun tpmLimit(): Optional<Long> = Optional.ofNullable(tpmLimit.getNullable("tpm_limit"))
+        fun tpmLimit(): Optional<Long> = tpmLimit.getOptional("tpm_limit")
 
         /**
          * Returns the raw JSON value of [budgetDuration].

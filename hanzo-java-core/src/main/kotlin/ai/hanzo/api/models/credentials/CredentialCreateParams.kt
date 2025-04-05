@@ -328,7 +328,7 @@ private constructor(
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun modelId(): Optional<String> = Optional.ofNullable(modelId.getNullable("model_id"))
+        fun modelId(): Optional<String> = modelId.getOptional("model_id")
 
         /**
          * Returns the raw JSON value of [credentialName].
