@@ -37,7 +37,7 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun providers(): Optional<Providers> = Optional.ofNullable(providers.getNullable("providers"))
+    fun providers(): Optional<Providers> = providers.getOptional("providers")
 
     /**
      * Returns the raw JSON value of [providers].

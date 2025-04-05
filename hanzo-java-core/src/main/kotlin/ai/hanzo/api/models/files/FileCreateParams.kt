@@ -334,7 +334,7 @@ private constructor(
          *   server responded with an unexpected value).
          */
         fun customLlmProvider(): Optional<String> =
-            Optional.ofNullable(customLlmProvider.value.getNullable("custom_llm_provider"))
+            customLlmProvider.value.getOptional("custom_llm_provider")
 
         /**
          * Returns the raw multipart value of [file].

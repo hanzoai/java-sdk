@@ -401,7 +401,7 @@ private constructor(
          *   server responded with an unexpected value).
          */
         fun maxBudgetInOrganization(): Optional<Double> =
-            Optional.ofNullable(maxBudgetInOrganization.getNullable("max_budget_in_organization"))
+            maxBudgetInOrganization.getOptional("max_budget_in_organization")
 
         /**
          * Returns the raw JSON value of [member].

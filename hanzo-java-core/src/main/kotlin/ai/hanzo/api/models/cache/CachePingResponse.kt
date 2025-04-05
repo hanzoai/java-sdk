@@ -74,22 +74,19 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun llmCacheParams(): Optional<String> =
-        Optional.ofNullable(llmCacheParams.getNullable("llm_cache_params"))
+    fun llmCacheParams(): Optional<String> = llmCacheParams.getOptional("llm_cache_params")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun pingResponse(): Optional<Boolean> =
-        Optional.ofNullable(pingResponse.getNullable("ping_response"))
+    fun pingResponse(): Optional<Boolean> = pingResponse.getOptional("ping_response")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun setCacheResponse(): Optional<String> =
-        Optional.ofNullable(setCacheResponse.getNullable("set_cache_response"))
+    fun setCacheResponse(): Optional<String> = setCacheResponse.getOptional("set_cache_response")
 
     /**
      * Returns the raw JSON value of [cacheType].

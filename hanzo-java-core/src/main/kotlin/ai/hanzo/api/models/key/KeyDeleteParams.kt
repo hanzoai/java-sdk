@@ -338,14 +338,13 @@ private constructor(
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun keyAliases(): Optional<List<String>> =
-            Optional.ofNullable(keyAliases.getNullable("key_aliases"))
+        fun keyAliases(): Optional<List<String>> = keyAliases.getOptional("key_aliases")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun keys(): Optional<List<String>> = Optional.ofNullable(keys.getNullable("keys"))
+        fun keys(): Optional<List<String>> = keys.getOptional("keys")
 
         /**
          * Returns the raw JSON value of [keyAliases].

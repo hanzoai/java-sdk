@@ -427,8 +427,7 @@ private constructor(
              * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if
              *   the server responded with an unexpected value).
              */
-            fun defaultOn(): Optional<Boolean> =
-                Optional.ofNullable(defaultOn.getNullable("default_on"))
+            fun defaultOn(): Optional<Boolean> = defaultOn.getOptional("default_on")
 
             /**
              * Returns the raw JSON value of [guardrail].
