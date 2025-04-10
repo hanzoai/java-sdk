@@ -53,7 +53,7 @@ import ai.hanzo.api.client.okhttp.HanzoOkHttpClient;
 import ai.hanzo.api.models.ClientGetHomeParams;
 import ai.hanzo.api.models.ClientGetHomeResponse;
 
-// Configures using the `HANZO_API_KEY` environment variable
+// Configures using the `HANZO_API_KEY` and `HANZO_BASE_URL` environment variables
 HanzoClient client = HanzoOkHttpClient.fromEnv();
 
 ClientGetHomeResponse response = client.getHome();
@@ -67,7 +67,7 @@ Configure the client using environment variables:
 import ai.hanzo.api.client.HanzoClient;
 import ai.hanzo.api.client.okhttp.HanzoOkHttpClient;
 
-// Configures using the `HANZO_API_KEY` environment variable
+// Configures using the `HANZO_API_KEY` and `HANZO_BASE_URL` environment variables
 HanzoClient client = HanzoOkHttpClient.fromEnv();
 ```
 
@@ -89,7 +89,7 @@ import ai.hanzo.api.client.HanzoClient;
 import ai.hanzo.api.client.okhttp.HanzoOkHttpClient;
 
 HanzoClient client = HanzoOkHttpClient.builder()
-    // Configures using the `HANZO_API_KEY` environment variable
+    // Configures using the `HANZO_API_KEY` and `HANZO_BASE_URL` environment variables
     .fromEnv()
     .apiKey("My API Key")
     .build();
@@ -97,9 +97,10 @@ HanzoClient client = HanzoOkHttpClient.builder()
 
 See this table for the available options:
 
-| Setter   | Environment variable | Required | Default value |
-| -------- | -------------------- | -------- | ------------- |
-| `apiKey` | `HANZO_API_KEY`      | true     | -             |
+| Setter    | Environment variable | Required | Default value            |
+| --------- | -------------------- | -------- | ------------------------ |
+| `apiKey`  | `HANZO_API_KEY`      | true     | -                        |
+| `baseUrl` | `HANZO_BASE_URL`     | true     | `"https://api.hanzo.ai"` |
 
 > [!TIP]
 > Don't create more than one client in the same application. Each client has a connection pool and
@@ -130,7 +131,7 @@ import ai.hanzo.api.models.ClientGetHomeParams;
 import ai.hanzo.api.models.ClientGetHomeResponse;
 import java.util.concurrent.CompletableFuture;
 
-// Configures using the `HANZO_API_KEY` environment variable
+// Configures using the `HANZO_API_KEY` and `HANZO_BASE_URL` environment variables
 HanzoClient client = HanzoOkHttpClient.fromEnv();
 
 CompletableFuture<ClientGetHomeResponse> response = client.async().getHome();
@@ -145,7 +146,7 @@ import ai.hanzo.api.models.ClientGetHomeParams;
 import ai.hanzo.api.models.ClientGetHomeResponse;
 import java.util.concurrent.CompletableFuture;
 
-// Configures using the `HANZO_API_KEY` environment variable
+// Configures using the `HANZO_API_KEY` and `HANZO_BASE_URL` environment variables
 HanzoClientAsync client = HanzoOkHttpClientAsync.fromEnv();
 
 CompletableFuture<ClientGetHomeResponse> response = client.getHome();
