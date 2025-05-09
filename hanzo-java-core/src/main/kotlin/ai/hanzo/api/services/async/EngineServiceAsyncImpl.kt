@@ -5,6 +5,7 @@ package ai.hanzo.api.services.async
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
 import ai.hanzo.api.core.handlers.withErrorHandler
@@ -22,6 +23,7 @@ import ai.hanzo.api.models.engines.EngineEmbedResponse
 import ai.hanzo.api.services.async.engines.ChatServiceAsync
 import ai.hanzo.api.services.async.engines.ChatServiceAsyncImpl
 import java.util.concurrent.CompletableFuture
+import kotlin.jvm.optionals.getOrNull
 
 class EngineServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     EngineServiceAsync {
@@ -69,6 +71,9 @@ class EngineServiceAsyncImpl internal constructor(private val clientOptions: Cli
             params: EngineCompleteParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<EngineCompleteResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("model", params.model().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
@@ -100,6 +105,9 @@ class EngineServiceAsyncImpl internal constructor(private val clientOptions: Cli
             params: EngineEmbedParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<EngineEmbedResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("model", params.model().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)

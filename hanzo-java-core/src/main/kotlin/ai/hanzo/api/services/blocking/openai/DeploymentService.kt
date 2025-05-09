@@ -36,14 +36,36 @@ interface DeploymentService {
      * }'
      * ```
      */
-    fun complete(params: DeploymentCompleteParams): DeploymentCompleteResponse =
-        complete(params, RequestOptions.none())
+    fun complete(model: String): DeploymentCompleteResponse =
+        complete(model, DeploymentCompleteParams.none())
+
+    /** @see [complete] */
+    fun complete(
+        model: String,
+        params: DeploymentCompleteParams = DeploymentCompleteParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): DeploymentCompleteResponse =
+        complete(params.toBuilder().model(model).build(), requestOptions)
+
+    /** @see [complete] */
+    fun complete(
+        model: String,
+        params: DeploymentCompleteParams = DeploymentCompleteParams.none(),
+    ): DeploymentCompleteResponse = complete(model, params, RequestOptions.none())
 
     /** @see [complete] */
     fun complete(
         params: DeploymentCompleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): DeploymentCompleteResponse
+
+    /** @see [complete] */
+    fun complete(params: DeploymentCompleteParams): DeploymentCompleteResponse =
+        complete(params, RequestOptions.none())
+
+    /** @see [complete] */
+    fun complete(model: String, requestOptions: RequestOptions): DeploymentCompleteResponse =
+        complete(model, DeploymentCompleteParams.none(), requestOptions)
 
     /**
      * Follows the exact same API spec as `OpenAI's Embeddings API
@@ -59,14 +81,34 @@ interface DeploymentService {
      * }'
      * ```
      */
-    fun embed(params: DeploymentEmbedParams): DeploymentEmbedResponse =
-        embed(params, RequestOptions.none())
+    fun embed(model: String): DeploymentEmbedResponse = embed(model, DeploymentEmbedParams.none())
+
+    /** @see [embed] */
+    fun embed(
+        model: String,
+        params: DeploymentEmbedParams = DeploymentEmbedParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): DeploymentEmbedResponse = embed(params.toBuilder().model(model).build(), requestOptions)
+
+    /** @see [embed] */
+    fun embed(
+        model: String,
+        params: DeploymentEmbedParams = DeploymentEmbedParams.none(),
+    ): DeploymentEmbedResponse = embed(model, params, RequestOptions.none())
 
     /** @see [embed] */
     fun embed(
         params: DeploymentEmbedParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): DeploymentEmbedResponse
+
+    /** @see [embed] */
+    fun embed(params: DeploymentEmbedParams): DeploymentEmbedResponse =
+        embed(params, RequestOptions.none())
+
+    /** @see [embed] */
+    fun embed(model: String, requestOptions: RequestOptions): DeploymentEmbedResponse =
+        embed(model, DeploymentEmbedParams.none(), requestOptions)
 
     /** A view of [DeploymentService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
@@ -78,9 +120,25 @@ interface DeploymentService {
          * otherwise the same as [DeploymentService.complete].
          */
         @MustBeClosed
+        fun complete(model: String): HttpResponseFor<DeploymentCompleteResponse> =
+            complete(model, DeploymentCompleteParams.none())
+
+        /** @see [complete] */
+        @MustBeClosed
         fun complete(
-            params: DeploymentCompleteParams
-        ): HttpResponseFor<DeploymentCompleteResponse> = complete(params, RequestOptions.none())
+            model: String,
+            params: DeploymentCompleteParams = DeploymentCompleteParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<DeploymentCompleteResponse> =
+            complete(params.toBuilder().model(model).build(), requestOptions)
+
+        /** @see [complete] */
+        @MustBeClosed
+        fun complete(
+            model: String,
+            params: DeploymentCompleteParams = DeploymentCompleteParams.none(),
+        ): HttpResponseFor<DeploymentCompleteResponse> =
+            complete(model, params, RequestOptions.none())
 
         /** @see [complete] */
         @MustBeClosed
@@ -89,13 +147,43 @@ interface DeploymentService {
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<DeploymentCompleteResponse>
 
+        /** @see [complete] */
+        @MustBeClosed
+        fun complete(
+            params: DeploymentCompleteParams
+        ): HttpResponseFor<DeploymentCompleteResponse> = complete(params, RequestOptions.none())
+
+        /** @see [complete] */
+        @MustBeClosed
+        fun complete(
+            model: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<DeploymentCompleteResponse> =
+            complete(model, DeploymentCompleteParams.none(), requestOptions)
+
         /**
          * Returns a raw HTTP response for `post /openai/deployments/{model}/embeddings`, but is
          * otherwise the same as [DeploymentService.embed].
          */
         @MustBeClosed
-        fun embed(params: DeploymentEmbedParams): HttpResponseFor<DeploymentEmbedResponse> =
-            embed(params, RequestOptions.none())
+        fun embed(model: String): HttpResponseFor<DeploymentEmbedResponse> =
+            embed(model, DeploymentEmbedParams.none())
+
+        /** @see [embed] */
+        @MustBeClosed
+        fun embed(
+            model: String,
+            params: DeploymentEmbedParams = DeploymentEmbedParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<DeploymentEmbedResponse> =
+            embed(params.toBuilder().model(model).build(), requestOptions)
+
+        /** @see [embed] */
+        @MustBeClosed
+        fun embed(
+            model: String,
+            params: DeploymentEmbedParams = DeploymentEmbedParams.none(),
+        ): HttpResponseFor<DeploymentEmbedResponse> = embed(model, params, RequestOptions.none())
 
         /** @see [embed] */
         @MustBeClosed
@@ -103,5 +191,18 @@ interface DeploymentService {
             params: DeploymentEmbedParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<DeploymentEmbedResponse>
+
+        /** @see [embed] */
+        @MustBeClosed
+        fun embed(params: DeploymentEmbedParams): HttpResponseFor<DeploymentEmbedResponse> =
+            embed(params, RequestOptions.none())
+
+        /** @see [embed] */
+        @MustBeClosed
+        fun embed(
+            model: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<DeploymentEmbedResponse> =
+            embed(model, DeploymentEmbedParams.none(), requestOptions)
     }
 }

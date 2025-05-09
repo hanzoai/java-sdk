@@ -52,14 +52,40 @@ interface CredentialServiceAsync {
         list(CredentialListParams.none(), requestOptions)
 
     /** [BETA] endpoint. This might change unexpectedly. */
-    fun delete(params: CredentialDeleteParams): CompletableFuture<CredentialDeleteResponse> =
-        delete(params, RequestOptions.none())
+    fun delete(credentialName: String): CompletableFuture<CredentialDeleteResponse> =
+        delete(credentialName, CredentialDeleteParams.none())
+
+    /** @see [delete] */
+    fun delete(
+        credentialName: String,
+        params: CredentialDeleteParams = CredentialDeleteParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<CredentialDeleteResponse> =
+        delete(params.toBuilder().credentialName(credentialName).build(), requestOptions)
+
+    /** @see [delete] */
+    fun delete(
+        credentialName: String,
+        params: CredentialDeleteParams = CredentialDeleteParams.none(),
+    ): CompletableFuture<CredentialDeleteResponse> =
+        delete(credentialName, params, RequestOptions.none())
 
     /** @see [delete] */
     fun delete(
         params: CredentialDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CredentialDeleteResponse>
+
+    /** @see [delete] */
+    fun delete(params: CredentialDeleteParams): CompletableFuture<CredentialDeleteResponse> =
+        delete(params, RequestOptions.none())
+
+    /** @see [delete] */
+    fun delete(
+        credentialName: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<CredentialDeleteResponse> =
+        delete(credentialName, CredentialDeleteParams.none(), requestOptions)
 
     /**
      * A view of [CredentialServiceAsync] that provides access to raw HTTP responses for each
@@ -119,9 +145,26 @@ interface CredentialServiceAsync {
          */
         @MustBeClosed
         fun delete(
-            params: CredentialDeleteParams
+            credentialName: String
         ): CompletableFuture<HttpResponseFor<CredentialDeleteResponse>> =
-            delete(params, RequestOptions.none())
+            delete(credentialName, CredentialDeleteParams.none())
+
+        /** @see [delete] */
+        @MustBeClosed
+        fun delete(
+            credentialName: String,
+            params: CredentialDeleteParams = CredentialDeleteParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<CredentialDeleteResponse>> =
+            delete(params.toBuilder().credentialName(credentialName).build(), requestOptions)
+
+        /** @see [delete] */
+        @MustBeClosed
+        fun delete(
+            credentialName: String,
+            params: CredentialDeleteParams = CredentialDeleteParams.none(),
+        ): CompletableFuture<HttpResponseFor<CredentialDeleteResponse>> =
+            delete(credentialName, params, RequestOptions.none())
 
         /** @see [delete] */
         @MustBeClosed
@@ -129,5 +172,20 @@ interface CredentialServiceAsync {
             params: CredentialDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<CredentialDeleteResponse>>
+
+        /** @see [delete] */
+        @MustBeClosed
+        fun delete(
+            params: CredentialDeleteParams
+        ): CompletableFuture<HttpResponseFor<CredentialDeleteResponse>> =
+            delete(params, RequestOptions.none())
+
+        /** @see [delete] */
+        @MustBeClosed
+        fun delete(
+            credentialName: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<CredentialDeleteResponse>> =
+            delete(credentialName, CredentialDeleteParams.none(), requestOptions)
     }
 }

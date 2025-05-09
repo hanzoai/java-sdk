@@ -30,6 +30,20 @@ interface ContentServiceAsync {
      *
      * ```
      */
+    fun retrieve(
+        fileId: String,
+        params: ContentRetrieveParams,
+    ): CompletableFuture<ContentRetrieveResponse> = retrieve(fileId, params, RequestOptions.none())
+
+    /** @see [retrieve] */
+    fun retrieve(
+        fileId: String,
+        params: ContentRetrieveParams,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<ContentRetrieveResponse> =
+        retrieve(params.toBuilder().fileId(fileId).build(), requestOptions)
+
+    /** @see [retrieve] */
     fun retrieve(params: ContentRetrieveParams): CompletableFuture<ContentRetrieveResponse> =
         retrieve(params, RequestOptions.none())
 
@@ -48,6 +62,23 @@ interface ContentServiceAsync {
          * Returns a raw HTTP response for `get /{provider}/v1/files/{file_id}/content`, but is
          * otherwise the same as [ContentServiceAsync.retrieve].
          */
+        @MustBeClosed
+        fun retrieve(
+            fileId: String,
+            params: ContentRetrieveParams,
+        ): CompletableFuture<HttpResponseFor<ContentRetrieveResponse>> =
+            retrieve(fileId, params, RequestOptions.none())
+
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(
+            fileId: String,
+            params: ContentRetrieveParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<ContentRetrieveResponse>> =
+            retrieve(params.toBuilder().fileId(fileId).build(), requestOptions)
+
+        /** @see [retrieve] */
         @MustBeClosed
         fun retrieve(
             params: ContentRetrieveParams

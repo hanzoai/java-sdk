@@ -3,7 +3,6 @@
 package ai.hanzo.api.models.batches
 
 import ai.hanzo.api.core.Params
-import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import java.util.Objects
@@ -22,14 +21,14 @@ import kotlin.jvm.optionals.getOrNull
  */
 class BatchRetrieveParams
 private constructor(
-    private val batchId: String,
+    private val batchId: String?,
     private val provider: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
     /** The ID of the batch to retrieve */
-    fun batchId(): String = batchId
+    fun batchId(): Optional<String> = Optional.ofNullable(batchId)
 
     fun provider(): Optional<String> = Optional.ofNullable(provider)
 
@@ -41,14 +40,9 @@ private constructor(
 
     companion object {
 
-        /**
-         * Returns a mutable builder for constructing an instance of [BatchRetrieveParams].
-         *
-         * The following fields are required:
-         * ```java
-         * .batchId()
-         * ```
-         */
+        @JvmStatic fun none(): BatchRetrieveParams = builder().build()
+
+        /** Returns a mutable builder for constructing an instance of [BatchRetrieveParams]. */
         @JvmStatic fun builder() = Builder()
     }
 
@@ -69,7 +63,10 @@ private constructor(
         }
 
         /** The ID of the batch to retrieve */
-        fun batchId(batchId: String) = apply { this.batchId = batchId }
+        fun batchId(batchId: String?) = apply { this.batchId = batchId }
+
+        /** Alias for calling [Builder.batchId] with `batchId.orElse(null)`. */
+        fun batchId(batchId: Optional<String>) = batchId(batchId.getOrNull())
 
         fun provider(provider: String?) = apply { this.provider = provider }
 
@@ -178,17 +175,10 @@ private constructor(
          * Returns an immutable instance of [BatchRetrieveParams].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
-         *
-         * The following fields are required:
-         * ```java
-         * .batchId()
-         * ```
-         *
-         * @throws IllegalStateException if any required field is unset.
          */
         fun build(): BatchRetrieveParams =
             BatchRetrieveParams(
-                checkRequired("batchId", batchId),
+                batchId,
                 provider,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
@@ -197,7 +187,7 @@ private constructor(
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> batchId
+            0 -> batchId ?: ""
             else -> ""
         }
 

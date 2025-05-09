@@ -5,6 +5,7 @@ package ai.hanzo.api.services.async.finetuning.jobs
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
 import ai.hanzo.api.core.handlers.withErrorHandler
@@ -18,6 +19,7 @@ import ai.hanzo.api.core.prepareAsync
 import ai.hanzo.api.models.finetuning.jobs.cancel.CancelCreateParams
 import ai.hanzo.api.models.finetuning.jobs.cancel.CancelCreateResponse
 import java.util.concurrent.CompletableFuture
+import kotlin.jvm.optionals.getOrNull
 
 class CancelServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     CancelServiceAsync {
@@ -48,6 +50,9 @@ class CancelServiceAsyncImpl internal constructor(private val clientOptions: Cli
             params: CancelCreateParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<CancelCreateResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("fineTuningJobId", params.fineTuningJobId().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)

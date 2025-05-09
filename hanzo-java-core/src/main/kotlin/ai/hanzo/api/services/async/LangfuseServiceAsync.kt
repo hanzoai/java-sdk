@@ -29,8 +29,22 @@ interface LangfuseServiceAsync {
      *
      * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
      */
-    fun create(params: LangfuseCreateParams): CompletableFuture<LangfuseCreateResponse> =
-        create(params, RequestOptions.none())
+    fun create(endpoint: String): CompletableFuture<LangfuseCreateResponse> =
+        create(endpoint, LangfuseCreateParams.none())
+
+    /** @see [create] */
+    fun create(
+        endpoint: String,
+        params: LangfuseCreateParams = LangfuseCreateParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<LangfuseCreateResponse> =
+        create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see [create] */
+    fun create(
+        endpoint: String,
+        params: LangfuseCreateParams = LangfuseCreateParams.none(),
+    ): CompletableFuture<LangfuseCreateResponse> = create(endpoint, params, RequestOptions.none())
 
     /** @see [create] */
     fun create(
@@ -38,13 +52,39 @@ interface LangfuseServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<LangfuseCreateResponse>
 
+    /** @see [create] */
+    fun create(params: LangfuseCreateParams): CompletableFuture<LangfuseCreateResponse> =
+        create(params, RequestOptions.none())
+
+    /** @see [create] */
+    fun create(
+        endpoint: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<LangfuseCreateResponse> =
+        create(endpoint, LangfuseCreateParams.none(), requestOptions)
+
     /**
      * Call Langfuse via LLM proxy. Works with Langfuse SDK.
      *
      * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
      */
-    fun retrieve(params: LangfuseRetrieveParams): CompletableFuture<LangfuseRetrieveResponse> =
-        retrieve(params, RequestOptions.none())
+    fun retrieve(endpoint: String): CompletableFuture<LangfuseRetrieveResponse> =
+        retrieve(endpoint, LangfuseRetrieveParams.none())
+
+    /** @see [retrieve] */
+    fun retrieve(
+        endpoint: String,
+        params: LangfuseRetrieveParams = LangfuseRetrieveParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<LangfuseRetrieveResponse> =
+        retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see [retrieve] */
+    fun retrieve(
+        endpoint: String,
+        params: LangfuseRetrieveParams = LangfuseRetrieveParams.none(),
+    ): CompletableFuture<LangfuseRetrieveResponse> =
+        retrieve(endpoint, params, RequestOptions.none())
 
     /** @see [retrieve] */
     fun retrieve(
@@ -52,13 +92,38 @@ interface LangfuseServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<LangfuseRetrieveResponse>
 
+    /** @see [retrieve] */
+    fun retrieve(params: LangfuseRetrieveParams): CompletableFuture<LangfuseRetrieveResponse> =
+        retrieve(params, RequestOptions.none())
+
+    /** @see [retrieve] */
+    fun retrieve(
+        endpoint: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<LangfuseRetrieveResponse> =
+        retrieve(endpoint, LangfuseRetrieveParams.none(), requestOptions)
+
     /**
      * Call Langfuse via LLM proxy. Works with Langfuse SDK.
      *
      * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
      */
-    fun update(params: LangfuseUpdateParams): CompletableFuture<LangfuseUpdateResponse> =
-        update(params, RequestOptions.none())
+    fun update(endpoint: String): CompletableFuture<LangfuseUpdateResponse> =
+        update(endpoint, LangfuseUpdateParams.none())
+
+    /** @see [update] */
+    fun update(
+        endpoint: String,
+        params: LangfuseUpdateParams = LangfuseUpdateParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<LangfuseUpdateResponse> =
+        update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see [update] */
+    fun update(
+        endpoint: String,
+        params: LangfuseUpdateParams = LangfuseUpdateParams.none(),
+    ): CompletableFuture<LangfuseUpdateResponse> = update(endpoint, params, RequestOptions.none())
 
     /** @see [update] */
     fun update(
@@ -66,13 +131,38 @@ interface LangfuseServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<LangfuseUpdateResponse>
 
+    /** @see [update] */
+    fun update(params: LangfuseUpdateParams): CompletableFuture<LangfuseUpdateResponse> =
+        update(params, RequestOptions.none())
+
+    /** @see [update] */
+    fun update(
+        endpoint: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<LangfuseUpdateResponse> =
+        update(endpoint, LangfuseUpdateParams.none(), requestOptions)
+
     /**
      * Call Langfuse via LLM proxy. Works with Langfuse SDK.
      *
      * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
      */
-    fun delete(params: LangfuseDeleteParams): CompletableFuture<LangfuseDeleteResponse> =
-        delete(params, RequestOptions.none())
+    fun delete(endpoint: String): CompletableFuture<LangfuseDeleteResponse> =
+        delete(endpoint, LangfuseDeleteParams.none())
+
+    /** @see [delete] */
+    fun delete(
+        endpoint: String,
+        params: LangfuseDeleteParams = LangfuseDeleteParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<LangfuseDeleteResponse> =
+        delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see [delete] */
+    fun delete(
+        endpoint: String,
+        params: LangfuseDeleteParams = LangfuseDeleteParams.none(),
+    ): CompletableFuture<LangfuseDeleteResponse> = delete(endpoint, params, RequestOptions.none())
 
     /** @see [delete] */
     fun delete(
@@ -80,19 +170,55 @@ interface LangfuseServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<LangfuseDeleteResponse>
 
+    /** @see [delete] */
+    fun delete(params: LangfuseDeleteParams): CompletableFuture<LangfuseDeleteResponse> =
+        delete(params, RequestOptions.none())
+
+    /** @see [delete] */
+    fun delete(
+        endpoint: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<LangfuseDeleteResponse> =
+        delete(endpoint, LangfuseDeleteParams.none(), requestOptions)
+
     /**
      * Call Langfuse via LLM proxy. Works with Langfuse SDK.
      *
      * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
      */
-    fun patch(params: LangfusePatchParams): CompletableFuture<LangfusePatchResponse> =
-        patch(params, RequestOptions.none())
+    fun patch(endpoint: String): CompletableFuture<LangfusePatchResponse> =
+        patch(endpoint, LangfusePatchParams.none())
+
+    /** @see [patch] */
+    fun patch(
+        endpoint: String,
+        params: LangfusePatchParams = LangfusePatchParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<LangfusePatchResponse> =
+        patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see [patch] */
+    fun patch(
+        endpoint: String,
+        params: LangfusePatchParams = LangfusePatchParams.none(),
+    ): CompletableFuture<LangfusePatchResponse> = patch(endpoint, params, RequestOptions.none())
 
     /** @see [patch] */
     fun patch(
         params: LangfusePatchParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<LangfusePatchResponse>
+
+    /** @see [patch] */
+    fun patch(params: LangfusePatchParams): CompletableFuture<LangfusePatchResponse> =
+        patch(params, RequestOptions.none())
+
+    /** @see [patch] */
+    fun patch(
+        endpoint: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<LangfusePatchResponse> =
+        patch(endpoint, LangfusePatchParams.none(), requestOptions)
 
     /**
      * A view of [LangfuseServiceAsync] that provides access to raw HTTP responses for each method.
@@ -104,10 +230,25 @@ interface LangfuseServiceAsync {
          * [LangfuseServiceAsync.create].
          */
         @MustBeClosed
+        fun create(endpoint: String): CompletableFuture<HttpResponseFor<LangfuseCreateResponse>> =
+            create(endpoint, LangfuseCreateParams.none())
+
+        /** @see [create] */
+        @MustBeClosed
         fun create(
-            params: LangfuseCreateParams
+            endpoint: String,
+            params: LangfuseCreateParams = LangfuseCreateParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<LangfuseCreateResponse>> =
-            create(params, RequestOptions.none())
+            create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see [create] */
+        @MustBeClosed
+        fun create(
+            endpoint: String,
+            params: LangfuseCreateParams = LangfuseCreateParams.none(),
+        ): CompletableFuture<HttpResponseFor<LangfuseCreateResponse>> =
+            create(endpoint, params, RequestOptions.none())
 
         /** @see [create] */
         @MustBeClosed
@@ -116,10 +257,56 @@ interface LangfuseServiceAsync {
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<LangfuseCreateResponse>>
 
+        /** @see [create] */
+        @MustBeClosed
+        fun create(
+            params: LangfuseCreateParams
+        ): CompletableFuture<HttpResponseFor<LangfuseCreateResponse>> =
+            create(params, RequestOptions.none())
+
+        /** @see [create] */
+        @MustBeClosed
+        fun create(
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<LangfuseCreateResponse>> =
+            create(endpoint, LangfuseCreateParams.none(), requestOptions)
+
         /**
          * Returns a raw HTTP response for `get /langfuse/{endpoint}`, but is otherwise the same as
          * [LangfuseServiceAsync.retrieve].
          */
+        @MustBeClosed
+        fun retrieve(
+            endpoint: String
+        ): CompletableFuture<HttpResponseFor<LangfuseRetrieveResponse>> =
+            retrieve(endpoint, LangfuseRetrieveParams.none())
+
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(
+            endpoint: String,
+            params: LangfuseRetrieveParams = LangfuseRetrieveParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<LangfuseRetrieveResponse>> =
+            retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(
+            endpoint: String,
+            params: LangfuseRetrieveParams = LangfuseRetrieveParams.none(),
+        ): CompletableFuture<HttpResponseFor<LangfuseRetrieveResponse>> =
+            retrieve(endpoint, params, RequestOptions.none())
+
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(
+            params: LangfuseRetrieveParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<LangfuseRetrieveResponse>>
+
+        /** @see [retrieve] */
         @MustBeClosed
         fun retrieve(
             params: LangfuseRetrieveParams
@@ -129,14 +316,44 @@ interface LangfuseServiceAsync {
         /** @see [retrieve] */
         @MustBeClosed
         fun retrieve(
-            params: LangfuseRetrieveParams,
-            requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<LangfuseRetrieveResponse>>
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<LangfuseRetrieveResponse>> =
+            retrieve(endpoint, LangfuseRetrieveParams.none(), requestOptions)
 
         /**
          * Returns a raw HTTP response for `put /langfuse/{endpoint}`, but is otherwise the same as
          * [LangfuseServiceAsync.update].
          */
+        @MustBeClosed
+        fun update(endpoint: String): CompletableFuture<HttpResponseFor<LangfuseUpdateResponse>> =
+            update(endpoint, LangfuseUpdateParams.none())
+
+        /** @see [update] */
+        @MustBeClosed
+        fun update(
+            endpoint: String,
+            params: LangfuseUpdateParams = LangfuseUpdateParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<LangfuseUpdateResponse>> =
+            update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see [update] */
+        @MustBeClosed
+        fun update(
+            endpoint: String,
+            params: LangfuseUpdateParams = LangfuseUpdateParams.none(),
+        ): CompletableFuture<HttpResponseFor<LangfuseUpdateResponse>> =
+            update(endpoint, params, RequestOptions.none())
+
+        /** @see [update] */
+        @MustBeClosed
+        fun update(
+            params: LangfuseUpdateParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<LangfuseUpdateResponse>>
+
+        /** @see [update] */
         @MustBeClosed
         fun update(
             params: LangfuseUpdateParams
@@ -146,14 +363,44 @@ interface LangfuseServiceAsync {
         /** @see [update] */
         @MustBeClosed
         fun update(
-            params: LangfuseUpdateParams,
-            requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<LangfuseUpdateResponse>>
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<LangfuseUpdateResponse>> =
+            update(endpoint, LangfuseUpdateParams.none(), requestOptions)
 
         /**
          * Returns a raw HTTP response for `delete /langfuse/{endpoint}`, but is otherwise the same
          * as [LangfuseServiceAsync.delete].
          */
+        @MustBeClosed
+        fun delete(endpoint: String): CompletableFuture<HttpResponseFor<LangfuseDeleteResponse>> =
+            delete(endpoint, LangfuseDeleteParams.none())
+
+        /** @see [delete] */
+        @MustBeClosed
+        fun delete(
+            endpoint: String,
+            params: LangfuseDeleteParams = LangfuseDeleteParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<LangfuseDeleteResponse>> =
+            delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see [delete] */
+        @MustBeClosed
+        fun delete(
+            endpoint: String,
+            params: LangfuseDeleteParams = LangfuseDeleteParams.none(),
+        ): CompletableFuture<HttpResponseFor<LangfuseDeleteResponse>> =
+            delete(endpoint, params, RequestOptions.none())
+
+        /** @see [delete] */
+        @MustBeClosed
+        fun delete(
+            params: LangfuseDeleteParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<LangfuseDeleteResponse>>
+
+        /** @see [delete] */
         @MustBeClosed
         fun delete(
             params: LangfuseDeleteParams
@@ -163,14 +410,44 @@ interface LangfuseServiceAsync {
         /** @see [delete] */
         @MustBeClosed
         fun delete(
-            params: LangfuseDeleteParams,
-            requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<LangfuseDeleteResponse>>
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<LangfuseDeleteResponse>> =
+            delete(endpoint, LangfuseDeleteParams.none(), requestOptions)
 
         /**
          * Returns a raw HTTP response for `patch /langfuse/{endpoint}`, but is otherwise the same
          * as [LangfuseServiceAsync.patch].
          */
+        @MustBeClosed
+        fun patch(endpoint: String): CompletableFuture<HttpResponseFor<LangfusePatchResponse>> =
+            patch(endpoint, LangfusePatchParams.none())
+
+        /** @see [patch] */
+        @MustBeClosed
+        fun patch(
+            endpoint: String,
+            params: LangfusePatchParams = LangfusePatchParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<LangfusePatchResponse>> =
+            patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see [patch] */
+        @MustBeClosed
+        fun patch(
+            endpoint: String,
+            params: LangfusePatchParams = LangfusePatchParams.none(),
+        ): CompletableFuture<HttpResponseFor<LangfusePatchResponse>> =
+            patch(endpoint, params, RequestOptions.none())
+
+        /** @see [patch] */
+        @MustBeClosed
+        fun patch(
+            params: LangfusePatchParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<LangfusePatchResponse>>
+
+        /** @see [patch] */
         @MustBeClosed
         fun patch(
             params: LangfusePatchParams
@@ -180,8 +457,9 @@ interface LangfuseServiceAsync {
         /** @see [patch] */
         @MustBeClosed
         fun patch(
-            params: LangfusePatchParams,
-            requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<LangfusePatchResponse>>
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<LangfusePatchResponse>> =
+            patch(endpoint, LangfusePatchParams.none(), requestOptions)
     }
 }

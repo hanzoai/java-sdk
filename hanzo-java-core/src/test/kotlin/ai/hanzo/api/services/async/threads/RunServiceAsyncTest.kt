@@ -4,7 +4,6 @@ package ai.hanzo.api.services.async.threads
 
 import ai.hanzo.api.TestServerExtension
 import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
-import ai.hanzo.api.models.threads.runs.RunCreateParams
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -22,8 +21,7 @@ internal class RunServiceAsyncTest {
                 .build()
         val runServiceAsync = client.threads().runs()
 
-        val runFuture =
-            runServiceAsync.create(RunCreateParams.builder().threadId("thread_id").build())
+        val runFuture = runServiceAsync.create("thread_id")
 
         val run = runFuture.get()
         run.validate()

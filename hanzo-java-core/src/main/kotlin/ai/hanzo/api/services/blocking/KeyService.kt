@@ -377,14 +377,39 @@ interface KeyService {
      *
      * Note: This is an Enterprise feature. It requires a premium license to use.
      */
-    fun regenerateByKey(params: KeyRegenerateByKeyParams): Optional<GenerateKeyResponse> =
-        regenerateByKey(params, RequestOptions.none())
+    fun regenerateByKey(pathKey: String): Optional<GenerateKeyResponse> =
+        regenerateByKey(pathKey, KeyRegenerateByKeyParams.none())
+
+    /** @see [regenerateByKey] */
+    fun regenerateByKey(
+        pathKey: String,
+        params: KeyRegenerateByKeyParams = KeyRegenerateByKeyParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): Optional<GenerateKeyResponse> =
+        regenerateByKey(params.toBuilder().pathKey(pathKey).build(), requestOptions)
+
+    /** @see [regenerateByKey] */
+    fun regenerateByKey(
+        pathKey: String,
+        params: KeyRegenerateByKeyParams = KeyRegenerateByKeyParams.none(),
+    ): Optional<GenerateKeyResponse> = regenerateByKey(pathKey, params, RequestOptions.none())
 
     /** @see [regenerateByKey] */
     fun regenerateByKey(
         params: KeyRegenerateByKeyParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): Optional<GenerateKeyResponse>
+
+    /** @see [regenerateByKey] */
+    fun regenerateByKey(params: KeyRegenerateByKeyParams): Optional<GenerateKeyResponse> =
+        regenerateByKey(params, RequestOptions.none())
+
+    /** @see [regenerateByKey] */
+    fun regenerateByKey(
+        pathKey: String,
+        requestOptions: RequestOptions,
+    ): Optional<GenerateKeyResponse> =
+        regenerateByKey(pathKey, KeyRegenerateByKeyParams.none(), requestOptions)
 
     /**
      * Retrieve information about a key. Parameters: key: Optional[str] = Query parameter
@@ -584,6 +609,35 @@ interface KeyService {
          * as [KeyService.regenerateByKey].
          */
         @MustBeClosed
+        fun regenerateByKey(pathKey: String): HttpResponseFor<Optional<GenerateKeyResponse>> =
+            regenerateByKey(pathKey, KeyRegenerateByKeyParams.none())
+
+        /** @see [regenerateByKey] */
+        @MustBeClosed
+        fun regenerateByKey(
+            pathKey: String,
+            params: KeyRegenerateByKeyParams = KeyRegenerateByKeyParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<Optional<GenerateKeyResponse>> =
+            regenerateByKey(params.toBuilder().pathKey(pathKey).build(), requestOptions)
+
+        /** @see [regenerateByKey] */
+        @MustBeClosed
+        fun regenerateByKey(
+            pathKey: String,
+            params: KeyRegenerateByKeyParams = KeyRegenerateByKeyParams.none(),
+        ): HttpResponseFor<Optional<GenerateKeyResponse>> =
+            regenerateByKey(pathKey, params, RequestOptions.none())
+
+        /** @see [regenerateByKey] */
+        @MustBeClosed
+        fun regenerateByKey(
+            params: KeyRegenerateByKeyParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<Optional<GenerateKeyResponse>>
+
+        /** @see [regenerateByKey] */
+        @MustBeClosed
         fun regenerateByKey(
             params: KeyRegenerateByKeyParams
         ): HttpResponseFor<Optional<GenerateKeyResponse>> =
@@ -592,9 +646,10 @@ interface KeyService {
         /** @see [regenerateByKey] */
         @MustBeClosed
         fun regenerateByKey(
-            params: KeyRegenerateByKeyParams,
-            requestOptions: RequestOptions = RequestOptions.none(),
-        ): HttpResponseFor<Optional<GenerateKeyResponse>>
+            pathKey: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<Optional<GenerateKeyResponse>> =
+            regenerateByKey(pathKey, KeyRegenerateByKeyParams.none(), requestOptions)
 
         /**
          * Returns a raw HTTP response for `get /key/info`, but is otherwise the same as

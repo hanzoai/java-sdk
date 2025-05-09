@@ -20,13 +20,33 @@ interface RunService {
      *
      * API Reference: https://platform.openai.com/docs/api-reference/runs/createRun
      */
-    fun create(params: RunCreateParams): RunCreateResponse = create(params, RequestOptions.none())
+    fun create(threadId: String): RunCreateResponse = create(threadId, RunCreateParams.none())
+
+    /** @see [create] */
+    fun create(
+        threadId: String,
+        params: RunCreateParams = RunCreateParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): RunCreateResponse = create(params.toBuilder().threadId(threadId).build(), requestOptions)
+
+    /** @see [create] */
+    fun create(
+        threadId: String,
+        params: RunCreateParams = RunCreateParams.none(),
+    ): RunCreateResponse = create(threadId, params, RequestOptions.none())
 
     /** @see [create] */
     fun create(
         params: RunCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): RunCreateResponse
+
+    /** @see [create] */
+    fun create(params: RunCreateParams): RunCreateResponse = create(params, RequestOptions.none())
+
+    /** @see [create] */
+    fun create(threadId: String, requestOptions: RequestOptions): RunCreateResponse =
+        create(threadId, RunCreateParams.none(), requestOptions)
 
     /** A view of [RunService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
@@ -36,8 +56,24 @@ interface RunService {
          * same as [RunService.create].
          */
         @MustBeClosed
-        fun create(params: RunCreateParams): HttpResponseFor<RunCreateResponse> =
-            create(params, RequestOptions.none())
+        fun create(threadId: String): HttpResponseFor<RunCreateResponse> =
+            create(threadId, RunCreateParams.none())
+
+        /** @see [create] */
+        @MustBeClosed
+        fun create(
+            threadId: String,
+            params: RunCreateParams = RunCreateParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<RunCreateResponse> =
+            create(params.toBuilder().threadId(threadId).build(), requestOptions)
+
+        /** @see [create] */
+        @MustBeClosed
+        fun create(
+            threadId: String,
+            params: RunCreateParams = RunCreateParams.none(),
+        ): HttpResponseFor<RunCreateResponse> = create(threadId, params, RequestOptions.none())
 
         /** @see [create] */
         @MustBeClosed
@@ -45,5 +81,18 @@ interface RunService {
             params: RunCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<RunCreateResponse>
+
+        /** @see [create] */
+        @MustBeClosed
+        fun create(params: RunCreateParams): HttpResponseFor<RunCreateResponse> =
+            create(params, RequestOptions.none())
+
+        /** @see [create] */
+        @MustBeClosed
+        fun create(
+            threadId: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<RunCreateResponse> =
+            create(threadId, RunCreateParams.none(), requestOptions)
     }
 }

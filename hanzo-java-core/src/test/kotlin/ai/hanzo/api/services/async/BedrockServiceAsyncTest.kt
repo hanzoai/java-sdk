@@ -4,11 +4,6 @@ package ai.hanzo.api.services.async
 
 import ai.hanzo.api.TestServerExtension
 import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
-import ai.hanzo.api.models.bedrock.BedrockCreateParams
-import ai.hanzo.api.models.bedrock.BedrockDeleteParams
-import ai.hanzo.api.models.bedrock.BedrockPatchParams
-import ai.hanzo.api.models.bedrock.BedrockRetrieveParams
-import ai.hanzo.api.models.bedrock.BedrockUpdateParams
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -26,8 +21,7 @@ internal class BedrockServiceAsyncTest {
                 .build()
         val bedrockServiceAsync = client.bedrock()
 
-        val bedrockFuture =
-            bedrockServiceAsync.create(BedrockCreateParams.builder().endpoint("endpoint").build())
+        val bedrockFuture = bedrockServiceAsync.create("endpoint")
 
         val bedrock = bedrockFuture.get()
         bedrock.validate()
@@ -43,10 +37,7 @@ internal class BedrockServiceAsyncTest {
                 .build()
         val bedrockServiceAsync = client.bedrock()
 
-        val bedrockFuture =
-            bedrockServiceAsync.retrieve(
-                BedrockRetrieveParams.builder().endpoint("endpoint").build()
-            )
+        val bedrockFuture = bedrockServiceAsync.retrieve("endpoint")
 
         val bedrock = bedrockFuture.get()
         bedrock.validate()
@@ -62,8 +53,7 @@ internal class BedrockServiceAsyncTest {
                 .build()
         val bedrockServiceAsync = client.bedrock()
 
-        val bedrockFuture =
-            bedrockServiceAsync.update(BedrockUpdateParams.builder().endpoint("endpoint").build())
+        val bedrockFuture = bedrockServiceAsync.update("endpoint")
 
         val bedrock = bedrockFuture.get()
         bedrock.validate()
@@ -79,8 +69,7 @@ internal class BedrockServiceAsyncTest {
                 .build()
         val bedrockServiceAsync = client.bedrock()
 
-        val bedrockFuture =
-            bedrockServiceAsync.delete(BedrockDeleteParams.builder().endpoint("endpoint").build())
+        val bedrockFuture = bedrockServiceAsync.delete("endpoint")
 
         val bedrock = bedrockFuture.get()
         bedrock.validate()
@@ -96,8 +85,7 @@ internal class BedrockServiceAsyncTest {
                 .build()
         val bedrockServiceAsync = client.bedrock()
 
-        val responseFuture =
-            bedrockServiceAsync.patch(BedrockPatchParams.builder().endpoint("endpoint").build())
+        val responseFuture = bedrockServiceAsync.patch("endpoint")
 
         val response = responseFuture.get()
         response.validate()

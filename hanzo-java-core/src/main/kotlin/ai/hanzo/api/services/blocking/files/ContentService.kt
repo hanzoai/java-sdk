@@ -29,6 +29,17 @@ interface ContentService {
      *
      * ```
      */
+    fun retrieve(fileId: String, params: ContentRetrieveParams): ContentRetrieveResponse =
+        retrieve(fileId, params, RequestOptions.none())
+
+    /** @see [retrieve] */
+    fun retrieve(
+        fileId: String,
+        params: ContentRetrieveParams,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): ContentRetrieveResponse = retrieve(params.toBuilder().fileId(fileId).build(), requestOptions)
+
+    /** @see [retrieve] */
     fun retrieve(params: ContentRetrieveParams): ContentRetrieveResponse =
         retrieve(params, RequestOptions.none())
 
@@ -45,6 +56,23 @@ interface ContentService {
          * Returns a raw HTTP response for `get /{provider}/v1/files/{file_id}/content`, but is
          * otherwise the same as [ContentService.retrieve].
          */
+        @MustBeClosed
+        fun retrieve(
+            fileId: String,
+            params: ContentRetrieveParams,
+        ): HttpResponseFor<ContentRetrieveResponse> =
+            retrieve(fileId, params, RequestOptions.none())
+
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(
+            fileId: String,
+            params: ContentRetrieveParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<ContentRetrieveResponse> =
+            retrieve(params.toBuilder().fileId(fileId).build(), requestOptions)
+
+        /** @see [retrieve] */
         @MustBeClosed
         fun retrieve(params: ContentRetrieveParams): HttpResponseFor<ContentRetrieveResponse> =
             retrieve(params, RequestOptions.none())

@@ -62,14 +62,14 @@ import kotlin.jvm.optionals.getOrNull
  */
 class CallbackAddParams
 private constructor(
-    private val teamId: String,
+    private val teamId: String?,
     private val llmChangedBy: String?,
     private val body: Body,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
-    fun teamId(): String = teamId
+    fun teamId(): Optional<String> = Optional.ofNullable(teamId)
 
     /**
      * The llm-changed-by header enables tracking of actions performed by authorized users on behalf
@@ -131,7 +131,6 @@ private constructor(
          *
          * The following fields are required:
          * ```java
-         * .teamId()
          * .callbackName()
          * .callbackVars()
          * ```
@@ -157,7 +156,10 @@ private constructor(
             additionalQueryParams = callbackAddParams.additionalQueryParams.toBuilder()
         }
 
-        fun teamId(teamId: String) = apply { this.teamId = teamId }
+        fun teamId(teamId: String?) = apply { this.teamId = teamId }
+
+        /** Alias for calling [Builder.teamId] with `teamId.orElse(null)`. */
+        fun teamId(teamId: Optional<String>) = teamId(teamId.getOrNull())
 
         /**
          * The llm-changed-by header enables tracking of actions performed by authorized users on
@@ -346,7 +348,6 @@ private constructor(
          *
          * The following fields are required:
          * ```java
-         * .teamId()
          * .callbackName()
          * .callbackVars()
          * ```
@@ -355,7 +356,7 @@ private constructor(
          */
         fun build(): CallbackAddParams =
             CallbackAddParams(
-                checkRequired("teamId", teamId),
+                teamId,
                 llmChangedBy,
                 body.build(),
                 additionalHeaders.build(),
@@ -367,7 +368,7 @@ private constructor(
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> teamId
+            0 -> teamId ?: ""
             else -> ""
         }
 

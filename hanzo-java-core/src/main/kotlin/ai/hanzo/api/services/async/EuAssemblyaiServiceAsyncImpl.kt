@@ -5,6 +5,7 @@ package ai.hanzo.api.services.async
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
 import ai.hanzo.api.core.handlers.withErrorHandler
@@ -26,6 +27,7 @@ import ai.hanzo.api.models.euassemblyai.EuAssemblyaiRetrieveResponse
 import ai.hanzo.api.models.euassemblyai.EuAssemblyaiUpdateParams
 import ai.hanzo.api.models.euassemblyai.EuAssemblyaiUpdateResponse
 import java.util.concurrent.CompletableFuture
+import kotlin.jvm.optionals.getOrNull
 
 class EuAssemblyaiServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     EuAssemblyaiServiceAsync {
@@ -84,6 +86,9 @@ class EuAssemblyaiServiceAsyncImpl internal constructor(private val clientOption
             params: EuAssemblyaiCreateParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<EuAssemblyaiCreateResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
@@ -115,6 +120,9 @@ class EuAssemblyaiServiceAsyncImpl internal constructor(private val clientOption
             params: EuAssemblyaiRetrieveParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<EuAssemblyaiRetrieveResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
@@ -145,6 +153,9 @@ class EuAssemblyaiServiceAsyncImpl internal constructor(private val clientOption
             params: EuAssemblyaiUpdateParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<EuAssemblyaiUpdateResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PUT)
@@ -176,6 +187,9 @@ class EuAssemblyaiServiceAsyncImpl internal constructor(private val clientOption
             params: EuAssemblyaiDeleteParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<EuAssemblyaiDeleteResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)
@@ -207,6 +221,9 @@ class EuAssemblyaiServiceAsyncImpl internal constructor(private val clientOption
             params: EuAssemblyaiPatchParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<EuAssemblyaiPatchResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PATCH)

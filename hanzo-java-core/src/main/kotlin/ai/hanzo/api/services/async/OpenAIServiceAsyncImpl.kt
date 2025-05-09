@@ -5,6 +5,7 @@ package ai.hanzo.api.services.async
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
 import ai.hanzo.api.core.handlers.withErrorHandler
@@ -28,6 +29,7 @@ import ai.hanzo.api.models.openai.OpenAIUpdateResponse
 import ai.hanzo.api.services.async.openai.DeploymentServiceAsync
 import ai.hanzo.api.services.async.openai.DeploymentServiceAsyncImpl
 import java.util.concurrent.CompletableFuture
+import kotlin.jvm.optionals.getOrNull
 
 class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     OpenAIServiceAsync {
@@ -98,6 +100,9 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
             params: OpenAICreateParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<OpenAICreateResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
@@ -129,6 +134,9 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
             params: OpenAIRetrieveParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<OpenAIRetrieveResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
@@ -159,6 +167,9 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
             params: OpenAIUpdateParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<OpenAIUpdateResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PUT)
@@ -190,6 +201,9 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
             params: OpenAIDeleteParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<OpenAIDeleteResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)
@@ -221,6 +235,9 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
             params: OpenAIPatchParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<OpenAIPatchResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PATCH)

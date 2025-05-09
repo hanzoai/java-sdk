@@ -36,14 +36,36 @@ interface CallbackService {
      * team_callback_settings_obj.failure_callback, "callback_vars":
      * team_callback_settings_obj.callback_vars, }, }
      */
-    fun retrieve(params: CallbackRetrieveParams): CallbackRetrieveResponse =
-        retrieve(params, RequestOptions.none())
+    fun retrieve(teamId: String): CallbackRetrieveResponse =
+        retrieve(teamId, CallbackRetrieveParams.none())
+
+    /** @see [retrieve] */
+    fun retrieve(
+        teamId: String,
+        params: CallbackRetrieveParams = CallbackRetrieveParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CallbackRetrieveResponse =
+        retrieve(params.toBuilder().teamId(teamId).build(), requestOptions)
+
+    /** @see [retrieve] */
+    fun retrieve(
+        teamId: String,
+        params: CallbackRetrieveParams = CallbackRetrieveParams.none(),
+    ): CallbackRetrieveResponse = retrieve(teamId, params, RequestOptions.none())
 
     /** @see [retrieve] */
     fun retrieve(
         params: CallbackRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CallbackRetrieveResponse
+
+    /** @see [retrieve] */
+    fun retrieve(params: CallbackRetrieveParams): CallbackRetrieveResponse =
+        retrieve(params, RequestOptions.none())
+
+    /** @see [retrieve] */
+    fun retrieve(teamId: String, requestOptions: RequestOptions): CallbackRetrieveResponse =
+        retrieve(teamId, CallbackRetrieveParams.none(), requestOptions)
 
     /**
      * Add a success/failure callback to a team
@@ -83,6 +105,17 @@ interface CallbackService {
      * This means for the team where team_id = dbe2f686-a686-4896-864a-4c3924458709, all LLM calls
      * will be logged to langfuse using the public key pk-lf-xxxx1 and the secret key sk-xxxxx
      */
+    fun add(teamId: String, params: CallbackAddParams): CallbackAddResponse =
+        add(teamId, params, RequestOptions.none())
+
+    /** @see [add] */
+    fun add(
+        teamId: String,
+        params: CallbackAddParams,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CallbackAddResponse = add(params.toBuilder().teamId(teamId).build(), requestOptions)
+
+    /** @see [add] */
     fun add(params: CallbackAddParams): CallbackAddResponse = add(params, RequestOptions.none())
 
     /** @see [add] */
@@ -99,8 +132,25 @@ interface CallbackService {
          * as [CallbackService.retrieve].
          */
         @MustBeClosed
-        fun retrieve(params: CallbackRetrieveParams): HttpResponseFor<CallbackRetrieveResponse> =
-            retrieve(params, RequestOptions.none())
+        fun retrieve(teamId: String): HttpResponseFor<CallbackRetrieveResponse> =
+            retrieve(teamId, CallbackRetrieveParams.none())
+
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(
+            teamId: String,
+            params: CallbackRetrieveParams = CallbackRetrieveParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<CallbackRetrieveResponse> =
+            retrieve(params.toBuilder().teamId(teamId).build(), requestOptions)
+
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(
+            teamId: String,
+            params: CallbackRetrieveParams = CallbackRetrieveParams.none(),
+        ): HttpResponseFor<CallbackRetrieveResponse> =
+            retrieve(teamId, params, RequestOptions.none())
 
         /** @see [retrieve] */
         @MustBeClosed
@@ -109,10 +159,37 @@ interface CallbackService {
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<CallbackRetrieveResponse>
 
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(params: CallbackRetrieveParams): HttpResponseFor<CallbackRetrieveResponse> =
+            retrieve(params, RequestOptions.none())
+
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(
+            teamId: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<CallbackRetrieveResponse> =
+            retrieve(teamId, CallbackRetrieveParams.none(), requestOptions)
+
         /**
          * Returns a raw HTTP response for `post /team/{team_id}/callback`, but is otherwise the
          * same as [CallbackService.add].
          */
+        @MustBeClosed
+        fun add(teamId: String, params: CallbackAddParams): HttpResponseFor<CallbackAddResponse> =
+            add(teamId, params, RequestOptions.none())
+
+        /** @see [add] */
+        @MustBeClosed
+        fun add(
+            teamId: String,
+            params: CallbackAddParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<CallbackAddResponse> =
+            add(params.toBuilder().teamId(teamId).build(), requestOptions)
+
+        /** @see [add] */
         @MustBeClosed
         fun add(params: CallbackAddParams): HttpResponseFor<CallbackAddResponse> =
             add(params, RequestOptions.none())
