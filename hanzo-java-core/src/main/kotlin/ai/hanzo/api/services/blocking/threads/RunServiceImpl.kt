@@ -5,6 +5,7 @@ package ai.hanzo.api.services.blocking.threads
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
 import ai.hanzo.api.core.handlers.withErrorHandler
@@ -17,6 +18,7 @@ import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepare
 import ai.hanzo.api.models.threads.runs.RunCreateParams
 import ai.hanzo.api.models.threads.runs.RunCreateResponse
+import kotlin.jvm.optionals.getOrNull
 
 class RunServiceImpl internal constructor(private val clientOptions: ClientOptions) : RunService {
 
@@ -45,6 +47,9 @@ class RunServiceImpl internal constructor(private val clientOptions: ClientOptio
             params: RunCreateParams,
             requestOptions: RequestOptions,
         ): HttpResponseFor<RunCreateResponse> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("threadId", params.threadId().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)

@@ -5,6 +5,7 @@ package ai.hanzo.api.services.async
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
 import ai.hanzo.api.core.handlers.withErrorHandler
@@ -26,6 +27,7 @@ import ai.hanzo.api.models.azure.AzurePatchResponse
 import ai.hanzo.api.models.azure.AzureUpdateParams
 import ai.hanzo.api.models.azure.AzureUpdateResponse
 import java.util.concurrent.CompletableFuture
+import kotlin.jvm.optionals.getOrNull
 
 class AzureServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     AzureServiceAsync {
@@ -84,6 +86,9 @@ class AzureServiceAsyncImpl internal constructor(private val clientOptions: Clie
             params: AzureCreateParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<AzureCreateResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
@@ -115,6 +120,9 @@ class AzureServiceAsyncImpl internal constructor(private val clientOptions: Clie
             params: AzureUpdateParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<AzureUpdateResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PUT)
@@ -146,6 +154,9 @@ class AzureServiceAsyncImpl internal constructor(private val clientOptions: Clie
             params: AzureDeleteParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<AzureDeleteResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)
@@ -176,6 +187,9 @@ class AzureServiceAsyncImpl internal constructor(private val clientOptions: Clie
             params: AzureCallParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<AzureCallResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
@@ -205,6 +219,9 @@ class AzureServiceAsyncImpl internal constructor(private val clientOptions: Clie
             params: AzurePatchParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<AzurePatchResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PATCH)

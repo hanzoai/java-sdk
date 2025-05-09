@@ -10,6 +10,7 @@ import ai.hanzo.api.core.http.QueryParams
 import ai.hanzo.api.core.toImmutable
 import java.util.Objects
 import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /**
  * Deletes a specified file. that can be used across - Assistants API, Batch API This is the
@@ -27,7 +28,7 @@ import java.util.Optional
 class FileDeleteParams
 private constructor(
     private val provider: String,
-    private val fileId: String,
+    private val fileId: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
     private val additionalBodyProperties: Map<String, JsonValue>,
@@ -35,7 +36,7 @@ private constructor(
 
     fun provider(): String = provider
 
-    fun fileId(): String = fileId
+    fun fileId(): Optional<String> = Optional.ofNullable(fileId)
 
     fun _additionalBodyProperties(): Map<String, JsonValue> = additionalBodyProperties
 
@@ -53,7 +54,6 @@ private constructor(
          * The following fields are required:
          * ```java
          * .provider()
-         * .fileId()
          * ```
          */
         @JvmStatic fun builder() = Builder()
@@ -79,7 +79,10 @@ private constructor(
 
         fun provider(provider: String) = apply { this.provider = provider }
 
-        fun fileId(fileId: String) = apply { this.fileId = fileId }
+        fun fileId(fileId: String?) = apply { this.fileId = fileId }
+
+        /** Alias for calling [Builder.fileId] with `fileId.orElse(null)`. */
+        fun fileId(fileId: Optional<String>) = fileId(fileId.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -209,7 +212,6 @@ private constructor(
          * The following fields are required:
          * ```java
          * .provider()
-         * .fileId()
          * ```
          *
          * @throws IllegalStateException if any required field is unset.
@@ -217,7 +219,7 @@ private constructor(
         fun build(): FileDeleteParams =
             FileDeleteParams(
                 checkRequired("provider", provider),
-                checkRequired("fileId", fileId),
+                fileId,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
                 additionalBodyProperties.toImmutable(),
@@ -230,7 +232,7 @@ private constructor(
     fun _pathParam(index: Int): String =
         when (index) {
             0 -> provider
-            1 -> fileId
+            1 -> fileId ?: ""
             else -> ""
         }
 

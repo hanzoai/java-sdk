@@ -5,6 +5,7 @@ package ai.hanzo.api.services.async
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
 import ai.hanzo.api.core.handlers.withErrorHandler
@@ -22,6 +23,7 @@ import ai.hanzo.api.models.assistants.AssistantDeleteResponse
 import ai.hanzo.api.models.assistants.AssistantListParams
 import ai.hanzo.api.models.assistants.AssistantListResponse
 import java.util.concurrent.CompletableFuture
+import kotlin.jvm.optionals.getOrNull
 
 class AssistantServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     AssistantServiceAsync {
@@ -127,6 +129,9 @@ class AssistantServiceAsyncImpl internal constructor(private val clientOptions: 
             params: AssistantDeleteParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<AssistantDeleteResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("assistantId", params.assistantId().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)

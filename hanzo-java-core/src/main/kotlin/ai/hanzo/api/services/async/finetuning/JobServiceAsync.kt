@@ -58,6 +58,21 @@ interface JobServiceAsync {
      * - `custom_llm_provider`: Name of the LLM provider
      * - `fine_tuning_job_id`: The ID of the fine-tuning job to retrieve.
      */
+    fun retrieve(
+        fineTuningJobId: String,
+        params: JobRetrieveParams,
+    ): CompletableFuture<JobRetrieveResponse> =
+        retrieve(fineTuningJobId, params, RequestOptions.none())
+
+    /** @see [retrieve] */
+    fun retrieve(
+        fineTuningJobId: String,
+        params: JobRetrieveParams,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<JobRetrieveResponse> =
+        retrieve(params.toBuilder().fineTuningJobId(fineTuningJobId).build(), requestOptions)
+
+    /** @see [retrieve] */
     fun retrieve(params: JobRetrieveParams): CompletableFuture<JobRetrieveResponse> =
         retrieve(params, RequestOptions.none())
 
@@ -109,6 +124,23 @@ interface JobServiceAsync {
          * Returns a raw HTTP response for `get /v1/fine_tuning/jobs/{fine_tuning_job_id}`, but is
          * otherwise the same as [JobServiceAsync.retrieve].
          */
+        @MustBeClosed
+        fun retrieve(
+            fineTuningJobId: String,
+            params: JobRetrieveParams,
+        ): CompletableFuture<HttpResponseFor<JobRetrieveResponse>> =
+            retrieve(fineTuningJobId, params, RequestOptions.none())
+
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(
+            fineTuningJobId: String,
+            params: JobRetrieveParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<JobRetrieveResponse>> =
+            retrieve(params.toBuilder().fineTuningJobId(fineTuningJobId).build(), requestOptions)
+
+        /** @see [retrieve] */
         @MustBeClosed
         fun retrieve(
             params: JobRetrieveParams

@@ -49,14 +49,36 @@ interface ThreadService {
      *
      * API Reference - https://platform.openai.com/docs/api-reference/threads/getThread
      */
-    fun retrieve(params: ThreadRetrieveParams): ThreadRetrieveResponse =
-        retrieve(params, RequestOptions.none())
+    fun retrieve(threadId: String): ThreadRetrieveResponse =
+        retrieve(threadId, ThreadRetrieveParams.none())
+
+    /** @see [retrieve] */
+    fun retrieve(
+        threadId: String,
+        params: ThreadRetrieveParams = ThreadRetrieveParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): ThreadRetrieveResponse =
+        retrieve(params.toBuilder().threadId(threadId).build(), requestOptions)
+
+    /** @see [retrieve] */
+    fun retrieve(
+        threadId: String,
+        params: ThreadRetrieveParams = ThreadRetrieveParams.none(),
+    ): ThreadRetrieveResponse = retrieve(threadId, params, RequestOptions.none())
 
     /** @see [retrieve] */
     fun retrieve(
         params: ThreadRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): ThreadRetrieveResponse
+
+    /** @see [retrieve] */
+    fun retrieve(params: ThreadRetrieveParams): ThreadRetrieveResponse =
+        retrieve(params, RequestOptions.none())
+
+    /** @see [retrieve] */
+    fun retrieve(threadId: String, requestOptions: RequestOptions): ThreadRetrieveResponse =
+        retrieve(threadId, ThreadRetrieveParams.none(), requestOptions)
 
     /** A view of [ThreadService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
@@ -95,8 +117,25 @@ interface ThreadService {
          * as [ThreadService.retrieve].
          */
         @MustBeClosed
-        fun retrieve(params: ThreadRetrieveParams): HttpResponseFor<ThreadRetrieveResponse> =
-            retrieve(params, RequestOptions.none())
+        fun retrieve(threadId: String): HttpResponseFor<ThreadRetrieveResponse> =
+            retrieve(threadId, ThreadRetrieveParams.none())
+
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(
+            threadId: String,
+            params: ThreadRetrieveParams = ThreadRetrieveParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<ThreadRetrieveResponse> =
+            retrieve(params.toBuilder().threadId(threadId).build(), requestOptions)
+
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(
+            threadId: String,
+            params: ThreadRetrieveParams = ThreadRetrieveParams.none(),
+        ): HttpResponseFor<ThreadRetrieveResponse> =
+            retrieve(threadId, params, RequestOptions.none())
 
         /** @see [retrieve] */
         @MustBeClosed
@@ -104,5 +143,18 @@ interface ThreadService {
             params: ThreadRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<ThreadRetrieveResponse>
+
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(params: ThreadRetrieveParams): HttpResponseFor<ThreadRetrieveResponse> =
+            retrieve(params, RequestOptions.none())
+
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(
+            threadId: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<ThreadRetrieveResponse> =
+            retrieve(threadId, ThreadRetrieveParams.none(), requestOptions)
     }
 }

@@ -11,6 +11,8 @@ import ai.hanzo.api.core.http.QueryParams
 import ai.hanzo.api.errors.HanzoInvalidDataException
 import com.fasterxml.jackson.annotation.JsonCreator
 import java.util.Objects
+import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /**
  * Retrieves a fine-tuning job. This is the equivalent of GET
@@ -22,13 +24,13 @@ import java.util.Objects
  */
 class JobRetrieveParams
 private constructor(
-    private val fineTuningJobId: String,
+    private val fineTuningJobId: String?,
     private val customLlmProvider: CustomLlmProvider,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
-    fun fineTuningJobId(): String = fineTuningJobId
+    fun fineTuningJobId(): Optional<String> = Optional.ofNullable(fineTuningJobId)
 
     fun customLlmProvider(): CustomLlmProvider = customLlmProvider
 
@@ -45,7 +47,6 @@ private constructor(
          *
          * The following fields are required:
          * ```java
-         * .fineTuningJobId()
          * .customLlmProvider()
          * ```
          */
@@ -68,9 +69,13 @@ private constructor(
             additionalQueryParams = jobRetrieveParams.additionalQueryParams.toBuilder()
         }
 
-        fun fineTuningJobId(fineTuningJobId: String) = apply {
+        fun fineTuningJobId(fineTuningJobId: String?) = apply {
             this.fineTuningJobId = fineTuningJobId
         }
+
+        /** Alias for calling [Builder.fineTuningJobId] with `fineTuningJobId.orElse(null)`. */
+        fun fineTuningJobId(fineTuningJobId: Optional<String>) =
+            fineTuningJobId(fineTuningJobId.getOrNull())
 
         fun customLlmProvider(customLlmProvider: CustomLlmProvider) = apply {
             this.customLlmProvider = customLlmProvider
@@ -181,7 +186,6 @@ private constructor(
          *
          * The following fields are required:
          * ```java
-         * .fineTuningJobId()
          * .customLlmProvider()
          * ```
          *
@@ -189,7 +193,7 @@ private constructor(
          */
         fun build(): JobRetrieveParams =
             JobRetrieveParams(
-                checkRequired("fineTuningJobId", fineTuningJobId),
+                fineTuningJobId,
                 checkRequired("customLlmProvider", customLlmProvider),
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
@@ -198,7 +202,7 @@ private constructor(
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> fineTuningJobId
+            0 -> fineTuningJobId ?: ""
             else -> ""
         }
 

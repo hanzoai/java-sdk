@@ -5,6 +5,7 @@ package ai.hanzo.api.services.async
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
 import ai.hanzo.api.core.handlers.withErrorHandler
@@ -24,6 +25,7 @@ import ai.hanzo.api.models.responses.ResponseRetrieveResponse
 import ai.hanzo.api.services.async.responses.InputItemServiceAsync
 import ai.hanzo.api.services.async.responses.InputItemServiceAsyncImpl
 import java.util.concurrent.CompletableFuture
+import kotlin.jvm.optionals.getOrNull
 
 class ResponseServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     ResponseServiceAsync {
@@ -111,6 +113,9 @@ class ResponseServiceAsyncImpl internal constructor(private val clientOptions: C
             params: ResponseRetrieveParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<ResponseRetrieveResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("responseId", params.responseId().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
@@ -141,6 +146,9 @@ class ResponseServiceAsyncImpl internal constructor(private val clientOptions: C
             params: ResponseDeleteParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<ResponseDeleteResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("responseId", params.responseId().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)

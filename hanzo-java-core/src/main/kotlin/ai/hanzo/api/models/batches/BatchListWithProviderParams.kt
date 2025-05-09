@@ -3,7 +3,6 @@
 package ai.hanzo.api.models.batches
 
 import ai.hanzo.api.core.Params
-import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import java.util.Objects
@@ -22,14 +21,14 @@ import kotlin.jvm.optionals.getOrNull
  */
 class BatchListWithProviderParams
 private constructor(
-    private val provider: String,
+    private val provider: String?,
     private val after: String?,
     private val limit: Long?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
-    fun provider(): String = provider
+    fun provider(): Optional<String> = Optional.ofNullable(provider)
 
     fun after(): Optional<String> = Optional.ofNullable(after)
 
@@ -43,13 +42,10 @@ private constructor(
 
     companion object {
 
+        @JvmStatic fun none(): BatchListWithProviderParams = builder().build()
+
         /**
          * Returns a mutable builder for constructing an instance of [BatchListWithProviderParams].
-         *
-         * The following fields are required:
-         * ```java
-         * .provider()
-         * ```
          */
         @JvmStatic fun builder() = Builder()
     }
@@ -72,7 +68,10 @@ private constructor(
             additionalQueryParams = batchListWithProviderParams.additionalQueryParams.toBuilder()
         }
 
-        fun provider(provider: String) = apply { this.provider = provider }
+        fun provider(provider: String?) = apply { this.provider = provider }
+
+        /** Alias for calling [Builder.provider] with `provider.orElse(null)`. */
+        fun provider(provider: Optional<String>) = provider(provider.getOrNull())
 
         fun after(after: String?) = apply { this.after = after }
 
@@ -193,17 +192,10 @@ private constructor(
          * Returns an immutable instance of [BatchListWithProviderParams].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
-         *
-         * The following fields are required:
-         * ```java
-         * .provider()
-         * ```
-         *
-         * @throws IllegalStateException if any required field is unset.
          */
         fun build(): BatchListWithProviderParams =
             BatchListWithProviderParams(
-                checkRequired("provider", provider),
+                provider,
                 after,
                 limit,
                 additionalHeaders.build(),
@@ -213,7 +205,7 @@ private constructor(
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> provider
+            0 -> provider ?: ""
             else -> ""
         }
 

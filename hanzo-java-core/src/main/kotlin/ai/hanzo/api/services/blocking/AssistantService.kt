@@ -69,14 +69,36 @@ interface AssistantService {
      * API Reference docs -
      * https://platform.openai.com/docs/api-reference/assistants/createAssistant
      */
-    fun delete(params: AssistantDeleteParams): AssistantDeleteResponse =
-        delete(params, RequestOptions.none())
+    fun delete(assistantId: String): AssistantDeleteResponse =
+        delete(assistantId, AssistantDeleteParams.none())
+
+    /** @see [delete] */
+    fun delete(
+        assistantId: String,
+        params: AssistantDeleteParams = AssistantDeleteParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): AssistantDeleteResponse =
+        delete(params.toBuilder().assistantId(assistantId).build(), requestOptions)
+
+    /** @see [delete] */
+    fun delete(
+        assistantId: String,
+        params: AssistantDeleteParams = AssistantDeleteParams.none(),
+    ): AssistantDeleteResponse = delete(assistantId, params, RequestOptions.none())
 
     /** @see [delete] */
     fun delete(
         params: AssistantDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AssistantDeleteResponse
+
+    /** @see [delete] */
+    fun delete(params: AssistantDeleteParams): AssistantDeleteResponse =
+        delete(params, RequestOptions.none())
+
+    /** @see [delete] */
+    fun delete(assistantId: String, requestOptions: RequestOptions): AssistantDeleteResponse =
+        delete(assistantId, AssistantDeleteParams.none(), requestOptions)
 
     /** A view of [AssistantService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
@@ -137,8 +159,25 @@ interface AssistantService {
          * the same as [AssistantService.delete].
          */
         @MustBeClosed
-        fun delete(params: AssistantDeleteParams): HttpResponseFor<AssistantDeleteResponse> =
-            delete(params, RequestOptions.none())
+        fun delete(assistantId: String): HttpResponseFor<AssistantDeleteResponse> =
+            delete(assistantId, AssistantDeleteParams.none())
+
+        /** @see [delete] */
+        @MustBeClosed
+        fun delete(
+            assistantId: String,
+            params: AssistantDeleteParams = AssistantDeleteParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<AssistantDeleteResponse> =
+            delete(params.toBuilder().assistantId(assistantId).build(), requestOptions)
+
+        /** @see [delete] */
+        @MustBeClosed
+        fun delete(
+            assistantId: String,
+            params: AssistantDeleteParams = AssistantDeleteParams.none(),
+        ): HttpResponseFor<AssistantDeleteResponse> =
+            delete(assistantId, params, RequestOptions.none())
 
         /** @see [delete] */
         @MustBeClosed
@@ -146,5 +185,18 @@ interface AssistantService {
             params: AssistantDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<AssistantDeleteResponse>
+
+        /** @see [delete] */
+        @MustBeClosed
+        fun delete(params: AssistantDeleteParams): HttpResponseFor<AssistantDeleteResponse> =
+            delete(params, RequestOptions.none())
+
+        /** @see [delete] */
+        @MustBeClosed
+        fun delete(
+            assistantId: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<AssistantDeleteResponse> =
+            delete(assistantId, AssistantDeleteParams.none(), requestOptions)
     }
 }

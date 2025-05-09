@@ -4,8 +4,6 @@ package ai.hanzo.api.services.async
 
 import ai.hanzo.api.TestServerExtension
 import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
-import ai.hanzo.api.models.engines.EngineCompleteParams
-import ai.hanzo.api.models.engines.EngineEmbedParams
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -23,8 +21,7 @@ internal class EngineServiceAsyncTest {
                 .build()
         val engineServiceAsync = client.engines()
 
-        val responseFuture =
-            engineServiceAsync.complete(EngineCompleteParams.builder().model("model").build())
+        val responseFuture = engineServiceAsync.complete("model")
 
         val response = responseFuture.get()
         response.validate()
@@ -40,8 +37,7 @@ internal class EngineServiceAsyncTest {
                 .build()
         val engineServiceAsync = client.engines()
 
-        val responseFuture =
-            engineServiceAsync.embed(EngineEmbedParams.builder().model("model").build())
+        val responseFuture = engineServiceAsync.embed("model")
 
         val response = responseFuture.get()
         response.validate()

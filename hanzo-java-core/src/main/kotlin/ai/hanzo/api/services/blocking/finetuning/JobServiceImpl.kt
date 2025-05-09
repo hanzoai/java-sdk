@@ -5,6 +5,7 @@ package ai.hanzo.api.services.blocking.finetuning
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
 import ai.hanzo.api.core.handlers.withErrorHandler
@@ -23,6 +24,7 @@ import ai.hanzo.api.models.finetuning.jobs.JobRetrieveParams
 import ai.hanzo.api.models.finetuning.jobs.JobRetrieveResponse
 import ai.hanzo.api.services.blocking.finetuning.jobs.CancelService
 import ai.hanzo.api.services.blocking.finetuning.jobs.CancelServiceImpl
+import kotlin.jvm.optionals.getOrNull
 
 class JobServiceImpl internal constructor(private val clientOptions: ClientOptions) : JobService {
 
@@ -100,6 +102,9 @@ class JobServiceImpl internal constructor(private val clientOptions: ClientOptio
             params: JobRetrieveParams,
             requestOptions: RequestOptions,
         ): HttpResponseFor<JobRetrieveResponse> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("fineTuningJobId", params.fineTuningJobId().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)

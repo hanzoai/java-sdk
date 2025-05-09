@@ -8,6 +8,8 @@ import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import java.util.Objects
+import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /**
  * PATCH Endpoint for partial model updates.
@@ -24,13 +26,13 @@ import java.util.Objects
  */
 class UpdatePartialParams
 private constructor(
-    private val modelId: String,
+    private val modelId: String?,
     private val updateDeployment: UpdateDeployment,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
-    fun modelId(): String = modelId
+    fun modelId(): Optional<String> = Optional.ofNullable(modelId)
 
     fun updateDeployment(): UpdateDeployment = updateDeployment
 
@@ -50,7 +52,6 @@ private constructor(
          *
          * The following fields are required:
          * ```java
-         * .modelId()
          * .updateDeployment()
          * ```
          */
@@ -73,7 +74,10 @@ private constructor(
             additionalQueryParams = updatePartialParams.additionalQueryParams.toBuilder()
         }
 
-        fun modelId(modelId: String) = apply { this.modelId = modelId }
+        fun modelId(modelId: String?) = apply { this.modelId = modelId }
+
+        /** Alias for calling [Builder.modelId] with `modelId.orElse(null)`. */
+        fun modelId(modelId: Optional<String>) = modelId(modelId.getOrNull())
 
         fun updateDeployment(updateDeployment: UpdateDeployment) = apply {
             this.updateDeployment = updateDeployment
@@ -184,7 +188,6 @@ private constructor(
          *
          * The following fields are required:
          * ```java
-         * .modelId()
          * .updateDeployment()
          * ```
          *
@@ -192,7 +195,7 @@ private constructor(
          */
         fun build(): UpdatePartialParams =
             UpdatePartialParams(
-                checkRequired("modelId", modelId),
+                modelId,
                 checkRequired("updateDeployment", updateDeployment),
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
@@ -203,7 +206,7 @@ private constructor(
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> modelId
+            0 -> modelId ?: ""
             else -> ""
         }
 

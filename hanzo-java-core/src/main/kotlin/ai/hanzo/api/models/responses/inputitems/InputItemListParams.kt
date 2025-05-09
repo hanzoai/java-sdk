@@ -3,10 +3,11 @@
 package ai.hanzo.api.models.responses.inputitems
 
 import ai.hanzo.api.core.Params
-import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import java.util.Objects
+import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /**
  * Get input items for a response.
@@ -20,12 +21,12 @@ import java.util.Objects
  */
 class InputItemListParams
 private constructor(
-    private val responseId: String,
+    private val responseId: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
-    fun responseId(): String = responseId
+    fun responseId(): Optional<String> = Optional.ofNullable(responseId)
 
     fun _additionalHeaders(): Headers = additionalHeaders
 
@@ -35,14 +36,9 @@ private constructor(
 
     companion object {
 
-        /**
-         * Returns a mutable builder for constructing an instance of [InputItemListParams].
-         *
-         * The following fields are required:
-         * ```java
-         * .responseId()
-         * ```
-         */
+        @JvmStatic fun none(): InputItemListParams = builder().build()
+
+        /** Returns a mutable builder for constructing an instance of [InputItemListParams]. */
         @JvmStatic fun builder() = Builder()
     }
 
@@ -60,7 +56,10 @@ private constructor(
             additionalQueryParams = inputItemListParams.additionalQueryParams.toBuilder()
         }
 
-        fun responseId(responseId: String) = apply { this.responseId = responseId }
+        fun responseId(responseId: String?) = apply { this.responseId = responseId }
+
+        /** Alias for calling [Builder.responseId] with `responseId.orElse(null)`. */
+        fun responseId(responseId: Optional<String>) = responseId(responseId.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -164,17 +163,10 @@ private constructor(
          * Returns an immutable instance of [InputItemListParams].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
-         *
-         * The following fields are required:
-         * ```java
-         * .responseId()
-         * ```
-         *
-         * @throws IllegalStateException if any required field is unset.
          */
         fun build(): InputItemListParams =
             InputItemListParams(
-                checkRequired("responseId", responseId),
+                responseId,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
             )
@@ -182,7 +174,7 @@ private constructor(
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> responseId
+            0 -> responseId ?: ""
             else -> ""
         }
 

@@ -285,15 +285,41 @@ interface TeamServiceAsync {
      * curl -X POST 'http://localhost:4000/team/dbe2f686-a686-4896-864a-4c3924458709/disable_logging'         -H 'Authorization: Bearer sk-1234'
      * ```
      */
+    fun disableLogging(teamId: String): CompletableFuture<TeamDisableLoggingResponse> =
+        disableLogging(teamId, TeamDisableLoggingParams.none())
+
+    /** @see [disableLogging] */
     fun disableLogging(
-        params: TeamDisableLoggingParams
-    ): CompletableFuture<TeamDisableLoggingResponse> = disableLogging(params, RequestOptions.none())
+        teamId: String,
+        params: TeamDisableLoggingParams = TeamDisableLoggingParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<TeamDisableLoggingResponse> =
+        disableLogging(params.toBuilder().teamId(teamId).build(), requestOptions)
+
+    /** @see [disableLogging] */
+    fun disableLogging(
+        teamId: String,
+        params: TeamDisableLoggingParams = TeamDisableLoggingParams.none(),
+    ): CompletableFuture<TeamDisableLoggingResponse> =
+        disableLogging(teamId, params, RequestOptions.none())
 
     /** @see [disableLogging] */
     fun disableLogging(
         params: TeamDisableLoggingParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<TeamDisableLoggingResponse>
+
+    /** @see [disableLogging] */
+    fun disableLogging(
+        params: TeamDisableLoggingParams
+    ): CompletableFuture<TeamDisableLoggingResponse> = disableLogging(params, RequestOptions.none())
+
+    /** @see [disableLogging] */
+    fun disableLogging(
+        teamId: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<TeamDisableLoggingResponse> =
+        disableLogging(teamId, TeamDisableLoggingParams.none(), requestOptions)
 
     /** List Available Teams */
     fun listAvailable(): CompletableFuture<TeamListAvailableResponse> =
@@ -543,9 +569,26 @@ interface TeamServiceAsync {
          */
         @MustBeClosed
         fun disableLogging(
-            params: TeamDisableLoggingParams
+            teamId: String
         ): CompletableFuture<HttpResponseFor<TeamDisableLoggingResponse>> =
-            disableLogging(params, RequestOptions.none())
+            disableLogging(teamId, TeamDisableLoggingParams.none())
+
+        /** @see [disableLogging] */
+        @MustBeClosed
+        fun disableLogging(
+            teamId: String,
+            params: TeamDisableLoggingParams = TeamDisableLoggingParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<TeamDisableLoggingResponse>> =
+            disableLogging(params.toBuilder().teamId(teamId).build(), requestOptions)
+
+        /** @see [disableLogging] */
+        @MustBeClosed
+        fun disableLogging(
+            teamId: String,
+            params: TeamDisableLoggingParams = TeamDisableLoggingParams.none(),
+        ): CompletableFuture<HttpResponseFor<TeamDisableLoggingResponse>> =
+            disableLogging(teamId, params, RequestOptions.none())
 
         /** @see [disableLogging] */
         @MustBeClosed
@@ -553,6 +596,21 @@ interface TeamServiceAsync {
             params: TeamDisableLoggingParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<TeamDisableLoggingResponse>>
+
+        /** @see [disableLogging] */
+        @MustBeClosed
+        fun disableLogging(
+            params: TeamDisableLoggingParams
+        ): CompletableFuture<HttpResponseFor<TeamDisableLoggingResponse>> =
+            disableLogging(params, RequestOptions.none())
+
+        /** @see [disableLogging] */
+        @MustBeClosed
+        fun disableLogging(
+            teamId: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<TeamDisableLoggingResponse>> =
+            disableLogging(teamId, TeamDisableLoggingParams.none(), requestOptions)
 
         /**
          * Returns a raw HTTP response for `get /team/available`, but is otherwise the same as

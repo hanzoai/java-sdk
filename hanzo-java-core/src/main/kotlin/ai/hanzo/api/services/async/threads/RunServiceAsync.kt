@@ -21,14 +21,39 @@ interface RunServiceAsync {
      *
      * API Reference: https://platform.openai.com/docs/api-reference/runs/createRun
      */
-    fun create(params: RunCreateParams): CompletableFuture<RunCreateResponse> =
-        create(params, RequestOptions.none())
+    fun create(threadId: String): CompletableFuture<RunCreateResponse> =
+        create(threadId, RunCreateParams.none())
+
+    /** @see [create] */
+    fun create(
+        threadId: String,
+        params: RunCreateParams = RunCreateParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<RunCreateResponse> =
+        create(params.toBuilder().threadId(threadId).build(), requestOptions)
+
+    /** @see [create] */
+    fun create(
+        threadId: String,
+        params: RunCreateParams = RunCreateParams.none(),
+    ): CompletableFuture<RunCreateResponse> = create(threadId, params, RequestOptions.none())
 
     /** @see [create] */
     fun create(
         params: RunCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<RunCreateResponse>
+
+    /** @see [create] */
+    fun create(params: RunCreateParams): CompletableFuture<RunCreateResponse> =
+        create(params, RequestOptions.none())
+
+    /** @see [create] */
+    fun create(
+        threadId: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<RunCreateResponse> =
+        create(threadId, RunCreateParams.none(), requestOptions)
 
     /** A view of [RunServiceAsync] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
@@ -38,8 +63,25 @@ interface RunServiceAsync {
          * same as [RunServiceAsync.create].
          */
         @MustBeClosed
-        fun create(params: RunCreateParams): CompletableFuture<HttpResponseFor<RunCreateResponse>> =
-            create(params, RequestOptions.none())
+        fun create(threadId: String): CompletableFuture<HttpResponseFor<RunCreateResponse>> =
+            create(threadId, RunCreateParams.none())
+
+        /** @see [create] */
+        @MustBeClosed
+        fun create(
+            threadId: String,
+            params: RunCreateParams = RunCreateParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<RunCreateResponse>> =
+            create(params.toBuilder().threadId(threadId).build(), requestOptions)
+
+        /** @see [create] */
+        @MustBeClosed
+        fun create(
+            threadId: String,
+            params: RunCreateParams = RunCreateParams.none(),
+        ): CompletableFuture<HttpResponseFor<RunCreateResponse>> =
+            create(threadId, params, RequestOptions.none())
 
         /** @see [create] */
         @MustBeClosed
@@ -47,5 +89,18 @@ interface RunServiceAsync {
             params: RunCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<RunCreateResponse>>
+
+        /** @see [create] */
+        @MustBeClosed
+        fun create(params: RunCreateParams): CompletableFuture<HttpResponseFor<RunCreateResponse>> =
+            create(params, RequestOptions.none())
+
+        /** @see [create] */
+        @MustBeClosed
+        fun create(
+            threadId: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<RunCreateResponse>> =
+            create(threadId, RunCreateParams.none(), requestOptions)
     }
 }

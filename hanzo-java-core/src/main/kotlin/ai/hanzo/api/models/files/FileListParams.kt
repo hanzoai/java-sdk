@@ -3,7 +3,6 @@
 package ai.hanzo.api.models.files
 
 import ai.hanzo.api.core.Params
-import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import java.util.Objects
@@ -25,13 +24,13 @@ import kotlin.jvm.optionals.getOrNull
  */
 class FileListParams
 private constructor(
-    private val provider: String,
+    private val provider: String?,
     private val purpose: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
-    fun provider(): String = provider
+    fun provider(): Optional<String> = Optional.ofNullable(provider)
 
     fun purpose(): Optional<String> = Optional.ofNullable(purpose)
 
@@ -43,14 +42,9 @@ private constructor(
 
     companion object {
 
-        /**
-         * Returns a mutable builder for constructing an instance of [FileListParams].
-         *
-         * The following fields are required:
-         * ```java
-         * .provider()
-         * ```
-         */
+        @JvmStatic fun none(): FileListParams = builder().build()
+
+        /** Returns a mutable builder for constructing an instance of [FileListParams]. */
         @JvmStatic fun builder() = Builder()
     }
 
@@ -70,7 +64,10 @@ private constructor(
             additionalQueryParams = fileListParams.additionalQueryParams.toBuilder()
         }
 
-        fun provider(provider: String) = apply { this.provider = provider }
+        fun provider(provider: String?) = apply { this.provider = provider }
+
+        /** Alias for calling [Builder.provider] with `provider.orElse(null)`. */
+        fun provider(provider: Optional<String>) = provider(provider.getOrNull())
 
         fun purpose(purpose: String?) = apply { this.purpose = purpose }
 
@@ -179,17 +176,10 @@ private constructor(
          * Returns an immutable instance of [FileListParams].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
-         *
-         * The following fields are required:
-         * ```java
-         * .provider()
-         * ```
-         *
-         * @throws IllegalStateException if any required field is unset.
          */
         fun build(): FileListParams =
             FileListParams(
-                checkRequired("provider", provider),
+                provider,
                 purpose,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
@@ -198,7 +188,7 @@ private constructor(
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> provider
+            0 -> provider ?: ""
             else -> ""
         }
 

@@ -40,6 +40,17 @@ interface UpdateService {
      * Raises: ProxyException: For various error conditions including authentication and database
      * errors
      */
+    fun partial(modelId: String, params: UpdatePartialParams): UpdatePartialResponse =
+        partial(modelId, params, RequestOptions.none())
+
+    /** @see [partial] */
+    fun partial(
+        modelId: String,
+        params: UpdatePartialParams,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): UpdatePartialResponse = partial(params.toBuilder().modelId(modelId).build(), requestOptions)
+
+    /** @see [partial] */
     fun partial(params: UpdatePartialParams): UpdatePartialResponse =
         partial(params, RequestOptions.none())
 
@@ -71,6 +82,22 @@ interface UpdateService {
          * Returns a raw HTTP response for `patch /model/{model_id}/update`, but is otherwise the
          * same as [UpdateService.partial].
          */
+        @MustBeClosed
+        fun partial(
+            modelId: String,
+            params: UpdatePartialParams,
+        ): HttpResponseFor<UpdatePartialResponse> = partial(modelId, params, RequestOptions.none())
+
+        /** @see [partial] */
+        @MustBeClosed
+        fun partial(
+            modelId: String,
+            params: UpdatePartialParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<UpdatePartialResponse> =
+            partial(params.toBuilder().modelId(modelId).build(), requestOptions)
+
+        /** @see [partial] */
         @MustBeClosed
         fun partial(params: UpdatePartialParams): HttpResponseFor<UpdatePartialResponse> =
             partial(params, RequestOptions.none())
