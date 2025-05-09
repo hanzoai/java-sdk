@@ -42,6 +42,20 @@ interface UpdateServiceAsync {
      * Raises: ProxyException: For various error conditions including authentication and database
      * errors
      */
+    fun partial(
+        modelId: String,
+        params: UpdatePartialParams,
+    ): CompletableFuture<UpdatePartialResponse> = partial(modelId, params, RequestOptions.none())
+
+    /** @see [partial] */
+    fun partial(
+        modelId: String,
+        params: UpdatePartialParams,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<UpdatePartialResponse> =
+        partial(params.toBuilder().modelId(modelId).build(), requestOptions)
+
+    /** @see [partial] */
     fun partial(params: UpdatePartialParams): CompletableFuture<UpdatePartialResponse> =
         partial(params, RequestOptions.none())
 
@@ -75,6 +89,23 @@ interface UpdateServiceAsync {
          * Returns a raw HTTP response for `patch /model/{model_id}/update`, but is otherwise the
          * same as [UpdateServiceAsync.partial].
          */
+        @MustBeClosed
+        fun partial(
+            modelId: String,
+            params: UpdatePartialParams,
+        ): CompletableFuture<HttpResponseFor<UpdatePartialResponse>> =
+            partial(modelId, params, RequestOptions.none())
+
+        /** @see [partial] */
+        @MustBeClosed
+        fun partial(
+            modelId: String,
+            params: UpdatePartialParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<UpdatePartialResponse>> =
+            partial(params.toBuilder().modelId(modelId).build(), requestOptions)
+
+        /** @see [partial] */
         @MustBeClosed
         fun partial(
             params: UpdatePartialParams

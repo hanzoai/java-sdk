@@ -3,20 +3,21 @@
 package ai.hanzo.api.models.bedrock
 
 import ai.hanzo.api.core.Params
-import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import java.util.Objects
+import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /** [Docs](https://docs.hanzo.ai/docs/pass_through/bedrock) */
 class BedrockRetrieveParams
 private constructor(
-    private val endpoint: String,
+    private val endpoint: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
-    fun endpoint(): String = endpoint
+    fun endpoint(): Optional<String> = Optional.ofNullable(endpoint)
 
     fun _additionalHeaders(): Headers = additionalHeaders
 
@@ -26,14 +27,9 @@ private constructor(
 
     companion object {
 
-        /**
-         * Returns a mutable builder for constructing an instance of [BedrockRetrieveParams].
-         *
-         * The following fields are required:
-         * ```java
-         * .endpoint()
-         * ```
-         */
+        @JvmStatic fun none(): BedrockRetrieveParams = builder().build()
+
+        /** Returns a mutable builder for constructing an instance of [BedrockRetrieveParams]. */
         @JvmStatic fun builder() = Builder()
     }
 
@@ -51,7 +47,10 @@ private constructor(
             additionalQueryParams = bedrockRetrieveParams.additionalQueryParams.toBuilder()
         }
 
-        fun endpoint(endpoint: String) = apply { this.endpoint = endpoint }
+        fun endpoint(endpoint: String?) = apply { this.endpoint = endpoint }
+
+        /** Alias for calling [Builder.endpoint] with `endpoint.orElse(null)`. */
+        fun endpoint(endpoint: Optional<String>) = endpoint(endpoint.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -155,17 +154,10 @@ private constructor(
          * Returns an immutable instance of [BedrockRetrieveParams].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
-         *
-         * The following fields are required:
-         * ```java
-         * .endpoint()
-         * ```
-         *
-         * @throws IllegalStateException if any required field is unset.
          */
         fun build(): BedrockRetrieveParams =
             BedrockRetrieveParams(
-                checkRequired("endpoint", endpoint),
+                endpoint,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
             )
@@ -173,7 +165,7 @@ private constructor(
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> endpoint
+            0 -> endpoint ?: ""
             else -> ""
         }
 

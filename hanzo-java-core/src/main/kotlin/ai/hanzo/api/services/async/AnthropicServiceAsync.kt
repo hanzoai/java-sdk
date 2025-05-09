@@ -25,8 +25,22 @@ interface AnthropicServiceAsync {
     fun withRawResponse(): WithRawResponse
 
     /** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
-    fun create(params: AnthropicCreateParams): CompletableFuture<AnthropicCreateResponse> =
-        create(params, RequestOptions.none())
+    fun create(endpoint: String): CompletableFuture<AnthropicCreateResponse> =
+        create(endpoint, AnthropicCreateParams.none())
+
+    /** @see [create] */
+    fun create(
+        endpoint: String,
+        params: AnthropicCreateParams = AnthropicCreateParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<AnthropicCreateResponse> =
+        create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see [create] */
+    fun create(
+        endpoint: String,
+        params: AnthropicCreateParams = AnthropicCreateParams.none(),
+    ): CompletableFuture<AnthropicCreateResponse> = create(endpoint, params, RequestOptions.none())
 
     /** @see [create] */
     fun create(
@@ -34,9 +48,35 @@ interface AnthropicServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<AnthropicCreateResponse>
 
+    /** @see [create] */
+    fun create(params: AnthropicCreateParams): CompletableFuture<AnthropicCreateResponse> =
+        create(params, RequestOptions.none())
+
+    /** @see [create] */
+    fun create(
+        endpoint: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<AnthropicCreateResponse> =
+        create(endpoint, AnthropicCreateParams.none(), requestOptions)
+
     /** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
-    fun retrieve(params: AnthropicRetrieveParams): CompletableFuture<AnthropicRetrieveResponse> =
-        retrieve(params, RequestOptions.none())
+    fun retrieve(endpoint: String): CompletableFuture<AnthropicRetrieveResponse> =
+        retrieve(endpoint, AnthropicRetrieveParams.none())
+
+    /** @see [retrieve] */
+    fun retrieve(
+        endpoint: String,
+        params: AnthropicRetrieveParams = AnthropicRetrieveParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<AnthropicRetrieveResponse> =
+        retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see [retrieve] */
+    fun retrieve(
+        endpoint: String,
+        params: AnthropicRetrieveParams = AnthropicRetrieveParams.none(),
+    ): CompletableFuture<AnthropicRetrieveResponse> =
+        retrieve(endpoint, params, RequestOptions.none())
 
     /** @see [retrieve] */
     fun retrieve(
@@ -44,9 +84,34 @@ interface AnthropicServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<AnthropicRetrieveResponse>
 
+    /** @see [retrieve] */
+    fun retrieve(params: AnthropicRetrieveParams): CompletableFuture<AnthropicRetrieveResponse> =
+        retrieve(params, RequestOptions.none())
+
+    /** @see [retrieve] */
+    fun retrieve(
+        endpoint: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<AnthropicRetrieveResponse> =
+        retrieve(endpoint, AnthropicRetrieveParams.none(), requestOptions)
+
     /** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
-    fun update(params: AnthropicUpdateParams): CompletableFuture<AnthropicUpdateResponse> =
-        update(params, RequestOptions.none())
+    fun update(endpoint: String): CompletableFuture<AnthropicUpdateResponse> =
+        update(endpoint, AnthropicUpdateParams.none())
+
+    /** @see [update] */
+    fun update(
+        endpoint: String,
+        params: AnthropicUpdateParams = AnthropicUpdateParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<AnthropicUpdateResponse> =
+        update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see [update] */
+    fun update(
+        endpoint: String,
+        params: AnthropicUpdateParams = AnthropicUpdateParams.none(),
+    ): CompletableFuture<AnthropicUpdateResponse> = update(endpoint, params, RequestOptions.none())
 
     /** @see [update] */
     fun update(
@@ -54,9 +119,34 @@ interface AnthropicServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<AnthropicUpdateResponse>
 
+    /** @see [update] */
+    fun update(params: AnthropicUpdateParams): CompletableFuture<AnthropicUpdateResponse> =
+        update(params, RequestOptions.none())
+
+    /** @see [update] */
+    fun update(
+        endpoint: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<AnthropicUpdateResponse> =
+        update(endpoint, AnthropicUpdateParams.none(), requestOptions)
+
     /** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
-    fun delete(params: AnthropicDeleteParams): CompletableFuture<AnthropicDeleteResponse> =
-        delete(params, RequestOptions.none())
+    fun delete(endpoint: String): CompletableFuture<AnthropicDeleteResponse> =
+        delete(endpoint, AnthropicDeleteParams.none())
+
+    /** @see [delete] */
+    fun delete(
+        endpoint: String,
+        params: AnthropicDeleteParams = AnthropicDeleteParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<AnthropicDeleteResponse> =
+        delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see [delete] */
+    fun delete(
+        endpoint: String,
+        params: AnthropicDeleteParams = AnthropicDeleteParams.none(),
+    ): CompletableFuture<AnthropicDeleteResponse> = delete(endpoint, params, RequestOptions.none())
 
     /** @see [delete] */
     fun delete(
@@ -64,15 +154,51 @@ interface AnthropicServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<AnthropicDeleteResponse>
 
+    /** @see [delete] */
+    fun delete(params: AnthropicDeleteParams): CompletableFuture<AnthropicDeleteResponse> =
+        delete(params, RequestOptions.none())
+
+    /** @see [delete] */
+    fun delete(
+        endpoint: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<AnthropicDeleteResponse> =
+        delete(endpoint, AnthropicDeleteParams.none(), requestOptions)
+
     /** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
-    fun modify(params: AnthropicModifyParams): CompletableFuture<AnthropicModifyResponse> =
-        modify(params, RequestOptions.none())
+    fun modify(endpoint: String): CompletableFuture<AnthropicModifyResponse> =
+        modify(endpoint, AnthropicModifyParams.none())
+
+    /** @see [modify] */
+    fun modify(
+        endpoint: String,
+        params: AnthropicModifyParams = AnthropicModifyParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<AnthropicModifyResponse> =
+        modify(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see [modify] */
+    fun modify(
+        endpoint: String,
+        params: AnthropicModifyParams = AnthropicModifyParams.none(),
+    ): CompletableFuture<AnthropicModifyResponse> = modify(endpoint, params, RequestOptions.none())
 
     /** @see [modify] */
     fun modify(
         params: AnthropicModifyParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<AnthropicModifyResponse>
+
+    /** @see [modify] */
+    fun modify(params: AnthropicModifyParams): CompletableFuture<AnthropicModifyResponse> =
+        modify(params, RequestOptions.none())
+
+    /** @see [modify] */
+    fun modify(
+        endpoint: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<AnthropicModifyResponse> =
+        modify(endpoint, AnthropicModifyParams.none(), requestOptions)
 
     /**
      * A view of [AnthropicServiceAsync] that provides access to raw HTTP responses for each method.
@@ -84,10 +210,25 @@ interface AnthropicServiceAsync {
          * as [AnthropicServiceAsync.create].
          */
         @MustBeClosed
+        fun create(endpoint: String): CompletableFuture<HttpResponseFor<AnthropicCreateResponse>> =
+            create(endpoint, AnthropicCreateParams.none())
+
+        /** @see [create] */
+        @MustBeClosed
         fun create(
-            params: AnthropicCreateParams
+            endpoint: String,
+            params: AnthropicCreateParams = AnthropicCreateParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<AnthropicCreateResponse>> =
-            create(params, RequestOptions.none())
+            create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see [create] */
+        @MustBeClosed
+        fun create(
+            endpoint: String,
+            params: AnthropicCreateParams = AnthropicCreateParams.none(),
+        ): CompletableFuture<HttpResponseFor<AnthropicCreateResponse>> =
+            create(endpoint, params, RequestOptions.none())
 
         /** @see [create] */
         @MustBeClosed
@@ -96,10 +237,56 @@ interface AnthropicServiceAsync {
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<AnthropicCreateResponse>>
 
+        /** @see [create] */
+        @MustBeClosed
+        fun create(
+            params: AnthropicCreateParams
+        ): CompletableFuture<HttpResponseFor<AnthropicCreateResponse>> =
+            create(params, RequestOptions.none())
+
+        /** @see [create] */
+        @MustBeClosed
+        fun create(
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<AnthropicCreateResponse>> =
+            create(endpoint, AnthropicCreateParams.none(), requestOptions)
+
         /**
          * Returns a raw HTTP response for `get /anthropic/{endpoint}`, but is otherwise the same as
          * [AnthropicServiceAsync.retrieve].
          */
+        @MustBeClosed
+        fun retrieve(
+            endpoint: String
+        ): CompletableFuture<HttpResponseFor<AnthropicRetrieveResponse>> =
+            retrieve(endpoint, AnthropicRetrieveParams.none())
+
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(
+            endpoint: String,
+            params: AnthropicRetrieveParams = AnthropicRetrieveParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<AnthropicRetrieveResponse>> =
+            retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(
+            endpoint: String,
+            params: AnthropicRetrieveParams = AnthropicRetrieveParams.none(),
+        ): CompletableFuture<HttpResponseFor<AnthropicRetrieveResponse>> =
+            retrieve(endpoint, params, RequestOptions.none())
+
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(
+            params: AnthropicRetrieveParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<AnthropicRetrieveResponse>>
+
+        /** @see [retrieve] */
         @MustBeClosed
         fun retrieve(
             params: AnthropicRetrieveParams
@@ -109,14 +296,44 @@ interface AnthropicServiceAsync {
         /** @see [retrieve] */
         @MustBeClosed
         fun retrieve(
-            params: AnthropicRetrieveParams,
-            requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<AnthropicRetrieveResponse>>
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<AnthropicRetrieveResponse>> =
+            retrieve(endpoint, AnthropicRetrieveParams.none(), requestOptions)
 
         /**
          * Returns a raw HTTP response for `put /anthropic/{endpoint}`, but is otherwise the same as
          * [AnthropicServiceAsync.update].
          */
+        @MustBeClosed
+        fun update(endpoint: String): CompletableFuture<HttpResponseFor<AnthropicUpdateResponse>> =
+            update(endpoint, AnthropicUpdateParams.none())
+
+        /** @see [update] */
+        @MustBeClosed
+        fun update(
+            endpoint: String,
+            params: AnthropicUpdateParams = AnthropicUpdateParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<AnthropicUpdateResponse>> =
+            update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see [update] */
+        @MustBeClosed
+        fun update(
+            endpoint: String,
+            params: AnthropicUpdateParams = AnthropicUpdateParams.none(),
+        ): CompletableFuture<HttpResponseFor<AnthropicUpdateResponse>> =
+            update(endpoint, params, RequestOptions.none())
+
+        /** @see [update] */
+        @MustBeClosed
+        fun update(
+            params: AnthropicUpdateParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<AnthropicUpdateResponse>>
+
+        /** @see [update] */
         @MustBeClosed
         fun update(
             params: AnthropicUpdateParams
@@ -126,14 +343,44 @@ interface AnthropicServiceAsync {
         /** @see [update] */
         @MustBeClosed
         fun update(
-            params: AnthropicUpdateParams,
-            requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<AnthropicUpdateResponse>>
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<AnthropicUpdateResponse>> =
+            update(endpoint, AnthropicUpdateParams.none(), requestOptions)
 
         /**
          * Returns a raw HTTP response for `delete /anthropic/{endpoint}`, but is otherwise the same
          * as [AnthropicServiceAsync.delete].
          */
+        @MustBeClosed
+        fun delete(endpoint: String): CompletableFuture<HttpResponseFor<AnthropicDeleteResponse>> =
+            delete(endpoint, AnthropicDeleteParams.none())
+
+        /** @see [delete] */
+        @MustBeClosed
+        fun delete(
+            endpoint: String,
+            params: AnthropicDeleteParams = AnthropicDeleteParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<AnthropicDeleteResponse>> =
+            delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see [delete] */
+        @MustBeClosed
+        fun delete(
+            endpoint: String,
+            params: AnthropicDeleteParams = AnthropicDeleteParams.none(),
+        ): CompletableFuture<HttpResponseFor<AnthropicDeleteResponse>> =
+            delete(endpoint, params, RequestOptions.none())
+
+        /** @see [delete] */
+        @MustBeClosed
+        fun delete(
+            params: AnthropicDeleteParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<AnthropicDeleteResponse>>
+
+        /** @see [delete] */
         @MustBeClosed
         fun delete(
             params: AnthropicDeleteParams
@@ -143,14 +390,44 @@ interface AnthropicServiceAsync {
         /** @see [delete] */
         @MustBeClosed
         fun delete(
-            params: AnthropicDeleteParams,
-            requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<AnthropicDeleteResponse>>
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<AnthropicDeleteResponse>> =
+            delete(endpoint, AnthropicDeleteParams.none(), requestOptions)
 
         /**
          * Returns a raw HTTP response for `patch /anthropic/{endpoint}`, but is otherwise the same
          * as [AnthropicServiceAsync.modify].
          */
+        @MustBeClosed
+        fun modify(endpoint: String): CompletableFuture<HttpResponseFor<AnthropicModifyResponse>> =
+            modify(endpoint, AnthropicModifyParams.none())
+
+        /** @see [modify] */
+        @MustBeClosed
+        fun modify(
+            endpoint: String,
+            params: AnthropicModifyParams = AnthropicModifyParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<AnthropicModifyResponse>> =
+            modify(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see [modify] */
+        @MustBeClosed
+        fun modify(
+            endpoint: String,
+            params: AnthropicModifyParams = AnthropicModifyParams.none(),
+        ): CompletableFuture<HttpResponseFor<AnthropicModifyResponse>> =
+            modify(endpoint, params, RequestOptions.none())
+
+        /** @see [modify] */
+        @MustBeClosed
+        fun modify(
+            params: AnthropicModifyParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<AnthropicModifyResponse>>
+
+        /** @see [modify] */
         @MustBeClosed
         fun modify(
             params: AnthropicModifyParams
@@ -160,8 +437,9 @@ interface AnthropicServiceAsync {
         /** @see [modify] */
         @MustBeClosed
         fun modify(
-            params: AnthropicModifyParams,
-            requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<AnthropicModifyResponse>>
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<AnthropicModifyResponse>> =
+            modify(endpoint, AnthropicModifyParams.none(), requestOptions)
     }
 }

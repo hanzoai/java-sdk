@@ -11,7 +11,6 @@ import ai.hanzo.api.models.team.TeamAddMemberParams
 import ai.hanzo.api.models.team.TeamBlockParams
 import ai.hanzo.api.models.team.TeamCreateParams
 import ai.hanzo.api.models.team.TeamDeleteParams
-import ai.hanzo.api.models.team.TeamDisableLoggingParams
 import ai.hanzo.api.models.team.TeamListAvailableParams
 import ai.hanzo.api.models.team.TeamListParams
 import ai.hanzo.api.models.team.TeamRemoveMemberParams
@@ -206,10 +205,7 @@ internal class TeamServiceAsyncTest {
                 .build()
         val teamServiceAsync = client.team()
 
-        val responseFuture =
-            teamServiceAsync.disableLogging(
-                TeamDisableLoggingParams.builder().teamId("team_id").build()
-            )
+        val responseFuture = teamServiceAsync.disableLogging("team_id")
 
         val response = responseFuture.get()
         response.validate()

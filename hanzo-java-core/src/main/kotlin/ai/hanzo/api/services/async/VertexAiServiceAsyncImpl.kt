@@ -5,6 +5,7 @@ package ai.hanzo.api.services.async
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
 import ai.hanzo.api.core.handlers.withErrorHandler
@@ -26,6 +27,7 @@ import ai.hanzo.api.models.vertexai.VertexAiRetrieveResponse
 import ai.hanzo.api.models.vertexai.VertexAiUpdateParams
 import ai.hanzo.api.models.vertexai.VertexAiUpdateResponse
 import java.util.concurrent.CompletableFuture
+import kotlin.jvm.optionals.getOrNull
 
 class VertexAiServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     VertexAiServiceAsync {
@@ -84,6 +86,9 @@ class VertexAiServiceAsyncImpl internal constructor(private val clientOptions: C
             params: VertexAiCreateParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<VertexAiCreateResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
@@ -115,6 +120,9 @@ class VertexAiServiceAsyncImpl internal constructor(private val clientOptions: C
             params: VertexAiRetrieveParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<VertexAiRetrieveResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
@@ -145,6 +153,9 @@ class VertexAiServiceAsyncImpl internal constructor(private val clientOptions: C
             params: VertexAiUpdateParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<VertexAiUpdateResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PUT)
@@ -176,6 +187,9 @@ class VertexAiServiceAsyncImpl internal constructor(private val clientOptions: C
             params: VertexAiDeleteParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<VertexAiDeleteResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)
@@ -207,6 +221,9 @@ class VertexAiServiceAsyncImpl internal constructor(private val clientOptions: C
             params: VertexAiPatchParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<VertexAiPatchResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PATCH)

@@ -5,6 +5,7 @@ package ai.hanzo.api.services.blocking.threads
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
 import ai.hanzo.api.core.handlers.withErrorHandler
@@ -19,6 +20,7 @@ import ai.hanzo.api.models.threads.messages.MessageCreateParams
 import ai.hanzo.api.models.threads.messages.MessageCreateResponse
 import ai.hanzo.api.models.threads.messages.MessageListParams
 import ai.hanzo.api.models.threads.messages.MessageListResponse
+import kotlin.jvm.optionals.getOrNull
 
 class MessageServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     MessageService {
@@ -56,6 +58,9 @@ class MessageServiceImpl internal constructor(private val clientOptions: ClientO
             params: MessageCreateParams,
             requestOptions: RequestOptions,
         ): HttpResponseFor<MessageCreateResponse> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("threadId", params.threadId().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
@@ -84,6 +89,9 @@ class MessageServiceImpl internal constructor(private val clientOptions: ClientO
             params: MessageListParams,
             requestOptions: RequestOptions,
         ): HttpResponseFor<MessageListResponse> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("threadId", params.threadId().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)

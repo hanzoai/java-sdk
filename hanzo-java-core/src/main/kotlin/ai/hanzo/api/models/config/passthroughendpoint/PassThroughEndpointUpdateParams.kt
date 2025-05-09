@@ -4,23 +4,23 @@ package ai.hanzo.api.models.config.passthroughendpoint
 
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.Params
-import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import ai.hanzo.api.core.toImmutable
 import java.util.Objects
 import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /** Update a pass-through endpoint */
 class PassThroughEndpointUpdateParams
 private constructor(
-    private val endpointId: String,
+    private val endpointId: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
     private val additionalBodyProperties: Map<String, JsonValue>,
 ) : Params {
 
-    fun endpointId(): String = endpointId
+    fun endpointId(): Optional<String> = Optional.ofNullable(endpointId)
 
     fun _additionalBodyProperties(): Map<String, JsonValue> = additionalBodyProperties
 
@@ -32,14 +32,11 @@ private constructor(
 
     companion object {
 
+        @JvmStatic fun none(): PassThroughEndpointUpdateParams = builder().build()
+
         /**
          * Returns a mutable builder for constructing an instance of
          * [PassThroughEndpointUpdateParams].
-         *
-         * The following fields are required:
-         * ```java
-         * .endpointId()
-         * ```
          */
         @JvmStatic fun builder() = Builder()
     }
@@ -63,7 +60,10 @@ private constructor(
                     passThroughEndpointUpdateParams.additionalBodyProperties.toMutableMap()
             }
 
-        fun endpointId(endpointId: String) = apply { this.endpointId = endpointId }
+        fun endpointId(endpointId: String?) = apply { this.endpointId = endpointId }
+
+        /** Alias for calling [Builder.endpointId] with `endpointId.orElse(null)`. */
+        fun endpointId(endpointId: Optional<String>) = endpointId(endpointId.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -189,17 +189,10 @@ private constructor(
          * Returns an immutable instance of [PassThroughEndpointUpdateParams].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
-         *
-         * The following fields are required:
-         * ```java
-         * .endpointId()
-         * ```
-         *
-         * @throws IllegalStateException if any required field is unset.
          */
         fun build(): PassThroughEndpointUpdateParams =
             PassThroughEndpointUpdateParams(
-                checkRequired("endpointId", endpointId),
+                endpointId,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
                 additionalBodyProperties.toImmutable(),
@@ -211,7 +204,7 @@ private constructor(
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> endpointId
+            0 -> endpointId ?: ""
             else -> ""
         }
 

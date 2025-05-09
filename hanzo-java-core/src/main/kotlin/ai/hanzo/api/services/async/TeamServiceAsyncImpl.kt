@@ -5,6 +5,7 @@ package ai.hanzo.api.services.async
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
 import ai.hanzo.api.core.handlers.withErrorHandler
@@ -44,6 +45,7 @@ import ai.hanzo.api.services.async.team.CallbackServiceAsyncImpl
 import ai.hanzo.api.services.async.team.ModelServiceAsync
 import ai.hanzo.api.services.async.team.ModelServiceAsyncImpl
 import java.util.concurrent.CompletableFuture
+import kotlin.jvm.optionals.getOrNull
 
 class TeamServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     TeamServiceAsync {
@@ -351,6 +353,9 @@ class TeamServiceAsyncImpl internal constructor(private val clientOptions: Clien
             params: TeamDisableLoggingParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<TeamDisableLoggingResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("teamId", params.teamId().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)

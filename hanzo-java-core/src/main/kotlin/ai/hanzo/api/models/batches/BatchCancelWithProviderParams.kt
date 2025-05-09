@@ -10,6 +10,7 @@ import ai.hanzo.api.core.http.QueryParams
 import ai.hanzo.api.core.toImmutable
 import java.util.Objects
 import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /**
  * Cancel a batch. This is the equivalent of POST
@@ -27,7 +28,7 @@ import java.util.Optional
 class BatchCancelWithProviderParams
 private constructor(
     private val provider: String,
-    private val batchId: String,
+    private val batchId: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
     private val additionalBodyProperties: Map<String, JsonValue>,
@@ -35,7 +36,7 @@ private constructor(
 
     fun provider(): String = provider
 
-    fun batchId(): String = batchId
+    fun batchId(): Optional<String> = Optional.ofNullable(batchId)
 
     fun _additionalBodyProperties(): Map<String, JsonValue> = additionalBodyProperties
 
@@ -54,7 +55,6 @@ private constructor(
          * The following fields are required:
          * ```java
          * .provider()
-         * .batchId()
          * ```
          */
         @JvmStatic fun builder() = Builder()
@@ -81,7 +81,10 @@ private constructor(
 
         fun provider(provider: String) = apply { this.provider = provider }
 
-        fun batchId(batchId: String) = apply { this.batchId = batchId }
+        fun batchId(batchId: String?) = apply { this.batchId = batchId }
+
+        /** Alias for calling [Builder.batchId] with `batchId.orElse(null)`. */
+        fun batchId(batchId: Optional<String>) = batchId(batchId.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -211,7 +214,6 @@ private constructor(
          * The following fields are required:
          * ```java
          * .provider()
-         * .batchId()
          * ```
          *
          * @throws IllegalStateException if any required field is unset.
@@ -219,7 +221,7 @@ private constructor(
         fun build(): BatchCancelWithProviderParams =
             BatchCancelWithProviderParams(
                 checkRequired("provider", provider),
-                checkRequired("batchId", batchId),
+                batchId,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
                 additionalBodyProperties.toImmutable(),
@@ -232,7 +234,7 @@ private constructor(
     fun _pathParam(index: Int): String =
         when (index) {
             0 -> provider
-            1 -> batchId
+            1 -> batchId ?: ""
             else -> ""
         }
 

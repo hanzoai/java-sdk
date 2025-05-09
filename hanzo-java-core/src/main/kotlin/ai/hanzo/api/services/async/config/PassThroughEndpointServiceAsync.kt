@@ -33,15 +33,41 @@ interface PassThroughEndpointServiceAsync {
     ): CompletableFuture<PassThroughEndpointCreateResponse>
 
     /** Update a pass-through endpoint */
+    fun update(endpointId: String): CompletableFuture<PassThroughEndpointUpdateResponse> =
+        update(endpointId, PassThroughEndpointUpdateParams.none())
+
+    /** @see [update] */
     fun update(
-        params: PassThroughEndpointUpdateParams
-    ): CompletableFuture<PassThroughEndpointUpdateResponse> = update(params, RequestOptions.none())
+        endpointId: String,
+        params: PassThroughEndpointUpdateParams = PassThroughEndpointUpdateParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<PassThroughEndpointUpdateResponse> =
+        update(params.toBuilder().endpointId(endpointId).build(), requestOptions)
+
+    /** @see [update] */
+    fun update(
+        endpointId: String,
+        params: PassThroughEndpointUpdateParams = PassThroughEndpointUpdateParams.none(),
+    ): CompletableFuture<PassThroughEndpointUpdateResponse> =
+        update(endpointId, params, RequestOptions.none())
 
     /** @see [update] */
     fun update(
         params: PassThroughEndpointUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<PassThroughEndpointUpdateResponse>
+
+    /** @see [update] */
+    fun update(
+        params: PassThroughEndpointUpdateParams
+    ): CompletableFuture<PassThroughEndpointUpdateResponse> = update(params, RequestOptions.none())
+
+    /** @see [update] */
+    fun update(
+        endpointId: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<PassThroughEndpointUpdateResponse> =
+        update(endpointId, PassThroughEndpointUpdateParams.none(), requestOptions)
 
     /**
      * GET configured pass through endpoint.
@@ -110,9 +136,26 @@ interface PassThroughEndpointServiceAsync {
          */
         @MustBeClosed
         fun update(
-            params: PassThroughEndpointUpdateParams
+            endpointId: String
         ): CompletableFuture<HttpResponseFor<PassThroughEndpointUpdateResponse>> =
-            update(params, RequestOptions.none())
+            update(endpointId, PassThroughEndpointUpdateParams.none())
+
+        /** @see [update] */
+        @MustBeClosed
+        fun update(
+            endpointId: String,
+            params: PassThroughEndpointUpdateParams = PassThroughEndpointUpdateParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<PassThroughEndpointUpdateResponse>> =
+            update(params.toBuilder().endpointId(endpointId).build(), requestOptions)
+
+        /** @see [update] */
+        @MustBeClosed
+        fun update(
+            endpointId: String,
+            params: PassThroughEndpointUpdateParams = PassThroughEndpointUpdateParams.none(),
+        ): CompletableFuture<HttpResponseFor<PassThroughEndpointUpdateResponse>> =
+            update(endpointId, params, RequestOptions.none())
 
         /** @see [update] */
         @MustBeClosed
@@ -120,6 +163,21 @@ interface PassThroughEndpointServiceAsync {
             params: PassThroughEndpointUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<PassThroughEndpointUpdateResponse>>
+
+        /** @see [update] */
+        @MustBeClosed
+        fun update(
+            params: PassThroughEndpointUpdateParams
+        ): CompletableFuture<HttpResponseFor<PassThroughEndpointUpdateResponse>> =
+            update(params, RequestOptions.none())
+
+        /** @see [update] */
+        @MustBeClosed
+        fun update(
+            endpointId: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<PassThroughEndpointUpdateResponse>> =
+            update(endpointId, PassThroughEndpointUpdateParams.none(), requestOptions)
 
         /**
          * Returns a raw HTTP response for `get /config/pass_through_endpoint`, but is otherwise the

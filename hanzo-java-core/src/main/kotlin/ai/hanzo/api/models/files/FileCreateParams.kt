@@ -17,6 +17,7 @@ import java.util.Objects
 import java.util.Optional
 import kotlin.io.path.inputStream
 import kotlin.io.path.name
+import kotlin.jvm.optionals.getOrNull
 
 /**
  * Upload a file that can be used across - Assistants API, Batch API This is the equivalent of POST
@@ -33,13 +34,13 @@ import kotlin.io.path.name
  */
 class FileCreateParams
 private constructor(
-    private val provider: String,
+    private val provider: String?,
     private val body: Body,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
-    fun provider(): String = provider
+    fun provider(): Optional<String> = Optional.ofNullable(provider)
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type or is unexpectedly
@@ -94,7 +95,6 @@ private constructor(
          *
          * The following fields are required:
          * ```java
-         * .provider()
          * .file()
          * .purpose()
          * ```
@@ -118,7 +118,10 @@ private constructor(
             additionalQueryParams = fileCreateParams.additionalQueryParams.toBuilder()
         }
 
-        fun provider(provider: String) = apply { this.provider = provider }
+        fun provider(provider: String?) = apply { this.provider = provider }
+
+        /** Alias for calling [Builder.provider] with `provider.orElse(null)`. */
+        fun provider(provider: Optional<String>) = provider(provider.getOrNull())
 
         /**
          * Sets the entire request body.
@@ -276,7 +279,6 @@ private constructor(
          *
          * The following fields are required:
          * ```java
-         * .provider()
          * .file()
          * .purpose()
          * ```
@@ -285,7 +287,7 @@ private constructor(
          */
         fun build(): FileCreateParams =
             FileCreateParams(
-                checkRequired("provider", provider),
+                provider,
                 body.build(),
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
@@ -302,7 +304,7 @@ private constructor(
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> provider
+            0 -> provider ?: ""
             else -> ""
         }
 

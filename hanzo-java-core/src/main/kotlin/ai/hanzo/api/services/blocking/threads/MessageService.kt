@@ -22,8 +22,21 @@ interface MessageService {
      *
      * API Reference - https://platform.openai.com/docs/api-reference/messages/createMessage
      */
-    fun create(params: MessageCreateParams): MessageCreateResponse =
-        create(params, RequestOptions.none())
+    fun create(threadId: String): MessageCreateResponse =
+        create(threadId, MessageCreateParams.none())
+
+    /** @see [create] */
+    fun create(
+        threadId: String,
+        params: MessageCreateParams = MessageCreateParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): MessageCreateResponse = create(params.toBuilder().threadId(threadId).build(), requestOptions)
+
+    /** @see [create] */
+    fun create(
+        threadId: String,
+        params: MessageCreateParams = MessageCreateParams.none(),
+    ): MessageCreateResponse = create(threadId, params, RequestOptions.none())
 
     /** @see [create] */
     fun create(
@@ -31,18 +44,46 @@ interface MessageService {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): MessageCreateResponse
 
+    /** @see [create] */
+    fun create(params: MessageCreateParams): MessageCreateResponse =
+        create(params, RequestOptions.none())
+
+    /** @see [create] */
+    fun create(threadId: String, requestOptions: RequestOptions): MessageCreateResponse =
+        create(threadId, MessageCreateParams.none(), requestOptions)
+
     /**
      * Returns a list of messages for a given thread.
      *
      * API Reference - https://platform.openai.com/docs/api-reference/messages/listMessages
      */
-    fun list(params: MessageListParams): MessageListResponse = list(params, RequestOptions.none())
+    fun list(threadId: String): MessageListResponse = list(threadId, MessageListParams.none())
+
+    /** @see [list] */
+    fun list(
+        threadId: String,
+        params: MessageListParams = MessageListParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): MessageListResponse = list(params.toBuilder().threadId(threadId).build(), requestOptions)
+
+    /** @see [list] */
+    fun list(
+        threadId: String,
+        params: MessageListParams = MessageListParams.none(),
+    ): MessageListResponse = list(threadId, params, RequestOptions.none())
 
     /** @see [list] */
     fun list(
         params: MessageListParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): MessageListResponse
+
+    /** @see [list] */
+    fun list(params: MessageListParams): MessageListResponse = list(params, RequestOptions.none())
+
+    /** @see [list] */
+    fun list(threadId: String, requestOptions: RequestOptions): MessageListResponse =
+        list(threadId, MessageListParams.none(), requestOptions)
 
     /** A view of [MessageService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
@@ -52,8 +93,24 @@ interface MessageService {
          * the same as [MessageService.create].
          */
         @MustBeClosed
-        fun create(params: MessageCreateParams): HttpResponseFor<MessageCreateResponse> =
-            create(params, RequestOptions.none())
+        fun create(threadId: String): HttpResponseFor<MessageCreateResponse> =
+            create(threadId, MessageCreateParams.none())
+
+        /** @see [create] */
+        @MustBeClosed
+        fun create(
+            threadId: String,
+            params: MessageCreateParams = MessageCreateParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<MessageCreateResponse> =
+            create(params.toBuilder().threadId(threadId).build(), requestOptions)
+
+        /** @see [create] */
+        @MustBeClosed
+        fun create(
+            threadId: String,
+            params: MessageCreateParams = MessageCreateParams.none(),
+        ): HttpResponseFor<MessageCreateResponse> = create(threadId, params, RequestOptions.none())
 
         /** @see [create] */
         @MustBeClosed
@@ -62,13 +119,42 @@ interface MessageService {
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<MessageCreateResponse>
 
+        /** @see [create] */
+        @MustBeClosed
+        fun create(params: MessageCreateParams): HttpResponseFor<MessageCreateResponse> =
+            create(params, RequestOptions.none())
+
+        /** @see [create] */
+        @MustBeClosed
+        fun create(
+            threadId: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<MessageCreateResponse> =
+            create(threadId, MessageCreateParams.none(), requestOptions)
+
         /**
          * Returns a raw HTTP response for `get /v1/threads/{thread_id}/messages`, but is otherwise
          * the same as [MessageService.list].
          */
         @MustBeClosed
-        fun list(params: MessageListParams): HttpResponseFor<MessageListResponse> =
-            list(params, RequestOptions.none())
+        fun list(threadId: String): HttpResponseFor<MessageListResponse> =
+            list(threadId, MessageListParams.none())
+
+        /** @see [list] */
+        @MustBeClosed
+        fun list(
+            threadId: String,
+            params: MessageListParams = MessageListParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<MessageListResponse> =
+            list(params.toBuilder().threadId(threadId).build(), requestOptions)
+
+        /** @see [list] */
+        @MustBeClosed
+        fun list(
+            threadId: String,
+            params: MessageListParams = MessageListParams.none(),
+        ): HttpResponseFor<MessageListResponse> = list(threadId, params, RequestOptions.none())
 
         /** @see [list] */
         @MustBeClosed
@@ -76,5 +162,18 @@ interface MessageService {
             params: MessageListParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<MessageListResponse>
+
+        /** @see [list] */
+        @MustBeClosed
+        fun list(params: MessageListParams): HttpResponseFor<MessageListResponse> =
+            list(params, RequestOptions.none())
+
+        /** @see [list] */
+        @MustBeClosed
+        fun list(
+            threadId: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<MessageListResponse> =
+            list(threadId, MessageListParams.none(), requestOptions)
     }
 }

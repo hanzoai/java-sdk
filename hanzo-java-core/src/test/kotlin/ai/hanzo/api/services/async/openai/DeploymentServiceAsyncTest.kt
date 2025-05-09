@@ -4,8 +4,6 @@ package ai.hanzo.api.services.async.openai
 
 import ai.hanzo.api.TestServerExtension
 import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
-import ai.hanzo.api.models.openai.deployments.DeploymentCompleteParams
-import ai.hanzo.api.models.openai.deployments.DeploymentEmbedParams
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -23,10 +21,7 @@ internal class DeploymentServiceAsyncTest {
                 .build()
         val deploymentServiceAsync = client.openai().deployments()
 
-        val responseFuture =
-            deploymentServiceAsync.complete(
-                DeploymentCompleteParams.builder().model("model").build()
-            )
+        val responseFuture = deploymentServiceAsync.complete("model")
 
         val response = responseFuture.get()
         response.validate()
@@ -42,8 +37,7 @@ internal class DeploymentServiceAsyncTest {
                 .build()
         val deploymentServiceAsync = client.openai().deployments()
 
-        val responseFuture =
-            deploymentServiceAsync.embed(DeploymentEmbedParams.builder().model("model").build())
+        val responseFuture = deploymentServiceAsync.embed("model")
 
         val response = responseFuture.get()
         response.validate()

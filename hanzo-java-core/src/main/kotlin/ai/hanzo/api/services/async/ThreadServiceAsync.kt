@@ -51,14 +51,39 @@ interface ThreadServiceAsync {
      *
      * API Reference - https://platform.openai.com/docs/api-reference/threads/getThread
      */
-    fun retrieve(params: ThreadRetrieveParams): CompletableFuture<ThreadRetrieveResponse> =
-        retrieve(params, RequestOptions.none())
+    fun retrieve(threadId: String): CompletableFuture<ThreadRetrieveResponse> =
+        retrieve(threadId, ThreadRetrieveParams.none())
+
+    /** @see [retrieve] */
+    fun retrieve(
+        threadId: String,
+        params: ThreadRetrieveParams = ThreadRetrieveParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<ThreadRetrieveResponse> =
+        retrieve(params.toBuilder().threadId(threadId).build(), requestOptions)
+
+    /** @see [retrieve] */
+    fun retrieve(
+        threadId: String,
+        params: ThreadRetrieveParams = ThreadRetrieveParams.none(),
+    ): CompletableFuture<ThreadRetrieveResponse> = retrieve(threadId, params, RequestOptions.none())
 
     /** @see [retrieve] */
     fun retrieve(
         params: ThreadRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<ThreadRetrieveResponse>
+
+    /** @see [retrieve] */
+    fun retrieve(params: ThreadRetrieveParams): CompletableFuture<ThreadRetrieveResponse> =
+        retrieve(params, RequestOptions.none())
+
+    /** @see [retrieve] */
+    fun retrieve(
+        threadId: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<ThreadRetrieveResponse> =
+        retrieve(threadId, ThreadRetrieveParams.none(), requestOptions)
 
     /**
      * A view of [ThreadServiceAsync] that provides access to raw HTTP responses for each method.
@@ -103,6 +128,35 @@ interface ThreadServiceAsync {
          * as [ThreadServiceAsync.retrieve].
          */
         @MustBeClosed
+        fun retrieve(threadId: String): CompletableFuture<HttpResponseFor<ThreadRetrieveResponse>> =
+            retrieve(threadId, ThreadRetrieveParams.none())
+
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(
+            threadId: String,
+            params: ThreadRetrieveParams = ThreadRetrieveParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<ThreadRetrieveResponse>> =
+            retrieve(params.toBuilder().threadId(threadId).build(), requestOptions)
+
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(
+            threadId: String,
+            params: ThreadRetrieveParams = ThreadRetrieveParams.none(),
+        ): CompletableFuture<HttpResponseFor<ThreadRetrieveResponse>> =
+            retrieve(threadId, params, RequestOptions.none())
+
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(
+            params: ThreadRetrieveParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<ThreadRetrieveResponse>>
+
+        /** @see [retrieve] */
+        @MustBeClosed
         fun retrieve(
             params: ThreadRetrieveParams
         ): CompletableFuture<HttpResponseFor<ThreadRetrieveResponse>> =
@@ -111,8 +165,9 @@ interface ThreadServiceAsync {
         /** @see [retrieve] */
         @MustBeClosed
         fun retrieve(
-            params: ThreadRetrieveParams,
-            requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<ThreadRetrieveResponse>>
+            threadId: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<ThreadRetrieveResponse>> =
+            retrieve(threadId, ThreadRetrieveParams.none(), requestOptions)
     }
 }

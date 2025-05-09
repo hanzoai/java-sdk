@@ -71,14 +71,40 @@ interface AssistantServiceAsync {
      * API Reference docs -
      * https://platform.openai.com/docs/api-reference/assistants/createAssistant
      */
-    fun delete(params: AssistantDeleteParams): CompletableFuture<AssistantDeleteResponse> =
-        delete(params, RequestOptions.none())
+    fun delete(assistantId: String): CompletableFuture<AssistantDeleteResponse> =
+        delete(assistantId, AssistantDeleteParams.none())
+
+    /** @see [delete] */
+    fun delete(
+        assistantId: String,
+        params: AssistantDeleteParams = AssistantDeleteParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<AssistantDeleteResponse> =
+        delete(params.toBuilder().assistantId(assistantId).build(), requestOptions)
+
+    /** @see [delete] */
+    fun delete(
+        assistantId: String,
+        params: AssistantDeleteParams = AssistantDeleteParams.none(),
+    ): CompletableFuture<AssistantDeleteResponse> =
+        delete(assistantId, params, RequestOptions.none())
 
     /** @see [delete] */
     fun delete(
         params: AssistantDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<AssistantDeleteResponse>
+
+    /** @see [delete] */
+    fun delete(params: AssistantDeleteParams): CompletableFuture<AssistantDeleteResponse> =
+        delete(params, RequestOptions.none())
+
+    /** @see [delete] */
+    fun delete(
+        assistantId: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<AssistantDeleteResponse> =
+        delete(assistantId, AssistantDeleteParams.none(), requestOptions)
 
     /**
      * A view of [AssistantServiceAsync] that provides access to raw HTTP responses for each method.
@@ -149,9 +175,26 @@ interface AssistantServiceAsync {
          */
         @MustBeClosed
         fun delete(
-            params: AssistantDeleteParams
+            assistantId: String
         ): CompletableFuture<HttpResponseFor<AssistantDeleteResponse>> =
-            delete(params, RequestOptions.none())
+            delete(assistantId, AssistantDeleteParams.none())
+
+        /** @see [delete] */
+        @MustBeClosed
+        fun delete(
+            assistantId: String,
+            params: AssistantDeleteParams = AssistantDeleteParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<AssistantDeleteResponse>> =
+            delete(params.toBuilder().assistantId(assistantId).build(), requestOptions)
+
+        /** @see [delete] */
+        @MustBeClosed
+        fun delete(
+            assistantId: String,
+            params: AssistantDeleteParams = AssistantDeleteParams.none(),
+        ): CompletableFuture<HttpResponseFor<AssistantDeleteResponse>> =
+            delete(assistantId, params, RequestOptions.none())
 
         /** @see [delete] */
         @MustBeClosed
@@ -159,5 +202,20 @@ interface AssistantServiceAsync {
             params: AssistantDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<AssistantDeleteResponse>>
+
+        /** @see [delete] */
+        @MustBeClosed
+        fun delete(
+            params: AssistantDeleteParams
+        ): CompletableFuture<HttpResponseFor<AssistantDeleteResponse>> =
+            delete(params, RequestOptions.none())
+
+        /** @see [delete] */
+        @MustBeClosed
+        fun delete(
+            assistantId: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<AssistantDeleteResponse>> =
+            delete(assistantId, AssistantDeleteParams.none(), requestOptions)
     }
 }
