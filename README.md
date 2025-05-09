@@ -325,7 +325,6 @@ Requests time out after 1 minute by default.
 To set a custom timeout, configure the method call using the `timeout` method:
 
 ```java
-import ai.hanzo.api.models.ClientGetHomeParams;
 import ai.hanzo.api.models.ClientGetHomeResponse;
 
 ClientGetHomeResponse response = client.getHome(RequestOptions.builder().timeout(Duration.ofSeconds(30)).build());
@@ -582,7 +581,6 @@ UtilTokenCounterResponse response = client.utils().tokenCounter(params).validate
 Or configure the method call to validate the response using the `responseValidation` method:
 
 ```java
-import ai.hanzo.api.models.ClientGetHomeParams;
 import ai.hanzo.api.models.ClientGetHomeResponse;
 
 ClientGetHomeResponse response = client.getHome(RequestOptions.builder().responseValidation(true).build());
