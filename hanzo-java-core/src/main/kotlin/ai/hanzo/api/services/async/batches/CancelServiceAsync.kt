@@ -29,14 +29,39 @@ interface CancelServiceAsync {
      *
      * ```
      */
-    fun cancel(params: CancelCancelParams): CompletableFuture<CancelCancelResponse> =
-        cancel(params, RequestOptions.none())
+    fun cancel(batchId: String): CompletableFuture<CancelCancelResponse> =
+        cancel(batchId, CancelCancelParams.none())
+
+    /** @see [cancel] */
+    fun cancel(
+        batchId: String,
+        params: CancelCancelParams = CancelCancelParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<CancelCancelResponse> =
+        cancel(params.toBuilder().batchId(batchId).build(), requestOptions)
+
+    /** @see [cancel] */
+    fun cancel(
+        batchId: String,
+        params: CancelCancelParams = CancelCancelParams.none(),
+    ): CompletableFuture<CancelCancelResponse> = cancel(batchId, params, RequestOptions.none())
 
     /** @see [cancel] */
     fun cancel(
         params: CancelCancelParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CancelCancelResponse>
+
+    /** @see [cancel] */
+    fun cancel(params: CancelCancelParams): CompletableFuture<CancelCancelResponse> =
+        cancel(params, RequestOptions.none())
+
+    /** @see [cancel] */
+    fun cancel(
+        batchId: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<CancelCancelResponse> =
+        cancel(batchId, CancelCancelParams.none(), requestOptions)
 
     /**
      * A view of [CancelServiceAsync] that provides access to raw HTTP responses for each method.
@@ -48,6 +73,35 @@ interface CancelServiceAsync {
          * same as [CancelServiceAsync.cancel].
          */
         @MustBeClosed
+        fun cancel(batchId: String): CompletableFuture<HttpResponseFor<CancelCancelResponse>> =
+            cancel(batchId, CancelCancelParams.none())
+
+        /** @see [cancel] */
+        @MustBeClosed
+        fun cancel(
+            batchId: String,
+            params: CancelCancelParams = CancelCancelParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<CancelCancelResponse>> =
+            cancel(params.toBuilder().batchId(batchId).build(), requestOptions)
+
+        /** @see [cancel] */
+        @MustBeClosed
+        fun cancel(
+            batchId: String,
+            params: CancelCancelParams = CancelCancelParams.none(),
+        ): CompletableFuture<HttpResponseFor<CancelCancelResponse>> =
+            cancel(batchId, params, RequestOptions.none())
+
+        /** @see [cancel] */
+        @MustBeClosed
+        fun cancel(
+            params: CancelCancelParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<CancelCancelResponse>>
+
+        /** @see [cancel] */
+        @MustBeClosed
         fun cancel(
             params: CancelCancelParams
         ): CompletableFuture<HttpResponseFor<CancelCancelResponse>> =
@@ -56,8 +110,9 @@ interface CancelServiceAsync {
         /** @see [cancel] */
         @MustBeClosed
         fun cancel(
-            params: CancelCancelParams,
-            requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<CancelCancelResponse>>
+            batchId: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<CancelCancelResponse>> =
+            cancel(batchId, CancelCancelParams.none(), requestOptions)
     }
 }

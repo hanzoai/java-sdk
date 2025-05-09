@@ -4,8 +4,6 @@ package ai.hanzo.api.services.async
 
 import ai.hanzo.api.TestServerExtension
 import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
-import ai.hanzo.api.models.responses.ResponseDeleteParams
-import ai.hanzo.api.models.responses.ResponseRetrieveParams
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -39,10 +37,7 @@ internal class ResponseServiceAsyncTest {
                 .build()
         val responseServiceAsync = client.responses()
 
-        val responseFuture =
-            responseServiceAsync.retrieve(
-                ResponseRetrieveParams.builder().responseId("response_id").build()
-            )
+        val responseFuture = responseServiceAsync.retrieve("response_id")
 
         val response = responseFuture.get()
         response.validate()
@@ -58,10 +53,7 @@ internal class ResponseServiceAsyncTest {
                 .build()
         val responseServiceAsync = client.responses()
 
-        val responseFuture =
-            responseServiceAsync.delete(
-                ResponseDeleteParams.builder().responseId("response_id").build()
-            )
+        val responseFuture = responseServiceAsync.delete("response_id")
 
         val response = responseFuture.get()
         response.validate()

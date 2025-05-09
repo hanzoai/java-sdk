@@ -4,12 +4,12 @@ package ai.hanzo.api.models.openai.deployments.chat
 
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.Params
-import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import ai.hanzo.api.core.toImmutable
 import java.util.Objects
 import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /**
  * Follows the exact same API spec as `OpenAI's Chat API
@@ -32,13 +32,13 @@ import java.util.Optional
  */
 class ChatCompleteParams
 private constructor(
-    private val model: String,
+    private val model: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
     private val additionalBodyProperties: Map<String, JsonValue>,
 ) : Params {
 
-    fun model(): String = model
+    fun model(): Optional<String> = Optional.ofNullable(model)
 
     fun _additionalBodyProperties(): Map<String, JsonValue> = additionalBodyProperties
 
@@ -50,14 +50,9 @@ private constructor(
 
     companion object {
 
-        /**
-         * Returns a mutable builder for constructing an instance of [ChatCompleteParams].
-         *
-         * The following fields are required:
-         * ```java
-         * .model()
-         * ```
-         */
+        @JvmStatic fun none(): ChatCompleteParams = builder().build()
+
+        /** Returns a mutable builder for constructing an instance of [ChatCompleteParams]. */
         @JvmStatic fun builder() = Builder()
     }
 
@@ -77,7 +72,10 @@ private constructor(
             additionalBodyProperties = chatCompleteParams.additionalBodyProperties.toMutableMap()
         }
 
-        fun model(model: String) = apply { this.model = model }
+        fun model(model: String?) = apply { this.model = model }
+
+        /** Alias for calling [Builder.model] with `model.orElse(null)`. */
+        fun model(model: Optional<String>) = model(model.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -203,17 +201,10 @@ private constructor(
          * Returns an immutable instance of [ChatCompleteParams].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
-         *
-         * The following fields are required:
-         * ```java
-         * .model()
-         * ```
-         *
-         * @throws IllegalStateException if any required field is unset.
          */
         fun build(): ChatCompleteParams =
             ChatCompleteParams(
-                checkRequired("model", model),
+                model,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
                 additionalBodyProperties.toImmutable(),
@@ -225,7 +216,7 @@ private constructor(
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> model
+            0 -> model ?: ""
             else -> ""
         }
 

@@ -382,6 +382,31 @@ interface KeyServiceAsync {
      *
      * Note: This is an Enterprise feature. It requires a premium license to use.
      */
+    fun regenerateByKey(pathKey: String): CompletableFuture<Optional<GenerateKeyResponse>> =
+        regenerateByKey(pathKey, KeyRegenerateByKeyParams.none())
+
+    /** @see [regenerateByKey] */
+    fun regenerateByKey(
+        pathKey: String,
+        params: KeyRegenerateByKeyParams = KeyRegenerateByKeyParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<Optional<GenerateKeyResponse>> =
+        regenerateByKey(params.toBuilder().pathKey(pathKey).build(), requestOptions)
+
+    /** @see [regenerateByKey] */
+    fun regenerateByKey(
+        pathKey: String,
+        params: KeyRegenerateByKeyParams = KeyRegenerateByKeyParams.none(),
+    ): CompletableFuture<Optional<GenerateKeyResponse>> =
+        regenerateByKey(pathKey, params, RequestOptions.none())
+
+    /** @see [regenerateByKey] */
+    fun regenerateByKey(
+        params: KeyRegenerateByKeyParams,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<Optional<GenerateKeyResponse>>
+
+    /** @see [regenerateByKey] */
     fun regenerateByKey(
         params: KeyRegenerateByKeyParams
     ): CompletableFuture<Optional<GenerateKeyResponse>> =
@@ -389,9 +414,10 @@ interface KeyServiceAsync {
 
     /** @see [regenerateByKey] */
     fun regenerateByKey(
-        params: KeyRegenerateByKeyParams,
-        requestOptions: RequestOptions = RequestOptions.none(),
-    ): CompletableFuture<Optional<GenerateKeyResponse>>
+        pathKey: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<Optional<GenerateKeyResponse>> =
+        regenerateByKey(pathKey, KeyRegenerateByKeyParams.none(), requestOptions)
 
     /**
      * Retrieve information about a key. Parameters: key: Optional[str] = Query parameter
@@ -610,9 +636,26 @@ interface KeyServiceAsync {
          */
         @MustBeClosed
         fun regenerateByKey(
-            params: KeyRegenerateByKeyParams
+            pathKey: String
         ): CompletableFuture<HttpResponseFor<Optional<GenerateKeyResponse>>> =
-            regenerateByKey(params, RequestOptions.none())
+            regenerateByKey(pathKey, KeyRegenerateByKeyParams.none())
+
+        /** @see [regenerateByKey] */
+        @MustBeClosed
+        fun regenerateByKey(
+            pathKey: String,
+            params: KeyRegenerateByKeyParams = KeyRegenerateByKeyParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<Optional<GenerateKeyResponse>>> =
+            regenerateByKey(params.toBuilder().pathKey(pathKey).build(), requestOptions)
+
+        /** @see [regenerateByKey] */
+        @MustBeClosed
+        fun regenerateByKey(
+            pathKey: String,
+            params: KeyRegenerateByKeyParams = KeyRegenerateByKeyParams.none(),
+        ): CompletableFuture<HttpResponseFor<Optional<GenerateKeyResponse>>> =
+            regenerateByKey(pathKey, params, RequestOptions.none())
 
         /** @see [regenerateByKey] */
         @MustBeClosed
@@ -620,6 +663,21 @@ interface KeyServiceAsync {
             params: KeyRegenerateByKeyParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<Optional<GenerateKeyResponse>>>
+
+        /** @see [regenerateByKey] */
+        @MustBeClosed
+        fun regenerateByKey(
+            params: KeyRegenerateByKeyParams
+        ): CompletableFuture<HttpResponseFor<Optional<GenerateKeyResponse>>> =
+            regenerateByKey(params, RequestOptions.none())
+
+        /** @see [regenerateByKey] */
+        @MustBeClosed
+        fun regenerateByKey(
+            pathKey: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<Optional<GenerateKeyResponse>>> =
+            regenerateByKey(pathKey, KeyRegenerateByKeyParams.none(), requestOptions)
 
         /**
          * Returns a raw HTTP response for `get /key/info`, but is otherwise the same as

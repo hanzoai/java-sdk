@@ -5,6 +5,7 @@ package ai.hanzo.api.services.blocking
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
 import ai.hanzo.api.core.handlers.withErrorHandler
@@ -35,6 +36,7 @@ import ai.hanzo.api.models.key.KeyUpdateResponse
 import ai.hanzo.api.services.blocking.key.RegenerateService
 import ai.hanzo.api.services.blocking.key.RegenerateServiceImpl
 import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 class KeyServiceImpl internal constructor(private val clientOptions: ClientOptions) : KeyService {
 
@@ -291,6 +293,9 @@ class KeyServiceImpl internal constructor(private val clientOptions: ClientOptio
             params: KeyRegenerateByKeyParams,
             requestOptions: RequestOptions,
         ): HttpResponseFor<Optional<GenerateKeyResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("pathKey", params.pathKey().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)

@@ -6,7 +6,6 @@ import ai.hanzo.api.TestServerExtension
 import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.models.credentials.CredentialCreateParams
-import ai.hanzo.api.models.credentials.CredentialDeleteParams
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -64,10 +63,7 @@ internal class CredentialServiceAsyncTest {
                 .build()
         val credentialServiceAsync = client.credentials()
 
-        val credentialFuture =
-            credentialServiceAsync.delete(
-                CredentialDeleteParams.builder().credentialName("credential_name").build()
-            )
+        val credentialFuture = credentialServiceAsync.delete("credential_name")
 
         val credential = credentialFuture.get()
         credential.validate()

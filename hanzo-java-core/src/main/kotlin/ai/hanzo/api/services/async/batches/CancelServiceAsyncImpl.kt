@@ -5,6 +5,7 @@ package ai.hanzo.api.services.async.batches
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
 import ai.hanzo.api.core.handlers.withErrorHandler
@@ -18,6 +19,7 @@ import ai.hanzo.api.core.prepareAsync
 import ai.hanzo.api.models.batches.cancel.CancelCancelParams
 import ai.hanzo.api.models.batches.cancel.CancelCancelResponse
 import java.util.concurrent.CompletableFuture
+import kotlin.jvm.optionals.getOrNull
 
 class CancelServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     CancelServiceAsync {
@@ -48,6 +50,9 @@ class CancelServiceAsyncImpl internal constructor(private val clientOptions: Cli
             params: CancelCancelParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<CancelCancelResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("batchId", params.batchId().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)

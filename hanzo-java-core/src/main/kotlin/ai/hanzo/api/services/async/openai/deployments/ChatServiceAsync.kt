@@ -35,14 +35,39 @@ interface ChatServiceAsync {
      * }'
      * ```
      */
-    fun complete(params: ChatCompleteParams): CompletableFuture<ChatCompleteResponse> =
-        complete(params, RequestOptions.none())
+    fun complete(model: String): CompletableFuture<ChatCompleteResponse> =
+        complete(model, ChatCompleteParams.none())
+
+    /** @see [complete] */
+    fun complete(
+        model: String,
+        params: ChatCompleteParams = ChatCompleteParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<ChatCompleteResponse> =
+        complete(params.toBuilder().model(model).build(), requestOptions)
+
+    /** @see [complete] */
+    fun complete(
+        model: String,
+        params: ChatCompleteParams = ChatCompleteParams.none(),
+    ): CompletableFuture<ChatCompleteResponse> = complete(model, params, RequestOptions.none())
 
     /** @see [complete] */
     fun complete(
         params: ChatCompleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<ChatCompleteResponse>
+
+    /** @see [complete] */
+    fun complete(params: ChatCompleteParams): CompletableFuture<ChatCompleteResponse> =
+        complete(params, RequestOptions.none())
+
+    /** @see [complete] */
+    fun complete(
+        model: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<ChatCompleteResponse> =
+        complete(model, ChatCompleteParams.none(), requestOptions)
 
     /** A view of [ChatServiceAsync] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
@@ -52,6 +77,35 @@ interface ChatServiceAsync {
          * is otherwise the same as [ChatServiceAsync.complete].
          */
         @MustBeClosed
+        fun complete(model: String): CompletableFuture<HttpResponseFor<ChatCompleteResponse>> =
+            complete(model, ChatCompleteParams.none())
+
+        /** @see [complete] */
+        @MustBeClosed
+        fun complete(
+            model: String,
+            params: ChatCompleteParams = ChatCompleteParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<ChatCompleteResponse>> =
+            complete(params.toBuilder().model(model).build(), requestOptions)
+
+        /** @see [complete] */
+        @MustBeClosed
+        fun complete(
+            model: String,
+            params: ChatCompleteParams = ChatCompleteParams.none(),
+        ): CompletableFuture<HttpResponseFor<ChatCompleteResponse>> =
+            complete(model, params, RequestOptions.none())
+
+        /** @see [complete] */
+        @MustBeClosed
+        fun complete(
+            params: ChatCompleteParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<ChatCompleteResponse>>
+
+        /** @see [complete] */
+        @MustBeClosed
         fun complete(
             params: ChatCompleteParams
         ): CompletableFuture<HttpResponseFor<ChatCompleteResponse>> =
@@ -60,8 +114,9 @@ interface ChatServiceAsync {
         /** @see [complete] */
         @MustBeClosed
         fun complete(
-            params: ChatCompleteParams,
-            requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<ChatCompleteResponse>>
+            model: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<ChatCompleteResponse>> =
+            complete(model, ChatCompleteParams.none(), requestOptions)
     }
 }

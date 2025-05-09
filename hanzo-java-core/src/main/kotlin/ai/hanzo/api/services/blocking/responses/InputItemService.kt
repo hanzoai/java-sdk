@@ -25,14 +25,36 @@ interface InputItemService {
      * curl -X GET http://localhost:4000/v1/responses/resp_abc123/input_items     -H "Authorization: Bearer sk-1234"
      * ```
      */
-    fun list(params: InputItemListParams): InputItemListResponse =
-        list(params, RequestOptions.none())
+    fun list(responseId: String): InputItemListResponse =
+        list(responseId, InputItemListParams.none())
+
+    /** @see [list] */
+    fun list(
+        responseId: String,
+        params: InputItemListParams = InputItemListParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): InputItemListResponse =
+        list(params.toBuilder().responseId(responseId).build(), requestOptions)
+
+    /** @see [list] */
+    fun list(
+        responseId: String,
+        params: InputItemListParams = InputItemListParams.none(),
+    ): InputItemListResponse = list(responseId, params, RequestOptions.none())
 
     /** @see [list] */
     fun list(
         params: InputItemListParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): InputItemListResponse
+
+    /** @see [list] */
+    fun list(params: InputItemListParams): InputItemListResponse =
+        list(params, RequestOptions.none())
+
+    /** @see [list] */
+    fun list(responseId: String, requestOptions: RequestOptions): InputItemListResponse =
+        list(responseId, InputItemListParams.none(), requestOptions)
 
     /** A view of [InputItemService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
@@ -42,8 +64,24 @@ interface InputItemService {
          * otherwise the same as [InputItemService.list].
          */
         @MustBeClosed
-        fun list(params: InputItemListParams): HttpResponseFor<InputItemListResponse> =
-            list(params, RequestOptions.none())
+        fun list(responseId: String): HttpResponseFor<InputItemListResponse> =
+            list(responseId, InputItemListParams.none())
+
+        /** @see [list] */
+        @MustBeClosed
+        fun list(
+            responseId: String,
+            params: InputItemListParams = InputItemListParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<InputItemListResponse> =
+            list(params.toBuilder().responseId(responseId).build(), requestOptions)
+
+        /** @see [list] */
+        @MustBeClosed
+        fun list(
+            responseId: String,
+            params: InputItemListParams = InputItemListParams.none(),
+        ): HttpResponseFor<InputItemListResponse> = list(responseId, params, RequestOptions.none())
 
         /** @see [list] */
         @MustBeClosed
@@ -51,5 +89,18 @@ interface InputItemService {
             params: InputItemListParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<InputItemListResponse>
+
+        /** @see [list] */
+        @MustBeClosed
+        fun list(params: InputItemListParams): HttpResponseFor<InputItemListResponse> =
+            list(params, RequestOptions.none())
+
+        /** @see [list] */
+        @MustBeClosed
+        fun list(
+            responseId: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<InputItemListResponse> =
+            list(responseId, InputItemListParams.none(), requestOptions)
     }
 }

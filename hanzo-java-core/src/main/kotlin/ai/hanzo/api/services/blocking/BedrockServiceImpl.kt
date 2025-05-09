@@ -5,6 +5,7 @@ package ai.hanzo.api.services.blocking
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
 import ai.hanzo.api.core.handlers.withErrorHandler
@@ -25,6 +26,7 @@ import ai.hanzo.api.models.bedrock.BedrockRetrieveParams
 import ai.hanzo.api.models.bedrock.BedrockRetrieveResponse
 import ai.hanzo.api.models.bedrock.BedrockUpdateParams
 import ai.hanzo.api.models.bedrock.BedrockUpdateResponse
+import kotlin.jvm.optionals.getOrNull
 
 class BedrockServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     BedrockService {
@@ -83,6 +85,9 @@ class BedrockServiceImpl internal constructor(private val clientOptions: ClientO
             params: BedrockCreateParams,
             requestOptions: RequestOptions,
         ): HttpResponseFor<BedrockCreateResponse> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
@@ -111,6 +116,9 @@ class BedrockServiceImpl internal constructor(private val clientOptions: ClientO
             params: BedrockRetrieveParams,
             requestOptions: RequestOptions,
         ): HttpResponseFor<BedrockRetrieveResponse> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
@@ -138,6 +146,9 @@ class BedrockServiceImpl internal constructor(private val clientOptions: ClientO
             params: BedrockUpdateParams,
             requestOptions: RequestOptions,
         ): HttpResponseFor<BedrockUpdateResponse> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PUT)
@@ -166,6 +177,9 @@ class BedrockServiceImpl internal constructor(private val clientOptions: ClientO
             params: BedrockDeleteParams,
             requestOptions: RequestOptions,
         ): HttpResponseFor<BedrockDeleteResponse> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)
@@ -194,6 +208,9 @@ class BedrockServiceImpl internal constructor(private val clientOptions: ClientO
             params: BedrockPatchParams,
             requestOptions: RequestOptions,
         ): HttpResponseFor<BedrockPatchResponse> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PATCH)

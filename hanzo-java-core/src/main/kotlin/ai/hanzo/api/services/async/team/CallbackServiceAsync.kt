@@ -37,14 +37,39 @@ interface CallbackServiceAsync {
      * team_callback_settings_obj.failure_callback, "callback_vars":
      * team_callback_settings_obj.callback_vars, }, }
      */
-    fun retrieve(params: CallbackRetrieveParams): CompletableFuture<CallbackRetrieveResponse> =
-        retrieve(params, RequestOptions.none())
+    fun retrieve(teamId: String): CompletableFuture<CallbackRetrieveResponse> =
+        retrieve(teamId, CallbackRetrieveParams.none())
+
+    /** @see [retrieve] */
+    fun retrieve(
+        teamId: String,
+        params: CallbackRetrieveParams = CallbackRetrieveParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<CallbackRetrieveResponse> =
+        retrieve(params.toBuilder().teamId(teamId).build(), requestOptions)
+
+    /** @see [retrieve] */
+    fun retrieve(
+        teamId: String,
+        params: CallbackRetrieveParams = CallbackRetrieveParams.none(),
+    ): CompletableFuture<CallbackRetrieveResponse> = retrieve(teamId, params, RequestOptions.none())
 
     /** @see [retrieve] */
     fun retrieve(
         params: CallbackRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CallbackRetrieveResponse>
+
+    /** @see [retrieve] */
+    fun retrieve(params: CallbackRetrieveParams): CompletableFuture<CallbackRetrieveResponse> =
+        retrieve(params, RequestOptions.none())
+
+    /** @see [retrieve] */
+    fun retrieve(
+        teamId: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<CallbackRetrieveResponse> =
+        retrieve(teamId, CallbackRetrieveParams.none(), requestOptions)
 
     /**
      * Add a success/failure callback to a team
@@ -84,6 +109,18 @@ interface CallbackServiceAsync {
      * This means for the team where team_id = dbe2f686-a686-4896-864a-4c3924458709, all LLM calls
      * will be logged to langfuse using the public key pk-lf-xxxx1 and the secret key sk-xxxxx
      */
+    fun add(teamId: String, params: CallbackAddParams): CompletableFuture<CallbackAddResponse> =
+        add(teamId, params, RequestOptions.none())
+
+    /** @see [add] */
+    fun add(
+        teamId: String,
+        params: CallbackAddParams,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<CallbackAddResponse> =
+        add(params.toBuilder().teamId(teamId).build(), requestOptions)
+
+    /** @see [add] */
     fun add(params: CallbackAddParams): CompletableFuture<CallbackAddResponse> =
         add(params, RequestOptions.none())
 
@@ -103,10 +140,25 @@ interface CallbackServiceAsync {
          * as [CallbackServiceAsync.retrieve].
          */
         @MustBeClosed
+        fun retrieve(teamId: String): CompletableFuture<HttpResponseFor<CallbackRetrieveResponse>> =
+            retrieve(teamId, CallbackRetrieveParams.none())
+
+        /** @see [retrieve] */
+        @MustBeClosed
         fun retrieve(
-            params: CallbackRetrieveParams
+            teamId: String,
+            params: CallbackRetrieveParams = CallbackRetrieveParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<CallbackRetrieveResponse>> =
-            retrieve(params, RequestOptions.none())
+            retrieve(params.toBuilder().teamId(teamId).build(), requestOptions)
+
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(
+            teamId: String,
+            params: CallbackRetrieveParams = CallbackRetrieveParams.none(),
+        ): CompletableFuture<HttpResponseFor<CallbackRetrieveResponse>> =
+            retrieve(teamId, params, RequestOptions.none())
 
         /** @see [retrieve] */
         @MustBeClosed
@@ -115,10 +167,42 @@ interface CallbackServiceAsync {
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<CallbackRetrieveResponse>>
 
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(
+            params: CallbackRetrieveParams
+        ): CompletableFuture<HttpResponseFor<CallbackRetrieveResponse>> =
+            retrieve(params, RequestOptions.none())
+
+        /** @see [retrieve] */
+        @MustBeClosed
+        fun retrieve(
+            teamId: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<CallbackRetrieveResponse>> =
+            retrieve(teamId, CallbackRetrieveParams.none(), requestOptions)
+
         /**
          * Returns a raw HTTP response for `post /team/{team_id}/callback`, but is otherwise the
          * same as [CallbackServiceAsync.add].
          */
+        @MustBeClosed
+        fun add(
+            teamId: String,
+            params: CallbackAddParams,
+        ): CompletableFuture<HttpResponseFor<CallbackAddResponse>> =
+            add(teamId, params, RequestOptions.none())
+
+        /** @see [add] */
+        @MustBeClosed
+        fun add(
+            teamId: String,
+            params: CallbackAddParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<CallbackAddResponse>> =
+            add(params.toBuilder().teamId(teamId).build(), requestOptions)
+
+        /** @see [add] */
         @MustBeClosed
         fun add(
             params: CallbackAddParams

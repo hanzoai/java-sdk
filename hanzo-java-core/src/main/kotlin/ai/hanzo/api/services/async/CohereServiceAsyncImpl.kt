@@ -5,6 +5,7 @@ package ai.hanzo.api.services.async
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
 import ai.hanzo.api.core.handlers.withErrorHandler
@@ -26,6 +27,7 @@ import ai.hanzo.api.models.cohere.CohereRetrieveResponse
 import ai.hanzo.api.models.cohere.CohereUpdateParams
 import ai.hanzo.api.models.cohere.CohereUpdateResponse
 import java.util.concurrent.CompletableFuture
+import kotlin.jvm.optionals.getOrNull
 
 class CohereServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     CohereServiceAsync {
@@ -84,6 +86,9 @@ class CohereServiceAsyncImpl internal constructor(private val clientOptions: Cli
             params: CohereCreateParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<CohereCreateResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
@@ -115,6 +120,9 @@ class CohereServiceAsyncImpl internal constructor(private val clientOptions: Cli
             params: CohereRetrieveParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<CohereRetrieveResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
@@ -145,6 +153,9 @@ class CohereServiceAsyncImpl internal constructor(private val clientOptions: Cli
             params: CohereUpdateParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<CohereUpdateResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PUT)
@@ -176,6 +187,9 @@ class CohereServiceAsyncImpl internal constructor(private val clientOptions: Cli
             params: CohereDeleteParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<CohereDeleteResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)
@@ -207,6 +221,9 @@ class CohereServiceAsyncImpl internal constructor(private val clientOptions: Cli
             params: CohereModifyParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<CohereModifyResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PATCH)

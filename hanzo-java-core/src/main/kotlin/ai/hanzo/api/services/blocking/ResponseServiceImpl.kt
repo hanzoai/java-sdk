@@ -5,6 +5,7 @@ package ai.hanzo.api.services.blocking
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
 import ai.hanzo.api.core.handlers.withErrorHandler
@@ -23,6 +24,7 @@ import ai.hanzo.api.models.responses.ResponseRetrieveParams
 import ai.hanzo.api.models.responses.ResponseRetrieveResponse
 import ai.hanzo.api.services.blocking.responses.InputItemService
 import ai.hanzo.api.services.blocking.responses.InputItemServiceImpl
+import kotlin.jvm.optionals.getOrNull
 
 class ResponseServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     ResponseService {
@@ -105,6 +107,9 @@ class ResponseServiceImpl internal constructor(private val clientOptions: Client
             params: ResponseRetrieveParams,
             requestOptions: RequestOptions,
         ): HttpResponseFor<ResponseRetrieveResponse> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("responseId", params.responseId().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
@@ -132,6 +137,9 @@ class ResponseServiceImpl internal constructor(private val clientOptions: Client
             params: ResponseDeleteParams,
             requestOptions: RequestOptions,
         ): HttpResponseFor<ResponseDeleteResponse> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("responseId", params.responseId().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)
