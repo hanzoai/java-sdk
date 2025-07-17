@@ -26,6 +26,7 @@ import ai.hanzo.api.models.langfuse.LangfuseRetrieveParams
 import ai.hanzo.api.models.langfuse.LangfuseRetrieveResponse
 import ai.hanzo.api.models.langfuse.LangfuseUpdateParams
 import ai.hanzo.api.models.langfuse.LangfuseUpdateResponse
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class LangfuseServiceImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -36,6 +37,9 @@ class LangfuseServiceImpl internal constructor(private val clientOptions: Client
     }
 
     override fun withRawResponse(): LangfuseService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): LangfuseService =
+        LangfuseServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: LangfuseCreateParams,
@@ -77,6 +81,13 @@ class LangfuseServiceImpl internal constructor(private val clientOptions: Client
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): LangfuseService.WithRawResponse =
+            LangfuseServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val createHandler: Handler<LangfuseCreateResponse> =
             jsonHandler<LangfuseCreateResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -91,6 +102,7 @@ class LangfuseServiceImpl internal constructor(private val clientOptions: Client
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("langfuse", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -122,6 +134,7 @@ class LangfuseServiceImpl internal constructor(private val clientOptions: Client
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("langfuse", params._pathParam(0))
                     .build()
                     .prepare(clientOptions, params)
@@ -152,6 +165,7 @@ class LangfuseServiceImpl internal constructor(private val clientOptions: Client
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PUT)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("langfuse", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -183,6 +197,7 @@ class LangfuseServiceImpl internal constructor(private val clientOptions: Client
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("langfuse", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -214,6 +229,7 @@ class LangfuseServiceImpl internal constructor(private val clientOptions: Client
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PATCH)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("langfuse", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()

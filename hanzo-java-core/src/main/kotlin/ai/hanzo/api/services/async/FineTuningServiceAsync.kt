@@ -2,7 +2,9 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.services.async.finetuning.JobServiceAsync
+import java.util.function.Consumer
 
 interface FineTuningServiceAsync {
 
@@ -11,6 +13,13 @@ interface FineTuningServiceAsync {
      */
     fun withRawResponse(): WithRawResponse
 
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): FineTuningServiceAsync
+
     fun jobs(): JobServiceAsync
 
     /**
@@ -18,6 +27,15 @@ interface FineTuningServiceAsync {
      * method.
      */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): FineTuningServiceAsync.WithRawResponse
 
         fun jobs(): JobServiceAsync.WithRawResponse
     }

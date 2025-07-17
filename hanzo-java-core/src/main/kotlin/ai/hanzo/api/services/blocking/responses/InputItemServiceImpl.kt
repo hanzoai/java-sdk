@@ -17,6 +17,7 @@ import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepare
 import ai.hanzo.api.models.responses.inputitems.InputItemListParams
 import ai.hanzo.api.models.responses.inputitems.InputItemListResponse
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class InputItemServiceImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -27,6 +28,9 @@ class InputItemServiceImpl internal constructor(private val clientOptions: Clien
     }
 
     override fun withRawResponse(): InputItemService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): InputItemService =
+        InputItemServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun list(
         params: InputItemListParams,
@@ -39,6 +43,13 @@ class InputItemServiceImpl internal constructor(private val clientOptions: Clien
         InputItemService.WithRawResponse {
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): InputItemService.WithRawResponse =
+            InputItemServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         private val listHandler: Handler<InputItemListResponse> =
             jsonHandler<InputItemListResponse>(clientOptions.jsonMapper)
@@ -54,6 +65,7 @@ class InputItemServiceImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "responses", params._pathParam(0), "input_items")
                     .build()
                     .prepare(clientOptions, params)

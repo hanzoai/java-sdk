@@ -23,6 +23,7 @@ import ai.hanzo.api.models.cache.CachePingParams
 import ai.hanzo.api.models.cache.CachePingResponse
 import ai.hanzo.api.services.blocking.cache.RediService
 import ai.hanzo.api.services.blocking.cache.RediServiceImpl
+import java.util.function.Consumer
 
 class CacheServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     CacheService {
@@ -34,6 +35,9 @@ class CacheServiceImpl internal constructor(private val clientOptions: ClientOpt
     private val redis: RediService by lazy { RediServiceImpl(clientOptions) }
 
     override fun withRawResponse(): CacheService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): CacheService =
+        CacheServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun redis(): RediService = redis
 
@@ -64,6 +68,13 @@ class CacheServiceImpl internal constructor(private val clientOptions: ClientOpt
             RediServiceImpl.WithRawResponseImpl(clientOptions)
         }
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): CacheService.WithRawResponse =
+            CacheServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         override fun redis(): RediService.WithRawResponse = redis
 
         private val deleteHandler: Handler<CacheDeleteResponse> =
@@ -77,6 +88,7 @@ class CacheServiceImpl internal constructor(private val clientOptions: ClientOpt
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("cache", "delete")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -105,6 +117,7 @@ class CacheServiceImpl internal constructor(private val clientOptions: ClientOpt
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("cache", "flushall")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -132,6 +145,7 @@ class CacheServiceImpl internal constructor(private val clientOptions: ClientOpt
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("cache", "ping")
                     .build()
                     .prepare(clientOptions, params)

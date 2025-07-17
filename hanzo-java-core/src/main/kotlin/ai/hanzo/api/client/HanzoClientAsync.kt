@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.client
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.ClientGetHomeParams
@@ -53,8 +54,8 @@ import ai.hanzo.api.services.async.ThreadServiceAsync
 import ai.hanzo.api.services.async.UserServiceAsync
 import ai.hanzo.api.services.async.UtilServiceAsync
 import ai.hanzo.api.services.async.VertexAiServiceAsync
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 /**
  * A client for interacting with the Hanzo REST API asynchronously. You can also switch to
@@ -84,6 +85,13 @@ interface HanzoClientAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): HanzoClientAsync
 
     fun models(): ModelServiceAsync
 
@@ -215,6 +223,13 @@ interface HanzoClientAsync {
     /** A view of [HanzoClientAsync] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
 
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): HanzoClientAsync.WithRawResponse
+
         fun models(): ModelServiceAsync.WithRawResponse
 
         fun openai(): OpenAIServiceAsync.WithRawResponse
@@ -315,26 +330,22 @@ interface HanzoClientAsync {
          * Returns a raw HTTP response for `get /`, but is otherwise the same as
          * [HanzoClientAsync.getHome].
          */
-        @MustBeClosed
         fun getHome(): CompletableFuture<HttpResponseFor<ClientGetHomeResponse>> =
             getHome(ClientGetHomeParams.none())
 
         /** @see [getHome] */
-        @MustBeClosed
         fun getHome(
             params: ClientGetHomeParams = ClientGetHomeParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<ClientGetHomeResponse>>
 
         /** @see [getHome] */
-        @MustBeClosed
         fun getHome(
             params: ClientGetHomeParams = ClientGetHomeParams.none()
         ): CompletableFuture<HttpResponseFor<ClientGetHomeResponse>> =
             getHome(params, RequestOptions.none())
 
         /** @see [getHome] */
-        @MustBeClosed
         fun getHome(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<ClientGetHomeResponse>> =

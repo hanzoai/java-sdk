@@ -18,6 +18,7 @@ import ai.hanzo.api.core.prepareAsync
 import ai.hanzo.api.models.audio.speech.SpeechCreateParams
 import ai.hanzo.api.models.audio.speech.SpeechCreateResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class SpeechServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     SpeechServiceAsync {
@@ -27,6 +28,9 @@ class SpeechServiceAsyncImpl internal constructor(private val clientOptions: Cli
     }
 
     override fun withRawResponse(): SpeechServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): SpeechServiceAsync =
+        SpeechServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: SpeechCreateParams,
@@ -40,6 +44,13 @@ class SpeechServiceAsyncImpl internal constructor(private val clientOptions: Cli
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): SpeechServiceAsync.WithRawResponse =
+            SpeechServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val createHandler: Handler<SpeechCreateResponse> =
             jsonHandler<SpeechCreateResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -51,6 +62,7 @@ class SpeechServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "audio", "speech")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()

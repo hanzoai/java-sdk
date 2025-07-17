@@ -45,6 +45,7 @@ import ai.hanzo.api.services.async.team.CallbackServiceAsyncImpl
 import ai.hanzo.api.services.async.team.ModelServiceAsync
 import ai.hanzo.api.services.async.team.ModelServiceAsyncImpl
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class TeamServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -59,6 +60,9 @@ class TeamServiceAsyncImpl internal constructor(private val clientOptions: Clien
     private val callback: CallbackServiceAsync by lazy { CallbackServiceAsyncImpl(clientOptions) }
 
     override fun withRawResponse(): TeamServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): TeamServiceAsync =
+        TeamServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun model(): ModelServiceAsync = model
 
@@ -161,6 +165,13 @@ class TeamServiceAsyncImpl internal constructor(private val clientOptions: Clien
             CallbackServiceAsyncImpl.WithRawResponseImpl(clientOptions)
         }
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): TeamServiceAsync.WithRawResponse =
+            TeamServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         override fun model(): ModelServiceAsync.WithRawResponse = model
 
         override fun callback(): CallbackServiceAsync.WithRawResponse = callback
@@ -175,6 +186,7 @@ class TeamServiceAsyncImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("team", "new")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -205,6 +217,7 @@ class TeamServiceAsyncImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("team", "update")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -235,6 +248,7 @@ class TeamServiceAsyncImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("team", "list")
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -264,6 +278,7 @@ class TeamServiceAsyncImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("team", "delete")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -295,6 +310,7 @@ class TeamServiceAsyncImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("team", "member_add")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -325,6 +341,7 @@ class TeamServiceAsyncImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("team", "block")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -359,6 +376,7 @@ class TeamServiceAsyncImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("team", params._pathParam(0), "disable_logging")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -390,6 +408,7 @@ class TeamServiceAsyncImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("team", "available")
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -420,6 +439,7 @@ class TeamServiceAsyncImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("team", "member_delete")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -451,6 +471,7 @@ class TeamServiceAsyncImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("team", "info")
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -481,6 +502,7 @@ class TeamServiceAsyncImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("team", "unblock")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -512,6 +534,7 @@ class TeamServiceAsyncImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("team", "member_update")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()

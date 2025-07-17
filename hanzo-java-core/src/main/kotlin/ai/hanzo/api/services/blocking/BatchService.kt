@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.blocking
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.batches.BatchCancelWithProviderParams
@@ -20,6 +21,7 @@ import ai.hanzo.api.models.batches.BatchRetrieveWithProviderParams
 import ai.hanzo.api.models.batches.BatchRetrieveWithProviderResponse
 import ai.hanzo.api.services.blocking.batches.CancelService
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface BatchService {
 
@@ -27,6 +29,13 @@ interface BatchService {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): BatchService
 
     fun cancel(): CancelService
 
@@ -293,6 +302,13 @@ interface BatchService {
 
     /** A view of [BatchService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): BatchService.WithRawResponse
 
         fun cancel(): CancelService.WithRawResponse
 

@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.blocking
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.vertexai.VertexAiCreateParams
@@ -15,6 +16,7 @@ import ai.hanzo.api.models.vertexai.VertexAiRetrieveResponse
 import ai.hanzo.api.models.vertexai.VertexAiUpdateParams
 import ai.hanzo.api.models.vertexai.VertexAiUpdateResponse
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface VertexAiService {
 
@@ -22,6 +24,13 @@ interface VertexAiService {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): VertexAiService
 
     /**
      * Call LLM proxy via Vertex AI SDK.
@@ -203,6 +212,13 @@ interface VertexAiService {
 
     /** A view of [VertexAiService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): VertexAiService.WithRawResponse
 
         /**
          * Returns a raw HTTP response for `post /vertex_ai/{endpoint}`, but is otherwise the same

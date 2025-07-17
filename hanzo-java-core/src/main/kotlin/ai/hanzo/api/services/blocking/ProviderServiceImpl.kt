@@ -16,6 +16,7 @@ import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepare
 import ai.hanzo.api.models.provider.ProviderListBudgetsParams
 import ai.hanzo.api.models.provider.ProviderListBudgetsResponse
+import java.util.function.Consumer
 
 class ProviderServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     ProviderService {
@@ -25,6 +26,9 @@ class ProviderServiceImpl internal constructor(private val clientOptions: Client
     }
 
     override fun withRawResponse(): ProviderService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): ProviderService =
+        ProviderServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun listBudgets(
         params: ProviderListBudgetsParams,
@@ -38,6 +42,13 @@ class ProviderServiceImpl internal constructor(private val clientOptions: Client
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ProviderService.WithRawResponse =
+            ProviderServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val listBudgetsHandler: Handler<ProviderListBudgetsResponse> =
             jsonHandler<ProviderListBudgetsResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -49,6 +60,7 @@ class ProviderServiceImpl internal constructor(private val clientOptions: Client
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("provider", "budgets")
                     .build()
                     .prepare(clientOptions, params)

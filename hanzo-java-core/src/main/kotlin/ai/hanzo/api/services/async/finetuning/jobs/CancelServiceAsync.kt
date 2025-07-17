@@ -2,12 +2,13 @@
 
 package ai.hanzo.api.services.async.finetuning.jobs
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.finetuning.jobs.cancel.CancelCreateParams
 import ai.hanzo.api.models.finetuning.jobs.cancel.CancelCreateResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface CancelServiceAsync {
 
@@ -15,6 +16,13 @@ interface CancelServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): CancelServiceAsync
 
     /**
      * Cancel a fine-tuning job.
@@ -67,17 +75,24 @@ interface CancelServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): CancelServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `post /v1/fine_tuning/jobs/{fine_tuning_job_id}/cancel`,
          * but is otherwise the same as [CancelServiceAsync.create].
          */
-        @MustBeClosed
         fun create(
             fineTuningJobId: String
         ): CompletableFuture<HttpResponseFor<CancelCreateResponse>> =
             create(fineTuningJobId, CancelCreateParams.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             fineTuningJobId: String,
             params: CancelCreateParams = CancelCreateParams.none(),
@@ -86,7 +101,6 @@ interface CancelServiceAsync {
             create(params.toBuilder().fineTuningJobId(fineTuningJobId).build(), requestOptions)
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             fineTuningJobId: String,
             params: CancelCreateParams = CancelCreateParams.none(),
@@ -94,21 +108,18 @@ interface CancelServiceAsync {
             create(fineTuningJobId, params, RequestOptions.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: CancelCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<CancelCreateResponse>>
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: CancelCreateParams
         ): CompletableFuture<HttpResponseFor<CancelCreateResponse>> =
             create(params, RequestOptions.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             fineTuningJobId: String,
             requestOptions: RequestOptions,

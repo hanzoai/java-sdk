@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.client
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.ClientGetHomeParams
@@ -54,6 +55,7 @@ import ai.hanzo.api.services.blocking.UserService
 import ai.hanzo.api.services.blocking.UtilService
 import ai.hanzo.api.services.blocking.VertexAiService
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 /**
  * A client for interacting with the Hanzo REST API synchronously. You can also switch to
@@ -83,6 +85,13 @@ interface HanzoClient {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): HanzoClient
 
     fun models(): ModelService
 
@@ -212,6 +221,13 @@ interface HanzoClient {
 
     /** A view of [HanzoClient] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): HanzoClient.WithRawResponse
 
         fun models(): ModelService.WithRawResponse
 

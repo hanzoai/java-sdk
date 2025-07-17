@@ -24,6 +24,7 @@ import ai.hanzo.api.models.finetuning.jobs.JobRetrieveParams
 import ai.hanzo.api.models.finetuning.jobs.JobRetrieveResponse
 import ai.hanzo.api.services.blocking.finetuning.jobs.CancelService
 import ai.hanzo.api.services.blocking.finetuning.jobs.CancelServiceImpl
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class JobServiceImpl internal constructor(private val clientOptions: ClientOptions) : JobService {
@@ -35,6 +36,9 @@ class JobServiceImpl internal constructor(private val clientOptions: ClientOptio
     private val cancel: CancelService by lazy { CancelServiceImpl(clientOptions) }
 
     override fun withRawResponse(): JobService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): JobService =
+        JobServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun cancel(): CancelService = cancel
 
@@ -65,6 +69,13 @@ class JobServiceImpl internal constructor(private val clientOptions: ClientOptio
             CancelServiceImpl.WithRawResponseImpl(clientOptions)
         }
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): JobService.WithRawResponse =
+            JobServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         override fun cancel(): CancelService.WithRawResponse = cancel
 
         private val createHandler: Handler<JobCreateResponse> =
@@ -77,6 +88,7 @@ class JobServiceImpl internal constructor(private val clientOptions: ClientOptio
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "fine_tuning", "jobs")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -108,6 +120,7 @@ class JobServiceImpl internal constructor(private val clientOptions: ClientOptio
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "fine_tuning", "jobs", params._pathParam(0))
                     .build()
                     .prepare(clientOptions, params)
@@ -134,6 +147,7 @@ class JobServiceImpl internal constructor(private val clientOptions: ClientOptio
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "fine_tuning", "jobs")
                     .build()
                     .prepare(clientOptions, params)

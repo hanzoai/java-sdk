@@ -22,6 +22,7 @@ import ai.hanzo.api.models.global.spend.SpendResetResponse
 import ai.hanzo.api.models.global.spend.SpendRetrieveReportParams
 import ai.hanzo.api.models.global.spend.SpendRetrieveReportResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class SpendServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     SpendServiceAsync {
@@ -31,6 +32,9 @@ class SpendServiceAsyncImpl internal constructor(private val clientOptions: Clie
     }
 
     override fun withRawResponse(): SpendServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): SpendServiceAsync =
+        SpendServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun listTags(
         params: SpendListTagsParams,
@@ -58,6 +62,13 @@ class SpendServiceAsyncImpl internal constructor(private val clientOptions: Clie
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): SpendServiceAsync.WithRawResponse =
+            SpendServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val listTagsHandler: Handler<List<SpendListTagsResponse>> =
             jsonHandler<List<SpendListTagsResponse>>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -69,6 +80,7 @@ class SpendServiceAsyncImpl internal constructor(private val clientOptions: Clie
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("global", "spend", "tags")
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -98,6 +110,7 @@ class SpendServiceAsyncImpl internal constructor(private val clientOptions: Clie
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("global", "spend", "reset")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -129,6 +142,7 @@ class SpendServiceAsyncImpl internal constructor(private val clientOptions: Clie
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("global", "spend", "report")
                     .build()
                     .prepareAsync(clientOptions, params)

@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.blocking
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.files.FileCreateParams
@@ -14,6 +15,7 @@ import ai.hanzo.api.models.files.FileRetrieveParams
 import ai.hanzo.api.models.files.FileRetrieveResponse
 import ai.hanzo.api.services.blocking.files.ContentService
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface FileService {
 
@@ -21,6 +23,13 @@ interface FileService {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): FileService
 
     fun content(): ContentService
 
@@ -162,6 +171,13 @@ interface FileService {
 
     /** A view of [FileService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): FileService.WithRawResponse
 
         fun content(): ContentService.WithRawResponse
 

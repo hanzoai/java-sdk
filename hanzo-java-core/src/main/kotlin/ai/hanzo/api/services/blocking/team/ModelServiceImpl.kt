@@ -19,6 +19,7 @@ import ai.hanzo.api.models.team.model.ModelAddParams
 import ai.hanzo.api.models.team.model.ModelAddResponse
 import ai.hanzo.api.models.team.model.ModelRemoveParams
 import ai.hanzo.api.models.team.model.ModelRemoveResponse
+import java.util.function.Consumer
 
 class ModelServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     ModelService {
@@ -28,6 +29,9 @@ class ModelServiceImpl internal constructor(private val clientOptions: ClientOpt
     }
 
     override fun withRawResponse(): ModelService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): ModelService =
+        ModelServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun add(params: ModelAddParams, requestOptions: RequestOptions): ModelAddResponse =
         // post /team/model/add
@@ -45,6 +49,13 @@ class ModelServiceImpl internal constructor(private val clientOptions: ClientOpt
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ModelService.WithRawResponse =
+            ModelServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val addHandler: Handler<ModelAddResponse> =
             jsonHandler<ModelAddResponse>(clientOptions.jsonMapper).withErrorHandler(errorHandler)
 
@@ -55,6 +66,7 @@ class ModelServiceImpl internal constructor(private val clientOptions: ClientOpt
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("team", "model", "add")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -83,6 +95,7 @@ class ModelServiceImpl internal constructor(private val clientOptions: ClientOpt
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("team", "model", "delete")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()

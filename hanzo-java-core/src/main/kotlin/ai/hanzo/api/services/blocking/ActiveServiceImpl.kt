@@ -16,6 +16,7 @@ import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepare
 import ai.hanzo.api.models.active.ActiveListCallbacksParams
 import ai.hanzo.api.models.active.ActiveListCallbacksResponse
+import java.util.function.Consumer
 
 class ActiveServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     ActiveService {
@@ -25,6 +26,9 @@ class ActiveServiceImpl internal constructor(private val clientOptions: ClientOp
     }
 
     override fun withRawResponse(): ActiveService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): ActiveService =
+        ActiveServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun listCallbacks(
         params: ActiveListCallbacksParams,
@@ -38,6 +42,13 @@ class ActiveServiceImpl internal constructor(private val clientOptions: ClientOp
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ActiveService.WithRawResponse =
+            ActiveServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val listCallbacksHandler: Handler<ActiveListCallbacksResponse> =
             jsonHandler<ActiveListCallbacksResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -49,6 +60,7 @@ class ActiveServiceImpl internal constructor(private val clientOptions: ClientOp
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("active", "callbacks")
                     .build()
                     .prepare(clientOptions, params)

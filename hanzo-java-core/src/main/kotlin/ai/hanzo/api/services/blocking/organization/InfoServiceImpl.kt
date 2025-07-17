@@ -19,6 +19,7 @@ import ai.hanzo.api.models.organization.info.InfoDeprecatedParams
 import ai.hanzo.api.models.organization.info.InfoDeprecatedResponse
 import ai.hanzo.api.models.organization.info.InfoRetrieveParams
 import ai.hanzo.api.models.organization.info.InfoRetrieveResponse
+import java.util.function.Consumer
 
 class InfoServiceImpl internal constructor(private val clientOptions: ClientOptions) : InfoService {
 
@@ -27,6 +28,9 @@ class InfoServiceImpl internal constructor(private val clientOptions: ClientOpti
     }
 
     override fun withRawResponse(): InfoService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): InfoService =
+        InfoServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun retrieve(
         params: InfoRetrieveParams,
@@ -47,6 +51,13 @@ class InfoServiceImpl internal constructor(private val clientOptions: ClientOpti
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): InfoService.WithRawResponse =
+            InfoServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val retrieveHandler: Handler<InfoRetrieveResponse> =
             jsonHandler<InfoRetrieveResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -58,6 +69,7 @@ class InfoServiceImpl internal constructor(private val clientOptions: ClientOpti
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("organization", "info")
                     .build()
                     .prepare(clientOptions, params)
@@ -85,6 +97,7 @@ class InfoServiceImpl internal constructor(private val clientOptions: ClientOpti
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("organization", "info")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()

@@ -3,6 +3,7 @@
 package ai.hanzo.api.services.blocking.key
 
 import ai.hanzo.api.core.ClientOptions
+import java.util.function.Consumer
 
 class RegenerateServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     RegenerateService {
@@ -13,6 +14,17 @@ class RegenerateServiceImpl internal constructor(private val clientOptions: Clie
 
     override fun withRawResponse(): RegenerateService.WithRawResponse = withRawResponse
 
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): RegenerateService =
+        RegenerateServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
+
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
-        RegenerateService.WithRawResponse
+        RegenerateService.WithRawResponse {
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): RegenerateService.WithRawResponse =
+            RegenerateServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+    }
 }

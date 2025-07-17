@@ -16,6 +16,7 @@ import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepare
 import ai.hanzo.api.models.settings.SettingRetrieveParams
 import ai.hanzo.api.models.settings.SettingRetrieveResponse
+import java.util.function.Consumer
 
 class SettingServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     SettingService {
@@ -25,6 +26,9 @@ class SettingServiceImpl internal constructor(private val clientOptions: ClientO
     }
 
     override fun withRawResponse(): SettingService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): SettingService =
+        SettingServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun retrieve(
         params: SettingRetrieveParams,
@@ -38,6 +42,13 @@ class SettingServiceImpl internal constructor(private val clientOptions: ClientO
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): SettingService.WithRawResponse =
+            SettingServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val retrieveHandler: Handler<SettingRetrieveResponse> =
             jsonHandler<SettingRetrieveResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -49,6 +60,7 @@ class SettingServiceImpl internal constructor(private val clientOptions: ClientO
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("settings")
                     .build()
                     .prepare(clientOptions, params)

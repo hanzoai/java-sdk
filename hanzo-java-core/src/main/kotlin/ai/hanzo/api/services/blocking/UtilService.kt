@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.blocking
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.utils.UtilGetSupportedOpenAIParamsParams
@@ -11,6 +12,7 @@ import ai.hanzo.api.models.utils.UtilTokenCounterResponse
 import ai.hanzo.api.models.utils.UtilTransformRequestParams
 import ai.hanzo.api.models.utils.UtilTransformRequestResponse
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface UtilService {
 
@@ -18,6 +20,13 @@ interface UtilService {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): UtilService
 
     /**
      * Returns supported openai params for a given llm model name
@@ -62,6 +71,13 @@ interface UtilService {
 
     /** A view of [UtilService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): UtilService.WithRawResponse
 
         /**
          * Returns a raw HTTP response for `get /utils/supported_openai_params`, but is otherwise

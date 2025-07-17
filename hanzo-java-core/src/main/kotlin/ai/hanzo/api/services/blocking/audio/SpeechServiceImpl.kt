@@ -17,6 +17,7 @@ import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepare
 import ai.hanzo.api.models.audio.speech.SpeechCreateParams
 import ai.hanzo.api.models.audio.speech.SpeechCreateResponse
+import java.util.function.Consumer
 
 class SpeechServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     SpeechService {
@@ -26,6 +27,9 @@ class SpeechServiceImpl internal constructor(private val clientOptions: ClientOp
     }
 
     override fun withRawResponse(): SpeechService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): SpeechService =
+        SpeechServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: SpeechCreateParams,
@@ -39,6 +43,13 @@ class SpeechServiceImpl internal constructor(private val clientOptions: ClientOp
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): SpeechService.WithRawResponse =
+            SpeechServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val createHandler: Handler<SpeechCreateResponse> =
             jsonHandler<SpeechCreateResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -50,6 +61,7 @@ class SpeechServiceImpl internal constructor(private val clientOptions: ClientOp
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "audio", "speech")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()

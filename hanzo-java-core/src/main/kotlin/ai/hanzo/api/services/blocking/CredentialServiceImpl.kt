@@ -22,6 +22,7 @@ import ai.hanzo.api.models.credentials.CredentialDeleteParams
 import ai.hanzo.api.models.credentials.CredentialDeleteResponse
 import ai.hanzo.api.models.credentials.CredentialListParams
 import ai.hanzo.api.models.credentials.CredentialListResponse
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class CredentialServiceImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -32,6 +33,9 @@ class CredentialServiceImpl internal constructor(private val clientOptions: Clie
     }
 
     override fun withRawResponse(): CredentialService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): CredentialService =
+        CredentialServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: CredentialCreateParams,
@@ -59,6 +63,13 @@ class CredentialServiceImpl internal constructor(private val clientOptions: Clie
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): CredentialService.WithRawResponse =
+            CredentialServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val createHandler: Handler<CredentialCreateResponse> =
             jsonHandler<CredentialCreateResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -70,6 +81,7 @@ class CredentialServiceImpl internal constructor(private val clientOptions: Clie
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("credentials")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -98,6 +110,7 @@ class CredentialServiceImpl internal constructor(private val clientOptions: Clie
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("credentials")
                     .build()
                     .prepare(clientOptions, params)
@@ -128,6 +141,7 @@ class CredentialServiceImpl internal constructor(private val clientOptions: Clie
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("credentials", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()

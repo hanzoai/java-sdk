@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.async.config
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.config.passthroughendpoint.PassThroughEndpointCreateParams
@@ -11,8 +12,8 @@ import ai.hanzo.api.models.config.passthroughendpoint.PassThroughEndpointListPar
 import ai.hanzo.api.models.config.passthroughendpoint.PassThroughEndpointResponse
 import ai.hanzo.api.models.config.passthroughendpoint.PassThroughEndpointUpdateParams
 import ai.hanzo.api.models.config.passthroughendpoint.PassThroughEndpointUpdateResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface PassThroughEndpointServiceAsync {
 
@@ -20,6 +21,13 @@ interface PassThroughEndpointServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): PassThroughEndpointServiceAsync
 
     /** Create new pass-through endpoint */
     fun create(
@@ -114,17 +122,24 @@ interface PassThroughEndpointServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): PassThroughEndpointServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `post /config/pass_through_endpoint`, but is otherwise
          * the same as [PassThroughEndpointServiceAsync.create].
          */
-        @MustBeClosed
         fun create(
             params: PassThroughEndpointCreateParams
         ): CompletableFuture<HttpResponseFor<PassThroughEndpointCreateResponse>> =
             create(params, RequestOptions.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: PassThroughEndpointCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -134,14 +149,12 @@ interface PassThroughEndpointServiceAsync {
          * Returns a raw HTTP response for `post /config/pass_through_endpoint/{endpoint_id}`, but
          * is otherwise the same as [PassThroughEndpointServiceAsync.update].
          */
-        @MustBeClosed
         fun update(
             endpointId: String
         ): CompletableFuture<HttpResponseFor<PassThroughEndpointUpdateResponse>> =
             update(endpointId, PassThroughEndpointUpdateParams.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             endpointId: String,
             params: PassThroughEndpointUpdateParams = PassThroughEndpointUpdateParams.none(),
@@ -150,7 +163,6 @@ interface PassThroughEndpointServiceAsync {
             update(params.toBuilder().endpointId(endpointId).build(), requestOptions)
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             endpointId: String,
             params: PassThroughEndpointUpdateParams = PassThroughEndpointUpdateParams.none(),
@@ -158,21 +170,18 @@ interface PassThroughEndpointServiceAsync {
             update(endpointId, params, RequestOptions.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             params: PassThroughEndpointUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<PassThroughEndpointUpdateResponse>>
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             params: PassThroughEndpointUpdateParams
         ): CompletableFuture<HttpResponseFor<PassThroughEndpointUpdateResponse>> =
             update(params, RequestOptions.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             endpointId: String,
             requestOptions: RequestOptions,
@@ -183,26 +192,22 @@ interface PassThroughEndpointServiceAsync {
          * Returns a raw HTTP response for `get /config/pass_through_endpoint`, but is otherwise the
          * same as [PassThroughEndpointServiceAsync.list].
          */
-        @MustBeClosed
         fun list(): CompletableFuture<HttpResponseFor<PassThroughEndpointResponse>> =
             list(PassThroughEndpointListParams.none())
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             params: PassThroughEndpointListParams = PassThroughEndpointListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<PassThroughEndpointResponse>>
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             params: PassThroughEndpointListParams = PassThroughEndpointListParams.none()
         ): CompletableFuture<HttpResponseFor<PassThroughEndpointResponse>> =
             list(params, RequestOptions.none())
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<PassThroughEndpointResponse>> =
@@ -212,14 +217,12 @@ interface PassThroughEndpointServiceAsync {
          * Returns a raw HTTP response for `delete /config/pass_through_endpoint`, but is otherwise
          * the same as [PassThroughEndpointServiceAsync.delete].
          */
-        @MustBeClosed
         fun delete(
             params: PassThroughEndpointDeleteParams
         ): CompletableFuture<HttpResponseFor<PassThroughEndpointResponse>> =
             delete(params, RequestOptions.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             params: PassThroughEndpointDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),

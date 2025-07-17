@@ -2,11 +2,13 @@
 
 package ai.hanzo.api.services.blocking.chat
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.chat.completions.CompletionCreateParams
 import ai.hanzo.api.models.chat.completions.CompletionCreateResponse
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface CompletionService {
 
@@ -14,6 +16,13 @@ interface CompletionService {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): CompletionService
 
     /**
      * Follows the exact same API spec as `OpenAI's Chat API
@@ -53,6 +62,15 @@ interface CompletionService {
 
     /** A view of [CompletionService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): CompletionService.WithRawResponse
 
         /**
          * Returns a raw HTTP response for `post /v1/chat/completions`, but is otherwise the same as

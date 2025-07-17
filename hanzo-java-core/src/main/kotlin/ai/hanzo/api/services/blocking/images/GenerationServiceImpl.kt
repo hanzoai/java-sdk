@@ -17,6 +17,7 @@ import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepare
 import ai.hanzo.api.models.images.generations.GenerationCreateParams
 import ai.hanzo.api.models.images.generations.GenerationCreateResponse
+import java.util.function.Consumer
 
 class GenerationServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     GenerationService {
@@ -26,6 +27,9 @@ class GenerationServiceImpl internal constructor(private val clientOptions: Clie
     }
 
     override fun withRawResponse(): GenerationService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): GenerationService =
+        GenerationServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: GenerationCreateParams,
@@ -39,6 +43,13 @@ class GenerationServiceImpl internal constructor(private val clientOptions: Clie
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): GenerationService.WithRawResponse =
+            GenerationServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val createHandler: Handler<GenerationCreateResponse> =
             jsonHandler<GenerationCreateResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -50,6 +61,7 @@ class GenerationServiceImpl internal constructor(private val clientOptions: Clie
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "images", "generations")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()

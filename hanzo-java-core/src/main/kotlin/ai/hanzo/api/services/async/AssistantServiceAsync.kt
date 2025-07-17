@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.assistants.AssistantCreateParams
@@ -10,8 +11,8 @@ import ai.hanzo.api.models.assistants.AssistantDeleteParams
 import ai.hanzo.api.models.assistants.AssistantDeleteResponse
 import ai.hanzo.api.models.assistants.AssistantListParams
 import ai.hanzo.api.models.assistants.AssistantListResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface AssistantServiceAsync {
 
@@ -19,6 +20,13 @@ interface AssistantServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): AssistantServiceAsync
 
     /**
      * Create assistant
@@ -112,29 +120,34 @@ interface AssistantServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): AssistantServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `post /v1/assistants`, but is otherwise the same as
          * [AssistantServiceAsync.create].
          */
-        @MustBeClosed
         fun create(): CompletableFuture<HttpResponseFor<AssistantCreateResponse>> =
             create(AssistantCreateParams.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: AssistantCreateParams = AssistantCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<AssistantCreateResponse>>
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: AssistantCreateParams = AssistantCreateParams.none()
         ): CompletableFuture<HttpResponseFor<AssistantCreateResponse>> =
             create(params, RequestOptions.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<AssistantCreateResponse>> =
@@ -144,26 +157,22 @@ interface AssistantServiceAsync {
          * Returns a raw HTTP response for `get /v1/assistants`, but is otherwise the same as
          * [AssistantServiceAsync.list].
          */
-        @MustBeClosed
         fun list(): CompletableFuture<HttpResponseFor<AssistantListResponse>> =
             list(AssistantListParams.none())
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             params: AssistantListParams = AssistantListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<AssistantListResponse>>
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             params: AssistantListParams = AssistantListParams.none()
         ): CompletableFuture<HttpResponseFor<AssistantListResponse>> =
             list(params, RequestOptions.none())
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<AssistantListResponse>> =
@@ -173,14 +182,12 @@ interface AssistantServiceAsync {
          * Returns a raw HTTP response for `delete /v1/assistants/{assistant_id}`, but is otherwise
          * the same as [AssistantServiceAsync.delete].
          */
-        @MustBeClosed
         fun delete(
             assistantId: String
         ): CompletableFuture<HttpResponseFor<AssistantDeleteResponse>> =
             delete(assistantId, AssistantDeleteParams.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             assistantId: String,
             params: AssistantDeleteParams = AssistantDeleteParams.none(),
@@ -189,7 +196,6 @@ interface AssistantServiceAsync {
             delete(params.toBuilder().assistantId(assistantId).build(), requestOptions)
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             assistantId: String,
             params: AssistantDeleteParams = AssistantDeleteParams.none(),
@@ -197,21 +203,18 @@ interface AssistantServiceAsync {
             delete(assistantId, params, RequestOptions.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             params: AssistantDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<AssistantDeleteResponse>>
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             params: AssistantDeleteParams
         ): CompletableFuture<HttpResponseFor<AssistantDeleteResponse>> =
             delete(params, RequestOptions.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             assistantId: String,
             requestOptions: RequestOptions,

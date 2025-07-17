@@ -17,6 +17,7 @@ import ai.hanzo.api.core.prepareAsync
 import ai.hanzo.api.models.routes.RouteListParams
 import ai.hanzo.api.models.routes.RouteListResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class RouteServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     RouteServiceAsync {
@@ -26,6 +27,9 @@ class RouteServiceAsyncImpl internal constructor(private val clientOptions: Clie
     }
 
     override fun withRawResponse(): RouteServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): RouteServiceAsync =
+        RouteServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun list(
         params: RouteListParams,
@@ -39,6 +43,13 @@ class RouteServiceAsyncImpl internal constructor(private val clientOptions: Clie
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): RouteServiceAsync.WithRawResponse =
+            RouteServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val listHandler: Handler<RouteListResponse> =
             jsonHandler<RouteListResponse>(clientOptions.jsonMapper).withErrorHandler(errorHandler)
 
@@ -49,6 +60,7 @@ class RouteServiceAsyncImpl internal constructor(private val clientOptions: Clie
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("routes")
                     .build()
                     .prepareAsync(clientOptions, params)
