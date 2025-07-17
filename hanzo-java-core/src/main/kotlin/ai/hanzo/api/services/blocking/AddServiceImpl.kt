@@ -17,6 +17,7 @@ import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepare
 import ai.hanzo.api.models.add.AddAddAllowedIpParams
 import ai.hanzo.api.models.add.AddAddAllowedIpResponse
+import java.util.function.Consumer
 
 class AddServiceImpl internal constructor(private val clientOptions: ClientOptions) : AddService {
 
@@ -25,6 +26,9 @@ class AddServiceImpl internal constructor(private val clientOptions: ClientOptio
     }
 
     override fun withRawResponse(): AddService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): AddService =
+        AddServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun addAllowedIp(
         params: AddAddAllowedIpParams,
@@ -38,6 +42,13 @@ class AddServiceImpl internal constructor(private val clientOptions: ClientOptio
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): AddService.WithRawResponse =
+            AddServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val addAllowedIpHandler: Handler<AddAddAllowedIpResponse> =
             jsonHandler<AddAddAllowedIpResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -49,6 +60,7 @@ class AddServiceImpl internal constructor(private val clientOptions: ClientOptio
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("add", "allowed_ip")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()

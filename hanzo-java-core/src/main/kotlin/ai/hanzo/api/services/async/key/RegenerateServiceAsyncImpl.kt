@@ -3,6 +3,7 @@
 package ai.hanzo.api.services.async.key
 
 import ai.hanzo.api.core.ClientOptions
+import java.util.function.Consumer
 
 class RegenerateServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     RegenerateServiceAsync {
@@ -13,6 +14,17 @@ class RegenerateServiceAsyncImpl internal constructor(private val clientOptions:
 
     override fun withRawResponse(): RegenerateServiceAsync.WithRawResponse = withRawResponse
 
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): RegenerateServiceAsync =
+        RegenerateServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
+
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
-        RegenerateServiceAsync.WithRawResponse
+        RegenerateServiceAsync.WithRawResponse {
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): RegenerateServiceAsync.WithRawResponse =
+            RegenerateServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+    }
 }

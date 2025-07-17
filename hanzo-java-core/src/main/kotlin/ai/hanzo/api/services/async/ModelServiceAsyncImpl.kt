@@ -24,6 +24,7 @@ import ai.hanzo.api.services.async.model.InfoServiceAsyncImpl
 import ai.hanzo.api.services.async.model.UpdateServiceAsync
 import ai.hanzo.api.services.async.model.UpdateServiceAsyncImpl
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class ModelServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     ModelServiceAsync {
@@ -37,6 +38,9 @@ class ModelServiceAsyncImpl internal constructor(private val clientOptions: Clie
     private val update: UpdateServiceAsync by lazy { UpdateServiceAsyncImpl(clientOptions) }
 
     override fun withRawResponse(): ModelServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): ModelServiceAsync =
+        ModelServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun info(): InfoServiceAsync = info
 
@@ -69,6 +73,13 @@ class ModelServiceAsyncImpl internal constructor(private val clientOptions: Clie
             UpdateServiceAsyncImpl.WithRawResponseImpl(clientOptions)
         }
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ModelServiceAsync.WithRawResponse =
+            ModelServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         override fun info(): InfoServiceAsync.WithRawResponse = info
 
         override fun update(): UpdateServiceAsync.WithRawResponse = update
@@ -84,6 +95,7 @@ class ModelServiceAsyncImpl internal constructor(private val clientOptions: Clie
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("model", "new")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -115,6 +127,7 @@ class ModelServiceAsyncImpl internal constructor(private val clientOptions: Clie
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("model", "delete")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()

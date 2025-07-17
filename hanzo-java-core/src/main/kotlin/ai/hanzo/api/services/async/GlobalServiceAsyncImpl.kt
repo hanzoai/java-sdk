@@ -5,6 +5,7 @@ package ai.hanzo.api.services.async
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.services.async.global.SpendServiceAsync
 import ai.hanzo.api.services.async.global.SpendServiceAsyncImpl
+import java.util.function.Consumer
 
 class GlobalServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     GlobalServiceAsync {
@@ -17,6 +18,9 @@ class GlobalServiceAsyncImpl internal constructor(private val clientOptions: Cli
 
     override fun withRawResponse(): GlobalServiceAsync.WithRawResponse = withRawResponse
 
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): GlobalServiceAsync =
+        GlobalServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
+
     override fun spend(): SpendServiceAsync = spend
 
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -25,6 +29,13 @@ class GlobalServiceAsyncImpl internal constructor(private val clientOptions: Cli
         private val spend: SpendServiceAsync.WithRawResponse by lazy {
             SpendServiceAsyncImpl.WithRawResponseImpl(clientOptions)
         }
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): GlobalServiceAsync.WithRawResponse =
+            GlobalServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         override fun spend(): SpendServiceAsync.WithRawResponse = spend
     }

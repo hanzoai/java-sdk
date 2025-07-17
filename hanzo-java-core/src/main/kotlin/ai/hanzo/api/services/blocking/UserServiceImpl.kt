@@ -25,6 +25,7 @@ import ai.hanzo.api.models.user.UserRetrieveInfoParams
 import ai.hanzo.api.models.user.UserRetrieveInfoResponse
 import ai.hanzo.api.models.user.UserUpdateParams
 import ai.hanzo.api.models.user.UserUpdateResponse
+import java.util.function.Consumer
 
 class UserServiceImpl internal constructor(private val clientOptions: ClientOptions) : UserService {
 
@@ -33,6 +34,9 @@ class UserServiceImpl internal constructor(private val clientOptions: ClientOpti
     }
 
     override fun withRawResponse(): UserService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): UserService =
+        UserServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: UserCreateParams,
@@ -71,6 +75,13 @@ class UserServiceImpl internal constructor(private val clientOptions: ClientOpti
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): UserService.WithRawResponse =
+            UserServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val createHandler: Handler<UserCreateResponse> =
             jsonHandler<UserCreateResponse>(clientOptions.jsonMapper).withErrorHandler(errorHandler)
 
@@ -81,6 +92,7 @@ class UserServiceImpl internal constructor(private val clientOptions: ClientOpti
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("user", "new")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -108,6 +120,7 @@ class UserServiceImpl internal constructor(private val clientOptions: ClientOpti
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("user", "update")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -135,6 +148,7 @@ class UserServiceImpl internal constructor(private val clientOptions: ClientOpti
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("user", "get_users")
                     .build()
                     .prepare(clientOptions, params)
@@ -161,6 +175,7 @@ class UserServiceImpl internal constructor(private val clientOptions: ClientOpti
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("user", "delete")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -189,6 +204,7 @@ class UserServiceImpl internal constructor(private val clientOptions: ClientOpti
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("user", "info")
                     .build()
                     .prepare(clientOptions, params)

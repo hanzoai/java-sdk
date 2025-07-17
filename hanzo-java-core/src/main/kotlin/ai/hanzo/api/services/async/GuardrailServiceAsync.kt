@@ -2,12 +2,13 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.guardrails.GuardrailListParams
 import ai.hanzo.api.models.guardrails.GuardrailListResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface GuardrailServiceAsync {
 
@@ -15,6 +16,13 @@ interface GuardrailServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): GuardrailServiceAsync
 
     /**
      * List the guardrails that are available on the proxy server
@@ -73,29 +81,34 @@ interface GuardrailServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): GuardrailServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `get /guardrails/list`, but is otherwise the same as
          * [GuardrailServiceAsync.list].
          */
-        @MustBeClosed
         fun list(): CompletableFuture<HttpResponseFor<GuardrailListResponse>> =
             list(GuardrailListParams.none())
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             params: GuardrailListParams = GuardrailListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<GuardrailListResponse>>
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             params: GuardrailListParams = GuardrailListParams.none()
         ): CompletableFuture<HttpResponseFor<GuardrailListResponse>> =
             list(params, RequestOptions.none())
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<GuardrailListResponse>> =

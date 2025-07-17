@@ -17,6 +17,7 @@ import ai.hanzo.api.core.prepareAsync
 import ai.hanzo.api.models.modelgroup.ModelGroupRetrieveInfoParams
 import ai.hanzo.api.models.modelgroup.ModelGroupRetrieveInfoResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class ModelGroupServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     ModelGroupServiceAsync {
@@ -26,6 +27,9 @@ class ModelGroupServiceAsyncImpl internal constructor(private val clientOptions:
     }
 
     override fun withRawResponse(): ModelGroupServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): ModelGroupServiceAsync =
+        ModelGroupServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun retrieveInfo(
         params: ModelGroupRetrieveInfoParams,
@@ -39,6 +43,13 @@ class ModelGroupServiceAsyncImpl internal constructor(private val clientOptions:
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ModelGroupServiceAsync.WithRawResponse =
+            ModelGroupServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val retrieveInfoHandler: Handler<ModelGroupRetrieveInfoResponse> =
             jsonHandler<ModelGroupRetrieveInfoResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -50,6 +61,7 @@ class ModelGroupServiceAsyncImpl internal constructor(private val clientOptions:
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("model_group", "info")
                     .build()
                     .prepareAsync(clientOptions, params)

@@ -17,6 +17,7 @@ import ai.hanzo.api.core.prepareAsync
 import ai.hanzo.api.models.settings.SettingRetrieveParams
 import ai.hanzo.api.models.settings.SettingRetrieveResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class SettingServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     SettingServiceAsync {
@@ -26,6 +27,9 @@ class SettingServiceAsyncImpl internal constructor(private val clientOptions: Cl
     }
 
     override fun withRawResponse(): SettingServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): SettingServiceAsync =
+        SettingServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun retrieve(
         params: SettingRetrieveParams,
@@ -39,6 +43,13 @@ class SettingServiceAsyncImpl internal constructor(private val clientOptions: Cl
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): SettingServiceAsync.WithRawResponse =
+            SettingServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val retrieveHandler: Handler<SettingRetrieveResponse> =
             jsonHandler<SettingRetrieveResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -50,6 +61,7 @@ class SettingServiceAsyncImpl internal constructor(private val clientOptions: Cl
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("settings")
                     .build()
                     .prepareAsync(clientOptions, params)

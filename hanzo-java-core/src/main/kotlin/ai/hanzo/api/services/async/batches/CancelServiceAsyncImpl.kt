@@ -19,6 +19,7 @@ import ai.hanzo.api.core.prepareAsync
 import ai.hanzo.api.models.batches.cancel.CancelCancelParams
 import ai.hanzo.api.models.batches.cancel.CancelCancelResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class CancelServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -29,6 +30,9 @@ class CancelServiceAsyncImpl internal constructor(private val clientOptions: Cli
     }
 
     override fun withRawResponse(): CancelServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): CancelServiceAsync =
+        CancelServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun cancel(
         params: CancelCancelParams,
@@ -41,6 +45,13 @@ class CancelServiceAsyncImpl internal constructor(private val clientOptions: Cli
         CancelServiceAsync.WithRawResponse {
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): CancelServiceAsync.WithRawResponse =
+            CancelServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         private val cancelHandler: Handler<CancelCancelResponse> =
             jsonHandler<CancelCancelResponse>(clientOptions.jsonMapper)
@@ -56,6 +67,7 @@ class CancelServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("batches", params._pathParam(0), "cancel")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()

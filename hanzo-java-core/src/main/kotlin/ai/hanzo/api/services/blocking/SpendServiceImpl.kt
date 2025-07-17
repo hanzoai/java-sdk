@@ -21,6 +21,7 @@ import ai.hanzo.api.models.spend.SpendListLogsParams
 import ai.hanzo.api.models.spend.SpendListLogsResponse
 import ai.hanzo.api.models.spend.SpendListTagsParams
 import ai.hanzo.api.models.spend.SpendListTagsResponse
+import java.util.function.Consumer
 
 class SpendServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     SpendService {
@@ -30,6 +31,9 @@ class SpendServiceImpl internal constructor(private val clientOptions: ClientOpt
     }
 
     override fun withRawResponse(): SpendService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): SpendService =
+        SpendServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun calculateSpend(
         params: SpendCalculateSpendParams,
@@ -57,6 +61,13 @@ class SpendServiceImpl internal constructor(private val clientOptions: ClientOpt
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): SpendService.WithRawResponse =
+            SpendServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val calculateSpendHandler: Handler<SpendCalculateSpendResponse> =
             jsonHandler<SpendCalculateSpendResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -68,6 +79,7 @@ class SpendServiceImpl internal constructor(private val clientOptions: ClientOpt
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("spend", "calculate")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -96,6 +108,7 @@ class SpendServiceImpl internal constructor(private val clientOptions: ClientOpt
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("spend", "logs")
                     .build()
                     .prepare(clientOptions, params)
@@ -123,6 +136,7 @@ class SpendServiceImpl internal constructor(private val clientOptions: ClientOpt
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("spend", "tags")
                     .build()
                     .prepare(clientOptions, params)

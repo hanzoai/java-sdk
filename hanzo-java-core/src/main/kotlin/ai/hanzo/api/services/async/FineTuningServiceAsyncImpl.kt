@@ -5,6 +5,7 @@ package ai.hanzo.api.services.async
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.services.async.finetuning.JobServiceAsync
 import ai.hanzo.api.services.async.finetuning.JobServiceAsyncImpl
+import java.util.function.Consumer
 
 class FineTuningServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     FineTuningServiceAsync {
@@ -17,6 +18,9 @@ class FineTuningServiceAsyncImpl internal constructor(private val clientOptions:
 
     override fun withRawResponse(): FineTuningServiceAsync.WithRawResponse = withRawResponse
 
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): FineTuningServiceAsync =
+        FineTuningServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
+
     override fun jobs(): JobServiceAsync = jobs
 
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -25,6 +29,13 @@ class FineTuningServiceAsyncImpl internal constructor(private val clientOptions:
         private val jobs: JobServiceAsync.WithRawResponse by lazy {
             JobServiceAsyncImpl.WithRawResponseImpl(clientOptions)
         }
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): FineTuningServiceAsync.WithRawResponse =
+            FineTuningServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         override fun jobs(): JobServiceAsync.WithRawResponse = jobs
     }

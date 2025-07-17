@@ -23,6 +23,7 @@ import ai.hanzo.api.models.engines.EngineEmbedResponse
 import ai.hanzo.api.services.async.engines.ChatServiceAsync
 import ai.hanzo.api.services.async.engines.ChatServiceAsyncImpl
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class EngineServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -35,6 +36,9 @@ class EngineServiceAsyncImpl internal constructor(private val clientOptions: Cli
     private val chat: ChatServiceAsync by lazy { ChatServiceAsyncImpl(clientOptions) }
 
     override fun withRawResponse(): EngineServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): EngineServiceAsync =
+        EngineServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun chat(): ChatServiceAsync = chat
 
@@ -61,6 +65,13 @@ class EngineServiceAsyncImpl internal constructor(private val clientOptions: Cli
             ChatServiceAsyncImpl.WithRawResponseImpl(clientOptions)
         }
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): EngineServiceAsync.WithRawResponse =
+            EngineServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         override fun chat(): ChatServiceAsync.WithRawResponse = chat
 
         private val completeHandler: Handler<EngineCompleteResponse> =
@@ -77,6 +88,7 @@ class EngineServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("engines", params._pathParam(0), "completions")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -111,6 +123,7 @@ class EngineServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("engines", params._pathParam(0), "embeddings")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()

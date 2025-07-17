@@ -18,6 +18,7 @@ import ai.hanzo.api.core.prepareAsync
 import ai.hanzo.api.models.audio.transcriptions.TranscriptionCreateParams
 import ai.hanzo.api.models.audio.transcriptions.TranscriptionCreateResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class TranscriptionServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     TranscriptionServiceAsync {
@@ -27,6 +28,9 @@ class TranscriptionServiceAsyncImpl internal constructor(private val clientOptio
     }
 
     override fun withRawResponse(): TranscriptionServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): TranscriptionServiceAsync =
+        TranscriptionServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: TranscriptionCreateParams,
@@ -40,6 +44,13 @@ class TranscriptionServiceAsyncImpl internal constructor(private val clientOptio
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): TranscriptionServiceAsync.WithRawResponse =
+            TranscriptionServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val createHandler: Handler<TranscriptionCreateResponse> =
             jsonHandler<TranscriptionCreateResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -51,6 +62,7 @@ class TranscriptionServiceAsyncImpl internal constructor(private val clientOptio
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "audio", "transcriptions")
                     .body(multipartFormData(clientOptions.jsonMapper, params._body()))
                     .build()

@@ -18,6 +18,7 @@ import ai.hanzo.api.core.prepareAsync
 import ai.hanzo.api.models.moderations.ModerationCreateParams
 import ai.hanzo.api.models.moderations.ModerationCreateResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class ModerationServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     ModerationServiceAsync {
@@ -27,6 +28,9 @@ class ModerationServiceAsyncImpl internal constructor(private val clientOptions:
     }
 
     override fun withRawResponse(): ModerationServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): ModerationServiceAsync =
+        ModerationServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: ModerationCreateParams,
@@ -40,6 +44,13 @@ class ModerationServiceAsyncImpl internal constructor(private val clientOptions:
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ModerationServiceAsync.WithRawResponse =
+            ModerationServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val createHandler: Handler<ModerationCreateResponse> =
             jsonHandler<ModerationCreateResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -51,6 +62,7 @@ class ModerationServiceAsyncImpl internal constructor(private val clientOptions:
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "moderations")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()

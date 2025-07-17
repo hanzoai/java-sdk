@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.blocking
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.cohere.CohereCreateParams
@@ -15,6 +16,7 @@ import ai.hanzo.api.models.cohere.CohereRetrieveResponse
 import ai.hanzo.api.models.cohere.CohereUpdateParams
 import ai.hanzo.api.models.cohere.CohereUpdateResponse
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface CohereService {
 
@@ -22,6 +24,13 @@ interface CohereService {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): CohereService
 
     /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
     fun create(endpoint: String): CohereCreateResponse = create(endpoint, CohereCreateParams.none())
@@ -177,6 +186,13 @@ interface CohereService {
 
     /** A view of [CohereService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): CohereService.WithRawResponse
 
         /**
          * Returns a raw HTTP response for `post /cohere/{endpoint}`, but is otherwise the same as

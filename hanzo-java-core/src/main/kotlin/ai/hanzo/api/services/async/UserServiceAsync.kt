@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.user.UserCreateParams
@@ -14,8 +15,8 @@ import ai.hanzo.api.models.user.UserRetrieveInfoParams
 import ai.hanzo.api.models.user.UserRetrieveInfoResponse
 import ai.hanzo.api.models.user.UserUpdateParams
 import ai.hanzo.api.models.user.UserUpdateResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface UserServiceAsync {
 
@@ -23,6 +24,13 @@ interface UserServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): UserServiceAsync
 
     /**
      * Use this to create a new INTERNAL user with a budget. Internal Users can access LLM Admin UI
@@ -272,29 +280,32 @@ interface UserServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): UserServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `post /user/new`, but is otherwise the same as
          * [UserServiceAsync.create].
          */
-        @MustBeClosed
         fun create(): CompletableFuture<HttpResponseFor<UserCreateResponse>> =
             create(UserCreateParams.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: UserCreateParams = UserCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<UserCreateResponse>>
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: UserCreateParams = UserCreateParams.none()
         ): CompletableFuture<HttpResponseFor<UserCreateResponse>> =
             create(params, RequestOptions.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<UserCreateResponse>> =
@@ -304,26 +315,22 @@ interface UserServiceAsync {
          * Returns a raw HTTP response for `post /user/update`, but is otherwise the same as
          * [UserServiceAsync.update].
          */
-        @MustBeClosed
         fun update(): CompletableFuture<HttpResponseFor<UserUpdateResponse>> =
             update(UserUpdateParams.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             params: UserUpdateParams = UserUpdateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<UserUpdateResponse>>
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             params: UserUpdateParams = UserUpdateParams.none()
         ): CompletableFuture<HttpResponseFor<UserUpdateResponse>> =
             update(params, RequestOptions.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<UserUpdateResponse>> =
@@ -333,26 +340,22 @@ interface UserServiceAsync {
          * Returns a raw HTTP response for `get /user/get_users`, but is otherwise the same as
          * [UserServiceAsync.list].
          */
-        @MustBeClosed
         fun list(): CompletableFuture<HttpResponseFor<UserListResponse>> =
             list(UserListParams.none())
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             params: UserListParams = UserListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<UserListResponse>>
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             params: UserListParams = UserListParams.none()
         ): CompletableFuture<HttpResponseFor<UserListResponse>> =
             list(params, RequestOptions.none())
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<UserListResponse>> =
@@ -362,14 +365,12 @@ interface UserServiceAsync {
          * Returns a raw HTTP response for `post /user/delete`, but is otherwise the same as
          * [UserServiceAsync.delete].
          */
-        @MustBeClosed
         fun delete(
             params: UserDeleteParams
         ): CompletableFuture<HttpResponseFor<UserDeleteResponse>> =
             delete(params, RequestOptions.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             params: UserDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -379,26 +380,22 @@ interface UserServiceAsync {
          * Returns a raw HTTP response for `get /user/info`, but is otherwise the same as
          * [UserServiceAsync.retrieveInfo].
          */
-        @MustBeClosed
         fun retrieveInfo(): CompletableFuture<HttpResponseFor<UserRetrieveInfoResponse>> =
             retrieveInfo(UserRetrieveInfoParams.none())
 
         /** @see [retrieveInfo] */
-        @MustBeClosed
         fun retrieveInfo(
             params: UserRetrieveInfoParams = UserRetrieveInfoParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<UserRetrieveInfoResponse>>
 
         /** @see [retrieveInfo] */
-        @MustBeClosed
         fun retrieveInfo(
             params: UserRetrieveInfoParams = UserRetrieveInfoParams.none()
         ): CompletableFuture<HttpResponseFor<UserRetrieveInfoResponse>> =
             retrieveInfo(params, RequestOptions.none())
 
         /** @see [retrieveInfo] */
-        @MustBeClosed
         fun retrieveInfo(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<UserRetrieveInfoResponse>> =

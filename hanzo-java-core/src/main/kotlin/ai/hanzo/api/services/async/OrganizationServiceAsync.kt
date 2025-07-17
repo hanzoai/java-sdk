@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.organization.OrganizationAddMemberParams
@@ -19,8 +20,8 @@ import ai.hanzo.api.models.organization.OrganizationUpdateMemberResponse
 import ai.hanzo.api.models.organization.OrganizationUpdateParams
 import ai.hanzo.api.models.organization.OrganizationUpdateResponse
 import ai.hanzo.api.services.async.organization.InfoServiceAsync
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface OrganizationServiceAsync {
 
@@ -28,6 +29,13 @@ interface OrganizationServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): OrganizationServiceAsync
 
     fun info(): InfoServiceAsync
 
@@ -235,20 +243,27 @@ interface OrganizationServiceAsync {
      */
     interface WithRawResponse {
 
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): OrganizationServiceAsync.WithRawResponse
+
         fun info(): InfoServiceAsync.WithRawResponse
 
         /**
          * Returns a raw HTTP response for `post /organization/new`, but is otherwise the same as
          * [OrganizationServiceAsync.create].
          */
-        @MustBeClosed
         fun create(
             params: OrganizationCreateParams
         ): CompletableFuture<HttpResponseFor<OrganizationCreateResponse>> =
             create(params, RequestOptions.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: OrganizationCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -258,26 +273,22 @@ interface OrganizationServiceAsync {
          * Returns a raw HTTP response for `patch /organization/update`, but is otherwise the same
          * as [OrganizationServiceAsync.update].
          */
-        @MustBeClosed
         fun update(): CompletableFuture<HttpResponseFor<OrganizationUpdateResponse>> =
             update(OrganizationUpdateParams.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             params: OrganizationUpdateParams = OrganizationUpdateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<OrganizationUpdateResponse>>
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             params: OrganizationUpdateParams = OrganizationUpdateParams.none()
         ): CompletableFuture<HttpResponseFor<OrganizationUpdateResponse>> =
             update(params, RequestOptions.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<OrganizationUpdateResponse>> =
@@ -287,26 +298,22 @@ interface OrganizationServiceAsync {
          * Returns a raw HTTP response for `get /organization/list`, but is otherwise the same as
          * [OrganizationServiceAsync.list].
          */
-        @MustBeClosed
         fun list(): CompletableFuture<HttpResponseFor<List<OrganizationListResponse>>> =
             list(OrganizationListParams.none())
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             params: OrganizationListParams = OrganizationListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<List<OrganizationListResponse>>>
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             params: OrganizationListParams = OrganizationListParams.none()
         ): CompletableFuture<HttpResponseFor<List<OrganizationListResponse>>> =
             list(params, RequestOptions.none())
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<List<OrganizationListResponse>>> =
@@ -316,14 +323,12 @@ interface OrganizationServiceAsync {
          * Returns a raw HTTP response for `delete /organization/delete`, but is otherwise the same
          * as [OrganizationServiceAsync.delete].
          */
-        @MustBeClosed
         fun delete(
             params: OrganizationDeleteParams
         ): CompletableFuture<HttpResponseFor<List<OrganizationDeleteResponse>>> =
             delete(params, RequestOptions.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             params: OrganizationDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -333,14 +338,12 @@ interface OrganizationServiceAsync {
          * Returns a raw HTTP response for `post /organization/member_add`, but is otherwise the
          * same as [OrganizationServiceAsync.addMember].
          */
-        @MustBeClosed
         fun addMember(
             params: OrganizationAddMemberParams
         ): CompletableFuture<HttpResponseFor<OrganizationAddMemberResponse>> =
             addMember(params, RequestOptions.none())
 
         /** @see [addMember] */
-        @MustBeClosed
         fun addMember(
             params: OrganizationAddMemberParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -350,14 +353,12 @@ interface OrganizationServiceAsync {
          * Returns a raw HTTP response for `delete /organization/member_delete`, but is otherwise
          * the same as [OrganizationServiceAsync.deleteMember].
          */
-        @MustBeClosed
         fun deleteMember(
             params: OrganizationDeleteMemberParams
         ): CompletableFuture<HttpResponseFor<OrganizationDeleteMemberResponse>> =
             deleteMember(params, RequestOptions.none())
 
         /** @see [deleteMember] */
-        @MustBeClosed
         fun deleteMember(
             params: OrganizationDeleteMemberParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -367,14 +368,12 @@ interface OrganizationServiceAsync {
          * Returns a raw HTTP response for `patch /organization/member_update`, but is otherwise the
          * same as [OrganizationServiceAsync.updateMember].
          */
-        @MustBeClosed
         fun updateMember(
             params: OrganizationUpdateMemberParams
         ): CompletableFuture<HttpResponseFor<OrganizationUpdateMemberResponse>> =
             updateMember(params, RequestOptions.none())
 
         /** @see [updateMember] */
-        @MustBeClosed
         fun updateMember(
             params: OrganizationUpdateMemberParams,
             requestOptions: RequestOptions = RequestOptions.none(),

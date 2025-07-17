@@ -2,14 +2,15 @@
 
 package ai.hanzo.api.services.async.model
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.model.update.UpdateFullParams
 import ai.hanzo.api.models.model.update.UpdateFullResponse
 import ai.hanzo.api.models.model.update.UpdatePartialParams
 import ai.hanzo.api.models.model.update.UpdatePartialResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface UpdateServiceAsync {
 
@@ -17,6 +18,13 @@ interface UpdateServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): UpdateServiceAsync
 
     /** Edit existing model params */
     fun full(params: UpdateFullParams): CompletableFuture<UpdateFullResponse> =
@@ -71,15 +79,22 @@ interface UpdateServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): UpdateServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `post /model/update`, but is otherwise the same as
          * [UpdateServiceAsync.full].
          */
-        @MustBeClosed
         fun full(params: UpdateFullParams): CompletableFuture<HttpResponseFor<UpdateFullResponse>> =
             full(params, RequestOptions.none())
 
         /** @see [full] */
-        @MustBeClosed
         fun full(
             params: UpdateFullParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -89,7 +104,6 @@ interface UpdateServiceAsync {
          * Returns a raw HTTP response for `patch /model/{model_id}/update`, but is otherwise the
          * same as [UpdateServiceAsync.partial].
          */
-        @MustBeClosed
         fun partial(
             modelId: String,
             params: UpdatePartialParams,
@@ -97,7 +111,6 @@ interface UpdateServiceAsync {
             partial(modelId, params, RequestOptions.none())
 
         /** @see [partial] */
-        @MustBeClosed
         fun partial(
             modelId: String,
             params: UpdatePartialParams,
@@ -106,14 +119,12 @@ interface UpdateServiceAsync {
             partial(params.toBuilder().modelId(modelId).build(), requestOptions)
 
         /** @see [partial] */
-        @MustBeClosed
         fun partial(
             params: UpdatePartialParams
         ): CompletableFuture<HttpResponseFor<UpdatePartialResponse>> =
             partial(params, RequestOptions.none())
 
         /** @see [partial] */
-        @MustBeClosed
         fun partial(
             params: UpdatePartialParams,
             requestOptions: RequestOptions = RequestOptions.none(),

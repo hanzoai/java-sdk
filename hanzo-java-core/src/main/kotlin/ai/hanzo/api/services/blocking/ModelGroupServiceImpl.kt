@@ -16,6 +16,7 @@ import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepare
 import ai.hanzo.api.models.modelgroup.ModelGroupRetrieveInfoParams
 import ai.hanzo.api.models.modelgroup.ModelGroupRetrieveInfoResponse
+import java.util.function.Consumer
 
 class ModelGroupServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     ModelGroupService {
@@ -25,6 +26,9 @@ class ModelGroupServiceImpl internal constructor(private val clientOptions: Clie
     }
 
     override fun withRawResponse(): ModelGroupService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): ModelGroupService =
+        ModelGroupServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun retrieveInfo(
         params: ModelGroupRetrieveInfoParams,
@@ -38,6 +42,13 @@ class ModelGroupServiceImpl internal constructor(private val clientOptions: Clie
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ModelGroupService.WithRawResponse =
+            ModelGroupServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val retrieveInfoHandler: Handler<ModelGroupRetrieveInfoResponse> =
             jsonHandler<ModelGroupRetrieveInfoResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -49,6 +60,7 @@ class ModelGroupServiceImpl internal constructor(private val clientOptions: Clie
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("model_group", "info")
                     .build()
                     .prepare(clientOptions, params)

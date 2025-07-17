@@ -23,6 +23,7 @@ import ai.hanzo.api.models.credentials.CredentialDeleteResponse
 import ai.hanzo.api.models.credentials.CredentialListParams
 import ai.hanzo.api.models.credentials.CredentialListResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class CredentialServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -33,6 +34,9 @@ class CredentialServiceAsyncImpl internal constructor(private val clientOptions:
     }
 
     override fun withRawResponse(): CredentialServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): CredentialServiceAsync =
+        CredentialServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: CredentialCreateParams,
@@ -60,6 +64,13 @@ class CredentialServiceAsyncImpl internal constructor(private val clientOptions:
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): CredentialServiceAsync.WithRawResponse =
+            CredentialServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val createHandler: Handler<CredentialCreateResponse> =
             jsonHandler<CredentialCreateResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -71,6 +82,7 @@ class CredentialServiceAsyncImpl internal constructor(private val clientOptions:
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("credentials")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -102,6 +114,7 @@ class CredentialServiceAsyncImpl internal constructor(private val clientOptions:
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("credentials")
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -135,6 +148,7 @@ class CredentialServiceAsyncImpl internal constructor(private val clientOptions:
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("credentials", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()

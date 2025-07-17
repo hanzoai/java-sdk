@@ -16,6 +16,7 @@ import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepare
 import ai.hanzo.api.models.cache.redis.RediRetrieveInfoParams
 import ai.hanzo.api.models.cache.redis.RediRetrieveInfoResponse
+import java.util.function.Consumer
 
 class RediServiceImpl internal constructor(private val clientOptions: ClientOptions) : RediService {
 
@@ -24,6 +25,9 @@ class RediServiceImpl internal constructor(private val clientOptions: ClientOpti
     }
 
     override fun withRawResponse(): RediService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): RediService =
+        RediServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun retrieveInfo(
         params: RediRetrieveInfoParams,
@@ -37,6 +41,13 @@ class RediServiceImpl internal constructor(private val clientOptions: ClientOpti
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): RediService.WithRawResponse =
+            RediServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val retrieveInfoHandler: Handler<RediRetrieveInfoResponse> =
             jsonHandler<RediRetrieveInfoResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -48,6 +59,7 @@ class RediServiceImpl internal constructor(private val clientOptions: ClientOpti
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("cache", "redis", "info")
                     .build()
                     .prepare(clientOptions, params)

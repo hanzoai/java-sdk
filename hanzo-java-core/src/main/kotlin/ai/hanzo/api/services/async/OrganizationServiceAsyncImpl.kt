@@ -32,6 +32,7 @@ import ai.hanzo.api.models.organization.OrganizationUpdateResponse
 import ai.hanzo.api.services.async.organization.InfoServiceAsync
 import ai.hanzo.api.services.async.organization.InfoServiceAsyncImpl
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class OrganizationServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     OrganizationServiceAsync {
@@ -43,6 +44,9 @@ class OrganizationServiceAsyncImpl internal constructor(private val clientOption
     private val info: InfoServiceAsync by lazy { InfoServiceAsyncImpl(clientOptions) }
 
     override fun withRawResponse(): OrganizationServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): OrganizationServiceAsync =
+        OrganizationServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun info(): InfoServiceAsync = info
 
@@ -104,6 +108,13 @@ class OrganizationServiceAsyncImpl internal constructor(private val clientOption
             InfoServiceAsyncImpl.WithRawResponseImpl(clientOptions)
         }
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): OrganizationServiceAsync.WithRawResponse =
+            OrganizationServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         override fun info(): InfoServiceAsync.WithRawResponse = info
 
         private val createHandler: Handler<OrganizationCreateResponse> =
@@ -117,6 +128,7 @@ class OrganizationServiceAsyncImpl internal constructor(private val clientOption
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("organization", "new")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -148,6 +160,7 @@ class OrganizationServiceAsyncImpl internal constructor(private val clientOption
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PATCH)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("organization", "update")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -179,6 +192,7 @@ class OrganizationServiceAsyncImpl internal constructor(private val clientOption
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("organization", "list")
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -209,6 +223,7 @@ class OrganizationServiceAsyncImpl internal constructor(private val clientOption
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("organization", "delete")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -240,6 +255,7 @@ class OrganizationServiceAsyncImpl internal constructor(private val clientOption
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("organization", "member_add")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -271,6 +287,7 @@ class OrganizationServiceAsyncImpl internal constructor(private val clientOption
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("organization", "member_delete")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -302,6 +319,7 @@ class OrganizationServiceAsyncImpl internal constructor(private val clientOption
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PATCH)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("organization", "member_update")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()

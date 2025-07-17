@@ -17,6 +17,7 @@ import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepare
 import ai.hanzo.api.models.files.content.ContentRetrieveParams
 import ai.hanzo.api.models.files.content.ContentRetrieveResponse
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class ContentServiceImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -27,6 +28,9 @@ class ContentServiceImpl internal constructor(private val clientOptions: ClientO
     }
 
     override fun withRawResponse(): ContentService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): ContentService =
+        ContentServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun retrieve(
         params: ContentRetrieveParams,
@@ -39,6 +43,13 @@ class ContentServiceImpl internal constructor(private val clientOptions: ClientO
         ContentService.WithRawResponse {
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ContentService.WithRawResponse =
+            ContentServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         private val retrieveHandler: Handler<ContentRetrieveResponse> =
             jsonHandler<ContentRetrieveResponse>(clientOptions.jsonMapper)
@@ -54,6 +65,7 @@ class ContentServiceImpl internal constructor(private val clientOptions: ClientO
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments(
                         params._pathParam(0),
                         "v1",

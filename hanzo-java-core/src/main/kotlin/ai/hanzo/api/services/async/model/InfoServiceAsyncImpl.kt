@@ -17,6 +17,7 @@ import ai.hanzo.api.core.prepareAsync
 import ai.hanzo.api.models.model.info.InfoListParams
 import ai.hanzo.api.models.model.info.InfoListResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class InfoServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     InfoServiceAsync {
@@ -26,6 +27,9 @@ class InfoServiceAsyncImpl internal constructor(private val clientOptions: Clien
     }
 
     override fun withRawResponse(): InfoServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): InfoServiceAsync =
+        InfoServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun list(
         params: InfoListParams,
@@ -39,6 +43,13 @@ class InfoServiceAsyncImpl internal constructor(private val clientOptions: Clien
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): InfoServiceAsync.WithRawResponse =
+            InfoServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val listHandler: Handler<InfoListResponse> =
             jsonHandler<InfoListResponse>(clientOptions.jsonMapper).withErrorHandler(errorHandler)
 
@@ -49,6 +60,7 @@ class InfoServiceAsyncImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("model", "info")
                     .build()
                     .prepareAsync(clientOptions, params)

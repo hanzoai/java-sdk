@@ -30,6 +30,7 @@ import ai.hanzo.api.models.customer.CustomerUnblockResponse
 import ai.hanzo.api.models.customer.CustomerUpdateParams
 import ai.hanzo.api.models.customer.CustomerUpdateResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class CustomerServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     CustomerServiceAsync {
@@ -39,6 +40,9 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
     }
 
     override fun withRawResponse(): CustomerServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): CustomerServiceAsync =
+        CustomerServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: CustomerCreateParams,
@@ -94,6 +98,13 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): CustomerServiceAsync.WithRawResponse =
+            CustomerServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val createHandler: Handler<CustomerCreateResponse> =
             jsonHandler<CustomerCreateResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -105,6 +116,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("customer", "new")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -136,6 +148,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("customer", "update")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -167,6 +180,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("customer", "list")
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -197,6 +211,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("customer", "delete")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -228,6 +243,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("customer", "block")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -259,6 +275,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("customer", "info")
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -289,6 +306,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("customer", "unblock")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()

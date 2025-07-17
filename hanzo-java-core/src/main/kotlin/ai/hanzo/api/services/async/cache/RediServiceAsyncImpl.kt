@@ -17,6 +17,7 @@ import ai.hanzo.api.core.prepareAsync
 import ai.hanzo.api.models.cache.redis.RediRetrieveInfoParams
 import ai.hanzo.api.models.cache.redis.RediRetrieveInfoResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class RediServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     RediServiceAsync {
@@ -26,6 +27,9 @@ class RediServiceAsyncImpl internal constructor(private val clientOptions: Clien
     }
 
     override fun withRawResponse(): RediServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): RediServiceAsync =
+        RediServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun retrieveInfo(
         params: RediRetrieveInfoParams,
@@ -39,6 +43,13 @@ class RediServiceAsyncImpl internal constructor(private val clientOptions: Clien
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): RediServiceAsync.WithRawResponse =
+            RediServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val retrieveInfoHandler: Handler<RediRetrieveInfoResponse> =
             jsonHandler<RediRetrieveInfoResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -50,6 +61,7 @@ class RediServiceAsyncImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("cache", "redis", "info")
                     .build()
                     .prepareAsync(clientOptions, params)

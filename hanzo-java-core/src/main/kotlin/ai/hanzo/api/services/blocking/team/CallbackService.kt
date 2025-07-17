@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.blocking.team
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.team.callback.CallbackAddParams
@@ -9,6 +10,7 @@ import ai.hanzo.api.models.team.callback.CallbackAddResponse
 import ai.hanzo.api.models.team.callback.CallbackRetrieveParams
 import ai.hanzo.api.models.team.callback.CallbackRetrieveResponse
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface CallbackService {
 
@@ -16,6 +18,13 @@ interface CallbackService {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): CallbackService
 
     /**
      * Get the success/failure callbacks and variables for a team
@@ -126,6 +135,13 @@ interface CallbackService {
 
     /** A view of [CallbackService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): CallbackService.WithRawResponse
 
         /**
          * Returns a raw HTTP response for `get /team/{team_id}/callback`, but is otherwise the same

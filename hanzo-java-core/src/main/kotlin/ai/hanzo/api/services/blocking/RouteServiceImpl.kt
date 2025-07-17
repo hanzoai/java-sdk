@@ -16,6 +16,7 @@ import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepare
 import ai.hanzo.api.models.routes.RouteListParams
 import ai.hanzo.api.models.routes.RouteListResponse
+import java.util.function.Consumer
 
 class RouteServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     RouteService {
@@ -26,6 +27,9 @@ class RouteServiceImpl internal constructor(private val clientOptions: ClientOpt
 
     override fun withRawResponse(): RouteService.WithRawResponse = withRawResponse
 
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): RouteService =
+        RouteServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
+
     override fun list(params: RouteListParams, requestOptions: RequestOptions): RouteListResponse =
         // get /routes
         withRawResponse().list(params, requestOptions).parse()
@@ -34,6 +38,13 @@ class RouteServiceImpl internal constructor(private val clientOptions: ClientOpt
         RouteService.WithRawResponse {
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): RouteService.WithRawResponse =
+            RouteServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         private val listHandler: Handler<RouteListResponse> =
             jsonHandler<RouteListResponse>(clientOptions.jsonMapper).withErrorHandler(errorHandler)
@@ -45,6 +56,7 @@ class RouteServiceImpl internal constructor(private val clientOptions: ClientOpt
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("routes")
                     .build()
                     .prepare(clientOptions, params)

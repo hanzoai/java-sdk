@@ -24,6 +24,7 @@ import ai.hanzo.api.models.responses.ResponseRetrieveParams
 import ai.hanzo.api.models.responses.ResponseRetrieveResponse
 import ai.hanzo.api.services.blocking.responses.InputItemService
 import ai.hanzo.api.services.blocking.responses.InputItemServiceImpl
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class ResponseServiceImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -36,6 +37,9 @@ class ResponseServiceImpl internal constructor(private val clientOptions: Client
     private val inputItems: InputItemService by lazy { InputItemServiceImpl(clientOptions) }
 
     override fun withRawResponse(): ResponseService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): ResponseService =
+        ResponseServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun inputItems(): InputItemService = inputItems
 
@@ -69,6 +73,13 @@ class ResponseServiceImpl internal constructor(private val clientOptions: Client
             InputItemServiceImpl.WithRawResponseImpl(clientOptions)
         }
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ResponseService.WithRawResponse =
+            ResponseServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         override fun inputItems(): InputItemService.WithRawResponse = inputItems
 
         private val createHandler: Handler<ResponseCreateResponse> =
@@ -82,6 +93,7 @@ class ResponseServiceImpl internal constructor(private val clientOptions: Client
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "responses")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -113,6 +125,7 @@ class ResponseServiceImpl internal constructor(private val clientOptions: Client
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "responses", params._pathParam(0))
                     .build()
                     .prepare(clientOptions, params)
@@ -143,6 +156,7 @@ class ResponseServiceImpl internal constructor(private val clientOptions: Client
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "responses", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()

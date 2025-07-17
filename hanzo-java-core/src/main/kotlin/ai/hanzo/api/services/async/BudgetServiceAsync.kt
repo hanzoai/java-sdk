@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.budget.BudgetCreateParams
@@ -16,8 +17,8 @@ import ai.hanzo.api.models.budget.BudgetSettingsParams
 import ai.hanzo.api.models.budget.BudgetSettingsResponse
 import ai.hanzo.api.models.budget.BudgetUpdateParams
 import ai.hanzo.api.models.budget.BudgetUpdateResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface BudgetServiceAsync {
 
@@ -25,6 +26,13 @@ interface BudgetServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): BudgetServiceAsync
 
     /**
      * Create a new budget object. Can apply this to teams, orgs, end-users, keys.
@@ -147,17 +155,24 @@ interface BudgetServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): BudgetServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `post /budget/new`, but is otherwise the same as
          * [BudgetServiceAsync.create].
          */
-        @MustBeClosed
         fun create(
             params: BudgetCreateParams
         ): CompletableFuture<HttpResponseFor<BudgetCreateResponse>> =
             create(params, RequestOptions.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: BudgetCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -167,14 +182,12 @@ interface BudgetServiceAsync {
          * Returns a raw HTTP response for `post /budget/update`, but is otherwise the same as
          * [BudgetServiceAsync.update].
          */
-        @MustBeClosed
         fun update(
             params: BudgetUpdateParams
         ): CompletableFuture<HttpResponseFor<BudgetUpdateResponse>> =
             update(params, RequestOptions.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             params: BudgetUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -184,26 +197,22 @@ interface BudgetServiceAsync {
          * Returns a raw HTTP response for `get /budget/list`, but is otherwise the same as
          * [BudgetServiceAsync.list].
          */
-        @MustBeClosed
         fun list(): CompletableFuture<HttpResponseFor<BudgetListResponse>> =
             list(BudgetListParams.none())
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             params: BudgetListParams = BudgetListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<BudgetListResponse>>
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             params: BudgetListParams = BudgetListParams.none()
         ): CompletableFuture<HttpResponseFor<BudgetListResponse>> =
             list(params, RequestOptions.none())
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<BudgetListResponse>> =
@@ -213,14 +222,12 @@ interface BudgetServiceAsync {
          * Returns a raw HTTP response for `post /budget/delete`, but is otherwise the same as
          * [BudgetServiceAsync.delete].
          */
-        @MustBeClosed
         fun delete(
             params: BudgetDeleteParams
         ): CompletableFuture<HttpResponseFor<BudgetDeleteResponse>> =
             delete(params, RequestOptions.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             params: BudgetDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -230,12 +237,10 @@ interface BudgetServiceAsync {
          * Returns a raw HTTP response for `post /budget/info`, but is otherwise the same as
          * [BudgetServiceAsync.info].
          */
-        @MustBeClosed
         fun info(params: BudgetInfoParams): CompletableFuture<HttpResponseFor<BudgetInfoResponse>> =
             info(params, RequestOptions.none())
 
         /** @see [info] */
-        @MustBeClosed
         fun info(
             params: BudgetInfoParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -245,14 +250,12 @@ interface BudgetServiceAsync {
          * Returns a raw HTTP response for `get /budget/settings`, but is otherwise the same as
          * [BudgetServiceAsync.settings].
          */
-        @MustBeClosed
         fun settings(
             params: BudgetSettingsParams
         ): CompletableFuture<HttpResponseFor<BudgetSettingsResponse>> =
             settings(params, RequestOptions.none())
 
         /** @see [settings] */
-        @MustBeClosed
         fun settings(
             params: BudgetSettingsParams,
             requestOptions: RequestOptions = RequestOptions.none(),

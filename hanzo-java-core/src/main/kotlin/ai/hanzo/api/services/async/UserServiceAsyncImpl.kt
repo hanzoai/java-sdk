@@ -26,6 +26,7 @@ import ai.hanzo.api.models.user.UserRetrieveInfoResponse
 import ai.hanzo.api.models.user.UserUpdateParams
 import ai.hanzo.api.models.user.UserUpdateResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class UserServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     UserServiceAsync {
@@ -35,6 +36,9 @@ class UserServiceAsyncImpl internal constructor(private val clientOptions: Clien
     }
 
     override fun withRawResponse(): UserServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): UserServiceAsync =
+        UserServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: UserCreateParams,
@@ -76,6 +80,13 @@ class UserServiceAsyncImpl internal constructor(private val clientOptions: Clien
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): UserServiceAsync.WithRawResponse =
+            UserServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val createHandler: Handler<UserCreateResponse> =
             jsonHandler<UserCreateResponse>(clientOptions.jsonMapper).withErrorHandler(errorHandler)
 
@@ -86,6 +97,7 @@ class UserServiceAsyncImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("user", "new")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -116,6 +128,7 @@ class UserServiceAsyncImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("user", "update")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -146,6 +159,7 @@ class UserServiceAsyncImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("user", "get_users")
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -175,6 +189,7 @@ class UserServiceAsyncImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("user", "delete")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -206,6 +221,7 @@ class UserServiceAsyncImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("user", "info")
                     .build()
                     .prepareAsync(clientOptions, params)

@@ -2,12 +2,13 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.provider.ProviderListBudgetsParams
 import ai.hanzo.api.models.provider.ProviderListBudgetsResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface ProviderServiceAsync {
 
@@ -15,6 +16,13 @@ interface ProviderServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): ProviderServiceAsync
 
     /**
      * Provider Budget Routing - Get Budget, Spend Details
@@ -87,29 +95,34 @@ interface ProviderServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ProviderServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `get /provider/budgets`, but is otherwise the same as
          * [ProviderServiceAsync.listBudgets].
          */
-        @MustBeClosed
         fun listBudgets(): CompletableFuture<HttpResponseFor<ProviderListBudgetsResponse>> =
             listBudgets(ProviderListBudgetsParams.none())
 
         /** @see [listBudgets] */
-        @MustBeClosed
         fun listBudgets(
             params: ProviderListBudgetsParams = ProviderListBudgetsParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<ProviderListBudgetsResponse>>
 
         /** @see [listBudgets] */
-        @MustBeClosed
         fun listBudgets(
             params: ProviderListBudgetsParams = ProviderListBudgetsParams.none()
         ): CompletableFuture<HttpResponseFor<ProviderListBudgetsResponse>> =
             listBudgets(params, RequestOptions.none())
 
         /** @see [listBudgets] */
-        @MustBeClosed
         fun listBudgets(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<ProviderListBudgetsResponse>> =

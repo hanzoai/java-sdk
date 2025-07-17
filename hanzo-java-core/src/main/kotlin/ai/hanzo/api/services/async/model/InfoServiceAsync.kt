@@ -2,12 +2,13 @@
 
 package ai.hanzo.api.services.async.model
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.model.info.InfoListParams
 import ai.hanzo.api.models.model.info.InfoListResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface InfoServiceAsync {
 
@@ -15,6 +16,13 @@ interface InfoServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): InfoServiceAsync
 
     /**
      * Provides more info about each model in /models, including config.yaml descriptions (except
@@ -67,29 +75,32 @@ interface InfoServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): InfoServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `get /model/info`, but is otherwise the same as
          * [InfoServiceAsync.list].
          */
-        @MustBeClosed
         fun list(): CompletableFuture<HttpResponseFor<InfoListResponse>> =
             list(InfoListParams.none())
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             params: InfoListParams = InfoListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<InfoListResponse>>
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             params: InfoListParams = InfoListParams.none()
         ): CompletableFuture<HttpResponseFor<InfoListResponse>> =
             list(params, RequestOptions.none())
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<InfoListResponse>> =
