@@ -22,6 +22,7 @@ import ai.hanzo.api.models.engines.EngineEmbedParams
 import ai.hanzo.api.models.engines.EngineEmbedResponse
 import ai.hanzo.api.services.blocking.engines.ChatService
 import ai.hanzo.api.services.blocking.engines.ChatServiceImpl
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class EngineServiceImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -34,6 +35,9 @@ class EngineServiceImpl internal constructor(private val clientOptions: ClientOp
     private val chat: ChatService by lazy { ChatServiceImpl(clientOptions) }
 
     override fun withRawResponse(): EngineService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): EngineService =
+        EngineServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun chat(): ChatService = chat
 
@@ -60,6 +64,13 @@ class EngineServiceImpl internal constructor(private val clientOptions: ClientOp
             ChatServiceImpl.WithRawResponseImpl(clientOptions)
         }
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): EngineService.WithRawResponse =
+            EngineServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         override fun chat(): ChatService.WithRawResponse = chat
 
         private val completeHandler: Handler<EngineCompleteResponse> =
@@ -76,6 +87,7 @@ class EngineServiceImpl internal constructor(private val clientOptions: ClientOp
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("engines", params._pathParam(0), "completions")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -107,6 +119,7 @@ class EngineServiceImpl internal constructor(private val clientOptions: ClientOp
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("engines", params._pathParam(0), "embeddings")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()

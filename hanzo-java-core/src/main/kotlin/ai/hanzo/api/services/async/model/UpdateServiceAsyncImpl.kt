@@ -21,6 +21,7 @@ import ai.hanzo.api.models.model.update.UpdateFullResponse
 import ai.hanzo.api.models.model.update.UpdatePartialParams
 import ai.hanzo.api.models.model.update.UpdatePartialResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class UpdateServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -31,6 +32,9 @@ class UpdateServiceAsyncImpl internal constructor(private val clientOptions: Cli
     }
 
     override fun withRawResponse(): UpdateServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): UpdateServiceAsync =
+        UpdateServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun full(
         params: UpdateFullParams,
@@ -51,6 +55,13 @@ class UpdateServiceAsyncImpl internal constructor(private val clientOptions: Cli
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): UpdateServiceAsync.WithRawResponse =
+            UpdateServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val fullHandler: Handler<UpdateFullResponse> =
             jsonHandler<UpdateFullResponse>(clientOptions.jsonMapper).withErrorHandler(errorHandler)
 
@@ -61,6 +72,7 @@ class UpdateServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("model", "update")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -95,6 +107,7 @@ class UpdateServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PATCH)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("model", params._pathParam(0), "update")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()

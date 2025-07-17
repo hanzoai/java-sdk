@@ -18,6 +18,7 @@ import ai.hanzo.api.core.prepareAsync
 import ai.hanzo.api.models.files.content.ContentRetrieveParams
 import ai.hanzo.api.models.files.content.ContentRetrieveResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class ContentServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -28,6 +29,9 @@ class ContentServiceAsyncImpl internal constructor(private val clientOptions: Cl
     }
 
     override fun withRawResponse(): ContentServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): ContentServiceAsync =
+        ContentServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun retrieve(
         params: ContentRetrieveParams,
@@ -40,6 +44,13 @@ class ContentServiceAsyncImpl internal constructor(private val clientOptions: Cl
         ContentServiceAsync.WithRawResponse {
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ContentServiceAsync.WithRawResponse =
+            ContentServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         private val retrieveHandler: Handler<ContentRetrieveResponse> =
             jsonHandler<ContentRetrieveResponse>(clientOptions.jsonMapper)
@@ -55,6 +66,7 @@ class ContentServiceAsyncImpl internal constructor(private val clientOptions: Cl
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments(
                         params._pathParam(0),
                         "v1",

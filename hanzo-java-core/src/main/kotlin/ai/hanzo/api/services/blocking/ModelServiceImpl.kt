@@ -23,6 +23,7 @@ import ai.hanzo.api.services.blocking.model.InfoService
 import ai.hanzo.api.services.blocking.model.InfoServiceImpl
 import ai.hanzo.api.services.blocking.model.UpdateService
 import ai.hanzo.api.services.blocking.model.UpdateServiceImpl
+import java.util.function.Consumer
 
 class ModelServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     ModelService {
@@ -36,6 +37,9 @@ class ModelServiceImpl internal constructor(private val clientOptions: ClientOpt
     private val update: UpdateService by lazy { UpdateServiceImpl(clientOptions) }
 
     override fun withRawResponse(): ModelService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): ModelService =
+        ModelServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun info(): InfoService = info
 
@@ -68,6 +72,13 @@ class ModelServiceImpl internal constructor(private val clientOptions: ClientOpt
             UpdateServiceImpl.WithRawResponseImpl(clientOptions)
         }
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ModelService.WithRawResponse =
+            ModelServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         override fun info(): InfoService.WithRawResponse = info
 
         override fun update(): UpdateService.WithRawResponse = update
@@ -83,6 +94,7 @@ class ModelServiceImpl internal constructor(private val clientOptions: ClientOpt
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("model", "new")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -111,6 +123,7 @@ class ModelServiceImpl internal constructor(private val clientOptions: ClientOpt
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("model", "delete")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()

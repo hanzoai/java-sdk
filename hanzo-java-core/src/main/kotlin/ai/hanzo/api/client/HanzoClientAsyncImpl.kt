@@ -112,6 +112,7 @@ import ai.hanzo.api.services.async.UtilServiceAsyncImpl
 import ai.hanzo.api.services.async.VertexAiServiceAsync
 import ai.hanzo.api.services.async.VertexAiServiceAsyncImpl
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class HanzoClientAsyncImpl(private val clientOptions: ClientOptions) : HanzoClientAsync {
 
@@ -309,6 +310,9 @@ class HanzoClientAsyncImpl(private val clientOptions: ClientOptions) : HanzoClie
     override fun sync(): HanzoClient = sync
 
     override fun withRawResponse(): HanzoClientAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): HanzoClientAsync =
+        HanzoClientAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun models(): ModelServiceAsync = models
 
@@ -612,6 +616,13 @@ class HanzoClientAsyncImpl(private val clientOptions: ClientOptions) : HanzoClie
             BudgetServiceAsyncImpl.WithRawResponseImpl(clientOptions)
         }
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): HanzoClientAsync.WithRawResponse =
+            HanzoClientAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         override fun models(): ModelServiceAsync.WithRawResponse = models
 
         override fun openai(): OpenAIServiceAsync.WithRawResponse = openai
@@ -719,6 +730,7 @@ class HanzoClientAsyncImpl(private val clientOptions: ClientOptions) : HanzoClie
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("")
                     .build()
                     .prepareAsync(clientOptions, params)

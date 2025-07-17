@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.blocking
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.langfuse.LangfuseCreateParams
@@ -15,6 +16,7 @@ import ai.hanzo.api.models.langfuse.LangfuseRetrieveResponse
 import ai.hanzo.api.models.langfuse.LangfuseUpdateParams
 import ai.hanzo.api.models.langfuse.LangfuseUpdateResponse
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface LangfuseService {
 
@@ -22,6 +24,13 @@ interface LangfuseService {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): LangfuseService
 
     /**
      * Call Langfuse via LLM proxy. Works with Langfuse SDK.
@@ -203,6 +212,13 @@ interface LangfuseService {
 
     /** A view of [LangfuseService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): LangfuseService.WithRawResponse
 
         /**
          * Returns a raw HTTP response for `post /langfuse/{endpoint}`, but is otherwise the same as

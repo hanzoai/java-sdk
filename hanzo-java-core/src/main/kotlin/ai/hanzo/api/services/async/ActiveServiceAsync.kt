@@ -2,12 +2,13 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.active.ActiveListCallbacksParams
 import ai.hanzo.api.models.active.ActiveListCallbacksResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface ActiveServiceAsync {
 
@@ -15,6 +16,13 @@ interface ActiveServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): ActiveServiceAsync
 
     /**
      * Returns a list of llm level settings
@@ -65,29 +73,34 @@ interface ActiveServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ActiveServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `get /active/callbacks`, but is otherwise the same as
          * [ActiveServiceAsync.listCallbacks].
          */
-        @MustBeClosed
         fun listCallbacks(): CompletableFuture<HttpResponseFor<ActiveListCallbacksResponse>> =
             listCallbacks(ActiveListCallbacksParams.none())
 
         /** @see [listCallbacks] */
-        @MustBeClosed
         fun listCallbacks(
             params: ActiveListCallbacksParams = ActiveListCallbacksParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<ActiveListCallbacksResponse>>
 
         /** @see [listCallbacks] */
-        @MustBeClosed
         fun listCallbacks(
             params: ActiveListCallbacksParams = ActiveListCallbacksParams.none()
         ): CompletableFuture<HttpResponseFor<ActiveListCallbacksResponse>> =
             listCallbacks(params, RequestOptions.none())
 
         /** @see [listCallbacks] */
-        @MustBeClosed
         fun listCallbacks(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<ActiveListCallbacksResponse>> =

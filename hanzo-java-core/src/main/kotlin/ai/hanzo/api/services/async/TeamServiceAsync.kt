@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.team.TeamAddMemberParams
@@ -30,8 +31,8 @@ import ai.hanzo.api.models.team.TeamUpdateParams
 import ai.hanzo.api.models.team.TeamUpdateResponse
 import ai.hanzo.api.services.async.team.CallbackServiceAsync
 import ai.hanzo.api.services.async.team.ModelServiceAsync
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface TeamServiceAsync {
 
@@ -39,6 +40,13 @@ interface TeamServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): TeamServiceAsync
 
     fun model(): ModelServiceAsync
 
@@ -435,6 +443,13 @@ interface TeamServiceAsync {
     /** A view of [TeamServiceAsync] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
 
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): TeamServiceAsync.WithRawResponse
+
         fun model(): ModelServiceAsync.WithRawResponse
 
         fun callback(): CallbackServiceAsync.WithRawResponse
@@ -443,26 +458,22 @@ interface TeamServiceAsync {
          * Returns a raw HTTP response for `post /team/new`, but is otherwise the same as
          * [TeamServiceAsync.create].
          */
-        @MustBeClosed
         fun create(): CompletableFuture<HttpResponseFor<TeamCreateResponse>> =
             create(TeamCreateParams.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: TeamCreateParams = TeamCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<TeamCreateResponse>>
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: TeamCreateParams = TeamCreateParams.none()
         ): CompletableFuture<HttpResponseFor<TeamCreateResponse>> =
             create(params, RequestOptions.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<TeamCreateResponse>> =
@@ -472,14 +483,12 @@ interface TeamServiceAsync {
          * Returns a raw HTTP response for `post /team/update`, but is otherwise the same as
          * [TeamServiceAsync.update].
          */
-        @MustBeClosed
         fun update(
             params: TeamUpdateParams
         ): CompletableFuture<HttpResponseFor<TeamUpdateResponse>> =
             update(params, RequestOptions.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             params: TeamUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -489,26 +498,22 @@ interface TeamServiceAsync {
          * Returns a raw HTTP response for `get /team/list`, but is otherwise the same as
          * [TeamServiceAsync.list].
          */
-        @MustBeClosed
         fun list(): CompletableFuture<HttpResponseFor<TeamListResponse>> =
             list(TeamListParams.none())
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             params: TeamListParams = TeamListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<TeamListResponse>>
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             params: TeamListParams = TeamListParams.none()
         ): CompletableFuture<HttpResponseFor<TeamListResponse>> =
             list(params, RequestOptions.none())
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<TeamListResponse>> =
@@ -518,14 +523,12 @@ interface TeamServiceAsync {
          * Returns a raw HTTP response for `post /team/delete`, but is otherwise the same as
          * [TeamServiceAsync.delete].
          */
-        @MustBeClosed
         fun delete(
             params: TeamDeleteParams
         ): CompletableFuture<HttpResponseFor<TeamDeleteResponse>> =
             delete(params, RequestOptions.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             params: TeamDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -535,14 +538,12 @@ interface TeamServiceAsync {
          * Returns a raw HTTP response for `post /team/member_add`, but is otherwise the same as
          * [TeamServiceAsync.addMember].
          */
-        @MustBeClosed
         fun addMember(
             params: TeamAddMemberParams
         ): CompletableFuture<HttpResponseFor<TeamAddMemberResponse>> =
             addMember(params, RequestOptions.none())
 
         /** @see [addMember] */
-        @MustBeClosed
         fun addMember(
             params: TeamAddMemberParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -552,12 +553,10 @@ interface TeamServiceAsync {
          * Returns a raw HTTP response for `post /team/block`, but is otherwise the same as
          * [TeamServiceAsync.block].
          */
-        @MustBeClosed
         fun block(params: TeamBlockParams): CompletableFuture<HttpResponseFor<TeamBlockResponse>> =
             block(params, RequestOptions.none())
 
         /** @see [block] */
-        @MustBeClosed
         fun block(
             params: TeamBlockParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -567,14 +566,12 @@ interface TeamServiceAsync {
          * Returns a raw HTTP response for `post /team/{team_id}/disable_logging`, but is otherwise
          * the same as [TeamServiceAsync.disableLogging].
          */
-        @MustBeClosed
         fun disableLogging(
             teamId: String
         ): CompletableFuture<HttpResponseFor<TeamDisableLoggingResponse>> =
             disableLogging(teamId, TeamDisableLoggingParams.none())
 
         /** @see [disableLogging] */
-        @MustBeClosed
         fun disableLogging(
             teamId: String,
             params: TeamDisableLoggingParams = TeamDisableLoggingParams.none(),
@@ -583,7 +580,6 @@ interface TeamServiceAsync {
             disableLogging(params.toBuilder().teamId(teamId).build(), requestOptions)
 
         /** @see [disableLogging] */
-        @MustBeClosed
         fun disableLogging(
             teamId: String,
             params: TeamDisableLoggingParams = TeamDisableLoggingParams.none(),
@@ -591,21 +587,18 @@ interface TeamServiceAsync {
             disableLogging(teamId, params, RequestOptions.none())
 
         /** @see [disableLogging] */
-        @MustBeClosed
         fun disableLogging(
             params: TeamDisableLoggingParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<TeamDisableLoggingResponse>>
 
         /** @see [disableLogging] */
-        @MustBeClosed
         fun disableLogging(
             params: TeamDisableLoggingParams
         ): CompletableFuture<HttpResponseFor<TeamDisableLoggingResponse>> =
             disableLogging(params, RequestOptions.none())
 
         /** @see [disableLogging] */
-        @MustBeClosed
         fun disableLogging(
             teamId: String,
             requestOptions: RequestOptions,
@@ -616,26 +609,22 @@ interface TeamServiceAsync {
          * Returns a raw HTTP response for `get /team/available`, but is otherwise the same as
          * [TeamServiceAsync.listAvailable].
          */
-        @MustBeClosed
         fun listAvailable(): CompletableFuture<HttpResponseFor<TeamListAvailableResponse>> =
             listAvailable(TeamListAvailableParams.none())
 
         /** @see [listAvailable] */
-        @MustBeClosed
         fun listAvailable(
             params: TeamListAvailableParams = TeamListAvailableParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<TeamListAvailableResponse>>
 
         /** @see [listAvailable] */
-        @MustBeClosed
         fun listAvailable(
             params: TeamListAvailableParams = TeamListAvailableParams.none()
         ): CompletableFuture<HttpResponseFor<TeamListAvailableResponse>> =
             listAvailable(params, RequestOptions.none())
 
         /** @see [listAvailable] */
-        @MustBeClosed
         fun listAvailable(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<TeamListAvailableResponse>> =
@@ -645,14 +634,12 @@ interface TeamServiceAsync {
          * Returns a raw HTTP response for `post /team/member_delete`, but is otherwise the same as
          * [TeamServiceAsync.removeMember].
          */
-        @MustBeClosed
         fun removeMember(
             params: TeamRemoveMemberParams
         ): CompletableFuture<HttpResponseFor<TeamRemoveMemberResponse>> =
             removeMember(params, RequestOptions.none())
 
         /** @see [removeMember] */
-        @MustBeClosed
         fun removeMember(
             params: TeamRemoveMemberParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -662,26 +649,22 @@ interface TeamServiceAsync {
          * Returns a raw HTTP response for `get /team/info`, but is otherwise the same as
          * [TeamServiceAsync.retrieveInfo].
          */
-        @MustBeClosed
         fun retrieveInfo(): CompletableFuture<HttpResponseFor<TeamRetrieveInfoResponse>> =
             retrieveInfo(TeamRetrieveInfoParams.none())
 
         /** @see [retrieveInfo] */
-        @MustBeClosed
         fun retrieveInfo(
             params: TeamRetrieveInfoParams = TeamRetrieveInfoParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<TeamRetrieveInfoResponse>>
 
         /** @see [retrieveInfo] */
-        @MustBeClosed
         fun retrieveInfo(
             params: TeamRetrieveInfoParams = TeamRetrieveInfoParams.none()
         ): CompletableFuture<HttpResponseFor<TeamRetrieveInfoResponse>> =
             retrieveInfo(params, RequestOptions.none())
 
         /** @see [retrieveInfo] */
-        @MustBeClosed
         fun retrieveInfo(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<TeamRetrieveInfoResponse>> =
@@ -691,14 +674,12 @@ interface TeamServiceAsync {
          * Returns a raw HTTP response for `post /team/unblock`, but is otherwise the same as
          * [TeamServiceAsync.unblock].
          */
-        @MustBeClosed
         fun unblock(
             params: TeamUnblockParams
         ): CompletableFuture<HttpResponseFor<TeamUnblockResponse>> =
             unblock(params, RequestOptions.none())
 
         /** @see [unblock] */
-        @MustBeClosed
         fun unblock(
             params: TeamUnblockParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -708,14 +689,12 @@ interface TeamServiceAsync {
          * Returns a raw HTTP response for `post /team/member_update`, but is otherwise the same as
          * [TeamServiceAsync.updateMember].
          */
-        @MustBeClosed
         fun updateMember(
             params: TeamUpdateMemberParams
         ): CompletableFuture<HttpResponseFor<TeamUpdateMemberResponse>> =
             updateMember(params, RequestOptions.none())
 
         /** @see [updateMember] */
-        @MustBeClosed
         fun updateMember(
             params: TeamUpdateMemberParams,
             requestOptions: RequestOptions = RequestOptions.none(),

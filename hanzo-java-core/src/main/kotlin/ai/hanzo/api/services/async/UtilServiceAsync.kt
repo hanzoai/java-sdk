@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.utils.UtilGetSupportedOpenAIParamsParams
@@ -10,8 +11,8 @@ import ai.hanzo.api.models.utils.UtilTokenCounterParams
 import ai.hanzo.api.models.utils.UtilTokenCounterResponse
 import ai.hanzo.api.models.utils.UtilTransformRequestParams
 import ai.hanzo.api.models.utils.UtilTransformRequestResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface UtilServiceAsync {
 
@@ -19,6 +20,13 @@ interface UtilServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): UtilServiceAsync
 
     /**
      * Returns supported openai params for a given llm model name
@@ -67,17 +75,22 @@ interface UtilServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): UtilServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `get /utils/supported_openai_params`, but is otherwise
          * the same as [UtilServiceAsync.getSupportedOpenAIParams].
          */
-        @MustBeClosed
         fun getSupportedOpenAIParams(
             params: UtilGetSupportedOpenAIParamsParams
         ): CompletableFuture<HttpResponseFor<UtilGetSupportedOpenAIParamsResponse>> =
             getSupportedOpenAIParams(params, RequestOptions.none())
 
         /** @see [getSupportedOpenAIParams] */
-        @MustBeClosed
         fun getSupportedOpenAIParams(
             params: UtilGetSupportedOpenAIParamsParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -87,14 +100,12 @@ interface UtilServiceAsync {
          * Returns a raw HTTP response for `post /utils/token_counter`, but is otherwise the same as
          * [UtilServiceAsync.tokenCounter].
          */
-        @MustBeClosed
         fun tokenCounter(
             params: UtilTokenCounterParams
         ): CompletableFuture<HttpResponseFor<UtilTokenCounterResponse>> =
             tokenCounter(params, RequestOptions.none())
 
         /** @see [tokenCounter] */
-        @MustBeClosed
         fun tokenCounter(
             params: UtilTokenCounterParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -104,14 +115,12 @@ interface UtilServiceAsync {
          * Returns a raw HTTP response for `post /utils/transform_request`, but is otherwise the
          * same as [UtilServiceAsync.transformRequest].
          */
-        @MustBeClosed
         fun transformRequest(
             params: UtilTransformRequestParams
         ): CompletableFuture<HttpResponseFor<UtilTransformRequestResponse>> =
             transformRequest(params, RequestOptions.none())
 
         /** @see [transformRequest] */
-        @MustBeClosed
         fun transformRequest(
             params: UtilTransformRequestParams,
             requestOptions: RequestOptions = RequestOptions.none(),

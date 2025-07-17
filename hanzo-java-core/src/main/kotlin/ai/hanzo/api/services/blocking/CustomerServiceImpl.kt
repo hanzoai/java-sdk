@@ -29,6 +29,7 @@ import ai.hanzo.api.models.customer.CustomerUnblockParams
 import ai.hanzo.api.models.customer.CustomerUnblockResponse
 import ai.hanzo.api.models.customer.CustomerUpdateParams
 import ai.hanzo.api.models.customer.CustomerUpdateResponse
+import java.util.function.Consumer
 
 class CustomerServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     CustomerService {
@@ -38,6 +39,9 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
     }
 
     override fun withRawResponse(): CustomerService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): CustomerService =
+        CustomerServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: CustomerCreateParams,
@@ -93,6 +97,13 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): CustomerService.WithRawResponse =
+            CustomerServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val createHandler: Handler<CustomerCreateResponse> =
             jsonHandler<CustomerCreateResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -104,6 +115,7 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("customer", "new")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -132,6 +144,7 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("customer", "update")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -160,6 +173,7 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("customer", "list")
                     .build()
                     .prepare(clientOptions, params)
@@ -187,6 +201,7 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("customer", "delete")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -215,6 +230,7 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("customer", "block")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -243,6 +259,7 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("customer", "info")
                     .build()
                     .prepare(clientOptions, params)
@@ -270,6 +287,7 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("customer", "unblock")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()

@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.async.global
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.global.spend.SpendListTagsParams
@@ -10,8 +11,8 @@ import ai.hanzo.api.models.global.spend.SpendResetParams
 import ai.hanzo.api.models.global.spend.SpendResetResponse
 import ai.hanzo.api.models.global.spend.SpendRetrieveReportParams
 import ai.hanzo.api.models.global.spend.SpendRetrieveReportResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface SpendServiceAsync {
 
@@ -19,6 +20,13 @@ interface SpendServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): SpendServiceAsync
 
     /**
      * LLM Enterprise - View Spend Per Request Tag. Used by LLM UI
@@ -108,29 +116,34 @@ interface SpendServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): SpendServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `get /global/spend/tags`, but is otherwise the same as
          * [SpendServiceAsync.listTags].
          */
-        @MustBeClosed
         fun listTags(): CompletableFuture<HttpResponseFor<List<SpendListTagsResponse>>> =
             listTags(SpendListTagsParams.none())
 
         /** @see [listTags] */
-        @MustBeClosed
         fun listTags(
             params: SpendListTagsParams = SpendListTagsParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<List<SpendListTagsResponse>>>
 
         /** @see [listTags] */
-        @MustBeClosed
         fun listTags(
             params: SpendListTagsParams = SpendListTagsParams.none()
         ): CompletableFuture<HttpResponseFor<List<SpendListTagsResponse>>> =
             listTags(params, RequestOptions.none())
 
         /** @see [listTags] */
-        @MustBeClosed
         fun listTags(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<List<SpendListTagsResponse>>> =
@@ -140,26 +153,22 @@ interface SpendServiceAsync {
          * Returns a raw HTTP response for `post /global/spend/reset`, but is otherwise the same as
          * [SpendServiceAsync.reset].
          */
-        @MustBeClosed
         fun reset(): CompletableFuture<HttpResponseFor<SpendResetResponse>> =
             reset(SpendResetParams.none())
 
         /** @see [reset] */
-        @MustBeClosed
         fun reset(
             params: SpendResetParams = SpendResetParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<SpendResetResponse>>
 
         /** @see [reset] */
-        @MustBeClosed
         fun reset(
             params: SpendResetParams = SpendResetParams.none()
         ): CompletableFuture<HttpResponseFor<SpendResetResponse>> =
             reset(params, RequestOptions.none())
 
         /** @see [reset] */
-        @MustBeClosed
         fun reset(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<SpendResetResponse>> =
@@ -169,27 +178,23 @@ interface SpendServiceAsync {
          * Returns a raw HTTP response for `get /global/spend/report`, but is otherwise the same as
          * [SpendServiceAsync.retrieveReport].
          */
-        @MustBeClosed
         fun retrieveReport():
             CompletableFuture<HttpResponseFor<List<SpendRetrieveReportResponse>>> =
             retrieveReport(SpendRetrieveReportParams.none())
 
         /** @see [retrieveReport] */
-        @MustBeClosed
         fun retrieveReport(
             params: SpendRetrieveReportParams = SpendRetrieveReportParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<List<SpendRetrieveReportResponse>>>
 
         /** @see [retrieveReport] */
-        @MustBeClosed
         fun retrieveReport(
             params: SpendRetrieveReportParams = SpendRetrieveReportParams.none()
         ): CompletableFuture<HttpResponseFor<List<SpendRetrieveReportResponse>>> =
             retrieveReport(params, RequestOptions.none())
 
         /** @see [retrieveReport] */
-        @MustBeClosed
         fun retrieveReport(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<List<SpendRetrieveReportResponse>>> =

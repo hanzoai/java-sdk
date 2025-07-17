@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.euassemblyai.EuAssemblyaiCreateParams
@@ -14,8 +15,8 @@ import ai.hanzo.api.models.euassemblyai.EuAssemblyaiRetrieveParams
 import ai.hanzo.api.models.euassemblyai.EuAssemblyaiRetrieveResponse
 import ai.hanzo.api.models.euassemblyai.EuAssemblyaiUpdateParams
 import ai.hanzo.api.models.euassemblyai.EuAssemblyaiUpdateResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface EuAssemblyaiServiceAsync {
 
@@ -23,6 +24,13 @@ interface EuAssemblyaiServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): EuAssemblyaiServiceAsync
 
     /** Assemblyai Proxy Route */
     fun create(endpoint: String): CompletableFuture<EuAssemblyaiCreateResponse> =
@@ -211,17 +219,24 @@ interface EuAssemblyaiServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): EuAssemblyaiServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `post /eu.assemblyai/{endpoint}`, but is otherwise the
          * same as [EuAssemblyaiServiceAsync.create].
          */
-        @MustBeClosed
         fun create(
             endpoint: String
         ): CompletableFuture<HttpResponseFor<EuAssemblyaiCreateResponse>> =
             create(endpoint, EuAssemblyaiCreateParams.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             endpoint: String,
             params: EuAssemblyaiCreateParams = EuAssemblyaiCreateParams.none(),
@@ -230,7 +245,6 @@ interface EuAssemblyaiServiceAsync {
             create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             endpoint: String,
             params: EuAssemblyaiCreateParams = EuAssemblyaiCreateParams.none(),
@@ -238,21 +252,18 @@ interface EuAssemblyaiServiceAsync {
             create(endpoint, params, RequestOptions.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: EuAssemblyaiCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<EuAssemblyaiCreateResponse>>
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: EuAssemblyaiCreateParams
         ): CompletableFuture<HttpResponseFor<EuAssemblyaiCreateResponse>> =
             create(params, RequestOptions.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -263,14 +274,12 @@ interface EuAssemblyaiServiceAsync {
          * Returns a raw HTTP response for `get /eu.assemblyai/{endpoint}`, but is otherwise the
          * same as [EuAssemblyaiServiceAsync.retrieve].
          */
-        @MustBeClosed
         fun retrieve(
             endpoint: String
         ): CompletableFuture<HttpResponseFor<EuAssemblyaiRetrieveResponse>> =
             retrieve(endpoint, EuAssemblyaiRetrieveParams.none())
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             endpoint: String,
             params: EuAssemblyaiRetrieveParams = EuAssemblyaiRetrieveParams.none(),
@@ -279,7 +288,6 @@ interface EuAssemblyaiServiceAsync {
             retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             endpoint: String,
             params: EuAssemblyaiRetrieveParams = EuAssemblyaiRetrieveParams.none(),
@@ -287,21 +295,18 @@ interface EuAssemblyaiServiceAsync {
             retrieve(endpoint, params, RequestOptions.none())
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             params: EuAssemblyaiRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<EuAssemblyaiRetrieveResponse>>
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             params: EuAssemblyaiRetrieveParams
         ): CompletableFuture<HttpResponseFor<EuAssemblyaiRetrieveResponse>> =
             retrieve(params, RequestOptions.none())
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -312,14 +317,12 @@ interface EuAssemblyaiServiceAsync {
          * Returns a raw HTTP response for `put /eu.assemblyai/{endpoint}`, but is otherwise the
          * same as [EuAssemblyaiServiceAsync.update].
          */
-        @MustBeClosed
         fun update(
             endpoint: String
         ): CompletableFuture<HttpResponseFor<EuAssemblyaiUpdateResponse>> =
             update(endpoint, EuAssemblyaiUpdateParams.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             endpoint: String,
             params: EuAssemblyaiUpdateParams = EuAssemblyaiUpdateParams.none(),
@@ -328,7 +331,6 @@ interface EuAssemblyaiServiceAsync {
             update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             endpoint: String,
             params: EuAssemblyaiUpdateParams = EuAssemblyaiUpdateParams.none(),
@@ -336,21 +338,18 @@ interface EuAssemblyaiServiceAsync {
             update(endpoint, params, RequestOptions.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             params: EuAssemblyaiUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<EuAssemblyaiUpdateResponse>>
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             params: EuAssemblyaiUpdateParams
         ): CompletableFuture<HttpResponseFor<EuAssemblyaiUpdateResponse>> =
             update(params, RequestOptions.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -361,14 +360,12 @@ interface EuAssemblyaiServiceAsync {
          * Returns a raw HTTP response for `delete /eu.assemblyai/{endpoint}`, but is otherwise the
          * same as [EuAssemblyaiServiceAsync.delete].
          */
-        @MustBeClosed
         fun delete(
             endpoint: String
         ): CompletableFuture<HttpResponseFor<EuAssemblyaiDeleteResponse>> =
             delete(endpoint, EuAssemblyaiDeleteParams.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             endpoint: String,
             params: EuAssemblyaiDeleteParams = EuAssemblyaiDeleteParams.none(),
@@ -377,7 +374,6 @@ interface EuAssemblyaiServiceAsync {
             delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             endpoint: String,
             params: EuAssemblyaiDeleteParams = EuAssemblyaiDeleteParams.none(),
@@ -385,21 +381,18 @@ interface EuAssemblyaiServiceAsync {
             delete(endpoint, params, RequestOptions.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             params: EuAssemblyaiDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<EuAssemblyaiDeleteResponse>>
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             params: EuAssemblyaiDeleteParams
         ): CompletableFuture<HttpResponseFor<EuAssemblyaiDeleteResponse>> =
             delete(params, RequestOptions.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -410,12 +403,10 @@ interface EuAssemblyaiServiceAsync {
          * Returns a raw HTTP response for `patch /eu.assemblyai/{endpoint}`, but is otherwise the
          * same as [EuAssemblyaiServiceAsync.patch].
          */
-        @MustBeClosed
         fun patch(endpoint: String): CompletableFuture<HttpResponseFor<EuAssemblyaiPatchResponse>> =
             patch(endpoint, EuAssemblyaiPatchParams.none())
 
         /** @see [patch] */
-        @MustBeClosed
         fun patch(
             endpoint: String,
             params: EuAssemblyaiPatchParams = EuAssemblyaiPatchParams.none(),
@@ -424,7 +415,6 @@ interface EuAssemblyaiServiceAsync {
             patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
         /** @see [patch] */
-        @MustBeClosed
         fun patch(
             endpoint: String,
             params: EuAssemblyaiPatchParams = EuAssemblyaiPatchParams.none(),
@@ -432,21 +422,18 @@ interface EuAssemblyaiServiceAsync {
             patch(endpoint, params, RequestOptions.none())
 
         /** @see [patch] */
-        @MustBeClosed
         fun patch(
             params: EuAssemblyaiPatchParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<EuAssemblyaiPatchResponse>>
 
         /** @see [patch] */
-        @MustBeClosed
         fun patch(
             params: EuAssemblyaiPatchParams
         ): CompletableFuture<HttpResponseFor<EuAssemblyaiPatchResponse>> =
             patch(params, RequestOptions.none())
 
         /** @see [patch] */
-        @MustBeClosed
         fun patch(
             endpoint: String,
             requestOptions: RequestOptions,

@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.blocking
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.team.TeamAddMemberParams
@@ -31,6 +32,7 @@ import ai.hanzo.api.models.team.TeamUpdateResponse
 import ai.hanzo.api.services.blocking.team.CallbackService
 import ai.hanzo.api.services.blocking.team.ModelService
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface TeamService {
 
@@ -38,6 +40,13 @@ interface TeamService {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): TeamService
 
     fun model(): ModelService
 
@@ -420,6 +429,13 @@ interface TeamService {
 
     /** A view of [TeamService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): TeamService.WithRawResponse
 
         fun model(): ModelService.WithRawResponse
 

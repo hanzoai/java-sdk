@@ -17,6 +17,7 @@ import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepare
 import ai.hanzo.api.models.chat.completions.CompletionCreateParams
 import ai.hanzo.api.models.chat.completions.CompletionCreateResponse
+import java.util.function.Consumer
 
 class CompletionServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     CompletionService {
@@ -26,6 +27,9 @@ class CompletionServiceImpl internal constructor(private val clientOptions: Clie
     }
 
     override fun withRawResponse(): CompletionService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): CompletionService =
+        CompletionServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: CompletionCreateParams,
@@ -39,6 +43,13 @@ class CompletionServiceImpl internal constructor(private val clientOptions: Clie
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): CompletionService.WithRawResponse =
+            CompletionServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val createHandler: Handler<CompletionCreateResponse> =
             jsonHandler<CompletionCreateResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -50,6 +61,7 @@ class CompletionServiceImpl internal constructor(private val clientOptions: Clie
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "chat", "completions")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()

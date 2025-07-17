@@ -16,6 +16,7 @@ import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepare
 import ai.hanzo.api.models.test.TestPingParams
 import ai.hanzo.api.models.test.TestPingResponse
+import java.util.function.Consumer
 
 class TestServiceImpl internal constructor(private val clientOptions: ClientOptions) : TestService {
 
@@ -25,6 +26,9 @@ class TestServiceImpl internal constructor(private val clientOptions: ClientOpti
 
     override fun withRawResponse(): TestService.WithRawResponse = withRawResponse
 
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): TestService =
+        TestServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
+
     override fun ping(params: TestPingParams, requestOptions: RequestOptions): TestPingResponse =
         // get /test
         withRawResponse().ping(params, requestOptions).parse()
@@ -33,6 +37,13 @@ class TestServiceImpl internal constructor(private val clientOptions: ClientOpti
         TestService.WithRawResponse {
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): TestService.WithRawResponse =
+            TestServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         private val pingHandler: Handler<TestPingResponse> =
             jsonHandler<TestPingResponse>(clientOptions.jsonMapper).withErrorHandler(errorHandler)
@@ -44,6 +55,7 @@ class TestServiceImpl internal constructor(private val clientOptions: ClientOpti
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("test")
                     .build()
                     .prepare(clientOptions, params)

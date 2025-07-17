@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.blocking
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.key.GenerateKeyResponse
@@ -24,6 +25,7 @@ import ai.hanzo.api.models.key.KeyUpdateResponse
 import ai.hanzo.api.services.blocking.key.RegenerateService
 import com.google.errorprone.annotations.MustBeClosed
 import java.util.Optional
+import java.util.function.Consumer
 
 interface KeyService {
 
@@ -31,6 +33,13 @@ interface KeyService {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): KeyService
 
     fun regenerate(): RegenerateService
 
@@ -472,6 +481,13 @@ interface KeyService {
 
     /** A view of [KeyService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): KeyService.WithRawResponse
 
         fun regenerate(): RegenerateService.WithRawResponse
 

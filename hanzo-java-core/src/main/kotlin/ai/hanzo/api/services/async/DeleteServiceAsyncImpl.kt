@@ -18,6 +18,7 @@ import ai.hanzo.api.core.prepareAsync
 import ai.hanzo.api.models.delete.DeleteCreateAllowedIpParams
 import ai.hanzo.api.models.delete.DeleteCreateAllowedIpResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class DeleteServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     DeleteServiceAsync {
@@ -27,6 +28,9 @@ class DeleteServiceAsyncImpl internal constructor(private val clientOptions: Cli
     }
 
     override fun withRawResponse(): DeleteServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): DeleteServiceAsync =
+        DeleteServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun createAllowedIp(
         params: DeleteCreateAllowedIpParams,
@@ -40,6 +44,13 @@ class DeleteServiceAsyncImpl internal constructor(private val clientOptions: Cli
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): DeleteServiceAsync.WithRawResponse =
+            DeleteServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val createAllowedIpHandler: Handler<DeleteCreateAllowedIpResponse> =
             jsonHandler<DeleteCreateAllowedIpResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -51,6 +62,7 @@ class DeleteServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("delete", "allowed_ip")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()

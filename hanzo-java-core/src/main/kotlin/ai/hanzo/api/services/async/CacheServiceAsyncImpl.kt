@@ -24,6 +24,7 @@ import ai.hanzo.api.models.cache.CachePingResponse
 import ai.hanzo.api.services.async.cache.RediServiceAsync
 import ai.hanzo.api.services.async.cache.RediServiceAsyncImpl
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class CacheServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     CacheServiceAsync {
@@ -35,6 +36,9 @@ class CacheServiceAsyncImpl internal constructor(private val clientOptions: Clie
     private val redis: RediServiceAsync by lazy { RediServiceAsyncImpl(clientOptions) }
 
     override fun withRawResponse(): CacheServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): CacheServiceAsync =
+        CacheServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun redis(): RediServiceAsync = redis
 
@@ -68,6 +72,13 @@ class CacheServiceAsyncImpl internal constructor(private val clientOptions: Clie
             RediServiceAsyncImpl.WithRawResponseImpl(clientOptions)
         }
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): CacheServiceAsync.WithRawResponse =
+            CacheServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         override fun redis(): RediServiceAsync.WithRawResponse = redis
 
         private val deleteHandler: Handler<CacheDeleteResponse> =
@@ -81,6 +92,7 @@ class CacheServiceAsyncImpl internal constructor(private val clientOptions: Clie
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("cache", "delete")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -112,6 +124,7 @@ class CacheServiceAsyncImpl internal constructor(private val clientOptions: Clie
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("cache", "flushall")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -142,6 +155,7 @@ class CacheServiceAsyncImpl internal constructor(private val clientOptions: Clie
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("cache", "ping")
                     .build()
                     .prepareAsync(clientOptions, params)

@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.blocking.openai
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.openai.deployments.DeploymentCompleteParams
@@ -10,6 +11,7 @@ import ai.hanzo.api.models.openai.deployments.DeploymentEmbedParams
 import ai.hanzo.api.models.openai.deployments.DeploymentEmbedResponse
 import ai.hanzo.api.services.blocking.openai.deployments.ChatService
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface DeploymentService {
 
@@ -17,6 +19,13 @@ interface DeploymentService {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): DeploymentService
 
     fun chat(): ChatService
 
@@ -112,6 +121,15 @@ interface DeploymentService {
 
     /** A view of [DeploymentService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): DeploymentService.WithRawResponse
 
         fun chat(): ChatService.WithRawResponse
 

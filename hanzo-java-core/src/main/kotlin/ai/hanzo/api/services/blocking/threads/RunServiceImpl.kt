@@ -18,6 +18,7 @@ import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepare
 import ai.hanzo.api.models.threads.runs.RunCreateParams
 import ai.hanzo.api.models.threads.runs.RunCreateResponse
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class RunServiceImpl internal constructor(private val clientOptions: ClientOptions) : RunService {
@@ -27,6 +28,9 @@ class RunServiceImpl internal constructor(private val clientOptions: ClientOptio
     }
 
     override fun withRawResponse(): RunService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): RunService =
+        RunServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: RunCreateParams,
@@ -39,6 +43,13 @@ class RunServiceImpl internal constructor(private val clientOptions: ClientOptio
         RunService.WithRawResponse {
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): RunService.WithRawResponse =
+            RunServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         private val createHandler: Handler<RunCreateResponse> =
             jsonHandler<RunCreateResponse>(clientOptions.jsonMapper).withErrorHandler(errorHandler)
@@ -53,6 +64,7 @@ class RunServiceImpl internal constructor(private val clientOptions: ClientOptio
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "threads", params._pathParam(0), "runs")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()

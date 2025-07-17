@@ -24,6 +24,7 @@ import ai.hanzo.api.services.blocking.threads.MessageService
 import ai.hanzo.api.services.blocking.threads.MessageServiceImpl
 import ai.hanzo.api.services.blocking.threads.RunService
 import ai.hanzo.api.services.blocking.threads.RunServiceImpl
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class ThreadServiceImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -38,6 +39,9 @@ class ThreadServiceImpl internal constructor(private val clientOptions: ClientOp
     private val runs: RunService by lazy { RunServiceImpl(clientOptions) }
 
     override fun withRawResponse(): ThreadService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): ThreadService =
+        ThreadServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun messages(): MessageService = messages
 
@@ -70,6 +74,13 @@ class ThreadServiceImpl internal constructor(private val clientOptions: ClientOp
             RunServiceImpl.WithRawResponseImpl(clientOptions)
         }
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ThreadService.WithRawResponse =
+            ThreadServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         override fun messages(): MessageService.WithRawResponse = messages
 
         override fun runs(): RunService.WithRawResponse = runs
@@ -85,6 +96,7 @@ class ThreadServiceImpl internal constructor(private val clientOptions: ClientOp
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "threads")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -116,6 +128,7 @@ class ThreadServiceImpl internal constructor(private val clientOptions: ClientOp
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "threads", params._pathParam(0))
                     .build()
                     .prepare(clientOptions, params)

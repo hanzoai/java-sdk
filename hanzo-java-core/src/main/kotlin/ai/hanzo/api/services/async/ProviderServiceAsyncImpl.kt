@@ -17,6 +17,7 @@ import ai.hanzo.api.core.prepareAsync
 import ai.hanzo.api.models.provider.ProviderListBudgetsParams
 import ai.hanzo.api.models.provider.ProviderListBudgetsResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class ProviderServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     ProviderServiceAsync {
@@ -26,6 +27,9 @@ class ProviderServiceAsyncImpl internal constructor(private val clientOptions: C
     }
 
     override fun withRawResponse(): ProviderServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): ProviderServiceAsync =
+        ProviderServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun listBudgets(
         params: ProviderListBudgetsParams,
@@ -39,6 +43,13 @@ class ProviderServiceAsyncImpl internal constructor(private val clientOptions: C
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ProviderServiceAsync.WithRawResponse =
+            ProviderServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val listBudgetsHandler: Handler<ProviderListBudgetsResponse> =
             jsonHandler<ProviderListBudgetsResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -50,6 +61,7 @@ class ProviderServiceAsyncImpl internal constructor(private val clientOptions: C
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("provider", "budgets")
                     .build()
                     .prepareAsync(clientOptions, params)

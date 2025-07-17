@@ -22,6 +22,7 @@ import ai.hanzo.api.models.assistants.AssistantDeleteParams
 import ai.hanzo.api.models.assistants.AssistantDeleteResponse
 import ai.hanzo.api.models.assistants.AssistantListParams
 import ai.hanzo.api.models.assistants.AssistantListResponse
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class AssistantServiceImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -32,6 +33,9 @@ class AssistantServiceImpl internal constructor(private val clientOptions: Clien
     }
 
     override fun withRawResponse(): AssistantService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): AssistantService =
+        AssistantServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: AssistantCreateParams,
@@ -59,6 +63,13 @@ class AssistantServiceImpl internal constructor(private val clientOptions: Clien
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): AssistantService.WithRawResponse =
+            AssistantServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val createHandler: Handler<AssistantCreateResponse> =
             jsonHandler<AssistantCreateResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -70,6 +81,7 @@ class AssistantServiceImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "assistants")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -98,6 +110,7 @@ class AssistantServiceImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "assistants")
                     .build()
                     .prepare(clientOptions, params)
@@ -128,6 +141,7 @@ class AssistantServiceImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "assistants", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()

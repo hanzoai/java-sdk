@@ -21,6 +21,7 @@ import ai.hanzo.api.models.team.callback.CallbackAddResponse
 import ai.hanzo.api.models.team.callback.CallbackRetrieveParams
 import ai.hanzo.api.models.team.callback.CallbackRetrieveResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class CallbackServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -31,6 +32,9 @@ class CallbackServiceAsyncImpl internal constructor(private val clientOptions: C
     }
 
     override fun withRawResponse(): CallbackServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): CallbackServiceAsync =
+        CallbackServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun retrieve(
         params: CallbackRetrieveParams,
@@ -51,6 +55,13 @@ class CallbackServiceAsyncImpl internal constructor(private val clientOptions: C
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): CallbackServiceAsync.WithRawResponse =
+            CallbackServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val retrieveHandler: Handler<CallbackRetrieveResponse> =
             jsonHandler<CallbackRetrieveResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -65,6 +76,7 @@ class CallbackServiceAsyncImpl internal constructor(private val clientOptions: C
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("team", params._pathParam(0), "callback")
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -98,6 +110,7 @@ class CallbackServiceAsyncImpl internal constructor(private val clientOptions: C
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("team", params._pathParam(0), "callback")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()

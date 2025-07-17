@@ -17,6 +17,7 @@ import ai.hanzo.api.core.prepareAsync
 import ai.hanzo.api.models.guardrails.GuardrailListParams
 import ai.hanzo.api.models.guardrails.GuardrailListResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class GuardrailServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     GuardrailServiceAsync {
@@ -26,6 +27,9 @@ class GuardrailServiceAsyncImpl internal constructor(private val clientOptions: 
     }
 
     override fun withRawResponse(): GuardrailServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): GuardrailServiceAsync =
+        GuardrailServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun list(
         params: GuardrailListParams,
@@ -39,6 +43,13 @@ class GuardrailServiceAsyncImpl internal constructor(private val clientOptions: 
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): GuardrailServiceAsync.WithRawResponse =
+            GuardrailServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val listHandler: Handler<GuardrailListResponse> =
             jsonHandler<GuardrailListResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -50,6 +61,7 @@ class GuardrailServiceAsyncImpl internal constructor(private val clientOptions: 
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("guardrails", "list")
                     .build()
                     .prepareAsync(clientOptions, params)

@@ -17,6 +17,7 @@ import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepare
 import ai.hanzo.api.models.audio.transcriptions.TranscriptionCreateParams
 import ai.hanzo.api.models.audio.transcriptions.TranscriptionCreateResponse
+import java.util.function.Consumer
 
 class TranscriptionServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     TranscriptionService {
@@ -26,6 +27,9 @@ class TranscriptionServiceImpl internal constructor(private val clientOptions: C
     }
 
     override fun withRawResponse(): TranscriptionService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): TranscriptionService =
+        TranscriptionServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: TranscriptionCreateParams,
@@ -39,6 +43,13 @@ class TranscriptionServiceImpl internal constructor(private val clientOptions: C
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): TranscriptionService.WithRawResponse =
+            TranscriptionServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val createHandler: Handler<TranscriptionCreateResponse> =
             jsonHandler<TranscriptionCreateResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -50,6 +61,7 @@ class TranscriptionServiceImpl internal constructor(private val clientOptions: C
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "audio", "transcriptions")
                     .body(multipartFormData(clientOptions.jsonMapper, params._body()))
                     .build()

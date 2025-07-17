@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.responses.ResponseCreateParams
@@ -11,8 +12,8 @@ import ai.hanzo.api.models.responses.ResponseDeleteResponse
 import ai.hanzo.api.models.responses.ResponseRetrieveParams
 import ai.hanzo.api.models.responses.ResponseRetrieveResponse
 import ai.hanzo.api.services.async.responses.InputItemServiceAsync
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface ResponseServiceAsync {
 
@@ -20,6 +21,13 @@ interface ResponseServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): ResponseServiceAsync
 
     fun inputItems(): InputItemServiceAsync
 
@@ -145,32 +153,37 @@ interface ResponseServiceAsync {
      */
     interface WithRawResponse {
 
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ResponseServiceAsync.WithRawResponse
+
         fun inputItems(): InputItemServiceAsync.WithRawResponse
 
         /**
          * Returns a raw HTTP response for `post /v1/responses`, but is otherwise the same as
          * [ResponseServiceAsync.create].
          */
-        @MustBeClosed
         fun create(): CompletableFuture<HttpResponseFor<ResponseCreateResponse>> =
             create(ResponseCreateParams.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: ResponseCreateParams = ResponseCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<ResponseCreateResponse>>
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: ResponseCreateParams = ResponseCreateParams.none()
         ): CompletableFuture<HttpResponseFor<ResponseCreateResponse>> =
             create(params, RequestOptions.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<ResponseCreateResponse>> =
@@ -180,14 +193,12 @@ interface ResponseServiceAsync {
          * Returns a raw HTTP response for `get /v1/responses/{response_id}`, but is otherwise the
          * same as [ResponseServiceAsync.retrieve].
          */
-        @MustBeClosed
         fun retrieve(
             responseId: String
         ): CompletableFuture<HttpResponseFor<ResponseRetrieveResponse>> =
             retrieve(responseId, ResponseRetrieveParams.none())
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             responseId: String,
             params: ResponseRetrieveParams = ResponseRetrieveParams.none(),
@@ -196,7 +207,6 @@ interface ResponseServiceAsync {
             retrieve(params.toBuilder().responseId(responseId).build(), requestOptions)
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             responseId: String,
             params: ResponseRetrieveParams = ResponseRetrieveParams.none(),
@@ -204,21 +214,18 @@ interface ResponseServiceAsync {
             retrieve(responseId, params, RequestOptions.none())
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             params: ResponseRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<ResponseRetrieveResponse>>
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             params: ResponseRetrieveParams
         ): CompletableFuture<HttpResponseFor<ResponseRetrieveResponse>> =
             retrieve(params, RequestOptions.none())
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             responseId: String,
             requestOptions: RequestOptions,
@@ -229,12 +236,10 @@ interface ResponseServiceAsync {
          * Returns a raw HTTP response for `delete /v1/responses/{response_id}`, but is otherwise
          * the same as [ResponseServiceAsync.delete].
          */
-        @MustBeClosed
         fun delete(responseId: String): CompletableFuture<HttpResponseFor<ResponseDeleteResponse>> =
             delete(responseId, ResponseDeleteParams.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             responseId: String,
             params: ResponseDeleteParams = ResponseDeleteParams.none(),
@@ -243,7 +248,6 @@ interface ResponseServiceAsync {
             delete(params.toBuilder().responseId(responseId).build(), requestOptions)
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             responseId: String,
             params: ResponseDeleteParams = ResponseDeleteParams.none(),
@@ -251,21 +255,18 @@ interface ResponseServiceAsync {
             delete(responseId, params, RequestOptions.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             params: ResponseDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<ResponseDeleteResponse>>
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             params: ResponseDeleteParams
         ): CompletableFuture<HttpResponseFor<ResponseDeleteResponse>> =
             delete(params, RequestOptions.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             responseId: String,
             requestOptions: RequestOptions,

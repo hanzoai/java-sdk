@@ -25,6 +25,7 @@ import ai.hanzo.api.models.finetuning.jobs.JobRetrieveResponse
 import ai.hanzo.api.services.async.finetuning.jobs.CancelServiceAsync
 import ai.hanzo.api.services.async.finetuning.jobs.CancelServiceAsyncImpl
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class JobServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -37,6 +38,9 @@ class JobServiceAsyncImpl internal constructor(private val clientOptions: Client
     private val cancel: CancelServiceAsync by lazy { CancelServiceAsyncImpl(clientOptions) }
 
     override fun withRawResponse(): JobServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): JobServiceAsync =
+        JobServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun cancel(): CancelServiceAsync = cancel
 
@@ -70,6 +74,13 @@ class JobServiceAsyncImpl internal constructor(private val clientOptions: Client
             CancelServiceAsyncImpl.WithRawResponseImpl(clientOptions)
         }
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): JobServiceAsync.WithRawResponse =
+            JobServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         override fun cancel(): CancelServiceAsync.WithRawResponse = cancel
 
         private val createHandler: Handler<JobCreateResponse> =
@@ -82,6 +93,7 @@ class JobServiceAsyncImpl internal constructor(private val clientOptions: Client
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "fine_tuning", "jobs")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -116,6 +128,7 @@ class JobServiceAsyncImpl internal constructor(private val clientOptions: Client
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "fine_tuning", "jobs", params._pathParam(0))
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -145,6 +158,7 @@ class JobServiceAsyncImpl internal constructor(private val clientOptions: Client
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "fine_tuning", "jobs")
                     .build()
                     .prepareAsync(clientOptions, params)

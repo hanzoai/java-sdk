@@ -23,6 +23,7 @@ import ai.hanzo.api.models.openai.deployments.DeploymentEmbedResponse
 import ai.hanzo.api.services.async.openai.deployments.ChatServiceAsync
 import ai.hanzo.api.services.async.openai.deployments.ChatServiceAsyncImpl
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class DeploymentServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -35,6 +36,9 @@ class DeploymentServiceAsyncImpl internal constructor(private val clientOptions:
     private val chat: ChatServiceAsync by lazy { ChatServiceAsyncImpl(clientOptions) }
 
     override fun withRawResponse(): DeploymentServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): DeploymentServiceAsync =
+        DeploymentServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun chat(): ChatServiceAsync = chat
 
@@ -61,6 +65,13 @@ class DeploymentServiceAsyncImpl internal constructor(private val clientOptions:
             ChatServiceAsyncImpl.WithRawResponseImpl(clientOptions)
         }
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): DeploymentServiceAsync.WithRawResponse =
+            DeploymentServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         override fun chat(): ChatServiceAsync.WithRawResponse = chat
 
         private val completeHandler: Handler<DeploymentCompleteResponse> =
@@ -77,6 +88,7 @@ class DeploymentServiceAsyncImpl internal constructor(private val clientOptions:
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("openai", "deployments", params._pathParam(0), "completions")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -111,6 +123,7 @@ class DeploymentServiceAsyncImpl internal constructor(private val clientOptions:
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("openai", "deployments", params._pathParam(0), "embeddings")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()

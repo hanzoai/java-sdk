@@ -17,6 +17,7 @@ import ai.hanzo.api.core.prepareAsync
 import ai.hanzo.api.models.active.ActiveListCallbacksParams
 import ai.hanzo.api.models.active.ActiveListCallbacksResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class ActiveServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     ActiveServiceAsync {
@@ -26,6 +27,9 @@ class ActiveServiceAsyncImpl internal constructor(private val clientOptions: Cli
     }
 
     override fun withRawResponse(): ActiveServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): ActiveServiceAsync =
+        ActiveServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun listCallbacks(
         params: ActiveListCallbacksParams,
@@ -39,6 +43,13 @@ class ActiveServiceAsyncImpl internal constructor(private val clientOptions: Cli
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ActiveServiceAsync.WithRawResponse =
+            ActiveServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val listCallbacksHandler: Handler<ActiveListCallbacksResponse> =
             jsonHandler<ActiveListCallbacksResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -50,6 +61,7 @@ class ActiveServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("active", "callbacks")
                     .build()
                     .prepareAsync(clientOptions, params)
