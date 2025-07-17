@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.azure.AzureCallParams
@@ -14,8 +15,8 @@ import ai.hanzo.api.models.azure.AzurePatchParams
 import ai.hanzo.api.models.azure.AzurePatchResponse
 import ai.hanzo.api.models.azure.AzureUpdateParams
 import ai.hanzo.api.models.azure.AzureUpdateResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface AzureServiceAsync {
 
@@ -23,6 +24,13 @@ interface AzureServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): AzureServiceAsync
 
     /**
      * Call any azure endpoint using the proxy.
@@ -222,15 +230,22 @@ interface AzureServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): AzureServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `post /azure/{endpoint}`, but is otherwise the same as
          * [AzureServiceAsync.create].
          */
-        @MustBeClosed
         fun create(endpoint: String): CompletableFuture<HttpResponseFor<AzureCreateResponse>> =
             create(endpoint, AzureCreateParams.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             endpoint: String,
             params: AzureCreateParams = AzureCreateParams.none(),
@@ -239,7 +254,6 @@ interface AzureServiceAsync {
             create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             endpoint: String,
             params: AzureCreateParams = AzureCreateParams.none(),
@@ -247,21 +261,18 @@ interface AzureServiceAsync {
             create(endpoint, params, RequestOptions.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: AzureCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<AzureCreateResponse>>
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: AzureCreateParams
         ): CompletableFuture<HttpResponseFor<AzureCreateResponse>> =
             create(params, RequestOptions.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -272,12 +283,10 @@ interface AzureServiceAsync {
          * Returns a raw HTTP response for `put /azure/{endpoint}`, but is otherwise the same as
          * [AzureServiceAsync.update].
          */
-        @MustBeClosed
         fun update(endpoint: String): CompletableFuture<HttpResponseFor<AzureUpdateResponse>> =
             update(endpoint, AzureUpdateParams.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             endpoint: String,
             params: AzureUpdateParams = AzureUpdateParams.none(),
@@ -286,7 +295,6 @@ interface AzureServiceAsync {
             update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             endpoint: String,
             params: AzureUpdateParams = AzureUpdateParams.none(),
@@ -294,21 +302,18 @@ interface AzureServiceAsync {
             update(endpoint, params, RequestOptions.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             params: AzureUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<AzureUpdateResponse>>
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             params: AzureUpdateParams
         ): CompletableFuture<HttpResponseFor<AzureUpdateResponse>> =
             update(params, RequestOptions.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -319,12 +324,10 @@ interface AzureServiceAsync {
          * Returns a raw HTTP response for `delete /azure/{endpoint}`, but is otherwise the same as
          * [AzureServiceAsync.delete].
          */
-        @MustBeClosed
         fun delete(endpoint: String): CompletableFuture<HttpResponseFor<AzureDeleteResponse>> =
             delete(endpoint, AzureDeleteParams.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             endpoint: String,
             params: AzureDeleteParams = AzureDeleteParams.none(),
@@ -333,7 +336,6 @@ interface AzureServiceAsync {
             delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             endpoint: String,
             params: AzureDeleteParams = AzureDeleteParams.none(),
@@ -341,21 +343,18 @@ interface AzureServiceAsync {
             delete(endpoint, params, RequestOptions.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             params: AzureDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<AzureDeleteResponse>>
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             params: AzureDeleteParams
         ): CompletableFuture<HttpResponseFor<AzureDeleteResponse>> =
             delete(params, RequestOptions.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -366,12 +365,10 @@ interface AzureServiceAsync {
          * Returns a raw HTTP response for `get /azure/{endpoint}`, but is otherwise the same as
          * [AzureServiceAsync.call].
          */
-        @MustBeClosed
         fun call(endpoint: String): CompletableFuture<HttpResponseFor<AzureCallResponse>> =
             call(endpoint, AzureCallParams.none())
 
         /** @see [call] */
-        @MustBeClosed
         fun call(
             endpoint: String,
             params: AzureCallParams = AzureCallParams.none(),
@@ -380,7 +377,6 @@ interface AzureServiceAsync {
             call(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
         /** @see [call] */
-        @MustBeClosed
         fun call(
             endpoint: String,
             params: AzureCallParams = AzureCallParams.none(),
@@ -388,19 +384,16 @@ interface AzureServiceAsync {
             call(endpoint, params, RequestOptions.none())
 
         /** @see [call] */
-        @MustBeClosed
         fun call(
             params: AzureCallParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<AzureCallResponse>>
 
         /** @see [call] */
-        @MustBeClosed
         fun call(params: AzureCallParams): CompletableFuture<HttpResponseFor<AzureCallResponse>> =
             call(params, RequestOptions.none())
 
         /** @see [call] */
-        @MustBeClosed
         fun call(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -411,12 +404,10 @@ interface AzureServiceAsync {
          * Returns a raw HTTP response for `patch /azure/{endpoint}`, but is otherwise the same as
          * [AzureServiceAsync.patch].
          */
-        @MustBeClosed
         fun patch(endpoint: String): CompletableFuture<HttpResponseFor<AzurePatchResponse>> =
             patch(endpoint, AzurePatchParams.none())
 
         /** @see [patch] */
-        @MustBeClosed
         fun patch(
             endpoint: String,
             params: AzurePatchParams = AzurePatchParams.none(),
@@ -425,7 +416,6 @@ interface AzureServiceAsync {
             patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
         /** @see [patch] */
-        @MustBeClosed
         fun patch(
             endpoint: String,
             params: AzurePatchParams = AzurePatchParams.none(),
@@ -433,21 +423,18 @@ interface AzureServiceAsync {
             patch(endpoint, params, RequestOptions.none())
 
         /** @see [patch] */
-        @MustBeClosed
         fun patch(
             params: AzurePatchParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<AzurePatchResponse>>
 
         /** @see [patch] */
-        @MustBeClosed
         fun patch(
             params: AzurePatchParams
         ): CompletableFuture<HttpResponseFor<AzurePatchResponse>> =
             patch(params, RequestOptions.none())
 
         /** @see [patch] */
-        @MustBeClosed
         fun patch(
             endpoint: String,
             requestOptions: RequestOptions,

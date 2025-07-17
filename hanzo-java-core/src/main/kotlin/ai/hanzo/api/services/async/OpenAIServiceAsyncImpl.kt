@@ -29,6 +29,7 @@ import ai.hanzo.api.models.openai.OpenAIUpdateResponse
 import ai.hanzo.api.services.async.openai.DeploymentServiceAsync
 import ai.hanzo.api.services.async.openai.DeploymentServiceAsyncImpl
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -43,6 +44,9 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
     }
 
     override fun withRawResponse(): OpenAIServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): OpenAIServiceAsync =
+        OpenAIServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun deployments(): DeploymentServiceAsync = deployments
 
@@ -90,6 +94,13 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
             DeploymentServiceAsyncImpl.WithRawResponseImpl(clientOptions)
         }
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): OpenAIServiceAsync.WithRawResponse =
+            OpenAIServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         override fun deployments(): DeploymentServiceAsync.WithRawResponse = deployments
 
         private val createHandler: Handler<OpenAICreateResponse> =
@@ -106,6 +117,7 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("openai", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -140,6 +152,7 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("openai", params._pathParam(0))
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -173,6 +186,7 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PUT)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("openai", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -207,6 +221,7 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("openai", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -241,6 +256,7 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PATCH)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("openai", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()

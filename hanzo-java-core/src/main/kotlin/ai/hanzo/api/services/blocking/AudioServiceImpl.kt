@@ -7,6 +7,7 @@ import ai.hanzo.api.services.blocking.audio.SpeechService
 import ai.hanzo.api.services.blocking.audio.SpeechServiceImpl
 import ai.hanzo.api.services.blocking.audio.TranscriptionService
 import ai.hanzo.api.services.blocking.audio.TranscriptionServiceImpl
+import java.util.function.Consumer
 
 class AudioServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     AudioService {
@@ -23,6 +24,9 @@ class AudioServiceImpl internal constructor(private val clientOptions: ClientOpt
 
     override fun withRawResponse(): AudioService.WithRawResponse = withRawResponse
 
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): AudioService =
+        AudioServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
+
     override fun speech(): SpeechService = speech
 
     override fun transcriptions(): TranscriptionService = transcriptions
@@ -37,6 +41,13 @@ class AudioServiceImpl internal constructor(private val clientOptions: ClientOpt
         private val transcriptions: TranscriptionService.WithRawResponse by lazy {
             TranscriptionServiceImpl.WithRawResponseImpl(clientOptions)
         }
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): AudioService.WithRawResponse =
+            AudioServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         override fun speech(): SpeechService.WithRawResponse = speech
 

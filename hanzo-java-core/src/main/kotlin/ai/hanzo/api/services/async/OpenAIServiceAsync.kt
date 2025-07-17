@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.openai.OpenAICreateParams
@@ -15,8 +16,8 @@ import ai.hanzo.api.models.openai.OpenAIRetrieveResponse
 import ai.hanzo.api.models.openai.OpenAIUpdateParams
 import ai.hanzo.api.models.openai.OpenAIUpdateResponse
 import ai.hanzo.api.services.async.openai.DeploymentServiceAsync
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface OpenAIServiceAsync {
 
@@ -24,6 +25,13 @@ interface OpenAIServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): OpenAIServiceAsync
 
     fun deployments(): DeploymentServiceAsync
 
@@ -217,18 +225,25 @@ interface OpenAIServiceAsync {
      */
     interface WithRawResponse {
 
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): OpenAIServiceAsync.WithRawResponse
+
         fun deployments(): DeploymentServiceAsync.WithRawResponse
 
         /**
          * Returns a raw HTTP response for `post /openai/{endpoint}`, but is otherwise the same as
          * [OpenAIServiceAsync.create].
          */
-        @MustBeClosed
         fun create(endpoint: String): CompletableFuture<HttpResponseFor<OpenAICreateResponse>> =
             create(endpoint, OpenAICreateParams.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             endpoint: String,
             params: OpenAICreateParams = OpenAICreateParams.none(),
@@ -237,7 +252,6 @@ interface OpenAIServiceAsync {
             create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             endpoint: String,
             params: OpenAICreateParams = OpenAICreateParams.none(),
@@ -245,21 +259,18 @@ interface OpenAIServiceAsync {
             create(endpoint, params, RequestOptions.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: OpenAICreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<OpenAICreateResponse>>
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: OpenAICreateParams
         ): CompletableFuture<HttpResponseFor<OpenAICreateResponse>> =
             create(params, RequestOptions.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -270,12 +281,10 @@ interface OpenAIServiceAsync {
          * Returns a raw HTTP response for `get /openai/{endpoint}`, but is otherwise the same as
          * [OpenAIServiceAsync.retrieve].
          */
-        @MustBeClosed
         fun retrieve(endpoint: String): CompletableFuture<HttpResponseFor<OpenAIRetrieveResponse>> =
             retrieve(endpoint, OpenAIRetrieveParams.none())
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             endpoint: String,
             params: OpenAIRetrieveParams = OpenAIRetrieveParams.none(),
@@ -284,7 +293,6 @@ interface OpenAIServiceAsync {
             retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             endpoint: String,
             params: OpenAIRetrieveParams = OpenAIRetrieveParams.none(),
@@ -292,21 +300,18 @@ interface OpenAIServiceAsync {
             retrieve(endpoint, params, RequestOptions.none())
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             params: OpenAIRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<OpenAIRetrieveResponse>>
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             params: OpenAIRetrieveParams
         ): CompletableFuture<HttpResponseFor<OpenAIRetrieveResponse>> =
             retrieve(params, RequestOptions.none())
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -317,12 +322,10 @@ interface OpenAIServiceAsync {
          * Returns a raw HTTP response for `put /openai/{endpoint}`, but is otherwise the same as
          * [OpenAIServiceAsync.update].
          */
-        @MustBeClosed
         fun update(endpoint: String): CompletableFuture<HttpResponseFor<OpenAIUpdateResponse>> =
             update(endpoint, OpenAIUpdateParams.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             endpoint: String,
             params: OpenAIUpdateParams = OpenAIUpdateParams.none(),
@@ -331,7 +334,6 @@ interface OpenAIServiceAsync {
             update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             endpoint: String,
             params: OpenAIUpdateParams = OpenAIUpdateParams.none(),
@@ -339,21 +341,18 @@ interface OpenAIServiceAsync {
             update(endpoint, params, RequestOptions.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             params: OpenAIUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<OpenAIUpdateResponse>>
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             params: OpenAIUpdateParams
         ): CompletableFuture<HttpResponseFor<OpenAIUpdateResponse>> =
             update(params, RequestOptions.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -364,12 +363,10 @@ interface OpenAIServiceAsync {
          * Returns a raw HTTP response for `delete /openai/{endpoint}`, but is otherwise the same as
          * [OpenAIServiceAsync.delete].
          */
-        @MustBeClosed
         fun delete(endpoint: String): CompletableFuture<HttpResponseFor<OpenAIDeleteResponse>> =
             delete(endpoint, OpenAIDeleteParams.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             endpoint: String,
             params: OpenAIDeleteParams = OpenAIDeleteParams.none(),
@@ -378,7 +375,6 @@ interface OpenAIServiceAsync {
             delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             endpoint: String,
             params: OpenAIDeleteParams = OpenAIDeleteParams.none(),
@@ -386,21 +382,18 @@ interface OpenAIServiceAsync {
             delete(endpoint, params, RequestOptions.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             params: OpenAIDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<OpenAIDeleteResponse>>
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             params: OpenAIDeleteParams
         ): CompletableFuture<HttpResponseFor<OpenAIDeleteResponse>> =
             delete(params, RequestOptions.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -411,12 +404,10 @@ interface OpenAIServiceAsync {
          * Returns a raw HTTP response for `patch /openai/{endpoint}`, but is otherwise the same as
          * [OpenAIServiceAsync.patch].
          */
-        @MustBeClosed
         fun patch(endpoint: String): CompletableFuture<HttpResponseFor<OpenAIPatchResponse>> =
             patch(endpoint, OpenAIPatchParams.none())
 
         /** @see [patch] */
-        @MustBeClosed
         fun patch(
             endpoint: String,
             params: OpenAIPatchParams = OpenAIPatchParams.none(),
@@ -425,7 +416,6 @@ interface OpenAIServiceAsync {
             patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
         /** @see [patch] */
-        @MustBeClosed
         fun patch(
             endpoint: String,
             params: OpenAIPatchParams = OpenAIPatchParams.none(),
@@ -433,21 +423,18 @@ interface OpenAIServiceAsync {
             patch(endpoint, params, RequestOptions.none())
 
         /** @see [patch] */
-        @MustBeClosed
         fun patch(
             params: OpenAIPatchParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<OpenAIPatchResponse>>
 
         /** @see [patch] */
-        @MustBeClosed
         fun patch(
             params: OpenAIPatchParams
         ): CompletableFuture<HttpResponseFor<OpenAIPatchResponse>> =
             patch(params, RequestOptions.none())
 
         /** @see [patch] */
-        @MustBeClosed
         fun patch(
             endpoint: String,
             requestOptions: RequestOptions,

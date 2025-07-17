@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.gemini.GeminiCreateParams
@@ -14,8 +15,8 @@ import ai.hanzo.api.models.gemini.GeminiRetrieveParams
 import ai.hanzo.api.models.gemini.GeminiRetrieveResponse
 import ai.hanzo.api.models.gemini.GeminiUpdateParams
 import ai.hanzo.api.models.gemini.GeminiUpdateResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface GeminiServiceAsync {
 
@@ -23,6 +24,13 @@ interface GeminiServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): GeminiServiceAsync
 
     /** [Docs](https://docs.hanzo.ai/docs/pass_through/google_ai_studio) */
     fun create(endpoint: String): CompletableFuture<GeminiCreateResponse> =
@@ -205,15 +213,22 @@ interface GeminiServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): GeminiServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `post /gemini/{endpoint}`, but is otherwise the same as
          * [GeminiServiceAsync.create].
          */
-        @MustBeClosed
         fun create(endpoint: String): CompletableFuture<HttpResponseFor<GeminiCreateResponse>> =
             create(endpoint, GeminiCreateParams.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             endpoint: String,
             params: GeminiCreateParams = GeminiCreateParams.none(),
@@ -222,7 +237,6 @@ interface GeminiServiceAsync {
             create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             endpoint: String,
             params: GeminiCreateParams = GeminiCreateParams.none(),
@@ -230,21 +244,18 @@ interface GeminiServiceAsync {
             create(endpoint, params, RequestOptions.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: GeminiCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<GeminiCreateResponse>>
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: GeminiCreateParams
         ): CompletableFuture<HttpResponseFor<GeminiCreateResponse>> =
             create(params, RequestOptions.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -255,12 +266,10 @@ interface GeminiServiceAsync {
          * Returns a raw HTTP response for `get /gemini/{endpoint}`, but is otherwise the same as
          * [GeminiServiceAsync.retrieve].
          */
-        @MustBeClosed
         fun retrieve(endpoint: String): CompletableFuture<HttpResponseFor<GeminiRetrieveResponse>> =
             retrieve(endpoint, GeminiRetrieveParams.none())
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             endpoint: String,
             params: GeminiRetrieveParams = GeminiRetrieveParams.none(),
@@ -269,7 +278,6 @@ interface GeminiServiceAsync {
             retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             endpoint: String,
             params: GeminiRetrieveParams = GeminiRetrieveParams.none(),
@@ -277,21 +285,18 @@ interface GeminiServiceAsync {
             retrieve(endpoint, params, RequestOptions.none())
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             params: GeminiRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<GeminiRetrieveResponse>>
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             params: GeminiRetrieveParams
         ): CompletableFuture<HttpResponseFor<GeminiRetrieveResponse>> =
             retrieve(params, RequestOptions.none())
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -302,12 +307,10 @@ interface GeminiServiceAsync {
          * Returns a raw HTTP response for `put /gemini/{endpoint}`, but is otherwise the same as
          * [GeminiServiceAsync.update].
          */
-        @MustBeClosed
         fun update(endpoint: String): CompletableFuture<HttpResponseFor<GeminiUpdateResponse>> =
             update(endpoint, GeminiUpdateParams.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             endpoint: String,
             params: GeminiUpdateParams = GeminiUpdateParams.none(),
@@ -316,7 +319,6 @@ interface GeminiServiceAsync {
             update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             endpoint: String,
             params: GeminiUpdateParams = GeminiUpdateParams.none(),
@@ -324,21 +326,18 @@ interface GeminiServiceAsync {
             update(endpoint, params, RequestOptions.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             params: GeminiUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<GeminiUpdateResponse>>
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             params: GeminiUpdateParams
         ): CompletableFuture<HttpResponseFor<GeminiUpdateResponse>> =
             update(params, RequestOptions.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -349,12 +348,10 @@ interface GeminiServiceAsync {
          * Returns a raw HTTP response for `delete /gemini/{endpoint}`, but is otherwise the same as
          * [GeminiServiceAsync.delete].
          */
-        @MustBeClosed
         fun delete(endpoint: String): CompletableFuture<HttpResponseFor<GeminiDeleteResponse>> =
             delete(endpoint, GeminiDeleteParams.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             endpoint: String,
             params: GeminiDeleteParams = GeminiDeleteParams.none(),
@@ -363,7 +360,6 @@ interface GeminiServiceAsync {
             delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             endpoint: String,
             params: GeminiDeleteParams = GeminiDeleteParams.none(),
@@ -371,21 +367,18 @@ interface GeminiServiceAsync {
             delete(endpoint, params, RequestOptions.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             params: GeminiDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<GeminiDeleteResponse>>
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             params: GeminiDeleteParams
         ): CompletableFuture<HttpResponseFor<GeminiDeleteResponse>> =
             delete(params, RequestOptions.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -396,12 +389,10 @@ interface GeminiServiceAsync {
          * Returns a raw HTTP response for `patch /gemini/{endpoint}`, but is otherwise the same as
          * [GeminiServiceAsync.patch].
          */
-        @MustBeClosed
         fun patch(endpoint: String): CompletableFuture<HttpResponseFor<GeminiPatchResponse>> =
             patch(endpoint, GeminiPatchParams.none())
 
         /** @see [patch] */
-        @MustBeClosed
         fun patch(
             endpoint: String,
             params: GeminiPatchParams = GeminiPatchParams.none(),
@@ -410,7 +401,6 @@ interface GeminiServiceAsync {
             patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
         /** @see [patch] */
-        @MustBeClosed
         fun patch(
             endpoint: String,
             params: GeminiPatchParams = GeminiPatchParams.none(),
@@ -418,21 +408,18 @@ interface GeminiServiceAsync {
             patch(endpoint, params, RequestOptions.none())
 
         /** @see [patch] */
-        @MustBeClosed
         fun patch(
             params: GeminiPatchParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<GeminiPatchResponse>>
 
         /** @see [patch] */
-        @MustBeClosed
         fun patch(
             params: GeminiPatchParams
         ): CompletableFuture<HttpResponseFor<GeminiPatchResponse>> =
             patch(params, RequestOptions.none())
 
         /** @see [patch] */
-        @MustBeClosed
         fun patch(
             endpoint: String,
             requestOptions: RequestOptions,

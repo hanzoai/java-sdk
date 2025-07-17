@@ -5,6 +5,7 @@ package ai.hanzo.api.services.blocking
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.services.blocking.images.GenerationService
 import ai.hanzo.api.services.blocking.images.GenerationServiceImpl
+import java.util.function.Consumer
 
 class ImageServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     ImageService {
@@ -17,6 +18,9 @@ class ImageServiceImpl internal constructor(private val clientOptions: ClientOpt
 
     override fun withRawResponse(): ImageService.WithRawResponse = withRawResponse
 
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): ImageService =
+        ImageServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
+
     override fun generations(): GenerationService = generations
 
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -25,6 +29,13 @@ class ImageServiceImpl internal constructor(private val clientOptions: ClientOpt
         private val generations: GenerationService.WithRawResponse by lazy {
             GenerationServiceImpl.WithRawResponseImpl(clientOptions)
         }
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ImageService.WithRawResponse =
+            ImageServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         override fun generations(): GenerationService.WithRawResponse = generations
     }

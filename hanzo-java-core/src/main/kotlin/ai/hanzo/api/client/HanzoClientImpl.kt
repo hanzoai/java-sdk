@@ -111,6 +111,7 @@ import ai.hanzo.api.services.blocking.UtilService
 import ai.hanzo.api.services.blocking.UtilServiceImpl
 import ai.hanzo.api.services.blocking.VertexAiService
 import ai.hanzo.api.services.blocking.VertexAiServiceImpl
+import java.util.function.Consumer
 
 class HanzoClientImpl(private val clientOptions: ClientOptions) : HanzoClient {
 
@@ -262,6 +263,9 @@ class HanzoClientImpl(private val clientOptions: ClientOptions) : HanzoClient {
     override fun async(): HanzoClientAsync = async
 
     override fun withRawResponse(): HanzoClient.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): HanzoClient =
+        HanzoClientImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun models(): ModelService = models
 
@@ -565,6 +569,13 @@ class HanzoClientImpl(private val clientOptions: ClientOptions) : HanzoClient {
             BudgetServiceImpl.WithRawResponseImpl(clientOptions)
         }
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): HanzoClient.WithRawResponse =
+            HanzoClientImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         override fun models(): ModelService.WithRawResponse = models
 
         override fun openai(): OpenAIService.WithRawResponse = openai
@@ -672,6 +683,7 @@ class HanzoClientImpl(private val clientOptions: ClientOptions) : HanzoClient {
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("")
                     .build()
                     .prepare(clientOptions, params)

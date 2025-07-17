@@ -22,6 +22,7 @@ import ai.hanzo.api.models.openai.deployments.DeploymentEmbedParams
 import ai.hanzo.api.models.openai.deployments.DeploymentEmbedResponse
 import ai.hanzo.api.services.blocking.openai.deployments.ChatService
 import ai.hanzo.api.services.blocking.openai.deployments.ChatServiceImpl
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class DeploymentServiceImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -34,6 +35,9 @@ class DeploymentServiceImpl internal constructor(private val clientOptions: Clie
     private val chat: ChatService by lazy { ChatServiceImpl(clientOptions) }
 
     override fun withRawResponse(): DeploymentService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): DeploymentService =
+        DeploymentServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun chat(): ChatService = chat
 
@@ -60,6 +64,13 @@ class DeploymentServiceImpl internal constructor(private val clientOptions: Clie
             ChatServiceImpl.WithRawResponseImpl(clientOptions)
         }
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): DeploymentService.WithRawResponse =
+            DeploymentServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         override fun chat(): ChatService.WithRawResponse = chat
 
         private val completeHandler: Handler<DeploymentCompleteResponse> =
@@ -76,6 +87,7 @@ class DeploymentServiceImpl internal constructor(private val clientOptions: Clie
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("openai", "deployments", params._pathParam(0), "completions")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -107,6 +119,7 @@ class DeploymentServiceImpl internal constructor(private val clientOptions: Clie
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("openai", "deployments", params._pathParam(0), "embeddings")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()

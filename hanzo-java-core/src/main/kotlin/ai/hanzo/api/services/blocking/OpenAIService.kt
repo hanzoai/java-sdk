@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.blocking
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.openai.OpenAICreateParams
@@ -16,6 +17,7 @@ import ai.hanzo.api.models.openai.OpenAIUpdateParams
 import ai.hanzo.api.models.openai.OpenAIUpdateResponse
 import ai.hanzo.api.services.blocking.openai.DeploymentService
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface OpenAIService {
 
@@ -23,6 +25,13 @@ interface OpenAIService {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): OpenAIService
 
     fun deployments(): DeploymentService
 
@@ -189,6 +198,13 @@ interface OpenAIService {
 
     /** A view of [OpenAIService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): OpenAIService.WithRawResponse
 
         fun deployments(): DeploymentService.WithRawResponse
 

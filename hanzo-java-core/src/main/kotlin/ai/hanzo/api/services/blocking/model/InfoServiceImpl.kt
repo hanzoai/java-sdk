@@ -16,6 +16,7 @@ import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepare
 import ai.hanzo.api.models.model.info.InfoListParams
 import ai.hanzo.api.models.model.info.InfoListResponse
+import java.util.function.Consumer
 
 class InfoServiceImpl internal constructor(private val clientOptions: ClientOptions) : InfoService {
 
@@ -25,6 +26,9 @@ class InfoServiceImpl internal constructor(private val clientOptions: ClientOpti
 
     override fun withRawResponse(): InfoService.WithRawResponse = withRawResponse
 
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): InfoService =
+        InfoServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
+
     override fun list(params: InfoListParams, requestOptions: RequestOptions): InfoListResponse =
         // get /model/info
         withRawResponse().list(params, requestOptions).parse()
@@ -33,6 +37,13 @@ class InfoServiceImpl internal constructor(private val clientOptions: ClientOpti
         InfoService.WithRawResponse {
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): InfoService.WithRawResponse =
+            InfoServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         private val listHandler: Handler<InfoListResponse> =
             jsonHandler<InfoListResponse>(clientOptions.jsonMapper).withErrorHandler(errorHandler)
@@ -44,6 +55,7 @@ class InfoServiceImpl internal constructor(private val clientOptions: ClientOpti
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("model", "info")
                     .build()
                     .prepare(clientOptions, params)

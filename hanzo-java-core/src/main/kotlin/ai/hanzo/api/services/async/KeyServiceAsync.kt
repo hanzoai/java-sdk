@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.key.GenerateKeyResponse
@@ -22,9 +23,9 @@ import ai.hanzo.api.models.key.KeyUnblockResponse
 import ai.hanzo.api.models.key.KeyUpdateParams
 import ai.hanzo.api.models.key.KeyUpdateResponse
 import ai.hanzo.api.services.async.key.RegenerateServiceAsync
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.Optional
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface KeyServiceAsync {
 
@@ -32,6 +33,13 @@ interface KeyServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): KeyServiceAsync
 
     fun regenerate(): RegenerateServiceAsync
 
@@ -482,18 +490,23 @@ interface KeyServiceAsync {
     /** A view of [KeyServiceAsync] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
 
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): KeyServiceAsync.WithRawResponse
+
         fun regenerate(): RegenerateServiceAsync.WithRawResponse
 
         /**
          * Returns a raw HTTP response for `post /key/update`, but is otherwise the same as
          * [KeyServiceAsync.update].
          */
-        @MustBeClosed
         fun update(params: KeyUpdateParams): CompletableFuture<HttpResponseFor<KeyUpdateResponse>> =
             update(params, RequestOptions.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             params: KeyUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -503,24 +516,20 @@ interface KeyServiceAsync {
          * Returns a raw HTTP response for `get /key/list`, but is otherwise the same as
          * [KeyServiceAsync.list].
          */
-        @MustBeClosed
         fun list(): CompletableFuture<HttpResponseFor<KeyListResponse>> = list(KeyListParams.none())
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             params: KeyListParams = KeyListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<KeyListResponse>>
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             params: KeyListParams = KeyListParams.none()
         ): CompletableFuture<HttpResponseFor<KeyListResponse>> = list(params, RequestOptions.none())
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<KeyListResponse>> =
@@ -530,26 +539,22 @@ interface KeyServiceAsync {
          * Returns a raw HTTP response for `post /key/delete`, but is otherwise the same as
          * [KeyServiceAsync.delete].
          */
-        @MustBeClosed
         fun delete(): CompletableFuture<HttpResponseFor<KeyDeleteResponse>> =
             delete(KeyDeleteParams.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             params: KeyDeleteParams = KeyDeleteParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<KeyDeleteResponse>>
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             params: KeyDeleteParams = KeyDeleteParams.none()
         ): CompletableFuture<HttpResponseFor<KeyDeleteResponse>> =
             delete(params, RequestOptions.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<KeyDeleteResponse>> =
@@ -559,14 +564,12 @@ interface KeyServiceAsync {
          * Returns a raw HTTP response for `post /key/block`, but is otherwise the same as
          * [KeyServiceAsync.block].
          */
-        @MustBeClosed
         fun block(
             params: KeyBlockParams
         ): CompletableFuture<HttpResponseFor<Optional<KeyBlockResponse>>> =
             block(params, RequestOptions.none())
 
         /** @see [block] */
-        @MustBeClosed
         fun block(
             params: KeyBlockParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -576,26 +579,22 @@ interface KeyServiceAsync {
          * Returns a raw HTTP response for `post /key/health`, but is otherwise the same as
          * [KeyServiceAsync.checkHealth].
          */
-        @MustBeClosed
         fun checkHealth(): CompletableFuture<HttpResponseFor<KeyCheckHealthResponse>> =
             checkHealth(KeyCheckHealthParams.none())
 
         /** @see [checkHealth] */
-        @MustBeClosed
         fun checkHealth(
             params: KeyCheckHealthParams = KeyCheckHealthParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<KeyCheckHealthResponse>>
 
         /** @see [checkHealth] */
-        @MustBeClosed
         fun checkHealth(
             params: KeyCheckHealthParams = KeyCheckHealthParams.none()
         ): CompletableFuture<HttpResponseFor<KeyCheckHealthResponse>> =
             checkHealth(params, RequestOptions.none())
 
         /** @see [checkHealth] */
-        @MustBeClosed
         fun checkHealth(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<KeyCheckHealthResponse>> =
@@ -605,26 +604,22 @@ interface KeyServiceAsync {
          * Returns a raw HTTP response for `post /key/generate`, but is otherwise the same as
          * [KeyServiceAsync.generate].
          */
-        @MustBeClosed
         fun generate(): CompletableFuture<HttpResponseFor<GenerateKeyResponse>> =
             generate(KeyGenerateParams.none())
 
         /** @see [generate] */
-        @MustBeClosed
         fun generate(
             params: KeyGenerateParams = KeyGenerateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<GenerateKeyResponse>>
 
         /** @see [generate] */
-        @MustBeClosed
         fun generate(
             params: KeyGenerateParams = KeyGenerateParams.none()
         ): CompletableFuture<HttpResponseFor<GenerateKeyResponse>> =
             generate(params, RequestOptions.none())
 
         /** @see [generate] */
-        @MustBeClosed
         fun generate(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<GenerateKeyResponse>> =
@@ -634,14 +629,12 @@ interface KeyServiceAsync {
          * Returns a raw HTTP response for `post /key/{key}/regenerate`, but is otherwise the same
          * as [KeyServiceAsync.regenerateByKey].
          */
-        @MustBeClosed
         fun regenerateByKey(
             pathKey: String
         ): CompletableFuture<HttpResponseFor<Optional<GenerateKeyResponse>>> =
             regenerateByKey(pathKey, KeyRegenerateByKeyParams.none())
 
         /** @see [regenerateByKey] */
-        @MustBeClosed
         fun regenerateByKey(
             pathKey: String,
             params: KeyRegenerateByKeyParams = KeyRegenerateByKeyParams.none(),
@@ -650,7 +643,6 @@ interface KeyServiceAsync {
             regenerateByKey(params.toBuilder().pathKey(pathKey).build(), requestOptions)
 
         /** @see [regenerateByKey] */
-        @MustBeClosed
         fun regenerateByKey(
             pathKey: String,
             params: KeyRegenerateByKeyParams = KeyRegenerateByKeyParams.none(),
@@ -658,21 +650,18 @@ interface KeyServiceAsync {
             regenerateByKey(pathKey, params, RequestOptions.none())
 
         /** @see [regenerateByKey] */
-        @MustBeClosed
         fun regenerateByKey(
             params: KeyRegenerateByKeyParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<Optional<GenerateKeyResponse>>>
 
         /** @see [regenerateByKey] */
-        @MustBeClosed
         fun regenerateByKey(
             params: KeyRegenerateByKeyParams
         ): CompletableFuture<HttpResponseFor<Optional<GenerateKeyResponse>>> =
             regenerateByKey(params, RequestOptions.none())
 
         /** @see [regenerateByKey] */
-        @MustBeClosed
         fun regenerateByKey(
             pathKey: String,
             requestOptions: RequestOptions,
@@ -683,26 +672,22 @@ interface KeyServiceAsync {
          * Returns a raw HTTP response for `get /key/info`, but is otherwise the same as
          * [KeyServiceAsync.retrieveInfo].
          */
-        @MustBeClosed
         fun retrieveInfo(): CompletableFuture<HttpResponseFor<KeyRetrieveInfoResponse>> =
             retrieveInfo(KeyRetrieveInfoParams.none())
 
         /** @see [retrieveInfo] */
-        @MustBeClosed
         fun retrieveInfo(
             params: KeyRetrieveInfoParams = KeyRetrieveInfoParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<KeyRetrieveInfoResponse>>
 
         /** @see [retrieveInfo] */
-        @MustBeClosed
         fun retrieveInfo(
             params: KeyRetrieveInfoParams = KeyRetrieveInfoParams.none()
         ): CompletableFuture<HttpResponseFor<KeyRetrieveInfoResponse>> =
             retrieveInfo(params, RequestOptions.none())
 
         /** @see [retrieveInfo] */
-        @MustBeClosed
         fun retrieveInfo(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<KeyRetrieveInfoResponse>> =
@@ -712,14 +697,12 @@ interface KeyServiceAsync {
          * Returns a raw HTTP response for `post /key/unblock`, but is otherwise the same as
          * [KeyServiceAsync.unblock].
          */
-        @MustBeClosed
         fun unblock(
             params: KeyUnblockParams
         ): CompletableFuture<HttpResponseFor<KeyUnblockResponse>> =
             unblock(params, RequestOptions.none())
 
         /** @see [unblock] */
-        @MustBeClosed
         fun unblock(
             params: KeyUnblockParams,
             requestOptions: RequestOptions = RequestOptions.none(),

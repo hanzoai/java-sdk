@@ -26,6 +26,7 @@ import ai.hanzo.api.models.azure.AzurePatchParams
 import ai.hanzo.api.models.azure.AzurePatchResponse
 import ai.hanzo.api.models.azure.AzureUpdateParams
 import ai.hanzo.api.models.azure.AzureUpdateResponse
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class AzureServiceImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -36,6 +37,9 @@ class AzureServiceImpl internal constructor(private val clientOptions: ClientOpt
     }
 
     override fun withRawResponse(): AzureService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): AzureService =
+        AzureServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: AzureCreateParams,
@@ -74,6 +78,13 @@ class AzureServiceImpl internal constructor(private val clientOptions: ClientOpt
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): AzureService.WithRawResponse =
+            AzureServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val createHandler: Handler<AzureCreateResponse> =
             jsonHandler<AzureCreateResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -88,6 +99,7 @@ class AzureServiceImpl internal constructor(private val clientOptions: ClientOpt
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("azure", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -119,6 +131,7 @@ class AzureServiceImpl internal constructor(private val clientOptions: ClientOpt
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PUT)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("azure", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -150,6 +163,7 @@ class AzureServiceImpl internal constructor(private val clientOptions: ClientOpt
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("azure", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -180,6 +194,7 @@ class AzureServiceImpl internal constructor(private val clientOptions: ClientOpt
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("azure", params._pathParam(0))
                     .build()
                     .prepare(clientOptions, params)
@@ -209,6 +224,7 @@ class AzureServiceImpl internal constructor(private val clientOptions: ClientOpt
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PATCH)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("azure", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()

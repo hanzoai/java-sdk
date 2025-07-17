@@ -18,6 +18,7 @@ import ai.hanzo.api.core.prepareAsync
 import ai.hanzo.api.models.responses.inputitems.InputItemListParams
 import ai.hanzo.api.models.responses.inputitems.InputItemListResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class InputItemServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -28,6 +29,9 @@ class InputItemServiceAsyncImpl internal constructor(private val clientOptions: 
     }
 
     override fun withRawResponse(): InputItemServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): InputItemServiceAsync =
+        InputItemServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun list(
         params: InputItemListParams,
@@ -40,6 +44,13 @@ class InputItemServiceAsyncImpl internal constructor(private val clientOptions: 
         InputItemServiceAsync.WithRawResponse {
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): InputItemServiceAsync.WithRawResponse =
+            InputItemServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         private val listHandler: Handler<InputItemListResponse> =
             jsonHandler<InputItemListResponse>(clientOptions.jsonMapper)
@@ -55,6 +66,7 @@ class InputItemServiceAsyncImpl internal constructor(private val clientOptions: 
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "responses", params._pathParam(0), "input_items")
                     .build()
                     .prepareAsync(clientOptions, params)

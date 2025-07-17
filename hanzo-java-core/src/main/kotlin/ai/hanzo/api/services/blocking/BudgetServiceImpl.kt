@@ -27,6 +27,7 @@ import ai.hanzo.api.models.budget.BudgetSettingsParams
 import ai.hanzo.api.models.budget.BudgetSettingsResponse
 import ai.hanzo.api.models.budget.BudgetUpdateParams
 import ai.hanzo.api.models.budget.BudgetUpdateResponse
+import java.util.function.Consumer
 
 class BudgetServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     BudgetService {
@@ -36,6 +37,9 @@ class BudgetServiceImpl internal constructor(private val clientOptions: ClientOp
     }
 
     override fun withRawResponse(): BudgetService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): BudgetService =
+        BudgetServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: BudgetCreateParams,
@@ -84,6 +88,13 @@ class BudgetServiceImpl internal constructor(private val clientOptions: ClientOp
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): BudgetService.WithRawResponse =
+            BudgetServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val createHandler: Handler<BudgetCreateResponse> =
             jsonHandler<BudgetCreateResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -95,6 +106,7 @@ class BudgetServiceImpl internal constructor(private val clientOptions: ClientOp
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("budget", "new")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -123,6 +135,7 @@ class BudgetServiceImpl internal constructor(private val clientOptions: ClientOp
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("budget", "update")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -150,6 +163,7 @@ class BudgetServiceImpl internal constructor(private val clientOptions: ClientOp
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("budget", "list")
                     .build()
                     .prepare(clientOptions, params)
@@ -177,6 +191,7 @@ class BudgetServiceImpl internal constructor(private val clientOptions: ClientOp
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("budget", "delete")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -204,6 +219,7 @@ class BudgetServiceImpl internal constructor(private val clientOptions: ClientOp
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("budget", "info")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -232,6 +248,7 @@ class BudgetServiceImpl internal constructor(private val clientOptions: ClientOp
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("budget", "settings")
                     .build()
                     .prepare(clientOptions, params)

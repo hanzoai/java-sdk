@@ -2,14 +2,15 @@
 
 package ai.hanzo.api.services.async.team
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.team.callback.CallbackAddParams
 import ai.hanzo.api.models.team.callback.CallbackAddResponse
 import ai.hanzo.api.models.team.callback.CallbackRetrieveParams
 import ai.hanzo.api.models.team.callback.CallbackRetrieveResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface CallbackServiceAsync {
 
@@ -17,6 +18,13 @@ interface CallbackServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): CallbackServiceAsync
 
     /**
      * Get the success/failure callbacks and variables for a team
@@ -136,15 +144,22 @@ interface CallbackServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): CallbackServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `get /team/{team_id}/callback`, but is otherwise the same
          * as [CallbackServiceAsync.retrieve].
          */
-        @MustBeClosed
         fun retrieve(teamId: String): CompletableFuture<HttpResponseFor<CallbackRetrieveResponse>> =
             retrieve(teamId, CallbackRetrieveParams.none())
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             teamId: String,
             params: CallbackRetrieveParams = CallbackRetrieveParams.none(),
@@ -153,7 +168,6 @@ interface CallbackServiceAsync {
             retrieve(params.toBuilder().teamId(teamId).build(), requestOptions)
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             teamId: String,
             params: CallbackRetrieveParams = CallbackRetrieveParams.none(),
@@ -161,21 +175,18 @@ interface CallbackServiceAsync {
             retrieve(teamId, params, RequestOptions.none())
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             params: CallbackRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<CallbackRetrieveResponse>>
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             params: CallbackRetrieveParams
         ): CompletableFuture<HttpResponseFor<CallbackRetrieveResponse>> =
             retrieve(params, RequestOptions.none())
 
         /** @see [retrieve] */
-        @MustBeClosed
         fun retrieve(
             teamId: String,
             requestOptions: RequestOptions,
@@ -186,7 +197,6 @@ interface CallbackServiceAsync {
          * Returns a raw HTTP response for `post /team/{team_id}/callback`, but is otherwise the
          * same as [CallbackServiceAsync.add].
          */
-        @MustBeClosed
         fun add(
             teamId: String,
             params: CallbackAddParams,
@@ -194,7 +204,6 @@ interface CallbackServiceAsync {
             add(teamId, params, RequestOptions.none())
 
         /** @see [add] */
-        @MustBeClosed
         fun add(
             teamId: String,
             params: CallbackAddParams,
@@ -203,14 +212,12 @@ interface CallbackServiceAsync {
             add(params.toBuilder().teamId(teamId).build(), requestOptions)
 
         /** @see [add] */
-        @MustBeClosed
         fun add(
             params: CallbackAddParams
         ): CompletableFuture<HttpResponseFor<CallbackAddResponse>> =
             add(params, RequestOptions.none())
 
         /** @see [add] */
-        @MustBeClosed
         fun add(
             params: CallbackAddParams,
             requestOptions: RequestOptions = RequestOptions.none(),

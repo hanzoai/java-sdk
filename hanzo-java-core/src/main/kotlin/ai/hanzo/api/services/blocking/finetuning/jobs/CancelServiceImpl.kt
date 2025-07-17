@@ -18,6 +18,7 @@ import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepare
 import ai.hanzo.api.models.finetuning.jobs.cancel.CancelCreateParams
 import ai.hanzo.api.models.finetuning.jobs.cancel.CancelCreateResponse
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class CancelServiceImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -28,6 +29,9 @@ class CancelServiceImpl internal constructor(private val clientOptions: ClientOp
     }
 
     override fun withRawResponse(): CancelService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): CancelService =
+        CancelServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: CancelCreateParams,
@@ -40,6 +44,13 @@ class CancelServiceImpl internal constructor(private val clientOptions: ClientOp
         CancelService.WithRawResponse {
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): CancelService.WithRawResponse =
+            CancelServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         private val createHandler: Handler<CancelCreateResponse> =
             jsonHandler<CancelCreateResponse>(clientOptions.jsonMapper)
@@ -55,6 +66,7 @@ class CancelServiceImpl internal constructor(private val clientOptions: ClientOp
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "fine_tuning", "jobs", params._pathParam(0), "cancel")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()

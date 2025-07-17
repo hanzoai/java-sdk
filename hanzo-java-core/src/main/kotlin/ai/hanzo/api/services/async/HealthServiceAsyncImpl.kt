@@ -25,6 +25,7 @@ import ai.hanzo.api.models.health.HealthCheckReadinessResponse
 import ai.hanzo.api.models.health.HealthCheckServicesParams
 import ai.hanzo.api.models.health.HealthCheckServicesResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class HealthServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     HealthServiceAsync {
@@ -34,6 +35,9 @@ class HealthServiceAsyncImpl internal constructor(private val clientOptions: Cli
     }
 
     override fun withRawResponse(): HealthServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): HealthServiceAsync =
+        HealthServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun checkAll(
         params: HealthCheckAllParams,
@@ -75,6 +79,13 @@ class HealthServiceAsyncImpl internal constructor(private val clientOptions: Cli
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): HealthServiceAsync.WithRawResponse =
+            HealthServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val checkAllHandler: Handler<HealthCheckAllResponse> =
             jsonHandler<HealthCheckAllResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -86,6 +97,7 @@ class HealthServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("health")
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -116,6 +128,7 @@ class HealthServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("health", "liveliness")
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -146,6 +159,7 @@ class HealthServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("health", "liveness")
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -176,6 +190,7 @@ class HealthServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("health", "readiness")
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -206,6 +221,7 @@ class HealthServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("health", "services")
                     .build()
                     .prepareAsync(clientOptions, params)

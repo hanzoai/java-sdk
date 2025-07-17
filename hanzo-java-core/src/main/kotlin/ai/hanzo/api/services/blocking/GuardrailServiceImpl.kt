@@ -16,6 +16,7 @@ import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepare
 import ai.hanzo.api.models.guardrails.GuardrailListParams
 import ai.hanzo.api.models.guardrails.GuardrailListResponse
+import java.util.function.Consumer
 
 class GuardrailServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     GuardrailService {
@@ -25,6 +26,9 @@ class GuardrailServiceImpl internal constructor(private val clientOptions: Clien
     }
 
     override fun withRawResponse(): GuardrailService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): GuardrailService =
+        GuardrailServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun list(
         params: GuardrailListParams,
@@ -38,6 +42,13 @@ class GuardrailServiceImpl internal constructor(private val clientOptions: Clien
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): GuardrailService.WithRawResponse =
+            GuardrailServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val listHandler: Handler<GuardrailListResponse> =
             jsonHandler<GuardrailListResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -49,6 +60,7 @@ class GuardrailServiceImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("guardrails", "list")
                     .build()
                     .prepare(clientOptions, params)

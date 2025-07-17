@@ -27,6 +27,7 @@ import ai.hanzo.api.models.cohere.CohereRetrieveResponse
 import ai.hanzo.api.models.cohere.CohereUpdateParams
 import ai.hanzo.api.models.cohere.CohereUpdateResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class CohereServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -37,6 +38,9 @@ class CohereServiceAsyncImpl internal constructor(private val clientOptions: Cli
     }
 
     override fun withRawResponse(): CohereServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): CohereServiceAsync =
+        CohereServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: CohereCreateParams,
@@ -78,6 +82,13 @@ class CohereServiceAsyncImpl internal constructor(private val clientOptions: Cli
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): CohereServiceAsync.WithRawResponse =
+            CohereServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val createHandler: Handler<CohereCreateResponse> =
             jsonHandler<CohereCreateResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -92,6 +103,7 @@ class CohereServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("cohere", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -126,6 +138,7 @@ class CohereServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("cohere", params._pathParam(0))
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -159,6 +172,7 @@ class CohereServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PUT)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("cohere", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -193,6 +207,7 @@ class CohereServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("cohere", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -227,6 +242,7 @@ class CohereServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PATCH)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("cohere", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()

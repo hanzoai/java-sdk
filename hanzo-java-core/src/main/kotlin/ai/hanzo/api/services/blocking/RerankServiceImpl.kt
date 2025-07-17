@@ -21,6 +21,7 @@ import ai.hanzo.api.models.rerank.RerankCreateV1Params
 import ai.hanzo.api.models.rerank.RerankCreateV1Response
 import ai.hanzo.api.models.rerank.RerankCreateV2Params
 import ai.hanzo.api.models.rerank.RerankCreateV2Response
+import java.util.function.Consumer
 
 class RerankServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     RerankService {
@@ -30,6 +31,9 @@ class RerankServiceImpl internal constructor(private val clientOptions: ClientOp
     }
 
     override fun withRawResponse(): RerankService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): RerankService =
+        RerankServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: RerankCreateParams,
@@ -57,6 +61,13 @@ class RerankServiceImpl internal constructor(private val clientOptions: ClientOp
 
         private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): RerankService.WithRawResponse =
+            RerankServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         private val createHandler: Handler<RerankCreateResponse> =
             jsonHandler<RerankCreateResponse>(clientOptions.jsonMapper)
                 .withErrorHandler(errorHandler)
@@ -68,6 +79,7 @@ class RerankServiceImpl internal constructor(private val clientOptions: ClientOp
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("rerank")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -96,6 +108,7 @@ class RerankServiceImpl internal constructor(private val clientOptions: ClientOp
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "rerank")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -124,6 +137,7 @@ class RerankServiceImpl internal constructor(private val clientOptions: ClientOp
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v2", "rerank")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()

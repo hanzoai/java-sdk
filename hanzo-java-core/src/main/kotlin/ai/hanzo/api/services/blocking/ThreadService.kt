@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.blocking
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.threads.ThreadCreateParams
@@ -11,6 +12,7 @@ import ai.hanzo.api.models.threads.ThreadRetrieveResponse
 import ai.hanzo.api.services.blocking.threads.MessageService
 import ai.hanzo.api.services.blocking.threads.RunService
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface ThreadService {
 
@@ -18,6 +20,13 @@ interface ThreadService {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): ThreadService
 
     fun messages(): MessageService
 
@@ -82,6 +91,13 @@ interface ThreadService {
 
     /** A view of [ThreadService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): ThreadService.WithRawResponse
 
         fun messages(): MessageService.WithRawResponse
 

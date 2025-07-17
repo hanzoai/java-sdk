@@ -25,6 +25,7 @@ import ai.hanzo.api.services.async.threads.MessageServiceAsyncImpl
 import ai.hanzo.api.services.async.threads.RunServiceAsync
 import ai.hanzo.api.services.async.threads.RunServiceAsyncImpl
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 import kotlin.jvm.optionals.getOrNull
 
 class ThreadServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -39,6 +40,9 @@ class ThreadServiceAsyncImpl internal constructor(private val clientOptions: Cli
     private val runs: RunServiceAsync by lazy { RunServiceAsyncImpl(clientOptions) }
 
     override fun withRawResponse(): ThreadServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): ThreadServiceAsync =
+        ThreadServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun messages(): MessageServiceAsync = messages
 
@@ -71,6 +75,13 @@ class ThreadServiceAsyncImpl internal constructor(private val clientOptions: Cli
             RunServiceAsyncImpl.WithRawResponseImpl(clientOptions)
         }
 
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ThreadServiceAsync.WithRawResponse =
+            ThreadServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
         override fun messages(): MessageServiceAsync.WithRawResponse = messages
 
         override fun runs(): RunServiceAsync.WithRawResponse = runs
@@ -86,6 +97,7 @@ class ThreadServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "threads")
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -120,6 +132,7 @@ class ThreadServiceAsyncImpl internal constructor(private val clientOptions: Cli
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("v1", "threads", params._pathParam(0))
                     .build()
                     .prepareAsync(clientOptions, params)

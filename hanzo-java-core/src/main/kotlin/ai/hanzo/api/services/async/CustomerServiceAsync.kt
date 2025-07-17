@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.customer.CustomerBlockParams
@@ -18,8 +19,8 @@ import ai.hanzo.api.models.customer.CustomerUnblockParams
 import ai.hanzo.api.models.customer.CustomerUnblockResponse
 import ai.hanzo.api.models.customer.CustomerUpdateParams
 import ai.hanzo.api.models.customer.CustomerUpdateResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface CustomerServiceAsync {
 
@@ -27,6 +28,13 @@ interface CustomerServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): CustomerServiceAsync
 
     /**
      * Allow creating a new Customer
@@ -236,17 +244,24 @@ interface CustomerServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): CustomerServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `post /customer/new`, but is otherwise the same as
          * [CustomerServiceAsync.create].
          */
-        @MustBeClosed
         fun create(
             params: CustomerCreateParams
         ): CompletableFuture<HttpResponseFor<CustomerCreateResponse>> =
             create(params, RequestOptions.none())
 
         /** @see [create] */
-        @MustBeClosed
         fun create(
             params: CustomerCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -256,14 +271,12 @@ interface CustomerServiceAsync {
          * Returns a raw HTTP response for `post /customer/update`, but is otherwise the same as
          * [CustomerServiceAsync.update].
          */
-        @MustBeClosed
         fun update(
             params: CustomerUpdateParams
         ): CompletableFuture<HttpResponseFor<CustomerUpdateResponse>> =
             update(params, RequestOptions.none())
 
         /** @see [update] */
-        @MustBeClosed
         fun update(
             params: CustomerUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -273,26 +286,22 @@ interface CustomerServiceAsync {
          * Returns a raw HTTP response for `get /customer/list`, but is otherwise the same as
          * [CustomerServiceAsync.list].
          */
-        @MustBeClosed
         fun list(): CompletableFuture<HttpResponseFor<List<CustomerListResponse>>> =
             list(CustomerListParams.none())
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             params: CustomerListParams = CustomerListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<List<CustomerListResponse>>>
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             params: CustomerListParams = CustomerListParams.none()
         ): CompletableFuture<HttpResponseFor<List<CustomerListResponse>>> =
             list(params, RequestOptions.none())
 
         /** @see [list] */
-        @MustBeClosed
         fun list(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<List<CustomerListResponse>>> =
@@ -302,14 +311,12 @@ interface CustomerServiceAsync {
          * Returns a raw HTTP response for `post /customer/delete`, but is otherwise the same as
          * [CustomerServiceAsync.delete].
          */
-        @MustBeClosed
         fun delete(
             params: CustomerDeleteParams
         ): CompletableFuture<HttpResponseFor<CustomerDeleteResponse>> =
             delete(params, RequestOptions.none())
 
         /** @see [delete] */
-        @MustBeClosed
         fun delete(
             params: CustomerDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -319,14 +326,12 @@ interface CustomerServiceAsync {
          * Returns a raw HTTP response for `post /customer/block`, but is otherwise the same as
          * [CustomerServiceAsync.block].
          */
-        @MustBeClosed
         fun block(
             params: CustomerBlockParams
         ): CompletableFuture<HttpResponseFor<CustomerBlockResponse>> =
             block(params, RequestOptions.none())
 
         /** @see [block] */
-        @MustBeClosed
         fun block(
             params: CustomerBlockParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -336,14 +341,12 @@ interface CustomerServiceAsync {
          * Returns a raw HTTP response for `get /customer/info`, but is otherwise the same as
          * [CustomerServiceAsync.retrieveInfo].
          */
-        @MustBeClosed
         fun retrieveInfo(
             params: CustomerRetrieveInfoParams
         ): CompletableFuture<HttpResponseFor<CustomerRetrieveInfoResponse>> =
             retrieveInfo(params, RequestOptions.none())
 
         /** @see [retrieveInfo] */
-        @MustBeClosed
         fun retrieveInfo(
             params: CustomerRetrieveInfoParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -353,14 +356,12 @@ interface CustomerServiceAsync {
          * Returns a raw HTTP response for `post /customer/unblock`, but is otherwise the same as
          * [CustomerServiceAsync.unblock].
          */
-        @MustBeClosed
         fun unblock(
             params: CustomerUnblockParams
         ): CompletableFuture<HttpResponseFor<CustomerUnblockResponse>> =
             unblock(params, RequestOptions.none())
 
         /** @see [unblock] */
-        @MustBeClosed
         fun unblock(
             params: CustomerUnblockParams,
             requestOptions: RequestOptions = RequestOptions.none(),

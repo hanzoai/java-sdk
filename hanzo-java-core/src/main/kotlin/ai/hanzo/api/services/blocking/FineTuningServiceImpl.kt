@@ -5,6 +5,7 @@ package ai.hanzo.api.services.blocking
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.services.blocking.finetuning.JobService
 import ai.hanzo.api.services.blocking.finetuning.JobServiceImpl
+import java.util.function.Consumer
 
 class FineTuningServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     FineTuningService {
@@ -17,6 +18,9 @@ class FineTuningServiceImpl internal constructor(private val clientOptions: Clie
 
     override fun withRawResponse(): FineTuningService.WithRawResponse = withRawResponse
 
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): FineTuningService =
+        FineTuningServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
+
     override fun jobs(): JobService = jobs
 
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -25,6 +29,13 @@ class FineTuningServiceImpl internal constructor(private val clientOptions: Clie
         private val jobs: JobService.WithRawResponse by lazy {
             JobServiceImpl.WithRawResponseImpl(clientOptions)
         }
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): FineTuningService.WithRawResponse =
+            FineTuningServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         override fun jobs(): JobService.WithRawResponse = jobs
     }
