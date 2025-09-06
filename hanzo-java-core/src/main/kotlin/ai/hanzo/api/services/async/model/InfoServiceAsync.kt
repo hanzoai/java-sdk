@@ -57,17 +57,17 @@ interface InfoServiceAsync {
      */
     fun list(): CompletableFuture<InfoListResponse> = list(InfoListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: InfoListParams = InfoListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<InfoListResponse>
 
-    /** @see [list] */
+    /** @see list */
     fun list(params: InfoListParams = InfoListParams.none()): CompletableFuture<InfoListResponse> =
         list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): CompletableFuture<InfoListResponse> =
         list(InfoListParams.none(), requestOptions)
 
@@ -88,19 +88,19 @@ interface InfoServiceAsync {
         fun list(): CompletableFuture<HttpResponseFor<InfoListResponse>> =
             list(InfoListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: InfoListParams = InfoListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<InfoListResponse>>
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: InfoListParams = InfoListParams.none()
         ): CompletableFuture<HttpResponseFor<InfoListResponse>> =
             list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<InfoListResponse>> =

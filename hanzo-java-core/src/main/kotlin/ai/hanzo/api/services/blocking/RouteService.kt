@@ -27,17 +27,17 @@ interface RouteService {
     /** Get a list of available routes in the FastAPI application. */
     fun list(): RouteListResponse = list(RouteListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: RouteListParams = RouteListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): RouteListResponse
 
-    /** @see [list] */
+    /** @see list */
     fun list(params: RouteListParams = RouteListParams.none()): RouteListResponse =
         list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): RouteListResponse =
         list(RouteListParams.none(), requestOptions)
 
@@ -57,20 +57,20 @@ interface RouteService {
          */
         @MustBeClosed fun list(): HttpResponseFor<RouteListResponse> = list(RouteListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: RouteListParams = RouteListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<RouteListResponse>
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: RouteListParams = RouteListParams.none()
         ): HttpResponseFor<RouteListResponse> = list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(requestOptions: RequestOptions): HttpResponseFor<RouteListResponse> =
             list(RouteListParams.none(), requestOptions)

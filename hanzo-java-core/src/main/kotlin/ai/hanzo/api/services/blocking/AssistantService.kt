@@ -36,18 +36,18 @@ interface AssistantService {
      */
     fun create(): AssistantCreateResponse = create(AssistantCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: AssistantCreateParams = AssistantCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AssistantCreateResponse
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: AssistantCreateParams = AssistantCreateParams.none()
     ): AssistantCreateResponse = create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): AssistantCreateResponse =
         create(AssistantCreateParams.none(), requestOptions)
 
@@ -58,17 +58,17 @@ interface AssistantService {
      */
     fun list(): AssistantListResponse = list(AssistantListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: AssistantListParams = AssistantListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AssistantListResponse
 
-    /** @see [list] */
+    /** @see list */
     fun list(params: AssistantListParams = AssistantListParams.none()): AssistantListResponse =
         list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): AssistantListResponse =
         list(AssistantListParams.none(), requestOptions)
 
@@ -81,7 +81,7 @@ interface AssistantService {
     fun delete(assistantId: String): AssistantDeleteResponse =
         delete(assistantId, AssistantDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         assistantId: String,
         params: AssistantDeleteParams = AssistantDeleteParams.none(),
@@ -89,23 +89,23 @@ interface AssistantService {
     ): AssistantDeleteResponse =
         delete(params.toBuilder().assistantId(assistantId).build(), requestOptions)
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         assistantId: String,
         params: AssistantDeleteParams = AssistantDeleteParams.none(),
     ): AssistantDeleteResponse = delete(assistantId, params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: AssistantDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AssistantDeleteResponse
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: AssistantDeleteParams): AssistantDeleteResponse =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(assistantId: String, requestOptions: RequestOptions): AssistantDeleteResponse =
         delete(assistantId, AssistantDeleteParams.none(), requestOptions)
 
@@ -127,20 +127,20 @@ interface AssistantService {
         fun create(): HttpResponseFor<AssistantCreateResponse> =
             create(AssistantCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: AssistantCreateParams = AssistantCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<AssistantCreateResponse>
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: AssistantCreateParams = AssistantCreateParams.none()
         ): HttpResponseFor<AssistantCreateResponse> = create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(requestOptions: RequestOptions): HttpResponseFor<AssistantCreateResponse> =
             create(AssistantCreateParams.none(), requestOptions)
@@ -152,20 +152,20 @@ interface AssistantService {
         @MustBeClosed
         fun list(): HttpResponseFor<AssistantListResponse> = list(AssistantListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: AssistantListParams = AssistantListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<AssistantListResponse>
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: AssistantListParams = AssistantListParams.none()
         ): HttpResponseFor<AssistantListResponse> = list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(requestOptions: RequestOptions): HttpResponseFor<AssistantListResponse> =
             list(AssistantListParams.none(), requestOptions)
@@ -178,7 +178,7 @@ interface AssistantService {
         fun delete(assistantId: String): HttpResponseFor<AssistantDeleteResponse> =
             delete(assistantId, AssistantDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             assistantId: String,
@@ -187,7 +187,7 @@ interface AssistantService {
         ): HttpResponseFor<AssistantDeleteResponse> =
             delete(params.toBuilder().assistantId(assistantId).build(), requestOptions)
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             assistantId: String,
@@ -195,19 +195,19 @@ interface AssistantService {
         ): HttpResponseFor<AssistantDeleteResponse> =
             delete(assistantId, params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: AssistantDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<AssistantDeleteResponse>
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(params: AssistantDeleteParams): HttpResponseFor<AssistantDeleteResponse> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             assistantId: String,

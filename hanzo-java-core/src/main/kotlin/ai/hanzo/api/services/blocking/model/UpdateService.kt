@@ -29,7 +29,7 @@ interface UpdateService {
     /** Edit existing model params */
     fun full(params: UpdateFullParams): UpdateFullResponse = full(params, RequestOptions.none())
 
-    /** @see [full] */
+    /** @see full */
     fun full(
         params: UpdateFullParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -52,18 +52,18 @@ interface UpdateService {
     fun partial(modelId: String, params: UpdatePartialParams): UpdatePartialResponse =
         partial(modelId, params, RequestOptions.none())
 
-    /** @see [partial] */
+    /** @see partial */
     fun partial(
         modelId: String,
         params: UpdatePartialParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): UpdatePartialResponse = partial(params.toBuilder().modelId(modelId).build(), requestOptions)
 
-    /** @see [partial] */
+    /** @see partial */
     fun partial(params: UpdatePartialParams): UpdatePartialResponse =
         partial(params, RequestOptions.none())
 
-    /** @see [partial] */
+    /** @see partial */
     fun partial(
         params: UpdatePartialParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -87,7 +87,7 @@ interface UpdateService {
         fun full(params: UpdateFullParams): HttpResponseFor<UpdateFullResponse> =
             full(params, RequestOptions.none())
 
-        /** @see [full] */
+        /** @see full */
         @MustBeClosed
         fun full(
             params: UpdateFullParams,
@@ -104,7 +104,7 @@ interface UpdateService {
             params: UpdatePartialParams,
         ): HttpResponseFor<UpdatePartialResponse> = partial(modelId, params, RequestOptions.none())
 
-        /** @see [partial] */
+        /** @see partial */
         @MustBeClosed
         fun partial(
             modelId: String,
@@ -113,12 +113,12 @@ interface UpdateService {
         ): HttpResponseFor<UpdatePartialResponse> =
             partial(params.toBuilder().modelId(modelId).build(), requestOptions)
 
-        /** @see [partial] */
+        /** @see partial */
         @MustBeClosed
         fun partial(params: UpdatePartialParams): HttpResponseFor<UpdatePartialResponse> =
             partial(params, RequestOptions.none())
 
-        /** @see [partial] */
+        /** @see partial */
         @MustBeClosed
         fun partial(
             params: UpdatePartialParams,

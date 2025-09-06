@@ -39,30 +39,30 @@ interface AzureService {
      */
     fun create(endpoint: String): AzureCreateResponse = create(endpoint, AzureCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         params: AzureCreateParams = AzureCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AzureCreateResponse = create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         params: AzureCreateParams = AzureCreateParams.none(),
     ): AzureCreateResponse = create(endpoint, params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: AzureCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AzureCreateResponse
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: AzureCreateParams): AzureCreateResponse =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(endpoint: String, requestOptions: RequestOptions): AzureCreateResponse =
         create(endpoint, AzureCreateParams.none(), requestOptions)
 
@@ -73,30 +73,30 @@ interface AzureService {
      */
     fun update(endpoint: String): AzureUpdateResponse = update(endpoint, AzureUpdateParams.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         params: AzureUpdateParams = AzureUpdateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AzureUpdateResponse = update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         params: AzureUpdateParams = AzureUpdateParams.none(),
     ): AzureUpdateResponse = update(endpoint, params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: AzureUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AzureUpdateResponse
 
-    /** @see [update] */
+    /** @see update */
     fun update(params: AzureUpdateParams): AzureUpdateResponse =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(endpoint: String, requestOptions: RequestOptions): AzureUpdateResponse =
         update(endpoint, AzureUpdateParams.none(), requestOptions)
 
@@ -107,30 +107,30 @@ interface AzureService {
      */
     fun delete(endpoint: String): AzureDeleteResponse = delete(endpoint, AzureDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         params: AzureDeleteParams = AzureDeleteParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AzureDeleteResponse = delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         params: AzureDeleteParams = AzureDeleteParams.none(),
     ): AzureDeleteResponse = delete(endpoint, params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: AzureDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AzureDeleteResponse
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: AzureDeleteParams): AzureDeleteResponse =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(endpoint: String, requestOptions: RequestOptions): AzureDeleteResponse =
         delete(endpoint, AzureDeleteParams.none(), requestOptions)
 
@@ -141,29 +141,29 @@ interface AzureService {
      */
     fun call(endpoint: String): AzureCallResponse = call(endpoint, AzureCallParams.none())
 
-    /** @see [call] */
+    /** @see call */
     fun call(
         endpoint: String,
         params: AzureCallParams = AzureCallParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AzureCallResponse = call(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [call] */
+    /** @see call */
     fun call(
         endpoint: String,
         params: AzureCallParams = AzureCallParams.none(),
     ): AzureCallResponse = call(endpoint, params, RequestOptions.none())
 
-    /** @see [call] */
+    /** @see call */
     fun call(
         params: AzureCallParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AzureCallResponse
 
-    /** @see [call] */
+    /** @see call */
     fun call(params: AzureCallParams): AzureCallResponse = call(params, RequestOptions.none())
 
-    /** @see [call] */
+    /** @see call */
     fun call(endpoint: String, requestOptions: RequestOptions): AzureCallResponse =
         call(endpoint, AzureCallParams.none(), requestOptions)
 
@@ -174,29 +174,29 @@ interface AzureService {
      */
     fun patch(endpoint: String): AzurePatchResponse = patch(endpoint, AzurePatchParams.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         endpoint: String,
         params: AzurePatchParams = AzurePatchParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AzurePatchResponse = patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         endpoint: String,
         params: AzurePatchParams = AzurePatchParams.none(),
     ): AzurePatchResponse = patch(endpoint, params, RequestOptions.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         params: AzurePatchParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AzurePatchResponse
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(params: AzurePatchParams): AzurePatchResponse = patch(params, RequestOptions.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(endpoint: String, requestOptions: RequestOptions): AzurePatchResponse =
         patch(endpoint, AzurePatchParams.none(), requestOptions)
 
@@ -218,7 +218,7 @@ interface AzureService {
         fun create(endpoint: String): HttpResponseFor<AzureCreateResponse> =
             create(endpoint, AzureCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             endpoint: String,
@@ -227,26 +227,26 @@ interface AzureService {
         ): HttpResponseFor<AzureCreateResponse> =
             create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             endpoint: String,
             params: AzureCreateParams = AzureCreateParams.none(),
         ): HttpResponseFor<AzureCreateResponse> = create(endpoint, params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: AzureCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<AzureCreateResponse>
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(params: AzureCreateParams): HttpResponseFor<AzureCreateResponse> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             endpoint: String,
@@ -262,7 +262,7 @@ interface AzureService {
         fun update(endpoint: String): HttpResponseFor<AzureUpdateResponse> =
             update(endpoint, AzureUpdateParams.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             endpoint: String,
@@ -271,26 +271,26 @@ interface AzureService {
         ): HttpResponseFor<AzureUpdateResponse> =
             update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             endpoint: String,
             params: AzureUpdateParams = AzureUpdateParams.none(),
         ): HttpResponseFor<AzureUpdateResponse> = update(endpoint, params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             params: AzureUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<AzureUpdateResponse>
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(params: AzureUpdateParams): HttpResponseFor<AzureUpdateResponse> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             endpoint: String,
@@ -306,7 +306,7 @@ interface AzureService {
         fun delete(endpoint: String): HttpResponseFor<AzureDeleteResponse> =
             delete(endpoint, AzureDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             endpoint: String,
@@ -315,26 +315,26 @@ interface AzureService {
         ): HttpResponseFor<AzureDeleteResponse> =
             delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             endpoint: String,
             params: AzureDeleteParams = AzureDeleteParams.none(),
         ): HttpResponseFor<AzureDeleteResponse> = delete(endpoint, params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: AzureDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<AzureDeleteResponse>
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(params: AzureDeleteParams): HttpResponseFor<AzureDeleteResponse> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             endpoint: String,
@@ -350,7 +350,7 @@ interface AzureService {
         fun call(endpoint: String): HttpResponseFor<AzureCallResponse> =
             call(endpoint, AzureCallParams.none())
 
-        /** @see [call] */
+        /** @see call */
         @MustBeClosed
         fun call(
             endpoint: String,
@@ -359,26 +359,26 @@ interface AzureService {
         ): HttpResponseFor<AzureCallResponse> =
             call(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [call] */
+        /** @see call */
         @MustBeClosed
         fun call(
             endpoint: String,
             params: AzureCallParams = AzureCallParams.none(),
         ): HttpResponseFor<AzureCallResponse> = call(endpoint, params, RequestOptions.none())
 
-        /** @see [call] */
+        /** @see call */
         @MustBeClosed
         fun call(
             params: AzureCallParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<AzureCallResponse>
 
-        /** @see [call] */
+        /** @see call */
         @MustBeClosed
         fun call(params: AzureCallParams): HttpResponseFor<AzureCallResponse> =
             call(params, RequestOptions.none())
 
-        /** @see [call] */
+        /** @see call */
         @MustBeClosed
         fun call(
             endpoint: String,
@@ -394,7 +394,7 @@ interface AzureService {
         fun patch(endpoint: String): HttpResponseFor<AzurePatchResponse> =
             patch(endpoint, AzurePatchParams.none())
 
-        /** @see [patch] */
+        /** @see patch */
         @MustBeClosed
         fun patch(
             endpoint: String,
@@ -403,26 +403,26 @@ interface AzureService {
         ): HttpResponseFor<AzurePatchResponse> =
             patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [patch] */
+        /** @see patch */
         @MustBeClosed
         fun patch(
             endpoint: String,
             params: AzurePatchParams = AzurePatchParams.none(),
         ): HttpResponseFor<AzurePatchResponse> = patch(endpoint, params, RequestOptions.none())
 
-        /** @see [patch] */
+        /** @see patch */
         @MustBeClosed
         fun patch(
             params: AzurePatchParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<AzurePatchResponse>
 
-        /** @see [patch] */
+        /** @see patch */
         @MustBeClosed
         fun patch(params: AzurePatchParams): HttpResponseFor<AzurePatchResponse> =
             patch(params, RequestOptions.none())
 
-        /** @see [patch] */
+        /** @see patch */
         @MustBeClosed
         fun patch(
             endpoint: String,

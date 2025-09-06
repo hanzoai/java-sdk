@@ -27,18 +27,18 @@ interface GenerationService {
     /** Image Generation */
     fun create(): GenerationCreateResponse = create(GenerationCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: GenerationCreateParams = GenerationCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): GenerationCreateResponse
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: GenerationCreateParams = GenerationCreateParams.none()
     ): GenerationCreateResponse = create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): GenerationCreateResponse =
         create(GenerationCreateParams.none(), requestOptions)
 
@@ -62,20 +62,20 @@ interface GenerationService {
         fun create(): HttpResponseFor<GenerationCreateResponse> =
             create(GenerationCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: GenerationCreateParams = GenerationCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<GenerationCreateResponse>
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: GenerationCreateParams = GenerationCreateParams.none()
         ): HttpResponseFor<GenerationCreateResponse> = create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(requestOptions: RequestOptions): HttpResponseFor<GenerationCreateResponse> =
             create(GenerationCreateParams.none(), requestOptions)

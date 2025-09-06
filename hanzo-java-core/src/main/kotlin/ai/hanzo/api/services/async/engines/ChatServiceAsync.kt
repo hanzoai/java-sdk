@@ -46,7 +46,7 @@ interface ChatServiceAsync {
     fun complete(model: String): CompletableFuture<ChatCompleteResponse> =
         complete(model, ChatCompleteParams.none())
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(
         model: String,
         params: ChatCompleteParams = ChatCompleteParams.none(),
@@ -54,23 +54,23 @@ interface ChatServiceAsync {
     ): CompletableFuture<ChatCompleteResponse> =
         complete(params.toBuilder().model(model).build(), requestOptions)
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(
         model: String,
         params: ChatCompleteParams = ChatCompleteParams.none(),
     ): CompletableFuture<ChatCompleteResponse> = complete(model, params, RequestOptions.none())
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(
         params: ChatCompleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<ChatCompleteResponse>
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(params: ChatCompleteParams): CompletableFuture<ChatCompleteResponse> =
         complete(params, RequestOptions.none())
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(
         model: String,
         requestOptions: RequestOptions,
@@ -94,7 +94,7 @@ interface ChatServiceAsync {
         fun complete(model: String): CompletableFuture<HttpResponseFor<ChatCompleteResponse>> =
             complete(model, ChatCompleteParams.none())
 
-        /** @see [complete] */
+        /** @see complete */
         fun complete(
             model: String,
             params: ChatCompleteParams = ChatCompleteParams.none(),
@@ -102,26 +102,26 @@ interface ChatServiceAsync {
         ): CompletableFuture<HttpResponseFor<ChatCompleteResponse>> =
             complete(params.toBuilder().model(model).build(), requestOptions)
 
-        /** @see [complete] */
+        /** @see complete */
         fun complete(
             model: String,
             params: ChatCompleteParams = ChatCompleteParams.none(),
         ): CompletableFuture<HttpResponseFor<ChatCompleteResponse>> =
             complete(model, params, RequestOptions.none())
 
-        /** @see [complete] */
+        /** @see complete */
         fun complete(
             params: ChatCompleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<ChatCompleteResponse>>
 
-        /** @see [complete] */
+        /** @see complete */
         fun complete(
             params: ChatCompleteParams
         ): CompletableFuture<HttpResponseFor<ChatCompleteResponse>> =
             complete(params, RequestOptions.none())
 
-        /** @see [complete] */
+        /** @see complete */
         fun complete(
             model: String,
             requestOptions: RequestOptions,

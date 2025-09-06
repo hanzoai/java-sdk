@@ -104,7 +104,7 @@ interface OrganizationService {
     fun create(params: OrganizationCreateParams): OrganizationCreateResponse =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: OrganizationCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -113,18 +113,18 @@ interface OrganizationService {
     /** Update an organization */
     fun update(): OrganizationUpdateResponse = update(OrganizationUpdateParams.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: OrganizationUpdateParams = OrganizationUpdateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): OrganizationUpdateResponse
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: OrganizationUpdateParams = OrganizationUpdateParams.none()
     ): OrganizationUpdateResponse = update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(requestOptions: RequestOptions): OrganizationUpdateResponse =
         update(OrganizationUpdateParams.none(), requestOptions)
 
@@ -135,18 +135,18 @@ interface OrganizationService {
      */
     fun list(): List<OrganizationListResponse> = list(OrganizationListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: OrganizationListParams = OrganizationListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): List<OrganizationListResponse>
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: OrganizationListParams = OrganizationListParams.none()
     ): List<OrganizationListResponse> = list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): List<OrganizationListResponse> =
         list(OrganizationListParams.none(), requestOptions)
 
@@ -159,7 +159,7 @@ interface OrganizationService {
     fun delete(params: OrganizationDeleteParams): List<OrganizationDeleteResponse> =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: OrganizationDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -203,7 +203,7 @@ interface OrganizationService {
     fun addMember(params: OrganizationAddMemberParams): OrganizationAddMemberResponse =
         addMember(params, RequestOptions.none())
 
-    /** @see [addMember] */
+    /** @see addMember */
     fun addMember(
         params: OrganizationAddMemberParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -213,7 +213,7 @@ interface OrganizationService {
     fun deleteMember(params: OrganizationDeleteMemberParams): OrganizationDeleteMemberResponse =
         deleteMember(params, RequestOptions.none())
 
-    /** @see [deleteMember] */
+    /** @see deleteMember */
     fun deleteMember(
         params: OrganizationDeleteMemberParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -223,7 +223,7 @@ interface OrganizationService {
     fun updateMember(params: OrganizationUpdateMemberParams): OrganizationUpdateMemberResponse =
         updateMember(params, RequestOptions.none())
 
-    /** @see [updateMember] */
+    /** @see updateMember */
     fun updateMember(
         params: OrganizationUpdateMemberParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -253,7 +253,7 @@ interface OrganizationService {
         fun create(params: OrganizationCreateParams): HttpResponseFor<OrganizationCreateResponse> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: OrganizationCreateParams,
@@ -268,20 +268,20 @@ interface OrganizationService {
         fun update(): HttpResponseFor<OrganizationUpdateResponse> =
             update(OrganizationUpdateParams.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             params: OrganizationUpdateParams = OrganizationUpdateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<OrganizationUpdateResponse>
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             params: OrganizationUpdateParams = OrganizationUpdateParams.none()
         ): HttpResponseFor<OrganizationUpdateResponse> = update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(requestOptions: RequestOptions): HttpResponseFor<OrganizationUpdateResponse> =
             update(OrganizationUpdateParams.none(), requestOptions)
@@ -294,20 +294,20 @@ interface OrganizationService {
         fun list(): HttpResponseFor<List<OrganizationListResponse>> =
             list(OrganizationListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: OrganizationListParams = OrganizationListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<List<OrganizationListResponse>>
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: OrganizationListParams = OrganizationListParams.none()
         ): HttpResponseFor<List<OrganizationListResponse>> = list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(requestOptions: RequestOptions): HttpResponseFor<List<OrganizationListResponse>> =
             list(OrganizationListParams.none(), requestOptions)
@@ -321,7 +321,7 @@ interface OrganizationService {
             params: OrganizationDeleteParams
         ): HttpResponseFor<List<OrganizationDeleteResponse>> = delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: OrganizationDeleteParams,
@@ -337,7 +337,7 @@ interface OrganizationService {
             params: OrganizationAddMemberParams
         ): HttpResponseFor<OrganizationAddMemberResponse> = addMember(params, RequestOptions.none())
 
-        /** @see [addMember] */
+        /** @see addMember */
         @MustBeClosed
         fun addMember(
             params: OrganizationAddMemberParams,
@@ -354,7 +354,7 @@ interface OrganizationService {
         ): HttpResponseFor<OrganizationDeleteMemberResponse> =
             deleteMember(params, RequestOptions.none())
 
-        /** @see [deleteMember] */
+        /** @see deleteMember */
         @MustBeClosed
         fun deleteMember(
             params: OrganizationDeleteMemberParams,
@@ -371,7 +371,7 @@ interface OrganizationService {
         ): HttpResponseFor<OrganizationUpdateMemberResponse> =
             updateMember(params, RequestOptions.none())
 
-        /** @see [updateMember] */
+        /** @see updateMember */
         @MustBeClosed
         fun updateMember(
             params: OrganizationUpdateMemberParams,

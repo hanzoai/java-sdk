@@ -5,12 +5,10 @@ package ai.hanzo.api.models.organization
 import ai.hanzo.api.core.JsonValue
 import kotlin.jvm.optionals.getOrNull
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 internal class OrganizationUpdateParamsTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun create() {
         OrganizationUpdateParams.builder()
@@ -24,7 +22,6 @@ internal class OrganizationUpdateParamsTest {
             .build()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun body() {
         val params =
@@ -49,7 +46,6 @@ internal class OrganizationUpdateParamsTest {
         assertThat(body.updatedBy()).contains("updated_by")
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun bodyWithoutOptionalFields() {
         val params = OrganizationUpdateParams.builder().build()

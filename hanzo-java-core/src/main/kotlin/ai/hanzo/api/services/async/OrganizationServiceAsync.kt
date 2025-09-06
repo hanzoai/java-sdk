@@ -104,7 +104,7 @@ interface OrganizationServiceAsync {
     fun create(params: OrganizationCreateParams): CompletableFuture<OrganizationCreateResponse> =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: OrganizationCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -114,18 +114,18 @@ interface OrganizationServiceAsync {
     fun update(): CompletableFuture<OrganizationUpdateResponse> =
         update(OrganizationUpdateParams.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: OrganizationUpdateParams = OrganizationUpdateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<OrganizationUpdateResponse>
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: OrganizationUpdateParams = OrganizationUpdateParams.none()
     ): CompletableFuture<OrganizationUpdateResponse> = update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(requestOptions: RequestOptions): CompletableFuture<OrganizationUpdateResponse> =
         update(OrganizationUpdateParams.none(), requestOptions)
 
@@ -137,18 +137,18 @@ interface OrganizationServiceAsync {
     fun list(): CompletableFuture<List<OrganizationListResponse>> =
         list(OrganizationListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: OrganizationListParams = OrganizationListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<List<OrganizationListResponse>>
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: OrganizationListParams = OrganizationListParams.none()
     ): CompletableFuture<List<OrganizationListResponse>> = list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): CompletableFuture<List<OrganizationListResponse>> =
         list(OrganizationListParams.none(), requestOptions)
 
@@ -162,7 +162,7 @@ interface OrganizationServiceAsync {
         params: OrganizationDeleteParams
     ): CompletableFuture<List<OrganizationDeleteResponse>> = delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: OrganizationDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -207,7 +207,7 @@ interface OrganizationServiceAsync {
         params: OrganizationAddMemberParams
     ): CompletableFuture<OrganizationAddMemberResponse> = addMember(params, RequestOptions.none())
 
-    /** @see [addMember] */
+    /** @see addMember */
     fun addMember(
         params: OrganizationAddMemberParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -219,7 +219,7 @@ interface OrganizationServiceAsync {
     ): CompletableFuture<OrganizationDeleteMemberResponse> =
         deleteMember(params, RequestOptions.none())
 
-    /** @see [deleteMember] */
+    /** @see deleteMember */
     fun deleteMember(
         params: OrganizationDeleteMemberParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -231,7 +231,7 @@ interface OrganizationServiceAsync {
     ): CompletableFuture<OrganizationUpdateMemberResponse> =
         updateMember(params, RequestOptions.none())
 
-    /** @see [updateMember] */
+    /** @see updateMember */
     fun updateMember(
         params: OrganizationUpdateMemberParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -263,7 +263,7 @@ interface OrganizationServiceAsync {
         ): CompletableFuture<HttpResponseFor<OrganizationCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: OrganizationCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -276,19 +276,19 @@ interface OrganizationServiceAsync {
         fun update(): CompletableFuture<HttpResponseFor<OrganizationUpdateResponse>> =
             update(OrganizationUpdateParams.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: OrganizationUpdateParams = OrganizationUpdateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<OrganizationUpdateResponse>>
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: OrganizationUpdateParams = OrganizationUpdateParams.none()
         ): CompletableFuture<HttpResponseFor<OrganizationUpdateResponse>> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<OrganizationUpdateResponse>> =
@@ -301,19 +301,19 @@ interface OrganizationServiceAsync {
         fun list(): CompletableFuture<HttpResponseFor<List<OrganizationListResponse>>> =
             list(OrganizationListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: OrganizationListParams = OrganizationListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<List<OrganizationListResponse>>>
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: OrganizationListParams = OrganizationListParams.none()
         ): CompletableFuture<HttpResponseFor<List<OrganizationListResponse>>> =
             list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<List<OrganizationListResponse>>> =
@@ -328,7 +328,7 @@ interface OrganizationServiceAsync {
         ): CompletableFuture<HttpResponseFor<List<OrganizationDeleteResponse>>> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: OrganizationDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -343,7 +343,7 @@ interface OrganizationServiceAsync {
         ): CompletableFuture<HttpResponseFor<OrganizationAddMemberResponse>> =
             addMember(params, RequestOptions.none())
 
-        /** @see [addMember] */
+        /** @see addMember */
         fun addMember(
             params: OrganizationAddMemberParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -358,7 +358,7 @@ interface OrganizationServiceAsync {
         ): CompletableFuture<HttpResponseFor<OrganizationDeleteMemberResponse>> =
             deleteMember(params, RequestOptions.none())
 
-        /** @see [deleteMember] */
+        /** @see deleteMember */
         fun deleteMember(
             params: OrganizationDeleteMemberParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -373,7 +373,7 @@ interface OrganizationServiceAsync {
         ): CompletableFuture<HttpResponseFor<OrganizationUpdateMemberResponse>> =
             updateMember(params, RequestOptions.none())
 
-        /** @see [updateMember] */
+        /** @see updateMember */
         fun updateMember(
             params: OrganizationUpdateMemberParams,
             requestOptions: RequestOptions = RequestOptions.none(),

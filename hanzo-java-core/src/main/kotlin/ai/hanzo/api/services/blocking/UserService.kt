@@ -108,17 +108,17 @@ interface UserService {
      */
     fun create(): UserCreateResponse = create(UserCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: UserCreateParams = UserCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): UserCreateResponse
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: UserCreateParams = UserCreateParams.none()): UserCreateResponse =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): UserCreateResponse =
         create(UserCreateParams.none(), requestOptions)
 
@@ -174,17 +174,17 @@ interface UserService {
      */
     fun update(): UserUpdateResponse = update(UserUpdateParams.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: UserUpdateParams = UserUpdateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): UserUpdateResponse
 
-    /** @see [update] */
+    /** @see update */
     fun update(params: UserUpdateParams = UserUpdateParams.none()): UserUpdateResponse =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(requestOptions: RequestOptions): UserUpdateResponse =
         update(UserUpdateParams.none(), requestOptions)
 
@@ -207,17 +207,17 @@ interface UserService {
      */
     fun list(): UserListResponse = list(UserListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: UserListParams = UserListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): UserListResponse
 
-    /** @see [list] */
+    /** @see list */
     fun list(params: UserListParams = UserListParams.none()): UserListResponse =
         list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): UserListResponse =
         list(UserListParams.none(), requestOptions)
 
@@ -238,7 +238,7 @@ interface UserService {
      */
     fun delete(params: UserDeleteParams): UserDeleteResponse = delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: UserDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -257,18 +257,18 @@ interface UserService {
      */
     fun retrieveInfo(): UserRetrieveInfoResponse = retrieveInfo(UserRetrieveInfoParams.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: UserRetrieveInfoParams = UserRetrieveInfoParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): UserRetrieveInfoResponse
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: UserRetrieveInfoParams = UserRetrieveInfoParams.none()
     ): UserRetrieveInfoResponse = retrieveInfo(params, RequestOptions.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(requestOptions: RequestOptions): UserRetrieveInfoResponse =
         retrieveInfo(UserRetrieveInfoParams.none(), requestOptions)
 
@@ -289,20 +289,20 @@ interface UserService {
         @MustBeClosed
         fun create(): HttpResponseFor<UserCreateResponse> = create(UserCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: UserCreateParams = UserCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<UserCreateResponse>
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: UserCreateParams = UserCreateParams.none()
         ): HttpResponseFor<UserCreateResponse> = create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(requestOptions: RequestOptions): HttpResponseFor<UserCreateResponse> =
             create(UserCreateParams.none(), requestOptions)
@@ -314,20 +314,20 @@ interface UserService {
         @MustBeClosed
         fun update(): HttpResponseFor<UserUpdateResponse> = update(UserUpdateParams.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             params: UserUpdateParams = UserUpdateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<UserUpdateResponse>
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             params: UserUpdateParams = UserUpdateParams.none()
         ): HttpResponseFor<UserUpdateResponse> = update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(requestOptions: RequestOptions): HttpResponseFor<UserUpdateResponse> =
             update(UserUpdateParams.none(), requestOptions)
@@ -338,20 +338,20 @@ interface UserService {
          */
         @MustBeClosed fun list(): HttpResponseFor<UserListResponse> = list(UserListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: UserListParams = UserListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<UserListResponse>
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: UserListParams = UserListParams.none()
         ): HttpResponseFor<UserListResponse> = list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(requestOptions: RequestOptions): HttpResponseFor<UserListResponse> =
             list(UserListParams.none(), requestOptions)
@@ -364,7 +364,7 @@ interface UserService {
         fun delete(params: UserDeleteParams): HttpResponseFor<UserDeleteResponse> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: UserDeleteParams,
@@ -379,20 +379,20 @@ interface UserService {
         fun retrieveInfo(): HttpResponseFor<UserRetrieveInfoResponse> =
             retrieveInfo(UserRetrieveInfoParams.none())
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         @MustBeClosed
         fun retrieveInfo(
             params: UserRetrieveInfoParams = UserRetrieveInfoParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<UserRetrieveInfoResponse>
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         @MustBeClosed
         fun retrieveInfo(
             params: UserRetrieveInfoParams = UserRetrieveInfoParams.none()
         ): HttpResponseFor<UserRetrieveInfoResponse> = retrieveInfo(params, RequestOptions.none())
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         @MustBeClosed
         fun retrieveInfo(
             requestOptions: RequestOptions

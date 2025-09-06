@@ -72,18 +72,18 @@ interface ProviderServiceAsync {
     fun listBudgets(): CompletableFuture<ProviderListBudgetsResponse> =
         listBudgets(ProviderListBudgetsParams.none())
 
-    /** @see [listBudgets] */
+    /** @see listBudgets */
     fun listBudgets(
         params: ProviderListBudgetsParams = ProviderListBudgetsParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<ProviderListBudgetsResponse>
 
-    /** @see [listBudgets] */
+    /** @see listBudgets */
     fun listBudgets(
         params: ProviderListBudgetsParams = ProviderListBudgetsParams.none()
     ): CompletableFuture<ProviderListBudgetsResponse> = listBudgets(params, RequestOptions.none())
 
-    /** @see [listBudgets] */
+    /** @see listBudgets */
     fun listBudgets(
         requestOptions: RequestOptions
     ): CompletableFuture<ProviderListBudgetsResponse> =
@@ -110,19 +110,19 @@ interface ProviderServiceAsync {
         fun listBudgets(): CompletableFuture<HttpResponseFor<ProviderListBudgetsResponse>> =
             listBudgets(ProviderListBudgetsParams.none())
 
-        /** @see [listBudgets] */
+        /** @see listBudgets */
         fun listBudgets(
             params: ProviderListBudgetsParams = ProviderListBudgetsParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<ProviderListBudgetsResponse>>
 
-        /** @see [listBudgets] */
+        /** @see listBudgets */
         fun listBudgets(
             params: ProviderListBudgetsParams = ProviderListBudgetsParams.none()
         ): CompletableFuture<HttpResponseFor<ProviderListBudgetsResponse>> =
             listBudgets(params, RequestOptions.none())
 
-        /** @see [listBudgets] */
+        /** @see listBudgets */
         fun listBudgets(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<ProviderListBudgetsResponse>> =

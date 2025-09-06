@@ -37,7 +37,7 @@ interface CancelService {
     fun create(fineTuningJobId: String): CancelCreateResponse =
         create(fineTuningJobId, CancelCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         fineTuningJobId: String,
         params: CancelCreateParams = CancelCreateParams.none(),
@@ -45,23 +45,23 @@ interface CancelService {
     ): CancelCreateResponse =
         create(params.toBuilder().fineTuningJobId(fineTuningJobId).build(), requestOptions)
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         fineTuningJobId: String,
         params: CancelCreateParams = CancelCreateParams.none(),
     ): CancelCreateResponse = create(fineTuningJobId, params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: CancelCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CancelCreateResponse
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: CancelCreateParams): CancelCreateResponse =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(fineTuningJobId: String, requestOptions: RequestOptions): CancelCreateResponse =
         create(fineTuningJobId, CancelCreateParams.none(), requestOptions)
 
@@ -83,7 +83,7 @@ interface CancelService {
         fun create(fineTuningJobId: String): HttpResponseFor<CancelCreateResponse> =
             create(fineTuningJobId, CancelCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             fineTuningJobId: String,
@@ -92,7 +92,7 @@ interface CancelService {
         ): HttpResponseFor<CancelCreateResponse> =
             create(params.toBuilder().fineTuningJobId(fineTuningJobId).build(), requestOptions)
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             fineTuningJobId: String,
@@ -100,19 +100,19 @@ interface CancelService {
         ): HttpResponseFor<CancelCreateResponse> =
             create(fineTuningJobId, params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: CancelCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<CancelCreateResponse>
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(params: CancelCreateParams): HttpResponseFor<CancelCreateResponse> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             fineTuningJobId: String,

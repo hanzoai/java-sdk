@@ -37,18 +37,18 @@ interface ModerationServiceAsync {
     fun create(): CompletableFuture<ModerationCreateResponse> =
         create(ModerationCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: ModerationCreateParams = ModerationCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<ModerationCreateResponse>
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: ModerationCreateParams = ModerationCreateParams.none()
     ): CompletableFuture<ModerationCreateResponse> = create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): CompletableFuture<ModerationCreateResponse> =
         create(ModerationCreateParams.none(), requestOptions)
 
@@ -74,19 +74,19 @@ interface ModerationServiceAsync {
         fun create(): CompletableFuture<HttpResponseFor<ModerationCreateResponse>> =
             create(ModerationCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: ModerationCreateParams = ModerationCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<ModerationCreateResponse>>
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: ModerationCreateParams = ModerationCreateParams.none()
         ): CompletableFuture<HttpResponseFor<ModerationCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<ModerationCreateResponse>> =

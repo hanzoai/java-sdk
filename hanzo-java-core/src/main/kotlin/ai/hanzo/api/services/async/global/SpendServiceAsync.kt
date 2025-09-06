@@ -45,18 +45,18 @@ interface SpendServiceAsync {
     fun listTags(): CompletableFuture<List<SpendListTagsResponse>> =
         listTags(SpendListTagsParams.none())
 
-    /** @see [listTags] */
+    /** @see listTags */
     fun listTags(
         params: SpendListTagsParams = SpendListTagsParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<List<SpendListTagsResponse>>
 
-    /** @see [listTags] */
+    /** @see listTags */
     fun listTags(
         params: SpendListTagsParams = SpendListTagsParams.none()
     ): CompletableFuture<List<SpendListTagsResponse>> = listTags(params, RequestOptions.none())
 
-    /** @see [listTags] */
+    /** @see listTags */
     fun listTags(requestOptions: RequestOptions): CompletableFuture<List<SpendListTagsResponse>> =
         listTags(SpendListTagsParams.none(), requestOptions)
 
@@ -70,18 +70,18 @@ interface SpendServiceAsync {
      */
     fun reset(): CompletableFuture<SpendResetResponse> = reset(SpendResetParams.none())
 
-    /** @see [reset] */
+    /** @see reset */
     fun reset(
         params: SpendResetParams = SpendResetParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<SpendResetResponse>
 
-    /** @see [reset] */
+    /** @see reset */
     fun reset(
         params: SpendResetParams = SpendResetParams.none()
     ): CompletableFuture<SpendResetResponse> = reset(params, RequestOptions.none())
 
-    /** @see [reset] */
+    /** @see reset */
     fun reset(requestOptions: RequestOptions): CompletableFuture<SpendResetResponse> =
         reset(SpendResetParams.none(), requestOptions)
 
@@ -94,19 +94,19 @@ interface SpendServiceAsync {
     fun retrieveReport(): CompletableFuture<List<SpendRetrieveReportResponse>> =
         retrieveReport(SpendRetrieveReportParams.none())
 
-    /** @see [retrieveReport] */
+    /** @see retrieveReport */
     fun retrieveReport(
         params: SpendRetrieveReportParams = SpendRetrieveReportParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<List<SpendRetrieveReportResponse>>
 
-    /** @see [retrieveReport] */
+    /** @see retrieveReport */
     fun retrieveReport(
         params: SpendRetrieveReportParams = SpendRetrieveReportParams.none()
     ): CompletableFuture<List<SpendRetrieveReportResponse>> =
         retrieveReport(params, RequestOptions.none())
 
-    /** @see [retrieveReport] */
+    /** @see retrieveReport */
     fun retrieveReport(
         requestOptions: RequestOptions
     ): CompletableFuture<List<SpendRetrieveReportResponse>> =
@@ -131,19 +131,19 @@ interface SpendServiceAsync {
         fun listTags(): CompletableFuture<HttpResponseFor<List<SpendListTagsResponse>>> =
             listTags(SpendListTagsParams.none())
 
-        /** @see [listTags] */
+        /** @see listTags */
         fun listTags(
             params: SpendListTagsParams = SpendListTagsParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<List<SpendListTagsResponse>>>
 
-        /** @see [listTags] */
+        /** @see listTags */
         fun listTags(
             params: SpendListTagsParams = SpendListTagsParams.none()
         ): CompletableFuture<HttpResponseFor<List<SpendListTagsResponse>>> =
             listTags(params, RequestOptions.none())
 
-        /** @see [listTags] */
+        /** @see listTags */
         fun listTags(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<List<SpendListTagsResponse>>> =
@@ -156,19 +156,19 @@ interface SpendServiceAsync {
         fun reset(): CompletableFuture<HttpResponseFor<SpendResetResponse>> =
             reset(SpendResetParams.none())
 
-        /** @see [reset] */
+        /** @see reset */
         fun reset(
             params: SpendResetParams = SpendResetParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<SpendResetResponse>>
 
-        /** @see [reset] */
+        /** @see reset */
         fun reset(
             params: SpendResetParams = SpendResetParams.none()
         ): CompletableFuture<HttpResponseFor<SpendResetResponse>> =
             reset(params, RequestOptions.none())
 
-        /** @see [reset] */
+        /** @see reset */
         fun reset(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<SpendResetResponse>> =
@@ -182,19 +182,19 @@ interface SpendServiceAsync {
             CompletableFuture<HttpResponseFor<List<SpendRetrieveReportResponse>>> =
             retrieveReport(SpendRetrieveReportParams.none())
 
-        /** @see [retrieveReport] */
+        /** @see retrieveReport */
         fun retrieveReport(
             params: SpendRetrieveReportParams = SpendRetrieveReportParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<List<SpendRetrieveReportResponse>>>
 
-        /** @see [retrieveReport] */
+        /** @see retrieveReport */
         fun retrieveReport(
             params: SpendRetrieveReportParams = SpendRetrieveReportParams.none()
         ): CompletableFuture<HttpResponseFor<List<SpendRetrieveReportResponse>>> =
             retrieveReport(params, RequestOptions.none())
 
-        /** @see [retrieveReport] */
+        /** @see retrieveReport */
         fun retrieveReport(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<List<SpendRetrieveReportResponse>>> =

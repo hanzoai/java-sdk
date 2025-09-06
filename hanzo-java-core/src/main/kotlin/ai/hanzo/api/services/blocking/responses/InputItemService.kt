@@ -37,7 +37,7 @@ interface InputItemService {
     fun list(responseId: String): InputItemListResponse =
         list(responseId, InputItemListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         responseId: String,
         params: InputItemListParams = InputItemListParams.none(),
@@ -45,23 +45,23 @@ interface InputItemService {
     ): InputItemListResponse =
         list(params.toBuilder().responseId(responseId).build(), requestOptions)
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         responseId: String,
         params: InputItemListParams = InputItemListParams.none(),
     ): InputItemListResponse = list(responseId, params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: InputItemListParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): InputItemListResponse
 
-    /** @see [list] */
+    /** @see list */
     fun list(params: InputItemListParams): InputItemListResponse =
         list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(responseId: String, requestOptions: RequestOptions): InputItemListResponse =
         list(responseId, InputItemListParams.none(), requestOptions)
 
@@ -83,7 +83,7 @@ interface InputItemService {
         fun list(responseId: String): HttpResponseFor<InputItemListResponse> =
             list(responseId, InputItemListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             responseId: String,
@@ -92,26 +92,26 @@ interface InputItemService {
         ): HttpResponseFor<InputItemListResponse> =
             list(params.toBuilder().responseId(responseId).build(), requestOptions)
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             responseId: String,
             params: InputItemListParams = InputItemListParams.none(),
         ): HttpResponseFor<InputItemListResponse> = list(responseId, params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: InputItemListParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<InputItemListResponse>
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(params: InputItemListParams): HttpResponseFor<InputItemListResponse> =
             list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             responseId: String,

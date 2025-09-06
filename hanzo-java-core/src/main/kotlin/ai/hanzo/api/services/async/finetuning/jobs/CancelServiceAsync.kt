@@ -37,7 +37,7 @@ interface CancelServiceAsync {
     fun create(fineTuningJobId: String): CompletableFuture<CancelCreateResponse> =
         create(fineTuningJobId, CancelCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         fineTuningJobId: String,
         params: CancelCreateParams = CancelCreateParams.none(),
@@ -45,24 +45,24 @@ interface CancelServiceAsync {
     ): CompletableFuture<CancelCreateResponse> =
         create(params.toBuilder().fineTuningJobId(fineTuningJobId).build(), requestOptions)
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         fineTuningJobId: String,
         params: CancelCreateParams = CancelCreateParams.none(),
     ): CompletableFuture<CancelCreateResponse> =
         create(fineTuningJobId, params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: CancelCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CancelCreateResponse>
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: CancelCreateParams): CompletableFuture<CancelCreateResponse> =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         fineTuningJobId: String,
         requestOptions: RequestOptions,
@@ -92,7 +92,7 @@ interface CancelServiceAsync {
         ): CompletableFuture<HttpResponseFor<CancelCreateResponse>> =
             create(fineTuningJobId, CancelCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             fineTuningJobId: String,
             params: CancelCreateParams = CancelCreateParams.none(),
@@ -100,26 +100,26 @@ interface CancelServiceAsync {
         ): CompletableFuture<HttpResponseFor<CancelCreateResponse>> =
             create(params.toBuilder().fineTuningJobId(fineTuningJobId).build(), requestOptions)
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             fineTuningJobId: String,
             params: CancelCreateParams = CancelCreateParams.none(),
         ): CompletableFuture<HttpResponseFor<CancelCreateResponse>> =
             create(fineTuningJobId, params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: CancelCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<CancelCreateResponse>>
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: CancelCreateParams
         ): CompletableFuture<HttpResponseFor<CancelCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             fineTuningJobId: String,
             requestOptions: RequestOptions,

@@ -27,18 +27,18 @@ interface RediService {
     /** Endpoint for getting /redis/info */
     fun retrieveInfo(): RediRetrieveInfoResponse = retrieveInfo(RediRetrieveInfoParams.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: RediRetrieveInfoParams = RediRetrieveInfoParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): RediRetrieveInfoResponse
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: RediRetrieveInfoParams = RediRetrieveInfoParams.none()
     ): RediRetrieveInfoResponse = retrieveInfo(params, RequestOptions.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(requestOptions: RequestOptions): RediRetrieveInfoResponse =
         retrieveInfo(RediRetrieveInfoParams.none(), requestOptions)
 
@@ -60,20 +60,20 @@ interface RediService {
         fun retrieveInfo(): HttpResponseFor<RediRetrieveInfoResponse> =
             retrieveInfo(RediRetrieveInfoParams.none())
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         @MustBeClosed
         fun retrieveInfo(
             params: RediRetrieveInfoParams = RediRetrieveInfoParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<RediRetrieveInfoResponse>
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         @MustBeClosed
         fun retrieveInfo(
             params: RediRetrieveInfoParams = RediRetrieveInfoParams.none()
         ): HttpResponseFor<RediRetrieveInfoResponse> = retrieveInfo(params, RequestOptions.none())
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         @MustBeClosed
         fun retrieveInfo(
             requestOptions: RequestOptions

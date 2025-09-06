@@ -36,18 +36,18 @@ interface AssistantServiceAsync {
      */
     fun create(): CompletableFuture<AssistantCreateResponse> = create(AssistantCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: AssistantCreateParams = AssistantCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<AssistantCreateResponse>
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: AssistantCreateParams = AssistantCreateParams.none()
     ): CompletableFuture<AssistantCreateResponse> = create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): CompletableFuture<AssistantCreateResponse> =
         create(AssistantCreateParams.none(), requestOptions)
 
@@ -58,18 +58,18 @@ interface AssistantServiceAsync {
      */
     fun list(): CompletableFuture<AssistantListResponse> = list(AssistantListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: AssistantListParams = AssistantListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<AssistantListResponse>
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: AssistantListParams = AssistantListParams.none()
     ): CompletableFuture<AssistantListResponse> = list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): CompletableFuture<AssistantListResponse> =
         list(AssistantListParams.none(), requestOptions)
 
@@ -82,7 +82,7 @@ interface AssistantServiceAsync {
     fun delete(assistantId: String): CompletableFuture<AssistantDeleteResponse> =
         delete(assistantId, AssistantDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         assistantId: String,
         params: AssistantDeleteParams = AssistantDeleteParams.none(),
@@ -90,24 +90,24 @@ interface AssistantServiceAsync {
     ): CompletableFuture<AssistantDeleteResponse> =
         delete(params.toBuilder().assistantId(assistantId).build(), requestOptions)
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         assistantId: String,
         params: AssistantDeleteParams = AssistantDeleteParams.none(),
     ): CompletableFuture<AssistantDeleteResponse> =
         delete(assistantId, params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: AssistantDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<AssistantDeleteResponse>
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: AssistantDeleteParams): CompletableFuture<AssistantDeleteResponse> =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         assistantId: String,
         requestOptions: RequestOptions,
@@ -135,19 +135,19 @@ interface AssistantServiceAsync {
         fun create(): CompletableFuture<HttpResponseFor<AssistantCreateResponse>> =
             create(AssistantCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: AssistantCreateParams = AssistantCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<AssistantCreateResponse>>
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: AssistantCreateParams = AssistantCreateParams.none()
         ): CompletableFuture<HttpResponseFor<AssistantCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<AssistantCreateResponse>> =
@@ -160,19 +160,19 @@ interface AssistantServiceAsync {
         fun list(): CompletableFuture<HttpResponseFor<AssistantListResponse>> =
             list(AssistantListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: AssistantListParams = AssistantListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<AssistantListResponse>>
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: AssistantListParams = AssistantListParams.none()
         ): CompletableFuture<HttpResponseFor<AssistantListResponse>> =
             list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<AssistantListResponse>> =
@@ -187,7 +187,7 @@ interface AssistantServiceAsync {
         ): CompletableFuture<HttpResponseFor<AssistantDeleteResponse>> =
             delete(assistantId, AssistantDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             assistantId: String,
             params: AssistantDeleteParams = AssistantDeleteParams.none(),
@@ -195,26 +195,26 @@ interface AssistantServiceAsync {
         ): CompletableFuture<HttpResponseFor<AssistantDeleteResponse>> =
             delete(params.toBuilder().assistantId(assistantId).build(), requestOptions)
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             assistantId: String,
             params: AssistantDeleteParams = AssistantDeleteParams.none(),
         ): CompletableFuture<HttpResponseFor<AssistantDeleteResponse>> =
             delete(assistantId, params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: AssistantDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<AssistantDeleteResponse>>
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: AssistantDeleteParams
         ): CompletableFuture<HttpResponseFor<AssistantDeleteResponse>> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             assistantId: String,
             requestOptions: RequestOptions,

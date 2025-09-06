@@ -113,18 +113,18 @@ interface TeamServiceAsync {
      */
     fun create(): CompletableFuture<TeamCreateResponse> = create(TeamCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: TeamCreateParams = TeamCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<TeamCreateResponse>
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: TeamCreateParams = TeamCreateParams.none()
     ): CompletableFuture<TeamCreateResponse> = create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): CompletableFuture<TeamCreateResponse> =
         create(TeamCreateParams.none(), requestOptions)
 
@@ -179,7 +179,7 @@ interface TeamServiceAsync {
     fun update(params: TeamUpdateParams): CompletableFuture<TeamUpdateResponse> =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: TeamUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -197,17 +197,17 @@ interface TeamServiceAsync {
      */
     fun list(): CompletableFuture<TeamListResponse> = list(TeamListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: TeamListParams = TeamListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<TeamListResponse>
 
-    /** @see [list] */
+    /** @see list */
     fun list(params: TeamListParams = TeamListParams.none()): CompletableFuture<TeamListResponse> =
         list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): CompletableFuture<TeamListResponse> =
         list(TeamListParams.none(), requestOptions)
 
@@ -227,7 +227,7 @@ interface TeamServiceAsync {
     fun delete(params: TeamDeleteParams): CompletableFuture<TeamDeleteResponse> =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: TeamDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -251,7 +251,7 @@ interface TeamServiceAsync {
     fun addMember(params: TeamAddMemberParams): CompletableFuture<TeamAddMemberResponse> =
         addMember(params, RequestOptions.none())
 
-    /** @see [addMember] */
+    /** @see addMember */
     fun addMember(
         params: TeamAddMemberParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -276,7 +276,7 @@ interface TeamServiceAsync {
     fun block(params: TeamBlockParams): CompletableFuture<TeamBlockResponse> =
         block(params, RequestOptions.none())
 
-    /** @see [block] */
+    /** @see block */
     fun block(
         params: TeamBlockParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -296,7 +296,7 @@ interface TeamServiceAsync {
     fun disableLogging(teamId: String): CompletableFuture<TeamDisableLoggingResponse> =
         disableLogging(teamId, TeamDisableLoggingParams.none())
 
-    /** @see [disableLogging] */
+    /** @see disableLogging */
     fun disableLogging(
         teamId: String,
         params: TeamDisableLoggingParams = TeamDisableLoggingParams.none(),
@@ -304,25 +304,25 @@ interface TeamServiceAsync {
     ): CompletableFuture<TeamDisableLoggingResponse> =
         disableLogging(params.toBuilder().teamId(teamId).build(), requestOptions)
 
-    /** @see [disableLogging] */
+    /** @see disableLogging */
     fun disableLogging(
         teamId: String,
         params: TeamDisableLoggingParams = TeamDisableLoggingParams.none(),
     ): CompletableFuture<TeamDisableLoggingResponse> =
         disableLogging(teamId, params, RequestOptions.none())
 
-    /** @see [disableLogging] */
+    /** @see disableLogging */
     fun disableLogging(
         params: TeamDisableLoggingParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<TeamDisableLoggingResponse>
 
-    /** @see [disableLogging] */
+    /** @see disableLogging */
     fun disableLogging(
         params: TeamDisableLoggingParams
     ): CompletableFuture<TeamDisableLoggingResponse> = disableLogging(params, RequestOptions.none())
 
-    /** @see [disableLogging] */
+    /** @see disableLogging */
     fun disableLogging(
         teamId: String,
         requestOptions: RequestOptions,
@@ -333,18 +333,18 @@ interface TeamServiceAsync {
     fun listAvailable(): CompletableFuture<TeamListAvailableResponse> =
         listAvailable(TeamListAvailableParams.none())
 
-    /** @see [listAvailable] */
+    /** @see listAvailable */
     fun listAvailable(
         params: TeamListAvailableParams = TeamListAvailableParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<TeamListAvailableResponse>
 
-    /** @see [listAvailable] */
+    /** @see listAvailable */
     fun listAvailable(
         params: TeamListAvailableParams = TeamListAvailableParams.none()
     ): CompletableFuture<TeamListAvailableResponse> = listAvailable(params, RequestOptions.none())
 
-    /** @see [listAvailable] */
+    /** @see listAvailable */
     fun listAvailable(
         requestOptions: RequestOptions
     ): CompletableFuture<TeamListAvailableResponse> =
@@ -370,7 +370,7 @@ interface TeamServiceAsync {
     fun removeMember(params: TeamRemoveMemberParams): CompletableFuture<TeamRemoveMemberResponse> =
         removeMember(params, RequestOptions.none())
 
-    /** @see [removeMember] */
+    /** @see removeMember */
     fun removeMember(
         params: TeamRemoveMemberParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -389,18 +389,18 @@ interface TeamServiceAsync {
     fun retrieveInfo(): CompletableFuture<TeamRetrieveInfoResponse> =
         retrieveInfo(TeamRetrieveInfoParams.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: TeamRetrieveInfoParams = TeamRetrieveInfoParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<TeamRetrieveInfoResponse>
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: TeamRetrieveInfoParams = TeamRetrieveInfoParams.none()
     ): CompletableFuture<TeamRetrieveInfoResponse> = retrieveInfo(params, RequestOptions.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(requestOptions: RequestOptions): CompletableFuture<TeamRetrieveInfoResponse> =
         retrieveInfo(TeamRetrieveInfoParams.none(), requestOptions)
 
@@ -420,7 +420,7 @@ interface TeamServiceAsync {
     fun unblock(params: TeamUnblockParams): CompletableFuture<TeamUnblockResponse> =
         unblock(params, RequestOptions.none())
 
-    /** @see [unblock] */
+    /** @see unblock */
     fun unblock(
         params: TeamUnblockParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -434,7 +434,7 @@ interface TeamServiceAsync {
     fun updateMember(params: TeamUpdateMemberParams): CompletableFuture<TeamUpdateMemberResponse> =
         updateMember(params, RequestOptions.none())
 
-    /** @see [updateMember] */
+    /** @see updateMember */
     fun updateMember(
         params: TeamUpdateMemberParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -461,19 +461,19 @@ interface TeamServiceAsync {
         fun create(): CompletableFuture<HttpResponseFor<TeamCreateResponse>> =
             create(TeamCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: TeamCreateParams = TeamCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<TeamCreateResponse>>
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: TeamCreateParams = TeamCreateParams.none()
         ): CompletableFuture<HttpResponseFor<TeamCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<TeamCreateResponse>> =
@@ -488,7 +488,7 @@ interface TeamServiceAsync {
         ): CompletableFuture<HttpResponseFor<TeamUpdateResponse>> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: TeamUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -501,19 +501,19 @@ interface TeamServiceAsync {
         fun list(): CompletableFuture<HttpResponseFor<TeamListResponse>> =
             list(TeamListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: TeamListParams = TeamListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<TeamListResponse>>
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: TeamListParams = TeamListParams.none()
         ): CompletableFuture<HttpResponseFor<TeamListResponse>> =
             list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<TeamListResponse>> =
@@ -528,7 +528,7 @@ interface TeamServiceAsync {
         ): CompletableFuture<HttpResponseFor<TeamDeleteResponse>> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: TeamDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -543,7 +543,7 @@ interface TeamServiceAsync {
         ): CompletableFuture<HttpResponseFor<TeamAddMemberResponse>> =
             addMember(params, RequestOptions.none())
 
-        /** @see [addMember] */
+        /** @see addMember */
         fun addMember(
             params: TeamAddMemberParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -556,7 +556,7 @@ interface TeamServiceAsync {
         fun block(params: TeamBlockParams): CompletableFuture<HttpResponseFor<TeamBlockResponse>> =
             block(params, RequestOptions.none())
 
-        /** @see [block] */
+        /** @see block */
         fun block(
             params: TeamBlockParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -571,7 +571,7 @@ interface TeamServiceAsync {
         ): CompletableFuture<HttpResponseFor<TeamDisableLoggingResponse>> =
             disableLogging(teamId, TeamDisableLoggingParams.none())
 
-        /** @see [disableLogging] */
+        /** @see disableLogging */
         fun disableLogging(
             teamId: String,
             params: TeamDisableLoggingParams = TeamDisableLoggingParams.none(),
@@ -579,26 +579,26 @@ interface TeamServiceAsync {
         ): CompletableFuture<HttpResponseFor<TeamDisableLoggingResponse>> =
             disableLogging(params.toBuilder().teamId(teamId).build(), requestOptions)
 
-        /** @see [disableLogging] */
+        /** @see disableLogging */
         fun disableLogging(
             teamId: String,
             params: TeamDisableLoggingParams = TeamDisableLoggingParams.none(),
         ): CompletableFuture<HttpResponseFor<TeamDisableLoggingResponse>> =
             disableLogging(teamId, params, RequestOptions.none())
 
-        /** @see [disableLogging] */
+        /** @see disableLogging */
         fun disableLogging(
             params: TeamDisableLoggingParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<TeamDisableLoggingResponse>>
 
-        /** @see [disableLogging] */
+        /** @see disableLogging */
         fun disableLogging(
             params: TeamDisableLoggingParams
         ): CompletableFuture<HttpResponseFor<TeamDisableLoggingResponse>> =
             disableLogging(params, RequestOptions.none())
 
-        /** @see [disableLogging] */
+        /** @see disableLogging */
         fun disableLogging(
             teamId: String,
             requestOptions: RequestOptions,
@@ -612,19 +612,19 @@ interface TeamServiceAsync {
         fun listAvailable(): CompletableFuture<HttpResponseFor<TeamListAvailableResponse>> =
             listAvailable(TeamListAvailableParams.none())
 
-        /** @see [listAvailable] */
+        /** @see listAvailable */
         fun listAvailable(
             params: TeamListAvailableParams = TeamListAvailableParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<TeamListAvailableResponse>>
 
-        /** @see [listAvailable] */
+        /** @see listAvailable */
         fun listAvailable(
             params: TeamListAvailableParams = TeamListAvailableParams.none()
         ): CompletableFuture<HttpResponseFor<TeamListAvailableResponse>> =
             listAvailable(params, RequestOptions.none())
 
-        /** @see [listAvailable] */
+        /** @see listAvailable */
         fun listAvailable(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<TeamListAvailableResponse>> =
@@ -639,7 +639,7 @@ interface TeamServiceAsync {
         ): CompletableFuture<HttpResponseFor<TeamRemoveMemberResponse>> =
             removeMember(params, RequestOptions.none())
 
-        /** @see [removeMember] */
+        /** @see removeMember */
         fun removeMember(
             params: TeamRemoveMemberParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -652,19 +652,19 @@ interface TeamServiceAsync {
         fun retrieveInfo(): CompletableFuture<HttpResponseFor<TeamRetrieveInfoResponse>> =
             retrieveInfo(TeamRetrieveInfoParams.none())
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         fun retrieveInfo(
             params: TeamRetrieveInfoParams = TeamRetrieveInfoParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<TeamRetrieveInfoResponse>>
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         fun retrieveInfo(
             params: TeamRetrieveInfoParams = TeamRetrieveInfoParams.none()
         ): CompletableFuture<HttpResponseFor<TeamRetrieveInfoResponse>> =
             retrieveInfo(params, RequestOptions.none())
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         fun retrieveInfo(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<TeamRetrieveInfoResponse>> =
@@ -679,7 +679,7 @@ interface TeamServiceAsync {
         ): CompletableFuture<HttpResponseFor<TeamUnblockResponse>> =
             unblock(params, RequestOptions.none())
 
-        /** @see [unblock] */
+        /** @see unblock */
         fun unblock(
             params: TeamUnblockParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -694,7 +694,7 @@ interface TeamServiceAsync {
         ): CompletableFuture<HttpResponseFor<TeamUpdateMemberResponse>> =
             updateMember(params, RequestOptions.none())
 
-        /** @see [updateMember] */
+        /** @see updateMember */
         fun updateMember(
             params: TeamUpdateMemberParams,
             requestOptions: RequestOptions = RequestOptions.none(),

@@ -51,18 +51,18 @@ interface HealthServiceAsync {
     fun checkAll(): CompletableFuture<HealthCheckAllResponse> =
         checkAll(HealthCheckAllParams.none())
 
-    /** @see [checkAll] */
+    /** @see checkAll */
     fun checkAll(
         params: HealthCheckAllParams = HealthCheckAllParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<HealthCheckAllResponse>
 
-    /** @see [checkAll] */
+    /** @see checkAll */
     fun checkAll(
         params: HealthCheckAllParams = HealthCheckAllParams.none()
     ): CompletableFuture<HealthCheckAllResponse> = checkAll(params, RequestOptions.none())
 
-    /** @see [checkAll] */
+    /** @see checkAll */
     fun checkAll(requestOptions: RequestOptions): CompletableFuture<HealthCheckAllResponse> =
         checkAll(HealthCheckAllParams.none(), requestOptions)
 
@@ -70,19 +70,19 @@ interface HealthServiceAsync {
     fun checkLiveliness(): CompletableFuture<HealthCheckLivelinessResponse> =
         checkLiveliness(HealthCheckLivelinessParams.none())
 
-    /** @see [checkLiveliness] */
+    /** @see checkLiveliness */
     fun checkLiveliness(
         params: HealthCheckLivelinessParams = HealthCheckLivelinessParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<HealthCheckLivelinessResponse>
 
-    /** @see [checkLiveliness] */
+    /** @see checkLiveliness */
     fun checkLiveliness(
         params: HealthCheckLivelinessParams = HealthCheckLivelinessParams.none()
     ): CompletableFuture<HealthCheckLivelinessResponse> =
         checkLiveliness(params, RequestOptions.none())
 
-    /** @see [checkLiveliness] */
+    /** @see checkLiveliness */
     fun checkLiveliness(
         requestOptions: RequestOptions
     ): CompletableFuture<HealthCheckLivelinessResponse> =
@@ -92,18 +92,18 @@ interface HealthServiceAsync {
     fun checkLiveness(): CompletableFuture<HealthCheckLivenessResponse> =
         checkLiveness(HealthCheckLivenessParams.none())
 
-    /** @see [checkLiveness] */
+    /** @see checkLiveness */
     fun checkLiveness(
         params: HealthCheckLivenessParams = HealthCheckLivenessParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<HealthCheckLivenessResponse>
 
-    /** @see [checkLiveness] */
+    /** @see checkLiveness */
     fun checkLiveness(
         params: HealthCheckLivenessParams = HealthCheckLivenessParams.none()
     ): CompletableFuture<HealthCheckLivenessResponse> = checkLiveness(params, RequestOptions.none())
 
-    /** @see [checkLiveness] */
+    /** @see checkLiveness */
     fun checkLiveness(
         requestOptions: RequestOptions
     ): CompletableFuture<HealthCheckLivenessResponse> =
@@ -113,19 +113,19 @@ interface HealthServiceAsync {
     fun checkReadiness(): CompletableFuture<HealthCheckReadinessResponse> =
         checkReadiness(HealthCheckReadinessParams.none())
 
-    /** @see [checkReadiness] */
+    /** @see checkReadiness */
     fun checkReadiness(
         params: HealthCheckReadinessParams = HealthCheckReadinessParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<HealthCheckReadinessResponse>
 
-    /** @see [checkReadiness] */
+    /** @see checkReadiness */
     fun checkReadiness(
         params: HealthCheckReadinessParams = HealthCheckReadinessParams.none()
     ): CompletableFuture<HealthCheckReadinessResponse> =
         checkReadiness(params, RequestOptions.none())
 
-    /** @see [checkReadiness] */
+    /** @see checkReadiness */
     fun checkReadiness(
         requestOptions: RequestOptions
     ): CompletableFuture<HealthCheckReadinessResponse> =
@@ -143,7 +143,7 @@ interface HealthServiceAsync {
         params: HealthCheckServicesParams
     ): CompletableFuture<HealthCheckServicesResponse> = checkServices(params, RequestOptions.none())
 
-    /** @see [checkServices] */
+    /** @see checkServices */
     fun checkServices(
         params: HealthCheckServicesParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -170,19 +170,19 @@ interface HealthServiceAsync {
         fun checkAll(): CompletableFuture<HttpResponseFor<HealthCheckAllResponse>> =
             checkAll(HealthCheckAllParams.none())
 
-        /** @see [checkAll] */
+        /** @see checkAll */
         fun checkAll(
             params: HealthCheckAllParams = HealthCheckAllParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<HealthCheckAllResponse>>
 
-        /** @see [checkAll] */
+        /** @see checkAll */
         fun checkAll(
             params: HealthCheckAllParams = HealthCheckAllParams.none()
         ): CompletableFuture<HttpResponseFor<HealthCheckAllResponse>> =
             checkAll(params, RequestOptions.none())
 
-        /** @see [checkAll] */
+        /** @see checkAll */
         fun checkAll(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<HealthCheckAllResponse>> =
@@ -195,19 +195,19 @@ interface HealthServiceAsync {
         fun checkLiveliness(): CompletableFuture<HttpResponseFor<HealthCheckLivelinessResponse>> =
             checkLiveliness(HealthCheckLivelinessParams.none())
 
-        /** @see [checkLiveliness] */
+        /** @see checkLiveliness */
         fun checkLiveliness(
             params: HealthCheckLivelinessParams = HealthCheckLivelinessParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<HealthCheckLivelinessResponse>>
 
-        /** @see [checkLiveliness] */
+        /** @see checkLiveliness */
         fun checkLiveliness(
             params: HealthCheckLivelinessParams = HealthCheckLivelinessParams.none()
         ): CompletableFuture<HttpResponseFor<HealthCheckLivelinessResponse>> =
             checkLiveliness(params, RequestOptions.none())
 
-        /** @see [checkLiveliness] */
+        /** @see checkLiveliness */
         fun checkLiveliness(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<HealthCheckLivelinessResponse>> =
@@ -220,19 +220,19 @@ interface HealthServiceAsync {
         fun checkLiveness(): CompletableFuture<HttpResponseFor<HealthCheckLivenessResponse>> =
             checkLiveness(HealthCheckLivenessParams.none())
 
-        /** @see [checkLiveness] */
+        /** @see checkLiveness */
         fun checkLiveness(
             params: HealthCheckLivenessParams = HealthCheckLivenessParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<HealthCheckLivenessResponse>>
 
-        /** @see [checkLiveness] */
+        /** @see checkLiveness */
         fun checkLiveness(
             params: HealthCheckLivenessParams = HealthCheckLivenessParams.none()
         ): CompletableFuture<HttpResponseFor<HealthCheckLivenessResponse>> =
             checkLiveness(params, RequestOptions.none())
 
-        /** @see [checkLiveness] */
+        /** @see checkLiveness */
         fun checkLiveness(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<HealthCheckLivenessResponse>> =
@@ -245,19 +245,19 @@ interface HealthServiceAsync {
         fun checkReadiness(): CompletableFuture<HttpResponseFor<HealthCheckReadinessResponse>> =
             checkReadiness(HealthCheckReadinessParams.none())
 
-        /** @see [checkReadiness] */
+        /** @see checkReadiness */
         fun checkReadiness(
             params: HealthCheckReadinessParams = HealthCheckReadinessParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<HealthCheckReadinessResponse>>
 
-        /** @see [checkReadiness] */
+        /** @see checkReadiness */
         fun checkReadiness(
             params: HealthCheckReadinessParams = HealthCheckReadinessParams.none()
         ): CompletableFuture<HttpResponseFor<HealthCheckReadinessResponse>> =
             checkReadiness(params, RequestOptions.none())
 
-        /** @see [checkReadiness] */
+        /** @see checkReadiness */
         fun checkReadiness(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<HealthCheckReadinessResponse>> =
@@ -272,7 +272,7 @@ interface HealthServiceAsync {
         ): CompletableFuture<HttpResponseFor<HealthCheckServicesResponse>> =
             checkServices(params, RequestOptions.none())
 
-        /** @see [checkServices] */
+        /** @see checkServices */
         fun checkServices(
             params: HealthCheckServicesParams,
             requestOptions: RequestOptions = RequestOptions.none(),

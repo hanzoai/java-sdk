@@ -30,7 +30,7 @@ interface InfoServiceAsync {
     fun retrieve(params: InfoRetrieveParams): CompletableFuture<InfoRetrieveResponse> =
         retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: InfoRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -40,7 +40,7 @@ interface InfoServiceAsync {
     fun deprecated(params: InfoDeprecatedParams): CompletableFuture<InfoDeprecatedResponse> =
         deprecated(params, RequestOptions.none())
 
-    /** @see [deprecated] */
+    /** @see deprecated */
     fun deprecated(
         params: InfoDeprecatedParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -65,7 +65,7 @@ interface InfoServiceAsync {
         ): CompletableFuture<HttpResponseFor<InfoRetrieveResponse>> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: InfoRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -80,7 +80,7 @@ interface InfoServiceAsync {
         ): CompletableFuture<HttpResponseFor<InfoDeprecatedResponse>> =
             deprecated(params, RequestOptions.none())
 
-        /** @see [deprecated] */
+        /** @see deprecated */
         fun deprecated(
             params: InfoDeprecatedParams,
             requestOptions: RequestOptions = RequestOptions.none(),

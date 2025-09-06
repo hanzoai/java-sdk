@@ -30,7 +30,7 @@ interface DeleteServiceAsync {
     ): CompletableFuture<DeleteCreateAllowedIpResponse> =
         createAllowedIp(params, RequestOptions.none())
 
-    /** @see [createAllowedIp] */
+    /** @see createAllowedIp */
     fun createAllowedIp(
         params: DeleteCreateAllowedIpParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -59,7 +59,7 @@ interface DeleteServiceAsync {
         ): CompletableFuture<HttpResponseFor<DeleteCreateAllowedIpResponse>> =
             createAllowedIp(params, RequestOptions.none())
 
-        /** @see [createAllowedIp] */
+        /** @see createAllowedIp */
         fun createAllowedIp(
             params: DeleteCreateAllowedIpParams,
             requestOptions: RequestOptions = RequestOptions.none(),

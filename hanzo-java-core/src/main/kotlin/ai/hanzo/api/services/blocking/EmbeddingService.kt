@@ -40,18 +40,18 @@ interface EmbeddingService {
      */
     fun create(): EmbeddingCreateResponse = create(EmbeddingCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: EmbeddingCreateParams = EmbeddingCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): EmbeddingCreateResponse
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: EmbeddingCreateParams = EmbeddingCreateParams.none()
     ): EmbeddingCreateResponse = create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): EmbeddingCreateResponse =
         create(EmbeddingCreateParams.none(), requestOptions)
 
@@ -73,20 +73,20 @@ interface EmbeddingService {
         fun create(): HttpResponseFor<EmbeddingCreateResponse> =
             create(EmbeddingCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: EmbeddingCreateParams = EmbeddingCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<EmbeddingCreateResponse>
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: EmbeddingCreateParams = EmbeddingCreateParams.none()
         ): HttpResponseFor<EmbeddingCreateResponse> = create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(requestOptions: RequestOptions): HttpResponseFor<EmbeddingCreateResponse> =
             create(EmbeddingCreateParams.none(), requestOptions)

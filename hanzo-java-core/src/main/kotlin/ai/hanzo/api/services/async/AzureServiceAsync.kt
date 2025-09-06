@@ -40,7 +40,7 @@ interface AzureServiceAsync {
     fun create(endpoint: String): CompletableFuture<AzureCreateResponse> =
         create(endpoint, AzureCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         params: AzureCreateParams = AzureCreateParams.none(),
@@ -48,23 +48,23 @@ interface AzureServiceAsync {
     ): CompletableFuture<AzureCreateResponse> =
         create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         params: AzureCreateParams = AzureCreateParams.none(),
     ): CompletableFuture<AzureCreateResponse> = create(endpoint, params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: AzureCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<AzureCreateResponse>
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: AzureCreateParams): CompletableFuture<AzureCreateResponse> =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -79,7 +79,7 @@ interface AzureServiceAsync {
     fun update(endpoint: String): CompletableFuture<AzureUpdateResponse> =
         update(endpoint, AzureUpdateParams.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         params: AzureUpdateParams = AzureUpdateParams.none(),
@@ -87,23 +87,23 @@ interface AzureServiceAsync {
     ): CompletableFuture<AzureUpdateResponse> =
         update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         params: AzureUpdateParams = AzureUpdateParams.none(),
     ): CompletableFuture<AzureUpdateResponse> = update(endpoint, params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: AzureUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<AzureUpdateResponse>
 
-    /** @see [update] */
+    /** @see update */
     fun update(params: AzureUpdateParams): CompletableFuture<AzureUpdateResponse> =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -118,7 +118,7 @@ interface AzureServiceAsync {
     fun delete(endpoint: String): CompletableFuture<AzureDeleteResponse> =
         delete(endpoint, AzureDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         params: AzureDeleteParams = AzureDeleteParams.none(),
@@ -126,23 +126,23 @@ interface AzureServiceAsync {
     ): CompletableFuture<AzureDeleteResponse> =
         delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         params: AzureDeleteParams = AzureDeleteParams.none(),
     ): CompletableFuture<AzureDeleteResponse> = delete(endpoint, params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: AzureDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<AzureDeleteResponse>
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: AzureDeleteParams): CompletableFuture<AzureDeleteResponse> =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -157,7 +157,7 @@ interface AzureServiceAsync {
     fun call(endpoint: String): CompletableFuture<AzureCallResponse> =
         call(endpoint, AzureCallParams.none())
 
-    /** @see [call] */
+    /** @see call */
     fun call(
         endpoint: String,
         params: AzureCallParams = AzureCallParams.none(),
@@ -165,23 +165,23 @@ interface AzureServiceAsync {
     ): CompletableFuture<AzureCallResponse> =
         call(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [call] */
+    /** @see call */
     fun call(
         endpoint: String,
         params: AzureCallParams = AzureCallParams.none(),
     ): CompletableFuture<AzureCallResponse> = call(endpoint, params, RequestOptions.none())
 
-    /** @see [call] */
+    /** @see call */
     fun call(
         params: AzureCallParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<AzureCallResponse>
 
-    /** @see [call] */
+    /** @see call */
     fun call(params: AzureCallParams): CompletableFuture<AzureCallResponse> =
         call(params, RequestOptions.none())
 
-    /** @see [call] */
+    /** @see call */
     fun call(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -195,7 +195,7 @@ interface AzureServiceAsync {
     fun patch(endpoint: String): CompletableFuture<AzurePatchResponse> =
         patch(endpoint, AzurePatchParams.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         endpoint: String,
         params: AzurePatchParams = AzurePatchParams.none(),
@@ -203,23 +203,23 @@ interface AzureServiceAsync {
     ): CompletableFuture<AzurePatchResponse> =
         patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         endpoint: String,
         params: AzurePatchParams = AzurePatchParams.none(),
     ): CompletableFuture<AzurePatchResponse> = patch(endpoint, params, RequestOptions.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         params: AzurePatchParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<AzurePatchResponse>
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(params: AzurePatchParams): CompletableFuture<AzurePatchResponse> =
         patch(params, RequestOptions.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -245,7 +245,7 @@ interface AzureServiceAsync {
         fun create(endpoint: String): CompletableFuture<HttpResponseFor<AzureCreateResponse>> =
             create(endpoint, AzureCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             endpoint: String,
             params: AzureCreateParams = AzureCreateParams.none(),
@@ -253,26 +253,26 @@ interface AzureServiceAsync {
         ): CompletableFuture<HttpResponseFor<AzureCreateResponse>> =
             create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             endpoint: String,
             params: AzureCreateParams = AzureCreateParams.none(),
         ): CompletableFuture<HttpResponseFor<AzureCreateResponse>> =
             create(endpoint, params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: AzureCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<AzureCreateResponse>>
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: AzureCreateParams
         ): CompletableFuture<HttpResponseFor<AzureCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -286,7 +286,7 @@ interface AzureServiceAsync {
         fun update(endpoint: String): CompletableFuture<HttpResponseFor<AzureUpdateResponse>> =
             update(endpoint, AzureUpdateParams.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             endpoint: String,
             params: AzureUpdateParams = AzureUpdateParams.none(),
@@ -294,26 +294,26 @@ interface AzureServiceAsync {
         ): CompletableFuture<HttpResponseFor<AzureUpdateResponse>> =
             update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             endpoint: String,
             params: AzureUpdateParams = AzureUpdateParams.none(),
         ): CompletableFuture<HttpResponseFor<AzureUpdateResponse>> =
             update(endpoint, params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: AzureUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<AzureUpdateResponse>>
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: AzureUpdateParams
         ): CompletableFuture<HttpResponseFor<AzureUpdateResponse>> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -327,7 +327,7 @@ interface AzureServiceAsync {
         fun delete(endpoint: String): CompletableFuture<HttpResponseFor<AzureDeleteResponse>> =
             delete(endpoint, AzureDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             endpoint: String,
             params: AzureDeleteParams = AzureDeleteParams.none(),
@@ -335,26 +335,26 @@ interface AzureServiceAsync {
         ): CompletableFuture<HttpResponseFor<AzureDeleteResponse>> =
             delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             endpoint: String,
             params: AzureDeleteParams = AzureDeleteParams.none(),
         ): CompletableFuture<HttpResponseFor<AzureDeleteResponse>> =
             delete(endpoint, params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: AzureDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<AzureDeleteResponse>>
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: AzureDeleteParams
         ): CompletableFuture<HttpResponseFor<AzureDeleteResponse>> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -368,7 +368,7 @@ interface AzureServiceAsync {
         fun call(endpoint: String): CompletableFuture<HttpResponseFor<AzureCallResponse>> =
             call(endpoint, AzureCallParams.none())
 
-        /** @see [call] */
+        /** @see call */
         fun call(
             endpoint: String,
             params: AzureCallParams = AzureCallParams.none(),
@@ -376,24 +376,24 @@ interface AzureServiceAsync {
         ): CompletableFuture<HttpResponseFor<AzureCallResponse>> =
             call(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [call] */
+        /** @see call */
         fun call(
             endpoint: String,
             params: AzureCallParams = AzureCallParams.none(),
         ): CompletableFuture<HttpResponseFor<AzureCallResponse>> =
             call(endpoint, params, RequestOptions.none())
 
-        /** @see [call] */
+        /** @see call */
         fun call(
             params: AzureCallParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<AzureCallResponse>>
 
-        /** @see [call] */
+        /** @see call */
         fun call(params: AzureCallParams): CompletableFuture<HttpResponseFor<AzureCallResponse>> =
             call(params, RequestOptions.none())
 
-        /** @see [call] */
+        /** @see call */
         fun call(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -407,7 +407,7 @@ interface AzureServiceAsync {
         fun patch(endpoint: String): CompletableFuture<HttpResponseFor<AzurePatchResponse>> =
             patch(endpoint, AzurePatchParams.none())
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             endpoint: String,
             params: AzurePatchParams = AzurePatchParams.none(),
@@ -415,26 +415,26 @@ interface AzureServiceAsync {
         ): CompletableFuture<HttpResponseFor<AzurePatchResponse>> =
             patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             endpoint: String,
             params: AzurePatchParams = AzurePatchParams.none(),
         ): CompletableFuture<HttpResponseFor<AzurePatchResponse>> =
             patch(endpoint, params, RequestOptions.none())
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             params: AzurePatchParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<AzurePatchResponse>>
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             params: AzurePatchParams
         ): CompletableFuture<HttpResponseFor<AzurePatchResponse>> =
             patch(params, RequestOptions.none())
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             endpoint: String,
             requestOptions: RequestOptions,
