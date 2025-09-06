@@ -50,18 +50,18 @@ interface ActiveServiceAsync {
     fun listCallbacks(): CompletableFuture<ActiveListCallbacksResponse> =
         listCallbacks(ActiveListCallbacksParams.none())
 
-    /** @see [listCallbacks] */
+    /** @see listCallbacks */
     fun listCallbacks(
         params: ActiveListCallbacksParams = ActiveListCallbacksParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<ActiveListCallbacksResponse>
 
-    /** @see [listCallbacks] */
+    /** @see listCallbacks */
     fun listCallbacks(
         params: ActiveListCallbacksParams = ActiveListCallbacksParams.none()
     ): CompletableFuture<ActiveListCallbacksResponse> = listCallbacks(params, RequestOptions.none())
 
-    /** @see [listCallbacks] */
+    /** @see listCallbacks */
     fun listCallbacks(
         requestOptions: RequestOptions
     ): CompletableFuture<ActiveListCallbacksResponse> =
@@ -88,19 +88,19 @@ interface ActiveServiceAsync {
         fun listCallbacks(): CompletableFuture<HttpResponseFor<ActiveListCallbacksResponse>> =
             listCallbacks(ActiveListCallbacksParams.none())
 
-        /** @see [listCallbacks] */
+        /** @see listCallbacks */
         fun listCallbacks(
             params: ActiveListCallbacksParams = ActiveListCallbacksParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<ActiveListCallbacksResponse>>
 
-        /** @see [listCallbacks] */
+        /** @see listCallbacks */
         fun listCallbacks(
             params: ActiveListCallbacksParams = ActiveListCallbacksParams.none()
         ): CompletableFuture<HttpResponseFor<ActiveListCallbacksResponse>> =
             listCallbacks(params, RequestOptions.none())
 
-        /** @see [listCallbacks] */
+        /** @see listCallbacks */
         fun listCallbacks(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<ActiveListCallbacksResponse>> =

@@ -43,7 +43,7 @@ interface ModelService {
      */
     fun add(params: ModelAddParams): ModelAddResponse = add(params, RequestOptions.none())
 
-    /** @see [add] */
+    /** @see add */
     fun add(
         params: ModelAddParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -68,7 +68,7 @@ interface ModelService {
     fun remove(params: ModelRemoveParams): ModelRemoveResponse =
         remove(params, RequestOptions.none())
 
-    /** @see [remove] */
+    /** @see remove */
     fun remove(
         params: ModelRemoveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -92,7 +92,7 @@ interface ModelService {
         fun add(params: ModelAddParams): HttpResponseFor<ModelAddResponse> =
             add(params, RequestOptions.none())
 
-        /** @see [add] */
+        /** @see add */
         @MustBeClosed
         fun add(
             params: ModelAddParams,
@@ -107,7 +107,7 @@ interface ModelService {
         fun remove(params: ModelRemoveParams): HttpResponseFor<ModelRemoveResponse> =
             remove(params, RequestOptions.none())
 
-        /** @see [remove] */
+        /** @see remove */
         @MustBeClosed
         fun remove(
             params: ModelRemoveParams,

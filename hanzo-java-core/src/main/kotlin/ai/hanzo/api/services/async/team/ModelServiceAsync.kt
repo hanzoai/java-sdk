@@ -44,7 +44,7 @@ interface ModelServiceAsync {
     fun add(params: ModelAddParams): CompletableFuture<ModelAddResponse> =
         add(params, RequestOptions.none())
 
-    /** @see [add] */
+    /** @see add */
     fun add(
         params: ModelAddParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -69,7 +69,7 @@ interface ModelServiceAsync {
     fun remove(params: ModelRemoveParams): CompletableFuture<ModelRemoveResponse> =
         remove(params, RequestOptions.none())
 
-    /** @see [remove] */
+    /** @see remove */
     fun remove(
         params: ModelRemoveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -94,7 +94,7 @@ interface ModelServiceAsync {
         fun add(params: ModelAddParams): CompletableFuture<HttpResponseFor<ModelAddResponse>> =
             add(params, RequestOptions.none())
 
-        /** @see [add] */
+        /** @see add */
         fun add(
             params: ModelAddParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -109,7 +109,7 @@ interface ModelServiceAsync {
         ): CompletableFuture<HttpResponseFor<ModelRemoveResponse>> =
             remove(params, RequestOptions.none())
 
-        /** @see [remove] */
+        /** @see remove */
         fun remove(
             params: ModelRemoveParams,
             requestOptions: RequestOptions = RequestOptions.none(),

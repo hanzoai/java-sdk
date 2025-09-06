@@ -3,14 +3,14 @@
 package ai.hanzo.api.services.async
 
 import ai.hanzo.api.core.ClientOptions
-import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.checkRequired
+import ai.hanzo.api.core.handlers.errorBodyHandler
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
-import ai.hanzo.api.core.handlers.withErrorHandler
 import ai.hanzo.api.core.http.HttpMethod
 import ai.hanzo.api.core.http.HttpRequest
+import ai.hanzo.api.core.http.HttpResponse
 import ai.hanzo.api.core.http.HttpResponse.Handler
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.core.http.json
@@ -88,7 +88,8 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
         OpenAIServiceAsync.WithRawResponse {
 
-        private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+        private val errorHandler: Handler<HttpResponse> =
+            errorHandler(errorBodyHandler(clientOptions.jsonMapper))
 
         private val deployments: DeploymentServiceAsync.WithRawResponse by lazy {
             DeploymentServiceAsyncImpl.WithRawResponseImpl(clientOptions)
@@ -105,7 +106,6 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
 
         private val createHandler: Handler<OpenAICreateResponse> =
             jsonHandler<OpenAICreateResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun create(
             params: OpenAICreateParams,
@@ -126,7 +126,7 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { createHandler.handle(it) }
                             .also {
@@ -140,7 +140,6 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
 
         private val retrieveHandler: Handler<OpenAIRetrieveResponse> =
             jsonHandler<OpenAIRetrieveResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun retrieve(
             params: OpenAIRetrieveParams,
@@ -160,7 +159,7 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { retrieveHandler.handle(it) }
                             .also {
@@ -174,7 +173,6 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
 
         private val updateHandler: Handler<OpenAIUpdateResponse> =
             jsonHandler<OpenAIUpdateResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun update(
             params: OpenAIUpdateParams,
@@ -195,7 +193,7 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { updateHandler.handle(it) }
                             .also {
@@ -209,7 +207,6 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
 
         private val deleteHandler: Handler<OpenAIDeleteResponse> =
             jsonHandler<OpenAIDeleteResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun delete(
             params: OpenAIDeleteParams,
@@ -230,7 +227,7 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { deleteHandler.handle(it) }
                             .also {
@@ -244,7 +241,6 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
 
         private val patchHandler: Handler<OpenAIPatchResponse> =
             jsonHandler<OpenAIPatchResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun patch(
             params: OpenAIPatchParams,
@@ -265,7 +261,7 @@ class OpenAIServiceAsyncImpl internal constructor(private val clientOptions: Cli
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { patchHandler.handle(it) }
                             .also {

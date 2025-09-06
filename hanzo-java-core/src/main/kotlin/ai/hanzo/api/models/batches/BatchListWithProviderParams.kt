@@ -34,8 +34,10 @@ private constructor(
 
     fun limit(): Optional<Long> = Optional.ofNullable(limit)
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
@@ -225,10 +227,16 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is BatchListWithProviderParams && provider == other.provider && after == other.after && limit == other.limit && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is BatchListWithProviderParams &&
+            provider == other.provider &&
+            after == other.after &&
+            limit == other.limit &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(provider, after, limit, additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(provider, after, limit, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
         "BatchListWithProviderParams{provider=$provider, after=$after, limit=$limit, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"

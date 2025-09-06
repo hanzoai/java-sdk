@@ -53,7 +53,7 @@ interface BudgetServiceAsync {
     fun create(params: BudgetCreateParams): CompletableFuture<BudgetCreateResponse> =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: BudgetCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -78,7 +78,7 @@ interface BudgetServiceAsync {
     fun update(params: BudgetUpdateParams): CompletableFuture<BudgetUpdateResponse> =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: BudgetUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -87,18 +87,18 @@ interface BudgetServiceAsync {
     /** List all the created budgets in proxy db. Used on Admin UI. */
     fun list(): CompletableFuture<BudgetListResponse> = list(BudgetListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: BudgetListParams = BudgetListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<BudgetListResponse>
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: BudgetListParams = BudgetListParams.none()
     ): CompletableFuture<BudgetListResponse> = list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): CompletableFuture<BudgetListResponse> =
         list(BudgetListParams.none(), requestOptions)
 
@@ -111,7 +111,7 @@ interface BudgetServiceAsync {
     fun delete(params: BudgetDeleteParams): CompletableFuture<BudgetDeleteResponse> =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: BudgetDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -126,7 +126,7 @@ interface BudgetServiceAsync {
     fun info(params: BudgetInfoParams): CompletableFuture<BudgetInfoResponse> =
         info(params, RequestOptions.none())
 
-    /** @see [info] */
+    /** @see info */
     fun info(
         params: BudgetInfoParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -143,7 +143,7 @@ interface BudgetServiceAsync {
     fun settings(params: BudgetSettingsParams): CompletableFuture<BudgetSettingsResponse> =
         settings(params, RequestOptions.none())
 
-    /** @see [settings] */
+    /** @see settings */
     fun settings(
         params: BudgetSettingsParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -172,7 +172,7 @@ interface BudgetServiceAsync {
         ): CompletableFuture<HttpResponseFor<BudgetCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: BudgetCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -187,7 +187,7 @@ interface BudgetServiceAsync {
         ): CompletableFuture<HttpResponseFor<BudgetUpdateResponse>> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: BudgetUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -200,19 +200,19 @@ interface BudgetServiceAsync {
         fun list(): CompletableFuture<HttpResponseFor<BudgetListResponse>> =
             list(BudgetListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: BudgetListParams = BudgetListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<BudgetListResponse>>
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: BudgetListParams = BudgetListParams.none()
         ): CompletableFuture<HttpResponseFor<BudgetListResponse>> =
             list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<BudgetListResponse>> =
@@ -227,7 +227,7 @@ interface BudgetServiceAsync {
         ): CompletableFuture<HttpResponseFor<BudgetDeleteResponse>> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: BudgetDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -240,7 +240,7 @@ interface BudgetServiceAsync {
         fun info(params: BudgetInfoParams): CompletableFuture<HttpResponseFor<BudgetInfoResponse>> =
             info(params, RequestOptions.none())
 
-        /** @see [info] */
+        /** @see info */
         fun info(
             params: BudgetInfoParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -255,7 +255,7 @@ interface BudgetServiceAsync {
         ): CompletableFuture<HttpResponseFor<BudgetSettingsResponse>> =
             settings(params, RequestOptions.none())
 
-        /** @see [settings] */
+        /** @see settings */
         fun settings(
             params: BudgetSettingsParams,
             requestOptions: RequestOptions = RequestOptions.none(),

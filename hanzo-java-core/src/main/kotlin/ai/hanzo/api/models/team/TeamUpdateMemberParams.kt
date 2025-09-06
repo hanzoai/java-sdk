@@ -100,8 +100,10 @@ private constructor(
 
     fun _additionalBodyProperties(): Map<String, JsonValue> = body._additionalProperties()
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
@@ -665,12 +667,18 @@ private constructor(
                 return true
             }
 
-            return /* spotless:off */ other is Body && teamId == other.teamId && maxBudgetInTeam == other.maxBudgetInTeam && role == other.role && userEmail == other.userEmail && userId == other.userId && additionalProperties == other.additionalProperties /* spotless:on */
+            return other is Body &&
+                teamId == other.teamId &&
+                maxBudgetInTeam == other.maxBudgetInTeam &&
+                role == other.role &&
+                userEmail == other.userEmail &&
+                userId == other.userId &&
+                additionalProperties == other.additionalProperties
         }
 
-        /* spotless:off */
-        private val hashCode: Int by lazy { Objects.hash(teamId, maxBudgetInTeam, role, userEmail, userId, additionalProperties) }
-        /* spotless:on */
+        private val hashCode: Int by lazy {
+            Objects.hash(teamId, maxBudgetInTeam, role, userEmail, userId, additionalProperties)
+        }
 
         override fun hashCode(): Int = hashCode
 
@@ -794,7 +802,7 @@ private constructor(
                 return true
             }
 
-            return /* spotless:off */ other is Role && value == other.value /* spotless:on */
+            return other is Role && value == other.value
         }
 
         override fun hashCode() = value.hashCode()
@@ -807,10 +815,13 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is TeamUpdateMemberParams && body == other.body && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is TeamUpdateMemberParams &&
+            body == other.body &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(body, additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int = Objects.hash(body, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
         "TeamUpdateMemberParams{body=$body, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"

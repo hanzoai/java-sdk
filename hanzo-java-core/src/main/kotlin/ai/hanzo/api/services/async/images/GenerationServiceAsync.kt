@@ -28,18 +28,18 @@ interface GenerationServiceAsync {
     fun create(): CompletableFuture<GenerationCreateResponse> =
         create(GenerationCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: GenerationCreateParams = GenerationCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<GenerationCreateResponse>
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: GenerationCreateParams = GenerationCreateParams.none()
     ): CompletableFuture<GenerationCreateResponse> = create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): CompletableFuture<GenerationCreateResponse> =
         create(GenerationCreateParams.none(), requestOptions)
 
@@ -65,19 +65,19 @@ interface GenerationServiceAsync {
         fun create(): CompletableFuture<HttpResponseFor<GenerationCreateResponse>> =
             create(GenerationCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: GenerationCreateParams = GenerationCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<GenerationCreateResponse>>
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: GenerationCreateParams = GenerationCreateParams.none()
         ): CompletableFuture<HttpResponseFor<GenerationCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<GenerationCreateResponse>> =

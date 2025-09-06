@@ -87,7 +87,7 @@ interface CustomerService {
     fun create(params: CustomerCreateParams): CustomerCreateResponse =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: CustomerCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -120,7 +120,7 @@ interface CustomerService {
     fun update(params: CustomerUpdateParams): CustomerUpdateResponse =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: CustomerUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -136,17 +136,17 @@ interface CustomerService {
      */
     fun list(): List<CustomerListResponse> = list(CustomerListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: CustomerListParams = CustomerListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): List<CustomerListResponse>
 
-    /** @see [list] */
+    /** @see list */
     fun list(params: CustomerListParams = CustomerListParams.none()): List<CustomerListResponse> =
         list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): List<CustomerListResponse> =
         list(CustomerListParams.none(), requestOptions)
 
@@ -168,7 +168,7 @@ interface CustomerService {
     fun delete(params: CustomerDeleteParams): CustomerDeleteResponse =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: CustomerDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -188,7 +188,7 @@ interface CustomerService {
     fun block(params: CustomerBlockParams): CustomerBlockResponse =
         block(params, RequestOptions.none())
 
-    /** @see [block] */
+    /** @see block */
     fun block(
         params: CustomerBlockParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -208,7 +208,7 @@ interface CustomerService {
     fun retrieveInfo(params: CustomerRetrieveInfoParams): CustomerRetrieveInfoResponse =
         retrieveInfo(params, RequestOptions.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: CustomerRetrieveInfoParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -230,7 +230,7 @@ interface CustomerService {
     fun unblock(params: CustomerUnblockParams): CustomerUnblockResponse =
         unblock(params, RequestOptions.none())
 
-    /** @see [unblock] */
+    /** @see unblock */
     fun unblock(
         params: CustomerUnblockParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -254,7 +254,7 @@ interface CustomerService {
         fun create(params: CustomerCreateParams): HttpResponseFor<CustomerCreateResponse> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: CustomerCreateParams,
@@ -269,7 +269,7 @@ interface CustomerService {
         fun update(params: CustomerUpdateParams): HttpResponseFor<CustomerUpdateResponse> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             params: CustomerUpdateParams,
@@ -283,20 +283,20 @@ interface CustomerService {
         @MustBeClosed
         fun list(): HttpResponseFor<List<CustomerListResponse>> = list(CustomerListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: CustomerListParams = CustomerListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<List<CustomerListResponse>>
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: CustomerListParams = CustomerListParams.none()
         ): HttpResponseFor<List<CustomerListResponse>> = list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(requestOptions: RequestOptions): HttpResponseFor<List<CustomerListResponse>> =
             list(CustomerListParams.none(), requestOptions)
@@ -309,7 +309,7 @@ interface CustomerService {
         fun delete(params: CustomerDeleteParams): HttpResponseFor<CustomerDeleteResponse> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: CustomerDeleteParams,
@@ -324,7 +324,7 @@ interface CustomerService {
         fun block(params: CustomerBlockParams): HttpResponseFor<CustomerBlockResponse> =
             block(params, RequestOptions.none())
 
-        /** @see [block] */
+        /** @see block */
         @MustBeClosed
         fun block(
             params: CustomerBlockParams,
@@ -341,7 +341,7 @@ interface CustomerService {
         ): HttpResponseFor<CustomerRetrieveInfoResponse> =
             retrieveInfo(params, RequestOptions.none())
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         @MustBeClosed
         fun retrieveInfo(
             params: CustomerRetrieveInfoParams,
@@ -356,7 +356,7 @@ interface CustomerService {
         fun unblock(params: CustomerUnblockParams): HttpResponseFor<CustomerUnblockResponse> =
             unblock(params, RequestOptions.none())
 
-        /** @see [unblock] */
+        /** @see unblock */
         @MustBeClosed
         fun unblock(
             params: CustomerUnblockParams,

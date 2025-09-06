@@ -36,7 +36,7 @@ interface GeminiServiceAsync {
     fun create(endpoint: String): CompletableFuture<GeminiCreateResponse> =
         create(endpoint, GeminiCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         params: GeminiCreateParams = GeminiCreateParams.none(),
@@ -44,23 +44,23 @@ interface GeminiServiceAsync {
     ): CompletableFuture<GeminiCreateResponse> =
         create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         params: GeminiCreateParams = GeminiCreateParams.none(),
     ): CompletableFuture<GeminiCreateResponse> = create(endpoint, params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: GeminiCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<GeminiCreateResponse>
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: GeminiCreateParams): CompletableFuture<GeminiCreateResponse> =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -71,7 +71,7 @@ interface GeminiServiceAsync {
     fun retrieve(endpoint: String): CompletableFuture<GeminiRetrieveResponse> =
         retrieve(endpoint, GeminiRetrieveParams.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         endpoint: String,
         params: GeminiRetrieveParams = GeminiRetrieveParams.none(),
@@ -79,23 +79,23 @@ interface GeminiServiceAsync {
     ): CompletableFuture<GeminiRetrieveResponse> =
         retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         endpoint: String,
         params: GeminiRetrieveParams = GeminiRetrieveParams.none(),
     ): CompletableFuture<GeminiRetrieveResponse> = retrieve(endpoint, params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: GeminiRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<GeminiRetrieveResponse>
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(params: GeminiRetrieveParams): CompletableFuture<GeminiRetrieveResponse> =
         retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -106,7 +106,7 @@ interface GeminiServiceAsync {
     fun update(endpoint: String): CompletableFuture<GeminiUpdateResponse> =
         update(endpoint, GeminiUpdateParams.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         params: GeminiUpdateParams = GeminiUpdateParams.none(),
@@ -114,23 +114,23 @@ interface GeminiServiceAsync {
     ): CompletableFuture<GeminiUpdateResponse> =
         update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         params: GeminiUpdateParams = GeminiUpdateParams.none(),
     ): CompletableFuture<GeminiUpdateResponse> = update(endpoint, params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: GeminiUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<GeminiUpdateResponse>
 
-    /** @see [update] */
+    /** @see update */
     fun update(params: GeminiUpdateParams): CompletableFuture<GeminiUpdateResponse> =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -141,7 +141,7 @@ interface GeminiServiceAsync {
     fun delete(endpoint: String): CompletableFuture<GeminiDeleteResponse> =
         delete(endpoint, GeminiDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         params: GeminiDeleteParams = GeminiDeleteParams.none(),
@@ -149,23 +149,23 @@ interface GeminiServiceAsync {
     ): CompletableFuture<GeminiDeleteResponse> =
         delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         params: GeminiDeleteParams = GeminiDeleteParams.none(),
     ): CompletableFuture<GeminiDeleteResponse> = delete(endpoint, params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: GeminiDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<GeminiDeleteResponse>
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: GeminiDeleteParams): CompletableFuture<GeminiDeleteResponse> =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -176,7 +176,7 @@ interface GeminiServiceAsync {
     fun patch(endpoint: String): CompletableFuture<GeminiPatchResponse> =
         patch(endpoint, GeminiPatchParams.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         endpoint: String,
         params: GeminiPatchParams = GeminiPatchParams.none(),
@@ -184,23 +184,23 @@ interface GeminiServiceAsync {
     ): CompletableFuture<GeminiPatchResponse> =
         patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         endpoint: String,
         params: GeminiPatchParams = GeminiPatchParams.none(),
     ): CompletableFuture<GeminiPatchResponse> = patch(endpoint, params, RequestOptions.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         params: GeminiPatchParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<GeminiPatchResponse>
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(params: GeminiPatchParams): CompletableFuture<GeminiPatchResponse> =
         patch(params, RequestOptions.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -228,7 +228,7 @@ interface GeminiServiceAsync {
         fun create(endpoint: String): CompletableFuture<HttpResponseFor<GeminiCreateResponse>> =
             create(endpoint, GeminiCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             endpoint: String,
             params: GeminiCreateParams = GeminiCreateParams.none(),
@@ -236,26 +236,26 @@ interface GeminiServiceAsync {
         ): CompletableFuture<HttpResponseFor<GeminiCreateResponse>> =
             create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             endpoint: String,
             params: GeminiCreateParams = GeminiCreateParams.none(),
         ): CompletableFuture<HttpResponseFor<GeminiCreateResponse>> =
             create(endpoint, params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: GeminiCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<GeminiCreateResponse>>
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: GeminiCreateParams
         ): CompletableFuture<HttpResponseFor<GeminiCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -269,7 +269,7 @@ interface GeminiServiceAsync {
         fun retrieve(endpoint: String): CompletableFuture<HttpResponseFor<GeminiRetrieveResponse>> =
             retrieve(endpoint, GeminiRetrieveParams.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             endpoint: String,
             params: GeminiRetrieveParams = GeminiRetrieveParams.none(),
@@ -277,26 +277,26 @@ interface GeminiServiceAsync {
         ): CompletableFuture<HttpResponseFor<GeminiRetrieveResponse>> =
             retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             endpoint: String,
             params: GeminiRetrieveParams = GeminiRetrieveParams.none(),
         ): CompletableFuture<HttpResponseFor<GeminiRetrieveResponse>> =
             retrieve(endpoint, params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: GeminiRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<GeminiRetrieveResponse>>
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: GeminiRetrieveParams
         ): CompletableFuture<HttpResponseFor<GeminiRetrieveResponse>> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -310,7 +310,7 @@ interface GeminiServiceAsync {
         fun update(endpoint: String): CompletableFuture<HttpResponseFor<GeminiUpdateResponse>> =
             update(endpoint, GeminiUpdateParams.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             endpoint: String,
             params: GeminiUpdateParams = GeminiUpdateParams.none(),
@@ -318,26 +318,26 @@ interface GeminiServiceAsync {
         ): CompletableFuture<HttpResponseFor<GeminiUpdateResponse>> =
             update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             endpoint: String,
             params: GeminiUpdateParams = GeminiUpdateParams.none(),
         ): CompletableFuture<HttpResponseFor<GeminiUpdateResponse>> =
             update(endpoint, params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: GeminiUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<GeminiUpdateResponse>>
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: GeminiUpdateParams
         ): CompletableFuture<HttpResponseFor<GeminiUpdateResponse>> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -351,7 +351,7 @@ interface GeminiServiceAsync {
         fun delete(endpoint: String): CompletableFuture<HttpResponseFor<GeminiDeleteResponse>> =
             delete(endpoint, GeminiDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             endpoint: String,
             params: GeminiDeleteParams = GeminiDeleteParams.none(),
@@ -359,26 +359,26 @@ interface GeminiServiceAsync {
         ): CompletableFuture<HttpResponseFor<GeminiDeleteResponse>> =
             delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             endpoint: String,
             params: GeminiDeleteParams = GeminiDeleteParams.none(),
         ): CompletableFuture<HttpResponseFor<GeminiDeleteResponse>> =
             delete(endpoint, params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: GeminiDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<GeminiDeleteResponse>>
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: GeminiDeleteParams
         ): CompletableFuture<HttpResponseFor<GeminiDeleteResponse>> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -392,7 +392,7 @@ interface GeminiServiceAsync {
         fun patch(endpoint: String): CompletableFuture<HttpResponseFor<GeminiPatchResponse>> =
             patch(endpoint, GeminiPatchParams.none())
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             endpoint: String,
             params: GeminiPatchParams = GeminiPatchParams.none(),
@@ -400,26 +400,26 @@ interface GeminiServiceAsync {
         ): CompletableFuture<HttpResponseFor<GeminiPatchResponse>> =
             patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             endpoint: String,
             params: GeminiPatchParams = GeminiPatchParams.none(),
         ): CompletableFuture<HttpResponseFor<GeminiPatchResponse>> =
             patch(endpoint, params, RequestOptions.none())
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             params: GeminiPatchParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<GeminiPatchResponse>>
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             params: GeminiPatchParams
         ): CompletableFuture<HttpResponseFor<GeminiPatchResponse>> =
             patch(params, RequestOptions.none())
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             endpoint: String,
             requestOptions: RequestOptions,

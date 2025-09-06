@@ -56,8 +56,10 @@ private constructor(
     /** View spend for a specific team_id. Example team_id='1234 */
     fun teamId(): Optional<String> = Optional.ofNullable(teamId)
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
@@ -400,7 +402,7 @@ private constructor(
                 return true
             }
 
-            return /* spotless:off */ other is GroupBy && value == other.value /* spotless:on */
+            return other is GroupBy && value == other.value
         }
 
         override fun hashCode() = value.hashCode()
@@ -413,10 +415,30 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is SpendRetrieveReportParams && apiKey == other.apiKey && customerId == other.customerId && endDate == other.endDate && groupBy == other.groupBy && internalUserId == other.internalUserId && startDate == other.startDate && teamId == other.teamId && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is SpendRetrieveReportParams &&
+            apiKey == other.apiKey &&
+            customerId == other.customerId &&
+            endDate == other.endDate &&
+            groupBy == other.groupBy &&
+            internalUserId == other.internalUserId &&
+            startDate == other.startDate &&
+            teamId == other.teamId &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(apiKey, customerId, endDate, groupBy, internalUserId, startDate, teamId, additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(
+            apiKey,
+            customerId,
+            endDate,
+            groupBy,
+            internalUserId,
+            startDate,
+            teamId,
+            additionalHeaders,
+            additionalQueryParams,
+        )
 
     override fun toString() =
         "SpendRetrieveReportParams{apiKey=$apiKey, customerId=$customerId, endDate=$endDate, groupBy=$groupBy, internalUserId=$internalUserId, startDate=$startDate, teamId=$teamId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"

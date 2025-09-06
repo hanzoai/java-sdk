@@ -101,7 +101,7 @@ interface KeyService {
      */
     fun update(params: KeyUpdateParams): KeyUpdateResponse = update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: KeyUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -115,17 +115,17 @@ interface KeyService {
      */
     fun list(): KeyListResponse = list(KeyListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: KeyListParams = KeyListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): KeyListResponse
 
-    /** @see [list] */
+    /** @see list */
     fun list(params: KeyListParams = KeyListParams.none()): KeyListResponse =
         list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): KeyListResponse =
         list(KeyListParams.none(), requestOptions)
 
@@ -153,17 +153,17 @@ interface KeyService {
      */
     fun delete(): KeyDeleteResponse = delete(KeyDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: KeyDeleteParams = KeyDeleteParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): KeyDeleteResponse
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: KeyDeleteParams = KeyDeleteParams.none()): KeyDeleteResponse =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(requestOptions: RequestOptions): KeyDeleteResponse =
         delete(KeyDeleteParams.none(), requestOptions)
 
@@ -186,7 +186,7 @@ interface KeyService {
     fun block(params: KeyBlockParams): Optional<KeyBlockResponse> =
         block(params, RequestOptions.none())
 
-    /** @see [block] */
+    /** @see block */
     fun block(
         params: KeyBlockParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -232,18 +232,18 @@ interface KeyService {
      */
     fun checkHealth(): KeyCheckHealthResponse = checkHealth(KeyCheckHealthParams.none())
 
-    /** @see [checkHealth] */
+    /** @see checkHealth */
     fun checkHealth(
         params: KeyCheckHealthParams = KeyCheckHealthParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): KeyCheckHealthResponse
 
-    /** @see [checkHealth] */
+    /** @see checkHealth */
     fun checkHealth(
         params: KeyCheckHealthParams = KeyCheckHealthParams.none()
     ): KeyCheckHealthResponse = checkHealth(params, RequestOptions.none())
 
-    /** @see [checkHealth] */
+    /** @see checkHealth */
     fun checkHealth(requestOptions: RequestOptions): KeyCheckHealthResponse =
         checkHealth(KeyCheckHealthParams.none(), requestOptions)
 
@@ -324,17 +324,17 @@ interface KeyService {
      */
     fun generate(): GenerateKeyResponse = generate(KeyGenerateParams.none())
 
-    /** @see [generate] */
+    /** @see generate */
     fun generate(
         params: KeyGenerateParams = KeyGenerateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): GenerateKeyResponse
 
-    /** @see [generate] */
+    /** @see generate */
     fun generate(params: KeyGenerateParams = KeyGenerateParams.none()): GenerateKeyResponse =
         generate(params, RequestOptions.none())
 
-    /** @see [generate] */
+    /** @see generate */
     fun generate(requestOptions: RequestOptions): GenerateKeyResponse =
         generate(KeyGenerateParams.none(), requestOptions)
 
@@ -389,7 +389,7 @@ interface KeyService {
     fun regenerateByKey(pathKey: String): Optional<GenerateKeyResponse> =
         regenerateByKey(pathKey, KeyRegenerateByKeyParams.none())
 
-    /** @see [regenerateByKey] */
+    /** @see regenerateByKey */
     fun regenerateByKey(
         pathKey: String,
         params: KeyRegenerateByKeyParams = KeyRegenerateByKeyParams.none(),
@@ -397,23 +397,23 @@ interface KeyService {
     ): Optional<GenerateKeyResponse> =
         regenerateByKey(params.toBuilder().pathKey(pathKey).build(), requestOptions)
 
-    /** @see [regenerateByKey] */
+    /** @see regenerateByKey */
     fun regenerateByKey(
         pathKey: String,
         params: KeyRegenerateByKeyParams = KeyRegenerateByKeyParams.none(),
     ): Optional<GenerateKeyResponse> = regenerateByKey(pathKey, params, RequestOptions.none())
 
-    /** @see [regenerateByKey] */
+    /** @see regenerateByKey */
     fun regenerateByKey(
         params: KeyRegenerateByKeyParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): Optional<GenerateKeyResponse>
 
-    /** @see [regenerateByKey] */
+    /** @see regenerateByKey */
     fun regenerateByKey(params: KeyRegenerateByKeyParams): Optional<GenerateKeyResponse> =
         regenerateByKey(params, RequestOptions.none())
 
-    /** @see [regenerateByKey] */
+    /** @see regenerateByKey */
     fun regenerateByKey(
         pathKey: String,
         requestOptions: RequestOptions,
@@ -439,18 +439,18 @@ interface KeyService {
      */
     fun retrieveInfo(): KeyRetrieveInfoResponse = retrieveInfo(KeyRetrieveInfoParams.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: KeyRetrieveInfoParams = KeyRetrieveInfoParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): KeyRetrieveInfoResponse
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: KeyRetrieveInfoParams = KeyRetrieveInfoParams.none()
     ): KeyRetrieveInfoResponse = retrieveInfo(params, RequestOptions.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(requestOptions: RequestOptions): KeyRetrieveInfoResponse =
         retrieveInfo(KeyRetrieveInfoParams.none(), requestOptions)
 
@@ -473,7 +473,7 @@ interface KeyService {
     fun unblock(params: KeyUnblockParams): KeyUnblockResponse =
         unblock(params, RequestOptions.none())
 
-    /** @see [unblock] */
+    /** @see unblock */
     fun unblock(
         params: KeyUnblockParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -499,7 +499,7 @@ interface KeyService {
         fun update(params: KeyUpdateParams): HttpResponseFor<KeyUpdateResponse> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             params: KeyUpdateParams,
@@ -512,19 +512,19 @@ interface KeyService {
          */
         @MustBeClosed fun list(): HttpResponseFor<KeyListResponse> = list(KeyListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: KeyListParams = KeyListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<KeyListResponse>
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(params: KeyListParams = KeyListParams.none()): HttpResponseFor<KeyListResponse> =
             list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(requestOptions: RequestOptions): HttpResponseFor<KeyListResponse> =
             list(KeyListParams.none(), requestOptions)
@@ -536,20 +536,20 @@ interface KeyService {
         @MustBeClosed
         fun delete(): HttpResponseFor<KeyDeleteResponse> = delete(KeyDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: KeyDeleteParams = KeyDeleteParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<KeyDeleteResponse>
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: KeyDeleteParams = KeyDeleteParams.none()
         ): HttpResponseFor<KeyDeleteResponse> = delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(requestOptions: RequestOptions): HttpResponseFor<KeyDeleteResponse> =
             delete(KeyDeleteParams.none(), requestOptions)
@@ -562,7 +562,7 @@ interface KeyService {
         fun block(params: KeyBlockParams): HttpResponseFor<Optional<KeyBlockResponse>> =
             block(params, RequestOptions.none())
 
-        /** @see [block] */
+        /** @see block */
         @MustBeClosed
         fun block(
             params: KeyBlockParams,
@@ -577,20 +577,20 @@ interface KeyService {
         fun checkHealth(): HttpResponseFor<KeyCheckHealthResponse> =
             checkHealth(KeyCheckHealthParams.none())
 
-        /** @see [checkHealth] */
+        /** @see checkHealth */
         @MustBeClosed
         fun checkHealth(
             params: KeyCheckHealthParams = KeyCheckHealthParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<KeyCheckHealthResponse>
 
-        /** @see [checkHealth] */
+        /** @see checkHealth */
         @MustBeClosed
         fun checkHealth(
             params: KeyCheckHealthParams = KeyCheckHealthParams.none()
         ): HttpResponseFor<KeyCheckHealthResponse> = checkHealth(params, RequestOptions.none())
 
-        /** @see [checkHealth] */
+        /** @see checkHealth */
         @MustBeClosed
         fun checkHealth(requestOptions: RequestOptions): HttpResponseFor<KeyCheckHealthResponse> =
             checkHealth(KeyCheckHealthParams.none(), requestOptions)
@@ -602,20 +602,20 @@ interface KeyService {
         @MustBeClosed
         fun generate(): HttpResponseFor<GenerateKeyResponse> = generate(KeyGenerateParams.none())
 
-        /** @see [generate] */
+        /** @see generate */
         @MustBeClosed
         fun generate(
             params: KeyGenerateParams = KeyGenerateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<GenerateKeyResponse>
 
-        /** @see [generate] */
+        /** @see generate */
         @MustBeClosed
         fun generate(
             params: KeyGenerateParams = KeyGenerateParams.none()
         ): HttpResponseFor<GenerateKeyResponse> = generate(params, RequestOptions.none())
 
-        /** @see [generate] */
+        /** @see generate */
         @MustBeClosed
         fun generate(requestOptions: RequestOptions): HttpResponseFor<GenerateKeyResponse> =
             generate(KeyGenerateParams.none(), requestOptions)
@@ -628,7 +628,7 @@ interface KeyService {
         fun regenerateByKey(pathKey: String): HttpResponseFor<Optional<GenerateKeyResponse>> =
             regenerateByKey(pathKey, KeyRegenerateByKeyParams.none())
 
-        /** @see [regenerateByKey] */
+        /** @see regenerateByKey */
         @MustBeClosed
         fun regenerateByKey(
             pathKey: String,
@@ -637,7 +637,7 @@ interface KeyService {
         ): HttpResponseFor<Optional<GenerateKeyResponse>> =
             regenerateByKey(params.toBuilder().pathKey(pathKey).build(), requestOptions)
 
-        /** @see [regenerateByKey] */
+        /** @see regenerateByKey */
         @MustBeClosed
         fun regenerateByKey(
             pathKey: String,
@@ -645,21 +645,21 @@ interface KeyService {
         ): HttpResponseFor<Optional<GenerateKeyResponse>> =
             regenerateByKey(pathKey, params, RequestOptions.none())
 
-        /** @see [regenerateByKey] */
+        /** @see regenerateByKey */
         @MustBeClosed
         fun regenerateByKey(
             params: KeyRegenerateByKeyParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<Optional<GenerateKeyResponse>>
 
-        /** @see [regenerateByKey] */
+        /** @see regenerateByKey */
         @MustBeClosed
         fun regenerateByKey(
             params: KeyRegenerateByKeyParams
         ): HttpResponseFor<Optional<GenerateKeyResponse>> =
             regenerateByKey(params, RequestOptions.none())
 
-        /** @see [regenerateByKey] */
+        /** @see regenerateByKey */
         @MustBeClosed
         fun regenerateByKey(
             pathKey: String,
@@ -675,20 +675,20 @@ interface KeyService {
         fun retrieveInfo(): HttpResponseFor<KeyRetrieveInfoResponse> =
             retrieveInfo(KeyRetrieveInfoParams.none())
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         @MustBeClosed
         fun retrieveInfo(
             params: KeyRetrieveInfoParams = KeyRetrieveInfoParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<KeyRetrieveInfoResponse>
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         @MustBeClosed
         fun retrieveInfo(
             params: KeyRetrieveInfoParams = KeyRetrieveInfoParams.none()
         ): HttpResponseFor<KeyRetrieveInfoResponse> = retrieveInfo(params, RequestOptions.none())
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         @MustBeClosed
         fun retrieveInfo(requestOptions: RequestOptions): HttpResponseFor<KeyRetrieveInfoResponse> =
             retrieveInfo(KeyRetrieveInfoParams.none(), requestOptions)
@@ -701,7 +701,7 @@ interface KeyService {
         fun unblock(params: KeyUnblockParams): HttpResponseFor<KeyUnblockResponse> =
             unblock(params, RequestOptions.none())
 
-        /** @see [unblock] */
+        /** @see unblock */
         @MustBeClosed
         fun unblock(
             params: KeyUnblockParams,

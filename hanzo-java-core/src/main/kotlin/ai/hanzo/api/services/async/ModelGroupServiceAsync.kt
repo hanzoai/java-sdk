@@ -165,19 +165,19 @@ interface ModelGroupServiceAsync {
     fun retrieveInfo(): CompletableFuture<ModelGroupRetrieveInfoResponse> =
         retrieveInfo(ModelGroupRetrieveInfoParams.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: ModelGroupRetrieveInfoParams = ModelGroupRetrieveInfoParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<ModelGroupRetrieveInfoResponse>
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: ModelGroupRetrieveInfoParams = ModelGroupRetrieveInfoParams.none()
     ): CompletableFuture<ModelGroupRetrieveInfoResponse> =
         retrieveInfo(params, RequestOptions.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         requestOptions: RequestOptions
     ): CompletableFuture<ModelGroupRetrieveInfoResponse> =
@@ -205,19 +205,19 @@ interface ModelGroupServiceAsync {
         fun retrieveInfo(): CompletableFuture<HttpResponseFor<ModelGroupRetrieveInfoResponse>> =
             retrieveInfo(ModelGroupRetrieveInfoParams.none())
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         fun retrieveInfo(
             params: ModelGroupRetrieveInfoParams = ModelGroupRetrieveInfoParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<ModelGroupRetrieveInfoResponse>>
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         fun retrieveInfo(
             params: ModelGroupRetrieveInfoParams = ModelGroupRetrieveInfoParams.none()
         ): CompletableFuture<HttpResponseFor<ModelGroupRetrieveInfoResponse>> =
             retrieveInfo(params, RequestOptions.none())
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         fun retrieveInfo(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<ModelGroupRetrieveInfoResponse>> =

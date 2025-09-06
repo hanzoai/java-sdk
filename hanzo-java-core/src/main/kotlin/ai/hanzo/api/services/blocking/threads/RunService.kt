@@ -31,29 +31,29 @@ interface RunService {
      */
     fun create(threadId: String): RunCreateResponse = create(threadId, RunCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         threadId: String,
         params: RunCreateParams = RunCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): RunCreateResponse = create(params.toBuilder().threadId(threadId).build(), requestOptions)
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         threadId: String,
         params: RunCreateParams = RunCreateParams.none(),
     ): RunCreateResponse = create(threadId, params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: RunCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): RunCreateResponse
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: RunCreateParams): RunCreateResponse = create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(threadId: String, requestOptions: RequestOptions): RunCreateResponse =
         create(threadId, RunCreateParams.none(), requestOptions)
 
@@ -75,7 +75,7 @@ interface RunService {
         fun create(threadId: String): HttpResponseFor<RunCreateResponse> =
             create(threadId, RunCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             threadId: String,
@@ -84,26 +84,26 @@ interface RunService {
         ): HttpResponseFor<RunCreateResponse> =
             create(params.toBuilder().threadId(threadId).build(), requestOptions)
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             threadId: String,
             params: RunCreateParams = RunCreateParams.none(),
         ): HttpResponseFor<RunCreateResponse> = create(threadId, params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: RunCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<RunCreateResponse>
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(params: RunCreateParams): HttpResponseFor<RunCreateResponse> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             threadId: String,

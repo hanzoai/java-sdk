@@ -35,17 +35,17 @@ interface TestService {
      */
     fun ping(): TestPingResponse = ping(TestPingParams.none())
 
-    /** @see [ping] */
+    /** @see ping */
     fun ping(
         params: TestPingParams = TestPingParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): TestPingResponse
 
-    /** @see [ping] */
+    /** @see ping */
     fun ping(params: TestPingParams = TestPingParams.none()): TestPingResponse =
         ping(params, RequestOptions.none())
 
-    /** @see [ping] */
+    /** @see ping */
     fun ping(requestOptions: RequestOptions): TestPingResponse =
         ping(TestPingParams.none(), requestOptions)
 
@@ -65,20 +65,20 @@ interface TestService {
          */
         @MustBeClosed fun ping(): HttpResponseFor<TestPingResponse> = ping(TestPingParams.none())
 
-        /** @see [ping] */
+        /** @see ping */
         @MustBeClosed
         fun ping(
             params: TestPingParams = TestPingParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<TestPingResponse>
 
-        /** @see [ping] */
+        /** @see ping */
         @MustBeClosed
         fun ping(
             params: TestPingParams = TestPingParams.none()
         ): HttpResponseFor<TestPingResponse> = ping(params, RequestOptions.none())
 
-        /** @see [ping] */
+        /** @see ping */
         @MustBeClosed
         fun ping(requestOptions: RequestOptions): HttpResponseFor<TestPingResponse> =
             ping(TestPingParams.none(), requestOptions)

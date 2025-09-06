@@ -113,17 +113,17 @@ interface TeamService {
      */
     fun create(): TeamCreateResponse = create(TeamCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: TeamCreateParams = TeamCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): TeamCreateResponse
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: TeamCreateParams = TeamCreateParams.none()): TeamCreateResponse =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): TeamCreateResponse =
         create(TeamCreateParams.none(), requestOptions)
 
@@ -177,7 +177,7 @@ interface TeamService {
      */
     fun update(params: TeamUpdateParams): TeamUpdateResponse = update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: TeamUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -195,17 +195,17 @@ interface TeamService {
      */
     fun list(): TeamListResponse = list(TeamListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: TeamListParams = TeamListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): TeamListResponse
 
-    /** @see [list] */
+    /** @see list */
     fun list(params: TeamListParams = TeamListParams.none()): TeamListResponse =
         list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): TeamListResponse =
         list(TeamListParams.none(), requestOptions)
 
@@ -224,7 +224,7 @@ interface TeamService {
      */
     fun delete(params: TeamDeleteParams): TeamDeleteResponse = delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: TeamDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -248,7 +248,7 @@ interface TeamService {
     fun addMember(params: TeamAddMemberParams): TeamAddMemberResponse =
         addMember(params, RequestOptions.none())
 
-    /** @see [addMember] */
+    /** @see addMember */
     fun addMember(
         params: TeamAddMemberParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -272,7 +272,7 @@ interface TeamService {
      */
     fun block(params: TeamBlockParams): TeamBlockResponse = block(params, RequestOptions.none())
 
-    /** @see [block] */
+    /** @see block */
     fun block(
         params: TeamBlockParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -292,7 +292,7 @@ interface TeamService {
     fun disableLogging(teamId: String): TeamDisableLoggingResponse =
         disableLogging(teamId, TeamDisableLoggingParams.none())
 
-    /** @see [disableLogging] */
+    /** @see disableLogging */
     fun disableLogging(
         teamId: String,
         params: TeamDisableLoggingParams = TeamDisableLoggingParams.none(),
@@ -300,41 +300,41 @@ interface TeamService {
     ): TeamDisableLoggingResponse =
         disableLogging(params.toBuilder().teamId(teamId).build(), requestOptions)
 
-    /** @see [disableLogging] */
+    /** @see disableLogging */
     fun disableLogging(
         teamId: String,
         params: TeamDisableLoggingParams = TeamDisableLoggingParams.none(),
     ): TeamDisableLoggingResponse = disableLogging(teamId, params, RequestOptions.none())
 
-    /** @see [disableLogging] */
+    /** @see disableLogging */
     fun disableLogging(
         params: TeamDisableLoggingParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): TeamDisableLoggingResponse
 
-    /** @see [disableLogging] */
+    /** @see disableLogging */
     fun disableLogging(params: TeamDisableLoggingParams): TeamDisableLoggingResponse =
         disableLogging(params, RequestOptions.none())
 
-    /** @see [disableLogging] */
+    /** @see disableLogging */
     fun disableLogging(teamId: String, requestOptions: RequestOptions): TeamDisableLoggingResponse =
         disableLogging(teamId, TeamDisableLoggingParams.none(), requestOptions)
 
     /** List Available Teams */
     fun listAvailable(): TeamListAvailableResponse = listAvailable(TeamListAvailableParams.none())
 
-    /** @see [listAvailable] */
+    /** @see listAvailable */
     fun listAvailable(
         params: TeamListAvailableParams = TeamListAvailableParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): TeamListAvailableResponse
 
-    /** @see [listAvailable] */
+    /** @see listAvailable */
     fun listAvailable(
         params: TeamListAvailableParams = TeamListAvailableParams.none()
     ): TeamListAvailableResponse = listAvailable(params, RequestOptions.none())
 
-    /** @see [listAvailable] */
+    /** @see listAvailable */
     fun listAvailable(requestOptions: RequestOptions): TeamListAvailableResponse =
         listAvailable(TeamListAvailableParams.none(), requestOptions)
 
@@ -358,7 +358,7 @@ interface TeamService {
     fun removeMember(params: TeamRemoveMemberParams): TeamRemoveMemberResponse =
         removeMember(params, RequestOptions.none())
 
-    /** @see [removeMember] */
+    /** @see removeMember */
     fun removeMember(
         params: TeamRemoveMemberParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -376,18 +376,18 @@ interface TeamService {
      */
     fun retrieveInfo(): TeamRetrieveInfoResponse = retrieveInfo(TeamRetrieveInfoParams.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: TeamRetrieveInfoParams = TeamRetrieveInfoParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): TeamRetrieveInfoResponse
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: TeamRetrieveInfoParams = TeamRetrieveInfoParams.none()
     ): TeamRetrieveInfoResponse = retrieveInfo(params, RequestOptions.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(requestOptions: RequestOptions): TeamRetrieveInfoResponse =
         retrieveInfo(TeamRetrieveInfoParams.none(), requestOptions)
 
@@ -407,7 +407,7 @@ interface TeamService {
     fun unblock(params: TeamUnblockParams): TeamUnblockResponse =
         unblock(params, RequestOptions.none())
 
-    /** @see [unblock] */
+    /** @see unblock */
     fun unblock(
         params: TeamUnblockParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -421,7 +421,7 @@ interface TeamService {
     fun updateMember(params: TeamUpdateMemberParams): TeamUpdateMemberResponse =
         updateMember(params, RequestOptions.none())
 
-    /** @see [updateMember] */
+    /** @see updateMember */
     fun updateMember(
         params: TeamUpdateMemberParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -448,20 +448,20 @@ interface TeamService {
         @MustBeClosed
         fun create(): HttpResponseFor<TeamCreateResponse> = create(TeamCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: TeamCreateParams = TeamCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<TeamCreateResponse>
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: TeamCreateParams = TeamCreateParams.none()
         ): HttpResponseFor<TeamCreateResponse> = create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(requestOptions: RequestOptions): HttpResponseFor<TeamCreateResponse> =
             create(TeamCreateParams.none(), requestOptions)
@@ -474,7 +474,7 @@ interface TeamService {
         fun update(params: TeamUpdateParams): HttpResponseFor<TeamUpdateResponse> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             params: TeamUpdateParams,
@@ -487,20 +487,20 @@ interface TeamService {
          */
         @MustBeClosed fun list(): HttpResponseFor<TeamListResponse> = list(TeamListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: TeamListParams = TeamListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<TeamListResponse>
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: TeamListParams = TeamListParams.none()
         ): HttpResponseFor<TeamListResponse> = list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(requestOptions: RequestOptions): HttpResponseFor<TeamListResponse> =
             list(TeamListParams.none(), requestOptions)
@@ -513,7 +513,7 @@ interface TeamService {
         fun delete(params: TeamDeleteParams): HttpResponseFor<TeamDeleteResponse> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: TeamDeleteParams,
@@ -528,7 +528,7 @@ interface TeamService {
         fun addMember(params: TeamAddMemberParams): HttpResponseFor<TeamAddMemberResponse> =
             addMember(params, RequestOptions.none())
 
-        /** @see [addMember] */
+        /** @see addMember */
         @MustBeClosed
         fun addMember(
             params: TeamAddMemberParams,
@@ -543,7 +543,7 @@ interface TeamService {
         fun block(params: TeamBlockParams): HttpResponseFor<TeamBlockResponse> =
             block(params, RequestOptions.none())
 
-        /** @see [block] */
+        /** @see block */
         @MustBeClosed
         fun block(
             params: TeamBlockParams,
@@ -558,7 +558,7 @@ interface TeamService {
         fun disableLogging(teamId: String): HttpResponseFor<TeamDisableLoggingResponse> =
             disableLogging(teamId, TeamDisableLoggingParams.none())
 
-        /** @see [disableLogging] */
+        /** @see disableLogging */
         @MustBeClosed
         fun disableLogging(
             teamId: String,
@@ -567,7 +567,7 @@ interface TeamService {
         ): HttpResponseFor<TeamDisableLoggingResponse> =
             disableLogging(params.toBuilder().teamId(teamId).build(), requestOptions)
 
-        /** @see [disableLogging] */
+        /** @see disableLogging */
         @MustBeClosed
         fun disableLogging(
             teamId: String,
@@ -575,21 +575,21 @@ interface TeamService {
         ): HttpResponseFor<TeamDisableLoggingResponse> =
             disableLogging(teamId, params, RequestOptions.none())
 
-        /** @see [disableLogging] */
+        /** @see disableLogging */
         @MustBeClosed
         fun disableLogging(
             params: TeamDisableLoggingParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<TeamDisableLoggingResponse>
 
-        /** @see [disableLogging] */
+        /** @see disableLogging */
         @MustBeClosed
         fun disableLogging(
             params: TeamDisableLoggingParams
         ): HttpResponseFor<TeamDisableLoggingResponse> =
             disableLogging(params, RequestOptions.none())
 
-        /** @see [disableLogging] */
+        /** @see disableLogging */
         @MustBeClosed
         fun disableLogging(
             teamId: String,
@@ -605,20 +605,20 @@ interface TeamService {
         fun listAvailable(): HttpResponseFor<TeamListAvailableResponse> =
             listAvailable(TeamListAvailableParams.none())
 
-        /** @see [listAvailable] */
+        /** @see listAvailable */
         @MustBeClosed
         fun listAvailable(
             params: TeamListAvailableParams = TeamListAvailableParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<TeamListAvailableResponse>
 
-        /** @see [listAvailable] */
+        /** @see listAvailable */
         @MustBeClosed
         fun listAvailable(
             params: TeamListAvailableParams = TeamListAvailableParams.none()
         ): HttpResponseFor<TeamListAvailableResponse> = listAvailable(params, RequestOptions.none())
 
-        /** @see [listAvailable] */
+        /** @see listAvailable */
         @MustBeClosed
         fun listAvailable(
             requestOptions: RequestOptions
@@ -634,7 +634,7 @@ interface TeamService {
             params: TeamRemoveMemberParams
         ): HttpResponseFor<TeamRemoveMemberResponse> = removeMember(params, RequestOptions.none())
 
-        /** @see [removeMember] */
+        /** @see removeMember */
         @MustBeClosed
         fun removeMember(
             params: TeamRemoveMemberParams,
@@ -649,20 +649,20 @@ interface TeamService {
         fun retrieveInfo(): HttpResponseFor<TeamRetrieveInfoResponse> =
             retrieveInfo(TeamRetrieveInfoParams.none())
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         @MustBeClosed
         fun retrieveInfo(
             params: TeamRetrieveInfoParams = TeamRetrieveInfoParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<TeamRetrieveInfoResponse>
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         @MustBeClosed
         fun retrieveInfo(
             params: TeamRetrieveInfoParams = TeamRetrieveInfoParams.none()
         ): HttpResponseFor<TeamRetrieveInfoResponse> = retrieveInfo(params, RequestOptions.none())
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         @MustBeClosed
         fun retrieveInfo(
             requestOptions: RequestOptions
@@ -677,7 +677,7 @@ interface TeamService {
         fun unblock(params: TeamUnblockParams): HttpResponseFor<TeamUnblockResponse> =
             unblock(params, RequestOptions.none())
 
-        /** @see [unblock] */
+        /** @see unblock */
         @MustBeClosed
         fun unblock(
             params: TeamUnblockParams,
@@ -693,7 +693,7 @@ interface TeamService {
             params: TeamUpdateMemberParams
         ): HttpResponseFor<TeamUpdateMemberResponse> = updateMember(params, RequestOptions.none())
 
-        /** @see [updateMember] */
+        /** @see updateMember */
         @MustBeClosed
         fun updateMember(
             params: TeamUpdateMemberParams,

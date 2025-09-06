@@ -32,7 +32,7 @@ interface RunServiceAsync {
     fun create(threadId: String): CompletableFuture<RunCreateResponse> =
         create(threadId, RunCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         threadId: String,
         params: RunCreateParams = RunCreateParams.none(),
@@ -40,23 +40,23 @@ interface RunServiceAsync {
     ): CompletableFuture<RunCreateResponse> =
         create(params.toBuilder().threadId(threadId).build(), requestOptions)
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         threadId: String,
         params: RunCreateParams = RunCreateParams.none(),
     ): CompletableFuture<RunCreateResponse> = create(threadId, params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: RunCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<RunCreateResponse>
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: RunCreateParams): CompletableFuture<RunCreateResponse> =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         threadId: String,
         requestOptions: RequestOptions,
@@ -80,7 +80,7 @@ interface RunServiceAsync {
         fun create(threadId: String): CompletableFuture<HttpResponseFor<RunCreateResponse>> =
             create(threadId, RunCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             threadId: String,
             params: RunCreateParams = RunCreateParams.none(),
@@ -88,24 +88,24 @@ interface RunServiceAsync {
         ): CompletableFuture<HttpResponseFor<RunCreateResponse>> =
             create(params.toBuilder().threadId(threadId).build(), requestOptions)
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             threadId: String,
             params: RunCreateParams = RunCreateParams.none(),
         ): CompletableFuture<HttpResponseFor<RunCreateResponse>> =
             create(threadId, params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: RunCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<RunCreateResponse>>
 
-        /** @see [create] */
+        /** @see create */
         fun create(params: RunCreateParams): CompletableFuture<HttpResponseFor<RunCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             threadId: String,
             requestOptions: RequestOptions,

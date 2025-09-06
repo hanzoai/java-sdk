@@ -52,7 +52,7 @@ interface JobServiceAsync {
     fun create(params: JobCreateParams): CompletableFuture<JobCreateResponse> =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: JobCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -72,7 +72,7 @@ interface JobServiceAsync {
     ): CompletableFuture<JobRetrieveResponse> =
         retrieve(fineTuningJobId, params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         fineTuningJobId: String,
         params: JobRetrieveParams,
@@ -80,11 +80,11 @@ interface JobServiceAsync {
     ): CompletableFuture<JobRetrieveResponse> =
         retrieve(params.toBuilder().fineTuningJobId(fineTuningJobId).build(), requestOptions)
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(params: JobRetrieveParams): CompletableFuture<JobRetrieveResponse> =
         retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: JobRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -102,7 +102,7 @@ interface JobServiceAsync {
     fun list(params: JobListParams): CompletableFuture<JobListResponse> =
         list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: JobListParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -127,7 +127,7 @@ interface JobServiceAsync {
         fun create(params: JobCreateParams): CompletableFuture<HttpResponseFor<JobCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: JobCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -143,7 +143,7 @@ interface JobServiceAsync {
         ): CompletableFuture<HttpResponseFor<JobRetrieveResponse>> =
             retrieve(fineTuningJobId, params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             fineTuningJobId: String,
             params: JobRetrieveParams,
@@ -151,13 +151,13 @@ interface JobServiceAsync {
         ): CompletableFuture<HttpResponseFor<JobRetrieveResponse>> =
             retrieve(params.toBuilder().fineTuningJobId(fineTuningJobId).build(), requestOptions)
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: JobRetrieveParams
         ): CompletableFuture<HttpResponseFor<JobRetrieveResponse>> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: JobRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -170,7 +170,7 @@ interface JobServiceAsync {
         fun list(params: JobListParams): CompletableFuture<HttpResponseFor<JobListResponse>> =
             list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: JobListParams,
             requestOptions: RequestOptions = RequestOptions.none(),

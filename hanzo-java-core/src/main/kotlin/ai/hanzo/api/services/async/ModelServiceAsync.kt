@@ -36,7 +36,7 @@ interface ModelServiceAsync {
     fun create(params: ModelCreateParams): CompletableFuture<ModelCreateResponse> =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: ModelCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -46,7 +46,7 @@ interface ModelServiceAsync {
     fun delete(params: ModelDeleteParams): CompletableFuture<ModelDeleteResponse> =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: ModelDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -77,7 +77,7 @@ interface ModelServiceAsync {
         ): CompletableFuture<HttpResponseFor<ModelCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: ModelCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -92,7 +92,7 @@ interface ModelServiceAsync {
         ): CompletableFuture<HttpResponseFor<ModelDeleteResponse>> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: ModelDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),

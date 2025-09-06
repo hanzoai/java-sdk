@@ -3,14 +3,14 @@
 package ai.hanzo.api.client
 
 import ai.hanzo.api.core.ClientOptions
-import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.getPackageVersion
+import ai.hanzo.api.core.handlers.errorBodyHandler
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
-import ai.hanzo.api.core.handlers.withErrorHandler
 import ai.hanzo.api.core.http.HttpMethod
 import ai.hanzo.api.core.http.HttpRequest
+import ai.hanzo.api.core.http.HttpResponse
 import ai.hanzo.api.core.http.HttpResponse.Handler
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.core.http.parseable
@@ -417,12 +417,13 @@ class HanzoClientAsyncImpl(private val clientOptions: ClientOptions) : HanzoClie
         // get /
         withRawResponse().getHome(params, requestOptions).thenApply { it.parse() }
 
-    override fun close() = clientOptions.httpClient.close()
+    override fun close() = clientOptions.close()
 
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
         HanzoClientAsync.WithRawResponse {
 
-        private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+        private val errorHandler: Handler<HttpResponse> =
+            errorHandler(errorBodyHandler(clientOptions.jsonMapper))
 
         private val models: ModelServiceAsync.WithRawResponse by lazy {
             ModelServiceAsyncImpl.WithRawResponseImpl(clientOptions)
@@ -721,7 +722,6 @@ class HanzoClientAsyncImpl(private val clientOptions: ClientOptions) : HanzoClie
 
         private val getHomeHandler: Handler<ClientGetHomeResponse> =
             jsonHandler<ClientGetHomeResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun getHome(
             params: ClientGetHomeParams,
@@ -738,7 +738,7 @@ class HanzoClientAsyncImpl(private val clientOptions: ClientOptions) : HanzoClie
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { getHomeHandler.handle(it) }
                             .also {

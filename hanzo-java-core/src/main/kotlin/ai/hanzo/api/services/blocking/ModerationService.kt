@@ -36,18 +36,18 @@ interface ModerationService {
      */
     fun create(): ModerationCreateResponse = create(ModerationCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: ModerationCreateParams = ModerationCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): ModerationCreateResponse
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: ModerationCreateParams = ModerationCreateParams.none()
     ): ModerationCreateResponse = create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): ModerationCreateResponse =
         create(ModerationCreateParams.none(), requestOptions)
 
@@ -71,20 +71,20 @@ interface ModerationService {
         fun create(): HttpResponseFor<ModerationCreateResponse> =
             create(ModerationCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: ModerationCreateParams = ModerationCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<ModerationCreateResponse>
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: ModerationCreateParams = ModerationCreateParams.none()
         ): HttpResponseFor<ModerationCreateResponse> = create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(requestOptions: RequestOptions): HttpResponseFor<ModerationCreateResponse> =
             create(ModerationCreateParams.none(), requestOptions)

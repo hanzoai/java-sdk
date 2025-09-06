@@ -43,7 +43,7 @@ interface ContentServiceAsync {
         params: ContentRetrieveParams,
     ): CompletableFuture<ContentRetrieveResponse> = retrieve(fileId, params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         fileId: String,
         params: ContentRetrieveParams,
@@ -51,11 +51,11 @@ interface ContentServiceAsync {
     ): CompletableFuture<ContentRetrieveResponse> =
         retrieve(params.toBuilder().fileId(fileId).build(), requestOptions)
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(params: ContentRetrieveParams): CompletableFuture<ContentRetrieveResponse> =
         retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: ContentRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -85,7 +85,7 @@ interface ContentServiceAsync {
         ): CompletableFuture<HttpResponseFor<ContentRetrieveResponse>> =
             retrieve(fileId, params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             fileId: String,
             params: ContentRetrieveParams,
@@ -93,13 +93,13 @@ interface ContentServiceAsync {
         ): CompletableFuture<HttpResponseFor<ContentRetrieveResponse>> =
             retrieve(params.toBuilder().fileId(fileId).build(), requestOptions)
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: ContentRetrieveParams
         ): CompletableFuture<HttpResponseFor<ContentRetrieveResponse>> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: ContentRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),

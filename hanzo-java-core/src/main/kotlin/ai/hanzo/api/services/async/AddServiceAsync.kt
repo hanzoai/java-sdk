@@ -28,7 +28,7 @@ interface AddServiceAsync {
     fun addAllowedIp(params: AddAddAllowedIpParams): CompletableFuture<AddAddAllowedIpResponse> =
         addAllowedIp(params, RequestOptions.none())
 
-    /** @see [addAllowedIp] */
+    /** @see addAllowedIp */
     fun addAllowedIp(
         params: AddAddAllowedIpParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -53,7 +53,7 @@ interface AddServiceAsync {
         ): CompletableFuture<HttpResponseFor<AddAddAllowedIpResponse>> =
             addAllowedIp(params, RequestOptions.none())
 
-        /** @see [addAllowedIp] */
+        /** @see addAllowedIp */
         fun addAllowedIp(
             params: AddAddAllowedIpParams,
             requestOptions: RequestOptions = RequestOptions.none(),

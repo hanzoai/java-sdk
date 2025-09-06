@@ -34,7 +34,7 @@ interface PassThroughEndpointServiceAsync {
         params: PassThroughEndpointCreateParams
     ): CompletableFuture<PassThroughEndpointCreateResponse> = create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: PassThroughEndpointCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -44,7 +44,7 @@ interface PassThroughEndpointServiceAsync {
     fun update(endpointId: String): CompletableFuture<PassThroughEndpointUpdateResponse> =
         update(endpointId, PassThroughEndpointUpdateParams.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpointId: String,
         params: PassThroughEndpointUpdateParams = PassThroughEndpointUpdateParams.none(),
@@ -52,25 +52,25 @@ interface PassThroughEndpointServiceAsync {
     ): CompletableFuture<PassThroughEndpointUpdateResponse> =
         update(params.toBuilder().endpointId(endpointId).build(), requestOptions)
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpointId: String,
         params: PassThroughEndpointUpdateParams = PassThroughEndpointUpdateParams.none(),
     ): CompletableFuture<PassThroughEndpointUpdateResponse> =
         update(endpointId, params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: PassThroughEndpointUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<PassThroughEndpointUpdateResponse>
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: PassThroughEndpointUpdateParams
     ): CompletableFuture<PassThroughEndpointUpdateResponse> = update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpointId: String,
         requestOptions: RequestOptions,
@@ -85,18 +85,18 @@ interface PassThroughEndpointServiceAsync {
     fun list(): CompletableFuture<PassThroughEndpointResponse> =
         list(PassThroughEndpointListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: PassThroughEndpointListParams = PassThroughEndpointListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<PassThroughEndpointResponse>
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: PassThroughEndpointListParams = PassThroughEndpointListParams.none()
     ): CompletableFuture<PassThroughEndpointResponse> = list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): CompletableFuture<PassThroughEndpointResponse> =
         list(PassThroughEndpointListParams.none(), requestOptions)
 
@@ -109,7 +109,7 @@ interface PassThroughEndpointServiceAsync {
         params: PassThroughEndpointDeleteParams
     ): CompletableFuture<PassThroughEndpointResponse> = delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: PassThroughEndpointDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -139,7 +139,7 @@ interface PassThroughEndpointServiceAsync {
         ): CompletableFuture<HttpResponseFor<PassThroughEndpointCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: PassThroughEndpointCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -154,7 +154,7 @@ interface PassThroughEndpointServiceAsync {
         ): CompletableFuture<HttpResponseFor<PassThroughEndpointUpdateResponse>> =
             update(endpointId, PassThroughEndpointUpdateParams.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             endpointId: String,
             params: PassThroughEndpointUpdateParams = PassThroughEndpointUpdateParams.none(),
@@ -162,26 +162,26 @@ interface PassThroughEndpointServiceAsync {
         ): CompletableFuture<HttpResponseFor<PassThroughEndpointUpdateResponse>> =
             update(params.toBuilder().endpointId(endpointId).build(), requestOptions)
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             endpointId: String,
             params: PassThroughEndpointUpdateParams = PassThroughEndpointUpdateParams.none(),
         ): CompletableFuture<HttpResponseFor<PassThroughEndpointUpdateResponse>> =
             update(endpointId, params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: PassThroughEndpointUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<PassThroughEndpointUpdateResponse>>
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: PassThroughEndpointUpdateParams
         ): CompletableFuture<HttpResponseFor<PassThroughEndpointUpdateResponse>> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             endpointId: String,
             requestOptions: RequestOptions,
@@ -195,19 +195,19 @@ interface PassThroughEndpointServiceAsync {
         fun list(): CompletableFuture<HttpResponseFor<PassThroughEndpointResponse>> =
             list(PassThroughEndpointListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: PassThroughEndpointListParams = PassThroughEndpointListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<PassThroughEndpointResponse>>
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: PassThroughEndpointListParams = PassThroughEndpointListParams.none()
         ): CompletableFuture<HttpResponseFor<PassThroughEndpointResponse>> =
             list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<PassThroughEndpointResponse>> =
@@ -222,7 +222,7 @@ interface PassThroughEndpointServiceAsync {
         ): CompletableFuture<HttpResponseFor<PassThroughEndpointResponse>> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: PassThroughEndpointDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),

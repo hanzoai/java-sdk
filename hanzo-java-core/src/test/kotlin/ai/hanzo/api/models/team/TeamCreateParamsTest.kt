@@ -6,12 +6,10 @@ import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.http.Headers
 import kotlin.jvm.optionals.getOrNull
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 internal class TeamCreateParamsTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun create() {
         TeamCreateParams.builder()
@@ -41,7 +39,6 @@ internal class TeamCreateParamsTest {
             .build()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun headers() {
         val params =
@@ -77,7 +74,6 @@ internal class TeamCreateParamsTest {
             .isEqualTo(Headers.builder().put("llm-changed-by", "llm-changed-by").build())
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun headersWithoutOptionalFields() {
         val params = TeamCreateParams.builder().build()
@@ -87,7 +83,6 @@ internal class TeamCreateParamsTest {
         assertThat(headers).isEqualTo(Headers.builder().build())
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun body() {
         val params =
@@ -144,7 +139,6 @@ internal class TeamCreateParamsTest {
         assertThat(body.tpmLimit()).contains(0L)
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun bodyWithoutOptionalFields() {
         val params = TeamCreateParams.builder().build()

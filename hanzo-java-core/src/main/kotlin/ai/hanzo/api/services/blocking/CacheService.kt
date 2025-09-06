@@ -45,17 +45,17 @@ interface CacheService {
      */
     fun delete(): CacheDeleteResponse = delete(CacheDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: CacheDeleteParams = CacheDeleteParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CacheDeleteResponse
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: CacheDeleteParams = CacheDeleteParams.none()): CacheDeleteResponse =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(requestOptions: RequestOptions): CacheDeleteResponse =
         delete(CacheDeleteParams.none(), requestOptions)
 
@@ -71,34 +71,34 @@ interface CacheService {
      */
     fun flushAll(): CacheFlushAllResponse = flushAll(CacheFlushAllParams.none())
 
-    /** @see [flushAll] */
+    /** @see flushAll */
     fun flushAll(
         params: CacheFlushAllParams = CacheFlushAllParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CacheFlushAllResponse
 
-    /** @see [flushAll] */
+    /** @see flushAll */
     fun flushAll(params: CacheFlushAllParams = CacheFlushAllParams.none()): CacheFlushAllResponse =
         flushAll(params, RequestOptions.none())
 
-    /** @see [flushAll] */
+    /** @see flushAll */
     fun flushAll(requestOptions: RequestOptions): CacheFlushAllResponse =
         flushAll(CacheFlushAllParams.none(), requestOptions)
 
     /** Endpoint for checking if cache can be pinged */
     fun ping(): CachePingResponse = ping(CachePingParams.none())
 
-    /** @see [ping] */
+    /** @see ping */
     fun ping(
         params: CachePingParams = CachePingParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CachePingResponse
 
-    /** @see [ping] */
+    /** @see ping */
     fun ping(params: CachePingParams = CachePingParams.none()): CachePingResponse =
         ping(params, RequestOptions.none())
 
-    /** @see [ping] */
+    /** @see ping */
     fun ping(requestOptions: RequestOptions): CachePingResponse =
         ping(CachePingParams.none(), requestOptions)
 
@@ -121,20 +121,20 @@ interface CacheService {
         @MustBeClosed
         fun delete(): HttpResponseFor<CacheDeleteResponse> = delete(CacheDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: CacheDeleteParams = CacheDeleteParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<CacheDeleteResponse>
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: CacheDeleteParams = CacheDeleteParams.none()
         ): HttpResponseFor<CacheDeleteResponse> = delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(requestOptions: RequestOptions): HttpResponseFor<CacheDeleteResponse> =
             delete(CacheDeleteParams.none(), requestOptions)
@@ -147,20 +147,20 @@ interface CacheService {
         fun flushAll(): HttpResponseFor<CacheFlushAllResponse> =
             flushAll(CacheFlushAllParams.none())
 
-        /** @see [flushAll] */
+        /** @see flushAll */
         @MustBeClosed
         fun flushAll(
             params: CacheFlushAllParams = CacheFlushAllParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<CacheFlushAllResponse>
 
-        /** @see [flushAll] */
+        /** @see flushAll */
         @MustBeClosed
         fun flushAll(
             params: CacheFlushAllParams = CacheFlushAllParams.none()
         ): HttpResponseFor<CacheFlushAllResponse> = flushAll(params, RequestOptions.none())
 
-        /** @see [flushAll] */
+        /** @see flushAll */
         @MustBeClosed
         fun flushAll(requestOptions: RequestOptions): HttpResponseFor<CacheFlushAllResponse> =
             flushAll(CacheFlushAllParams.none(), requestOptions)
@@ -171,20 +171,20 @@ interface CacheService {
          */
         @MustBeClosed fun ping(): HttpResponseFor<CachePingResponse> = ping(CachePingParams.none())
 
-        /** @see [ping] */
+        /** @see ping */
         @MustBeClosed
         fun ping(
             params: CachePingParams = CachePingParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<CachePingResponse>
 
-        /** @see [ping] */
+        /** @see ping */
         @MustBeClosed
         fun ping(
             params: CachePingParams = CachePingParams.none()
         ): HttpResponseFor<CachePingResponse> = ping(params, RequestOptions.none())
 
-        /** @see [ping] */
+        /** @see ping */
         @MustBeClosed
         fun ping(requestOptions: RequestOptions): HttpResponseFor<CachePingResponse> =
             ping(CachePingParams.none(), requestOptions)

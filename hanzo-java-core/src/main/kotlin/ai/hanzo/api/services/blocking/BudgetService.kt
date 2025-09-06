@@ -53,7 +53,7 @@ interface BudgetService {
     fun create(params: BudgetCreateParams): BudgetCreateResponse =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: BudgetCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -78,7 +78,7 @@ interface BudgetService {
     fun update(params: BudgetUpdateParams): BudgetUpdateResponse =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: BudgetUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -87,17 +87,17 @@ interface BudgetService {
     /** List all the created budgets in proxy db. Used on Admin UI. */
     fun list(): BudgetListResponse = list(BudgetListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: BudgetListParams = BudgetListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): BudgetListResponse
 
-    /** @see [list] */
+    /** @see list */
     fun list(params: BudgetListParams = BudgetListParams.none()): BudgetListResponse =
         list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): BudgetListResponse =
         list(BudgetListParams.none(), requestOptions)
 
@@ -110,7 +110,7 @@ interface BudgetService {
     fun delete(params: BudgetDeleteParams): BudgetDeleteResponse =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: BudgetDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -124,7 +124,7 @@ interface BudgetService {
      */
     fun info(params: BudgetInfoParams): BudgetInfoResponse = info(params, RequestOptions.none())
 
-    /** @see [info] */
+    /** @see info */
     fun info(
         params: BudgetInfoParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -141,7 +141,7 @@ interface BudgetService {
     fun settings(params: BudgetSettingsParams): BudgetSettingsResponse =
         settings(params, RequestOptions.none())
 
-    /** @see [settings] */
+    /** @see settings */
     fun settings(
         params: BudgetSettingsParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -165,7 +165,7 @@ interface BudgetService {
         fun create(params: BudgetCreateParams): HttpResponseFor<BudgetCreateResponse> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: BudgetCreateParams,
@@ -180,7 +180,7 @@ interface BudgetService {
         fun update(params: BudgetUpdateParams): HttpResponseFor<BudgetUpdateResponse> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             params: BudgetUpdateParams,
@@ -194,20 +194,20 @@ interface BudgetService {
         @MustBeClosed
         fun list(): HttpResponseFor<BudgetListResponse> = list(BudgetListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: BudgetListParams = BudgetListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<BudgetListResponse>
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: BudgetListParams = BudgetListParams.none()
         ): HttpResponseFor<BudgetListResponse> = list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(requestOptions: RequestOptions): HttpResponseFor<BudgetListResponse> =
             list(BudgetListParams.none(), requestOptions)
@@ -220,7 +220,7 @@ interface BudgetService {
         fun delete(params: BudgetDeleteParams): HttpResponseFor<BudgetDeleteResponse> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: BudgetDeleteParams,
@@ -235,7 +235,7 @@ interface BudgetService {
         fun info(params: BudgetInfoParams): HttpResponseFor<BudgetInfoResponse> =
             info(params, RequestOptions.none())
 
-        /** @see [info] */
+        /** @see info */
         @MustBeClosed
         fun info(
             params: BudgetInfoParams,
@@ -250,7 +250,7 @@ interface BudgetService {
         fun settings(params: BudgetSettingsParams): HttpResponseFor<BudgetSettingsResponse> =
             settings(params, RequestOptions.none())
 
-        /** @see [settings] */
+        /** @see settings */
         @MustBeClosed
         fun settings(
             params: BudgetSettingsParams,

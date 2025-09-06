@@ -43,7 +43,7 @@ interface UtilServiceAsync {
     ): CompletableFuture<UtilGetSupportedOpenAIParamsResponse> =
         getSupportedOpenAIParams(params, RequestOptions.none())
 
-    /** @see [getSupportedOpenAIParams] */
+    /** @see getSupportedOpenAIParams */
     fun getSupportedOpenAIParams(
         params: UtilGetSupportedOpenAIParamsParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -53,7 +53,7 @@ interface UtilServiceAsync {
     fun tokenCounter(params: UtilTokenCounterParams): CompletableFuture<UtilTokenCounterResponse> =
         tokenCounter(params, RequestOptions.none())
 
-    /** @see [tokenCounter] */
+    /** @see tokenCounter */
     fun tokenCounter(
         params: UtilTokenCounterParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -65,7 +65,7 @@ interface UtilServiceAsync {
     ): CompletableFuture<UtilTransformRequestResponse> =
         transformRequest(params, RequestOptions.none())
 
-    /** @see [transformRequest] */
+    /** @see transformRequest */
     fun transformRequest(
         params: UtilTransformRequestParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -90,7 +90,7 @@ interface UtilServiceAsync {
         ): CompletableFuture<HttpResponseFor<UtilGetSupportedOpenAIParamsResponse>> =
             getSupportedOpenAIParams(params, RequestOptions.none())
 
-        /** @see [getSupportedOpenAIParams] */
+        /** @see getSupportedOpenAIParams */
         fun getSupportedOpenAIParams(
             params: UtilGetSupportedOpenAIParamsParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -105,7 +105,7 @@ interface UtilServiceAsync {
         ): CompletableFuture<HttpResponseFor<UtilTokenCounterResponse>> =
             tokenCounter(params, RequestOptions.none())
 
-        /** @see [tokenCounter] */
+        /** @see tokenCounter */
         fun tokenCounter(
             params: UtilTokenCounterParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -120,7 +120,7 @@ interface UtilServiceAsync {
         ): CompletableFuture<HttpResponseFor<UtilTransformRequestResponse>> =
             transformRequest(params, RequestOptions.none())
 
-        /** @see [transformRequest] */
+        /** @see transformRequest */
         fun transformRequest(
             params: UtilTransformRequestParams,
             requestOptions: RequestOptions = RequestOptions.none(),

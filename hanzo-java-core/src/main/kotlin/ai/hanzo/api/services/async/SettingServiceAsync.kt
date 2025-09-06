@@ -50,18 +50,18 @@ interface SettingServiceAsync {
     fun retrieve(): CompletableFuture<SettingRetrieveResponse> =
         retrieve(SettingRetrieveParams.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: SettingRetrieveParams = SettingRetrieveParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<SettingRetrieveResponse>
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: SettingRetrieveParams = SettingRetrieveParams.none()
     ): CompletableFuture<SettingRetrieveResponse> = retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(requestOptions: RequestOptions): CompletableFuture<SettingRetrieveResponse> =
         retrieve(SettingRetrieveParams.none(), requestOptions)
 
@@ -86,19 +86,19 @@ interface SettingServiceAsync {
         fun retrieve(): CompletableFuture<HttpResponseFor<SettingRetrieveResponse>> =
             retrieve(SettingRetrieveParams.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: SettingRetrieveParams = SettingRetrieveParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<SettingRetrieveResponse>>
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: SettingRetrieveParams = SettingRetrieveParams.none()
         ): CompletableFuture<HttpResponseFor<SettingRetrieveResponse>> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<SettingRetrieveResponse>> =

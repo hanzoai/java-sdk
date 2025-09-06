@@ -60,17 +60,17 @@ interface GuardrailService {
      */
     fun list(): GuardrailListResponse = list(GuardrailListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: GuardrailListParams = GuardrailListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): GuardrailListResponse
 
-    /** @see [list] */
+    /** @see list */
     fun list(params: GuardrailListParams = GuardrailListParams.none()): GuardrailListResponse =
         list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): GuardrailListResponse =
         list(GuardrailListParams.none(), requestOptions)
 
@@ -91,20 +91,20 @@ interface GuardrailService {
         @MustBeClosed
         fun list(): HttpResponseFor<GuardrailListResponse> = list(GuardrailListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: GuardrailListParams = GuardrailListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<GuardrailListResponse>
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: GuardrailListParams = GuardrailListParams.none()
         ): HttpResponseFor<GuardrailListResponse> = list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(requestOptions: RequestOptions): HttpResponseFor<GuardrailListResponse> =
             list(GuardrailListParams.none(), requestOptions)

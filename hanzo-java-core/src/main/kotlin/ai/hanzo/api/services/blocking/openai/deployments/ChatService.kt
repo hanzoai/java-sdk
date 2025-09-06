@@ -45,30 +45,30 @@ interface ChatService {
      */
     fun complete(model: String): ChatCompleteResponse = complete(model, ChatCompleteParams.none())
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(
         model: String,
         params: ChatCompleteParams = ChatCompleteParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): ChatCompleteResponse = complete(params.toBuilder().model(model).build(), requestOptions)
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(
         model: String,
         params: ChatCompleteParams = ChatCompleteParams.none(),
     ): ChatCompleteResponse = complete(model, params, RequestOptions.none())
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(
         params: ChatCompleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): ChatCompleteResponse
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(params: ChatCompleteParams): ChatCompleteResponse =
         complete(params, RequestOptions.none())
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(model: String, requestOptions: RequestOptions): ChatCompleteResponse =
         complete(model, ChatCompleteParams.none(), requestOptions)
 
@@ -90,7 +90,7 @@ interface ChatService {
         fun complete(model: String): HttpResponseFor<ChatCompleteResponse> =
             complete(model, ChatCompleteParams.none())
 
-        /** @see [complete] */
+        /** @see complete */
         @MustBeClosed
         fun complete(
             model: String,
@@ -99,26 +99,26 @@ interface ChatService {
         ): HttpResponseFor<ChatCompleteResponse> =
             complete(params.toBuilder().model(model).build(), requestOptions)
 
-        /** @see [complete] */
+        /** @see complete */
         @MustBeClosed
         fun complete(
             model: String,
             params: ChatCompleteParams = ChatCompleteParams.none(),
         ): HttpResponseFor<ChatCompleteResponse> = complete(model, params, RequestOptions.none())
 
-        /** @see [complete] */
+        /** @see complete */
         @MustBeClosed
         fun complete(
             params: ChatCompleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<ChatCompleteResponse>
 
-        /** @see [complete] */
+        /** @see complete */
         @MustBeClosed
         fun complete(params: ChatCompleteParams): HttpResponseFor<ChatCompleteResponse> =
             complete(params, RequestOptions.none())
 
-        /** @see [complete] */
+        /** @see complete */
         @MustBeClosed
         fun complete(
             model: String,

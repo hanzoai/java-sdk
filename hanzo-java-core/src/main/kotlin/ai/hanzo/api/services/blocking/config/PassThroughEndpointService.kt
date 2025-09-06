@@ -33,7 +33,7 @@ interface PassThroughEndpointService {
     fun create(params: PassThroughEndpointCreateParams): PassThroughEndpointCreateResponse =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: PassThroughEndpointCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -43,7 +43,7 @@ interface PassThroughEndpointService {
     fun update(endpointId: String): PassThroughEndpointUpdateResponse =
         update(endpointId, PassThroughEndpointUpdateParams.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpointId: String,
         params: PassThroughEndpointUpdateParams = PassThroughEndpointUpdateParams.none(),
@@ -51,23 +51,23 @@ interface PassThroughEndpointService {
     ): PassThroughEndpointUpdateResponse =
         update(params.toBuilder().endpointId(endpointId).build(), requestOptions)
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpointId: String,
         params: PassThroughEndpointUpdateParams = PassThroughEndpointUpdateParams.none(),
     ): PassThroughEndpointUpdateResponse = update(endpointId, params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: PassThroughEndpointUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): PassThroughEndpointUpdateResponse
 
-    /** @see [update] */
+    /** @see update */
     fun update(params: PassThroughEndpointUpdateParams): PassThroughEndpointUpdateResponse =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpointId: String,
         requestOptions: RequestOptions,
@@ -81,18 +81,18 @@ interface PassThroughEndpointService {
      */
     fun list(): PassThroughEndpointResponse = list(PassThroughEndpointListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: PassThroughEndpointListParams = PassThroughEndpointListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): PassThroughEndpointResponse
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: PassThroughEndpointListParams = PassThroughEndpointListParams.none()
     ): PassThroughEndpointResponse = list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): PassThroughEndpointResponse =
         list(PassThroughEndpointListParams.none(), requestOptions)
 
@@ -104,7 +104,7 @@ interface PassThroughEndpointService {
     fun delete(params: PassThroughEndpointDeleteParams): PassThroughEndpointResponse =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: PassThroughEndpointDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -135,7 +135,7 @@ interface PassThroughEndpointService {
         ): HttpResponseFor<PassThroughEndpointCreateResponse> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: PassThroughEndpointCreateParams,
@@ -150,7 +150,7 @@ interface PassThroughEndpointService {
         fun update(endpointId: String): HttpResponseFor<PassThroughEndpointUpdateResponse> =
             update(endpointId, PassThroughEndpointUpdateParams.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             endpointId: String,
@@ -159,7 +159,7 @@ interface PassThroughEndpointService {
         ): HttpResponseFor<PassThroughEndpointUpdateResponse> =
             update(params.toBuilder().endpointId(endpointId).build(), requestOptions)
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             endpointId: String,
@@ -167,21 +167,21 @@ interface PassThroughEndpointService {
         ): HttpResponseFor<PassThroughEndpointUpdateResponse> =
             update(endpointId, params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             params: PassThroughEndpointUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<PassThroughEndpointUpdateResponse>
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             params: PassThroughEndpointUpdateParams
         ): HttpResponseFor<PassThroughEndpointUpdateResponse> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             endpointId: String,
@@ -197,20 +197,20 @@ interface PassThroughEndpointService {
         fun list(): HttpResponseFor<PassThroughEndpointResponse> =
             list(PassThroughEndpointListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: PassThroughEndpointListParams = PassThroughEndpointListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<PassThroughEndpointResponse>
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: PassThroughEndpointListParams = PassThroughEndpointListParams.none()
         ): HttpResponseFor<PassThroughEndpointResponse> = list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(requestOptions: RequestOptions): HttpResponseFor<PassThroughEndpointResponse> =
             list(PassThroughEndpointListParams.none(), requestOptions)
@@ -224,7 +224,7 @@ interface PassThroughEndpointService {
             params: PassThroughEndpointDeleteParams
         ): HttpResponseFor<PassThroughEndpointResponse> = delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: PassThroughEndpointDeleteParams,

@@ -3,13 +3,13 @@
 package ai.hanzo.api.services.async
 
 import ai.hanzo.api.core.ClientOptions
-import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.handlers.errorBodyHandler
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
-import ai.hanzo.api.core.handlers.withErrorHandler
 import ai.hanzo.api.core.http.HttpMethod
 import ai.hanzo.api.core.http.HttpRequest
+import ai.hanzo.api.core.http.HttpResponse
 import ai.hanzo.api.core.http.HttpResponse.Handler
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.core.http.json
@@ -66,7 +66,8 @@ class CacheServiceAsyncImpl internal constructor(private val clientOptions: Clie
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
         CacheServiceAsync.WithRawResponse {
 
-        private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+        private val errorHandler: Handler<HttpResponse> =
+            errorHandler(errorBodyHandler(clientOptions.jsonMapper))
 
         private val redis: RediServiceAsync.WithRawResponse by lazy {
             RediServiceAsyncImpl.WithRawResponseImpl(clientOptions)
@@ -83,7 +84,6 @@ class CacheServiceAsyncImpl internal constructor(private val clientOptions: Clie
 
         private val deleteHandler: Handler<CacheDeleteResponse> =
             jsonHandler<CacheDeleteResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun delete(
             params: CacheDeleteParams,
@@ -101,7 +101,7 @@ class CacheServiceAsyncImpl internal constructor(private val clientOptions: Clie
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { deleteHandler.handle(it) }
                             .also {
@@ -115,7 +115,6 @@ class CacheServiceAsyncImpl internal constructor(private val clientOptions: Clie
 
         private val flushAllHandler: Handler<CacheFlushAllResponse> =
             jsonHandler<CacheFlushAllResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun flushAll(
             params: CacheFlushAllParams,
@@ -133,7 +132,7 @@ class CacheServiceAsyncImpl internal constructor(private val clientOptions: Clie
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { flushAllHandler.handle(it) }
                             .also {
@@ -146,7 +145,7 @@ class CacheServiceAsyncImpl internal constructor(private val clientOptions: Clie
         }
 
         private val pingHandler: Handler<CachePingResponse> =
-            jsonHandler<CachePingResponse>(clientOptions.jsonMapper).withErrorHandler(errorHandler)
+            jsonHandler<CachePingResponse>(clientOptions.jsonMapper)
 
         override fun ping(
             params: CachePingParams,
@@ -163,7 +162,7 @@ class CacheServiceAsyncImpl internal constructor(private val clientOptions: Clie
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { pingHandler.handle(it) }
                             .also {

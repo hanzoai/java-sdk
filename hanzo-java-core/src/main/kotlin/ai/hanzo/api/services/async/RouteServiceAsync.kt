@@ -27,18 +27,18 @@ interface RouteServiceAsync {
     /** Get a list of available routes in the FastAPI application. */
     fun list(): CompletableFuture<RouteListResponse> = list(RouteListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: RouteListParams = RouteListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<RouteListResponse>
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: RouteListParams = RouteListParams.none()
     ): CompletableFuture<RouteListResponse> = list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): CompletableFuture<RouteListResponse> =
         list(RouteListParams.none(), requestOptions)
 
@@ -61,19 +61,19 @@ interface RouteServiceAsync {
         fun list(): CompletableFuture<HttpResponseFor<RouteListResponse>> =
             list(RouteListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: RouteListParams = RouteListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<RouteListResponse>>
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: RouteListParams = RouteListParams.none()
         ): CompletableFuture<HttpResponseFor<RouteListResponse>> =
             list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<RouteListResponse>> =

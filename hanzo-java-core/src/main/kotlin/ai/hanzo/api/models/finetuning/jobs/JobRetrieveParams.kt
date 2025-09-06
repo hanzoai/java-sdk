@@ -34,8 +34,10 @@ private constructor(
 
     fun customLlmProvider(): CustomLlmProvider = customLlmProvider
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
@@ -336,7 +338,7 @@ private constructor(
                 return true
             }
 
-            return /* spotless:off */ other is CustomLlmProvider && value == other.value /* spotless:on */
+            return other is CustomLlmProvider && value == other.value
         }
 
         override fun hashCode() = value.hashCode()
@@ -349,10 +351,15 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is JobRetrieveParams && fineTuningJobId == other.fineTuningJobId && customLlmProvider == other.customLlmProvider && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is JobRetrieveParams &&
+            fineTuningJobId == other.fineTuningJobId &&
+            customLlmProvider == other.customLlmProvider &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(fineTuningJobId, customLlmProvider, additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(fineTuningJobId, customLlmProvider, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
         "JobRetrieveParams{fineTuningJobId=$fineTuningJobId, customLlmProvider=$customLlmProvider, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"

@@ -32,7 +32,7 @@ interface TranscriptionServiceAsync {
     fun create(params: TranscriptionCreateParams): CompletableFuture<TranscriptionCreateResponse> =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: TranscriptionCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -62,7 +62,7 @@ interface TranscriptionServiceAsync {
         ): CompletableFuture<HttpResponseFor<TranscriptionCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: TranscriptionCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),

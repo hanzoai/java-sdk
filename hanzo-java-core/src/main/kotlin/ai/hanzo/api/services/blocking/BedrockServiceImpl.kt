@@ -3,14 +3,14 @@
 package ai.hanzo.api.services.blocking
 
 import ai.hanzo.api.core.ClientOptions
-import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.checkRequired
+import ai.hanzo.api.core.handlers.errorBodyHandler
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
-import ai.hanzo.api.core.handlers.withErrorHandler
 import ai.hanzo.api.core.http.HttpMethod
 import ai.hanzo.api.core.http.HttpRequest
+import ai.hanzo.api.core.http.HttpResponse
 import ai.hanzo.api.core.http.HttpResponse.Handler
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.core.http.json
@@ -79,7 +79,8 @@ class BedrockServiceImpl internal constructor(private val clientOptions: ClientO
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
         BedrockService.WithRawResponse {
 
-        private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+        private val errorHandler: Handler<HttpResponse> =
+            errorHandler(errorBodyHandler(clientOptions.jsonMapper))
 
         override fun withOptions(
             modifier: Consumer<ClientOptions.Builder>
@@ -90,7 +91,6 @@ class BedrockServiceImpl internal constructor(private val clientOptions: ClientO
 
         private val createHandler: Handler<BedrockCreateResponse> =
             jsonHandler<BedrockCreateResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun create(
             params: BedrockCreateParams,
@@ -109,7 +109,7 @@ class BedrockServiceImpl internal constructor(private val clientOptions: ClientO
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { createHandler.handle(it) }
                     .also {
@@ -122,7 +122,6 @@ class BedrockServiceImpl internal constructor(private val clientOptions: ClientO
 
         private val retrieveHandler: Handler<BedrockRetrieveResponse> =
             jsonHandler<BedrockRetrieveResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun retrieve(
             params: BedrockRetrieveParams,
@@ -140,7 +139,7 @@ class BedrockServiceImpl internal constructor(private val clientOptions: ClientO
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { retrieveHandler.handle(it) }
                     .also {
@@ -153,7 +152,6 @@ class BedrockServiceImpl internal constructor(private val clientOptions: ClientO
 
         private val updateHandler: Handler<BedrockUpdateResponse> =
             jsonHandler<BedrockUpdateResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun update(
             params: BedrockUpdateParams,
@@ -172,7 +170,7 @@ class BedrockServiceImpl internal constructor(private val clientOptions: ClientO
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { updateHandler.handle(it) }
                     .also {
@@ -185,7 +183,6 @@ class BedrockServiceImpl internal constructor(private val clientOptions: ClientO
 
         private val deleteHandler: Handler<BedrockDeleteResponse> =
             jsonHandler<BedrockDeleteResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun delete(
             params: BedrockDeleteParams,
@@ -204,7 +201,7 @@ class BedrockServiceImpl internal constructor(private val clientOptions: ClientO
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { deleteHandler.handle(it) }
                     .also {
@@ -217,7 +214,6 @@ class BedrockServiceImpl internal constructor(private val clientOptions: ClientO
 
         private val patchHandler: Handler<BedrockPatchResponse> =
             jsonHandler<BedrockPatchResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun patch(
             params: BedrockPatchParams,
@@ -236,7 +232,7 @@ class BedrockServiceImpl internal constructor(private val clientOptions: ClientO
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { patchHandler.handle(it) }
                     .also {

@@ -7,12 +7,10 @@ import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.models.key.regenerate.RegenerateKeyRequest
 import kotlin.jvm.optionals.getOrNull
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 internal class KeyRegenerateByKeyParamsTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun create() {
         KeyRegenerateByKeyParams.builder()
@@ -53,7 +51,6 @@ internal class KeyRegenerateByKeyParamsTest {
             .build()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun pathParams() {
         val params = KeyRegenerateByKeyParams.builder().pathKey("key").build()
@@ -63,7 +60,6 @@ internal class KeyRegenerateByKeyParamsTest {
         assertThat(params._pathParam(1)).isEqualTo("")
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun headers() {
         val params =
@@ -110,7 +106,6 @@ internal class KeyRegenerateByKeyParamsTest {
             .isEqualTo(Headers.builder().put("llm-changed-by", "llm-changed-by").build())
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun headersWithoutOptionalFields() {
         val params = KeyRegenerateByKeyParams.builder().pathKey("key").build()
@@ -120,7 +115,6 @@ internal class KeyRegenerateByKeyParamsTest {
         assertThat(headers).isEqualTo(Headers.builder().build())
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun body() {
         val params =
@@ -198,7 +192,6 @@ internal class KeyRegenerateByKeyParamsTest {
             )
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun bodyWithoutOptionalFields() {
         val params = KeyRegenerateByKeyParams.builder().pathKey("key").build()
