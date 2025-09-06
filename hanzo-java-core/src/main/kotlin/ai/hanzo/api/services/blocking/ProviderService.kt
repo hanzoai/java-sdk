@@ -71,18 +71,18 @@ interface ProviderService {
      */
     fun listBudgets(): ProviderListBudgetsResponse = listBudgets(ProviderListBudgetsParams.none())
 
-    /** @see [listBudgets] */
+    /** @see listBudgets */
     fun listBudgets(
         params: ProviderListBudgetsParams = ProviderListBudgetsParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): ProviderListBudgetsResponse
 
-    /** @see [listBudgets] */
+    /** @see listBudgets */
     fun listBudgets(
         params: ProviderListBudgetsParams = ProviderListBudgetsParams.none()
     ): ProviderListBudgetsResponse = listBudgets(params, RequestOptions.none())
 
-    /** @see [listBudgets] */
+    /** @see listBudgets */
     fun listBudgets(requestOptions: RequestOptions): ProviderListBudgetsResponse =
         listBudgets(ProviderListBudgetsParams.none(), requestOptions)
 
@@ -104,20 +104,20 @@ interface ProviderService {
         fun listBudgets(): HttpResponseFor<ProviderListBudgetsResponse> =
             listBudgets(ProviderListBudgetsParams.none())
 
-        /** @see [listBudgets] */
+        /** @see listBudgets */
         @MustBeClosed
         fun listBudgets(
             params: ProviderListBudgetsParams = ProviderListBudgetsParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<ProviderListBudgetsResponse>
 
-        /** @see [listBudgets] */
+        /** @see listBudgets */
         @MustBeClosed
         fun listBudgets(
             params: ProviderListBudgetsParams = ProviderListBudgetsParams.none()
         ): HttpResponseFor<ProviderListBudgetsResponse> = listBudgets(params, RequestOptions.none())
 
-        /** @see [listBudgets] */
+        /** @see listBudgets */
         @MustBeClosed
         fun listBudgets(
             requestOptions: RequestOptions

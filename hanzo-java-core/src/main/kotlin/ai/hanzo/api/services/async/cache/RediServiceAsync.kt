@@ -28,18 +28,18 @@ interface RediServiceAsync {
     fun retrieveInfo(): CompletableFuture<RediRetrieveInfoResponse> =
         retrieveInfo(RediRetrieveInfoParams.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: RediRetrieveInfoParams = RediRetrieveInfoParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<RediRetrieveInfoResponse>
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: RediRetrieveInfoParams = RediRetrieveInfoParams.none()
     ): CompletableFuture<RediRetrieveInfoResponse> = retrieveInfo(params, RequestOptions.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(requestOptions: RequestOptions): CompletableFuture<RediRetrieveInfoResponse> =
         retrieveInfo(RediRetrieveInfoParams.none(), requestOptions)
 
@@ -60,19 +60,19 @@ interface RediServiceAsync {
         fun retrieveInfo(): CompletableFuture<HttpResponseFor<RediRetrieveInfoResponse>> =
             retrieveInfo(RediRetrieveInfoParams.none())
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         fun retrieveInfo(
             params: RediRetrieveInfoParams = RediRetrieveInfoParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<RediRetrieveInfoResponse>>
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         fun retrieveInfo(
             params: RediRetrieveInfoParams = RediRetrieveInfoParams.none()
         ): CompletableFuture<HttpResponseFor<RediRetrieveInfoResponse>> =
             retrieveInfo(params, RequestOptions.none())
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         fun retrieveInfo(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<RediRetrieveInfoResponse>> =

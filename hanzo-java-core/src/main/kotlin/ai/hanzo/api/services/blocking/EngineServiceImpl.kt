@@ -3,14 +3,14 @@
 package ai.hanzo.api.services.blocking
 
 import ai.hanzo.api.core.ClientOptions
-import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.checkRequired
+import ai.hanzo.api.core.handlers.errorBodyHandler
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
-import ai.hanzo.api.core.handlers.withErrorHandler
 import ai.hanzo.api.core.http.HttpMethod
 import ai.hanzo.api.core.http.HttpRequest
+import ai.hanzo.api.core.http.HttpResponse
 import ai.hanzo.api.core.http.HttpResponse.Handler
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.core.http.json
@@ -58,7 +58,8 @@ class EngineServiceImpl internal constructor(private val clientOptions: ClientOp
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
         EngineService.WithRawResponse {
 
-        private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+        private val errorHandler: Handler<HttpResponse> =
+            errorHandler(errorBodyHandler(clientOptions.jsonMapper))
 
         private val chat: ChatService.WithRawResponse by lazy {
             ChatServiceImpl.WithRawResponseImpl(clientOptions)
@@ -75,7 +76,6 @@ class EngineServiceImpl internal constructor(private val clientOptions: ClientOp
 
         private val completeHandler: Handler<EngineCompleteResponse> =
             jsonHandler<EngineCompleteResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun complete(
             params: EngineCompleteParams,
@@ -94,7 +94,7 @@ class EngineServiceImpl internal constructor(private val clientOptions: ClientOp
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { completeHandler.handle(it) }
                     .also {
@@ -107,7 +107,6 @@ class EngineServiceImpl internal constructor(private val clientOptions: ClientOp
 
         private val embedHandler: Handler<EngineEmbedResponse> =
             jsonHandler<EngineEmbedResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun embed(
             params: EngineEmbedParams,
@@ -126,7 +125,7 @@ class EngineServiceImpl internal constructor(private val clientOptions: ClientOp
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { embedHandler.handle(it) }
                     .also {

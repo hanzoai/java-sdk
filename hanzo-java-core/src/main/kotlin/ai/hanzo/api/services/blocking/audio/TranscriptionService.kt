@@ -32,7 +32,7 @@ interface TranscriptionService {
     fun create(params: TranscriptionCreateParams): TranscriptionCreateResponse =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: TranscriptionCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -61,7 +61,7 @@ interface TranscriptionService {
             params: TranscriptionCreateParams
         ): HttpResponseFor<TranscriptionCreateResponse> = create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: TranscriptionCreateParams,

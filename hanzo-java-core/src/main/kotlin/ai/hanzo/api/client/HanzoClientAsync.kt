@@ -192,18 +192,18 @@ interface HanzoClientAsync {
     /** Home */
     fun getHome(): CompletableFuture<ClientGetHomeResponse> = getHome(ClientGetHomeParams.none())
 
-    /** @see [getHome] */
+    /** @see getHome */
     fun getHome(
         params: ClientGetHomeParams = ClientGetHomeParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<ClientGetHomeResponse>
 
-    /** @see [getHome] */
+    /** @see getHome */
     fun getHome(
         params: ClientGetHomeParams = ClientGetHomeParams.none()
     ): CompletableFuture<ClientGetHomeResponse> = getHome(params, RequestOptions.none())
 
-    /** @see [getHome] */
+    /** @see getHome */
     fun getHome(requestOptions: RequestOptions): CompletableFuture<ClientGetHomeResponse> =
         getHome(ClientGetHomeParams.none(), requestOptions)
 
@@ -333,19 +333,19 @@ interface HanzoClientAsync {
         fun getHome(): CompletableFuture<HttpResponseFor<ClientGetHomeResponse>> =
             getHome(ClientGetHomeParams.none())
 
-        /** @see [getHome] */
+        /** @see getHome */
         fun getHome(
             params: ClientGetHomeParams = ClientGetHomeParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<ClientGetHomeResponse>>
 
-        /** @see [getHome] */
+        /** @see getHome */
         fun getHome(
             params: ClientGetHomeParams = ClientGetHomeParams.none()
         ): CompletableFuture<HttpResponseFor<ClientGetHomeResponse>> =
             getHome(params, RequestOptions.none())
 
-        /** @see [getHome] */
+        /** @see getHome */
         fun getHome(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<ClientGetHomeResponse>> =

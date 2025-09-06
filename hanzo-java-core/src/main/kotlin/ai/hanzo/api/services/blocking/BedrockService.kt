@@ -36,30 +36,30 @@ interface BedrockService {
     fun create(endpoint: String): BedrockCreateResponse =
         create(endpoint, BedrockCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         params: BedrockCreateParams = BedrockCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): BedrockCreateResponse = create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         params: BedrockCreateParams = BedrockCreateParams.none(),
     ): BedrockCreateResponse = create(endpoint, params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: BedrockCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): BedrockCreateResponse
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: BedrockCreateParams): BedrockCreateResponse =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(endpoint: String, requestOptions: RequestOptions): BedrockCreateResponse =
         create(endpoint, BedrockCreateParams.none(), requestOptions)
 
@@ -67,7 +67,7 @@ interface BedrockService {
     fun retrieve(endpoint: String): BedrockRetrieveResponse =
         retrieve(endpoint, BedrockRetrieveParams.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         endpoint: String,
         params: BedrockRetrieveParams = BedrockRetrieveParams.none(),
@@ -75,23 +75,23 @@ interface BedrockService {
     ): BedrockRetrieveResponse =
         retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         endpoint: String,
         params: BedrockRetrieveParams = BedrockRetrieveParams.none(),
     ): BedrockRetrieveResponse = retrieve(endpoint, params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: BedrockRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): BedrockRetrieveResponse
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(params: BedrockRetrieveParams): BedrockRetrieveResponse =
         retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(endpoint: String, requestOptions: RequestOptions): BedrockRetrieveResponse =
         retrieve(endpoint, BedrockRetrieveParams.none(), requestOptions)
 
@@ -99,30 +99,30 @@ interface BedrockService {
     fun update(endpoint: String): BedrockUpdateResponse =
         update(endpoint, BedrockUpdateParams.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         params: BedrockUpdateParams = BedrockUpdateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): BedrockUpdateResponse = update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         params: BedrockUpdateParams = BedrockUpdateParams.none(),
     ): BedrockUpdateResponse = update(endpoint, params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: BedrockUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): BedrockUpdateResponse
 
-    /** @see [update] */
+    /** @see update */
     fun update(params: BedrockUpdateParams): BedrockUpdateResponse =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(endpoint: String, requestOptions: RequestOptions): BedrockUpdateResponse =
         update(endpoint, BedrockUpdateParams.none(), requestOptions)
 
@@ -130,60 +130,60 @@ interface BedrockService {
     fun delete(endpoint: String): BedrockDeleteResponse =
         delete(endpoint, BedrockDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         params: BedrockDeleteParams = BedrockDeleteParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): BedrockDeleteResponse = delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         params: BedrockDeleteParams = BedrockDeleteParams.none(),
     ): BedrockDeleteResponse = delete(endpoint, params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: BedrockDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): BedrockDeleteResponse
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: BedrockDeleteParams): BedrockDeleteResponse =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(endpoint: String, requestOptions: RequestOptions): BedrockDeleteResponse =
         delete(endpoint, BedrockDeleteParams.none(), requestOptions)
 
     /** [Docs](https://docs.hanzo.ai/docs/pass_through/bedrock) */
     fun patch(endpoint: String): BedrockPatchResponse = patch(endpoint, BedrockPatchParams.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         endpoint: String,
         params: BedrockPatchParams = BedrockPatchParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): BedrockPatchResponse = patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         endpoint: String,
         params: BedrockPatchParams = BedrockPatchParams.none(),
     ): BedrockPatchResponse = patch(endpoint, params, RequestOptions.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         params: BedrockPatchParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): BedrockPatchResponse
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(params: BedrockPatchParams): BedrockPatchResponse =
         patch(params, RequestOptions.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(endpoint: String, requestOptions: RequestOptions): BedrockPatchResponse =
         patch(endpoint, BedrockPatchParams.none(), requestOptions)
 
@@ -205,7 +205,7 @@ interface BedrockService {
         fun create(endpoint: String): HttpResponseFor<BedrockCreateResponse> =
             create(endpoint, BedrockCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             endpoint: String,
@@ -214,26 +214,26 @@ interface BedrockService {
         ): HttpResponseFor<BedrockCreateResponse> =
             create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             endpoint: String,
             params: BedrockCreateParams = BedrockCreateParams.none(),
         ): HttpResponseFor<BedrockCreateResponse> = create(endpoint, params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: BedrockCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<BedrockCreateResponse>
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(params: BedrockCreateParams): HttpResponseFor<BedrockCreateResponse> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             endpoint: String,
@@ -249,7 +249,7 @@ interface BedrockService {
         fun retrieve(endpoint: String): HttpResponseFor<BedrockRetrieveResponse> =
             retrieve(endpoint, BedrockRetrieveParams.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             endpoint: String,
@@ -258,7 +258,7 @@ interface BedrockService {
         ): HttpResponseFor<BedrockRetrieveResponse> =
             retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             endpoint: String,
@@ -266,19 +266,19 @@ interface BedrockService {
         ): HttpResponseFor<BedrockRetrieveResponse> =
             retrieve(endpoint, params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             params: BedrockRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<BedrockRetrieveResponse>
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(params: BedrockRetrieveParams): HttpResponseFor<BedrockRetrieveResponse> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             endpoint: String,
@@ -294,7 +294,7 @@ interface BedrockService {
         fun update(endpoint: String): HttpResponseFor<BedrockUpdateResponse> =
             update(endpoint, BedrockUpdateParams.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             endpoint: String,
@@ -303,26 +303,26 @@ interface BedrockService {
         ): HttpResponseFor<BedrockUpdateResponse> =
             update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             endpoint: String,
             params: BedrockUpdateParams = BedrockUpdateParams.none(),
         ): HttpResponseFor<BedrockUpdateResponse> = update(endpoint, params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             params: BedrockUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<BedrockUpdateResponse>
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(params: BedrockUpdateParams): HttpResponseFor<BedrockUpdateResponse> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             endpoint: String,
@@ -338,7 +338,7 @@ interface BedrockService {
         fun delete(endpoint: String): HttpResponseFor<BedrockDeleteResponse> =
             delete(endpoint, BedrockDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             endpoint: String,
@@ -347,26 +347,26 @@ interface BedrockService {
         ): HttpResponseFor<BedrockDeleteResponse> =
             delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             endpoint: String,
             params: BedrockDeleteParams = BedrockDeleteParams.none(),
         ): HttpResponseFor<BedrockDeleteResponse> = delete(endpoint, params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: BedrockDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<BedrockDeleteResponse>
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(params: BedrockDeleteParams): HttpResponseFor<BedrockDeleteResponse> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             endpoint: String,
@@ -382,7 +382,7 @@ interface BedrockService {
         fun patch(endpoint: String): HttpResponseFor<BedrockPatchResponse> =
             patch(endpoint, BedrockPatchParams.none())
 
-        /** @see [patch] */
+        /** @see patch */
         @MustBeClosed
         fun patch(
             endpoint: String,
@@ -391,26 +391,26 @@ interface BedrockService {
         ): HttpResponseFor<BedrockPatchResponse> =
             patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [patch] */
+        /** @see patch */
         @MustBeClosed
         fun patch(
             endpoint: String,
             params: BedrockPatchParams = BedrockPatchParams.none(),
         ): HttpResponseFor<BedrockPatchResponse> = patch(endpoint, params, RequestOptions.none())
 
-        /** @see [patch] */
+        /** @see patch */
         @MustBeClosed
         fun patch(
             params: BedrockPatchParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<BedrockPatchResponse>
 
-        /** @see [patch] */
+        /** @see patch */
         @MustBeClosed
         fun patch(params: BedrockPatchParams): HttpResponseFor<BedrockPatchResponse> =
             patch(params, RequestOptions.none())
 
-        /** @see [patch] */
+        /** @see patch */
         @MustBeClosed
         fun patch(
             endpoint: String,

@@ -40,30 +40,30 @@ interface OpenAIService {
      */
     fun create(endpoint: String): OpenAICreateResponse = create(endpoint, OpenAICreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         params: OpenAICreateParams = OpenAICreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): OpenAICreateResponse = create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         params: OpenAICreateParams = OpenAICreateParams.none(),
     ): OpenAICreateResponse = create(endpoint, params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: OpenAICreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): OpenAICreateResponse
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: OpenAICreateParams): OpenAICreateResponse =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(endpoint: String, requestOptions: RequestOptions): OpenAICreateResponse =
         create(endpoint, OpenAICreateParams.none(), requestOptions)
 
@@ -73,7 +73,7 @@ interface OpenAIService {
     fun retrieve(endpoint: String): OpenAIRetrieveResponse =
         retrieve(endpoint, OpenAIRetrieveParams.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         endpoint: String,
         params: OpenAIRetrieveParams = OpenAIRetrieveParams.none(),
@@ -81,23 +81,23 @@ interface OpenAIService {
     ): OpenAIRetrieveResponse =
         retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         endpoint: String,
         params: OpenAIRetrieveParams = OpenAIRetrieveParams.none(),
     ): OpenAIRetrieveResponse = retrieve(endpoint, params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: OpenAIRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): OpenAIRetrieveResponse
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(params: OpenAIRetrieveParams): OpenAIRetrieveResponse =
         retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(endpoint: String, requestOptions: RequestOptions): OpenAIRetrieveResponse =
         retrieve(endpoint, OpenAIRetrieveParams.none(), requestOptions)
 
@@ -106,30 +106,30 @@ interface OpenAIService {
      */
     fun update(endpoint: String): OpenAIUpdateResponse = update(endpoint, OpenAIUpdateParams.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         params: OpenAIUpdateParams = OpenAIUpdateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): OpenAIUpdateResponse = update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         params: OpenAIUpdateParams = OpenAIUpdateParams.none(),
     ): OpenAIUpdateResponse = update(endpoint, params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: OpenAIUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): OpenAIUpdateResponse
 
-    /** @see [update] */
+    /** @see update */
     fun update(params: OpenAIUpdateParams): OpenAIUpdateResponse =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(endpoint: String, requestOptions: RequestOptions): OpenAIUpdateResponse =
         update(endpoint, OpenAIUpdateParams.none(), requestOptions)
 
@@ -138,30 +138,30 @@ interface OpenAIService {
      */
     fun delete(endpoint: String): OpenAIDeleteResponse = delete(endpoint, OpenAIDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         params: OpenAIDeleteParams = OpenAIDeleteParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): OpenAIDeleteResponse = delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         params: OpenAIDeleteParams = OpenAIDeleteParams.none(),
     ): OpenAIDeleteResponse = delete(endpoint, params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: OpenAIDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): OpenAIDeleteResponse
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: OpenAIDeleteParams): OpenAIDeleteResponse =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(endpoint: String, requestOptions: RequestOptions): OpenAIDeleteResponse =
         delete(endpoint, OpenAIDeleteParams.none(), requestOptions)
 
@@ -170,29 +170,29 @@ interface OpenAIService {
      */
     fun patch(endpoint: String): OpenAIPatchResponse = patch(endpoint, OpenAIPatchParams.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         endpoint: String,
         params: OpenAIPatchParams = OpenAIPatchParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): OpenAIPatchResponse = patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         endpoint: String,
         params: OpenAIPatchParams = OpenAIPatchParams.none(),
     ): OpenAIPatchResponse = patch(endpoint, params, RequestOptions.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         params: OpenAIPatchParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): OpenAIPatchResponse
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(params: OpenAIPatchParams): OpenAIPatchResponse = patch(params, RequestOptions.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(endpoint: String, requestOptions: RequestOptions): OpenAIPatchResponse =
         patch(endpoint, OpenAIPatchParams.none(), requestOptions)
 
@@ -216,7 +216,7 @@ interface OpenAIService {
         fun create(endpoint: String): HttpResponseFor<OpenAICreateResponse> =
             create(endpoint, OpenAICreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             endpoint: String,
@@ -225,26 +225,26 @@ interface OpenAIService {
         ): HttpResponseFor<OpenAICreateResponse> =
             create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             endpoint: String,
             params: OpenAICreateParams = OpenAICreateParams.none(),
         ): HttpResponseFor<OpenAICreateResponse> = create(endpoint, params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: OpenAICreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<OpenAICreateResponse>
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(params: OpenAICreateParams): HttpResponseFor<OpenAICreateResponse> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             endpoint: String,
@@ -260,7 +260,7 @@ interface OpenAIService {
         fun retrieve(endpoint: String): HttpResponseFor<OpenAIRetrieveResponse> =
             retrieve(endpoint, OpenAIRetrieveParams.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             endpoint: String,
@@ -269,7 +269,7 @@ interface OpenAIService {
         ): HttpResponseFor<OpenAIRetrieveResponse> =
             retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             endpoint: String,
@@ -277,19 +277,19 @@ interface OpenAIService {
         ): HttpResponseFor<OpenAIRetrieveResponse> =
             retrieve(endpoint, params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             params: OpenAIRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<OpenAIRetrieveResponse>
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(params: OpenAIRetrieveParams): HttpResponseFor<OpenAIRetrieveResponse> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             endpoint: String,
@@ -305,7 +305,7 @@ interface OpenAIService {
         fun update(endpoint: String): HttpResponseFor<OpenAIUpdateResponse> =
             update(endpoint, OpenAIUpdateParams.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             endpoint: String,
@@ -314,26 +314,26 @@ interface OpenAIService {
         ): HttpResponseFor<OpenAIUpdateResponse> =
             update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             endpoint: String,
             params: OpenAIUpdateParams = OpenAIUpdateParams.none(),
         ): HttpResponseFor<OpenAIUpdateResponse> = update(endpoint, params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             params: OpenAIUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<OpenAIUpdateResponse>
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(params: OpenAIUpdateParams): HttpResponseFor<OpenAIUpdateResponse> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             endpoint: String,
@@ -349,7 +349,7 @@ interface OpenAIService {
         fun delete(endpoint: String): HttpResponseFor<OpenAIDeleteResponse> =
             delete(endpoint, OpenAIDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             endpoint: String,
@@ -358,26 +358,26 @@ interface OpenAIService {
         ): HttpResponseFor<OpenAIDeleteResponse> =
             delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             endpoint: String,
             params: OpenAIDeleteParams = OpenAIDeleteParams.none(),
         ): HttpResponseFor<OpenAIDeleteResponse> = delete(endpoint, params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: OpenAIDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<OpenAIDeleteResponse>
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(params: OpenAIDeleteParams): HttpResponseFor<OpenAIDeleteResponse> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             endpoint: String,
@@ -393,7 +393,7 @@ interface OpenAIService {
         fun patch(endpoint: String): HttpResponseFor<OpenAIPatchResponse> =
             patch(endpoint, OpenAIPatchParams.none())
 
-        /** @see [patch] */
+        /** @see patch */
         @MustBeClosed
         fun patch(
             endpoint: String,
@@ -402,26 +402,26 @@ interface OpenAIService {
         ): HttpResponseFor<OpenAIPatchResponse> =
             patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [patch] */
+        /** @see patch */
         @MustBeClosed
         fun patch(
             endpoint: String,
             params: OpenAIPatchParams = OpenAIPatchParams.none(),
         ): HttpResponseFor<OpenAIPatchResponse> = patch(endpoint, params, RequestOptions.none())
 
-        /** @see [patch] */
+        /** @see patch */
         @MustBeClosed
         fun patch(
             params: OpenAIPatchParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<OpenAIPatchResponse>
 
-        /** @see [patch] */
+        /** @see patch */
         @MustBeClosed
         fun patch(params: OpenAIPatchParams): HttpResponseFor<OpenAIPatchResponse> =
             patch(params, RequestOptions.none())
 
-        /** @see [patch] */
+        /** @see patch */
         @MustBeClosed
         fun patch(
             endpoint: String,

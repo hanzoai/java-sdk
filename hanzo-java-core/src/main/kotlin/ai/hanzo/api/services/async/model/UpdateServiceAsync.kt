@@ -30,7 +30,7 @@ interface UpdateServiceAsync {
     fun full(params: UpdateFullParams): CompletableFuture<UpdateFullResponse> =
         full(params, RequestOptions.none())
 
-    /** @see [full] */
+    /** @see full */
     fun full(
         params: UpdateFullParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -55,7 +55,7 @@ interface UpdateServiceAsync {
         params: UpdatePartialParams,
     ): CompletableFuture<UpdatePartialResponse> = partial(modelId, params, RequestOptions.none())
 
-    /** @see [partial] */
+    /** @see partial */
     fun partial(
         modelId: String,
         params: UpdatePartialParams,
@@ -63,11 +63,11 @@ interface UpdateServiceAsync {
     ): CompletableFuture<UpdatePartialResponse> =
         partial(params.toBuilder().modelId(modelId).build(), requestOptions)
 
-    /** @see [partial] */
+    /** @see partial */
     fun partial(params: UpdatePartialParams): CompletableFuture<UpdatePartialResponse> =
         partial(params, RequestOptions.none())
 
-    /** @see [partial] */
+    /** @see partial */
     fun partial(
         params: UpdatePartialParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -94,7 +94,7 @@ interface UpdateServiceAsync {
         fun full(params: UpdateFullParams): CompletableFuture<HttpResponseFor<UpdateFullResponse>> =
             full(params, RequestOptions.none())
 
-        /** @see [full] */
+        /** @see full */
         fun full(
             params: UpdateFullParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -110,7 +110,7 @@ interface UpdateServiceAsync {
         ): CompletableFuture<HttpResponseFor<UpdatePartialResponse>> =
             partial(modelId, params, RequestOptions.none())
 
-        /** @see [partial] */
+        /** @see partial */
         fun partial(
             modelId: String,
             params: UpdatePartialParams,
@@ -118,13 +118,13 @@ interface UpdateServiceAsync {
         ): CompletableFuture<HttpResponseFor<UpdatePartialResponse>> =
             partial(params.toBuilder().modelId(modelId).build(), requestOptions)
 
-        /** @see [partial] */
+        /** @see partial */
         fun partial(
             params: UpdatePartialParams
         ): CompletableFuture<HttpResponseFor<UpdatePartialResponse>> =
             partial(params, RequestOptions.none())
 
-        /** @see [partial] */
+        /** @see partial */
         fun partial(
             params: UpdatePartialParams,
             requestOptions: RequestOptions = RequestOptions.none(),

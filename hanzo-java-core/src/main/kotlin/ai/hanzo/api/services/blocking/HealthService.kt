@@ -50,18 +50,18 @@ interface HealthService {
      */
     fun checkAll(): HealthCheckAllResponse = checkAll(HealthCheckAllParams.none())
 
-    /** @see [checkAll] */
+    /** @see checkAll */
     fun checkAll(
         params: HealthCheckAllParams = HealthCheckAllParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): HealthCheckAllResponse
 
-    /** @see [checkAll] */
+    /** @see checkAll */
     fun checkAll(
         params: HealthCheckAllParams = HealthCheckAllParams.none()
     ): HealthCheckAllResponse = checkAll(params, RequestOptions.none())
 
-    /** @see [checkAll] */
+    /** @see checkAll */
     fun checkAll(requestOptions: RequestOptions): HealthCheckAllResponse =
         checkAll(HealthCheckAllParams.none(), requestOptions)
 
@@ -69,18 +69,18 @@ interface HealthService {
     fun checkLiveliness(): HealthCheckLivelinessResponse =
         checkLiveliness(HealthCheckLivelinessParams.none())
 
-    /** @see [checkLiveliness] */
+    /** @see checkLiveliness */
     fun checkLiveliness(
         params: HealthCheckLivelinessParams = HealthCheckLivelinessParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): HealthCheckLivelinessResponse
 
-    /** @see [checkLiveliness] */
+    /** @see checkLiveliness */
     fun checkLiveliness(
         params: HealthCheckLivelinessParams = HealthCheckLivelinessParams.none()
     ): HealthCheckLivelinessResponse = checkLiveliness(params, RequestOptions.none())
 
-    /** @see [checkLiveliness] */
+    /** @see checkLiveliness */
     fun checkLiveliness(requestOptions: RequestOptions): HealthCheckLivelinessResponse =
         checkLiveliness(HealthCheckLivelinessParams.none(), requestOptions)
 
@@ -88,18 +88,18 @@ interface HealthService {
     fun checkLiveness(): HealthCheckLivenessResponse =
         checkLiveness(HealthCheckLivenessParams.none())
 
-    /** @see [checkLiveness] */
+    /** @see checkLiveness */
     fun checkLiveness(
         params: HealthCheckLivenessParams = HealthCheckLivenessParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): HealthCheckLivenessResponse
 
-    /** @see [checkLiveness] */
+    /** @see checkLiveness */
     fun checkLiveness(
         params: HealthCheckLivenessParams = HealthCheckLivenessParams.none()
     ): HealthCheckLivenessResponse = checkLiveness(params, RequestOptions.none())
 
-    /** @see [checkLiveness] */
+    /** @see checkLiveness */
     fun checkLiveness(requestOptions: RequestOptions): HealthCheckLivenessResponse =
         checkLiveness(HealthCheckLivenessParams.none(), requestOptions)
 
@@ -107,18 +107,18 @@ interface HealthService {
     fun checkReadiness(): HealthCheckReadinessResponse =
         checkReadiness(HealthCheckReadinessParams.none())
 
-    /** @see [checkReadiness] */
+    /** @see checkReadiness */
     fun checkReadiness(
         params: HealthCheckReadinessParams = HealthCheckReadinessParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): HealthCheckReadinessResponse
 
-    /** @see [checkReadiness] */
+    /** @see checkReadiness */
     fun checkReadiness(
         params: HealthCheckReadinessParams = HealthCheckReadinessParams.none()
     ): HealthCheckReadinessResponse = checkReadiness(params, RequestOptions.none())
 
-    /** @see [checkReadiness] */
+    /** @see checkReadiness */
     fun checkReadiness(requestOptions: RequestOptions): HealthCheckReadinessResponse =
         checkReadiness(HealthCheckReadinessParams.none(), requestOptions)
 
@@ -133,7 +133,7 @@ interface HealthService {
     fun checkServices(params: HealthCheckServicesParams): HealthCheckServicesResponse =
         checkServices(params, RequestOptions.none())
 
-    /** @see [checkServices] */
+    /** @see checkServices */
     fun checkServices(
         params: HealthCheckServicesParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -157,20 +157,20 @@ interface HealthService {
         fun checkAll(): HttpResponseFor<HealthCheckAllResponse> =
             checkAll(HealthCheckAllParams.none())
 
-        /** @see [checkAll] */
+        /** @see checkAll */
         @MustBeClosed
         fun checkAll(
             params: HealthCheckAllParams = HealthCheckAllParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<HealthCheckAllResponse>
 
-        /** @see [checkAll] */
+        /** @see checkAll */
         @MustBeClosed
         fun checkAll(
             params: HealthCheckAllParams = HealthCheckAllParams.none()
         ): HttpResponseFor<HealthCheckAllResponse> = checkAll(params, RequestOptions.none())
 
-        /** @see [checkAll] */
+        /** @see checkAll */
         @MustBeClosed
         fun checkAll(requestOptions: RequestOptions): HttpResponseFor<HealthCheckAllResponse> =
             checkAll(HealthCheckAllParams.none(), requestOptions)
@@ -183,21 +183,21 @@ interface HealthService {
         fun checkLiveliness(): HttpResponseFor<HealthCheckLivelinessResponse> =
             checkLiveliness(HealthCheckLivelinessParams.none())
 
-        /** @see [checkLiveliness] */
+        /** @see checkLiveliness */
         @MustBeClosed
         fun checkLiveliness(
             params: HealthCheckLivelinessParams = HealthCheckLivelinessParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<HealthCheckLivelinessResponse>
 
-        /** @see [checkLiveliness] */
+        /** @see checkLiveliness */
         @MustBeClosed
         fun checkLiveliness(
             params: HealthCheckLivelinessParams = HealthCheckLivelinessParams.none()
         ): HttpResponseFor<HealthCheckLivelinessResponse> =
             checkLiveliness(params, RequestOptions.none())
 
-        /** @see [checkLiveliness] */
+        /** @see checkLiveliness */
         @MustBeClosed
         fun checkLiveliness(
             requestOptions: RequestOptions
@@ -212,21 +212,21 @@ interface HealthService {
         fun checkLiveness(): HttpResponseFor<HealthCheckLivenessResponse> =
             checkLiveness(HealthCheckLivenessParams.none())
 
-        /** @see [checkLiveness] */
+        /** @see checkLiveness */
         @MustBeClosed
         fun checkLiveness(
             params: HealthCheckLivenessParams = HealthCheckLivenessParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<HealthCheckLivenessResponse>
 
-        /** @see [checkLiveness] */
+        /** @see checkLiveness */
         @MustBeClosed
         fun checkLiveness(
             params: HealthCheckLivenessParams = HealthCheckLivenessParams.none()
         ): HttpResponseFor<HealthCheckLivenessResponse> =
             checkLiveness(params, RequestOptions.none())
 
-        /** @see [checkLiveness] */
+        /** @see checkLiveness */
         @MustBeClosed
         fun checkLiveness(
             requestOptions: RequestOptions
@@ -241,21 +241,21 @@ interface HealthService {
         fun checkReadiness(): HttpResponseFor<HealthCheckReadinessResponse> =
             checkReadiness(HealthCheckReadinessParams.none())
 
-        /** @see [checkReadiness] */
+        /** @see checkReadiness */
         @MustBeClosed
         fun checkReadiness(
             params: HealthCheckReadinessParams = HealthCheckReadinessParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<HealthCheckReadinessResponse>
 
-        /** @see [checkReadiness] */
+        /** @see checkReadiness */
         @MustBeClosed
         fun checkReadiness(
             params: HealthCheckReadinessParams = HealthCheckReadinessParams.none()
         ): HttpResponseFor<HealthCheckReadinessResponse> =
             checkReadiness(params, RequestOptions.none())
 
-        /** @see [checkReadiness] */
+        /** @see checkReadiness */
         @MustBeClosed
         fun checkReadiness(
             requestOptions: RequestOptions
@@ -272,7 +272,7 @@ interface HealthService {
         ): HttpResponseFor<HealthCheckServicesResponse> =
             checkServices(params, RequestOptions.none())
 
-        /** @see [checkServices] */
+        /** @see checkServices */
         @MustBeClosed
         fun checkServices(
             params: HealthCheckServicesParams,

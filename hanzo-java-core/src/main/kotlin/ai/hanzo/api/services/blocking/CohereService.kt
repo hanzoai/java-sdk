@@ -35,30 +35,30 @@ interface CohereService {
     /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
     fun create(endpoint: String): CohereCreateResponse = create(endpoint, CohereCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         params: CohereCreateParams = CohereCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CohereCreateResponse = create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         params: CohereCreateParams = CohereCreateParams.none(),
     ): CohereCreateResponse = create(endpoint, params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: CohereCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CohereCreateResponse
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: CohereCreateParams): CohereCreateResponse =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(endpoint: String, requestOptions: RequestOptions): CohereCreateResponse =
         create(endpoint, CohereCreateParams.none(), requestOptions)
 
@@ -66,7 +66,7 @@ interface CohereService {
     fun retrieve(endpoint: String): CohereRetrieveResponse =
         retrieve(endpoint, CohereRetrieveParams.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         endpoint: String,
         params: CohereRetrieveParams = CohereRetrieveParams.none(),
@@ -74,113 +74,113 @@ interface CohereService {
     ): CohereRetrieveResponse =
         retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         endpoint: String,
         params: CohereRetrieveParams = CohereRetrieveParams.none(),
     ): CohereRetrieveResponse = retrieve(endpoint, params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: CohereRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CohereRetrieveResponse
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(params: CohereRetrieveParams): CohereRetrieveResponse =
         retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(endpoint: String, requestOptions: RequestOptions): CohereRetrieveResponse =
         retrieve(endpoint, CohereRetrieveParams.none(), requestOptions)
 
     /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
     fun update(endpoint: String): CohereUpdateResponse = update(endpoint, CohereUpdateParams.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         params: CohereUpdateParams = CohereUpdateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CohereUpdateResponse = update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         params: CohereUpdateParams = CohereUpdateParams.none(),
     ): CohereUpdateResponse = update(endpoint, params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: CohereUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CohereUpdateResponse
 
-    /** @see [update] */
+    /** @see update */
     fun update(params: CohereUpdateParams): CohereUpdateResponse =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(endpoint: String, requestOptions: RequestOptions): CohereUpdateResponse =
         update(endpoint, CohereUpdateParams.none(), requestOptions)
 
     /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
     fun delete(endpoint: String): CohereDeleteResponse = delete(endpoint, CohereDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         params: CohereDeleteParams = CohereDeleteParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CohereDeleteResponse = delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         params: CohereDeleteParams = CohereDeleteParams.none(),
     ): CohereDeleteResponse = delete(endpoint, params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: CohereDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CohereDeleteResponse
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: CohereDeleteParams): CohereDeleteResponse =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(endpoint: String, requestOptions: RequestOptions): CohereDeleteResponse =
         delete(endpoint, CohereDeleteParams.none(), requestOptions)
 
     /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
     fun modify(endpoint: String): CohereModifyResponse = modify(endpoint, CohereModifyParams.none())
 
-    /** @see [modify] */
+    /** @see modify */
     fun modify(
         endpoint: String,
         params: CohereModifyParams = CohereModifyParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CohereModifyResponse = modify(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [modify] */
+    /** @see modify */
     fun modify(
         endpoint: String,
         params: CohereModifyParams = CohereModifyParams.none(),
     ): CohereModifyResponse = modify(endpoint, params, RequestOptions.none())
 
-    /** @see [modify] */
+    /** @see modify */
     fun modify(
         params: CohereModifyParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CohereModifyResponse
 
-    /** @see [modify] */
+    /** @see modify */
     fun modify(params: CohereModifyParams): CohereModifyResponse =
         modify(params, RequestOptions.none())
 
-    /** @see [modify] */
+    /** @see modify */
     fun modify(endpoint: String, requestOptions: RequestOptions): CohereModifyResponse =
         modify(endpoint, CohereModifyParams.none(), requestOptions)
 
@@ -202,7 +202,7 @@ interface CohereService {
         fun create(endpoint: String): HttpResponseFor<CohereCreateResponse> =
             create(endpoint, CohereCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             endpoint: String,
@@ -211,26 +211,26 @@ interface CohereService {
         ): HttpResponseFor<CohereCreateResponse> =
             create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             endpoint: String,
             params: CohereCreateParams = CohereCreateParams.none(),
         ): HttpResponseFor<CohereCreateResponse> = create(endpoint, params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: CohereCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<CohereCreateResponse>
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(params: CohereCreateParams): HttpResponseFor<CohereCreateResponse> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             endpoint: String,
@@ -246,7 +246,7 @@ interface CohereService {
         fun retrieve(endpoint: String): HttpResponseFor<CohereRetrieveResponse> =
             retrieve(endpoint, CohereRetrieveParams.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             endpoint: String,
@@ -255,7 +255,7 @@ interface CohereService {
         ): HttpResponseFor<CohereRetrieveResponse> =
             retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             endpoint: String,
@@ -263,19 +263,19 @@ interface CohereService {
         ): HttpResponseFor<CohereRetrieveResponse> =
             retrieve(endpoint, params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             params: CohereRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<CohereRetrieveResponse>
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(params: CohereRetrieveParams): HttpResponseFor<CohereRetrieveResponse> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             endpoint: String,
@@ -291,7 +291,7 @@ interface CohereService {
         fun update(endpoint: String): HttpResponseFor<CohereUpdateResponse> =
             update(endpoint, CohereUpdateParams.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             endpoint: String,
@@ -300,26 +300,26 @@ interface CohereService {
         ): HttpResponseFor<CohereUpdateResponse> =
             update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             endpoint: String,
             params: CohereUpdateParams = CohereUpdateParams.none(),
         ): HttpResponseFor<CohereUpdateResponse> = update(endpoint, params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             params: CohereUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<CohereUpdateResponse>
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(params: CohereUpdateParams): HttpResponseFor<CohereUpdateResponse> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             endpoint: String,
@@ -335,7 +335,7 @@ interface CohereService {
         fun delete(endpoint: String): HttpResponseFor<CohereDeleteResponse> =
             delete(endpoint, CohereDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             endpoint: String,
@@ -344,26 +344,26 @@ interface CohereService {
         ): HttpResponseFor<CohereDeleteResponse> =
             delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             endpoint: String,
             params: CohereDeleteParams = CohereDeleteParams.none(),
         ): HttpResponseFor<CohereDeleteResponse> = delete(endpoint, params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: CohereDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<CohereDeleteResponse>
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(params: CohereDeleteParams): HttpResponseFor<CohereDeleteResponse> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             endpoint: String,
@@ -379,7 +379,7 @@ interface CohereService {
         fun modify(endpoint: String): HttpResponseFor<CohereModifyResponse> =
             modify(endpoint, CohereModifyParams.none())
 
-        /** @see [modify] */
+        /** @see modify */
         @MustBeClosed
         fun modify(
             endpoint: String,
@@ -388,26 +388,26 @@ interface CohereService {
         ): HttpResponseFor<CohereModifyResponse> =
             modify(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [modify] */
+        /** @see modify */
         @MustBeClosed
         fun modify(
             endpoint: String,
             params: CohereModifyParams = CohereModifyParams.none(),
         ): HttpResponseFor<CohereModifyResponse> = modify(endpoint, params, RequestOptions.none())
 
-        /** @see [modify] */
+        /** @see modify */
         @MustBeClosed
         fun modify(
             params: CohereModifyParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<CohereModifyResponse>
 
-        /** @see [modify] */
+        /** @see modify */
         @MustBeClosed
         fun modify(params: CohereModifyParams): HttpResponseFor<CohereModifyResponse> =
             modify(params, RequestOptions.none())
 
-        /** @see [modify] */
+        /** @see modify */
         @MustBeClosed
         fun modify(
             endpoint: String,

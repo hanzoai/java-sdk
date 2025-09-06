@@ -34,7 +34,7 @@ interface MessageServiceAsync {
     fun create(threadId: String): CompletableFuture<MessageCreateResponse> =
         create(threadId, MessageCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         threadId: String,
         params: MessageCreateParams = MessageCreateParams.none(),
@@ -42,23 +42,23 @@ interface MessageServiceAsync {
     ): CompletableFuture<MessageCreateResponse> =
         create(params.toBuilder().threadId(threadId).build(), requestOptions)
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         threadId: String,
         params: MessageCreateParams = MessageCreateParams.none(),
     ): CompletableFuture<MessageCreateResponse> = create(threadId, params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: MessageCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<MessageCreateResponse>
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: MessageCreateParams): CompletableFuture<MessageCreateResponse> =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         threadId: String,
         requestOptions: RequestOptions,
@@ -73,7 +73,7 @@ interface MessageServiceAsync {
     fun list(threadId: String): CompletableFuture<MessageListResponse> =
         list(threadId, MessageListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         threadId: String,
         params: MessageListParams = MessageListParams.none(),
@@ -81,23 +81,23 @@ interface MessageServiceAsync {
     ): CompletableFuture<MessageListResponse> =
         list(params.toBuilder().threadId(threadId).build(), requestOptions)
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         threadId: String,
         params: MessageListParams = MessageListParams.none(),
     ): CompletableFuture<MessageListResponse> = list(threadId, params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: MessageListParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<MessageListResponse>
 
-    /** @see [list] */
+    /** @see list */
     fun list(params: MessageListParams): CompletableFuture<MessageListResponse> =
         list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         threadId: String,
         requestOptions: RequestOptions,
@@ -125,7 +125,7 @@ interface MessageServiceAsync {
         fun create(threadId: String): CompletableFuture<HttpResponseFor<MessageCreateResponse>> =
             create(threadId, MessageCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             threadId: String,
             params: MessageCreateParams = MessageCreateParams.none(),
@@ -133,26 +133,26 @@ interface MessageServiceAsync {
         ): CompletableFuture<HttpResponseFor<MessageCreateResponse>> =
             create(params.toBuilder().threadId(threadId).build(), requestOptions)
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             threadId: String,
             params: MessageCreateParams = MessageCreateParams.none(),
         ): CompletableFuture<HttpResponseFor<MessageCreateResponse>> =
             create(threadId, params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: MessageCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<MessageCreateResponse>>
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: MessageCreateParams
         ): CompletableFuture<HttpResponseFor<MessageCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             threadId: String,
             requestOptions: RequestOptions,
@@ -166,7 +166,7 @@ interface MessageServiceAsync {
         fun list(threadId: String): CompletableFuture<HttpResponseFor<MessageListResponse>> =
             list(threadId, MessageListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             threadId: String,
             params: MessageListParams = MessageListParams.none(),
@@ -174,26 +174,26 @@ interface MessageServiceAsync {
         ): CompletableFuture<HttpResponseFor<MessageListResponse>> =
             list(params.toBuilder().threadId(threadId).build(), requestOptions)
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             threadId: String,
             params: MessageListParams = MessageListParams.none(),
         ): CompletableFuture<HttpResponseFor<MessageListResponse>> =
             list(threadId, params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: MessageListParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<MessageListResponse>>
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: MessageListParams
         ): CompletableFuture<HttpResponseFor<MessageListResponse>> =
             list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             threadId: String,
             requestOptions: RequestOptions,

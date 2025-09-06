@@ -3,14 +3,14 @@
 package ai.hanzo.api.services.blocking
 
 import ai.hanzo.api.core.ClientOptions
-import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.checkRequired
+import ai.hanzo.api.core.handlers.errorBodyHandler
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
-import ai.hanzo.api.core.handlers.withErrorHandler
 import ai.hanzo.api.core.http.HttpMethod
 import ai.hanzo.api.core.http.HttpRequest
+import ai.hanzo.api.core.http.HttpResponse
 import ai.hanzo.api.core.http.HttpResponse.Handler
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.core.http.json
@@ -79,7 +79,8 @@ class EuAssemblyaiServiceImpl internal constructor(private val clientOptions: Cl
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
         EuAssemblyaiService.WithRawResponse {
 
-        private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+        private val errorHandler: Handler<HttpResponse> =
+            errorHandler(errorBodyHandler(clientOptions.jsonMapper))
 
         override fun withOptions(
             modifier: Consumer<ClientOptions.Builder>
@@ -90,7 +91,6 @@ class EuAssemblyaiServiceImpl internal constructor(private val clientOptions: Cl
 
         private val createHandler: Handler<EuAssemblyaiCreateResponse> =
             jsonHandler<EuAssemblyaiCreateResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun create(
             params: EuAssemblyaiCreateParams,
@@ -109,7 +109,7 @@ class EuAssemblyaiServiceImpl internal constructor(private val clientOptions: Cl
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { createHandler.handle(it) }
                     .also {
@@ -122,7 +122,6 @@ class EuAssemblyaiServiceImpl internal constructor(private val clientOptions: Cl
 
         private val retrieveHandler: Handler<EuAssemblyaiRetrieveResponse> =
             jsonHandler<EuAssemblyaiRetrieveResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun retrieve(
             params: EuAssemblyaiRetrieveParams,
@@ -140,7 +139,7 @@ class EuAssemblyaiServiceImpl internal constructor(private val clientOptions: Cl
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { retrieveHandler.handle(it) }
                     .also {
@@ -153,7 +152,6 @@ class EuAssemblyaiServiceImpl internal constructor(private val clientOptions: Cl
 
         private val updateHandler: Handler<EuAssemblyaiUpdateResponse> =
             jsonHandler<EuAssemblyaiUpdateResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun update(
             params: EuAssemblyaiUpdateParams,
@@ -172,7 +170,7 @@ class EuAssemblyaiServiceImpl internal constructor(private val clientOptions: Cl
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { updateHandler.handle(it) }
                     .also {
@@ -185,7 +183,6 @@ class EuAssemblyaiServiceImpl internal constructor(private val clientOptions: Cl
 
         private val deleteHandler: Handler<EuAssemblyaiDeleteResponse> =
             jsonHandler<EuAssemblyaiDeleteResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun delete(
             params: EuAssemblyaiDeleteParams,
@@ -204,7 +201,7 @@ class EuAssemblyaiServiceImpl internal constructor(private val clientOptions: Cl
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { deleteHandler.handle(it) }
                     .also {
@@ -217,7 +214,6 @@ class EuAssemblyaiServiceImpl internal constructor(private val clientOptions: Cl
 
         private val patchHandler: Handler<EuAssemblyaiPatchResponse> =
             jsonHandler<EuAssemblyaiPatchResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun patch(
             params: EuAssemblyaiPatchParams,
@@ -236,7 +232,7 @@ class EuAssemblyaiServiceImpl internal constructor(private val clientOptions: Cl
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { patchHandler.handle(it) }
                     .also {

@@ -53,8 +53,10 @@ private constructor(
     /** Filter keys by user ID */
     fun userId(): Optional<String> = Optional.ofNullable(userId)
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
@@ -319,10 +321,32 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is KeyListParams && includeTeamKeys == other.includeTeamKeys && keyAlias == other.keyAlias && organizationId == other.organizationId && page == other.page && returnFullObject == other.returnFullObject && size == other.size && teamId == other.teamId && userId == other.userId && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is KeyListParams &&
+            includeTeamKeys == other.includeTeamKeys &&
+            keyAlias == other.keyAlias &&
+            organizationId == other.organizationId &&
+            page == other.page &&
+            returnFullObject == other.returnFullObject &&
+            size == other.size &&
+            teamId == other.teamId &&
+            userId == other.userId &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(includeTeamKeys, keyAlias, organizationId, page, returnFullObject, size, teamId, userId, additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(
+            includeTeamKeys,
+            keyAlias,
+            organizationId,
+            page,
+            returnFullObject,
+            size,
+            teamId,
+            userId,
+            additionalHeaders,
+            additionalQueryParams,
+        )
 
     override fun toString() =
         "KeyListParams{includeTeamKeys=$includeTeamKeys, keyAlias=$keyAlias, organizationId=$organizationId, page=$page, returnFullObject=$returnFullObject, size=$size, teamId=$teamId, userId=$userId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"

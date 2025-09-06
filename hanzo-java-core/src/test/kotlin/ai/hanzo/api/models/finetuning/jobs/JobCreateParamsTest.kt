@@ -4,12 +4,10 @@ package ai.hanzo.api.models.finetuning.jobs
 
 import kotlin.jvm.optionals.getOrNull
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 internal class JobCreateParamsTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun create() {
         JobCreateParams.builder()
@@ -30,7 +28,6 @@ internal class JobCreateParamsTest {
             .build()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun body() {
         val params =
@@ -70,7 +67,6 @@ internal class JobCreateParamsTest {
         assertThat(body.validationFile()).contains("validation_file")
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun bodyWithoutOptionalFields() {
         val params =

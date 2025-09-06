@@ -45,18 +45,18 @@ interface CacheServiceAsync {
      */
     fun delete(): CompletableFuture<CacheDeleteResponse> = delete(CacheDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: CacheDeleteParams = CacheDeleteParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CacheDeleteResponse>
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: CacheDeleteParams = CacheDeleteParams.none()
     ): CompletableFuture<CacheDeleteResponse> = delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(requestOptions: RequestOptions): CompletableFuture<CacheDeleteResponse> =
         delete(CacheDeleteParams.none(), requestOptions)
 
@@ -72,36 +72,36 @@ interface CacheServiceAsync {
      */
     fun flushAll(): CompletableFuture<CacheFlushAllResponse> = flushAll(CacheFlushAllParams.none())
 
-    /** @see [flushAll] */
+    /** @see flushAll */
     fun flushAll(
         params: CacheFlushAllParams = CacheFlushAllParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CacheFlushAllResponse>
 
-    /** @see [flushAll] */
+    /** @see flushAll */
     fun flushAll(
         params: CacheFlushAllParams = CacheFlushAllParams.none()
     ): CompletableFuture<CacheFlushAllResponse> = flushAll(params, RequestOptions.none())
 
-    /** @see [flushAll] */
+    /** @see flushAll */
     fun flushAll(requestOptions: RequestOptions): CompletableFuture<CacheFlushAllResponse> =
         flushAll(CacheFlushAllParams.none(), requestOptions)
 
     /** Endpoint for checking if cache can be pinged */
     fun ping(): CompletableFuture<CachePingResponse> = ping(CachePingParams.none())
 
-    /** @see [ping] */
+    /** @see ping */
     fun ping(
         params: CachePingParams = CachePingParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CachePingResponse>
 
-    /** @see [ping] */
+    /** @see ping */
     fun ping(
         params: CachePingParams = CachePingParams.none()
     ): CompletableFuture<CachePingResponse> = ping(params, RequestOptions.none())
 
-    /** @see [ping] */
+    /** @see ping */
     fun ping(requestOptions: RequestOptions): CompletableFuture<CachePingResponse> =
         ping(CachePingParams.none(), requestOptions)
 
@@ -126,19 +126,19 @@ interface CacheServiceAsync {
         fun delete(): CompletableFuture<HttpResponseFor<CacheDeleteResponse>> =
             delete(CacheDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: CacheDeleteParams = CacheDeleteParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<CacheDeleteResponse>>
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: CacheDeleteParams = CacheDeleteParams.none()
         ): CompletableFuture<HttpResponseFor<CacheDeleteResponse>> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<CacheDeleteResponse>> =
@@ -151,19 +151,19 @@ interface CacheServiceAsync {
         fun flushAll(): CompletableFuture<HttpResponseFor<CacheFlushAllResponse>> =
             flushAll(CacheFlushAllParams.none())
 
-        /** @see [flushAll] */
+        /** @see flushAll */
         fun flushAll(
             params: CacheFlushAllParams = CacheFlushAllParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<CacheFlushAllResponse>>
 
-        /** @see [flushAll] */
+        /** @see flushAll */
         fun flushAll(
             params: CacheFlushAllParams = CacheFlushAllParams.none()
         ): CompletableFuture<HttpResponseFor<CacheFlushAllResponse>> =
             flushAll(params, RequestOptions.none())
 
-        /** @see [flushAll] */
+        /** @see flushAll */
         fun flushAll(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<CacheFlushAllResponse>> =
@@ -176,19 +176,19 @@ interface CacheServiceAsync {
         fun ping(): CompletableFuture<HttpResponseFor<CachePingResponse>> =
             ping(CachePingParams.none())
 
-        /** @see [ping] */
+        /** @see ping */
         fun ping(
             params: CachePingParams = CachePingParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<CachePingResponse>>
 
-        /** @see [ping] */
+        /** @see ping */
         fun ping(
             params: CachePingParams = CachePingParams.none()
         ): CompletableFuture<HttpResponseFor<CachePingResponse>> =
             ping(params, RequestOptions.none())
 
-        /** @see [ping] */
+        /** @see ping */
         fun ping(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<CachePingResponse>> =

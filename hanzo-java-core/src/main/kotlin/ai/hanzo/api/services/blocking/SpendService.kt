@@ -79,18 +79,18 @@ interface SpendService {
     fun calculateSpend(): SpendCalculateSpendResponse =
         calculateSpend(SpendCalculateSpendParams.none())
 
-    /** @see [calculateSpend] */
+    /** @see calculateSpend */
     fun calculateSpend(
         params: SpendCalculateSpendParams = SpendCalculateSpendParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): SpendCalculateSpendResponse
 
-    /** @see [calculateSpend] */
+    /** @see calculateSpend */
     fun calculateSpend(
         params: SpendCalculateSpendParams = SpendCalculateSpendParams.none()
     ): SpendCalculateSpendResponse = calculateSpend(params, RequestOptions.none())
 
-    /** @see [calculateSpend] */
+    /** @see calculateSpend */
     fun calculateSpend(requestOptions: RequestOptions): SpendCalculateSpendResponse =
         calculateSpend(SpendCalculateSpendParams.none(), requestOptions)
 
@@ -124,18 +124,18 @@ interface SpendService {
      */
     fun listLogs(): List<SpendListLogsResponse> = listLogs(SpendListLogsParams.none())
 
-    /** @see [listLogs] */
+    /** @see listLogs */
     fun listLogs(
         params: SpendListLogsParams = SpendListLogsParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): List<SpendListLogsResponse>
 
-    /** @see [listLogs] */
+    /** @see listLogs */
     fun listLogs(
         params: SpendListLogsParams = SpendListLogsParams.none()
     ): List<SpendListLogsResponse> = listLogs(params, RequestOptions.none())
 
-    /** @see [listLogs] */
+    /** @see listLogs */
     fun listLogs(requestOptions: RequestOptions): List<SpendListLogsResponse> =
         listLogs(SpendListLogsParams.none(), requestOptions)
 
@@ -155,18 +155,18 @@ interface SpendService {
      */
     fun listTags(): List<SpendListTagsResponse> = listTags(SpendListTagsParams.none())
 
-    /** @see [listTags] */
+    /** @see listTags */
     fun listTags(
         params: SpendListTagsParams = SpendListTagsParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): List<SpendListTagsResponse>
 
-    /** @see [listTags] */
+    /** @see listTags */
     fun listTags(
         params: SpendListTagsParams = SpendListTagsParams.none()
     ): List<SpendListTagsResponse> = listTags(params, RequestOptions.none())
 
-    /** @see [listTags] */
+    /** @see listTags */
     fun listTags(requestOptions: RequestOptions): List<SpendListTagsResponse> =
         listTags(SpendListTagsParams.none(), requestOptions)
 
@@ -188,21 +188,21 @@ interface SpendService {
         fun calculateSpend(): HttpResponseFor<SpendCalculateSpendResponse> =
             calculateSpend(SpendCalculateSpendParams.none())
 
-        /** @see [calculateSpend] */
+        /** @see calculateSpend */
         @MustBeClosed
         fun calculateSpend(
             params: SpendCalculateSpendParams = SpendCalculateSpendParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<SpendCalculateSpendResponse>
 
-        /** @see [calculateSpend] */
+        /** @see calculateSpend */
         @MustBeClosed
         fun calculateSpend(
             params: SpendCalculateSpendParams = SpendCalculateSpendParams.none()
         ): HttpResponseFor<SpendCalculateSpendResponse> =
             calculateSpend(params, RequestOptions.none())
 
-        /** @see [calculateSpend] */
+        /** @see calculateSpend */
         @MustBeClosed
         fun calculateSpend(
             requestOptions: RequestOptions
@@ -217,20 +217,20 @@ interface SpendService {
         fun listLogs(): HttpResponseFor<List<SpendListLogsResponse>> =
             listLogs(SpendListLogsParams.none())
 
-        /** @see [listLogs] */
+        /** @see listLogs */
         @MustBeClosed
         fun listLogs(
             params: SpendListLogsParams = SpendListLogsParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<List<SpendListLogsResponse>>
 
-        /** @see [listLogs] */
+        /** @see listLogs */
         @MustBeClosed
         fun listLogs(
             params: SpendListLogsParams = SpendListLogsParams.none()
         ): HttpResponseFor<List<SpendListLogsResponse>> = listLogs(params, RequestOptions.none())
 
-        /** @see [listLogs] */
+        /** @see listLogs */
         @MustBeClosed
         fun listLogs(requestOptions: RequestOptions): HttpResponseFor<List<SpendListLogsResponse>> =
             listLogs(SpendListLogsParams.none(), requestOptions)
@@ -243,20 +243,20 @@ interface SpendService {
         fun listTags(): HttpResponseFor<List<SpendListTagsResponse>> =
             listTags(SpendListTagsParams.none())
 
-        /** @see [listTags] */
+        /** @see listTags */
         @MustBeClosed
         fun listTags(
             params: SpendListTagsParams = SpendListTagsParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<List<SpendListTagsResponse>>
 
-        /** @see [listTags] */
+        /** @see listTags */
         @MustBeClosed
         fun listTags(
             params: SpendListTagsParams = SpendListTagsParams.none()
         ): HttpResponseFor<List<SpendListTagsResponse>> = listTags(params, RequestOptions.none())
 
-        /** @see [listTags] */
+        /** @see listTags */
         @MustBeClosed
         fun listTags(requestOptions: RequestOptions): HttpResponseFor<List<SpendListTagsResponse>> =
             listTags(SpendListTagsParams.none(), requestOptions)

@@ -43,18 +43,18 @@ interface CompletionServiceAsync {
     fun create(): CompletableFuture<CompletionCreateResponse> =
         create(CompletionCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: CompletionCreateParams = CompletionCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CompletionCreateResponse>
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: CompletionCreateParams = CompletionCreateParams.none()
     ): CompletableFuture<CompletionCreateResponse> = create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): CompletableFuture<CompletionCreateResponse> =
         create(CompletionCreateParams.none(), requestOptions)
 
@@ -80,19 +80,19 @@ interface CompletionServiceAsync {
         fun create(): CompletableFuture<HttpResponseFor<CompletionCreateResponse>> =
             create(CompletionCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: CompletionCreateParams = CompletionCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<CompletionCreateResponse>>
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: CompletionCreateParams = CompletionCreateParams.none()
         ): CompletableFuture<HttpResponseFor<CompletionCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<CompletionCreateResponse>> =

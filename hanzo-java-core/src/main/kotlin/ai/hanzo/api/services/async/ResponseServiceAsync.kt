@@ -44,18 +44,18 @@ interface ResponseServiceAsync {
      */
     fun create(): CompletableFuture<ResponseCreateResponse> = create(ResponseCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: ResponseCreateParams = ResponseCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<ResponseCreateResponse>
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: ResponseCreateParams = ResponseCreateParams.none()
     ): CompletableFuture<ResponseCreateResponse> = create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): CompletableFuture<ResponseCreateResponse> =
         create(ResponseCreateParams.none(), requestOptions)
 
@@ -72,7 +72,7 @@ interface ResponseServiceAsync {
     fun retrieve(responseId: String): CompletableFuture<ResponseRetrieveResponse> =
         retrieve(responseId, ResponseRetrieveParams.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         responseId: String,
         params: ResponseRetrieveParams = ResponseRetrieveParams.none(),
@@ -80,24 +80,24 @@ interface ResponseServiceAsync {
     ): CompletableFuture<ResponseRetrieveResponse> =
         retrieve(params.toBuilder().responseId(responseId).build(), requestOptions)
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         responseId: String,
         params: ResponseRetrieveParams = ResponseRetrieveParams.none(),
     ): CompletableFuture<ResponseRetrieveResponse> =
         retrieve(responseId, params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: ResponseRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<ResponseRetrieveResponse>
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(params: ResponseRetrieveParams): CompletableFuture<ResponseRetrieveResponse> =
         retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         responseId: String,
         requestOptions: RequestOptions,
@@ -117,7 +117,7 @@ interface ResponseServiceAsync {
     fun delete(responseId: String): CompletableFuture<ResponseDeleteResponse> =
         delete(responseId, ResponseDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         responseId: String,
         params: ResponseDeleteParams = ResponseDeleteParams.none(),
@@ -125,23 +125,23 @@ interface ResponseServiceAsync {
     ): CompletableFuture<ResponseDeleteResponse> =
         delete(params.toBuilder().responseId(responseId).build(), requestOptions)
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         responseId: String,
         params: ResponseDeleteParams = ResponseDeleteParams.none(),
     ): CompletableFuture<ResponseDeleteResponse> = delete(responseId, params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: ResponseDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<ResponseDeleteResponse>
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: ResponseDeleteParams): CompletableFuture<ResponseDeleteResponse> =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         responseId: String,
         requestOptions: RequestOptions,
@@ -171,19 +171,19 @@ interface ResponseServiceAsync {
         fun create(): CompletableFuture<HttpResponseFor<ResponseCreateResponse>> =
             create(ResponseCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: ResponseCreateParams = ResponseCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<ResponseCreateResponse>>
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: ResponseCreateParams = ResponseCreateParams.none()
         ): CompletableFuture<HttpResponseFor<ResponseCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<ResponseCreateResponse>> =
@@ -198,7 +198,7 @@ interface ResponseServiceAsync {
         ): CompletableFuture<HttpResponseFor<ResponseRetrieveResponse>> =
             retrieve(responseId, ResponseRetrieveParams.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             responseId: String,
             params: ResponseRetrieveParams = ResponseRetrieveParams.none(),
@@ -206,26 +206,26 @@ interface ResponseServiceAsync {
         ): CompletableFuture<HttpResponseFor<ResponseRetrieveResponse>> =
             retrieve(params.toBuilder().responseId(responseId).build(), requestOptions)
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             responseId: String,
             params: ResponseRetrieveParams = ResponseRetrieveParams.none(),
         ): CompletableFuture<HttpResponseFor<ResponseRetrieveResponse>> =
             retrieve(responseId, params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: ResponseRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<ResponseRetrieveResponse>>
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: ResponseRetrieveParams
         ): CompletableFuture<HttpResponseFor<ResponseRetrieveResponse>> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             responseId: String,
             requestOptions: RequestOptions,
@@ -239,7 +239,7 @@ interface ResponseServiceAsync {
         fun delete(responseId: String): CompletableFuture<HttpResponseFor<ResponseDeleteResponse>> =
             delete(responseId, ResponseDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             responseId: String,
             params: ResponseDeleteParams = ResponseDeleteParams.none(),
@@ -247,26 +247,26 @@ interface ResponseServiceAsync {
         ): CompletableFuture<HttpResponseFor<ResponseDeleteResponse>> =
             delete(params.toBuilder().responseId(responseId).build(), requestOptions)
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             responseId: String,
             params: ResponseDeleteParams = ResponseDeleteParams.none(),
         ): CompletableFuture<HttpResponseFor<ResponseDeleteResponse>> =
             delete(responseId, params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: ResponseDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<ResponseDeleteResponse>>
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: ResponseDeleteParams
         ): CompletableFuture<HttpResponseFor<ResponseDeleteResponse>> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             responseId: String,
             requestOptions: RequestOptions,

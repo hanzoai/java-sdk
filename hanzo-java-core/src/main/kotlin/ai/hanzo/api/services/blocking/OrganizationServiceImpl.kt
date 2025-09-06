@@ -3,13 +3,13 @@
 package ai.hanzo.api.services.blocking
 
 import ai.hanzo.api.core.ClientOptions
-import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.handlers.errorBodyHandler
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
-import ai.hanzo.api.core.handlers.withErrorHandler
 import ai.hanzo.api.core.http.HttpMethod
 import ai.hanzo.api.core.http.HttpRequest
+import ai.hanzo.api.core.http.HttpResponse
 import ai.hanzo.api.core.http.HttpResponse.Handler
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.core.http.json
@@ -101,7 +101,8 @@ class OrganizationServiceImpl internal constructor(private val clientOptions: Cl
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
         OrganizationService.WithRawResponse {
 
-        private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+        private val errorHandler: Handler<HttpResponse> =
+            errorHandler(errorBodyHandler(clientOptions.jsonMapper))
 
         private val info: InfoService.WithRawResponse by lazy {
             InfoServiceImpl.WithRawResponseImpl(clientOptions)
@@ -118,7 +119,6 @@ class OrganizationServiceImpl internal constructor(private val clientOptions: Cl
 
         private val createHandler: Handler<OrganizationCreateResponse> =
             jsonHandler<OrganizationCreateResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun create(
             params: OrganizationCreateParams,
@@ -134,7 +134,7 @@ class OrganizationServiceImpl internal constructor(private val clientOptions: Cl
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { createHandler.handle(it) }
                     .also {
@@ -147,7 +147,6 @@ class OrganizationServiceImpl internal constructor(private val clientOptions: Cl
 
         private val updateHandler: Handler<OrganizationUpdateResponse> =
             jsonHandler<OrganizationUpdateResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun update(
             params: OrganizationUpdateParams,
@@ -163,7 +162,7 @@ class OrganizationServiceImpl internal constructor(private val clientOptions: Cl
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { updateHandler.handle(it) }
                     .also {
@@ -176,7 +175,6 @@ class OrganizationServiceImpl internal constructor(private val clientOptions: Cl
 
         private val listHandler: Handler<List<OrganizationListResponse>> =
             jsonHandler<List<OrganizationListResponse>>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun list(
             params: OrganizationListParams,
@@ -191,7 +189,7 @@ class OrganizationServiceImpl internal constructor(private val clientOptions: Cl
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { listHandler.handle(it) }
                     .also {
@@ -204,7 +202,6 @@ class OrganizationServiceImpl internal constructor(private val clientOptions: Cl
 
         private val deleteHandler: Handler<List<OrganizationDeleteResponse>> =
             jsonHandler<List<OrganizationDeleteResponse>>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun delete(
             params: OrganizationDeleteParams,
@@ -220,7 +217,7 @@ class OrganizationServiceImpl internal constructor(private val clientOptions: Cl
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { deleteHandler.handle(it) }
                     .also {
@@ -233,7 +230,6 @@ class OrganizationServiceImpl internal constructor(private val clientOptions: Cl
 
         private val addMemberHandler: Handler<OrganizationAddMemberResponse> =
             jsonHandler<OrganizationAddMemberResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun addMember(
             params: OrganizationAddMemberParams,
@@ -249,7 +245,7 @@ class OrganizationServiceImpl internal constructor(private val clientOptions: Cl
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { addMemberHandler.handle(it) }
                     .also {
@@ -262,7 +258,6 @@ class OrganizationServiceImpl internal constructor(private val clientOptions: Cl
 
         private val deleteMemberHandler: Handler<OrganizationDeleteMemberResponse> =
             jsonHandler<OrganizationDeleteMemberResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun deleteMember(
             params: OrganizationDeleteMemberParams,
@@ -278,7 +273,7 @@ class OrganizationServiceImpl internal constructor(private val clientOptions: Cl
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { deleteMemberHandler.handle(it) }
                     .also {
@@ -291,7 +286,6 @@ class OrganizationServiceImpl internal constructor(private val clientOptions: Cl
 
         private val updateMemberHandler: Handler<OrganizationUpdateMemberResponse> =
             jsonHandler<OrganizationUpdateMemberResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun updateMember(
             params: OrganizationUpdateMemberParams,
@@ -307,7 +301,7 @@ class OrganizationServiceImpl internal constructor(private val clientOptions: Cl
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { updateMemberHandler.handle(it) }
                     .also {

@@ -1,6 +1,14 @@
 rootProject.name = "hanzo-java-root"
 
-include("hanzo-java")
-include("hanzo-java-client-okhttp")
-include("hanzo-java-core")
-include("hanzo-java-example")
+val projectNames = rootDir.listFiles()
+    ?.asSequence()
+    .orEmpty()
+    .filter { file ->
+        file.isDirectory &&
+        file.name.startsWith("hanzo-java") &&
+        file.listFiles()?.asSequence().orEmpty().any { it.name == "build.gradle.kts" }
+    }
+    .map { it.name }
+    .toList()
+println("projects: $projectNames")
+projectNames.forEach { include(it) }

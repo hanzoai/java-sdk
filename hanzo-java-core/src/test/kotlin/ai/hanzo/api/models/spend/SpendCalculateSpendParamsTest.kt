@@ -5,12 +5,10 @@ package ai.hanzo.api.models.spend
 import ai.hanzo.api.core.JsonValue
 import kotlin.jvm.optionals.getOrNull
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 internal class SpendCalculateSpendParamsTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun create() {
         SpendCalculateSpendParams.builder()
@@ -20,7 +18,6 @@ internal class SpendCalculateSpendParamsTest {
             .build()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun body() {
         val params =
@@ -38,7 +35,6 @@ internal class SpendCalculateSpendParamsTest {
         assertThat(body.model()).contains("model")
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun bodyWithoutOptionalFields() {
         val params = SpendCalculateSpendParams.builder().build()

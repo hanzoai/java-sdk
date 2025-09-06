@@ -35,17 +35,17 @@ interface TestServiceAsync {
      */
     fun ping(): CompletableFuture<TestPingResponse> = ping(TestPingParams.none())
 
-    /** @see [ping] */
+    /** @see ping */
     fun ping(
         params: TestPingParams = TestPingParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<TestPingResponse>
 
-    /** @see [ping] */
+    /** @see ping */
     fun ping(params: TestPingParams = TestPingParams.none()): CompletableFuture<TestPingResponse> =
         ping(params, RequestOptions.none())
 
-    /** @see [ping] */
+    /** @see ping */
     fun ping(requestOptions: RequestOptions): CompletableFuture<TestPingResponse> =
         ping(TestPingParams.none(), requestOptions)
 
@@ -66,19 +66,19 @@ interface TestServiceAsync {
         fun ping(): CompletableFuture<HttpResponseFor<TestPingResponse>> =
             ping(TestPingParams.none())
 
-        /** @see [ping] */
+        /** @see ping */
         fun ping(
             params: TestPingParams = TestPingParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<TestPingResponse>>
 
-        /** @see [ping] */
+        /** @see ping */
         fun ping(
             params: TestPingParams = TestPingParams.none()
         ): CompletableFuture<HttpResponseFor<TestPingResponse>> =
             ping(params, RequestOptions.none())
 
-        /** @see [ping] */
+        /** @see ping */
         fun ping(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<TestPingResponse>> =

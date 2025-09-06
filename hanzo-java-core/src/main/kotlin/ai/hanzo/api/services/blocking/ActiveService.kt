@@ -50,18 +50,18 @@ interface ActiveService {
     fun listCallbacks(): ActiveListCallbacksResponse =
         listCallbacks(ActiveListCallbacksParams.none())
 
-    /** @see [listCallbacks] */
+    /** @see listCallbacks */
     fun listCallbacks(
         params: ActiveListCallbacksParams = ActiveListCallbacksParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): ActiveListCallbacksResponse
 
-    /** @see [listCallbacks] */
+    /** @see listCallbacks */
     fun listCallbacks(
         params: ActiveListCallbacksParams = ActiveListCallbacksParams.none()
     ): ActiveListCallbacksResponse = listCallbacks(params, RequestOptions.none())
 
-    /** @see [listCallbacks] */
+    /** @see listCallbacks */
     fun listCallbacks(requestOptions: RequestOptions): ActiveListCallbacksResponse =
         listCallbacks(ActiveListCallbacksParams.none(), requestOptions)
 
@@ -83,21 +83,21 @@ interface ActiveService {
         fun listCallbacks(): HttpResponseFor<ActiveListCallbacksResponse> =
             listCallbacks(ActiveListCallbacksParams.none())
 
-        /** @see [listCallbacks] */
+        /** @see listCallbacks */
         @MustBeClosed
         fun listCallbacks(
             params: ActiveListCallbacksParams = ActiveListCallbacksParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<ActiveListCallbacksResponse>
 
-        /** @see [listCallbacks] */
+        /** @see listCallbacks */
         @MustBeClosed
         fun listCallbacks(
             params: ActiveListCallbacksParams = ActiveListCallbacksParams.none()
         ): HttpResponseFor<ActiveListCallbacksResponse> =
             listCallbacks(params, RequestOptions.none())
 
-        /** @see [listCallbacks] */
+        /** @see listCallbacks */
         @MustBeClosed
         fun listCallbacks(
             requestOptions: RequestOptions

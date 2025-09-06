@@ -43,7 +43,7 @@ interface UtilService {
     ): UtilGetSupportedOpenAIParamsResponse =
         getSupportedOpenAIParams(params, RequestOptions.none())
 
-    /** @see [getSupportedOpenAIParams] */
+    /** @see getSupportedOpenAIParams */
     fun getSupportedOpenAIParams(
         params: UtilGetSupportedOpenAIParamsParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -53,7 +53,7 @@ interface UtilService {
     fun tokenCounter(params: UtilTokenCounterParams): UtilTokenCounterResponse =
         tokenCounter(params, RequestOptions.none())
 
-    /** @see [tokenCounter] */
+    /** @see tokenCounter */
     fun tokenCounter(
         params: UtilTokenCounterParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -63,7 +63,7 @@ interface UtilService {
     fun transformRequest(params: UtilTransformRequestParams): UtilTransformRequestResponse =
         transformRequest(params, RequestOptions.none())
 
-    /** @see [transformRequest] */
+    /** @see transformRequest */
     fun transformRequest(
         params: UtilTransformRequestParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -89,7 +89,7 @@ interface UtilService {
         ): HttpResponseFor<UtilGetSupportedOpenAIParamsResponse> =
             getSupportedOpenAIParams(params, RequestOptions.none())
 
-        /** @see [getSupportedOpenAIParams] */
+        /** @see getSupportedOpenAIParams */
         @MustBeClosed
         fun getSupportedOpenAIParams(
             params: UtilGetSupportedOpenAIParamsParams,
@@ -105,7 +105,7 @@ interface UtilService {
             params: UtilTokenCounterParams
         ): HttpResponseFor<UtilTokenCounterResponse> = tokenCounter(params, RequestOptions.none())
 
-        /** @see [tokenCounter] */
+        /** @see tokenCounter */
         @MustBeClosed
         fun tokenCounter(
             params: UtilTokenCounterParams,
@@ -122,7 +122,7 @@ interface UtilService {
         ): HttpResponseFor<UtilTransformRequestResponse> =
             transformRequest(params, RequestOptions.none())
 
-        /** @see [transformRequest] */
+        /** @see transformRequest */
         @MustBeClosed
         fun transformRequest(
             params: UtilTransformRequestParams,
