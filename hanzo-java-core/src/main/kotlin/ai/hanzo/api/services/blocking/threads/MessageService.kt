@@ -34,30 +34,30 @@ interface MessageService {
     fun create(threadId: String): MessageCreateResponse =
         create(threadId, MessageCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         threadId: String,
         params: MessageCreateParams = MessageCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): MessageCreateResponse = create(params.toBuilder().threadId(threadId).build(), requestOptions)
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         threadId: String,
         params: MessageCreateParams = MessageCreateParams.none(),
     ): MessageCreateResponse = create(threadId, params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: MessageCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): MessageCreateResponse
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: MessageCreateParams): MessageCreateResponse =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(threadId: String, requestOptions: RequestOptions): MessageCreateResponse =
         create(threadId, MessageCreateParams.none(), requestOptions)
 
@@ -68,29 +68,29 @@ interface MessageService {
      */
     fun list(threadId: String): MessageListResponse = list(threadId, MessageListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         threadId: String,
         params: MessageListParams = MessageListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): MessageListResponse = list(params.toBuilder().threadId(threadId).build(), requestOptions)
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         threadId: String,
         params: MessageListParams = MessageListParams.none(),
     ): MessageListResponse = list(threadId, params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: MessageListParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): MessageListResponse
 
-    /** @see [list] */
+    /** @see list */
     fun list(params: MessageListParams): MessageListResponse = list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(threadId: String, requestOptions: RequestOptions): MessageListResponse =
         list(threadId, MessageListParams.none(), requestOptions)
 
@@ -112,7 +112,7 @@ interface MessageService {
         fun create(threadId: String): HttpResponseFor<MessageCreateResponse> =
             create(threadId, MessageCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             threadId: String,
@@ -121,26 +121,26 @@ interface MessageService {
         ): HttpResponseFor<MessageCreateResponse> =
             create(params.toBuilder().threadId(threadId).build(), requestOptions)
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             threadId: String,
             params: MessageCreateParams = MessageCreateParams.none(),
         ): HttpResponseFor<MessageCreateResponse> = create(threadId, params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: MessageCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<MessageCreateResponse>
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(params: MessageCreateParams): HttpResponseFor<MessageCreateResponse> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             threadId: String,
@@ -156,7 +156,7 @@ interface MessageService {
         fun list(threadId: String): HttpResponseFor<MessageListResponse> =
             list(threadId, MessageListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             threadId: String,
@@ -165,26 +165,26 @@ interface MessageService {
         ): HttpResponseFor<MessageListResponse> =
             list(params.toBuilder().threadId(threadId).build(), requestOptions)
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             threadId: String,
             params: MessageListParams = MessageListParams.none(),
         ): HttpResponseFor<MessageListResponse> = list(threadId, params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: MessageListParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<MessageListResponse>
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(params: MessageListParams): HttpResponseFor<MessageListResponse> =
             list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             threadId: String,

@@ -108,18 +108,18 @@ interface UserServiceAsync {
      */
     fun create(): CompletableFuture<UserCreateResponse> = create(UserCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: UserCreateParams = UserCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<UserCreateResponse>
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: UserCreateParams = UserCreateParams.none()
     ): CompletableFuture<UserCreateResponse> = create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): CompletableFuture<UserCreateResponse> =
         create(UserCreateParams.none(), requestOptions)
 
@@ -175,18 +175,18 @@ interface UserServiceAsync {
      */
     fun update(): CompletableFuture<UserUpdateResponse> = update(UserUpdateParams.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: UserUpdateParams = UserUpdateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<UserUpdateResponse>
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: UserUpdateParams = UserUpdateParams.none()
     ): CompletableFuture<UserUpdateResponse> = update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(requestOptions: RequestOptions): CompletableFuture<UserUpdateResponse> =
         update(UserUpdateParams.none(), requestOptions)
 
@@ -209,17 +209,17 @@ interface UserServiceAsync {
      */
     fun list(): CompletableFuture<UserListResponse> = list(UserListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: UserListParams = UserListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<UserListResponse>
 
-    /** @see [list] */
+    /** @see list */
     fun list(params: UserListParams = UserListParams.none()): CompletableFuture<UserListResponse> =
         list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): CompletableFuture<UserListResponse> =
         list(UserListParams.none(), requestOptions)
 
@@ -241,7 +241,7 @@ interface UserServiceAsync {
     fun delete(params: UserDeleteParams): CompletableFuture<UserDeleteResponse> =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: UserDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -261,18 +261,18 @@ interface UserServiceAsync {
     fun retrieveInfo(): CompletableFuture<UserRetrieveInfoResponse> =
         retrieveInfo(UserRetrieveInfoParams.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: UserRetrieveInfoParams = UserRetrieveInfoParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<UserRetrieveInfoResponse>
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: UserRetrieveInfoParams = UserRetrieveInfoParams.none()
     ): CompletableFuture<UserRetrieveInfoResponse> = retrieveInfo(params, RequestOptions.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(requestOptions: RequestOptions): CompletableFuture<UserRetrieveInfoResponse> =
         retrieveInfo(UserRetrieveInfoParams.none(), requestOptions)
 
@@ -293,19 +293,19 @@ interface UserServiceAsync {
         fun create(): CompletableFuture<HttpResponseFor<UserCreateResponse>> =
             create(UserCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: UserCreateParams = UserCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<UserCreateResponse>>
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: UserCreateParams = UserCreateParams.none()
         ): CompletableFuture<HttpResponseFor<UserCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<UserCreateResponse>> =
@@ -318,19 +318,19 @@ interface UserServiceAsync {
         fun update(): CompletableFuture<HttpResponseFor<UserUpdateResponse>> =
             update(UserUpdateParams.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: UserUpdateParams = UserUpdateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<UserUpdateResponse>>
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: UserUpdateParams = UserUpdateParams.none()
         ): CompletableFuture<HttpResponseFor<UserUpdateResponse>> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<UserUpdateResponse>> =
@@ -343,19 +343,19 @@ interface UserServiceAsync {
         fun list(): CompletableFuture<HttpResponseFor<UserListResponse>> =
             list(UserListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: UserListParams = UserListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<UserListResponse>>
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: UserListParams = UserListParams.none()
         ): CompletableFuture<HttpResponseFor<UserListResponse>> =
             list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<UserListResponse>> =
@@ -370,7 +370,7 @@ interface UserServiceAsync {
         ): CompletableFuture<HttpResponseFor<UserDeleteResponse>> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: UserDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -383,19 +383,19 @@ interface UserServiceAsync {
         fun retrieveInfo(): CompletableFuture<HttpResponseFor<UserRetrieveInfoResponse>> =
             retrieveInfo(UserRetrieveInfoParams.none())
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         fun retrieveInfo(
             params: UserRetrieveInfoParams = UserRetrieveInfoParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<UserRetrieveInfoResponse>>
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         fun retrieveInfo(
             params: UserRetrieveInfoParams = UserRetrieveInfoParams.none()
         ): CompletableFuture<HttpResponseFor<UserRetrieveInfoResponse>> =
             retrieveInfo(params, RequestOptions.none())
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         fun retrieveInfo(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<UserRetrieveInfoResponse>> =

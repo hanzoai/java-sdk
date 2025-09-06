@@ -39,18 +39,18 @@ interface ThreadServiceAsync {
      */
     fun create(): CompletableFuture<ThreadCreateResponse> = create(ThreadCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: ThreadCreateParams = ThreadCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<ThreadCreateResponse>
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: ThreadCreateParams = ThreadCreateParams.none()
     ): CompletableFuture<ThreadCreateResponse> = create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): CompletableFuture<ThreadCreateResponse> =
         create(ThreadCreateParams.none(), requestOptions)
 
@@ -62,7 +62,7 @@ interface ThreadServiceAsync {
     fun retrieve(threadId: String): CompletableFuture<ThreadRetrieveResponse> =
         retrieve(threadId, ThreadRetrieveParams.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         threadId: String,
         params: ThreadRetrieveParams = ThreadRetrieveParams.none(),
@@ -70,23 +70,23 @@ interface ThreadServiceAsync {
     ): CompletableFuture<ThreadRetrieveResponse> =
         retrieve(params.toBuilder().threadId(threadId).build(), requestOptions)
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         threadId: String,
         params: ThreadRetrieveParams = ThreadRetrieveParams.none(),
     ): CompletableFuture<ThreadRetrieveResponse> = retrieve(threadId, params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: ThreadRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<ThreadRetrieveResponse>
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(params: ThreadRetrieveParams): CompletableFuture<ThreadRetrieveResponse> =
         retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         threadId: String,
         requestOptions: RequestOptions,
@@ -118,19 +118,19 @@ interface ThreadServiceAsync {
         fun create(): CompletableFuture<HttpResponseFor<ThreadCreateResponse>> =
             create(ThreadCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: ThreadCreateParams = ThreadCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<ThreadCreateResponse>>
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: ThreadCreateParams = ThreadCreateParams.none()
         ): CompletableFuture<HttpResponseFor<ThreadCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<ThreadCreateResponse>> =
@@ -143,7 +143,7 @@ interface ThreadServiceAsync {
         fun retrieve(threadId: String): CompletableFuture<HttpResponseFor<ThreadRetrieveResponse>> =
             retrieve(threadId, ThreadRetrieveParams.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             threadId: String,
             params: ThreadRetrieveParams = ThreadRetrieveParams.none(),
@@ -151,26 +151,26 @@ interface ThreadServiceAsync {
         ): CompletableFuture<HttpResponseFor<ThreadRetrieveResponse>> =
             retrieve(params.toBuilder().threadId(threadId).build(), requestOptions)
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             threadId: String,
             params: ThreadRetrieveParams = ThreadRetrieveParams.none(),
         ): CompletableFuture<HttpResponseFor<ThreadRetrieveResponse>> =
             retrieve(threadId, params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: ThreadRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<ThreadRetrieveResponse>>
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: ThreadRetrieveParams
         ): CompletableFuture<HttpResponseFor<ThreadRetrieveResponse>> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             threadId: String,
             requestOptions: RequestOptions,

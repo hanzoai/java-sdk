@@ -3,13 +3,13 @@
 package ai.hanzo.api.services.blocking
 
 import ai.hanzo.api.core.ClientOptions
-import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.handlers.errorBodyHandler
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
-import ai.hanzo.api.core.handlers.withErrorHandler
 import ai.hanzo.api.core.http.HttpMethod
 import ai.hanzo.api.core.http.HttpRequest
+import ai.hanzo.api.core.http.HttpResponse
 import ai.hanzo.api.core.http.HttpResponse.Handler
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.core.http.json
@@ -95,7 +95,8 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
         CustomerService.WithRawResponse {
 
-        private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+        private val errorHandler: Handler<HttpResponse> =
+            errorHandler(errorBodyHandler(clientOptions.jsonMapper))
 
         override fun withOptions(
             modifier: Consumer<ClientOptions.Builder>
@@ -106,7 +107,6 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
 
         private val createHandler: Handler<CustomerCreateResponse> =
             jsonHandler<CustomerCreateResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun create(
             params: CustomerCreateParams,
@@ -122,7 +122,7 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { createHandler.handle(it) }
                     .also {
@@ -135,7 +135,6 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
 
         private val updateHandler: Handler<CustomerUpdateResponse> =
             jsonHandler<CustomerUpdateResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun update(
             params: CustomerUpdateParams,
@@ -151,7 +150,7 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { updateHandler.handle(it) }
                     .also {
@@ -164,7 +163,6 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
 
         private val listHandler: Handler<List<CustomerListResponse>> =
             jsonHandler<List<CustomerListResponse>>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun list(
             params: CustomerListParams,
@@ -179,7 +177,7 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { listHandler.handle(it) }
                     .also {
@@ -192,7 +190,6 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
 
         private val deleteHandler: Handler<CustomerDeleteResponse> =
             jsonHandler<CustomerDeleteResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun delete(
             params: CustomerDeleteParams,
@@ -208,7 +205,7 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { deleteHandler.handle(it) }
                     .also {
@@ -221,7 +218,6 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
 
         private val blockHandler: Handler<CustomerBlockResponse> =
             jsonHandler<CustomerBlockResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun block(
             params: CustomerBlockParams,
@@ -237,7 +233,7 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { blockHandler.handle(it) }
                     .also {
@@ -250,7 +246,6 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
 
         private val retrieveInfoHandler: Handler<CustomerRetrieveInfoResponse> =
             jsonHandler<CustomerRetrieveInfoResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun retrieveInfo(
             params: CustomerRetrieveInfoParams,
@@ -265,7 +260,7 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { retrieveInfoHandler.handle(it) }
                     .also {
@@ -278,7 +273,6 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
 
         private val unblockHandler: Handler<CustomerUnblockResponse> =
             jsonHandler<CustomerUnblockResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun unblock(
             params: CustomerUnblockParams,
@@ -294,7 +288,7 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { unblockHandler.handle(it) }
                     .also {

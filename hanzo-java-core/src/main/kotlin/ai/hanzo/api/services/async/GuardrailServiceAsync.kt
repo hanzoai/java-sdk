@@ -60,18 +60,18 @@ interface GuardrailServiceAsync {
      */
     fun list(): CompletableFuture<GuardrailListResponse> = list(GuardrailListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: GuardrailListParams = GuardrailListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<GuardrailListResponse>
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: GuardrailListParams = GuardrailListParams.none()
     ): CompletableFuture<GuardrailListResponse> = list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): CompletableFuture<GuardrailListResponse> =
         list(GuardrailListParams.none(), requestOptions)
 
@@ -96,19 +96,19 @@ interface GuardrailServiceAsync {
         fun list(): CompletableFuture<HttpResponseFor<GuardrailListResponse>> =
             list(GuardrailListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: GuardrailListParams = GuardrailListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<GuardrailListResponse>>
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: GuardrailListParams = GuardrailListParams.none()
         ): CompletableFuture<HttpResponseFor<GuardrailListResponse>> =
             list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<GuardrailListResponse>> =

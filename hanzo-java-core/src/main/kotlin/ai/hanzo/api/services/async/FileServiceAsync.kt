@@ -49,7 +49,7 @@ interface FileServiceAsync {
     fun create(provider: String, params: FileCreateParams): CompletableFuture<FileCreateResponse> =
         create(provider, params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         provider: String,
         params: FileCreateParams,
@@ -57,11 +57,11 @@ interface FileServiceAsync {
     ): CompletableFuture<FileCreateResponse> =
         create(params.toBuilder().provider(provider).build(), requestOptions)
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: FileCreateParams): CompletableFuture<FileCreateResponse> =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: FileCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -85,7 +85,7 @@ interface FileServiceAsync {
         params: FileRetrieveParams,
     ): CompletableFuture<FileRetrieveResponse> = retrieve(fileId, params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         fileId: String,
         params: FileRetrieveParams,
@@ -93,11 +93,11 @@ interface FileServiceAsync {
     ): CompletableFuture<FileRetrieveResponse> =
         retrieve(params.toBuilder().fileId(fileId).build(), requestOptions)
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(params: FileRetrieveParams): CompletableFuture<FileRetrieveResponse> =
         retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: FileRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -119,7 +119,7 @@ interface FileServiceAsync {
     fun list(provider: String): CompletableFuture<FileListResponse> =
         list(provider, FileListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         provider: String,
         params: FileListParams = FileListParams.none(),
@@ -127,23 +127,23 @@ interface FileServiceAsync {
     ): CompletableFuture<FileListResponse> =
         list(params.toBuilder().provider(provider).build(), requestOptions)
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         provider: String,
         params: FileListParams = FileListParams.none(),
     ): CompletableFuture<FileListResponse> = list(provider, params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: FileListParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<FileListResponse>
 
-    /** @see [list] */
+    /** @see list */
     fun list(params: FileListParams): CompletableFuture<FileListResponse> =
         list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         provider: String,
         requestOptions: RequestOptions,
@@ -165,7 +165,7 @@ interface FileServiceAsync {
     fun delete(fileId: String, params: FileDeleteParams): CompletableFuture<FileDeleteResponse> =
         delete(fileId, params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         fileId: String,
         params: FileDeleteParams,
@@ -173,11 +173,11 @@ interface FileServiceAsync {
     ): CompletableFuture<FileDeleteResponse> =
         delete(params.toBuilder().fileId(fileId).build(), requestOptions)
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: FileDeleteParams): CompletableFuture<FileDeleteResponse> =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: FileDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -205,7 +205,7 @@ interface FileServiceAsync {
         ): CompletableFuture<HttpResponseFor<FileCreateResponse>> =
             create(provider, params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             provider: String,
             params: FileCreateParams,
@@ -213,13 +213,13 @@ interface FileServiceAsync {
         ): CompletableFuture<HttpResponseFor<FileCreateResponse>> =
             create(params.toBuilder().provider(provider).build(), requestOptions)
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: FileCreateParams
         ): CompletableFuture<HttpResponseFor<FileCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: FileCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -235,7 +235,7 @@ interface FileServiceAsync {
         ): CompletableFuture<HttpResponseFor<FileRetrieveResponse>> =
             retrieve(fileId, params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             fileId: String,
             params: FileRetrieveParams,
@@ -243,13 +243,13 @@ interface FileServiceAsync {
         ): CompletableFuture<HttpResponseFor<FileRetrieveResponse>> =
             retrieve(params.toBuilder().fileId(fileId).build(), requestOptions)
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: FileRetrieveParams
         ): CompletableFuture<HttpResponseFor<FileRetrieveResponse>> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: FileRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -262,7 +262,7 @@ interface FileServiceAsync {
         fun list(provider: String): CompletableFuture<HttpResponseFor<FileListResponse>> =
             list(provider, FileListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             provider: String,
             params: FileListParams = FileListParams.none(),
@@ -270,24 +270,24 @@ interface FileServiceAsync {
         ): CompletableFuture<HttpResponseFor<FileListResponse>> =
             list(params.toBuilder().provider(provider).build(), requestOptions)
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             provider: String,
             params: FileListParams = FileListParams.none(),
         ): CompletableFuture<HttpResponseFor<FileListResponse>> =
             list(provider, params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: FileListParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<FileListResponse>>
 
-        /** @see [list] */
+        /** @see list */
         fun list(params: FileListParams): CompletableFuture<HttpResponseFor<FileListResponse>> =
             list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             provider: String,
             requestOptions: RequestOptions,
@@ -304,7 +304,7 @@ interface FileServiceAsync {
         ): CompletableFuture<HttpResponseFor<FileDeleteResponse>> =
             delete(fileId, params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             fileId: String,
             params: FileDeleteParams,
@@ -312,13 +312,13 @@ interface FileServiceAsync {
         ): CompletableFuture<HttpResponseFor<FileDeleteResponse>> =
             delete(params.toBuilder().fileId(fileId).build(), requestOptions)
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: FileDeleteParams
         ): CompletableFuture<HttpResponseFor<FileDeleteResponse>> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: FileDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),

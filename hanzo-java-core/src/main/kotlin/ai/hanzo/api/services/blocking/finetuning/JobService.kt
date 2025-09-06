@@ -51,7 +51,7 @@ interface JobService {
      */
     fun create(params: JobCreateParams): JobCreateResponse = create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: JobCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -68,7 +68,7 @@ interface JobService {
     fun retrieve(fineTuningJobId: String, params: JobRetrieveParams): JobRetrieveResponse =
         retrieve(fineTuningJobId, params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         fineTuningJobId: String,
         params: JobRetrieveParams,
@@ -76,11 +76,11 @@ interface JobService {
     ): JobRetrieveResponse =
         retrieve(params.toBuilder().fineTuningJobId(fineTuningJobId).build(), requestOptions)
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(params: JobRetrieveParams): JobRetrieveResponse =
         retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: JobRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -97,7 +97,7 @@ interface JobService {
      */
     fun list(params: JobListParams): JobListResponse = list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: JobListParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -123,7 +123,7 @@ interface JobService {
         fun create(params: JobCreateParams): HttpResponseFor<JobCreateResponse> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: JobCreateParams,
@@ -141,7 +141,7 @@ interface JobService {
         ): HttpResponseFor<JobRetrieveResponse> =
             retrieve(fineTuningJobId, params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             fineTuningJobId: String,
@@ -150,12 +150,12 @@ interface JobService {
         ): HttpResponseFor<JobRetrieveResponse> =
             retrieve(params.toBuilder().fineTuningJobId(fineTuningJobId).build(), requestOptions)
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(params: JobRetrieveParams): HttpResponseFor<JobRetrieveResponse> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             params: JobRetrieveParams,
@@ -170,7 +170,7 @@ interface JobService {
         fun list(params: JobListParams): HttpResponseFor<JobListResponse> =
             list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: JobListParams,

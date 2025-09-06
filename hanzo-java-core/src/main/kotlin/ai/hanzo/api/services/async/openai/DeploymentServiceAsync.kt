@@ -48,7 +48,7 @@ interface DeploymentServiceAsync {
     fun complete(model: String): CompletableFuture<DeploymentCompleteResponse> =
         complete(model, DeploymentCompleteParams.none())
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(
         model: String,
         params: DeploymentCompleteParams = DeploymentCompleteParams.none(),
@@ -56,24 +56,24 @@ interface DeploymentServiceAsync {
     ): CompletableFuture<DeploymentCompleteResponse> =
         complete(params.toBuilder().model(model).build(), requestOptions)
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(
         model: String,
         params: DeploymentCompleteParams = DeploymentCompleteParams.none(),
     ): CompletableFuture<DeploymentCompleteResponse> =
         complete(model, params, RequestOptions.none())
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(
         params: DeploymentCompleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<DeploymentCompleteResponse>
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(params: DeploymentCompleteParams): CompletableFuture<DeploymentCompleteResponse> =
         complete(params, RequestOptions.none())
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(
         model: String,
         requestOptions: RequestOptions,
@@ -97,7 +97,7 @@ interface DeploymentServiceAsync {
     fun embed(model: String): CompletableFuture<DeploymentEmbedResponse> =
         embed(model, DeploymentEmbedParams.none())
 
-    /** @see [embed] */
+    /** @see embed */
     fun embed(
         model: String,
         params: DeploymentEmbedParams = DeploymentEmbedParams.none(),
@@ -105,23 +105,23 @@ interface DeploymentServiceAsync {
     ): CompletableFuture<DeploymentEmbedResponse> =
         embed(params.toBuilder().model(model).build(), requestOptions)
 
-    /** @see [embed] */
+    /** @see embed */
     fun embed(
         model: String,
         params: DeploymentEmbedParams = DeploymentEmbedParams.none(),
     ): CompletableFuture<DeploymentEmbedResponse> = embed(model, params, RequestOptions.none())
 
-    /** @see [embed] */
+    /** @see embed */
     fun embed(
         params: DeploymentEmbedParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<DeploymentEmbedResponse>
 
-    /** @see [embed] */
+    /** @see embed */
     fun embed(params: DeploymentEmbedParams): CompletableFuture<DeploymentEmbedResponse> =
         embed(params, RequestOptions.none())
 
-    /** @see [embed] */
+    /** @see embed */
     fun embed(
         model: String,
         requestOptions: RequestOptions,
@@ -154,7 +154,7 @@ interface DeploymentServiceAsync {
         ): CompletableFuture<HttpResponseFor<DeploymentCompleteResponse>> =
             complete(model, DeploymentCompleteParams.none())
 
-        /** @see [complete] */
+        /** @see complete */
         fun complete(
             model: String,
             params: DeploymentCompleteParams = DeploymentCompleteParams.none(),
@@ -162,26 +162,26 @@ interface DeploymentServiceAsync {
         ): CompletableFuture<HttpResponseFor<DeploymentCompleteResponse>> =
             complete(params.toBuilder().model(model).build(), requestOptions)
 
-        /** @see [complete] */
+        /** @see complete */
         fun complete(
             model: String,
             params: DeploymentCompleteParams = DeploymentCompleteParams.none(),
         ): CompletableFuture<HttpResponseFor<DeploymentCompleteResponse>> =
             complete(model, params, RequestOptions.none())
 
-        /** @see [complete] */
+        /** @see complete */
         fun complete(
             params: DeploymentCompleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<DeploymentCompleteResponse>>
 
-        /** @see [complete] */
+        /** @see complete */
         fun complete(
             params: DeploymentCompleteParams
         ): CompletableFuture<HttpResponseFor<DeploymentCompleteResponse>> =
             complete(params, RequestOptions.none())
 
-        /** @see [complete] */
+        /** @see complete */
         fun complete(
             model: String,
             requestOptions: RequestOptions,
@@ -195,7 +195,7 @@ interface DeploymentServiceAsync {
         fun embed(model: String): CompletableFuture<HttpResponseFor<DeploymentEmbedResponse>> =
             embed(model, DeploymentEmbedParams.none())
 
-        /** @see [embed] */
+        /** @see embed */
         fun embed(
             model: String,
             params: DeploymentEmbedParams = DeploymentEmbedParams.none(),
@@ -203,26 +203,26 @@ interface DeploymentServiceAsync {
         ): CompletableFuture<HttpResponseFor<DeploymentEmbedResponse>> =
             embed(params.toBuilder().model(model).build(), requestOptions)
 
-        /** @see [embed] */
+        /** @see embed */
         fun embed(
             model: String,
             params: DeploymentEmbedParams = DeploymentEmbedParams.none(),
         ): CompletableFuture<HttpResponseFor<DeploymentEmbedResponse>> =
             embed(model, params, RequestOptions.none())
 
-        /** @see [embed] */
+        /** @see embed */
         fun embed(
             params: DeploymentEmbedParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<DeploymentEmbedResponse>>
 
-        /** @see [embed] */
+        /** @see embed */
         fun embed(
             params: DeploymentEmbedParams
         ): CompletableFuture<HttpResponseFor<DeploymentEmbedResponse>> =
             embed(params, RequestOptions.none())
 
-        /** @see [embed] */
+        /** @see embed */
         fun embed(
             model: String,
             requestOptions: RequestOptions,

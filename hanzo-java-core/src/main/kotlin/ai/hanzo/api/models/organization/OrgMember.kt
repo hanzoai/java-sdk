@@ -344,7 +344,7 @@ private constructor(
                 return true
             }
 
-            return /* spotless:off */ other is Role && value == other.value /* spotless:on */
+            return other is Role && value == other.value
         }
 
         override fun hashCode() = value.hashCode()
@@ -357,12 +357,16 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is OrgMember && role == other.role && userEmail == other.userEmail && userId == other.userId && additionalProperties == other.additionalProperties /* spotless:on */
+        return other is OrgMember &&
+            role == other.role &&
+            userEmail == other.userEmail &&
+            userId == other.userId &&
+            additionalProperties == other.additionalProperties
     }
 
-    /* spotless:off */
-    private val hashCode: Int by lazy { Objects.hash(role, userEmail, userId, additionalProperties) }
-    /* spotless:on */
+    private val hashCode: Int by lazy {
+        Objects.hash(role, userEmail, userId, additionalProperties)
+    }
 
     override fun hashCode(): Int = hashCode
 

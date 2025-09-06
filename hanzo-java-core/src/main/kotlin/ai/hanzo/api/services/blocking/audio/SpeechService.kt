@@ -31,17 +31,17 @@ interface SpeechService {
      */
     fun create(): SpeechCreateResponse = create(SpeechCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: SpeechCreateParams = SpeechCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): SpeechCreateResponse
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: SpeechCreateParams = SpeechCreateParams.none()): SpeechCreateResponse =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): SpeechCreateResponse =
         create(SpeechCreateParams.none(), requestOptions)
 
@@ -62,20 +62,20 @@ interface SpeechService {
         @MustBeClosed
         fun create(): HttpResponseFor<SpeechCreateResponse> = create(SpeechCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: SpeechCreateParams = SpeechCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<SpeechCreateResponse>
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: SpeechCreateParams = SpeechCreateParams.none()
         ): HttpResponseFor<SpeechCreateResponse> = create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(requestOptions: RequestOptions): HttpResponseFor<SpeechCreateResponse> =
             create(SpeechCreateParams.none(), requestOptions)

@@ -31,18 +31,18 @@ interface RerankServiceAsync {
     /** Rerank */
     fun create(): CompletableFuture<RerankCreateResponse> = create(RerankCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: RerankCreateParams = RerankCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<RerankCreateResponse>
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: RerankCreateParams = RerankCreateParams.none()
     ): CompletableFuture<RerankCreateResponse> = create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): CompletableFuture<RerankCreateResponse> =
         create(RerankCreateParams.none(), requestOptions)
 
@@ -50,18 +50,18 @@ interface RerankServiceAsync {
     fun createV1(): CompletableFuture<RerankCreateV1Response> =
         createV1(RerankCreateV1Params.none())
 
-    /** @see [createV1] */
+    /** @see createV1 */
     fun createV1(
         params: RerankCreateV1Params = RerankCreateV1Params.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<RerankCreateV1Response>
 
-    /** @see [createV1] */
+    /** @see createV1 */
     fun createV1(
         params: RerankCreateV1Params = RerankCreateV1Params.none()
     ): CompletableFuture<RerankCreateV1Response> = createV1(params, RequestOptions.none())
 
-    /** @see [createV1] */
+    /** @see createV1 */
     fun createV1(requestOptions: RequestOptions): CompletableFuture<RerankCreateV1Response> =
         createV1(RerankCreateV1Params.none(), requestOptions)
 
@@ -69,18 +69,18 @@ interface RerankServiceAsync {
     fun createV2(): CompletableFuture<RerankCreateV2Response> =
         createV2(RerankCreateV2Params.none())
 
-    /** @see [createV2] */
+    /** @see createV2 */
     fun createV2(
         params: RerankCreateV2Params = RerankCreateV2Params.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<RerankCreateV2Response>
 
-    /** @see [createV2] */
+    /** @see createV2 */
     fun createV2(
         params: RerankCreateV2Params = RerankCreateV2Params.none()
     ): CompletableFuture<RerankCreateV2Response> = createV2(params, RequestOptions.none())
 
-    /** @see [createV2] */
+    /** @see createV2 */
     fun createV2(requestOptions: RequestOptions): CompletableFuture<RerankCreateV2Response> =
         createV2(RerankCreateV2Params.none(), requestOptions)
 
@@ -105,19 +105,19 @@ interface RerankServiceAsync {
         fun create(): CompletableFuture<HttpResponseFor<RerankCreateResponse>> =
             create(RerankCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: RerankCreateParams = RerankCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<RerankCreateResponse>>
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: RerankCreateParams = RerankCreateParams.none()
         ): CompletableFuture<HttpResponseFor<RerankCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<RerankCreateResponse>> =
@@ -130,19 +130,19 @@ interface RerankServiceAsync {
         fun createV1(): CompletableFuture<HttpResponseFor<RerankCreateV1Response>> =
             createV1(RerankCreateV1Params.none())
 
-        /** @see [createV1] */
+        /** @see createV1 */
         fun createV1(
             params: RerankCreateV1Params = RerankCreateV1Params.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<RerankCreateV1Response>>
 
-        /** @see [createV1] */
+        /** @see createV1 */
         fun createV1(
             params: RerankCreateV1Params = RerankCreateV1Params.none()
         ): CompletableFuture<HttpResponseFor<RerankCreateV1Response>> =
             createV1(params, RequestOptions.none())
 
-        /** @see [createV1] */
+        /** @see createV1 */
         fun createV1(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<RerankCreateV1Response>> =
@@ -155,19 +155,19 @@ interface RerankServiceAsync {
         fun createV2(): CompletableFuture<HttpResponseFor<RerankCreateV2Response>> =
             createV2(RerankCreateV2Params.none())
 
-        /** @see [createV2] */
+        /** @see createV2 */
         fun createV2(
             params: RerankCreateV2Params = RerankCreateV2Params.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<RerankCreateV2Response>>
 
-        /** @see [createV2] */
+        /** @see createV2 */
         fun createV2(
             params: RerankCreateV2Params = RerankCreateV2Params.none()
         ): CompletableFuture<HttpResponseFor<RerankCreateV2Response>> =
             createV2(params, RequestOptions.none())
 
-        /** @see [createV2] */
+        /** @see createV2 */
         fun createV2(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<RerankCreateV2Response>> =

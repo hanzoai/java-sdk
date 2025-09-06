@@ -39,30 +39,30 @@ interface CancelService {
      */
     fun cancel(batchId: String): CancelCancelResponse = cancel(batchId, CancelCancelParams.none())
 
-    /** @see [cancel] */
+    /** @see cancel */
     fun cancel(
         batchId: String,
         params: CancelCancelParams = CancelCancelParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CancelCancelResponse = cancel(params.toBuilder().batchId(batchId).build(), requestOptions)
 
-    /** @see [cancel] */
+    /** @see cancel */
     fun cancel(
         batchId: String,
         params: CancelCancelParams = CancelCancelParams.none(),
     ): CancelCancelResponse = cancel(batchId, params, RequestOptions.none())
 
-    /** @see [cancel] */
+    /** @see cancel */
     fun cancel(
         params: CancelCancelParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CancelCancelResponse
 
-    /** @see [cancel] */
+    /** @see cancel */
     fun cancel(params: CancelCancelParams): CancelCancelResponse =
         cancel(params, RequestOptions.none())
 
-    /** @see [cancel] */
+    /** @see cancel */
     fun cancel(batchId: String, requestOptions: RequestOptions): CancelCancelResponse =
         cancel(batchId, CancelCancelParams.none(), requestOptions)
 
@@ -84,7 +84,7 @@ interface CancelService {
         fun cancel(batchId: String): HttpResponseFor<CancelCancelResponse> =
             cancel(batchId, CancelCancelParams.none())
 
-        /** @see [cancel] */
+        /** @see cancel */
         @MustBeClosed
         fun cancel(
             batchId: String,
@@ -93,26 +93,26 @@ interface CancelService {
         ): HttpResponseFor<CancelCancelResponse> =
             cancel(params.toBuilder().batchId(batchId).build(), requestOptions)
 
-        /** @see [cancel] */
+        /** @see cancel */
         @MustBeClosed
         fun cancel(
             batchId: String,
             params: CancelCancelParams = CancelCancelParams.none(),
         ): HttpResponseFor<CancelCancelResponse> = cancel(batchId, params, RequestOptions.none())
 
-        /** @see [cancel] */
+        /** @see cancel */
         @MustBeClosed
         fun cancel(
             params: CancelCancelParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<CancelCancelResponse>
 
-        /** @see [cancel] */
+        /** @see cancel */
         @MustBeClosed
         fun cancel(params: CancelCancelParams): HttpResponseFor<CancelCancelResponse> =
             cancel(params, RequestOptions.none())
 
-        /** @see [cancel] */
+        /** @see cancel */
         @MustBeClosed
         fun cancel(
             batchId: String,

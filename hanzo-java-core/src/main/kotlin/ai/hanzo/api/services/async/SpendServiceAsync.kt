@@ -79,19 +79,19 @@ interface SpendServiceAsync {
     fun calculateSpend(): CompletableFuture<SpendCalculateSpendResponse> =
         calculateSpend(SpendCalculateSpendParams.none())
 
-    /** @see [calculateSpend] */
+    /** @see calculateSpend */
     fun calculateSpend(
         params: SpendCalculateSpendParams = SpendCalculateSpendParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<SpendCalculateSpendResponse>
 
-    /** @see [calculateSpend] */
+    /** @see calculateSpend */
     fun calculateSpend(
         params: SpendCalculateSpendParams = SpendCalculateSpendParams.none()
     ): CompletableFuture<SpendCalculateSpendResponse> =
         calculateSpend(params, RequestOptions.none())
 
-    /** @see [calculateSpend] */
+    /** @see calculateSpend */
     fun calculateSpend(
         requestOptions: RequestOptions
     ): CompletableFuture<SpendCalculateSpendResponse> =
@@ -128,18 +128,18 @@ interface SpendServiceAsync {
     fun listLogs(): CompletableFuture<List<SpendListLogsResponse>> =
         listLogs(SpendListLogsParams.none())
 
-    /** @see [listLogs] */
+    /** @see listLogs */
     fun listLogs(
         params: SpendListLogsParams = SpendListLogsParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<List<SpendListLogsResponse>>
 
-    /** @see [listLogs] */
+    /** @see listLogs */
     fun listLogs(
         params: SpendListLogsParams = SpendListLogsParams.none()
     ): CompletableFuture<List<SpendListLogsResponse>> = listLogs(params, RequestOptions.none())
 
-    /** @see [listLogs] */
+    /** @see listLogs */
     fun listLogs(requestOptions: RequestOptions): CompletableFuture<List<SpendListLogsResponse>> =
         listLogs(SpendListLogsParams.none(), requestOptions)
 
@@ -160,18 +160,18 @@ interface SpendServiceAsync {
     fun listTags(): CompletableFuture<List<SpendListTagsResponse>> =
         listTags(SpendListTagsParams.none())
 
-    /** @see [listTags] */
+    /** @see listTags */
     fun listTags(
         params: SpendListTagsParams = SpendListTagsParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<List<SpendListTagsResponse>>
 
-    /** @see [listTags] */
+    /** @see listTags */
     fun listTags(
         params: SpendListTagsParams = SpendListTagsParams.none()
     ): CompletableFuture<List<SpendListTagsResponse>> = listTags(params, RequestOptions.none())
 
-    /** @see [listTags] */
+    /** @see listTags */
     fun listTags(requestOptions: RequestOptions): CompletableFuture<List<SpendListTagsResponse>> =
         listTags(SpendListTagsParams.none(), requestOptions)
 
@@ -194,19 +194,19 @@ interface SpendServiceAsync {
         fun calculateSpend(): CompletableFuture<HttpResponseFor<SpendCalculateSpendResponse>> =
             calculateSpend(SpendCalculateSpendParams.none())
 
-        /** @see [calculateSpend] */
+        /** @see calculateSpend */
         fun calculateSpend(
             params: SpendCalculateSpendParams = SpendCalculateSpendParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<SpendCalculateSpendResponse>>
 
-        /** @see [calculateSpend] */
+        /** @see calculateSpend */
         fun calculateSpend(
             params: SpendCalculateSpendParams = SpendCalculateSpendParams.none()
         ): CompletableFuture<HttpResponseFor<SpendCalculateSpendResponse>> =
             calculateSpend(params, RequestOptions.none())
 
-        /** @see [calculateSpend] */
+        /** @see calculateSpend */
         fun calculateSpend(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<SpendCalculateSpendResponse>> =
@@ -219,19 +219,19 @@ interface SpendServiceAsync {
         fun listLogs(): CompletableFuture<HttpResponseFor<List<SpendListLogsResponse>>> =
             listLogs(SpendListLogsParams.none())
 
-        /** @see [listLogs] */
+        /** @see listLogs */
         fun listLogs(
             params: SpendListLogsParams = SpendListLogsParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<List<SpendListLogsResponse>>>
 
-        /** @see [listLogs] */
+        /** @see listLogs */
         fun listLogs(
             params: SpendListLogsParams = SpendListLogsParams.none()
         ): CompletableFuture<HttpResponseFor<List<SpendListLogsResponse>>> =
             listLogs(params, RequestOptions.none())
 
-        /** @see [listLogs] */
+        /** @see listLogs */
         fun listLogs(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<List<SpendListLogsResponse>>> =
@@ -244,19 +244,19 @@ interface SpendServiceAsync {
         fun listTags(): CompletableFuture<HttpResponseFor<List<SpendListTagsResponse>>> =
             listTags(SpendListTagsParams.none())
 
-        /** @see [listTags] */
+        /** @see listTags */
         fun listTags(
             params: SpendListTagsParams = SpendListTagsParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<List<SpendListTagsResponse>>>
 
-        /** @see [listTags] */
+        /** @see listTags */
         fun listTags(
             params: SpendListTagsParams = SpendListTagsParams.none()
         ): CompletableFuture<HttpResponseFor<List<SpendListTagsResponse>>> =
             listTags(params, RequestOptions.none())
 
-        /** @see [listTags] */
+        /** @see listTags */
         fun listTags(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<List<SpendListTagsResponse>>> =

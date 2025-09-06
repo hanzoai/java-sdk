@@ -5,12 +5,10 @@ package ai.hanzo.api.models.key
 import ai.hanzo.api.core.http.Headers
 import kotlin.jvm.optionals.getOrNull
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 internal class KeyDeleteParamsTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun create() {
         KeyDeleteParams.builder()
@@ -20,7 +18,6 @@ internal class KeyDeleteParamsTest {
             .build()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun headers() {
         val params =
@@ -36,7 +33,6 @@ internal class KeyDeleteParamsTest {
             .isEqualTo(Headers.builder().put("llm-changed-by", "llm-changed-by").build())
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun headersWithoutOptionalFields() {
         val params = KeyDeleteParams.builder().build()
@@ -46,7 +42,6 @@ internal class KeyDeleteParamsTest {
         assertThat(headers).isEqualTo(Headers.builder().build())
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun body() {
         val params =
@@ -62,7 +57,6 @@ internal class KeyDeleteParamsTest {
         assertThat(body.keys().getOrNull()).containsExactly("string")
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun bodyWithoutOptionalFields() {
         val params = KeyDeleteParams.builder().build()

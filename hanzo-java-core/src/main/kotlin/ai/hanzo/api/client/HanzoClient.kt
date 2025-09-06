@@ -192,17 +192,17 @@ interface HanzoClient {
     /** Home */
     fun getHome(): ClientGetHomeResponse = getHome(ClientGetHomeParams.none())
 
-    /** @see [getHome] */
+    /** @see getHome */
     fun getHome(
         params: ClientGetHomeParams = ClientGetHomeParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): ClientGetHomeResponse
 
-    /** @see [getHome] */
+    /** @see getHome */
     fun getHome(params: ClientGetHomeParams = ClientGetHomeParams.none()): ClientGetHomeResponse =
         getHome(params, RequestOptions.none())
 
-    /** @see [getHome] */
+    /** @see getHome */
     fun getHome(requestOptions: RequestOptions): ClientGetHomeResponse =
         getHome(ClientGetHomeParams.none(), requestOptions)
 
@@ -332,20 +332,20 @@ interface HanzoClient {
         @MustBeClosed
         fun getHome(): HttpResponseFor<ClientGetHomeResponse> = getHome(ClientGetHomeParams.none())
 
-        /** @see [getHome] */
+        /** @see getHome */
         @MustBeClosed
         fun getHome(
             params: ClientGetHomeParams = ClientGetHomeParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<ClientGetHomeResponse>
 
-        /** @see [getHome] */
+        /** @see getHome */
         @MustBeClosed
         fun getHome(
             params: ClientGetHomeParams = ClientGetHomeParams.none()
         ): HttpResponseFor<ClientGetHomeResponse> = getHome(params, RequestOptions.none())
 
-        /** @see [getHome] */
+        /** @see getHome */
         @MustBeClosed
         fun getHome(requestOptions: RequestOptions): HttpResponseFor<ClientGetHomeResponse> =
             getHome(ClientGetHomeParams.none(), requestOptions)

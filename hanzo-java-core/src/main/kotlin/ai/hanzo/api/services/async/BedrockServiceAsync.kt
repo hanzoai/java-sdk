@@ -36,7 +36,7 @@ interface BedrockServiceAsync {
     fun create(endpoint: String): CompletableFuture<BedrockCreateResponse> =
         create(endpoint, BedrockCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         params: BedrockCreateParams = BedrockCreateParams.none(),
@@ -44,23 +44,23 @@ interface BedrockServiceAsync {
     ): CompletableFuture<BedrockCreateResponse> =
         create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         params: BedrockCreateParams = BedrockCreateParams.none(),
     ): CompletableFuture<BedrockCreateResponse> = create(endpoint, params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: BedrockCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<BedrockCreateResponse>
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: BedrockCreateParams): CompletableFuture<BedrockCreateResponse> =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -71,7 +71,7 @@ interface BedrockServiceAsync {
     fun retrieve(endpoint: String): CompletableFuture<BedrockRetrieveResponse> =
         retrieve(endpoint, BedrockRetrieveParams.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         endpoint: String,
         params: BedrockRetrieveParams = BedrockRetrieveParams.none(),
@@ -79,24 +79,24 @@ interface BedrockServiceAsync {
     ): CompletableFuture<BedrockRetrieveResponse> =
         retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         endpoint: String,
         params: BedrockRetrieveParams = BedrockRetrieveParams.none(),
     ): CompletableFuture<BedrockRetrieveResponse> =
         retrieve(endpoint, params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: BedrockRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<BedrockRetrieveResponse>
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(params: BedrockRetrieveParams): CompletableFuture<BedrockRetrieveResponse> =
         retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -107,7 +107,7 @@ interface BedrockServiceAsync {
     fun update(endpoint: String): CompletableFuture<BedrockUpdateResponse> =
         update(endpoint, BedrockUpdateParams.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         params: BedrockUpdateParams = BedrockUpdateParams.none(),
@@ -115,23 +115,23 @@ interface BedrockServiceAsync {
     ): CompletableFuture<BedrockUpdateResponse> =
         update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         params: BedrockUpdateParams = BedrockUpdateParams.none(),
     ): CompletableFuture<BedrockUpdateResponse> = update(endpoint, params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: BedrockUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<BedrockUpdateResponse>
 
-    /** @see [update] */
+    /** @see update */
     fun update(params: BedrockUpdateParams): CompletableFuture<BedrockUpdateResponse> =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -142,7 +142,7 @@ interface BedrockServiceAsync {
     fun delete(endpoint: String): CompletableFuture<BedrockDeleteResponse> =
         delete(endpoint, BedrockDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         params: BedrockDeleteParams = BedrockDeleteParams.none(),
@@ -150,23 +150,23 @@ interface BedrockServiceAsync {
     ): CompletableFuture<BedrockDeleteResponse> =
         delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         params: BedrockDeleteParams = BedrockDeleteParams.none(),
     ): CompletableFuture<BedrockDeleteResponse> = delete(endpoint, params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: BedrockDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<BedrockDeleteResponse>
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: BedrockDeleteParams): CompletableFuture<BedrockDeleteResponse> =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -177,7 +177,7 @@ interface BedrockServiceAsync {
     fun patch(endpoint: String): CompletableFuture<BedrockPatchResponse> =
         patch(endpoint, BedrockPatchParams.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         endpoint: String,
         params: BedrockPatchParams = BedrockPatchParams.none(),
@@ -185,23 +185,23 @@ interface BedrockServiceAsync {
     ): CompletableFuture<BedrockPatchResponse> =
         patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         endpoint: String,
         params: BedrockPatchParams = BedrockPatchParams.none(),
     ): CompletableFuture<BedrockPatchResponse> = patch(endpoint, params, RequestOptions.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         params: BedrockPatchParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<BedrockPatchResponse>
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(params: BedrockPatchParams): CompletableFuture<BedrockPatchResponse> =
         patch(params, RequestOptions.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -229,7 +229,7 @@ interface BedrockServiceAsync {
         fun create(endpoint: String): CompletableFuture<HttpResponseFor<BedrockCreateResponse>> =
             create(endpoint, BedrockCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             endpoint: String,
             params: BedrockCreateParams = BedrockCreateParams.none(),
@@ -237,26 +237,26 @@ interface BedrockServiceAsync {
         ): CompletableFuture<HttpResponseFor<BedrockCreateResponse>> =
             create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             endpoint: String,
             params: BedrockCreateParams = BedrockCreateParams.none(),
         ): CompletableFuture<HttpResponseFor<BedrockCreateResponse>> =
             create(endpoint, params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: BedrockCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<BedrockCreateResponse>>
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: BedrockCreateParams
         ): CompletableFuture<HttpResponseFor<BedrockCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -272,7 +272,7 @@ interface BedrockServiceAsync {
         ): CompletableFuture<HttpResponseFor<BedrockRetrieveResponse>> =
             retrieve(endpoint, BedrockRetrieveParams.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             endpoint: String,
             params: BedrockRetrieveParams = BedrockRetrieveParams.none(),
@@ -280,26 +280,26 @@ interface BedrockServiceAsync {
         ): CompletableFuture<HttpResponseFor<BedrockRetrieveResponse>> =
             retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             endpoint: String,
             params: BedrockRetrieveParams = BedrockRetrieveParams.none(),
         ): CompletableFuture<HttpResponseFor<BedrockRetrieveResponse>> =
             retrieve(endpoint, params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: BedrockRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<BedrockRetrieveResponse>>
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: BedrockRetrieveParams
         ): CompletableFuture<HttpResponseFor<BedrockRetrieveResponse>> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -313,7 +313,7 @@ interface BedrockServiceAsync {
         fun update(endpoint: String): CompletableFuture<HttpResponseFor<BedrockUpdateResponse>> =
             update(endpoint, BedrockUpdateParams.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             endpoint: String,
             params: BedrockUpdateParams = BedrockUpdateParams.none(),
@@ -321,26 +321,26 @@ interface BedrockServiceAsync {
         ): CompletableFuture<HttpResponseFor<BedrockUpdateResponse>> =
             update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             endpoint: String,
             params: BedrockUpdateParams = BedrockUpdateParams.none(),
         ): CompletableFuture<HttpResponseFor<BedrockUpdateResponse>> =
             update(endpoint, params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: BedrockUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<BedrockUpdateResponse>>
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: BedrockUpdateParams
         ): CompletableFuture<HttpResponseFor<BedrockUpdateResponse>> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -354,7 +354,7 @@ interface BedrockServiceAsync {
         fun delete(endpoint: String): CompletableFuture<HttpResponseFor<BedrockDeleteResponse>> =
             delete(endpoint, BedrockDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             endpoint: String,
             params: BedrockDeleteParams = BedrockDeleteParams.none(),
@@ -362,26 +362,26 @@ interface BedrockServiceAsync {
         ): CompletableFuture<HttpResponseFor<BedrockDeleteResponse>> =
             delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             endpoint: String,
             params: BedrockDeleteParams = BedrockDeleteParams.none(),
         ): CompletableFuture<HttpResponseFor<BedrockDeleteResponse>> =
             delete(endpoint, params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: BedrockDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<BedrockDeleteResponse>>
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: BedrockDeleteParams
         ): CompletableFuture<HttpResponseFor<BedrockDeleteResponse>> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -395,7 +395,7 @@ interface BedrockServiceAsync {
         fun patch(endpoint: String): CompletableFuture<HttpResponseFor<BedrockPatchResponse>> =
             patch(endpoint, BedrockPatchParams.none())
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             endpoint: String,
             params: BedrockPatchParams = BedrockPatchParams.none(),
@@ -403,26 +403,26 @@ interface BedrockServiceAsync {
         ): CompletableFuture<HttpResponseFor<BedrockPatchResponse>> =
             patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             endpoint: String,
             params: BedrockPatchParams = BedrockPatchParams.none(),
         ): CompletableFuture<HttpResponseFor<BedrockPatchResponse>> =
             patch(endpoint, params, RequestOptions.none())
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             params: BedrockPatchParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<BedrockPatchResponse>>
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             params: BedrockPatchParams
         ): CompletableFuture<HttpResponseFor<BedrockPatchResponse>> =
             patch(params, RequestOptions.none())
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             endpoint: String,
             requestOptions: RequestOptions,

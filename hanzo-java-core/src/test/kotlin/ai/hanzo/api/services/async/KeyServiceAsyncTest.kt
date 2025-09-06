@@ -24,7 +24,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 @ExtendWith(TestServerExtension::class)
 internal class KeyServiceAsyncTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun update() {
         val client =
@@ -72,7 +72,7 @@ internal class KeyServiceAsyncTest {
         key.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun list() {
         val client =
@@ -100,7 +100,7 @@ internal class KeyServiceAsyncTest {
         keys.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun delete() {
         val client =
@@ -123,7 +123,7 @@ internal class KeyServiceAsyncTest {
         key.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun block() {
         val client =
@@ -146,7 +146,7 @@ internal class KeyServiceAsyncTest {
         unwrappedResponse?.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun checkHealth() {
         val client =
@@ -162,7 +162,7 @@ internal class KeyServiceAsyncTest {
         response.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun generate() {
         val client =
@@ -210,7 +210,7 @@ internal class KeyServiceAsyncTest {
         generateKeyResponse.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun regenerateByKey() {
         val client =
@@ -265,7 +265,7 @@ internal class KeyServiceAsyncTest {
         unwrappedGenerateKeyResponse?.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun retrieveInfo() {
         val client =
@@ -282,7 +282,7 @@ internal class KeyServiceAsyncTest {
         response.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun unblock() {
         val client =

@@ -87,7 +87,7 @@ interface CustomerServiceAsync {
     fun create(params: CustomerCreateParams): CompletableFuture<CustomerCreateResponse> =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: CustomerCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -120,7 +120,7 @@ interface CustomerServiceAsync {
     fun update(params: CustomerUpdateParams): CompletableFuture<CustomerUpdateResponse> =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: CustomerUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -136,18 +136,18 @@ interface CustomerServiceAsync {
      */
     fun list(): CompletableFuture<List<CustomerListResponse>> = list(CustomerListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: CustomerListParams = CustomerListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<List<CustomerListResponse>>
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: CustomerListParams = CustomerListParams.none()
     ): CompletableFuture<List<CustomerListResponse>> = list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): CompletableFuture<List<CustomerListResponse>> =
         list(CustomerListParams.none(), requestOptions)
 
@@ -169,7 +169,7 @@ interface CustomerServiceAsync {
     fun delete(params: CustomerDeleteParams): CompletableFuture<CustomerDeleteResponse> =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: CustomerDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -189,7 +189,7 @@ interface CustomerServiceAsync {
     fun block(params: CustomerBlockParams): CompletableFuture<CustomerBlockResponse> =
         block(params, RequestOptions.none())
 
-    /** @see [block] */
+    /** @see block */
     fun block(
         params: CustomerBlockParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -210,7 +210,7 @@ interface CustomerServiceAsync {
         params: CustomerRetrieveInfoParams
     ): CompletableFuture<CustomerRetrieveInfoResponse> = retrieveInfo(params, RequestOptions.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: CustomerRetrieveInfoParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -232,7 +232,7 @@ interface CustomerServiceAsync {
     fun unblock(params: CustomerUnblockParams): CompletableFuture<CustomerUnblockResponse> =
         unblock(params, RequestOptions.none())
 
-    /** @see [unblock] */
+    /** @see unblock */
     fun unblock(
         params: CustomerUnblockParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -261,7 +261,7 @@ interface CustomerServiceAsync {
         ): CompletableFuture<HttpResponseFor<CustomerCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: CustomerCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -276,7 +276,7 @@ interface CustomerServiceAsync {
         ): CompletableFuture<HttpResponseFor<CustomerUpdateResponse>> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: CustomerUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -289,19 +289,19 @@ interface CustomerServiceAsync {
         fun list(): CompletableFuture<HttpResponseFor<List<CustomerListResponse>>> =
             list(CustomerListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: CustomerListParams = CustomerListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<List<CustomerListResponse>>>
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             params: CustomerListParams = CustomerListParams.none()
         ): CompletableFuture<HttpResponseFor<List<CustomerListResponse>>> =
             list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         fun list(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<List<CustomerListResponse>>> =
@@ -316,7 +316,7 @@ interface CustomerServiceAsync {
         ): CompletableFuture<HttpResponseFor<CustomerDeleteResponse>> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: CustomerDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -331,7 +331,7 @@ interface CustomerServiceAsync {
         ): CompletableFuture<HttpResponseFor<CustomerBlockResponse>> =
             block(params, RequestOptions.none())
 
-        /** @see [block] */
+        /** @see block */
         fun block(
             params: CustomerBlockParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -346,7 +346,7 @@ interface CustomerServiceAsync {
         ): CompletableFuture<HttpResponseFor<CustomerRetrieveInfoResponse>> =
             retrieveInfo(params, RequestOptions.none())
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         fun retrieveInfo(
             params: CustomerRetrieveInfoParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -361,7 +361,7 @@ interface CustomerServiceAsync {
         ): CompletableFuture<HttpResponseFor<CustomerUnblockResponse>> =
             unblock(params, RequestOptions.none())
 
-        /** @see [unblock] */
+        /** @see unblock */
         fun unblock(
             params: CustomerUnblockParams,
             requestOptions: RequestOptions = RequestOptions.none(),

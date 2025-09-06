@@ -36,7 +36,7 @@ interface CohereServiceAsync {
     fun create(endpoint: String): CompletableFuture<CohereCreateResponse> =
         create(endpoint, CohereCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         params: CohereCreateParams = CohereCreateParams.none(),
@@ -44,23 +44,23 @@ interface CohereServiceAsync {
     ): CompletableFuture<CohereCreateResponse> =
         create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         params: CohereCreateParams = CohereCreateParams.none(),
     ): CompletableFuture<CohereCreateResponse> = create(endpoint, params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: CohereCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CohereCreateResponse>
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: CohereCreateParams): CompletableFuture<CohereCreateResponse> =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -71,7 +71,7 @@ interface CohereServiceAsync {
     fun retrieve(endpoint: String): CompletableFuture<CohereRetrieveResponse> =
         retrieve(endpoint, CohereRetrieveParams.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         endpoint: String,
         params: CohereRetrieveParams = CohereRetrieveParams.none(),
@@ -79,23 +79,23 @@ interface CohereServiceAsync {
     ): CompletableFuture<CohereRetrieveResponse> =
         retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         endpoint: String,
         params: CohereRetrieveParams = CohereRetrieveParams.none(),
     ): CompletableFuture<CohereRetrieveResponse> = retrieve(endpoint, params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: CohereRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CohereRetrieveResponse>
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(params: CohereRetrieveParams): CompletableFuture<CohereRetrieveResponse> =
         retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -106,7 +106,7 @@ interface CohereServiceAsync {
     fun update(endpoint: String): CompletableFuture<CohereUpdateResponse> =
         update(endpoint, CohereUpdateParams.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         params: CohereUpdateParams = CohereUpdateParams.none(),
@@ -114,23 +114,23 @@ interface CohereServiceAsync {
     ): CompletableFuture<CohereUpdateResponse> =
         update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         params: CohereUpdateParams = CohereUpdateParams.none(),
     ): CompletableFuture<CohereUpdateResponse> = update(endpoint, params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: CohereUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CohereUpdateResponse>
 
-    /** @see [update] */
+    /** @see update */
     fun update(params: CohereUpdateParams): CompletableFuture<CohereUpdateResponse> =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -141,7 +141,7 @@ interface CohereServiceAsync {
     fun delete(endpoint: String): CompletableFuture<CohereDeleteResponse> =
         delete(endpoint, CohereDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         params: CohereDeleteParams = CohereDeleteParams.none(),
@@ -149,23 +149,23 @@ interface CohereServiceAsync {
     ): CompletableFuture<CohereDeleteResponse> =
         delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         params: CohereDeleteParams = CohereDeleteParams.none(),
     ): CompletableFuture<CohereDeleteResponse> = delete(endpoint, params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: CohereDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CohereDeleteResponse>
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: CohereDeleteParams): CompletableFuture<CohereDeleteResponse> =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -176,7 +176,7 @@ interface CohereServiceAsync {
     fun modify(endpoint: String): CompletableFuture<CohereModifyResponse> =
         modify(endpoint, CohereModifyParams.none())
 
-    /** @see [modify] */
+    /** @see modify */
     fun modify(
         endpoint: String,
         params: CohereModifyParams = CohereModifyParams.none(),
@@ -184,23 +184,23 @@ interface CohereServiceAsync {
     ): CompletableFuture<CohereModifyResponse> =
         modify(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [modify] */
+    /** @see modify */
     fun modify(
         endpoint: String,
         params: CohereModifyParams = CohereModifyParams.none(),
     ): CompletableFuture<CohereModifyResponse> = modify(endpoint, params, RequestOptions.none())
 
-    /** @see [modify] */
+    /** @see modify */
     fun modify(
         params: CohereModifyParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CohereModifyResponse>
 
-    /** @see [modify] */
+    /** @see modify */
     fun modify(params: CohereModifyParams): CompletableFuture<CohereModifyResponse> =
         modify(params, RequestOptions.none())
 
-    /** @see [modify] */
+    /** @see modify */
     fun modify(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -228,7 +228,7 @@ interface CohereServiceAsync {
         fun create(endpoint: String): CompletableFuture<HttpResponseFor<CohereCreateResponse>> =
             create(endpoint, CohereCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             endpoint: String,
             params: CohereCreateParams = CohereCreateParams.none(),
@@ -236,26 +236,26 @@ interface CohereServiceAsync {
         ): CompletableFuture<HttpResponseFor<CohereCreateResponse>> =
             create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             endpoint: String,
             params: CohereCreateParams = CohereCreateParams.none(),
         ): CompletableFuture<HttpResponseFor<CohereCreateResponse>> =
             create(endpoint, params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: CohereCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<CohereCreateResponse>>
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: CohereCreateParams
         ): CompletableFuture<HttpResponseFor<CohereCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -269,7 +269,7 @@ interface CohereServiceAsync {
         fun retrieve(endpoint: String): CompletableFuture<HttpResponseFor<CohereRetrieveResponse>> =
             retrieve(endpoint, CohereRetrieveParams.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             endpoint: String,
             params: CohereRetrieveParams = CohereRetrieveParams.none(),
@@ -277,26 +277,26 @@ interface CohereServiceAsync {
         ): CompletableFuture<HttpResponseFor<CohereRetrieveResponse>> =
             retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             endpoint: String,
             params: CohereRetrieveParams = CohereRetrieveParams.none(),
         ): CompletableFuture<HttpResponseFor<CohereRetrieveResponse>> =
             retrieve(endpoint, params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: CohereRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<CohereRetrieveResponse>>
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: CohereRetrieveParams
         ): CompletableFuture<HttpResponseFor<CohereRetrieveResponse>> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -310,7 +310,7 @@ interface CohereServiceAsync {
         fun update(endpoint: String): CompletableFuture<HttpResponseFor<CohereUpdateResponse>> =
             update(endpoint, CohereUpdateParams.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             endpoint: String,
             params: CohereUpdateParams = CohereUpdateParams.none(),
@@ -318,26 +318,26 @@ interface CohereServiceAsync {
         ): CompletableFuture<HttpResponseFor<CohereUpdateResponse>> =
             update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             endpoint: String,
             params: CohereUpdateParams = CohereUpdateParams.none(),
         ): CompletableFuture<HttpResponseFor<CohereUpdateResponse>> =
             update(endpoint, params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: CohereUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<CohereUpdateResponse>>
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: CohereUpdateParams
         ): CompletableFuture<HttpResponseFor<CohereUpdateResponse>> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -351,7 +351,7 @@ interface CohereServiceAsync {
         fun delete(endpoint: String): CompletableFuture<HttpResponseFor<CohereDeleteResponse>> =
             delete(endpoint, CohereDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             endpoint: String,
             params: CohereDeleteParams = CohereDeleteParams.none(),
@@ -359,26 +359,26 @@ interface CohereServiceAsync {
         ): CompletableFuture<HttpResponseFor<CohereDeleteResponse>> =
             delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             endpoint: String,
             params: CohereDeleteParams = CohereDeleteParams.none(),
         ): CompletableFuture<HttpResponseFor<CohereDeleteResponse>> =
             delete(endpoint, params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: CohereDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<CohereDeleteResponse>>
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: CohereDeleteParams
         ): CompletableFuture<HttpResponseFor<CohereDeleteResponse>> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -392,7 +392,7 @@ interface CohereServiceAsync {
         fun modify(endpoint: String): CompletableFuture<HttpResponseFor<CohereModifyResponse>> =
             modify(endpoint, CohereModifyParams.none())
 
-        /** @see [modify] */
+        /** @see modify */
         fun modify(
             endpoint: String,
             params: CohereModifyParams = CohereModifyParams.none(),
@@ -400,26 +400,26 @@ interface CohereServiceAsync {
         ): CompletableFuture<HttpResponseFor<CohereModifyResponse>> =
             modify(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [modify] */
+        /** @see modify */
         fun modify(
             endpoint: String,
             params: CohereModifyParams = CohereModifyParams.none(),
         ): CompletableFuture<HttpResponseFor<CohereModifyResponse>> =
             modify(endpoint, params, RequestOptions.none())
 
-        /** @see [modify] */
+        /** @see modify */
         fun modify(
             params: CohereModifyParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<CohereModifyResponse>>
 
-        /** @see [modify] */
+        /** @see modify */
         fun modify(
             params: CohereModifyParams
         ): CompletableFuture<HttpResponseFor<CohereModifyResponse>> =
             modify(params, RequestOptions.none())
 
-        /** @see [modify] */
+        /** @see modify */
         fun modify(
             endpoint: String,
             requestOptions: RequestOptions,

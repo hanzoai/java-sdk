@@ -48,7 +48,7 @@ interface EngineServiceAsync {
     fun complete(model: String): CompletableFuture<EngineCompleteResponse> =
         complete(model, EngineCompleteParams.none())
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(
         model: String,
         params: EngineCompleteParams = EngineCompleteParams.none(),
@@ -56,23 +56,23 @@ interface EngineServiceAsync {
     ): CompletableFuture<EngineCompleteResponse> =
         complete(params.toBuilder().model(model).build(), requestOptions)
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(
         model: String,
         params: EngineCompleteParams = EngineCompleteParams.none(),
     ): CompletableFuture<EngineCompleteResponse> = complete(model, params, RequestOptions.none())
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(
         params: EngineCompleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<EngineCompleteResponse>
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(params: EngineCompleteParams): CompletableFuture<EngineCompleteResponse> =
         complete(params, RequestOptions.none())
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(
         model: String,
         requestOptions: RequestOptions,
@@ -96,7 +96,7 @@ interface EngineServiceAsync {
     fun embed(model: String): CompletableFuture<EngineEmbedResponse> =
         embed(model, EngineEmbedParams.none())
 
-    /** @see [embed] */
+    /** @see embed */
     fun embed(
         model: String,
         params: EngineEmbedParams = EngineEmbedParams.none(),
@@ -104,23 +104,23 @@ interface EngineServiceAsync {
     ): CompletableFuture<EngineEmbedResponse> =
         embed(params.toBuilder().model(model).build(), requestOptions)
 
-    /** @see [embed] */
+    /** @see embed */
     fun embed(
         model: String,
         params: EngineEmbedParams = EngineEmbedParams.none(),
     ): CompletableFuture<EngineEmbedResponse> = embed(model, params, RequestOptions.none())
 
-    /** @see [embed] */
+    /** @see embed */
     fun embed(
         params: EngineEmbedParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<EngineEmbedResponse>
 
-    /** @see [embed] */
+    /** @see embed */
     fun embed(params: EngineEmbedParams): CompletableFuture<EngineEmbedResponse> =
         embed(params, RequestOptions.none())
 
-    /** @see [embed] */
+    /** @see embed */
     fun embed(
         model: String,
         requestOptions: RequestOptions,
@@ -150,7 +150,7 @@ interface EngineServiceAsync {
         fun complete(model: String): CompletableFuture<HttpResponseFor<EngineCompleteResponse>> =
             complete(model, EngineCompleteParams.none())
 
-        /** @see [complete] */
+        /** @see complete */
         fun complete(
             model: String,
             params: EngineCompleteParams = EngineCompleteParams.none(),
@@ -158,26 +158,26 @@ interface EngineServiceAsync {
         ): CompletableFuture<HttpResponseFor<EngineCompleteResponse>> =
             complete(params.toBuilder().model(model).build(), requestOptions)
 
-        /** @see [complete] */
+        /** @see complete */
         fun complete(
             model: String,
             params: EngineCompleteParams = EngineCompleteParams.none(),
         ): CompletableFuture<HttpResponseFor<EngineCompleteResponse>> =
             complete(model, params, RequestOptions.none())
 
-        /** @see [complete] */
+        /** @see complete */
         fun complete(
             params: EngineCompleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<EngineCompleteResponse>>
 
-        /** @see [complete] */
+        /** @see complete */
         fun complete(
             params: EngineCompleteParams
         ): CompletableFuture<HttpResponseFor<EngineCompleteResponse>> =
             complete(params, RequestOptions.none())
 
-        /** @see [complete] */
+        /** @see complete */
         fun complete(
             model: String,
             requestOptions: RequestOptions,
@@ -191,7 +191,7 @@ interface EngineServiceAsync {
         fun embed(model: String): CompletableFuture<HttpResponseFor<EngineEmbedResponse>> =
             embed(model, EngineEmbedParams.none())
 
-        /** @see [embed] */
+        /** @see embed */
         fun embed(
             model: String,
             params: EngineEmbedParams = EngineEmbedParams.none(),
@@ -199,26 +199,26 @@ interface EngineServiceAsync {
         ): CompletableFuture<HttpResponseFor<EngineEmbedResponse>> =
             embed(params.toBuilder().model(model).build(), requestOptions)
 
-        /** @see [embed] */
+        /** @see embed */
         fun embed(
             model: String,
             params: EngineEmbedParams = EngineEmbedParams.none(),
         ): CompletableFuture<HttpResponseFor<EngineEmbedResponse>> =
             embed(model, params, RequestOptions.none())
 
-        /** @see [embed] */
+        /** @see embed */
         fun embed(
             params: EngineEmbedParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<EngineEmbedResponse>>
 
-        /** @see [embed] */
+        /** @see embed */
         fun embed(
             params: EngineEmbedParams
         ): CompletableFuture<HttpResponseFor<EngineEmbedResponse>> =
             embed(params, RequestOptions.none())
 
-        /** @see [embed] */
+        /** @see embed */
         fun embed(
             model: String,
             requestOptions: RequestOptions,

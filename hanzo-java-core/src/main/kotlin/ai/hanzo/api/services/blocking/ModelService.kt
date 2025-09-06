@@ -36,7 +36,7 @@ interface ModelService {
     fun create(params: ModelCreateParams): ModelCreateResponse =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: ModelCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -46,7 +46,7 @@ interface ModelService {
     fun delete(params: ModelDeleteParams): ModelDeleteResponse =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: ModelDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -74,7 +74,7 @@ interface ModelService {
         fun create(params: ModelCreateParams): HttpResponseFor<ModelCreateResponse> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: ModelCreateParams,
@@ -89,7 +89,7 @@ interface ModelService {
         fun delete(params: ModelDeleteParams): HttpResponseFor<ModelDeleteResponse> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: ModelDeleteParams,

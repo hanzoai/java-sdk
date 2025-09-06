@@ -28,7 +28,7 @@ interface DeleteService {
     fun createAllowedIp(params: DeleteCreateAllowedIpParams): DeleteCreateAllowedIpResponse =
         createAllowedIp(params, RequestOptions.none())
 
-    /** @see [createAllowedIp] */
+    /** @see createAllowedIp */
     fun createAllowedIp(
         params: DeleteCreateAllowedIpParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -54,7 +54,7 @@ interface DeleteService {
         ): HttpResponseFor<DeleteCreateAllowedIpResponse> =
             createAllowedIp(params, RequestOptions.none())
 
-        /** @see [createAllowedIp] */
+        /** @see createAllowedIp */
         @MustBeClosed
         fun createAllowedIp(
             params: DeleteCreateAllowedIpParams,

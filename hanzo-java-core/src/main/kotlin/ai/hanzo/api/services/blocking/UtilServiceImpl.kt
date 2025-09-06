@@ -3,13 +3,13 @@
 package ai.hanzo.api.services.blocking
 
 import ai.hanzo.api.core.ClientOptions
-import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.handlers.errorBodyHandler
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
-import ai.hanzo.api.core.handlers.withErrorHandler
 import ai.hanzo.api.core.http.HttpMethod
 import ai.hanzo.api.core.http.HttpRequest
+import ai.hanzo.api.core.http.HttpResponse
 import ai.hanzo.api.core.http.HttpResponse.Handler
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.core.http.json
@@ -58,7 +58,8 @@ class UtilServiceImpl internal constructor(private val clientOptions: ClientOpti
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
         UtilService.WithRawResponse {
 
-        private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+        private val errorHandler: Handler<HttpResponse> =
+            errorHandler(errorBodyHandler(clientOptions.jsonMapper))
 
         override fun withOptions(
             modifier: Consumer<ClientOptions.Builder>
@@ -69,7 +70,6 @@ class UtilServiceImpl internal constructor(private val clientOptions: ClientOpti
 
         private val getSupportedOpenAIParamsHandler: Handler<UtilGetSupportedOpenAIParamsResponse> =
             jsonHandler<UtilGetSupportedOpenAIParamsResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun getSupportedOpenAIParams(
             params: UtilGetSupportedOpenAIParamsParams,
@@ -84,7 +84,7 @@ class UtilServiceImpl internal constructor(private val clientOptions: ClientOpti
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { getSupportedOpenAIParamsHandler.handle(it) }
                     .also {
@@ -97,7 +97,6 @@ class UtilServiceImpl internal constructor(private val clientOptions: ClientOpti
 
         private val tokenCounterHandler: Handler<UtilTokenCounterResponse> =
             jsonHandler<UtilTokenCounterResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun tokenCounter(
             params: UtilTokenCounterParams,
@@ -113,7 +112,7 @@ class UtilServiceImpl internal constructor(private val clientOptions: ClientOpti
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { tokenCounterHandler.handle(it) }
                     .also {
@@ -126,7 +125,6 @@ class UtilServiceImpl internal constructor(private val clientOptions: ClientOpti
 
         private val transformRequestHandler: Handler<UtilTransformRequestResponse> =
             jsonHandler<UtilTransformRequestResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun transformRequest(
             params: UtilTransformRequestParams,
@@ -142,7 +140,7 @@ class UtilServiceImpl internal constructor(private val clientOptions: ClientOpti
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { transformRequestHandler.handle(it) }
                     .also {

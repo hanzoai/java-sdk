@@ -40,7 +40,7 @@ interface VertexAiServiceAsync {
     fun create(endpoint: String): CompletableFuture<VertexAiCreateResponse> =
         create(endpoint, VertexAiCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         params: VertexAiCreateParams = VertexAiCreateParams.none(),
@@ -48,23 +48,23 @@ interface VertexAiServiceAsync {
     ): CompletableFuture<VertexAiCreateResponse> =
         create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         params: VertexAiCreateParams = VertexAiCreateParams.none(),
     ): CompletableFuture<VertexAiCreateResponse> = create(endpoint, params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: VertexAiCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<VertexAiCreateResponse>
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: VertexAiCreateParams): CompletableFuture<VertexAiCreateResponse> =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -79,7 +79,7 @@ interface VertexAiServiceAsync {
     fun retrieve(endpoint: String): CompletableFuture<VertexAiRetrieveResponse> =
         retrieve(endpoint, VertexAiRetrieveParams.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         endpoint: String,
         params: VertexAiRetrieveParams = VertexAiRetrieveParams.none(),
@@ -87,24 +87,24 @@ interface VertexAiServiceAsync {
     ): CompletableFuture<VertexAiRetrieveResponse> =
         retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         endpoint: String,
         params: VertexAiRetrieveParams = VertexAiRetrieveParams.none(),
     ): CompletableFuture<VertexAiRetrieveResponse> =
         retrieve(endpoint, params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: VertexAiRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<VertexAiRetrieveResponse>
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(params: VertexAiRetrieveParams): CompletableFuture<VertexAiRetrieveResponse> =
         retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -119,7 +119,7 @@ interface VertexAiServiceAsync {
     fun update(endpoint: String): CompletableFuture<VertexAiUpdateResponse> =
         update(endpoint, VertexAiUpdateParams.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         params: VertexAiUpdateParams = VertexAiUpdateParams.none(),
@@ -127,23 +127,23 @@ interface VertexAiServiceAsync {
     ): CompletableFuture<VertexAiUpdateResponse> =
         update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         params: VertexAiUpdateParams = VertexAiUpdateParams.none(),
     ): CompletableFuture<VertexAiUpdateResponse> = update(endpoint, params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: VertexAiUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<VertexAiUpdateResponse>
 
-    /** @see [update] */
+    /** @see update */
     fun update(params: VertexAiUpdateParams): CompletableFuture<VertexAiUpdateResponse> =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -158,7 +158,7 @@ interface VertexAiServiceAsync {
     fun delete(endpoint: String): CompletableFuture<VertexAiDeleteResponse> =
         delete(endpoint, VertexAiDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         params: VertexAiDeleteParams = VertexAiDeleteParams.none(),
@@ -166,23 +166,23 @@ interface VertexAiServiceAsync {
     ): CompletableFuture<VertexAiDeleteResponse> =
         delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         params: VertexAiDeleteParams = VertexAiDeleteParams.none(),
     ): CompletableFuture<VertexAiDeleteResponse> = delete(endpoint, params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: VertexAiDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<VertexAiDeleteResponse>
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: VertexAiDeleteParams): CompletableFuture<VertexAiDeleteResponse> =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -197,7 +197,7 @@ interface VertexAiServiceAsync {
     fun patch(endpoint: String): CompletableFuture<VertexAiPatchResponse> =
         patch(endpoint, VertexAiPatchParams.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         endpoint: String,
         params: VertexAiPatchParams = VertexAiPatchParams.none(),
@@ -205,23 +205,23 @@ interface VertexAiServiceAsync {
     ): CompletableFuture<VertexAiPatchResponse> =
         patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         endpoint: String,
         params: VertexAiPatchParams = VertexAiPatchParams.none(),
     ): CompletableFuture<VertexAiPatchResponse> = patch(endpoint, params, RequestOptions.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         params: VertexAiPatchParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<VertexAiPatchResponse>
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(params: VertexAiPatchParams): CompletableFuture<VertexAiPatchResponse> =
         patch(params, RequestOptions.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -249,7 +249,7 @@ interface VertexAiServiceAsync {
         fun create(endpoint: String): CompletableFuture<HttpResponseFor<VertexAiCreateResponse>> =
             create(endpoint, VertexAiCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             endpoint: String,
             params: VertexAiCreateParams = VertexAiCreateParams.none(),
@@ -257,26 +257,26 @@ interface VertexAiServiceAsync {
         ): CompletableFuture<HttpResponseFor<VertexAiCreateResponse>> =
             create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             endpoint: String,
             params: VertexAiCreateParams = VertexAiCreateParams.none(),
         ): CompletableFuture<HttpResponseFor<VertexAiCreateResponse>> =
             create(endpoint, params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: VertexAiCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<VertexAiCreateResponse>>
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: VertexAiCreateParams
         ): CompletableFuture<HttpResponseFor<VertexAiCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -292,7 +292,7 @@ interface VertexAiServiceAsync {
         ): CompletableFuture<HttpResponseFor<VertexAiRetrieveResponse>> =
             retrieve(endpoint, VertexAiRetrieveParams.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             endpoint: String,
             params: VertexAiRetrieveParams = VertexAiRetrieveParams.none(),
@@ -300,26 +300,26 @@ interface VertexAiServiceAsync {
         ): CompletableFuture<HttpResponseFor<VertexAiRetrieveResponse>> =
             retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             endpoint: String,
             params: VertexAiRetrieveParams = VertexAiRetrieveParams.none(),
         ): CompletableFuture<HttpResponseFor<VertexAiRetrieveResponse>> =
             retrieve(endpoint, params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: VertexAiRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<VertexAiRetrieveResponse>>
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: VertexAiRetrieveParams
         ): CompletableFuture<HttpResponseFor<VertexAiRetrieveResponse>> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -333,7 +333,7 @@ interface VertexAiServiceAsync {
         fun update(endpoint: String): CompletableFuture<HttpResponseFor<VertexAiUpdateResponse>> =
             update(endpoint, VertexAiUpdateParams.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             endpoint: String,
             params: VertexAiUpdateParams = VertexAiUpdateParams.none(),
@@ -341,26 +341,26 @@ interface VertexAiServiceAsync {
         ): CompletableFuture<HttpResponseFor<VertexAiUpdateResponse>> =
             update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             endpoint: String,
             params: VertexAiUpdateParams = VertexAiUpdateParams.none(),
         ): CompletableFuture<HttpResponseFor<VertexAiUpdateResponse>> =
             update(endpoint, params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: VertexAiUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<VertexAiUpdateResponse>>
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: VertexAiUpdateParams
         ): CompletableFuture<HttpResponseFor<VertexAiUpdateResponse>> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -374,7 +374,7 @@ interface VertexAiServiceAsync {
         fun delete(endpoint: String): CompletableFuture<HttpResponseFor<VertexAiDeleteResponse>> =
             delete(endpoint, VertexAiDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             endpoint: String,
             params: VertexAiDeleteParams = VertexAiDeleteParams.none(),
@@ -382,26 +382,26 @@ interface VertexAiServiceAsync {
         ): CompletableFuture<HttpResponseFor<VertexAiDeleteResponse>> =
             delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             endpoint: String,
             params: VertexAiDeleteParams = VertexAiDeleteParams.none(),
         ): CompletableFuture<HttpResponseFor<VertexAiDeleteResponse>> =
             delete(endpoint, params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: VertexAiDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<VertexAiDeleteResponse>>
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: VertexAiDeleteParams
         ): CompletableFuture<HttpResponseFor<VertexAiDeleteResponse>> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -415,7 +415,7 @@ interface VertexAiServiceAsync {
         fun patch(endpoint: String): CompletableFuture<HttpResponseFor<VertexAiPatchResponse>> =
             patch(endpoint, VertexAiPatchParams.none())
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             endpoint: String,
             params: VertexAiPatchParams = VertexAiPatchParams.none(),
@@ -423,26 +423,26 @@ interface VertexAiServiceAsync {
         ): CompletableFuture<HttpResponseFor<VertexAiPatchResponse>> =
             patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             endpoint: String,
             params: VertexAiPatchParams = VertexAiPatchParams.none(),
         ): CompletableFuture<HttpResponseFor<VertexAiPatchResponse>> =
             patch(endpoint, params, RequestOptions.none())
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             params: VertexAiPatchParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<VertexAiPatchResponse>>
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             params: VertexAiPatchParams
         ): CompletableFuture<HttpResponseFor<VertexAiPatchResponse>> =
             patch(params, RequestOptions.none())
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             endpoint: String,
             requestOptions: RequestOptions,

@@ -41,7 +41,7 @@ interface OpenAIServiceAsync {
     fun create(endpoint: String): CompletableFuture<OpenAICreateResponse> =
         create(endpoint, OpenAICreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         params: OpenAICreateParams = OpenAICreateParams.none(),
@@ -49,23 +49,23 @@ interface OpenAIServiceAsync {
     ): CompletableFuture<OpenAICreateResponse> =
         create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         params: OpenAICreateParams = OpenAICreateParams.none(),
     ): CompletableFuture<OpenAICreateResponse> = create(endpoint, params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: OpenAICreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<OpenAICreateResponse>
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: OpenAICreateParams): CompletableFuture<OpenAICreateResponse> =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -78,7 +78,7 @@ interface OpenAIServiceAsync {
     fun retrieve(endpoint: String): CompletableFuture<OpenAIRetrieveResponse> =
         retrieve(endpoint, OpenAIRetrieveParams.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         endpoint: String,
         params: OpenAIRetrieveParams = OpenAIRetrieveParams.none(),
@@ -86,23 +86,23 @@ interface OpenAIServiceAsync {
     ): CompletableFuture<OpenAIRetrieveResponse> =
         retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         endpoint: String,
         params: OpenAIRetrieveParams = OpenAIRetrieveParams.none(),
     ): CompletableFuture<OpenAIRetrieveResponse> = retrieve(endpoint, params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: OpenAIRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<OpenAIRetrieveResponse>
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(params: OpenAIRetrieveParams): CompletableFuture<OpenAIRetrieveResponse> =
         retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -115,7 +115,7 @@ interface OpenAIServiceAsync {
     fun update(endpoint: String): CompletableFuture<OpenAIUpdateResponse> =
         update(endpoint, OpenAIUpdateParams.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         params: OpenAIUpdateParams = OpenAIUpdateParams.none(),
@@ -123,23 +123,23 @@ interface OpenAIServiceAsync {
     ): CompletableFuture<OpenAIUpdateResponse> =
         update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         params: OpenAIUpdateParams = OpenAIUpdateParams.none(),
     ): CompletableFuture<OpenAIUpdateResponse> = update(endpoint, params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: OpenAIUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<OpenAIUpdateResponse>
 
-    /** @see [update] */
+    /** @see update */
     fun update(params: OpenAIUpdateParams): CompletableFuture<OpenAIUpdateResponse> =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -152,7 +152,7 @@ interface OpenAIServiceAsync {
     fun delete(endpoint: String): CompletableFuture<OpenAIDeleteResponse> =
         delete(endpoint, OpenAIDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         params: OpenAIDeleteParams = OpenAIDeleteParams.none(),
@@ -160,23 +160,23 @@ interface OpenAIServiceAsync {
     ): CompletableFuture<OpenAIDeleteResponse> =
         delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         params: OpenAIDeleteParams = OpenAIDeleteParams.none(),
     ): CompletableFuture<OpenAIDeleteResponse> = delete(endpoint, params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: OpenAIDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<OpenAIDeleteResponse>
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: OpenAIDeleteParams): CompletableFuture<OpenAIDeleteResponse> =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -189,7 +189,7 @@ interface OpenAIServiceAsync {
     fun patch(endpoint: String): CompletableFuture<OpenAIPatchResponse> =
         patch(endpoint, OpenAIPatchParams.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         endpoint: String,
         params: OpenAIPatchParams = OpenAIPatchParams.none(),
@@ -197,23 +197,23 @@ interface OpenAIServiceAsync {
     ): CompletableFuture<OpenAIPatchResponse> =
         patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         endpoint: String,
         params: OpenAIPatchParams = OpenAIPatchParams.none(),
     ): CompletableFuture<OpenAIPatchResponse> = patch(endpoint, params, RequestOptions.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         params: OpenAIPatchParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<OpenAIPatchResponse>
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(params: OpenAIPatchParams): CompletableFuture<OpenAIPatchResponse> =
         patch(params, RequestOptions.none())
 
-    /** @see [patch] */
+    /** @see patch */
     fun patch(
         endpoint: String,
         requestOptions: RequestOptions,
@@ -243,7 +243,7 @@ interface OpenAIServiceAsync {
         fun create(endpoint: String): CompletableFuture<HttpResponseFor<OpenAICreateResponse>> =
             create(endpoint, OpenAICreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             endpoint: String,
             params: OpenAICreateParams = OpenAICreateParams.none(),
@@ -251,26 +251,26 @@ interface OpenAIServiceAsync {
         ): CompletableFuture<HttpResponseFor<OpenAICreateResponse>> =
             create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             endpoint: String,
             params: OpenAICreateParams = OpenAICreateParams.none(),
         ): CompletableFuture<HttpResponseFor<OpenAICreateResponse>> =
             create(endpoint, params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: OpenAICreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<OpenAICreateResponse>>
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: OpenAICreateParams
         ): CompletableFuture<HttpResponseFor<OpenAICreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -284,7 +284,7 @@ interface OpenAIServiceAsync {
         fun retrieve(endpoint: String): CompletableFuture<HttpResponseFor<OpenAIRetrieveResponse>> =
             retrieve(endpoint, OpenAIRetrieveParams.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             endpoint: String,
             params: OpenAIRetrieveParams = OpenAIRetrieveParams.none(),
@@ -292,26 +292,26 @@ interface OpenAIServiceAsync {
         ): CompletableFuture<HttpResponseFor<OpenAIRetrieveResponse>> =
             retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             endpoint: String,
             params: OpenAIRetrieveParams = OpenAIRetrieveParams.none(),
         ): CompletableFuture<HttpResponseFor<OpenAIRetrieveResponse>> =
             retrieve(endpoint, params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: OpenAIRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<OpenAIRetrieveResponse>>
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: OpenAIRetrieveParams
         ): CompletableFuture<HttpResponseFor<OpenAIRetrieveResponse>> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -325,7 +325,7 @@ interface OpenAIServiceAsync {
         fun update(endpoint: String): CompletableFuture<HttpResponseFor<OpenAIUpdateResponse>> =
             update(endpoint, OpenAIUpdateParams.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             endpoint: String,
             params: OpenAIUpdateParams = OpenAIUpdateParams.none(),
@@ -333,26 +333,26 @@ interface OpenAIServiceAsync {
         ): CompletableFuture<HttpResponseFor<OpenAIUpdateResponse>> =
             update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             endpoint: String,
             params: OpenAIUpdateParams = OpenAIUpdateParams.none(),
         ): CompletableFuture<HttpResponseFor<OpenAIUpdateResponse>> =
             update(endpoint, params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: OpenAIUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<OpenAIUpdateResponse>>
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: OpenAIUpdateParams
         ): CompletableFuture<HttpResponseFor<OpenAIUpdateResponse>> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -366,7 +366,7 @@ interface OpenAIServiceAsync {
         fun delete(endpoint: String): CompletableFuture<HttpResponseFor<OpenAIDeleteResponse>> =
             delete(endpoint, OpenAIDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             endpoint: String,
             params: OpenAIDeleteParams = OpenAIDeleteParams.none(),
@@ -374,26 +374,26 @@ interface OpenAIServiceAsync {
         ): CompletableFuture<HttpResponseFor<OpenAIDeleteResponse>> =
             delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             endpoint: String,
             params: OpenAIDeleteParams = OpenAIDeleteParams.none(),
         ): CompletableFuture<HttpResponseFor<OpenAIDeleteResponse>> =
             delete(endpoint, params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: OpenAIDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<OpenAIDeleteResponse>>
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: OpenAIDeleteParams
         ): CompletableFuture<HttpResponseFor<OpenAIDeleteResponse>> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             endpoint: String,
             requestOptions: RequestOptions,
@@ -407,7 +407,7 @@ interface OpenAIServiceAsync {
         fun patch(endpoint: String): CompletableFuture<HttpResponseFor<OpenAIPatchResponse>> =
             patch(endpoint, OpenAIPatchParams.none())
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             endpoint: String,
             params: OpenAIPatchParams = OpenAIPatchParams.none(),
@@ -415,26 +415,26 @@ interface OpenAIServiceAsync {
         ): CompletableFuture<HttpResponseFor<OpenAIPatchResponse>> =
             patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             endpoint: String,
             params: OpenAIPatchParams = OpenAIPatchParams.none(),
         ): CompletableFuture<HttpResponseFor<OpenAIPatchResponse>> =
             patch(endpoint, params, RequestOptions.none())
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             params: OpenAIPatchParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<OpenAIPatchResponse>>
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             params: OpenAIPatchParams
         ): CompletableFuture<HttpResponseFor<OpenAIPatchResponse>> =
             patch(params, RequestOptions.none())
 
-        /** @see [patch] */
+        /** @see patch */
         fun patch(
             endpoint: String,
             requestOptions: RequestOptions,

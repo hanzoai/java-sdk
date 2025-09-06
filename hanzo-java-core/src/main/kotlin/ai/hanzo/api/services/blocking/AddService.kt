@@ -28,7 +28,7 @@ interface AddService {
     fun addAllowedIp(params: AddAddAllowedIpParams): AddAddAllowedIpResponse =
         addAllowedIp(params, RequestOptions.none())
 
-    /** @see [addAllowedIp] */
+    /** @see addAllowedIp */
     fun addAllowedIp(
         params: AddAddAllowedIpParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -52,7 +52,7 @@ interface AddService {
         fun addAllowedIp(params: AddAddAllowedIpParams): HttpResponseFor<AddAddAllowedIpResponse> =
             addAllowedIp(params, RequestOptions.none())
 
-        /** @see [addAllowedIp] */
+        /** @see addAllowedIp */
         @MustBeClosed
         fun addAllowedIp(
             params: AddAddAllowedIpParams,

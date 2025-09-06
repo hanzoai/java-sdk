@@ -48,7 +48,7 @@ interface CallbackService {
     fun retrieve(teamId: String): CallbackRetrieveResponse =
         retrieve(teamId, CallbackRetrieveParams.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         teamId: String,
         params: CallbackRetrieveParams = CallbackRetrieveParams.none(),
@@ -56,23 +56,23 @@ interface CallbackService {
     ): CallbackRetrieveResponse =
         retrieve(params.toBuilder().teamId(teamId).build(), requestOptions)
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         teamId: String,
         params: CallbackRetrieveParams = CallbackRetrieveParams.none(),
     ): CallbackRetrieveResponse = retrieve(teamId, params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: CallbackRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CallbackRetrieveResponse
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(params: CallbackRetrieveParams): CallbackRetrieveResponse =
         retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(teamId: String, requestOptions: RequestOptions): CallbackRetrieveResponse =
         retrieve(teamId, CallbackRetrieveParams.none(), requestOptions)
 
@@ -117,17 +117,17 @@ interface CallbackService {
     fun add(teamId: String, params: CallbackAddParams): CallbackAddResponse =
         add(teamId, params, RequestOptions.none())
 
-    /** @see [add] */
+    /** @see add */
     fun add(
         teamId: String,
         params: CallbackAddParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CallbackAddResponse = add(params.toBuilder().teamId(teamId).build(), requestOptions)
 
-    /** @see [add] */
+    /** @see add */
     fun add(params: CallbackAddParams): CallbackAddResponse = add(params, RequestOptions.none())
 
-    /** @see [add] */
+    /** @see add */
     fun add(
         params: CallbackAddParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -151,7 +151,7 @@ interface CallbackService {
         fun retrieve(teamId: String): HttpResponseFor<CallbackRetrieveResponse> =
             retrieve(teamId, CallbackRetrieveParams.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             teamId: String,
@@ -160,7 +160,7 @@ interface CallbackService {
         ): HttpResponseFor<CallbackRetrieveResponse> =
             retrieve(params.toBuilder().teamId(teamId).build(), requestOptions)
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             teamId: String,
@@ -168,19 +168,19 @@ interface CallbackService {
         ): HttpResponseFor<CallbackRetrieveResponse> =
             retrieve(teamId, params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             params: CallbackRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<CallbackRetrieveResponse>
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(params: CallbackRetrieveParams): HttpResponseFor<CallbackRetrieveResponse> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             teamId: String,
@@ -196,7 +196,7 @@ interface CallbackService {
         fun add(teamId: String, params: CallbackAddParams): HttpResponseFor<CallbackAddResponse> =
             add(teamId, params, RequestOptions.none())
 
-        /** @see [add] */
+        /** @see add */
         @MustBeClosed
         fun add(
             teamId: String,
@@ -205,12 +205,12 @@ interface CallbackService {
         ): HttpResponseFor<CallbackAddResponse> =
             add(params.toBuilder().teamId(teamId).build(), requestOptions)
 
-        /** @see [add] */
+        /** @see add */
         @MustBeClosed
         fun add(params: CallbackAddParams): HttpResponseFor<CallbackAddResponse> =
             add(params, RequestOptions.none())
 
-        /** @see [add] */
+        /** @see add */
         @MustBeClosed
         fun add(
             params: CallbackAddParams,
