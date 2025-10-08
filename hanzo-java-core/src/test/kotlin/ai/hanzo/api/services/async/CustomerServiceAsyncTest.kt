@@ -6,11 +6,9 @@ import ai.hanzo.api.TestServerExtension
 import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.models.customer.BlockUsers
-import ai.hanzo.api.models.customer.CustomerBlockParams
 import ai.hanzo.api.models.customer.CustomerCreateParams
 import ai.hanzo.api.models.customer.CustomerDeleteParams
 import ai.hanzo.api.models.customer.CustomerRetrieveInfoParams
-import ai.hanzo.api.models.customer.CustomerUnblockParams
 import ai.hanzo.api.models.customer.CustomerUpdateParams
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
@@ -137,11 +135,7 @@ internal class CustomerServiceAsyncTest {
         val customerServiceAsync = client.customer()
 
         val responseFuture =
-            customerServiceAsync.block(
-                CustomerBlockParams.builder()
-                    .blockUsers(BlockUsers.builder().addUserId("string").build())
-                    .build()
-            )
+            customerServiceAsync.block(BlockUsers.builder().addUserId("string").build())
 
         val response = responseFuture.get()
         response.validate()
@@ -177,11 +171,7 @@ internal class CustomerServiceAsyncTest {
         val customerServiceAsync = client.customer()
 
         val responseFuture =
-            customerServiceAsync.unblock(
-                CustomerUnblockParams.builder()
-                    .blockUsers(BlockUsers.builder().addUserId("string").build())
-                    .build()
-            )
+            customerServiceAsync.unblock(BlockUsers.builder().addUserId("string").build())
 
         val response = responseFuture.get()
         response.validate()

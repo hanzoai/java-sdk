@@ -18,6 +18,7 @@ import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
 
 class TeamUpdateMemberResponse
+@JsonCreator(mode = JsonCreator.Mode.DISABLED)
 private constructor(
     private val teamId: JsonField<String>,
     private val userId: JsonField<String>,

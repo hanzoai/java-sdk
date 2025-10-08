@@ -19,6 +19,7 @@ import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
 
 class Member
+@JsonCreator(mode = JsonCreator.Mode.DISABLED)
 private constructor(
     private val role: JsonField<Role>,
     private val userEmail: JsonField<String>,

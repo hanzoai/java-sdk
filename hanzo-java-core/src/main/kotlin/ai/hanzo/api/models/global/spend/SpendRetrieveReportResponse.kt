@@ -31,6 +31,7 @@ import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
 
 class SpendRetrieveReportResponse
+@JsonCreator(mode = JsonCreator.Mode.DISABLED)
 private constructor(
     private val apiKey: JsonField<String>,
     private val callType: JsonField<String>,

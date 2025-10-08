@@ -5,6 +5,7 @@ package ai.hanzo.api.services.blocking
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
+import ai.hanzo.api.models.add.IpAddress
 import ai.hanzo.api.models.delete.DeleteCreateAllowedIpParams
 import ai.hanzo.api.models.delete.DeleteCreateAllowedIpResponse
 import com.google.errorprone.annotations.MustBeClosed
@@ -34,6 +35,20 @@ interface DeleteService {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): DeleteCreateAllowedIpResponse
 
+    /** @see createAllowedIp */
+    fun createAllowedIp(
+        ipAddress: IpAddress,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): DeleteCreateAllowedIpResponse =
+        createAllowedIp(
+            DeleteCreateAllowedIpParams.builder().ipAddress(ipAddress).build(),
+            requestOptions,
+        )
+
+    /** @see createAllowedIp */
+    fun createAllowedIp(ipAddress: IpAddress): DeleteCreateAllowedIpResponse =
+        createAllowedIp(ipAddress, RequestOptions.none())
+
     /** A view of [DeleteService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
 
@@ -60,5 +75,21 @@ interface DeleteService {
             params: DeleteCreateAllowedIpParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<DeleteCreateAllowedIpResponse>
+
+        /** @see createAllowedIp */
+        @MustBeClosed
+        fun createAllowedIp(
+            ipAddress: IpAddress,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<DeleteCreateAllowedIpResponse> =
+            createAllowedIp(
+                DeleteCreateAllowedIpParams.builder().ipAddress(ipAddress).build(),
+                requestOptions,
+            )
+
+        /** @see createAllowedIp */
+        @MustBeClosed
+        fun createAllowedIp(ipAddress: IpAddress): HttpResponseFor<DeleteCreateAllowedIpResponse> =
+            createAllowedIp(ipAddress, RequestOptions.none())
     }
 }

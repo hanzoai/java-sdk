@@ -21,6 +21,7 @@ import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
 
 class OrganizationAddMemberResponse
+@JsonCreator(mode = JsonCreator.Mode.DISABLED)
 private constructor(
     private val organizationId: JsonField<String>,
     private val updatedOrganizationMemberships: JsonField<List<UpdatedOrganizationMembership>>,
@@ -291,6 +292,7 @@ private constructor(
      * organization
      */
     class UpdatedOrganizationMembership
+    @JsonCreator(mode = JsonCreator.Mode.DISABLED)
     private constructor(
         private val createdAt: JsonField<OffsetDateTime>,
         private val organizationId: JsonField<String>,
@@ -723,6 +725,7 @@ private constructor(
 
         /** Represents user-controllable params for a LLM_BudgetTable record */
         class LlmBudgetTable
+        @JsonCreator(mode = JsonCreator.Mode.DISABLED)
         private constructor(
             private val budgetDuration: JsonField<String>,
             private val maxBudget: JsonField<Double>,
@@ -1200,6 +1203,7 @@ private constructor(
     }
 
     class UpdatedUser
+    @JsonCreator(mode = JsonCreator.Mode.DISABLED)
     private constructor(
         private val userId: JsonField<String>,
         private val budgetDuration: JsonField<String>,
@@ -1904,6 +1908,7 @@ private constructor(
          * the organization
          */
         class OrganizationMembership
+        @JsonCreator(mode = JsonCreator.Mode.DISABLED)
         private constructor(
             private val createdAt: JsonField<OffsetDateTime>,
             private val organizationId: JsonField<String>,
@@ -2350,6 +2355,7 @@ private constructor(
 
             /** Represents user-controllable params for a LLM_BudgetTable record */
             class LlmBudgetTable
+            @JsonCreator(mode = JsonCreator.Mode.DISABLED)
             private constructor(
                 private val budgetDuration: JsonField<String>,
                 private val maxBudget: JsonField<Double>,

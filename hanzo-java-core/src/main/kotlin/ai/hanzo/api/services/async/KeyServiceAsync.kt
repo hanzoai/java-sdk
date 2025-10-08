@@ -5,6 +5,7 @@ package ai.hanzo.api.services.async
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
+import ai.hanzo.api.models.key.BlockKeyRequest
 import ai.hanzo.api.models.key.GenerateKeyResponse
 import ai.hanzo.api.models.key.KeyBlockParams
 import ai.hanzo.api.models.key.KeyBlockResponse
@@ -194,6 +195,17 @@ interface KeyServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<Optional<KeyBlockResponse>>
 
+    /** @see block */
+    fun block(
+        blockKeyRequest: BlockKeyRequest,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<Optional<KeyBlockResponse>> =
+        block(KeyBlockParams.builder().blockKeyRequest(blockKeyRequest).build(), requestOptions)
+
+    /** @see block */
+    fun block(blockKeyRequest: BlockKeyRequest): CompletableFuture<Optional<KeyBlockResponse>> =
+        block(blockKeyRequest, RequestOptions.none())
+
     /**
      * Check the health of the key
      *
@@ -213,7 +225,9 @@ interface KeyServiceAsync {
      * {
      *   "key": "healthy",
      *   "logging_callbacks": {
-     *     "callbacks": ["gcs_bucket"],
+     *     "callbacks": [
+     *       "gcs_bucket"
+     *     ],
      *     "status": "healthy",
      *     "details": "No logger exceptions triggered, system is healthy. Manually check if logs were sent to ['gcs_bucket']"
      *   }
@@ -225,7 +239,9 @@ interface KeyServiceAsync {
      * {
      *   "key": "unhealthy",
      *   "logging_callbacks": {
-     *     "callbacks": ["gcs_bucket"],
+     *     "callbacks": [
+     *       "gcs_bucket"
+     *     ],
      *     "status": "unhealthy",
      *     "details": "Logger exceptions triggered, system is unhealthy: Failed to load vertex credentials. Check to see if credentials containing partial/invalid information."
      *   }
@@ -487,6 +503,17 @@ interface KeyServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<KeyUnblockResponse>
 
+    /** @see unblock */
+    fun unblock(
+        blockKeyRequest: BlockKeyRequest,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<KeyUnblockResponse> =
+        unblock(KeyUnblockParams.builder().blockKeyRequest(blockKeyRequest).build(), requestOptions)
+
+    /** @see unblock */
+    fun unblock(blockKeyRequest: BlockKeyRequest): CompletableFuture<KeyUnblockResponse> =
+        unblock(blockKeyRequest, RequestOptions.none())
+
     /** A view of [KeyServiceAsync] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
 
@@ -574,6 +601,19 @@ interface KeyServiceAsync {
             params: KeyBlockParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<Optional<KeyBlockResponse>>>
+
+        /** @see block */
+        fun block(
+            blockKeyRequest: BlockKeyRequest,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<Optional<KeyBlockResponse>>> =
+            block(KeyBlockParams.builder().blockKeyRequest(blockKeyRequest).build(), requestOptions)
+
+        /** @see block */
+        fun block(
+            blockKeyRequest: BlockKeyRequest
+        ): CompletableFuture<HttpResponseFor<Optional<KeyBlockResponse>>> =
+            block(blockKeyRequest, RequestOptions.none())
 
         /**
          * Returns a raw HTTP response for `post /key/health`, but is otherwise the same as
@@ -707,5 +747,21 @@ interface KeyServiceAsync {
             params: KeyUnblockParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<KeyUnblockResponse>>
+
+        /** @see unblock */
+        fun unblock(
+            blockKeyRequest: BlockKeyRequest,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<KeyUnblockResponse>> =
+            unblock(
+                KeyUnblockParams.builder().blockKeyRequest(blockKeyRequest).build(),
+                requestOptions,
+            )
+
+        /** @see unblock */
+        fun unblock(
+            blockKeyRequest: BlockKeyRequest
+        ): CompletableFuture<HttpResponseFor<KeyUnblockResponse>> =
+            unblock(blockKeyRequest, RequestOptions.none())
     }
 }
