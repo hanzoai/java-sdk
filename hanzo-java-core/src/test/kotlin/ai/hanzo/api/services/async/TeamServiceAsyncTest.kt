@@ -8,14 +8,12 @@ import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.models.team.BlockTeamRequest
 import ai.hanzo.api.models.team.Member
 import ai.hanzo.api.models.team.TeamAddMemberParams
-import ai.hanzo.api.models.team.TeamBlockParams
 import ai.hanzo.api.models.team.TeamCreateParams
 import ai.hanzo.api.models.team.TeamDeleteParams
 import ai.hanzo.api.models.team.TeamListAvailableParams
 import ai.hanzo.api.models.team.TeamListParams
 import ai.hanzo.api.models.team.TeamRemoveMemberParams
 import ai.hanzo.api.models.team.TeamRetrieveInfoParams
-import ai.hanzo.api.models.team.TeamUnblockParams
 import ai.hanzo.api.models.team.TeamUpdateMemberParams
 import ai.hanzo.api.models.team.TeamUpdateParams
 import org.junit.jupiter.api.Disabled
@@ -185,11 +183,7 @@ internal class TeamServiceAsyncTest {
         val teamServiceAsync = client.team()
 
         val responseFuture =
-            teamServiceAsync.block(
-                TeamBlockParams.builder()
-                    .blockTeamRequest(BlockTeamRequest.builder().teamId("team_id").build())
-                    .build()
-            )
+            teamServiceAsync.block(BlockTeamRequest.builder().teamId("team_id").build())
 
         val response = responseFuture.get()
         response.validate()
@@ -285,11 +279,7 @@ internal class TeamServiceAsyncTest {
         val teamServiceAsync = client.team()
 
         val responseFuture =
-            teamServiceAsync.unblock(
-                TeamUnblockParams.builder()
-                    .blockTeamRequest(BlockTeamRequest.builder().teamId("team_id").build())
-                    .build()
-            )
+            teamServiceAsync.unblock(BlockTeamRequest.builder().teamId("team_id").build())
 
         val response = responseFuture.get()
         response.validate()

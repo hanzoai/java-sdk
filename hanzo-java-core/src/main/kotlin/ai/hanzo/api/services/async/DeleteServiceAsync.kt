@@ -5,6 +5,7 @@ package ai.hanzo.api.services.async
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
+import ai.hanzo.api.models.add.IpAddress
 import ai.hanzo.api.models.delete.DeleteCreateAllowedIpParams
 import ai.hanzo.api.models.delete.DeleteCreateAllowedIpResponse
 import java.util.concurrent.CompletableFuture
@@ -36,6 +37,20 @@ interface DeleteServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<DeleteCreateAllowedIpResponse>
 
+    /** @see createAllowedIp */
+    fun createAllowedIp(
+        ipAddress: IpAddress,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<DeleteCreateAllowedIpResponse> =
+        createAllowedIp(
+            DeleteCreateAllowedIpParams.builder().ipAddress(ipAddress).build(),
+            requestOptions,
+        )
+
+    /** @see createAllowedIp */
+    fun createAllowedIp(ipAddress: IpAddress): CompletableFuture<DeleteCreateAllowedIpResponse> =
+        createAllowedIp(ipAddress, RequestOptions.none())
+
     /**
      * A view of [DeleteServiceAsync] that provides access to raw HTTP responses for each method.
      */
@@ -64,5 +79,21 @@ interface DeleteServiceAsync {
             params: DeleteCreateAllowedIpParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<DeleteCreateAllowedIpResponse>>
+
+        /** @see createAllowedIp */
+        fun createAllowedIp(
+            ipAddress: IpAddress,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<DeleteCreateAllowedIpResponse>> =
+            createAllowedIp(
+                DeleteCreateAllowedIpParams.builder().ipAddress(ipAddress).build(),
+                requestOptions,
+            )
+
+        /** @see createAllowedIp */
+        fun createAllowedIp(
+            ipAddress: IpAddress
+        ): CompletableFuture<HttpResponseFor<DeleteCreateAllowedIpResponse>> =
+            createAllowedIp(ipAddress, RequestOptions.none())
     }
 }

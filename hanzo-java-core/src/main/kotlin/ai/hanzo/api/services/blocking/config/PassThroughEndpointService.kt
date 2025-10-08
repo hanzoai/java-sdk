@@ -12,6 +12,7 @@ import ai.hanzo.api.models.config.passthroughendpoint.PassThroughEndpointListPar
 import ai.hanzo.api.models.config.passthroughendpoint.PassThroughEndpointResponse
 import ai.hanzo.api.models.config.passthroughendpoint.PassThroughEndpointUpdateParams
 import ai.hanzo.api.models.config.passthroughendpoint.PassThroughEndpointUpdateResponse
+import ai.hanzo.api.models.config.passthroughendpoint.PassThroughGenericEndpoint
 import com.google.errorprone.annotations.MustBeClosed
 import java.util.function.Consumer
 
@@ -38,6 +39,23 @@ interface PassThroughEndpointService {
         params: PassThroughEndpointCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): PassThroughEndpointCreateResponse
+
+    /** @see create */
+    fun create(
+        passThroughGenericEndpoint: PassThroughGenericEndpoint,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): PassThroughEndpointCreateResponse =
+        create(
+            PassThroughEndpointCreateParams.builder()
+                .passThroughGenericEndpoint(passThroughGenericEndpoint)
+                .build(),
+            requestOptions,
+        )
+
+    /** @see create */
+    fun create(
+        passThroughGenericEndpoint: PassThroughGenericEndpoint
+    ): PassThroughEndpointCreateResponse = create(passThroughGenericEndpoint, RequestOptions.none())
 
     /** Update a pass-through endpoint */
     fun update(endpointId: String): PassThroughEndpointUpdateResponse =
@@ -141,6 +159,26 @@ interface PassThroughEndpointService {
             params: PassThroughEndpointCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<PassThroughEndpointCreateResponse>
+
+        /** @see create */
+        @MustBeClosed
+        fun create(
+            passThroughGenericEndpoint: PassThroughGenericEndpoint,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<PassThroughEndpointCreateResponse> =
+            create(
+                PassThroughEndpointCreateParams.builder()
+                    .passThroughGenericEndpoint(passThroughGenericEndpoint)
+                    .build(),
+                requestOptions,
+            )
+
+        /** @see create */
+        @MustBeClosed
+        fun create(
+            passThroughGenericEndpoint: PassThroughGenericEndpoint
+        ): HttpResponseFor<PassThroughEndpointCreateResponse> =
+            create(passThroughGenericEndpoint, RequestOptions.none())
 
         /**
          * Returns a raw HTTP response for `post /config/pass_through_endpoint/{endpoint_id}`, but

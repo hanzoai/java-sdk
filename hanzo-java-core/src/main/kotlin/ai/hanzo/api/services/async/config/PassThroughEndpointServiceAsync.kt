@@ -12,6 +12,7 @@ import ai.hanzo.api.models.config.passthroughendpoint.PassThroughEndpointListPar
 import ai.hanzo.api.models.config.passthroughendpoint.PassThroughEndpointResponse
 import ai.hanzo.api.models.config.passthroughendpoint.PassThroughEndpointUpdateParams
 import ai.hanzo.api.models.config.passthroughendpoint.PassThroughEndpointUpdateResponse
+import ai.hanzo.api.models.config.passthroughendpoint.PassThroughGenericEndpoint
 import java.util.concurrent.CompletableFuture
 import java.util.function.Consumer
 
@@ -39,6 +40,24 @@ interface PassThroughEndpointServiceAsync {
         params: PassThroughEndpointCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<PassThroughEndpointCreateResponse>
+
+    /** @see create */
+    fun create(
+        passThroughGenericEndpoint: PassThroughGenericEndpoint,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<PassThroughEndpointCreateResponse> =
+        create(
+            PassThroughEndpointCreateParams.builder()
+                .passThroughGenericEndpoint(passThroughGenericEndpoint)
+                .build(),
+            requestOptions,
+        )
+
+    /** @see create */
+    fun create(
+        passThroughGenericEndpoint: PassThroughGenericEndpoint
+    ): CompletableFuture<PassThroughEndpointCreateResponse> =
+        create(passThroughGenericEndpoint, RequestOptions.none())
 
     /** Update a pass-through endpoint */
     fun update(endpointId: String): CompletableFuture<PassThroughEndpointUpdateResponse> =
@@ -144,6 +163,24 @@ interface PassThroughEndpointServiceAsync {
             params: PassThroughEndpointCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<PassThroughEndpointCreateResponse>>
+
+        /** @see create */
+        fun create(
+            passThroughGenericEndpoint: PassThroughGenericEndpoint,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<PassThroughEndpointCreateResponse>> =
+            create(
+                PassThroughEndpointCreateParams.builder()
+                    .passThroughGenericEndpoint(passThroughGenericEndpoint)
+                    .build(),
+                requestOptions,
+            )
+
+        /** @see create */
+        fun create(
+            passThroughGenericEndpoint: PassThroughGenericEndpoint
+        ): CompletableFuture<HttpResponseFor<PassThroughEndpointCreateResponse>> =
+            create(passThroughGenericEndpoint, RequestOptions.none())
 
         /**
          * Returns a raw HTTP response for `post /config/pass_through_endpoint/{endpoint_id}`, but

@@ -58,7 +58,7 @@ import kotlin.jvm.optionals.getOrNull
  *   [Docs](https://docs.hanzo.ai/docs/proxy/guardrails) Returns:
  * - team_id: (str) Unique team id - used for tracking spend across multiple keys for same team id.
  *
- * \_deprecated_params:
+ * _deprecated_params:
  * - admins: list - A list of user_id's for the admin role
  * - users: list - A list of user_id's for the user role
  *
@@ -71,12 +71,12 @@ import kotlin.jvm.optionals.getOrNull
  * }'
  *
  * ```
- * ```
+ *  ```
  * curl --location 'http://0.0.0.0:4000/team/new'     --header 'Authorization: Bearer sk-1234'     --header 'Content-Type: application/json'     --data '{
- *            "team_alias": "QA Prod Bot",
- *            "max_budget": 0.000000001,
- *            "budget_duration": "1d"
- *        }'
+ *             "team_alias": "QA Prod Bot",
+ *             "max_budget": 0.000000001,
+ *             "budget_duration": "1d"
+ *         }'
  * ```
  */
 class TeamCreateParams
@@ -737,6 +737,7 @@ private constructor(
     override fun _queryParams(): QueryParams = additionalQueryParams
 
     class Body
+    @JsonCreator(mode = JsonCreator.Mode.DISABLED)
     private constructor(
         private val admins: JsonField<List<JsonValue>>,
         private val blocked: JsonField<Boolean>,

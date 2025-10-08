@@ -2,6 +2,7 @@ package ai.hanzo.api.core.http
 
 import ai.hanzo.api.client.okhttp.OkHttpClient
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.Sleeper
 import ai.hanzo.api.errors.HanzoRetryableException
 import com.github.tomakehurst.wiremock.client.WireMock.*
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo
@@ -294,12 +295,14 @@ internal class RetryingHttpClientTest {
                 .httpClient(failingHttpClient)
                 .maxRetries(2)
                 .sleeper(
-                    object : RetryingHttpClient.Sleeper {
+                    object : Sleeper {
 
                         override fun sleep(duration: Duration) {}
 
                         override fun sleepAsync(duration: Duration): CompletableFuture<Void> =
                             CompletableFuture.completedFuture(null)
+
+                        override fun close() {}
                     }
                 )
                 .build()
@@ -333,12 +336,14 @@ internal class RetryingHttpClientTest {
             .httpClient(httpClient)
             // Use a no-op `Sleeper` to make the test fast.
             .sleeper(
-                object : RetryingHttpClient.Sleeper {
+                object : Sleeper {
 
                     override fun sleep(duration: Duration) {}
 
                     override fun sleepAsync(duration: Duration): CompletableFuture<Void> =
                         CompletableFuture.completedFuture(null)
+
+                    override fun close() {}
                 }
             )
 

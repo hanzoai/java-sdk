@@ -5,6 +5,7 @@ package ai.hanzo.api.services.async
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
+import ai.hanzo.api.models.customer.BlockUsers
 import ai.hanzo.api.models.customer.CustomerBlockParams
 import ai.hanzo.api.models.customer.CustomerBlockResponse
 import ai.hanzo.api.models.customer.CustomerCreateParams
@@ -195,6 +196,17 @@ interface CustomerServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CustomerBlockResponse>
 
+    /** @see block */
+    fun block(
+        blockUsers: BlockUsers,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<CustomerBlockResponse> =
+        block(CustomerBlockParams.builder().blockUsers(blockUsers).build(), requestOptions)
+
+    /** @see block */
+    fun block(blockUsers: BlockUsers): CompletableFuture<CustomerBlockResponse> =
+        block(blockUsers, RequestOptions.none())
+
     /**
      * Get information about an end-user. An `end_user` is a customer (external user) of the proxy.
      *
@@ -237,6 +249,17 @@ interface CustomerServiceAsync {
         params: CustomerUnblockParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CustomerUnblockResponse>
+
+    /** @see unblock */
+    fun unblock(
+        blockUsers: BlockUsers,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<CustomerUnblockResponse> =
+        unblock(CustomerUnblockParams.builder().blockUsers(blockUsers).build(), requestOptions)
+
+    /** @see unblock */
+    fun unblock(blockUsers: BlockUsers): CompletableFuture<CustomerUnblockResponse> =
+        unblock(blockUsers, RequestOptions.none())
 
     /**
      * A view of [CustomerServiceAsync] that provides access to raw HTTP responses for each method.
@@ -337,6 +360,19 @@ interface CustomerServiceAsync {
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<CustomerBlockResponse>>
 
+        /** @see block */
+        fun block(
+            blockUsers: BlockUsers,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<CustomerBlockResponse>> =
+            block(CustomerBlockParams.builder().blockUsers(blockUsers).build(), requestOptions)
+
+        /** @see block */
+        fun block(
+            blockUsers: BlockUsers
+        ): CompletableFuture<HttpResponseFor<CustomerBlockResponse>> =
+            block(blockUsers, RequestOptions.none())
+
         /**
          * Returns a raw HTTP response for `get /customer/info`, but is otherwise the same as
          * [CustomerServiceAsync.retrieveInfo].
@@ -366,5 +402,18 @@ interface CustomerServiceAsync {
             params: CustomerUnblockParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<CustomerUnblockResponse>>
+
+        /** @see unblock */
+        fun unblock(
+            blockUsers: BlockUsers,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<CustomerUnblockResponse>> =
+            unblock(CustomerUnblockParams.builder().blockUsers(blockUsers).build(), requestOptions)
+
+        /** @see unblock */
+        fun unblock(
+            blockUsers: BlockUsers
+        ): CompletableFuture<HttpResponseFor<CustomerUnblockResponse>> =
+            unblock(blockUsers, RequestOptions.none())
     }
 }

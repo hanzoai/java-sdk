@@ -20,6 +20,7 @@ import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
 
 class KeyCheckHealthResponse
+@JsonCreator(mode = JsonCreator.Mode.DISABLED)
 private constructor(
     private val key: JsonField<Key>,
     private val loggingCallbacks: JsonField<LoggingCallbacks>,
@@ -307,6 +308,7 @@ private constructor(
     }
 
     class LoggingCallbacks
+    @JsonCreator(mode = JsonCreator.Mode.DISABLED)
     private constructor(
         private val callbacks: JsonField<List<String>>,
         private val details: JsonField<String>,
