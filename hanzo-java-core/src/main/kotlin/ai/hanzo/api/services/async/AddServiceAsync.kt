@@ -7,6 +7,7 @@ import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.add.AddAddAllowedIpParams
 import ai.hanzo.api.models.add.AddAddAllowedIpResponse
+import ai.hanzo.api.models.add.IpAddress
 import java.util.concurrent.CompletableFuture
 import java.util.function.Consumer
 
@@ -34,6 +35,17 @@ interface AddServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<AddAddAllowedIpResponse>
 
+    /** @see addAllowedIp */
+    fun addAllowedIp(
+        ipAddress: IpAddress,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<AddAddAllowedIpResponse> =
+        addAllowedIp(AddAddAllowedIpParams.builder().ipAddress(ipAddress).build(), requestOptions)
+
+    /** @see addAllowedIp */
+    fun addAllowedIp(ipAddress: IpAddress): CompletableFuture<AddAddAllowedIpResponse> =
+        addAllowedIp(ipAddress, RequestOptions.none())
+
     /** A view of [AddServiceAsync] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
 
@@ -58,5 +70,21 @@ interface AddServiceAsync {
             params: AddAddAllowedIpParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<AddAddAllowedIpResponse>>
+
+        /** @see addAllowedIp */
+        fun addAllowedIp(
+            ipAddress: IpAddress,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<AddAddAllowedIpResponse>> =
+            addAllowedIp(
+                AddAddAllowedIpParams.builder().ipAddress(ipAddress).build(),
+                requestOptions,
+            )
+
+        /** @see addAllowedIp */
+        fun addAllowedIp(
+            ipAddress: IpAddress
+        ): CompletableFuture<HttpResponseFor<AddAddAllowedIpResponse>> =
+            addAllowedIp(ipAddress, RequestOptions.none())
     }
 }

@@ -32,6 +32,7 @@ import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
 
 class UpdateDeployment
+@JsonCreator(mode = JsonCreator.Mode.DISABLED)
 private constructor(
     private val llmParams: JsonField<LlmParams>,
     private val modelInfo: JsonField<ModelInfo>,
@@ -226,6 +227,7 @@ private constructor(
             (if (modelName.asKnown().isPresent) 1 else 0)
 
     class LlmParams
+    @JsonCreator(mode = JsonCreator.Mode.DISABLED)
     private constructor(
         private val apiBase: JsonField<String>,
         private val apiKey: JsonField<String>,

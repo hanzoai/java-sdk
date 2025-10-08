@@ -32,6 +32,7 @@ import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
 
 class TeamCreateResponse
+@JsonCreator(mode = JsonCreator.Mode.DISABLED)
 private constructor(
     private val teamId: JsonField<String>,
     private val admins: JsonField<List<JsonValue>>,
@@ -917,6 +918,7 @@ private constructor(
             (if (tpmLimit.asKnown().isPresent) 1 else 0)
 
     class LlmModelTable
+    @JsonCreator(mode = JsonCreator.Mode.DISABLED)
     private constructor(
         private val createdBy: JsonField<String>,
         private val updatedBy: JsonField<String>,

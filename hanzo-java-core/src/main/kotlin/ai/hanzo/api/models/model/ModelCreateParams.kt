@@ -312,6 +312,7 @@ private constructor(
     override fun _queryParams(): QueryParams = additionalQueryParams
 
     class Body
+    @JsonCreator(mode = JsonCreator.Mode.DISABLED)
     private constructor(
         private val llmParams: JsonField<LlmParams>,
         private val modelInfo: JsonField<ModelInfo>,
@@ -553,6 +554,7 @@ private constructor(
 
     /** LLM Params with 'model' requirement - used for completions */
     class LlmParams
+    @JsonCreator(mode = JsonCreator.Mode.DISABLED)
     private constructor(
         private val model: JsonField<String>,
         private val apiBase: JsonField<String>,

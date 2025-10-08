@@ -5,6 +5,7 @@ package ai.hanzo.api.services.async.model
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
+import ai.hanzo.api.models.model.update.UpdateDeployment
 import ai.hanzo.api.models.model.update.UpdateFullParams
 import ai.hanzo.api.models.model.update.UpdateFullResponse
 import ai.hanzo.api.models.model.update.UpdatePartialParams
@@ -35,6 +36,17 @@ interface UpdateServiceAsync {
         params: UpdateFullParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<UpdateFullResponse>
+
+    /** @see full */
+    fun full(
+        updateDeployment: UpdateDeployment,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<UpdateFullResponse> =
+        full(UpdateFullParams.builder().updateDeployment(updateDeployment).build(), requestOptions)
+
+    /** @see full */
+    fun full(updateDeployment: UpdateDeployment): CompletableFuture<UpdateFullResponse> =
+        full(updateDeployment, RequestOptions.none())
 
     /**
      * PATCH Endpoint for partial model updates.
@@ -99,6 +111,22 @@ interface UpdateServiceAsync {
             params: UpdateFullParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<UpdateFullResponse>>
+
+        /** @see full */
+        fun full(
+            updateDeployment: UpdateDeployment,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<UpdateFullResponse>> =
+            full(
+                UpdateFullParams.builder().updateDeployment(updateDeployment).build(),
+                requestOptions,
+            )
+
+        /** @see full */
+        fun full(
+            updateDeployment: UpdateDeployment
+        ): CompletableFuture<HttpResponseFor<UpdateFullResponse>> =
+            full(updateDeployment, RequestOptions.none())
 
         /**
          * Returns a raw HTTP response for `patch /model/{model_id}/update`, but is otherwise the

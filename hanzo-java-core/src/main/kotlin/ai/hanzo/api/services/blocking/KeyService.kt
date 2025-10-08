@@ -5,6 +5,7 @@ package ai.hanzo.api.services.blocking
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
+import ai.hanzo.api.models.key.BlockKeyRequest
 import ai.hanzo.api.models.key.GenerateKeyResponse
 import ai.hanzo.api.models.key.KeyBlockParams
 import ai.hanzo.api.models.key.KeyBlockResponse
@@ -192,6 +193,17 @@ interface KeyService {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): Optional<KeyBlockResponse>
 
+    /** @see block */
+    fun block(
+        blockKeyRequest: BlockKeyRequest,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): Optional<KeyBlockResponse> =
+        block(KeyBlockParams.builder().blockKeyRequest(blockKeyRequest).build(), requestOptions)
+
+    /** @see block */
+    fun block(blockKeyRequest: BlockKeyRequest): Optional<KeyBlockResponse> =
+        block(blockKeyRequest, RequestOptions.none())
+
     /**
      * Check the health of the key
      *
@@ -211,7 +223,9 @@ interface KeyService {
      * {
      *   "key": "healthy",
      *   "logging_callbacks": {
-     *     "callbacks": ["gcs_bucket"],
+     *     "callbacks": [
+     *       "gcs_bucket"
+     *     ],
      *     "status": "healthy",
      *     "details": "No logger exceptions triggered, system is healthy. Manually check if logs were sent to ['gcs_bucket']"
      *   }
@@ -223,7 +237,9 @@ interface KeyService {
      * {
      *   "key": "unhealthy",
      *   "logging_callbacks": {
-     *     "callbacks": ["gcs_bucket"],
+     *     "callbacks": [
+     *       "gcs_bucket"
+     *     ],
      *     "status": "unhealthy",
      *     "details": "Logger exceptions triggered, system is unhealthy: Failed to load vertex credentials. Check to see if credentials containing partial/invalid information."
      *   }
@@ -479,6 +495,17 @@ interface KeyService {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): KeyUnblockResponse
 
+    /** @see unblock */
+    fun unblock(
+        blockKeyRequest: BlockKeyRequest,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): KeyUnblockResponse =
+        unblock(KeyUnblockParams.builder().blockKeyRequest(blockKeyRequest).build(), requestOptions)
+
+    /** @see unblock */
+    fun unblock(blockKeyRequest: BlockKeyRequest): KeyUnblockResponse =
+        unblock(blockKeyRequest, RequestOptions.none())
+
     /** A view of [KeyService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
 
@@ -568,6 +595,19 @@ interface KeyService {
             params: KeyBlockParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<Optional<KeyBlockResponse>>
+
+        /** @see block */
+        @MustBeClosed
+        fun block(
+            blockKeyRequest: BlockKeyRequest,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<Optional<KeyBlockResponse>> =
+            block(KeyBlockParams.builder().blockKeyRequest(blockKeyRequest).build(), requestOptions)
+
+        /** @see block */
+        @MustBeClosed
+        fun block(blockKeyRequest: BlockKeyRequest): HttpResponseFor<Optional<KeyBlockResponse>> =
+            block(blockKeyRequest, RequestOptions.none())
 
         /**
          * Returns a raw HTTP response for `post /key/health`, but is otherwise the same as
@@ -707,5 +747,21 @@ interface KeyService {
             params: KeyUnblockParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<KeyUnblockResponse>
+
+        /** @see unblock */
+        @MustBeClosed
+        fun unblock(
+            blockKeyRequest: BlockKeyRequest,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<KeyUnblockResponse> =
+            unblock(
+                KeyUnblockParams.builder().blockKeyRequest(blockKeyRequest).build(),
+                requestOptions,
+            )
+
+        /** @see unblock */
+        @MustBeClosed
+        fun unblock(blockKeyRequest: BlockKeyRequest): HttpResponseFor<KeyUnblockResponse> =
+            unblock(blockKeyRequest, RequestOptions.none())
     }
 }

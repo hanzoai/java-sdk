@@ -21,6 +21,7 @@ import kotlin.jvm.optionals.getOrNull
  * Complete provider budget configuration and status. Maps provider names to their budget configs.
  */
 class ProviderListBudgetsResponse
+@JsonCreator(mode = JsonCreator.Mode.DISABLED)
 private constructor(
     private val providers: JsonField<Providers>,
     private val additionalProperties: MutableMap<String, JsonValue>,
