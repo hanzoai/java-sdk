@@ -5,6 +5,7 @@ package ai.hanzo.api.services.async
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
+import ai.hanzo.api.models.team.BlockTeamRequest
 import ai.hanzo.api.models.team.TeamAddMemberParams
 import ai.hanzo.api.models.team.TeamAddMemberResponse
 import ai.hanzo.api.models.team.TeamBlockParams
@@ -90,7 +91,7 @@ interface TeamServiceAsync {
      * - team_id: (str) Unique team id - used for tracking spend across multiple keys for same team
      *   id.
      *
-     * \_deprecated_params:
+     * _deprecated_params:
      * - admins: list - A list of user_id's for the admin role
      * - users: list - A list of user_id's for the user role
      *
@@ -103,12 +104,12 @@ interface TeamServiceAsync {
      * }'
      *
      * ```
-     * ```
+     *  ```
      * curl --location 'http://0.0.0.0:4000/team/new'     --header 'Authorization: Bearer sk-1234'     --header 'Content-Type: application/json'     --data '{
-     *            "team_alias": "QA Prod Bot",
-     *            "max_budget": 0.000000001,
-     *            "budget_duration": "1d"
-     *        }'
+     *             "team_alias": "QA Prod Bot",
+     *             "max_budget": 0.000000001,
+     *             "budget_duration": "1d"
+     *         }'
      * ```
      */
     fun create(): CompletableFuture<TeamCreateResponse> = create(TeamCreateParams.none())
@@ -282,6 +283,17 @@ interface TeamServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<TeamBlockResponse>
 
+    /** @see block */
+    fun block(
+        blockTeamRequest: BlockTeamRequest,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<TeamBlockResponse> =
+        block(TeamBlockParams.builder().blockTeamRequest(blockTeamRequest).build(), requestOptions)
+
+    /** @see block */
+    fun block(blockTeamRequest: BlockTeamRequest): CompletableFuture<TeamBlockResponse> =
+        block(blockTeamRequest, RequestOptions.none())
+
     /**
      * Disable all logging callbacks for a team
      *
@@ -426,6 +438,20 @@ interface TeamServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<TeamUnblockResponse>
 
+    /** @see unblock */
+    fun unblock(
+        blockTeamRequest: BlockTeamRequest,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<TeamUnblockResponse> =
+        unblock(
+            TeamUnblockParams.builder().blockTeamRequest(blockTeamRequest).build(),
+            requestOptions,
+        )
+
+    /** @see unblock */
+    fun unblock(blockTeamRequest: BlockTeamRequest): CompletableFuture<TeamUnblockResponse> =
+        unblock(blockTeamRequest, RequestOptions.none())
+
     /**
      * [BETA]
      *
@@ -562,6 +588,22 @@ interface TeamServiceAsync {
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<TeamBlockResponse>>
 
+        /** @see block */
+        fun block(
+            blockTeamRequest: BlockTeamRequest,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<TeamBlockResponse>> =
+            block(
+                TeamBlockParams.builder().blockTeamRequest(blockTeamRequest).build(),
+                requestOptions,
+            )
+
+        /** @see block */
+        fun block(
+            blockTeamRequest: BlockTeamRequest
+        ): CompletableFuture<HttpResponseFor<TeamBlockResponse>> =
+            block(blockTeamRequest, RequestOptions.none())
+
         /**
          * Returns a raw HTTP response for `post /team/{team_id}/disable_logging`, but is otherwise
          * the same as [TeamServiceAsync.disableLogging].
@@ -684,6 +726,22 @@ interface TeamServiceAsync {
             params: TeamUnblockParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<TeamUnblockResponse>>
+
+        /** @see unblock */
+        fun unblock(
+            blockTeamRequest: BlockTeamRequest,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<TeamUnblockResponse>> =
+            unblock(
+                TeamUnblockParams.builder().blockTeamRequest(blockTeamRequest).build(),
+                requestOptions,
+            )
+
+        /** @see unblock */
+        fun unblock(
+            blockTeamRequest: BlockTeamRequest
+        ): CompletableFuture<HttpResponseFor<TeamUnblockResponse>> =
+            unblock(blockTeamRequest, RequestOptions.none())
 
         /**
          * Returns a raw HTTP response for `post /team/member_update`, but is otherwise the same as

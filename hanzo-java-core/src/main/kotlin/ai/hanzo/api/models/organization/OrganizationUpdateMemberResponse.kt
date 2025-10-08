@@ -23,6 +23,7 @@ import kotlin.jvm.optionals.getOrNull
  * organization
  */
 class OrganizationUpdateMemberResponse
+@JsonCreator(mode = JsonCreator.Mode.DISABLED)
 private constructor(
     private val createdAt: JsonField<OffsetDateTime>,
     private val organizationId: JsonField<String>,
@@ -438,6 +439,7 @@ private constructor(
 
     /** Represents user-controllable params for a LLM_BudgetTable record */
     class LlmBudgetTable
+    @JsonCreator(mode = JsonCreator.Mode.DISABLED)
     private constructor(
         private val budgetDuration: JsonField<String>,
         private val maxBudget: JsonField<Double>,

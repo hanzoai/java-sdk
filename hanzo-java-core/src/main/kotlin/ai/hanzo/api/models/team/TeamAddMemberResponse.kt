@@ -32,6 +32,7 @@ import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
 
 class TeamAddMemberResponse
+@JsonCreator(mode = JsonCreator.Mode.DISABLED)
 private constructor(
     private val teamId: JsonField<String>,
     private val updatedTeamMemberships: JsonField<List<UpdatedTeamMembership>>,
@@ -1028,6 +1029,7 @@ private constructor(
             (if (tpmLimit.asKnown().isPresent) 1 else 0)
 
     class UpdatedTeamMembership
+    @JsonCreator(mode = JsonCreator.Mode.DISABLED)
     private constructor(
         private val budgetId: JsonField<String>,
         private val llmBudgetTable: JsonField<LlmBudgetTable>,
@@ -1285,6 +1287,7 @@ private constructor(
 
         /** Represents user-controllable params for a LLM_BudgetTable record */
         class LlmBudgetTable
+        @JsonCreator(mode = JsonCreator.Mode.DISABLED)
         private constructor(
             private val budgetDuration: JsonField<String>,
             private val maxBudget: JsonField<Double>,
@@ -1746,6 +1749,7 @@ private constructor(
     }
 
     class UpdatedUser
+    @JsonCreator(mode = JsonCreator.Mode.DISABLED)
     private constructor(
         private val userId: JsonField<String>,
         private val budgetDuration: JsonField<String>,
@@ -2450,6 +2454,7 @@ private constructor(
          * the organization
          */
         class OrganizationMembership
+        @JsonCreator(mode = JsonCreator.Mode.DISABLED)
         private constructor(
             private val createdAt: JsonField<OffsetDateTime>,
             private val organizationId: JsonField<String>,
@@ -2896,6 +2901,7 @@ private constructor(
 
             /** Represents user-controllable params for a LLM_BudgetTable record */
             class LlmBudgetTable
+            @JsonCreator(mode = JsonCreator.Mode.DISABLED)
             private constructor(
                 private val budgetDuration: JsonField<String>,
                 private val maxBudget: JsonField<Double>,
@@ -3438,6 +3444,7 @@ private constructor(
     }
 
     class LlmModelTable
+    @JsonCreator(mode = JsonCreator.Mode.DISABLED)
     private constructor(
         private val createdBy: JsonField<String>,
         private val updatedBy: JsonField<String>,

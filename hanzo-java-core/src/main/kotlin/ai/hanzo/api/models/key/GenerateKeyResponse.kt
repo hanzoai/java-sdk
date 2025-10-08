@@ -21,6 +21,7 @@ import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
 
 class GenerateKeyResponse
+@JsonCreator(mode = JsonCreator.Mode.DISABLED)
 private constructor(
     private val expires: JsonField<OffsetDateTime>,
     private val key: JsonField<String>,

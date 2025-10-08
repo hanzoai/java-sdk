@@ -5,7 +5,6 @@ package ai.hanzo.api.services.async
 import ai.hanzo.api.TestServerExtension
 import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
 import ai.hanzo.api.models.add.IpAddress
-import ai.hanzo.api.models.delete.DeleteCreateAllowedIpParams
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -24,11 +23,7 @@ internal class DeleteServiceAsyncTest {
         val deleteServiceAsync = client.delete()
 
         val responseFuture =
-            deleteServiceAsync.createAllowedIp(
-                DeleteCreateAllowedIpParams.builder()
-                    .ipAddress(IpAddress.builder().ip("ip").build())
-                    .build()
-            )
+            deleteServiceAsync.createAllowedIp(IpAddress.builder().ip("ip").build())
 
         val response = responseFuture.get()
         response.validate()
