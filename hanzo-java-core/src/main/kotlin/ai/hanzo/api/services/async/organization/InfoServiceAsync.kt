@@ -5,10 +5,10 @@ package ai.hanzo.api.services.async.organization
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
+import ai.hanzo.api.models.organization.OrganizationTableWithMembers
 import ai.hanzo.api.models.organization.info.InfoDeprecatedParams
 import ai.hanzo.api.models.organization.info.InfoDeprecatedResponse
 import ai.hanzo.api.models.organization.info.InfoRetrieveParams
-import ai.hanzo.api.models.organization.info.InfoRetrieveResponse
 import java.util.concurrent.CompletableFuture
 import java.util.function.Consumer
 
@@ -27,14 +27,14 @@ interface InfoServiceAsync {
     fun withOptions(modifier: Consumer<ClientOptions.Builder>): InfoServiceAsync
 
     /** Get the org specific information */
-    fun retrieve(params: InfoRetrieveParams): CompletableFuture<InfoRetrieveResponse> =
+    fun retrieve(params: InfoRetrieveParams): CompletableFuture<OrganizationTableWithMembers> =
         retrieve(params, RequestOptions.none())
 
     /** @see retrieve */
     fun retrieve(
         params: InfoRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
-    ): CompletableFuture<InfoRetrieveResponse>
+    ): CompletableFuture<OrganizationTableWithMembers>
 
     /** DEPRECATED: Use GET /organization/info instead */
     fun deprecated(params: InfoDeprecatedParams): CompletableFuture<InfoDeprecatedResponse> =
@@ -62,14 +62,14 @@ interface InfoServiceAsync {
          */
         fun retrieve(
             params: InfoRetrieveParams
-        ): CompletableFuture<HttpResponseFor<InfoRetrieveResponse>> =
+        ): CompletableFuture<HttpResponseFor<OrganizationTableWithMembers>> =
             retrieve(params, RequestOptions.none())
 
         /** @see retrieve */
         fun retrieve(
             params: InfoRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<InfoRetrieveResponse>>
+        ): CompletableFuture<HttpResponseFor<OrganizationTableWithMembers>>
 
         /**
          * Returns a raw HTTP response for `post /organization/info`, but is otherwise the same as

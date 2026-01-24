@@ -32,7 +32,10 @@ interface BedrockServiceAsync {
      */
     fun withOptions(modifier: Consumer<ClientOptions.Builder>): BedrockServiceAsync
 
-    /** [Docs](https://docs.hanzo.ai/docs/pass_through/bedrock) */
+    /**
+     * This is the v1 passthrough for Bedrock. V2 is handled by the `/bedrock/v2` endpoint.
+     * [Docs](https://docs.litellm.ai/docs/pass_through/bedrock)
+     */
     fun create(endpoint: String): CompletableFuture<BedrockCreateResponse> =
         create(endpoint, BedrockCreateParams.none())
 
@@ -67,7 +70,10 @@ interface BedrockServiceAsync {
     ): CompletableFuture<BedrockCreateResponse> =
         create(endpoint, BedrockCreateParams.none(), requestOptions)
 
-    /** [Docs](https://docs.hanzo.ai/docs/pass_through/bedrock) */
+    /**
+     * This is the v1 passthrough for Bedrock. V2 is handled by the `/bedrock/v2` endpoint.
+     * [Docs](https://docs.litellm.ai/docs/pass_through/bedrock)
+     */
     fun retrieve(endpoint: String): CompletableFuture<BedrockRetrieveResponse> =
         retrieve(endpoint, BedrockRetrieveParams.none())
 
@@ -103,7 +109,10 @@ interface BedrockServiceAsync {
     ): CompletableFuture<BedrockRetrieveResponse> =
         retrieve(endpoint, BedrockRetrieveParams.none(), requestOptions)
 
-    /** [Docs](https://docs.hanzo.ai/docs/pass_through/bedrock) */
+    /**
+     * This is the v1 passthrough for Bedrock. V2 is handled by the `/bedrock/v2` endpoint.
+     * [Docs](https://docs.litellm.ai/docs/pass_through/bedrock)
+     */
     fun update(endpoint: String): CompletableFuture<BedrockUpdateResponse> =
         update(endpoint, BedrockUpdateParams.none())
 
@@ -138,7 +147,10 @@ interface BedrockServiceAsync {
     ): CompletableFuture<BedrockUpdateResponse> =
         update(endpoint, BedrockUpdateParams.none(), requestOptions)
 
-    /** [Docs](https://docs.hanzo.ai/docs/pass_through/bedrock) */
+    /**
+     * This is the v1 passthrough for Bedrock. V2 is handled by the `/bedrock/v2` endpoint.
+     * [Docs](https://docs.litellm.ai/docs/pass_through/bedrock)
+     */
     fun delete(endpoint: String): CompletableFuture<BedrockDeleteResponse> =
         delete(endpoint, BedrockDeleteParams.none())
 
@@ -173,7 +185,10 @@ interface BedrockServiceAsync {
     ): CompletableFuture<BedrockDeleteResponse> =
         delete(endpoint, BedrockDeleteParams.none(), requestOptions)
 
-    /** [Docs](https://docs.hanzo.ai/docs/pass_through/bedrock) */
+    /**
+     * This is the v1 passthrough for Bedrock. V2 is handled by the `/bedrock/v2` endpoint.
+     * [Docs](https://docs.litellm.ai/docs/pass_through/bedrock)
+     */
     fun patch(endpoint: String): CompletableFuture<BedrockPatchResponse> =
         patch(endpoint, BedrockPatchParams.none())
 

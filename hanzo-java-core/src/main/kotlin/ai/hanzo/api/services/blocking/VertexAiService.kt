@@ -33,9 +33,9 @@ interface VertexAiService {
     fun withOptions(modifier: Consumer<ClientOptions.Builder>): VertexAiService
 
     /**
-     * Call LLM proxy via Vertex AI SDK.
+     * Call LiteLLM proxy via Vertex AI SDK.
      *
-     * [Docs](https://docs.hanzo.ai/docs/pass_through/vertex_ai)
+     * [Docs](https://docs.litellm.ai/docs/pass_through/vertex_ai)
      */
     fun create(endpoint: String): VertexAiCreateResponse =
         create(endpoint, VertexAiCreateParams.none())
@@ -69,9 +69,9 @@ interface VertexAiService {
         create(endpoint, VertexAiCreateParams.none(), requestOptions)
 
     /**
-     * Call LLM proxy via Vertex AI SDK.
+     * Call LiteLLM proxy via Vertex AI SDK.
      *
-     * [Docs](https://docs.hanzo.ai/docs/pass_through/vertex_ai)
+     * [Docs](https://docs.litellm.ai/docs/pass_through/vertex_ai)
      */
     fun retrieve(endpoint: String): VertexAiRetrieveResponse =
         retrieve(endpoint, VertexAiRetrieveParams.none())
@@ -105,9 +105,9 @@ interface VertexAiService {
         retrieve(endpoint, VertexAiRetrieveParams.none(), requestOptions)
 
     /**
-     * Call LLM proxy via Vertex AI SDK.
+     * Call LiteLLM proxy via Vertex AI SDK.
      *
-     * [Docs](https://docs.hanzo.ai/docs/pass_through/vertex_ai)
+     * [Docs](https://docs.litellm.ai/docs/pass_through/vertex_ai)
      */
     fun update(endpoint: String): VertexAiUpdateResponse =
         update(endpoint, VertexAiUpdateParams.none())
@@ -141,9 +141,9 @@ interface VertexAiService {
         update(endpoint, VertexAiUpdateParams.none(), requestOptions)
 
     /**
-     * Call LLM proxy via Vertex AI SDK.
+     * Call LiteLLM proxy via Vertex AI SDK.
      *
-     * [Docs](https://docs.hanzo.ai/docs/pass_through/vertex_ai)
+     * [Docs](https://docs.litellm.ai/docs/pass_through/vertex_ai)
      */
     fun delete(endpoint: String): VertexAiDeleteResponse =
         delete(endpoint, VertexAiDeleteParams.none())
@@ -177,9 +177,9 @@ interface VertexAiService {
         delete(endpoint, VertexAiDeleteParams.none(), requestOptions)
 
     /**
-     * Call LLM proxy via Vertex AI SDK.
+     * Call LiteLLM proxy via Vertex AI SDK.
      *
-     * [Docs](https://docs.hanzo.ai/docs/pass_through/vertex_ai)
+     * [Docs](https://docs.litellm.ai/docs/pass_through/vertex_ai)
      */
     fun patch(endpoint: String): VertexAiPatchResponse = patch(endpoint, VertexAiPatchParams.none())
 

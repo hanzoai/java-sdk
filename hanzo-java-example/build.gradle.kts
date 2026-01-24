@@ -8,7 +8,8 @@ repositories {
 }
 
 dependencies {
-    implementation(project(":hanzo-java"))
+    implementation(project(":hanzo-java-core"))
+    implementation(project(":hanzo-java-client-okhttp"))
 }
 
 tasks.withType<JavaCompile>().configureEach {

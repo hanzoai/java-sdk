@@ -10,9 +10,9 @@ import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
 
 /**
- * Call Langfuse via LLM proxy. Works with Langfuse SDK.
+ * Call Langfuse via LiteLLM proxy. Works with Langfuse SDK.
  *
- * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
+ * [Docs](https://docs.litellm.ai/docs/pass_through/langfuse)
  */
 class LangfuseRetrieveParams
 private constructor(

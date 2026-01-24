@@ -90,34 +90,26 @@ interface DeploymentService {
      * }'
      * ```
      */
-    fun embed(model: String): DeploymentEmbedResponse = embed(model, DeploymentEmbedParams.none())
+    fun embed(pathModel: String, params: DeploymentEmbedParams): DeploymentEmbedResponse =
+        embed(pathModel, params, RequestOptions.none())
 
     /** @see embed */
     fun embed(
-        model: String,
-        params: DeploymentEmbedParams = DeploymentEmbedParams.none(),
-        requestOptions: RequestOptions = RequestOptions.none(),
-    ): DeploymentEmbedResponse = embed(params.toBuilder().model(model).build(), requestOptions)
-
-    /** @see embed */
-    fun embed(
-        model: String,
-        params: DeploymentEmbedParams = DeploymentEmbedParams.none(),
-    ): DeploymentEmbedResponse = embed(model, params, RequestOptions.none())
-
-    /** @see embed */
-    fun embed(
+        pathModel: String,
         params: DeploymentEmbedParams,
         requestOptions: RequestOptions = RequestOptions.none(),
-    ): DeploymentEmbedResponse
+    ): DeploymentEmbedResponse =
+        embed(params.toBuilder().pathModel(pathModel).build(), requestOptions)
 
     /** @see embed */
     fun embed(params: DeploymentEmbedParams): DeploymentEmbedResponse =
         embed(params, RequestOptions.none())
 
     /** @see embed */
-    fun embed(model: String, requestOptions: RequestOptions): DeploymentEmbedResponse =
-        embed(model, DeploymentEmbedParams.none(), requestOptions)
+    fun embed(
+        params: DeploymentEmbedParams,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): DeploymentEmbedResponse
 
     /** A view of [DeploymentService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
@@ -184,31 +176,20 @@ interface DeploymentService {
          * otherwise the same as [DeploymentService.embed].
          */
         @MustBeClosed
-        fun embed(model: String): HttpResponseFor<DeploymentEmbedResponse> =
-            embed(model, DeploymentEmbedParams.none())
-
-        /** @see embed */
-        @MustBeClosed
         fun embed(
-            model: String,
-            params: DeploymentEmbedParams = DeploymentEmbedParams.none(),
-            requestOptions: RequestOptions = RequestOptions.none(),
+            pathModel: String,
+            params: DeploymentEmbedParams,
         ): HttpResponseFor<DeploymentEmbedResponse> =
-            embed(params.toBuilder().model(model).build(), requestOptions)
+            embed(pathModel, params, RequestOptions.none())
 
         /** @see embed */
         @MustBeClosed
         fun embed(
-            model: String,
-            params: DeploymentEmbedParams = DeploymentEmbedParams.none(),
-        ): HttpResponseFor<DeploymentEmbedResponse> = embed(model, params, RequestOptions.none())
-
-        /** @see embed */
-        @MustBeClosed
-        fun embed(
+            pathModel: String,
             params: DeploymentEmbedParams,
             requestOptions: RequestOptions = RequestOptions.none(),
-        ): HttpResponseFor<DeploymentEmbedResponse>
+        ): HttpResponseFor<DeploymentEmbedResponse> =
+            embed(params.toBuilder().pathModel(pathModel).build(), requestOptions)
 
         /** @see embed */
         @MustBeClosed
@@ -218,9 +199,8 @@ interface DeploymentService {
         /** @see embed */
         @MustBeClosed
         fun embed(
-            model: String,
-            requestOptions: RequestOptions,
-        ): HttpResponseFor<DeploymentEmbedResponse> =
-            embed(model, DeploymentEmbedParams.none(), requestOptions)
+            params: DeploymentEmbedParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<DeploymentEmbedResponse>
     }
 }

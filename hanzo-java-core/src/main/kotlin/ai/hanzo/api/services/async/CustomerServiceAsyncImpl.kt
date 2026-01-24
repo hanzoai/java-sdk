@@ -22,13 +22,12 @@ import ai.hanzo.api.models.customer.CustomerCreateResponse
 import ai.hanzo.api.models.customer.CustomerDeleteParams
 import ai.hanzo.api.models.customer.CustomerDeleteResponse
 import ai.hanzo.api.models.customer.CustomerListParams
-import ai.hanzo.api.models.customer.CustomerListResponse
 import ai.hanzo.api.models.customer.CustomerRetrieveInfoParams
-import ai.hanzo.api.models.customer.CustomerRetrieveInfoResponse
 import ai.hanzo.api.models.customer.CustomerUnblockParams
 import ai.hanzo.api.models.customer.CustomerUnblockResponse
 import ai.hanzo.api.models.customer.CustomerUpdateParams
 import ai.hanzo.api.models.customer.CustomerUpdateResponse
+import ai.hanzo.api.models.customer.LiteLlmEndUserTable
 import java.util.concurrent.CompletableFuture
 import java.util.function.Consumer
 
@@ -61,7 +60,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
     override fun list(
         params: CustomerListParams,
         requestOptions: RequestOptions,
-    ): CompletableFuture<List<CustomerListResponse>> =
+    ): CompletableFuture<List<LiteLlmEndUserTable>> =
         // get /customer/list
         withRawResponse().list(params, requestOptions).thenApply { it.parse() }
 
@@ -82,7 +81,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
     override fun retrieveInfo(
         params: CustomerRetrieveInfoParams,
         requestOptions: RequestOptions,
-    ): CompletableFuture<CustomerRetrieveInfoResponse> =
+    ): CompletableFuture<LiteLlmEndUserTable> =
         // get /customer/info
         withRawResponse().retrieveInfo(params, requestOptions).thenApply { it.parse() }
 
@@ -168,13 +167,13 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
                 }
         }
 
-        private val listHandler: Handler<List<CustomerListResponse>> =
-            jsonHandler<List<CustomerListResponse>>(clientOptions.jsonMapper)
+        private val listHandler: Handler<List<LiteLlmEndUserTable>> =
+            jsonHandler<List<LiteLlmEndUserTable>>(clientOptions.jsonMapper)
 
         override fun list(
             params: CustomerListParams,
             requestOptions: RequestOptions,
-        ): CompletableFuture<HttpResponseFor<List<CustomerListResponse>>> {
+        ): CompletableFuture<HttpResponseFor<List<LiteLlmEndUserTable>>> {
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
@@ -260,13 +259,13 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
                 }
         }
 
-        private val retrieveInfoHandler: Handler<CustomerRetrieveInfoResponse> =
-            jsonHandler<CustomerRetrieveInfoResponse>(clientOptions.jsonMapper)
+        private val retrieveInfoHandler: Handler<LiteLlmEndUserTable> =
+            jsonHandler<LiteLlmEndUserTable>(clientOptions.jsonMapper)
 
         override fun retrieveInfo(
             params: CustomerRetrieveInfoParams,
             requestOptions: RequestOptions,
-        ): CompletableFuture<HttpResponseFor<CustomerRetrieveInfoResponse>> {
+        ): CompletableFuture<HttpResponseFor<LiteLlmEndUserTable>> {
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
