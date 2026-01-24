@@ -38,22 +38,14 @@ interface EmbeddingService {
      * }'
      * ```
      */
-    fun create(): EmbeddingCreateResponse = create(EmbeddingCreateParams.none())
+    fun create(params: EmbeddingCreateParams): EmbeddingCreateResponse =
+        create(params, RequestOptions.none())
 
     /** @see create */
     fun create(
-        params: EmbeddingCreateParams = EmbeddingCreateParams.none(),
+        params: EmbeddingCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): EmbeddingCreateResponse
-
-    /** @see create */
-    fun create(
-        params: EmbeddingCreateParams = EmbeddingCreateParams.none()
-    ): EmbeddingCreateResponse = create(params, RequestOptions.none())
-
-    /** @see create */
-    fun create(requestOptions: RequestOptions): EmbeddingCreateResponse =
-        create(EmbeddingCreateParams.none(), requestOptions)
 
     /** A view of [EmbeddingService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
@@ -70,25 +62,14 @@ interface EmbeddingService {
          * [EmbeddingService.create].
          */
         @MustBeClosed
-        fun create(): HttpResponseFor<EmbeddingCreateResponse> =
-            create(EmbeddingCreateParams.none())
+        fun create(params: EmbeddingCreateParams): HttpResponseFor<EmbeddingCreateResponse> =
+            create(params, RequestOptions.none())
 
         /** @see create */
         @MustBeClosed
         fun create(
-            params: EmbeddingCreateParams = EmbeddingCreateParams.none(),
+            params: EmbeddingCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<EmbeddingCreateResponse>
-
-        /** @see create */
-        @MustBeClosed
-        fun create(
-            params: EmbeddingCreateParams = EmbeddingCreateParams.none()
-        ): HttpResponseFor<EmbeddingCreateResponse> = create(params, RequestOptions.none())
-
-        /** @see create */
-        @MustBeClosed
-        fun create(requestOptions: RequestOptions): HttpResponseFor<EmbeddingCreateResponse> =
-            create(EmbeddingCreateParams.none(), requestOptions)
     }
 }

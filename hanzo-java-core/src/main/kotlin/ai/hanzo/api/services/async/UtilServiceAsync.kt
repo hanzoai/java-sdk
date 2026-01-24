@@ -29,7 +29,7 @@ interface UtilServiceAsync {
     fun withOptions(modifier: Consumer<ClientOptions.Builder>): UtilServiceAsync
 
     /**
-     * Returns supported openai params for a given llm model name
+     * Returns supported openai params for a given litellm model name
      *
      * e.g. `gpt-4` vs `gpt-3.5-turbo`
      *
@@ -49,7 +49,12 @@ interface UtilServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<UtilGetSupportedOpenAIParamsResponse>
 
-    /** Token Counter */
+    /**
+     * Args: request: TokenCountRequest call_endpoint: bool - When set to "True" it will call the
+     * token counting endpoint - e.g Anthropic or Google AI Studio Token Counting APIs.
+     *
+     * Returns: TokenCountResponse
+     */
     fun tokenCounter(params: UtilTokenCounterParams): CompletableFuture<UtilTokenCounterResponse> =
         tokenCounter(params, RequestOptions.none())
 

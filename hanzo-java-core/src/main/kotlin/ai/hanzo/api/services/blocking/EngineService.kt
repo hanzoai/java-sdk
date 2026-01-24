@@ -89,33 +89,24 @@ interface EngineService {
      * }'
      * ```
      */
-    fun embed(model: String): EngineEmbedResponse = embed(model, EngineEmbedParams.none())
+    fun embed(pathModel: String, params: EngineEmbedParams): EngineEmbedResponse =
+        embed(pathModel, params, RequestOptions.none())
 
     /** @see embed */
     fun embed(
-        model: String,
-        params: EngineEmbedParams = EngineEmbedParams.none(),
+        pathModel: String,
+        params: EngineEmbedParams,
         requestOptions: RequestOptions = RequestOptions.none(),
-    ): EngineEmbedResponse = embed(params.toBuilder().model(model).build(), requestOptions)
+    ): EngineEmbedResponse = embed(params.toBuilder().pathModel(pathModel).build(), requestOptions)
 
     /** @see embed */
-    fun embed(
-        model: String,
-        params: EngineEmbedParams = EngineEmbedParams.none(),
-    ): EngineEmbedResponse = embed(model, params, RequestOptions.none())
+    fun embed(params: EngineEmbedParams): EngineEmbedResponse = embed(params, RequestOptions.none())
 
     /** @see embed */
     fun embed(
         params: EngineEmbedParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): EngineEmbedResponse
-
-    /** @see embed */
-    fun embed(params: EngineEmbedParams): EngineEmbedResponse = embed(params, RequestOptions.none())
-
-    /** @see embed */
-    fun embed(model: String, requestOptions: RequestOptions): EngineEmbedResponse =
-        embed(model, EngineEmbedParams.none(), requestOptions)
 
     /** A view of [EngineService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
@@ -178,31 +169,19 @@ interface EngineService {
          * same as [EngineService.embed].
          */
         @MustBeClosed
-        fun embed(model: String): HttpResponseFor<EngineEmbedResponse> =
-            embed(model, EngineEmbedParams.none())
+        fun embed(
+            pathModel: String,
+            params: EngineEmbedParams,
+        ): HttpResponseFor<EngineEmbedResponse> = embed(pathModel, params, RequestOptions.none())
 
         /** @see embed */
         @MustBeClosed
         fun embed(
-            model: String,
-            params: EngineEmbedParams = EngineEmbedParams.none(),
-            requestOptions: RequestOptions = RequestOptions.none(),
-        ): HttpResponseFor<EngineEmbedResponse> =
-            embed(params.toBuilder().model(model).build(), requestOptions)
-
-        /** @see embed */
-        @MustBeClosed
-        fun embed(
-            model: String,
-            params: EngineEmbedParams = EngineEmbedParams.none(),
-        ): HttpResponseFor<EngineEmbedResponse> = embed(model, params, RequestOptions.none())
-
-        /** @see embed */
-        @MustBeClosed
-        fun embed(
+            pathModel: String,
             params: EngineEmbedParams,
             requestOptions: RequestOptions = RequestOptions.none(),
-        ): HttpResponseFor<EngineEmbedResponse>
+        ): HttpResponseFor<EngineEmbedResponse> =
+            embed(params.toBuilder().pathModel(pathModel).build(), requestOptions)
 
         /** @see embed */
         @MustBeClosed
@@ -212,9 +191,8 @@ interface EngineService {
         /** @see embed */
         @MustBeClosed
         fun embed(
-            model: String,
-            requestOptions: RequestOptions,
-        ): HttpResponseFor<EngineEmbedResponse> =
-            embed(model, EngineEmbedParams.none(), requestOptions)
+            params: EngineEmbedParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<EngineEmbedResponse>
     }
 }

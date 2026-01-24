@@ -32,7 +32,7 @@ interface CohereService {
      */
     fun withOptions(modifier: Consumer<ClientOptions.Builder>): CohereService
 
-    /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
+    /** [Docs](https://docs.litellm.ai/docs/pass_through/cohere) */
     fun create(endpoint: String): CohereCreateResponse = create(endpoint, CohereCreateParams.none())
 
     /** @see create */
@@ -62,7 +62,7 @@ interface CohereService {
     fun create(endpoint: String, requestOptions: RequestOptions): CohereCreateResponse =
         create(endpoint, CohereCreateParams.none(), requestOptions)
 
-    /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
+    /** [Docs](https://docs.litellm.ai/docs/pass_through/cohere) */
     fun retrieve(endpoint: String): CohereRetrieveResponse =
         retrieve(endpoint, CohereRetrieveParams.none())
 
@@ -94,7 +94,7 @@ interface CohereService {
     fun retrieve(endpoint: String, requestOptions: RequestOptions): CohereRetrieveResponse =
         retrieve(endpoint, CohereRetrieveParams.none(), requestOptions)
 
-    /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
+    /** [Docs](https://docs.litellm.ai/docs/pass_through/cohere) */
     fun update(endpoint: String): CohereUpdateResponse = update(endpoint, CohereUpdateParams.none())
 
     /** @see update */
@@ -124,7 +124,7 @@ interface CohereService {
     fun update(endpoint: String, requestOptions: RequestOptions): CohereUpdateResponse =
         update(endpoint, CohereUpdateParams.none(), requestOptions)
 
-    /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
+    /** [Docs](https://docs.litellm.ai/docs/pass_through/cohere) */
     fun delete(endpoint: String): CohereDeleteResponse = delete(endpoint, CohereDeleteParams.none())
 
     /** @see delete */
@@ -154,7 +154,7 @@ interface CohereService {
     fun delete(endpoint: String, requestOptions: RequestOptions): CohereDeleteResponse =
         delete(endpoint, CohereDeleteParams.none(), requestOptions)
 
-    /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
+    /** [Docs](https://docs.litellm.ai/docs/pass_through/cohere) */
     fun modify(endpoint: String): CohereModifyResponse = modify(endpoint, CohereModifyParams.none())
 
     /** @see modify */

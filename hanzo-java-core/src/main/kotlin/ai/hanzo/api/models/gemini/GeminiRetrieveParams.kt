@@ -9,7 +9,7 @@ import java.util.Objects
 import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
 
-/** [Docs](https://docs.hanzo.ai/docs/pass_through/google_ai_studio) */
+/** [Docs](https://docs.litellm.ai/docs/pass_through/google_ai_studio) */
 class GeminiRetrieveParams
 private constructor(
     private val endpoint: String?,

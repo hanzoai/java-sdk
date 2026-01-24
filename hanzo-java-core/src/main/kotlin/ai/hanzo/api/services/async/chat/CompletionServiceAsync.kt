@@ -43,23 +43,14 @@ interface CompletionServiceAsync {
      * }'
      * ```
      */
-    fun create(): CompletableFuture<CompletionCreateResponse> =
-        create(CompletionCreateParams.none())
+    fun create(params: CompletionCreateParams): CompletableFuture<CompletionCreateResponse> =
+        create(params, RequestOptions.none())
 
     /** @see create */
     fun create(
-        params: CompletionCreateParams = CompletionCreateParams.none(),
+        params: CompletionCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CompletionCreateResponse>
-
-    /** @see create */
-    fun create(
-        params: CompletionCreateParams = CompletionCreateParams.none()
-    ): CompletableFuture<CompletionCreateResponse> = create(params, RequestOptions.none())
-
-    /** @see create */
-    fun create(requestOptions: RequestOptions): CompletableFuture<CompletionCreateResponse> =
-        create(CompletionCreateParams.none(), requestOptions)
 
     /**
      * A view of [CompletionServiceAsync] that provides access to raw HTTP responses for each
@@ -80,25 +71,15 @@ interface CompletionServiceAsync {
          * Returns a raw HTTP response for `post /v1/chat/completions`, but is otherwise the same as
          * [CompletionServiceAsync.create].
          */
-        fun create(): CompletableFuture<HttpResponseFor<CompletionCreateResponse>> =
-            create(CompletionCreateParams.none())
-
-        /** @see create */
         fun create(
-            params: CompletionCreateParams = CompletionCreateParams.none(),
-            requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<CompletionCreateResponse>>
-
-        /** @see create */
-        fun create(
-            params: CompletionCreateParams = CompletionCreateParams.none()
+            params: CompletionCreateParams
         ): CompletableFuture<HttpResponseFor<CompletionCreateResponse>> =
             create(params, RequestOptions.none())
 
         /** @see create */
         fun create(
-            requestOptions: RequestOptions
-        ): CompletableFuture<HttpResponseFor<CompletionCreateResponse>> =
-            create(CompletionCreateParams.none(), requestOptions)
+            params: CompletionCreateParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<CompletionCreateResponse>>
     }
 }

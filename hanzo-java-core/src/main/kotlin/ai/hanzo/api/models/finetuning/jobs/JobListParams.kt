@@ -5,7 +5,6 @@ package ai.hanzo.api.models.finetuning.jobs
 import ai.hanzo.api.core.Enum
 import ai.hanzo.api.core.JsonField
 import ai.hanzo.api.core.Params
-import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import ai.hanzo.api.errors.HanzoInvalidDataException
@@ -19,24 +18,28 @@ import kotlin.jvm.optionals.getOrNull
  * https://api.openai.com/v1/fine_tuning/jobs
  *
  * Supported Query Params:
- * - `custom_llm_provider`: Name of the LLM provider
+ * - `custom_llm_provider`: Name of the LiteLLM provider
  * - `after`: Identifier for the last job from the previous pagination request.
  * - `limit`: Number of fine-tuning jobs to retrieve (default is 20).
  */
 class JobListParams
 private constructor(
-    private val customLlmProvider: CustomLlmProvider,
     private val after: String?,
+    private val customLlmProvider: CustomLlmProvider?,
     private val limit: Long?,
+    private val targetModelNames: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
-    fun customLlmProvider(): CustomLlmProvider = customLlmProvider
-
     fun after(): Optional<String> = Optional.ofNullable(after)
 
+    fun customLlmProvider(): Optional<CustomLlmProvider> = Optional.ofNullable(customLlmProvider)
+
     fun limit(): Optional<Long> = Optional.ofNullable(limit)
+
+    /** Comma separated list of model names to filter by. Example: 'gpt-4o,gpt-4o-mini' */
+    fun targetModelNames(): Optional<String> = Optional.ofNullable(targetModelNames)
 
     /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
@@ -48,43 +51,44 @@ private constructor(
 
     companion object {
 
-        /**
-         * Returns a mutable builder for constructing an instance of [JobListParams].
-         *
-         * The following fields are required:
-         * ```java
-         * .customLlmProvider()
-         * ```
-         */
+        @JvmStatic fun none(): JobListParams = builder().build()
+
+        /** Returns a mutable builder for constructing an instance of [JobListParams]. */
         @JvmStatic fun builder() = Builder()
     }
 
     /** A builder for [JobListParams]. */
     class Builder internal constructor() {
 
-        private var customLlmProvider: CustomLlmProvider? = null
         private var after: String? = null
+        private var customLlmProvider: CustomLlmProvider? = null
         private var limit: Long? = null
+        private var targetModelNames: String? = null
         private var additionalHeaders: Headers.Builder = Headers.builder()
         private var additionalQueryParams: QueryParams.Builder = QueryParams.builder()
 
         @JvmSynthetic
         internal fun from(jobListParams: JobListParams) = apply {
-            customLlmProvider = jobListParams.customLlmProvider
             after = jobListParams.after
+            customLlmProvider = jobListParams.customLlmProvider
             limit = jobListParams.limit
+            targetModelNames = jobListParams.targetModelNames
             additionalHeaders = jobListParams.additionalHeaders.toBuilder()
             additionalQueryParams = jobListParams.additionalQueryParams.toBuilder()
-        }
-
-        fun customLlmProvider(customLlmProvider: CustomLlmProvider) = apply {
-            this.customLlmProvider = customLlmProvider
         }
 
         fun after(after: String?) = apply { this.after = after }
 
         /** Alias for calling [Builder.after] with `after.orElse(null)`. */
         fun after(after: Optional<String>) = after(after.getOrNull())
+
+        fun customLlmProvider(customLlmProvider: CustomLlmProvider?) = apply {
+            this.customLlmProvider = customLlmProvider
+        }
+
+        /** Alias for calling [Builder.customLlmProvider] with `customLlmProvider.orElse(null)`. */
+        fun customLlmProvider(customLlmProvider: Optional<CustomLlmProvider>) =
+            customLlmProvider(customLlmProvider.getOrNull())
 
         fun limit(limit: Long?) = apply { this.limit = limit }
 
@@ -97,6 +101,15 @@ private constructor(
 
         /** Alias for calling [Builder.limit] with `limit.orElse(null)`. */
         fun limit(limit: Optional<Long>) = limit(limit.getOrNull())
+
+        /** Comma separated list of model names to filter by. Example: 'gpt-4o,gpt-4o-mini' */
+        fun targetModelNames(targetModelNames: String?) = apply {
+            this.targetModelNames = targetModelNames
+        }
+
+        /** Alias for calling [Builder.targetModelNames] with `targetModelNames.orElse(null)`. */
+        fun targetModelNames(targetModelNames: Optional<String>) =
+            targetModelNames(targetModelNames.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -200,19 +213,13 @@ private constructor(
          * Returns an immutable instance of [JobListParams].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
-         *
-         * The following fields are required:
-         * ```java
-         * .customLlmProvider()
-         * ```
-         *
-         * @throws IllegalStateException if any required field is unset.
          */
         fun build(): JobListParams =
             JobListParams(
-                checkRequired("customLlmProvider", customLlmProvider),
                 after,
+                customLlmProvider,
                 limit,
+                targetModelNames,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
             )
@@ -223,9 +230,10 @@ private constructor(
     override fun _queryParams(): QueryParams =
         QueryParams.builder()
             .apply {
-                put("custom_llm_provider", customLlmProvider.toString())
                 after?.let { put("after", it) }
+                customLlmProvider?.let { put("custom_llm_provider", it.toString()) }
                 limit?.let { put("limit", it.toString()) }
+                targetModelNames?.let { put("target_model_names", it) }
                 putAll(additionalQueryParams)
             }
             .build()
@@ -364,16 +372,24 @@ private constructor(
         }
 
         return other is JobListParams &&
-            customLlmProvider == other.customLlmProvider &&
             after == other.after &&
+            customLlmProvider == other.customLlmProvider &&
             limit == other.limit &&
+            targetModelNames == other.targetModelNames &&
             additionalHeaders == other.additionalHeaders &&
             additionalQueryParams == other.additionalQueryParams
     }
 
     override fun hashCode(): Int =
-        Objects.hash(customLlmProvider, after, limit, additionalHeaders, additionalQueryParams)
+        Objects.hash(
+            after,
+            customLlmProvider,
+            limit,
+            targetModelNames,
+            additionalHeaders,
+            additionalQueryParams,
+        )
 
     override fun toString() =
-        "JobListParams{customLlmProvider=$customLlmProvider, after=$after, limit=$limit, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
+        "JobListParams{after=$after, customLlmProvider=$customLlmProvider, limit=$limit, targetModelNames=$targetModelNames, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
 }

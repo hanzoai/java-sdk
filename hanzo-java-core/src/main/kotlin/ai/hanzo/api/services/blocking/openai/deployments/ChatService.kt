@@ -43,34 +43,26 @@ interface ChatService {
      * }'
      * ```
      */
-    fun complete(model: String): ChatCompleteResponse = complete(model, ChatCompleteParams.none())
+    fun complete(pathModel: String, params: ChatCompleteParams): ChatCompleteResponse =
+        complete(pathModel, params, RequestOptions.none())
 
     /** @see complete */
     fun complete(
-        model: String,
-        params: ChatCompleteParams = ChatCompleteParams.none(),
-        requestOptions: RequestOptions = RequestOptions.none(),
-    ): ChatCompleteResponse = complete(params.toBuilder().model(model).build(), requestOptions)
-
-    /** @see complete */
-    fun complete(
-        model: String,
-        params: ChatCompleteParams = ChatCompleteParams.none(),
-    ): ChatCompleteResponse = complete(model, params, RequestOptions.none())
-
-    /** @see complete */
-    fun complete(
+        pathModel: String,
         params: ChatCompleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
-    ): ChatCompleteResponse
+    ): ChatCompleteResponse =
+        complete(params.toBuilder().pathModel(pathModel).build(), requestOptions)
 
     /** @see complete */
     fun complete(params: ChatCompleteParams): ChatCompleteResponse =
         complete(params, RequestOptions.none())
 
     /** @see complete */
-    fun complete(model: String, requestOptions: RequestOptions): ChatCompleteResponse =
-        complete(model, ChatCompleteParams.none(), requestOptions)
+    fun complete(
+        params: ChatCompleteParams,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): ChatCompleteResponse
 
     /** A view of [ChatService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
@@ -87,31 +79,20 @@ interface ChatService {
          * is otherwise the same as [ChatService.complete].
          */
         @MustBeClosed
-        fun complete(model: String): HttpResponseFor<ChatCompleteResponse> =
-            complete(model, ChatCompleteParams.none())
-
-        /** @see complete */
-        @MustBeClosed
         fun complete(
-            model: String,
-            params: ChatCompleteParams = ChatCompleteParams.none(),
-            requestOptions: RequestOptions = RequestOptions.none(),
+            pathModel: String,
+            params: ChatCompleteParams,
         ): HttpResponseFor<ChatCompleteResponse> =
-            complete(params.toBuilder().model(model).build(), requestOptions)
+            complete(pathModel, params, RequestOptions.none())
 
         /** @see complete */
         @MustBeClosed
         fun complete(
-            model: String,
-            params: ChatCompleteParams = ChatCompleteParams.none(),
-        ): HttpResponseFor<ChatCompleteResponse> = complete(model, params, RequestOptions.none())
-
-        /** @see complete */
-        @MustBeClosed
-        fun complete(
+            pathModel: String,
             params: ChatCompleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
-        ): HttpResponseFor<ChatCompleteResponse>
+        ): HttpResponseFor<ChatCompleteResponse> =
+            complete(params.toBuilder().pathModel(pathModel).build(), requestOptions)
 
         /** @see complete */
         @MustBeClosed
@@ -121,9 +102,8 @@ interface ChatService {
         /** @see complete */
         @MustBeClosed
         fun complete(
-            model: String,
-            requestOptions: RequestOptions,
-        ): HttpResponseFor<ChatCompleteResponse> =
-            complete(model, ChatCompleteParams.none(), requestOptions)
+            params: ChatCompleteParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<ChatCompleteResponse>
     }
 }

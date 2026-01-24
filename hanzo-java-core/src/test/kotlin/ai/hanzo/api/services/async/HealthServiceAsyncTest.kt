@@ -24,7 +24,9 @@ internal class HealthServiceAsyncTest {
         val healthServiceAsync = client.health()
 
         val responseFuture =
-            healthServiceAsync.checkAll(HealthCheckAllParams.builder().model("model").build())
+            healthServiceAsync.checkAll(
+                HealthCheckAllParams.builder().model("model").modelId("model_id").build()
+            )
 
         val response = responseFuture.get()
         response.validate()

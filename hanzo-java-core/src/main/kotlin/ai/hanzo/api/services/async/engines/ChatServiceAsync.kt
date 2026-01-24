@@ -43,28 +43,18 @@ interface ChatServiceAsync {
      * }'
      * ```
      */
-    fun complete(model: String): CompletableFuture<ChatCompleteResponse> =
-        complete(model, ChatCompleteParams.none())
+    fun complete(
+        pathModel: String,
+        params: ChatCompleteParams,
+    ): CompletableFuture<ChatCompleteResponse> = complete(pathModel, params, RequestOptions.none())
 
     /** @see complete */
     fun complete(
-        model: String,
-        params: ChatCompleteParams = ChatCompleteParams.none(),
-        requestOptions: RequestOptions = RequestOptions.none(),
-    ): CompletableFuture<ChatCompleteResponse> =
-        complete(params.toBuilder().model(model).build(), requestOptions)
-
-    /** @see complete */
-    fun complete(
-        model: String,
-        params: ChatCompleteParams = ChatCompleteParams.none(),
-    ): CompletableFuture<ChatCompleteResponse> = complete(model, params, RequestOptions.none())
-
-    /** @see complete */
-    fun complete(
+        pathModel: String,
         params: ChatCompleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
-    ): CompletableFuture<ChatCompleteResponse>
+    ): CompletableFuture<ChatCompleteResponse> =
+        complete(params.toBuilder().pathModel(pathModel).build(), requestOptions)
 
     /** @see complete */
     fun complete(params: ChatCompleteParams): CompletableFuture<ChatCompleteResponse> =
@@ -72,10 +62,9 @@ interface ChatServiceAsync {
 
     /** @see complete */
     fun complete(
-        model: String,
-        requestOptions: RequestOptions,
-    ): CompletableFuture<ChatCompleteResponse> =
-        complete(model, ChatCompleteParams.none(), requestOptions)
+        params: ChatCompleteParams,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<ChatCompleteResponse>
 
     /** A view of [ChatServiceAsync] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
@@ -91,29 +80,19 @@ interface ChatServiceAsync {
          * Returns a raw HTTP response for `post /engines/{model}/chat/completions`, but is
          * otherwise the same as [ChatServiceAsync.complete].
          */
-        fun complete(model: String): CompletableFuture<HttpResponseFor<ChatCompleteResponse>> =
-            complete(model, ChatCompleteParams.none())
-
-        /** @see complete */
         fun complete(
-            model: String,
-            params: ChatCompleteParams = ChatCompleteParams.none(),
-            requestOptions: RequestOptions = RequestOptions.none(),
+            pathModel: String,
+            params: ChatCompleteParams,
         ): CompletableFuture<HttpResponseFor<ChatCompleteResponse>> =
-            complete(params.toBuilder().model(model).build(), requestOptions)
+            complete(pathModel, params, RequestOptions.none())
 
         /** @see complete */
         fun complete(
-            model: String,
-            params: ChatCompleteParams = ChatCompleteParams.none(),
-        ): CompletableFuture<HttpResponseFor<ChatCompleteResponse>> =
-            complete(model, params, RequestOptions.none())
-
-        /** @see complete */
-        fun complete(
+            pathModel: String,
             params: ChatCompleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<ChatCompleteResponse>>
+        ): CompletableFuture<HttpResponseFor<ChatCompleteResponse>> =
+            complete(params.toBuilder().pathModel(pathModel).build(), requestOptions)
 
         /** @see complete */
         fun complete(
@@ -123,9 +102,8 @@ interface ChatServiceAsync {
 
         /** @see complete */
         fun complete(
-            model: String,
-            requestOptions: RequestOptions,
-        ): CompletableFuture<HttpResponseFor<ChatCompleteResponse>> =
-            complete(model, ChatCompleteParams.none(), requestOptions)
+            params: ChatCompleteParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<ChatCompleteResponse>>
     }
 }

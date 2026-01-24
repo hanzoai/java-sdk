@@ -11,6 +11,7 @@ import ai.hanzo.api.models.finetuning.jobs.JobListParams
 import ai.hanzo.api.models.finetuning.jobs.JobListResponse
 import ai.hanzo.api.models.finetuning.jobs.JobRetrieveParams
 import ai.hanzo.api.models.finetuning.jobs.JobRetrieveResponse
+import ai.hanzo.api.models.finetuning.jobs.LiteLlmFineTuningJobCreate
 import ai.hanzo.api.services.async.finetuning.jobs.CancelServiceAsync
 import java.util.concurrent.CompletableFuture
 import java.util.function.Consumer
@@ -58,31 +59,49 @@ interface JobServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<JobCreateResponse>
 
+    /** @see create */
+    fun create(
+        liteLlmFineTuningJobCreate: LiteLlmFineTuningJobCreate,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<JobCreateResponse> =
+        create(
+            JobCreateParams.builder()
+                .liteLlmFineTuningJobCreate(liteLlmFineTuningJobCreate)
+                .build(),
+            requestOptions,
+        )
+
+    /** @see create */
+    fun create(
+        liteLlmFineTuningJobCreate: LiteLlmFineTuningJobCreate
+    ): CompletableFuture<JobCreateResponse> =
+        create(liteLlmFineTuningJobCreate, RequestOptions.none())
+
     /**
      * Retrieves a fine-tuning job. This is the equivalent of GET
      * https://api.openai.com/v1/fine_tuning/jobs/{fine_tuning_job_id}
      *
      * Supported Query Params:
-     * - `custom_llm_provider`: Name of the LLM provider
+     * - `custom_llm_provider`: Name of the LiteLLM provider
      * - `fine_tuning_job_id`: The ID of the fine-tuning job to retrieve.
      */
-    fun retrieve(
-        fineTuningJobId: String,
-        params: JobRetrieveParams,
-    ): CompletableFuture<JobRetrieveResponse> =
-        retrieve(fineTuningJobId, params, RequestOptions.none())
+    fun retrieve(fineTuningJobId: String): CompletableFuture<JobRetrieveResponse> =
+        retrieve(fineTuningJobId, JobRetrieveParams.none())
 
     /** @see retrieve */
     fun retrieve(
         fineTuningJobId: String,
-        params: JobRetrieveParams,
+        params: JobRetrieveParams = JobRetrieveParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<JobRetrieveResponse> =
         retrieve(params.toBuilder().fineTuningJobId(fineTuningJobId).build(), requestOptions)
 
     /** @see retrieve */
-    fun retrieve(params: JobRetrieveParams): CompletableFuture<JobRetrieveResponse> =
-        retrieve(params, RequestOptions.none())
+    fun retrieve(
+        fineTuningJobId: String,
+        params: JobRetrieveParams = JobRetrieveParams.none(),
+    ): CompletableFuture<JobRetrieveResponse> =
+        retrieve(fineTuningJobId, params, RequestOptions.none())
 
     /** @see retrieve */
     fun retrieve(
@@ -90,23 +109,41 @@ interface JobServiceAsync {
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<JobRetrieveResponse>
 
+    /** @see retrieve */
+    fun retrieve(params: JobRetrieveParams): CompletableFuture<JobRetrieveResponse> =
+        retrieve(params, RequestOptions.none())
+
+    /** @see retrieve */
+    fun retrieve(
+        fineTuningJobId: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<JobRetrieveResponse> =
+        retrieve(fineTuningJobId, JobRetrieveParams.none(), requestOptions)
+
     /**
      * Lists fine-tuning jobs for the organization. This is the equivalent of GET
      * https://api.openai.com/v1/fine_tuning/jobs
      *
      * Supported Query Params:
-     * - `custom_llm_provider`: Name of the LLM provider
+     * - `custom_llm_provider`: Name of the LiteLLM provider
      * - `after`: Identifier for the last job from the previous pagination request.
      * - `limit`: Number of fine-tuning jobs to retrieve (default is 20).
      */
-    fun list(params: JobListParams): CompletableFuture<JobListResponse> =
-        list(params, RequestOptions.none())
+    fun list(): CompletableFuture<JobListResponse> = list(JobListParams.none())
 
     /** @see list */
     fun list(
-        params: JobListParams,
+        params: JobListParams = JobListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<JobListResponse>
+
+    /** @see list */
+    fun list(params: JobListParams = JobListParams.none()): CompletableFuture<JobListResponse> =
+        list(params, RequestOptions.none())
+
+    /** @see list */
+    fun list(requestOptions: RequestOptions): CompletableFuture<JobListResponse> =
+        list(JobListParams.none(), requestOptions)
 
     /** A view of [JobServiceAsync] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
@@ -133,23 +170,53 @@ interface JobServiceAsync {
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<JobCreateResponse>>
 
+        /** @see create */
+        fun create(
+            liteLlmFineTuningJobCreate: LiteLlmFineTuningJobCreate,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<JobCreateResponse>> =
+            create(
+                JobCreateParams.builder()
+                    .liteLlmFineTuningJobCreate(liteLlmFineTuningJobCreate)
+                    .build(),
+                requestOptions,
+            )
+
+        /** @see create */
+        fun create(
+            liteLlmFineTuningJobCreate: LiteLlmFineTuningJobCreate
+        ): CompletableFuture<HttpResponseFor<JobCreateResponse>> =
+            create(liteLlmFineTuningJobCreate, RequestOptions.none())
+
         /**
          * Returns a raw HTTP response for `get /v1/fine_tuning/jobs/{fine_tuning_job_id}`, but is
          * otherwise the same as [JobServiceAsync.retrieve].
          */
         fun retrieve(
+            fineTuningJobId: String
+        ): CompletableFuture<HttpResponseFor<JobRetrieveResponse>> =
+            retrieve(fineTuningJobId, JobRetrieveParams.none())
+
+        /** @see retrieve */
+        fun retrieve(
             fineTuningJobId: String,
-            params: JobRetrieveParams,
+            params: JobRetrieveParams = JobRetrieveParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<JobRetrieveResponse>> =
+            retrieve(params.toBuilder().fineTuningJobId(fineTuningJobId).build(), requestOptions)
+
+        /** @see retrieve */
+        fun retrieve(
+            fineTuningJobId: String,
+            params: JobRetrieveParams = JobRetrieveParams.none(),
         ): CompletableFuture<HttpResponseFor<JobRetrieveResponse>> =
             retrieve(fineTuningJobId, params, RequestOptions.none())
 
         /** @see retrieve */
         fun retrieve(
-            fineTuningJobId: String,
             params: JobRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<JobRetrieveResponse>> =
-            retrieve(params.toBuilder().fineTuningJobId(fineTuningJobId).build(), requestOptions)
+        ): CompletableFuture<HttpResponseFor<JobRetrieveResponse>>
 
         /** @see retrieve */
         fun retrieve(
@@ -159,21 +226,32 @@ interface JobServiceAsync {
 
         /** @see retrieve */
         fun retrieve(
-            params: JobRetrieveParams,
-            requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<JobRetrieveResponse>>
+            fineTuningJobId: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<JobRetrieveResponse>> =
+            retrieve(fineTuningJobId, JobRetrieveParams.none(), requestOptions)
 
         /**
          * Returns a raw HTTP response for `get /v1/fine_tuning/jobs`, but is otherwise the same as
          * [JobServiceAsync.list].
          */
-        fun list(params: JobListParams): CompletableFuture<HttpResponseFor<JobListResponse>> =
-            list(params, RequestOptions.none())
+        fun list(): CompletableFuture<HttpResponseFor<JobListResponse>> = list(JobListParams.none())
 
         /** @see list */
         fun list(
-            params: JobListParams,
+            params: JobListParams = JobListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<JobListResponse>>
+
+        /** @see list */
+        fun list(
+            params: JobListParams = JobListParams.none()
+        ): CompletableFuture<HttpResponseFor<JobListResponse>> = list(params, RequestOptions.none())
+
+        /** @see list */
+        fun list(
+            requestOptions: RequestOptions
+        ): CompletableFuture<HttpResponseFor<JobListResponse>> =
+            list(JobListParams.none(), requestOptions)
     }
 }
