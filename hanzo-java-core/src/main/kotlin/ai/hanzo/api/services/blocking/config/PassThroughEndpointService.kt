@@ -57,29 +57,19 @@ interface PassThroughEndpointService {
         passThroughGenericEndpoint: PassThroughGenericEndpoint
     ): PassThroughEndpointCreateResponse = create(passThroughGenericEndpoint, RequestOptions.none())
 
-    /** Update a pass-through endpoint */
-    fun update(endpointId: String): PassThroughEndpointUpdateResponse =
-        update(endpointId, PassThroughEndpointUpdateParams.none())
-
-    /** @see update */
+    /** Update a pass-through endpoint by ID. */
     fun update(
         endpointId: String,
-        params: PassThroughEndpointUpdateParams = PassThroughEndpointUpdateParams.none(),
-        requestOptions: RequestOptions = RequestOptions.none(),
-    ): PassThroughEndpointUpdateResponse =
-        update(params.toBuilder().endpointId(endpointId).build(), requestOptions)
-
-    /** @see update */
-    fun update(
-        endpointId: String,
-        params: PassThroughEndpointUpdateParams = PassThroughEndpointUpdateParams.none(),
+        params: PassThroughEndpointUpdateParams,
     ): PassThroughEndpointUpdateResponse = update(endpointId, params, RequestOptions.none())
 
     /** @see update */
     fun update(
+        endpointId: String,
         params: PassThroughEndpointUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
-    ): PassThroughEndpointUpdateResponse
+    ): PassThroughEndpointUpdateResponse =
+        update(params.toBuilder().endpointId(endpointId).build(), requestOptions)
 
     /** @see update */
     fun update(params: PassThroughEndpointUpdateParams): PassThroughEndpointUpdateResponse =
@@ -87,10 +77,9 @@ interface PassThroughEndpointService {
 
     /** @see update */
     fun update(
-        endpointId: String,
-        requestOptions: RequestOptions,
-    ): PassThroughEndpointUpdateResponse =
-        update(endpointId, PassThroughEndpointUpdateParams.none(), requestOptions)
+        params: PassThroughEndpointUpdateParams,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): PassThroughEndpointUpdateResponse
 
     /**
      * GET configured pass through endpoint.
@@ -115,7 +104,7 @@ interface PassThroughEndpointService {
         list(PassThroughEndpointListParams.none(), requestOptions)
 
     /**
-     * Delete a pass-through endpoint
+     * Delete a pass-through endpoint by ID.
      *
      * Returns - the deleted endpoint
      */
@@ -185,32 +174,20 @@ interface PassThroughEndpointService {
          * is otherwise the same as [PassThroughEndpointService.update].
          */
         @MustBeClosed
-        fun update(endpointId: String): HttpResponseFor<PassThroughEndpointUpdateResponse> =
-            update(endpointId, PassThroughEndpointUpdateParams.none())
-
-        /** @see update */
-        @MustBeClosed
         fun update(
             endpointId: String,
-            params: PassThroughEndpointUpdateParams = PassThroughEndpointUpdateParams.none(),
-            requestOptions: RequestOptions = RequestOptions.none(),
-        ): HttpResponseFor<PassThroughEndpointUpdateResponse> =
-            update(params.toBuilder().endpointId(endpointId).build(), requestOptions)
-
-        /** @see update */
-        @MustBeClosed
-        fun update(
-            endpointId: String,
-            params: PassThroughEndpointUpdateParams = PassThroughEndpointUpdateParams.none(),
+            params: PassThroughEndpointUpdateParams,
         ): HttpResponseFor<PassThroughEndpointUpdateResponse> =
             update(endpointId, params, RequestOptions.none())
 
         /** @see update */
         @MustBeClosed
         fun update(
+            endpointId: String,
             params: PassThroughEndpointUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
-        ): HttpResponseFor<PassThroughEndpointUpdateResponse>
+        ): HttpResponseFor<PassThroughEndpointUpdateResponse> =
+            update(params.toBuilder().endpointId(endpointId).build(), requestOptions)
 
         /** @see update */
         @MustBeClosed
@@ -222,10 +199,9 @@ interface PassThroughEndpointService {
         /** @see update */
         @MustBeClosed
         fun update(
-            endpointId: String,
-            requestOptions: RequestOptions,
-        ): HttpResponseFor<PassThroughEndpointUpdateResponse> =
-            update(endpointId, PassThroughEndpointUpdateParams.none(), requestOptions)
+            params: PassThroughEndpointUpdateParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<PassThroughEndpointUpdateResponse>
 
         /**
          * Returns a raw HTTP response for `get /config/pass_through_endpoint`, but is otherwise the

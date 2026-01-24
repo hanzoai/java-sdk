@@ -9,7 +9,7 @@ import java.util.Objects
 import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
 
-/** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
+/** [Docs](https://docs.litellm.ai/docs/pass_through/anthropic_completion) */
 class AnthropicRetrieveParams
 private constructor(
     private val endpoint: String?,

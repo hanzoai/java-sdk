@@ -61,7 +61,7 @@ class ChatServiceImpl internal constructor(private val clientOptions: ClientOpti
         ): HttpResponseFor<ChatCompleteResponse> {
             // We check here instead of in the params builder because this can be specified
             // positionally or in the params class.
-            checkRequired("model", params.model().getOrNull())
+            checkRequired("pathModel", params.pathModel().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
@@ -73,7 +73,7 @@ class ChatServiceImpl internal constructor(private val clientOptions: ClientOpti
                         "chat",
                         "completions",
                     )
-                    .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
+                    .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))

@@ -10,7 +10,15 @@ import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
 
 /**
+ * [DEPRECATED] This endpoint is not paginated and can cause performance issues. Please use
+ * `/spend/logs/v2` instead for paginated access to spend logs.
+ *
  * View all spend logs, if request_id is provided, only logs for that request_id will be returned
+ *
+ * When start_date and end_date are provided:
+ * - summarize=true (default): Returns aggregated spend data grouped by date (maintains backward
+ *   compatibility)
+ * - summarize=false: Returns filtered individual log entries within the date range
  *
  * Example Request for all logs
  *
@@ -27,13 +35,19 @@ import kotlin.jvm.optionals.getOrNull
  * Example Request for specific api_key
  *
  * ```
- * curl -X GET "http://0.0.0.0:8000/spend/logs?api_key=sk-Fn8Ej39NkBQmUagFEoUWPQ" -H "Authorization: Bearer sk-1234"
+ * curl -X GET "http://0.0.0.0:8000/spend/logs?api_key=sk-test-example-key-123" -H "Authorization: Bearer sk-1234"
  * ```
  *
  * Example Request for specific user_id
  *
  * ```
- * curl -X GET "http://0.0.0.0:8000/spend/logs?user_id=z@hanzo.ai" -H "Authorization: Bearer sk-1234"
+ * curl -X GET "http://0.0.0.0:8000/spend/logs?user_id=ishaan@berri.ai" -H "Authorization: Bearer sk-1234"
+ * ```
+ *
+ * Example Request for date range with individual logs (unsummarized)
+ *
+ * ```
+ * curl -X GET "http://0.0.0.0:8000/spend/logs?start_date=2024-01-01&end_date=2024-01-02&summarize=false" -H "Authorization: Bearer sk-1234"
  * ```
  */
 class SpendListLogsParams
@@ -42,6 +56,7 @@ private constructor(
     private val endDate: String?,
     private val requestId: String?,
     private val startDate: String?,
+    private val summarize: Boolean?,
     private val userId: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
@@ -61,6 +76,12 @@ private constructor(
 
     /** Time from which to start viewing key spend */
     fun startDate(): Optional<String> = Optional.ofNullable(startDate)
+
+    /**
+     * When start_date and end_date are provided, summarize=true returns aggregated data by date
+     * (legacy behavior), summarize=false returns filtered individual logs
+     */
+    fun summarize(): Optional<Boolean> = Optional.ofNullable(summarize)
 
     /** Get spend logs based on user_id */
     fun userId(): Optional<String> = Optional.ofNullable(userId)
@@ -88,6 +109,7 @@ private constructor(
         private var endDate: String? = null
         private var requestId: String? = null
         private var startDate: String? = null
+        private var summarize: Boolean? = null
         private var userId: String? = null
         private var additionalHeaders: Headers.Builder = Headers.builder()
         private var additionalQueryParams: QueryParams.Builder = QueryParams.builder()
@@ -98,6 +120,7 @@ private constructor(
             endDate = spendListLogsParams.endDate
             requestId = spendListLogsParams.requestId
             startDate = spendListLogsParams.startDate
+            summarize = spendListLogsParams.summarize
             userId = spendListLogsParams.userId
             additionalHeaders = spendListLogsParams.additionalHeaders.toBuilder()
             additionalQueryParams = spendListLogsParams.additionalQueryParams.toBuilder()
@@ -129,6 +152,22 @@ private constructor(
 
         /** Alias for calling [Builder.startDate] with `startDate.orElse(null)`. */
         fun startDate(startDate: Optional<String>) = startDate(startDate.getOrNull())
+
+        /**
+         * When start_date and end_date are provided, summarize=true returns aggregated data by date
+         * (legacy behavior), summarize=false returns filtered individual logs
+         */
+        fun summarize(summarize: Boolean?) = apply { this.summarize = summarize }
+
+        /**
+         * Alias for [Builder.summarize].
+         *
+         * This unboxed primitive overload exists for backwards compatibility.
+         */
+        fun summarize(summarize: Boolean) = summarize(summarize as Boolean?)
+
+        /** Alias for calling [Builder.summarize] with `summarize.orElse(null)`. */
+        fun summarize(summarize: Optional<Boolean>) = summarize(summarize.getOrNull())
 
         /** Get spend logs based on user_id */
         fun userId(userId: String?) = apply { this.userId = userId }
@@ -245,6 +284,7 @@ private constructor(
                 endDate,
                 requestId,
                 startDate,
+                summarize,
                 userId,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
@@ -260,6 +300,7 @@ private constructor(
                 endDate?.let { put("end_date", it) }
                 requestId?.let { put("request_id", it) }
                 startDate?.let { put("start_date", it) }
+                summarize?.let { put("summarize", it.toString()) }
                 userId?.let { put("user_id", it) }
                 putAll(additionalQueryParams)
             }
@@ -275,6 +316,7 @@ private constructor(
             endDate == other.endDate &&
             requestId == other.requestId &&
             startDate == other.startDate &&
+            summarize == other.summarize &&
             userId == other.userId &&
             additionalHeaders == other.additionalHeaders &&
             additionalQueryParams == other.additionalQueryParams
@@ -286,11 +328,12 @@ private constructor(
             endDate,
             requestId,
             startDate,
+            summarize,
             userId,
             additionalHeaders,
             additionalQueryParams,
         )
 
     override fun toString() =
-        "SpendListLogsParams{apiKey=$apiKey, endDate=$endDate, requestId=$requestId, startDate=$startDate, userId=$userId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
+        "SpendListLogsParams{apiKey=$apiKey, endDate=$endDate, requestId=$requestId, startDate=$startDate, summarize=$summarize, userId=$userId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
 }

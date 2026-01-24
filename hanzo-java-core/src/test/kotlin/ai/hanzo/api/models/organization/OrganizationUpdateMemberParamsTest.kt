@@ -12,7 +12,7 @@ internal class OrganizationUpdateMemberParamsTest {
         OrganizationUpdateMemberParams.builder()
             .organizationId("organization_id")
             .maxBudgetInOrganization(0.0)
-            .role(OrganizationUpdateMemberParams.Role.PROXY_ADMIN)
+            .role(UserRoles.PROXY_ADMIN)
             .userEmail("user_email")
             .userId("user_id")
             .build()
@@ -24,7 +24,7 @@ internal class OrganizationUpdateMemberParamsTest {
             OrganizationUpdateMemberParams.builder()
                 .organizationId("organization_id")
                 .maxBudgetInOrganization(0.0)
-                .role(OrganizationUpdateMemberParams.Role.PROXY_ADMIN)
+                .role(UserRoles.PROXY_ADMIN)
                 .userEmail("user_email")
                 .userId("user_id")
                 .build()
@@ -33,7 +33,7 @@ internal class OrganizationUpdateMemberParamsTest {
 
         assertThat(body.organizationId()).isEqualTo("organization_id")
         assertThat(body.maxBudgetInOrganization()).contains(0.0)
-        assertThat(body.role()).contains(OrganizationUpdateMemberParams.Role.PROXY_ADMIN)
+        assertThat(body.role()).contains(UserRoles.PROXY_ADMIN)
         assertThat(body.userEmail()).contains("user_email")
         assertThat(body.userId()).contains("user_id")
     }

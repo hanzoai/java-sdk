@@ -22,13 +22,12 @@ import ai.hanzo.api.models.customer.CustomerCreateResponse
 import ai.hanzo.api.models.customer.CustomerDeleteParams
 import ai.hanzo.api.models.customer.CustomerDeleteResponse
 import ai.hanzo.api.models.customer.CustomerListParams
-import ai.hanzo.api.models.customer.CustomerListResponse
 import ai.hanzo.api.models.customer.CustomerRetrieveInfoParams
-import ai.hanzo.api.models.customer.CustomerRetrieveInfoResponse
 import ai.hanzo.api.models.customer.CustomerUnblockParams
 import ai.hanzo.api.models.customer.CustomerUnblockResponse
 import ai.hanzo.api.models.customer.CustomerUpdateParams
 import ai.hanzo.api.models.customer.CustomerUpdateResponse
+import ai.hanzo.api.models.customer.LiteLlmEndUserTable
 import java.util.function.Consumer
 
 class CustomerServiceImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -60,7 +59,7 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
     override fun list(
         params: CustomerListParams,
         requestOptions: RequestOptions,
-    ): List<CustomerListResponse> =
+    ): List<LiteLlmEndUserTable> =
         // get /customer/list
         withRawResponse().list(params, requestOptions).parse()
 
@@ -81,7 +80,7 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
     override fun retrieveInfo(
         params: CustomerRetrieveInfoParams,
         requestOptions: RequestOptions,
-    ): CustomerRetrieveInfoResponse =
+    ): LiteLlmEndUserTable =
         // get /customer/info
         withRawResponse().retrieveInfo(params, requestOptions).parse()
 
@@ -161,13 +160,13 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
             }
         }
 
-        private val listHandler: Handler<List<CustomerListResponse>> =
-            jsonHandler<List<CustomerListResponse>>(clientOptions.jsonMapper)
+        private val listHandler: Handler<List<LiteLlmEndUserTable>> =
+            jsonHandler<List<LiteLlmEndUserTable>>(clientOptions.jsonMapper)
 
         override fun list(
             params: CustomerListParams,
             requestOptions: RequestOptions,
-        ): HttpResponseFor<List<CustomerListResponse>> {
+        ): HttpResponseFor<List<LiteLlmEndUserTable>> {
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
@@ -244,13 +243,13 @@ class CustomerServiceImpl internal constructor(private val clientOptions: Client
             }
         }
 
-        private val retrieveInfoHandler: Handler<CustomerRetrieveInfoResponse> =
-            jsonHandler<CustomerRetrieveInfoResponse>(clientOptions.jsonMapper)
+        private val retrieveInfoHandler: Handler<LiteLlmEndUserTable> =
+            jsonHandler<LiteLlmEndUserTable>(clientOptions.jsonMapper)
 
         override fun retrieveInfo(
             params: CustomerRetrieveInfoParams,
             requestOptions: RequestOptions,
-        ): HttpResponseFor<CustomerRetrieveInfoResponse> {
+        ): HttpResponseFor<LiteLlmEndUserTable> {
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
