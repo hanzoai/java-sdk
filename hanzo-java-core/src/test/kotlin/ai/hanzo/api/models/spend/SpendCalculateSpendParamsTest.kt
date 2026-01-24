@@ -12,7 +12,11 @@ internal class SpendCalculateSpendParamsTest {
     @Test
     fun create() {
         SpendCalculateSpendParams.builder()
-            .completionResponse(JsonValue.from(mapOf<String, Any>()))
+            .completionResponse(
+                SpendCalculateSpendParams.CompletionResponse.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                    .build()
+            )
             .addMessage(JsonValue.from(mapOf<String, Any>()))
             .model("model")
             .build()
@@ -22,14 +26,23 @@ internal class SpendCalculateSpendParamsTest {
     fun body() {
         val params =
             SpendCalculateSpendParams.builder()
-                .completionResponse(JsonValue.from(mapOf<String, Any>()))
+                .completionResponse(
+                    SpendCalculateSpendParams.CompletionResponse.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("bar"))
+                        .build()
+                )
                 .addMessage(JsonValue.from(mapOf<String, Any>()))
                 .model("model")
                 .build()
 
         val body = params._body()
 
-        assertThat(body._completionResponse()).isEqualTo(JsonValue.from(mapOf<String, Any>()))
+        assertThat(body.completionResponse())
+            .contains(
+                SpendCalculateSpendParams.CompletionResponse.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                    .build()
+            )
         assertThat(body.messages().getOrNull())
             .containsExactly(JsonValue.from(mapOf<String, Any>()))
         assertThat(body.model()).contains("model")

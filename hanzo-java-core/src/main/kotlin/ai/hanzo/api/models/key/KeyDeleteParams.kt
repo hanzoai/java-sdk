@@ -45,17 +45,17 @@ import kotlin.jvm.optionals.getOrNull
  */
 class KeyDeleteParams
 private constructor(
-    private val llmChangedBy: String?,
+    private val litellmChangedBy: String?,
     private val body: Body,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
     /**
-     * The llm-changed-by header enables tracking of actions performed by authorized users on behalf
-     * of other users, providing an audit trail for accountability
+     * The litellm-changed-by header enables tracking of actions performed by authorized users on
+     * behalf of other users, providing an audit trail for accountability
      */
-    fun llmChangedBy(): Optional<String> = Optional.ofNullable(llmChangedBy)
+    fun litellmChangedBy(): Optional<String> = Optional.ofNullable(litellmChangedBy)
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
@@ -104,27 +104,30 @@ private constructor(
     /** A builder for [KeyDeleteParams]. */
     class Builder internal constructor() {
 
-        private var llmChangedBy: String? = null
+        private var litellmChangedBy: String? = null
         private var body: Body.Builder = Body.builder()
         private var additionalHeaders: Headers.Builder = Headers.builder()
         private var additionalQueryParams: QueryParams.Builder = QueryParams.builder()
 
         @JvmSynthetic
         internal fun from(keyDeleteParams: KeyDeleteParams) = apply {
-            llmChangedBy = keyDeleteParams.llmChangedBy
+            litellmChangedBy = keyDeleteParams.litellmChangedBy
             body = keyDeleteParams.body.toBuilder()
             additionalHeaders = keyDeleteParams.additionalHeaders.toBuilder()
             additionalQueryParams = keyDeleteParams.additionalQueryParams.toBuilder()
         }
 
         /**
-         * The llm-changed-by header enables tracking of actions performed by authorized users on
-         * behalf of other users, providing an audit trail for accountability
+         * The litellm-changed-by header enables tracking of actions performed by authorized users
+         * on behalf of other users, providing an audit trail for accountability
          */
-        fun llmChangedBy(llmChangedBy: String?) = apply { this.llmChangedBy = llmChangedBy }
+        fun litellmChangedBy(litellmChangedBy: String?) = apply {
+            this.litellmChangedBy = litellmChangedBy
+        }
 
-        /** Alias for calling [Builder.llmChangedBy] with `llmChangedBy.orElse(null)`. */
-        fun llmChangedBy(llmChangedBy: Optional<String>) = llmChangedBy(llmChangedBy.getOrNull())
+        /** Alias for calling [Builder.litellmChangedBy] with `litellmChangedBy.orElse(null)`. */
+        fun litellmChangedBy(litellmChangedBy: Optional<String>) =
+            litellmChangedBy(litellmChangedBy.getOrNull())
 
         /**
          * Sets the entire request body.
@@ -302,7 +305,7 @@ private constructor(
          */
         fun build(): KeyDeleteParams =
             KeyDeleteParams(
-                llmChangedBy,
+                litellmChangedBy,
                 body.build(),
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
@@ -314,7 +317,7 @@ private constructor(
     override fun _headers(): Headers =
         Headers.builder()
             .apply {
-                llmChangedBy?.let { put("llm-changed-by", it) }
+                litellmChangedBy?.let { put("litellm-changed-by", it) }
                 putAll(additionalHeaders)
             }
             .build()
@@ -538,15 +541,15 @@ private constructor(
         }
 
         return other is KeyDeleteParams &&
-            llmChangedBy == other.llmChangedBy &&
+            litellmChangedBy == other.litellmChangedBy &&
             body == other.body &&
             additionalHeaders == other.additionalHeaders &&
             additionalQueryParams == other.additionalQueryParams
     }
 
     override fun hashCode(): Int =
-        Objects.hash(llmChangedBy, body, additionalHeaders, additionalQueryParams)
+        Objects.hash(litellmChangedBy, body, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
-        "KeyDeleteParams{llmChangedBy=$llmChangedBy, body=$body, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
+        "KeyDeleteParams{litellmChangedBy=$litellmChangedBy, body=$body, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
 }

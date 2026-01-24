@@ -33,9 +33,9 @@ interface LangfuseServiceAsync {
     fun withOptions(modifier: Consumer<ClientOptions.Builder>): LangfuseServiceAsync
 
     /**
-     * Call Langfuse via LLM proxy. Works with Langfuse SDK.
+     * Call Langfuse via LiteLLM proxy. Works with Langfuse SDK.
      *
-     * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
+     * [Docs](https://docs.litellm.ai/docs/pass_through/langfuse)
      */
     fun create(endpoint: String): CompletableFuture<LangfuseCreateResponse> =
         create(endpoint, LangfuseCreateParams.none())
@@ -72,9 +72,9 @@ interface LangfuseServiceAsync {
         create(endpoint, LangfuseCreateParams.none(), requestOptions)
 
     /**
-     * Call Langfuse via LLM proxy. Works with Langfuse SDK.
+     * Call Langfuse via LiteLLM proxy. Works with Langfuse SDK.
      *
-     * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
+     * [Docs](https://docs.litellm.ai/docs/pass_through/langfuse)
      */
     fun retrieve(endpoint: String): CompletableFuture<LangfuseRetrieveResponse> =
         retrieve(endpoint, LangfuseRetrieveParams.none())
@@ -112,9 +112,9 @@ interface LangfuseServiceAsync {
         retrieve(endpoint, LangfuseRetrieveParams.none(), requestOptions)
 
     /**
-     * Call Langfuse via LLM proxy. Works with Langfuse SDK.
+     * Call Langfuse via LiteLLM proxy. Works with Langfuse SDK.
      *
-     * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
+     * [Docs](https://docs.litellm.ai/docs/pass_through/langfuse)
      */
     fun update(endpoint: String): CompletableFuture<LangfuseUpdateResponse> =
         update(endpoint, LangfuseUpdateParams.none())
@@ -151,9 +151,9 @@ interface LangfuseServiceAsync {
         update(endpoint, LangfuseUpdateParams.none(), requestOptions)
 
     /**
-     * Call Langfuse via LLM proxy. Works with Langfuse SDK.
+     * Call Langfuse via LiteLLM proxy. Works with Langfuse SDK.
      *
-     * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
+     * [Docs](https://docs.litellm.ai/docs/pass_through/langfuse)
      */
     fun delete(endpoint: String): CompletableFuture<LangfuseDeleteResponse> =
         delete(endpoint, LangfuseDeleteParams.none())
@@ -190,9 +190,9 @@ interface LangfuseServiceAsync {
         delete(endpoint, LangfuseDeleteParams.none(), requestOptions)
 
     /**
-     * Call Langfuse via LLM proxy. Works with Langfuse SDK.
+     * Call Langfuse via LiteLLM proxy. Works with Langfuse SDK.
      *
-     * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
+     * [Docs](https://docs.litellm.ai/docs/pass_through/langfuse)
      */
     fun patch(endpoint: String): CompletableFuture<LangfusePatchResponse> =
         patch(endpoint, LangfusePatchParams.none())

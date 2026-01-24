@@ -9,16 +9,7 @@ import java.util.Objects
 import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
 
-/**
- * Get input items for a response.
- *
- * Follows the OpenAI Responses API spec:
- * https://platform.openai.com/docs/api-reference/responses/input-items
- *
- * ```bash
- * curl -X GET http://localhost:4000/v1/responses/resp_abc123/input_items     -H "Authorization: Bearer sk-1234"
- * ```
- */
+/** List input items for a response. */
 class InputItemListParams
 private constructor(
     private val responseId: String?,

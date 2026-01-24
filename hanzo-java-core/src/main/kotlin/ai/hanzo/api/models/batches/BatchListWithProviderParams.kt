@@ -24,6 +24,7 @@ private constructor(
     private val provider: String?,
     private val after: String?,
     private val limit: Long?,
+    private val targetModelNames: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
@@ -33,6 +34,8 @@ private constructor(
     fun after(): Optional<String> = Optional.ofNullable(after)
 
     fun limit(): Optional<Long> = Optional.ofNullable(limit)
+
+    fun targetModelNames(): Optional<String> = Optional.ofNullable(targetModelNames)
 
     /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
@@ -58,6 +61,7 @@ private constructor(
         private var provider: String? = null
         private var after: String? = null
         private var limit: Long? = null
+        private var targetModelNames: String? = null
         private var additionalHeaders: Headers.Builder = Headers.builder()
         private var additionalQueryParams: QueryParams.Builder = QueryParams.builder()
 
@@ -66,6 +70,7 @@ private constructor(
             provider = batchListWithProviderParams.provider
             after = batchListWithProviderParams.after
             limit = batchListWithProviderParams.limit
+            targetModelNames = batchListWithProviderParams.targetModelNames
             additionalHeaders = batchListWithProviderParams.additionalHeaders.toBuilder()
             additionalQueryParams = batchListWithProviderParams.additionalQueryParams.toBuilder()
         }
@@ -91,6 +96,14 @@ private constructor(
 
         /** Alias for calling [Builder.limit] with `limit.orElse(null)`. */
         fun limit(limit: Optional<Long>) = limit(limit.getOrNull())
+
+        fun targetModelNames(targetModelNames: String?) = apply {
+            this.targetModelNames = targetModelNames
+        }
+
+        /** Alias for calling [Builder.targetModelNames] with `targetModelNames.orElse(null)`. */
+        fun targetModelNames(targetModelNames: Optional<String>) =
+            targetModelNames(targetModelNames.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -200,6 +213,7 @@ private constructor(
                 provider,
                 after,
                 limit,
+                targetModelNames,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
             )
@@ -218,6 +232,7 @@ private constructor(
             .apply {
                 after?.let { put("after", it) }
                 limit?.let { put("limit", it.toString()) }
+                targetModelNames?.let { put("target_model_names", it) }
                 putAll(additionalQueryParams)
             }
             .build()
@@ -231,13 +246,21 @@ private constructor(
             provider == other.provider &&
             after == other.after &&
             limit == other.limit &&
+            targetModelNames == other.targetModelNames &&
             additionalHeaders == other.additionalHeaders &&
             additionalQueryParams == other.additionalQueryParams
     }
 
     override fun hashCode(): Int =
-        Objects.hash(provider, after, limit, additionalHeaders, additionalQueryParams)
+        Objects.hash(
+            provider,
+            after,
+            limit,
+            targetModelNames,
+            additionalHeaders,
+            additionalQueryParams,
+        )
 
     override fun toString() =
-        "BatchListWithProviderParams{provider=$provider, after=$after, limit=$limit, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
+        "BatchListWithProviderParams{provider=$provider, after=$after, limit=$limit, targetModelNames=$targetModelNames, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
 }

@@ -93,28 +93,18 @@ interface EngineServiceAsync {
      * }'
      * ```
      */
-    fun embed(model: String): CompletableFuture<EngineEmbedResponse> =
-        embed(model, EngineEmbedParams.none())
+    fun embed(
+        pathModel: String,
+        params: EngineEmbedParams,
+    ): CompletableFuture<EngineEmbedResponse> = embed(pathModel, params, RequestOptions.none())
 
     /** @see embed */
     fun embed(
-        model: String,
-        params: EngineEmbedParams = EngineEmbedParams.none(),
-        requestOptions: RequestOptions = RequestOptions.none(),
-    ): CompletableFuture<EngineEmbedResponse> =
-        embed(params.toBuilder().model(model).build(), requestOptions)
-
-    /** @see embed */
-    fun embed(
-        model: String,
-        params: EngineEmbedParams = EngineEmbedParams.none(),
-    ): CompletableFuture<EngineEmbedResponse> = embed(model, params, RequestOptions.none())
-
-    /** @see embed */
-    fun embed(
+        pathModel: String,
         params: EngineEmbedParams,
         requestOptions: RequestOptions = RequestOptions.none(),
-    ): CompletableFuture<EngineEmbedResponse>
+    ): CompletableFuture<EngineEmbedResponse> =
+        embed(params.toBuilder().pathModel(pathModel).build(), requestOptions)
 
     /** @see embed */
     fun embed(params: EngineEmbedParams): CompletableFuture<EngineEmbedResponse> =
@@ -122,10 +112,9 @@ interface EngineServiceAsync {
 
     /** @see embed */
     fun embed(
-        model: String,
-        requestOptions: RequestOptions,
-    ): CompletableFuture<EngineEmbedResponse> =
-        embed(model, EngineEmbedParams.none(), requestOptions)
+        params: EngineEmbedParams,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<EngineEmbedResponse>
 
     /**
      * A view of [EngineServiceAsync] that provides access to raw HTTP responses for each method.
@@ -188,29 +177,19 @@ interface EngineServiceAsync {
          * Returns a raw HTTP response for `post /engines/{model}/embeddings`, but is otherwise the
          * same as [EngineServiceAsync.embed].
          */
-        fun embed(model: String): CompletableFuture<HttpResponseFor<EngineEmbedResponse>> =
-            embed(model, EngineEmbedParams.none())
-
-        /** @see embed */
         fun embed(
-            model: String,
-            params: EngineEmbedParams = EngineEmbedParams.none(),
-            requestOptions: RequestOptions = RequestOptions.none(),
+            pathModel: String,
+            params: EngineEmbedParams,
         ): CompletableFuture<HttpResponseFor<EngineEmbedResponse>> =
-            embed(params.toBuilder().model(model).build(), requestOptions)
+            embed(pathModel, params, RequestOptions.none())
 
         /** @see embed */
         fun embed(
-            model: String,
-            params: EngineEmbedParams = EngineEmbedParams.none(),
-        ): CompletableFuture<HttpResponseFor<EngineEmbedResponse>> =
-            embed(model, params, RequestOptions.none())
-
-        /** @see embed */
-        fun embed(
+            pathModel: String,
             params: EngineEmbedParams,
             requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<EngineEmbedResponse>>
+        ): CompletableFuture<HttpResponseFor<EngineEmbedResponse>> =
+            embed(params.toBuilder().pathModel(pathModel).build(), requestOptions)
 
         /** @see embed */
         fun embed(
@@ -220,9 +199,8 @@ interface EngineServiceAsync {
 
         /** @see embed */
         fun embed(
-            model: String,
-            requestOptions: RequestOptions,
-        ): CompletableFuture<HttpResponseFor<EngineEmbedResponse>> =
-            embed(model, EngineEmbedParams.none(), requestOptions)
+            params: EngineEmbedParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<EngineEmbedResponse>>
     }
 }
