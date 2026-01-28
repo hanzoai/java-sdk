@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.blocking
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.azure.AzureCallParams
@@ -15,6 +16,7 @@ import ai.hanzo.api.models.azure.AzurePatchResponse
 import ai.hanzo.api.models.azure.AzureUpdateParams
 import ai.hanzo.api.models.azure.AzureUpdateResponse
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface AzureService {
 
@@ -24,149 +26,423 @@ interface AzureService {
     fun withRawResponse(): WithRawResponse
 
     /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): AzureService
+
+    /**
      * Call any azure endpoint using the proxy.
      *
      * Just use `{PROXY_BASE_URL}/azure/{endpoint:path}`
+     *
+     * Checks if the deployment id in the url is a litellm model name. If so, it will route using
+     * the llm_router.allm_passthrough_route.
      */
-    fun create(params: AzureCreateParams): AzureCreateResponse =
-        create(params, RequestOptions.none())
+    fun create(endpoint: String): AzureCreateResponse = create(endpoint, AzureCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
+    fun create(
+        endpoint: String,
+        params: AzureCreateParams = AzureCreateParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): AzureCreateResponse = create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see create */
+    fun create(
+        endpoint: String,
+        params: AzureCreateParams = AzureCreateParams.none(),
+    ): AzureCreateResponse = create(endpoint, params, RequestOptions.none())
+
+    /** @see create */
     fun create(
         params: AzureCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AzureCreateResponse
 
+    /** @see create */
+    fun create(params: AzureCreateParams): AzureCreateResponse =
+        create(params, RequestOptions.none())
+
+    /** @see create */
+    fun create(endpoint: String, requestOptions: RequestOptions): AzureCreateResponse =
+        create(endpoint, AzureCreateParams.none(), requestOptions)
+
     /**
      * Call any azure endpoint using the proxy.
      *
      * Just use `{PROXY_BASE_URL}/azure/{endpoint:path}`
+     *
+     * Checks if the deployment id in the url is a litellm model name. If so, it will route using
+     * the llm_router.allm_passthrough_route.
      */
-    fun update(params: AzureUpdateParams): AzureUpdateResponse =
-        update(params, RequestOptions.none())
+    fun update(endpoint: String): AzureUpdateResponse = update(endpoint, AzureUpdateParams.none())
 
-    /** @see [update] */
+    /** @see update */
+    fun update(
+        endpoint: String,
+        params: AzureUpdateParams = AzureUpdateParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): AzureUpdateResponse = update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see update */
+    fun update(
+        endpoint: String,
+        params: AzureUpdateParams = AzureUpdateParams.none(),
+    ): AzureUpdateResponse = update(endpoint, params, RequestOptions.none())
+
+    /** @see update */
     fun update(
         params: AzureUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AzureUpdateResponse
 
+    /** @see update */
+    fun update(params: AzureUpdateParams): AzureUpdateResponse =
+        update(params, RequestOptions.none())
+
+    /** @see update */
+    fun update(endpoint: String, requestOptions: RequestOptions): AzureUpdateResponse =
+        update(endpoint, AzureUpdateParams.none(), requestOptions)
+
     /**
      * Call any azure endpoint using the proxy.
      *
      * Just use `{PROXY_BASE_URL}/azure/{endpoint:path}`
+     *
+     * Checks if the deployment id in the url is a litellm model name. If so, it will route using
+     * the llm_router.allm_passthrough_route.
      */
-    fun delete(params: AzureDeleteParams): AzureDeleteResponse =
-        delete(params, RequestOptions.none())
+    fun delete(endpoint: String): AzureDeleteResponse = delete(endpoint, AzureDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
+    fun delete(
+        endpoint: String,
+        params: AzureDeleteParams = AzureDeleteParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): AzureDeleteResponse = delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see delete */
+    fun delete(
+        endpoint: String,
+        params: AzureDeleteParams = AzureDeleteParams.none(),
+    ): AzureDeleteResponse = delete(endpoint, params, RequestOptions.none())
+
+    /** @see delete */
     fun delete(
         params: AzureDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AzureDeleteResponse
 
+    /** @see delete */
+    fun delete(params: AzureDeleteParams): AzureDeleteResponse =
+        delete(params, RequestOptions.none())
+
+    /** @see delete */
+    fun delete(endpoint: String, requestOptions: RequestOptions): AzureDeleteResponse =
+        delete(endpoint, AzureDeleteParams.none(), requestOptions)
+
     /**
      * Call any azure endpoint using the proxy.
      *
      * Just use `{PROXY_BASE_URL}/azure/{endpoint:path}`
+     *
+     * Checks if the deployment id in the url is a litellm model name. If so, it will route using
+     * the llm_router.allm_passthrough_route.
      */
-    fun call(params: AzureCallParams): AzureCallResponse = call(params, RequestOptions.none())
+    fun call(endpoint: String): AzureCallResponse = call(endpoint, AzureCallParams.none())
 
-    /** @see [call] */
+    /** @see call */
+    fun call(
+        endpoint: String,
+        params: AzureCallParams = AzureCallParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): AzureCallResponse = call(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see call */
+    fun call(
+        endpoint: String,
+        params: AzureCallParams = AzureCallParams.none(),
+    ): AzureCallResponse = call(endpoint, params, RequestOptions.none())
+
+    /** @see call */
     fun call(
         params: AzureCallParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AzureCallResponse
 
+    /** @see call */
+    fun call(params: AzureCallParams): AzureCallResponse = call(params, RequestOptions.none())
+
+    /** @see call */
+    fun call(endpoint: String, requestOptions: RequestOptions): AzureCallResponse =
+        call(endpoint, AzureCallParams.none(), requestOptions)
+
     /**
      * Call any azure endpoint using the proxy.
      *
      * Just use `{PROXY_BASE_URL}/azure/{endpoint:path}`
+     *
+     * Checks if the deployment id in the url is a litellm model name. If so, it will route using
+     * the llm_router.allm_passthrough_route.
      */
-    fun patch(params: AzurePatchParams): AzurePatchResponse = patch(params, RequestOptions.none())
+    fun patch(endpoint: String): AzurePatchResponse = patch(endpoint, AzurePatchParams.none())
 
-    /** @see [patch] */
+    /** @see patch */
+    fun patch(
+        endpoint: String,
+        params: AzurePatchParams = AzurePatchParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): AzurePatchResponse = patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see patch */
+    fun patch(
+        endpoint: String,
+        params: AzurePatchParams = AzurePatchParams.none(),
+    ): AzurePatchResponse = patch(endpoint, params, RequestOptions.none())
+
+    /** @see patch */
     fun patch(
         params: AzurePatchParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AzurePatchResponse
 
+    /** @see patch */
+    fun patch(params: AzurePatchParams): AzurePatchResponse = patch(params, RequestOptions.none())
+
+    /** @see patch */
+    fun patch(endpoint: String, requestOptions: RequestOptions): AzurePatchResponse =
+        patch(endpoint, AzurePatchParams.none(), requestOptions)
+
     /** A view of [AzureService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): AzureService.WithRawResponse
 
         /**
          * Returns a raw HTTP response for `post /azure/{endpoint}`, but is otherwise the same as
          * [AzureService.create].
          */
         @MustBeClosed
-        fun create(params: AzureCreateParams): HttpResponseFor<AzureCreateResponse> =
-            create(params, RequestOptions.none())
+        fun create(endpoint: String): HttpResponseFor<AzureCreateResponse> =
+            create(endpoint, AzureCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
+        @MustBeClosed
+        fun create(
+            endpoint: String,
+            params: AzureCreateParams = AzureCreateParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<AzureCreateResponse> =
+            create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see create */
+        @MustBeClosed
+        fun create(
+            endpoint: String,
+            params: AzureCreateParams = AzureCreateParams.none(),
+        ): HttpResponseFor<AzureCreateResponse> = create(endpoint, params, RequestOptions.none())
+
+        /** @see create */
         @MustBeClosed
         fun create(
             params: AzureCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<AzureCreateResponse>
 
+        /** @see create */
+        @MustBeClosed
+        fun create(params: AzureCreateParams): HttpResponseFor<AzureCreateResponse> =
+            create(params, RequestOptions.none())
+
+        /** @see create */
+        @MustBeClosed
+        fun create(
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<AzureCreateResponse> =
+            create(endpoint, AzureCreateParams.none(), requestOptions)
+
         /**
          * Returns a raw HTTP response for `put /azure/{endpoint}`, but is otherwise the same as
          * [AzureService.update].
          */
         @MustBeClosed
-        fun update(params: AzureUpdateParams): HttpResponseFor<AzureUpdateResponse> =
-            update(params, RequestOptions.none())
+        fun update(endpoint: String): HttpResponseFor<AzureUpdateResponse> =
+            update(endpoint, AzureUpdateParams.none())
 
-        /** @see [update] */
+        /** @see update */
+        @MustBeClosed
+        fun update(
+            endpoint: String,
+            params: AzureUpdateParams = AzureUpdateParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<AzureUpdateResponse> =
+            update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see update */
+        @MustBeClosed
+        fun update(
+            endpoint: String,
+            params: AzureUpdateParams = AzureUpdateParams.none(),
+        ): HttpResponseFor<AzureUpdateResponse> = update(endpoint, params, RequestOptions.none())
+
+        /** @see update */
         @MustBeClosed
         fun update(
             params: AzureUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<AzureUpdateResponse>
 
+        /** @see update */
+        @MustBeClosed
+        fun update(params: AzureUpdateParams): HttpResponseFor<AzureUpdateResponse> =
+            update(params, RequestOptions.none())
+
+        /** @see update */
+        @MustBeClosed
+        fun update(
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<AzureUpdateResponse> =
+            update(endpoint, AzureUpdateParams.none(), requestOptions)
+
         /**
          * Returns a raw HTTP response for `delete /azure/{endpoint}`, but is otherwise the same as
          * [AzureService.delete].
          */
         @MustBeClosed
-        fun delete(params: AzureDeleteParams): HttpResponseFor<AzureDeleteResponse> =
-            delete(params, RequestOptions.none())
+        fun delete(endpoint: String): HttpResponseFor<AzureDeleteResponse> =
+            delete(endpoint, AzureDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
+        @MustBeClosed
+        fun delete(
+            endpoint: String,
+            params: AzureDeleteParams = AzureDeleteParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<AzureDeleteResponse> =
+            delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see delete */
+        @MustBeClosed
+        fun delete(
+            endpoint: String,
+            params: AzureDeleteParams = AzureDeleteParams.none(),
+        ): HttpResponseFor<AzureDeleteResponse> = delete(endpoint, params, RequestOptions.none())
+
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: AzureDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<AzureDeleteResponse>
 
+        /** @see delete */
+        @MustBeClosed
+        fun delete(params: AzureDeleteParams): HttpResponseFor<AzureDeleteResponse> =
+            delete(params, RequestOptions.none())
+
+        /** @see delete */
+        @MustBeClosed
+        fun delete(
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<AzureDeleteResponse> =
+            delete(endpoint, AzureDeleteParams.none(), requestOptions)
+
         /**
          * Returns a raw HTTP response for `get /azure/{endpoint}`, but is otherwise the same as
          * [AzureService.call].
          */
         @MustBeClosed
-        fun call(params: AzureCallParams): HttpResponseFor<AzureCallResponse> =
-            call(params, RequestOptions.none())
+        fun call(endpoint: String): HttpResponseFor<AzureCallResponse> =
+            call(endpoint, AzureCallParams.none())
 
-        /** @see [call] */
+        /** @see call */
+        @MustBeClosed
+        fun call(
+            endpoint: String,
+            params: AzureCallParams = AzureCallParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<AzureCallResponse> =
+            call(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see call */
+        @MustBeClosed
+        fun call(
+            endpoint: String,
+            params: AzureCallParams = AzureCallParams.none(),
+        ): HttpResponseFor<AzureCallResponse> = call(endpoint, params, RequestOptions.none())
+
+        /** @see call */
         @MustBeClosed
         fun call(
             params: AzureCallParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<AzureCallResponse>
 
+        /** @see call */
+        @MustBeClosed
+        fun call(params: AzureCallParams): HttpResponseFor<AzureCallResponse> =
+            call(params, RequestOptions.none())
+
+        /** @see call */
+        @MustBeClosed
+        fun call(
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<AzureCallResponse> =
+            call(endpoint, AzureCallParams.none(), requestOptions)
+
         /**
          * Returns a raw HTTP response for `patch /azure/{endpoint}`, but is otherwise the same as
          * [AzureService.patch].
          */
         @MustBeClosed
-        fun patch(params: AzurePatchParams): HttpResponseFor<AzurePatchResponse> =
-            patch(params, RequestOptions.none())
+        fun patch(endpoint: String): HttpResponseFor<AzurePatchResponse> =
+            patch(endpoint, AzurePatchParams.none())
 
-        /** @see [patch] */
+        /** @see patch */
+        @MustBeClosed
+        fun patch(
+            endpoint: String,
+            params: AzurePatchParams = AzurePatchParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<AzurePatchResponse> =
+            patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see patch */
+        @MustBeClosed
+        fun patch(
+            endpoint: String,
+            params: AzurePatchParams = AzurePatchParams.none(),
+        ): HttpResponseFor<AzurePatchResponse> = patch(endpoint, params, RequestOptions.none())
+
+        /** @see patch */
         @MustBeClosed
         fun patch(
             params: AzurePatchParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<AzurePatchResponse>
+
+        /** @see patch */
+        @MustBeClosed
+        fun patch(params: AzurePatchParams): HttpResponseFor<AzurePatchResponse> =
+            patch(params, RequestOptions.none())
+
+        /** @see patch */
+        @MustBeClosed
+        fun patch(
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<AzurePatchResponse> =
+            patch(endpoint, AzurePatchParams.none(), requestOptions)
     }
 }

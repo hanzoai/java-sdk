@@ -3,23 +3,24 @@
 package ai.hanzo.api.services.async.organization
 
 import ai.hanzo.api.core.ClientOptions
-import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.handlers.errorBodyHandler
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
-import ai.hanzo.api.core.handlers.withErrorHandler
 import ai.hanzo.api.core.http.HttpMethod
 import ai.hanzo.api.core.http.HttpRequest
+import ai.hanzo.api.core.http.HttpResponse
 import ai.hanzo.api.core.http.HttpResponse.Handler
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.core.http.json
 import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepareAsync
+import ai.hanzo.api.models.organization.OrganizationTableWithMembers
 import ai.hanzo.api.models.organization.info.InfoDeprecatedParams
 import ai.hanzo.api.models.organization.info.InfoDeprecatedResponse
 import ai.hanzo.api.models.organization.info.InfoRetrieveParams
-import ai.hanzo.api.models.organization.info.InfoRetrieveResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class InfoServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     InfoServiceAsync {
@@ -30,10 +31,13 @@ class InfoServiceAsyncImpl internal constructor(private val clientOptions: Clien
 
     override fun withRawResponse(): InfoServiceAsync.WithRawResponse = withRawResponse
 
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): InfoServiceAsync =
+        InfoServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
+
     override fun retrieve(
         params: InfoRetrieveParams,
         requestOptions: RequestOptions,
-    ): CompletableFuture<InfoRetrieveResponse> =
+    ): CompletableFuture<OrganizationTableWithMembers> =
         // get /organization/info
         withRawResponse().retrieve(params, requestOptions).thenApply { it.parse() }
 
@@ -47,19 +51,27 @@ class InfoServiceAsyncImpl internal constructor(private val clientOptions: Clien
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
         InfoServiceAsync.WithRawResponse {
 
-        private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+        private val errorHandler: Handler<HttpResponse> =
+            errorHandler(errorBodyHandler(clientOptions.jsonMapper))
 
-        private val retrieveHandler: Handler<InfoRetrieveResponse> =
-            jsonHandler<InfoRetrieveResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): InfoServiceAsync.WithRawResponse =
+            InfoServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
+        private val retrieveHandler: Handler<OrganizationTableWithMembers> =
+            jsonHandler<OrganizationTableWithMembers>(clientOptions.jsonMapper)
 
         override fun retrieve(
             params: InfoRetrieveParams,
             requestOptions: RequestOptions,
-        ): CompletableFuture<HttpResponseFor<InfoRetrieveResponse>> {
+        ): CompletableFuture<HttpResponseFor<OrganizationTableWithMembers>> {
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("organization", "info")
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -67,7 +79,7 @@ class InfoServiceAsyncImpl internal constructor(private val clientOptions: Clien
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { retrieveHandler.handle(it) }
                             .also {
@@ -81,7 +93,6 @@ class InfoServiceAsyncImpl internal constructor(private val clientOptions: Clien
 
         private val deprecatedHandler: Handler<InfoDeprecatedResponse> =
             jsonHandler<InfoDeprecatedResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun deprecated(
             params: InfoDeprecatedParams,
@@ -90,6 +101,7 @@ class InfoServiceAsyncImpl internal constructor(private val clientOptions: Clien
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("organization", "info")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -98,7 +110,7 @@ class InfoServiceAsyncImpl internal constructor(private val clientOptions: Clien
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { deprecatedHandler.handle(it) }
                             .also {

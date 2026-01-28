@@ -4,46 +4,47 @@ package ai.hanzo.api.models.azure
 
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.Params
-import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import ai.hanzo.api.core.toImmutable
 import java.util.Objects
 import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /**
  * Call any azure endpoint using the proxy.
  *
  * Just use `{PROXY_BASE_URL}/azure/{endpoint:path}`
+ *
+ * Checks if the deployment id in the url is a litellm model name. If so, it will route using the
+ * llm_router.allm_passthrough_route.
  */
 class AzureDeleteParams
 private constructor(
-    private val endpoint: String,
+    private val endpoint: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
     private val additionalBodyProperties: Map<String, JsonValue>,
 ) : Params {
 
-    fun endpoint(): String = endpoint
+    fun endpoint(): Optional<String> = Optional.ofNullable(endpoint)
 
+    /** Additional body properties to send with the request. */
     fun _additionalBodyProperties(): Map<String, JsonValue> = additionalBodyProperties
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
 
     companion object {
 
-        /**
-         * Returns a mutable builder for constructing an instance of [AzureDeleteParams].
-         *
-         * The following fields are required:
-         * ```java
-         * .endpoint()
-         * ```
-         */
+        @JvmStatic fun none(): AzureDeleteParams = builder().build()
+
+        /** Returns a mutable builder for constructing an instance of [AzureDeleteParams]. */
         @JvmStatic fun builder() = Builder()
     }
 
@@ -63,7 +64,10 @@ private constructor(
             additionalBodyProperties = azureDeleteParams.additionalBodyProperties.toMutableMap()
         }
 
-        fun endpoint(endpoint: String) = apply { this.endpoint = endpoint }
+        fun endpoint(endpoint: String?) = apply { this.endpoint = endpoint }
+
+        /** Alias for calling [Builder.endpoint] with `endpoint.orElse(null)`. */
+        fun endpoint(endpoint: Optional<String>) = endpoint(endpoint.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -189,30 +193,22 @@ private constructor(
          * Returns an immutable instance of [AzureDeleteParams].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
-         *
-         * The following fields are required:
-         * ```java
-         * .endpoint()
-         * ```
-         *
-         * @throws IllegalStateException if any required field is unset.
          */
         fun build(): AzureDeleteParams =
             AzureDeleteParams(
-                checkRequired("endpoint", endpoint),
+                endpoint,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
                 additionalBodyProperties.toImmutable(),
             )
     }
 
-    @JvmSynthetic
-    internal fun _body(): Optional<Map<String, JsonValue>> =
+    fun _body(): Optional<Map<String, JsonValue>> =
         Optional.ofNullable(additionalBodyProperties.ifEmpty { null })
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> endpoint
+            0 -> endpoint ?: ""
             else -> ""
         }
 
@@ -225,10 +221,15 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is AzureDeleteParams && endpoint == other.endpoint && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams && additionalBodyProperties == other.additionalBodyProperties /* spotless:on */
+        return other is AzureDeleteParams &&
+            endpoint == other.endpoint &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams &&
+            additionalBodyProperties == other.additionalBodyProperties
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(endpoint, additionalHeaders, additionalQueryParams, additionalBodyProperties) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(endpoint, additionalHeaders, additionalQueryParams, additionalBodyProperties)
 
     override fun toString() =
         "AzureDeleteParams{endpoint=$endpoint, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams, additionalBodyProperties=$additionalBodyProperties}"

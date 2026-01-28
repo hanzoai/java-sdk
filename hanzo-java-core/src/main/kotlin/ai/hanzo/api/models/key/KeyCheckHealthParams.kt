@@ -29,7 +29,9 @@ import java.util.Optional
  * {
  *   "key": "healthy",
  *   "logging_callbacks": {
- *     "callbacks": ["gcs_bucket"],
+ *     "callbacks": [
+ *       "gcs_bucket"
+ *     ],
  *     "status": "healthy",
  *     "details": "No logger exceptions triggered, system is healthy. Manually check if logs were sent to ['gcs_bucket']"
  *   }
@@ -41,7 +43,9 @@ import java.util.Optional
  * {
  *   "key": "unhealthy",
  *   "logging_callbacks": {
- *     "callbacks": ["gcs_bucket"],
+ *     "callbacks": [
+ *       "gcs_bucket"
+ *     ],
  *     "status": "unhealthy",
  *     "details": "Logger exceptions triggered, system is unhealthy: Failed to load vertex credentials. Check to see if credentials containing partial/invalid information."
  *   }
@@ -55,10 +59,13 @@ private constructor(
     private val additionalBodyProperties: Map<String, JsonValue>,
 ) : Params {
 
+    /** Additional body properties to send with the request. */
     fun _additionalBodyProperties(): Map<String, JsonValue> = additionalBodyProperties
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
@@ -218,8 +225,7 @@ private constructor(
             )
     }
 
-    @JvmSynthetic
-    internal fun _body(): Optional<Map<String, JsonValue>> =
+    fun _body(): Optional<Map<String, JsonValue>> =
         Optional.ofNullable(additionalBodyProperties.ifEmpty { null })
 
     override fun _headers(): Headers = additionalHeaders
@@ -231,10 +237,14 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is KeyCheckHealthParams && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams && additionalBodyProperties == other.additionalBodyProperties /* spotless:on */
+        return other is KeyCheckHealthParams &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams &&
+            additionalBodyProperties == other.additionalBodyProperties
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(additionalHeaders, additionalQueryParams, additionalBodyProperties) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(additionalHeaders, additionalQueryParams, additionalBodyProperties)
 
     override fun toString() =
         "KeyCheckHealthParams{additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams, additionalBodyProperties=$additionalBodyProperties}"

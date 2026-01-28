@@ -3,13 +3,13 @@
 package ai.hanzo.api.services.blocking
 
 import ai.hanzo.api.core.ClientOptions
-import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.handlers.errorBodyHandler
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
-import ai.hanzo.api.core.handlers.withErrorHandler
 import ai.hanzo.api.core.http.HttpMethod
 import ai.hanzo.api.core.http.HttpRequest
+import ai.hanzo.api.core.http.HttpResponse
 import ai.hanzo.api.core.http.HttpResponse.Handler
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.core.http.json
@@ -21,6 +21,7 @@ import ai.hanzo.api.models.spend.SpendListLogsParams
 import ai.hanzo.api.models.spend.SpendListLogsResponse
 import ai.hanzo.api.models.spend.SpendListTagsParams
 import ai.hanzo.api.models.spend.SpendListTagsResponse
+import java.util.function.Consumer
 
 class SpendServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     SpendService {
@@ -30,6 +31,9 @@ class SpendServiceImpl internal constructor(private val clientOptions: ClientOpt
     }
 
     override fun withRawResponse(): SpendService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): SpendService =
+        SpendServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun calculateSpend(
         params: SpendCalculateSpendParams,
@@ -55,11 +59,18 @@ class SpendServiceImpl internal constructor(private val clientOptions: ClientOpt
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
         SpendService.WithRawResponse {
 
-        private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+        private val errorHandler: Handler<HttpResponse> =
+            errorHandler(errorBodyHandler(clientOptions.jsonMapper))
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): SpendService.WithRawResponse =
+            SpendServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         private val calculateSpendHandler: Handler<SpendCalculateSpendResponse> =
             jsonHandler<SpendCalculateSpendResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun calculateSpend(
             params: SpendCalculateSpendParams,
@@ -68,13 +79,14 @@ class SpendServiceImpl internal constructor(private val clientOptions: ClientOpt
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("spend", "calculate")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { calculateSpendHandler.handle(it) }
                     .also {
@@ -87,7 +99,6 @@ class SpendServiceImpl internal constructor(private val clientOptions: ClientOpt
 
         private val listLogsHandler: Handler<List<SpendListLogsResponse>> =
             jsonHandler<List<SpendListLogsResponse>>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun listLogs(
             params: SpendListLogsParams,
@@ -96,12 +107,13 @@ class SpendServiceImpl internal constructor(private val clientOptions: ClientOpt
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("spend", "logs")
                     .build()
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { listLogsHandler.handle(it) }
                     .also {
@@ -114,7 +126,6 @@ class SpendServiceImpl internal constructor(private val clientOptions: ClientOpt
 
         private val listTagsHandler: Handler<List<SpendListTagsResponse>> =
             jsonHandler<List<SpendListTagsResponse>>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun listTags(
             params: SpendListTagsParams,
@@ -123,12 +134,13 @@ class SpendServiceImpl internal constructor(private val clientOptions: ClientOpt
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("spend", "tags")
                     .build()
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { listTagsHandler.handle(it) }
                     .also {

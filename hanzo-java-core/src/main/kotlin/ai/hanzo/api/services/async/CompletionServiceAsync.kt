@@ -2,12 +2,13 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.completions.CompletionCreateParams
 import ai.hanzo.api.models.completions.CompletionCreateResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface CompletionServiceAsync {
 
@@ -15,6 +16,13 @@ interface CompletionServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): CompletionServiceAsync
 
     /**
      * Follows the exact same API spec as `OpenAI's Completions API
@@ -35,18 +43,18 @@ interface CompletionServiceAsync {
     fun create(): CompletableFuture<CompletionCreateResponse> =
         create(CompletionCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: CompletionCreateParams = CompletionCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CompletionCreateResponse>
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: CompletionCreateParams = CompletionCreateParams.none()
     ): CompletableFuture<CompletionCreateResponse> = create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): CompletableFuture<CompletionCreateResponse> =
         create(CompletionCreateParams.none(), requestOptions)
 
@@ -57,29 +65,34 @@ interface CompletionServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): CompletionServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `post /completions`, but is otherwise the same as
          * [CompletionServiceAsync.create].
          */
-        @MustBeClosed
         fun create(): CompletableFuture<HttpResponseFor<CompletionCreateResponse>> =
             create(CompletionCreateParams.none())
 
-        /** @see [create] */
-        @MustBeClosed
+        /** @see create */
         fun create(
             params: CompletionCreateParams = CompletionCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<CompletionCreateResponse>>
 
-        /** @see [create] */
-        @MustBeClosed
+        /** @see create */
         fun create(
             params: CompletionCreateParams = CompletionCreateParams.none()
         ): CompletableFuture<HttpResponseFor<CompletionCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
-        @MustBeClosed
+        /** @see create */
         fun create(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<CompletionCreateResponse>> =

@@ -2,11 +2,13 @@
 
 package ai.hanzo.api.services.blocking.openai.deployments
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.openai.deployments.chat.ChatCompleteParams
 import ai.hanzo.api.models.openai.deployments.chat.ChatCompleteResponse
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface ChatService {
 
@@ -14,6 +16,13 @@ interface ChatService {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): ChatService
 
     /**
      * Follows the exact same API spec as `OpenAI's Chat API
@@ -34,10 +43,22 @@ interface ChatService {
      * }'
      * ```
      */
+    fun complete(pathModel: String, params: ChatCompleteParams): ChatCompleteResponse =
+        complete(pathModel, params, RequestOptions.none())
+
+    /** @see complete */
+    fun complete(
+        pathModel: String,
+        params: ChatCompleteParams,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): ChatCompleteResponse =
+        complete(params.toBuilder().pathModel(pathModel).build(), requestOptions)
+
+    /** @see complete */
     fun complete(params: ChatCompleteParams): ChatCompleteResponse =
         complete(params, RequestOptions.none())
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(
         params: ChatCompleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -47,14 +68,38 @@ interface ChatService {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): ChatService.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `post /openai/deployments/{model}/chat/completions`, but
          * is otherwise the same as [ChatService.complete].
          */
         @MustBeClosed
+        fun complete(
+            pathModel: String,
+            params: ChatCompleteParams,
+        ): HttpResponseFor<ChatCompleteResponse> =
+            complete(pathModel, params, RequestOptions.none())
+
+        /** @see complete */
+        @MustBeClosed
+        fun complete(
+            pathModel: String,
+            params: ChatCompleteParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<ChatCompleteResponse> =
+            complete(params.toBuilder().pathModel(pathModel).build(), requestOptions)
+
+        /** @see complete */
+        @MustBeClosed
         fun complete(params: ChatCompleteParams): HttpResponseFor<ChatCompleteResponse> =
             complete(params, RequestOptions.none())
 
-        /** @see [complete] */
+        /** @see complete */
         @MustBeClosed
         fun complete(
             params: ChatCompleteParams,

@@ -4,8 +4,6 @@ package ai.hanzo.api.services.async.threads
 
 import ai.hanzo.api.TestServerExtension
 import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
-import ai.hanzo.api.models.threads.messages.MessageCreateParams
-import ai.hanzo.api.models.threads.messages.MessageListParams
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -13,7 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 @ExtendWith(TestServerExtension::class)
 internal class MessageServiceAsyncTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun create() {
         val client =
@@ -23,14 +21,13 @@ internal class MessageServiceAsyncTest {
                 .build()
         val messageServiceAsync = client.threads().messages()
 
-        val messageFuture =
-            messageServiceAsync.create(MessageCreateParams.builder().threadId("thread_id").build())
+        val messageFuture = messageServiceAsync.create("thread_id")
 
         val message = messageFuture.get()
         message.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun list() {
         val client =
@@ -40,10 +37,9 @@ internal class MessageServiceAsyncTest {
                 .build()
         val messageServiceAsync = client.threads().messages()
 
-        val messageFuture =
-            messageServiceAsync.list(MessageListParams.builder().threadId("thread_id").build())
+        val messagesFuture = messageServiceAsync.list("thread_id")
 
-        val message = messageFuture.get()
-        message.validate()
+        val messages = messagesFuture.get()
+        messages.validate()
     }
 }

@@ -4,42 +4,41 @@ package ai.hanzo.api.models.credentials
 
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.Params
-import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import ai.hanzo.api.core.toImmutable
 import java.util.Objects
 import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /** [BETA] endpoint. This might change unexpectedly. */
 class CredentialDeleteParams
 private constructor(
-    private val credentialName: String,
+    private val credentialName: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
     private val additionalBodyProperties: Map<String, JsonValue>,
 ) : Params {
 
-    fun credentialName(): String = credentialName
+    /** The credential name, percent-decoded; may contain slashes */
+    fun credentialName(): Optional<String> = Optional.ofNullable(credentialName)
 
+    /** Additional body properties to send with the request. */
     fun _additionalBodyProperties(): Map<String, JsonValue> = additionalBodyProperties
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
 
     companion object {
 
-        /**
-         * Returns a mutable builder for constructing an instance of [CredentialDeleteParams].
-         *
-         * The following fields are required:
-         * ```java
-         * .credentialName()
-         * ```
-         */
+        @JvmStatic fun none(): CredentialDeleteParams = builder().build()
+
+        /** Returns a mutable builder for constructing an instance of [CredentialDeleteParams]. */
         @JvmStatic fun builder() = Builder()
     }
 
@@ -60,7 +59,12 @@ private constructor(
                 credentialDeleteParams.additionalBodyProperties.toMutableMap()
         }
 
-        fun credentialName(credentialName: String) = apply { this.credentialName = credentialName }
+        /** The credential name, percent-decoded; may contain slashes */
+        fun credentialName(credentialName: String?) = apply { this.credentialName = credentialName }
+
+        /** Alias for calling [Builder.credentialName] with `credentialName.orElse(null)`. */
+        fun credentialName(credentialName: Optional<String>) =
+            credentialName(credentialName.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -186,30 +190,22 @@ private constructor(
          * Returns an immutable instance of [CredentialDeleteParams].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
-         *
-         * The following fields are required:
-         * ```java
-         * .credentialName()
-         * ```
-         *
-         * @throws IllegalStateException if any required field is unset.
          */
         fun build(): CredentialDeleteParams =
             CredentialDeleteParams(
-                checkRequired("credentialName", credentialName),
+                credentialName,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
                 additionalBodyProperties.toImmutable(),
             )
     }
 
-    @JvmSynthetic
-    internal fun _body(): Optional<Map<String, JsonValue>> =
+    fun _body(): Optional<Map<String, JsonValue>> =
         Optional.ofNullable(additionalBodyProperties.ifEmpty { null })
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> credentialName
+            0 -> credentialName ?: ""
             else -> ""
         }
 
@@ -222,10 +218,20 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is CredentialDeleteParams && credentialName == other.credentialName && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams && additionalBodyProperties == other.additionalBodyProperties /* spotless:on */
+        return other is CredentialDeleteParams &&
+            credentialName == other.credentialName &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams &&
+            additionalBodyProperties == other.additionalBodyProperties
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(credentialName, additionalHeaders, additionalQueryParams, additionalBodyProperties) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(
+            credentialName,
+            additionalHeaders,
+            additionalQueryParams,
+            additionalBodyProperties,
+        )
 
     override fun toString() =
         "CredentialDeleteParams{credentialName=$credentialName, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams, additionalBodyProperties=$additionalBodyProperties}"

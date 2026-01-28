@@ -4,15 +4,19 @@ package ai.hanzo.api.models.responses
 
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.Params
-import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import ai.hanzo.api.core.toImmutable
 import java.util.Objects
 import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /**
  * Delete a response by ID.
+ *
+ * Supports both:
+ * - Polling IDs (litellm_poll_*): Deletes from Redis cache
+ * - Provider response IDs: Passes through to provider API
  *
  * Follows the OpenAI Responses API spec:
  * https://platform.openai.com/docs/api-reference/responses/delete
@@ -23,32 +27,30 @@ import java.util.Optional
  */
 class ResponseDeleteParams
 private constructor(
-    private val responseId: String,
+    private val responseId: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
     private val additionalBodyProperties: Map<String, JsonValue>,
 ) : Params {
 
-    fun responseId(): String = responseId
+    fun responseId(): Optional<String> = Optional.ofNullable(responseId)
 
+    /** Additional body properties to send with the request. */
     fun _additionalBodyProperties(): Map<String, JsonValue> = additionalBodyProperties
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
 
     companion object {
 
-        /**
-         * Returns a mutable builder for constructing an instance of [ResponseDeleteParams].
-         *
-         * The following fields are required:
-         * ```java
-         * .responseId()
-         * ```
-         */
+        @JvmStatic fun none(): ResponseDeleteParams = builder().build()
+
+        /** Returns a mutable builder for constructing an instance of [ResponseDeleteParams]. */
         @JvmStatic fun builder() = Builder()
     }
 
@@ -68,7 +70,10 @@ private constructor(
             additionalBodyProperties = responseDeleteParams.additionalBodyProperties.toMutableMap()
         }
 
-        fun responseId(responseId: String) = apply { this.responseId = responseId }
+        fun responseId(responseId: String?) = apply { this.responseId = responseId }
+
+        /** Alias for calling [Builder.responseId] with `responseId.orElse(null)`. */
+        fun responseId(responseId: Optional<String>) = responseId(responseId.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -194,30 +199,22 @@ private constructor(
          * Returns an immutable instance of [ResponseDeleteParams].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
-         *
-         * The following fields are required:
-         * ```java
-         * .responseId()
-         * ```
-         *
-         * @throws IllegalStateException if any required field is unset.
          */
         fun build(): ResponseDeleteParams =
             ResponseDeleteParams(
-                checkRequired("responseId", responseId),
+                responseId,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
                 additionalBodyProperties.toImmutable(),
             )
     }
 
-    @JvmSynthetic
-    internal fun _body(): Optional<Map<String, JsonValue>> =
+    fun _body(): Optional<Map<String, JsonValue>> =
         Optional.ofNullable(additionalBodyProperties.ifEmpty { null })
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> responseId
+            0 -> responseId ?: ""
             else -> ""
         }
 
@@ -230,10 +227,15 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is ResponseDeleteParams && responseId == other.responseId && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams && additionalBodyProperties == other.additionalBodyProperties /* spotless:on */
+        return other is ResponseDeleteParams &&
+            responseId == other.responseId &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams &&
+            additionalBodyProperties == other.additionalBodyProperties
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(responseId, additionalHeaders, additionalQueryParams, additionalBodyProperties) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(responseId, additionalHeaders, additionalQueryParams, additionalBodyProperties)
 
     override fun toString() =
         "ResponseDeleteParams{responseId=$responseId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams, additionalBodyProperties=$additionalBodyProperties}"

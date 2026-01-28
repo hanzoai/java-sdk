@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.blocking
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.euassemblyai.EuAssemblyaiCreateParams
@@ -15,6 +16,7 @@ import ai.hanzo.api.models.euassemblyai.EuAssemblyaiRetrieveResponse
 import ai.hanzo.api.models.euassemblyai.EuAssemblyaiUpdateParams
 import ai.hanzo.api.models.euassemblyai.EuAssemblyaiUpdateResponse
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface EuAssemblyaiService {
 
@@ -23,55 +25,172 @@ interface EuAssemblyaiService {
      */
     fun withRawResponse(): WithRawResponse
 
-    /** Assemblyai Proxy Route */
-    fun create(params: EuAssemblyaiCreateParams): EuAssemblyaiCreateResponse =
-        create(params, RequestOptions.none())
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): EuAssemblyaiService
 
-    /** @see [create] */
+    /** Assemblyai Proxy Route */
+    fun create(endpoint: String): EuAssemblyaiCreateResponse =
+        create(endpoint, EuAssemblyaiCreateParams.none())
+
+    /** @see create */
+    fun create(
+        endpoint: String,
+        params: EuAssemblyaiCreateParams = EuAssemblyaiCreateParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): EuAssemblyaiCreateResponse =
+        create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see create */
+    fun create(
+        endpoint: String,
+        params: EuAssemblyaiCreateParams = EuAssemblyaiCreateParams.none(),
+    ): EuAssemblyaiCreateResponse = create(endpoint, params, RequestOptions.none())
+
+    /** @see create */
     fun create(
         params: EuAssemblyaiCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): EuAssemblyaiCreateResponse
 
-    /** Assemblyai Proxy Route */
-    fun retrieve(params: EuAssemblyaiRetrieveParams): EuAssemblyaiRetrieveResponse =
-        retrieve(params, RequestOptions.none())
+    /** @see create */
+    fun create(params: EuAssemblyaiCreateParams): EuAssemblyaiCreateResponse =
+        create(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see create */
+    fun create(endpoint: String, requestOptions: RequestOptions): EuAssemblyaiCreateResponse =
+        create(endpoint, EuAssemblyaiCreateParams.none(), requestOptions)
+
+    /** Assemblyai Proxy Route */
+    fun retrieve(endpoint: String): EuAssemblyaiRetrieveResponse =
+        retrieve(endpoint, EuAssemblyaiRetrieveParams.none())
+
+    /** @see retrieve */
+    fun retrieve(
+        endpoint: String,
+        params: EuAssemblyaiRetrieveParams = EuAssemblyaiRetrieveParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): EuAssemblyaiRetrieveResponse =
+        retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see retrieve */
+    fun retrieve(
+        endpoint: String,
+        params: EuAssemblyaiRetrieveParams = EuAssemblyaiRetrieveParams.none(),
+    ): EuAssemblyaiRetrieveResponse = retrieve(endpoint, params, RequestOptions.none())
+
+    /** @see retrieve */
     fun retrieve(
         params: EuAssemblyaiRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): EuAssemblyaiRetrieveResponse
 
-    /** Assemblyai Proxy Route */
-    fun update(params: EuAssemblyaiUpdateParams): EuAssemblyaiUpdateResponse =
-        update(params, RequestOptions.none())
+    /** @see retrieve */
+    fun retrieve(params: EuAssemblyaiRetrieveParams): EuAssemblyaiRetrieveResponse =
+        retrieve(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see retrieve */
+    fun retrieve(endpoint: String, requestOptions: RequestOptions): EuAssemblyaiRetrieveResponse =
+        retrieve(endpoint, EuAssemblyaiRetrieveParams.none(), requestOptions)
+
+    /** Assemblyai Proxy Route */
+    fun update(endpoint: String): EuAssemblyaiUpdateResponse =
+        update(endpoint, EuAssemblyaiUpdateParams.none())
+
+    /** @see update */
+    fun update(
+        endpoint: String,
+        params: EuAssemblyaiUpdateParams = EuAssemblyaiUpdateParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): EuAssemblyaiUpdateResponse =
+        update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see update */
+    fun update(
+        endpoint: String,
+        params: EuAssemblyaiUpdateParams = EuAssemblyaiUpdateParams.none(),
+    ): EuAssemblyaiUpdateResponse = update(endpoint, params, RequestOptions.none())
+
+    /** @see update */
     fun update(
         params: EuAssemblyaiUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): EuAssemblyaiUpdateResponse
 
-    /** Assemblyai Proxy Route */
-    fun delete(params: EuAssemblyaiDeleteParams): EuAssemblyaiDeleteResponse =
-        delete(params, RequestOptions.none())
+    /** @see update */
+    fun update(params: EuAssemblyaiUpdateParams): EuAssemblyaiUpdateResponse =
+        update(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see update */
+    fun update(endpoint: String, requestOptions: RequestOptions): EuAssemblyaiUpdateResponse =
+        update(endpoint, EuAssemblyaiUpdateParams.none(), requestOptions)
+
+    /** Assemblyai Proxy Route */
+    fun delete(endpoint: String): EuAssemblyaiDeleteResponse =
+        delete(endpoint, EuAssemblyaiDeleteParams.none())
+
+    /** @see delete */
+    fun delete(
+        endpoint: String,
+        params: EuAssemblyaiDeleteParams = EuAssemblyaiDeleteParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): EuAssemblyaiDeleteResponse =
+        delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see delete */
+    fun delete(
+        endpoint: String,
+        params: EuAssemblyaiDeleteParams = EuAssemblyaiDeleteParams.none(),
+    ): EuAssemblyaiDeleteResponse = delete(endpoint, params, RequestOptions.none())
+
+    /** @see delete */
     fun delete(
         params: EuAssemblyaiDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): EuAssemblyaiDeleteResponse
 
-    /** Assemblyai Proxy Route */
-    fun patch(params: EuAssemblyaiPatchParams): EuAssemblyaiPatchResponse =
-        patch(params, RequestOptions.none())
+    /** @see delete */
+    fun delete(params: EuAssemblyaiDeleteParams): EuAssemblyaiDeleteResponse =
+        delete(params, RequestOptions.none())
 
-    /** @see [patch] */
+    /** @see delete */
+    fun delete(endpoint: String, requestOptions: RequestOptions): EuAssemblyaiDeleteResponse =
+        delete(endpoint, EuAssemblyaiDeleteParams.none(), requestOptions)
+
+    /** Assemblyai Proxy Route */
+    fun patch(endpoint: String): EuAssemblyaiPatchResponse =
+        patch(endpoint, EuAssemblyaiPatchParams.none())
+
+    /** @see patch */
+    fun patch(
+        endpoint: String,
+        params: EuAssemblyaiPatchParams = EuAssemblyaiPatchParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): EuAssemblyaiPatchResponse =
+        patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see patch */
+    fun patch(
+        endpoint: String,
+        params: EuAssemblyaiPatchParams = EuAssemblyaiPatchParams.none(),
+    ): EuAssemblyaiPatchResponse = patch(endpoint, params, RequestOptions.none())
+
+    /** @see patch */
     fun patch(
         params: EuAssemblyaiPatchParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): EuAssemblyaiPatchResponse
+
+    /** @see patch */
+    fun patch(params: EuAssemblyaiPatchParams): EuAssemblyaiPatchResponse =
+        patch(params, RequestOptions.none())
+
+    /** @see patch */
+    fun patch(endpoint: String, requestOptions: RequestOptions): EuAssemblyaiPatchResponse =
+        patch(endpoint, EuAssemblyaiPatchParams.none(), requestOptions)
 
     /**
      * A view of [EuAssemblyaiService] that provides access to raw HTTP responses for each method.
@@ -79,79 +198,238 @@ interface EuAssemblyaiService {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): EuAssemblyaiService.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `post /eu.assemblyai/{endpoint}`, but is otherwise the
          * same as [EuAssemblyaiService.create].
          */
         @MustBeClosed
-        fun create(params: EuAssemblyaiCreateParams): HttpResponseFor<EuAssemblyaiCreateResponse> =
-            create(params, RequestOptions.none())
+        fun create(endpoint: String): HttpResponseFor<EuAssemblyaiCreateResponse> =
+            create(endpoint, EuAssemblyaiCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
+        @MustBeClosed
+        fun create(
+            endpoint: String,
+            params: EuAssemblyaiCreateParams = EuAssemblyaiCreateParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<EuAssemblyaiCreateResponse> =
+            create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see create */
+        @MustBeClosed
+        fun create(
+            endpoint: String,
+            params: EuAssemblyaiCreateParams = EuAssemblyaiCreateParams.none(),
+        ): HttpResponseFor<EuAssemblyaiCreateResponse> =
+            create(endpoint, params, RequestOptions.none())
+
+        /** @see create */
         @MustBeClosed
         fun create(
             params: EuAssemblyaiCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<EuAssemblyaiCreateResponse>
 
+        /** @see create */
+        @MustBeClosed
+        fun create(params: EuAssemblyaiCreateParams): HttpResponseFor<EuAssemblyaiCreateResponse> =
+            create(params, RequestOptions.none())
+
+        /** @see create */
+        @MustBeClosed
+        fun create(
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<EuAssemblyaiCreateResponse> =
+            create(endpoint, EuAssemblyaiCreateParams.none(), requestOptions)
+
         /**
          * Returns a raw HTTP response for `get /eu.assemblyai/{endpoint}`, but is otherwise the
          * same as [EuAssemblyaiService.retrieve].
          */
         @MustBeClosed
-        fun retrieve(
-            params: EuAssemblyaiRetrieveParams
-        ): HttpResponseFor<EuAssemblyaiRetrieveResponse> = retrieve(params, RequestOptions.none())
+        fun retrieve(endpoint: String): HttpResponseFor<EuAssemblyaiRetrieveResponse> =
+            retrieve(endpoint, EuAssemblyaiRetrieveParams.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
+        @MustBeClosed
+        fun retrieve(
+            endpoint: String,
+            params: EuAssemblyaiRetrieveParams = EuAssemblyaiRetrieveParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<EuAssemblyaiRetrieveResponse> =
+            retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see retrieve */
+        @MustBeClosed
+        fun retrieve(
+            endpoint: String,
+            params: EuAssemblyaiRetrieveParams = EuAssemblyaiRetrieveParams.none(),
+        ): HttpResponseFor<EuAssemblyaiRetrieveResponse> =
+            retrieve(endpoint, params, RequestOptions.none())
+
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             params: EuAssemblyaiRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<EuAssemblyaiRetrieveResponse>
 
+        /** @see retrieve */
+        @MustBeClosed
+        fun retrieve(
+            params: EuAssemblyaiRetrieveParams
+        ): HttpResponseFor<EuAssemblyaiRetrieveResponse> = retrieve(params, RequestOptions.none())
+
+        /** @see retrieve */
+        @MustBeClosed
+        fun retrieve(
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<EuAssemblyaiRetrieveResponse> =
+            retrieve(endpoint, EuAssemblyaiRetrieveParams.none(), requestOptions)
+
         /**
          * Returns a raw HTTP response for `put /eu.assemblyai/{endpoint}`, but is otherwise the
          * same as [EuAssemblyaiService.update].
          */
         @MustBeClosed
-        fun update(params: EuAssemblyaiUpdateParams): HttpResponseFor<EuAssemblyaiUpdateResponse> =
-            update(params, RequestOptions.none())
+        fun update(endpoint: String): HttpResponseFor<EuAssemblyaiUpdateResponse> =
+            update(endpoint, EuAssemblyaiUpdateParams.none())
 
-        /** @see [update] */
+        /** @see update */
+        @MustBeClosed
+        fun update(
+            endpoint: String,
+            params: EuAssemblyaiUpdateParams = EuAssemblyaiUpdateParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<EuAssemblyaiUpdateResponse> =
+            update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see update */
+        @MustBeClosed
+        fun update(
+            endpoint: String,
+            params: EuAssemblyaiUpdateParams = EuAssemblyaiUpdateParams.none(),
+        ): HttpResponseFor<EuAssemblyaiUpdateResponse> =
+            update(endpoint, params, RequestOptions.none())
+
+        /** @see update */
         @MustBeClosed
         fun update(
             params: EuAssemblyaiUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<EuAssemblyaiUpdateResponse>
 
+        /** @see update */
+        @MustBeClosed
+        fun update(params: EuAssemblyaiUpdateParams): HttpResponseFor<EuAssemblyaiUpdateResponse> =
+            update(params, RequestOptions.none())
+
+        /** @see update */
+        @MustBeClosed
+        fun update(
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<EuAssemblyaiUpdateResponse> =
+            update(endpoint, EuAssemblyaiUpdateParams.none(), requestOptions)
+
         /**
          * Returns a raw HTTP response for `delete /eu.assemblyai/{endpoint}`, but is otherwise the
          * same as [EuAssemblyaiService.delete].
          */
         @MustBeClosed
-        fun delete(params: EuAssemblyaiDeleteParams): HttpResponseFor<EuAssemblyaiDeleteResponse> =
-            delete(params, RequestOptions.none())
+        fun delete(endpoint: String): HttpResponseFor<EuAssemblyaiDeleteResponse> =
+            delete(endpoint, EuAssemblyaiDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
+        @MustBeClosed
+        fun delete(
+            endpoint: String,
+            params: EuAssemblyaiDeleteParams = EuAssemblyaiDeleteParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<EuAssemblyaiDeleteResponse> =
+            delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see delete */
+        @MustBeClosed
+        fun delete(
+            endpoint: String,
+            params: EuAssemblyaiDeleteParams = EuAssemblyaiDeleteParams.none(),
+        ): HttpResponseFor<EuAssemblyaiDeleteResponse> =
+            delete(endpoint, params, RequestOptions.none())
+
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: EuAssemblyaiDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<EuAssemblyaiDeleteResponse>
 
+        /** @see delete */
+        @MustBeClosed
+        fun delete(params: EuAssemblyaiDeleteParams): HttpResponseFor<EuAssemblyaiDeleteResponse> =
+            delete(params, RequestOptions.none())
+
+        /** @see delete */
+        @MustBeClosed
+        fun delete(
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<EuAssemblyaiDeleteResponse> =
+            delete(endpoint, EuAssemblyaiDeleteParams.none(), requestOptions)
+
         /**
          * Returns a raw HTTP response for `patch /eu.assemblyai/{endpoint}`, but is otherwise the
          * same as [EuAssemblyaiService.patch].
          */
         @MustBeClosed
-        fun patch(params: EuAssemblyaiPatchParams): HttpResponseFor<EuAssemblyaiPatchResponse> =
-            patch(params, RequestOptions.none())
+        fun patch(endpoint: String): HttpResponseFor<EuAssemblyaiPatchResponse> =
+            patch(endpoint, EuAssemblyaiPatchParams.none())
 
-        /** @see [patch] */
+        /** @see patch */
+        @MustBeClosed
+        fun patch(
+            endpoint: String,
+            params: EuAssemblyaiPatchParams = EuAssemblyaiPatchParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<EuAssemblyaiPatchResponse> =
+            patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see patch */
+        @MustBeClosed
+        fun patch(
+            endpoint: String,
+            params: EuAssemblyaiPatchParams = EuAssemblyaiPatchParams.none(),
+        ): HttpResponseFor<EuAssemblyaiPatchResponse> =
+            patch(endpoint, params, RequestOptions.none())
+
+        /** @see patch */
         @MustBeClosed
         fun patch(
             params: EuAssemblyaiPatchParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<EuAssemblyaiPatchResponse>
+
+        /** @see patch */
+        @MustBeClosed
+        fun patch(params: EuAssemblyaiPatchParams): HttpResponseFor<EuAssemblyaiPatchResponse> =
+            patch(params, RequestOptions.none())
+
+        /** @see patch */
+        @MustBeClosed
+        fun patch(
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<EuAssemblyaiPatchResponse> =
+            patch(endpoint, EuAssemblyaiPatchParams.none(), requestOptions)
     }
 }

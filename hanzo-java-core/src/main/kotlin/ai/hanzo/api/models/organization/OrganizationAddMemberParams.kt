@@ -9,10 +9,12 @@ import ai.hanzo.api.core.JsonField
 import ai.hanzo.api.core.JsonMissing
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.Params
+import ai.hanzo.api.core.allMaxBy
 import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.getOrThrow
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
+import ai.hanzo.api.core.toImmutable
 import ai.hanzo.api.errors.HanzoInvalidDataException
 import com.fasterxml.jackson.annotation.JsonAnyGetter
 import com.fasterxml.jackson.annotation.JsonAnySetter
@@ -42,7 +44,7 @@ import kotlin.jvm.optionals.getOrNull
  * # Parameters:
  * - organization_id: str (required)
  * - member: Union[List[Member], Member] (required)
- *     - role: Literal[LLMUserRoles] (required)
+ *     - role: Literal[LitellmUserRoles] (required)
  *     - user_id: Optional[str]
  *     - user_email: Optional[str]
  *
@@ -54,7 +56,7 @@ import kotlin.jvm.optionals.getOrNull
  *     "organization_id": "45e3e396-ee08-4a61-a88e-16b3ce7e0849",
  *     "member": {
  *         "role": "internal_user",
- *         "user_id": "dev247652@hanzo.ai"
+ *         "user_id": "krrish247652@berri.ai"
  *     },
  *     "max_budget_in_organization": 100.0
  * }'
@@ -62,8 +64,8 @@ import kotlin.jvm.optionals.getOrNull
  *
  * The following is executed in this function:
  * 1. Check if organization exists
- * 2. Creates a new Internal User if the user_id or user_email is not found in LLM_UserTable
- * 3. Add Internal User to the `LLM_OrganizationMembership` table
+ * 2. Creates a new Internal User if the user_id or user_email is not found in LiteLLM_UserTable
+ * 3. Add Internal User to the `LiteLLM_OrganizationMembership` table
  */
 class OrganizationAddMemberParams
 private constructor(
@@ -114,8 +116,10 @@ private constructor(
 
     fun _additionalBodyProperties(): Map<String, JsonValue> = body._additionalProperties()
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
@@ -147,6 +151,17 @@ private constructor(
             additionalHeaders = organizationAddMemberParams.additionalHeaders.toBuilder()
             additionalQueryParams = organizationAddMemberParams.additionalQueryParams.toBuilder()
         }
+
+        /**
+         * Sets the entire request body.
+         *
+         * This is generally only useful if you are already constructing the body separately.
+         * Otherwise, it's more convenient to use the top-level setters instead:
+         * - [member]
+         * - [organizationId]
+         * - [maxBudgetInOrganization]
+         */
+        fun body(body: Body) = apply { this.body = body.toBuilder() }
 
         fun member(member: Member) = apply { body.member(member) }
 
@@ -347,13 +362,14 @@ private constructor(
             )
     }
 
-    @JvmSynthetic internal fun _body(): Body = body
+    fun _body(): Body = body
 
     override fun _headers(): Headers = additionalHeaders
 
     override fun _queryParams(): QueryParams = additionalQueryParams
 
     class Body
+    @JsonCreator(mode = JsonCreator.Mode.DISABLED)
     private constructor(
         private val member: JsonField<Member>,
         private val organizationId: JsonField<String>,
@@ -389,7 +405,7 @@ private constructor(
          *   server responded with an unexpected value).
          */
         fun maxBudgetInOrganization(): Optional<Double> =
-            Optional.ofNullable(maxBudgetInOrganization.getNullable("max_budget_in_organization"))
+            maxBudgetInOrganization.getOptional("max_budget_in_organization")
 
         /**
          * Returns the raw JSON value of [member].
@@ -575,17 +591,41 @@ private constructor(
             validated = true
         }
 
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
+
+        /**
+         * Returns a score indicating how many valid values are contained in this object
+         * recursively.
+         *
+         * Used for best match union deserialization.
+         */
+        @JvmSynthetic
+        internal fun validity(): Int =
+            (member.asKnown().getOrNull()?.validity() ?: 0) +
+                (if (organizationId.asKnown().isPresent) 1 else 0) +
+                (if (maxBudgetInOrganization.asKnown().isPresent) 1 else 0)
+
         override fun equals(other: Any?): Boolean {
             if (this === other) {
                 return true
             }
 
-            return /* spotless:off */ other is Body && member == other.member && organizationId == other.organizationId && maxBudgetInOrganization == other.maxBudgetInOrganization && additionalProperties == other.additionalProperties /* spotless:on */
+            return other is Body &&
+                member == other.member &&
+                organizationId == other.organizationId &&
+                maxBudgetInOrganization == other.maxBudgetInOrganization &&
+                additionalProperties == other.additionalProperties
         }
 
-        /* spotless:off */
-        private val hashCode: Int by lazy { Objects.hash(member, organizationId, maxBudgetInOrganization, additionalProperties) }
-        /* spotless:on */
+        private val hashCode: Int by lazy {
+            Objects.hash(member, organizationId, maxBudgetInOrganization, additionalProperties)
+        }
 
         override fun hashCode(): Int = hashCode
 
@@ -616,13 +656,12 @@ private constructor(
 
         fun _json(): Optional<JsonValue> = Optional.ofNullable(_json)
 
-        fun <T> accept(visitor: Visitor<T>): T {
-            return when {
+        fun <T> accept(visitor: Visitor<T>): T =
+            when {
                 orgMembers != null -> visitor.visitOrgMembers(orgMembers)
                 org != null -> visitor.visitOrg(org)
                 else -> visitor.unknown(_json)
             }
-        }
 
         private var validated: Boolean = false
 
@@ -645,15 +684,42 @@ private constructor(
             validated = true
         }
 
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
+
+        /**
+         * Returns a score indicating how many valid values are contained in this object
+         * recursively.
+         *
+         * Used for best match union deserialization.
+         */
+        @JvmSynthetic
+        internal fun validity(): Int =
+            accept(
+                object : Visitor<Int> {
+                    override fun visitOrgMembers(orgMembers: List<OrgMember>) =
+                        orgMembers.sumOf { it.validity().toInt() }
+
+                    override fun visitOrg(org: OrgMember) = org.validity()
+
+                    override fun unknown(json: JsonValue?) = 0
+                }
+            )
+
         override fun equals(other: Any?): Boolean {
             if (this === other) {
                 return true
             }
 
-            return /* spotless:off */ other is Member && orgMembers == other.orgMembers && org == other.org /* spotless:on */
+            return other is Member && orgMembers == other.orgMembers && org == other.org
         }
 
-        override fun hashCode(): Int = /* spotless:off */ Objects.hash(orgMembers, org) /* spotless:on */
+        override fun hashCode(): Int = Objects.hash(orgMembers, org)
 
         override fun toString(): String =
             when {
@@ -666,7 +732,8 @@ private constructor(
         companion object {
 
             @JvmStatic
-            fun ofOrgMembers(orgMembers: List<OrgMember>) = Member(orgMembers = orgMembers)
+            fun ofOrgMembers(orgMembers: List<OrgMember>) =
+                Member(orgMembers = orgMembers.toImmutable())
 
             @JvmStatic fun ofOrg(org: OrgMember) = Member(org = org)
         }
@@ -698,18 +765,28 @@ private constructor(
             override fun ObjectCodec.deserialize(node: JsonNode): Member {
                 val json = JsonValue.fromJsonNode(node)
 
-                tryDeserialize(node, jacksonTypeRef<List<OrgMember>>()) {
-                        it.forEach { it.validate() }
-                    }
-                    ?.let {
-                        return Member(orgMembers = it, _json = json)
-                    }
-                tryDeserialize(node, jacksonTypeRef<OrgMember>()) { it.validate() }
-                    ?.let {
-                        return Member(org = it, _json = json)
-                    }
-
-                return Member(_json = json)
+                val bestMatches =
+                    sequenceOf(
+                            tryDeserialize(node, jacksonTypeRef<OrgMember>())?.let {
+                                Member(org = it, _json = json)
+                            },
+                            tryDeserialize(node, jacksonTypeRef<List<OrgMember>>())?.let {
+                                Member(orgMembers = it, _json = json)
+                            },
+                        )
+                        .filterNotNull()
+                        .allMaxBy { it.validity() }
+                        .toList()
+                return when (bestMatches.size) {
+                    // This can happen if what we're deserializing is completely incompatible with
+                    // all the possible variants (e.g. deserializing from boolean).
+                    0 -> Member(_json = json)
+                    1 -> bestMatches.single()
+                    // If there's more than one match with the highest validity, then use the first
+                    // completely valid match, or simply the first match if none are completely
+                    // valid.
+                    else -> bestMatches.firstOrNull { it.isValid() } ?: bestMatches.first()
+                }
             }
         }
 
@@ -735,10 +812,13 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is OrganizationAddMemberParams && body == other.body && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is OrganizationAddMemberParams &&
+            body == other.body &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(body, additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int = Objects.hash(body, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
         "OrganizationAddMemberParams{body=$body, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"

@@ -4,7 +4,6 @@ package ai.hanzo.api.services.async.responses
 
 import ai.hanzo.api.TestServerExtension
 import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
-import ai.hanzo.api.models.responses.inputitems.InputItemListParams
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -12,7 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 @ExtendWith(TestServerExtension::class)
 internal class InputItemServiceAsyncTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun list() {
         val client =
@@ -22,12 +21,9 @@ internal class InputItemServiceAsyncTest {
                 .build()
         val inputItemServiceAsync = client.responses().inputItems()
 
-        val inputItemFuture =
-            inputItemServiceAsync.list(
-                InputItemListParams.builder().responseId("response_id").build()
-            )
+        val inputItemsFuture = inputItemServiceAsync.list("response_id")
 
-        val inputItem = inputItemFuture.get()
-        inputItem.validate()
+        val inputItems = inputItemsFuture.get()
+        inputItems.validate()
     }
 }

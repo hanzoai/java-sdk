@@ -5,12 +5,10 @@ package ai.hanzo.api.models.organization
 import ai.hanzo.api.core.JsonValue
 import kotlin.jvm.optionals.getOrNull
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 internal class OrganizationCreateParamsTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun create() {
         OrganizationCreateParams.builder()
@@ -19,9 +17,41 @@ internal class OrganizationCreateParamsTest {
             .budgetId("budget_id")
             .maxBudget(0.0)
             .maxParallelRequests(0L)
-            .metadata(JsonValue.from(mapOf<String, Any>()))
-            .modelMaxBudget(JsonValue.from(mapOf<String, Any>()))
+            .metadata(
+                OrganizationCreateParams.Metadata.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                    .build()
+            )
+            .modelMaxBudget(
+                OrganizationCreateParams.ModelMaxBudget.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                    .build()
+            )
+            .modelRpmLimit(
+                OrganizationCreateParams.ModelRpmLimit.builder()
+                    .putAdditionalProperty("foo", JsonValue.from(0))
+                    .build()
+            )
+            .modelTpmLimit(
+                OrganizationCreateParams.ModelTpmLimit.builder()
+                    .putAdditionalProperty("foo", JsonValue.from(0))
+                    .build()
+            )
             .addModel(JsonValue.from(mapOf<String, Any>()))
+            .objectPermission(
+                OrganizationCreateParams.ObjectPermission.builder()
+                    .addAgentAccessGroup("string")
+                    .addAgent("string")
+                    .addMcpAccessGroup("string")
+                    .addMcpServer("string")
+                    .mcpToolPermissions(
+                        OrganizationCreateParams.ObjectPermission.McpToolPermissions.builder()
+                            .putAdditionalProperty("foo", JsonValue.from(listOf("string")))
+                            .build()
+                    )
+                    .addVectorStore("string")
+                    .build()
+            )
             .organizationId("organization_id")
             .rpmLimit(0L)
             .softBudget(0.0)
@@ -29,7 +59,6 @@ internal class OrganizationCreateParamsTest {
             .build()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun body() {
         val params =
@@ -39,9 +68,41 @@ internal class OrganizationCreateParamsTest {
                 .budgetId("budget_id")
                 .maxBudget(0.0)
                 .maxParallelRequests(0L)
-                .metadata(JsonValue.from(mapOf<String, Any>()))
-                .modelMaxBudget(JsonValue.from(mapOf<String, Any>()))
+                .metadata(
+                    OrganizationCreateParams.Metadata.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("bar"))
+                        .build()
+                )
+                .modelMaxBudget(
+                    OrganizationCreateParams.ModelMaxBudget.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("bar"))
+                        .build()
+                )
+                .modelRpmLimit(
+                    OrganizationCreateParams.ModelRpmLimit.builder()
+                        .putAdditionalProperty("foo", JsonValue.from(0))
+                        .build()
+                )
+                .modelTpmLimit(
+                    OrganizationCreateParams.ModelTpmLimit.builder()
+                        .putAdditionalProperty("foo", JsonValue.from(0))
+                        .build()
+                )
                 .addModel(JsonValue.from(mapOf<String, Any>()))
+                .objectPermission(
+                    OrganizationCreateParams.ObjectPermission.builder()
+                        .addAgentAccessGroup("string")
+                        .addAgent("string")
+                        .addMcpAccessGroup("string")
+                        .addMcpServer("string")
+                        .mcpToolPermissions(
+                            OrganizationCreateParams.ObjectPermission.McpToolPermissions.builder()
+                                .putAdditionalProperty("foo", JsonValue.from(listOf("string")))
+                                .build()
+                        )
+                        .addVectorStore("string")
+                        .build()
+                )
                 .organizationId("organization_id")
                 .rpmLimit(0L)
                 .softBudget(0.0)
@@ -55,16 +116,52 @@ internal class OrganizationCreateParamsTest {
         assertThat(body.budgetId()).contains("budget_id")
         assertThat(body.maxBudget()).contains(0.0)
         assertThat(body.maxParallelRequests()).contains(0L)
-        assertThat(body._metadata()).isEqualTo(JsonValue.from(mapOf<String, Any>()))
-        assertThat(body._modelMaxBudget()).isEqualTo(JsonValue.from(mapOf<String, Any>()))
+        assertThat(body.metadata())
+            .contains(
+                OrganizationCreateParams.Metadata.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                    .build()
+            )
+        assertThat(body.modelMaxBudget())
+            .contains(
+                OrganizationCreateParams.ModelMaxBudget.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                    .build()
+            )
+        assertThat(body.modelRpmLimit())
+            .contains(
+                OrganizationCreateParams.ModelRpmLimit.builder()
+                    .putAdditionalProperty("foo", JsonValue.from(0))
+                    .build()
+            )
+        assertThat(body.modelTpmLimit())
+            .contains(
+                OrganizationCreateParams.ModelTpmLimit.builder()
+                    .putAdditionalProperty("foo", JsonValue.from(0))
+                    .build()
+            )
         assertThat(body.models().getOrNull()).containsExactly(JsonValue.from(mapOf<String, Any>()))
+        assertThat(body.objectPermission())
+            .contains(
+                OrganizationCreateParams.ObjectPermission.builder()
+                    .addAgentAccessGroup("string")
+                    .addAgent("string")
+                    .addMcpAccessGroup("string")
+                    .addMcpServer("string")
+                    .mcpToolPermissions(
+                        OrganizationCreateParams.ObjectPermission.McpToolPermissions.builder()
+                            .putAdditionalProperty("foo", JsonValue.from(listOf("string")))
+                            .build()
+                    )
+                    .addVectorStore("string")
+                    .build()
+            )
         assertThat(body.organizationId()).contains("organization_id")
         assertThat(body.rpmLimit()).contains(0L)
         assertThat(body.softBudget()).contains(0.0)
         assertThat(body.tpmLimit()).contains(0L)
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun bodyWithoutOptionalFields() {
         val params =

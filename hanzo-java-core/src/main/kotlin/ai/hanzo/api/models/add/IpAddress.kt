@@ -16,6 +16,7 @@ import java.util.Collections
 import java.util.Objects
 
 class IpAddress
+@JsonCreator(mode = JsonCreator.Mode.DISABLED)
 private constructor(
     private val ip: JsonField<String>,
     private val additionalProperties: MutableMap<String, JsonValue>,
@@ -132,17 +133,32 @@ private constructor(
         validated = true
     }
 
+    fun isValid(): Boolean =
+        try {
+            validate()
+            true
+        } catch (e: HanzoInvalidDataException) {
+            false
+        }
+
+    /**
+     * Returns a score indicating how many valid values are contained in this object recursively.
+     *
+     * Used for best match union deserialization.
+     */
+    @JvmSynthetic internal fun validity(): Int = (if (ip.asKnown().isPresent) 1 else 0)
+
     override fun equals(other: Any?): Boolean {
         if (this === other) {
             return true
         }
 
-        return /* spotless:off */ other is IpAddress && ip == other.ip && additionalProperties == other.additionalProperties /* spotless:on */
+        return other is IpAddress &&
+            ip == other.ip &&
+            additionalProperties == other.additionalProperties
     }
 
-    /* spotless:off */
     private val hashCode: Int by lazy { Objects.hash(ip, additionalProperties) }
-    /* spotless:on */
 
     override fun hashCode(): Int = hashCode
 

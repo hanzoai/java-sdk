@@ -3,6 +3,7 @@
 package ai.hanzo.api.models.files
 
 import ai.hanzo.api.core.ExcludeMissing
+import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.MultipartField
 import ai.hanzo.api.core.Params
 import ai.hanzo.api.core.checkRequired
@@ -10,13 +11,17 @@ import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import ai.hanzo.api.core.toImmutable
 import ai.hanzo.api.errors.HanzoInvalidDataException
+import com.fasterxml.jackson.annotation.JsonAnyGetter
+import com.fasterxml.jackson.annotation.JsonAnySetter
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.io.InputStream
 import java.nio.file.Path
+import java.util.Collections
 import java.util.Objects
 import java.util.Optional
 import kotlin.io.path.inputStream
 import kotlin.io.path.name
+import kotlin.jvm.optionals.getOrNull
 
 /**
  * Upload a file that can be used across - Assistants API, Batch API This is the equivalent of POST
@@ -28,18 +33,18 @@ import kotlin.io.path.name
  *
  * ```
  * curl http://localhost:4000/v1/files         -H "Authorization: Bearer sk-1234"         -F purpose="batch"         -F file="@mydata.jsonl"
- *
+ *     -F expires_after[anchor]="created_at"         -F expires_after[seconds]=2592000
  * ```
  */
 class FileCreateParams
 private constructor(
-    private val provider: String,
+    private val provider: String?,
     private val body: Body,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
-    fun provider(): String = provider
+    fun provider(): Optional<String> = Optional.ofNullable(provider)
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type or is unexpectedly
@@ -58,6 +63,24 @@ private constructor(
      *   server responded with an unexpected value).
      */
     fun customLlmProvider(): Optional<String> = body.customLlmProvider()
+
+    /**
+     * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
+     *   server responded with an unexpected value).
+     */
+    fun litellmMetadata(): Optional<String> = body.litellmMetadata()
+
+    /**
+     * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
+     *   server responded with an unexpected value).
+     */
+    fun targetModelNames(): Optional<String> = body.targetModelNames()
+
+    /**
+     * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
+     *   server responded with an unexpected value).
+     */
+    fun targetStorage(): Optional<String> = body.targetStorage()
 
     /**
      * Returns the raw multipart value of [file].
@@ -81,8 +104,36 @@ private constructor(
      */
     fun _customLlmProvider(): MultipartField<String> = body._customLlmProvider()
 
+    /**
+     * Returns the raw multipart value of [litellmMetadata].
+     *
+     * Unlike [litellmMetadata], this method doesn't throw if the multipart field has an unexpected
+     * type.
+     */
+    fun _litellmMetadata(): MultipartField<String> = body._litellmMetadata()
+
+    /**
+     * Returns the raw multipart value of [targetModelNames].
+     *
+     * Unlike [targetModelNames], this method doesn't throw if the multipart field has an unexpected
+     * type.
+     */
+    fun _targetModelNames(): MultipartField<String> = body._targetModelNames()
+
+    /**
+     * Returns the raw multipart value of [targetStorage].
+     *
+     * Unlike [targetStorage], this method doesn't throw if the multipart field has an unexpected
+     * type.
+     */
+    fun _targetStorage(): MultipartField<String> = body._targetStorage()
+
+    fun _additionalBodyProperties(): Map<String, JsonValue> = body._additionalProperties()
+
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
@@ -94,7 +145,6 @@ private constructor(
          *
          * The following fields are required:
          * ```java
-         * .provider()
          * .file()
          * .purpose()
          * ```
@@ -118,7 +168,24 @@ private constructor(
             additionalQueryParams = fileCreateParams.additionalQueryParams.toBuilder()
         }
 
-        fun provider(provider: String) = apply { this.provider = provider }
+        fun provider(provider: String?) = apply { this.provider = provider }
+
+        /** Alias for calling [Builder.provider] with `provider.orElse(null)`. */
+        fun provider(provider: Optional<String>) = provider(provider.getOrNull())
+
+        /**
+         * Sets the entire request body.
+         *
+         * This is generally only useful if you are already constructing the body separately.
+         * Otherwise, it's more convenient to use the top-level setters instead:
+         * - [file]
+         * - [purpose]
+         * - [customLlmProvider]
+         * - [litellmMetadata]
+         * - [targetModelNames]
+         * - etc.
+         */
+        fun body(body: Body) = apply { this.body = body.toBuilder() }
 
         fun file(file: InputStream) = apply { body.file(file) }
 
@@ -133,7 +200,7 @@ private constructor(
 
         fun file(file: ByteArray) = apply { body.file(file) }
 
-        fun file(file: Path) = apply { body.file(file) }
+        fun file(path: Path) = apply { body.file(path) }
 
         fun purpose(purpose: String) = apply { body.purpose(purpose) }
 
@@ -158,6 +225,72 @@ private constructor(
          */
         fun customLlmProvider(customLlmProvider: MultipartField<String>) = apply {
             body.customLlmProvider(customLlmProvider)
+        }
+
+        fun litellmMetadata(litellmMetadata: String?) = apply {
+            body.litellmMetadata(litellmMetadata)
+        }
+
+        /** Alias for calling [Builder.litellmMetadata] with `litellmMetadata.orElse(null)`. */
+        fun litellmMetadata(litellmMetadata: Optional<String>) =
+            litellmMetadata(litellmMetadata.getOrNull())
+
+        /**
+         * Sets [Builder.litellmMetadata] to an arbitrary multipart value.
+         *
+         * You should usually call [Builder.litellmMetadata] with a well-typed [String] value
+         * instead. This method is primarily for setting the field to an undocumented or not yet
+         * supported value.
+         */
+        fun litellmMetadata(litellmMetadata: MultipartField<String>) = apply {
+            body.litellmMetadata(litellmMetadata)
+        }
+
+        fun targetModelNames(targetModelNames: String) = apply {
+            body.targetModelNames(targetModelNames)
+        }
+
+        /**
+         * Sets [Builder.targetModelNames] to an arbitrary multipart value.
+         *
+         * You should usually call [Builder.targetModelNames] with a well-typed [String] value
+         * instead. This method is primarily for setting the field to an undocumented or not yet
+         * supported value.
+         */
+        fun targetModelNames(targetModelNames: MultipartField<String>) = apply {
+            body.targetModelNames(targetModelNames)
+        }
+
+        fun targetStorage(targetStorage: String) = apply { body.targetStorage(targetStorage) }
+
+        /**
+         * Sets [Builder.targetStorage] to an arbitrary multipart value.
+         *
+         * You should usually call [Builder.targetStorage] with a well-typed [String] value instead.
+         * This method is primarily for setting the field to an undocumented or not yet supported
+         * value.
+         */
+        fun targetStorage(targetStorage: MultipartField<String>) = apply {
+            body.targetStorage(targetStorage)
+        }
+
+        fun additionalBodyProperties(additionalBodyProperties: Map<String, JsonValue>) = apply {
+            body.additionalProperties(additionalBodyProperties)
+        }
+
+        fun putAdditionalBodyProperty(key: String, value: JsonValue) = apply {
+            body.putAdditionalProperty(key, value)
+        }
+
+        fun putAllAdditionalBodyProperties(additionalBodyProperties: Map<String, JsonValue>) =
+            apply {
+                body.putAllAdditionalProperties(additionalBodyProperties)
+            }
+
+        fun removeAdditionalBodyProperty(key: String) = apply { body.removeAdditionalProperty(key) }
+
+        fun removeAllAdditionalBodyProperties(keys: Set<String>) = apply {
+            body.removeAllAdditionalProperties(keys)
         }
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
@@ -265,7 +398,6 @@ private constructor(
          *
          * The following fields are required:
          * ```java
-         * .provider()
          * .file()
          * .purpose()
          * ```
@@ -274,25 +406,27 @@ private constructor(
          */
         fun build(): FileCreateParams =
             FileCreateParams(
-                checkRequired("provider", provider),
+                provider,
                 body.build(),
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
             )
     }
 
-    @JvmSynthetic
-    internal fun _body(): Map<String, MultipartField<*>> =
-        mapOf(
+    fun _body(): Map<String, MultipartField<*>> =
+        (mapOf(
                 "file" to _file(),
                 "purpose" to _purpose(),
                 "custom_llm_provider" to _customLlmProvider(),
-            )
+                "litellm_metadata" to _litellmMetadata(),
+                "target_model_names" to _targetModelNames(),
+                "target_storage" to _targetStorage(),
+            ) + _additionalBodyProperties().mapValues { (_, value) -> MultipartField.of(value) })
             .toImmutable()
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> provider
+            0 -> provider ?: ""
             else -> ""
         }
 
@@ -305,6 +439,10 @@ private constructor(
         private val file: MultipartField<InputStream>,
         private val purpose: MultipartField<String>,
         private val customLlmProvider: MultipartField<String>,
+        private val litellmMetadata: MultipartField<String>,
+        private val targetModelNames: MultipartField<String>,
+        private val targetStorage: MultipartField<String>,
+        private val additionalProperties: MutableMap<String, JsonValue>,
     ) {
 
         /**
@@ -324,7 +462,27 @@ private constructor(
          *   server responded with an unexpected value).
          */
         fun customLlmProvider(): Optional<String> =
-            Optional.ofNullable(customLlmProvider.value.getNullable("custom_llm_provider"))
+            customLlmProvider.value.getOptional("custom_llm_provider")
+
+        /**
+         * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
+         *   server responded with an unexpected value).
+         */
+        fun litellmMetadata(): Optional<String> =
+            litellmMetadata.value.getOptional("litellm_metadata")
+
+        /**
+         * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
+         *   server responded with an unexpected value).
+         */
+        fun targetModelNames(): Optional<String> =
+            targetModelNames.value.getOptional("target_model_names")
+
+        /**
+         * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
+         *   server responded with an unexpected value).
+         */
+        fun targetStorage(): Optional<String> = targetStorage.value.getOptional("target_storage")
 
         /**
          * Returns the raw multipart value of [file].
@@ -351,6 +509,46 @@ private constructor(
         @ExcludeMissing
         fun _customLlmProvider(): MultipartField<String> = customLlmProvider
 
+        /**
+         * Returns the raw multipart value of [litellmMetadata].
+         *
+         * Unlike [litellmMetadata], this method doesn't throw if the multipart field has an
+         * unexpected type.
+         */
+        @JsonProperty("litellm_metadata")
+        @ExcludeMissing
+        fun _litellmMetadata(): MultipartField<String> = litellmMetadata
+
+        /**
+         * Returns the raw multipart value of [targetModelNames].
+         *
+         * Unlike [targetModelNames], this method doesn't throw if the multipart field has an
+         * unexpected type.
+         */
+        @JsonProperty("target_model_names")
+        @ExcludeMissing
+        fun _targetModelNames(): MultipartField<String> = targetModelNames
+
+        /**
+         * Returns the raw multipart value of [targetStorage].
+         *
+         * Unlike [targetStorage], this method doesn't throw if the multipart field has an
+         * unexpected type.
+         */
+        @JsonProperty("target_storage")
+        @ExcludeMissing
+        fun _targetStorage(): MultipartField<String> = targetStorage
+
+        @JsonAnySetter
+        private fun putAdditionalProperty(key: String, value: JsonValue) {
+            additionalProperties.put(key, value)
+        }
+
+        @JsonAnyGetter
+        @ExcludeMissing
+        fun _additionalProperties(): Map<String, JsonValue> =
+            Collections.unmodifiableMap(additionalProperties)
+
         fun toBuilder() = Builder().from(this)
 
         companion object {
@@ -373,12 +571,20 @@ private constructor(
             private var file: MultipartField<InputStream>? = null
             private var purpose: MultipartField<String>? = null
             private var customLlmProvider: MultipartField<String> = MultipartField.of(null)
+            private var litellmMetadata: MultipartField<String> = MultipartField.of(null)
+            private var targetModelNames: MultipartField<String> = MultipartField.of(null)
+            private var targetStorage: MultipartField<String> = MultipartField.of(null)
+            private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
 
             @JvmSynthetic
             internal fun from(body: Body) = apply {
                 file = body.file
                 purpose = body.purpose
                 customLlmProvider = body.customLlmProvider
+                litellmMetadata = body.litellmMetadata
+                targetModelNames = body.targetModelNames
+                targetStorage = body.targetStorage
+                additionalProperties = body.additionalProperties.toMutableMap()
             }
 
             fun file(file: InputStream) = file(MultipartField.of(file))
@@ -394,11 +600,11 @@ private constructor(
 
             fun file(file: ByteArray) = file(file.inputStream())
 
-            fun file(file: Path) =
+            fun file(path: Path) =
                 file(
                     MultipartField.builder<InputStream>()
-                        .value(file.inputStream())
-                        .filename(file.name)
+                        .value(path.inputStream())
+                        .filename(path.name)
                         .build()
                 )
 
@@ -427,6 +633,71 @@ private constructor(
                 this.customLlmProvider = customLlmProvider
             }
 
+            fun litellmMetadata(litellmMetadata: String?) =
+                litellmMetadata(MultipartField.of(litellmMetadata))
+
+            /** Alias for calling [Builder.litellmMetadata] with `litellmMetadata.orElse(null)`. */
+            fun litellmMetadata(litellmMetadata: Optional<String>) =
+                litellmMetadata(litellmMetadata.getOrNull())
+
+            /**
+             * Sets [Builder.litellmMetadata] to an arbitrary multipart value.
+             *
+             * You should usually call [Builder.litellmMetadata] with a well-typed [String] value
+             * instead. This method is primarily for setting the field to an undocumented or not yet
+             * supported value.
+             */
+            fun litellmMetadata(litellmMetadata: MultipartField<String>) = apply {
+                this.litellmMetadata = litellmMetadata
+            }
+
+            fun targetModelNames(targetModelNames: String) =
+                targetModelNames(MultipartField.of(targetModelNames))
+
+            /**
+             * Sets [Builder.targetModelNames] to an arbitrary multipart value.
+             *
+             * You should usually call [Builder.targetModelNames] with a well-typed [String] value
+             * instead. This method is primarily for setting the field to an undocumented or not yet
+             * supported value.
+             */
+            fun targetModelNames(targetModelNames: MultipartField<String>) = apply {
+                this.targetModelNames = targetModelNames
+            }
+
+            fun targetStorage(targetStorage: String) =
+                targetStorage(MultipartField.of(targetStorage))
+
+            /**
+             * Sets [Builder.targetStorage] to an arbitrary multipart value.
+             *
+             * You should usually call [Builder.targetStorage] with a well-typed [String] value
+             * instead. This method is primarily for setting the field to an undocumented or not yet
+             * supported value.
+             */
+            fun targetStorage(targetStorage: MultipartField<String>) = apply {
+                this.targetStorage = targetStorage
+            }
+
+            fun additionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
+                this.additionalProperties.clear()
+                putAllAdditionalProperties(additionalProperties)
+            }
+
+            fun putAdditionalProperty(key: String, value: JsonValue) = apply {
+                additionalProperties.put(key, value)
+            }
+
+            fun putAllAdditionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
+                this.additionalProperties.putAll(additionalProperties)
+            }
+
+            fun removeAdditionalProperty(key: String) = apply { additionalProperties.remove(key) }
+
+            fun removeAllAdditionalProperties(keys: Set<String>) = apply {
+                keys.forEach(::removeAdditionalProperty)
+            }
+
             /**
              * Returns an immutable instance of [Body].
              *
@@ -445,6 +716,10 @@ private constructor(
                     checkRequired("file", file),
                     checkRequired("purpose", purpose),
                     customLlmProvider,
+                    litellmMetadata,
+                    targetModelNames,
+                    targetStorage,
+                    additionalProperties.toMutableMap(),
                 )
         }
 
@@ -458,25 +733,51 @@ private constructor(
             file()
             purpose()
             customLlmProvider()
+            litellmMetadata()
+            targetModelNames()
+            targetStorage()
             validated = true
         }
+
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
 
         override fun equals(other: Any?): Boolean {
             if (this === other) {
                 return true
             }
 
-            return /* spotless:off */ other is Body && file == other.file && purpose == other.purpose && customLlmProvider == other.customLlmProvider /* spotless:on */
+            return other is Body &&
+                file == other.file &&
+                purpose == other.purpose &&
+                customLlmProvider == other.customLlmProvider &&
+                litellmMetadata == other.litellmMetadata &&
+                targetModelNames == other.targetModelNames &&
+                targetStorage == other.targetStorage &&
+                additionalProperties == other.additionalProperties
         }
 
-        /* spotless:off */
-        private val hashCode: Int by lazy { Objects.hash(file, purpose, customLlmProvider) }
-        /* spotless:on */
+        private val hashCode: Int by lazy {
+            Objects.hash(
+                file,
+                purpose,
+                customLlmProvider,
+                litellmMetadata,
+                targetModelNames,
+                targetStorage,
+                additionalProperties,
+            )
+        }
 
         override fun hashCode(): Int = hashCode
 
         override fun toString() =
-            "Body{file=$file, purpose=$purpose, customLlmProvider=$customLlmProvider}"
+            "Body{file=$file, purpose=$purpose, customLlmProvider=$customLlmProvider, litellmMetadata=$litellmMetadata, targetModelNames=$targetModelNames, targetStorage=$targetStorage, additionalProperties=$additionalProperties}"
     }
 
     override fun equals(other: Any?): Boolean {
@@ -484,10 +785,15 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is FileCreateParams && provider == other.provider && body == other.body && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is FileCreateParams &&
+            provider == other.provider &&
+            body == other.body &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(provider, body, additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(provider, body, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
         "FileCreateParams{provider=$provider, body=$body, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"

@@ -2,11 +2,13 @@
 
 package ai.hanzo.api.services.blocking
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.test.TestPingParams
 import ai.hanzo.api.models.test.TestPingResponse
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface TestService {
 
@@ -14,6 +16,13 @@ interface TestService {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): TestService
 
     /**
      * [DEPRECATED] use `/health/liveliness` instead.
@@ -26,17 +35,17 @@ interface TestService {
      */
     fun ping(): TestPingResponse = ping(TestPingParams.none())
 
-    /** @see [ping] */
+    /** @see ping */
     fun ping(
         params: TestPingParams = TestPingParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): TestPingResponse
 
-    /** @see [ping] */
+    /** @see ping */
     fun ping(params: TestPingParams = TestPingParams.none()): TestPingResponse =
         ping(params, RequestOptions.none())
 
-    /** @see [ping] */
+    /** @see ping */
     fun ping(requestOptions: RequestOptions): TestPingResponse =
         ping(TestPingParams.none(), requestOptions)
 
@@ -44,25 +53,32 @@ interface TestService {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): TestService.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `get /test`, but is otherwise the same as
          * [TestService.ping].
          */
         @MustBeClosed fun ping(): HttpResponseFor<TestPingResponse> = ping(TestPingParams.none())
 
-        /** @see [ping] */
+        /** @see ping */
         @MustBeClosed
         fun ping(
             params: TestPingParams = TestPingParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<TestPingResponse>
 
-        /** @see [ping] */
+        /** @see ping */
         @MustBeClosed
         fun ping(
             params: TestPingParams = TestPingParams.none()
         ): HttpResponseFor<TestPingResponse> = ping(params, RequestOptions.none())
 
-        /** @see [ping] */
+        /** @see ping */
         @MustBeClosed
         fun ping(requestOptions: RequestOptions): HttpResponseFor<TestPingResponse> =
             ping(TestPingParams.none(), requestOptions)

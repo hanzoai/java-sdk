@@ -3,7 +3,6 @@
 package ai.hanzo.api.models.batches
 
 import ai.hanzo.api.core.Params
-import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import java.util.Objects
@@ -22,34 +21,36 @@ import kotlin.jvm.optionals.getOrNull
  */
 class BatchListWithProviderParams
 private constructor(
-    private val provider: String,
+    private val provider: String?,
     private val after: String?,
     private val limit: Long?,
+    private val targetModelNames: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
-    fun provider(): String = provider
+    fun provider(): Optional<String> = Optional.ofNullable(provider)
 
     fun after(): Optional<String> = Optional.ofNullable(after)
 
     fun limit(): Optional<Long> = Optional.ofNullable(limit)
 
+    fun targetModelNames(): Optional<String> = Optional.ofNullable(targetModelNames)
+
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
 
     companion object {
 
+        @JvmStatic fun none(): BatchListWithProviderParams = builder().build()
+
         /**
          * Returns a mutable builder for constructing an instance of [BatchListWithProviderParams].
-         *
-         * The following fields are required:
-         * ```java
-         * .provider()
-         * ```
          */
         @JvmStatic fun builder() = Builder()
     }
@@ -60,6 +61,7 @@ private constructor(
         private var provider: String? = null
         private var after: String? = null
         private var limit: Long? = null
+        private var targetModelNames: String? = null
         private var additionalHeaders: Headers.Builder = Headers.builder()
         private var additionalQueryParams: QueryParams.Builder = QueryParams.builder()
 
@@ -68,11 +70,15 @@ private constructor(
             provider = batchListWithProviderParams.provider
             after = batchListWithProviderParams.after
             limit = batchListWithProviderParams.limit
+            targetModelNames = batchListWithProviderParams.targetModelNames
             additionalHeaders = batchListWithProviderParams.additionalHeaders.toBuilder()
             additionalQueryParams = batchListWithProviderParams.additionalQueryParams.toBuilder()
         }
 
-        fun provider(provider: String) = apply { this.provider = provider }
+        fun provider(provider: String?) = apply { this.provider = provider }
+
+        /** Alias for calling [Builder.provider] with `provider.orElse(null)`. */
+        fun provider(provider: Optional<String>) = provider(provider.getOrNull())
 
         fun after(after: String?) = apply { this.after = after }
 
@@ -90,6 +96,14 @@ private constructor(
 
         /** Alias for calling [Builder.limit] with `limit.orElse(null)`. */
         fun limit(limit: Optional<Long>) = limit(limit.getOrNull())
+
+        fun targetModelNames(targetModelNames: String?) = apply {
+            this.targetModelNames = targetModelNames
+        }
+
+        /** Alias for calling [Builder.targetModelNames] with `targetModelNames.orElse(null)`. */
+        fun targetModelNames(targetModelNames: Optional<String>) =
+            targetModelNames(targetModelNames.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -193,19 +207,13 @@ private constructor(
          * Returns an immutable instance of [BatchListWithProviderParams].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
-         *
-         * The following fields are required:
-         * ```java
-         * .provider()
-         * ```
-         *
-         * @throws IllegalStateException if any required field is unset.
          */
         fun build(): BatchListWithProviderParams =
             BatchListWithProviderParams(
-                checkRequired("provider", provider),
+                provider,
                 after,
                 limit,
+                targetModelNames,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
             )
@@ -213,7 +221,7 @@ private constructor(
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> provider
+            0 -> provider ?: ""
             else -> ""
         }
 
@@ -224,6 +232,7 @@ private constructor(
             .apply {
                 after?.let { put("after", it) }
                 limit?.let { put("limit", it.toString()) }
+                targetModelNames?.let { put("target_model_names", it) }
                 putAll(additionalQueryParams)
             }
             .build()
@@ -233,11 +242,25 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is BatchListWithProviderParams && provider == other.provider && after == other.after && limit == other.limit && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is BatchListWithProviderParams &&
+            provider == other.provider &&
+            after == other.after &&
+            limit == other.limit &&
+            targetModelNames == other.targetModelNames &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(provider, after, limit, additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(
+            provider,
+            after,
+            limit,
+            targetModelNames,
+            additionalHeaders,
+            additionalQueryParams,
+        )
 
     override fun toString() =
-        "BatchListWithProviderParams{provider=$provider, after=$after, limit=$limit, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
+        "BatchListWithProviderParams{provider=$provider, after=$after, limit=$limit, targetModelNames=$targetModelNames, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
 }

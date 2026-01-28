@@ -3,46 +3,52 @@
 package ai.hanzo.api.models.responses
 
 import ai.hanzo.api.core.Params
-import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import java.util.Objects
+import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /**
  * Get a response by ID.
+ *
+ * Supports both:
+ * - Polling IDs (litellm_poll_*): Returns cumulative cached content from background responses
+ * - Provider response IDs: Passes through to provider API
  *
  * Follows the OpenAI Responses API spec:
  * https://platform.openai.com/docs/api-reference/responses/get
  *
  * ```bash
+ * # Get polling response
+ * curl -X GET http://localhost:4000/v1/responses/litellm_poll_abc123     -H "Authorization: Bearer sk-1234"
+ *
+ * # Get provider response
  * curl -X GET http://localhost:4000/v1/responses/resp_abc123     -H "Authorization: Bearer sk-1234"
  * ```
  */
 class ResponseRetrieveParams
 private constructor(
-    private val responseId: String,
+    private val responseId: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
-    fun responseId(): String = responseId
+    fun responseId(): Optional<String> = Optional.ofNullable(responseId)
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
 
     companion object {
 
-        /**
-         * Returns a mutable builder for constructing an instance of [ResponseRetrieveParams].
-         *
-         * The following fields are required:
-         * ```java
-         * .responseId()
-         * ```
-         */
+        @JvmStatic fun none(): ResponseRetrieveParams = builder().build()
+
+        /** Returns a mutable builder for constructing an instance of [ResponseRetrieveParams]. */
         @JvmStatic fun builder() = Builder()
     }
 
@@ -60,7 +66,10 @@ private constructor(
             additionalQueryParams = responseRetrieveParams.additionalQueryParams.toBuilder()
         }
 
-        fun responseId(responseId: String) = apply { this.responseId = responseId }
+        fun responseId(responseId: String?) = apply { this.responseId = responseId }
+
+        /** Alias for calling [Builder.responseId] with `responseId.orElse(null)`. */
+        fun responseId(responseId: Optional<String>) = responseId(responseId.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -164,17 +173,10 @@ private constructor(
          * Returns an immutable instance of [ResponseRetrieveParams].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
-         *
-         * The following fields are required:
-         * ```java
-         * .responseId()
-         * ```
-         *
-         * @throws IllegalStateException if any required field is unset.
          */
         fun build(): ResponseRetrieveParams =
             ResponseRetrieveParams(
-                checkRequired("responseId", responseId),
+                responseId,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
             )
@@ -182,7 +184,7 @@ private constructor(
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> responseId
+            0 -> responseId ?: ""
             else -> ""
         }
 
@@ -195,10 +197,14 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is ResponseRetrieveParams && responseId == other.responseId && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is ResponseRetrieveParams &&
+            responseId == other.responseId &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(responseId, additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(responseId, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
         "ResponseRetrieveParams{responseId=$responseId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"

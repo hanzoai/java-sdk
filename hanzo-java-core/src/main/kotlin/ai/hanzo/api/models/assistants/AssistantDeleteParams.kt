@@ -4,12 +4,12 @@ package ai.hanzo.api.models.assistants
 
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.Params
-import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import ai.hanzo.api.core.toImmutable
 import java.util.Objects
 import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /**
  * Delete assistant
@@ -18,32 +18,30 @@ import java.util.Optional
  */
 class AssistantDeleteParams
 private constructor(
-    private val assistantId: String,
+    private val assistantId: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
     private val additionalBodyProperties: Map<String, JsonValue>,
 ) : Params {
 
-    fun assistantId(): String = assistantId
+    fun assistantId(): Optional<String> = Optional.ofNullable(assistantId)
 
+    /** Additional body properties to send with the request. */
     fun _additionalBodyProperties(): Map<String, JsonValue> = additionalBodyProperties
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
 
     companion object {
 
-        /**
-         * Returns a mutable builder for constructing an instance of [AssistantDeleteParams].
-         *
-         * The following fields are required:
-         * ```java
-         * .assistantId()
-         * ```
-         */
+        @JvmStatic fun none(): AssistantDeleteParams = builder().build()
+
+        /** Returns a mutable builder for constructing an instance of [AssistantDeleteParams]. */
         @JvmStatic fun builder() = Builder()
     }
 
@@ -63,7 +61,10 @@ private constructor(
             additionalBodyProperties = assistantDeleteParams.additionalBodyProperties.toMutableMap()
         }
 
-        fun assistantId(assistantId: String) = apply { this.assistantId = assistantId }
+        fun assistantId(assistantId: String?) = apply { this.assistantId = assistantId }
+
+        /** Alias for calling [Builder.assistantId] with `assistantId.orElse(null)`. */
+        fun assistantId(assistantId: Optional<String>) = assistantId(assistantId.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -189,30 +190,22 @@ private constructor(
          * Returns an immutable instance of [AssistantDeleteParams].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
-         *
-         * The following fields are required:
-         * ```java
-         * .assistantId()
-         * ```
-         *
-         * @throws IllegalStateException if any required field is unset.
          */
         fun build(): AssistantDeleteParams =
             AssistantDeleteParams(
-                checkRequired("assistantId", assistantId),
+                assistantId,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
                 additionalBodyProperties.toImmutable(),
             )
     }
 
-    @JvmSynthetic
-    internal fun _body(): Optional<Map<String, JsonValue>> =
+    fun _body(): Optional<Map<String, JsonValue>> =
         Optional.ofNullable(additionalBodyProperties.ifEmpty { null })
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> assistantId
+            0 -> assistantId ?: ""
             else -> ""
         }
 
@@ -225,10 +218,20 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is AssistantDeleteParams && assistantId == other.assistantId && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams && additionalBodyProperties == other.additionalBodyProperties /* spotless:on */
+        return other is AssistantDeleteParams &&
+            assistantId == other.assistantId &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams &&
+            additionalBodyProperties == other.additionalBodyProperties
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(assistantId, additionalHeaders, additionalQueryParams, additionalBodyProperties) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(
+            assistantId,
+            additionalHeaders,
+            additionalQueryParams,
+            additionalBodyProperties,
+        )
 
     override fun toString() =
         "AssistantDeleteParams{assistantId=$assistantId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams, additionalBodyProperties=$additionalBodyProperties}"

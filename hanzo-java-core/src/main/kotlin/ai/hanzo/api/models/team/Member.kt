@@ -19,6 +19,7 @@ import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
 
 class Member
+@JsonCreator(mode = JsonCreator.Mode.DISABLED)
 private constructor(
     private val role: JsonField<Role>,
     private val userEmail: JsonField<String>,
@@ -34,22 +35,29 @@ private constructor(
     ) : this(role, userEmail, userId, mutableMapOf())
 
     /**
+     * The role of the user within the team. 'admin' users can manage team settings and members,
+     * 'user' is a regular team member
+     *
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type or is unexpectedly
      *   missing or null (e.g. if the server responded with an unexpected value).
      */
     fun role(): Role = role.getRequired("role")
 
     /**
+     * The email address of the user to add. Either user_id or user_email must be provided
+     *
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun userEmail(): Optional<String> = Optional.ofNullable(userEmail.getNullable("user_email"))
+    fun userEmail(): Optional<String> = userEmail.getOptional("user_email")
 
     /**
+     * The unique ID of the user to add. Either user_id or user_email must be provided
+     *
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun userId(): Optional<String> = Optional.ofNullable(userId.getNullable("user_id"))
+    fun userId(): Optional<String> = userId.getOptional("user_id")
 
     /**
      * Returns the raw JSON value of [role].
@@ -113,6 +121,10 @@ private constructor(
             additionalProperties = member.additionalProperties.toMutableMap()
         }
 
+        /**
+         * The role of the user within the team. 'admin' users can manage team settings and members,
+         * 'user' is a regular team member
+         */
         fun role(role: Role) = role(JsonField.of(role))
 
         /**
@@ -123,6 +135,7 @@ private constructor(
          */
         fun role(role: JsonField<Role>) = apply { this.role = role }
 
+        /** The email address of the user to add. Either user_id or user_email must be provided */
         fun userEmail(userEmail: String?) = userEmail(JsonField.ofNullable(userEmail))
 
         /** Alias for calling [Builder.userEmail] with `userEmail.orElse(null)`. */
@@ -137,6 +150,7 @@ private constructor(
          */
         fun userEmail(userEmail: JsonField<String>) = apply { this.userEmail = userEmail }
 
+        /** The unique ID of the user to add. Either user_id or user_email must be provided */
         fun userId(userId: String?) = userId(JsonField.ofNullable(userId))
 
         /** Alias for calling [Builder.userId] with `userId.orElse(null)`. */
@@ -197,12 +211,35 @@ private constructor(
             return@apply
         }
 
-        role()
+        role().validate()
         userEmail()
         userId()
         validated = true
     }
 
+    fun isValid(): Boolean =
+        try {
+            validate()
+            true
+        } catch (e: HanzoInvalidDataException) {
+            false
+        }
+
+    /**
+     * Returns a score indicating how many valid values are contained in this object recursively.
+     *
+     * Used for best match union deserialization.
+     */
+    @JvmSynthetic
+    internal fun validity(): Int =
+        (role.asKnown().getOrNull()?.validity() ?: 0) +
+            (if (userEmail.asKnown().isPresent) 1 else 0) +
+            (if (userId.asKnown().isPresent) 1 else 0)
+
+    /**
+     * The role of the user within the team. 'admin' users can manage team settings and members,
+     * 'user' is a regular team member
+     */
     class Role @JsonCreator private constructor(private val value: JsonField<String>) : Enum {
 
         /**
@@ -287,12 +324,39 @@ private constructor(
         fun asString(): String =
             _value().asString().orElseThrow { HanzoInvalidDataException("Value is not a String") }
 
+        private var validated: Boolean = false
+
+        fun validate(): Role = apply {
+            if (validated) {
+                return@apply
+            }
+
+            known()
+            validated = true
+        }
+
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
+
+        /**
+         * Returns a score indicating how many valid values are contained in this object
+         * recursively.
+         *
+         * Used for best match union deserialization.
+         */
+        @JvmSynthetic internal fun validity(): Int = if (value() == Value._UNKNOWN) 0 else 1
+
         override fun equals(other: Any?): Boolean {
             if (this === other) {
                 return true
             }
 
-            return /* spotless:off */ other is Role && value == other.value /* spotless:on */
+            return other is Role && value == other.value
         }
 
         override fun hashCode() = value.hashCode()
@@ -305,12 +369,16 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is Member && role == other.role && userEmail == other.userEmail && userId == other.userId && additionalProperties == other.additionalProperties /* spotless:on */
+        return other is Member &&
+            role == other.role &&
+            userEmail == other.userEmail &&
+            userId == other.userId &&
+            additionalProperties == other.additionalProperties
     }
 
-    /* spotless:off */
-    private val hashCode: Int by lazy { Objects.hash(role, userEmail, userId, additionalProperties) }
-    /* spotless:on */
+    private val hashCode: Int by lazy {
+        Objects.hash(role, userEmail, userId, additionalProperties)
+    }
 
     override fun hashCode(): Int = hashCode
 

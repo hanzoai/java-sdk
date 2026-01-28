@@ -62,20 +62,20 @@ import kotlin.jvm.optionals.getOrNull
  */
 class CallbackAddParams
 private constructor(
-    private val teamId: String,
-    private val llmChangedBy: String?,
+    private val teamId: String?,
+    private val litellmChangedBy: String?,
     private val body: Body,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
-    fun teamId(): String = teamId
+    fun teamId(): Optional<String> = Optional.ofNullable(teamId)
 
     /**
-     * The llm-changed-by header enables tracking of actions performed by authorized users on behalf
-     * of other users, providing an audit trail for accountability
+     * The litellm-changed-by header enables tracking of actions performed by authorized users on
+     * behalf of other users, providing an audit trail for accountability
      */
-    fun llmChangedBy(): Optional<String> = Optional.ofNullable(llmChangedBy)
+    fun litellmChangedBy(): Optional<String> = Optional.ofNullable(litellmChangedBy)
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type or is unexpectedly
@@ -118,8 +118,10 @@ private constructor(
 
     fun _additionalBodyProperties(): Map<String, JsonValue> = body._additionalProperties()
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
@@ -131,7 +133,6 @@ private constructor(
          *
          * The following fields are required:
          * ```java
-         * .teamId()
          * .callbackName()
          * .callbackVars()
          * ```
@@ -143,7 +144,7 @@ private constructor(
     class Builder internal constructor() {
 
         private var teamId: String? = null
-        private var llmChangedBy: String? = null
+        private var litellmChangedBy: String? = null
         private var body: Body.Builder = Body.builder()
         private var additionalHeaders: Headers.Builder = Headers.builder()
         private var additionalQueryParams: QueryParams.Builder = QueryParams.builder()
@@ -151,22 +152,39 @@ private constructor(
         @JvmSynthetic
         internal fun from(callbackAddParams: CallbackAddParams) = apply {
             teamId = callbackAddParams.teamId
-            llmChangedBy = callbackAddParams.llmChangedBy
+            litellmChangedBy = callbackAddParams.litellmChangedBy
             body = callbackAddParams.body.toBuilder()
             additionalHeaders = callbackAddParams.additionalHeaders.toBuilder()
             additionalQueryParams = callbackAddParams.additionalQueryParams.toBuilder()
         }
 
-        fun teamId(teamId: String) = apply { this.teamId = teamId }
+        fun teamId(teamId: String?) = apply { this.teamId = teamId }
+
+        /** Alias for calling [Builder.teamId] with `teamId.orElse(null)`. */
+        fun teamId(teamId: Optional<String>) = teamId(teamId.getOrNull())
 
         /**
-         * The llm-changed-by header enables tracking of actions performed by authorized users on
-         * behalf of other users, providing an audit trail for accountability
+         * The litellm-changed-by header enables tracking of actions performed by authorized users
+         * on behalf of other users, providing an audit trail for accountability
          */
-        fun llmChangedBy(llmChangedBy: String?) = apply { this.llmChangedBy = llmChangedBy }
+        fun litellmChangedBy(litellmChangedBy: String?) = apply {
+            this.litellmChangedBy = litellmChangedBy
+        }
 
-        /** Alias for calling [Builder.llmChangedBy] with `llmChangedBy.orElse(null)`. */
-        fun llmChangedBy(llmChangedBy: Optional<String>) = llmChangedBy(llmChangedBy.getOrNull())
+        /** Alias for calling [Builder.litellmChangedBy] with `litellmChangedBy.orElse(null)`. */
+        fun litellmChangedBy(litellmChangedBy: Optional<String>) =
+            litellmChangedBy(litellmChangedBy.getOrNull())
+
+        /**
+         * Sets the entire request body.
+         *
+         * This is generally only useful if you are already constructing the body separately.
+         * Otherwise, it's more convenient to use the top-level setters instead:
+         * - [callbackName]
+         * - [callbackVars]
+         * - [callbackType]
+         */
+        fun body(body: Body) = apply { this.body = body.toBuilder() }
 
         fun callbackName(callbackName: String) = apply { body.callbackName(callbackName) }
 
@@ -335,7 +353,6 @@ private constructor(
          *
          * The following fields are required:
          * ```java
-         * .teamId()
          * .callbackName()
          * .callbackVars()
          * ```
@@ -344,26 +361,26 @@ private constructor(
          */
         fun build(): CallbackAddParams =
             CallbackAddParams(
-                checkRequired("teamId", teamId),
-                llmChangedBy,
+                teamId,
+                litellmChangedBy,
                 body.build(),
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
             )
     }
 
-    @JvmSynthetic internal fun _body(): Body = body
+    fun _body(): Body = body
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> teamId
+            0 -> teamId ?: ""
             else -> ""
         }
 
     override fun _headers(): Headers =
         Headers.builder()
             .apply {
-                llmChangedBy?.let { put("llm-changed-by", it) }
+                litellmChangedBy?.let { put("litellm-changed-by", it) }
                 putAll(additionalHeaders)
             }
             .build()
@@ -371,6 +388,7 @@ private constructor(
     override fun _queryParams(): QueryParams = additionalQueryParams
 
     class Body
+    @JsonCreator(mode = JsonCreator.Mode.DISABLED)
     private constructor(
         private val callbackName: JsonField<String>,
         private val callbackVars: JsonField<CallbackVars>,
@@ -407,8 +425,7 @@ private constructor(
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun callbackType(): Optional<CallbackType> =
-            Optional.ofNullable(callbackType.getNullable("callback_type"))
+        fun callbackType(): Optional<CallbackType> = callbackType.getOptional("callback_type")
 
         /**
          * Returns the raw JSON value of [callbackName].
@@ -576,21 +593,45 @@ private constructor(
 
             callbackName()
             callbackVars().validate()
-            callbackType()
+            callbackType().ifPresent { it.validate() }
             validated = true
         }
+
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
+
+        /**
+         * Returns a score indicating how many valid values are contained in this object
+         * recursively.
+         *
+         * Used for best match union deserialization.
+         */
+        @JvmSynthetic
+        internal fun validity(): Int =
+            (if (callbackName.asKnown().isPresent) 1 else 0) +
+                (callbackVars.asKnown().getOrNull()?.validity() ?: 0) +
+                (callbackType.asKnown().getOrNull()?.validity() ?: 0)
 
         override fun equals(other: Any?): Boolean {
             if (this === other) {
                 return true
             }
 
-            return /* spotless:off */ other is Body && callbackName == other.callbackName && callbackVars == other.callbackVars && callbackType == other.callbackType && additionalProperties == other.additionalProperties /* spotless:on */
+            return other is Body &&
+                callbackName == other.callbackName &&
+                callbackVars == other.callbackVars &&
+                callbackType == other.callbackType &&
+                additionalProperties == other.additionalProperties
         }
 
-        /* spotless:off */
-        private val hashCode: Int by lazy { Objects.hash(callbackName, callbackVars, callbackType, additionalProperties) }
-        /* spotless:on */
+        private val hashCode: Int by lazy {
+            Objects.hash(callbackName, callbackVars, callbackType, additionalProperties)
+        }
 
         override fun hashCode(): Int = hashCode
 
@@ -664,17 +705,33 @@ private constructor(
             validated = true
         }
 
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
+
+        /**
+         * Returns a score indicating how many valid values are contained in this object
+         * recursively.
+         *
+         * Used for best match union deserialization.
+         */
+        @JvmSynthetic
+        internal fun validity(): Int =
+            additionalProperties.count { (_, value) -> !value.isNull() && !value.isMissing() }
+
         override fun equals(other: Any?): Boolean {
             if (this === other) {
                 return true
             }
 
-            return /* spotless:off */ other is CallbackVars && additionalProperties == other.additionalProperties /* spotless:on */
+            return other is CallbackVars && additionalProperties == other.additionalProperties
         }
 
-        /* spotless:off */
         private val hashCode: Int by lazy { Objects.hash(additionalProperties) }
-        /* spotless:on */
 
         override fun hashCode(): Int = hashCode
 
@@ -774,12 +831,39 @@ private constructor(
         fun asString(): String =
             _value().asString().orElseThrow { HanzoInvalidDataException("Value is not a String") }
 
+        private var validated: Boolean = false
+
+        fun validate(): CallbackType = apply {
+            if (validated) {
+                return@apply
+            }
+
+            known()
+            validated = true
+        }
+
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
+
+        /**
+         * Returns a score indicating how many valid values are contained in this object
+         * recursively.
+         *
+         * Used for best match union deserialization.
+         */
+        @JvmSynthetic internal fun validity(): Int = if (value() == Value._UNKNOWN) 0 else 1
+
         override fun equals(other: Any?): Boolean {
             if (this === other) {
                 return true
             }
 
-            return /* spotless:off */ other is CallbackType && value == other.value /* spotless:on */
+            return other is CallbackType && value == other.value
         }
 
         override fun hashCode() = value.hashCode()
@@ -792,11 +876,17 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is CallbackAddParams && teamId == other.teamId && llmChangedBy == other.llmChangedBy && body == other.body && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is CallbackAddParams &&
+            teamId == other.teamId &&
+            litellmChangedBy == other.litellmChangedBy &&
+            body == other.body &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(teamId, llmChangedBy, body, additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(teamId, litellmChangedBy, body, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
-        "CallbackAddParams{teamId=$teamId, llmChangedBy=$llmChangedBy, body=$body, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
+        "CallbackAddParams{teamId=$teamId, litellmChangedBy=$litellmChangedBy, body=$body, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
 }

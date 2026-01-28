@@ -11,7 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 @ExtendWith(TestServerExtension::class)
 internal class RouteServiceAsyncTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun list() {
         val client =
@@ -21,9 +21,9 @@ internal class RouteServiceAsyncTest {
                 .build()
         val routeServiceAsync = client.routes()
 
-        val routeFuture = routeServiceAsync.list()
+        val routesFuture = routeServiceAsync.list()
 
-        val route = routeFuture.get()
-        route.validate()
+        val routes = routesFuture.get()
+        routes.validate()
     }
 }

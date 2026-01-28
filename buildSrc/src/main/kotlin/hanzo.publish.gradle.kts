@@ -7,6 +7,17 @@ plugins {
     id("com.vanniktech.maven.publish")
 }
 
+publishing {
+  repositories {
+      if (project.hasProperty("publishLocal")) {
+          maven {
+              name = "LocalFileSystem"
+              url = uri("${rootProject.layout.buildDirectory.get()}/local-maven-repo")
+          }
+      }
+  }
+}
+
 repositories {
     gradlePluginPortal()
     mavenCentral()
@@ -17,8 +28,10 @@ extra["signingInMemoryKeyId"] = System.getenv("GPG_SIGNING_KEY_ID")
 extra["signingInMemoryKeyPassword"] = System.getenv("GPG_SIGNING_PASSWORD")
 
 configure<MavenPublishBaseExtension> {
-    signAllPublications()
-    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    if (!project.hasProperty("publishLocal")) {
+        signAllPublications()
+        publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    }
 
     coordinates(project.group.toString(), project.name, project.version.toString())
     configure(
@@ -29,8 +42,8 @@ configure<MavenPublishBaseExtension> {
     )
 
     pom {
-        name.set("Hanzo API")
-        description.set("Call 100+ LLMs in the OpenAI format. [**Docs**](https://docs.hanzo.ai/)\n\n👉 [`Hanzo Console`](https://cloud.hanzo.ai). Create, Edit API Keys.\n\n💸 [`LLM Models`](https://models.hanzo.ai/).")
+        name.set("LiteLLM API")
+        description.set("Proxy Server to call 100+ LLMs in the OpenAI format.\n[**Customize Swagger Docs**](https://docs.litellm.ai/docs/proxy/enterprise#swagger-docs---custom-routes--branding)\n\n👉 [`LiteLLM Admin Panel on /ui`](/ui). Create, Edit Keys with SSO. Having\nissues? Try [`Fallback Login`](/fallback/login)\n\n💸 [`LiteLLM Model Cost Map`](https://models.litellm.ai/).\n\n🔎 [`LiteLLM Model Hub`](/ui/model_hub_table). See available models on the\nproxy. [**Docs**](https://docs.litellm.ai/docs/proxy/ai_hub)")
         url.set("https://docs.hanzo.ai")
 
         licenses {
@@ -52,4 +65,8 @@ configure<MavenPublishBaseExtension> {
             url.set("https://github.com/hanzoai/java-sdk")
         }
     }
+}
+
+tasks.withType<Zip>().configureEach {
+    isZip64 = true
 }

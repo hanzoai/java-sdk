@@ -2,8 +2,10 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
+import ai.hanzo.api.models.customer.BlockUsers
 import ai.hanzo.api.models.customer.CustomerBlockParams
 import ai.hanzo.api.models.customer.CustomerBlockResponse
 import ai.hanzo.api.models.customer.CustomerCreateParams
@@ -11,15 +13,14 @@ import ai.hanzo.api.models.customer.CustomerCreateResponse
 import ai.hanzo.api.models.customer.CustomerDeleteParams
 import ai.hanzo.api.models.customer.CustomerDeleteResponse
 import ai.hanzo.api.models.customer.CustomerListParams
-import ai.hanzo.api.models.customer.CustomerListResponse
 import ai.hanzo.api.models.customer.CustomerRetrieveInfoParams
-import ai.hanzo.api.models.customer.CustomerRetrieveInfoResponse
 import ai.hanzo.api.models.customer.CustomerUnblockParams
 import ai.hanzo.api.models.customer.CustomerUnblockResponse
 import ai.hanzo.api.models.customer.CustomerUpdateParams
 import ai.hanzo.api.models.customer.CustomerUpdateResponse
-import com.google.errorprone.annotations.MustBeClosed
+import ai.hanzo.api.models.customer.LiteLlmEndUserTable
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface CustomerServiceAsync {
 
@@ -27,6 +28,13 @@ interface CustomerServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): CustomerServiceAsync
 
     /**
      * Allow creating a new Customer
@@ -58,13 +66,15 @@ interface CustomerServiceAsync {
      *   for a given customer.
      * - soft_budget: Optional[float] - [Not Implemented Yet] Get alerts when customer crosses given
      *   budget, doesn't block requests.
+     * - spend: Optional[float] - Specify initial spend for a given customer.
+     * - budget_reset_at: Optional[str] - Specify the date and time when the budget should be reset.
      * - Allow specifying allowed regions
      * - Allow specifying default model
      *
      * Example curl:
      * ```
      * curl --location 'http://0.0.0.0:4000/customer/new'         --header 'Authorization: Bearer sk-1234'         --header 'Content-Type: application/json'         --data '{
-     *         "user_id" : "z-jaff-3",
+     *         "user_id" : "ishaan-jaff-3",
      *         "allowed_region": "eu",
      *         "budget_id": "free_tier",
      *         "default_model": "azure/gpt-3.5-turbo-eu" <- all calls from this user, use this model?
@@ -79,7 +89,7 @@ interface CustomerServiceAsync {
     fun create(params: CustomerCreateParams): CompletableFuture<CustomerCreateResponse> =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: CustomerCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -102,7 +112,7 @@ interface CustomerServiceAsync {
      * Example curl:
      * ```
      * curl --location 'http://0.0.0.0:4000/customer/update'     --header 'Authorization: Bearer sk-1234'     --header 'Content-Type: application/json'     --data '{
-     *     "user_id": "test-llm-user-4",
+     *     "user_id": "test-litellm-user-4",
      *     "budget_id": "paid_tier"
      * }'
      *
@@ -112,7 +122,7 @@ interface CustomerServiceAsync {
     fun update(params: CustomerUpdateParams): CompletableFuture<CustomerUpdateResponse> =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: CustomerUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -126,21 +136,21 @@ interface CustomerServiceAsync {
      * curl --location --request GET 'http://0.0.0.0:4000/customer/list'         --header 'Authorization: Bearer sk-1234'
      * ```
      */
-    fun list(): CompletableFuture<List<CustomerListResponse>> = list(CustomerListParams.none())
+    fun list(): CompletableFuture<List<LiteLlmEndUserTable>> = list(CustomerListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: CustomerListParams = CustomerListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
-    ): CompletableFuture<List<CustomerListResponse>>
+    ): CompletableFuture<List<LiteLlmEndUserTable>>
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: CustomerListParams = CustomerListParams.none()
-    ): CompletableFuture<List<CustomerListResponse>> = list(params, RequestOptions.none())
+    ): CompletableFuture<List<LiteLlmEndUserTable>> = list(params, RequestOptions.none())
 
-    /** @see [list] */
-    fun list(requestOptions: RequestOptions): CompletableFuture<List<CustomerListResponse>> =
+    /** @see list */
+    fun list(requestOptions: RequestOptions): CompletableFuture<List<LiteLlmEndUserTable>> =
         list(CustomerListParams.none(), requestOptions)
 
     /**
@@ -152,7 +162,7 @@ interface CustomerServiceAsync {
      * Example curl:
      * ```
      * curl --location 'http://0.0.0.0:4000/customer/delete'         --header 'Authorization: Bearer sk-1234'         --header 'Content-Type: application/json'         --data '{
-     *         "user_ids" :["z-jaff-5"]
+     *         "user_ids" :["ishaan-jaff-5"]
      * }'
      *
      * See below for all params
@@ -161,7 +171,7 @@ interface CustomerServiceAsync {
     fun delete(params: CustomerDeleteParams): CompletableFuture<CustomerDeleteResponse> =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: CustomerDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -181,11 +191,22 @@ interface CustomerServiceAsync {
     fun block(params: CustomerBlockParams): CompletableFuture<CustomerBlockResponse> =
         block(params, RequestOptions.none())
 
-    /** @see [block] */
+    /** @see block */
     fun block(
         params: CustomerBlockParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CustomerBlockResponse>
+
+    /** @see block */
+    fun block(
+        blockUsers: BlockUsers,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<CustomerBlockResponse> =
+        block(CustomerBlockParams.builder().blockUsers(blockUsers).build(), requestOptions)
+
+    /** @see block */
+    fun block(blockUsers: BlockUsers): CompletableFuture<CustomerBlockResponse> =
+        block(blockUsers, RequestOptions.none())
 
     /**
      * Get information about an end-user. An `end_user` is a customer (external user) of the proxy.
@@ -195,18 +216,17 @@ interface CustomerServiceAsync {
      *
      * Example curl:
      * ```
-     * curl -X GET 'http://localhost:4000/customer/info?end_user_id=test-llm-user-4'         -H 'Authorization: Bearer sk-1234'
+     * curl -X GET 'http://localhost:4000/customer/info?end_user_id=test-litellm-user-4'         -H 'Authorization: Bearer sk-1234'
      * ```
      */
-    fun retrieveInfo(
-        params: CustomerRetrieveInfoParams
-    ): CompletableFuture<CustomerRetrieveInfoResponse> = retrieveInfo(params, RequestOptions.none())
+    fun retrieveInfo(params: CustomerRetrieveInfoParams): CompletableFuture<LiteLlmEndUserTable> =
+        retrieveInfo(params, RequestOptions.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: CustomerRetrieveInfoParams,
         requestOptions: RequestOptions = RequestOptions.none(),
-    ): CompletableFuture<CustomerRetrieveInfoResponse>
+    ): CompletableFuture<LiteLlmEndUserTable>
 
     /**
      * [BETA] Unblock calls with this user id
@@ -224,11 +244,22 @@ interface CustomerServiceAsync {
     fun unblock(params: CustomerUnblockParams): CompletableFuture<CustomerUnblockResponse> =
         unblock(params, RequestOptions.none())
 
-    /** @see [unblock] */
+    /** @see unblock */
     fun unblock(
         params: CustomerUnblockParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<CustomerUnblockResponse>
+
+    /** @see unblock */
+    fun unblock(
+        blockUsers: BlockUsers,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<CustomerUnblockResponse> =
+        unblock(CustomerUnblockParams.builder().blockUsers(blockUsers).build(), requestOptions)
+
+    /** @see unblock */
+    fun unblock(blockUsers: BlockUsers): CompletableFuture<CustomerUnblockResponse> =
+        unblock(blockUsers, RequestOptions.none())
 
     /**
      * A view of [CustomerServiceAsync] that provides access to raw HTTP responses for each method.
@@ -236,17 +267,24 @@ interface CustomerServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): CustomerServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `post /customer/new`, but is otherwise the same as
          * [CustomerServiceAsync.create].
          */
-        @MustBeClosed
         fun create(
             params: CustomerCreateParams
         ): CompletableFuture<HttpResponseFor<CustomerCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
-        @MustBeClosed
+        /** @see create */
         fun create(
             params: CustomerCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -256,14 +294,12 @@ interface CustomerServiceAsync {
          * Returns a raw HTTP response for `post /customer/update`, but is otherwise the same as
          * [CustomerServiceAsync.update].
          */
-        @MustBeClosed
         fun update(
             params: CustomerUpdateParams
         ): CompletableFuture<HttpResponseFor<CustomerUpdateResponse>> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
-        @MustBeClosed
+        /** @see update */
         fun update(
             params: CustomerUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -273,43 +309,37 @@ interface CustomerServiceAsync {
          * Returns a raw HTTP response for `get /customer/list`, but is otherwise the same as
          * [CustomerServiceAsync.list].
          */
-        @MustBeClosed
-        fun list(): CompletableFuture<HttpResponseFor<List<CustomerListResponse>>> =
+        fun list(): CompletableFuture<HttpResponseFor<List<LiteLlmEndUserTable>>> =
             list(CustomerListParams.none())
 
-        /** @see [list] */
-        @MustBeClosed
+        /** @see list */
         fun list(
             params: CustomerListParams = CustomerListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<List<CustomerListResponse>>>
+        ): CompletableFuture<HttpResponseFor<List<LiteLlmEndUserTable>>>
 
-        /** @see [list] */
-        @MustBeClosed
+        /** @see list */
         fun list(
             params: CustomerListParams = CustomerListParams.none()
-        ): CompletableFuture<HttpResponseFor<List<CustomerListResponse>>> =
+        ): CompletableFuture<HttpResponseFor<List<LiteLlmEndUserTable>>> =
             list(params, RequestOptions.none())
 
-        /** @see [list] */
-        @MustBeClosed
+        /** @see list */
         fun list(
             requestOptions: RequestOptions
-        ): CompletableFuture<HttpResponseFor<List<CustomerListResponse>>> =
+        ): CompletableFuture<HttpResponseFor<List<LiteLlmEndUserTable>>> =
             list(CustomerListParams.none(), requestOptions)
 
         /**
          * Returns a raw HTTP response for `post /customer/delete`, but is otherwise the same as
          * [CustomerServiceAsync.delete].
          */
-        @MustBeClosed
         fun delete(
             params: CustomerDeleteParams
         ): CompletableFuture<HttpResponseFor<CustomerDeleteResponse>> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
-        @MustBeClosed
+        /** @see delete */
         fun delete(
             params: CustomerDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -319,51 +349,71 @@ interface CustomerServiceAsync {
          * Returns a raw HTTP response for `post /customer/block`, but is otherwise the same as
          * [CustomerServiceAsync.block].
          */
-        @MustBeClosed
         fun block(
             params: CustomerBlockParams
         ): CompletableFuture<HttpResponseFor<CustomerBlockResponse>> =
             block(params, RequestOptions.none())
 
-        /** @see [block] */
-        @MustBeClosed
+        /** @see block */
         fun block(
             params: CustomerBlockParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<CustomerBlockResponse>>
 
+        /** @see block */
+        fun block(
+            blockUsers: BlockUsers,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<CustomerBlockResponse>> =
+            block(CustomerBlockParams.builder().blockUsers(blockUsers).build(), requestOptions)
+
+        /** @see block */
+        fun block(
+            blockUsers: BlockUsers
+        ): CompletableFuture<HttpResponseFor<CustomerBlockResponse>> =
+            block(blockUsers, RequestOptions.none())
+
         /**
          * Returns a raw HTTP response for `get /customer/info`, but is otherwise the same as
          * [CustomerServiceAsync.retrieveInfo].
          */
-        @MustBeClosed
         fun retrieveInfo(
             params: CustomerRetrieveInfoParams
-        ): CompletableFuture<HttpResponseFor<CustomerRetrieveInfoResponse>> =
+        ): CompletableFuture<HttpResponseFor<LiteLlmEndUserTable>> =
             retrieveInfo(params, RequestOptions.none())
 
-        /** @see [retrieveInfo] */
-        @MustBeClosed
+        /** @see retrieveInfo */
         fun retrieveInfo(
             params: CustomerRetrieveInfoParams,
             requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<CustomerRetrieveInfoResponse>>
+        ): CompletableFuture<HttpResponseFor<LiteLlmEndUserTable>>
 
         /**
          * Returns a raw HTTP response for `post /customer/unblock`, but is otherwise the same as
          * [CustomerServiceAsync.unblock].
          */
-        @MustBeClosed
         fun unblock(
             params: CustomerUnblockParams
         ): CompletableFuture<HttpResponseFor<CustomerUnblockResponse>> =
             unblock(params, RequestOptions.none())
 
-        /** @see [unblock] */
-        @MustBeClosed
+        /** @see unblock */
         fun unblock(
             params: CustomerUnblockParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<CustomerUnblockResponse>>
+
+        /** @see unblock */
+        fun unblock(
+            blockUsers: BlockUsers,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<CustomerUnblockResponse>> =
+            unblock(CustomerUnblockParams.builder().blockUsers(blockUsers).build(), requestOptions)
+
+        /** @see unblock */
+        fun unblock(
+            blockUsers: BlockUsers
+        ): CompletableFuture<HttpResponseFor<CustomerUnblockResponse>> =
+            unblock(blockUsers, RequestOptions.none())
     }
 }

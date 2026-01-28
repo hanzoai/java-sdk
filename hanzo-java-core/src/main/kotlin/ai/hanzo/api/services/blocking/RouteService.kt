@@ -2,11 +2,13 @@
 
 package ai.hanzo.api.services.blocking
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.routes.RouteListParams
 import ai.hanzo.api.models.routes.RouteListResponse
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface RouteService {
 
@@ -15,20 +17,27 @@ interface RouteService {
      */
     fun withRawResponse(): WithRawResponse
 
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): RouteService
+
     /** Get a list of available routes in the FastAPI application. */
     fun list(): RouteListResponse = list(RouteListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: RouteListParams = RouteListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): RouteListResponse
 
-    /** @see [list] */
+    /** @see list */
     fun list(params: RouteListParams = RouteListParams.none()): RouteListResponse =
         list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): RouteListResponse =
         list(RouteListParams.none(), requestOptions)
 
@@ -36,25 +45,32 @@ interface RouteService {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): RouteService.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `get /routes`, but is otherwise the same as
          * [RouteService.list].
          */
         @MustBeClosed fun list(): HttpResponseFor<RouteListResponse> = list(RouteListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: RouteListParams = RouteListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<RouteListResponse>
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: RouteListParams = RouteListParams.none()
         ): HttpResponseFor<RouteListResponse> = list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(requestOptions: RequestOptions): HttpResponseFor<RouteListResponse> =
             list(RouteListParams.none(), requestOptions)

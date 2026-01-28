@@ -5,7 +5,6 @@ package ai.hanzo.api.services.async.config
 import ai.hanzo.api.TestServerExtension
 import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
 import ai.hanzo.api.core.JsonValue
-import ai.hanzo.api.models.config.passthroughendpoint.PassThroughEndpointCreateParams
 import ai.hanzo.api.models.config.passthroughendpoint.PassThroughEndpointDeleteParams
 import ai.hanzo.api.models.config.passthroughendpoint.PassThroughEndpointListParams
 import ai.hanzo.api.models.config.passthroughendpoint.PassThroughEndpointUpdateParams
@@ -17,7 +16,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 @ExtendWith(TestServerExtension::class)
 internal class PassThroughEndpointServiceAsyncTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun create() {
         val client =
@@ -29,14 +28,31 @@ internal class PassThroughEndpointServiceAsyncTest {
 
         val passThroughEndpointFuture =
             passThroughEndpointServiceAsync.create(
-                PassThroughEndpointCreateParams.builder()
-                    .passThroughGenericEndpoint(
-                        PassThroughGenericEndpoint.builder()
-                            .headers(JsonValue.from(mapOf<String, Any>()))
-                            .path("path")
-                            .target("target")
+                PassThroughGenericEndpoint.builder()
+                    .path("path")
+                    .target("target")
+                    .id("id")
+                    .auth(true)
+                    .costPerRequest(0.0)
+                    .guardrails(
+                        PassThroughGenericEndpoint.Guardrails.builder()
+                            .putAdditionalProperty(
+                                "foo",
+                                JsonValue.from(
+                                    mapOf(
+                                        "request_fields" to listOf("string"),
+                                        "response_fields" to listOf("string"),
+                                    )
+                                ),
+                            )
                             .build()
                     )
+                    .headers(
+                        PassThroughGenericEndpoint.Headers.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
+                    .includeSubpath(true)
                     .build()
             )
 
@@ -44,7 +60,7 @@ internal class PassThroughEndpointServiceAsyncTest {
         passThroughEndpoint.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun update() {
         val client =
@@ -56,14 +72,44 @@ internal class PassThroughEndpointServiceAsyncTest {
 
         val passThroughEndpointFuture =
             passThroughEndpointServiceAsync.update(
-                PassThroughEndpointUpdateParams.builder().endpointId("endpoint_id").build()
+                PassThroughEndpointUpdateParams.builder()
+                    .endpointId("endpoint_id")
+                    .passThroughGenericEndpoint(
+                        PassThroughGenericEndpoint.builder()
+                            .path("path")
+                            .target("target")
+                            .id("id")
+                            .auth(true)
+                            .costPerRequest(0.0)
+                            .guardrails(
+                                PassThroughGenericEndpoint.Guardrails.builder()
+                                    .putAdditionalProperty(
+                                        "foo",
+                                        JsonValue.from(
+                                            mapOf(
+                                                "request_fields" to listOf("string"),
+                                                "response_fields" to listOf("string"),
+                                            )
+                                        ),
+                                    )
+                                    .build()
+                            )
+                            .headers(
+                                PassThroughGenericEndpoint.Headers.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                                    .build()
+                            )
+                            .includeSubpath(true)
+                            .build()
+                    )
+                    .build()
             )
 
         val passThroughEndpoint = passThroughEndpointFuture.get()
         passThroughEndpoint.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun list() {
         val client =
@@ -75,14 +121,17 @@ internal class PassThroughEndpointServiceAsyncTest {
 
         val passThroughEndpointResponseFuture =
             passThroughEndpointServiceAsync.list(
-                PassThroughEndpointListParams.builder().endpointId("endpoint_id").build()
+                PassThroughEndpointListParams.builder()
+                    .endpointId("endpoint_id")
+                    .teamId("team_id")
+                    .build()
             )
 
         val passThroughEndpointResponse = passThroughEndpointResponseFuture.get()
         passThroughEndpointResponse.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun delete() {
         val client =

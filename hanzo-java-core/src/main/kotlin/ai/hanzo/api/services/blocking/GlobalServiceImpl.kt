@@ -5,6 +5,7 @@ package ai.hanzo.api.services.blocking
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.services.blocking.global.SpendService
 import ai.hanzo.api.services.blocking.global.SpendServiceImpl
+import java.util.function.Consumer
 
 class GlobalServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     GlobalService {
@@ -17,6 +18,9 @@ class GlobalServiceImpl internal constructor(private val clientOptions: ClientOp
 
     override fun withRawResponse(): GlobalService.WithRawResponse = withRawResponse
 
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): GlobalService =
+        GlobalServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
+
     override fun spend(): SpendService = spend
 
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -25,6 +29,13 @@ class GlobalServiceImpl internal constructor(private val clientOptions: ClientOp
         private val spend: SpendService.WithRawResponse by lazy {
             SpendServiceImpl.WithRawResponseImpl(clientOptions)
         }
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): GlobalService.WithRawResponse =
+            GlobalServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         override fun spend(): SpendService.WithRawResponse = spend
     }

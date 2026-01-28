@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.spend.SpendCalculateSpendParams
@@ -10,8 +11,8 @@ import ai.hanzo.api.models.spend.SpendListLogsParams
 import ai.hanzo.api.models.spend.SpendListLogsResponse
 import ai.hanzo.api.models.spend.SpendListTagsParams
 import ai.hanzo.api.models.spend.SpendListTagsResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface SpendServiceAsync {
 
@@ -21,12 +22,19 @@ interface SpendServiceAsync {
     fun withRawResponse(): WithRawResponse
 
     /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): SpendServiceAsync
+
+    /**
      * Accepts all the params of completion_cost.
      *
      * Calculate spend **before** making call:
      *
      * Note: If you see a spend of $0.0 you need to set custom_pricing for your model:
-     * https://docs.hanzo.ai/docs/proxy/custom_pricing
+     * https://docs.litellm.ai/docs/proxy/custom_pricing
      *
      * ```
      * curl --location 'http://localhost:4000/spend/calculate'
@@ -71,27 +79,35 @@ interface SpendServiceAsync {
     fun calculateSpend(): CompletableFuture<SpendCalculateSpendResponse> =
         calculateSpend(SpendCalculateSpendParams.none())
 
-    /** @see [calculateSpend] */
+    /** @see calculateSpend */
     fun calculateSpend(
         params: SpendCalculateSpendParams = SpendCalculateSpendParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<SpendCalculateSpendResponse>
 
-    /** @see [calculateSpend] */
+    /** @see calculateSpend */
     fun calculateSpend(
         params: SpendCalculateSpendParams = SpendCalculateSpendParams.none()
     ): CompletableFuture<SpendCalculateSpendResponse> =
         calculateSpend(params, RequestOptions.none())
 
-    /** @see [calculateSpend] */
+    /** @see calculateSpend */
     fun calculateSpend(
         requestOptions: RequestOptions
     ): CompletableFuture<SpendCalculateSpendResponse> =
         calculateSpend(SpendCalculateSpendParams.none(), requestOptions)
 
     /**
+     * [DEPRECATED] This endpoint is not paginated and can cause performance issues. Please use
+     * `/spend/logs/v2` instead for paginated access to spend logs.
+     *
      * View all spend logs, if request_id is provided, only logs for that request_id will be
      * returned
+     *
+     * When start_date and end_date are provided:
+     * - summarize=true (default): Returns aggregated spend data grouped by date (maintains backward
+     *   compatibility)
+     * - summarize=false: Returns filtered individual log entries within the date range
      *
      * Example Request for all logs
      *
@@ -108,35 +124,41 @@ interface SpendServiceAsync {
      * Example Request for specific api_key
      *
      * ```
-     * curl -X GET "http://0.0.0.0:8000/spend/logs?api_key=sk-Fn8Ej39NkBQmUagFEoUWPQ" -H "Authorization: Bearer sk-1234"
+     * curl -X GET "http://0.0.0.0:8000/spend/logs?api_key=sk-test-example-key-123" -H "Authorization: Bearer sk-1234"
      * ```
      *
      * Example Request for specific user_id
      *
      * ```
-     * curl -X GET "http://0.0.0.0:8000/spend/logs?user_id=z@hanzo.ai" -H "Authorization: Bearer sk-1234"
+     * curl -X GET "http://0.0.0.0:8000/spend/logs?user_id=ishaan@berri.ai" -H "Authorization: Bearer sk-1234"
+     * ```
+     *
+     * Example Request for date range with individual logs (unsummarized)
+     *
+     * ```
+     * curl -X GET "http://0.0.0.0:8000/spend/logs?start_date=2024-01-01&end_date=2024-01-02&summarize=false" -H "Authorization: Bearer sk-1234"
      * ```
      */
     fun listLogs(): CompletableFuture<List<SpendListLogsResponse>> =
         listLogs(SpendListLogsParams.none())
 
-    /** @see [listLogs] */
+    /** @see listLogs */
     fun listLogs(
         params: SpendListLogsParams = SpendListLogsParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<List<SpendListLogsResponse>>
 
-    /** @see [listLogs] */
+    /** @see listLogs */
     fun listLogs(
         params: SpendListLogsParams = SpendListLogsParams.none()
     ): CompletableFuture<List<SpendListLogsResponse>> = listLogs(params, RequestOptions.none())
 
-    /** @see [listLogs] */
+    /** @see listLogs */
     fun listLogs(requestOptions: RequestOptions): CompletableFuture<List<SpendListLogsResponse>> =
         listLogs(SpendListLogsParams.none(), requestOptions)
 
     /**
-     * LLM Enterprise - View Spend Per Request Tag
+     * LiteLLM Enterprise - View Spend Per Request Tag
      *
      * Example Request:
      * ```
@@ -152,18 +174,18 @@ interface SpendServiceAsync {
     fun listTags(): CompletableFuture<List<SpendListTagsResponse>> =
         listTags(SpendListTagsParams.none())
 
-    /** @see [listTags] */
+    /** @see listTags */
     fun listTags(
         params: SpendListTagsParams = SpendListTagsParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<List<SpendListTagsResponse>>
 
-    /** @see [listTags] */
+    /** @see listTags */
     fun listTags(
         params: SpendListTagsParams = SpendListTagsParams.none()
     ): CompletableFuture<List<SpendListTagsResponse>> = listTags(params, RequestOptions.none())
 
-    /** @see [listTags] */
+    /** @see listTags */
     fun listTags(requestOptions: RequestOptions): CompletableFuture<List<SpendListTagsResponse>> =
         listTags(SpendListTagsParams.none(), requestOptions)
 
@@ -171,29 +193,34 @@ interface SpendServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): SpendServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `post /spend/calculate`, but is otherwise the same as
          * [SpendServiceAsync.calculateSpend].
          */
-        @MustBeClosed
         fun calculateSpend(): CompletableFuture<HttpResponseFor<SpendCalculateSpendResponse>> =
             calculateSpend(SpendCalculateSpendParams.none())
 
-        /** @see [calculateSpend] */
-        @MustBeClosed
+        /** @see calculateSpend */
         fun calculateSpend(
             params: SpendCalculateSpendParams = SpendCalculateSpendParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<SpendCalculateSpendResponse>>
 
-        /** @see [calculateSpend] */
-        @MustBeClosed
+        /** @see calculateSpend */
         fun calculateSpend(
             params: SpendCalculateSpendParams = SpendCalculateSpendParams.none()
         ): CompletableFuture<HttpResponseFor<SpendCalculateSpendResponse>> =
             calculateSpend(params, RequestOptions.none())
 
-        /** @see [calculateSpend] */
-        @MustBeClosed
+        /** @see calculateSpend */
         fun calculateSpend(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<SpendCalculateSpendResponse>> =
@@ -203,26 +230,22 @@ interface SpendServiceAsync {
          * Returns a raw HTTP response for `get /spend/logs`, but is otherwise the same as
          * [SpendServiceAsync.listLogs].
          */
-        @MustBeClosed
         fun listLogs(): CompletableFuture<HttpResponseFor<List<SpendListLogsResponse>>> =
             listLogs(SpendListLogsParams.none())
 
-        /** @see [listLogs] */
-        @MustBeClosed
+        /** @see listLogs */
         fun listLogs(
             params: SpendListLogsParams = SpendListLogsParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<List<SpendListLogsResponse>>>
 
-        /** @see [listLogs] */
-        @MustBeClosed
+        /** @see listLogs */
         fun listLogs(
             params: SpendListLogsParams = SpendListLogsParams.none()
         ): CompletableFuture<HttpResponseFor<List<SpendListLogsResponse>>> =
             listLogs(params, RequestOptions.none())
 
-        /** @see [listLogs] */
-        @MustBeClosed
+        /** @see listLogs */
         fun listLogs(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<List<SpendListLogsResponse>>> =
@@ -232,26 +255,22 @@ interface SpendServiceAsync {
          * Returns a raw HTTP response for `get /spend/tags`, but is otherwise the same as
          * [SpendServiceAsync.listTags].
          */
-        @MustBeClosed
         fun listTags(): CompletableFuture<HttpResponseFor<List<SpendListTagsResponse>>> =
             listTags(SpendListTagsParams.none())
 
-        /** @see [listTags] */
-        @MustBeClosed
+        /** @see listTags */
         fun listTags(
             params: SpendListTagsParams = SpendListTagsParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<List<SpendListTagsResponse>>>
 
-        /** @see [listTags] */
-        @MustBeClosed
+        /** @see listTags */
         fun listTags(
             params: SpendListTagsParams = SpendListTagsParams.none()
         ): CompletableFuture<HttpResponseFor<List<SpendListTagsResponse>>> =
             listTags(params, RequestOptions.none())
 
-        /** @see [listTags] */
-        @MustBeClosed
+        /** @see listTags */
         fun listTags(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<List<SpendListTagsResponse>>> =

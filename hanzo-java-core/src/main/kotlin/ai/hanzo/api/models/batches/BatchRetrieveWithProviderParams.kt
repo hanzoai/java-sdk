@@ -7,6 +7,8 @@ import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import java.util.Objects
+import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /**
  * Retrieves a batch. This is the equivalent of GET https://api.openai.com/v1/batches/{batch_id}
@@ -21,7 +23,7 @@ import java.util.Objects
 class BatchRetrieveWithProviderParams
 private constructor(
     private val provider: String,
-    private val batchId: String,
+    private val batchId: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
@@ -29,10 +31,12 @@ private constructor(
     fun provider(): String = provider
 
     /** The ID of the batch to retrieve */
-    fun batchId(): String = batchId
+    fun batchId(): Optional<String> = Optional.ofNullable(batchId)
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
@@ -46,7 +50,6 @@ private constructor(
          * The following fields are required:
          * ```java
          * .provider()
-         * .batchId()
          * ```
          */
         @JvmStatic fun builder() = Builder()
@@ -73,7 +76,10 @@ private constructor(
         fun provider(provider: String) = apply { this.provider = provider }
 
         /** The ID of the batch to retrieve */
-        fun batchId(batchId: String) = apply { this.batchId = batchId }
+        fun batchId(batchId: String?) = apply { this.batchId = batchId }
+
+        /** Alias for calling [Builder.batchId] with `batchId.orElse(null)`. */
+        fun batchId(batchId: Optional<String>) = batchId(batchId.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -181,7 +187,6 @@ private constructor(
          * The following fields are required:
          * ```java
          * .provider()
-         * .batchId()
          * ```
          *
          * @throws IllegalStateException if any required field is unset.
@@ -189,7 +194,7 @@ private constructor(
         fun build(): BatchRetrieveWithProviderParams =
             BatchRetrieveWithProviderParams(
                 checkRequired("provider", provider),
-                checkRequired("batchId", batchId),
+                batchId,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
             )
@@ -198,7 +203,7 @@ private constructor(
     fun _pathParam(index: Int): String =
         when (index) {
             0 -> provider
-            1 -> batchId
+            1 -> batchId ?: ""
             else -> ""
         }
 
@@ -211,10 +216,15 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is BatchRetrieveWithProviderParams && provider == other.provider && batchId == other.batchId && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is BatchRetrieveWithProviderParams &&
+            provider == other.provider &&
+            batchId == other.batchId &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(provider, batchId, additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(provider, batchId, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
         "BatchRetrieveWithProviderParams{provider=$provider, batchId=$batchId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"

@@ -4,12 +4,12 @@ package ai.hanzo.api.models.team
 
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.Params
-import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import ai.hanzo.api.core.toImmutable
 import java.util.Objects
 import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /**
  * Disable all logging callbacks for a team
@@ -24,32 +24,30 @@ import java.util.Optional
  */
 class TeamDisableLoggingParams
 private constructor(
-    private val teamId: String,
+    private val teamId: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
     private val additionalBodyProperties: Map<String, JsonValue>,
 ) : Params {
 
-    fun teamId(): String = teamId
+    fun teamId(): Optional<String> = Optional.ofNullable(teamId)
 
+    /** Additional body properties to send with the request. */
     fun _additionalBodyProperties(): Map<String, JsonValue> = additionalBodyProperties
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
 
     companion object {
 
-        /**
-         * Returns a mutable builder for constructing an instance of [TeamDisableLoggingParams].
-         *
-         * The following fields are required:
-         * ```java
-         * .teamId()
-         * ```
-         */
+        @JvmStatic fun none(): TeamDisableLoggingParams = builder().build()
+
+        /** Returns a mutable builder for constructing an instance of [TeamDisableLoggingParams]. */
         @JvmStatic fun builder() = Builder()
     }
 
@@ -70,7 +68,10 @@ private constructor(
                 teamDisableLoggingParams.additionalBodyProperties.toMutableMap()
         }
 
-        fun teamId(teamId: String) = apply { this.teamId = teamId }
+        fun teamId(teamId: String?) = apply { this.teamId = teamId }
+
+        /** Alias for calling [Builder.teamId] with `teamId.orElse(null)`. */
+        fun teamId(teamId: Optional<String>) = teamId(teamId.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -196,30 +197,22 @@ private constructor(
          * Returns an immutable instance of [TeamDisableLoggingParams].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
-         *
-         * The following fields are required:
-         * ```java
-         * .teamId()
-         * ```
-         *
-         * @throws IllegalStateException if any required field is unset.
          */
         fun build(): TeamDisableLoggingParams =
             TeamDisableLoggingParams(
-                checkRequired("teamId", teamId),
+                teamId,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
                 additionalBodyProperties.toImmutable(),
             )
     }
 
-    @JvmSynthetic
-    internal fun _body(): Optional<Map<String, JsonValue>> =
+    fun _body(): Optional<Map<String, JsonValue>> =
         Optional.ofNullable(additionalBodyProperties.ifEmpty { null })
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> teamId
+            0 -> teamId ?: ""
             else -> ""
         }
 
@@ -232,10 +225,15 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is TeamDisableLoggingParams && teamId == other.teamId && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams && additionalBodyProperties == other.additionalBodyProperties /* spotless:on */
+        return other is TeamDisableLoggingParams &&
+            teamId == other.teamId &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams &&
+            additionalBodyProperties == other.additionalBodyProperties
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(teamId, additionalHeaders, additionalQueryParams, additionalBodyProperties) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(teamId, additionalHeaders, additionalQueryParams, additionalBodyProperties)
 
     override fun toString() =
         "TeamDisableLoggingParams{teamId=$teamId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams, additionalBodyProperties=$additionalBodyProperties}"
