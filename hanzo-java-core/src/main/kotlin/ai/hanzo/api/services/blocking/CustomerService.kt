@@ -2,8 +2,10 @@
 
 package ai.hanzo.api.services.blocking
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
+import ai.hanzo.api.models.customer.BlockUsers
 import ai.hanzo.api.models.customer.CustomerBlockParams
 import ai.hanzo.api.models.customer.CustomerBlockResponse
 import ai.hanzo.api.models.customer.CustomerCreateParams
@@ -11,14 +13,14 @@ import ai.hanzo.api.models.customer.CustomerCreateResponse
 import ai.hanzo.api.models.customer.CustomerDeleteParams
 import ai.hanzo.api.models.customer.CustomerDeleteResponse
 import ai.hanzo.api.models.customer.CustomerListParams
-import ai.hanzo.api.models.customer.CustomerListResponse
 import ai.hanzo.api.models.customer.CustomerRetrieveInfoParams
-import ai.hanzo.api.models.customer.CustomerRetrieveInfoResponse
 import ai.hanzo.api.models.customer.CustomerUnblockParams
 import ai.hanzo.api.models.customer.CustomerUnblockResponse
 import ai.hanzo.api.models.customer.CustomerUpdateParams
 import ai.hanzo.api.models.customer.CustomerUpdateResponse
+import ai.hanzo.api.models.customer.LiteLlmEndUserTable
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface CustomerService {
 
@@ -26,6 +28,13 @@ interface CustomerService {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): CustomerService
 
     /**
      * Allow creating a new Customer
@@ -57,13 +66,15 @@ interface CustomerService {
      *   for a given customer.
      * - soft_budget: Optional[float] - [Not Implemented Yet] Get alerts when customer crosses given
      *   budget, doesn't block requests.
+     * - spend: Optional[float] - Specify initial spend for a given customer.
+     * - budget_reset_at: Optional[str] - Specify the date and time when the budget should be reset.
      * - Allow specifying allowed regions
      * - Allow specifying default model
      *
      * Example curl:
      * ```
      * curl --location 'http://0.0.0.0:4000/customer/new'         --header 'Authorization: Bearer sk-1234'         --header 'Content-Type: application/json'         --data '{
-     *         "user_id" : "z-jaff-3",
+     *         "user_id" : "ishaan-jaff-3",
      *         "allowed_region": "eu",
      *         "budget_id": "free_tier",
      *         "default_model": "azure/gpt-3.5-turbo-eu" <- all calls from this user, use this model?
@@ -78,7 +89,7 @@ interface CustomerService {
     fun create(params: CustomerCreateParams): CustomerCreateResponse =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: CustomerCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -101,7 +112,7 @@ interface CustomerService {
      * Example curl:
      * ```
      * curl --location 'http://0.0.0.0:4000/customer/update'     --header 'Authorization: Bearer sk-1234'     --header 'Content-Type: application/json'     --data '{
-     *     "user_id": "test-llm-user-4",
+     *     "user_id": "test-litellm-user-4",
      *     "budget_id": "paid_tier"
      * }'
      *
@@ -111,7 +122,7 @@ interface CustomerService {
     fun update(params: CustomerUpdateParams): CustomerUpdateResponse =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: CustomerUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -125,20 +136,20 @@ interface CustomerService {
      * curl --location --request GET 'http://0.0.0.0:4000/customer/list'         --header 'Authorization: Bearer sk-1234'
      * ```
      */
-    fun list(): List<CustomerListResponse> = list(CustomerListParams.none())
+    fun list(): List<LiteLlmEndUserTable> = list(CustomerListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: CustomerListParams = CustomerListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
-    ): List<CustomerListResponse>
+    ): List<LiteLlmEndUserTable>
 
-    /** @see [list] */
-    fun list(params: CustomerListParams = CustomerListParams.none()): List<CustomerListResponse> =
+    /** @see list */
+    fun list(params: CustomerListParams = CustomerListParams.none()): List<LiteLlmEndUserTable> =
         list(params, RequestOptions.none())
 
-    /** @see [list] */
-    fun list(requestOptions: RequestOptions): List<CustomerListResponse> =
+    /** @see list */
+    fun list(requestOptions: RequestOptions): List<LiteLlmEndUserTable> =
         list(CustomerListParams.none(), requestOptions)
 
     /**
@@ -150,7 +161,7 @@ interface CustomerService {
      * Example curl:
      * ```
      * curl --location 'http://0.0.0.0:4000/customer/delete'         --header 'Authorization: Bearer sk-1234'         --header 'Content-Type: application/json'         --data '{
-     *         "user_ids" :["z-jaff-5"]
+     *         "user_ids" :["ishaan-jaff-5"]
      * }'
      *
      * See below for all params
@@ -159,7 +170,7 @@ interface CustomerService {
     fun delete(params: CustomerDeleteParams): CustomerDeleteResponse =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: CustomerDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -179,11 +190,22 @@ interface CustomerService {
     fun block(params: CustomerBlockParams): CustomerBlockResponse =
         block(params, RequestOptions.none())
 
-    /** @see [block] */
+    /** @see block */
     fun block(
         params: CustomerBlockParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CustomerBlockResponse
+
+    /** @see block */
+    fun block(
+        blockUsers: BlockUsers,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CustomerBlockResponse =
+        block(CustomerBlockParams.builder().blockUsers(blockUsers).build(), requestOptions)
+
+    /** @see block */
+    fun block(blockUsers: BlockUsers): CustomerBlockResponse =
+        block(blockUsers, RequestOptions.none())
 
     /**
      * Get information about an end-user. An `end_user` is a customer (external user) of the proxy.
@@ -193,17 +215,17 @@ interface CustomerService {
      *
      * Example curl:
      * ```
-     * curl -X GET 'http://localhost:4000/customer/info?end_user_id=test-llm-user-4'         -H 'Authorization: Bearer sk-1234'
+     * curl -X GET 'http://localhost:4000/customer/info?end_user_id=test-litellm-user-4'         -H 'Authorization: Bearer sk-1234'
      * ```
      */
-    fun retrieveInfo(params: CustomerRetrieveInfoParams): CustomerRetrieveInfoResponse =
+    fun retrieveInfo(params: CustomerRetrieveInfoParams): LiteLlmEndUserTable =
         retrieveInfo(params, RequestOptions.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: CustomerRetrieveInfoParams,
         requestOptions: RequestOptions = RequestOptions.none(),
-    ): CustomerRetrieveInfoResponse
+    ): LiteLlmEndUserTable
 
     /**
      * [BETA] Unblock calls with this user id
@@ -221,14 +243,32 @@ interface CustomerService {
     fun unblock(params: CustomerUnblockParams): CustomerUnblockResponse =
         unblock(params, RequestOptions.none())
 
-    /** @see [unblock] */
+    /** @see unblock */
     fun unblock(
         params: CustomerUnblockParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CustomerUnblockResponse
 
+    /** @see unblock */
+    fun unblock(
+        blockUsers: BlockUsers,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CustomerUnblockResponse =
+        unblock(CustomerUnblockParams.builder().blockUsers(blockUsers).build(), requestOptions)
+
+    /** @see unblock */
+    fun unblock(blockUsers: BlockUsers): CustomerUnblockResponse =
+        unblock(blockUsers, RequestOptions.none())
+
     /** A view of [CustomerService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): CustomerService.WithRawResponse
 
         /**
          * Returns a raw HTTP response for `post /customer/new`, but is otherwise the same as
@@ -238,7 +278,7 @@ interface CustomerService {
         fun create(params: CustomerCreateParams): HttpResponseFor<CustomerCreateResponse> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: CustomerCreateParams,
@@ -253,7 +293,7 @@ interface CustomerService {
         fun update(params: CustomerUpdateParams): HttpResponseFor<CustomerUpdateResponse> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             params: CustomerUpdateParams,
@@ -265,24 +305,24 @@ interface CustomerService {
          * [CustomerService.list].
          */
         @MustBeClosed
-        fun list(): HttpResponseFor<List<CustomerListResponse>> = list(CustomerListParams.none())
+        fun list(): HttpResponseFor<List<LiteLlmEndUserTable>> = list(CustomerListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: CustomerListParams = CustomerListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
-        ): HttpResponseFor<List<CustomerListResponse>>
+        ): HttpResponseFor<List<LiteLlmEndUserTable>>
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: CustomerListParams = CustomerListParams.none()
-        ): HttpResponseFor<List<CustomerListResponse>> = list(params, RequestOptions.none())
+        ): HttpResponseFor<List<LiteLlmEndUserTable>> = list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
-        fun list(requestOptions: RequestOptions): HttpResponseFor<List<CustomerListResponse>> =
+        fun list(requestOptions: RequestOptions): HttpResponseFor<List<LiteLlmEndUserTable>> =
             list(CustomerListParams.none(), requestOptions)
 
         /**
@@ -293,7 +333,7 @@ interface CustomerService {
         fun delete(params: CustomerDeleteParams): HttpResponseFor<CustomerDeleteResponse> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: CustomerDeleteParams,
@@ -308,29 +348,40 @@ interface CustomerService {
         fun block(params: CustomerBlockParams): HttpResponseFor<CustomerBlockResponse> =
             block(params, RequestOptions.none())
 
-        /** @see [block] */
+        /** @see block */
         @MustBeClosed
         fun block(
             params: CustomerBlockParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<CustomerBlockResponse>
 
+        /** @see block */
+        @MustBeClosed
+        fun block(
+            blockUsers: BlockUsers,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<CustomerBlockResponse> =
+            block(CustomerBlockParams.builder().blockUsers(blockUsers).build(), requestOptions)
+
+        /** @see block */
+        @MustBeClosed
+        fun block(blockUsers: BlockUsers): HttpResponseFor<CustomerBlockResponse> =
+            block(blockUsers, RequestOptions.none())
+
         /**
          * Returns a raw HTTP response for `get /customer/info`, but is otherwise the same as
          * [CustomerService.retrieveInfo].
          */
         @MustBeClosed
-        fun retrieveInfo(
-            params: CustomerRetrieveInfoParams
-        ): HttpResponseFor<CustomerRetrieveInfoResponse> =
+        fun retrieveInfo(params: CustomerRetrieveInfoParams): HttpResponseFor<LiteLlmEndUserTable> =
             retrieveInfo(params, RequestOptions.none())
 
-        /** @see [retrieveInfo] */
+        /** @see retrieveInfo */
         @MustBeClosed
         fun retrieveInfo(
             params: CustomerRetrieveInfoParams,
             requestOptions: RequestOptions = RequestOptions.none(),
-        ): HttpResponseFor<CustomerRetrieveInfoResponse>
+        ): HttpResponseFor<LiteLlmEndUserTable>
 
         /**
          * Returns a raw HTTP response for `post /customer/unblock`, but is otherwise the same as
@@ -340,11 +391,24 @@ interface CustomerService {
         fun unblock(params: CustomerUnblockParams): HttpResponseFor<CustomerUnblockResponse> =
             unblock(params, RequestOptions.none())
 
-        /** @see [unblock] */
+        /** @see unblock */
         @MustBeClosed
         fun unblock(
             params: CustomerUnblockParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<CustomerUnblockResponse>
+
+        /** @see unblock */
+        @MustBeClosed
+        fun unblock(
+            blockUsers: BlockUsers,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<CustomerUnblockResponse> =
+            unblock(CustomerUnblockParams.builder().blockUsers(blockUsers).build(), requestOptions)
+
+        /** @see unblock */
+        @MustBeClosed
+        fun unblock(blockUsers: BlockUsers): HttpResponseFor<CustomerUnblockResponse> =
+            unblock(blockUsers, RequestOptions.none())
     }
 }

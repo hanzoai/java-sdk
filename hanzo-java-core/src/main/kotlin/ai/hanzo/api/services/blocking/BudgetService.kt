@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.blocking
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.budget.BudgetCreateParams
@@ -12,11 +13,13 @@ import ai.hanzo.api.models.budget.BudgetInfoParams
 import ai.hanzo.api.models.budget.BudgetInfoResponse
 import ai.hanzo.api.models.budget.BudgetListParams
 import ai.hanzo.api.models.budget.BudgetListResponse
+import ai.hanzo.api.models.budget.BudgetNew
 import ai.hanzo.api.models.budget.BudgetSettingsParams
 import ai.hanzo.api.models.budget.BudgetSettingsResponse
 import ai.hanzo.api.models.budget.BudgetUpdateParams
 import ai.hanzo.api.models.budget.BudgetUpdateResponse
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface BudgetService {
 
@@ -24,6 +27,13 @@ interface BudgetService {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): BudgetService
 
     /**
      * Create a new budget object. Can apply this to teams, orgs, end-users, keys.
@@ -40,15 +50,28 @@ interface BudgetService {
      * - model_max_budget: Optional[dict] - Specify max budget for a given model. Example:
      *   {"openai/gpt-4o-mini": {"max_budget": 100.0, "budget_duration": "1d", "tpm_limit": 100000,
      *   "rpm_limit": 100000}}
+     * - budget_reset_at: Optional[datetime] - Datetime when the initial budget is reset. Default is
+     *   now.
      */
     fun create(params: BudgetCreateParams): BudgetCreateResponse =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: BudgetCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): BudgetCreateResponse
+
+    /** @see create */
+    fun create(
+        budgetNew: BudgetNew,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): BudgetCreateResponse =
+        create(BudgetCreateParams.builder().budgetNew(budgetNew).build(), requestOptions)
+
+    /** @see create */
+    fun create(budgetNew: BudgetNew): BudgetCreateResponse =
+        create(budgetNew, RequestOptions.none())
 
     /**
      * Update an existing budget object.
@@ -65,30 +88,42 @@ interface BudgetService {
      * - model_max_budget: Optional[dict] - Specify max budget for a given model. Example:
      *   {"openai/gpt-4o-mini": {"max_budget": 100.0, "budget_duration": "1d", "tpm_limit": 100000,
      *   "rpm_limit": 100000}}
+     * - budget_reset_at: Optional[datetime] - Update the Datetime when the budget was last reset.
      */
     fun update(params: BudgetUpdateParams): BudgetUpdateResponse =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: BudgetUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): BudgetUpdateResponse
 
+    /** @see update */
+    fun update(
+        budgetNew: BudgetNew,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): BudgetUpdateResponse =
+        update(BudgetUpdateParams.builder().budgetNew(budgetNew).build(), requestOptions)
+
+    /** @see update */
+    fun update(budgetNew: BudgetNew): BudgetUpdateResponse =
+        update(budgetNew, RequestOptions.none())
+
     /** List all the created budgets in proxy db. Used on Admin UI. */
     fun list(): BudgetListResponse = list(BudgetListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: BudgetListParams = BudgetListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): BudgetListResponse
 
-    /** @see [list] */
+    /** @see list */
     fun list(params: BudgetListParams = BudgetListParams.none()): BudgetListResponse =
         list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): BudgetListResponse =
         list(BudgetListParams.none(), requestOptions)
 
@@ -101,7 +136,7 @@ interface BudgetService {
     fun delete(params: BudgetDeleteParams): BudgetDeleteResponse =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: BudgetDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -115,7 +150,7 @@ interface BudgetService {
      */
     fun info(params: BudgetInfoParams): BudgetInfoResponse = info(params, RequestOptions.none())
 
-    /** @see [info] */
+    /** @see info */
     fun info(
         params: BudgetInfoParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -132,7 +167,7 @@ interface BudgetService {
     fun settings(params: BudgetSettingsParams): BudgetSettingsResponse =
         settings(params, RequestOptions.none())
 
-    /** @see [settings] */
+    /** @see settings */
     fun settings(
         params: BudgetSettingsParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -142,6 +177,13 @@ interface BudgetService {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): BudgetService.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `post /budget/new`, but is otherwise the same as
          * [BudgetService.create].
          */
@@ -149,12 +191,25 @@ interface BudgetService {
         fun create(params: BudgetCreateParams): HttpResponseFor<BudgetCreateResponse> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: BudgetCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<BudgetCreateResponse>
+
+        /** @see create */
+        @MustBeClosed
+        fun create(
+            budgetNew: BudgetNew,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<BudgetCreateResponse> =
+            create(BudgetCreateParams.builder().budgetNew(budgetNew).build(), requestOptions)
+
+        /** @see create */
+        @MustBeClosed
+        fun create(budgetNew: BudgetNew): HttpResponseFor<BudgetCreateResponse> =
+            create(budgetNew, RequestOptions.none())
 
         /**
          * Returns a raw HTTP response for `post /budget/update`, but is otherwise the same as
@@ -164,12 +219,25 @@ interface BudgetService {
         fun update(params: BudgetUpdateParams): HttpResponseFor<BudgetUpdateResponse> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             params: BudgetUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<BudgetUpdateResponse>
+
+        /** @see update */
+        @MustBeClosed
+        fun update(
+            budgetNew: BudgetNew,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<BudgetUpdateResponse> =
+            update(BudgetUpdateParams.builder().budgetNew(budgetNew).build(), requestOptions)
+
+        /** @see update */
+        @MustBeClosed
+        fun update(budgetNew: BudgetNew): HttpResponseFor<BudgetUpdateResponse> =
+            update(budgetNew, RequestOptions.none())
 
         /**
          * Returns a raw HTTP response for `get /budget/list`, but is otherwise the same as
@@ -178,20 +246,20 @@ interface BudgetService {
         @MustBeClosed
         fun list(): HttpResponseFor<BudgetListResponse> = list(BudgetListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: BudgetListParams = BudgetListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<BudgetListResponse>
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: BudgetListParams = BudgetListParams.none()
         ): HttpResponseFor<BudgetListResponse> = list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(requestOptions: RequestOptions): HttpResponseFor<BudgetListResponse> =
             list(BudgetListParams.none(), requestOptions)
@@ -204,7 +272,7 @@ interface BudgetService {
         fun delete(params: BudgetDeleteParams): HttpResponseFor<BudgetDeleteResponse> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: BudgetDeleteParams,
@@ -219,7 +287,7 @@ interface BudgetService {
         fun info(params: BudgetInfoParams): HttpResponseFor<BudgetInfoResponse> =
             info(params, RequestOptions.none())
 
-        /** @see [info] */
+        /** @see info */
         @MustBeClosed
         fun info(
             params: BudgetInfoParams,
@@ -234,7 +302,7 @@ interface BudgetService {
         fun settings(params: BudgetSettingsParams): HttpResponseFor<BudgetSettingsResponse> =
             settings(params, RequestOptions.none())
 
-        /** @see [settings] */
+        /** @see settings */
         @MustBeClosed
         fun settings(
             params: BudgetSettingsParams,

@@ -20,6 +20,7 @@ import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
 
 class ModelInfo
+@JsonCreator(mode = JsonCreator.Mode.DISABLED)
 private constructor(
     private val id: JsonField<String>,
     private val baseModel: JsonField<String>,
@@ -70,64 +71,62 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun id(): Optional<String> = Optional.ofNullable(id.getNullable("id"))
+    fun id(): Optional<String> = id.getOptional("id")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun baseModel(): Optional<String> = Optional.ofNullable(baseModel.getNullable("base_model"))
+    fun baseModel(): Optional<String> = baseModel.getOptional("base_model")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun createdAt(): Optional<OffsetDateTime> =
-        Optional.ofNullable(createdAt.getNullable("created_at"))
+    fun createdAt(): Optional<OffsetDateTime> = createdAt.getOptional("created_at")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun createdBy(): Optional<String> = Optional.ofNullable(createdBy.getNullable("created_by"))
+    fun createdBy(): Optional<String> = createdBy.getOptional("created_by")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun dbModel(): Optional<Boolean> = Optional.ofNullable(dbModel.getNullable("db_model"))
+    fun dbModel(): Optional<Boolean> = dbModel.getOptional("db_model")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun teamId(): Optional<String> = Optional.ofNullable(teamId.getNullable("team_id"))
+    fun teamId(): Optional<String> = teamId.getOptional("team_id")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
     fun teamPublicModelName(): Optional<String> =
-        Optional.ofNullable(teamPublicModelName.getNullable("team_public_model_name"))
+        teamPublicModelName.getOptional("team_public_model_name")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun tier(): Optional<Tier> = Optional.ofNullable(tier.getNullable("tier"))
+    fun tier(): Optional<Tier> = tier.getOptional("tier")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun updatedAt(): Optional<OffsetDateTime> =
-        Optional.ofNullable(updatedAt.getNullable("updated_at"))
+    fun updatedAt(): Optional<OffsetDateTime> = updatedAt.getOptional("updated_at")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun updatedBy(): Optional<String> = Optional.ofNullable(updatedBy.getNullable("updated_by"))
+    fun updatedBy(): Optional<String> = updatedBy.getOptional("updated_by")
 
     /**
      * Returns the raw JSON value of [id].
@@ -461,11 +460,37 @@ private constructor(
         dbModel()
         teamId()
         teamPublicModelName()
-        tier()
+        tier().ifPresent { it.validate() }
         updatedAt()
         updatedBy()
         validated = true
     }
+
+    fun isValid(): Boolean =
+        try {
+            validate()
+            true
+        } catch (e: HanzoInvalidDataException) {
+            false
+        }
+
+    /**
+     * Returns a score indicating how many valid values are contained in this object recursively.
+     *
+     * Used for best match union deserialization.
+     */
+    @JvmSynthetic
+    internal fun validity(): Int =
+        (if (id.asKnown().isPresent) 1 else 0) +
+            (if (baseModel.asKnown().isPresent) 1 else 0) +
+            (if (createdAt.asKnown().isPresent) 1 else 0) +
+            (if (createdBy.asKnown().isPresent) 1 else 0) +
+            (if (dbModel.asKnown().isPresent) 1 else 0) +
+            (if (teamId.asKnown().isPresent) 1 else 0) +
+            (if (teamPublicModelName.asKnown().isPresent) 1 else 0) +
+            (tier.asKnown().getOrNull()?.validity() ?: 0) +
+            (if (updatedAt.asKnown().isPresent) 1 else 0) +
+            (if (updatedBy.asKnown().isPresent) 1 else 0)
 
     class Tier @JsonCreator private constructor(private val value: JsonField<String>) : Enum {
 
@@ -551,12 +576,39 @@ private constructor(
         fun asString(): String =
             _value().asString().orElseThrow { HanzoInvalidDataException("Value is not a String") }
 
+        private var validated: Boolean = false
+
+        fun validate(): Tier = apply {
+            if (validated) {
+                return@apply
+            }
+
+            known()
+            validated = true
+        }
+
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
+
+        /**
+         * Returns a score indicating how many valid values are contained in this object
+         * recursively.
+         *
+         * Used for best match union deserialization.
+         */
+        @JvmSynthetic internal fun validity(): Int = if (value() == Value._UNKNOWN) 0 else 1
+
         override fun equals(other: Any?): Boolean {
             if (this === other) {
                 return true
             }
 
-            return /* spotless:off */ other is Tier && value == other.value /* spotless:on */
+            return other is Tier && value == other.value
         }
 
         override fun hashCode() = value.hashCode()
@@ -569,12 +621,35 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is ModelInfo && id == other.id && baseModel == other.baseModel && createdAt == other.createdAt && createdBy == other.createdBy && dbModel == other.dbModel && teamId == other.teamId && teamPublicModelName == other.teamPublicModelName && tier == other.tier && updatedAt == other.updatedAt && updatedBy == other.updatedBy && additionalProperties == other.additionalProperties /* spotless:on */
+        return other is ModelInfo &&
+            id == other.id &&
+            baseModel == other.baseModel &&
+            createdAt == other.createdAt &&
+            createdBy == other.createdBy &&
+            dbModel == other.dbModel &&
+            teamId == other.teamId &&
+            teamPublicModelName == other.teamPublicModelName &&
+            tier == other.tier &&
+            updatedAt == other.updatedAt &&
+            updatedBy == other.updatedBy &&
+            additionalProperties == other.additionalProperties
     }
 
-    /* spotless:off */
-    private val hashCode: Int by lazy { Objects.hash(id, baseModel, createdAt, createdBy, dbModel, teamId, teamPublicModelName, tier, updatedAt, updatedBy, additionalProperties) }
-    /* spotless:on */
+    private val hashCode: Int by lazy {
+        Objects.hash(
+            id,
+            baseModel,
+            createdAt,
+            createdBy,
+            dbModel,
+            teamId,
+            teamPublicModelName,
+            tier,
+            updatedAt,
+            updatedBy,
+            additionalProperties,
+        )
+    }
 
     override fun hashCode(): Int = hashCode
 

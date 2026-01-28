@@ -3,10 +3,11 @@
 package ai.hanzo.api.models.team.callback
 
 import ai.hanzo.api.core.Params
-import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import java.util.Objects
+import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /**
  * Get the success/failure callbacks and variables for a team
@@ -28,29 +29,26 @@ import java.util.Objects
  */
 class CallbackRetrieveParams
 private constructor(
-    private val teamId: String,
+    private val teamId: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
-    fun teamId(): String = teamId
+    fun teamId(): Optional<String> = Optional.ofNullable(teamId)
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
 
     companion object {
 
-        /**
-         * Returns a mutable builder for constructing an instance of [CallbackRetrieveParams].
-         *
-         * The following fields are required:
-         * ```java
-         * .teamId()
-         * ```
-         */
+        @JvmStatic fun none(): CallbackRetrieveParams = builder().build()
+
+        /** Returns a mutable builder for constructing an instance of [CallbackRetrieveParams]. */
         @JvmStatic fun builder() = Builder()
     }
 
@@ -68,7 +66,10 @@ private constructor(
             additionalQueryParams = callbackRetrieveParams.additionalQueryParams.toBuilder()
         }
 
-        fun teamId(teamId: String) = apply { this.teamId = teamId }
+        fun teamId(teamId: String?) = apply { this.teamId = teamId }
+
+        /** Alias for calling [Builder.teamId] with `teamId.orElse(null)`. */
+        fun teamId(teamId: Optional<String>) = teamId(teamId.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -172,25 +173,14 @@ private constructor(
          * Returns an immutable instance of [CallbackRetrieveParams].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
-         *
-         * The following fields are required:
-         * ```java
-         * .teamId()
-         * ```
-         *
-         * @throws IllegalStateException if any required field is unset.
          */
         fun build(): CallbackRetrieveParams =
-            CallbackRetrieveParams(
-                checkRequired("teamId", teamId),
-                additionalHeaders.build(),
-                additionalQueryParams.build(),
-            )
+            CallbackRetrieveParams(teamId, additionalHeaders.build(), additionalQueryParams.build())
     }
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> teamId
+            0 -> teamId ?: ""
             else -> ""
         }
 
@@ -203,10 +193,13 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is CallbackRetrieveParams && teamId == other.teamId && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is CallbackRetrieveParams &&
+            teamId == other.teamId &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(teamId, additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int = Objects.hash(teamId, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
         "CallbackRetrieveParams{teamId=$teamId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"

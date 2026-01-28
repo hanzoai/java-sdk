@@ -2,12 +2,13 @@
 
 package ai.hanzo.api.services.async.engines
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.engines.chat.ChatCompleteParams
 import ai.hanzo.api.models.engines.chat.ChatCompleteResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface ChatServiceAsync {
 
@@ -15,6 +16,13 @@ interface ChatServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): ChatServiceAsync
 
     /**
      * Follows the exact same API spec as `OpenAI's Chat API
@@ -35,10 +43,24 @@ interface ChatServiceAsync {
      * }'
      * ```
      */
+    fun complete(
+        pathModel: String,
+        params: ChatCompleteParams,
+    ): CompletableFuture<ChatCompleteResponse> = complete(pathModel, params, RequestOptions.none())
+
+    /** @see complete */
+    fun complete(
+        pathModel: String,
+        params: ChatCompleteParams,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<ChatCompleteResponse> =
+        complete(params.toBuilder().pathModel(pathModel).build(), requestOptions)
+
+    /** @see complete */
     fun complete(params: ChatCompleteParams): CompletableFuture<ChatCompleteResponse> =
         complete(params, RequestOptions.none())
 
-    /** @see [complete] */
+    /** @see complete */
     fun complete(
         params: ChatCompleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -48,17 +70,37 @@ interface ChatServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): ChatServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `post /engines/{model}/chat/completions`, but is
          * otherwise the same as [ChatServiceAsync.complete].
          */
-        @MustBeClosed
+        fun complete(
+            pathModel: String,
+            params: ChatCompleteParams,
+        ): CompletableFuture<HttpResponseFor<ChatCompleteResponse>> =
+            complete(pathModel, params, RequestOptions.none())
+
+        /** @see complete */
+        fun complete(
+            pathModel: String,
+            params: ChatCompleteParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<ChatCompleteResponse>> =
+            complete(params.toBuilder().pathModel(pathModel).build(), requestOptions)
+
+        /** @see complete */
         fun complete(
             params: ChatCompleteParams
         ): CompletableFuture<HttpResponseFor<ChatCompleteResponse>> =
             complete(params, RequestOptions.none())
 
-        /** @see [complete] */
-        @MustBeClosed
+        /** @see complete */
         fun complete(
             params: ChatCompleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),

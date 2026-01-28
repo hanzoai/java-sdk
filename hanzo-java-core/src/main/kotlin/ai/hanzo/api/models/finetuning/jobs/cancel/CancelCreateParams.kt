@@ -4,12 +4,12 @@ package ai.hanzo.api.models.finetuning.jobs.cancel
 
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.Params
-import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import ai.hanzo.api.core.toImmutable
 import java.util.Objects
 import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /**
  * Cancel a fine-tuning job.
@@ -18,37 +18,35 @@ import java.util.Optional
  * https://api.openai.com/v1/fine_tuning/jobs/{fine_tuning_job_id}/cancel
  *
  * Supported Query Params:
- * - `custom_llm_provider`: Name of the LLM provider
+ * - `custom_llm_provider`: Name of the LiteLLM provider
  * - `fine_tuning_job_id`: The ID of the fine-tuning job to cancel.
  */
 class CancelCreateParams
 private constructor(
-    private val fineTuningJobId: String,
+    private val fineTuningJobId: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
     private val additionalBodyProperties: Map<String, JsonValue>,
 ) : Params {
 
-    fun fineTuningJobId(): String = fineTuningJobId
+    fun fineTuningJobId(): Optional<String> = Optional.ofNullable(fineTuningJobId)
 
+    /** Additional body properties to send with the request. */
     fun _additionalBodyProperties(): Map<String, JsonValue> = additionalBodyProperties
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
 
     companion object {
 
-        /**
-         * Returns a mutable builder for constructing an instance of [CancelCreateParams].
-         *
-         * The following fields are required:
-         * ```java
-         * .fineTuningJobId()
-         * ```
-         */
+        @JvmStatic fun none(): CancelCreateParams = builder().build()
+
+        /** Returns a mutable builder for constructing an instance of [CancelCreateParams]. */
         @JvmStatic fun builder() = Builder()
     }
 
@@ -68,9 +66,13 @@ private constructor(
             additionalBodyProperties = cancelCreateParams.additionalBodyProperties.toMutableMap()
         }
 
-        fun fineTuningJobId(fineTuningJobId: String) = apply {
+        fun fineTuningJobId(fineTuningJobId: String?) = apply {
             this.fineTuningJobId = fineTuningJobId
         }
+
+        /** Alias for calling [Builder.fineTuningJobId] with `fineTuningJobId.orElse(null)`. */
+        fun fineTuningJobId(fineTuningJobId: Optional<String>) =
+            fineTuningJobId(fineTuningJobId.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -196,30 +198,22 @@ private constructor(
          * Returns an immutable instance of [CancelCreateParams].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
-         *
-         * The following fields are required:
-         * ```java
-         * .fineTuningJobId()
-         * ```
-         *
-         * @throws IllegalStateException if any required field is unset.
          */
         fun build(): CancelCreateParams =
             CancelCreateParams(
-                checkRequired("fineTuningJobId", fineTuningJobId),
+                fineTuningJobId,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
                 additionalBodyProperties.toImmutable(),
             )
     }
 
-    @JvmSynthetic
-    internal fun _body(): Optional<Map<String, JsonValue>> =
+    fun _body(): Optional<Map<String, JsonValue>> =
         Optional.ofNullable(additionalBodyProperties.ifEmpty { null })
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> fineTuningJobId
+            0 -> fineTuningJobId ?: ""
             else -> ""
         }
 
@@ -232,10 +226,20 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is CancelCreateParams && fineTuningJobId == other.fineTuningJobId && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams && additionalBodyProperties == other.additionalBodyProperties /* spotless:on */
+        return other is CancelCreateParams &&
+            fineTuningJobId == other.fineTuningJobId &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams &&
+            additionalBodyProperties == other.additionalBodyProperties
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(fineTuningJobId, additionalHeaders, additionalQueryParams, additionalBodyProperties) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(
+            fineTuningJobId,
+            additionalHeaders,
+            additionalQueryParams,
+            additionalBodyProperties,
+        )
 
     override fun toString() =
         "CancelCreateParams{fineTuningJobId=$fineTuningJobId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams, additionalBodyProperties=$additionalBodyProperties}"

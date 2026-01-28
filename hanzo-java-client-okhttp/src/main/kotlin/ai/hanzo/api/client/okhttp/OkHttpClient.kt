@@ -2,7 +2,6 @@ package ai.hanzo.api.client.okhttp
 
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.Timeout
-import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.HttpClient
 import ai.hanzo.api.core.http.HttpMethod
@@ -14,10 +13,15 @@ import java.io.IOException
 import java.io.InputStream
 import java.net.Proxy
 import java.time.Duration
+import java.util.concurrent.CancellationException
 import java.util.concurrent.CompletableFuture
+import java.util.concurrent.ExecutorService
+import javax.net.ssl.HostnameVerifier
+import javax.net.ssl.SSLSocketFactory
+import javax.net.ssl.X509TrustManager
 import okhttp3.Call
 import okhttp3.Callback
-import okhttp3.HttpUrl
+import okhttp3.Dispatcher
 import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaType
@@ -29,8 +33,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import okio.BufferedSink
 
 class OkHttpClient
-private constructor(private val okHttpClient: okhttp3.OkHttpClient, private val baseUrl: HttpUrl) :
-    HttpClient {
+private constructor(@JvmSynthetic internal val okHttpClient: okhttp3.OkHttpClient) : HttpClient {
 
     override fun execute(request: HttpRequest, requestOptions: RequestOptions): HttpResponse {
         val call = newCall(request, requestOptions)
@@ -50,20 +53,25 @@ private constructor(private val okHttpClient: okhttp3.OkHttpClient, private val 
     ): CompletableFuture<HttpResponse> {
         val future = CompletableFuture<HttpResponse>()
 
-        request.body?.run { future.whenComplete { _, _ -> close() } }
-
-        newCall(request, requestOptions)
-            .enqueue(
-                object : Callback {
-                    override fun onResponse(call: Call, response: Response) {
-                        future.complete(response.toResponse())
-                    }
-
-                    override fun onFailure(call: Call, e: IOException) {
-                        future.completeExceptionally(HanzoIoException("Request failed", e))
-                    }
+        val call = newCall(request, requestOptions)
+        call.enqueue(
+            object : Callback {
+                override fun onResponse(call: Call, response: Response) {
+                    future.complete(response.toResponse())
                 }
-            )
+
+                override fun onFailure(call: Call, e: IOException) {
+                    future.completeExceptionally(HanzoIoException("Request failed", e))
+                }
+            }
+        )
+
+        future.whenComplete { _, e ->
+            if (e is CancellationException) {
+                call.cancel()
+            }
+            request.body?.close()
+        }
 
         return future
     }
@@ -86,7 +94,7 @@ private constructor(private val okHttpClient: okhttp3.OkHttpClient, private val 
         if (logLevel != null) {
             clientBuilder.addNetworkInterceptor(
                 HttpLoggingInterceptor().setLevel(logLevel).apply {
-                    redactHeader("Ocp-Apim-Subscription-Key")
+                    redactHeader("x-litellm-api-key")
                 }
             )
         }
@@ -111,19 +119,19 @@ private constructor(private val okHttpClient: okhttp3.OkHttpClient, private val 
 
         val builder = Request.Builder().url(toUrl()).method(method.name, body)
         headers.names().forEach { name ->
-            headers.values(name).forEach { builder.header(name, it) }
+            headers.values(name).forEach { builder.addHeader(name, it) }
         }
 
         if (
             !headers.names().contains("X-Stainless-Read-Timeout") && client.readTimeoutMillis != 0
         ) {
-            builder.header(
+            builder.addHeader(
                 "X-Stainless-Read-Timeout",
                 Duration.ofMillis(client.readTimeoutMillis.toLong()).seconds.toString(),
             )
         }
         if (!headers.names().contains("X-Stainless-Timeout") && client.callTimeoutMillis != 0) {
-            builder.header(
+            builder.addHeader(
                 "X-Stainless-Timeout",
                 Duration.ofMillis(client.callTimeoutMillis.toLong()).seconds.toString(),
             )
@@ -142,11 +150,7 @@ private constructor(private val okHttpClient: okhttp3.OkHttpClient, private val 
         }
 
     private fun HttpRequest.toUrl(): String {
-        url?.let {
-            return it
-        }
-
-        val builder = baseUrl.newBuilder()
+        val builder = baseUrl.toHttpUrl().newBuilder()
         pathSegments.forEach(builder::addPathSegment)
         queryParams.keys().forEach { key ->
             queryParams.values(key).forEach { builder.addQueryParameter(key, it) }
@@ -196,11 +200,12 @@ private constructor(private val okHttpClient: okhttp3.OkHttpClient, private val 
 
     class Builder internal constructor() {
 
-        private var baseUrl: HttpUrl? = null
         private var timeout: Timeout = Timeout.default()
         private var proxy: Proxy? = null
-
-        fun baseUrl(baseUrl: String) = apply { this.baseUrl = baseUrl.toHttpUrl() }
+        private var dispatcherExecutorService: ExecutorService? = null
+        private var sslSocketFactory: SSLSocketFactory? = null
+        private var trustManager: X509TrustManager? = null
+        private var hostnameVerifier: HostnameVerifier? = null
 
         fun timeout(timeout: Timeout) = apply { this.timeout = timeout }
 
@@ -208,16 +213,53 @@ private constructor(private val okHttpClient: okhttp3.OkHttpClient, private val 
 
         fun proxy(proxy: Proxy?) = apply { this.proxy = proxy }
 
+        fun dispatcherExecutorService(dispatcherExecutorService: ExecutorService?) = apply {
+            this.dispatcherExecutorService = dispatcherExecutorService
+        }
+
+        fun sslSocketFactory(sslSocketFactory: SSLSocketFactory?) = apply {
+            this.sslSocketFactory = sslSocketFactory
+        }
+
+        fun trustManager(trustManager: X509TrustManager?) = apply {
+            this.trustManager = trustManager
+        }
+
+        fun hostnameVerifier(hostnameVerifier: HostnameVerifier?) = apply {
+            this.hostnameVerifier = hostnameVerifier
+        }
+
         fun build(): OkHttpClient =
             OkHttpClient(
                 okhttp3.OkHttpClient.Builder()
+                    // `RetryingHttpClient` handles retries if the user enabled them.
+                    .retryOnConnectionFailure(false)
                     .connectTimeout(timeout.connect())
                     .readTimeout(timeout.read())
                     .writeTimeout(timeout.write())
                     .callTimeout(timeout.request())
                     .proxy(proxy)
-                    .build(),
-                checkRequired("baseUrl", baseUrl),
+                    .apply {
+                        dispatcherExecutorService?.let { dispatcher(Dispatcher(it)) }
+
+                        val sslSocketFactory = sslSocketFactory
+                        val trustManager = trustManager
+                        if (sslSocketFactory != null && trustManager != null) {
+                            sslSocketFactory(sslSocketFactory, trustManager)
+                        } else {
+                            check((sslSocketFactory != null) == (trustManager != null)) {
+                                "Both or none of `sslSocketFactory` and `trustManager` must be set, but only one was set"
+                            }
+                        }
+
+                        hostnameVerifier?.let(::hostnameVerifier)
+                    }
+                    .build()
+                    .apply {
+                        // We usually make all our requests to the same host so it makes sense to
+                        // raise the per-host limit to the overall limit.
+                        dispatcher.maxRequestsPerHost = dispatcher.maxRequests
+                    }
             )
     }
 }

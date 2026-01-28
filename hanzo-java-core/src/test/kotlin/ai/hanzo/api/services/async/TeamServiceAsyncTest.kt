@@ -8,15 +8,12 @@ import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.models.team.BlockTeamRequest
 import ai.hanzo.api.models.team.Member
 import ai.hanzo.api.models.team.TeamAddMemberParams
-import ai.hanzo.api.models.team.TeamBlockParams
 import ai.hanzo.api.models.team.TeamCreateParams
 import ai.hanzo.api.models.team.TeamDeleteParams
-import ai.hanzo.api.models.team.TeamDisableLoggingParams
 import ai.hanzo.api.models.team.TeamListAvailableParams
 import ai.hanzo.api.models.team.TeamListParams
 import ai.hanzo.api.models.team.TeamRemoveMemberParams
 import ai.hanzo.api.models.team.TeamRetrieveInfoParams
-import ai.hanzo.api.models.team.TeamUnblockParams
 import ai.hanzo.api.models.team.TeamUpdateMemberParams
 import ai.hanzo.api.models.team.TeamUpdateParams
 import org.junit.jupiter.api.Disabled
@@ -26,7 +23,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 @ExtendWith(TestServerExtension::class)
 internal class TeamServiceAsyncTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun create() {
         val client =
@@ -39,8 +36,17 @@ internal class TeamServiceAsyncTest {
         val teamFuture =
             teamServiceAsync.create(
                 TeamCreateParams.builder()
-                    .llmChangedBy("llm-changed-by")
+                    .litellmChangedBy("litellm-changed-by")
                     .addAdmin(JsonValue.from(mapOf<String, Any>()))
+                    .addAllowedPassthroughRoute(JsonValue.from(mapOf<String, Any>()))
+                    .addAllowedVectorStoreIndex(
+                        TeamCreateParams.AllowedVectorStoreIndex.builder()
+                            .indexName("index_name")
+                            .addIndexPermission(
+                                TeamCreateParams.AllowedVectorStoreIndex.IndexPermission.READ
+                            )
+                            .build()
+                    )
                     .blocked(true)
                     .budgetDuration("budget_duration")
                     .addGuardrail("string")
@@ -53,15 +59,65 @@ internal class TeamServiceAsyncTest {
                             .userId("user_id")
                             .build()
                     )
-                    .metadata(JsonValue.from(mapOf<String, Any>()))
-                    .modelAliases(JsonValue.from(mapOf<String, Any>()))
+                    .metadata(
+                        TeamCreateParams.Metadata.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
+                    .modelAliases(
+                        TeamCreateParams.ModelAliases.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
+                    .modelRpmLimit(
+                        TeamCreateParams.ModelRpmLimit.builder()
+                            .putAdditionalProperty("foo", JsonValue.from(0))
+                            .build()
+                    )
+                    .modelTpmLimit(
+                        TeamCreateParams.ModelTpmLimit.builder()
+                            .putAdditionalProperty("foo", JsonValue.from(0))
+                            .build()
+                    )
                     .addModel(JsonValue.from(mapOf<String, Any>()))
+                    .objectPermission(
+                        TeamCreateParams.ObjectPermission.builder()
+                            .addAgentAccessGroup("string")
+                            .addAgent("string")
+                            .addMcpAccessGroup("string")
+                            .addMcpServer("string")
+                            .mcpToolPermissions(
+                                TeamCreateParams.ObjectPermission.McpToolPermissions.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from(listOf("string")))
+                                    .build()
+                            )
+                            .addVectorStore("string")
+                            .build()
+                    )
                     .organizationId("organization_id")
+                    .addPrompt("string")
+                    .routerSettings(
+                        TeamCreateParams.RouterSettings.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
                     .rpmLimit(0L)
+                    .rpmLimitType(TeamCreateParams.RpmLimitType.GUARANTEED_THROUGHPUT)
+                    .secretManagerSettings(
+                        TeamCreateParams.SecretManagerSettings.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
                     .addTag(JsonValue.from(mapOf<String, Any>()))
                     .teamAlias("team_alias")
                     .teamId("team_id")
+                    .teamMemberBudget(0.0)
+                    .teamMemberKeyDuration("team_member_key_duration")
+                    .addTeamMemberPermission("string")
+                    .teamMemberRpmLimit(0L)
+                    .teamMemberTpmLimit(0L)
                     .tpmLimit(0L)
+                    .tpmLimitType(TeamCreateParams.TpmLimitType.GUARANTEED_THROUGHPUT)
                     .build()
             )
 
@@ -69,7 +125,7 @@ internal class TeamServiceAsyncTest {
         team.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun update() {
         val client =
@@ -82,19 +138,76 @@ internal class TeamServiceAsyncTest {
         val teamFuture =
             teamServiceAsync.update(
                 TeamUpdateParams.builder()
-                    .llmChangedBy("llm-changed-by")
+                    .litellmChangedBy("litellm-changed-by")
                     .teamId("team_id")
+                    .addAllowedPassthroughRoute(JsonValue.from(mapOf<String, Any>()))
+                    .addAllowedVectorStoreIndex(
+                        TeamUpdateParams.AllowedVectorStoreIndex.builder()
+                            .indexName("index_name")
+                            .addIndexPermission(
+                                TeamUpdateParams.AllowedVectorStoreIndex.IndexPermission.READ
+                            )
+                            .build()
+                    )
                     .blocked(true)
                     .budgetDuration("budget_duration")
                     .addGuardrail("string")
                     .maxBudget(0.0)
-                    .metadata(JsonValue.from(mapOf<String, Any>()))
-                    .modelAliases(JsonValue.from(mapOf<String, Any>()))
+                    .metadata(
+                        TeamUpdateParams.Metadata.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
+                    .modelAliases(
+                        TeamUpdateParams.ModelAliases.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
+                    .modelRpmLimit(
+                        TeamUpdateParams.ModelRpmLimit.builder()
+                            .putAdditionalProperty("foo", JsonValue.from(0))
+                            .build()
+                    )
+                    .modelTpmLimit(
+                        TeamUpdateParams.ModelTpmLimit.builder()
+                            .putAdditionalProperty("foo", JsonValue.from(0))
+                            .build()
+                    )
                     .addModel(JsonValue.from(mapOf<String, Any>()))
+                    .objectPermission(
+                        TeamUpdateParams.ObjectPermission.builder()
+                            .addAgentAccessGroup("string")
+                            .addAgent("string")
+                            .addMcpAccessGroup("string")
+                            .addMcpServer("string")
+                            .mcpToolPermissions(
+                                TeamUpdateParams.ObjectPermission.McpToolPermissions.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from(listOf("string")))
+                                    .build()
+                            )
+                            .addVectorStore("string")
+                            .build()
+                    )
                     .organizationId("organization_id")
+                    .addPrompt("string")
+                    .routerSettings(
+                        TeamUpdateParams.RouterSettings.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
                     .rpmLimit(0L)
+                    .secretManagerSettings(
+                        TeamUpdateParams.SecretManagerSettings.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
                     .addTag(JsonValue.from(mapOf<String, Any>()))
                     .teamAlias("team_alias")
+                    .teamMemberBudget(0.0)
+                    .teamMemberBudgetDuration("team_member_budget_duration")
+                    .teamMemberKeyDuration("team_member_key_duration")
+                    .teamMemberRpmLimit(0L)
+                    .teamMemberTpmLimit(0L)
                     .tpmLimit(0L)
                     .build()
             )
@@ -103,7 +216,7 @@ internal class TeamServiceAsyncTest {
         team.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun list() {
         val client =
@@ -113,16 +226,16 @@ internal class TeamServiceAsyncTest {
                 .build()
         val teamServiceAsync = client.team()
 
-        val teamFuture =
+        val teamsFuture =
             teamServiceAsync.list(
                 TeamListParams.builder().organizationId("organization_id").userId("user_id").build()
             )
 
-        val team = teamFuture.get()
-        team.validate()
+        val teams = teamsFuture.get()
+        teams.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun delete() {
         val client =
@@ -135,7 +248,7 @@ internal class TeamServiceAsyncTest {
         val teamFuture =
             teamServiceAsync.delete(
                 TeamDeleteParams.builder()
-                    .llmChangedBy("llm-changed-by")
+                    .litellmChangedBy("litellm-changed-by")
                     .addTeamId("string")
                     .build()
             )
@@ -144,7 +257,7 @@ internal class TeamServiceAsyncTest {
         team.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun addMember() {
         val client =
@@ -175,7 +288,7 @@ internal class TeamServiceAsyncTest {
         response.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun block() {
         val client =
@@ -186,17 +299,13 @@ internal class TeamServiceAsyncTest {
         val teamServiceAsync = client.team()
 
         val responseFuture =
-            teamServiceAsync.block(
-                TeamBlockParams.builder()
-                    .blockTeamRequest(BlockTeamRequest.builder().teamId("team_id").build())
-                    .build()
-            )
+            teamServiceAsync.block(BlockTeamRequest.builder().teamId("team_id").build())
 
         val response = responseFuture.get()
         response.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun disableLogging() {
         val client =
@@ -206,16 +315,13 @@ internal class TeamServiceAsyncTest {
                 .build()
         val teamServiceAsync = client.team()
 
-        val responseFuture =
-            teamServiceAsync.disableLogging(
-                TeamDisableLoggingParams.builder().teamId("team_id").build()
-            )
+        val responseFuture = teamServiceAsync.disableLogging("team_id")
 
         val response = responseFuture.get()
         response.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun listAvailable() {
         val client =
@@ -236,7 +342,7 @@ internal class TeamServiceAsyncTest {
         response.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun removeMember() {
         val client =
@@ -259,7 +365,7 @@ internal class TeamServiceAsyncTest {
         response.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun retrieveInfo() {
         val client =
@@ -278,7 +384,7 @@ internal class TeamServiceAsyncTest {
         response.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun unblock() {
         val client =
@@ -289,17 +395,13 @@ internal class TeamServiceAsyncTest {
         val teamServiceAsync = client.team()
 
         val responseFuture =
-            teamServiceAsync.unblock(
-                TeamUnblockParams.builder()
-                    .blockTeamRequest(BlockTeamRequest.builder().teamId("team_id").build())
-                    .build()
-            )
+            teamServiceAsync.unblock(BlockTeamRequest.builder().teamId("team_id").build())
 
         val response = responseFuture.get()
         response.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun updateMember() {
         val client =
@@ -315,6 +417,8 @@ internal class TeamServiceAsyncTest {
                     .teamId("team_id")
                     .maxBudgetInTeam(0.0)
                     .role(TeamUpdateMemberParams.Role.ADMIN)
+                    .rpmLimit(0L)
+                    .tpmLimit(0L)
                     .userEmail("user_email")
                     .userId("user_id")
                     .build()

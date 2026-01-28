@@ -3,10 +3,11 @@
 package ai.hanzo.api.models.threads.messages
 
 import ai.hanzo.api.core.Params
-import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import java.util.Objects
+import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /**
  * Returns a list of messages for a given thread.
@@ -15,29 +16,26 @@ import java.util.Objects
  */
 class MessageListParams
 private constructor(
-    private val threadId: String,
+    private val threadId: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
-    fun threadId(): String = threadId
+    fun threadId(): Optional<String> = Optional.ofNullable(threadId)
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
 
     companion object {
 
-        /**
-         * Returns a mutable builder for constructing an instance of [MessageListParams].
-         *
-         * The following fields are required:
-         * ```java
-         * .threadId()
-         * ```
-         */
+        @JvmStatic fun none(): MessageListParams = builder().build()
+
+        /** Returns a mutable builder for constructing an instance of [MessageListParams]. */
         @JvmStatic fun builder() = Builder()
     }
 
@@ -55,7 +53,10 @@ private constructor(
             additionalQueryParams = messageListParams.additionalQueryParams.toBuilder()
         }
 
-        fun threadId(threadId: String) = apply { this.threadId = threadId }
+        fun threadId(threadId: String?) = apply { this.threadId = threadId }
+
+        /** Alias for calling [Builder.threadId] with `threadId.orElse(null)`. */
+        fun threadId(threadId: Optional<String>) = threadId(threadId.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -159,25 +160,14 @@ private constructor(
          * Returns an immutable instance of [MessageListParams].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
-         *
-         * The following fields are required:
-         * ```java
-         * .threadId()
-         * ```
-         *
-         * @throws IllegalStateException if any required field is unset.
          */
         fun build(): MessageListParams =
-            MessageListParams(
-                checkRequired("threadId", threadId),
-                additionalHeaders.build(),
-                additionalQueryParams.build(),
-            )
+            MessageListParams(threadId, additionalHeaders.build(), additionalQueryParams.build())
     }
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> threadId
+            0 -> threadId ?: ""
             else -> ""
         }
 
@@ -190,10 +180,13 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is MessageListParams && threadId == other.threadId && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is MessageListParams &&
+            threadId == other.threadId &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(threadId, additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int = Objects.hash(threadId, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
         "MessageListParams{threadId=$threadId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"

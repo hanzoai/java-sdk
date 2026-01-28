@@ -2,12 +2,13 @@
 
 package ai.hanzo.api.services.async.audio
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.audio.speech.SpeechCreateParams
 import ai.hanzo.api.models.audio.speech.SpeechCreateResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface SpeechServiceAsync {
 
@@ -17,24 +18,31 @@ interface SpeechServiceAsync {
     fun withRawResponse(): WithRawResponse
 
     /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): SpeechServiceAsync
+
+    /**
      * Same params as:
      *
      * https://platform.openai.com/docs/api-reference/audio/createSpeech
      */
     fun create(): CompletableFuture<SpeechCreateResponse> = create(SpeechCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: SpeechCreateParams = SpeechCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<SpeechCreateResponse>
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: SpeechCreateParams = SpeechCreateParams.none()
     ): CompletableFuture<SpeechCreateResponse> = create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): CompletableFuture<SpeechCreateResponse> =
         create(SpeechCreateParams.none(), requestOptions)
 
@@ -44,29 +52,34 @@ interface SpeechServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): SpeechServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `post /v1/audio/speech`, but is otherwise the same as
          * [SpeechServiceAsync.create].
          */
-        @MustBeClosed
         fun create(): CompletableFuture<HttpResponseFor<SpeechCreateResponse>> =
             create(SpeechCreateParams.none())
 
-        /** @see [create] */
-        @MustBeClosed
+        /** @see create */
         fun create(
             params: SpeechCreateParams = SpeechCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<SpeechCreateResponse>>
 
-        /** @see [create] */
-        @MustBeClosed
+        /** @see create */
         fun create(
             params: SpeechCreateParams = SpeechCreateParams.none()
         ): CompletableFuture<HttpResponseFor<SpeechCreateResponse>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
-        @MustBeClosed
+        /** @see create */
         fun create(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<SpeechCreateResponse>> =

@@ -2,12 +2,13 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.settings.SettingRetrieveParams
 import ai.hanzo.api.models.settings.SettingRetrieveResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface SettingServiceAsync {
 
@@ -17,7 +18,14 @@ interface SettingServiceAsync {
     fun withRawResponse(): WithRawResponse
 
     /**
-     * Returns a list of llm level settings
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): SettingServiceAsync
+
+    /**
+     * Returns a list of litellm level settings
      *
      * This is useful for debugging and ensuring the proxy server is configured correctly.
      *
@@ -25,35 +33,35 @@ interface SettingServiceAsync {
      * ```
      * {
      *     "alerting": _alerting,
-     *     "llm.callbacks": llm_callbacks,
-     *     "llm.input_callback": llm_input_callbacks,
-     *     "llm.failure_callback": llm_failure_callbacks,
-     *     "llm.success_callback": llm_success_callbacks,
-     *     "llm._async_success_callback": llm_async_success_callbacks,
-     *     "llm._async_failure_callback": llm_async_failure_callbacks,
-     *     "llm._async_input_callback": llm_async_input_callbacks,
-     *     "all_llm_callbacks": all_llm_callbacks,
-     *     "num_callbacks": len(all_llm_callbacks),
+     *     "litellm.callbacks": litellm_callbacks,
+     *     "litellm.input_callback": litellm_input_callbacks,
+     *     "litellm.failure_callback": litellm_failure_callbacks,
+     *     "litellm.success_callback": litellm_success_callbacks,
+     *     "litellm._async_success_callback": litellm_async_success_callbacks,
+     *     "litellm._async_failure_callback": litellm_async_failure_callbacks,
+     *     "litellm._async_input_callback": litellm_async_input_callbacks,
+     *     "all_litellm_callbacks": all_litellm_callbacks,
+     *     "num_callbacks": len(all_litellm_callbacks),
      *     "num_alerting": _num_alerting,
-     *     "llm.request_timeout": llm.request_timeout,
+     *     "litellm.request_timeout": litellm.request_timeout,
      * }
      * ```
      */
     fun retrieve(): CompletableFuture<SettingRetrieveResponse> =
         retrieve(SettingRetrieveParams.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: SettingRetrieveParams = SettingRetrieveParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<SettingRetrieveResponse>
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: SettingRetrieveParams = SettingRetrieveParams.none()
     ): CompletableFuture<SettingRetrieveResponse> = retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(requestOptions: RequestOptions): CompletableFuture<SettingRetrieveResponse> =
         retrieve(SettingRetrieveParams.none(), requestOptions)
 
@@ -63,29 +71,34 @@ interface SettingServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): SettingServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `get /settings`, but is otherwise the same as
          * [SettingServiceAsync.retrieve].
          */
-        @MustBeClosed
         fun retrieve(): CompletableFuture<HttpResponseFor<SettingRetrieveResponse>> =
             retrieve(SettingRetrieveParams.none())
 
-        /** @see [retrieve] */
-        @MustBeClosed
+        /** @see retrieve */
         fun retrieve(
             params: SettingRetrieveParams = SettingRetrieveParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<SettingRetrieveResponse>>
 
-        /** @see [retrieve] */
-        @MustBeClosed
+        /** @see retrieve */
         fun retrieve(
             params: SettingRetrieveParams = SettingRetrieveParams.none()
         ): CompletableFuture<HttpResponseFor<SettingRetrieveResponse>> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
-        @MustBeClosed
+        /** @see retrieve */
         fun retrieve(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<SettingRetrieveResponse>> =

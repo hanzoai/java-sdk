@@ -5,6 +5,7 @@ package ai.hanzo.api.services.blocking
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.services.blocking.chat.CompletionService
 import ai.hanzo.api.services.blocking.chat.CompletionServiceImpl
+import java.util.function.Consumer
 
 class ChatServiceImpl internal constructor(private val clientOptions: ClientOptions) : ChatService {
 
@@ -16,6 +17,9 @@ class ChatServiceImpl internal constructor(private val clientOptions: ClientOpti
 
     override fun withRawResponse(): ChatService.WithRawResponse = withRawResponse
 
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): ChatService =
+        ChatServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
+
     override fun completions(): CompletionService = completions
 
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -24,6 +28,13 @@ class ChatServiceImpl internal constructor(private val clientOptions: ClientOpti
         private val completions: CompletionService.WithRawResponse by lazy {
             CompletionServiceImpl.WithRawResponseImpl(clientOptions)
         }
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ChatService.WithRawResponse =
+            ChatServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         override fun completions(): CompletionService.WithRawResponse = completions
     }

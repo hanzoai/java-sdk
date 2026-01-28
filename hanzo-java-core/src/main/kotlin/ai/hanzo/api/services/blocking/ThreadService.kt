@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.blocking
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.threads.ThreadCreateParams
@@ -11,6 +12,7 @@ import ai.hanzo.api.models.threads.ThreadRetrieveResponse
 import ai.hanzo.api.services.blocking.threads.MessageService
 import ai.hanzo.api.services.blocking.threads.RunService
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface ThreadService {
 
@@ -18,6 +20,13 @@ interface ThreadService {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): ThreadService
 
     fun messages(): MessageService
 
@@ -30,17 +39,17 @@ interface ThreadService {
      */
     fun create(): ThreadCreateResponse = create(ThreadCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: ThreadCreateParams = ThreadCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): ThreadCreateResponse
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: ThreadCreateParams = ThreadCreateParams.none()): ThreadCreateResponse =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): ThreadCreateResponse =
         create(ThreadCreateParams.none(), requestOptions)
 
@@ -49,17 +58,46 @@ interface ThreadService {
      *
      * API Reference - https://platform.openai.com/docs/api-reference/threads/getThread
      */
-    fun retrieve(params: ThreadRetrieveParams): ThreadRetrieveResponse =
-        retrieve(params, RequestOptions.none())
+    fun retrieve(threadId: String): ThreadRetrieveResponse =
+        retrieve(threadId, ThreadRetrieveParams.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
+    fun retrieve(
+        threadId: String,
+        params: ThreadRetrieveParams = ThreadRetrieveParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): ThreadRetrieveResponse =
+        retrieve(params.toBuilder().threadId(threadId).build(), requestOptions)
+
+    /** @see retrieve */
+    fun retrieve(
+        threadId: String,
+        params: ThreadRetrieveParams = ThreadRetrieveParams.none(),
+    ): ThreadRetrieveResponse = retrieve(threadId, params, RequestOptions.none())
+
+    /** @see retrieve */
     fun retrieve(
         params: ThreadRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): ThreadRetrieveResponse
 
+    /** @see retrieve */
+    fun retrieve(params: ThreadRetrieveParams): ThreadRetrieveResponse =
+        retrieve(params, RequestOptions.none())
+
+    /** @see retrieve */
+    fun retrieve(threadId: String, requestOptions: RequestOptions): ThreadRetrieveResponse =
+        retrieve(threadId, ThreadRetrieveParams.none(), requestOptions)
+
     /** A view of [ThreadService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): ThreadService.WithRawResponse
 
         fun messages(): MessageService.WithRawResponse
 
@@ -72,20 +110,20 @@ interface ThreadService {
         @MustBeClosed
         fun create(): HttpResponseFor<ThreadCreateResponse> = create(ThreadCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: ThreadCreateParams = ThreadCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<ThreadCreateResponse>
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: ThreadCreateParams = ThreadCreateParams.none()
         ): HttpResponseFor<ThreadCreateResponse> = create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(requestOptions: RequestOptions): HttpResponseFor<ThreadCreateResponse> =
             create(ThreadCreateParams.none(), requestOptions)
@@ -95,14 +133,44 @@ interface ThreadService {
          * as [ThreadService.retrieve].
          */
         @MustBeClosed
-        fun retrieve(params: ThreadRetrieveParams): HttpResponseFor<ThreadRetrieveResponse> =
-            retrieve(params, RequestOptions.none())
+        fun retrieve(threadId: String): HttpResponseFor<ThreadRetrieveResponse> =
+            retrieve(threadId, ThreadRetrieveParams.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
+        @MustBeClosed
+        fun retrieve(
+            threadId: String,
+            params: ThreadRetrieveParams = ThreadRetrieveParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<ThreadRetrieveResponse> =
+            retrieve(params.toBuilder().threadId(threadId).build(), requestOptions)
+
+        /** @see retrieve */
+        @MustBeClosed
+        fun retrieve(
+            threadId: String,
+            params: ThreadRetrieveParams = ThreadRetrieveParams.none(),
+        ): HttpResponseFor<ThreadRetrieveResponse> =
+            retrieve(threadId, params, RequestOptions.none())
+
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             params: ThreadRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<ThreadRetrieveResponse>
+
+        /** @see retrieve */
+        @MustBeClosed
+        fun retrieve(params: ThreadRetrieveParams): HttpResponseFor<ThreadRetrieveResponse> =
+            retrieve(params, RequestOptions.none())
+
+        /** @see retrieve */
+        @MustBeClosed
+        fun retrieve(
+            threadId: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<ThreadRetrieveResponse> =
+            retrieve(threadId, ThreadRetrieveParams.none(), requestOptions)
     }
 }

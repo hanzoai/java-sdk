@@ -6,7 +6,6 @@ import ai.hanzo.api.TestServerExtension
 import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.models.credentials.CredentialCreateParams
-import ai.hanzo.api.models.credentials.CredentialDeleteParams
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -14,7 +13,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 @ExtendWith(TestServerExtension::class)
 internal class CredentialServiceAsyncTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun create() {
         val client =
@@ -27,9 +26,17 @@ internal class CredentialServiceAsyncTest {
         val credentialFuture =
             credentialServiceAsync.create(
                 CredentialCreateParams.builder()
-                    .credentialInfo(JsonValue.from(mapOf<String, Any>()))
+                    .credentialInfo(
+                        CredentialCreateParams.CredentialInfo.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
                     .credentialName("credential_name")
-                    .credentialValues(JsonValue.from(mapOf<String, Any>()))
+                    .credentialValues(
+                        CredentialCreateParams.CredentialValues.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
                     .modelId("model_id")
                     .build()
             )
@@ -38,7 +45,7 @@ internal class CredentialServiceAsyncTest {
         credential.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun list() {
         val client =
@@ -48,13 +55,13 @@ internal class CredentialServiceAsyncTest {
                 .build()
         val credentialServiceAsync = client.credentials()
 
-        val credentialFuture = credentialServiceAsync.list()
+        val credentialsFuture = credentialServiceAsync.list()
 
-        val credential = credentialFuture.get()
-        credential.validate()
+        val credentials = credentialsFuture.get()
+        credentials.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun delete() {
         val client =
@@ -64,10 +71,7 @@ internal class CredentialServiceAsyncTest {
                 .build()
         val credentialServiceAsync = client.credentials()
 
-        val credentialFuture =
-            credentialServiceAsync.delete(
-                CredentialDeleteParams.builder().credentialName("credential_name").build()
-            )
+        val credentialFuture = credentialServiceAsync.delete("credential_name")
 
         val credential = credentialFuture.get()
         credential.validate()

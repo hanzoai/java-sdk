@@ -10,6 +10,7 @@ import ai.hanzo.api.core.http.QueryParams
 import ai.hanzo.api.core.toImmutable
 import java.util.Objects
 import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /**
  * Cancel a batch. This is the equivalent of POST
@@ -27,7 +28,7 @@ import java.util.Optional
 class BatchCancelWithProviderParams
 private constructor(
     private val provider: String,
-    private val batchId: String,
+    private val batchId: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
     private val additionalBodyProperties: Map<String, JsonValue>,
@@ -35,12 +36,15 @@ private constructor(
 
     fun provider(): String = provider
 
-    fun batchId(): String = batchId
+    fun batchId(): Optional<String> = Optional.ofNullable(batchId)
 
+    /** Additional body properties to send with the request. */
     fun _additionalBodyProperties(): Map<String, JsonValue> = additionalBodyProperties
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
@@ -54,7 +58,6 @@ private constructor(
          * The following fields are required:
          * ```java
          * .provider()
-         * .batchId()
          * ```
          */
         @JvmStatic fun builder() = Builder()
@@ -81,7 +84,10 @@ private constructor(
 
         fun provider(provider: String) = apply { this.provider = provider }
 
-        fun batchId(batchId: String) = apply { this.batchId = batchId }
+        fun batchId(batchId: String?) = apply { this.batchId = batchId }
+
+        /** Alias for calling [Builder.batchId] with `batchId.orElse(null)`. */
+        fun batchId(batchId: Optional<String>) = batchId(batchId.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -211,7 +217,6 @@ private constructor(
          * The following fields are required:
          * ```java
          * .provider()
-         * .batchId()
          * ```
          *
          * @throws IllegalStateException if any required field is unset.
@@ -219,21 +224,20 @@ private constructor(
         fun build(): BatchCancelWithProviderParams =
             BatchCancelWithProviderParams(
                 checkRequired("provider", provider),
-                checkRequired("batchId", batchId),
+                batchId,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
                 additionalBodyProperties.toImmutable(),
             )
     }
 
-    @JvmSynthetic
-    internal fun _body(): Optional<Map<String, JsonValue>> =
+    fun _body(): Optional<Map<String, JsonValue>> =
         Optional.ofNullable(additionalBodyProperties.ifEmpty { null })
 
     fun _pathParam(index: Int): String =
         when (index) {
             0 -> provider
-            1 -> batchId
+            1 -> batchId ?: ""
             else -> ""
         }
 
@@ -246,10 +250,22 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is BatchCancelWithProviderParams && provider == other.provider && batchId == other.batchId && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams && additionalBodyProperties == other.additionalBodyProperties /* spotless:on */
+        return other is BatchCancelWithProviderParams &&
+            provider == other.provider &&
+            batchId == other.batchId &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams &&
+            additionalBodyProperties == other.additionalBodyProperties
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(provider, batchId, additionalHeaders, additionalQueryParams, additionalBodyProperties) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(
+            provider,
+            batchId,
+            additionalHeaders,
+            additionalQueryParams,
+            additionalBodyProperties,
+        )
 
     override fun toString() =
         "BatchCancelWithProviderParams{provider=$provider, batchId=$batchId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams, additionalBodyProperties=$additionalBodyProperties}"

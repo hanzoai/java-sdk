@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.blocking
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.vertexai.VertexAiCreateParams
@@ -15,6 +16,7 @@ import ai.hanzo.api.models.vertexai.VertexAiRetrieveResponse
 import ai.hanzo.api.models.vertexai.VertexAiUpdateParams
 import ai.hanzo.api.models.vertexai.VertexAiUpdateResponse
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface VertexAiService {
 
@@ -24,151 +26,419 @@ interface VertexAiService {
     fun withRawResponse(): WithRawResponse
 
     /**
-     * Call LLM proxy via Vertex AI SDK.
+     * Returns a view of this service with the given option modifications applied.
      *
-     * [Docs](https://docs.hanzo.ai/docs/pass_through/vertex_ai)
+     * The original service is not modified.
      */
-    fun create(params: VertexAiCreateParams): VertexAiCreateResponse =
-        create(params, RequestOptions.none())
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): VertexAiService
 
-    /** @see [create] */
+    /**
+     * Call LiteLLM proxy via Vertex AI SDK.
+     *
+     * [Docs](https://docs.litellm.ai/docs/pass_through/vertex_ai)
+     */
+    fun create(endpoint: String): VertexAiCreateResponse =
+        create(endpoint, VertexAiCreateParams.none())
+
+    /** @see create */
+    fun create(
+        endpoint: String,
+        params: VertexAiCreateParams = VertexAiCreateParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): VertexAiCreateResponse =
+        create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see create */
+    fun create(
+        endpoint: String,
+        params: VertexAiCreateParams = VertexAiCreateParams.none(),
+    ): VertexAiCreateResponse = create(endpoint, params, RequestOptions.none())
+
+    /** @see create */
     fun create(
         params: VertexAiCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): VertexAiCreateResponse
 
-    /**
-     * Call LLM proxy via Vertex AI SDK.
-     *
-     * [Docs](https://docs.hanzo.ai/docs/pass_through/vertex_ai)
-     */
-    fun retrieve(params: VertexAiRetrieveParams): VertexAiRetrieveResponse =
-        retrieve(params, RequestOptions.none())
+    /** @see create */
+    fun create(params: VertexAiCreateParams): VertexAiCreateResponse =
+        create(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see create */
+    fun create(endpoint: String, requestOptions: RequestOptions): VertexAiCreateResponse =
+        create(endpoint, VertexAiCreateParams.none(), requestOptions)
+
+    /**
+     * Call LiteLLM proxy via Vertex AI SDK.
+     *
+     * [Docs](https://docs.litellm.ai/docs/pass_through/vertex_ai)
+     */
+    fun retrieve(endpoint: String): VertexAiRetrieveResponse =
+        retrieve(endpoint, VertexAiRetrieveParams.none())
+
+    /** @see retrieve */
+    fun retrieve(
+        endpoint: String,
+        params: VertexAiRetrieveParams = VertexAiRetrieveParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): VertexAiRetrieveResponse =
+        retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see retrieve */
+    fun retrieve(
+        endpoint: String,
+        params: VertexAiRetrieveParams = VertexAiRetrieveParams.none(),
+    ): VertexAiRetrieveResponse = retrieve(endpoint, params, RequestOptions.none())
+
+    /** @see retrieve */
     fun retrieve(
         params: VertexAiRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): VertexAiRetrieveResponse
 
-    /**
-     * Call LLM proxy via Vertex AI SDK.
-     *
-     * [Docs](https://docs.hanzo.ai/docs/pass_through/vertex_ai)
-     */
-    fun update(params: VertexAiUpdateParams): VertexAiUpdateResponse =
-        update(params, RequestOptions.none())
+    /** @see retrieve */
+    fun retrieve(params: VertexAiRetrieveParams): VertexAiRetrieveResponse =
+        retrieve(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see retrieve */
+    fun retrieve(endpoint: String, requestOptions: RequestOptions): VertexAiRetrieveResponse =
+        retrieve(endpoint, VertexAiRetrieveParams.none(), requestOptions)
+
+    /**
+     * Call LiteLLM proxy via Vertex AI SDK.
+     *
+     * [Docs](https://docs.litellm.ai/docs/pass_through/vertex_ai)
+     */
+    fun update(endpoint: String): VertexAiUpdateResponse =
+        update(endpoint, VertexAiUpdateParams.none())
+
+    /** @see update */
+    fun update(
+        endpoint: String,
+        params: VertexAiUpdateParams = VertexAiUpdateParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): VertexAiUpdateResponse =
+        update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see update */
+    fun update(
+        endpoint: String,
+        params: VertexAiUpdateParams = VertexAiUpdateParams.none(),
+    ): VertexAiUpdateResponse = update(endpoint, params, RequestOptions.none())
+
+    /** @see update */
     fun update(
         params: VertexAiUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): VertexAiUpdateResponse
 
-    /**
-     * Call LLM proxy via Vertex AI SDK.
-     *
-     * [Docs](https://docs.hanzo.ai/docs/pass_through/vertex_ai)
-     */
-    fun delete(params: VertexAiDeleteParams): VertexAiDeleteResponse =
-        delete(params, RequestOptions.none())
+    /** @see update */
+    fun update(params: VertexAiUpdateParams): VertexAiUpdateResponse =
+        update(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see update */
+    fun update(endpoint: String, requestOptions: RequestOptions): VertexAiUpdateResponse =
+        update(endpoint, VertexAiUpdateParams.none(), requestOptions)
+
+    /**
+     * Call LiteLLM proxy via Vertex AI SDK.
+     *
+     * [Docs](https://docs.litellm.ai/docs/pass_through/vertex_ai)
+     */
+    fun delete(endpoint: String): VertexAiDeleteResponse =
+        delete(endpoint, VertexAiDeleteParams.none())
+
+    /** @see delete */
+    fun delete(
+        endpoint: String,
+        params: VertexAiDeleteParams = VertexAiDeleteParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): VertexAiDeleteResponse =
+        delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see delete */
+    fun delete(
+        endpoint: String,
+        params: VertexAiDeleteParams = VertexAiDeleteParams.none(),
+    ): VertexAiDeleteResponse = delete(endpoint, params, RequestOptions.none())
+
+    /** @see delete */
     fun delete(
         params: VertexAiDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): VertexAiDeleteResponse
 
-    /**
-     * Call LLM proxy via Vertex AI SDK.
-     *
-     * [Docs](https://docs.hanzo.ai/docs/pass_through/vertex_ai)
-     */
-    fun patch(params: VertexAiPatchParams): VertexAiPatchResponse =
-        patch(params, RequestOptions.none())
+    /** @see delete */
+    fun delete(params: VertexAiDeleteParams): VertexAiDeleteResponse =
+        delete(params, RequestOptions.none())
 
-    /** @see [patch] */
+    /** @see delete */
+    fun delete(endpoint: String, requestOptions: RequestOptions): VertexAiDeleteResponse =
+        delete(endpoint, VertexAiDeleteParams.none(), requestOptions)
+
+    /**
+     * Call LiteLLM proxy via Vertex AI SDK.
+     *
+     * [Docs](https://docs.litellm.ai/docs/pass_through/vertex_ai)
+     */
+    fun patch(endpoint: String): VertexAiPatchResponse = patch(endpoint, VertexAiPatchParams.none())
+
+    /** @see patch */
+    fun patch(
+        endpoint: String,
+        params: VertexAiPatchParams = VertexAiPatchParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): VertexAiPatchResponse = patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+    /** @see patch */
+    fun patch(
+        endpoint: String,
+        params: VertexAiPatchParams = VertexAiPatchParams.none(),
+    ): VertexAiPatchResponse = patch(endpoint, params, RequestOptions.none())
+
+    /** @see patch */
     fun patch(
         params: VertexAiPatchParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): VertexAiPatchResponse
 
+    /** @see patch */
+    fun patch(params: VertexAiPatchParams): VertexAiPatchResponse =
+        patch(params, RequestOptions.none())
+
+    /** @see patch */
+    fun patch(endpoint: String, requestOptions: RequestOptions): VertexAiPatchResponse =
+        patch(endpoint, VertexAiPatchParams.none(), requestOptions)
+
     /** A view of [VertexAiService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): VertexAiService.WithRawResponse
 
         /**
          * Returns a raw HTTP response for `post /vertex_ai/{endpoint}`, but is otherwise the same
          * as [VertexAiService.create].
          */
         @MustBeClosed
-        fun create(params: VertexAiCreateParams): HttpResponseFor<VertexAiCreateResponse> =
-            create(params, RequestOptions.none())
+        fun create(endpoint: String): HttpResponseFor<VertexAiCreateResponse> =
+            create(endpoint, VertexAiCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
+        @MustBeClosed
+        fun create(
+            endpoint: String,
+            params: VertexAiCreateParams = VertexAiCreateParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<VertexAiCreateResponse> =
+            create(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see create */
+        @MustBeClosed
+        fun create(
+            endpoint: String,
+            params: VertexAiCreateParams = VertexAiCreateParams.none(),
+        ): HttpResponseFor<VertexAiCreateResponse> = create(endpoint, params, RequestOptions.none())
+
+        /** @see create */
         @MustBeClosed
         fun create(
             params: VertexAiCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<VertexAiCreateResponse>
 
+        /** @see create */
+        @MustBeClosed
+        fun create(params: VertexAiCreateParams): HttpResponseFor<VertexAiCreateResponse> =
+            create(params, RequestOptions.none())
+
+        /** @see create */
+        @MustBeClosed
+        fun create(
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<VertexAiCreateResponse> =
+            create(endpoint, VertexAiCreateParams.none(), requestOptions)
+
         /**
          * Returns a raw HTTP response for `get /vertex_ai/{endpoint}`, but is otherwise the same as
          * [VertexAiService.retrieve].
          */
         @MustBeClosed
-        fun retrieve(params: VertexAiRetrieveParams): HttpResponseFor<VertexAiRetrieveResponse> =
-            retrieve(params, RequestOptions.none())
+        fun retrieve(endpoint: String): HttpResponseFor<VertexAiRetrieveResponse> =
+            retrieve(endpoint, VertexAiRetrieveParams.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
+        @MustBeClosed
+        fun retrieve(
+            endpoint: String,
+            params: VertexAiRetrieveParams = VertexAiRetrieveParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<VertexAiRetrieveResponse> =
+            retrieve(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see retrieve */
+        @MustBeClosed
+        fun retrieve(
+            endpoint: String,
+            params: VertexAiRetrieveParams = VertexAiRetrieveParams.none(),
+        ): HttpResponseFor<VertexAiRetrieveResponse> =
+            retrieve(endpoint, params, RequestOptions.none())
+
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             params: VertexAiRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<VertexAiRetrieveResponse>
 
+        /** @see retrieve */
+        @MustBeClosed
+        fun retrieve(params: VertexAiRetrieveParams): HttpResponseFor<VertexAiRetrieveResponse> =
+            retrieve(params, RequestOptions.none())
+
+        /** @see retrieve */
+        @MustBeClosed
+        fun retrieve(
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<VertexAiRetrieveResponse> =
+            retrieve(endpoint, VertexAiRetrieveParams.none(), requestOptions)
+
         /**
          * Returns a raw HTTP response for `put /vertex_ai/{endpoint}`, but is otherwise the same as
          * [VertexAiService.update].
          */
         @MustBeClosed
-        fun update(params: VertexAiUpdateParams): HttpResponseFor<VertexAiUpdateResponse> =
-            update(params, RequestOptions.none())
+        fun update(endpoint: String): HttpResponseFor<VertexAiUpdateResponse> =
+            update(endpoint, VertexAiUpdateParams.none())
 
-        /** @see [update] */
+        /** @see update */
+        @MustBeClosed
+        fun update(
+            endpoint: String,
+            params: VertexAiUpdateParams = VertexAiUpdateParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<VertexAiUpdateResponse> =
+            update(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see update */
+        @MustBeClosed
+        fun update(
+            endpoint: String,
+            params: VertexAiUpdateParams = VertexAiUpdateParams.none(),
+        ): HttpResponseFor<VertexAiUpdateResponse> = update(endpoint, params, RequestOptions.none())
+
+        /** @see update */
         @MustBeClosed
         fun update(
             params: VertexAiUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<VertexAiUpdateResponse>
 
+        /** @see update */
+        @MustBeClosed
+        fun update(params: VertexAiUpdateParams): HttpResponseFor<VertexAiUpdateResponse> =
+            update(params, RequestOptions.none())
+
+        /** @see update */
+        @MustBeClosed
+        fun update(
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<VertexAiUpdateResponse> =
+            update(endpoint, VertexAiUpdateParams.none(), requestOptions)
+
         /**
          * Returns a raw HTTP response for `delete /vertex_ai/{endpoint}`, but is otherwise the same
          * as [VertexAiService.delete].
          */
         @MustBeClosed
-        fun delete(params: VertexAiDeleteParams): HttpResponseFor<VertexAiDeleteResponse> =
-            delete(params, RequestOptions.none())
+        fun delete(endpoint: String): HttpResponseFor<VertexAiDeleteResponse> =
+            delete(endpoint, VertexAiDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
+        @MustBeClosed
+        fun delete(
+            endpoint: String,
+            params: VertexAiDeleteParams = VertexAiDeleteParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<VertexAiDeleteResponse> =
+            delete(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see delete */
+        @MustBeClosed
+        fun delete(
+            endpoint: String,
+            params: VertexAiDeleteParams = VertexAiDeleteParams.none(),
+        ): HttpResponseFor<VertexAiDeleteResponse> = delete(endpoint, params, RequestOptions.none())
+
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: VertexAiDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<VertexAiDeleteResponse>
 
+        /** @see delete */
+        @MustBeClosed
+        fun delete(params: VertexAiDeleteParams): HttpResponseFor<VertexAiDeleteResponse> =
+            delete(params, RequestOptions.none())
+
+        /** @see delete */
+        @MustBeClosed
+        fun delete(
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<VertexAiDeleteResponse> =
+            delete(endpoint, VertexAiDeleteParams.none(), requestOptions)
+
         /**
          * Returns a raw HTTP response for `patch /vertex_ai/{endpoint}`, but is otherwise the same
          * as [VertexAiService.patch].
          */
         @MustBeClosed
-        fun patch(params: VertexAiPatchParams): HttpResponseFor<VertexAiPatchResponse> =
-            patch(params, RequestOptions.none())
+        fun patch(endpoint: String): HttpResponseFor<VertexAiPatchResponse> =
+            patch(endpoint, VertexAiPatchParams.none())
 
-        /** @see [patch] */
+        /** @see patch */
+        @MustBeClosed
+        fun patch(
+            endpoint: String,
+            params: VertexAiPatchParams = VertexAiPatchParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<VertexAiPatchResponse> =
+            patch(params.toBuilder().endpoint(endpoint).build(), requestOptions)
+
+        /** @see patch */
+        @MustBeClosed
+        fun patch(
+            endpoint: String,
+            params: VertexAiPatchParams = VertexAiPatchParams.none(),
+        ): HttpResponseFor<VertexAiPatchResponse> = patch(endpoint, params, RequestOptions.none())
+
+        /** @see patch */
         @MustBeClosed
         fun patch(
             params: VertexAiPatchParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<VertexAiPatchResponse>
+
+        /** @see patch */
+        @MustBeClosed
+        fun patch(params: VertexAiPatchParams): HttpResponseFor<VertexAiPatchResponse> =
+            patch(params, RequestOptions.none())
+
+        /** @see patch */
+        @MustBeClosed
+        fun patch(
+            endpoint: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<VertexAiPatchResponse> =
+            patch(endpoint, VertexAiPatchParams.none(), requestOptions)
     }
 }

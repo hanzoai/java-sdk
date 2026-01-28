@@ -8,7 +8,8 @@ repositories {
 }
 
 dependencies {
-    implementation(project(":hanzo-java"))
+    implementation(project(":hanzo-java-core"))
+    implementation(project(":hanzo-java-client-okhttp"))
 }
 
 tasks.withType<JavaCompile>().configureEach {
@@ -17,5 +18,12 @@ tasks.withType<JavaCompile>().configureEach {
 }
 
 application {
-    mainClass = "ai.hanzo.api.example.Main"
+    // Use `./gradlew :hanzo-java-example:run` to run `Main`
+    // Use `./gradlew :hanzo-java-example:run -Pexample=Something` to run `SomethingExample`
+    mainClass = "ai.hanzo.api.example.${
+        if (project.hasProperty("example"))
+            "${project.property("example")}Example"
+        else
+            "Main"
+    }"
 }

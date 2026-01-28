@@ -2,11 +2,13 @@
 
 package ai.hanzo.api.services.blocking
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.moderations.ModerationCreateParams
 import ai.hanzo.api.models.moderations.ModerationCreateResponse
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface ModerationService {
 
@@ -16,10 +18,15 @@ interface ModerationService {
     fun withRawResponse(): WithRawResponse
 
     /**
-     * The moderations endpoint is a tool you can use to check whether content complies with an LLM
-     * Providers policies.
+     * Returns a view of this service with the given option modifications applied.
      *
-     * Quick Start
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): ModerationService
+
+    /**
+     * The moderations endpoint is a tool you can use to check whether content complies with an LLM
+     * Providers policies. Quick Start
      *
      * ```
      * curl --location 'http://0.0.0.0:4000/moderations'     --header 'Content-Type: application/json'     --header 'Authorization: Bearer sk-1234'     --data '{"input": "Sample text goes here", "model": "text-moderation-stable"}'
@@ -27,23 +34,32 @@ interface ModerationService {
      */
     fun create(): ModerationCreateResponse = create(ModerationCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: ModerationCreateParams = ModerationCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): ModerationCreateResponse
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: ModerationCreateParams = ModerationCreateParams.none()
     ): ModerationCreateResponse = create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): ModerationCreateResponse =
         create(ModerationCreateParams.none(), requestOptions)
 
     /** A view of [ModerationService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ModerationService.WithRawResponse
 
         /**
          * Returns a raw HTTP response for `post /v1/moderations`, but is otherwise the same as
@@ -53,20 +69,20 @@ interface ModerationService {
         fun create(): HttpResponseFor<ModerationCreateResponse> =
             create(ModerationCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: ModerationCreateParams = ModerationCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<ModerationCreateResponse>
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: ModerationCreateParams = ModerationCreateParams.none()
         ): HttpResponseFor<ModerationCreateResponse> = create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(requestOptions: RequestOptions): HttpResponseFor<ModerationCreateResponse> =
             create(ModerationCreateParams.none(), requestOptions)

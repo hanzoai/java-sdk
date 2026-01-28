@@ -2,8 +2,10 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
+import ai.hanzo.api.models.key.BlockKeyRequest
 import ai.hanzo.api.models.key.GenerateKeyResponse
 import ai.hanzo.api.models.key.KeyBlockParams
 import ai.hanzo.api.models.key.KeyBlockResponse
@@ -22,9 +24,9 @@ import ai.hanzo.api.models.key.KeyUnblockResponse
 import ai.hanzo.api.models.key.KeyUpdateParams
 import ai.hanzo.api.models.key.KeyUpdateResponse
 import ai.hanzo.api.services.async.key.RegenerateServiceAsync
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.Optional
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface KeyServiceAsync {
 
@@ -32,6 +34,13 @@ interface KeyServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): KeyServiceAsync
 
     fun regenerate(): RegenerateServiceAsync
 
@@ -47,9 +56,10 @@ interface KeyServiceAsync {
      *   `/budget/new`.
      * - models: Optional[list] - Model_name's a user is allowed to call
      * - tags: Optional[List[str]] - Tags for organizing keys (Enterprise only)
+     * - prompts: Optional[List[str]] - List of prompts that the key is allowed to use.
      * - enforced_params: Optional[List[str]] - List of enforced params for the key (Enterprise
      *   only).
-     *   [Docs](https://docs.hanzo.ai/docs/proxy/enterprise#enforce-required-params-for-llm-requests)
+     *   [Docs](https://docs.litellm.ai/docs/proxy/enterprise#enforce-required-params-for-llm-requests)
      * - spend: Optional[float] - Amount spent by key
      * - max_budget: Optional[float] - Max budget for key
      * - model_max_budget: Optional[Dict[str, BudgetConfig]] - Model-specific budgets {"gpt-4":
@@ -65,19 +75,50 @@ interface KeyServiceAsync {
      *   200}
      * - model_tpm_limit: Optional[dict] - Model-specific TPM limits {"gpt-4": 100000, "claude-v1":
      *   200000}
+     * - tpm_limit_type: Optional[str] - TPM rate limit type - "best_effort_throughput",
+     *   "guaranteed_throughput", or "dynamic"
+     * - rpm_limit_type: Optional[str] - RPM rate limit type - "best_effort_throughput",
+     *   "guaranteed_throughput", or "dynamic"
      * - allowed_cache_controls: Optional[list] - List of allowed cache control values
-     * - duration: Optional[str] - Key validity duration ("30d", "1h", etc.)
+     * - duration: Optional[str] - Key validity duration ("30d", "1h", etc.) or "-1" to never expire
      * - permissions: Optional[dict] - Key-specific permissions
      * - send_invite_email: Optional[bool] - Send invite email to user_id
      * - guardrails: Optional[List[str]] - List of active guardrails for the key
+     * - disable_global_guardrails: Optional[bool] - Whether to disable global guardrails for the
+     *   key.
+     * - prompts: Optional[List[str]] - List of prompts that the key is allowed to use.
      * - blocked: Optional[bool] - Whether the key is blocked
      * - aliases: Optional[dict] - Model aliases for the
-     *   key - [Docs](https://llm.vercel.app/docs/proxy/virtual_keys#model-aliases)
+     *   key - [Docs](https://litellm.vercel.app/docs/proxy/virtual_keys#model-aliases)
      * - config: Optional[dict] - [DEPRECATED PARAM] Key-specific config.
      * - temp_budget_increase: Optional[float] - Temporary budget increase for the key (Enterprise
      *   only).
      * - temp_budget_expiry: Optional[str] - Expiry time for the temporary budget increase
      *   (Enterprise only).
+     * - allowed_routes: Optional[list] - List of allowed routes for the key. Store the actual route
+     *   or store a wildcard pattern for a set of routes.
+     *   Example - ["/chat/completions", "/embeddings", "/keys&#47;*"]
+     * - allowed_passthrough_routes: Optional[list] - List of allowed pass through routes for the
+     *   key. Store the actual route or store a wildcard pattern for a set of routes.
+     *   Example - ["/my-custom-endpoint"]. Use this instead of allowed_routes, if you just want to
+     *   specify which pass through routes the key can access, without specifying the routes. If
+     *   allowed_routes is specified, allowed_passthrough_routes is ignored.
+     * - prompts: Optional[List[str]] - List of allowed prompts for the key. If specified, the key
+     *   will only be able to use these specific prompts.
+     * - object_permission: Optional[LiteLLM_ObjectPermissionBase] - key-specific object permission.
+     *   Example - {"vector_stores": ["vector_store_1", "vector_store_2"], "agents":
+     *   ["agent_1", "agent_2"], "agent_access_groups": ["dev_group"]}. IF null or {} then no object
+     *   permission.
+     * - auto_rotate: Optional[bool] - Whether this key should be automatically rotated
+     * - rotation_interval: Optional[str] - How often to rotate this key (e.g., '30d', '90d').
+     *   Required if auto_rotate=True
+     * - allowed_vector_store_indexes: Optional[List[dict]] - List of allowed vector store indexes
+     *   for the key.
+     *   Example - [{"index_name": "my-index", "index_permissions": ["write", "read"]}]. If
+     *   specified, the key will only be able to use these specific vector store indexes. Create
+     *   index, using `/v1/indexes` endpoint.
+     * - router_settings: Optional[UpdateRouterConfig] - key-specific router settings. Example -
+     *   {"model_group_retry_policy": {"max_retries": 5}}. IF null or {} then no router settings.
      *
      * Example:
      * ```bash
@@ -94,7 +135,7 @@ interface KeyServiceAsync {
     fun update(params: KeyUpdateParams): CompletableFuture<KeyUpdateResponse> =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: KeyUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -103,22 +144,30 @@ interface KeyServiceAsync {
     /**
      * List all keys for a given user / team / organization.
      *
+     * Parameters: expand: Optional[List[str]] - Expand related objects (e.g. 'user' to include user
+     * information) status: Optional[str] - Filter by status. Currently supports "deleted" to query
+     * deleted keys.
+     *
      * Returns: { "keys": List[str] or List[UserAPIKeyAuth], "total_count": int, "current_page":
      * int, "total_pages": int, }
+     *
+     * When expand includes "user", each key object will include a "user" field with the associated
+     * user object. Note: When expand=user is specified, full key objects are returned regardless of
+     * the return_full_object parameter.
      */
     fun list(): CompletableFuture<KeyListResponse> = list(KeyListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: KeyListParams = KeyListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<KeyListResponse>
 
-    /** @see [list] */
+    /** @see list */
     fun list(params: KeyListParams = KeyListParams.none()): CompletableFuture<KeyListResponse> =
         list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): CompletableFuture<KeyListResponse> =
         list(KeyListParams.none(), requestOptions)
 
@@ -146,18 +195,18 @@ interface KeyServiceAsync {
      */
     fun delete(): CompletableFuture<KeyDeleteResponse> = delete(KeyDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: KeyDeleteParams = KeyDeleteParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<KeyDeleteResponse>
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: KeyDeleteParams = KeyDeleteParams.none()
     ): CompletableFuture<KeyDeleteResponse> = delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(requestOptions: RequestOptions): CompletableFuture<KeyDeleteResponse> =
         delete(KeyDeleteParams.none(), requestOptions)
 
@@ -180,11 +229,22 @@ interface KeyServiceAsync {
     fun block(params: KeyBlockParams): CompletableFuture<Optional<KeyBlockResponse>> =
         block(params, RequestOptions.none())
 
-    /** @see [block] */
+    /** @see block */
     fun block(
         params: KeyBlockParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<Optional<KeyBlockResponse>>
+
+    /** @see block */
+    fun block(
+        blockKeyRequest: BlockKeyRequest,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<Optional<KeyBlockResponse>> =
+        block(KeyBlockParams.builder().blockKeyRequest(blockKeyRequest).build(), requestOptions)
+
+    /** @see block */
+    fun block(blockKeyRequest: BlockKeyRequest): CompletableFuture<Optional<KeyBlockResponse>> =
+        block(blockKeyRequest, RequestOptions.none())
 
     /**
      * Check the health of the key
@@ -205,7 +265,9 @@ interface KeyServiceAsync {
      * {
      *   "key": "healthy",
      *   "logging_callbacks": {
-     *     "callbacks": ["gcs_bucket"],
+     *     "callbacks": [
+     *       "gcs_bucket"
+     *     ],
      *     "status": "healthy",
      *     "details": "No logger exceptions triggered, system is healthy. Manually check if logs were sent to ['gcs_bucket']"
      *   }
@@ -217,7 +279,9 @@ interface KeyServiceAsync {
      * {
      *   "key": "unhealthy",
      *   "logging_callbacks": {
-     *     "callbacks": ["gcs_bucket"],
+     *     "callbacks": [
+     *       "gcs_bucket"
+     *     ],
      *     "status": "unhealthy",
      *     "details": "Logger exceptions triggered, system is unhealthy: Failed to load vertex credentials. Check to see if credentials containing partial/invalid information."
      *   }
@@ -227,25 +291,25 @@ interface KeyServiceAsync {
     fun checkHealth(): CompletableFuture<KeyCheckHealthResponse> =
         checkHealth(KeyCheckHealthParams.none())
 
-    /** @see [checkHealth] */
+    /** @see checkHealth */
     fun checkHealth(
         params: KeyCheckHealthParams = KeyCheckHealthParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<KeyCheckHealthResponse>
 
-    /** @see [checkHealth] */
+    /** @see checkHealth */
     fun checkHealth(
         params: KeyCheckHealthParams = KeyCheckHealthParams.none()
     ): CompletableFuture<KeyCheckHealthResponse> = checkHealth(params, RequestOptions.none())
 
-    /** @see [checkHealth] */
+    /** @see checkHealth */
     fun checkHealth(requestOptions: RequestOptions): CompletableFuture<KeyCheckHealthResponse> =
         checkHealth(KeyCheckHealthParams.none(), requestOptions)
 
     /**
      * Generate an API key based on the provided data.
      *
-     * Docs: https://docs.hanzo.ai/docs/proxy/virtual_keys
+     * Docs: https://docs.litellm.ai/docs/proxy/virtual_keys
      *
      * Parameters:
      * - duration: Optional[str] - Specify the length of time the token is valid for. You can set
@@ -255,16 +319,19 @@ interface KeyServiceAsync {
      *   created for you.
      * - team_id: Optional[str] - The team id of the key
      * - user_id: Optional[str] - The user id of the key
+     * - organization_id: Optional[str] - The organization id of the key. If not set, and team_id is
+     *   set, the organization id will be the same as the team id. If conflict, an error will be
+     *   raised.
      * - budget_id: Optional[str] - The budget id associated with the key. Created by calling
      *   `/budget/new`.
      * - models: Optional[list] - Model_name's a user is allowed to call. (if empty, key is allowed
      *   to call all models)
      * - aliases: Optional[dict] - Any alias mappings, on top of anything in the config.yaml model
      *   list. -
-     *   https://docs.hanzo.ai/docs/proxy/virtual_keys#managing-auth---upgradedowngrade-models
+     *   https://docs.litellm.ai/docs/proxy/virtual_keys#managing-auth---upgradedowngrade-models
      * - config: Optional[dict] - any key-specific configs, overrides config in config.yaml
      * - spend: Optional[int] - Amount spent by key. Default is 0. Will be updated by proxy whenever
-     *   key is used. https://docs.hanzo.ai/docs/proxy/virtual_keys#managing-auth---tracking-spend
+     *   key is used. https://docs.litellm.ai/docs/proxy/virtual_keys#managing-auth---tracking-spend
      * - send_invite_email: Optional[bool] - Whether to send an invite email to the user_id, with
      *   the generate key
      * - max_budget: Optional[float] - Specify max budget for a given key.
@@ -274,8 +341,10 @@ interface KeyServiceAsync {
      * - max_parallel_requests: Optional[int] - Rate limit a user based on the number of parallel
      *   requests. Raises 429 error, if user's parallel requests > x.
      * - metadata: Optional[dict] - Metadata for key, store information for key. Example metadata =
-     *   {"team": "core-infra", "app": "app2", "email": "z@hanzo.ai" }
+     *   {"team": "core-infra", "app": "app2", "email": "ishaan@berri.ai" }
      * - guardrails: Optional[List[str]] - List of active guardrails for the key
+     * - disable_global_guardrails: Optional[bool] - Whether to disable global guardrails for the
+     *   key.
      * - permissions: Optional[dict] - key-specific permissions. Currently just used for turning off
      *   pii masking (if connected). Example - {"pii": false}
      * - model_max_budget: Optional[Dict[str, BudgetConfig]] - Model-specific budgets {"gpt-4":
@@ -287,20 +356,59 @@ interface KeyServiceAsync {
      * - model_tpm_limit: Optional[dict] - key-specific model tpm limit. Example -
      *   {"text-davinci-002": 1000, "gpt-3.5-turbo": 1000}. IF null or {} then no model specific tpm
      *   limit.
+     * - tpm_limit_type: Optional[str] - Type of tpm limit. Options: "best_effort_throughput" (no
+     *   error if we're overallocating tpm), "guaranteed_throughput" (raise an error if we're
+     *   overallocating tpm), "dynamic" (dynamically exceed limit when no 429 errors). Defaults to
+     *   "best_effort_throughput".
+     * - rpm_limit_type: Optional[str] - Type of rpm limit. Options: "best_effort_throughput" (no
+     *   error if we're overallocating rpm), "guaranteed_throughput" (raise an error if we're
+     *   overallocating rpm), "dynamic" (dynamically exceed limit when no 429 errors). Defaults to
+     *   "best_effort_throughput".
      * - allowed_cache_controls: Optional[list] - List of allowed cache control values.
      *   Example - ["no-cache", "no-store"]. See all values -
-     *   https://docs.hanzo.ai/docs/proxy/caching#turn-on--off-caching-per-request
+     *   https://docs.litellm.ai/docs/proxy/caching#turn-on--off-caching-per-request
      * - blocked: Optional[bool] - Whether the key is blocked.
      * - rpm_limit: Optional[int] - Specify rpm limit for a given key (Requests per minute)
      * - tpm_limit: Optional[int] - Specify tpm limit for a given key (Tokens per minute)
      * - soft_budget: Optional[float] - Specify soft budget for a given key. Will trigger a slack
      *   alert when this soft budget is reached.
      * - tags: Optional[List[str]] - Tags for
-     *   [tracking spend](https://llm.vercel.app/docs/proxy/enterprise#tracking-spend-for-custom-tags)
-     *   and/or doing [tag-based routing](https://llm.vercel.app/docs/proxy/tag_routing).
+     *   [tracking spend](https://litellm.vercel.app/docs/proxy/enterprise#tracking-spend-for-custom-tags)
+     *   and/or doing [tag-based routing](https://litellm.vercel.app/docs/proxy/tag_routing).
+     * - prompts: Optional[List[str]] - List of prompts that the key is allowed to use.
      * - enforced_params: Optional[List[str]] - List of enforced params for the key (Enterprise
      *   only).
-     *   [Docs](https://docs.hanzo.ai/docs/proxy/enterprise#enforce-required-params-for-llm-requests)
+     *   [Docs](https://docs.litellm.ai/docs/proxy/enterprise#enforce-required-params-for-llm-requests)
+     * - prompts: Optional[List[str]] - List of prompts that the key is allowed to use.
+     * - allowed_routes: Optional[list] - List of allowed routes for the key. Store the actual route
+     *   or store a wildcard pattern for a set of routes.
+     *   Example - ["/chat/completions", "/embeddings", "/keys&#47;*"]
+     * - allowed_passthrough_routes: Optional[list] - List of allowed pass through endpoints for the
+     *   key. Store the actual endpoint or store a wildcard pattern for a set of endpoints.
+     *   Example - ["/my-custom-endpoint"]. Use this instead of allowed_routes, if you just want to
+     *   specify which pass through endpoints the key can access, without specifying the routes. If
+     *   allowed_routes is specified, allowed_pass_through_endpoints is ignored.
+     * - object_permission: Optional[LiteLLM_ObjectPermissionBase] - key-specific object permission.
+     *   Example - {"vector_stores": ["vector_store_1", "vector_store_2"], "agents":
+     *   ["agent_1", "agent_2"], "agent_access_groups": ["dev_group"]}. IF null or {} then no object
+     *   permission.
+     * - key_type: Optional[str] - Type of key that determines default allowed routes. Options:
+     *   "llm_api" (can call LLM API routes), "management" (can call management routes), "read_only"
+     *   (can only call info/read routes), "default" (uses default allowed routes). Defaults to
+     *   "default".
+     * - prompts: Optional[List[str]] - List of allowed prompts for the key. If specified, the key
+     *   will only be able to use these specific prompts.
+     * - auto_rotate: Optional[bool] - Whether this key should be automatically rotated
+     *   (regenerated)
+     * - rotation_interval: Optional[str] - How often to auto-rotate this key (e.g., '30s', '30m',
+     *   '30h', '30d'). Required if auto_rotate=True.
+     * - allowed_vector_store_indexes: Optional[List[dict]] - List of allowed vector store indexes
+     *   for the key.
+     *   Example - [{"index_name": "my-index", "index_permissions": ["write", "read"]}]. If
+     *   specified, the key will only be able to use these specific vector store indexes. Create
+     *   index, using `/v1/indexes` endpoint.
+     * - router_settings: Optional[UpdateRouterConfig] - key-specific router settings. Example -
+     *   {"model_group_retry_policy": {"max_retries": 5}}. IF null or {} then no router settings.
      *
      * Examples:
      * 1. Allow users to turn on/off pii masking
@@ -319,18 +427,18 @@ interface KeyServiceAsync {
      */
     fun generate(): CompletableFuture<GenerateKeyResponse> = generate(KeyGenerateParams.none())
 
-    /** @see [generate] */
+    /** @see generate */
     fun generate(
         params: KeyGenerateParams = KeyGenerateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<GenerateKeyResponse>
 
-    /** @see [generate] */
+    /** @see generate */
     fun generate(
         params: KeyGenerateParams = KeyGenerateParams.none()
     ): CompletableFuture<GenerateKeyResponse> = generate(params, RequestOptions.none())
 
-    /** @see [generate] */
+    /** @see generate */
     fun generate(requestOptions: RequestOptions): CompletableFuture<GenerateKeyResponse> =
         generate(KeyGenerateParams.none(), requestOptions)
 
@@ -341,6 +449,10 @@ interface KeyServiceAsync {
      * - key: str (path parameter) - The key to regenerate
      * - data: Optional[RegenerateKeyRequest] - Request body containing optional parameters to
      *   update
+     *     - key: Optional[str] - The key to regenerate.
+     *     - new_master_key: Optional[str] - The new master key to use, if key is the master key.
+     *     - new_key: Optional[str] - The new key to use, if key is not the master key. If both set,
+     *       new_master_key will be used.
      *     - key_alias: Optional[str] - User-friendly key alias
      *     - user_id: Optional[str] - User ID associated with key
      *     - team_id: Optional[str] - Team ID associated with key
@@ -382,16 +494,42 @@ interface KeyServiceAsync {
      *
      * Note: This is an Enterprise feature. It requires a premium license to use.
      */
+    fun regenerateByKey(pathKey: String): CompletableFuture<Optional<GenerateKeyResponse>> =
+        regenerateByKey(pathKey, KeyRegenerateByKeyParams.none())
+
+    /** @see regenerateByKey */
+    fun regenerateByKey(
+        pathKey: String,
+        params: KeyRegenerateByKeyParams = KeyRegenerateByKeyParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<Optional<GenerateKeyResponse>> =
+        regenerateByKey(params.toBuilder().pathKey(pathKey).build(), requestOptions)
+
+    /** @see regenerateByKey */
+    fun regenerateByKey(
+        pathKey: String,
+        params: KeyRegenerateByKeyParams = KeyRegenerateByKeyParams.none(),
+    ): CompletableFuture<Optional<GenerateKeyResponse>> =
+        regenerateByKey(pathKey, params, RequestOptions.none())
+
+    /** @see regenerateByKey */
+    fun regenerateByKey(
+        params: KeyRegenerateByKeyParams,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<Optional<GenerateKeyResponse>>
+
+    /** @see regenerateByKey */
     fun regenerateByKey(
         params: KeyRegenerateByKeyParams
     ): CompletableFuture<Optional<GenerateKeyResponse>> =
         regenerateByKey(params, RequestOptions.none())
 
-    /** @see [regenerateByKey] */
+    /** @see regenerateByKey */
     fun regenerateByKey(
-        params: KeyRegenerateByKeyParams,
-        requestOptions: RequestOptions = RequestOptions.none(),
-    ): CompletableFuture<Optional<GenerateKeyResponse>>
+        pathKey: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<Optional<GenerateKeyResponse>> =
+        regenerateByKey(pathKey, KeyRegenerateByKeyParams.none(), requestOptions)
 
     /**
      * Retrieve information about a key. Parameters: key: Optional[str] = Query parameter
@@ -401,30 +539,30 @@ interface KeyServiceAsync {
      *
      * Example Curl:
      * ```
-     * curl -X GET "http://0.0.0.0:4000/key/info?key=sk-02Wr4IAlN3NvPXvL5JVvDA" -H "Authorization: Bearer sk-1234"
+     * curl -X GET "http://0.0.0.0:4000/key/info?key=sk-test-example-key-123" -H "Authorization: Bearer sk-1234"
      * ```
      *
      * Example Curl - if no key is passed, it will use the Key Passed in Authorization Header
      *
      * ```
-     * curl -X GET "http://0.0.0.0:4000/key/info" -H "Authorization: Bearer sk-02Wr4IAlN3NvPXvL5JVvDA"
+     * curl -X GET "http://0.0.0.0:4000/key/info" -H "Authorization: Bearer sk-test-example-key-123"
      * ```
      */
     fun retrieveInfo(): CompletableFuture<KeyRetrieveInfoResponse> =
         retrieveInfo(KeyRetrieveInfoParams.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: KeyRetrieveInfoParams = KeyRetrieveInfoParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<KeyRetrieveInfoResponse>
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(
         params: KeyRetrieveInfoParams = KeyRetrieveInfoParams.none()
     ): CompletableFuture<KeyRetrieveInfoResponse> = retrieveInfo(params, RequestOptions.none())
 
-    /** @see [retrieveInfo] */
+    /** @see retrieveInfo */
     fun retrieveInfo(requestOptions: RequestOptions): CompletableFuture<KeyRetrieveInfoResponse> =
         retrieveInfo(KeyRetrieveInfoParams.none(), requestOptions)
 
@@ -447,14 +585,32 @@ interface KeyServiceAsync {
     fun unblock(params: KeyUnblockParams): CompletableFuture<KeyUnblockResponse> =
         unblock(params, RequestOptions.none())
 
-    /** @see [unblock] */
+    /** @see unblock */
     fun unblock(
         params: KeyUnblockParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<KeyUnblockResponse>
 
+    /** @see unblock */
+    fun unblock(
+        blockKeyRequest: BlockKeyRequest,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<KeyUnblockResponse> =
+        unblock(KeyUnblockParams.builder().blockKeyRequest(blockKeyRequest).build(), requestOptions)
+
+    /** @see unblock */
+    fun unblock(blockKeyRequest: BlockKeyRequest): CompletableFuture<KeyUnblockResponse> =
+        unblock(blockKeyRequest, RequestOptions.none())
+
     /** A view of [KeyServiceAsync] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): KeyServiceAsync.WithRawResponse
 
         fun regenerate(): RegenerateServiceAsync.WithRawResponse
 
@@ -462,12 +618,10 @@ interface KeyServiceAsync {
          * Returns a raw HTTP response for `post /key/update`, but is otherwise the same as
          * [KeyServiceAsync.update].
          */
-        @MustBeClosed
         fun update(params: KeyUpdateParams): CompletableFuture<HttpResponseFor<KeyUpdateResponse>> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
-        @MustBeClosed
+        /** @see update */
         fun update(
             params: KeyUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -477,24 +631,20 @@ interface KeyServiceAsync {
          * Returns a raw HTTP response for `get /key/list`, but is otherwise the same as
          * [KeyServiceAsync.list].
          */
-        @MustBeClosed
         fun list(): CompletableFuture<HttpResponseFor<KeyListResponse>> = list(KeyListParams.none())
 
-        /** @see [list] */
-        @MustBeClosed
+        /** @see list */
         fun list(
             params: KeyListParams = KeyListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<KeyListResponse>>
 
-        /** @see [list] */
-        @MustBeClosed
+        /** @see list */
         fun list(
             params: KeyListParams = KeyListParams.none()
         ): CompletableFuture<HttpResponseFor<KeyListResponse>> = list(params, RequestOptions.none())
 
-        /** @see [list] */
-        @MustBeClosed
+        /** @see list */
         fun list(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<KeyListResponse>> =
@@ -504,26 +654,22 @@ interface KeyServiceAsync {
          * Returns a raw HTTP response for `post /key/delete`, but is otherwise the same as
          * [KeyServiceAsync.delete].
          */
-        @MustBeClosed
         fun delete(): CompletableFuture<HttpResponseFor<KeyDeleteResponse>> =
             delete(KeyDeleteParams.none())
 
-        /** @see [delete] */
-        @MustBeClosed
+        /** @see delete */
         fun delete(
             params: KeyDeleteParams = KeyDeleteParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<KeyDeleteResponse>>
 
-        /** @see [delete] */
-        @MustBeClosed
+        /** @see delete */
         fun delete(
             params: KeyDeleteParams = KeyDeleteParams.none()
         ): CompletableFuture<HttpResponseFor<KeyDeleteResponse>> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
-        @MustBeClosed
+        /** @see delete */
         fun delete(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<KeyDeleteResponse>> =
@@ -533,43 +679,50 @@ interface KeyServiceAsync {
          * Returns a raw HTTP response for `post /key/block`, but is otherwise the same as
          * [KeyServiceAsync.block].
          */
-        @MustBeClosed
         fun block(
             params: KeyBlockParams
         ): CompletableFuture<HttpResponseFor<Optional<KeyBlockResponse>>> =
             block(params, RequestOptions.none())
 
-        /** @see [block] */
-        @MustBeClosed
+        /** @see block */
         fun block(
             params: KeyBlockParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<Optional<KeyBlockResponse>>>
 
+        /** @see block */
+        fun block(
+            blockKeyRequest: BlockKeyRequest,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<Optional<KeyBlockResponse>>> =
+            block(KeyBlockParams.builder().blockKeyRequest(blockKeyRequest).build(), requestOptions)
+
+        /** @see block */
+        fun block(
+            blockKeyRequest: BlockKeyRequest
+        ): CompletableFuture<HttpResponseFor<Optional<KeyBlockResponse>>> =
+            block(blockKeyRequest, RequestOptions.none())
+
         /**
          * Returns a raw HTTP response for `post /key/health`, but is otherwise the same as
          * [KeyServiceAsync.checkHealth].
          */
-        @MustBeClosed
         fun checkHealth(): CompletableFuture<HttpResponseFor<KeyCheckHealthResponse>> =
             checkHealth(KeyCheckHealthParams.none())
 
-        /** @see [checkHealth] */
-        @MustBeClosed
+        /** @see checkHealth */
         fun checkHealth(
             params: KeyCheckHealthParams = KeyCheckHealthParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<KeyCheckHealthResponse>>
 
-        /** @see [checkHealth] */
-        @MustBeClosed
+        /** @see checkHealth */
         fun checkHealth(
             params: KeyCheckHealthParams = KeyCheckHealthParams.none()
         ): CompletableFuture<HttpResponseFor<KeyCheckHealthResponse>> =
             checkHealth(params, RequestOptions.none())
 
-        /** @see [checkHealth] */
-        @MustBeClosed
+        /** @see checkHealth */
         fun checkHealth(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<KeyCheckHealthResponse>> =
@@ -579,26 +732,22 @@ interface KeyServiceAsync {
          * Returns a raw HTTP response for `post /key/generate`, but is otherwise the same as
          * [KeyServiceAsync.generate].
          */
-        @MustBeClosed
         fun generate(): CompletableFuture<HttpResponseFor<GenerateKeyResponse>> =
             generate(KeyGenerateParams.none())
 
-        /** @see [generate] */
-        @MustBeClosed
+        /** @see generate */
         fun generate(
             params: KeyGenerateParams = KeyGenerateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<GenerateKeyResponse>>
 
-        /** @see [generate] */
-        @MustBeClosed
+        /** @see generate */
         fun generate(
             params: KeyGenerateParams = KeyGenerateParams.none()
         ): CompletableFuture<HttpResponseFor<GenerateKeyResponse>> =
             generate(params, RequestOptions.none())
 
-        /** @see [generate] */
-        @MustBeClosed
+        /** @see generate */
         fun generate(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<GenerateKeyResponse>> =
@@ -608,43 +757,65 @@ interface KeyServiceAsync {
          * Returns a raw HTTP response for `post /key/{key}/regenerate`, but is otherwise the same
          * as [KeyServiceAsync.regenerateByKey].
          */
-        @MustBeClosed
         fun regenerateByKey(
-            params: KeyRegenerateByKeyParams
+            pathKey: String
         ): CompletableFuture<HttpResponseFor<Optional<GenerateKeyResponse>>> =
-            regenerateByKey(params, RequestOptions.none())
+            regenerateByKey(pathKey, KeyRegenerateByKeyParams.none())
 
-        /** @see [regenerateByKey] */
-        @MustBeClosed
+        /** @see regenerateByKey */
+        fun regenerateByKey(
+            pathKey: String,
+            params: KeyRegenerateByKeyParams = KeyRegenerateByKeyParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<Optional<GenerateKeyResponse>>> =
+            regenerateByKey(params.toBuilder().pathKey(pathKey).build(), requestOptions)
+
+        /** @see regenerateByKey */
+        fun regenerateByKey(
+            pathKey: String,
+            params: KeyRegenerateByKeyParams = KeyRegenerateByKeyParams.none(),
+        ): CompletableFuture<HttpResponseFor<Optional<GenerateKeyResponse>>> =
+            regenerateByKey(pathKey, params, RequestOptions.none())
+
+        /** @see regenerateByKey */
         fun regenerateByKey(
             params: KeyRegenerateByKeyParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<Optional<GenerateKeyResponse>>>
 
+        /** @see regenerateByKey */
+        fun regenerateByKey(
+            params: KeyRegenerateByKeyParams
+        ): CompletableFuture<HttpResponseFor<Optional<GenerateKeyResponse>>> =
+            regenerateByKey(params, RequestOptions.none())
+
+        /** @see regenerateByKey */
+        fun regenerateByKey(
+            pathKey: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<Optional<GenerateKeyResponse>>> =
+            regenerateByKey(pathKey, KeyRegenerateByKeyParams.none(), requestOptions)
+
         /**
          * Returns a raw HTTP response for `get /key/info`, but is otherwise the same as
          * [KeyServiceAsync.retrieveInfo].
          */
-        @MustBeClosed
         fun retrieveInfo(): CompletableFuture<HttpResponseFor<KeyRetrieveInfoResponse>> =
             retrieveInfo(KeyRetrieveInfoParams.none())
 
-        /** @see [retrieveInfo] */
-        @MustBeClosed
+        /** @see retrieveInfo */
         fun retrieveInfo(
             params: KeyRetrieveInfoParams = KeyRetrieveInfoParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<KeyRetrieveInfoResponse>>
 
-        /** @see [retrieveInfo] */
-        @MustBeClosed
+        /** @see retrieveInfo */
         fun retrieveInfo(
             params: KeyRetrieveInfoParams = KeyRetrieveInfoParams.none()
         ): CompletableFuture<HttpResponseFor<KeyRetrieveInfoResponse>> =
             retrieveInfo(params, RequestOptions.none())
 
-        /** @see [retrieveInfo] */
-        @MustBeClosed
+        /** @see retrieveInfo */
         fun retrieveInfo(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<KeyRetrieveInfoResponse>> =
@@ -654,17 +825,31 @@ interface KeyServiceAsync {
          * Returns a raw HTTP response for `post /key/unblock`, but is otherwise the same as
          * [KeyServiceAsync.unblock].
          */
-        @MustBeClosed
         fun unblock(
             params: KeyUnblockParams
         ): CompletableFuture<HttpResponseFor<KeyUnblockResponse>> =
             unblock(params, RequestOptions.none())
 
-        /** @see [unblock] */
-        @MustBeClosed
+        /** @see unblock */
         fun unblock(
             params: KeyUnblockParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<KeyUnblockResponse>>
+
+        /** @see unblock */
+        fun unblock(
+            blockKeyRequest: BlockKeyRequest,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<KeyUnblockResponse>> =
+            unblock(
+                KeyUnblockParams.builder().blockKeyRequest(blockKeyRequest).build(),
+                requestOptions,
+            )
+
+        /** @see unblock */
+        fun unblock(
+            blockKeyRequest: BlockKeyRequest
+        ): CompletableFuture<HttpResponseFor<KeyUnblockResponse>> =
+            unblock(blockKeyRequest, RequestOptions.none())
     }
 }

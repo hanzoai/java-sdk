@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.blocking
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.assistants.AssistantCreateParams
@@ -11,6 +12,7 @@ import ai.hanzo.api.models.assistants.AssistantDeleteResponse
 import ai.hanzo.api.models.assistants.AssistantListParams
 import ai.hanzo.api.models.assistants.AssistantListResponse
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface AssistantService {
 
@@ -20,6 +22,13 @@ interface AssistantService {
     fun withRawResponse(): WithRawResponse
 
     /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): AssistantService
+
+    /**
      * Create assistant
      *
      * API Reference docs -
@@ -27,18 +36,18 @@ interface AssistantService {
      */
     fun create(): AssistantCreateResponse = create(AssistantCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: AssistantCreateParams = AssistantCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AssistantCreateResponse
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: AssistantCreateParams = AssistantCreateParams.none()
     ): AssistantCreateResponse = create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): AssistantCreateResponse =
         create(AssistantCreateParams.none(), requestOptions)
 
@@ -49,17 +58,17 @@ interface AssistantService {
      */
     fun list(): AssistantListResponse = list(AssistantListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: AssistantListParams = AssistantListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AssistantListResponse
 
-    /** @see [list] */
+    /** @see list */
     fun list(params: AssistantListParams = AssistantListParams.none()): AssistantListResponse =
         list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): AssistantListResponse =
         list(AssistantListParams.none(), requestOptions)
 
@@ -69,17 +78,46 @@ interface AssistantService {
      * API Reference docs -
      * https://platform.openai.com/docs/api-reference/assistants/createAssistant
      */
-    fun delete(params: AssistantDeleteParams): AssistantDeleteResponse =
-        delete(params, RequestOptions.none())
+    fun delete(assistantId: String): AssistantDeleteResponse =
+        delete(assistantId, AssistantDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
+    fun delete(
+        assistantId: String,
+        params: AssistantDeleteParams = AssistantDeleteParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): AssistantDeleteResponse =
+        delete(params.toBuilder().assistantId(assistantId).build(), requestOptions)
+
+    /** @see delete */
+    fun delete(
+        assistantId: String,
+        params: AssistantDeleteParams = AssistantDeleteParams.none(),
+    ): AssistantDeleteResponse = delete(assistantId, params, RequestOptions.none())
+
+    /** @see delete */
     fun delete(
         params: AssistantDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): AssistantDeleteResponse
 
+    /** @see delete */
+    fun delete(params: AssistantDeleteParams): AssistantDeleteResponse =
+        delete(params, RequestOptions.none())
+
+    /** @see delete */
+    fun delete(assistantId: String, requestOptions: RequestOptions): AssistantDeleteResponse =
+        delete(assistantId, AssistantDeleteParams.none(), requestOptions)
+
     /** A view of [AssistantService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
+
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): AssistantService.WithRawResponse
 
         /**
          * Returns a raw HTTP response for `post /v1/assistants`, but is otherwise the same as
@@ -89,20 +127,20 @@ interface AssistantService {
         fun create(): HttpResponseFor<AssistantCreateResponse> =
             create(AssistantCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: AssistantCreateParams = AssistantCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<AssistantCreateResponse>
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: AssistantCreateParams = AssistantCreateParams.none()
         ): HttpResponseFor<AssistantCreateResponse> = create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(requestOptions: RequestOptions): HttpResponseFor<AssistantCreateResponse> =
             create(AssistantCreateParams.none(), requestOptions)
@@ -114,20 +152,20 @@ interface AssistantService {
         @MustBeClosed
         fun list(): HttpResponseFor<AssistantListResponse> = list(AssistantListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: AssistantListParams = AssistantListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<AssistantListResponse>
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: AssistantListParams = AssistantListParams.none()
         ): HttpResponseFor<AssistantListResponse> = list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(requestOptions: RequestOptions): HttpResponseFor<AssistantListResponse> =
             list(AssistantListParams.none(), requestOptions)
@@ -137,14 +175,44 @@ interface AssistantService {
          * the same as [AssistantService.delete].
          */
         @MustBeClosed
-        fun delete(params: AssistantDeleteParams): HttpResponseFor<AssistantDeleteResponse> =
-            delete(params, RequestOptions.none())
+        fun delete(assistantId: String): HttpResponseFor<AssistantDeleteResponse> =
+            delete(assistantId, AssistantDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
+        @MustBeClosed
+        fun delete(
+            assistantId: String,
+            params: AssistantDeleteParams = AssistantDeleteParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): HttpResponseFor<AssistantDeleteResponse> =
+            delete(params.toBuilder().assistantId(assistantId).build(), requestOptions)
+
+        /** @see delete */
+        @MustBeClosed
+        fun delete(
+            assistantId: String,
+            params: AssistantDeleteParams = AssistantDeleteParams.none(),
+        ): HttpResponseFor<AssistantDeleteResponse> =
+            delete(assistantId, params, RequestOptions.none())
+
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: AssistantDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<AssistantDeleteResponse>
+
+        /** @see delete */
+        @MustBeClosed
+        fun delete(params: AssistantDeleteParams): HttpResponseFor<AssistantDeleteResponse> =
+            delete(params, RequestOptions.none())
+
+        /** @see delete */
+        @MustBeClosed
+        fun delete(
+            assistantId: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<AssistantDeleteResponse> =
+            delete(assistantId, AssistantDeleteParams.none(), requestOptions)
     }
 }

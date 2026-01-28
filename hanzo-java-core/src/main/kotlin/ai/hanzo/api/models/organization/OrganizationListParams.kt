@@ -6,20 +6,45 @@ import ai.hanzo.api.core.Params
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import java.util.Objects
+import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /**
+ * Get a list of organizations with optional filtering.
+ *
+ * Parameters: org_id: Optional[str] Filter organizations by exact organization_id match org_alias:
+ * Optional[str] Filter organizations by partial organization_alias match (case-insensitive)
+ *
+ * Example:
  * ```
- * curl --location --request GET 'http://0.0.0.0:4000/organization/list'         --header 'Authorization: Bearer sk-1234'
+ * curl --location --request GET 'http://0.0.0.0:4000/organization/list?org_alias=my-org'         --header 'Authorization: Bearer sk-1234'
+ * ```
+ *
+ * Example with org_id:
+ * ```
+ * curl --location --request GET 'http://0.0.0.0:4000/organization/list?org_id=123e4567-e89b-12d3-a456-426614174000'         --header 'Authorization: Bearer sk-1234'
  * ```
  */
 class OrganizationListParams
 private constructor(
+    private val orgAlias: String?,
+    private val orgId: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
+    /**
+     * Filter organizations by partial organization_alias match. Supports case-insensitive search.
+     */
+    fun orgAlias(): Optional<String> = Optional.ofNullable(orgAlias)
+
+    /** Filter organizations by exact organization_id match */
+    fun orgId(): Optional<String> = Optional.ofNullable(orgId)
+
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
@@ -35,14 +60,33 @@ private constructor(
     /** A builder for [OrganizationListParams]. */
     class Builder internal constructor() {
 
+        private var orgAlias: String? = null
+        private var orgId: String? = null
         private var additionalHeaders: Headers.Builder = Headers.builder()
         private var additionalQueryParams: QueryParams.Builder = QueryParams.builder()
 
         @JvmSynthetic
         internal fun from(organizationListParams: OrganizationListParams) = apply {
+            orgAlias = organizationListParams.orgAlias
+            orgId = organizationListParams.orgId
             additionalHeaders = organizationListParams.additionalHeaders.toBuilder()
             additionalQueryParams = organizationListParams.additionalQueryParams.toBuilder()
         }
+
+        /**
+         * Filter organizations by partial organization_alias match. Supports case-insensitive
+         * search.
+         */
+        fun orgAlias(orgAlias: String?) = apply { this.orgAlias = orgAlias }
+
+        /** Alias for calling [Builder.orgAlias] with `orgAlias.orElse(null)`. */
+        fun orgAlias(orgAlias: Optional<String>) = orgAlias(orgAlias.getOrNull())
+
+        /** Filter organizations by exact organization_id match */
+        fun orgId(orgId: String?) = apply { this.orgId = orgId }
+
+        /** Alias for calling [Builder.orgId] with `orgId.orElse(null)`. */
+        fun orgId(orgId: Optional<String>) = orgId(orgId.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -148,23 +192,40 @@ private constructor(
          * Further updates to this [Builder] will not mutate the returned instance.
          */
         fun build(): OrganizationListParams =
-            OrganizationListParams(additionalHeaders.build(), additionalQueryParams.build())
+            OrganizationListParams(
+                orgAlias,
+                orgId,
+                additionalHeaders.build(),
+                additionalQueryParams.build(),
+            )
     }
 
     override fun _headers(): Headers = additionalHeaders
 
-    override fun _queryParams(): QueryParams = additionalQueryParams
+    override fun _queryParams(): QueryParams =
+        QueryParams.builder()
+            .apply {
+                orgAlias?.let { put("org_alias", it) }
+                orgId?.let { put("org_id", it) }
+                putAll(additionalQueryParams)
+            }
+            .build()
 
     override fun equals(other: Any?): Boolean {
         if (this === other) {
             return true
         }
 
-        return /* spotless:off */ other is OrganizationListParams && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is OrganizationListParams &&
+            orgAlias == other.orgAlias &&
+            orgId == other.orgId &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(orgAlias, orgId, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
-        "OrganizationListParams{additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
+        "OrganizationListParams{orgAlias=$orgAlias, orgId=$orgId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
 }

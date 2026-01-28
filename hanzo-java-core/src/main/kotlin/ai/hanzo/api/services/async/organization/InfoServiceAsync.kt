@@ -2,14 +2,15 @@
 
 package ai.hanzo.api.services.async.organization
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
+import ai.hanzo.api.models.organization.OrganizationTableWithMembers
 import ai.hanzo.api.models.organization.info.InfoDeprecatedParams
 import ai.hanzo.api.models.organization.info.InfoDeprecatedResponse
 import ai.hanzo.api.models.organization.info.InfoRetrieveParams
-import ai.hanzo.api.models.organization.info.InfoRetrieveResponse
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface InfoServiceAsync {
 
@@ -18,21 +19,28 @@ interface InfoServiceAsync {
      */
     fun withRawResponse(): WithRawResponse
 
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): InfoServiceAsync
+
     /** Get the org specific information */
-    fun retrieve(params: InfoRetrieveParams): CompletableFuture<InfoRetrieveResponse> =
+    fun retrieve(params: InfoRetrieveParams): CompletableFuture<OrganizationTableWithMembers> =
         retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: InfoRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
-    ): CompletableFuture<InfoRetrieveResponse>
+    ): CompletableFuture<OrganizationTableWithMembers>
 
     /** DEPRECATED: Use GET /organization/info instead */
     fun deprecated(params: InfoDeprecatedParams): CompletableFuture<InfoDeprecatedResponse> =
         deprecated(params, RequestOptions.none())
 
-    /** @see [deprecated] */
+    /** @see deprecated */
     fun deprecated(
         params: InfoDeprecatedParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -42,34 +50,37 @@ interface InfoServiceAsync {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): InfoServiceAsync.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `get /organization/info`, but is otherwise the same as
          * [InfoServiceAsync.retrieve].
          */
-        @MustBeClosed
         fun retrieve(
             params: InfoRetrieveParams
-        ): CompletableFuture<HttpResponseFor<InfoRetrieveResponse>> =
+        ): CompletableFuture<HttpResponseFor<OrganizationTableWithMembers>> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
-        @MustBeClosed
+        /** @see retrieve */
         fun retrieve(
             params: InfoRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<InfoRetrieveResponse>>
+        ): CompletableFuture<HttpResponseFor<OrganizationTableWithMembers>>
 
         /**
          * Returns a raw HTTP response for `post /organization/info`, but is otherwise the same as
          * [InfoServiceAsync.deprecated].
          */
-        @MustBeClosed
         fun deprecated(
             params: InfoDeprecatedParams
         ): CompletableFuture<HttpResponseFor<InfoDeprecatedResponse>> =
             deprecated(params, RequestOptions.none())
 
-        /** @see [deprecated] */
-        @MustBeClosed
+        /** @see deprecated */
         fun deprecated(
             params: InfoDeprecatedParams,
             requestOptions: RequestOptions = RequestOptions.none(),

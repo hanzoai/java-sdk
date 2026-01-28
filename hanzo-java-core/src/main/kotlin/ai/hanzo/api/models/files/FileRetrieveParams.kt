@@ -7,6 +7,8 @@ import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import java.util.Objects
+import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /**
  * Returns information about a specific file. that can be used across - Assistants API, Batch API
@@ -24,17 +26,19 @@ import java.util.Objects
 class FileRetrieveParams
 private constructor(
     private val provider: String,
-    private val fileId: String,
+    private val fileId: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
     fun provider(): String = provider
 
-    fun fileId(): String = fileId
+    fun fileId(): Optional<String> = Optional.ofNullable(fileId)
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
@@ -47,7 +51,6 @@ private constructor(
          * The following fields are required:
          * ```java
          * .provider()
-         * .fileId()
          * ```
          */
         @JvmStatic fun builder() = Builder()
@@ -71,7 +74,10 @@ private constructor(
 
         fun provider(provider: String) = apply { this.provider = provider }
 
-        fun fileId(fileId: String) = apply { this.fileId = fileId }
+        fun fileId(fileId: String?) = apply { this.fileId = fileId }
+
+        /** Alias for calling [Builder.fileId] with `fileId.orElse(null)`. */
+        fun fileId(fileId: Optional<String>) = fileId(fileId.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -179,7 +185,6 @@ private constructor(
          * The following fields are required:
          * ```java
          * .provider()
-         * .fileId()
          * ```
          *
          * @throws IllegalStateException if any required field is unset.
@@ -187,7 +192,7 @@ private constructor(
         fun build(): FileRetrieveParams =
             FileRetrieveParams(
                 checkRequired("provider", provider),
-                checkRequired("fileId", fileId),
+                fileId,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
             )
@@ -196,7 +201,7 @@ private constructor(
     fun _pathParam(index: Int): String =
         when (index) {
             0 -> provider
-            1 -> fileId
+            1 -> fileId ?: ""
             else -> ""
         }
 
@@ -209,10 +214,15 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is FileRetrieveParams && provider == other.provider && fileId == other.fileId && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is FileRetrieveParams &&
+            provider == other.provider &&
+            fileId == other.fileId &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(provider, fileId, additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(provider, fileId, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
         "FileRetrieveParams{provider=$provider, fileId=$fileId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"

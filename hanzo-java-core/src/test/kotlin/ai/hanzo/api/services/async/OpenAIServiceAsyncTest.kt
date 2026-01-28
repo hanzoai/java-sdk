@@ -4,11 +4,6 @@ package ai.hanzo.api.services.async
 
 import ai.hanzo.api.TestServerExtension
 import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
-import ai.hanzo.api.models.openai.OpenAICreateParams
-import ai.hanzo.api.models.openai.OpenAIDeleteParams
-import ai.hanzo.api.models.openai.OpenAIPatchParams
-import ai.hanzo.api.models.openai.OpenAIRetrieveParams
-import ai.hanzo.api.models.openai.OpenAIUpdateParams
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -16,7 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 @ExtendWith(TestServerExtension::class)
 internal class OpenAIServiceAsyncTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun create() {
         val client =
@@ -26,14 +21,13 @@ internal class OpenAIServiceAsyncTest {
                 .build()
         val openaiServiceAsync = client.openai()
 
-        val openaiFuture =
-            openaiServiceAsync.create(OpenAICreateParams.builder().endpoint("endpoint").build())
+        val openaiFuture = openaiServiceAsync.create("endpoint")
 
         val openai = openaiFuture.get()
         openai.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun retrieve() {
         val client =
@@ -43,14 +37,13 @@ internal class OpenAIServiceAsyncTest {
                 .build()
         val openaiServiceAsync = client.openai()
 
-        val openaiFuture =
-            openaiServiceAsync.retrieve(OpenAIRetrieveParams.builder().endpoint("endpoint").build())
+        val openaiFuture = openaiServiceAsync.retrieve("endpoint")
 
         val openai = openaiFuture.get()
         openai.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun update() {
         val client =
@@ -60,14 +53,13 @@ internal class OpenAIServiceAsyncTest {
                 .build()
         val openaiServiceAsync = client.openai()
 
-        val openaiFuture =
-            openaiServiceAsync.update(OpenAIUpdateParams.builder().endpoint("endpoint").build())
+        val openaiFuture = openaiServiceAsync.update("endpoint")
 
         val openai = openaiFuture.get()
         openai.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun delete() {
         val client =
@@ -77,14 +69,13 @@ internal class OpenAIServiceAsyncTest {
                 .build()
         val openaiServiceAsync = client.openai()
 
-        val openaiFuture =
-            openaiServiceAsync.delete(OpenAIDeleteParams.builder().endpoint("endpoint").build())
+        val openaiFuture = openaiServiceAsync.delete("endpoint")
 
         val openai = openaiFuture.get()
         openai.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun patch() {
         val client =
@@ -94,8 +85,7 @@ internal class OpenAIServiceAsyncTest {
                 .build()
         val openaiServiceAsync = client.openai()
 
-        val responseFuture =
-            openaiServiceAsync.patch(OpenAIPatchParams.builder().endpoint("endpoint").build())
+        val responseFuture = openaiServiceAsync.patch("endpoint")
 
         val response = responseFuture.get()
         response.validate()

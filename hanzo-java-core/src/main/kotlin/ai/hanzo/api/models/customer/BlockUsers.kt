@@ -16,8 +16,10 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.util.Collections
 import java.util.Objects
+import kotlin.jvm.optionals.getOrNull
 
 class BlockUsers
+@JsonCreator(mode = JsonCreator.Mode.DISABLED)
 private constructor(
     private val userIds: JsonField<List<String>>,
     private val additionalProperties: MutableMap<String, JsonValue>,
@@ -154,17 +156,32 @@ private constructor(
         validated = true
     }
 
+    fun isValid(): Boolean =
+        try {
+            validate()
+            true
+        } catch (e: HanzoInvalidDataException) {
+            false
+        }
+
+    /**
+     * Returns a score indicating how many valid values are contained in this object recursively.
+     *
+     * Used for best match union deserialization.
+     */
+    @JvmSynthetic internal fun validity(): Int = (userIds.asKnown().getOrNull()?.size ?: 0)
+
     override fun equals(other: Any?): Boolean {
         if (this === other) {
             return true
         }
 
-        return /* spotless:off */ other is BlockUsers && userIds == other.userIds && additionalProperties == other.additionalProperties /* spotless:on */
+        return other is BlockUsers &&
+            userIds == other.userIds &&
+            additionalProperties == other.additionalProperties
     }
 
-    /* spotless:off */
     private val hashCode: Int by lazy { Objects.hash(userIds, additionalProperties) }
-    /* spotless:on */
 
     override fun hashCode(): Int = hashCode
 

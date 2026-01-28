@@ -5,6 +5,7 @@ package ai.hanzo.api.services.async
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.services.async.images.GenerationServiceAsync
 import ai.hanzo.api.services.async.images.GenerationServiceAsyncImpl
+import java.util.function.Consumer
 
 class ImageServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     ImageServiceAsync {
@@ -19,6 +20,9 @@ class ImageServiceAsyncImpl internal constructor(private val clientOptions: Clie
 
     override fun withRawResponse(): ImageServiceAsync.WithRawResponse = withRawResponse
 
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): ImageServiceAsync =
+        ImageServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
+
     override fun generations(): GenerationServiceAsync = generations
 
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
@@ -27,6 +31,13 @@ class ImageServiceAsyncImpl internal constructor(private val clientOptions: Clie
         private val generations: GenerationServiceAsync.WithRawResponse by lazy {
             GenerationServiceAsyncImpl.WithRawResponseImpl(clientOptions)
         }
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ImageServiceAsync.WithRawResponse =
+            ImageServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         override fun generations(): GenerationServiceAsync.WithRawResponse = generations
     }

@@ -3,19 +3,20 @@
 package ai.hanzo.api.services.blocking
 
 import ai.hanzo.api.core.ClientOptions
-import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.handlers.errorBodyHandler
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
-import ai.hanzo.api.core.handlers.withErrorHandler
 import ai.hanzo.api.core.http.HttpMethod
 import ai.hanzo.api.core.http.HttpRequest
+import ai.hanzo.api.core.http.HttpResponse
 import ai.hanzo.api.core.http.HttpResponse.Handler
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepare
 import ai.hanzo.api.models.active.ActiveListCallbacksParams
 import ai.hanzo.api.models.active.ActiveListCallbacksResponse
+import java.util.function.Consumer
 
 class ActiveServiceImpl internal constructor(private val clientOptions: ClientOptions) :
     ActiveService {
@@ -25,6 +26,9 @@ class ActiveServiceImpl internal constructor(private val clientOptions: ClientOp
     }
 
     override fun withRawResponse(): ActiveService.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): ActiveService =
+        ActiveServiceImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun listCallbacks(
         params: ActiveListCallbacksParams,
@@ -36,11 +40,18 @@ class ActiveServiceImpl internal constructor(private val clientOptions: ClientOp
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
         ActiveService.WithRawResponse {
 
-        private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+        private val errorHandler: Handler<HttpResponse> =
+            errorHandler(errorBodyHandler(clientOptions.jsonMapper))
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ActiveService.WithRawResponse =
+            ActiveServiceImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         private val listCallbacksHandler: Handler<ActiveListCallbacksResponse> =
             jsonHandler<ActiveListCallbacksResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun listCallbacks(
             params: ActiveListCallbacksParams,
@@ -49,12 +60,13 @@ class ActiveServiceImpl internal constructor(private val clientOptions: ClientOp
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("active", "callbacks")
                     .build()
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { listCallbacksHandler.handle(it) }
                     .also {

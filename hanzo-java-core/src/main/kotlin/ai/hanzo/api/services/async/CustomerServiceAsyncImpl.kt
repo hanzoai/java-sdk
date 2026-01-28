@@ -3,13 +3,13 @@
 package ai.hanzo.api.services.async
 
 import ai.hanzo.api.core.ClientOptions
-import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.handlers.errorBodyHandler
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
-import ai.hanzo.api.core.handlers.withErrorHandler
 import ai.hanzo.api.core.http.HttpMethod
 import ai.hanzo.api.core.http.HttpRequest
+import ai.hanzo.api.core.http.HttpResponse
 import ai.hanzo.api.core.http.HttpResponse.Handler
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.core.http.json
@@ -22,14 +22,14 @@ import ai.hanzo.api.models.customer.CustomerCreateResponse
 import ai.hanzo.api.models.customer.CustomerDeleteParams
 import ai.hanzo.api.models.customer.CustomerDeleteResponse
 import ai.hanzo.api.models.customer.CustomerListParams
-import ai.hanzo.api.models.customer.CustomerListResponse
 import ai.hanzo.api.models.customer.CustomerRetrieveInfoParams
-import ai.hanzo.api.models.customer.CustomerRetrieveInfoResponse
 import ai.hanzo.api.models.customer.CustomerUnblockParams
 import ai.hanzo.api.models.customer.CustomerUnblockResponse
 import ai.hanzo.api.models.customer.CustomerUpdateParams
 import ai.hanzo.api.models.customer.CustomerUpdateResponse
+import ai.hanzo.api.models.customer.LiteLlmEndUserTable
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class CustomerServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     CustomerServiceAsync {
@@ -39,6 +39,9 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
     }
 
     override fun withRawResponse(): CustomerServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): CustomerServiceAsync =
+        CustomerServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: CustomerCreateParams,
@@ -57,7 +60,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
     override fun list(
         params: CustomerListParams,
         requestOptions: RequestOptions,
-    ): CompletableFuture<List<CustomerListResponse>> =
+    ): CompletableFuture<List<LiteLlmEndUserTable>> =
         // get /customer/list
         withRawResponse().list(params, requestOptions).thenApply { it.parse() }
 
@@ -78,7 +81,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
     override fun retrieveInfo(
         params: CustomerRetrieveInfoParams,
         requestOptions: RequestOptions,
-    ): CompletableFuture<CustomerRetrieveInfoResponse> =
+    ): CompletableFuture<LiteLlmEndUserTable> =
         // get /customer/info
         withRawResponse().retrieveInfo(params, requestOptions).thenApply { it.parse() }
 
@@ -92,11 +95,18 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
         CustomerServiceAsync.WithRawResponse {
 
-        private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+        private val errorHandler: Handler<HttpResponse> =
+            errorHandler(errorBodyHandler(clientOptions.jsonMapper))
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): CustomerServiceAsync.WithRawResponse =
+            CustomerServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         private val createHandler: Handler<CustomerCreateResponse> =
             jsonHandler<CustomerCreateResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun create(
             params: CustomerCreateParams,
@@ -105,6 +115,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("customer", "new")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -113,7 +124,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { createHandler.handle(it) }
                             .also {
@@ -127,7 +138,6 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
 
         private val updateHandler: Handler<CustomerUpdateResponse> =
             jsonHandler<CustomerUpdateResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun update(
             params: CustomerUpdateParams,
@@ -136,6 +146,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("customer", "update")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -144,7 +155,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { updateHandler.handle(it) }
                             .also {
@@ -156,17 +167,17 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
                 }
         }
 
-        private val listHandler: Handler<List<CustomerListResponse>> =
-            jsonHandler<List<CustomerListResponse>>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
+        private val listHandler: Handler<List<LiteLlmEndUserTable>> =
+            jsonHandler<List<LiteLlmEndUserTable>>(clientOptions.jsonMapper)
 
         override fun list(
             params: CustomerListParams,
             requestOptions: RequestOptions,
-        ): CompletableFuture<HttpResponseFor<List<CustomerListResponse>>> {
+        ): CompletableFuture<HttpResponseFor<List<LiteLlmEndUserTable>>> {
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("customer", "list")
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -174,7 +185,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { listHandler.handle(it) }
                             .also {
@@ -188,7 +199,6 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
 
         private val deleteHandler: Handler<CustomerDeleteResponse> =
             jsonHandler<CustomerDeleteResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun delete(
             params: CustomerDeleteParams,
@@ -197,6 +207,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("customer", "delete")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -205,7 +216,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { deleteHandler.handle(it) }
                             .also {
@@ -219,7 +230,6 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
 
         private val blockHandler: Handler<CustomerBlockResponse> =
             jsonHandler<CustomerBlockResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun block(
             params: CustomerBlockParams,
@@ -228,6 +238,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("customer", "block")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -236,7 +247,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { blockHandler.handle(it) }
                             .also {
@@ -248,17 +259,17 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
                 }
         }
 
-        private val retrieveInfoHandler: Handler<CustomerRetrieveInfoResponse> =
-            jsonHandler<CustomerRetrieveInfoResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
+        private val retrieveInfoHandler: Handler<LiteLlmEndUserTable> =
+            jsonHandler<LiteLlmEndUserTable>(clientOptions.jsonMapper)
 
         override fun retrieveInfo(
             params: CustomerRetrieveInfoParams,
             requestOptions: RequestOptions,
-        ): CompletableFuture<HttpResponseFor<CustomerRetrieveInfoResponse>> {
+        ): CompletableFuture<HttpResponseFor<LiteLlmEndUserTable>> {
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("customer", "info")
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -266,7 +277,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { retrieveInfoHandler.handle(it) }
                             .also {
@@ -280,7 +291,6 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
 
         private val unblockHandler: Handler<CustomerUnblockResponse> =
             jsonHandler<CustomerUnblockResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun unblock(
             params: CustomerUnblockParams,
@@ -289,6 +299,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("customer", "unblock")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -297,7 +308,7 @@ class CustomerServiceAsyncImpl internal constructor(private val clientOptions: C
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { unblockHandler.handle(it) }
                             .also {

@@ -3,13 +3,13 @@
 package ai.hanzo.api.services.async
 
 import ai.hanzo.api.core.ClientOptions
-import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.handlers.errorBodyHandler
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
-import ai.hanzo.api.core.handlers.withErrorHandler
 import ai.hanzo.api.core.http.HttpMethod
 import ai.hanzo.api.core.http.HttpRequest
+import ai.hanzo.api.core.http.HttpResponse
 import ai.hanzo.api.core.http.HttpResponse.Handler
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.core.http.json
@@ -22,6 +22,7 @@ import ai.hanzo.api.models.spend.SpendListLogsResponse
 import ai.hanzo.api.models.spend.SpendListTagsParams
 import ai.hanzo.api.models.spend.SpendListTagsResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 class SpendServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     SpendServiceAsync {
@@ -31,6 +32,9 @@ class SpendServiceAsyncImpl internal constructor(private val clientOptions: Clie
     }
 
     override fun withRawResponse(): SpendServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): SpendServiceAsync =
+        SpendServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun calculateSpend(
         params: SpendCalculateSpendParams,
@@ -56,11 +60,18 @@ class SpendServiceAsyncImpl internal constructor(private val clientOptions: Clie
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
         SpendServiceAsync.WithRawResponse {
 
-        private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+        private val errorHandler: Handler<HttpResponse> =
+            errorHandler(errorBodyHandler(clientOptions.jsonMapper))
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): SpendServiceAsync.WithRawResponse =
+            SpendServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         private val calculateSpendHandler: Handler<SpendCalculateSpendResponse> =
             jsonHandler<SpendCalculateSpendResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun calculateSpend(
             params: SpendCalculateSpendParams,
@@ -69,6 +80,7 @@ class SpendServiceAsyncImpl internal constructor(private val clientOptions: Clie
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("spend", "calculate")
                     .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
@@ -77,7 +89,7 @@ class SpendServiceAsyncImpl internal constructor(private val clientOptions: Clie
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { calculateSpendHandler.handle(it) }
                             .also {
@@ -91,7 +103,6 @@ class SpendServiceAsyncImpl internal constructor(private val clientOptions: Clie
 
         private val listLogsHandler: Handler<List<SpendListLogsResponse>> =
             jsonHandler<List<SpendListLogsResponse>>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun listLogs(
             params: SpendListLogsParams,
@@ -100,6 +111,7 @@ class SpendServiceAsyncImpl internal constructor(private val clientOptions: Clie
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("spend", "logs")
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -107,7 +119,7 @@ class SpendServiceAsyncImpl internal constructor(private val clientOptions: Clie
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { listLogsHandler.handle(it) }
                             .also {
@@ -121,7 +133,6 @@ class SpendServiceAsyncImpl internal constructor(private val clientOptions: Clie
 
         private val listTagsHandler: Handler<List<SpendListTagsResponse>> =
             jsonHandler<List<SpendListTagsResponse>>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun listTags(
             params: SpendListTagsParams,
@@ -130,6 +141,7 @@ class SpendServiceAsyncImpl internal constructor(private val clientOptions: Clie
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("spend", "tags")
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -137,7 +149,7 @@ class SpendServiceAsyncImpl internal constructor(private val clientOptions: Clie
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { listTagsHandler.handle(it) }
                             .also {

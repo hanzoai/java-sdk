@@ -24,7 +24,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 @ExtendWith(TestServerExtension::class)
 internal class KeyServiceTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun update() {
         val client =
@@ -37,33 +37,126 @@ internal class KeyServiceTest {
         val key =
             keyService.update(
                 KeyUpdateParams.builder()
-                    .llmChangedBy("llm-changed-by")
+                    .litellmChangedBy("litellm-changed-by")
                     .key("key")
-                    .aliases(JsonValue.from(mapOf<String, Any>()))
+                    .aliases(
+                        KeyUpdateParams.Aliases.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
                     .addAllowedCacheControl(JsonValue.from(mapOf<String, Any>()))
+                    .addAllowedPassthroughRoute(JsonValue.from(mapOf<String, Any>()))
+                    .addAllowedRoute(JsonValue.from(mapOf<String, Any>()))
+                    .addAllowedVectorStoreIndex(
+                        KeyUpdateParams.AllowedVectorStoreIndex.builder()
+                            .indexName("index_name")
+                            .addIndexPermission(
+                                KeyUpdateParams.AllowedVectorStoreIndex.IndexPermission.READ
+                            )
+                            .build()
+                    )
+                    .autoRotate(true)
                     .blocked(true)
                     .budgetDuration("budget_duration")
                     .budgetId("budget_id")
-                    .config(JsonValue.from(mapOf<String, Any>()))
+                    .config(
+                        KeyUpdateParams.Config.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
                     .duration("duration")
                     .addEnforcedParam("string")
                     .addGuardrail("string")
                     .keyAlias("key_alias")
                     .maxBudget(0.0)
                     .maxParallelRequests(0L)
-                    .metadata(JsonValue.from(mapOf<String, Any>()))
-                    .modelMaxBudget(JsonValue.from(mapOf<String, Any>()))
-                    .modelRpmLimit(JsonValue.from(mapOf<String, Any>()))
-                    .modelTpmLimit(JsonValue.from(mapOf<String, Any>()))
+                    .metadata(
+                        KeyUpdateParams.Metadata.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
+                    .modelMaxBudget(
+                        KeyUpdateParams.ModelMaxBudget.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
+                    .modelRpmLimit(
+                        KeyUpdateParams.ModelRpmLimit.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
+                    .modelTpmLimit(
+                        KeyUpdateParams.ModelTpmLimit.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
                     .addModel(JsonValue.from(mapOf<String, Any>()))
-                    .permissions(JsonValue.from(mapOf<String, Any>()))
+                    .objectPermission(
+                        KeyUpdateParams.ObjectPermission.builder()
+                            .addAgentAccessGroup("string")
+                            .addAgent("string")
+                            .addMcpAccessGroup("string")
+                            .addMcpServer("string")
+                            .mcpToolPermissions(
+                                KeyUpdateParams.ObjectPermission.McpToolPermissions.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from(listOf("string")))
+                                    .build()
+                            )
+                            .addVectorStore("string")
+                            .build()
+                    )
+                    .permissions(
+                        KeyUpdateParams.Permissions.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
+                    .addPrompt("string")
+                    .rotationInterval("rotation_interval")
+                    .routerSettings(
+                        KeyUpdateParams.RouterSettings.builder()
+                            .allowedFails(0L)
+                            .addContextWindowFallback(
+                                KeyUpdateParams.RouterSettings.ContextWindowFallback.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                                    .build()
+                            )
+                            .cooldownTime(0.0)
+                            .addFallback(
+                                KeyUpdateParams.RouterSettings.Fallback.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                                    .build()
+                            )
+                            .maxRetries(0L)
+                            .modelGroupAlias(
+                                KeyUpdateParams.RouterSettings.ModelGroupAlias.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from("string"))
+                                    .build()
+                            )
+                            .modelGroupRetryPolicy(
+                                KeyUpdateParams.RouterSettings.ModelGroupRetryPolicy.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                                    .build()
+                            )
+                            .numRetries(0L)
+                            .retryAfter(0.0)
+                            .routingStrategy("routing_strategy")
+                            .routingStrategyArgs(
+                                KeyUpdateParams.RouterSettings.RoutingStrategyArgs.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                                    .build()
+                            )
+                            .timeout(0.0)
+                            .build()
+                    )
                     .rpmLimit(0L)
+                    .rpmLimitType(KeyUpdateParams.RpmLimitType.GUARANTEED_THROUGHPUT)
                     .spend(0.0)
                     .addTag("string")
                     .teamId("team_id")
                     .tempBudgetExpiry(OffsetDateTime.parse("2019-12-27T18:11:19.117Z"))
                     .tempBudgetIncrease(0.0)
                     .tpmLimit(0L)
+                    .tpmLimitType(KeyUpdateParams.TpmLimitType.GUARANTEED_THROUGHPUT)
                     .userId("user_id")
                     .build()
             )
@@ -71,7 +164,7 @@ internal class KeyServiceTest {
         key.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun list() {
         val client =
@@ -81,24 +174,30 @@ internal class KeyServiceTest {
                 .build()
         val keyService = client.key()
 
-        val key =
+        val keys =
             keyService.list(
                 KeyListParams.builder()
+                    .addExpand("string")
+                    .includeCreatedByKeys(true)
                     .includeTeamKeys(true)
                     .keyAlias("key_alias")
+                    .keyHash("key_hash")
                     .organizationId("organization_id")
                     .page(1L)
                     .returnFullObject(true)
                     .size(1L)
+                    .sortBy("sort_by")
+                    .sortOrder("sort_order")
+                    .status("status")
                     .teamId("team_id")
                     .userId("user_id")
                     .build()
             )
 
-        key.validate()
+        keys.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun delete() {
         val client =
@@ -111,7 +210,7 @@ internal class KeyServiceTest {
         val key =
             keyService.delete(
                 KeyDeleteParams.builder()
-                    .llmChangedBy("llm-changed-by")
+                    .litellmChangedBy("litellm-changed-by")
                     .addKeyAlias("string")
                     .addKey("string")
                     .build()
@@ -120,7 +219,7 @@ internal class KeyServiceTest {
         key.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun block() {
         val client =
@@ -133,7 +232,7 @@ internal class KeyServiceTest {
         val response =
             keyService.block(
                 KeyBlockParams.builder()
-                    .llmChangedBy("llm-changed-by")
+                    .litellmChangedBy("litellm-changed-by")
                     .blockKeyRequest(BlockKeyRequest.builder().key("key").build())
                     .build()
             )
@@ -142,7 +241,7 @@ internal class KeyServiceTest {
         unwrappedResponse?.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun checkHealth() {
         val client =
@@ -157,7 +256,7 @@ internal class KeyServiceTest {
         response.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun generate() {
         val client =
@@ -170,33 +269,128 @@ internal class KeyServiceTest {
         val generateKeyResponse =
             keyService.generate(
                 KeyGenerateParams.builder()
-                    .llmChangedBy("llm-changed-by")
-                    .aliases(JsonValue.from(mapOf<String, Any>()))
+                    .litellmChangedBy("litellm-changed-by")
+                    .aliases(
+                        KeyGenerateParams.Aliases.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
                     .addAllowedCacheControl(JsonValue.from(mapOf<String, Any>()))
+                    .addAllowedPassthroughRoute(JsonValue.from(mapOf<String, Any>()))
+                    .addAllowedRoute(JsonValue.from(mapOf<String, Any>()))
+                    .addAllowedVectorStoreIndex(
+                        KeyGenerateParams.AllowedVectorStoreIndex.builder()
+                            .indexName("index_name")
+                            .addIndexPermission(
+                                KeyGenerateParams.AllowedVectorStoreIndex.IndexPermission.READ
+                            )
+                            .build()
+                    )
+                    .autoRotate(true)
                     .blocked(true)
                     .budgetDuration("budget_duration")
                     .budgetId("budget_id")
-                    .config(JsonValue.from(mapOf<String, Any>()))
+                    .config(
+                        KeyGenerateParams.Config.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
                     .duration("duration")
                     .addEnforcedParam("string")
                     .addGuardrail("string")
                     .key("key")
                     .keyAlias("key_alias")
+                    .keyType(KeyGenerateParams.KeyType.LLM_API)
                     .maxBudget(0.0)
                     .maxParallelRequests(0L)
-                    .metadata(JsonValue.from(mapOf<String, Any>()))
-                    .modelMaxBudget(JsonValue.from(mapOf<String, Any>()))
-                    .modelRpmLimit(JsonValue.from(mapOf<String, Any>()))
-                    .modelTpmLimit(JsonValue.from(mapOf<String, Any>()))
+                    .metadata(
+                        KeyGenerateParams.Metadata.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
+                    .modelMaxBudget(
+                        KeyGenerateParams.ModelMaxBudget.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
+                    .modelRpmLimit(
+                        KeyGenerateParams.ModelRpmLimit.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
+                    .modelTpmLimit(
+                        KeyGenerateParams.ModelTpmLimit.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
                     .addModel(JsonValue.from(mapOf<String, Any>()))
-                    .permissions(JsonValue.from(mapOf<String, Any>()))
+                    .objectPermission(
+                        KeyGenerateParams.ObjectPermission.builder()
+                            .addAgentAccessGroup("string")
+                            .addAgent("string")
+                            .addMcpAccessGroup("string")
+                            .addMcpServer("string")
+                            .mcpToolPermissions(
+                                KeyGenerateParams.ObjectPermission.McpToolPermissions.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from(listOf("string")))
+                                    .build()
+                            )
+                            .addVectorStore("string")
+                            .build()
+                    )
+                    .organizationId("organization_id")
+                    .permissions(
+                        KeyGenerateParams.Permissions.builder()
+                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                            .build()
+                    )
+                    .addPrompt("string")
+                    .rotationInterval("rotation_interval")
+                    .routerSettings(
+                        KeyGenerateParams.RouterSettings.builder()
+                            .allowedFails(0L)
+                            .addContextWindowFallback(
+                                KeyGenerateParams.RouterSettings.ContextWindowFallback.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                                    .build()
+                            )
+                            .cooldownTime(0.0)
+                            .addFallback(
+                                KeyGenerateParams.RouterSettings.Fallback.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                                    .build()
+                            )
+                            .maxRetries(0L)
+                            .modelGroupAlias(
+                                KeyGenerateParams.RouterSettings.ModelGroupAlias.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from("string"))
+                                    .build()
+                            )
+                            .modelGroupRetryPolicy(
+                                KeyGenerateParams.RouterSettings.ModelGroupRetryPolicy.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                                    .build()
+                            )
+                            .numRetries(0L)
+                            .retryAfter(0.0)
+                            .routingStrategy("routing_strategy")
+                            .routingStrategyArgs(
+                                KeyGenerateParams.RouterSettings.RoutingStrategyArgs.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                                    .build()
+                            )
+                            .timeout(0.0)
+                            .build()
+                    )
                     .rpmLimit(0L)
+                    .rpmLimitType(KeyGenerateParams.RpmLimitType.GUARANTEED_THROUGHPUT)
                     .sendInviteEmail(true)
                     .softBudget(0.0)
                     .spend(0.0)
                     .addTag("string")
                     .teamId("team_id")
                     .tpmLimit(0L)
+                    .tpmLimitType(KeyGenerateParams.TpmLimitType.GUARANTEED_THROUGHPUT)
                     .userId("user_id")
                     .build()
             )
@@ -204,7 +398,7 @@ internal class KeyServiceTest {
         generateKeyResponse.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun regenerateByKey() {
         val client =
@@ -218,36 +412,141 @@ internal class KeyServiceTest {
             keyService.regenerateByKey(
                 KeyRegenerateByKeyParams.builder()
                     .pathKey("key")
-                    .llmChangedBy("llm-changed-by")
+                    .litellmChangedBy("litellm-changed-by")
                     .regenerateKeyRequest(
                         RegenerateKeyRequest.builder()
-                            .aliases(JsonValue.from(mapOf<String, Any>()))
+                            .aliases(
+                                RegenerateKeyRequest.Aliases.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                                    .build()
+                            )
                             .addAllowedCacheControl(JsonValue.from(mapOf<String, Any>()))
+                            .addAllowedPassthroughRoute(JsonValue.from(mapOf<String, Any>()))
+                            .addAllowedRoute(JsonValue.from(mapOf<String, Any>()))
+                            .addAllowedVectorStoreIndex(
+                                RegenerateKeyRequest.AllowedVectorStoreIndex.builder()
+                                    .indexName("index_name")
+                                    .addIndexPermission(
+                                        RegenerateKeyRequest.AllowedVectorStoreIndex.IndexPermission
+                                            .READ
+                                    )
+                                    .build()
+                            )
+                            .autoRotate(true)
                             .blocked(true)
                             .budgetDuration("budget_duration")
                             .budgetId("budget_id")
-                            .config(JsonValue.from(mapOf<String, Any>()))
+                            .config(
+                                RegenerateKeyRequest.Config.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                                    .build()
+                            )
                             .duration("duration")
                             .addEnforcedParam("string")
                             .addGuardrail("string")
                             .key("key")
                             .keyAlias("key_alias")
+                            .keyType(RegenerateKeyRequest.KeyType.LLM_API)
                             .maxBudget(0.0)
                             .maxParallelRequests(0L)
-                            .metadata(JsonValue.from(mapOf<String, Any>()))
-                            .modelMaxBudget(JsonValue.from(mapOf<String, Any>()))
-                            .modelRpmLimit(JsonValue.from(mapOf<String, Any>()))
-                            .modelTpmLimit(JsonValue.from(mapOf<String, Any>()))
+                            .metadata(
+                                RegenerateKeyRequest.Metadata.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                                    .build()
+                            )
+                            .modelMaxBudget(
+                                RegenerateKeyRequest.ModelMaxBudget.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                                    .build()
+                            )
+                            .modelRpmLimit(
+                                RegenerateKeyRequest.ModelRpmLimit.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                                    .build()
+                            )
+                            .modelTpmLimit(
+                                RegenerateKeyRequest.ModelTpmLimit.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                                    .build()
+                            )
                             .addModel(JsonValue.from(mapOf<String, Any>()))
+                            .newKey("new_key")
                             .newMasterKey("new_master_key")
-                            .permissions(JsonValue.from(mapOf<String, Any>()))
+                            .objectPermission(
+                                RegenerateKeyRequest.ObjectPermission.builder()
+                                    .addAgentAccessGroup("string")
+                                    .addAgent("string")
+                                    .addMcpAccessGroup("string")
+                                    .addMcpServer("string")
+                                    .mcpToolPermissions(
+                                        RegenerateKeyRequest.ObjectPermission.McpToolPermissions
+                                            .builder()
+                                            .putAdditionalProperty(
+                                                "foo",
+                                                JsonValue.from(listOf("string")),
+                                            )
+                                            .build()
+                                    )
+                                    .addVectorStore("string")
+                                    .build()
+                            )
+                            .organizationId("organization_id")
+                            .permissions(
+                                RegenerateKeyRequest.Permissions.builder()
+                                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                                    .build()
+                            )
+                            .addPrompt("string")
+                            .rotationInterval("rotation_interval")
+                            .routerSettings(
+                                RegenerateKeyRequest.RouterSettings.builder()
+                                    .allowedFails(0L)
+                                    .addContextWindowFallback(
+                                        RegenerateKeyRequest.RouterSettings.ContextWindowFallback
+                                            .builder()
+                                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                                            .build()
+                                    )
+                                    .cooldownTime(0.0)
+                                    .addFallback(
+                                        RegenerateKeyRequest.RouterSettings.Fallback.builder()
+                                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                                            .build()
+                                    )
+                                    .maxRetries(0L)
+                                    .modelGroupAlias(
+                                        RegenerateKeyRequest.RouterSettings.ModelGroupAlias
+                                            .builder()
+                                            .putAdditionalProperty("foo", JsonValue.from("string"))
+                                            .build()
+                                    )
+                                    .modelGroupRetryPolicy(
+                                        RegenerateKeyRequest.RouterSettings.ModelGroupRetryPolicy
+                                            .builder()
+                                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                                            .build()
+                                    )
+                                    .numRetries(0L)
+                                    .retryAfter(0.0)
+                                    .routingStrategy("routing_strategy")
+                                    .routingStrategyArgs(
+                                        RegenerateKeyRequest.RouterSettings.RoutingStrategyArgs
+                                            .builder()
+                                            .putAdditionalProperty("foo", JsonValue.from("bar"))
+                                            .build()
+                                    )
+                                    .timeout(0.0)
+                                    .build()
+                            )
                             .rpmLimit(0L)
+                            .rpmLimitType(RegenerateKeyRequest.RpmLimitType.GUARANTEED_THROUGHPUT)
                             .sendInviteEmail(true)
                             .softBudget(0.0)
                             .spend(0.0)
                             .addTag("string")
                             .teamId("team_id")
                             .tpmLimit(0L)
+                            .tpmLimitType(RegenerateKeyRequest.TpmLimitType.GUARANTEED_THROUGHPUT)
                             .userId("user_id")
                             .build()
                     )
@@ -258,7 +557,7 @@ internal class KeyServiceTest {
         unwrappedGenerateKeyResponse?.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun retrieveInfo() {
         val client =
@@ -273,7 +572,7 @@ internal class KeyServiceTest {
         response.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun unblock() {
         val client =
@@ -286,7 +585,7 @@ internal class KeyServiceTest {
         val response =
             keyService.unblock(
                 KeyUnblockParams.builder()
-                    .llmChangedBy("llm-changed-by")
+                    .litellmChangedBy("litellm-changed-by")
                     .blockKeyRequest(BlockKeyRequest.builder().key("key").build())
                     .build()
             )

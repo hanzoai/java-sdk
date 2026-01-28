@@ -5,6 +5,8 @@ package ai.hanzo.api.core
 import ai.hanzo.api.errors.HanzoInvalidDataException
 import java.util.Collections
 import java.util.SortedMap
+import java.util.concurrent.CompletableFuture
+import java.util.concurrent.locks.Lock
 
 @JvmSynthetic
 internal fun <T : Any> T?.getOrThrow(name: String): T =
@@ -24,6 +26,34 @@ internal fun <K, V> Map<K, V>.toImmutable(): Map<K, V> =
 internal fun <K : Comparable<K>, V> SortedMap<K, V>.toImmutable(): SortedMap<K, V> =
     if (isEmpty()) Collections.emptySortedMap()
     else Collections.unmodifiableSortedMap(toSortedMap(comparator()))
+
+/**
+ * Returns all elements that yield the largest value for the given function, or an empty list if
+ * there are zero elements.
+ *
+ * This is similar to [Sequence.maxByOrNull] except it returns _all_ elements that yield the largest
+ * value; not just the first one.
+ */
+@JvmSynthetic
+internal fun <T, R : Comparable<R>> Sequence<T>.allMaxBy(selector: (T) -> R): List<T> {
+    var maxValue: R? = null
+    val maxElements = mutableListOf<T>()
+
+    val iterator = iterator()
+    while (iterator.hasNext()) {
+        val element = iterator.next()
+        val value = selector(element)
+        if (maxValue == null || value > maxValue) {
+            maxValue = value
+            maxElements.clear()
+            maxElements.add(element)
+        } else if (value == maxValue) {
+            maxElements.add(element)
+        }
+    }
+
+    return maxElements
+}
 
 /**
  * Returns whether [this] is equal to [other].
@@ -62,3 +92,24 @@ internal fun Any?.contentToString(): String {
 }
 
 internal interface Enum
+
+/**
+ * Executes the given [action] while holding the lock, returning a [CompletableFuture] with the
+ * result.
+ *
+ * @param action The asynchronous action to execute while holding the lock
+ * @return A [CompletableFuture] that completes with the result of the action
+ */
+@JvmSynthetic
+internal fun <T> Lock.withLockAsync(action: () -> CompletableFuture<T>): CompletableFuture<T> {
+    lock()
+    val future =
+        try {
+            action()
+        } catch (e: Throwable) {
+            unlock()
+            throw e
+        }
+    future.whenComplete { _, _ -> unlock() }
+    return future
+}

@@ -3,13 +3,14 @@
 package ai.hanzo.api.services.async
 
 import ai.hanzo.api.core.ClientOptions
-import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.core.RequestOptions
+import ai.hanzo.api.core.checkRequired
+import ai.hanzo.api.core.handlers.errorBodyHandler
 import ai.hanzo.api.core.handlers.errorHandler
 import ai.hanzo.api.core.handlers.jsonHandler
-import ai.hanzo.api.core.handlers.withErrorHandler
 import ai.hanzo.api.core.http.HttpMethod
 import ai.hanzo.api.core.http.HttpRequest
+import ai.hanzo.api.core.http.HttpResponse
 import ai.hanzo.api.core.http.HttpResponse.Handler
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.core.http.json
@@ -26,6 +27,8 @@ import ai.hanzo.api.models.assemblyai.AssemblyaiRetrieveResponse
 import ai.hanzo.api.models.assemblyai.AssemblyaiUpdateParams
 import ai.hanzo.api.models.assemblyai.AssemblyaiUpdateResponse
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
+import kotlin.jvm.optionals.getOrNull
 
 class AssemblyaiServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
     AssemblyaiServiceAsync {
@@ -35,6 +38,9 @@ class AssemblyaiServiceAsyncImpl internal constructor(private val clientOptions:
     }
 
     override fun withRawResponse(): AssemblyaiServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): AssemblyaiServiceAsync =
+        AssemblyaiServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun create(
         params: AssemblyaiCreateParams,
@@ -74,19 +80,30 @@ class AssemblyaiServiceAsyncImpl internal constructor(private val clientOptions:
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
         AssemblyaiServiceAsync.WithRawResponse {
 
-        private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+        private val errorHandler: Handler<HttpResponse> =
+            errorHandler(errorBodyHandler(clientOptions.jsonMapper))
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): AssemblyaiServiceAsync.WithRawResponse =
+            AssemblyaiServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
 
         private val createHandler: Handler<AssemblyaiCreateResponse> =
             jsonHandler<AssemblyaiCreateResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun create(
             params: AssemblyaiCreateParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<AssemblyaiCreateResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("assemblyai", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -95,7 +112,7 @@ class AssemblyaiServiceAsyncImpl internal constructor(private val clientOptions:
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { createHandler.handle(it) }
                             .also {
@@ -109,15 +126,18 @@ class AssemblyaiServiceAsyncImpl internal constructor(private val clientOptions:
 
         private val retrieveHandler: Handler<AssemblyaiRetrieveResponse> =
             jsonHandler<AssemblyaiRetrieveResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun retrieve(
             params: AssemblyaiRetrieveParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<AssemblyaiRetrieveResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("assemblyai", params._pathParam(0))
                     .build()
                     .prepareAsync(clientOptions, params)
@@ -125,7 +145,7 @@ class AssemblyaiServiceAsyncImpl internal constructor(private val clientOptions:
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { retrieveHandler.handle(it) }
                             .also {
@@ -139,15 +159,18 @@ class AssemblyaiServiceAsyncImpl internal constructor(private val clientOptions:
 
         private val updateHandler: Handler<AssemblyaiUpdateResponse> =
             jsonHandler<AssemblyaiUpdateResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun update(
             params: AssemblyaiUpdateParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<AssemblyaiUpdateResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PUT)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("assemblyai", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -156,7 +179,7 @@ class AssemblyaiServiceAsyncImpl internal constructor(private val clientOptions:
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { updateHandler.handle(it) }
                             .also {
@@ -170,15 +193,18 @@ class AssemblyaiServiceAsyncImpl internal constructor(private val clientOptions:
 
         private val deleteHandler: Handler<AssemblyaiDeleteResponse> =
             jsonHandler<AssemblyaiDeleteResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun delete(
             params: AssemblyaiDeleteParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<AssemblyaiDeleteResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("assemblyai", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -187,7 +213,7 @@ class AssemblyaiServiceAsyncImpl internal constructor(private val clientOptions:
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { deleteHandler.handle(it) }
                             .also {
@@ -201,15 +227,18 @@ class AssemblyaiServiceAsyncImpl internal constructor(private val clientOptions:
 
         private val patchHandler: Handler<AssemblyaiPatchResponse> =
             jsonHandler<AssemblyaiPatchResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun patch(
             params: AssemblyaiPatchParams,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<AssemblyaiPatchResponse>> {
+            // We check here instead of in the params builder because this can be specified
+            // positionally or in the params class.
+            checkRequired("endpoint", params.endpoint().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PATCH)
+                    .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("assemblyai", params._pathParam(0))
                     .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
                     .build()
@@ -218,7 +247,7 @@ class AssemblyaiServiceAsyncImpl internal constructor(private val clientOptions:
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { patchHandler.handle(it) }
                             .also {

@@ -4,11 +4,6 @@ package ai.hanzo.api.services.async
 
 import ai.hanzo.api.TestServerExtension
 import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
-import ai.hanzo.api.models.azure.AzureCallParams
-import ai.hanzo.api.models.azure.AzureCreateParams
-import ai.hanzo.api.models.azure.AzureDeleteParams
-import ai.hanzo.api.models.azure.AzurePatchParams
-import ai.hanzo.api.models.azure.AzureUpdateParams
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -16,7 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 @ExtendWith(TestServerExtension::class)
 internal class AzureServiceAsyncTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun create() {
         val client =
@@ -26,14 +21,13 @@ internal class AzureServiceAsyncTest {
                 .build()
         val azureServiceAsync = client.azure()
 
-        val azureFuture =
-            azureServiceAsync.create(AzureCreateParams.builder().endpoint("endpoint").build())
+        val azureFuture = azureServiceAsync.create("endpoint")
 
         val azure = azureFuture.get()
         azure.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun update() {
         val client =
@@ -43,14 +37,13 @@ internal class AzureServiceAsyncTest {
                 .build()
         val azureServiceAsync = client.azure()
 
-        val azureFuture =
-            azureServiceAsync.update(AzureUpdateParams.builder().endpoint("endpoint").build())
+        val azureFuture = azureServiceAsync.update("endpoint")
 
         val azure = azureFuture.get()
         azure.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun delete() {
         val client =
@@ -60,14 +53,13 @@ internal class AzureServiceAsyncTest {
                 .build()
         val azureServiceAsync = client.azure()
 
-        val azureFuture =
-            azureServiceAsync.delete(AzureDeleteParams.builder().endpoint("endpoint").build())
+        val azureFuture = azureServiceAsync.delete("endpoint")
 
         val azure = azureFuture.get()
         azure.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun call() {
         val client =
@@ -77,14 +69,13 @@ internal class AzureServiceAsyncTest {
                 .build()
         val azureServiceAsync = client.azure()
 
-        val responseFuture =
-            azureServiceAsync.call(AzureCallParams.builder().endpoint("endpoint").build())
+        val responseFuture = azureServiceAsync.call("endpoint")
 
         val response = responseFuture.get()
         response.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun patch() {
         val client =
@@ -94,8 +85,7 @@ internal class AzureServiceAsyncTest {
                 .build()
         val azureServiceAsync = client.azure()
 
-        val responseFuture =
-            azureServiceAsync.patch(AzurePatchParams.builder().endpoint("endpoint").build())
+        val responseFuture = azureServiceAsync.patch("endpoint")
 
         val response = responseFuture.get()
         response.validate()

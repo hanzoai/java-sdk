@@ -3,41 +3,42 @@
 package ai.hanzo.api.models.azure
 
 import ai.hanzo.api.core.Params
-import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import java.util.Objects
+import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 /**
  * Call any azure endpoint using the proxy.
  *
  * Just use `{PROXY_BASE_URL}/azure/{endpoint:path}`
+ *
+ * Checks if the deployment id in the url is a litellm model name. If so, it will route using the
+ * llm_router.allm_passthrough_route.
  */
 class AzureCallParams
 private constructor(
-    private val endpoint: String,
+    private val endpoint: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
-    fun endpoint(): String = endpoint
+    fun endpoint(): Optional<String> = Optional.ofNullable(endpoint)
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
 
     companion object {
 
-        /**
-         * Returns a mutable builder for constructing an instance of [AzureCallParams].
-         *
-         * The following fields are required:
-         * ```java
-         * .endpoint()
-         * ```
-         */
+        @JvmStatic fun none(): AzureCallParams = builder().build()
+
+        /** Returns a mutable builder for constructing an instance of [AzureCallParams]. */
         @JvmStatic fun builder() = Builder()
     }
 
@@ -55,7 +56,10 @@ private constructor(
             additionalQueryParams = azureCallParams.additionalQueryParams.toBuilder()
         }
 
-        fun endpoint(endpoint: String) = apply { this.endpoint = endpoint }
+        fun endpoint(endpoint: String?) = apply { this.endpoint = endpoint }
+
+        /** Alias for calling [Builder.endpoint] with `endpoint.orElse(null)`. */
+        fun endpoint(endpoint: Optional<String>) = endpoint(endpoint.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -159,25 +163,14 @@ private constructor(
          * Returns an immutable instance of [AzureCallParams].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
-         *
-         * The following fields are required:
-         * ```java
-         * .endpoint()
-         * ```
-         *
-         * @throws IllegalStateException if any required field is unset.
          */
         fun build(): AzureCallParams =
-            AzureCallParams(
-                checkRequired("endpoint", endpoint),
-                additionalHeaders.build(),
-                additionalQueryParams.build(),
-            )
+            AzureCallParams(endpoint, additionalHeaders.build(), additionalQueryParams.build())
     }
 
     fun _pathParam(index: Int): String =
         when (index) {
-            0 -> endpoint
+            0 -> endpoint ?: ""
             else -> ""
         }
 
@@ -190,10 +183,13 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is AzureCallParams && endpoint == other.endpoint && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is AzureCallParams &&
+            endpoint == other.endpoint &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(endpoint, additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int = Objects.hash(endpoint, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
         "AzureCallParams{endpoint=$endpoint, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"

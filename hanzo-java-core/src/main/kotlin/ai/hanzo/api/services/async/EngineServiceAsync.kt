@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.async
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.engines.EngineCompleteParams
@@ -9,8 +10,8 @@ import ai.hanzo.api.models.engines.EngineCompleteResponse
 import ai.hanzo.api.models.engines.EngineEmbedParams
 import ai.hanzo.api.models.engines.EngineEmbedResponse
 import ai.hanzo.api.services.async.engines.ChatServiceAsync
-import com.google.errorprone.annotations.MustBeClosed
 import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 interface EngineServiceAsync {
 
@@ -18,6 +19,13 @@ interface EngineServiceAsync {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): EngineServiceAsync
 
     fun chat(): ChatServiceAsync
 
@@ -37,14 +45,39 @@ interface EngineServiceAsync {
      * }'
      * ```
      */
-    fun complete(params: EngineCompleteParams): CompletableFuture<EngineCompleteResponse> =
-        complete(params, RequestOptions.none())
+    fun complete(model: String): CompletableFuture<EngineCompleteResponse> =
+        complete(model, EngineCompleteParams.none())
 
-    /** @see [complete] */
+    /** @see complete */
+    fun complete(
+        model: String,
+        params: EngineCompleteParams = EngineCompleteParams.none(),
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<EngineCompleteResponse> =
+        complete(params.toBuilder().model(model).build(), requestOptions)
+
+    /** @see complete */
+    fun complete(
+        model: String,
+        params: EngineCompleteParams = EngineCompleteParams.none(),
+    ): CompletableFuture<EngineCompleteResponse> = complete(model, params, RequestOptions.none())
+
+    /** @see complete */
     fun complete(
         params: EngineCompleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<EngineCompleteResponse>
+
+    /** @see complete */
+    fun complete(params: EngineCompleteParams): CompletableFuture<EngineCompleteResponse> =
+        complete(params, RequestOptions.none())
+
+    /** @see complete */
+    fun complete(
+        model: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<EngineCompleteResponse> =
+        complete(model, EngineCompleteParams.none(), requestOptions)
 
     /**
      * Follows the exact same API spec as `OpenAI's Embeddings API
@@ -60,10 +93,24 @@ interface EngineServiceAsync {
      * }'
      * ```
      */
+    fun embed(
+        pathModel: String,
+        params: EngineEmbedParams,
+    ): CompletableFuture<EngineEmbedResponse> = embed(pathModel, params, RequestOptions.none())
+
+    /** @see embed */
+    fun embed(
+        pathModel: String,
+        params: EngineEmbedParams,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<EngineEmbedResponse> =
+        embed(params.toBuilder().pathModel(pathModel).build(), requestOptions)
+
+    /** @see embed */
     fun embed(params: EngineEmbedParams): CompletableFuture<EngineEmbedResponse> =
         embed(params, RequestOptions.none())
 
-    /** @see [embed] */
+    /** @see embed */
     fun embed(
         params: EngineEmbedParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -74,37 +121,83 @@ interface EngineServiceAsync {
      */
     interface WithRawResponse {
 
+        /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): EngineServiceAsync.WithRawResponse
+
         fun chat(): ChatServiceAsync.WithRawResponse
 
         /**
          * Returns a raw HTTP response for `post /engines/{model}/completions`, but is otherwise the
          * same as [EngineServiceAsync.complete].
          */
-        @MustBeClosed
-        fun complete(
-            params: EngineCompleteParams
-        ): CompletableFuture<HttpResponseFor<EngineCompleteResponse>> =
-            complete(params, RequestOptions.none())
+        fun complete(model: String): CompletableFuture<HttpResponseFor<EngineCompleteResponse>> =
+            complete(model, EngineCompleteParams.none())
 
-        /** @see [complete] */
-        @MustBeClosed
+        /** @see complete */
+        fun complete(
+            model: String,
+            params: EngineCompleteParams = EngineCompleteParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<EngineCompleteResponse>> =
+            complete(params.toBuilder().model(model).build(), requestOptions)
+
+        /** @see complete */
+        fun complete(
+            model: String,
+            params: EngineCompleteParams = EngineCompleteParams.none(),
+        ): CompletableFuture<HttpResponseFor<EngineCompleteResponse>> =
+            complete(model, params, RequestOptions.none())
+
+        /** @see complete */
         fun complete(
             params: EngineCompleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<EngineCompleteResponse>>
 
+        /** @see complete */
+        fun complete(
+            params: EngineCompleteParams
+        ): CompletableFuture<HttpResponseFor<EngineCompleteResponse>> =
+            complete(params, RequestOptions.none())
+
+        /** @see complete */
+        fun complete(
+            model: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<EngineCompleteResponse>> =
+            complete(model, EngineCompleteParams.none(), requestOptions)
+
         /**
          * Returns a raw HTTP response for `post /engines/{model}/embeddings`, but is otherwise the
          * same as [EngineServiceAsync.embed].
          */
-        @MustBeClosed
+        fun embed(
+            pathModel: String,
+            params: EngineEmbedParams,
+        ): CompletableFuture<HttpResponseFor<EngineEmbedResponse>> =
+            embed(pathModel, params, RequestOptions.none())
+
+        /** @see embed */
+        fun embed(
+            pathModel: String,
+            params: EngineEmbedParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<EngineEmbedResponse>> =
+            embed(params.toBuilder().pathModel(pathModel).build(), requestOptions)
+
+        /** @see embed */
         fun embed(
             params: EngineEmbedParams
         ): CompletableFuture<HttpResponseFor<EngineEmbedResponse>> =
             embed(params, RequestOptions.none())
 
-        /** @see [embed] */
-        @MustBeClosed
+        /** @see embed */
         fun embed(
             params: EngineEmbedParams,
             requestOptions: RequestOptions = RequestOptions.none(),

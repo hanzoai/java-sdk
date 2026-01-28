@@ -2,11 +2,13 @@
 
 package ai.hanzo.api.services.blocking.model
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.model.info.InfoListParams
 import ai.hanzo.api.models.model.info.InfoListResponse
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface InfoService {
 
@@ -16,49 +18,57 @@ interface InfoService {
     fun withRawResponse(): WithRawResponse
 
     /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): InfoService
+
+    /**
      * Provides more info about each model in /models, including config.yaml descriptions (except
      * api key and api base)
      *
-     * Parameters: llm_model_id: Optional[str] = None (this is the value of `x-llm-model-id`
+     * Parameters: litellm_model_id: Optional[str] = None (this is the value of `x-litellm-model-id`
      * returned in response headers)
      *
-     *     - When llm_model_id is passed, it will return the info for that specific model
-     *     - When llm_model_id is not passed, it will return the info for all models
+     *     - When litellm_model_id is passed, it will return the info for that specific model
+     *     - When litellm_model_id is not passed, it will return the info for all models
      *
      * Returns: Returns a dictionary containing information about each model.
      *
      * Example Response:
      * ```json
      * {
-     *   "data": [
-     *     {
-     *       "model_name": "fake-openai-endpoint",
-     *       "llm_params": {
-     *         "api_base": "https://exampleopenaiendpoint-production.up.railway.app/",
-     *         "model": "openai/fake"
-     *       },
-     *       "model_info": {
-     *         "id": "112f74fab24a7a5245d2ced3536dd8f5f9192c57ee6e332af0f0512e08bed5af",
-     *         "db_model": false
-     *       }
-     *     }
-     *   ]
+     *     "data": [
+     *                 {
+     *                     "model_name": "fake-openai-endpoint",
+     *                     "litellm_params": {
+     *                         "api_base": "https://exampleopenaiendpoint-production.up.railway.app/",
+     *                         "model": "openai/fake"
+     *                     },
+     *                     "model_info": {
+     *                         "id": "112f74fab24a7a5245d2ced3536dd8f5f9192c57ee6e332af0f0512e08bed5af",
+     *                         "db_model": false
+     *                     }
+     *                 }
+     *             ]
      * }
+     *
      * ```
      */
     fun list(): InfoListResponse = list(InfoListParams.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(
         params: InfoListParams = InfoListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): InfoListResponse
 
-    /** @see [list] */
+    /** @see list */
     fun list(params: InfoListParams = InfoListParams.none()): InfoListResponse =
         list(params, RequestOptions.none())
 
-    /** @see [list] */
+    /** @see list */
     fun list(requestOptions: RequestOptions): InfoListResponse =
         list(InfoListParams.none(), requestOptions)
 
@@ -66,25 +76,32 @@ interface InfoService {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): InfoService.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `get /model/info`, but is otherwise the same as
          * [InfoService.list].
          */
         @MustBeClosed fun list(): HttpResponseFor<InfoListResponse> = list(InfoListParams.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: InfoListParams = InfoListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<InfoListResponse>
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(
             params: InfoListParams = InfoListParams.none()
         ): HttpResponseFor<InfoListResponse> = list(params, RequestOptions.none())
 
-        /** @see [list] */
+        /** @see list */
         @MustBeClosed
         fun list(requestOptions: RequestOptions): HttpResponseFor<InfoListResponse> =
             list(InfoListParams.none(), requestOptions)

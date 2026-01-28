@@ -20,6 +20,7 @@ import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
 
 class KeyCheckHealthResponse
+@JsonCreator(mode = JsonCreator.Mode.DISABLED)
 private constructor(
     private val key: JsonField<Key>,
     private val loggingCallbacks: JsonField<LoggingCallbacks>,
@@ -38,14 +39,14 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun key(): Optional<Key> = Optional.ofNullable(key.getNullable("key"))
+    fun key(): Optional<Key> = key.getOptional("key")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
     fun loggingCallbacks(): Optional<LoggingCallbacks> =
-        Optional.ofNullable(loggingCallbacks.getNullable("logging_callbacks"))
+        loggingCallbacks.getOptional("logging_callbacks")
 
     /**
      * Returns the raw JSON value of [key].
@@ -159,10 +160,28 @@ private constructor(
             return@apply
         }
 
-        key()
+        key().ifPresent { it.validate() }
         loggingCallbacks().ifPresent { it.validate() }
         validated = true
     }
+
+    fun isValid(): Boolean =
+        try {
+            validate()
+            true
+        } catch (e: HanzoInvalidDataException) {
+            false
+        }
+
+    /**
+     * Returns a score indicating how many valid values are contained in this object recursively.
+     *
+     * Used for best match union deserialization.
+     */
+    @JvmSynthetic
+    internal fun validity(): Int =
+        (key.asKnown().getOrNull()?.validity() ?: 0) +
+            (loggingCallbacks.asKnown().getOrNull()?.validity() ?: 0)
 
     class Key @JsonCreator private constructor(private val value: JsonField<String>) : Enum {
 
@@ -248,12 +267,39 @@ private constructor(
         fun asString(): String =
             _value().asString().orElseThrow { HanzoInvalidDataException("Value is not a String") }
 
+        private var validated: Boolean = false
+
+        fun validate(): Key = apply {
+            if (validated) {
+                return@apply
+            }
+
+            known()
+            validated = true
+        }
+
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
+
+        /**
+         * Returns a score indicating how many valid values are contained in this object
+         * recursively.
+         *
+         * Used for best match union deserialization.
+         */
+        @JvmSynthetic internal fun validity(): Int = if (value() == Value._UNKNOWN) 0 else 1
+
         override fun equals(other: Any?): Boolean {
             if (this === other) {
                 return true
             }
 
-            return /* spotless:off */ other is Key && value == other.value /* spotless:on */
+            return other is Key && value == other.value
         }
 
         override fun hashCode() = value.hashCode()
@@ -262,6 +308,7 @@ private constructor(
     }
 
     class LoggingCallbacks
+    @JsonCreator(mode = JsonCreator.Mode.DISABLED)
     private constructor(
         private val callbacks: JsonField<List<String>>,
         private val details: JsonField<String>,
@@ -282,20 +329,19 @@ private constructor(
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun callbacks(): Optional<List<String>> =
-            Optional.ofNullable(callbacks.getNullable("callbacks"))
+        fun callbacks(): Optional<List<String>> = callbacks.getOptional("callbacks")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun details(): Optional<String> = Optional.ofNullable(details.getNullable("details"))
+        fun details(): Optional<String> = details.getOptional("details")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun status(): Optional<Status> = Optional.ofNullable(status.getNullable("status"))
+        fun status(): Optional<Status> = status.getOptional("status")
 
         /**
          * Returns the raw JSON value of [callbacks].
@@ -446,9 +492,29 @@ private constructor(
 
             callbacks()
             details()
-            status()
+            status().ifPresent { it.validate() }
             validated = true
         }
+
+        fun isValid(): Boolean =
+            try {
+                validate()
+                true
+            } catch (e: HanzoInvalidDataException) {
+                false
+            }
+
+        /**
+         * Returns a score indicating how many valid values are contained in this object
+         * recursively.
+         *
+         * Used for best match union deserialization.
+         */
+        @JvmSynthetic
+        internal fun validity(): Int =
+            (callbacks.asKnown().getOrNull()?.size ?: 0) +
+                (if (details.asKnown().isPresent) 1 else 0) +
+                (status.asKnown().getOrNull()?.validity() ?: 0)
 
         class Status @JsonCreator private constructor(private val value: JsonField<String>) : Enum {
 
@@ -539,12 +605,39 @@ private constructor(
                     HanzoInvalidDataException("Value is not a String")
                 }
 
+            private var validated: Boolean = false
+
+            fun validate(): Status = apply {
+                if (validated) {
+                    return@apply
+                }
+
+                known()
+                validated = true
+            }
+
+            fun isValid(): Boolean =
+                try {
+                    validate()
+                    true
+                } catch (e: HanzoInvalidDataException) {
+                    false
+                }
+
+            /**
+             * Returns a score indicating how many valid values are contained in this object
+             * recursively.
+             *
+             * Used for best match union deserialization.
+             */
+            @JvmSynthetic internal fun validity(): Int = if (value() == Value._UNKNOWN) 0 else 1
+
             override fun equals(other: Any?): Boolean {
                 if (this === other) {
                     return true
                 }
 
-                return /* spotless:off */ other is Status && value == other.value /* spotless:on */
+                return other is Status && value == other.value
             }
 
             override fun hashCode() = value.hashCode()
@@ -557,12 +650,16 @@ private constructor(
                 return true
             }
 
-            return /* spotless:off */ other is LoggingCallbacks && callbacks == other.callbacks && details == other.details && status == other.status && additionalProperties == other.additionalProperties /* spotless:on */
+            return other is LoggingCallbacks &&
+                callbacks == other.callbacks &&
+                details == other.details &&
+                status == other.status &&
+                additionalProperties == other.additionalProperties
         }
 
-        /* spotless:off */
-        private val hashCode: Int by lazy { Objects.hash(callbacks, details, status, additionalProperties) }
-        /* spotless:on */
+        private val hashCode: Int by lazy {
+            Objects.hash(callbacks, details, status, additionalProperties)
+        }
 
         override fun hashCode(): Int = hashCode
 
@@ -575,12 +672,13 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is KeyCheckHealthResponse && key == other.key && loggingCallbacks == other.loggingCallbacks && additionalProperties == other.additionalProperties /* spotless:on */
+        return other is KeyCheckHealthResponse &&
+            key == other.key &&
+            loggingCallbacks == other.loggingCallbacks &&
+            additionalProperties == other.additionalProperties
     }
 
-    /* spotless:off */
     private val hashCode: Int by lazy { Objects.hash(key, loggingCallbacks, additionalProperties) }
-    /* spotless:on */
 
     override fun hashCode(): Int = hashCode
 

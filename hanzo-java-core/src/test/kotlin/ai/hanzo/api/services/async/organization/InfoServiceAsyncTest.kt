@@ -13,7 +13,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 @ExtendWith(TestServerExtension::class)
 internal class InfoServiceAsyncTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun retrieve() {
         val client =
@@ -23,16 +23,16 @@ internal class InfoServiceAsyncTest {
                 .build()
         val infoServiceAsync = client.organization().info()
 
-        val infoFuture =
+        val organizationTableWithMembersFuture =
             infoServiceAsync.retrieve(
                 InfoRetrieveParams.builder().organizationId("organization_id").build()
             )
 
-        val info = infoFuture.get()
-        info.validate()
+        val organizationTableWithMembers = organizationTableWithMembersFuture.get()
+        organizationTableWithMembers.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun deprecated() {
         val client =

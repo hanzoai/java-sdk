@@ -2,6 +2,7 @@
 
 package ai.hanzo.api.services.blocking.team
 
+import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.models.team.model.ModelAddParams
@@ -9,6 +10,7 @@ import ai.hanzo.api.models.team.model.ModelAddResponse
 import ai.hanzo.api.models.team.model.ModelRemoveParams
 import ai.hanzo.api.models.team.model.ModelRemoveResponse
 import com.google.errorprone.annotations.MustBeClosed
+import java.util.function.Consumer
 
 interface ModelService {
 
@@ -16,6 +18,13 @@ interface ModelService {
      * Returns a view of this service that provides access to raw HTTP responses for each method.
      */
     fun withRawResponse(): WithRawResponse
+
+    /**
+     * Returns a view of this service with the given option modifications applied.
+     *
+     * The original service is not modified.
+     */
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): ModelService
 
     /**
      * Add models to a team's allowed model list. Only proxy admin or team admin can add models.
@@ -34,7 +43,7 @@ interface ModelService {
      */
     fun add(params: ModelAddParams): ModelAddResponse = add(params, RequestOptions.none())
 
-    /** @see [add] */
+    /** @see add */
     fun add(
         params: ModelAddParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -59,7 +68,7 @@ interface ModelService {
     fun remove(params: ModelRemoveParams): ModelRemoveResponse =
         remove(params, RequestOptions.none())
 
-    /** @see [remove] */
+    /** @see remove */
     fun remove(
         params: ModelRemoveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -69,6 +78,13 @@ interface ModelService {
     interface WithRawResponse {
 
         /**
+         * Returns a view of this service with the given option modifications applied.
+         *
+         * The original service is not modified.
+         */
+        fun withOptions(modifier: Consumer<ClientOptions.Builder>): ModelService.WithRawResponse
+
+        /**
          * Returns a raw HTTP response for `post /team/model/add`, but is otherwise the same as
          * [ModelService.add].
          */
@@ -76,7 +92,7 @@ interface ModelService {
         fun add(params: ModelAddParams): HttpResponseFor<ModelAddResponse> =
             add(params, RequestOptions.none())
 
-        /** @see [add] */
+        /** @see add */
         @MustBeClosed
         fun add(
             params: ModelAddParams,
@@ -91,7 +107,7 @@ interface ModelService {
         fun remove(params: ModelRemoveParams): HttpResponseFor<ModelRemoveResponse> =
             remove(params, RequestOptions.none())
 
-        /** @see [remove] */
+        /** @see remove */
         @MustBeClosed
         fun remove(
             params: ModelRemoveParams,
