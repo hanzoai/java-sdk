@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2026-01-31)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/hanzoai/java-sdk/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Chores
+
+* **internal:** allow passing args to `./scripts/test` ([7046bb0](https://github.com/hanzoai/java-sdk/commit/7046bb0f7bd5dab1e7c68276cbd44d829067ec20))
+
 ## 0.1.0-alpha.3 (2026-01-28)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/hanzoai/java-sdk/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
