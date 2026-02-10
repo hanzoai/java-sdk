@@ -14,10 +14,6 @@ import kotlin.jvm.optionals.getOrNull
 /**
  * Delete a response by ID.
  *
- * Supports both:
- * - Polling IDs (litellm_poll_*): Deletes from Redis cache
- * - Provider response IDs: Passes through to provider API
- *
  * Follows the OpenAI Responses API spec:
  * https://platform.openai.com/docs/api-reference/responses/delete
  *

@@ -23,9 +23,7 @@ internal class InfoServiceAsyncTest {
         val infoServiceAsync = client.model().info()
 
         val infosFuture =
-            infoServiceAsync.list(
-                InfoListParams.builder().litellmModelId("litellm_model_id").build()
-            )
+            infoServiceAsync.list(InfoListParams.builder().llmModelId("llm_model_id").build())
 
         val infos = infosFuture.get()
         infos.validate()

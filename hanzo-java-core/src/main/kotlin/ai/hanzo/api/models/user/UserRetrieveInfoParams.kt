@@ -17,7 +17,7 @@ import kotlin.jvm.optionals.getOrNull
  * Example request
  *
  * ```
- * curl -X GET 'http://localhost:4000/user/info?user_id=krrish7%40berri.ai'     --header 'Authorization: Bearer sk-1234'
+ * curl -X GET 'http://localhost:4000/user/info?user_id=dev7%40hanzo.ai'     --header 'Authorization: Bearer sk-1234'
  * ```
  */
 class UserRetrieveInfoParams
