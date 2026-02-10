@@ -14,8 +14,6 @@ import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.getOrThrow
 import ai.hanzo.api.core.toImmutable
 import ai.hanzo.api.errors.HanzoInvalidDataException
-import ai.hanzo.api.models.organization.BudgetTable
-import ai.hanzo.api.models.organization.OrganizationMembershipTable
 import com.fasterxml.jackson.annotation.JsonAnyGetter
 import com.fasterxml.jackson.annotation.JsonAnySetter
 import com.fasterxml.jackson.annotation.JsonCreator
@@ -44,24 +42,19 @@ private constructor(
     private val budgetDuration: JsonField<String>,
     private val budgetResetAt: JsonField<OffsetDateTime>,
     private val createdAt: JsonField<OffsetDateTime>,
-    private val litellmModelTable: JsonField<LitellmModelTable>,
+    private val llmModelTable: JsonField<LlmModelTable>,
     private val maxBudget: JsonField<Double>,
     private val maxParallelRequests: JsonField<Long>,
     private val members: JsonField<List<JsonValue>>,
     private val membersWithRoles: JsonField<List<Member>>,
-    private val metadata: JsonField<Metadata>,
+    private val metadata: JsonValue,
     private val modelId: JsonField<Long>,
     private val models: JsonField<List<JsonValue>>,
-    private val objectPermission: JsonField<ObjectPermission>,
-    private val objectPermissionId: JsonField<String>,
     private val organizationId: JsonField<String>,
-    private val routerSettings: JsonField<RouterSettings>,
     private val rpmLimit: JsonField<Long>,
     private val spend: JsonField<Double>,
     private val teamAlias: JsonField<String>,
-    private val teamMemberPermissions: JsonField<List<String>>,
     private val tpmLimit: JsonField<Long>,
-    private val updatedAt: JsonField<OffsetDateTime>,
     private val additionalProperties: MutableMap<String, JsonValue>,
 ) {
 
@@ -87,9 +80,9 @@ private constructor(
         @JsonProperty("created_at")
         @ExcludeMissing
         createdAt: JsonField<OffsetDateTime> = JsonMissing.of(),
-        @JsonProperty("litellm_model_table")
+        @JsonProperty("llm_model_table")
         @ExcludeMissing
-        litellmModelTable: JsonField<LitellmModelTable> = JsonMissing.of(),
+        llmModelTable: JsonField<LlmModelTable> = JsonMissing.of(),
         @JsonProperty("max_budget") @ExcludeMissing maxBudget: JsonField<Double> = JsonMissing.of(),
         @JsonProperty("max_parallel_requests")
         @ExcludeMissing
@@ -100,33 +93,18 @@ private constructor(
         @JsonProperty("members_with_roles")
         @ExcludeMissing
         membersWithRoles: JsonField<List<Member>> = JsonMissing.of(),
-        @JsonProperty("metadata") @ExcludeMissing metadata: JsonField<Metadata> = JsonMissing.of(),
+        @JsonProperty("metadata") @ExcludeMissing metadata: JsonValue = JsonMissing.of(),
         @JsonProperty("model_id") @ExcludeMissing modelId: JsonField<Long> = JsonMissing.of(),
         @JsonProperty("models")
         @ExcludeMissing
         models: JsonField<List<JsonValue>> = JsonMissing.of(),
-        @JsonProperty("object_permission")
-        @ExcludeMissing
-        objectPermission: JsonField<ObjectPermission> = JsonMissing.of(),
-        @JsonProperty("object_permission_id")
-        @ExcludeMissing
-        objectPermissionId: JsonField<String> = JsonMissing.of(),
         @JsonProperty("organization_id")
         @ExcludeMissing
         organizationId: JsonField<String> = JsonMissing.of(),
-        @JsonProperty("router_settings")
-        @ExcludeMissing
-        routerSettings: JsonField<RouterSettings> = JsonMissing.of(),
         @JsonProperty("rpm_limit") @ExcludeMissing rpmLimit: JsonField<Long> = JsonMissing.of(),
         @JsonProperty("spend") @ExcludeMissing spend: JsonField<Double> = JsonMissing.of(),
         @JsonProperty("team_alias") @ExcludeMissing teamAlias: JsonField<String> = JsonMissing.of(),
-        @JsonProperty("team_member_permissions")
-        @ExcludeMissing
-        teamMemberPermissions: JsonField<List<String>> = JsonMissing.of(),
         @JsonProperty("tpm_limit") @ExcludeMissing tpmLimit: JsonField<Long> = JsonMissing.of(),
-        @JsonProperty("updated_at")
-        @ExcludeMissing
-        updatedAt: JsonField<OffsetDateTime> = JsonMissing.of(),
     ) : this(
         teamId,
         updatedTeamMemberships,
@@ -136,7 +114,7 @@ private constructor(
         budgetDuration,
         budgetResetAt,
         createdAt,
-        litellmModelTable,
+        llmModelTable,
         maxBudget,
         maxParallelRequests,
         members,
@@ -144,16 +122,11 @@ private constructor(
         metadata,
         modelId,
         models,
-        objectPermission,
-        objectPermissionId,
         organizationId,
-        routerSettings,
         rpmLimit,
         spend,
         teamAlias,
-        teamMemberPermissions,
         tpmLimit,
-        updatedAt,
         mutableMapOf(),
     )
 
@@ -210,8 +183,7 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun litellmModelTable(): Optional<LitellmModelTable> =
-        litellmModelTable.getOptional("litellm_model_table")
+    fun llmModelTable(): Optional<LlmModelTable> = llmModelTable.getOptional("llm_model_table")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
@@ -240,10 +212,12 @@ private constructor(
         membersWithRoles.getOptional("members_with_roles")
 
     /**
-     * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-     *   server responded with an unexpected value).
+     * This arbitrary value can be deserialized into a custom type using the `convert` method:
+     * ```java
+     * MyClass myObject = teamAddMemberResponse.metadata().convert(MyClass.class);
+     * ```
      */
-    fun metadata(): Optional<Metadata> = metadata.getOptional("metadata")
+    @JsonProperty("metadata") @ExcludeMissing fun _metadata(): JsonValue = metadata
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
@@ -258,32 +232,10 @@ private constructor(
     fun models(): Optional<List<JsonValue>> = models.getOptional("models")
 
     /**
-     * Represents a LiteLLM_ObjectPermissionTable record
-     *
-     * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-     *   server responded with an unexpected value).
-     */
-    fun objectPermission(): Optional<ObjectPermission> =
-        objectPermission.getOptional("object_permission")
-
-    /**
-     * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-     *   server responded with an unexpected value).
-     */
-    fun objectPermissionId(): Optional<String> =
-        objectPermissionId.getOptional("object_permission_id")
-
-    /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
     fun organizationId(): Optional<String> = organizationId.getOptional("organization_id")
-
-    /**
-     * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-     *   server responded with an unexpected value).
-     */
-    fun routerSettings(): Optional<RouterSettings> = routerSettings.getOptional("router_settings")
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
@@ -307,20 +259,7 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun teamMemberPermissions(): Optional<List<String>> =
-        teamMemberPermissions.getOptional("team_member_permissions")
-
-    /**
-     * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-     *   server responded with an unexpected value).
-     */
     fun tpmLimit(): Optional<Long> = tpmLimit.getOptional("tpm_limit")
-
-    /**
-     * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-     *   server responded with an unexpected value).
-     */
-    fun updatedAt(): Optional<OffsetDateTime> = updatedAt.getOptional("updated_at")
 
     /**
      * Returns the raw JSON value of [teamId].
@@ -390,14 +329,13 @@ private constructor(
     fun _createdAt(): JsonField<OffsetDateTime> = createdAt
 
     /**
-     * Returns the raw JSON value of [litellmModelTable].
+     * Returns the raw JSON value of [llmModelTable].
      *
-     * Unlike [litellmModelTable], this method doesn't throw if the JSON field has an unexpected
-     * type.
+     * Unlike [llmModelTable], this method doesn't throw if the JSON field has an unexpected type.
      */
-    @JsonProperty("litellm_model_table")
+    @JsonProperty("llm_model_table")
     @ExcludeMissing
-    fun _litellmModelTable(): JsonField<LitellmModelTable> = litellmModelTable
+    fun _llmModelTable(): JsonField<LlmModelTable> = llmModelTable
 
     /**
      * Returns the raw JSON value of [maxBudget].
@@ -434,13 +372,6 @@ private constructor(
     fun _membersWithRoles(): JsonField<List<Member>> = membersWithRoles
 
     /**
-     * Returns the raw JSON value of [metadata].
-     *
-     * Unlike [metadata], this method doesn't throw if the JSON field has an unexpected type.
-     */
-    @JsonProperty("metadata") @ExcludeMissing fun _metadata(): JsonField<Metadata> = metadata
-
-    /**
      * Returns the raw JSON value of [modelId].
      *
      * Unlike [modelId], this method doesn't throw if the JSON field has an unexpected type.
@@ -455,26 +386,6 @@ private constructor(
     @JsonProperty("models") @ExcludeMissing fun _models(): JsonField<List<JsonValue>> = models
 
     /**
-     * Returns the raw JSON value of [objectPermission].
-     *
-     * Unlike [objectPermission], this method doesn't throw if the JSON field has an unexpected
-     * type.
-     */
-    @JsonProperty("object_permission")
-    @ExcludeMissing
-    fun _objectPermission(): JsonField<ObjectPermission> = objectPermission
-
-    /**
-     * Returns the raw JSON value of [objectPermissionId].
-     *
-     * Unlike [objectPermissionId], this method doesn't throw if the JSON field has an unexpected
-     * type.
-     */
-    @JsonProperty("object_permission_id")
-    @ExcludeMissing
-    fun _objectPermissionId(): JsonField<String> = objectPermissionId
-
-    /**
      * Returns the raw JSON value of [organizationId].
      *
      * Unlike [organizationId], this method doesn't throw if the JSON field has an unexpected type.
@@ -482,15 +393,6 @@ private constructor(
     @JsonProperty("organization_id")
     @ExcludeMissing
     fun _organizationId(): JsonField<String> = organizationId
-
-    /**
-     * Returns the raw JSON value of [routerSettings].
-     *
-     * Unlike [routerSettings], this method doesn't throw if the JSON field has an unexpected type.
-     */
-    @JsonProperty("router_settings")
-    @ExcludeMissing
-    fun _routerSettings(): JsonField<RouterSettings> = routerSettings
 
     /**
      * Returns the raw JSON value of [rpmLimit].
@@ -514,30 +416,11 @@ private constructor(
     @JsonProperty("team_alias") @ExcludeMissing fun _teamAlias(): JsonField<String> = teamAlias
 
     /**
-     * Returns the raw JSON value of [teamMemberPermissions].
-     *
-     * Unlike [teamMemberPermissions], this method doesn't throw if the JSON field has an unexpected
-     * type.
-     */
-    @JsonProperty("team_member_permissions")
-    @ExcludeMissing
-    fun _teamMemberPermissions(): JsonField<List<String>> = teamMemberPermissions
-
-    /**
      * Returns the raw JSON value of [tpmLimit].
      *
      * Unlike [tpmLimit], this method doesn't throw if the JSON field has an unexpected type.
      */
     @JsonProperty("tpm_limit") @ExcludeMissing fun _tpmLimit(): JsonField<Long> = tpmLimit
-
-    /**
-     * Returns the raw JSON value of [updatedAt].
-     *
-     * Unlike [updatedAt], this method doesn't throw if the JSON field has an unexpected type.
-     */
-    @JsonProperty("updated_at")
-    @ExcludeMissing
-    fun _updatedAt(): JsonField<OffsetDateTime> = updatedAt
 
     @JsonAnySetter
     private fun putAdditionalProperty(key: String, value: JsonValue) {
@@ -577,24 +460,19 @@ private constructor(
         private var budgetDuration: JsonField<String> = JsonMissing.of()
         private var budgetResetAt: JsonField<OffsetDateTime> = JsonMissing.of()
         private var createdAt: JsonField<OffsetDateTime> = JsonMissing.of()
-        private var litellmModelTable: JsonField<LitellmModelTable> = JsonMissing.of()
+        private var llmModelTable: JsonField<LlmModelTable> = JsonMissing.of()
         private var maxBudget: JsonField<Double> = JsonMissing.of()
         private var maxParallelRequests: JsonField<Long> = JsonMissing.of()
         private var members: JsonField<MutableList<JsonValue>>? = null
         private var membersWithRoles: JsonField<MutableList<Member>>? = null
-        private var metadata: JsonField<Metadata> = JsonMissing.of()
+        private var metadata: JsonValue = JsonMissing.of()
         private var modelId: JsonField<Long> = JsonMissing.of()
         private var models: JsonField<MutableList<JsonValue>>? = null
-        private var objectPermission: JsonField<ObjectPermission> = JsonMissing.of()
-        private var objectPermissionId: JsonField<String> = JsonMissing.of()
         private var organizationId: JsonField<String> = JsonMissing.of()
-        private var routerSettings: JsonField<RouterSettings> = JsonMissing.of()
         private var rpmLimit: JsonField<Long> = JsonMissing.of()
         private var spend: JsonField<Double> = JsonMissing.of()
         private var teamAlias: JsonField<String> = JsonMissing.of()
-        private var teamMemberPermissions: JsonField<MutableList<String>>? = null
         private var tpmLimit: JsonField<Long> = JsonMissing.of()
-        private var updatedAt: JsonField<OffsetDateTime> = JsonMissing.of()
         private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
 
         @JvmSynthetic
@@ -608,7 +486,7 @@ private constructor(
             budgetDuration = teamAddMemberResponse.budgetDuration
             budgetResetAt = teamAddMemberResponse.budgetResetAt
             createdAt = teamAddMemberResponse.createdAt
-            litellmModelTable = teamAddMemberResponse.litellmModelTable
+            llmModelTable = teamAddMemberResponse.llmModelTable
             maxBudget = teamAddMemberResponse.maxBudget
             maxParallelRequests = teamAddMemberResponse.maxParallelRequests
             members = teamAddMemberResponse.members.map { it.toMutableList() }
@@ -616,17 +494,11 @@ private constructor(
             metadata = teamAddMemberResponse.metadata
             modelId = teamAddMemberResponse.modelId
             models = teamAddMemberResponse.models.map { it.toMutableList() }
-            objectPermission = teamAddMemberResponse.objectPermission
-            objectPermissionId = teamAddMemberResponse.objectPermissionId
             organizationId = teamAddMemberResponse.organizationId
-            routerSettings = teamAddMemberResponse.routerSettings
             rpmLimit = teamAddMemberResponse.rpmLimit
             spend = teamAddMemberResponse.spend
             teamAlias = teamAddMemberResponse.teamAlias
-            teamMemberPermissions =
-                teamAddMemberResponse.teamMemberPermissions.map { it.toMutableList() }
             tpmLimit = teamAddMemberResponse.tpmLimit
-            updatedAt = teamAddMemberResponse.updatedAt
             additionalProperties = teamAddMemberResponse.additionalProperties.toMutableMap()
         }
 
@@ -777,22 +649,22 @@ private constructor(
          */
         fun createdAt(createdAt: JsonField<OffsetDateTime>) = apply { this.createdAt = createdAt }
 
-        fun litellmModelTable(litellmModelTable: LitellmModelTable?) =
-            litellmModelTable(JsonField.ofNullable(litellmModelTable))
+        fun llmModelTable(llmModelTable: LlmModelTable?) =
+            llmModelTable(JsonField.ofNullable(llmModelTable))
 
-        /** Alias for calling [Builder.litellmModelTable] with `litellmModelTable.orElse(null)`. */
-        fun litellmModelTable(litellmModelTable: Optional<LitellmModelTable>) =
-            litellmModelTable(litellmModelTable.getOrNull())
+        /** Alias for calling [Builder.llmModelTable] with `llmModelTable.orElse(null)`. */
+        fun llmModelTable(llmModelTable: Optional<LlmModelTable>) =
+            llmModelTable(llmModelTable.getOrNull())
 
         /**
-         * Sets [Builder.litellmModelTable] to an arbitrary JSON value.
+         * Sets [Builder.llmModelTable] to an arbitrary JSON value.
          *
-         * You should usually call [Builder.litellmModelTable] with a well-typed [LitellmModelTable]
-         * value instead. This method is primarily for setting the field to an undocumented or not
-         * yet supported value.
+         * You should usually call [Builder.llmModelTable] with a well-typed [LlmModelTable] value
+         * instead. This method is primarily for setting the field to an undocumented or not yet
+         * supported value.
          */
-        fun litellmModelTable(litellmModelTable: JsonField<LitellmModelTable>) = apply {
-            this.litellmModelTable = litellmModelTable
+        fun llmModelTable(llmModelTable: JsonField<LlmModelTable>) = apply {
+            this.llmModelTable = llmModelTable
         }
 
         fun maxBudget(maxBudget: Double?) = maxBudget(JsonField.ofNullable(maxBudget))
@@ -895,19 +767,7 @@ private constructor(
                 }
         }
 
-        fun metadata(metadata: Metadata?) = metadata(JsonField.ofNullable(metadata))
-
-        /** Alias for calling [Builder.metadata] with `metadata.orElse(null)`. */
-        fun metadata(metadata: Optional<Metadata>) = metadata(metadata.getOrNull())
-
-        /**
-         * Sets [Builder.metadata] to an arbitrary JSON value.
-         *
-         * You should usually call [Builder.metadata] with a well-typed [Metadata] value instead.
-         * This method is primarily for setting the field to an undocumented or not yet supported
-         * value.
-         */
-        fun metadata(metadata: JsonField<Metadata>) = apply { this.metadata = metadata }
+        fun metadata(metadata: JsonValue) = apply { this.metadata = metadata }
 
         fun modelId(modelId: Long?) = modelId(JsonField.ofNullable(modelId))
 
@@ -954,45 +814,6 @@ private constructor(
                 }
         }
 
-        /** Represents a LiteLLM_ObjectPermissionTable record */
-        fun objectPermission(objectPermission: ObjectPermission?) =
-            objectPermission(JsonField.ofNullable(objectPermission))
-
-        /** Alias for calling [Builder.objectPermission] with `objectPermission.orElse(null)`. */
-        fun objectPermission(objectPermission: Optional<ObjectPermission>) =
-            objectPermission(objectPermission.getOrNull())
-
-        /**
-         * Sets [Builder.objectPermission] to an arbitrary JSON value.
-         *
-         * You should usually call [Builder.objectPermission] with a well-typed [ObjectPermission]
-         * value instead. This method is primarily for setting the field to an undocumented or not
-         * yet supported value.
-         */
-        fun objectPermission(objectPermission: JsonField<ObjectPermission>) = apply {
-            this.objectPermission = objectPermission
-        }
-
-        fun objectPermissionId(objectPermissionId: String?) =
-            objectPermissionId(JsonField.ofNullable(objectPermissionId))
-
-        /**
-         * Alias for calling [Builder.objectPermissionId] with `objectPermissionId.orElse(null)`.
-         */
-        fun objectPermissionId(objectPermissionId: Optional<String>) =
-            objectPermissionId(objectPermissionId.getOrNull())
-
-        /**
-         * Sets [Builder.objectPermissionId] to an arbitrary JSON value.
-         *
-         * You should usually call [Builder.objectPermissionId] with a well-typed [String] value
-         * instead. This method is primarily for setting the field to an undocumented or not yet
-         * supported value.
-         */
-        fun objectPermissionId(objectPermissionId: JsonField<String>) = apply {
-            this.objectPermissionId = objectPermissionId
-        }
-
         fun organizationId(organizationId: String?) =
             organizationId(JsonField.ofNullable(organizationId))
 
@@ -1009,24 +830,6 @@ private constructor(
          */
         fun organizationId(organizationId: JsonField<String>) = apply {
             this.organizationId = organizationId
-        }
-
-        fun routerSettings(routerSettings: RouterSettings?) =
-            routerSettings(JsonField.ofNullable(routerSettings))
-
-        /** Alias for calling [Builder.routerSettings] with `routerSettings.orElse(null)`. */
-        fun routerSettings(routerSettings: Optional<RouterSettings>) =
-            routerSettings(routerSettings.getOrNull())
-
-        /**
-         * Sets [Builder.routerSettings] to an arbitrary JSON value.
-         *
-         * You should usually call [Builder.routerSettings] with a well-typed [RouterSettings] value
-         * instead. This method is primarily for setting the field to an undocumented or not yet
-         * supported value.
-         */
-        fun routerSettings(routerSettings: JsonField<RouterSettings>) = apply {
-            this.routerSettings = routerSettings
         }
 
         fun rpmLimit(rpmLimit: Long?) = rpmLimit(JsonField.ofNullable(rpmLimit))
@@ -1083,39 +886,6 @@ private constructor(
          */
         fun teamAlias(teamAlias: JsonField<String>) = apply { this.teamAlias = teamAlias }
 
-        fun teamMemberPermissions(teamMemberPermissions: List<String>?) =
-            teamMemberPermissions(JsonField.ofNullable(teamMemberPermissions))
-
-        /**
-         * Alias for calling [Builder.teamMemberPermissions] with
-         * `teamMemberPermissions.orElse(null)`.
-         */
-        fun teamMemberPermissions(teamMemberPermissions: Optional<List<String>>) =
-            teamMemberPermissions(teamMemberPermissions.getOrNull())
-
-        /**
-         * Sets [Builder.teamMemberPermissions] to an arbitrary JSON value.
-         *
-         * You should usually call [Builder.teamMemberPermissions] with a well-typed `List<String>`
-         * value instead. This method is primarily for setting the field to an undocumented or not
-         * yet supported value.
-         */
-        fun teamMemberPermissions(teamMemberPermissions: JsonField<List<String>>) = apply {
-            this.teamMemberPermissions = teamMemberPermissions.map { it.toMutableList() }
-        }
-
-        /**
-         * Adds a single [String] to [teamMemberPermissions].
-         *
-         * @throws IllegalStateException if the field was previously set to a non-list.
-         */
-        fun addTeamMemberPermission(teamMemberPermission: String) = apply {
-            teamMemberPermissions =
-                (teamMemberPermissions ?: JsonField.of(mutableListOf())).also {
-                    checkKnown("teamMemberPermissions", it).add(teamMemberPermission)
-                }
-        }
-
         fun tpmLimit(tpmLimit: Long?) = tpmLimit(JsonField.ofNullable(tpmLimit))
 
         /**
@@ -1135,20 +905,6 @@ private constructor(
          * method is primarily for setting the field to an undocumented or not yet supported value.
          */
         fun tpmLimit(tpmLimit: JsonField<Long>) = apply { this.tpmLimit = tpmLimit }
-
-        fun updatedAt(updatedAt: OffsetDateTime?) = updatedAt(JsonField.ofNullable(updatedAt))
-
-        /** Alias for calling [Builder.updatedAt] with `updatedAt.orElse(null)`. */
-        fun updatedAt(updatedAt: Optional<OffsetDateTime>) = updatedAt(updatedAt.getOrNull())
-
-        /**
-         * Sets [Builder.updatedAt] to an arbitrary JSON value.
-         *
-         * You should usually call [Builder.updatedAt] with a well-typed [OffsetDateTime] value
-         * instead. This method is primarily for setting the field to an undocumented or not yet
-         * supported value.
-         */
-        fun updatedAt(updatedAt: JsonField<OffsetDateTime>) = apply { this.updatedAt = updatedAt }
 
         fun additionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
             this.additionalProperties.clear()
@@ -1195,7 +951,7 @@ private constructor(
                 budgetDuration,
                 budgetResetAt,
                 createdAt,
-                litellmModelTable,
+                llmModelTable,
                 maxBudget,
                 maxParallelRequests,
                 (members ?: JsonMissing.of()).map { it.toImmutable() },
@@ -1203,16 +959,11 @@ private constructor(
                 metadata,
                 modelId,
                 (models ?: JsonMissing.of()).map { it.toImmutable() },
-                objectPermission,
-                objectPermissionId,
                 organizationId,
-                routerSettings,
                 rpmLimit,
                 spend,
                 teamAlias,
-                (teamMemberPermissions ?: JsonMissing.of()).map { it.toImmutable() },
                 tpmLimit,
-                updatedAt,
                 additionalProperties.toMutableMap(),
             )
     }
@@ -1232,24 +983,18 @@ private constructor(
         budgetDuration()
         budgetResetAt()
         createdAt()
-        litellmModelTable().ifPresent { it.validate() }
+        llmModelTable().ifPresent { it.validate() }
         maxBudget()
         maxParallelRequests()
         members()
         membersWithRoles().ifPresent { it.forEach { it.validate() } }
-        metadata().ifPresent { it.validate() }
         modelId()
         models()
-        objectPermission().ifPresent { it.validate() }
-        objectPermissionId()
         organizationId()
-        routerSettings().ifPresent { it.validate() }
         rpmLimit()
         spend()
         teamAlias()
-        teamMemberPermissions()
         tpmLimit()
-        updatedAt()
         validated = true
     }
 
@@ -1276,57 +1021,55 @@ private constructor(
             (if (budgetDuration.asKnown().isPresent) 1 else 0) +
             (if (budgetResetAt.asKnown().isPresent) 1 else 0) +
             (if (createdAt.asKnown().isPresent) 1 else 0) +
-            (litellmModelTable.asKnown().getOrNull()?.validity() ?: 0) +
+            (llmModelTable.asKnown().getOrNull()?.validity() ?: 0) +
             (if (maxBudget.asKnown().isPresent) 1 else 0) +
             (if (maxParallelRequests.asKnown().isPresent) 1 else 0) +
             (members.asKnown().getOrNull()?.size ?: 0) +
             (membersWithRoles.asKnown().getOrNull()?.sumOf { it.validity().toInt() } ?: 0) +
-            (metadata.asKnown().getOrNull()?.validity() ?: 0) +
             (if (modelId.asKnown().isPresent) 1 else 0) +
             (models.asKnown().getOrNull()?.size ?: 0) +
-            (objectPermission.asKnown().getOrNull()?.validity() ?: 0) +
-            (if (objectPermissionId.asKnown().isPresent) 1 else 0) +
             (if (organizationId.asKnown().isPresent) 1 else 0) +
-            (routerSettings.asKnown().getOrNull()?.validity() ?: 0) +
             (if (rpmLimit.asKnown().isPresent) 1 else 0) +
             (if (spend.asKnown().isPresent) 1 else 0) +
             (if (teamAlias.asKnown().isPresent) 1 else 0) +
-            (teamMemberPermissions.asKnown().getOrNull()?.size ?: 0) +
-            (if (tpmLimit.asKnown().isPresent) 1 else 0) +
-            (if (updatedAt.asKnown().isPresent) 1 else 0)
+            (if (tpmLimit.asKnown().isPresent) 1 else 0)
 
     class UpdatedTeamMembership
     @JsonCreator(mode = JsonCreator.Mode.DISABLED)
     private constructor(
-        private val litellmBudgetTable: JsonField<BudgetTable>,
+        private val budgetId: JsonField<String>,
+        private val llmBudgetTable: JsonField<LlmBudgetTable>,
         private val teamId: JsonField<String>,
         private val userId: JsonField<String>,
-        private val budgetId: JsonField<String>,
-        private val spend: JsonField<Double>,
         private val additionalProperties: MutableMap<String, JsonValue>,
     ) {
 
         @JsonCreator
         private constructor(
-            @JsonProperty("litellm_budget_table")
-            @ExcludeMissing
-            litellmBudgetTable: JsonField<BudgetTable> = JsonMissing.of(),
-            @JsonProperty("team_id") @ExcludeMissing teamId: JsonField<String> = JsonMissing.of(),
-            @JsonProperty("user_id") @ExcludeMissing userId: JsonField<String> = JsonMissing.of(),
             @JsonProperty("budget_id")
             @ExcludeMissing
             budgetId: JsonField<String> = JsonMissing.of(),
-            @JsonProperty("spend") @ExcludeMissing spend: JsonField<Double> = JsonMissing.of(),
-        ) : this(litellmBudgetTable, teamId, userId, budgetId, spend, mutableMapOf())
+            @JsonProperty("llm_budget_table")
+            @ExcludeMissing
+            llmBudgetTable: JsonField<LlmBudgetTable> = JsonMissing.of(),
+            @JsonProperty("team_id") @ExcludeMissing teamId: JsonField<String> = JsonMissing.of(),
+            @JsonProperty("user_id") @ExcludeMissing userId: JsonField<String> = JsonMissing.of(),
+        ) : this(budgetId, llmBudgetTable, teamId, userId, mutableMapOf())
 
         /**
-         * Represents user-controllable params for a LiteLLM_BudgetTable record
+         * @throws HanzoInvalidDataException if the JSON field has an unexpected type or is
+         *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+         */
+        fun budgetId(): String = budgetId.getRequired("budget_id")
+
+        /**
+         * Represents user-controllable params for a LLM_BudgetTable record
          *
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun litellmBudgetTable(): Optional<BudgetTable> =
-            litellmBudgetTable.getOptional("litellm_budget_table")
+        fun llmBudgetTable(): Optional<LlmBudgetTable> =
+            llmBudgetTable.getOptional("llm_budget_table")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type or is
@@ -1341,26 +1084,21 @@ private constructor(
         fun userId(): String = userId.getRequired("user_id")
 
         /**
-         * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-         *   server responded with an unexpected value).
-         */
-        fun budgetId(): Optional<String> = budgetId.getOptional("budget_id")
-
-        /**
-         * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-         *   server responded with an unexpected value).
-         */
-        fun spend(): Optional<Double> = spend.getOptional("spend")
-
-        /**
-         * Returns the raw JSON value of [litellmBudgetTable].
+         * Returns the raw JSON value of [budgetId].
          *
-         * Unlike [litellmBudgetTable], this method doesn't throw if the JSON field has an
-         * unexpected type.
+         * Unlike [budgetId], this method doesn't throw if the JSON field has an unexpected type.
          */
-        @JsonProperty("litellm_budget_table")
+        @JsonProperty("budget_id") @ExcludeMissing fun _budgetId(): JsonField<String> = budgetId
+
+        /**
+         * Returns the raw JSON value of [llmBudgetTable].
+         *
+         * Unlike [llmBudgetTable], this method doesn't throw if the JSON field has an unexpected
+         * type.
+         */
+        @JsonProperty("llm_budget_table")
         @ExcludeMissing
-        fun _litellmBudgetTable(): JsonField<BudgetTable> = litellmBudgetTable
+        fun _llmBudgetTable(): JsonField<LlmBudgetTable> = llmBudgetTable
 
         /**
          * Returns the raw JSON value of [teamId].
@@ -1375,20 +1113,6 @@ private constructor(
          * Unlike [userId], this method doesn't throw if the JSON field has an unexpected type.
          */
         @JsonProperty("user_id") @ExcludeMissing fun _userId(): JsonField<String> = userId
-
-        /**
-         * Returns the raw JSON value of [budgetId].
-         *
-         * Unlike [budgetId], this method doesn't throw if the JSON field has an unexpected type.
-         */
-        @JsonProperty("budget_id") @ExcludeMissing fun _budgetId(): JsonField<String> = budgetId
-
-        /**
-         * Returns the raw JSON value of [spend].
-         *
-         * Unlike [spend], this method doesn't throw if the JSON field has an unexpected type.
-         */
-        @JsonProperty("spend") @ExcludeMissing fun _spend(): JsonField<Double> = spend
 
         @JsonAnySetter
         private fun putAdditionalProperty(key: String, value: JsonValue) {
@@ -1409,7 +1133,8 @@ private constructor(
              *
              * The following fields are required:
              * ```java
-             * .litellmBudgetTable()
+             * .budgetId()
+             * .llmBudgetTable()
              * .teamId()
              * .userId()
              * ```
@@ -1420,43 +1145,49 @@ private constructor(
         /** A builder for [UpdatedTeamMembership]. */
         class Builder internal constructor() {
 
-            private var litellmBudgetTable: JsonField<BudgetTable>? = null
+            private var budgetId: JsonField<String>? = null
+            private var llmBudgetTable: JsonField<LlmBudgetTable>? = null
             private var teamId: JsonField<String>? = null
             private var userId: JsonField<String>? = null
-            private var budgetId: JsonField<String> = JsonMissing.of()
-            private var spend: JsonField<Double> = JsonMissing.of()
             private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
 
             @JvmSynthetic
             internal fun from(updatedTeamMembership: UpdatedTeamMembership) = apply {
-                litellmBudgetTable = updatedTeamMembership.litellmBudgetTable
+                budgetId = updatedTeamMembership.budgetId
+                llmBudgetTable = updatedTeamMembership.llmBudgetTable
                 teamId = updatedTeamMembership.teamId
                 userId = updatedTeamMembership.userId
-                budgetId = updatedTeamMembership.budgetId
-                spend = updatedTeamMembership.spend
                 additionalProperties = updatedTeamMembership.additionalProperties.toMutableMap()
             }
 
-            /** Represents user-controllable params for a LiteLLM_BudgetTable record */
-            fun litellmBudgetTable(litellmBudgetTable: BudgetTable?) =
-                litellmBudgetTable(JsonField.ofNullable(litellmBudgetTable))
+            fun budgetId(budgetId: String) = budgetId(JsonField.of(budgetId))
 
             /**
-             * Alias for calling [Builder.litellmBudgetTable] with
-             * `litellmBudgetTable.orElse(null)`.
-             */
-            fun litellmBudgetTable(litellmBudgetTable: Optional<BudgetTable>) =
-                litellmBudgetTable(litellmBudgetTable.getOrNull())
-
-            /**
-             * Sets [Builder.litellmBudgetTable] to an arbitrary JSON value.
+             * Sets [Builder.budgetId] to an arbitrary JSON value.
              *
-             * You should usually call [Builder.litellmBudgetTable] with a well-typed [BudgetTable]
+             * You should usually call [Builder.budgetId] with a well-typed [String] value instead.
+             * This method is primarily for setting the field to an undocumented or not yet
+             * supported value.
+             */
+            fun budgetId(budgetId: JsonField<String>) = apply { this.budgetId = budgetId }
+
+            /** Represents user-controllable params for a LLM_BudgetTable record */
+            fun llmBudgetTable(llmBudgetTable: LlmBudgetTable?) =
+                llmBudgetTable(JsonField.ofNullable(llmBudgetTable))
+
+            /** Alias for calling [Builder.llmBudgetTable] with `llmBudgetTable.orElse(null)`. */
+            fun llmBudgetTable(llmBudgetTable: Optional<LlmBudgetTable>) =
+                llmBudgetTable(llmBudgetTable.getOrNull())
+
+            /**
+             * Sets [Builder.llmBudgetTable] to an arbitrary JSON value.
+             *
+             * You should usually call [Builder.llmBudgetTable] with a well-typed [LlmBudgetTable]
              * value instead. This method is primarily for setting the field to an undocumented or
              * not yet supported value.
              */
-            fun litellmBudgetTable(litellmBudgetTable: JsonField<BudgetTable>) = apply {
-                this.litellmBudgetTable = litellmBudgetTable
+            fun llmBudgetTable(llmBudgetTable: JsonField<LlmBudgetTable>) = apply {
+                this.llmBudgetTable = llmBudgetTable
             }
 
             fun teamId(teamId: String) = teamId(JsonField.of(teamId))
@@ -1480,41 +1211,6 @@ private constructor(
              * supported value.
              */
             fun userId(userId: JsonField<String>) = apply { this.userId = userId }
-
-            fun budgetId(budgetId: String?) = budgetId(JsonField.ofNullable(budgetId))
-
-            /** Alias for calling [Builder.budgetId] with `budgetId.orElse(null)`. */
-            fun budgetId(budgetId: Optional<String>) = budgetId(budgetId.getOrNull())
-
-            /**
-             * Sets [Builder.budgetId] to an arbitrary JSON value.
-             *
-             * You should usually call [Builder.budgetId] with a well-typed [String] value instead.
-             * This method is primarily for setting the field to an undocumented or not yet
-             * supported value.
-             */
-            fun budgetId(budgetId: JsonField<String>) = apply { this.budgetId = budgetId }
-
-            fun spend(spend: Double?) = spend(JsonField.ofNullable(spend))
-
-            /**
-             * Alias for [Builder.spend].
-             *
-             * This unboxed primitive overload exists for backwards compatibility.
-             */
-            fun spend(spend: Double) = spend(spend as Double?)
-
-            /** Alias for calling [Builder.spend] with `spend.orElse(null)`. */
-            fun spend(spend: Optional<Double>) = spend(spend.getOrNull())
-
-            /**
-             * Sets [Builder.spend] to an arbitrary JSON value.
-             *
-             * You should usually call [Builder.spend] with a well-typed [Double] value instead.
-             * This method is primarily for setting the field to an undocumented or not yet
-             * supported value.
-             */
-            fun spend(spend: JsonField<Double>) = apply { this.spend = spend }
 
             fun additionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
                 this.additionalProperties.clear()
@@ -1542,7 +1238,8 @@ private constructor(
              *
              * The following fields are required:
              * ```java
-             * .litellmBudgetTable()
+             * .budgetId()
+             * .llmBudgetTable()
              * .teamId()
              * .userId()
              * ```
@@ -1551,11 +1248,10 @@ private constructor(
              */
             fun build(): UpdatedTeamMembership =
                 UpdatedTeamMembership(
-                    checkRequired("litellmBudgetTable", litellmBudgetTable),
+                    checkRequired("budgetId", budgetId),
+                    checkRequired("llmBudgetTable", llmBudgetTable),
                     checkRequired("teamId", teamId),
                     checkRequired("userId", userId),
-                    budgetId,
-                    spend,
                     additionalProperties.toMutableMap(),
                 )
         }
@@ -1567,11 +1263,10 @@ private constructor(
                 return@apply
             }
 
-            litellmBudgetTable().ifPresent { it.validate() }
+            budgetId()
+            llmBudgetTable().ifPresent { it.validate() }
             teamId()
             userId()
-            budgetId()
-            spend()
             validated = true
         }
 
@@ -1591,11 +1286,457 @@ private constructor(
          */
         @JvmSynthetic
         internal fun validity(): Int =
-            (litellmBudgetTable.asKnown().getOrNull()?.validity() ?: 0) +
+            (if (budgetId.asKnown().isPresent) 1 else 0) +
+                (llmBudgetTable.asKnown().getOrNull()?.validity() ?: 0) +
                 (if (teamId.asKnown().isPresent) 1 else 0) +
-                (if (userId.asKnown().isPresent) 1 else 0) +
-                (if (budgetId.asKnown().isPresent) 1 else 0) +
-                (if (spend.asKnown().isPresent) 1 else 0)
+                (if (userId.asKnown().isPresent) 1 else 0)
+
+        /** Represents user-controllable params for a LLM_BudgetTable record */
+        class LlmBudgetTable
+        @JsonCreator(mode = JsonCreator.Mode.DISABLED)
+        private constructor(
+            private val budgetDuration: JsonField<String>,
+            private val maxBudget: JsonField<Double>,
+            private val maxParallelRequests: JsonField<Long>,
+            private val modelMaxBudget: JsonValue,
+            private val rpmLimit: JsonField<Long>,
+            private val softBudget: JsonField<Double>,
+            private val tpmLimit: JsonField<Long>,
+            private val additionalProperties: MutableMap<String, JsonValue>,
+        ) {
+
+            @JsonCreator
+            private constructor(
+                @JsonProperty("budget_duration")
+                @ExcludeMissing
+                budgetDuration: JsonField<String> = JsonMissing.of(),
+                @JsonProperty("max_budget")
+                @ExcludeMissing
+                maxBudget: JsonField<Double> = JsonMissing.of(),
+                @JsonProperty("max_parallel_requests")
+                @ExcludeMissing
+                maxParallelRequests: JsonField<Long> = JsonMissing.of(),
+                @JsonProperty("model_max_budget")
+                @ExcludeMissing
+                modelMaxBudget: JsonValue = JsonMissing.of(),
+                @JsonProperty("rpm_limit")
+                @ExcludeMissing
+                rpmLimit: JsonField<Long> = JsonMissing.of(),
+                @JsonProperty("soft_budget")
+                @ExcludeMissing
+                softBudget: JsonField<Double> = JsonMissing.of(),
+                @JsonProperty("tpm_limit")
+                @ExcludeMissing
+                tpmLimit: JsonField<Long> = JsonMissing.of(),
+            ) : this(
+                budgetDuration,
+                maxBudget,
+                maxParallelRequests,
+                modelMaxBudget,
+                rpmLimit,
+                softBudget,
+                tpmLimit,
+                mutableMapOf(),
+            )
+
+            /**
+             * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if
+             *   the server responded with an unexpected value).
+             */
+            fun budgetDuration(): Optional<String> = budgetDuration.getOptional("budget_duration")
+
+            /**
+             * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if
+             *   the server responded with an unexpected value).
+             */
+            fun maxBudget(): Optional<Double> = maxBudget.getOptional("max_budget")
+
+            /**
+             * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if
+             *   the server responded with an unexpected value).
+             */
+            fun maxParallelRequests(): Optional<Long> =
+                maxParallelRequests.getOptional("max_parallel_requests")
+
+            /**
+             * This arbitrary value can be deserialized into a custom type using the `convert`
+             * method:
+             * ```java
+             * MyClass myObject = llmBudgetTable.modelMaxBudget().convert(MyClass.class);
+             * ```
+             */
+            @JsonProperty("model_max_budget")
+            @ExcludeMissing
+            fun _modelMaxBudget(): JsonValue = modelMaxBudget
+
+            /**
+             * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if
+             *   the server responded with an unexpected value).
+             */
+            fun rpmLimit(): Optional<Long> = rpmLimit.getOptional("rpm_limit")
+
+            /**
+             * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if
+             *   the server responded with an unexpected value).
+             */
+            fun softBudget(): Optional<Double> = softBudget.getOptional("soft_budget")
+
+            /**
+             * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if
+             *   the server responded with an unexpected value).
+             */
+            fun tpmLimit(): Optional<Long> = tpmLimit.getOptional("tpm_limit")
+
+            /**
+             * Returns the raw JSON value of [budgetDuration].
+             *
+             * Unlike [budgetDuration], this method doesn't throw if the JSON field has an
+             * unexpected type.
+             */
+            @JsonProperty("budget_duration")
+            @ExcludeMissing
+            fun _budgetDuration(): JsonField<String> = budgetDuration
+
+            /**
+             * Returns the raw JSON value of [maxBudget].
+             *
+             * Unlike [maxBudget], this method doesn't throw if the JSON field has an unexpected
+             * type.
+             */
+            @JsonProperty("max_budget")
+            @ExcludeMissing
+            fun _maxBudget(): JsonField<Double> = maxBudget
+
+            /**
+             * Returns the raw JSON value of [maxParallelRequests].
+             *
+             * Unlike [maxParallelRequests], this method doesn't throw if the JSON field has an
+             * unexpected type.
+             */
+            @JsonProperty("max_parallel_requests")
+            @ExcludeMissing
+            fun _maxParallelRequests(): JsonField<Long> = maxParallelRequests
+
+            /**
+             * Returns the raw JSON value of [rpmLimit].
+             *
+             * Unlike [rpmLimit], this method doesn't throw if the JSON field has an unexpected
+             * type.
+             */
+            @JsonProperty("rpm_limit") @ExcludeMissing fun _rpmLimit(): JsonField<Long> = rpmLimit
+
+            /**
+             * Returns the raw JSON value of [softBudget].
+             *
+             * Unlike [softBudget], this method doesn't throw if the JSON field has an unexpected
+             * type.
+             */
+            @JsonProperty("soft_budget")
+            @ExcludeMissing
+            fun _softBudget(): JsonField<Double> = softBudget
+
+            /**
+             * Returns the raw JSON value of [tpmLimit].
+             *
+             * Unlike [tpmLimit], this method doesn't throw if the JSON field has an unexpected
+             * type.
+             */
+            @JsonProperty("tpm_limit") @ExcludeMissing fun _tpmLimit(): JsonField<Long> = tpmLimit
+
+            @JsonAnySetter
+            private fun putAdditionalProperty(key: String, value: JsonValue) {
+                additionalProperties.put(key, value)
+            }
+
+            @JsonAnyGetter
+            @ExcludeMissing
+            fun _additionalProperties(): Map<String, JsonValue> =
+                Collections.unmodifiableMap(additionalProperties)
+
+            fun toBuilder() = Builder().from(this)
+
+            companion object {
+
+                /** Returns a mutable builder for constructing an instance of [LlmBudgetTable]. */
+                @JvmStatic fun builder() = Builder()
+            }
+
+            /** A builder for [LlmBudgetTable]. */
+            class Builder internal constructor() {
+
+                private var budgetDuration: JsonField<String> = JsonMissing.of()
+                private var maxBudget: JsonField<Double> = JsonMissing.of()
+                private var maxParallelRequests: JsonField<Long> = JsonMissing.of()
+                private var modelMaxBudget: JsonValue = JsonMissing.of()
+                private var rpmLimit: JsonField<Long> = JsonMissing.of()
+                private var softBudget: JsonField<Double> = JsonMissing.of()
+                private var tpmLimit: JsonField<Long> = JsonMissing.of()
+                private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
+
+                @JvmSynthetic
+                internal fun from(llmBudgetTable: LlmBudgetTable) = apply {
+                    budgetDuration = llmBudgetTable.budgetDuration
+                    maxBudget = llmBudgetTable.maxBudget
+                    maxParallelRequests = llmBudgetTable.maxParallelRequests
+                    modelMaxBudget = llmBudgetTable.modelMaxBudget
+                    rpmLimit = llmBudgetTable.rpmLimit
+                    softBudget = llmBudgetTable.softBudget
+                    tpmLimit = llmBudgetTable.tpmLimit
+                    additionalProperties = llmBudgetTable.additionalProperties.toMutableMap()
+                }
+
+                fun budgetDuration(budgetDuration: String?) =
+                    budgetDuration(JsonField.ofNullable(budgetDuration))
+
+                /**
+                 * Alias for calling [Builder.budgetDuration] with `budgetDuration.orElse(null)`.
+                 */
+                fun budgetDuration(budgetDuration: Optional<String>) =
+                    budgetDuration(budgetDuration.getOrNull())
+
+                /**
+                 * Sets [Builder.budgetDuration] to an arbitrary JSON value.
+                 *
+                 * You should usually call [Builder.budgetDuration] with a well-typed [String] value
+                 * instead. This method is primarily for setting the field to an undocumented or not
+                 * yet supported value.
+                 */
+                fun budgetDuration(budgetDuration: JsonField<String>) = apply {
+                    this.budgetDuration = budgetDuration
+                }
+
+                fun maxBudget(maxBudget: Double?) = maxBudget(JsonField.ofNullable(maxBudget))
+
+                /**
+                 * Alias for [Builder.maxBudget].
+                 *
+                 * This unboxed primitive overload exists for backwards compatibility.
+                 */
+                fun maxBudget(maxBudget: Double) = maxBudget(maxBudget as Double?)
+
+                /** Alias for calling [Builder.maxBudget] with `maxBudget.orElse(null)`. */
+                fun maxBudget(maxBudget: Optional<Double>) = maxBudget(maxBudget.getOrNull())
+
+                /**
+                 * Sets [Builder.maxBudget] to an arbitrary JSON value.
+                 *
+                 * You should usually call [Builder.maxBudget] with a well-typed [Double] value
+                 * instead. This method is primarily for setting the field to an undocumented or not
+                 * yet supported value.
+                 */
+                fun maxBudget(maxBudget: JsonField<Double>) = apply { this.maxBudget = maxBudget }
+
+                fun maxParallelRequests(maxParallelRequests: Long?) =
+                    maxParallelRequests(JsonField.ofNullable(maxParallelRequests))
+
+                /**
+                 * Alias for [Builder.maxParallelRequests].
+                 *
+                 * This unboxed primitive overload exists for backwards compatibility.
+                 */
+                fun maxParallelRequests(maxParallelRequests: Long) =
+                    maxParallelRequests(maxParallelRequests as Long?)
+
+                /**
+                 * Alias for calling [Builder.maxParallelRequests] with
+                 * `maxParallelRequests.orElse(null)`.
+                 */
+                fun maxParallelRequests(maxParallelRequests: Optional<Long>) =
+                    maxParallelRequests(maxParallelRequests.getOrNull())
+
+                /**
+                 * Sets [Builder.maxParallelRequests] to an arbitrary JSON value.
+                 *
+                 * You should usually call [Builder.maxParallelRequests] with a well-typed [Long]
+                 * value instead. This method is primarily for setting the field to an undocumented
+                 * or not yet supported value.
+                 */
+                fun maxParallelRequests(maxParallelRequests: JsonField<Long>) = apply {
+                    this.maxParallelRequests = maxParallelRequests
+                }
+
+                fun modelMaxBudget(modelMaxBudget: JsonValue) = apply {
+                    this.modelMaxBudget = modelMaxBudget
+                }
+
+                fun rpmLimit(rpmLimit: Long?) = rpmLimit(JsonField.ofNullable(rpmLimit))
+
+                /**
+                 * Alias for [Builder.rpmLimit].
+                 *
+                 * This unboxed primitive overload exists for backwards compatibility.
+                 */
+                fun rpmLimit(rpmLimit: Long) = rpmLimit(rpmLimit as Long?)
+
+                /** Alias for calling [Builder.rpmLimit] with `rpmLimit.orElse(null)`. */
+                fun rpmLimit(rpmLimit: Optional<Long>) = rpmLimit(rpmLimit.getOrNull())
+
+                /**
+                 * Sets [Builder.rpmLimit] to an arbitrary JSON value.
+                 *
+                 * You should usually call [Builder.rpmLimit] with a well-typed [Long] value
+                 * instead. This method is primarily for setting the field to an undocumented or not
+                 * yet supported value.
+                 */
+                fun rpmLimit(rpmLimit: JsonField<Long>) = apply { this.rpmLimit = rpmLimit }
+
+                fun softBudget(softBudget: Double?) = softBudget(JsonField.ofNullable(softBudget))
+
+                /**
+                 * Alias for [Builder.softBudget].
+                 *
+                 * This unboxed primitive overload exists for backwards compatibility.
+                 */
+                fun softBudget(softBudget: Double) = softBudget(softBudget as Double?)
+
+                /** Alias for calling [Builder.softBudget] with `softBudget.orElse(null)`. */
+                fun softBudget(softBudget: Optional<Double>) = softBudget(softBudget.getOrNull())
+
+                /**
+                 * Sets [Builder.softBudget] to an arbitrary JSON value.
+                 *
+                 * You should usually call [Builder.softBudget] with a well-typed [Double] value
+                 * instead. This method is primarily for setting the field to an undocumented or not
+                 * yet supported value.
+                 */
+                fun softBudget(softBudget: JsonField<Double>) = apply {
+                    this.softBudget = softBudget
+                }
+
+                fun tpmLimit(tpmLimit: Long?) = tpmLimit(JsonField.ofNullable(tpmLimit))
+
+                /**
+                 * Alias for [Builder.tpmLimit].
+                 *
+                 * This unboxed primitive overload exists for backwards compatibility.
+                 */
+                fun tpmLimit(tpmLimit: Long) = tpmLimit(tpmLimit as Long?)
+
+                /** Alias for calling [Builder.tpmLimit] with `tpmLimit.orElse(null)`. */
+                fun tpmLimit(tpmLimit: Optional<Long>) = tpmLimit(tpmLimit.getOrNull())
+
+                /**
+                 * Sets [Builder.tpmLimit] to an arbitrary JSON value.
+                 *
+                 * You should usually call [Builder.tpmLimit] with a well-typed [Long] value
+                 * instead. This method is primarily for setting the field to an undocumented or not
+                 * yet supported value.
+                 */
+                fun tpmLimit(tpmLimit: JsonField<Long>) = apply { this.tpmLimit = tpmLimit }
+
+                fun additionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
+                    this.additionalProperties.clear()
+                    putAllAdditionalProperties(additionalProperties)
+                }
+
+                fun putAdditionalProperty(key: String, value: JsonValue) = apply {
+                    additionalProperties.put(key, value)
+                }
+
+                fun putAllAdditionalProperties(additionalProperties: Map<String, JsonValue>) =
+                    apply {
+                        this.additionalProperties.putAll(additionalProperties)
+                    }
+
+                fun removeAdditionalProperty(key: String) = apply {
+                    additionalProperties.remove(key)
+                }
+
+                fun removeAllAdditionalProperties(keys: Set<String>) = apply {
+                    keys.forEach(::removeAdditionalProperty)
+                }
+
+                /**
+                 * Returns an immutable instance of [LlmBudgetTable].
+                 *
+                 * Further updates to this [Builder] will not mutate the returned instance.
+                 */
+                fun build(): LlmBudgetTable =
+                    LlmBudgetTable(
+                        budgetDuration,
+                        maxBudget,
+                        maxParallelRequests,
+                        modelMaxBudget,
+                        rpmLimit,
+                        softBudget,
+                        tpmLimit,
+                        additionalProperties.toMutableMap(),
+                    )
+            }
+
+            private var validated: Boolean = false
+
+            fun validate(): LlmBudgetTable = apply {
+                if (validated) {
+                    return@apply
+                }
+
+                budgetDuration()
+                maxBudget()
+                maxParallelRequests()
+                rpmLimit()
+                softBudget()
+                tpmLimit()
+                validated = true
+            }
+
+            fun isValid(): Boolean =
+                try {
+                    validate()
+                    true
+                } catch (e: HanzoInvalidDataException) {
+                    false
+                }
+
+            /**
+             * Returns a score indicating how many valid values are contained in this object
+             * recursively.
+             *
+             * Used for best match union deserialization.
+             */
+            @JvmSynthetic
+            internal fun validity(): Int =
+                (if (budgetDuration.asKnown().isPresent) 1 else 0) +
+                    (if (maxBudget.asKnown().isPresent) 1 else 0) +
+                    (if (maxParallelRequests.asKnown().isPresent) 1 else 0) +
+                    (if (rpmLimit.asKnown().isPresent) 1 else 0) +
+                    (if (softBudget.asKnown().isPresent) 1 else 0) +
+                    (if (tpmLimit.asKnown().isPresent) 1 else 0)
+
+            override fun equals(other: Any?): Boolean {
+                if (this === other) {
+                    return true
+                }
+
+                return other is LlmBudgetTable &&
+                    budgetDuration == other.budgetDuration &&
+                    maxBudget == other.maxBudget &&
+                    maxParallelRequests == other.maxParallelRequests &&
+                    modelMaxBudget == other.modelMaxBudget &&
+                    rpmLimit == other.rpmLimit &&
+                    softBudget == other.softBudget &&
+                    tpmLimit == other.tpmLimit &&
+                    additionalProperties == other.additionalProperties
+            }
+
+            private val hashCode: Int by lazy {
+                Objects.hash(
+                    budgetDuration,
+                    maxBudget,
+                    maxParallelRequests,
+                    modelMaxBudget,
+                    rpmLimit,
+                    softBudget,
+                    tpmLimit,
+                    additionalProperties,
+                )
+            }
+
+            override fun hashCode(): Int = hashCode
+
+            override fun toString() =
+                "LlmBudgetTable{budgetDuration=$budgetDuration, maxBudget=$maxBudget, maxParallelRequests=$maxParallelRequests, modelMaxBudget=$modelMaxBudget, rpmLimit=$rpmLimit, softBudget=$softBudget, tpmLimit=$tpmLimit, additionalProperties=$additionalProperties}"
+        }
 
         override fun equals(other: Any?): Boolean {
             if (this === other) {
@@ -1603,22 +1744,21 @@ private constructor(
             }
 
             return other is UpdatedTeamMembership &&
-                litellmBudgetTable == other.litellmBudgetTable &&
+                budgetId == other.budgetId &&
+                llmBudgetTable == other.llmBudgetTable &&
                 teamId == other.teamId &&
                 userId == other.userId &&
-                budgetId == other.budgetId &&
-                spend == other.spend &&
                 additionalProperties == other.additionalProperties
         }
 
         private val hashCode: Int by lazy {
-            Objects.hash(litellmBudgetTable, teamId, userId, budgetId, spend, additionalProperties)
+            Objects.hash(budgetId, llmBudgetTable, teamId, userId, additionalProperties)
         }
 
         override fun hashCode(): Int = hashCode
 
         override fun toString() =
-            "UpdatedTeamMembership{litellmBudgetTable=$litellmBudgetTable, teamId=$teamId, userId=$userId, budgetId=$budgetId, spend=$spend, additionalProperties=$additionalProperties}"
+            "UpdatedTeamMembership{budgetId=$budgetId, llmBudgetTable=$llmBudgetTable, teamId=$teamId, userId=$userId, additionalProperties=$additionalProperties}"
     }
 
     class UpdatedUser
@@ -1627,21 +1767,17 @@ private constructor(
         private val userId: JsonField<String>,
         private val budgetDuration: JsonField<String>,
         private val budgetResetAt: JsonField<OffsetDateTime>,
-        private val createdAt: JsonField<OffsetDateTime>,
         private val maxBudget: JsonField<Double>,
-        private val metadata: JsonField<Metadata>,
-        private val modelMaxBudget: JsonField<ModelMaxBudget>,
-        private val modelSpend: JsonField<ModelSpend>,
+        private val metadata: JsonValue,
+        private val modelMaxBudget: JsonValue,
+        private val modelSpend: JsonValue,
         private val models: JsonField<List<JsonValue>>,
-        private val objectPermission: JsonField<ObjectPermission>,
-        private val organizationMemberships: JsonField<List<OrganizationMembershipTable>>,
+        private val organizationMemberships: JsonField<List<OrganizationMembership>>,
         private val rpmLimit: JsonField<Long>,
         private val spend: JsonField<Double>,
         private val ssoUserId: JsonField<String>,
         private val teams: JsonField<List<String>>,
         private val tpmLimit: JsonField<Long>,
-        private val updatedAt: JsonField<OffsetDateTime>,
-        private val userAlias: JsonField<String>,
         private val userEmail: JsonField<String>,
         private val userRole: JsonField<String>,
         private val additionalProperties: MutableMap<String, JsonValue>,
@@ -1656,31 +1792,20 @@ private constructor(
             @JsonProperty("budget_reset_at")
             @ExcludeMissing
             budgetResetAt: JsonField<OffsetDateTime> = JsonMissing.of(),
-            @JsonProperty("created_at")
-            @ExcludeMissing
-            createdAt: JsonField<OffsetDateTime> = JsonMissing.of(),
             @JsonProperty("max_budget")
             @ExcludeMissing
             maxBudget: JsonField<Double> = JsonMissing.of(),
-            @JsonProperty("metadata")
-            @ExcludeMissing
-            metadata: JsonField<Metadata> = JsonMissing.of(),
+            @JsonProperty("metadata") @ExcludeMissing metadata: JsonValue = JsonMissing.of(),
             @JsonProperty("model_max_budget")
             @ExcludeMissing
-            modelMaxBudget: JsonField<ModelMaxBudget> = JsonMissing.of(),
-            @JsonProperty("model_spend")
-            @ExcludeMissing
-            modelSpend: JsonField<ModelSpend> = JsonMissing.of(),
+            modelMaxBudget: JsonValue = JsonMissing.of(),
+            @JsonProperty("model_spend") @ExcludeMissing modelSpend: JsonValue = JsonMissing.of(),
             @JsonProperty("models")
             @ExcludeMissing
             models: JsonField<List<JsonValue>> = JsonMissing.of(),
-            @JsonProperty("object_permission")
-            @ExcludeMissing
-            objectPermission: JsonField<ObjectPermission> = JsonMissing.of(),
             @JsonProperty("organization_memberships")
             @ExcludeMissing
-            organizationMemberships: JsonField<List<OrganizationMembershipTable>> =
-                JsonMissing.of(),
+            organizationMemberships: JsonField<List<OrganizationMembership>> = JsonMissing.of(),
             @JsonProperty("rpm_limit") @ExcludeMissing rpmLimit: JsonField<Long> = JsonMissing.of(),
             @JsonProperty("spend") @ExcludeMissing spend: JsonField<Double> = JsonMissing.of(),
             @JsonProperty("sso_user_id")
@@ -1690,12 +1815,6 @@ private constructor(
             @ExcludeMissing
             teams: JsonField<List<String>> = JsonMissing.of(),
             @JsonProperty("tpm_limit") @ExcludeMissing tpmLimit: JsonField<Long> = JsonMissing.of(),
-            @JsonProperty("updated_at")
-            @ExcludeMissing
-            updatedAt: JsonField<OffsetDateTime> = JsonMissing.of(),
-            @JsonProperty("user_alias")
-            @ExcludeMissing
-            userAlias: JsonField<String> = JsonMissing.of(),
             @JsonProperty("user_email")
             @ExcludeMissing
             userEmail: JsonField<String> = JsonMissing.of(),
@@ -1706,21 +1825,17 @@ private constructor(
             userId,
             budgetDuration,
             budgetResetAt,
-            createdAt,
             maxBudget,
             metadata,
             modelMaxBudget,
             modelSpend,
             models,
-            objectPermission,
             organizationMemberships,
             rpmLimit,
             spend,
             ssoUserId,
             teams,
             tpmLimit,
-            updatedAt,
-            userAlias,
             userEmail,
             userRole,
             mutableMapOf(),
@@ -1748,32 +1863,33 @@ private constructor(
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun createdAt(): Optional<OffsetDateTime> = createdAt.getOptional("created_at")
-
-        /**
-         * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-         *   server responded with an unexpected value).
-         */
         fun maxBudget(): Optional<Double> = maxBudget.getOptional("max_budget")
 
         /**
-         * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-         *   server responded with an unexpected value).
+         * This arbitrary value can be deserialized into a custom type using the `convert` method:
+         * ```java
+         * MyClass myObject = updatedUser.metadata().convert(MyClass.class);
+         * ```
          */
-        fun metadata(): Optional<Metadata> = metadata.getOptional("metadata")
+        @JsonProperty("metadata") @ExcludeMissing fun _metadata(): JsonValue = metadata
 
         /**
-         * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-         *   server responded with an unexpected value).
+         * This arbitrary value can be deserialized into a custom type using the `convert` method:
+         * ```java
+         * MyClass myObject = updatedUser.modelMaxBudget().convert(MyClass.class);
+         * ```
          */
-        fun modelMaxBudget(): Optional<ModelMaxBudget> =
-            modelMaxBudget.getOptional("model_max_budget")
+        @JsonProperty("model_max_budget")
+        @ExcludeMissing
+        fun _modelMaxBudget(): JsonValue = modelMaxBudget
 
         /**
-         * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-         *   server responded with an unexpected value).
+         * This arbitrary value can be deserialized into a custom type using the `convert` method:
+         * ```java
+         * MyClass myObject = updatedUser.modelSpend().convert(MyClass.class);
+         * ```
          */
-        fun modelSpend(): Optional<ModelSpend> = modelSpend.getOptional("model_spend")
+        @JsonProperty("model_spend") @ExcludeMissing fun _modelSpend(): JsonValue = modelSpend
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
@@ -1782,19 +1898,10 @@ private constructor(
         fun models(): Optional<List<JsonValue>> = models.getOptional("models")
 
         /**
-         * Represents a LiteLLM_ObjectPermissionTable record
-         *
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun objectPermission(): Optional<ObjectPermission> =
-            objectPermission.getOptional("object_permission")
-
-        /**
-         * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-         *   server responded with an unexpected value).
-         */
-        fun organizationMemberships(): Optional<List<OrganizationMembershipTable>> =
+        fun organizationMemberships(): Optional<List<OrganizationMembership>> =
             organizationMemberships.getOptional("organization_memberships")
 
         /**
@@ -1826,18 +1933,6 @@ private constructor(
          *   server responded with an unexpected value).
          */
         fun tpmLimit(): Optional<Long> = tpmLimit.getOptional("tpm_limit")
-
-        /**
-         * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-         *   server responded with an unexpected value).
-         */
-        fun updatedAt(): Optional<OffsetDateTime> = updatedAt.getOptional("updated_at")
-
-        /**
-         * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-         *   server responded with an unexpected value).
-         */
-        fun userAlias(): Optional<String> = userAlias.getOptional("user_alias")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
@@ -1879,46 +1974,11 @@ private constructor(
         fun _budgetResetAt(): JsonField<OffsetDateTime> = budgetResetAt
 
         /**
-         * Returns the raw JSON value of [createdAt].
-         *
-         * Unlike [createdAt], this method doesn't throw if the JSON field has an unexpected type.
-         */
-        @JsonProperty("created_at")
-        @ExcludeMissing
-        fun _createdAt(): JsonField<OffsetDateTime> = createdAt
-
-        /**
          * Returns the raw JSON value of [maxBudget].
          *
          * Unlike [maxBudget], this method doesn't throw if the JSON field has an unexpected type.
          */
         @JsonProperty("max_budget") @ExcludeMissing fun _maxBudget(): JsonField<Double> = maxBudget
-
-        /**
-         * Returns the raw JSON value of [metadata].
-         *
-         * Unlike [metadata], this method doesn't throw if the JSON field has an unexpected type.
-         */
-        @JsonProperty("metadata") @ExcludeMissing fun _metadata(): JsonField<Metadata> = metadata
-
-        /**
-         * Returns the raw JSON value of [modelMaxBudget].
-         *
-         * Unlike [modelMaxBudget], this method doesn't throw if the JSON field has an unexpected
-         * type.
-         */
-        @JsonProperty("model_max_budget")
-        @ExcludeMissing
-        fun _modelMaxBudget(): JsonField<ModelMaxBudget> = modelMaxBudget
-
-        /**
-         * Returns the raw JSON value of [modelSpend].
-         *
-         * Unlike [modelSpend], this method doesn't throw if the JSON field has an unexpected type.
-         */
-        @JsonProperty("model_spend")
-        @ExcludeMissing
-        fun _modelSpend(): JsonField<ModelSpend> = modelSpend
 
         /**
          * Returns the raw JSON value of [models].
@@ -1928,16 +1988,6 @@ private constructor(
         @JsonProperty("models") @ExcludeMissing fun _models(): JsonField<List<JsonValue>> = models
 
         /**
-         * Returns the raw JSON value of [objectPermission].
-         *
-         * Unlike [objectPermission], this method doesn't throw if the JSON field has an unexpected
-         * type.
-         */
-        @JsonProperty("object_permission")
-        @ExcludeMissing
-        fun _objectPermission(): JsonField<ObjectPermission> = objectPermission
-
-        /**
          * Returns the raw JSON value of [organizationMemberships].
          *
          * Unlike [organizationMemberships], this method doesn't throw if the JSON field has an
@@ -1945,7 +1995,7 @@ private constructor(
          */
         @JsonProperty("organization_memberships")
         @ExcludeMissing
-        fun _organizationMemberships(): JsonField<List<OrganizationMembershipTable>> =
+        fun _organizationMemberships(): JsonField<List<OrganizationMembership>> =
             organizationMemberships
 
         /**
@@ -1982,22 +2032,6 @@ private constructor(
          * Unlike [tpmLimit], this method doesn't throw if the JSON field has an unexpected type.
          */
         @JsonProperty("tpm_limit") @ExcludeMissing fun _tpmLimit(): JsonField<Long> = tpmLimit
-
-        /**
-         * Returns the raw JSON value of [updatedAt].
-         *
-         * Unlike [updatedAt], this method doesn't throw if the JSON field has an unexpected type.
-         */
-        @JsonProperty("updated_at")
-        @ExcludeMissing
-        fun _updatedAt(): JsonField<OffsetDateTime> = updatedAt
-
-        /**
-         * Returns the raw JSON value of [userAlias].
-         *
-         * Unlike [userAlias], this method doesn't throw if the JSON field has an unexpected type.
-         */
-        @JsonProperty("user_alias") @ExcludeMissing fun _userAlias(): JsonField<String> = userAlias
 
         /**
          * Returns the raw JSON value of [userEmail].
@@ -2044,23 +2078,18 @@ private constructor(
             private var userId: JsonField<String>? = null
             private var budgetDuration: JsonField<String> = JsonMissing.of()
             private var budgetResetAt: JsonField<OffsetDateTime> = JsonMissing.of()
-            private var createdAt: JsonField<OffsetDateTime> = JsonMissing.of()
             private var maxBudget: JsonField<Double> = JsonMissing.of()
-            private var metadata: JsonField<Metadata> = JsonMissing.of()
-            private var modelMaxBudget: JsonField<ModelMaxBudget> = JsonMissing.of()
-            private var modelSpend: JsonField<ModelSpend> = JsonMissing.of()
+            private var metadata: JsonValue = JsonMissing.of()
+            private var modelMaxBudget: JsonValue = JsonMissing.of()
+            private var modelSpend: JsonValue = JsonMissing.of()
             private var models: JsonField<MutableList<JsonValue>>? = null
-            private var objectPermission: JsonField<ObjectPermission> = JsonMissing.of()
-            private var organizationMemberships:
-                JsonField<MutableList<OrganizationMembershipTable>>? =
+            private var organizationMemberships: JsonField<MutableList<OrganizationMembership>>? =
                 null
             private var rpmLimit: JsonField<Long> = JsonMissing.of()
             private var spend: JsonField<Double> = JsonMissing.of()
             private var ssoUserId: JsonField<String> = JsonMissing.of()
             private var teams: JsonField<MutableList<String>>? = null
             private var tpmLimit: JsonField<Long> = JsonMissing.of()
-            private var updatedAt: JsonField<OffsetDateTime> = JsonMissing.of()
-            private var userAlias: JsonField<String> = JsonMissing.of()
             private var userEmail: JsonField<String> = JsonMissing.of()
             private var userRole: JsonField<String> = JsonMissing.of()
             private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
@@ -2070,13 +2099,11 @@ private constructor(
                 userId = updatedUser.userId
                 budgetDuration = updatedUser.budgetDuration
                 budgetResetAt = updatedUser.budgetResetAt
-                createdAt = updatedUser.createdAt
                 maxBudget = updatedUser.maxBudget
                 metadata = updatedUser.metadata
                 modelMaxBudget = updatedUser.modelMaxBudget
                 modelSpend = updatedUser.modelSpend
                 models = updatedUser.models.map { it.toMutableList() }
-                objectPermission = updatedUser.objectPermission
                 organizationMemberships =
                     updatedUser.organizationMemberships.map { it.toMutableList() }
                 rpmLimit = updatedUser.rpmLimit
@@ -2084,8 +2111,6 @@ private constructor(
                 ssoUserId = updatedUser.ssoUserId
                 teams = updatedUser.teams.map { it.toMutableList() }
                 tpmLimit = updatedUser.tpmLimit
-                updatedAt = updatedUser.updatedAt
-                userAlias = updatedUser.userAlias
                 userEmail = updatedUser.userEmail
                 userRole = updatedUser.userRole
                 additionalProperties = updatedUser.additionalProperties.toMutableMap()
@@ -2138,22 +2163,6 @@ private constructor(
                 this.budgetResetAt = budgetResetAt
             }
 
-            fun createdAt(createdAt: OffsetDateTime?) = createdAt(JsonField.ofNullable(createdAt))
-
-            /** Alias for calling [Builder.createdAt] with `createdAt.orElse(null)`. */
-            fun createdAt(createdAt: Optional<OffsetDateTime>) = createdAt(createdAt.getOrNull())
-
-            /**
-             * Sets [Builder.createdAt] to an arbitrary JSON value.
-             *
-             * You should usually call [Builder.createdAt] with a well-typed [OffsetDateTime] value
-             * instead. This method is primarily for setting the field to an undocumented or not yet
-             * supported value.
-             */
-            fun createdAt(createdAt: JsonField<OffsetDateTime>) = apply {
-                this.createdAt = createdAt
-            }
-
             fun maxBudget(maxBudget: Double?) = maxBudget(JsonField.ofNullable(maxBudget))
 
             /**
@@ -2175,53 +2184,13 @@ private constructor(
              */
             fun maxBudget(maxBudget: JsonField<Double>) = apply { this.maxBudget = maxBudget }
 
-            fun metadata(metadata: Metadata?) = metadata(JsonField.ofNullable(metadata))
+            fun metadata(metadata: JsonValue) = apply { this.metadata = metadata }
 
-            /** Alias for calling [Builder.metadata] with `metadata.orElse(null)`. */
-            fun metadata(metadata: Optional<Metadata>) = metadata(metadata.getOrNull())
-
-            /**
-             * Sets [Builder.metadata] to an arbitrary JSON value.
-             *
-             * You should usually call [Builder.metadata] with a well-typed [Metadata] value
-             * instead. This method is primarily for setting the field to an undocumented or not yet
-             * supported value.
-             */
-            fun metadata(metadata: JsonField<Metadata>) = apply { this.metadata = metadata }
-
-            fun modelMaxBudget(modelMaxBudget: ModelMaxBudget?) =
-                modelMaxBudget(JsonField.ofNullable(modelMaxBudget))
-
-            /** Alias for calling [Builder.modelMaxBudget] with `modelMaxBudget.orElse(null)`. */
-            fun modelMaxBudget(modelMaxBudget: Optional<ModelMaxBudget>) =
-                modelMaxBudget(modelMaxBudget.getOrNull())
-
-            /**
-             * Sets [Builder.modelMaxBudget] to an arbitrary JSON value.
-             *
-             * You should usually call [Builder.modelMaxBudget] with a well-typed [ModelMaxBudget]
-             * value instead. This method is primarily for setting the field to an undocumented or
-             * not yet supported value.
-             */
-            fun modelMaxBudget(modelMaxBudget: JsonField<ModelMaxBudget>) = apply {
+            fun modelMaxBudget(modelMaxBudget: JsonValue) = apply {
                 this.modelMaxBudget = modelMaxBudget
             }
 
-            fun modelSpend(modelSpend: ModelSpend?) = modelSpend(JsonField.ofNullable(modelSpend))
-
-            /** Alias for calling [Builder.modelSpend] with `modelSpend.orElse(null)`. */
-            fun modelSpend(modelSpend: Optional<ModelSpend>) = modelSpend(modelSpend.getOrNull())
-
-            /**
-             * Sets [Builder.modelSpend] to an arbitrary JSON value.
-             *
-             * You should usually call [Builder.modelSpend] with a well-typed [ModelSpend] value
-             * instead. This method is primarily for setting the field to an undocumented or not yet
-             * supported value.
-             */
-            fun modelSpend(modelSpend: JsonField<ModelSpend>) = apply {
-                this.modelSpend = modelSpend
-            }
+            fun modelSpend(modelSpend: JsonValue) = apply { this.modelSpend = modelSpend }
 
             fun models(models: List<JsonValue>) = models(JsonField.of(models))
 
@@ -2248,64 +2217,41 @@ private constructor(
                     }
             }
 
-            /** Represents a LiteLLM_ObjectPermissionTable record */
-            fun objectPermission(objectPermission: ObjectPermission?) =
-                objectPermission(JsonField.ofNullable(objectPermission))
-
-            /**
-             * Alias for calling [Builder.objectPermission] with `objectPermission.orElse(null)`.
-             */
-            fun objectPermission(objectPermission: Optional<ObjectPermission>) =
-                objectPermission(objectPermission.getOrNull())
-
-            /**
-             * Sets [Builder.objectPermission] to an arbitrary JSON value.
-             *
-             * You should usually call [Builder.objectPermission] with a well-typed
-             * [ObjectPermission] value instead. This method is primarily for setting the field to
-             * an undocumented or not yet supported value.
-             */
-            fun objectPermission(objectPermission: JsonField<ObjectPermission>) = apply {
-                this.objectPermission = objectPermission
-            }
-
-            fun organizationMemberships(
-                organizationMemberships: List<OrganizationMembershipTable>?
-            ) = organizationMemberships(JsonField.ofNullable(organizationMemberships))
+            fun organizationMemberships(organizationMemberships: List<OrganizationMembership>?) =
+                organizationMemberships(JsonField.ofNullable(organizationMemberships))
 
             /**
              * Alias for calling [Builder.organizationMemberships] with
              * `organizationMemberships.orElse(null)`.
              */
             fun organizationMemberships(
-                organizationMemberships: Optional<List<OrganizationMembershipTable>>
+                organizationMemberships: Optional<List<OrganizationMembership>>
             ) = organizationMemberships(organizationMemberships.getOrNull())
 
             /**
              * Sets [Builder.organizationMemberships] to an arbitrary JSON value.
              *
              * You should usually call [Builder.organizationMemberships] with a well-typed
-             * `List<OrganizationMembershipTable>` value instead. This method is primarily for
-             * setting the field to an undocumented or not yet supported value.
+             * `List<OrganizationMembership>` value instead. This method is primarily for setting
+             * the field to an undocumented or not yet supported value.
              */
             fun organizationMemberships(
-                organizationMemberships: JsonField<List<OrganizationMembershipTable>>
+                organizationMemberships: JsonField<List<OrganizationMembership>>
             ) = apply {
                 this.organizationMemberships = organizationMemberships.map { it.toMutableList() }
             }
 
             /**
-             * Adds a single [OrganizationMembershipTable] to [organizationMemberships].
+             * Adds a single [OrganizationMembership] to [organizationMemberships].
              *
              * @throws IllegalStateException if the field was previously set to a non-list.
              */
-            fun addOrganizationMembership(organizationMembership: OrganizationMembershipTable) =
-                apply {
-                    organizationMemberships =
-                        (organizationMemberships ?: JsonField.of(mutableListOf())).also {
-                            checkKnown("organizationMemberships", it).add(organizationMembership)
-                        }
-                }
+            fun addOrganizationMembership(organizationMembership: OrganizationMembership) = apply {
+                organizationMemberships =
+                    (organizationMemberships ?: JsonField.of(mutableListOf())).also {
+                        checkKnown("organizationMemberships", it).add(organizationMembership)
+                    }
+            }
 
             fun rpmLimit(rpmLimit: Long?) = rpmLimit(JsonField.ofNullable(rpmLimit))
 
@@ -2399,36 +2345,6 @@ private constructor(
              */
             fun tpmLimit(tpmLimit: JsonField<Long>) = apply { this.tpmLimit = tpmLimit }
 
-            fun updatedAt(updatedAt: OffsetDateTime?) = updatedAt(JsonField.ofNullable(updatedAt))
-
-            /** Alias for calling [Builder.updatedAt] with `updatedAt.orElse(null)`. */
-            fun updatedAt(updatedAt: Optional<OffsetDateTime>) = updatedAt(updatedAt.getOrNull())
-
-            /**
-             * Sets [Builder.updatedAt] to an arbitrary JSON value.
-             *
-             * You should usually call [Builder.updatedAt] with a well-typed [OffsetDateTime] value
-             * instead. This method is primarily for setting the field to an undocumented or not yet
-             * supported value.
-             */
-            fun updatedAt(updatedAt: JsonField<OffsetDateTime>) = apply {
-                this.updatedAt = updatedAt
-            }
-
-            fun userAlias(userAlias: String?) = userAlias(JsonField.ofNullable(userAlias))
-
-            /** Alias for calling [Builder.userAlias] with `userAlias.orElse(null)`. */
-            fun userAlias(userAlias: Optional<String>) = userAlias(userAlias.getOrNull())
-
-            /**
-             * Sets [Builder.userAlias] to an arbitrary JSON value.
-             *
-             * You should usually call [Builder.userAlias] with a well-typed [String] value instead.
-             * This method is primarily for setting the field to an undocumented or not yet
-             * supported value.
-             */
-            fun userAlias(userAlias: JsonField<String>) = apply { this.userAlias = userAlias }
-
             fun userEmail(userEmail: String?) = userEmail(JsonField.ofNullable(userEmail))
 
             /** Alias for calling [Builder.userEmail] with `userEmail.orElse(null)`. */
@@ -2493,21 +2409,17 @@ private constructor(
                     checkRequired("userId", userId),
                     budgetDuration,
                     budgetResetAt,
-                    createdAt,
                     maxBudget,
                     metadata,
                     modelMaxBudget,
                     modelSpend,
                     (models ?: JsonMissing.of()).map { it.toImmutable() },
-                    objectPermission,
                     (organizationMemberships ?: JsonMissing.of()).map { it.toImmutable() },
                     rpmLimit,
                     spend,
                     ssoUserId,
                     (teams ?: JsonMissing.of()).map { it.toImmutable() },
                     tpmLimit,
-                    updatedAt,
-                    userAlias,
                     userEmail,
                     userRole,
                     additionalProperties.toMutableMap(),
@@ -2524,21 +2436,14 @@ private constructor(
             userId()
             budgetDuration()
             budgetResetAt()
-            createdAt()
             maxBudget()
-            metadata().ifPresent { it.validate() }
-            modelMaxBudget().ifPresent { it.validate() }
-            modelSpend().ifPresent { it.validate() }
             models()
-            objectPermission().ifPresent { it.validate() }
             organizationMemberships().ifPresent { it.forEach { it.validate() } }
             rpmLimit()
             spend()
             ssoUserId()
             teams()
             tpmLimit()
-            updatedAt()
-            userAlias()
             userEmail()
             userRole()
             validated = true
@@ -2563,13 +2468,8 @@ private constructor(
             (if (userId.asKnown().isPresent) 1 else 0) +
                 (if (budgetDuration.asKnown().isPresent) 1 else 0) +
                 (if (budgetResetAt.asKnown().isPresent) 1 else 0) +
-                (if (createdAt.asKnown().isPresent) 1 else 0) +
                 (if (maxBudget.asKnown().isPresent) 1 else 0) +
-                (metadata.asKnown().getOrNull()?.validity() ?: 0) +
-                (modelMaxBudget.asKnown().getOrNull()?.validity() ?: 0) +
-                (modelSpend.asKnown().getOrNull()?.validity() ?: 0) +
                 (models.asKnown().getOrNull()?.size ?: 0) +
-                (objectPermission.asKnown().getOrNull()?.validity() ?: 0) +
                 (organizationMemberships.asKnown().getOrNull()?.sumOf { it.validity().toInt() }
                     ?: 0) +
                 (if (rpmLimit.asKnown().isPresent) 1 else 0) +
@@ -2577,362 +2477,63 @@ private constructor(
                 (if (ssoUserId.asKnown().isPresent) 1 else 0) +
                 (teams.asKnown().getOrNull()?.size ?: 0) +
                 (if (tpmLimit.asKnown().isPresent) 1 else 0) +
-                (if (updatedAt.asKnown().isPresent) 1 else 0) +
-                (if (userAlias.asKnown().isPresent) 1 else 0) +
                 (if (userEmail.asKnown().isPresent) 1 else 0) +
                 (if (userRole.asKnown().isPresent) 1 else 0)
 
-        class Metadata
-        @JsonCreator
-        private constructor(
-            @com.fasterxml.jackson.annotation.JsonValue
-            private val additionalProperties: Map<String, JsonValue>
-        ) {
-
-            @JsonAnyGetter
-            @ExcludeMissing
-            fun _additionalProperties(): Map<String, JsonValue> = additionalProperties
-
-            fun toBuilder() = Builder().from(this)
-
-            companion object {
-
-                /** Returns a mutable builder for constructing an instance of [Metadata]. */
-                @JvmStatic fun builder() = Builder()
-            }
-
-            /** A builder for [Metadata]. */
-            class Builder internal constructor() {
-
-                private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
-
-                @JvmSynthetic
-                internal fun from(metadata: Metadata) = apply {
-                    additionalProperties = metadata.additionalProperties.toMutableMap()
-                }
-
-                fun additionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
-                    this.additionalProperties.clear()
-                    putAllAdditionalProperties(additionalProperties)
-                }
-
-                fun putAdditionalProperty(key: String, value: JsonValue) = apply {
-                    additionalProperties.put(key, value)
-                }
-
-                fun putAllAdditionalProperties(additionalProperties: Map<String, JsonValue>) =
-                    apply {
-                        this.additionalProperties.putAll(additionalProperties)
-                    }
-
-                fun removeAdditionalProperty(key: String) = apply {
-                    additionalProperties.remove(key)
-                }
-
-                fun removeAllAdditionalProperties(keys: Set<String>) = apply {
-                    keys.forEach(::removeAdditionalProperty)
-                }
-
-                /**
-                 * Returns an immutable instance of [Metadata].
-                 *
-                 * Further updates to this [Builder] will not mutate the returned instance.
-                 */
-                fun build(): Metadata = Metadata(additionalProperties.toImmutable())
-            }
-
-            private var validated: Boolean = false
-
-            fun validate(): Metadata = apply {
-                if (validated) {
-                    return@apply
-                }
-
-                validated = true
-            }
-
-            fun isValid(): Boolean =
-                try {
-                    validate()
-                    true
-                } catch (e: HanzoInvalidDataException) {
-                    false
-                }
-
-            /**
-             * Returns a score indicating how many valid values are contained in this object
-             * recursively.
-             *
-             * Used for best match union deserialization.
-             */
-            @JvmSynthetic
-            internal fun validity(): Int =
-                additionalProperties.count { (_, value) -> !value.isNull() && !value.isMissing() }
-
-            override fun equals(other: Any?): Boolean {
-                if (this === other) {
-                    return true
-                }
-
-                return other is Metadata && additionalProperties == other.additionalProperties
-            }
-
-            private val hashCode: Int by lazy { Objects.hash(additionalProperties) }
-
-            override fun hashCode(): Int = hashCode
-
-            override fun toString() = "Metadata{additionalProperties=$additionalProperties}"
-        }
-
-        class ModelMaxBudget
-        @JsonCreator
-        private constructor(
-            @com.fasterxml.jackson.annotation.JsonValue
-            private val additionalProperties: Map<String, JsonValue>
-        ) {
-
-            @JsonAnyGetter
-            @ExcludeMissing
-            fun _additionalProperties(): Map<String, JsonValue> = additionalProperties
-
-            fun toBuilder() = Builder().from(this)
-
-            companion object {
-
-                /** Returns a mutable builder for constructing an instance of [ModelMaxBudget]. */
-                @JvmStatic fun builder() = Builder()
-            }
-
-            /** A builder for [ModelMaxBudget]. */
-            class Builder internal constructor() {
-
-                private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
-
-                @JvmSynthetic
-                internal fun from(modelMaxBudget: ModelMaxBudget) = apply {
-                    additionalProperties = modelMaxBudget.additionalProperties.toMutableMap()
-                }
-
-                fun additionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
-                    this.additionalProperties.clear()
-                    putAllAdditionalProperties(additionalProperties)
-                }
-
-                fun putAdditionalProperty(key: String, value: JsonValue) = apply {
-                    additionalProperties.put(key, value)
-                }
-
-                fun putAllAdditionalProperties(additionalProperties: Map<String, JsonValue>) =
-                    apply {
-                        this.additionalProperties.putAll(additionalProperties)
-                    }
-
-                fun removeAdditionalProperty(key: String) = apply {
-                    additionalProperties.remove(key)
-                }
-
-                fun removeAllAdditionalProperties(keys: Set<String>) = apply {
-                    keys.forEach(::removeAdditionalProperty)
-                }
-
-                /**
-                 * Returns an immutable instance of [ModelMaxBudget].
-                 *
-                 * Further updates to this [Builder] will not mutate the returned instance.
-                 */
-                fun build(): ModelMaxBudget = ModelMaxBudget(additionalProperties.toImmutable())
-            }
-
-            private var validated: Boolean = false
-
-            fun validate(): ModelMaxBudget = apply {
-                if (validated) {
-                    return@apply
-                }
-
-                validated = true
-            }
-
-            fun isValid(): Boolean =
-                try {
-                    validate()
-                    true
-                } catch (e: HanzoInvalidDataException) {
-                    false
-                }
-
-            /**
-             * Returns a score indicating how many valid values are contained in this object
-             * recursively.
-             *
-             * Used for best match union deserialization.
-             */
-            @JvmSynthetic
-            internal fun validity(): Int =
-                additionalProperties.count { (_, value) -> !value.isNull() && !value.isMissing() }
-
-            override fun equals(other: Any?): Boolean {
-                if (this === other) {
-                    return true
-                }
-
-                return other is ModelMaxBudget && additionalProperties == other.additionalProperties
-            }
-
-            private val hashCode: Int by lazy { Objects.hash(additionalProperties) }
-
-            override fun hashCode(): Int = hashCode
-
-            override fun toString() = "ModelMaxBudget{additionalProperties=$additionalProperties}"
-        }
-
-        class ModelSpend
-        @JsonCreator
-        private constructor(
-            @com.fasterxml.jackson.annotation.JsonValue
-            private val additionalProperties: Map<String, JsonValue>
-        ) {
-
-            @JsonAnyGetter
-            @ExcludeMissing
-            fun _additionalProperties(): Map<String, JsonValue> = additionalProperties
-
-            fun toBuilder() = Builder().from(this)
-
-            companion object {
-
-                /** Returns a mutable builder for constructing an instance of [ModelSpend]. */
-                @JvmStatic fun builder() = Builder()
-            }
-
-            /** A builder for [ModelSpend]. */
-            class Builder internal constructor() {
-
-                private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
-
-                @JvmSynthetic
-                internal fun from(modelSpend: ModelSpend) = apply {
-                    additionalProperties = modelSpend.additionalProperties.toMutableMap()
-                }
-
-                fun additionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
-                    this.additionalProperties.clear()
-                    putAllAdditionalProperties(additionalProperties)
-                }
-
-                fun putAdditionalProperty(key: String, value: JsonValue) = apply {
-                    additionalProperties.put(key, value)
-                }
-
-                fun putAllAdditionalProperties(additionalProperties: Map<String, JsonValue>) =
-                    apply {
-                        this.additionalProperties.putAll(additionalProperties)
-                    }
-
-                fun removeAdditionalProperty(key: String) = apply {
-                    additionalProperties.remove(key)
-                }
-
-                fun removeAllAdditionalProperties(keys: Set<String>) = apply {
-                    keys.forEach(::removeAdditionalProperty)
-                }
-
-                /**
-                 * Returns an immutable instance of [ModelSpend].
-                 *
-                 * Further updates to this [Builder] will not mutate the returned instance.
-                 */
-                fun build(): ModelSpend = ModelSpend(additionalProperties.toImmutable())
-            }
-
-            private var validated: Boolean = false
-
-            fun validate(): ModelSpend = apply {
-                if (validated) {
-                    return@apply
-                }
-
-                validated = true
-            }
-
-            fun isValid(): Boolean =
-                try {
-                    validate()
-                    true
-                } catch (e: HanzoInvalidDataException) {
-                    false
-                }
-
-            /**
-             * Returns a score indicating how many valid values are contained in this object
-             * recursively.
-             *
-             * Used for best match union deserialization.
-             */
-            @JvmSynthetic
-            internal fun validity(): Int =
-                additionalProperties.count { (_, value) -> !value.isNull() && !value.isMissing() }
-
-            override fun equals(other: Any?): Boolean {
-                if (this === other) {
-                    return true
-                }
-
-                return other is ModelSpend && additionalProperties == other.additionalProperties
-            }
-
-            private val hashCode: Int by lazy { Objects.hash(additionalProperties) }
-
-            override fun hashCode(): Int = hashCode
-
-            override fun toString() = "ModelSpend{additionalProperties=$additionalProperties}"
-        }
-
-        /** Represents a LiteLLM_ObjectPermissionTable record */
-        class ObjectPermission
+        /**
+         * This is the table that track what organizations a user belongs to and users spend within
+         * the organization
+         */
+        class OrganizationMembership
         @JsonCreator(mode = JsonCreator.Mode.DISABLED)
         private constructor(
-            private val objectPermissionId: JsonField<String>,
-            private val agentAccessGroups: JsonField<List<String>>,
-            private val agents: JsonField<List<String>>,
-            private val mcpAccessGroups: JsonField<List<String>>,
-            private val mcpServers: JsonField<List<String>>,
-            private val mcpToolPermissions: JsonField<McpToolPermissions>,
-            private val vectorStores: JsonField<List<String>>,
+            private val createdAt: JsonField<OffsetDateTime>,
+            private val organizationId: JsonField<String>,
+            private val updatedAt: JsonField<OffsetDateTime>,
+            private val userId: JsonField<String>,
+            private val budgetId: JsonField<String>,
+            private val llmBudgetTable: JsonField<LlmBudgetTable>,
+            private val spend: JsonField<Double>,
+            private val user: JsonValue,
+            private val userRole: JsonField<String>,
             private val additionalProperties: MutableMap<String, JsonValue>,
         ) {
 
             @JsonCreator
             private constructor(
-                @JsonProperty("object_permission_id")
+                @JsonProperty("created_at")
                 @ExcludeMissing
-                objectPermissionId: JsonField<String> = JsonMissing.of(),
-                @JsonProperty("agent_access_groups")
+                createdAt: JsonField<OffsetDateTime> = JsonMissing.of(),
+                @JsonProperty("organization_id")
                 @ExcludeMissing
-                agentAccessGroups: JsonField<List<String>> = JsonMissing.of(),
-                @JsonProperty("agents")
+                organizationId: JsonField<String> = JsonMissing.of(),
+                @JsonProperty("updated_at")
                 @ExcludeMissing
-                agents: JsonField<List<String>> = JsonMissing.of(),
-                @JsonProperty("mcp_access_groups")
+                updatedAt: JsonField<OffsetDateTime> = JsonMissing.of(),
+                @JsonProperty("user_id")
                 @ExcludeMissing
-                mcpAccessGroups: JsonField<List<String>> = JsonMissing.of(),
-                @JsonProperty("mcp_servers")
+                userId: JsonField<String> = JsonMissing.of(),
+                @JsonProperty("budget_id")
                 @ExcludeMissing
-                mcpServers: JsonField<List<String>> = JsonMissing.of(),
-                @JsonProperty("mcp_tool_permissions")
+                budgetId: JsonField<String> = JsonMissing.of(),
+                @JsonProperty("llm_budget_table")
                 @ExcludeMissing
-                mcpToolPermissions: JsonField<McpToolPermissions> = JsonMissing.of(),
-                @JsonProperty("vector_stores")
+                llmBudgetTable: JsonField<LlmBudgetTable> = JsonMissing.of(),
+                @JsonProperty("spend") @ExcludeMissing spend: JsonField<Double> = JsonMissing.of(),
+                @JsonProperty("user") @ExcludeMissing user: JsonValue = JsonMissing.of(),
+                @JsonProperty("user_role")
                 @ExcludeMissing
-                vectorStores: JsonField<List<String>> = JsonMissing.of(),
+                userRole: JsonField<String> = JsonMissing.of(),
             ) : this(
-                objectPermissionId,
-                agentAccessGroups,
-                agents,
-                mcpAccessGroups,
-                mcpServers,
-                mcpToolPermissions,
-                vectorStores,
+                createdAt,
+                organizationId,
+                updatedAt,
+                userId,
+                budgetId,
+                llmBudgetTable,
+                spend,
+                user,
+                userRole,
                 mutableMapOf(),
             )
 
@@ -2941,114 +2542,134 @@ private constructor(
              *   unexpectedly missing or null (e.g. if the server responded with an unexpected
              *   value).
              */
-            fun objectPermissionId(): String =
-                objectPermissionId.getRequired("object_permission_id")
+            fun createdAt(): OffsetDateTime = createdAt.getRequired("created_at")
+
+            /**
+             * @throws HanzoInvalidDataException if the JSON field has an unexpected type or is
+             *   unexpectedly missing or null (e.g. if the server responded with an unexpected
+             *   value).
+             */
+            fun organizationId(): String = organizationId.getRequired("organization_id")
+
+            /**
+             * @throws HanzoInvalidDataException if the JSON field has an unexpected type or is
+             *   unexpectedly missing or null (e.g. if the server responded with an unexpected
+             *   value).
+             */
+            fun updatedAt(): OffsetDateTime = updatedAt.getRequired("updated_at")
+
+            /**
+             * @throws HanzoInvalidDataException if the JSON field has an unexpected type or is
+             *   unexpectedly missing or null (e.g. if the server responded with an unexpected
+             *   value).
+             */
+            fun userId(): String = userId.getRequired("user_id")
 
             /**
              * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if
              *   the server responded with an unexpected value).
              */
-            fun agentAccessGroups(): Optional<List<String>> =
-                agentAccessGroups.getOptional("agent_access_groups")
+            fun budgetId(): Optional<String> = budgetId.getOptional("budget_id")
 
             /**
-             * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if
-             *   the server responded with an unexpected value).
-             */
-            fun agents(): Optional<List<String>> = agents.getOptional("agents")
-
-            /**
-             * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if
-             *   the server responded with an unexpected value).
-             */
-            fun mcpAccessGroups(): Optional<List<String>> =
-                mcpAccessGroups.getOptional("mcp_access_groups")
-
-            /**
-             * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if
-             *   the server responded with an unexpected value).
-             */
-            fun mcpServers(): Optional<List<String>> = mcpServers.getOptional("mcp_servers")
-
-            /**
-             * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if
-             *   the server responded with an unexpected value).
-             */
-            fun mcpToolPermissions(): Optional<McpToolPermissions> =
-                mcpToolPermissions.getOptional("mcp_tool_permissions")
-
-            /**
-             * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if
-             *   the server responded with an unexpected value).
-             */
-            fun vectorStores(): Optional<List<String>> = vectorStores.getOptional("vector_stores")
-
-            /**
-             * Returns the raw JSON value of [objectPermissionId].
+             * Represents user-controllable params for a LLM_BudgetTable record
              *
-             * Unlike [objectPermissionId], this method doesn't throw if the JSON field has an
-             * unexpected type.
+             * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if
+             *   the server responded with an unexpected value).
              */
-            @JsonProperty("object_permission_id")
-            @ExcludeMissing
-            fun _objectPermissionId(): JsonField<String> = objectPermissionId
+            fun llmBudgetTable(): Optional<LlmBudgetTable> =
+                llmBudgetTable.getOptional("llm_budget_table")
 
             /**
-             * Returns the raw JSON value of [agentAccessGroups].
-             *
-             * Unlike [agentAccessGroups], this method doesn't throw if the JSON field has an
-             * unexpected type.
+             * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if
+             *   the server responded with an unexpected value).
              */
-            @JsonProperty("agent_access_groups")
-            @ExcludeMissing
-            fun _agentAccessGroups(): JsonField<List<String>> = agentAccessGroups
+            fun spend(): Optional<Double> = spend.getOptional("spend")
 
             /**
-             * Returns the raw JSON value of [agents].
-             *
-             * Unlike [agents], this method doesn't throw if the JSON field has an unexpected type.
+             * This arbitrary value can be deserialized into a custom type using the `convert`
+             * method:
+             * ```java
+             * MyClass myObject = organizationMembership.user().convert(MyClass.class);
+             * ```
              */
-            @JsonProperty("agents") @ExcludeMissing fun _agents(): JsonField<List<String>> = agents
+            @JsonProperty("user") @ExcludeMissing fun _user(): JsonValue = user
 
             /**
-             * Returns the raw JSON value of [mcpAccessGroups].
-             *
-             * Unlike [mcpAccessGroups], this method doesn't throw if the JSON field has an
-             * unexpected type.
+             * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if
+             *   the server responded with an unexpected value).
              */
-            @JsonProperty("mcp_access_groups")
-            @ExcludeMissing
-            fun _mcpAccessGroups(): JsonField<List<String>> = mcpAccessGroups
+            fun userRole(): Optional<String> = userRole.getOptional("user_role")
 
             /**
-             * Returns the raw JSON value of [mcpServers].
+             * Returns the raw JSON value of [createdAt].
              *
-             * Unlike [mcpServers], this method doesn't throw if the JSON field has an unexpected
+             * Unlike [createdAt], this method doesn't throw if the JSON field has an unexpected
              * type.
              */
-            @JsonProperty("mcp_servers")
+            @JsonProperty("created_at")
             @ExcludeMissing
-            fun _mcpServers(): JsonField<List<String>> = mcpServers
+            fun _createdAt(): JsonField<OffsetDateTime> = createdAt
 
             /**
-             * Returns the raw JSON value of [mcpToolPermissions].
+             * Returns the raw JSON value of [organizationId].
              *
-             * Unlike [mcpToolPermissions], this method doesn't throw if the JSON field has an
+             * Unlike [organizationId], this method doesn't throw if the JSON field has an
              * unexpected type.
              */
-            @JsonProperty("mcp_tool_permissions")
+            @JsonProperty("organization_id")
             @ExcludeMissing
-            fun _mcpToolPermissions(): JsonField<McpToolPermissions> = mcpToolPermissions
+            fun _organizationId(): JsonField<String> = organizationId
 
             /**
-             * Returns the raw JSON value of [vectorStores].
+             * Returns the raw JSON value of [updatedAt].
              *
-             * Unlike [vectorStores], this method doesn't throw if the JSON field has an unexpected
+             * Unlike [updatedAt], this method doesn't throw if the JSON field has an unexpected
              * type.
              */
-            @JsonProperty("vector_stores")
+            @JsonProperty("updated_at")
             @ExcludeMissing
-            fun _vectorStores(): JsonField<List<String>> = vectorStores
+            fun _updatedAt(): JsonField<OffsetDateTime> = updatedAt
+
+            /**
+             * Returns the raw JSON value of [userId].
+             *
+             * Unlike [userId], this method doesn't throw if the JSON field has an unexpected type.
+             */
+            @JsonProperty("user_id") @ExcludeMissing fun _userId(): JsonField<String> = userId
+
+            /**
+             * Returns the raw JSON value of [budgetId].
+             *
+             * Unlike [budgetId], this method doesn't throw if the JSON field has an unexpected
+             * type.
+             */
+            @JsonProperty("budget_id") @ExcludeMissing fun _budgetId(): JsonField<String> = budgetId
+
+            /**
+             * Returns the raw JSON value of [llmBudgetTable].
+             *
+             * Unlike [llmBudgetTable], this method doesn't throw if the JSON field has an
+             * unexpected type.
+             */
+            @JsonProperty("llm_budget_table")
+            @ExcludeMissing
+            fun _llmBudgetTable(): JsonField<LlmBudgetTable> = llmBudgetTable
+
+            /**
+             * Returns the raw JSON value of [spend].
+             *
+             * Unlike [spend], this method doesn't throw if the JSON field has an unexpected type.
+             */
+            @JsonProperty("spend") @ExcludeMissing fun _spend(): JsonField<Double> = spend
+
+            /**
+             * Returns the raw JSON value of [userRole].
+             *
+             * Unlike [userRole], this method doesn't throw if the JSON field has an unexpected
+             * type.
+             */
+            @JsonProperty("user_role") @ExcludeMissing fun _userRole(): JsonField<String> = userRole
 
             @JsonAnySetter
             private fun putAdditionalProperty(key: String, value: JsonValue) {
@@ -3065,228 +2686,161 @@ private constructor(
             companion object {
 
                 /**
-                 * Returns a mutable builder for constructing an instance of [ObjectPermission].
+                 * Returns a mutable builder for constructing an instance of
+                 * [OrganizationMembership].
                  *
                  * The following fields are required:
                  * ```java
-                 * .objectPermissionId()
+                 * .createdAt()
+                 * .organizationId()
+                 * .updatedAt()
+                 * .userId()
                  * ```
                  */
                 @JvmStatic fun builder() = Builder()
             }
 
-            /** A builder for [ObjectPermission]. */
+            /** A builder for [OrganizationMembership]. */
             class Builder internal constructor() {
 
-                private var objectPermissionId: JsonField<String>? = null
-                private var agentAccessGroups: JsonField<MutableList<String>>? = null
-                private var agents: JsonField<MutableList<String>>? = null
-                private var mcpAccessGroups: JsonField<MutableList<String>>? = null
-                private var mcpServers: JsonField<MutableList<String>>? = null
-                private var mcpToolPermissions: JsonField<McpToolPermissions> = JsonMissing.of()
-                private var vectorStores: JsonField<MutableList<String>>? = null
+                private var createdAt: JsonField<OffsetDateTime>? = null
+                private var organizationId: JsonField<String>? = null
+                private var updatedAt: JsonField<OffsetDateTime>? = null
+                private var userId: JsonField<String>? = null
+                private var budgetId: JsonField<String> = JsonMissing.of()
+                private var llmBudgetTable: JsonField<LlmBudgetTable> = JsonMissing.of()
+                private var spend: JsonField<Double> = JsonMissing.of()
+                private var user: JsonValue = JsonMissing.of()
+                private var userRole: JsonField<String> = JsonMissing.of()
                 private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
 
                 @JvmSynthetic
-                internal fun from(objectPermission: ObjectPermission) = apply {
-                    objectPermissionId = objectPermission.objectPermissionId
-                    agentAccessGroups =
-                        objectPermission.agentAccessGroups.map { it.toMutableList() }
-                    agents = objectPermission.agents.map { it.toMutableList() }
-                    mcpAccessGroups = objectPermission.mcpAccessGroups.map { it.toMutableList() }
-                    mcpServers = objectPermission.mcpServers.map { it.toMutableList() }
-                    mcpToolPermissions = objectPermission.mcpToolPermissions
-                    vectorStores = objectPermission.vectorStores.map { it.toMutableList() }
-                    additionalProperties = objectPermission.additionalProperties.toMutableMap()
+                internal fun from(organizationMembership: OrganizationMembership) = apply {
+                    createdAt = organizationMembership.createdAt
+                    organizationId = organizationMembership.organizationId
+                    updatedAt = organizationMembership.updatedAt
+                    userId = organizationMembership.userId
+                    budgetId = organizationMembership.budgetId
+                    llmBudgetTable = organizationMembership.llmBudgetTable
+                    spend = organizationMembership.spend
+                    user = organizationMembership.user
+                    userRole = organizationMembership.userRole
+                    additionalProperties =
+                        organizationMembership.additionalProperties.toMutableMap()
                 }
 
-                fun objectPermissionId(objectPermissionId: String) =
-                    objectPermissionId(JsonField.of(objectPermissionId))
+                fun createdAt(createdAt: OffsetDateTime) = createdAt(JsonField.of(createdAt))
 
                 /**
-                 * Sets [Builder.objectPermissionId] to an arbitrary JSON value.
+                 * Sets [Builder.createdAt] to an arbitrary JSON value.
                  *
-                 * You should usually call [Builder.objectPermissionId] with a well-typed [String]
+                 * You should usually call [Builder.createdAt] with a well-typed [OffsetDateTime]
                  * value instead. This method is primarily for setting the field to an undocumented
                  * or not yet supported value.
                  */
-                fun objectPermissionId(objectPermissionId: JsonField<String>) = apply {
-                    this.objectPermissionId = objectPermissionId
+                fun createdAt(createdAt: JsonField<OffsetDateTime>) = apply {
+                    this.createdAt = createdAt
                 }
 
-                fun agentAccessGroups(agentAccessGroups: List<String>?) =
-                    agentAccessGroups(JsonField.ofNullable(agentAccessGroups))
+                fun organizationId(organizationId: String) =
+                    organizationId(JsonField.of(organizationId))
 
                 /**
-                 * Alias for calling [Builder.agentAccessGroups] with
-                 * `agentAccessGroups.orElse(null)`.
-                 */
-                fun agentAccessGroups(agentAccessGroups: Optional<List<String>>) =
-                    agentAccessGroups(agentAccessGroups.getOrNull())
-
-                /**
-                 * Sets [Builder.agentAccessGroups] to an arbitrary JSON value.
+                 * Sets [Builder.organizationId] to an arbitrary JSON value.
                  *
-                 * You should usually call [Builder.agentAccessGroups] with a well-typed
-                 * `List<String>` value instead. This method is primarily for setting the field to
-                 * an undocumented or not yet supported value.
-                 */
-                fun agentAccessGroups(agentAccessGroups: JsonField<List<String>>) = apply {
-                    this.agentAccessGroups = agentAccessGroups.map { it.toMutableList() }
-                }
-
-                /**
-                 * Adds a single [String] to [agentAccessGroups].
-                 *
-                 * @throws IllegalStateException if the field was previously set to a non-list.
-                 */
-                fun addAgentAccessGroup(agentAccessGroup: String) = apply {
-                    agentAccessGroups =
-                        (agentAccessGroups ?: JsonField.of(mutableListOf())).also {
-                            checkKnown("agentAccessGroups", it).add(agentAccessGroup)
-                        }
-                }
-
-                fun agents(agents: List<String>?) = agents(JsonField.ofNullable(agents))
-
-                /** Alias for calling [Builder.agents] with `agents.orElse(null)`. */
-                fun agents(agents: Optional<List<String>>) = agents(agents.getOrNull())
-
-                /**
-                 * Sets [Builder.agents] to an arbitrary JSON value.
-                 *
-                 * You should usually call [Builder.agents] with a well-typed `List<String>` value
+                 * You should usually call [Builder.organizationId] with a well-typed [String] value
                  * instead. This method is primarily for setting the field to an undocumented or not
                  * yet supported value.
                  */
-                fun agents(agents: JsonField<List<String>>) = apply {
-                    this.agents = agents.map { it.toMutableList() }
+                fun organizationId(organizationId: JsonField<String>) = apply {
+                    this.organizationId = organizationId
                 }
 
+                fun updatedAt(updatedAt: OffsetDateTime) = updatedAt(JsonField.of(updatedAt))
+
                 /**
-                 * Adds a single [String] to [agents].
+                 * Sets [Builder.updatedAt] to an arbitrary JSON value.
                  *
-                 * @throws IllegalStateException if the field was previously set to a non-list.
+                 * You should usually call [Builder.updatedAt] with a well-typed [OffsetDateTime]
+                 * value instead. This method is primarily for setting the field to an undocumented
+                 * or not yet supported value.
                  */
-                fun addAgent(agent: String) = apply {
-                    agents =
-                        (agents ?: JsonField.of(mutableListOf())).also {
-                            checkKnown("agents", it).add(agent)
-                        }
+                fun updatedAt(updatedAt: JsonField<OffsetDateTime>) = apply {
+                    this.updatedAt = updatedAt
                 }
 
-                fun mcpAccessGroups(mcpAccessGroups: List<String>?) =
-                    mcpAccessGroups(JsonField.ofNullable(mcpAccessGroups))
+                fun userId(userId: String) = userId(JsonField.of(userId))
 
                 /**
-                 * Alias for calling [Builder.mcpAccessGroups] with `mcpAccessGroups.orElse(null)`.
-                 */
-                fun mcpAccessGroups(mcpAccessGroups: Optional<List<String>>) =
-                    mcpAccessGroups(mcpAccessGroups.getOrNull())
-
-                /**
-                 * Sets [Builder.mcpAccessGroups] to an arbitrary JSON value.
+                 * Sets [Builder.userId] to an arbitrary JSON value.
                  *
-                 * You should usually call [Builder.mcpAccessGroups] with a well-typed
-                 * `List<String>` value instead. This method is primarily for setting the field to
+                 * You should usually call [Builder.userId] with a well-typed [String] value
+                 * instead. This method is primarily for setting the field to an undocumented or not
+                 * yet supported value.
+                 */
+                fun userId(userId: JsonField<String>) = apply { this.userId = userId }
+
+                fun budgetId(budgetId: String?) = budgetId(JsonField.ofNullable(budgetId))
+
+                /** Alias for calling [Builder.budgetId] with `budgetId.orElse(null)`. */
+                fun budgetId(budgetId: Optional<String>) = budgetId(budgetId.getOrNull())
+
+                /**
+                 * Sets [Builder.budgetId] to an arbitrary JSON value.
+                 *
+                 * You should usually call [Builder.budgetId] with a well-typed [String] value
+                 * instead. This method is primarily for setting the field to an undocumented or not
+                 * yet supported value.
+                 */
+                fun budgetId(budgetId: JsonField<String>) = apply { this.budgetId = budgetId }
+
+                /** Represents user-controllable params for a LLM_BudgetTable record */
+                fun llmBudgetTable(llmBudgetTable: LlmBudgetTable?) =
+                    llmBudgetTable(JsonField.ofNullable(llmBudgetTable))
+
+                /**
+                 * Alias for calling [Builder.llmBudgetTable] with `llmBudgetTable.orElse(null)`.
+                 */
+                fun llmBudgetTable(llmBudgetTable: Optional<LlmBudgetTable>) =
+                    llmBudgetTable(llmBudgetTable.getOrNull())
+
+                /**
+                 * Sets [Builder.llmBudgetTable] to an arbitrary JSON value.
+                 *
+                 * You should usually call [Builder.llmBudgetTable] with a well-typed
+                 * [LlmBudgetTable] value instead. This method is primarily for setting the field to
                  * an undocumented or not yet supported value.
                  */
-                fun mcpAccessGroups(mcpAccessGroups: JsonField<List<String>>) = apply {
-                    this.mcpAccessGroups = mcpAccessGroups.map { it.toMutableList() }
+                fun llmBudgetTable(llmBudgetTable: JsonField<LlmBudgetTable>) = apply {
+                    this.llmBudgetTable = llmBudgetTable
                 }
 
+                fun spend(spend: Double) = spend(JsonField.of(spend))
+
                 /**
-                 * Adds a single [String] to [mcpAccessGroups].
+                 * Sets [Builder.spend] to an arbitrary JSON value.
                  *
-                 * @throws IllegalStateException if the field was previously set to a non-list.
+                 * You should usually call [Builder.spend] with a well-typed [Double] value instead.
+                 * This method is primarily for setting the field to an undocumented or not yet
+                 * supported value.
                  */
-                fun addMcpAccessGroup(mcpAccessGroup: String) = apply {
-                    mcpAccessGroups =
-                        (mcpAccessGroups ?: JsonField.of(mutableListOf())).also {
-                            checkKnown("mcpAccessGroups", it).add(mcpAccessGroup)
-                        }
-                }
+                fun spend(spend: JsonField<Double>) = apply { this.spend = spend }
 
-                fun mcpServers(mcpServers: List<String>?) =
-                    mcpServers(JsonField.ofNullable(mcpServers))
+                fun user(user: JsonValue) = apply { this.user = user }
 
-                /** Alias for calling [Builder.mcpServers] with `mcpServers.orElse(null)`. */
-                fun mcpServers(mcpServers: Optional<List<String>>) =
-                    mcpServers(mcpServers.getOrNull())
+                fun userRole(userRole: String?) = userRole(JsonField.ofNullable(userRole))
+
+                /** Alias for calling [Builder.userRole] with `userRole.orElse(null)`. */
+                fun userRole(userRole: Optional<String>) = userRole(userRole.getOrNull())
 
                 /**
-                 * Sets [Builder.mcpServers] to an arbitrary JSON value.
+                 * Sets [Builder.userRole] to an arbitrary JSON value.
                  *
-                 * You should usually call [Builder.mcpServers] with a well-typed `List<String>`
-                 * value instead. This method is primarily for setting the field to an undocumented
-                 * or not yet supported value.
+                 * You should usually call [Builder.userRole] with a well-typed [String] value
+                 * instead. This method is primarily for setting the field to an undocumented or not
+                 * yet supported value.
                  */
-                fun mcpServers(mcpServers: JsonField<List<String>>) = apply {
-                    this.mcpServers = mcpServers.map { it.toMutableList() }
-                }
-
-                /**
-                 * Adds a single [String] to [mcpServers].
-                 *
-                 * @throws IllegalStateException if the field was previously set to a non-list.
-                 */
-                fun addMcpServer(mcpServer: String) = apply {
-                    mcpServers =
-                        (mcpServers ?: JsonField.of(mutableListOf())).also {
-                            checkKnown("mcpServers", it).add(mcpServer)
-                        }
-                }
-
-                fun mcpToolPermissions(mcpToolPermissions: McpToolPermissions?) =
-                    mcpToolPermissions(JsonField.ofNullable(mcpToolPermissions))
-
-                /**
-                 * Alias for calling [Builder.mcpToolPermissions] with
-                 * `mcpToolPermissions.orElse(null)`.
-                 */
-                fun mcpToolPermissions(mcpToolPermissions: Optional<McpToolPermissions>) =
-                    mcpToolPermissions(mcpToolPermissions.getOrNull())
-
-                /**
-                 * Sets [Builder.mcpToolPermissions] to an arbitrary JSON value.
-                 *
-                 * You should usually call [Builder.mcpToolPermissions] with a well-typed
-                 * [McpToolPermissions] value instead. This method is primarily for setting the
-                 * field to an undocumented or not yet supported value.
-                 */
-                fun mcpToolPermissions(mcpToolPermissions: JsonField<McpToolPermissions>) = apply {
-                    this.mcpToolPermissions = mcpToolPermissions
-                }
-
-                fun vectorStores(vectorStores: List<String>?) =
-                    vectorStores(JsonField.ofNullable(vectorStores))
-
-                /** Alias for calling [Builder.vectorStores] with `vectorStores.orElse(null)`. */
-                fun vectorStores(vectorStores: Optional<List<String>>) =
-                    vectorStores(vectorStores.getOrNull())
-
-                /**
-                 * Sets [Builder.vectorStores] to an arbitrary JSON value.
-                 *
-                 * You should usually call [Builder.vectorStores] with a well-typed `List<String>`
-                 * value instead. This method is primarily for setting the field to an undocumented
-                 * or not yet supported value.
-                 */
-                fun vectorStores(vectorStores: JsonField<List<String>>) = apply {
-                    this.vectorStores = vectorStores.map { it.toMutableList() }
-                }
-
-                /**
-                 * Adds a single [String] to [vectorStores].
-                 *
-                 * @throws IllegalStateException if the field was previously set to a non-list.
-                 */
-                fun addVectorStore(vectorStore: String) = apply {
-                    vectorStores =
-                        (vectorStores ?: JsonField.of(mutableListOf())).also {
-                            checkKnown("vectorStores", it).add(vectorStore)
-                        }
-                }
+                fun userRole(userRole: JsonField<String>) = apply { this.userRole = userRole }
 
                 fun additionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
                     this.additionalProperties.clear()
@@ -3311,44 +2865,50 @@ private constructor(
                 }
 
                 /**
-                 * Returns an immutable instance of [ObjectPermission].
+                 * Returns an immutable instance of [OrganizationMembership].
                  *
                  * Further updates to this [Builder] will not mutate the returned instance.
                  *
                  * The following fields are required:
                  * ```java
-                 * .objectPermissionId()
+                 * .createdAt()
+                 * .organizationId()
+                 * .updatedAt()
+                 * .userId()
                  * ```
                  *
                  * @throws IllegalStateException if any required field is unset.
                  */
-                fun build(): ObjectPermission =
-                    ObjectPermission(
-                        checkRequired("objectPermissionId", objectPermissionId),
-                        (agentAccessGroups ?: JsonMissing.of()).map { it.toImmutable() },
-                        (agents ?: JsonMissing.of()).map { it.toImmutable() },
-                        (mcpAccessGroups ?: JsonMissing.of()).map { it.toImmutable() },
-                        (mcpServers ?: JsonMissing.of()).map { it.toImmutable() },
-                        mcpToolPermissions,
-                        (vectorStores ?: JsonMissing.of()).map { it.toImmutable() },
+                fun build(): OrganizationMembership =
+                    OrganizationMembership(
+                        checkRequired("createdAt", createdAt),
+                        checkRequired("organizationId", organizationId),
+                        checkRequired("updatedAt", updatedAt),
+                        checkRequired("userId", userId),
+                        budgetId,
+                        llmBudgetTable,
+                        spend,
+                        user,
+                        userRole,
                         additionalProperties.toMutableMap(),
                     )
             }
 
             private var validated: Boolean = false
 
-            fun validate(): ObjectPermission = apply {
+            fun validate(): OrganizationMembership = apply {
                 if (validated) {
                     return@apply
                 }
 
-                objectPermissionId()
-                agentAccessGroups()
-                agents()
-                mcpAccessGroups()
-                mcpServers()
-                mcpToolPermissions().ifPresent { it.validate() }
-                vectorStores()
+                createdAt()
+                organizationId()
+                updatedAt()
+                userId()
+                budgetId()
+                llmBudgetTable().ifPresent { it.validate() }
+                spend()
+                userRole()
                 validated = true
             }
 
@@ -3368,46 +2928,359 @@ private constructor(
              */
             @JvmSynthetic
             internal fun validity(): Int =
-                (if (objectPermissionId.asKnown().isPresent) 1 else 0) +
-                    (agentAccessGroups.asKnown().getOrNull()?.size ?: 0) +
-                    (agents.asKnown().getOrNull()?.size ?: 0) +
-                    (mcpAccessGroups.asKnown().getOrNull()?.size ?: 0) +
-                    (mcpServers.asKnown().getOrNull()?.size ?: 0) +
-                    (mcpToolPermissions.asKnown().getOrNull()?.validity() ?: 0) +
-                    (vectorStores.asKnown().getOrNull()?.size ?: 0)
+                (if (createdAt.asKnown().isPresent) 1 else 0) +
+                    (if (organizationId.asKnown().isPresent) 1 else 0) +
+                    (if (updatedAt.asKnown().isPresent) 1 else 0) +
+                    (if (userId.asKnown().isPresent) 1 else 0) +
+                    (if (budgetId.asKnown().isPresent) 1 else 0) +
+                    (llmBudgetTable.asKnown().getOrNull()?.validity() ?: 0) +
+                    (if (spend.asKnown().isPresent) 1 else 0) +
+                    (if (userRole.asKnown().isPresent) 1 else 0)
 
-            class McpToolPermissions
-            @JsonCreator
+            /** Represents user-controllable params for a LLM_BudgetTable record */
+            class LlmBudgetTable
+            @JsonCreator(mode = JsonCreator.Mode.DISABLED)
             private constructor(
-                @com.fasterxml.jackson.annotation.JsonValue
-                private val additionalProperties: Map<String, JsonValue>
+                private val budgetDuration: JsonField<String>,
+                private val maxBudget: JsonField<Double>,
+                private val maxParallelRequests: JsonField<Long>,
+                private val modelMaxBudget: JsonValue,
+                private val rpmLimit: JsonField<Long>,
+                private val softBudget: JsonField<Double>,
+                private val tpmLimit: JsonField<Long>,
+                private val additionalProperties: MutableMap<String, JsonValue>,
             ) {
+
+                @JsonCreator
+                private constructor(
+                    @JsonProperty("budget_duration")
+                    @ExcludeMissing
+                    budgetDuration: JsonField<String> = JsonMissing.of(),
+                    @JsonProperty("max_budget")
+                    @ExcludeMissing
+                    maxBudget: JsonField<Double> = JsonMissing.of(),
+                    @JsonProperty("max_parallel_requests")
+                    @ExcludeMissing
+                    maxParallelRequests: JsonField<Long> = JsonMissing.of(),
+                    @JsonProperty("model_max_budget")
+                    @ExcludeMissing
+                    modelMaxBudget: JsonValue = JsonMissing.of(),
+                    @JsonProperty("rpm_limit")
+                    @ExcludeMissing
+                    rpmLimit: JsonField<Long> = JsonMissing.of(),
+                    @JsonProperty("soft_budget")
+                    @ExcludeMissing
+                    softBudget: JsonField<Double> = JsonMissing.of(),
+                    @JsonProperty("tpm_limit")
+                    @ExcludeMissing
+                    tpmLimit: JsonField<Long> = JsonMissing.of(),
+                ) : this(
+                    budgetDuration,
+                    maxBudget,
+                    maxParallelRequests,
+                    modelMaxBudget,
+                    rpmLimit,
+                    softBudget,
+                    tpmLimit,
+                    mutableMapOf(),
+                )
+
+                /**
+                 * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g.
+                 *   if the server responded with an unexpected value).
+                 */
+                fun budgetDuration(): Optional<String> =
+                    budgetDuration.getOptional("budget_duration")
+
+                /**
+                 * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g.
+                 *   if the server responded with an unexpected value).
+                 */
+                fun maxBudget(): Optional<Double> = maxBudget.getOptional("max_budget")
+
+                /**
+                 * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g.
+                 *   if the server responded with an unexpected value).
+                 */
+                fun maxParallelRequests(): Optional<Long> =
+                    maxParallelRequests.getOptional("max_parallel_requests")
+
+                /**
+                 * This arbitrary value can be deserialized into a custom type using the `convert`
+                 * method:
+                 * ```java
+                 * MyClass myObject = llmBudgetTable.modelMaxBudget().convert(MyClass.class);
+                 * ```
+                 */
+                @JsonProperty("model_max_budget")
+                @ExcludeMissing
+                fun _modelMaxBudget(): JsonValue = modelMaxBudget
+
+                /**
+                 * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g.
+                 *   if the server responded with an unexpected value).
+                 */
+                fun rpmLimit(): Optional<Long> = rpmLimit.getOptional("rpm_limit")
+
+                /**
+                 * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g.
+                 *   if the server responded with an unexpected value).
+                 */
+                fun softBudget(): Optional<Double> = softBudget.getOptional("soft_budget")
+
+                /**
+                 * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g.
+                 *   if the server responded with an unexpected value).
+                 */
+                fun tpmLimit(): Optional<Long> = tpmLimit.getOptional("tpm_limit")
+
+                /**
+                 * Returns the raw JSON value of [budgetDuration].
+                 *
+                 * Unlike [budgetDuration], this method doesn't throw if the JSON field has an
+                 * unexpected type.
+                 */
+                @JsonProperty("budget_duration")
+                @ExcludeMissing
+                fun _budgetDuration(): JsonField<String> = budgetDuration
+
+                /**
+                 * Returns the raw JSON value of [maxBudget].
+                 *
+                 * Unlike [maxBudget], this method doesn't throw if the JSON field has an unexpected
+                 * type.
+                 */
+                @JsonProperty("max_budget")
+                @ExcludeMissing
+                fun _maxBudget(): JsonField<Double> = maxBudget
+
+                /**
+                 * Returns the raw JSON value of [maxParallelRequests].
+                 *
+                 * Unlike [maxParallelRequests], this method doesn't throw if the JSON field has an
+                 * unexpected type.
+                 */
+                @JsonProperty("max_parallel_requests")
+                @ExcludeMissing
+                fun _maxParallelRequests(): JsonField<Long> = maxParallelRequests
+
+                /**
+                 * Returns the raw JSON value of [rpmLimit].
+                 *
+                 * Unlike [rpmLimit], this method doesn't throw if the JSON field has an unexpected
+                 * type.
+                 */
+                @JsonProperty("rpm_limit")
+                @ExcludeMissing
+                fun _rpmLimit(): JsonField<Long> = rpmLimit
+
+                /**
+                 * Returns the raw JSON value of [softBudget].
+                 *
+                 * Unlike [softBudget], this method doesn't throw if the JSON field has an
+                 * unexpected type.
+                 */
+                @JsonProperty("soft_budget")
+                @ExcludeMissing
+                fun _softBudget(): JsonField<Double> = softBudget
+
+                /**
+                 * Returns the raw JSON value of [tpmLimit].
+                 *
+                 * Unlike [tpmLimit], this method doesn't throw if the JSON field has an unexpected
+                 * type.
+                 */
+                @JsonProperty("tpm_limit")
+                @ExcludeMissing
+                fun _tpmLimit(): JsonField<Long> = tpmLimit
+
+                @JsonAnySetter
+                private fun putAdditionalProperty(key: String, value: JsonValue) {
+                    additionalProperties.put(key, value)
+                }
 
                 @JsonAnyGetter
                 @ExcludeMissing
-                fun _additionalProperties(): Map<String, JsonValue> = additionalProperties
+                fun _additionalProperties(): Map<String, JsonValue> =
+                    Collections.unmodifiableMap(additionalProperties)
 
                 fun toBuilder() = Builder().from(this)
 
                 companion object {
 
                     /**
-                     * Returns a mutable builder for constructing an instance of
-                     * [McpToolPermissions].
+                     * Returns a mutable builder for constructing an instance of [LlmBudgetTable].
                      */
                     @JvmStatic fun builder() = Builder()
                 }
 
-                /** A builder for [McpToolPermissions]. */
+                /** A builder for [LlmBudgetTable]. */
                 class Builder internal constructor() {
 
+                    private var budgetDuration: JsonField<String> = JsonMissing.of()
+                    private var maxBudget: JsonField<Double> = JsonMissing.of()
+                    private var maxParallelRequests: JsonField<Long> = JsonMissing.of()
+                    private var modelMaxBudget: JsonValue = JsonMissing.of()
+                    private var rpmLimit: JsonField<Long> = JsonMissing.of()
+                    private var softBudget: JsonField<Double> = JsonMissing.of()
+                    private var tpmLimit: JsonField<Long> = JsonMissing.of()
                     private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
 
                     @JvmSynthetic
-                    internal fun from(mcpToolPermissions: McpToolPermissions) = apply {
-                        additionalProperties =
-                            mcpToolPermissions.additionalProperties.toMutableMap()
+                    internal fun from(llmBudgetTable: LlmBudgetTable) = apply {
+                        budgetDuration = llmBudgetTable.budgetDuration
+                        maxBudget = llmBudgetTable.maxBudget
+                        maxParallelRequests = llmBudgetTable.maxParallelRequests
+                        modelMaxBudget = llmBudgetTable.modelMaxBudget
+                        rpmLimit = llmBudgetTable.rpmLimit
+                        softBudget = llmBudgetTable.softBudget
+                        tpmLimit = llmBudgetTable.tpmLimit
+                        additionalProperties = llmBudgetTable.additionalProperties.toMutableMap()
                     }
+
+                    fun budgetDuration(budgetDuration: String?) =
+                        budgetDuration(JsonField.ofNullable(budgetDuration))
+
+                    /**
+                     * Alias for calling [Builder.budgetDuration] with
+                     * `budgetDuration.orElse(null)`.
+                     */
+                    fun budgetDuration(budgetDuration: Optional<String>) =
+                        budgetDuration(budgetDuration.getOrNull())
+
+                    /**
+                     * Sets [Builder.budgetDuration] to an arbitrary JSON value.
+                     *
+                     * You should usually call [Builder.budgetDuration] with a well-typed [String]
+                     * value instead. This method is primarily for setting the field to an
+                     * undocumented or not yet supported value.
+                     */
+                    fun budgetDuration(budgetDuration: JsonField<String>) = apply {
+                        this.budgetDuration = budgetDuration
+                    }
+
+                    fun maxBudget(maxBudget: Double?) = maxBudget(JsonField.ofNullable(maxBudget))
+
+                    /**
+                     * Alias for [Builder.maxBudget].
+                     *
+                     * This unboxed primitive overload exists for backwards compatibility.
+                     */
+                    fun maxBudget(maxBudget: Double) = maxBudget(maxBudget as Double?)
+
+                    /** Alias for calling [Builder.maxBudget] with `maxBudget.orElse(null)`. */
+                    fun maxBudget(maxBudget: Optional<Double>) = maxBudget(maxBudget.getOrNull())
+
+                    /**
+                     * Sets [Builder.maxBudget] to an arbitrary JSON value.
+                     *
+                     * You should usually call [Builder.maxBudget] with a well-typed [Double] value
+                     * instead. This method is primarily for setting the field to an undocumented or
+                     * not yet supported value.
+                     */
+                    fun maxBudget(maxBudget: JsonField<Double>) = apply {
+                        this.maxBudget = maxBudget
+                    }
+
+                    fun maxParallelRequests(maxParallelRequests: Long?) =
+                        maxParallelRequests(JsonField.ofNullable(maxParallelRequests))
+
+                    /**
+                     * Alias for [Builder.maxParallelRequests].
+                     *
+                     * This unboxed primitive overload exists for backwards compatibility.
+                     */
+                    fun maxParallelRequests(maxParallelRequests: Long) =
+                        maxParallelRequests(maxParallelRequests as Long?)
+
+                    /**
+                     * Alias for calling [Builder.maxParallelRequests] with
+                     * `maxParallelRequests.orElse(null)`.
+                     */
+                    fun maxParallelRequests(maxParallelRequests: Optional<Long>) =
+                        maxParallelRequests(maxParallelRequests.getOrNull())
+
+                    /**
+                     * Sets [Builder.maxParallelRequests] to an arbitrary JSON value.
+                     *
+                     * You should usually call [Builder.maxParallelRequests] with a well-typed
+                     * [Long] value instead. This method is primarily for setting the field to an
+                     * undocumented or not yet supported value.
+                     */
+                    fun maxParallelRequests(maxParallelRequests: JsonField<Long>) = apply {
+                        this.maxParallelRequests = maxParallelRequests
+                    }
+
+                    fun modelMaxBudget(modelMaxBudget: JsonValue) = apply {
+                        this.modelMaxBudget = modelMaxBudget
+                    }
+
+                    fun rpmLimit(rpmLimit: Long?) = rpmLimit(JsonField.ofNullable(rpmLimit))
+
+                    /**
+                     * Alias for [Builder.rpmLimit].
+                     *
+                     * This unboxed primitive overload exists for backwards compatibility.
+                     */
+                    fun rpmLimit(rpmLimit: Long) = rpmLimit(rpmLimit as Long?)
+
+                    /** Alias for calling [Builder.rpmLimit] with `rpmLimit.orElse(null)`. */
+                    fun rpmLimit(rpmLimit: Optional<Long>) = rpmLimit(rpmLimit.getOrNull())
+
+                    /**
+                     * Sets [Builder.rpmLimit] to an arbitrary JSON value.
+                     *
+                     * You should usually call [Builder.rpmLimit] with a well-typed [Long] value
+                     * instead. This method is primarily for setting the field to an undocumented or
+                     * not yet supported value.
+                     */
+                    fun rpmLimit(rpmLimit: JsonField<Long>) = apply { this.rpmLimit = rpmLimit }
+
+                    fun softBudget(softBudget: Double?) =
+                        softBudget(JsonField.ofNullable(softBudget))
+
+                    /**
+                     * Alias for [Builder.softBudget].
+                     *
+                     * This unboxed primitive overload exists for backwards compatibility.
+                     */
+                    fun softBudget(softBudget: Double) = softBudget(softBudget as Double?)
+
+                    /** Alias for calling [Builder.softBudget] with `softBudget.orElse(null)`. */
+                    fun softBudget(softBudget: Optional<Double>) =
+                        softBudget(softBudget.getOrNull())
+
+                    /**
+                     * Sets [Builder.softBudget] to an arbitrary JSON value.
+                     *
+                     * You should usually call [Builder.softBudget] with a well-typed [Double] value
+                     * instead. This method is primarily for setting the field to an undocumented or
+                     * not yet supported value.
+                     */
+                    fun softBudget(softBudget: JsonField<Double>) = apply {
+                        this.softBudget = softBudget
+                    }
+
+                    fun tpmLimit(tpmLimit: Long?) = tpmLimit(JsonField.ofNullable(tpmLimit))
+
+                    /**
+                     * Alias for [Builder.tpmLimit].
+                     *
+                     * This unboxed primitive overload exists for backwards compatibility.
+                     */
+                    fun tpmLimit(tpmLimit: Long) = tpmLimit(tpmLimit as Long?)
+
+                    /** Alias for calling [Builder.tpmLimit] with `tpmLimit.orElse(null)`. */
+                    fun tpmLimit(tpmLimit: Optional<Long>) = tpmLimit(tpmLimit.getOrNull())
+
+                    /**
+                     * Sets [Builder.tpmLimit] to an arbitrary JSON value.
+                     *
+                     * You should usually call [Builder.tpmLimit] with a well-typed [Long] value
+                     * instead. This method is primarily for setting the field to an undocumented or
+                     * not yet supported value.
+                     */
+                    fun tpmLimit(tpmLimit: JsonField<Long>) = apply { this.tpmLimit = tpmLimit }
 
                     fun additionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
                         this.additionalProperties.clear()
@@ -3432,21 +3305,36 @@ private constructor(
                     }
 
                     /**
-                     * Returns an immutable instance of [McpToolPermissions].
+                     * Returns an immutable instance of [LlmBudgetTable].
                      *
                      * Further updates to this [Builder] will not mutate the returned instance.
                      */
-                    fun build(): McpToolPermissions =
-                        McpToolPermissions(additionalProperties.toImmutable())
+                    fun build(): LlmBudgetTable =
+                        LlmBudgetTable(
+                            budgetDuration,
+                            maxBudget,
+                            maxParallelRequests,
+                            modelMaxBudget,
+                            rpmLimit,
+                            softBudget,
+                            tpmLimit,
+                            additionalProperties.toMutableMap(),
+                        )
                 }
 
                 private var validated: Boolean = false
 
-                fun validate(): McpToolPermissions = apply {
+                fun validate(): LlmBudgetTable = apply {
                     if (validated) {
                         return@apply
                     }
 
+                    budgetDuration()
+                    maxBudget()
+                    maxParallelRequests()
+                    rpmLimit()
+                    softBudget()
+                    tpmLimit()
                     validated = true
                 }
 
@@ -3466,25 +3354,46 @@ private constructor(
                  */
                 @JvmSynthetic
                 internal fun validity(): Int =
-                    additionalProperties.count { (_, value) ->
-                        !value.isNull() && !value.isMissing()
-                    }
+                    (if (budgetDuration.asKnown().isPresent) 1 else 0) +
+                        (if (maxBudget.asKnown().isPresent) 1 else 0) +
+                        (if (maxParallelRequests.asKnown().isPresent) 1 else 0) +
+                        (if (rpmLimit.asKnown().isPresent) 1 else 0) +
+                        (if (softBudget.asKnown().isPresent) 1 else 0) +
+                        (if (tpmLimit.asKnown().isPresent) 1 else 0)
 
                 override fun equals(other: Any?): Boolean {
                     if (this === other) {
                         return true
                     }
 
-                    return other is McpToolPermissions &&
+                    return other is LlmBudgetTable &&
+                        budgetDuration == other.budgetDuration &&
+                        maxBudget == other.maxBudget &&
+                        maxParallelRequests == other.maxParallelRequests &&
+                        modelMaxBudget == other.modelMaxBudget &&
+                        rpmLimit == other.rpmLimit &&
+                        softBudget == other.softBudget &&
+                        tpmLimit == other.tpmLimit &&
                         additionalProperties == other.additionalProperties
                 }
 
-                private val hashCode: Int by lazy { Objects.hash(additionalProperties) }
+                private val hashCode: Int by lazy {
+                    Objects.hash(
+                        budgetDuration,
+                        maxBudget,
+                        maxParallelRequests,
+                        modelMaxBudget,
+                        rpmLimit,
+                        softBudget,
+                        tpmLimit,
+                        additionalProperties,
+                    )
+                }
 
                 override fun hashCode(): Int = hashCode
 
                 override fun toString() =
-                    "McpToolPermissions{additionalProperties=$additionalProperties}"
+                    "LlmBudgetTable{budgetDuration=$budgetDuration, maxBudget=$maxBudget, maxParallelRequests=$maxParallelRequests, modelMaxBudget=$modelMaxBudget, rpmLimit=$rpmLimit, softBudget=$softBudget, tpmLimit=$tpmLimit, additionalProperties=$additionalProperties}"
             }
 
             override fun equals(other: Any?): Boolean {
@@ -3492,26 +3401,30 @@ private constructor(
                     return true
                 }
 
-                return other is ObjectPermission &&
-                    objectPermissionId == other.objectPermissionId &&
-                    agentAccessGroups == other.agentAccessGroups &&
-                    agents == other.agents &&
-                    mcpAccessGroups == other.mcpAccessGroups &&
-                    mcpServers == other.mcpServers &&
-                    mcpToolPermissions == other.mcpToolPermissions &&
-                    vectorStores == other.vectorStores &&
+                return other is OrganizationMembership &&
+                    createdAt == other.createdAt &&
+                    organizationId == other.organizationId &&
+                    updatedAt == other.updatedAt &&
+                    userId == other.userId &&
+                    budgetId == other.budgetId &&
+                    llmBudgetTable == other.llmBudgetTable &&
+                    spend == other.spend &&
+                    user == other.user &&
+                    userRole == other.userRole &&
                     additionalProperties == other.additionalProperties
             }
 
             private val hashCode: Int by lazy {
                 Objects.hash(
-                    objectPermissionId,
-                    agentAccessGroups,
-                    agents,
-                    mcpAccessGroups,
-                    mcpServers,
-                    mcpToolPermissions,
-                    vectorStores,
+                    createdAt,
+                    organizationId,
+                    updatedAt,
+                    userId,
+                    budgetId,
+                    llmBudgetTable,
+                    spend,
+                    user,
+                    userRole,
                     additionalProperties,
                 )
             }
@@ -3519,7 +3432,7 @@ private constructor(
             override fun hashCode(): Int = hashCode
 
             override fun toString() =
-                "ObjectPermission{objectPermissionId=$objectPermissionId, agentAccessGroups=$agentAccessGroups, agents=$agents, mcpAccessGroups=$mcpAccessGroups, mcpServers=$mcpServers, mcpToolPermissions=$mcpToolPermissions, vectorStores=$vectorStores, additionalProperties=$additionalProperties}"
+                "OrganizationMembership{createdAt=$createdAt, organizationId=$organizationId, updatedAt=$updatedAt, userId=$userId, budgetId=$budgetId, llmBudgetTable=$llmBudgetTable, spend=$spend, user=$user, userRole=$userRole, additionalProperties=$additionalProperties}"
         }
 
         override fun equals(other: Any?): Boolean {
@@ -3531,21 +3444,17 @@ private constructor(
                 userId == other.userId &&
                 budgetDuration == other.budgetDuration &&
                 budgetResetAt == other.budgetResetAt &&
-                createdAt == other.createdAt &&
                 maxBudget == other.maxBudget &&
                 metadata == other.metadata &&
                 modelMaxBudget == other.modelMaxBudget &&
                 modelSpend == other.modelSpend &&
                 models == other.models &&
-                objectPermission == other.objectPermission &&
                 organizationMemberships == other.organizationMemberships &&
                 rpmLimit == other.rpmLimit &&
                 spend == other.spend &&
                 ssoUserId == other.ssoUserId &&
                 teams == other.teams &&
                 tpmLimit == other.tpmLimit &&
-                updatedAt == other.updatedAt &&
-                userAlias == other.userAlias &&
                 userEmail == other.userEmail &&
                 userRole == other.userRole &&
                 additionalProperties == other.additionalProperties
@@ -3556,21 +3465,17 @@ private constructor(
                 userId,
                 budgetDuration,
                 budgetResetAt,
-                createdAt,
                 maxBudget,
                 metadata,
                 modelMaxBudget,
                 modelSpend,
                 models,
-                objectPermission,
                 organizationMemberships,
                 rpmLimit,
                 spend,
                 ssoUserId,
                 teams,
                 tpmLimit,
-                updatedAt,
-                userAlias,
                 userEmail,
                 userRole,
                 additionalProperties,
@@ -3580,17 +3485,15 @@ private constructor(
         override fun hashCode(): Int = hashCode
 
         override fun toString() =
-            "UpdatedUser{userId=$userId, budgetDuration=$budgetDuration, budgetResetAt=$budgetResetAt, createdAt=$createdAt, maxBudget=$maxBudget, metadata=$metadata, modelMaxBudget=$modelMaxBudget, modelSpend=$modelSpend, models=$models, objectPermission=$objectPermission, organizationMemberships=$organizationMemberships, rpmLimit=$rpmLimit, spend=$spend, ssoUserId=$ssoUserId, teams=$teams, tpmLimit=$tpmLimit, updatedAt=$updatedAt, userAlias=$userAlias, userEmail=$userEmail, userRole=$userRole, additionalProperties=$additionalProperties}"
+            "UpdatedUser{userId=$userId, budgetDuration=$budgetDuration, budgetResetAt=$budgetResetAt, maxBudget=$maxBudget, metadata=$metadata, modelMaxBudget=$modelMaxBudget, modelSpend=$modelSpend, models=$models, organizationMemberships=$organizationMemberships, rpmLimit=$rpmLimit, spend=$spend, ssoUserId=$ssoUserId, teams=$teams, tpmLimit=$tpmLimit, userEmail=$userEmail, userRole=$userRole, additionalProperties=$additionalProperties}"
     }
 
-    class LitellmModelTable
+    class LlmModelTable
     @JsonCreator(mode = JsonCreator.Mode.DISABLED)
     private constructor(
         private val createdBy: JsonField<String>,
         private val updatedBy: JsonField<String>,
-        private val id: JsonField<Long>,
         private val modelAliases: JsonField<ModelAliases>,
-        private val team: JsonValue,
         private val additionalProperties: MutableMap<String, JsonValue>,
     ) {
 
@@ -3602,12 +3505,10 @@ private constructor(
             @JsonProperty("updated_by")
             @ExcludeMissing
             updatedBy: JsonField<String> = JsonMissing.of(),
-            @JsonProperty("id") @ExcludeMissing id: JsonField<Long> = JsonMissing.of(),
             @JsonProperty("model_aliases")
             @ExcludeMissing
             modelAliases: JsonField<ModelAliases> = JsonMissing.of(),
-            @JsonProperty("team") @ExcludeMissing team: JsonValue = JsonMissing.of(),
-        ) : this(createdBy, updatedBy, id, modelAliases, team, mutableMapOf())
+        ) : this(createdBy, updatedBy, modelAliases, mutableMapOf())
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type or is
@@ -3625,21 +3526,7 @@ private constructor(
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun id(): Optional<Long> = id.getOptional("id")
-
-        /**
-         * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-         *   server responded with an unexpected value).
-         */
         fun modelAliases(): Optional<ModelAliases> = modelAliases.getOptional("model_aliases")
-
-        /**
-         * This arbitrary value can be deserialized into a custom type using the `convert` method:
-         * ```java
-         * MyClass myObject = litellmModelTable.team().convert(MyClass.class);
-         * ```
-         */
-        @JsonProperty("team") @ExcludeMissing fun _team(): JsonValue = team
 
         /**
          * Returns the raw JSON value of [createdBy].
@@ -3654,13 +3541,6 @@ private constructor(
          * Unlike [updatedBy], this method doesn't throw if the JSON field has an unexpected type.
          */
         @JsonProperty("updated_by") @ExcludeMissing fun _updatedBy(): JsonField<String> = updatedBy
-
-        /**
-         * Returns the raw JSON value of [id].
-         *
-         * Unlike [id], this method doesn't throw if the JSON field has an unexpected type.
-         */
-        @JsonProperty("id") @ExcludeMissing fun _id(): JsonField<Long> = id
 
         /**
          * Returns the raw JSON value of [modelAliases].
@@ -3687,7 +3567,7 @@ private constructor(
         companion object {
 
             /**
-             * Returns a mutable builder for constructing an instance of [LitellmModelTable].
+             * Returns a mutable builder for constructing an instance of [LlmModelTable].
              *
              * The following fields are required:
              * ```java
@@ -3698,24 +3578,20 @@ private constructor(
             @JvmStatic fun builder() = Builder()
         }
 
-        /** A builder for [LitellmModelTable]. */
+        /** A builder for [LlmModelTable]. */
         class Builder internal constructor() {
 
             private var createdBy: JsonField<String>? = null
             private var updatedBy: JsonField<String>? = null
-            private var id: JsonField<Long> = JsonMissing.of()
             private var modelAliases: JsonField<ModelAliases> = JsonMissing.of()
-            private var team: JsonValue = JsonMissing.of()
             private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
 
             @JvmSynthetic
-            internal fun from(litellmModelTable: LitellmModelTable) = apply {
-                createdBy = litellmModelTable.createdBy
-                updatedBy = litellmModelTable.updatedBy
-                id = litellmModelTable.id
-                modelAliases = litellmModelTable.modelAliases
-                team = litellmModelTable.team
-                additionalProperties = litellmModelTable.additionalProperties.toMutableMap()
+            internal fun from(llmModelTable: LlmModelTable) = apply {
+                createdBy = llmModelTable.createdBy
+                updatedBy = llmModelTable.updatedBy
+                modelAliases = llmModelTable.modelAliases
+                additionalProperties = llmModelTable.additionalProperties.toMutableMap()
             }
 
             fun createdBy(createdBy: String) = createdBy(JsonField.of(createdBy))
@@ -3740,27 +3616,6 @@ private constructor(
              */
             fun updatedBy(updatedBy: JsonField<String>) = apply { this.updatedBy = updatedBy }
 
-            fun id(id: Long?) = id(JsonField.ofNullable(id))
-
-            /**
-             * Alias for [Builder.id].
-             *
-             * This unboxed primitive overload exists for backwards compatibility.
-             */
-            fun id(id: Long) = id(id as Long?)
-
-            /** Alias for calling [Builder.id] with `id.orElse(null)`. */
-            fun id(id: Optional<Long>) = id(id.getOrNull())
-
-            /**
-             * Sets [Builder.id] to an arbitrary JSON value.
-             *
-             * You should usually call [Builder.id] with a well-typed [Long] value instead. This
-             * method is primarily for setting the field to an undocumented or not yet supported
-             * value.
-             */
-            fun id(id: JsonField<Long>) = apply { this.id = id }
-
             fun modelAliases(modelAliases: ModelAliases?) =
                 modelAliases(JsonField.ofNullable(modelAliases))
 
@@ -3779,16 +3634,12 @@ private constructor(
                 this.modelAliases = modelAliases
             }
 
-            /**
-             * Alias for calling [modelAliases] with `ModelAliases.ofUnionMember0(unionMember0)`.
-             */
-            fun modelAliases(unionMember0: ModelAliases.UnionMember0) =
-                modelAliases(ModelAliases.ofUnionMember0(unionMember0))
+            /** Alias for calling [modelAliases] with `ModelAliases.ofJsonValue(jsonValue)`. */
+            fun modelAliases(jsonValue: JsonValue) =
+                modelAliases(ModelAliases.ofJsonValue(jsonValue))
 
             /** Alias for calling [modelAliases] with `ModelAliases.ofString(string)`. */
             fun modelAliases(string: String) = modelAliases(ModelAliases.ofString(string))
-
-            fun team(team: JsonValue) = apply { this.team = team }
 
             fun additionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
                 this.additionalProperties.clear()
@@ -3810,7 +3661,7 @@ private constructor(
             }
 
             /**
-             * Returns an immutable instance of [LitellmModelTable].
+             * Returns an immutable instance of [LlmModelTable].
              *
              * Further updates to this [Builder] will not mutate the returned instance.
              *
@@ -3822,27 +3673,24 @@ private constructor(
              *
              * @throws IllegalStateException if any required field is unset.
              */
-            fun build(): LitellmModelTable =
-                LitellmModelTable(
+            fun build(): LlmModelTable =
+                LlmModelTable(
                     checkRequired("createdBy", createdBy),
                     checkRequired("updatedBy", updatedBy),
-                    id,
                     modelAliases,
-                    team,
                     additionalProperties.toMutableMap(),
                 )
         }
 
         private var validated: Boolean = false
 
-        fun validate(): LitellmModelTable = apply {
+        fun validate(): LlmModelTable = apply {
             if (validated) {
                 return@apply
             }
 
             createdBy()
             updatedBy()
-            id()
             modelAliases().ifPresent { it.validate() }
             validated = true
         }
@@ -3865,27 +3713,26 @@ private constructor(
         internal fun validity(): Int =
             (if (createdBy.asKnown().isPresent) 1 else 0) +
                 (if (updatedBy.asKnown().isPresent) 1 else 0) +
-                (if (id.asKnown().isPresent) 1 else 0) +
                 (modelAliases.asKnown().getOrNull()?.validity() ?: 0)
 
         @JsonDeserialize(using = ModelAliases.Deserializer::class)
         @JsonSerialize(using = ModelAliases.Serializer::class)
         class ModelAliases
         private constructor(
-            private val unionMember0: UnionMember0? = null,
+            private val jsonValue: JsonValue? = null,
             private val string: String? = null,
             private val _json: JsonValue? = null,
         ) {
 
-            fun unionMember0(): Optional<UnionMember0> = Optional.ofNullable(unionMember0)
+            fun jsonValue(): Optional<JsonValue> = Optional.ofNullable(jsonValue)
 
             fun string(): Optional<String> = Optional.ofNullable(string)
 
-            fun isUnionMember0(): Boolean = unionMember0 != null
+            fun isJsonValue(): Boolean = jsonValue != null
 
             fun isString(): Boolean = string != null
 
-            fun asUnionMember0(): UnionMember0 = unionMember0.getOrThrow("unionMember0")
+            fun asJsonValue(): JsonValue = jsonValue.getOrThrow("jsonValue")
 
             fun asString(): String = string.getOrThrow("string")
 
@@ -3893,7 +3740,7 @@ private constructor(
 
             fun <T> accept(visitor: Visitor<T>): T =
                 when {
-                    unionMember0 != null -> visitor.visitUnionMember0(unionMember0)
+                    jsonValue != null -> visitor.visitJsonValue(jsonValue)
                     string != null -> visitor.visitString(string)
                     else -> visitor.unknown(_json)
                 }
@@ -3907,9 +3754,7 @@ private constructor(
 
                 accept(
                     object : Visitor<Unit> {
-                        override fun visitUnionMember0(unionMember0: UnionMember0) {
-                            unionMember0.validate()
-                        }
+                        override fun visitJsonValue(jsonValue: JsonValue) {}
 
                         override fun visitString(string: String) {}
                     }
@@ -3935,8 +3780,7 @@ private constructor(
             internal fun validity(): Int =
                 accept(
                     object : Visitor<Int> {
-                        override fun visitUnionMember0(unionMember0: UnionMember0) =
-                            unionMember0.validity()
+                        override fun visitJsonValue(jsonValue: JsonValue) = 1
 
                         override fun visitString(string: String) = 1
 
@@ -3950,15 +3794,15 @@ private constructor(
                 }
 
                 return other is ModelAliases &&
-                    unionMember0 == other.unionMember0 &&
+                    jsonValue == other.jsonValue &&
                     string == other.string
             }
 
-            override fun hashCode(): Int = Objects.hash(unionMember0, string)
+            override fun hashCode(): Int = Objects.hash(jsonValue, string)
 
             override fun toString(): String =
                 when {
-                    unionMember0 != null -> "ModelAliases{unionMember0=$unionMember0}"
+                    jsonValue != null -> "ModelAliases{jsonValue=$jsonValue}"
                     string != null -> "ModelAliases{string=$string}"
                     _json != null -> "ModelAliases{_unknown=$_json}"
                     else -> throw IllegalStateException("Invalid ModelAliases")
@@ -3967,8 +3811,7 @@ private constructor(
             companion object {
 
                 @JvmStatic
-                fun ofUnionMember0(unionMember0: UnionMember0) =
-                    ModelAliases(unionMember0 = unionMember0)
+                fun ofJsonValue(jsonValue: JsonValue) = ModelAliases(jsonValue = jsonValue)
 
                 @JvmStatic fun ofString(string: String) = ModelAliases(string = string)
             }
@@ -3979,7 +3822,7 @@ private constructor(
              */
             interface Visitor<out T> {
 
-                fun visitUnionMember0(unionMember0: UnionMember0): T
+                fun visitJsonValue(jsonValue: JsonValue): T
 
                 fun visitString(string: String): T
 
@@ -4005,11 +3848,11 @@ private constructor(
 
                     val bestMatches =
                         sequenceOf(
-                                tryDeserialize(node, jacksonTypeRef<UnionMember0>())?.let {
-                                    ModelAliases(unionMember0 = it, _json = json)
-                                },
                                 tryDeserialize(node, jacksonTypeRef<String>())?.let {
                                     ModelAliases(string = it, _json = json)
+                                },
+                                tryDeserialize(node, jacksonTypeRef<JsonValue>())?.let {
+                                    ModelAliases(jsonValue = it, _json = json)
                                 },
                             )
                             .filterNotNull()
@@ -4017,7 +3860,7 @@ private constructor(
                             .toList()
                     return when (bestMatches.size) {
                         // This can happen if what we're deserializing is completely incompatible
-                        // with all the possible variants (e.g. deserializing from boolean).
+                        // with all the possible variants.
                         0 -> ModelAliases(_json = json)
                         1 -> bestMatches.single()
                         // If there's more than one match with the highest validity, then use the
@@ -4036,118 +3879,13 @@ private constructor(
                     provider: SerializerProvider,
                 ) {
                     when {
-                        value.unionMember0 != null -> generator.writeObject(value.unionMember0)
+                        value.jsonValue != null -> generator.writeObject(value.jsonValue)
                         value.string != null -> generator.writeObject(value.string)
                         value._json != null -> generator.writeObject(value._json)
                         else -> throw IllegalStateException("Invalid ModelAliases")
                     }
                 }
             }
-
-            class UnionMember0
-            @JsonCreator
-            private constructor(
-                @com.fasterxml.jackson.annotation.JsonValue
-                private val additionalProperties: Map<String, JsonValue>
-            ) {
-
-                @JsonAnyGetter
-                @ExcludeMissing
-                fun _additionalProperties(): Map<String, JsonValue> = additionalProperties
-
-                fun toBuilder() = Builder().from(this)
-
-                companion object {
-
-                    /** Returns a mutable builder for constructing an instance of [UnionMember0]. */
-                    @JvmStatic fun builder() = Builder()
-                }
-
-                /** A builder for [UnionMember0]. */
-                class Builder internal constructor() {
-
-                    private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
-
-                    @JvmSynthetic
-                    internal fun from(unionMember0: UnionMember0) = apply {
-                        additionalProperties = unionMember0.additionalProperties.toMutableMap()
-                    }
-
-                    fun additionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
-                        this.additionalProperties.clear()
-                        putAllAdditionalProperties(additionalProperties)
-                    }
-
-                    fun putAdditionalProperty(key: String, value: JsonValue) = apply {
-                        additionalProperties.put(key, value)
-                    }
-
-                    fun putAllAdditionalProperties(additionalProperties: Map<String, JsonValue>) =
-                        apply {
-                            this.additionalProperties.putAll(additionalProperties)
-                        }
-
-                    fun removeAdditionalProperty(key: String) = apply {
-                        additionalProperties.remove(key)
-                    }
-
-                    fun removeAllAdditionalProperties(keys: Set<String>) = apply {
-                        keys.forEach(::removeAdditionalProperty)
-                    }
-
-                    /**
-                     * Returns an immutable instance of [UnionMember0].
-                     *
-                     * Further updates to this [Builder] will not mutate the returned instance.
-                     */
-                    fun build(): UnionMember0 = UnionMember0(additionalProperties.toImmutable())
-                }
-
-                private var validated: Boolean = false
-
-                fun validate(): UnionMember0 = apply {
-                    if (validated) {
-                        return@apply
-                    }
-
-                    validated = true
-                }
-
-                fun isValid(): Boolean =
-                    try {
-                        validate()
-                        true
-                    } catch (e: HanzoInvalidDataException) {
-                        false
-                    }
-
-                /**
-                 * Returns a score indicating how many valid values are contained in this object
-                 * recursively.
-                 *
-                 * Used for best match union deserialization.
-                 */
-                @JvmSynthetic
-                internal fun validity(): Int =
-                    additionalProperties.count { (_, value) ->
-                        !value.isNull() && !value.isMissing()
-                    }
-
-                override fun equals(other: Any?): Boolean {
-                    if (this === other) {
-                        return true
-                    }
-
-                    return other is UnionMember0 &&
-                        additionalProperties == other.additionalProperties
-                }
-
-                private val hashCode: Int by lazy { Objects.hash(additionalProperties) }
-
-                override fun hashCode(): Int = hashCode
-
-                override fun toString() = "UnionMember0{additionalProperties=$additionalProperties}"
-            }
         }
 
         override fun equals(other: Any?): Boolean {
@@ -4155,839 +3893,21 @@ private constructor(
                 return true
             }
 
-            return other is LitellmModelTable &&
+            return other is LlmModelTable &&
                 createdBy == other.createdBy &&
                 updatedBy == other.updatedBy &&
-                id == other.id &&
                 modelAliases == other.modelAliases &&
-                team == other.team &&
                 additionalProperties == other.additionalProperties
         }
 
         private val hashCode: Int by lazy {
-            Objects.hash(createdBy, updatedBy, id, modelAliases, team, additionalProperties)
+            Objects.hash(createdBy, updatedBy, modelAliases, additionalProperties)
         }
 
         override fun hashCode(): Int = hashCode
 
         override fun toString() =
-            "LitellmModelTable{createdBy=$createdBy, updatedBy=$updatedBy, id=$id, modelAliases=$modelAliases, team=$team, additionalProperties=$additionalProperties}"
-    }
-
-    class Metadata
-    @JsonCreator
-    private constructor(
-        @com.fasterxml.jackson.annotation.JsonValue
-        private val additionalProperties: Map<String, JsonValue>
-    ) {
-
-        @JsonAnyGetter
-        @ExcludeMissing
-        fun _additionalProperties(): Map<String, JsonValue> = additionalProperties
-
-        fun toBuilder() = Builder().from(this)
-
-        companion object {
-
-            /** Returns a mutable builder for constructing an instance of [Metadata]. */
-            @JvmStatic fun builder() = Builder()
-        }
-
-        /** A builder for [Metadata]. */
-        class Builder internal constructor() {
-
-            private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
-
-            @JvmSynthetic
-            internal fun from(metadata: Metadata) = apply {
-                additionalProperties = metadata.additionalProperties.toMutableMap()
-            }
-
-            fun additionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
-                this.additionalProperties.clear()
-                putAllAdditionalProperties(additionalProperties)
-            }
-
-            fun putAdditionalProperty(key: String, value: JsonValue) = apply {
-                additionalProperties.put(key, value)
-            }
-
-            fun putAllAdditionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
-                this.additionalProperties.putAll(additionalProperties)
-            }
-
-            fun removeAdditionalProperty(key: String) = apply { additionalProperties.remove(key) }
-
-            fun removeAllAdditionalProperties(keys: Set<String>) = apply {
-                keys.forEach(::removeAdditionalProperty)
-            }
-
-            /**
-             * Returns an immutable instance of [Metadata].
-             *
-             * Further updates to this [Builder] will not mutate the returned instance.
-             */
-            fun build(): Metadata = Metadata(additionalProperties.toImmutable())
-        }
-
-        private var validated: Boolean = false
-
-        fun validate(): Metadata = apply {
-            if (validated) {
-                return@apply
-            }
-
-            validated = true
-        }
-
-        fun isValid(): Boolean =
-            try {
-                validate()
-                true
-            } catch (e: HanzoInvalidDataException) {
-                false
-            }
-
-        /**
-         * Returns a score indicating how many valid values are contained in this object
-         * recursively.
-         *
-         * Used for best match union deserialization.
-         */
-        @JvmSynthetic
-        internal fun validity(): Int =
-            additionalProperties.count { (_, value) -> !value.isNull() && !value.isMissing() }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) {
-                return true
-            }
-
-            return other is Metadata && additionalProperties == other.additionalProperties
-        }
-
-        private val hashCode: Int by lazy { Objects.hash(additionalProperties) }
-
-        override fun hashCode(): Int = hashCode
-
-        override fun toString() = "Metadata{additionalProperties=$additionalProperties}"
-    }
-
-    /** Represents a LiteLLM_ObjectPermissionTable record */
-    class ObjectPermission
-    @JsonCreator(mode = JsonCreator.Mode.DISABLED)
-    private constructor(
-        private val objectPermissionId: JsonField<String>,
-        private val agentAccessGroups: JsonField<List<String>>,
-        private val agents: JsonField<List<String>>,
-        private val mcpAccessGroups: JsonField<List<String>>,
-        private val mcpServers: JsonField<List<String>>,
-        private val mcpToolPermissions: JsonField<McpToolPermissions>,
-        private val vectorStores: JsonField<List<String>>,
-        private val additionalProperties: MutableMap<String, JsonValue>,
-    ) {
-
-        @JsonCreator
-        private constructor(
-            @JsonProperty("object_permission_id")
-            @ExcludeMissing
-            objectPermissionId: JsonField<String> = JsonMissing.of(),
-            @JsonProperty("agent_access_groups")
-            @ExcludeMissing
-            agentAccessGroups: JsonField<List<String>> = JsonMissing.of(),
-            @JsonProperty("agents")
-            @ExcludeMissing
-            agents: JsonField<List<String>> = JsonMissing.of(),
-            @JsonProperty("mcp_access_groups")
-            @ExcludeMissing
-            mcpAccessGroups: JsonField<List<String>> = JsonMissing.of(),
-            @JsonProperty("mcp_servers")
-            @ExcludeMissing
-            mcpServers: JsonField<List<String>> = JsonMissing.of(),
-            @JsonProperty("mcp_tool_permissions")
-            @ExcludeMissing
-            mcpToolPermissions: JsonField<McpToolPermissions> = JsonMissing.of(),
-            @JsonProperty("vector_stores")
-            @ExcludeMissing
-            vectorStores: JsonField<List<String>> = JsonMissing.of(),
-        ) : this(
-            objectPermissionId,
-            agentAccessGroups,
-            agents,
-            mcpAccessGroups,
-            mcpServers,
-            mcpToolPermissions,
-            vectorStores,
-            mutableMapOf(),
-        )
-
-        /**
-         * @throws HanzoInvalidDataException if the JSON field has an unexpected type or is
-         *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
-         */
-        fun objectPermissionId(): String = objectPermissionId.getRequired("object_permission_id")
-
-        /**
-         * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-         *   server responded with an unexpected value).
-         */
-        fun agentAccessGroups(): Optional<List<String>> =
-            agentAccessGroups.getOptional("agent_access_groups")
-
-        /**
-         * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-         *   server responded with an unexpected value).
-         */
-        fun agents(): Optional<List<String>> = agents.getOptional("agents")
-
-        /**
-         * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-         *   server responded with an unexpected value).
-         */
-        fun mcpAccessGroups(): Optional<List<String>> =
-            mcpAccessGroups.getOptional("mcp_access_groups")
-
-        /**
-         * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-         *   server responded with an unexpected value).
-         */
-        fun mcpServers(): Optional<List<String>> = mcpServers.getOptional("mcp_servers")
-
-        /**
-         * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-         *   server responded with an unexpected value).
-         */
-        fun mcpToolPermissions(): Optional<McpToolPermissions> =
-            mcpToolPermissions.getOptional("mcp_tool_permissions")
-
-        /**
-         * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-         *   server responded with an unexpected value).
-         */
-        fun vectorStores(): Optional<List<String>> = vectorStores.getOptional("vector_stores")
-
-        /**
-         * Returns the raw JSON value of [objectPermissionId].
-         *
-         * Unlike [objectPermissionId], this method doesn't throw if the JSON field has an
-         * unexpected type.
-         */
-        @JsonProperty("object_permission_id")
-        @ExcludeMissing
-        fun _objectPermissionId(): JsonField<String> = objectPermissionId
-
-        /**
-         * Returns the raw JSON value of [agentAccessGroups].
-         *
-         * Unlike [agentAccessGroups], this method doesn't throw if the JSON field has an unexpected
-         * type.
-         */
-        @JsonProperty("agent_access_groups")
-        @ExcludeMissing
-        fun _agentAccessGroups(): JsonField<List<String>> = agentAccessGroups
-
-        /**
-         * Returns the raw JSON value of [agents].
-         *
-         * Unlike [agents], this method doesn't throw if the JSON field has an unexpected type.
-         */
-        @JsonProperty("agents") @ExcludeMissing fun _agents(): JsonField<List<String>> = agents
-
-        /**
-         * Returns the raw JSON value of [mcpAccessGroups].
-         *
-         * Unlike [mcpAccessGroups], this method doesn't throw if the JSON field has an unexpected
-         * type.
-         */
-        @JsonProperty("mcp_access_groups")
-        @ExcludeMissing
-        fun _mcpAccessGroups(): JsonField<List<String>> = mcpAccessGroups
-
-        /**
-         * Returns the raw JSON value of [mcpServers].
-         *
-         * Unlike [mcpServers], this method doesn't throw if the JSON field has an unexpected type.
-         */
-        @JsonProperty("mcp_servers")
-        @ExcludeMissing
-        fun _mcpServers(): JsonField<List<String>> = mcpServers
-
-        /**
-         * Returns the raw JSON value of [mcpToolPermissions].
-         *
-         * Unlike [mcpToolPermissions], this method doesn't throw if the JSON field has an
-         * unexpected type.
-         */
-        @JsonProperty("mcp_tool_permissions")
-        @ExcludeMissing
-        fun _mcpToolPermissions(): JsonField<McpToolPermissions> = mcpToolPermissions
-
-        /**
-         * Returns the raw JSON value of [vectorStores].
-         *
-         * Unlike [vectorStores], this method doesn't throw if the JSON field has an unexpected
-         * type.
-         */
-        @JsonProperty("vector_stores")
-        @ExcludeMissing
-        fun _vectorStores(): JsonField<List<String>> = vectorStores
-
-        @JsonAnySetter
-        private fun putAdditionalProperty(key: String, value: JsonValue) {
-            additionalProperties.put(key, value)
-        }
-
-        @JsonAnyGetter
-        @ExcludeMissing
-        fun _additionalProperties(): Map<String, JsonValue> =
-            Collections.unmodifiableMap(additionalProperties)
-
-        fun toBuilder() = Builder().from(this)
-
-        companion object {
-
-            /**
-             * Returns a mutable builder for constructing an instance of [ObjectPermission].
-             *
-             * The following fields are required:
-             * ```java
-             * .objectPermissionId()
-             * ```
-             */
-            @JvmStatic fun builder() = Builder()
-        }
-
-        /** A builder for [ObjectPermission]. */
-        class Builder internal constructor() {
-
-            private var objectPermissionId: JsonField<String>? = null
-            private var agentAccessGroups: JsonField<MutableList<String>>? = null
-            private var agents: JsonField<MutableList<String>>? = null
-            private var mcpAccessGroups: JsonField<MutableList<String>>? = null
-            private var mcpServers: JsonField<MutableList<String>>? = null
-            private var mcpToolPermissions: JsonField<McpToolPermissions> = JsonMissing.of()
-            private var vectorStores: JsonField<MutableList<String>>? = null
-            private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
-
-            @JvmSynthetic
-            internal fun from(objectPermission: ObjectPermission) = apply {
-                objectPermissionId = objectPermission.objectPermissionId
-                agentAccessGroups = objectPermission.agentAccessGroups.map { it.toMutableList() }
-                agents = objectPermission.agents.map { it.toMutableList() }
-                mcpAccessGroups = objectPermission.mcpAccessGroups.map { it.toMutableList() }
-                mcpServers = objectPermission.mcpServers.map { it.toMutableList() }
-                mcpToolPermissions = objectPermission.mcpToolPermissions
-                vectorStores = objectPermission.vectorStores.map { it.toMutableList() }
-                additionalProperties = objectPermission.additionalProperties.toMutableMap()
-            }
-
-            fun objectPermissionId(objectPermissionId: String) =
-                objectPermissionId(JsonField.of(objectPermissionId))
-
-            /**
-             * Sets [Builder.objectPermissionId] to an arbitrary JSON value.
-             *
-             * You should usually call [Builder.objectPermissionId] with a well-typed [String] value
-             * instead. This method is primarily for setting the field to an undocumented or not yet
-             * supported value.
-             */
-            fun objectPermissionId(objectPermissionId: JsonField<String>) = apply {
-                this.objectPermissionId = objectPermissionId
-            }
-
-            fun agentAccessGroups(agentAccessGroups: List<String>?) =
-                agentAccessGroups(JsonField.ofNullable(agentAccessGroups))
-
-            /**
-             * Alias for calling [Builder.agentAccessGroups] with `agentAccessGroups.orElse(null)`.
-             */
-            fun agentAccessGroups(agentAccessGroups: Optional<List<String>>) =
-                agentAccessGroups(agentAccessGroups.getOrNull())
-
-            /**
-             * Sets [Builder.agentAccessGroups] to an arbitrary JSON value.
-             *
-             * You should usually call [Builder.agentAccessGroups] with a well-typed `List<String>`
-             * value instead. This method is primarily for setting the field to an undocumented or
-             * not yet supported value.
-             */
-            fun agentAccessGroups(agentAccessGroups: JsonField<List<String>>) = apply {
-                this.agentAccessGroups = agentAccessGroups.map { it.toMutableList() }
-            }
-
-            /**
-             * Adds a single [String] to [agentAccessGroups].
-             *
-             * @throws IllegalStateException if the field was previously set to a non-list.
-             */
-            fun addAgentAccessGroup(agentAccessGroup: String) = apply {
-                agentAccessGroups =
-                    (agentAccessGroups ?: JsonField.of(mutableListOf())).also {
-                        checkKnown("agentAccessGroups", it).add(agentAccessGroup)
-                    }
-            }
-
-            fun agents(agents: List<String>?) = agents(JsonField.ofNullable(agents))
-
-            /** Alias for calling [Builder.agents] with `agents.orElse(null)`. */
-            fun agents(agents: Optional<List<String>>) = agents(agents.getOrNull())
-
-            /**
-             * Sets [Builder.agents] to an arbitrary JSON value.
-             *
-             * You should usually call [Builder.agents] with a well-typed `List<String>` value
-             * instead. This method is primarily for setting the field to an undocumented or not yet
-             * supported value.
-             */
-            fun agents(agents: JsonField<List<String>>) = apply {
-                this.agents = agents.map { it.toMutableList() }
-            }
-
-            /**
-             * Adds a single [String] to [agents].
-             *
-             * @throws IllegalStateException if the field was previously set to a non-list.
-             */
-            fun addAgent(agent: String) = apply {
-                agents =
-                    (agents ?: JsonField.of(mutableListOf())).also {
-                        checkKnown("agents", it).add(agent)
-                    }
-            }
-
-            fun mcpAccessGroups(mcpAccessGroups: List<String>?) =
-                mcpAccessGroups(JsonField.ofNullable(mcpAccessGroups))
-
-            /** Alias for calling [Builder.mcpAccessGroups] with `mcpAccessGroups.orElse(null)`. */
-            fun mcpAccessGroups(mcpAccessGroups: Optional<List<String>>) =
-                mcpAccessGroups(mcpAccessGroups.getOrNull())
-
-            /**
-             * Sets [Builder.mcpAccessGroups] to an arbitrary JSON value.
-             *
-             * You should usually call [Builder.mcpAccessGroups] with a well-typed `List<String>`
-             * value instead. This method is primarily for setting the field to an undocumented or
-             * not yet supported value.
-             */
-            fun mcpAccessGroups(mcpAccessGroups: JsonField<List<String>>) = apply {
-                this.mcpAccessGroups = mcpAccessGroups.map { it.toMutableList() }
-            }
-
-            /**
-             * Adds a single [String] to [mcpAccessGroups].
-             *
-             * @throws IllegalStateException if the field was previously set to a non-list.
-             */
-            fun addMcpAccessGroup(mcpAccessGroup: String) = apply {
-                mcpAccessGroups =
-                    (mcpAccessGroups ?: JsonField.of(mutableListOf())).also {
-                        checkKnown("mcpAccessGroups", it).add(mcpAccessGroup)
-                    }
-            }
-
-            fun mcpServers(mcpServers: List<String>?) = mcpServers(JsonField.ofNullable(mcpServers))
-
-            /** Alias for calling [Builder.mcpServers] with `mcpServers.orElse(null)`. */
-            fun mcpServers(mcpServers: Optional<List<String>>) = mcpServers(mcpServers.getOrNull())
-
-            /**
-             * Sets [Builder.mcpServers] to an arbitrary JSON value.
-             *
-             * You should usually call [Builder.mcpServers] with a well-typed `List<String>` value
-             * instead. This method is primarily for setting the field to an undocumented or not yet
-             * supported value.
-             */
-            fun mcpServers(mcpServers: JsonField<List<String>>) = apply {
-                this.mcpServers = mcpServers.map { it.toMutableList() }
-            }
-
-            /**
-             * Adds a single [String] to [mcpServers].
-             *
-             * @throws IllegalStateException if the field was previously set to a non-list.
-             */
-            fun addMcpServer(mcpServer: String) = apply {
-                mcpServers =
-                    (mcpServers ?: JsonField.of(mutableListOf())).also {
-                        checkKnown("mcpServers", it).add(mcpServer)
-                    }
-            }
-
-            fun mcpToolPermissions(mcpToolPermissions: McpToolPermissions?) =
-                mcpToolPermissions(JsonField.ofNullable(mcpToolPermissions))
-
-            /**
-             * Alias for calling [Builder.mcpToolPermissions] with
-             * `mcpToolPermissions.orElse(null)`.
-             */
-            fun mcpToolPermissions(mcpToolPermissions: Optional<McpToolPermissions>) =
-                mcpToolPermissions(mcpToolPermissions.getOrNull())
-
-            /**
-             * Sets [Builder.mcpToolPermissions] to an arbitrary JSON value.
-             *
-             * You should usually call [Builder.mcpToolPermissions] with a well-typed
-             * [McpToolPermissions] value instead. This method is primarily for setting the field to
-             * an undocumented or not yet supported value.
-             */
-            fun mcpToolPermissions(mcpToolPermissions: JsonField<McpToolPermissions>) = apply {
-                this.mcpToolPermissions = mcpToolPermissions
-            }
-
-            fun vectorStores(vectorStores: List<String>?) =
-                vectorStores(JsonField.ofNullable(vectorStores))
-
-            /** Alias for calling [Builder.vectorStores] with `vectorStores.orElse(null)`. */
-            fun vectorStores(vectorStores: Optional<List<String>>) =
-                vectorStores(vectorStores.getOrNull())
-
-            /**
-             * Sets [Builder.vectorStores] to an arbitrary JSON value.
-             *
-             * You should usually call [Builder.vectorStores] with a well-typed `List<String>` value
-             * instead. This method is primarily for setting the field to an undocumented or not yet
-             * supported value.
-             */
-            fun vectorStores(vectorStores: JsonField<List<String>>) = apply {
-                this.vectorStores = vectorStores.map { it.toMutableList() }
-            }
-
-            /**
-             * Adds a single [String] to [vectorStores].
-             *
-             * @throws IllegalStateException if the field was previously set to a non-list.
-             */
-            fun addVectorStore(vectorStore: String) = apply {
-                vectorStores =
-                    (vectorStores ?: JsonField.of(mutableListOf())).also {
-                        checkKnown("vectorStores", it).add(vectorStore)
-                    }
-            }
-
-            fun additionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
-                this.additionalProperties.clear()
-                putAllAdditionalProperties(additionalProperties)
-            }
-
-            fun putAdditionalProperty(key: String, value: JsonValue) = apply {
-                additionalProperties.put(key, value)
-            }
-
-            fun putAllAdditionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
-                this.additionalProperties.putAll(additionalProperties)
-            }
-
-            fun removeAdditionalProperty(key: String) = apply { additionalProperties.remove(key) }
-
-            fun removeAllAdditionalProperties(keys: Set<String>) = apply {
-                keys.forEach(::removeAdditionalProperty)
-            }
-
-            /**
-             * Returns an immutable instance of [ObjectPermission].
-             *
-             * Further updates to this [Builder] will not mutate the returned instance.
-             *
-             * The following fields are required:
-             * ```java
-             * .objectPermissionId()
-             * ```
-             *
-             * @throws IllegalStateException if any required field is unset.
-             */
-            fun build(): ObjectPermission =
-                ObjectPermission(
-                    checkRequired("objectPermissionId", objectPermissionId),
-                    (agentAccessGroups ?: JsonMissing.of()).map { it.toImmutable() },
-                    (agents ?: JsonMissing.of()).map { it.toImmutable() },
-                    (mcpAccessGroups ?: JsonMissing.of()).map { it.toImmutable() },
-                    (mcpServers ?: JsonMissing.of()).map { it.toImmutable() },
-                    mcpToolPermissions,
-                    (vectorStores ?: JsonMissing.of()).map { it.toImmutable() },
-                    additionalProperties.toMutableMap(),
-                )
-        }
-
-        private var validated: Boolean = false
-
-        fun validate(): ObjectPermission = apply {
-            if (validated) {
-                return@apply
-            }
-
-            objectPermissionId()
-            agentAccessGroups()
-            agents()
-            mcpAccessGroups()
-            mcpServers()
-            mcpToolPermissions().ifPresent { it.validate() }
-            vectorStores()
-            validated = true
-        }
-
-        fun isValid(): Boolean =
-            try {
-                validate()
-                true
-            } catch (e: HanzoInvalidDataException) {
-                false
-            }
-
-        /**
-         * Returns a score indicating how many valid values are contained in this object
-         * recursively.
-         *
-         * Used for best match union deserialization.
-         */
-        @JvmSynthetic
-        internal fun validity(): Int =
-            (if (objectPermissionId.asKnown().isPresent) 1 else 0) +
-                (agentAccessGroups.asKnown().getOrNull()?.size ?: 0) +
-                (agents.asKnown().getOrNull()?.size ?: 0) +
-                (mcpAccessGroups.asKnown().getOrNull()?.size ?: 0) +
-                (mcpServers.asKnown().getOrNull()?.size ?: 0) +
-                (mcpToolPermissions.asKnown().getOrNull()?.validity() ?: 0) +
-                (vectorStores.asKnown().getOrNull()?.size ?: 0)
-
-        class McpToolPermissions
-        @JsonCreator
-        private constructor(
-            @com.fasterxml.jackson.annotation.JsonValue
-            private val additionalProperties: Map<String, JsonValue>
-        ) {
-
-            @JsonAnyGetter
-            @ExcludeMissing
-            fun _additionalProperties(): Map<String, JsonValue> = additionalProperties
-
-            fun toBuilder() = Builder().from(this)
-
-            companion object {
-
-                /**
-                 * Returns a mutable builder for constructing an instance of [McpToolPermissions].
-                 */
-                @JvmStatic fun builder() = Builder()
-            }
-
-            /** A builder for [McpToolPermissions]. */
-            class Builder internal constructor() {
-
-                private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
-
-                @JvmSynthetic
-                internal fun from(mcpToolPermissions: McpToolPermissions) = apply {
-                    additionalProperties = mcpToolPermissions.additionalProperties.toMutableMap()
-                }
-
-                fun additionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
-                    this.additionalProperties.clear()
-                    putAllAdditionalProperties(additionalProperties)
-                }
-
-                fun putAdditionalProperty(key: String, value: JsonValue) = apply {
-                    additionalProperties.put(key, value)
-                }
-
-                fun putAllAdditionalProperties(additionalProperties: Map<String, JsonValue>) =
-                    apply {
-                        this.additionalProperties.putAll(additionalProperties)
-                    }
-
-                fun removeAdditionalProperty(key: String) = apply {
-                    additionalProperties.remove(key)
-                }
-
-                fun removeAllAdditionalProperties(keys: Set<String>) = apply {
-                    keys.forEach(::removeAdditionalProperty)
-                }
-
-                /**
-                 * Returns an immutable instance of [McpToolPermissions].
-                 *
-                 * Further updates to this [Builder] will not mutate the returned instance.
-                 */
-                fun build(): McpToolPermissions =
-                    McpToolPermissions(additionalProperties.toImmutable())
-            }
-
-            private var validated: Boolean = false
-
-            fun validate(): McpToolPermissions = apply {
-                if (validated) {
-                    return@apply
-                }
-
-                validated = true
-            }
-
-            fun isValid(): Boolean =
-                try {
-                    validate()
-                    true
-                } catch (e: HanzoInvalidDataException) {
-                    false
-                }
-
-            /**
-             * Returns a score indicating how many valid values are contained in this object
-             * recursively.
-             *
-             * Used for best match union deserialization.
-             */
-            @JvmSynthetic
-            internal fun validity(): Int =
-                additionalProperties.count { (_, value) -> !value.isNull() && !value.isMissing() }
-
-            override fun equals(other: Any?): Boolean {
-                if (this === other) {
-                    return true
-                }
-
-                return other is McpToolPermissions &&
-                    additionalProperties == other.additionalProperties
-            }
-
-            private val hashCode: Int by lazy { Objects.hash(additionalProperties) }
-
-            override fun hashCode(): Int = hashCode
-
-            override fun toString() =
-                "McpToolPermissions{additionalProperties=$additionalProperties}"
-        }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) {
-                return true
-            }
-
-            return other is ObjectPermission &&
-                objectPermissionId == other.objectPermissionId &&
-                agentAccessGroups == other.agentAccessGroups &&
-                agents == other.agents &&
-                mcpAccessGroups == other.mcpAccessGroups &&
-                mcpServers == other.mcpServers &&
-                mcpToolPermissions == other.mcpToolPermissions &&
-                vectorStores == other.vectorStores &&
-                additionalProperties == other.additionalProperties
-        }
-
-        private val hashCode: Int by lazy {
-            Objects.hash(
-                objectPermissionId,
-                agentAccessGroups,
-                agents,
-                mcpAccessGroups,
-                mcpServers,
-                mcpToolPermissions,
-                vectorStores,
-                additionalProperties,
-            )
-        }
-
-        override fun hashCode(): Int = hashCode
-
-        override fun toString() =
-            "ObjectPermission{objectPermissionId=$objectPermissionId, agentAccessGroups=$agentAccessGroups, agents=$agents, mcpAccessGroups=$mcpAccessGroups, mcpServers=$mcpServers, mcpToolPermissions=$mcpToolPermissions, vectorStores=$vectorStores, additionalProperties=$additionalProperties}"
-    }
-
-    class RouterSettings
-    @JsonCreator
-    private constructor(
-        @com.fasterxml.jackson.annotation.JsonValue
-        private val additionalProperties: Map<String, JsonValue>
-    ) {
-
-        @JsonAnyGetter
-        @ExcludeMissing
-        fun _additionalProperties(): Map<String, JsonValue> = additionalProperties
-
-        fun toBuilder() = Builder().from(this)
-
-        companion object {
-
-            /** Returns a mutable builder for constructing an instance of [RouterSettings]. */
-            @JvmStatic fun builder() = Builder()
-        }
-
-        /** A builder for [RouterSettings]. */
-        class Builder internal constructor() {
-
-            private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
-
-            @JvmSynthetic
-            internal fun from(routerSettings: RouterSettings) = apply {
-                additionalProperties = routerSettings.additionalProperties.toMutableMap()
-            }
-
-            fun additionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
-                this.additionalProperties.clear()
-                putAllAdditionalProperties(additionalProperties)
-            }
-
-            fun putAdditionalProperty(key: String, value: JsonValue) = apply {
-                additionalProperties.put(key, value)
-            }
-
-            fun putAllAdditionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
-                this.additionalProperties.putAll(additionalProperties)
-            }
-
-            fun removeAdditionalProperty(key: String) = apply { additionalProperties.remove(key) }
-
-            fun removeAllAdditionalProperties(keys: Set<String>) = apply {
-                keys.forEach(::removeAdditionalProperty)
-            }
-
-            /**
-             * Returns an immutable instance of [RouterSettings].
-             *
-             * Further updates to this [Builder] will not mutate the returned instance.
-             */
-            fun build(): RouterSettings = RouterSettings(additionalProperties.toImmutable())
-        }
-
-        private var validated: Boolean = false
-
-        fun validate(): RouterSettings = apply {
-            if (validated) {
-                return@apply
-            }
-
-            validated = true
-        }
-
-        fun isValid(): Boolean =
-            try {
-                validate()
-                true
-            } catch (e: HanzoInvalidDataException) {
-                false
-            }
-
-        /**
-         * Returns a score indicating how many valid values are contained in this object
-         * recursively.
-         *
-         * Used for best match union deserialization.
-         */
-        @JvmSynthetic
-        internal fun validity(): Int =
-            additionalProperties.count { (_, value) -> !value.isNull() && !value.isMissing() }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) {
-                return true
-            }
-
-            return other is RouterSettings && additionalProperties == other.additionalProperties
-        }
-
-        private val hashCode: Int by lazy { Objects.hash(additionalProperties) }
-
-        override fun hashCode(): Int = hashCode
-
-        override fun toString() = "RouterSettings{additionalProperties=$additionalProperties}"
+            "LlmModelTable{createdBy=$createdBy, updatedBy=$updatedBy, modelAliases=$modelAliases, additionalProperties=$additionalProperties}"
     }
 
     override fun equals(other: Any?): Boolean {
@@ -5004,7 +3924,7 @@ private constructor(
             budgetDuration == other.budgetDuration &&
             budgetResetAt == other.budgetResetAt &&
             createdAt == other.createdAt &&
-            litellmModelTable == other.litellmModelTable &&
+            llmModelTable == other.llmModelTable &&
             maxBudget == other.maxBudget &&
             maxParallelRequests == other.maxParallelRequests &&
             members == other.members &&
@@ -5012,16 +3932,11 @@ private constructor(
             metadata == other.metadata &&
             modelId == other.modelId &&
             models == other.models &&
-            objectPermission == other.objectPermission &&
-            objectPermissionId == other.objectPermissionId &&
             organizationId == other.organizationId &&
-            routerSettings == other.routerSettings &&
             rpmLimit == other.rpmLimit &&
             spend == other.spend &&
             teamAlias == other.teamAlias &&
-            teamMemberPermissions == other.teamMemberPermissions &&
             tpmLimit == other.tpmLimit &&
-            updatedAt == other.updatedAt &&
             additionalProperties == other.additionalProperties
     }
 
@@ -5035,7 +3950,7 @@ private constructor(
             budgetDuration,
             budgetResetAt,
             createdAt,
-            litellmModelTable,
+            llmModelTable,
             maxBudget,
             maxParallelRequests,
             members,
@@ -5043,16 +3958,11 @@ private constructor(
             metadata,
             modelId,
             models,
-            objectPermission,
-            objectPermissionId,
             organizationId,
-            routerSettings,
             rpmLimit,
             spend,
             teamAlias,
-            teamMemberPermissions,
             tpmLimit,
-            updatedAt,
             additionalProperties,
         )
     }
@@ -5060,5 +3970,5 @@ private constructor(
     override fun hashCode(): Int = hashCode
 
     override fun toString() =
-        "TeamAddMemberResponse{teamId=$teamId, updatedTeamMemberships=$updatedTeamMemberships, updatedUsers=$updatedUsers, admins=$admins, blocked=$blocked, budgetDuration=$budgetDuration, budgetResetAt=$budgetResetAt, createdAt=$createdAt, litellmModelTable=$litellmModelTable, maxBudget=$maxBudget, maxParallelRequests=$maxParallelRequests, members=$members, membersWithRoles=$membersWithRoles, metadata=$metadata, modelId=$modelId, models=$models, objectPermission=$objectPermission, objectPermissionId=$objectPermissionId, organizationId=$organizationId, routerSettings=$routerSettings, rpmLimit=$rpmLimit, spend=$spend, teamAlias=$teamAlias, teamMemberPermissions=$teamMemberPermissions, tpmLimit=$tpmLimit, updatedAt=$updatedAt, additionalProperties=$additionalProperties}"
+        "TeamAddMemberResponse{teamId=$teamId, updatedTeamMemberships=$updatedTeamMemberships, updatedUsers=$updatedUsers, admins=$admins, blocked=$blocked, budgetDuration=$budgetDuration, budgetResetAt=$budgetResetAt, createdAt=$createdAt, llmModelTable=$llmModelTable, maxBudget=$maxBudget, maxParallelRequests=$maxParallelRequests, members=$members, membersWithRoles=$membersWithRoles, metadata=$metadata, modelId=$modelId, models=$models, organizationId=$organizationId, rpmLimit=$rpmLimit, spend=$spend, teamAlias=$teamAlias, tpmLimit=$tpmLimit, additionalProperties=$additionalProperties}"
 }

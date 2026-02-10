@@ -32,10 +32,7 @@ interface BedrockService {
      */
     fun withOptions(modifier: Consumer<ClientOptions.Builder>): BedrockService
 
-    /**
-     * This is the v1 passthrough for Bedrock. V2 is handled by the `/bedrock/v2` endpoint.
-     * [Docs](https://docs.litellm.ai/docs/pass_through/bedrock)
-     */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/bedrock) */
     fun create(endpoint: String): BedrockCreateResponse =
         create(endpoint, BedrockCreateParams.none())
 
@@ -66,10 +63,7 @@ interface BedrockService {
     fun create(endpoint: String, requestOptions: RequestOptions): BedrockCreateResponse =
         create(endpoint, BedrockCreateParams.none(), requestOptions)
 
-    /**
-     * This is the v1 passthrough for Bedrock. V2 is handled by the `/bedrock/v2` endpoint.
-     * [Docs](https://docs.litellm.ai/docs/pass_through/bedrock)
-     */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/bedrock) */
     fun retrieve(endpoint: String): BedrockRetrieveResponse =
         retrieve(endpoint, BedrockRetrieveParams.none())
 
@@ -101,10 +95,7 @@ interface BedrockService {
     fun retrieve(endpoint: String, requestOptions: RequestOptions): BedrockRetrieveResponse =
         retrieve(endpoint, BedrockRetrieveParams.none(), requestOptions)
 
-    /**
-     * This is the v1 passthrough for Bedrock. V2 is handled by the `/bedrock/v2` endpoint.
-     * [Docs](https://docs.litellm.ai/docs/pass_through/bedrock)
-     */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/bedrock) */
     fun update(endpoint: String): BedrockUpdateResponse =
         update(endpoint, BedrockUpdateParams.none())
 
@@ -135,10 +126,7 @@ interface BedrockService {
     fun update(endpoint: String, requestOptions: RequestOptions): BedrockUpdateResponse =
         update(endpoint, BedrockUpdateParams.none(), requestOptions)
 
-    /**
-     * This is the v1 passthrough for Bedrock. V2 is handled by the `/bedrock/v2` endpoint.
-     * [Docs](https://docs.litellm.ai/docs/pass_through/bedrock)
-     */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/bedrock) */
     fun delete(endpoint: String): BedrockDeleteResponse =
         delete(endpoint, BedrockDeleteParams.none())
 
@@ -169,10 +157,7 @@ interface BedrockService {
     fun delete(endpoint: String, requestOptions: RequestOptions): BedrockDeleteResponse =
         delete(endpoint, BedrockDeleteParams.none(), requestOptions)
 
-    /**
-     * This is the v1 passthrough for Bedrock. V2 is handled by the `/bedrock/v2` endpoint.
-     * [Docs](https://docs.litellm.ai/docs/pass_through/bedrock)
-     */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/bedrock) */
     fun patch(endpoint: String): BedrockPatchResponse = patch(endpoint, BedrockPatchParams.none())
 
     /** @see patch */

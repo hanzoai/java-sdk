@@ -32,7 +32,7 @@ interface AnthropicServiceAsync {
      */
     fun withOptions(modifier: Consumer<ClientOptions.Builder>): AnthropicServiceAsync
 
-    /** [Docs](https://docs.litellm.ai/docs/pass_through/anthropic_completion) */
+    /** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
     fun create(endpoint: String): CompletableFuture<AnthropicCreateResponse> =
         create(endpoint, AnthropicCreateParams.none())
 
@@ -67,7 +67,7 @@ interface AnthropicServiceAsync {
     ): CompletableFuture<AnthropicCreateResponse> =
         create(endpoint, AnthropicCreateParams.none(), requestOptions)
 
-    /** [Docs](https://docs.litellm.ai/docs/pass_through/anthropic_completion) */
+    /** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
     fun retrieve(endpoint: String): CompletableFuture<AnthropicRetrieveResponse> =
         retrieve(endpoint, AnthropicRetrieveParams.none())
 
@@ -103,7 +103,7 @@ interface AnthropicServiceAsync {
     ): CompletableFuture<AnthropicRetrieveResponse> =
         retrieve(endpoint, AnthropicRetrieveParams.none(), requestOptions)
 
-    /** [Docs](https://docs.litellm.ai/docs/pass_through/anthropic_completion) */
+    /** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
     fun update(endpoint: String): CompletableFuture<AnthropicUpdateResponse> =
         update(endpoint, AnthropicUpdateParams.none())
 
@@ -138,7 +138,7 @@ interface AnthropicServiceAsync {
     ): CompletableFuture<AnthropicUpdateResponse> =
         update(endpoint, AnthropicUpdateParams.none(), requestOptions)
 
-    /** [Docs](https://docs.litellm.ai/docs/pass_through/anthropic_completion) */
+    /** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
     fun delete(endpoint: String): CompletableFuture<AnthropicDeleteResponse> =
         delete(endpoint, AnthropicDeleteParams.none())
 
@@ -173,7 +173,7 @@ interface AnthropicServiceAsync {
     ): CompletableFuture<AnthropicDeleteResponse> =
         delete(endpoint, AnthropicDeleteParams.none(), requestOptions)
 
-    /** [Docs](https://docs.litellm.ai/docs/pass_through/anthropic_completion) */
+    /** [Docs](https://docs.hanzo.ai/docs/anthropic_completion) */
     fun modify(endpoint: String): CompletableFuture<AnthropicModifyResponse> =
         modify(endpoint, AnthropicModifyParams.none())
 

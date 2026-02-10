@@ -65,12 +65,7 @@ internal class BatchServiceAsyncTest {
 
         val batchesFuture =
             batchServiceAsync.list(
-                BatchListParams.builder()
-                    .after("after")
-                    .limit(0L)
-                    .provider("provider")
-                    .targetModelNames("target_model_names")
-                    .build()
+                BatchListParams.builder().after("after").limit(0L).provider("provider").build()
             )
 
         val batches = batchesFuture.get()
@@ -131,7 +126,6 @@ internal class BatchServiceAsyncTest {
                     .provider("provider")
                     .after("after")
                     .limit(0L)
-                    .targetModelNames("target_model_names")
                     .build()
             )
 
