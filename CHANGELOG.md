@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2026-02-10)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/hanzoai/java-sdk/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Features
+
+* **api:** api update ([516867f](https://github.com/hanzoai/java-sdk/commit/516867ff30ef49f05b4ea521ece41b859bfdc69a))
+
+
+### Chores
+
+* **internal:** allow passing args to `./scripts/test` ([7046bb0](https://github.com/hanzoai/java-sdk/commit/7046bb0f7bd5dab1e7c68276cbd44d829067ec20))
+* **internal:** upgrade AssertJ ([700e78b](https://github.com/hanzoai/java-sdk/commit/700e78b1d30fc27e7f6fb9f8b6e10e83c79302d0))
+
 ## 0.1.0-alpha.3 (2026-01-28)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/hanzoai/java-sdk/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
