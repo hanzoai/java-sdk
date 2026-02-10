@@ -22,11 +22,13 @@ import ai.hanzo.api.models.organization.OrganizationCreateResponse
 import ai.hanzo.api.models.organization.OrganizationDeleteMemberParams
 import ai.hanzo.api.models.organization.OrganizationDeleteMemberResponse
 import ai.hanzo.api.models.organization.OrganizationDeleteParams
+import ai.hanzo.api.models.organization.OrganizationDeleteResponse
 import ai.hanzo.api.models.organization.OrganizationListParams
-import ai.hanzo.api.models.organization.OrganizationMembershipTable
-import ai.hanzo.api.models.organization.OrganizationTableWithMembers
+import ai.hanzo.api.models.organization.OrganizationListResponse
 import ai.hanzo.api.models.organization.OrganizationUpdateMemberParams
+import ai.hanzo.api.models.organization.OrganizationUpdateMemberResponse
 import ai.hanzo.api.models.organization.OrganizationUpdateParams
+import ai.hanzo.api.models.organization.OrganizationUpdateResponse
 import ai.hanzo.api.services.blocking.organization.InfoService
 import ai.hanzo.api.services.blocking.organization.InfoServiceImpl
 import java.util.function.Consumer
@@ -57,21 +59,21 @@ class OrganizationServiceImpl internal constructor(private val clientOptions: Cl
     override fun update(
         params: OrganizationUpdateParams,
         requestOptions: RequestOptions,
-    ): OrganizationTableWithMembers =
+    ): OrganizationUpdateResponse =
         // patch /organization/update
         withRawResponse().update(params, requestOptions).parse()
 
     override fun list(
         params: OrganizationListParams,
         requestOptions: RequestOptions,
-    ): List<OrganizationTableWithMembers> =
+    ): List<OrganizationListResponse> =
         // get /organization/list
         withRawResponse().list(params, requestOptions).parse()
 
     override fun delete(
         params: OrganizationDeleteParams,
         requestOptions: RequestOptions,
-    ): List<OrganizationTableWithMembers> =
+    ): List<OrganizationDeleteResponse> =
         // delete /organization/delete
         withRawResponse().delete(params, requestOptions).parse()
 
@@ -92,7 +94,7 @@ class OrganizationServiceImpl internal constructor(private val clientOptions: Cl
     override fun updateMember(
         params: OrganizationUpdateMemberParams,
         requestOptions: RequestOptions,
-    ): OrganizationMembershipTable =
+    ): OrganizationUpdateMemberResponse =
         // patch /organization/member_update
         withRawResponse().updateMember(params, requestOptions).parse()
 
@@ -143,19 +145,19 @@ class OrganizationServiceImpl internal constructor(private val clientOptions: Cl
             }
         }
 
-        private val updateHandler: Handler<OrganizationTableWithMembers> =
-            jsonHandler<OrganizationTableWithMembers>(clientOptions.jsonMapper)
+        private val updateHandler: Handler<OrganizationUpdateResponse> =
+            jsonHandler<OrganizationUpdateResponse>(clientOptions.jsonMapper)
 
         override fun update(
             params: OrganizationUpdateParams,
             requestOptions: RequestOptions,
-        ): HttpResponseFor<OrganizationTableWithMembers> {
+        ): HttpResponseFor<OrganizationUpdateResponse> {
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PATCH)
                     .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("organization", "update")
-                    .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
+                    .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
@@ -171,13 +173,13 @@ class OrganizationServiceImpl internal constructor(private val clientOptions: Cl
             }
         }
 
-        private val listHandler: Handler<List<OrganizationTableWithMembers>> =
-            jsonHandler<List<OrganizationTableWithMembers>>(clientOptions.jsonMapper)
+        private val listHandler: Handler<List<OrganizationListResponse>> =
+            jsonHandler<List<OrganizationListResponse>>(clientOptions.jsonMapper)
 
         override fun list(
             params: OrganizationListParams,
             requestOptions: RequestOptions,
-        ): HttpResponseFor<List<OrganizationTableWithMembers>> {
+        ): HttpResponseFor<List<OrganizationListResponse>> {
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
@@ -198,13 +200,13 @@ class OrganizationServiceImpl internal constructor(private val clientOptions: Cl
             }
         }
 
-        private val deleteHandler: Handler<List<OrganizationTableWithMembers>> =
-            jsonHandler<List<OrganizationTableWithMembers>>(clientOptions.jsonMapper)
+        private val deleteHandler: Handler<List<OrganizationDeleteResponse>> =
+            jsonHandler<List<OrganizationDeleteResponse>>(clientOptions.jsonMapper)
 
         override fun delete(
             params: OrganizationDeleteParams,
             requestOptions: RequestOptions,
-        ): HttpResponseFor<List<OrganizationTableWithMembers>> {
+        ): HttpResponseFor<List<OrganizationDeleteResponse>> {
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)
@@ -282,13 +284,13 @@ class OrganizationServiceImpl internal constructor(private val clientOptions: Cl
             }
         }
 
-        private val updateMemberHandler: Handler<OrganizationMembershipTable> =
-            jsonHandler<OrganizationMembershipTable>(clientOptions.jsonMapper)
+        private val updateMemberHandler: Handler<OrganizationUpdateMemberResponse> =
+            jsonHandler<OrganizationUpdateMemberResponse>(clientOptions.jsonMapper)
 
         override fun updateMember(
             params: OrganizationUpdateMemberParams,
             requestOptions: RequestOptions,
-        ): HttpResponseFor<OrganizationMembershipTable> {
+        ): HttpResponseFor<OrganizationUpdateMemberResponse> {
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PATCH)

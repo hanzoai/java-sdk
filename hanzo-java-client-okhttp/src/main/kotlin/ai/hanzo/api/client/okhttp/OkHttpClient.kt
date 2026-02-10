@@ -94,7 +94,7 @@ private constructor(@JvmSynthetic internal val okHttpClient: okhttp3.OkHttpClien
         if (logLevel != null) {
             clientBuilder.addNetworkInterceptor(
                 HttpLoggingInterceptor().setLevel(logLevel).apply {
-                    redactHeader("x-litellm-api-key")
+                    redactHeader("Ocp-Apim-Subscription-Key")
                 }
             )
         }

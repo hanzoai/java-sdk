@@ -39,17 +39,17 @@ import kotlin.jvm.optionals.getOrNull
  */
 class UserDeleteParams
 private constructor(
-    private val litellmChangedBy: String?,
+    private val llmChangedBy: String?,
     private val body: Body,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
     /**
-     * The litellm-changed-by header enables tracking of actions performed by authorized users on
-     * behalf of other users, providing an audit trail for accountability
+     * The llm-changed-by header enables tracking of actions performed by authorized users on behalf
+     * of other users, providing an audit trail for accountability
      */
-    fun litellmChangedBy(): Optional<String> = Optional.ofNullable(litellmChangedBy)
+    fun llmChangedBy(): Optional<String> = Optional.ofNullable(llmChangedBy)
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type or is unexpectedly
@@ -90,30 +90,27 @@ private constructor(
     /** A builder for [UserDeleteParams]. */
     class Builder internal constructor() {
 
-        private var litellmChangedBy: String? = null
+        private var llmChangedBy: String? = null
         private var body: Body.Builder = Body.builder()
         private var additionalHeaders: Headers.Builder = Headers.builder()
         private var additionalQueryParams: QueryParams.Builder = QueryParams.builder()
 
         @JvmSynthetic
         internal fun from(userDeleteParams: UserDeleteParams) = apply {
-            litellmChangedBy = userDeleteParams.litellmChangedBy
+            llmChangedBy = userDeleteParams.llmChangedBy
             body = userDeleteParams.body.toBuilder()
             additionalHeaders = userDeleteParams.additionalHeaders.toBuilder()
             additionalQueryParams = userDeleteParams.additionalQueryParams.toBuilder()
         }
 
         /**
-         * The litellm-changed-by header enables tracking of actions performed by authorized users
-         * on behalf of other users, providing an audit trail for accountability
+         * The llm-changed-by header enables tracking of actions performed by authorized users on
+         * behalf of other users, providing an audit trail for accountability
          */
-        fun litellmChangedBy(litellmChangedBy: String?) = apply {
-            this.litellmChangedBy = litellmChangedBy
-        }
+        fun llmChangedBy(llmChangedBy: String?) = apply { this.llmChangedBy = llmChangedBy }
 
-        /** Alias for calling [Builder.litellmChangedBy] with `litellmChangedBy.orElse(null)`. */
-        fun litellmChangedBy(litellmChangedBy: Optional<String>) =
-            litellmChangedBy(litellmChangedBy.getOrNull())
+        /** Alias for calling [Builder.llmChangedBy] with `llmChangedBy.orElse(null)`. */
+        fun llmChangedBy(llmChangedBy: Optional<String>) = llmChangedBy(llmChangedBy.getOrNull())
 
         /**
          * Sets the entire request body.
@@ -273,7 +270,7 @@ private constructor(
          */
         fun build(): UserDeleteParams =
             UserDeleteParams(
-                litellmChangedBy,
+                llmChangedBy,
                 body.build(),
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
@@ -285,7 +282,7 @@ private constructor(
     override fun _headers(): Headers =
         Headers.builder()
             .apply {
-                litellmChangedBy?.let { put("litellm-changed-by", it) }
+                llmChangedBy?.let { put("llm-changed-by", it) }
                 putAll(additionalHeaders)
             }
             .build()
@@ -470,15 +467,15 @@ private constructor(
         }
 
         return other is UserDeleteParams &&
-            litellmChangedBy == other.litellmChangedBy &&
+            llmChangedBy == other.llmChangedBy &&
             body == other.body &&
             additionalHeaders == other.additionalHeaders &&
             additionalQueryParams == other.additionalQueryParams
     }
 
     override fun hashCode(): Int =
-        Objects.hash(litellmChangedBy, body, additionalHeaders, additionalQueryParams)
+        Objects.hash(llmChangedBy, body, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
-        "UserDeleteParams{litellmChangedBy=$litellmChangedBy, body=$body, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
+        "UserDeleteParams{llmChangedBy=$llmChangedBy, body=$body, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
 }
