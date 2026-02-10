@@ -10,7 +10,7 @@ import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
 
 /**
- * LiteLLM Enterprise - View Spend Per Request Tag. Used by LiteLLM UI
+ * LLM Enterprise - View Spend Per Request Tag. Used by LLM UI
  *
  * Example Request:
  * ```

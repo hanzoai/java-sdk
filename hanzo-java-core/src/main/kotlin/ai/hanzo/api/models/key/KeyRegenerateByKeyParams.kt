@@ -18,10 +18,6 @@ import kotlin.jvm.optionals.getOrNull
  * Parameters:
  * - key: str (path parameter) - The key to regenerate
  * - data: Optional[RegenerateKeyRequest] - Request body containing optional parameters to update
- *     - key: Optional[str] - The key to regenerate.
- *     - new_master_key: Optional[str] - The new master key to use, if key is the master key.
- *     - new_key: Optional[str] - The new key to use, if key is not the master key. If both set,
- *       new_master_key will be used.
  *     - key_alias: Optional[str] - User-friendly key alias
  *     - user_id: Optional[str] - User ID associated with key
  *     - team_id: Optional[str] - Team ID associated with key
@@ -65,7 +61,7 @@ import kotlin.jvm.optionals.getOrNull
 class KeyRegenerateByKeyParams
 private constructor(
     private val pathKey: String?,
-    private val litellmChangedBy: String?,
+    private val llmChangedBy: String?,
     private val regenerateKeyRequest: RegenerateKeyRequest?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
@@ -74,10 +70,10 @@ private constructor(
     fun pathKey(): Optional<String> = Optional.ofNullable(pathKey)
 
     /**
-     * The litellm-changed-by header enables tracking of actions performed by authorized users on
-     * behalf of other users, providing an audit trail for accountability
+     * The llm-changed-by header enables tracking of actions performed by authorized users on behalf
+     * of other users, providing an audit trail for accountability
      */
-    fun litellmChangedBy(): Optional<String> = Optional.ofNullable(litellmChangedBy)
+    fun llmChangedBy(): Optional<String> = Optional.ofNullable(llmChangedBy)
 
     fun regenerateKeyRequest(): Optional<RegenerateKeyRequest> =
         Optional.ofNullable(regenerateKeyRequest)
@@ -105,7 +101,7 @@ private constructor(
     class Builder internal constructor() {
 
         private var pathKey: String? = null
-        private var litellmChangedBy: String? = null
+        private var llmChangedBy: String? = null
         private var regenerateKeyRequest: RegenerateKeyRequest? = null
         private var additionalHeaders: Headers.Builder = Headers.builder()
         private var additionalQueryParams: QueryParams.Builder = QueryParams.builder()
@@ -113,7 +109,7 @@ private constructor(
         @JvmSynthetic
         internal fun from(keyRegenerateByKeyParams: KeyRegenerateByKeyParams) = apply {
             pathKey = keyRegenerateByKeyParams.pathKey
-            litellmChangedBy = keyRegenerateByKeyParams.litellmChangedBy
+            llmChangedBy = keyRegenerateByKeyParams.llmChangedBy
             regenerateKeyRequest = keyRegenerateByKeyParams.regenerateKeyRequest
             additionalHeaders = keyRegenerateByKeyParams.additionalHeaders.toBuilder()
             additionalQueryParams = keyRegenerateByKeyParams.additionalQueryParams.toBuilder()
@@ -125,16 +121,13 @@ private constructor(
         fun pathKey(pathKey: Optional<String>) = pathKey(pathKey.getOrNull())
 
         /**
-         * The litellm-changed-by header enables tracking of actions performed by authorized users
-         * on behalf of other users, providing an audit trail for accountability
+         * The llm-changed-by header enables tracking of actions performed by authorized users on
+         * behalf of other users, providing an audit trail for accountability
          */
-        fun litellmChangedBy(litellmChangedBy: String?) = apply {
-            this.litellmChangedBy = litellmChangedBy
-        }
+        fun llmChangedBy(llmChangedBy: String?) = apply { this.llmChangedBy = llmChangedBy }
 
-        /** Alias for calling [Builder.litellmChangedBy] with `litellmChangedBy.orElse(null)`. */
-        fun litellmChangedBy(litellmChangedBy: Optional<String>) =
-            litellmChangedBy(litellmChangedBy.getOrNull())
+        /** Alias for calling [Builder.llmChangedBy] with `llmChangedBy.orElse(null)`. */
+        fun llmChangedBy(llmChangedBy: Optional<String>) = llmChangedBy(llmChangedBy.getOrNull())
 
         fun regenerateKeyRequest(regenerateKeyRequest: RegenerateKeyRequest?) = apply {
             this.regenerateKeyRequest = regenerateKeyRequest
@@ -253,7 +246,7 @@ private constructor(
         fun build(): KeyRegenerateByKeyParams =
             KeyRegenerateByKeyParams(
                 pathKey,
-                litellmChangedBy,
+                llmChangedBy,
                 regenerateKeyRequest,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
@@ -271,7 +264,7 @@ private constructor(
     override fun _headers(): Headers =
         Headers.builder()
             .apply {
-                litellmChangedBy?.let { put("litellm-changed-by", it) }
+                llmChangedBy?.let { put("llm-changed-by", it) }
                 putAll(additionalHeaders)
             }
             .build()
@@ -285,7 +278,7 @@ private constructor(
 
         return other is KeyRegenerateByKeyParams &&
             pathKey == other.pathKey &&
-            litellmChangedBy == other.litellmChangedBy &&
+            llmChangedBy == other.llmChangedBy &&
             regenerateKeyRequest == other.regenerateKeyRequest &&
             additionalHeaders == other.additionalHeaders &&
             additionalQueryParams == other.additionalQueryParams
@@ -294,12 +287,12 @@ private constructor(
     override fun hashCode(): Int =
         Objects.hash(
             pathKey,
-            litellmChangedBy,
+            llmChangedBy,
             regenerateKeyRequest,
             additionalHeaders,
             additionalQueryParams,
         )
 
     override fun toString() =
-        "KeyRegenerateByKeyParams{pathKey=$pathKey, litellmChangedBy=$litellmChangedBy, regenerateKeyRequest=$regenerateKeyRequest, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
+        "KeyRegenerateByKeyParams{pathKey=$pathKey, llmChangedBy=$llmChangedBy, regenerateKeyRequest=$regenerateKeyRequest, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
 }

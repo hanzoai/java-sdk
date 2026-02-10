@@ -22,11 +22,13 @@ import ai.hanzo.api.models.organization.OrganizationCreateResponse
 import ai.hanzo.api.models.organization.OrganizationDeleteMemberParams
 import ai.hanzo.api.models.organization.OrganizationDeleteMemberResponse
 import ai.hanzo.api.models.organization.OrganizationDeleteParams
+import ai.hanzo.api.models.organization.OrganizationDeleteResponse
 import ai.hanzo.api.models.organization.OrganizationListParams
-import ai.hanzo.api.models.organization.OrganizationMembershipTable
-import ai.hanzo.api.models.organization.OrganizationTableWithMembers
+import ai.hanzo.api.models.organization.OrganizationListResponse
 import ai.hanzo.api.models.organization.OrganizationUpdateMemberParams
+import ai.hanzo.api.models.organization.OrganizationUpdateMemberResponse
 import ai.hanzo.api.models.organization.OrganizationUpdateParams
+import ai.hanzo.api.models.organization.OrganizationUpdateResponse
 import ai.hanzo.api.services.async.organization.InfoServiceAsync
 import ai.hanzo.api.services.async.organization.InfoServiceAsyncImpl
 import java.util.concurrent.CompletableFuture
@@ -58,21 +60,21 @@ class OrganizationServiceAsyncImpl internal constructor(private val clientOption
     override fun update(
         params: OrganizationUpdateParams,
         requestOptions: RequestOptions,
-    ): CompletableFuture<OrganizationTableWithMembers> =
+    ): CompletableFuture<OrganizationUpdateResponse> =
         // patch /organization/update
         withRawResponse().update(params, requestOptions).thenApply { it.parse() }
 
     override fun list(
         params: OrganizationListParams,
         requestOptions: RequestOptions,
-    ): CompletableFuture<List<OrganizationTableWithMembers>> =
+    ): CompletableFuture<List<OrganizationListResponse>> =
         // get /organization/list
         withRawResponse().list(params, requestOptions).thenApply { it.parse() }
 
     override fun delete(
         params: OrganizationDeleteParams,
         requestOptions: RequestOptions,
-    ): CompletableFuture<List<OrganizationTableWithMembers>> =
+    ): CompletableFuture<List<OrganizationDeleteResponse>> =
         // delete /organization/delete
         withRawResponse().delete(params, requestOptions).thenApply { it.parse() }
 
@@ -93,7 +95,7 @@ class OrganizationServiceAsyncImpl internal constructor(private val clientOption
     override fun updateMember(
         params: OrganizationUpdateMemberParams,
         requestOptions: RequestOptions,
-    ): CompletableFuture<OrganizationMembershipTable> =
+    ): CompletableFuture<OrganizationUpdateMemberResponse> =
         // patch /organization/member_update
         withRawResponse().updateMember(params, requestOptions).thenApply { it.parse() }
 
@@ -147,19 +149,19 @@ class OrganizationServiceAsyncImpl internal constructor(private val clientOption
                 }
         }
 
-        private val updateHandler: Handler<OrganizationTableWithMembers> =
-            jsonHandler<OrganizationTableWithMembers>(clientOptions.jsonMapper)
+        private val updateHandler: Handler<OrganizationUpdateResponse> =
+            jsonHandler<OrganizationUpdateResponse>(clientOptions.jsonMapper)
 
         override fun update(
             params: OrganizationUpdateParams,
             requestOptions: RequestOptions,
-        ): CompletableFuture<HttpResponseFor<OrganizationTableWithMembers>> {
+        ): CompletableFuture<HttpResponseFor<OrganizationUpdateResponse>> {
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PATCH)
                     .baseUrl(clientOptions.baseUrl())
                     .addPathSegments("organization", "update")
-                    .apply { params._body().ifPresent { body(json(clientOptions.jsonMapper, it)) } }
+                    .body(json(clientOptions.jsonMapper, params._body()))
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
@@ -178,13 +180,13 @@ class OrganizationServiceAsyncImpl internal constructor(private val clientOption
                 }
         }
 
-        private val listHandler: Handler<List<OrganizationTableWithMembers>> =
-            jsonHandler<List<OrganizationTableWithMembers>>(clientOptions.jsonMapper)
+        private val listHandler: Handler<List<OrganizationListResponse>> =
+            jsonHandler<List<OrganizationListResponse>>(clientOptions.jsonMapper)
 
         override fun list(
             params: OrganizationListParams,
             requestOptions: RequestOptions,
-        ): CompletableFuture<HttpResponseFor<List<OrganizationTableWithMembers>>> {
+        ): CompletableFuture<HttpResponseFor<List<OrganizationListResponse>>> {
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)
@@ -208,13 +210,13 @@ class OrganizationServiceAsyncImpl internal constructor(private val clientOption
                 }
         }
 
-        private val deleteHandler: Handler<List<OrganizationTableWithMembers>> =
-            jsonHandler<List<OrganizationTableWithMembers>>(clientOptions.jsonMapper)
+        private val deleteHandler: Handler<List<OrganizationDeleteResponse>> =
+            jsonHandler<List<OrganizationDeleteResponse>>(clientOptions.jsonMapper)
 
         override fun delete(
             params: OrganizationDeleteParams,
             requestOptions: RequestOptions,
-        ): CompletableFuture<HttpResponseFor<List<OrganizationTableWithMembers>>> {
+        ): CompletableFuture<HttpResponseFor<List<OrganizationDeleteResponse>>> {
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.DELETE)
@@ -301,13 +303,13 @@ class OrganizationServiceAsyncImpl internal constructor(private val clientOption
                 }
         }
 
-        private val updateMemberHandler: Handler<OrganizationMembershipTable> =
-            jsonHandler<OrganizationMembershipTable>(clientOptions.jsonMapper)
+        private val updateMemberHandler: Handler<OrganizationUpdateMemberResponse> =
+            jsonHandler<OrganizationUpdateMemberResponse>(clientOptions.jsonMapper)
 
         override fun updateMember(
             params: OrganizationUpdateMemberParams,
             requestOptions: RequestOptions,
-        ): CompletableFuture<HttpResponseFor<OrganizationMembershipTable>> {
+        ): CompletableFuture<HttpResponseFor<OrganizationUpdateMemberResponse>> {
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.PATCH)

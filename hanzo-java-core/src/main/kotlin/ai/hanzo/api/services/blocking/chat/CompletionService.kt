@@ -43,14 +43,22 @@ interface CompletionService {
      * }'
      * ```
      */
-    fun create(params: CompletionCreateParams): CompletionCreateResponse =
-        create(params, RequestOptions.none())
+    fun create(): CompletionCreateResponse = create(CompletionCreateParams.none())
 
     /** @see create */
     fun create(
-        params: CompletionCreateParams,
+        params: CompletionCreateParams = CompletionCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletionCreateResponse
+
+    /** @see create */
+    fun create(
+        params: CompletionCreateParams = CompletionCreateParams.none()
+    ): CompletionCreateResponse = create(params, RequestOptions.none())
+
+    /** @see create */
+    fun create(requestOptions: RequestOptions): CompletionCreateResponse =
+        create(CompletionCreateParams.none(), requestOptions)
 
     /** A view of [CompletionService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
@@ -69,14 +77,25 @@ interface CompletionService {
          * [CompletionService.create].
          */
         @MustBeClosed
-        fun create(params: CompletionCreateParams): HttpResponseFor<CompletionCreateResponse> =
-            create(params, RequestOptions.none())
+        fun create(): HttpResponseFor<CompletionCreateResponse> =
+            create(CompletionCreateParams.none())
 
         /** @see create */
         @MustBeClosed
         fun create(
-            params: CompletionCreateParams,
+            params: CompletionCreateParams = CompletionCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<CompletionCreateResponse>
+
+        /** @see create */
+        @MustBeClosed
+        fun create(
+            params: CompletionCreateParams = CompletionCreateParams.none()
+        ): HttpResponseFor<CompletionCreateResponse> = create(params, RequestOptions.none())
+
+        /** @see create */
+        @MustBeClosed
+        fun create(requestOptions: RequestOptions): HttpResponseFor<CompletionCreateResponse> =
+            create(CompletionCreateParams.none(), requestOptions)
     }
 }

@@ -26,7 +26,6 @@ class FileListParams
 private constructor(
     private val provider: String?,
     private val purpose: String?,
-    private val targetModelNames: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
@@ -34,8 +33,6 @@ private constructor(
     fun provider(): Optional<String> = Optional.ofNullable(provider)
 
     fun purpose(): Optional<String> = Optional.ofNullable(purpose)
-
-    fun targetModelNames(): Optional<String> = Optional.ofNullable(targetModelNames)
 
     /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
@@ -58,7 +55,6 @@ private constructor(
 
         private var provider: String? = null
         private var purpose: String? = null
-        private var targetModelNames: String? = null
         private var additionalHeaders: Headers.Builder = Headers.builder()
         private var additionalQueryParams: QueryParams.Builder = QueryParams.builder()
 
@@ -66,7 +62,6 @@ private constructor(
         internal fun from(fileListParams: FileListParams) = apply {
             provider = fileListParams.provider
             purpose = fileListParams.purpose
-            targetModelNames = fileListParams.targetModelNames
             additionalHeaders = fileListParams.additionalHeaders.toBuilder()
             additionalQueryParams = fileListParams.additionalQueryParams.toBuilder()
         }
@@ -80,14 +75,6 @@ private constructor(
 
         /** Alias for calling [Builder.purpose] with `purpose.orElse(null)`. */
         fun purpose(purpose: Optional<String>) = purpose(purpose.getOrNull())
-
-        fun targetModelNames(targetModelNames: String?) = apply {
-            this.targetModelNames = targetModelNames
-        }
-
-        /** Alias for calling [Builder.targetModelNames] with `targetModelNames.orElse(null)`. */
-        fun targetModelNames(targetModelNames: Optional<String>) =
-            targetModelNames(targetModelNames.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -196,7 +183,6 @@ private constructor(
             FileListParams(
                 provider,
                 purpose,
-                targetModelNames,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
             )
@@ -214,7 +200,6 @@ private constructor(
         QueryParams.builder()
             .apply {
                 purpose?.let { put("purpose", it) }
-                targetModelNames?.let { put("target_model_names", it) }
                 putAll(additionalQueryParams)
             }
             .build()
@@ -227,14 +212,13 @@ private constructor(
         return other is FileListParams &&
             provider == other.provider &&
             purpose == other.purpose &&
-            targetModelNames == other.targetModelNames &&
             additionalHeaders == other.additionalHeaders &&
             additionalQueryParams == other.additionalQueryParams
     }
 
     override fun hashCode(): Int =
-        Objects.hash(provider, purpose, targetModelNames, additionalHeaders, additionalQueryParams)
+        Objects.hash(provider, purpose, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
-        "FileListParams{provider=$provider, purpose=$purpose, targetModelNames=$targetModelNames, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
+        "FileListParams{provider=$provider, purpose=$purpose, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
 }

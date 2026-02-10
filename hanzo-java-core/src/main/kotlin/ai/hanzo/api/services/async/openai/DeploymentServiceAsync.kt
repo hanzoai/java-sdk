@@ -94,18 +94,28 @@ interface DeploymentServiceAsync {
      * }'
      * ```
      */
-    fun embed(
-        pathModel: String,
-        params: DeploymentEmbedParams,
-    ): CompletableFuture<DeploymentEmbedResponse> = embed(pathModel, params, RequestOptions.none())
+    fun embed(model: String): CompletableFuture<DeploymentEmbedResponse> =
+        embed(model, DeploymentEmbedParams.none())
 
     /** @see embed */
     fun embed(
-        pathModel: String,
-        params: DeploymentEmbedParams,
+        model: String,
+        params: DeploymentEmbedParams = DeploymentEmbedParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<DeploymentEmbedResponse> =
-        embed(params.toBuilder().pathModel(pathModel).build(), requestOptions)
+        embed(params.toBuilder().model(model).build(), requestOptions)
+
+    /** @see embed */
+    fun embed(
+        model: String,
+        params: DeploymentEmbedParams = DeploymentEmbedParams.none(),
+    ): CompletableFuture<DeploymentEmbedResponse> = embed(model, params, RequestOptions.none())
+
+    /** @see embed */
+    fun embed(
+        params: DeploymentEmbedParams,
+        requestOptions: RequestOptions = RequestOptions.none(),
+    ): CompletableFuture<DeploymentEmbedResponse>
 
     /** @see embed */
     fun embed(params: DeploymentEmbedParams): CompletableFuture<DeploymentEmbedResponse> =
@@ -113,9 +123,10 @@ interface DeploymentServiceAsync {
 
     /** @see embed */
     fun embed(
-        params: DeploymentEmbedParams,
-        requestOptions: RequestOptions = RequestOptions.none(),
-    ): CompletableFuture<DeploymentEmbedResponse>
+        model: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<DeploymentEmbedResponse> =
+        embed(model, DeploymentEmbedParams.none(), requestOptions)
 
     /**
      * A view of [DeploymentServiceAsync] that provides access to raw HTTP responses for each
@@ -181,19 +192,29 @@ interface DeploymentServiceAsync {
          * Returns a raw HTTP response for `post /openai/deployments/{model}/embeddings`, but is
          * otherwise the same as [DeploymentServiceAsync.embed].
          */
-        fun embed(
-            pathModel: String,
-            params: DeploymentEmbedParams,
-        ): CompletableFuture<HttpResponseFor<DeploymentEmbedResponse>> =
-            embed(pathModel, params, RequestOptions.none())
+        fun embed(model: String): CompletableFuture<HttpResponseFor<DeploymentEmbedResponse>> =
+            embed(model, DeploymentEmbedParams.none())
 
         /** @see embed */
         fun embed(
-            pathModel: String,
-            params: DeploymentEmbedParams,
+            model: String,
+            params: DeploymentEmbedParams = DeploymentEmbedParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<DeploymentEmbedResponse>> =
-            embed(params.toBuilder().pathModel(pathModel).build(), requestOptions)
+            embed(params.toBuilder().model(model).build(), requestOptions)
+
+        /** @see embed */
+        fun embed(
+            model: String,
+            params: DeploymentEmbedParams = DeploymentEmbedParams.none(),
+        ): CompletableFuture<HttpResponseFor<DeploymentEmbedResponse>> =
+            embed(model, params, RequestOptions.none())
+
+        /** @see embed */
+        fun embed(
+            params: DeploymentEmbedParams,
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<DeploymentEmbedResponse>>
 
         /** @see embed */
         fun embed(
@@ -203,8 +224,9 @@ interface DeploymentServiceAsync {
 
         /** @see embed */
         fun embed(
-            params: DeploymentEmbedParams,
-            requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<DeploymentEmbedResponse>>
+            model: String,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<DeploymentEmbedResponse>> =
+            embed(model, DeploymentEmbedParams.none(), requestOptions)
     }
 }
