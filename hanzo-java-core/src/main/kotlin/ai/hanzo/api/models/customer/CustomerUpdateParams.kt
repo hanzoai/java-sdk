@@ -38,7 +38,7 @@ import kotlin.jvm.optionals.getOrNull
  * Example curl:
  * ```
  * curl --location 'http://0.0.0.0:4000/customer/update'     --header 'Authorization: Bearer sk-1234'     --header 'Content-Type: application/json'     --data '{
- *     "user_id": "test-litellm-user-4",
+ *     "user_id": "test-llm-user-4",
  *     "budget_id": "paid_tier"
  * }'
  *

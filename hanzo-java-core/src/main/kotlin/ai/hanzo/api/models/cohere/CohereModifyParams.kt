@@ -11,7 +11,7 @@ import java.util.Objects
 import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
 
-/** [Docs](https://docs.litellm.ai/docs/pass_through/cohere) */
+/** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
 class CohereModifyParams
 private constructor(
     private val endpoint: String?,

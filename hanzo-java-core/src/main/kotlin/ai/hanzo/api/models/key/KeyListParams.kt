@@ -5,7 +5,6 @@ package ai.hanzo.api.models.key
 import ai.hanzo.api.core.Params
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
-import ai.hanzo.api.core.toImmutable
 import java.util.Objects
 import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
@@ -13,51 +12,28 @@ import kotlin.jvm.optionals.getOrNull
 /**
  * List all keys for a given user / team / organization.
  *
- * Parameters: expand: Optional[List[str]] - Expand related objects (e.g. 'user' to include user
- * information) status: Optional[str] - Filter by status. Currently supports "deleted" to query
- * deleted keys.
- *
  * Returns: { "keys": List[str] or List[UserAPIKeyAuth], "total_count": int, "current_page": int,
  * "total_pages": int, }
- *
- * When expand includes "user", each key object will include a "user" field with the associated user
- * object. Note: When expand=user is specified, full key objects are returned regardless of the
- * return_full_object parameter.
  */
 class KeyListParams
 private constructor(
-    private val expand: List<String>?,
-    private val includeCreatedByKeys: Boolean?,
     private val includeTeamKeys: Boolean?,
     private val keyAlias: String?,
-    private val keyHash: String?,
     private val organizationId: String?,
     private val page: Long?,
     private val returnFullObject: Boolean?,
     private val size: Long?,
-    private val sortBy: String?,
-    private val sortOrder: String?,
-    private val status: String?,
     private val teamId: String?,
     private val userId: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
-    /** Expand related objects (e.g. 'user') */
-    fun expand(): Optional<List<String>> = Optional.ofNullable(expand)
-
-    /** Include keys created by the user */
-    fun includeCreatedByKeys(): Optional<Boolean> = Optional.ofNullable(includeCreatedByKeys)
-
     /** Include all keys for teams that user is an admin of. */
     fun includeTeamKeys(): Optional<Boolean> = Optional.ofNullable(includeTeamKeys)
 
     /** Filter keys by key alias */
     fun keyAlias(): Optional<String> = Optional.ofNullable(keyAlias)
-
-    /** Filter keys by key hash */
-    fun keyHash(): Optional<String> = Optional.ofNullable(keyHash)
 
     /** Filter keys by organization ID */
     fun organizationId(): Optional<String> = Optional.ofNullable(organizationId)
@@ -70,15 +46,6 @@ private constructor(
 
     /** Page size */
     fun size(): Optional<Long> = Optional.ofNullable(size)
-
-    /** Column to sort by (e.g. 'user_id', 'created_at', 'spend') */
-    fun sortBy(): Optional<String> = Optional.ofNullable(sortBy)
-
-    /** Sort order ('asc' or 'desc') */
-    fun sortOrder(): Optional<String> = Optional.ofNullable(sortOrder)
-
-    /** Filter by status (e.g. 'deleted') */
-    fun status(): Optional<String> = Optional.ofNullable(status)
 
     /** Filter keys by team ID */
     fun teamId(): Optional<String> = Optional.ofNullable(teamId)
@@ -105,18 +72,12 @@ private constructor(
     /** A builder for [KeyListParams]. */
     class Builder internal constructor() {
 
-        private var expand: MutableList<String>? = null
-        private var includeCreatedByKeys: Boolean? = null
         private var includeTeamKeys: Boolean? = null
         private var keyAlias: String? = null
-        private var keyHash: String? = null
         private var organizationId: String? = null
         private var page: Long? = null
         private var returnFullObject: Boolean? = null
         private var size: Long? = null
-        private var sortBy: String? = null
-        private var sortOrder: String? = null
-        private var status: String? = null
         private var teamId: String? = null
         private var userId: String? = null
         private var additionalHeaders: Headers.Builder = Headers.builder()
@@ -124,58 +85,17 @@ private constructor(
 
         @JvmSynthetic
         internal fun from(keyListParams: KeyListParams) = apply {
-            expand = keyListParams.expand?.toMutableList()
-            includeCreatedByKeys = keyListParams.includeCreatedByKeys
             includeTeamKeys = keyListParams.includeTeamKeys
             keyAlias = keyListParams.keyAlias
-            keyHash = keyListParams.keyHash
             organizationId = keyListParams.organizationId
             page = keyListParams.page
             returnFullObject = keyListParams.returnFullObject
             size = keyListParams.size
-            sortBy = keyListParams.sortBy
-            sortOrder = keyListParams.sortOrder
-            status = keyListParams.status
             teamId = keyListParams.teamId
             userId = keyListParams.userId
             additionalHeaders = keyListParams.additionalHeaders.toBuilder()
             additionalQueryParams = keyListParams.additionalQueryParams.toBuilder()
         }
-
-        /** Expand related objects (e.g. 'user') */
-        fun expand(expand: List<String>?) = apply { this.expand = expand?.toMutableList() }
-
-        /** Alias for calling [Builder.expand] with `expand.orElse(null)`. */
-        fun expand(expand: Optional<List<String>>) = expand(expand.getOrNull())
-
-        /**
-         * Adds a single [String] to [Builder.expand].
-         *
-         * @throws IllegalStateException if the field was previously set to a non-list.
-         */
-        fun addExpand(expand: String) = apply {
-            this.expand = (this.expand ?: mutableListOf()).apply { add(expand) }
-        }
-
-        /** Include keys created by the user */
-        fun includeCreatedByKeys(includeCreatedByKeys: Boolean?) = apply {
-            this.includeCreatedByKeys = includeCreatedByKeys
-        }
-
-        /**
-         * Alias for [Builder.includeCreatedByKeys].
-         *
-         * This unboxed primitive overload exists for backwards compatibility.
-         */
-        fun includeCreatedByKeys(includeCreatedByKeys: Boolean) =
-            includeCreatedByKeys(includeCreatedByKeys as Boolean?)
-
-        /**
-         * Alias for calling [Builder.includeCreatedByKeys] with
-         * `includeCreatedByKeys.orElse(null)`.
-         */
-        fun includeCreatedByKeys(includeCreatedByKeys: Optional<Boolean>) =
-            includeCreatedByKeys(includeCreatedByKeys.getOrNull())
 
         /** Include all keys for teams that user is an admin of. */
         fun includeTeamKeys(includeTeamKeys: Boolean?) = apply {
@@ -198,12 +118,6 @@ private constructor(
 
         /** Alias for calling [Builder.keyAlias] with `keyAlias.orElse(null)`. */
         fun keyAlias(keyAlias: Optional<String>) = keyAlias(keyAlias.getOrNull())
-
-        /** Filter keys by key hash */
-        fun keyHash(keyHash: String?) = apply { this.keyHash = keyHash }
-
-        /** Alias for calling [Builder.keyHash] with `keyHash.orElse(null)`. */
-        fun keyHash(keyHash: Optional<String>) = keyHash(keyHash.getOrNull())
 
         /** Filter keys by organization ID */
         fun organizationId(organizationId: String?) = apply { this.organizationId = organizationId }
@@ -254,24 +168,6 @@ private constructor(
 
         /** Alias for calling [Builder.size] with `size.orElse(null)`. */
         fun size(size: Optional<Long>) = size(size.getOrNull())
-
-        /** Column to sort by (e.g. 'user_id', 'created_at', 'spend') */
-        fun sortBy(sortBy: String?) = apply { this.sortBy = sortBy }
-
-        /** Alias for calling [Builder.sortBy] with `sortBy.orElse(null)`. */
-        fun sortBy(sortBy: Optional<String>) = sortBy(sortBy.getOrNull())
-
-        /** Sort order ('asc' or 'desc') */
-        fun sortOrder(sortOrder: String?) = apply { this.sortOrder = sortOrder }
-
-        /** Alias for calling [Builder.sortOrder] with `sortOrder.orElse(null)`. */
-        fun sortOrder(sortOrder: Optional<String>) = sortOrder(sortOrder.getOrNull())
-
-        /** Filter by status (e.g. 'deleted') */
-        fun status(status: String?) = apply { this.status = status }
-
-        /** Alias for calling [Builder.status] with `status.orElse(null)`. */
-        fun status(status: Optional<String>) = status(status.getOrNull())
 
         /** Filter keys by team ID */
         fun teamId(teamId: String?) = apply { this.teamId = teamId }
@@ -390,18 +286,12 @@ private constructor(
          */
         fun build(): KeyListParams =
             KeyListParams(
-                expand?.toImmutable(),
-                includeCreatedByKeys,
                 includeTeamKeys,
                 keyAlias,
-                keyHash,
                 organizationId,
                 page,
                 returnFullObject,
                 size,
-                sortBy,
-                sortOrder,
-                status,
                 teamId,
                 userId,
                 additionalHeaders.build(),
@@ -414,18 +304,12 @@ private constructor(
     override fun _queryParams(): QueryParams =
         QueryParams.builder()
             .apply {
-                expand?.let { put("expand", it.joinToString(",")) }
-                includeCreatedByKeys?.let { put("include_created_by_keys", it.toString()) }
                 includeTeamKeys?.let { put("include_team_keys", it.toString()) }
                 keyAlias?.let { put("key_alias", it) }
-                keyHash?.let { put("key_hash", it) }
                 organizationId?.let { put("organization_id", it) }
                 page?.let { put("page", it.toString()) }
                 returnFullObject?.let { put("return_full_object", it.toString()) }
                 size?.let { put("size", it.toString()) }
-                sortBy?.let { put("sort_by", it) }
-                sortOrder?.let { put("sort_order", it) }
-                status?.let { put("status", it) }
                 teamId?.let { put("team_id", it) }
                 userId?.let { put("user_id", it) }
                 putAll(additionalQueryParams)
@@ -438,18 +322,12 @@ private constructor(
         }
 
         return other is KeyListParams &&
-            expand == other.expand &&
-            includeCreatedByKeys == other.includeCreatedByKeys &&
             includeTeamKeys == other.includeTeamKeys &&
             keyAlias == other.keyAlias &&
-            keyHash == other.keyHash &&
             organizationId == other.organizationId &&
             page == other.page &&
             returnFullObject == other.returnFullObject &&
             size == other.size &&
-            sortBy == other.sortBy &&
-            sortOrder == other.sortOrder &&
-            status == other.status &&
             teamId == other.teamId &&
             userId == other.userId &&
             additionalHeaders == other.additionalHeaders &&
@@ -458,18 +336,12 @@ private constructor(
 
     override fun hashCode(): Int =
         Objects.hash(
-            expand,
-            includeCreatedByKeys,
             includeTeamKeys,
             keyAlias,
-            keyHash,
             organizationId,
             page,
             returnFullObject,
             size,
-            sortBy,
-            sortOrder,
-            status,
             teamId,
             userId,
             additionalHeaders,
@@ -477,5 +349,5 @@ private constructor(
         )
 
     override fun toString() =
-        "KeyListParams{expand=$expand, includeCreatedByKeys=$includeCreatedByKeys, includeTeamKeys=$includeTeamKeys, keyAlias=$keyAlias, keyHash=$keyHash, organizationId=$organizationId, page=$page, returnFullObject=$returnFullObject, size=$size, sortBy=$sortBy, sortOrder=$sortOrder, status=$status, teamId=$teamId, userId=$userId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
+        "KeyListParams{includeTeamKeys=$includeTeamKeys, keyAlias=$keyAlias, organizationId=$organizationId, page=$page, returnFullObject=$returnFullObject, size=$size, teamId=$teamId, userId=$userId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
 }

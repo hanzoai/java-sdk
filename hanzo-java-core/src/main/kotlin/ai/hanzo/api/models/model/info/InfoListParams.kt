@@ -13,11 +13,11 @@ import kotlin.jvm.optionals.getOrNull
  * Provides more info about each model in /models, including config.yaml descriptions (except api
  * key and api base)
  *
- * Parameters: litellm_model_id: Optional[str] = None (this is the value of `x-litellm-model-id`
- * returned in response headers)
+ * Parameters: llm_model_id: Optional[str] = None (this is the value of `x-llm-model-id` returned in
+ * response headers)
  *
- *     - When litellm_model_id is passed, it will return the info for that specific model
- *     - When litellm_model_id is not passed, it will return the info for all models
+ *     - When llm_model_id is passed, it will return the info for that specific model
+ *     - When llm_model_id is not passed, it will return the info for all models
  *
  * Returns: Returns a dictionary containing information about each model.
  *
@@ -27,7 +27,7 @@ import kotlin.jvm.optionals.getOrNull
  *     "data": [
  *                 {
  *                     "model_name": "fake-openai-endpoint",
- *                     "litellm_params": {
+ *                     "llm_params": {
  *                         "api_base": "https://exampleopenaiendpoint-production.up.railway.app/",
  *                         "model": "openai/fake"
  *                     },
@@ -43,12 +43,12 @@ import kotlin.jvm.optionals.getOrNull
  */
 class InfoListParams
 private constructor(
-    private val litellmModelId: String?,
+    private val llmModelId: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
-    fun litellmModelId(): Optional<String> = Optional.ofNullable(litellmModelId)
+    fun llmModelId(): Optional<String> = Optional.ofNullable(llmModelId)
 
     /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
@@ -69,22 +69,21 @@ private constructor(
     /** A builder for [InfoListParams]. */
     class Builder internal constructor() {
 
-        private var litellmModelId: String? = null
+        private var llmModelId: String? = null
         private var additionalHeaders: Headers.Builder = Headers.builder()
         private var additionalQueryParams: QueryParams.Builder = QueryParams.builder()
 
         @JvmSynthetic
         internal fun from(infoListParams: InfoListParams) = apply {
-            litellmModelId = infoListParams.litellmModelId
+            llmModelId = infoListParams.llmModelId
             additionalHeaders = infoListParams.additionalHeaders.toBuilder()
             additionalQueryParams = infoListParams.additionalQueryParams.toBuilder()
         }
 
-        fun litellmModelId(litellmModelId: String?) = apply { this.litellmModelId = litellmModelId }
+        fun llmModelId(llmModelId: String?) = apply { this.llmModelId = llmModelId }
 
-        /** Alias for calling [Builder.litellmModelId] with `litellmModelId.orElse(null)`. */
-        fun litellmModelId(litellmModelId: Optional<String>) =
-            litellmModelId(litellmModelId.getOrNull())
+        /** Alias for calling [Builder.llmModelId] with `llmModelId.orElse(null)`. */
+        fun llmModelId(llmModelId: Optional<String>) = llmModelId(llmModelId.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -190,7 +189,7 @@ private constructor(
          * Further updates to this [Builder] will not mutate the returned instance.
          */
         fun build(): InfoListParams =
-            InfoListParams(litellmModelId, additionalHeaders.build(), additionalQueryParams.build())
+            InfoListParams(llmModelId, additionalHeaders.build(), additionalQueryParams.build())
     }
 
     override fun _headers(): Headers = additionalHeaders
@@ -198,7 +197,7 @@ private constructor(
     override fun _queryParams(): QueryParams =
         QueryParams.builder()
             .apply {
-                litellmModelId?.let { put("litellm_model_id", it) }
+                llmModelId?.let { put("llm_model_id", it) }
                 putAll(additionalQueryParams)
             }
             .build()
@@ -209,14 +208,14 @@ private constructor(
         }
 
         return other is InfoListParams &&
-            litellmModelId == other.litellmModelId &&
+            llmModelId == other.llmModelId &&
             additionalHeaders == other.additionalHeaders &&
             additionalQueryParams == other.additionalQueryParams
     }
 
     override fun hashCode(): Int =
-        Objects.hash(litellmModelId, additionalHeaders, additionalQueryParams)
+        Objects.hash(llmModelId, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
-        "InfoListParams{litellmModelId=$litellmModelId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
+        "InfoListParams{llmModelId=$llmModelId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
 }

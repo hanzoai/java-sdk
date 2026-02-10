@@ -11,8 +11,8 @@ import java.util.Objects
 import java.util.Optional
 
 /**
- * Endpoint for deleting a key from the cache. All responses from litellm proxy have
- * `x-litellm-cache-key` in the headers
+ * Endpoint for deleting a key from the cache. All responses from llm proxy have `x-llm-cache-key`
+ * in the headers
  *
  * Parameters:
  * - **keys**: *Optional[List[str]]* - A list of keys to delete from the cache. Example {"keys":

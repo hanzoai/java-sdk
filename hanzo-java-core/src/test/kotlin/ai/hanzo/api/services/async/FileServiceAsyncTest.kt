@@ -32,9 +32,6 @@ internal class FileServiceAsyncTest {
                     .file("some content".byteInputStream())
                     .purpose("purpose")
                     .customLlmProvider("custom_llm_provider")
-                    .litellmMetadata("litellm_metadata")
-                    .targetModelNames("target_model_names")
-                    .targetStorage("target_storage")
                     .build()
             )
 
@@ -73,11 +70,7 @@ internal class FileServiceAsyncTest {
 
         val filesFuture =
             fileServiceAsync.list(
-                FileListParams.builder()
-                    .provider("provider")
-                    .purpose("purpose")
-                    .targetModelNames("target_model_names")
-                    .build()
+                FileListParams.builder().provider("provider").purpose("purpose").build()
             )
 
         val files = filesFuture.get()

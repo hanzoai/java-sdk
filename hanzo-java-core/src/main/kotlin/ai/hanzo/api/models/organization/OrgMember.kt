@@ -41,16 +41,12 @@ private constructor(
     fun role(): Role = role.getRequired("role")
 
     /**
-     * The email address of the user to add. Either user_id or user_email must be provided
-     *
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
     fun userEmail(): Optional<String> = userEmail.getOptional("user_email")
 
     /**
-     * The unique ID of the user to add. Either user_id or user_email must be provided
-     *
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
@@ -128,7 +124,6 @@ private constructor(
          */
         fun role(role: JsonField<Role>) = apply { this.role = role }
 
-        /** The email address of the user to add. Either user_id or user_email must be provided */
         fun userEmail(userEmail: String?) = userEmail(JsonField.ofNullable(userEmail))
 
         /** Alias for calling [Builder.userEmail] with `userEmail.orElse(null)`. */
@@ -143,7 +138,6 @@ private constructor(
          */
         fun userEmail(userEmail: JsonField<String>) = apply { this.userEmail = userEmail }
 
-        /** The unique ID of the user to add. Either user_id or user_email must be provided */
         fun userId(userId: String?) = userId(JsonField.ofNullable(userId))
 
         /** Alias for calling [Builder.userId] with `userId.orElse(null)`. */

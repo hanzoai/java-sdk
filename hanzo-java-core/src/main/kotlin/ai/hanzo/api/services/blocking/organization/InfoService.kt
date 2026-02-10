@@ -5,10 +5,10 @@ package ai.hanzo.api.services.blocking.organization
 import ai.hanzo.api.core.ClientOptions
 import ai.hanzo.api.core.RequestOptions
 import ai.hanzo.api.core.http.HttpResponseFor
-import ai.hanzo.api.models.organization.OrganizationTableWithMembers
 import ai.hanzo.api.models.organization.info.InfoDeprecatedParams
 import ai.hanzo.api.models.organization.info.InfoDeprecatedResponse
 import ai.hanzo.api.models.organization.info.InfoRetrieveParams
+import ai.hanzo.api.models.organization.info.InfoRetrieveResponse
 import com.google.errorprone.annotations.MustBeClosed
 import java.util.function.Consumer
 
@@ -27,14 +27,14 @@ interface InfoService {
     fun withOptions(modifier: Consumer<ClientOptions.Builder>): InfoService
 
     /** Get the org specific information */
-    fun retrieve(params: InfoRetrieveParams): OrganizationTableWithMembers =
+    fun retrieve(params: InfoRetrieveParams): InfoRetrieveResponse =
         retrieve(params, RequestOptions.none())
 
     /** @see retrieve */
     fun retrieve(
         params: InfoRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
-    ): OrganizationTableWithMembers
+    ): InfoRetrieveResponse
 
     /** DEPRECATED: Use GET /organization/info instead */
     fun deprecated(params: InfoDeprecatedParams): InfoDeprecatedResponse =
@@ -61,7 +61,7 @@ interface InfoService {
          * [InfoService.retrieve].
          */
         @MustBeClosed
-        fun retrieve(params: InfoRetrieveParams): HttpResponseFor<OrganizationTableWithMembers> =
+        fun retrieve(params: InfoRetrieveParams): HttpResponseFor<InfoRetrieveResponse> =
             retrieve(params, RequestOptions.none())
 
         /** @see retrieve */
@@ -69,7 +69,7 @@ interface InfoService {
         fun retrieve(
             params: InfoRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
-        ): HttpResponseFor<OrganizationTableWithMembers>
+        ): HttpResponseFor<InfoRetrieveResponse>
 
         /**
          * Returns a raw HTTP response for `post /organization/info`, but is otherwise the same as
