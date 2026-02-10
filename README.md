@@ -503,7 +503,7 @@ import ai.hanzo.api.core.JsonValue;
 import ai.hanzo.api.models.model.ModelCreateParams;
 
 ModelCreateParams params = ModelCreateParams.builder()
-    .litellmParams(ModelCreateParams.LitellmParams.builder()
+    .llmParams(ModelCreateParams.LlmParams.builder()
         .putAdditionalProperty("secretProperty", JsonValue.from("42"))
         .build())
     .build();

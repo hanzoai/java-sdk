@@ -47,18 +47,8 @@ internal class UtilServiceAsyncTest {
         val responseFuture =
             utilServiceAsync.tokenCounter(
                 UtilTokenCounterParams.builder()
-                    .callEndpoint(true)
                     .model("model")
-                    .addContent(
-                        UtilTokenCounterParams.Content.builder()
-                            .putAdditionalProperty("foo", JsonValue.from("bar"))
-                            .build()
-                    )
-                    .addMessage(
-                        UtilTokenCounterParams.Message.builder()
-                            .putAdditionalProperty("foo", JsonValue.from("bar"))
-                            .build()
-                    )
+                    .addMessage(JsonValue.from(mapOf<String, Any>()))
                     .prompt("prompt")
                     .build()
             )
@@ -81,11 +71,7 @@ internal class UtilServiceAsyncTest {
             utilServiceAsync.transformRequest(
                 UtilTransformRequestParams.builder()
                     .callType(UtilTransformRequestParams.CallType.EMBEDDING)
-                    .requestBody(
-                        UtilTransformRequestParams.RequestBody.builder()
-                            .putAdditionalProperty("foo", JsonValue.from("bar"))
-                            .build()
-                    )
+                    .requestBody(JsonValue.from(mapOf<String, Any>()))
                     .build()
             )
 

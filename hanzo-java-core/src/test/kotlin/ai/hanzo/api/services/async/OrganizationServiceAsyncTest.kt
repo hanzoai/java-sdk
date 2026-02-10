@@ -10,9 +10,8 @@ import ai.hanzo.api.models.organization.OrganizationAddMemberParams
 import ai.hanzo.api.models.organization.OrganizationCreateParams
 import ai.hanzo.api.models.organization.OrganizationDeleteMemberParams
 import ai.hanzo.api.models.organization.OrganizationDeleteParams
-import ai.hanzo.api.models.organization.OrganizationListParams
 import ai.hanzo.api.models.organization.OrganizationUpdateMemberParams
-import ai.hanzo.api.models.organization.UserRoles
+import ai.hanzo.api.models.organization.OrganizationUpdateParams
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -38,42 +37,9 @@ internal class OrganizationServiceAsyncTest {
                     .budgetId("budget_id")
                     .maxBudget(0.0)
                     .maxParallelRequests(0L)
-                    .metadata(
-                        OrganizationCreateParams.Metadata.builder()
-                            .putAdditionalProperty("foo", JsonValue.from("bar"))
-                            .build()
-                    )
-                    .modelMaxBudget(
-                        OrganizationCreateParams.ModelMaxBudget.builder()
-                            .putAdditionalProperty("foo", JsonValue.from("bar"))
-                            .build()
-                    )
-                    .modelRpmLimit(
-                        OrganizationCreateParams.ModelRpmLimit.builder()
-                            .putAdditionalProperty("foo", JsonValue.from(0))
-                            .build()
-                    )
-                    .modelTpmLimit(
-                        OrganizationCreateParams.ModelTpmLimit.builder()
-                            .putAdditionalProperty("foo", JsonValue.from(0))
-                            .build()
-                    )
+                    .metadata(JsonValue.from(mapOf<String, Any>()))
+                    .modelMaxBudget(JsonValue.from(mapOf<String, Any>()))
                     .addModel(JsonValue.from(mapOf<String, Any>()))
-                    .objectPermission(
-                        OrganizationCreateParams.ObjectPermission.builder()
-                            .addAgentAccessGroup("string")
-                            .addAgent("string")
-                            .addMcpAccessGroup("string")
-                            .addMcpServer("string")
-                            .mcpToolPermissions(
-                                OrganizationCreateParams.ObjectPermission.McpToolPermissions
-                                    .builder()
-                                    .putAdditionalProperty("foo", JsonValue.from(listOf("string")))
-                                    .build()
-                            )
-                            .addVectorStore("string")
-                            .build()
-                    )
                     .organizationId("organization_id")
                     .rpmLimit(0L)
                     .softBudget(0.0)
@@ -95,10 +61,21 @@ internal class OrganizationServiceAsyncTest {
                 .build()
         val organizationServiceAsync = client.organization()
 
-        val organizationTableWithMembersFuture = organizationServiceAsync.update()
+        val organizationFuture =
+            organizationServiceAsync.update(
+                OrganizationUpdateParams.builder()
+                    .budgetId("budget_id")
+                    .metadata(JsonValue.from(mapOf<String, Any>()))
+                    .addModel("string")
+                    .organizationAlias("organization_alias")
+                    .organizationId("organization_id")
+                    .spend(0.0)
+                    .updatedBy("updated_by")
+                    .build()
+            )
 
-        val organizationTableWithMembers = organizationTableWithMembersFuture.get()
-        organizationTableWithMembers.validate()
+        val organization = organizationFuture.get()
+        organization.validate()
     }
 
     @Disabled("Prism tests are disabled")
@@ -111,13 +88,10 @@ internal class OrganizationServiceAsyncTest {
                 .build()
         val organizationServiceAsync = client.organization()
 
-        val organizationTableWithMembersFuture =
-            organizationServiceAsync.list(
-                OrganizationListParams.builder().orgAlias("org_alias").orgId("org_id").build()
-            )
+        val organizationsFuture = organizationServiceAsync.list()
 
-        val organizationTableWithMembers = organizationTableWithMembersFuture.get()
-        organizationTableWithMembers.forEach { it.validate() }
+        val organizations = organizationsFuture.get()
+        organizations.forEach { it.validate() }
     }
 
     @Disabled("Prism tests are disabled")
@@ -130,13 +104,13 @@ internal class OrganizationServiceAsyncTest {
                 .build()
         val organizationServiceAsync = client.organization()
 
-        val organizationTableWithMembersFuture =
+        val organizationsFuture =
             organizationServiceAsync.delete(
                 OrganizationDeleteParams.builder().addOrganizationId("string").build()
             )
 
-        val organizationTableWithMembers = organizationTableWithMembersFuture.get()
-        organizationTableWithMembers.forEach { it.validate() }
+        val organizations = organizationsFuture.get()
+        organizations.forEach { it.validate() }
     }
 
     @Disabled("Prism tests are disabled")
@@ -203,18 +177,18 @@ internal class OrganizationServiceAsyncTest {
                 .build()
         val organizationServiceAsync = client.organization()
 
-        val organizationMembershipTableFuture =
+        val responseFuture =
             organizationServiceAsync.updateMember(
                 OrganizationUpdateMemberParams.builder()
                     .organizationId("organization_id")
                     .maxBudgetInOrganization(0.0)
-                    .role(UserRoles.PROXY_ADMIN)
+                    .role(OrganizationUpdateMemberParams.Role.PROXY_ADMIN)
                     .userEmail("user_email")
                     .userId("user_id")
                     .build()
             )
 
-        val organizationMembershipTable = organizationMembershipTableFuture.get()
-        organizationMembershipTable.validate()
+        val response = responseFuture.get()
+        response.validate()
     }
 }

@@ -32,7 +32,7 @@ interface CohereServiceAsync {
      */
     fun withOptions(modifier: Consumer<ClientOptions.Builder>): CohereServiceAsync
 
-    /** [Docs](https://docs.litellm.ai/docs/pass_through/cohere) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
     fun create(endpoint: String): CompletableFuture<CohereCreateResponse> =
         create(endpoint, CohereCreateParams.none())
 
@@ -67,7 +67,7 @@ interface CohereServiceAsync {
     ): CompletableFuture<CohereCreateResponse> =
         create(endpoint, CohereCreateParams.none(), requestOptions)
 
-    /** [Docs](https://docs.litellm.ai/docs/pass_through/cohere) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
     fun retrieve(endpoint: String): CompletableFuture<CohereRetrieveResponse> =
         retrieve(endpoint, CohereRetrieveParams.none())
 
@@ -102,7 +102,7 @@ interface CohereServiceAsync {
     ): CompletableFuture<CohereRetrieveResponse> =
         retrieve(endpoint, CohereRetrieveParams.none(), requestOptions)
 
-    /** [Docs](https://docs.litellm.ai/docs/pass_through/cohere) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
     fun update(endpoint: String): CompletableFuture<CohereUpdateResponse> =
         update(endpoint, CohereUpdateParams.none())
 
@@ -137,7 +137,7 @@ interface CohereServiceAsync {
     ): CompletableFuture<CohereUpdateResponse> =
         update(endpoint, CohereUpdateParams.none(), requestOptions)
 
-    /** [Docs](https://docs.litellm.ai/docs/pass_through/cohere) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
     fun delete(endpoint: String): CompletableFuture<CohereDeleteResponse> =
         delete(endpoint, CohereDeleteParams.none())
 
@@ -172,7 +172,7 @@ interface CohereServiceAsync {
     ): CompletableFuture<CohereDeleteResponse> =
         delete(endpoint, CohereDeleteParams.none(), requestOptions)
 
-    /** [Docs](https://docs.litellm.ai/docs/pass_through/cohere) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/cohere) */
     fun modify(endpoint: String): CompletableFuture<CohereModifyResponse> =
         modify(endpoint, CohereModifyParams.none())
 

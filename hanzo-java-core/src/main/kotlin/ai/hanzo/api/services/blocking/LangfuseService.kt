@@ -33,9 +33,9 @@ interface LangfuseService {
     fun withOptions(modifier: Consumer<ClientOptions.Builder>): LangfuseService
 
     /**
-     * Call Langfuse via LiteLLM proxy. Works with Langfuse SDK.
+     * Call Langfuse via LLM proxy. Works with Langfuse SDK.
      *
-     * [Docs](https://docs.litellm.ai/docs/pass_through/langfuse)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
      */
     fun create(endpoint: String): LangfuseCreateResponse =
         create(endpoint, LangfuseCreateParams.none())
@@ -69,9 +69,9 @@ interface LangfuseService {
         create(endpoint, LangfuseCreateParams.none(), requestOptions)
 
     /**
-     * Call Langfuse via LiteLLM proxy. Works with Langfuse SDK.
+     * Call Langfuse via LLM proxy. Works with Langfuse SDK.
      *
-     * [Docs](https://docs.litellm.ai/docs/pass_through/langfuse)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
      */
     fun retrieve(endpoint: String): LangfuseRetrieveResponse =
         retrieve(endpoint, LangfuseRetrieveParams.none())
@@ -105,9 +105,9 @@ interface LangfuseService {
         retrieve(endpoint, LangfuseRetrieveParams.none(), requestOptions)
 
     /**
-     * Call Langfuse via LiteLLM proxy. Works with Langfuse SDK.
+     * Call Langfuse via LLM proxy. Works with Langfuse SDK.
      *
-     * [Docs](https://docs.litellm.ai/docs/pass_through/langfuse)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
      */
     fun update(endpoint: String): LangfuseUpdateResponse =
         update(endpoint, LangfuseUpdateParams.none())
@@ -141,9 +141,9 @@ interface LangfuseService {
         update(endpoint, LangfuseUpdateParams.none(), requestOptions)
 
     /**
-     * Call Langfuse via LiteLLM proxy. Works with Langfuse SDK.
+     * Call Langfuse via LLM proxy. Works with Langfuse SDK.
      *
-     * [Docs](https://docs.litellm.ai/docs/pass_through/langfuse)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
      */
     fun delete(endpoint: String): LangfuseDeleteResponse =
         delete(endpoint, LangfuseDeleteParams.none())
@@ -177,9 +177,9 @@ interface LangfuseService {
         delete(endpoint, LangfuseDeleteParams.none(), requestOptions)
 
     /**
-     * Call Langfuse via LiteLLM proxy. Works with Langfuse SDK.
+     * Call Langfuse via LLM proxy. Works with Langfuse SDK.
      *
-     * [Docs](https://docs.litellm.ai/docs/pass_through/langfuse)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/langfuse)
      */
     fun patch(endpoint: String): LangfusePatchResponse = patch(endpoint, LangfusePatchParams.none())
 

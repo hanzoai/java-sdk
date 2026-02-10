@@ -12,7 +12,7 @@ import java.util.Objects
 import java.util.Optional
 
 /**
- * Delete a pass-through endpoint by ID.
+ * Delete a pass-through endpoint
  *
  * Returns - the deleted endpoint
  */

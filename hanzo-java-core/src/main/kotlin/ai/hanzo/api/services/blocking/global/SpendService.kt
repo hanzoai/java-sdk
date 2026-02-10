@@ -29,7 +29,7 @@ interface SpendService {
     fun withOptions(modifier: Consumer<ClientOptions.Builder>): SpendService
 
     /**
-     * LiteLLM Enterprise - View Spend Per Request Tag. Used by LiteLLM UI
+     * LLM Enterprise - View Spend Per Request Tag. Used by LLM UI
      *
      * Example Request:
      * ```
@@ -62,10 +62,10 @@ interface SpendService {
     /**
      * ADMIN ONLY / MASTER KEY Only Endpoint
      *
-     * Globally reset spend for All API Keys and Teams, maintain LiteLLM_SpendLogs
-     * 1. LiteLLM_SpendLogs will maintain the logs on spend, no data gets deleted from there
-     * 2. LiteLLM_VerificationTokens spend will be set = 0
-     * 3. LiteLLM_TeamTable spend will be set = 0
+     * Globally reset spend for All API Keys and Teams, maintain LLM_SpendLogs
+     * 1. LLM_SpendLogs will maintain the logs on spend, no data gets deleted from there
+     * 2. LLM_VerificationTokens spend will be set = 0
+     * 3. LLM_TeamTable spend will be set = 0
      */
     fun reset(): SpendResetResponse = reset(SpendResetParams.none())
 

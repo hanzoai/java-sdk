@@ -15,10 +15,10 @@ import ai.hanzo.api.core.http.HttpResponseFor
 import ai.hanzo.api.core.http.json
 import ai.hanzo.api.core.http.parseable
 import ai.hanzo.api.core.prepareAsync
-import ai.hanzo.api.models.organization.OrganizationTableWithMembers
 import ai.hanzo.api.models.organization.info.InfoDeprecatedParams
 import ai.hanzo.api.models.organization.info.InfoDeprecatedResponse
 import ai.hanzo.api.models.organization.info.InfoRetrieveParams
+import ai.hanzo.api.models.organization.info.InfoRetrieveResponse
 import java.util.concurrent.CompletableFuture
 import java.util.function.Consumer
 
@@ -37,7 +37,7 @@ class InfoServiceAsyncImpl internal constructor(private val clientOptions: Clien
     override fun retrieve(
         params: InfoRetrieveParams,
         requestOptions: RequestOptions,
-    ): CompletableFuture<OrganizationTableWithMembers> =
+    ): CompletableFuture<InfoRetrieveResponse> =
         // get /organization/info
         withRawResponse().retrieve(params, requestOptions).thenApply { it.parse() }
 
@@ -61,13 +61,13 @@ class InfoServiceAsyncImpl internal constructor(private val clientOptions: Clien
                 clientOptions.toBuilder().apply(modifier::accept).build()
             )
 
-        private val retrieveHandler: Handler<OrganizationTableWithMembers> =
-            jsonHandler<OrganizationTableWithMembers>(clientOptions.jsonMapper)
+        private val retrieveHandler: Handler<InfoRetrieveResponse> =
+            jsonHandler<InfoRetrieveResponse>(clientOptions.jsonMapper)
 
         override fun retrieve(
             params: InfoRetrieveParams,
             requestOptions: RequestOptions,
-        ): CompletableFuture<HttpResponseFor<OrganizationTableWithMembers>> {
+        ): CompletableFuture<HttpResponseFor<InfoRetrieveResponse>> {
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.GET)

@@ -20,7 +20,6 @@ private constructor(
     private val additionalBodyProperties: Map<String, JsonValue>,
 ) : Params {
 
-    /** The credential name, percent-decoded; may contain slashes */
     fun credentialName(): Optional<String> = Optional.ofNullable(credentialName)
 
     /** Additional body properties to send with the request. */
@@ -59,7 +58,6 @@ private constructor(
                 credentialDeleteParams.additionalBodyProperties.toMutableMap()
         }
 
-        /** The credential name, percent-decoded; may contain slashes */
         fun credentialName(credentialName: String?) = apply { this.credentialName = credentialName }
 
         /** Alias for calling [Builder.credentialName] with `credentialName.orElse(null)`. */
