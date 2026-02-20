@@ -2,7 +2,6 @@
 
 package ai.hanzo.api.services.async
 
-import ai.hanzo.api.TestServerExtension
 import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.models.utils.UtilGetSupportedOpenAIParamsParams
@@ -10,19 +9,13 @@ import ai.hanzo.api.models.utils.UtilTokenCounterParams
 import ai.hanzo.api.models.utils.UtilTransformRequestParams
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
 
-@ExtendWith(TestServerExtension::class)
 internal class UtilServiceAsyncTest {
 
     @Disabled("Prism tests are disabled")
     @Test
     fun getSupportedOpenAIParams() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val utilServiceAsync = client.utils()
 
         val responseFuture =
@@ -37,11 +30,7 @@ internal class UtilServiceAsyncTest {
     @Disabled("Prism tests are disabled")
     @Test
     fun tokenCounter() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val utilServiceAsync = client.utils()
 
         val responseFuture =
@@ -60,11 +49,7 @@ internal class UtilServiceAsyncTest {
     @Disabled("Prism tests are disabled")
     @Test
     fun transformRequest() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val utilServiceAsync = client.utils()
 
         val responseFuture =
