@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test
 
 internal class OrganizationServiceAsyncTest {
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun create() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
@@ -44,7 +44,7 @@ internal class OrganizationServiceAsyncTest {
         organization.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun update() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
@@ -67,7 +67,7 @@ internal class OrganizationServiceAsyncTest {
         organization.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun list() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
@@ -79,7 +79,7 @@ internal class OrganizationServiceAsyncTest {
         organizations.forEach { it.validate() }
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun delete() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
@@ -94,7 +94,7 @@ internal class OrganizationServiceAsyncTest {
         organizations.forEach { it.validate() }
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun addMember() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
@@ -121,7 +121,7 @@ internal class OrganizationServiceAsyncTest {
         response.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun deleteMember() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
@@ -140,7 +140,7 @@ internal class OrganizationServiceAsyncTest {
         response.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun updateMember() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()

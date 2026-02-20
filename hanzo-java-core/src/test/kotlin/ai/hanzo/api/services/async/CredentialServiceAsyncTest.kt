@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test
 
 internal class CredentialServiceAsyncTest {
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun create() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
@@ -30,7 +30,7 @@ internal class CredentialServiceAsyncTest {
         credential.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun list() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
@@ -42,7 +42,7 @@ internal class CredentialServiceAsyncTest {
         credentials.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun delete() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()

@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test
 
 internal class BatchServiceAsyncTest {
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun create() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
@@ -27,7 +27,7 @@ internal class BatchServiceAsyncTest {
         batch.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun retrieve() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
@@ -42,7 +42,7 @@ internal class BatchServiceAsyncTest {
         batch.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun list() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
@@ -57,7 +57,7 @@ internal class BatchServiceAsyncTest {
         batches.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun cancelWithProvider() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
@@ -75,7 +75,7 @@ internal class BatchServiceAsyncTest {
         response.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun createWithProvider() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
@@ -87,7 +87,7 @@ internal class BatchServiceAsyncTest {
         response.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun listWithProvider() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
@@ -106,7 +106,7 @@ internal class BatchServiceAsyncTest {
         response.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun retrieveWithProvider() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
