@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test
 
 internal class UpdateServiceAsyncTest {
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun full() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
@@ -79,7 +79,7 @@ internal class UpdateServiceAsyncTest {
         response.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun partial() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()

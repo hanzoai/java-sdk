@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 
 internal class AnthropicServiceAsyncTest {
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun create() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
@@ -20,7 +20,7 @@ internal class AnthropicServiceAsyncTest {
         anthropic.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun retrieve() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
@@ -32,7 +32,7 @@ internal class AnthropicServiceAsyncTest {
         anthropic.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun update() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
@@ -44,7 +44,7 @@ internal class AnthropicServiceAsyncTest {
         anthropic.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun delete() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
@@ -56,7 +56,7 @@ internal class AnthropicServiceAsyncTest {
         anthropic.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun modify() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
