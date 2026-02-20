@@ -2,23 +2,16 @@
 
 package ai.hanzo.api.services.async
 
-import ai.hanzo.api.TestServerExtension
 import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
 
-@ExtendWith(TestServerExtension::class)
 internal class AnthropicServiceAsyncTest {
 
     @Disabled("Prism tests are disabled")
     @Test
     fun create() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val anthropicServiceAsync = client.anthropic()
 
         val anthropicFuture = anthropicServiceAsync.create("endpoint")
@@ -30,11 +23,7 @@ internal class AnthropicServiceAsyncTest {
     @Disabled("Prism tests are disabled")
     @Test
     fun retrieve() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val anthropicServiceAsync = client.anthropic()
 
         val anthropicFuture = anthropicServiceAsync.retrieve("endpoint")
@@ -46,11 +35,7 @@ internal class AnthropicServiceAsyncTest {
     @Disabled("Prism tests are disabled")
     @Test
     fun update() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val anthropicServiceAsync = client.anthropic()
 
         val anthropicFuture = anthropicServiceAsync.update("endpoint")
@@ -62,11 +47,7 @@ internal class AnthropicServiceAsyncTest {
     @Disabled("Prism tests are disabled")
     @Test
     fun delete() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val anthropicServiceAsync = client.anthropic()
 
         val anthropicFuture = anthropicServiceAsync.delete("endpoint")
@@ -78,11 +59,7 @@ internal class AnthropicServiceAsyncTest {
     @Disabled("Prism tests are disabled")
     @Test
     fun modify() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val anthropicServiceAsync = client.anthropic()
 
         val responseFuture = anthropicServiceAsync.modify("endpoint")

@@ -2,7 +2,6 @@
 
 package ai.hanzo.api.services.async
 
-import ai.hanzo.api.TestServerExtension
 import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.models.user.UserCreateParams
@@ -12,19 +11,13 @@ import ai.hanzo.api.models.user.UserRetrieveInfoParams
 import ai.hanzo.api.models.user.UserUpdateParams
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
 
-@ExtendWith(TestServerExtension::class)
 internal class UserServiceAsyncTest {
 
     @Disabled("Prism tests are disabled")
     @Test
     fun create() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val userServiceAsync = client.user()
 
         val userFuture =
@@ -67,11 +60,7 @@ internal class UserServiceAsyncTest {
     @Disabled("Prism tests are disabled")
     @Test
     fun update() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val userServiceAsync = client.user()
 
         val userFuture =
@@ -111,11 +100,7 @@ internal class UserServiceAsyncTest {
     @Disabled("Prism tests are disabled")
     @Test
     fun list() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val userServiceAsync = client.user()
 
         val usersFuture =
@@ -135,11 +120,7 @@ internal class UserServiceAsyncTest {
     @Disabled("Prism tests are disabled")
     @Test
     fun delete() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val userServiceAsync = client.user()
 
         val userFuture =
@@ -157,11 +138,7 @@ internal class UserServiceAsyncTest {
     @Disabled("Prism tests are disabled")
     @Test
     fun retrieveInfo() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val userServiceAsync = client.user()
 
         val responseFuture =
