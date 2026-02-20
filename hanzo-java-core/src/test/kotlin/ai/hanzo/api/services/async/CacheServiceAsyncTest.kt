@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 
 internal class CacheServiceAsyncTest {
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun delete() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
@@ -20,7 +20,7 @@ internal class CacheServiceAsyncTest {
         cache.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun flushAll() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
@@ -32,7 +32,7 @@ internal class CacheServiceAsyncTest {
         response.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun ping() {
         val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
