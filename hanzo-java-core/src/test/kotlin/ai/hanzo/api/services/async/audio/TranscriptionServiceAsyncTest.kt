@@ -17,7 +17,7 @@ internal class TranscriptionServiceAsyncTest {
 
         val transcriptionFuture =
             transcriptionServiceAsync.create(
-                TranscriptionCreateParams.builder().file("some content".byteInputStream()).build()
+                TranscriptionCreateParams.builder().file("Example data".byteInputStream()).build()
             )
 
         val transcription = transcriptionFuture.get()
