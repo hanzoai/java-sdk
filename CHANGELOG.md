@@ -1,5 +1,42 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2026-06-01)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/hanzoai/java-sdk/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Features
+
+* **api:** api update ([6a5c942](https://github.com/hanzoai/java-sdk/commit/6a5c942be9a61eb93a4aa05e380777a863f5c03d))
+* **client:** add connection pooling option ([fba313c](https://github.com/hanzoai/java-sdk/commit/fba313c64ea9b04525494200653fe3669677dbf3))
+
+
+### Bug Fixes
+
+* **client:** allow updating header/query affecting fields in `toBuilder()` ([8cf6f93](https://github.com/hanzoai/java-sdk/commit/8cf6f935307c05840390e972e1a1dd73fa1aafab))
+* **client:** incorrect `Retry-After` parsing ([577f45f](https://github.com/hanzoai/java-sdk/commit/577f45f71570456c0861bbcf155fe972cb68e8be))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([5f08f1c](https://github.com/hanzoai/java-sdk/commit/5f08f1cac913e215e651c21c9de0a0745c3a5acb))
+* **ci:** skip uploading artifacts on stainless-internal branches ([b81b416](https://github.com/hanzoai/java-sdk/commit/b81b416d00611d4f7d51112d4da8e10835b51eda))
+* drop apache dependency ([3f59101](https://github.com/hanzoai/java-sdk/commit/3f591015b6f1701ac2571f794f3f2f3391b3ae39))
+* **internal:** allow passing args to `./scripts/test` ([ab07f70](https://github.com/hanzoai/java-sdk/commit/ab07f70005e85d10f939bfa852865094539051f3))
+* **internal:** bump ktfmt ([c5969c8](https://github.com/hanzoai/java-sdk/commit/c5969c8c0c88e4e88893f1ba64d7940252c578b1))
+* **internal:** bump palantir-java-format ([61e03d4](https://github.com/hanzoai/java-sdk/commit/61e03d4f071d4adb7bcb2e052c63825781776a8e))
+* **internal:** codegen related update ([2564be5](https://github.com/hanzoai/java-sdk/commit/2564be5a17f8741e8410a0cfca06f5dc49df9a88))
+* **internal:** expand imports ([2c74317](https://github.com/hanzoai/java-sdk/commit/2c7431780363720dcefea6ff782365593430c89c))
+* **internal:** make `OkHttp` constructor internal ([de8a086](https://github.com/hanzoai/java-sdk/commit/de8a0862639fd32f3c45f0539905200febe18aa5))
+* **internal:** remove mock server code ([f9feeb4](https://github.com/hanzoai/java-sdk/commit/f9feeb42545b6defda1a7003dd9f9dcbf79e896f))
+* **internal:** tweak CI branches ([2d74825](https://github.com/hanzoai/java-sdk/commit/2d748253896ff073d12c670b74c7ea44879b2981))
+* **internal:** update `TestServerExtension` comment ([42da073](https://github.com/hanzoai/java-sdk/commit/42da073830c58475443795f4a36635925f11a73d))
+* **internal:** update gitignore ([8d3685f](https://github.com/hanzoai/java-sdk/commit/8d3685f4a461c90abe0918255af72682fcb96a7d))
+* **internal:** update retry delay tests ([1bf7ac9](https://github.com/hanzoai/java-sdk/commit/1bf7ac91a35acd2b92b049f529f280ab303249b2))
+* **internal:** upgrade AssertJ ([b191a70](https://github.com/hanzoai/java-sdk/commit/b191a701a1df83215695ac5c684336ba7f5f9189))
+* make `Properties` more resilient to `null` ([0f1fecf](https://github.com/hanzoai/java-sdk/commit/0f1fecfc945222275175b57c77e4145880a31762))
+* update mock server docs ([9b30b6f](https://github.com/hanzoai/java-sdk/commit/9b30b6fa919390e81f44e9d331e0fec4f951c79d))
+* update placeholder string ([8ebc000](https://github.com/hanzoai/java-sdk/commit/8ebc000175a03da2caa742dd0c376aa734eaf760))
+
 ## 0.1.0-alpha.3 (2026-01-28)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/hanzoai/java-sdk/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
