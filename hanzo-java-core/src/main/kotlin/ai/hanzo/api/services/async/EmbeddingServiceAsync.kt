@@ -38,14 +38,22 @@ interface EmbeddingServiceAsync {
      * }'
      * ```
      */
-    fun create(params: EmbeddingCreateParams): CompletableFuture<EmbeddingCreateResponse> =
-        create(params, RequestOptions.none())
+    fun create(): CompletableFuture<EmbeddingCreateResponse> = create(EmbeddingCreateParams.none())
 
     /** @see create */
     fun create(
-        params: EmbeddingCreateParams,
+        params: EmbeddingCreateParams = EmbeddingCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<EmbeddingCreateResponse>
+
+    /** @see create */
+    fun create(
+        params: EmbeddingCreateParams = EmbeddingCreateParams.none()
+    ): CompletableFuture<EmbeddingCreateResponse> = create(params, RequestOptions.none())
+
+    /** @see create */
+    fun create(requestOptions: RequestOptions): CompletableFuture<EmbeddingCreateResponse> =
+        create(EmbeddingCreateParams.none(), requestOptions)
 
     /**
      * A view of [EmbeddingServiceAsync] that provides access to raw HTTP responses for each method.
@@ -65,15 +73,25 @@ interface EmbeddingServiceAsync {
          * Returns a raw HTTP response for `post /embeddings`, but is otherwise the same as
          * [EmbeddingServiceAsync.create].
          */
+        fun create(): CompletableFuture<HttpResponseFor<EmbeddingCreateResponse>> =
+            create(EmbeddingCreateParams.none())
+
+        /** @see create */
         fun create(
-            params: EmbeddingCreateParams
+            params: EmbeddingCreateParams = EmbeddingCreateParams.none(),
+            requestOptions: RequestOptions = RequestOptions.none(),
+        ): CompletableFuture<HttpResponseFor<EmbeddingCreateResponse>>
+
+        /** @see create */
+        fun create(
+            params: EmbeddingCreateParams = EmbeddingCreateParams.none()
         ): CompletableFuture<HttpResponseFor<EmbeddingCreateResponse>> =
             create(params, RequestOptions.none())
 
         /** @see create */
         fun create(
-            params: EmbeddingCreateParams,
-            requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<EmbeddingCreateResponse>>
+            requestOptions: RequestOptions
+        ): CompletableFuture<HttpResponseFor<EmbeddingCreateResponse>> =
+            create(EmbeddingCreateParams.none(), requestOptions)
     }
 }

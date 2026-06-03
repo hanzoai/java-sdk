@@ -2,7 +2,6 @@
 
 package ai.hanzo.api.services.async
 
-import ai.hanzo.api.TestServerExtension
 import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.models.customer.BlockUsers
@@ -10,22 +9,15 @@ import ai.hanzo.api.models.customer.CustomerCreateParams
 import ai.hanzo.api.models.customer.CustomerDeleteParams
 import ai.hanzo.api.models.customer.CustomerRetrieveInfoParams
 import ai.hanzo.api.models.customer.CustomerUpdateParams
-import java.time.OffsetDateTime
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
 
-@ExtendWith(TestServerExtension::class)
 internal class CustomerServiceAsyncTest {
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun create() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val customerServiceAsync = client.customer()
 
         val customerFuture =
@@ -37,7 +29,6 @@ internal class CustomerServiceAsyncTest {
                     .blocked(true)
                     .budgetDuration("budget_duration")
                     .budgetId("budget_id")
-                    .budgetResetAt(OffsetDateTime.parse("2019-12-27T18:11:19.117Z"))
                     .defaultModel("default_model")
                     .maxBudget(0.0)
                     .maxParallelRequests(0L)
@@ -58,7 +49,6 @@ internal class CustomerServiceAsyncTest {
                     )
                     .rpmLimit(0L)
                     .softBudget(0.0)
-                    .spend(0.0)
                     .tpmLimit(0L)
                     .build()
             )
@@ -67,14 +57,10 @@ internal class CustomerServiceAsyncTest {
         customer.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun update() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val customerServiceAsync = client.customer()
 
         val customerFuture =
@@ -94,30 +80,22 @@ internal class CustomerServiceAsyncTest {
         customer.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun list() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val customerServiceAsync = client.customer()
 
-        val liteLlmEndUserTablesFuture = customerServiceAsync.list()
+        val customersFuture = customerServiceAsync.list()
 
-        val liteLlmEndUserTables = liteLlmEndUserTablesFuture.get()
-        liteLlmEndUserTables.forEach { it.validate() }
+        val customers = customersFuture.get()
+        customers.forEach { it.validate() }
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun delete() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val customerServiceAsync = client.customer()
 
         val customerFuture =
@@ -127,14 +105,10 @@ internal class CustomerServiceAsyncTest {
         customer.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun block() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val customerServiceAsync = client.customer()
 
         val responseFuture =
@@ -144,33 +118,25 @@ internal class CustomerServiceAsyncTest {
         response.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun retrieveInfo() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val customerServiceAsync = client.customer()
 
-        val liteLlmEndUserTableFuture =
+        val responseFuture =
             customerServiceAsync.retrieveInfo(
                 CustomerRetrieveInfoParams.builder().endUserId("end_user_id").build()
             )
 
-        val liteLlmEndUserTable = liteLlmEndUserTableFuture.get()
-        liteLlmEndUserTable.validate()
+        val response = responseFuture.get()
+        response.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun unblock() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val customerServiceAsync = client.customer()
 
         val responseFuture =

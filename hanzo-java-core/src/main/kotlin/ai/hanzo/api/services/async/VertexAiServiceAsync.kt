@@ -33,9 +33,9 @@ interface VertexAiServiceAsync {
     fun withOptions(modifier: Consumer<ClientOptions.Builder>): VertexAiServiceAsync
 
     /**
-     * Call LiteLLM proxy via Vertex AI SDK.
+     * Call LLM proxy via Vertex AI SDK.
      *
-     * [Docs](https://docs.litellm.ai/docs/pass_through/vertex_ai)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/vertex_ai)
      */
     fun create(endpoint: String): CompletableFuture<VertexAiCreateResponse> =
         create(endpoint, VertexAiCreateParams.none())
@@ -72,9 +72,9 @@ interface VertexAiServiceAsync {
         create(endpoint, VertexAiCreateParams.none(), requestOptions)
 
     /**
-     * Call LiteLLM proxy via Vertex AI SDK.
+     * Call LLM proxy via Vertex AI SDK.
      *
-     * [Docs](https://docs.litellm.ai/docs/pass_through/vertex_ai)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/vertex_ai)
      */
     fun retrieve(endpoint: String): CompletableFuture<VertexAiRetrieveResponse> =
         retrieve(endpoint, VertexAiRetrieveParams.none())
@@ -112,9 +112,9 @@ interface VertexAiServiceAsync {
         retrieve(endpoint, VertexAiRetrieveParams.none(), requestOptions)
 
     /**
-     * Call LiteLLM proxy via Vertex AI SDK.
+     * Call LLM proxy via Vertex AI SDK.
      *
-     * [Docs](https://docs.litellm.ai/docs/pass_through/vertex_ai)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/vertex_ai)
      */
     fun update(endpoint: String): CompletableFuture<VertexAiUpdateResponse> =
         update(endpoint, VertexAiUpdateParams.none())
@@ -151,9 +151,9 @@ interface VertexAiServiceAsync {
         update(endpoint, VertexAiUpdateParams.none(), requestOptions)
 
     /**
-     * Call LiteLLM proxy via Vertex AI SDK.
+     * Call LLM proxy via Vertex AI SDK.
      *
-     * [Docs](https://docs.litellm.ai/docs/pass_through/vertex_ai)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/vertex_ai)
      */
     fun delete(endpoint: String): CompletableFuture<VertexAiDeleteResponse> =
         delete(endpoint, VertexAiDeleteParams.none())
@@ -190,9 +190,9 @@ interface VertexAiServiceAsync {
         delete(endpoint, VertexAiDeleteParams.none(), requestOptions)
 
     /**
-     * Call LiteLLM proxy via Vertex AI SDK.
+     * Call LLM proxy via Vertex AI SDK.
      *
-     * [Docs](https://docs.litellm.ai/docs/pass_through/vertex_ai)
+     * [Docs](https://docs.hanzo.ai/docs/pass_through/vertex_ai)
      */
     fun patch(endpoint: String): CompletableFuture<VertexAiPatchResponse> =
         patch(endpoint, VertexAiPatchParams.none())

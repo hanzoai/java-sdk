@@ -5,6 +5,7 @@ package ai.hanzo.api.models.finetuning.jobs
 import ai.hanzo.api.core.Enum
 import ai.hanzo.api.core.JsonField
 import ai.hanzo.api.core.Params
+import ai.hanzo.api.core.checkRequired
 import ai.hanzo.api.core.http.Headers
 import ai.hanzo.api.core.http.QueryParams
 import ai.hanzo.api.errors.HanzoInvalidDataException
@@ -18,20 +19,20 @@ import kotlin.jvm.optionals.getOrNull
  * https://api.openai.com/v1/fine_tuning/jobs/{fine_tuning_job_id}
  *
  * Supported Query Params:
- * - `custom_llm_provider`: Name of the LiteLLM provider
+ * - `custom_llm_provider`: Name of the LLM provider
  * - `fine_tuning_job_id`: The ID of the fine-tuning job to retrieve.
  */
 class JobRetrieveParams
 private constructor(
     private val fineTuningJobId: String?,
-    private val customLlmProvider: CustomLlmProvider?,
+    private val customLlmProvider: CustomLlmProvider,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
     fun fineTuningJobId(): Optional<String> = Optional.ofNullable(fineTuningJobId)
 
-    fun customLlmProvider(): Optional<CustomLlmProvider> = Optional.ofNullable(customLlmProvider)
+    fun customLlmProvider(): CustomLlmProvider = customLlmProvider
 
     /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
@@ -43,9 +44,14 @@ private constructor(
 
     companion object {
 
-        @JvmStatic fun none(): JobRetrieveParams = builder().build()
-
-        /** Returns a mutable builder for constructing an instance of [JobRetrieveParams]. */
+        /**
+         * Returns a mutable builder for constructing an instance of [JobRetrieveParams].
+         *
+         * The following fields are required:
+         * ```java
+         * .customLlmProvider()
+         * ```
+         */
         @JvmStatic fun builder() = Builder()
     }
 
@@ -73,13 +79,9 @@ private constructor(
         fun fineTuningJobId(fineTuningJobId: Optional<String>) =
             fineTuningJobId(fineTuningJobId.getOrNull())
 
-        fun customLlmProvider(customLlmProvider: CustomLlmProvider?) = apply {
+        fun customLlmProvider(customLlmProvider: CustomLlmProvider) = apply {
             this.customLlmProvider = customLlmProvider
         }
-
-        /** Alias for calling [Builder.customLlmProvider] with `customLlmProvider.orElse(null)`. */
-        fun customLlmProvider(customLlmProvider: Optional<CustomLlmProvider>) =
-            customLlmProvider(customLlmProvider.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -183,11 +185,18 @@ private constructor(
          * Returns an immutable instance of [JobRetrieveParams].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
+         *
+         * The following fields are required:
+         * ```java
+         * .customLlmProvider()
+         * ```
+         *
+         * @throws IllegalStateException if any required field is unset.
          */
         fun build(): JobRetrieveParams =
             JobRetrieveParams(
                 fineTuningJobId,
-                customLlmProvider,
+                checkRequired("customLlmProvider", customLlmProvider),
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
             )
@@ -204,7 +213,7 @@ private constructor(
     override fun _queryParams(): QueryParams =
         QueryParams.builder()
             .apply {
-                customLlmProvider?.let { put("custom_llm_provider", it.toString()) }
+                put("custom_llm_provider", customLlmProvider.toString())
                 putAll(additionalQueryParams)
             }
             .build()

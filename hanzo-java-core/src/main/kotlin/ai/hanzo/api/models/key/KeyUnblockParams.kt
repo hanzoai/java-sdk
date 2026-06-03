@@ -28,17 +28,17 @@ import kotlin.jvm.optionals.getOrNull
  */
 class KeyUnblockParams
 private constructor(
-    private val litellmChangedBy: String?,
+    private val llmChangedBy: String?,
     private val blockKeyRequest: BlockKeyRequest,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
     /**
-     * The litellm-changed-by header enables tracking of actions performed by authorized users on
-     * behalf of other users, providing an audit trail for accountability
+     * The llm-changed-by header enables tracking of actions performed by authorized users on behalf
+     * of other users, providing an audit trail for accountability
      */
-    fun litellmChangedBy(): Optional<String> = Optional.ofNullable(litellmChangedBy)
+    fun llmChangedBy(): Optional<String> = Optional.ofNullable(llmChangedBy)
 
     fun blockKeyRequest(): BlockKeyRequest = blockKeyRequest
 
@@ -69,30 +69,27 @@ private constructor(
     /** A builder for [KeyUnblockParams]. */
     class Builder internal constructor() {
 
-        private var litellmChangedBy: String? = null
+        private var llmChangedBy: String? = null
         private var blockKeyRequest: BlockKeyRequest? = null
         private var additionalHeaders: Headers.Builder = Headers.builder()
         private var additionalQueryParams: QueryParams.Builder = QueryParams.builder()
 
         @JvmSynthetic
         internal fun from(keyUnblockParams: KeyUnblockParams) = apply {
-            litellmChangedBy = keyUnblockParams.litellmChangedBy
+            llmChangedBy = keyUnblockParams.llmChangedBy
             blockKeyRequest = keyUnblockParams.blockKeyRequest
             additionalHeaders = keyUnblockParams.additionalHeaders.toBuilder()
             additionalQueryParams = keyUnblockParams.additionalQueryParams.toBuilder()
         }
 
         /**
-         * The litellm-changed-by header enables tracking of actions performed by authorized users
-         * on behalf of other users, providing an audit trail for accountability
+         * The llm-changed-by header enables tracking of actions performed by authorized users on
+         * behalf of other users, providing an audit trail for accountability
          */
-        fun litellmChangedBy(litellmChangedBy: String?) = apply {
-            this.litellmChangedBy = litellmChangedBy
-        }
+        fun llmChangedBy(llmChangedBy: String?) = apply { this.llmChangedBy = llmChangedBy }
 
-        /** Alias for calling [Builder.litellmChangedBy] with `litellmChangedBy.orElse(null)`. */
-        fun litellmChangedBy(litellmChangedBy: Optional<String>) =
-            litellmChangedBy(litellmChangedBy.getOrNull())
+        /** Alias for calling [Builder.llmChangedBy] with `llmChangedBy.orElse(null)`. */
+        fun llmChangedBy(llmChangedBy: Optional<String>) = llmChangedBy(llmChangedBy.getOrNull())
 
         fun blockKeyRequest(blockKeyRequest: BlockKeyRequest) = apply {
             this.blockKeyRequest = blockKeyRequest
@@ -210,7 +207,7 @@ private constructor(
          */
         fun build(): KeyUnblockParams =
             KeyUnblockParams(
-                litellmChangedBy,
+                llmChangedBy,
                 checkRequired("blockKeyRequest", blockKeyRequest),
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
@@ -222,7 +219,7 @@ private constructor(
     override fun _headers(): Headers =
         Headers.builder()
             .apply {
-                litellmChangedBy?.let { put("litellm-changed-by", it) }
+                llmChangedBy?.let { put("llm-changed-by", it) }
                 putAll(additionalHeaders)
             }
             .build()
@@ -235,15 +232,15 @@ private constructor(
         }
 
         return other is KeyUnblockParams &&
-            litellmChangedBy == other.litellmChangedBy &&
+            llmChangedBy == other.llmChangedBy &&
             blockKeyRequest == other.blockKeyRequest &&
             additionalHeaders == other.additionalHeaders &&
             additionalQueryParams == other.additionalQueryParams
     }
 
     override fun hashCode(): Int =
-        Objects.hash(litellmChangedBy, blockKeyRequest, additionalHeaders, additionalQueryParams)
+        Objects.hash(llmChangedBy, blockKeyRequest, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
-        "KeyUnblockParams{litellmChangedBy=$litellmChangedBy, blockKeyRequest=$blockKeyRequest, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
+        "KeyUnblockParams{llmChangedBy=$llmChangedBy, blockKeyRequest=$blockKeyRequest, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
 }

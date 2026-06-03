@@ -17,14 +17,11 @@ import kotlin.jvm.optionals.getOrNull
 class PassThroughEndpointListParams
 private constructor(
     private val endpointId: String?,
-    private val teamId: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
 
     fun endpointId(): Optional<String> = Optional.ofNullable(endpointId)
-
-    fun teamId(): Optional<String> = Optional.ofNullable(teamId)
 
     /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
@@ -49,14 +46,12 @@ private constructor(
     class Builder internal constructor() {
 
         private var endpointId: String? = null
-        private var teamId: String? = null
         private var additionalHeaders: Headers.Builder = Headers.builder()
         private var additionalQueryParams: QueryParams.Builder = QueryParams.builder()
 
         @JvmSynthetic
         internal fun from(passThroughEndpointListParams: PassThroughEndpointListParams) = apply {
             endpointId = passThroughEndpointListParams.endpointId
-            teamId = passThroughEndpointListParams.teamId
             additionalHeaders = passThroughEndpointListParams.additionalHeaders.toBuilder()
             additionalQueryParams = passThroughEndpointListParams.additionalQueryParams.toBuilder()
         }
@@ -65,11 +60,6 @@ private constructor(
 
         /** Alias for calling [Builder.endpointId] with `endpointId.orElse(null)`. */
         fun endpointId(endpointId: Optional<String>) = endpointId(endpointId.getOrNull())
-
-        fun teamId(teamId: String?) = apply { this.teamId = teamId }
-
-        /** Alias for calling [Builder.teamId] with `teamId.orElse(null)`. */
-        fun teamId(teamId: Optional<String>) = teamId(teamId.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -177,7 +167,6 @@ private constructor(
         fun build(): PassThroughEndpointListParams =
             PassThroughEndpointListParams(
                 endpointId,
-                teamId,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
             )
@@ -189,7 +178,6 @@ private constructor(
         QueryParams.builder()
             .apply {
                 endpointId?.let { put("endpoint_id", it) }
-                teamId?.let { put("team_id", it) }
                 putAll(additionalQueryParams)
             }
             .build()
@@ -201,14 +189,13 @@ private constructor(
 
         return other is PassThroughEndpointListParams &&
             endpointId == other.endpointId &&
-            teamId == other.teamId &&
             additionalHeaders == other.additionalHeaders &&
             additionalQueryParams == other.additionalQueryParams
     }
 
     override fun hashCode(): Int =
-        Objects.hash(endpointId, teamId, additionalHeaders, additionalQueryParams)
+        Objects.hash(endpointId, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
-        "PassThroughEndpointListParams{endpointId=$endpointId, teamId=$teamId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
+        "PassThroughEndpointListParams{endpointId=$endpointId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
 }
