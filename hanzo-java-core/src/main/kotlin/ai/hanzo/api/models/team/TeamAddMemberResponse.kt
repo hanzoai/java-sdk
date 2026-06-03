@@ -970,6 +970,14 @@ private constructor(
 
     private var validated: Boolean = false
 
+    /**
+     * Validates that the types of all values in this object match their expected types recursively.
+     *
+     * This method is _not_ forwards compatible with new types from the API for existing fields.
+     *
+     * @throws HanzoInvalidDataException if any value type in this object doesn't match its expected
+     *   type.
+     */
     fun validate(): TeamAddMemberResponse = apply {
         if (validated) {
             return@apply
@@ -1258,6 +1266,15 @@ private constructor(
 
         private var validated: Boolean = false
 
+        /**
+         * Validates that the types of all values in this object match their expected types
+         * recursively.
+         *
+         * This method is _not_ forwards compatible with new types from the API for existing fields.
+         *
+         * @throws HanzoInvalidDataException if any value type in this object doesn't match its
+         *   expected type.
+         */
         fun validate(): UpdatedTeamMembership = apply {
             if (validated) {
                 return@apply
@@ -1666,6 +1683,16 @@ private constructor(
 
             private var validated: Boolean = false
 
+            /**
+             * Validates that the types of all values in this object match their expected types
+             * recursively.
+             *
+             * This method is _not_ forwards compatible with new types from the API for existing
+             * fields.
+             *
+             * @throws HanzoInvalidDataException if any value type in this object doesn't match its
+             *   expected type.
+             */
             fun validate(): LlmBudgetTable = apply {
                 if (validated) {
                     return@apply
@@ -2428,6 +2455,15 @@ private constructor(
 
         private var validated: Boolean = false
 
+        /**
+         * Validates that the types of all values in this object match their expected types
+         * recursively.
+         *
+         * This method is _not_ forwards compatible with new types from the API for existing fields.
+         *
+         * @throws HanzoInvalidDataException if any value type in this object doesn't match its
+         *   expected type.
+         */
         fun validate(): UpdatedUser = apply {
             if (validated) {
                 return@apply
@@ -2896,6 +2932,16 @@ private constructor(
 
             private var validated: Boolean = false
 
+            /**
+             * Validates that the types of all values in this object match their expected types
+             * recursively.
+             *
+             * This method is _not_ forwards compatible with new types from the API for existing
+             * fields.
+             *
+             * @throws HanzoInvalidDataException if any value type in this object doesn't match its
+             *   expected type.
+             */
             fun validate(): OrganizationMembership = apply {
                 if (validated) {
                     return@apply
@@ -3324,6 +3370,16 @@ private constructor(
 
                 private var validated: Boolean = false
 
+                /**
+                 * Validates that the types of all values in this object match their expected types
+                 * recursively.
+                 *
+                 * This method is _not_ forwards compatible with new types from the API for existing
+                 * fields.
+                 *
+                 * @throws HanzoInvalidDataException if any value type in this object doesn't match
+                 *   its expected type.
+                 */
                 fun validate(): LlmBudgetTable = apply {
                     if (validated) {
                         return@apply
@@ -3684,6 +3740,15 @@ private constructor(
 
         private var validated: Boolean = false
 
+        /**
+         * Validates that the types of all values in this object match their expected types
+         * recursively.
+         *
+         * This method is _not_ forwards compatible with new types from the API for existing fields.
+         *
+         * @throws HanzoInvalidDataException if any value type in this object doesn't match its
+         *   expected type.
+         */
         fun validate(): LlmModelTable = apply {
             if (validated) {
                 return@apply
@@ -3738,6 +3803,36 @@ private constructor(
 
             fun _json(): Optional<JsonValue> = Optional.ofNullable(_json)
 
+            /**
+             * Maps this instance's current variant to a value of type [T] using the given
+             * [visitor].
+             *
+             * Note that this method is _not_ forwards compatible with new variants from the API,
+             * unless [visitor] overrides [Visitor.unknown]. To handle variants not known to this
+             * version of the SDK gracefully, consider overriding [Visitor.unknown]:
+             * ```java
+             * import ai.hanzo.api.core.JsonValue;
+             * import java.util.Optional;
+             *
+             * Optional<String> result = modelAliases.accept(new ModelAliases.Visitor<Optional<String>>() {
+             *     @Override
+             *     public Optional<String> visitJsonValue(JsonValue jsonValue) {
+             *         return Optional.of(jsonValue.toString());
+             *     }
+             *
+             *     // ...
+             *
+             *     @Override
+             *     public Optional<String> unknown(JsonValue json) {
+             *         // Or inspect the `json`.
+             *         return Optional.empty();
+             *     }
+             * });
+             * ```
+             *
+             * @throws HanzoInvalidDataException if [Visitor.unknown] is not overridden in [visitor]
+             *   and the current variant is unknown.
+             */
             fun <T> accept(visitor: Visitor<T>): T =
                 when {
                     jsonValue != null -> visitor.visitJsonValue(jsonValue)
@@ -3747,6 +3842,16 @@ private constructor(
 
             private var validated: Boolean = false
 
+            /**
+             * Validates that the types of all values in this object match their expected types
+             * recursively.
+             *
+             * This method is _not_ forwards compatible with new types from the API for existing
+             * fields.
+             *
+             * @throws HanzoInvalidDataException if any value type in this object doesn't match its
+             *   expected type.
+             */
             fun validate(): ModelAliases = apply {
                 if (validated) {
                     return@apply
