@@ -2,7 +2,6 @@
 
 package ai.hanzo.api.services.async
 
-import ai.hanzo.api.TestServerExtension
 import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
 import ai.hanzo.api.core.JsonValue
 import ai.hanzo.api.models.spend.SpendCalculateSpendParams
@@ -10,29 +9,19 @@ import ai.hanzo.api.models.spend.SpendListLogsParams
 import ai.hanzo.api.models.spend.SpendListTagsParams
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
 
-@ExtendWith(TestServerExtension::class)
 internal class SpendServiceAsyncTest {
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun calculateSpend() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val spendServiceAsync = client.spend()
 
         val responseFuture =
             spendServiceAsync.calculateSpend(
                 SpendCalculateSpendParams.builder()
-                    .completionResponse(
-                        SpendCalculateSpendParams.CompletionResponse.builder()
-                            .putAdditionalProperty("foo", JsonValue.from("bar"))
-                            .build()
-                    )
+                    .completionResponse(JsonValue.from(mapOf<String, Any>()))
                     .addMessage(JsonValue.from(mapOf<String, Any>()))
                     .model("model")
                     .build()
@@ -42,14 +31,10 @@ internal class SpendServiceAsyncTest {
         response.validate()
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun listLogs() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val spendServiceAsync = client.spend()
 
         val responseFuture =
@@ -59,7 +44,6 @@ internal class SpendServiceAsyncTest {
                     .endDate("end_date")
                     .requestId("request_id")
                     .startDate("start_date")
-                    .summarize(true)
                     .userId("user_id")
                     .build()
             )
@@ -68,14 +52,10 @@ internal class SpendServiceAsyncTest {
         response.forEach { it.validate() }
     }
 
-    @Disabled("Prism tests are disabled")
+    @Disabled("Mock server tests are disabled")
     @Test
     fun listTags() {
-        val client =
-            HanzoOkHttpClientAsync.builder()
-                .baseUrl(TestServerExtension.BASE_URL)
-                .apiKey("My API Key")
-                .build()
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
         val spendServiceAsync = client.spend()
 
         val responseFuture =

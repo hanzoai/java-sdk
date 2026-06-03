@@ -9,18 +9,14 @@ import ai.hanzo.api.core.http.QueryParams
 import ai.hanzo.api.core.toImmutable
 import java.util.Objects
 import java.util.Optional
-import kotlin.jvm.optionals.getOrNull
 
 /** Image Generation */
 class GenerationCreateParams
 private constructor(
-    private val model: String?,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
     private val additionalBodyProperties: Map<String, JsonValue>,
 ) : Params {
-
-    fun model(): Optional<String> = Optional.ofNullable(model)
 
     /** Additional body properties to send with the request. */
     fun _additionalBodyProperties(): Map<String, JsonValue> = additionalBodyProperties
@@ -44,24 +40,17 @@ private constructor(
     /** A builder for [GenerationCreateParams]. */
     class Builder internal constructor() {
 
-        private var model: String? = null
         private var additionalHeaders: Headers.Builder = Headers.builder()
         private var additionalQueryParams: QueryParams.Builder = QueryParams.builder()
         private var additionalBodyProperties: MutableMap<String, JsonValue> = mutableMapOf()
 
         @JvmSynthetic
         internal fun from(generationCreateParams: GenerationCreateParams) = apply {
-            model = generationCreateParams.model
             additionalHeaders = generationCreateParams.additionalHeaders.toBuilder()
             additionalQueryParams = generationCreateParams.additionalQueryParams.toBuilder()
             additionalBodyProperties =
                 generationCreateParams.additionalBodyProperties.toMutableMap()
         }
-
-        fun model(model: String?) = apply { this.model = model }
-
-        /** Alias for calling [Builder.model] with `model.orElse(null)`. */
-        fun model(model: Optional<String>) = model(model.getOrNull())
 
         fun additionalHeaders(additionalHeaders: Headers) = apply {
             this.additionalHeaders.clear()
@@ -190,7 +179,6 @@ private constructor(
          */
         fun build(): GenerationCreateParams =
             GenerationCreateParams(
-                model,
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
                 additionalBodyProperties.toImmutable(),
@@ -202,13 +190,7 @@ private constructor(
 
     override fun _headers(): Headers = additionalHeaders
 
-    override fun _queryParams(): QueryParams =
-        QueryParams.builder()
-            .apply {
-                model?.let { put("model", it) }
-                putAll(additionalQueryParams)
-            }
-            .build()
+    override fun _queryParams(): QueryParams = additionalQueryParams
 
     override fun equals(other: Any?): Boolean {
         if (this === other) {
@@ -216,15 +198,14 @@ private constructor(
         }
 
         return other is GenerationCreateParams &&
-            model == other.model &&
             additionalHeaders == other.additionalHeaders &&
             additionalQueryParams == other.additionalQueryParams &&
             additionalBodyProperties == other.additionalBodyProperties
     }
 
     override fun hashCode(): Int =
-        Objects.hash(model, additionalHeaders, additionalQueryParams, additionalBodyProperties)
+        Objects.hash(additionalHeaders, additionalQueryParams, additionalBodyProperties)
 
     override fun toString() =
-        "GenerationCreateParams{model=$model, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams, additionalBodyProperties=$additionalBodyProperties}"
+        "GenerationCreateParams{additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams, additionalBodyProperties=$additionalBodyProperties}"
 }

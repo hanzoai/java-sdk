@@ -22,21 +22,13 @@ import java.util.Objects
 import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
 
-/**
- * Args: request: TokenCountRequest call_endpoint: bool - When set to "True" it will call the token
- * counting endpoint - e.g Anthropic or Google AI Studio Token Counting APIs.
- *
- * Returns: TokenCountResponse
- */
+/** Token Counter */
 class UtilTokenCounterParams
 private constructor(
-    private val callEndpoint: Boolean?,
     private val body: Body,
     private val additionalHeaders: Headers,
     private val additionalQueryParams: QueryParams,
 ) : Params {
-
-    fun callEndpoint(): Optional<Boolean> = Optional.ofNullable(callEndpoint)
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type or is unexpectedly
@@ -48,13 +40,7 @@ private constructor(
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
      *   server responded with an unexpected value).
      */
-    fun contents(): Optional<List<Content>> = body.contents()
-
-    /**
-     * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-     *   server responded with an unexpected value).
-     */
-    fun messages(): Optional<List<Message>> = body.messages()
+    fun messages(): Optional<List<JsonValue>> = body.messages()
 
     /**
      * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
@@ -70,18 +56,11 @@ private constructor(
     fun _model(): JsonField<String> = body._model()
 
     /**
-     * Returns the raw JSON value of [contents].
-     *
-     * Unlike [contents], this method doesn't throw if the JSON field has an unexpected type.
-     */
-    fun _contents(): JsonField<List<Content>> = body._contents()
-
-    /**
      * Returns the raw JSON value of [messages].
      *
      * Unlike [messages], this method doesn't throw if the JSON field has an unexpected type.
      */
-    fun _messages(): JsonField<List<Message>> = body._messages()
+    fun _messages(): JsonField<List<JsonValue>> = body._messages()
 
     /**
      * Returns the raw JSON value of [prompt].
@@ -116,30 +95,16 @@ private constructor(
     /** A builder for [UtilTokenCounterParams]. */
     class Builder internal constructor() {
 
-        private var callEndpoint: Boolean? = null
         private var body: Body.Builder = Body.builder()
         private var additionalHeaders: Headers.Builder = Headers.builder()
         private var additionalQueryParams: QueryParams.Builder = QueryParams.builder()
 
         @JvmSynthetic
         internal fun from(utilTokenCounterParams: UtilTokenCounterParams) = apply {
-            callEndpoint = utilTokenCounterParams.callEndpoint
             body = utilTokenCounterParams.body.toBuilder()
             additionalHeaders = utilTokenCounterParams.additionalHeaders.toBuilder()
             additionalQueryParams = utilTokenCounterParams.additionalQueryParams.toBuilder()
         }
-
-        fun callEndpoint(callEndpoint: Boolean?) = apply { this.callEndpoint = callEndpoint }
-
-        /**
-         * Alias for [Builder.callEndpoint].
-         *
-         * This unboxed primitive overload exists for backwards compatibility.
-         */
-        fun callEndpoint(callEndpoint: Boolean) = callEndpoint(callEndpoint as Boolean?)
-
-        /** Alias for calling [Builder.callEndpoint] with `callEndpoint.orElse(null)`. */
-        fun callEndpoint(callEndpoint: Optional<Boolean>) = callEndpoint(callEndpoint.getOrNull())
 
         /**
          * Sets the entire request body.
@@ -147,7 +112,6 @@ private constructor(
          * This is generally only useful if you are already constructing the body separately.
          * Otherwise, it's more convenient to use the top-level setters instead:
          * - [model]
-         * - [contents]
          * - [messages]
          * - [prompt]
          */
@@ -163,47 +127,26 @@ private constructor(
          */
         fun model(model: JsonField<String>) = apply { body.model(model) }
 
-        fun contents(contents: List<Content>?) = apply { body.contents(contents) }
-
-        /** Alias for calling [Builder.contents] with `contents.orElse(null)`. */
-        fun contents(contents: Optional<List<Content>>) = contents(contents.getOrNull())
-
-        /**
-         * Sets [Builder.contents] to an arbitrary JSON value.
-         *
-         * You should usually call [Builder.contents] with a well-typed `List<Content>` value
-         * instead. This method is primarily for setting the field to an undocumented or not yet
-         * supported value.
-         */
-        fun contents(contents: JsonField<List<Content>>) = apply { body.contents(contents) }
-
-        /**
-         * Adds a single [Content] to [contents].
-         *
-         * @throws IllegalStateException if the field was previously set to a non-list.
-         */
-        fun addContent(content: Content) = apply { body.addContent(content) }
-
-        fun messages(messages: List<Message>?) = apply { body.messages(messages) }
+        fun messages(messages: List<JsonValue>?) = apply { body.messages(messages) }
 
         /** Alias for calling [Builder.messages] with `messages.orElse(null)`. */
-        fun messages(messages: Optional<List<Message>>) = messages(messages.getOrNull())
+        fun messages(messages: Optional<List<JsonValue>>) = messages(messages.getOrNull())
 
         /**
          * Sets [Builder.messages] to an arbitrary JSON value.
          *
-         * You should usually call [Builder.messages] with a well-typed `List<Message>` value
+         * You should usually call [Builder.messages] with a well-typed `List<JsonValue>` value
          * instead. This method is primarily for setting the field to an undocumented or not yet
          * supported value.
          */
-        fun messages(messages: JsonField<List<Message>>) = apply { body.messages(messages) }
+        fun messages(messages: JsonField<List<JsonValue>>) = apply { body.messages(messages) }
 
         /**
-         * Adds a single [Message] to [messages].
+         * Adds a single [JsonValue] to [messages].
          *
          * @throws IllegalStateException if the field was previously set to a non-list.
          */
-        fun addMessage(message: Message) = apply { body.addMessage(message) }
+        fun addMessage(message: JsonValue) = apply { body.addMessage(message) }
 
         fun prompt(prompt: String?) = apply { body.prompt(prompt) }
 
@@ -349,7 +292,6 @@ private constructor(
          */
         fun build(): UtilTokenCounterParams =
             UtilTokenCounterParams(
-                callEndpoint,
                 body.build(),
                 additionalHeaders.build(),
                 additionalQueryParams.build(),
@@ -360,20 +302,13 @@ private constructor(
 
     override fun _headers(): Headers = additionalHeaders
 
-    override fun _queryParams(): QueryParams =
-        QueryParams.builder()
-            .apply {
-                callEndpoint?.let { put("call_endpoint", it.toString()) }
-                putAll(additionalQueryParams)
-            }
-            .build()
+    override fun _queryParams(): QueryParams = additionalQueryParams
 
     class Body
     @JsonCreator(mode = JsonCreator.Mode.DISABLED)
     private constructor(
         private val model: JsonField<String>,
-        private val contents: JsonField<List<Content>>,
-        private val messages: JsonField<List<Message>>,
+        private val messages: JsonField<List<JsonValue>>,
         private val prompt: JsonField<String>,
         private val additionalProperties: MutableMap<String, JsonValue>,
     ) {
@@ -381,14 +316,11 @@ private constructor(
         @JsonCreator
         private constructor(
             @JsonProperty("model") @ExcludeMissing model: JsonField<String> = JsonMissing.of(),
-            @JsonProperty("contents")
-            @ExcludeMissing
-            contents: JsonField<List<Content>> = JsonMissing.of(),
             @JsonProperty("messages")
             @ExcludeMissing
-            messages: JsonField<List<Message>> = JsonMissing.of(),
+            messages: JsonField<List<JsonValue>> = JsonMissing.of(),
             @JsonProperty("prompt") @ExcludeMissing prompt: JsonField<String> = JsonMissing.of(),
-        ) : this(model, contents, messages, prompt, mutableMapOf())
+        ) : this(model, messages, prompt, mutableMapOf())
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type or is
@@ -400,13 +332,7 @@ private constructor(
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
          *   server responded with an unexpected value).
          */
-        fun contents(): Optional<List<Content>> = contents.getOptional("contents")
-
-        /**
-         * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
-         *   server responded with an unexpected value).
-         */
-        fun messages(): Optional<List<Message>> = messages.getOptional("messages")
+        fun messages(): Optional<List<JsonValue>> = messages.getOptional("messages")
 
         /**
          * @throws HanzoInvalidDataException if the JSON field has an unexpected type (e.g. if the
@@ -422,22 +348,13 @@ private constructor(
         @JsonProperty("model") @ExcludeMissing fun _model(): JsonField<String> = model
 
         /**
-         * Returns the raw JSON value of [contents].
-         *
-         * Unlike [contents], this method doesn't throw if the JSON field has an unexpected type.
-         */
-        @JsonProperty("contents")
-        @ExcludeMissing
-        fun _contents(): JsonField<List<Content>> = contents
-
-        /**
          * Returns the raw JSON value of [messages].
          *
          * Unlike [messages], this method doesn't throw if the JSON field has an unexpected type.
          */
         @JsonProperty("messages")
         @ExcludeMissing
-        fun _messages(): JsonField<List<Message>> = messages
+        fun _messages(): JsonField<List<JsonValue>> = messages
 
         /**
          * Returns the raw JSON value of [prompt].
@@ -475,15 +392,13 @@ private constructor(
         class Builder internal constructor() {
 
             private var model: JsonField<String>? = null
-            private var contents: JsonField<MutableList<Content>>? = null
-            private var messages: JsonField<MutableList<Message>>? = null
+            private var messages: JsonField<MutableList<JsonValue>>? = null
             private var prompt: JsonField<String> = JsonMissing.of()
             private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
 
             @JvmSynthetic
             internal fun from(body: Body) = apply {
                 model = body.model
-                contents = body.contents.map { it.toMutableList() }
                 messages = body.messages.map { it.toMutableList() }
                 prompt = body.prompt
                 additionalProperties = body.additionalProperties.toMutableMap()
@@ -500,56 +415,28 @@ private constructor(
              */
             fun model(model: JsonField<String>) = apply { this.model = model }
 
-            fun contents(contents: List<Content>?) = contents(JsonField.ofNullable(contents))
-
-            /** Alias for calling [Builder.contents] with `contents.orElse(null)`. */
-            fun contents(contents: Optional<List<Content>>) = contents(contents.getOrNull())
-
-            /**
-             * Sets [Builder.contents] to an arbitrary JSON value.
-             *
-             * You should usually call [Builder.contents] with a well-typed `List<Content>` value
-             * instead. This method is primarily for setting the field to an undocumented or not yet
-             * supported value.
-             */
-            fun contents(contents: JsonField<List<Content>>) = apply {
-                this.contents = contents.map { it.toMutableList() }
-            }
-
-            /**
-             * Adds a single [Content] to [contents].
-             *
-             * @throws IllegalStateException if the field was previously set to a non-list.
-             */
-            fun addContent(content: Content) = apply {
-                contents =
-                    (contents ?: JsonField.of(mutableListOf())).also {
-                        checkKnown("contents", it).add(content)
-                    }
-            }
-
-            fun messages(messages: List<Message>?) = messages(JsonField.ofNullable(messages))
+            fun messages(messages: List<JsonValue>?) = messages(JsonField.ofNullable(messages))
 
             /** Alias for calling [Builder.messages] with `messages.orElse(null)`. */
-            fun messages(messages: Optional<List<Message>>) = messages(messages.getOrNull())
+            fun messages(messages: Optional<List<JsonValue>>) = messages(messages.getOrNull())
 
             /**
              * Sets [Builder.messages] to an arbitrary JSON value.
              *
-             * You should usually call [Builder.messages] with a well-typed `List<Message>` value
+             * You should usually call [Builder.messages] with a well-typed `List<JsonValue>` value
              * instead. This method is primarily for setting the field to an undocumented or not yet
              * supported value.
              */
-            fun messages(messages: JsonField<List<Message>>) = apply {
+            fun messages(messages: JsonField<List<JsonValue>>) = apply {
                 this.messages = messages.map { it.toMutableList() }
             }
 
             /**
-             * Adds a single [Message] to [messages].
+             * Adds a single [JsonValue] to [messages].
              *
              * @throws IllegalStateException if the field was previously set to a non-list.
              */
-            fun addMessage(message: Message) = apply {
+            fun addMessage(message: JsonValue) = apply {
                 messages =
                     (messages ?: JsonField.of(mutableListOf())).also {
                         checkKnown("messages", it).add(message)
@@ -604,7 +491,6 @@ private constructor(
             fun build(): Body =
                 Body(
                     checkRequired("model", model),
-                    (contents ?: JsonMissing.of()).map { it.toImmutable() },
                     (messages ?: JsonMissing.of()).map { it.toImmutable() },
                     prompt,
                     additionalProperties.toMutableMap(),
@@ -619,8 +505,7 @@ private constructor(
             }
 
             model()
-            contents().ifPresent { it.forEach { it.validate() } }
-            messages().ifPresent { it.forEach { it.validate() } }
+            messages()
             prompt()
             validated = true
         }
@@ -642,8 +527,7 @@ private constructor(
         @JvmSynthetic
         internal fun validity(): Int =
             (if (model.asKnown().isPresent) 1 else 0) +
-                (contents.asKnown().getOrNull()?.sumOf { it.validity().toInt() } ?: 0) +
-                (messages.asKnown().getOrNull()?.sumOf { it.validity().toInt() } ?: 0) +
+                (messages.asKnown().getOrNull()?.size ?: 0) +
                 (if (prompt.asKnown().isPresent) 1 else 0)
 
         override fun equals(other: Any?): Boolean {
@@ -653,218 +537,19 @@ private constructor(
 
             return other is Body &&
                 model == other.model &&
-                contents == other.contents &&
                 messages == other.messages &&
                 prompt == other.prompt &&
                 additionalProperties == other.additionalProperties
         }
 
         private val hashCode: Int by lazy {
-            Objects.hash(model, contents, messages, prompt, additionalProperties)
+            Objects.hash(model, messages, prompt, additionalProperties)
         }
 
         override fun hashCode(): Int = hashCode
 
         override fun toString() =
-            "Body{model=$model, contents=$contents, messages=$messages, prompt=$prompt, additionalProperties=$additionalProperties}"
-    }
-
-    class Content
-    @JsonCreator
-    private constructor(
-        @com.fasterxml.jackson.annotation.JsonValue
-        private val additionalProperties: Map<String, JsonValue>
-    ) {
-
-        @JsonAnyGetter
-        @ExcludeMissing
-        fun _additionalProperties(): Map<String, JsonValue> = additionalProperties
-
-        fun toBuilder() = Builder().from(this)
-
-        companion object {
-
-            /** Returns a mutable builder for constructing an instance of [Content]. */
-            @JvmStatic fun builder() = Builder()
-        }
-
-        /** A builder for [Content]. */
-        class Builder internal constructor() {
-
-            private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
-
-            @JvmSynthetic
-            internal fun from(content: Content) = apply {
-                additionalProperties = content.additionalProperties.toMutableMap()
-            }
-
-            fun additionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
-                this.additionalProperties.clear()
-                putAllAdditionalProperties(additionalProperties)
-            }
-
-            fun putAdditionalProperty(key: String, value: JsonValue) = apply {
-                additionalProperties.put(key, value)
-            }
-
-            fun putAllAdditionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
-                this.additionalProperties.putAll(additionalProperties)
-            }
-
-            fun removeAdditionalProperty(key: String) = apply { additionalProperties.remove(key) }
-
-            fun removeAllAdditionalProperties(keys: Set<String>) = apply {
-                keys.forEach(::removeAdditionalProperty)
-            }
-
-            /**
-             * Returns an immutable instance of [Content].
-             *
-             * Further updates to this [Builder] will not mutate the returned instance.
-             */
-            fun build(): Content = Content(additionalProperties.toImmutable())
-        }
-
-        private var validated: Boolean = false
-
-        fun validate(): Content = apply {
-            if (validated) {
-                return@apply
-            }
-
-            validated = true
-        }
-
-        fun isValid(): Boolean =
-            try {
-                validate()
-                true
-            } catch (e: HanzoInvalidDataException) {
-                false
-            }
-
-        /**
-         * Returns a score indicating how many valid values are contained in this object
-         * recursively.
-         *
-         * Used for best match union deserialization.
-         */
-        @JvmSynthetic
-        internal fun validity(): Int =
-            additionalProperties.count { (_, value) -> !value.isNull() && !value.isMissing() }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) {
-                return true
-            }
-
-            return other is Content && additionalProperties == other.additionalProperties
-        }
-
-        private val hashCode: Int by lazy { Objects.hash(additionalProperties) }
-
-        override fun hashCode(): Int = hashCode
-
-        override fun toString() = "Content{additionalProperties=$additionalProperties}"
-    }
-
-    class Message
-    @JsonCreator
-    private constructor(
-        @com.fasterxml.jackson.annotation.JsonValue
-        private val additionalProperties: Map<String, JsonValue>
-    ) {
-
-        @JsonAnyGetter
-        @ExcludeMissing
-        fun _additionalProperties(): Map<String, JsonValue> = additionalProperties
-
-        fun toBuilder() = Builder().from(this)
-
-        companion object {
-
-            /** Returns a mutable builder for constructing an instance of [Message]. */
-            @JvmStatic fun builder() = Builder()
-        }
-
-        /** A builder for [Message]. */
-        class Builder internal constructor() {
-
-            private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
-
-            @JvmSynthetic
-            internal fun from(message: Message) = apply {
-                additionalProperties = message.additionalProperties.toMutableMap()
-            }
-
-            fun additionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
-                this.additionalProperties.clear()
-                putAllAdditionalProperties(additionalProperties)
-            }
-
-            fun putAdditionalProperty(key: String, value: JsonValue) = apply {
-                additionalProperties.put(key, value)
-            }
-
-            fun putAllAdditionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
-                this.additionalProperties.putAll(additionalProperties)
-            }
-
-            fun removeAdditionalProperty(key: String) = apply { additionalProperties.remove(key) }
-
-            fun removeAllAdditionalProperties(keys: Set<String>) = apply {
-                keys.forEach(::removeAdditionalProperty)
-            }
-
-            /**
-             * Returns an immutable instance of [Message].
-             *
-             * Further updates to this [Builder] will not mutate the returned instance.
-             */
-            fun build(): Message = Message(additionalProperties.toImmutable())
-        }
-
-        private var validated: Boolean = false
-
-        fun validate(): Message = apply {
-            if (validated) {
-                return@apply
-            }
-
-            validated = true
-        }
-
-        fun isValid(): Boolean =
-            try {
-                validate()
-                true
-            } catch (e: HanzoInvalidDataException) {
-                false
-            }
-
-        /**
-         * Returns a score indicating how many valid values are contained in this object
-         * recursively.
-         *
-         * Used for best match union deserialization.
-         */
-        @JvmSynthetic
-        internal fun validity(): Int =
-            additionalProperties.count { (_, value) -> !value.isNull() && !value.isMissing() }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) {
-                return true
-            }
-
-            return other is Message && additionalProperties == other.additionalProperties
-        }
-
-        private val hashCode: Int by lazy { Objects.hash(additionalProperties) }
-
-        override fun hashCode(): Int = hashCode
-
-        override fun toString() = "Message{additionalProperties=$additionalProperties}"
+            "Body{model=$model, messages=$messages, prompt=$prompt, additionalProperties=$additionalProperties}"
     }
 
     override fun equals(other: Any?): Boolean {
@@ -873,15 +558,13 @@ private constructor(
         }
 
         return other is UtilTokenCounterParams &&
-            callEndpoint == other.callEndpoint &&
             body == other.body &&
             additionalHeaders == other.additionalHeaders &&
             additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int =
-        Objects.hash(callEndpoint, body, additionalHeaders, additionalQueryParams)
+    override fun hashCode(): Int = Objects.hash(body, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
-        "UtilTokenCounterParams{callEndpoint=$callEndpoint, body=$body, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
+        "UtilTokenCounterParams{body=$body, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
 }

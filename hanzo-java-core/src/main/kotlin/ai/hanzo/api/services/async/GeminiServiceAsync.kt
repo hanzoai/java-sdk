@@ -32,7 +32,7 @@ interface GeminiServiceAsync {
      */
     fun withOptions(modifier: Consumer<ClientOptions.Builder>): GeminiServiceAsync
 
-    /** [Docs](https://docs.litellm.ai/docs/pass_through/google_ai_studio) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/google_ai_studio) */
     fun create(endpoint: String): CompletableFuture<GeminiCreateResponse> =
         create(endpoint, GeminiCreateParams.none())
 
@@ -67,7 +67,7 @@ interface GeminiServiceAsync {
     ): CompletableFuture<GeminiCreateResponse> =
         create(endpoint, GeminiCreateParams.none(), requestOptions)
 
-    /** [Docs](https://docs.litellm.ai/docs/pass_through/google_ai_studio) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/google_ai_studio) */
     fun retrieve(endpoint: String): CompletableFuture<GeminiRetrieveResponse> =
         retrieve(endpoint, GeminiRetrieveParams.none())
 
@@ -102,7 +102,7 @@ interface GeminiServiceAsync {
     ): CompletableFuture<GeminiRetrieveResponse> =
         retrieve(endpoint, GeminiRetrieveParams.none(), requestOptions)
 
-    /** [Docs](https://docs.litellm.ai/docs/pass_through/google_ai_studio) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/google_ai_studio) */
     fun update(endpoint: String): CompletableFuture<GeminiUpdateResponse> =
         update(endpoint, GeminiUpdateParams.none())
 
@@ -137,7 +137,7 @@ interface GeminiServiceAsync {
     ): CompletableFuture<GeminiUpdateResponse> =
         update(endpoint, GeminiUpdateParams.none(), requestOptions)
 
-    /** [Docs](https://docs.litellm.ai/docs/pass_through/google_ai_studio) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/google_ai_studio) */
     fun delete(endpoint: String): CompletableFuture<GeminiDeleteResponse> =
         delete(endpoint, GeminiDeleteParams.none())
 
@@ -172,7 +172,7 @@ interface GeminiServiceAsync {
     ): CompletableFuture<GeminiDeleteResponse> =
         delete(endpoint, GeminiDeleteParams.none(), requestOptions)
 
-    /** [Docs](https://docs.litellm.ai/docs/pass_through/google_ai_studio) */
+    /** [Docs](https://docs.hanzo.ai/docs/pass_through/google_ai_studio) */
     fun patch(endpoint: String): CompletableFuture<GeminiPatchResponse> =
         patch(endpoint, GeminiPatchParams.none())
 
