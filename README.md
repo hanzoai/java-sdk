@@ -2,8 +2,8 @@
 
 <!-- x-release-please-start-version -->
 
-[![Maven Central](https://img.shields.io/maven-central/v/ai.hanzo.api/hanzo-java)](https://central.sonatype.com/artifact/ai.hanzo.api/hanzo-java/0.1.0-alpha.3)
-[![javadoc](https://javadoc.io/badge2/ai.hanzo.api/hanzo-java/0.1.0-alpha.3/javadoc.svg)](https://javadoc.io/doc/ai.hanzo.api/hanzo-java/0.1.0-alpha.3)
+[![Maven Central](https://img.shields.io/maven-central/v/ai.hanzo.api/hanzo-java)](https://central.sonatype.com/artifact/ai.hanzo.api/hanzo-java/0.1.0-alpha.4)
+[![javadoc](https://javadoc.io/badge2/ai.hanzo.api/hanzo-java/0.1.0-alpha.4/javadoc.svg)](https://javadoc.io/doc/ai.hanzo.api/hanzo-java/0.1.0-alpha.4)
 
 <!-- x-release-please-end -->
 
@@ -24,7 +24,7 @@ Use the Hanzo MCP Server to enable AI assistants to interact with this API, allo
 
 <!-- x-release-please-start-version -->
 
-The REST API documentation can be found on [docs.hanzo.ai](https://docs.hanzo.ai). Javadocs are available on [javadoc.io](https://javadoc.io/doc/ai.hanzo.api/hanzo-java/0.1.0-alpha.3).
+The REST API documentation can be found on [docs.hanzo.ai](https://docs.hanzo.ai). Javadocs are available on [javadoc.io](https://javadoc.io/doc/ai.hanzo.api/hanzo-java/0.1.0-alpha.4).
 
 <!-- x-release-please-end -->
 
@@ -35,7 +35,7 @@ The REST API documentation can be found on [docs.hanzo.ai](https://docs.hanzo.ai
 ### Gradle
 
 ```kotlin
-implementation("ai.hanzo.api:hanzo-java:0.1.0-alpha.3")
+implementation("ai.hanzo.api:hanzo-java:0.1.0-alpha.4")
 ```
 
 ### Maven
@@ -44,7 +44,7 @@ implementation("ai.hanzo.api:hanzo-java:0.1.0-alpha.3")
 <dependency>
   <groupId>ai.hanzo.api</groupId>
   <artifactId>hanzo-java</artifactId>
-  <version>0.1.0-alpha.3</version>
+  <version>0.1.0-alpha.4</version>
 </dependency>
 ```
 
@@ -298,8 +298,6 @@ The SDK throws custom unchecked exception types:
 
 ## Logging
 
-The SDK uses the standard [OkHttp logging interceptor](https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor).
-
 Enable logging by setting the `HANZO_LOG` environment variable to `info`:
 
 ```sh
@@ -310,6 +308,19 @@ Or to `debug` for more verbose logging:
 
 ```sh
 export HANZO_LOG=debug
+```
+
+Or configure the client manually using the `logLevel` method:
+
+```java
+import ai.hanzo.api.client.HanzoClient;
+import ai.hanzo.api.client.okhttp.HanzoOkHttpClient;
+import ai.hanzo.api.core.LogLevel;
+
+HanzoClient client = HanzoOkHttpClient.builder()
+    .fromEnv()
+    .logLevel(LogLevel.INFO)
+    .build();
 ```
 
 ## ProGuard and R8
@@ -401,6 +412,21 @@ HanzoClient client = HanzoOkHttpClient.builder()
         "https://example.com", 8080
       )
     ))
+    .build();
+```
+
+If the proxy responds with `407 Proxy Authentication Required`, supply credentials by also configuring `proxyAuthenticator`:
+
+```java
+import ai.hanzo.api.client.HanzoClient;
+import ai.hanzo.api.client.okhttp.HanzoOkHttpClient;
+import ai.hanzo.api.core.http.ProxyAuthenticator;
+
+HanzoClient client = HanzoOkHttpClient.builder()
+    .fromEnv()
+    .proxy(...)
+    // Or a custom implementation of `ProxyAuthenticator`.
+    .proxyAuthenticator(ProxyAuthenticator.basic("username", "password"))
     .build();
 ```
 
@@ -651,7 +677,9 @@ In rare cases, the API may return a response that doesn't match the expected typ
 
 By default, the SDK will not throw an exception in this case. It will throw [`HanzoInvalidDataException`](hanzo-java-core/src/main/kotlin/ai/hanzo/api/errors/HanzoInvalidDataException.kt) only if you directly access the property.
 
-If you would prefer to check that the response is completely well-typed upfront, then either call `validate()`:
+Validating the response is _not_ forwards compatible with new types from the API for existing fields.
+
+If you would still prefer to check that the response is completely well-typed upfront, then either call `validate()`:
 
 ```java
 import ai.hanzo.api.models.utils.UtilTokenCounterResponse;
