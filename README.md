@@ -1,3 +1,5 @@
+<p align="center"><img src=".github/hero.svg" alt="java-sdk" width="880"></p>
+
 # Hanzo Java API Library
 
 <!-- x-release-please-start-version -->
