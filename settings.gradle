@@ -1,0 +1,6 @@
+rootProject.name = 'java-sdk'
+
+// hanzo-java-cloud is the published artifact and is generated in full from
+// hanzoai/openapi. examples is the gate that proves it is usable.
+include 'hanzo-java-cloud'
+include 'examples'
