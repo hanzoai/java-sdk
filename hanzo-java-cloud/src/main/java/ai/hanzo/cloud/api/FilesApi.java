@@ -1673,8 +1673,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * The session file surface
+     * The root of the executor&#39;s session-file surface. The contract addresses a session&#39;s files one segment down (/v1/files/{session_id}); this bare address is served because one registration owns the whole prefix, and what it answers is the executor&#39;s to decide.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1688,8 +1688,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * The session file surface
+     * The root of the executor&#39;s session-file surface. The contract addresses a session&#39;s files one segment down (/v1/files/{session_id}); this bare address is served because one registration owns the whole prefix, and what it answers is the executor&#39;s to decide.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1705,8 +1705,8 @@ public class FilesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The session file surface (asynchronously)
+     * The root of the executor&#39;s session-file surface. The contract addresses a session&#39;s files one segment down (/v1/files/{session_id}); this bare address is served because one registration owns the whole prefix, and what it answers is the executor&#39;s to decide.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1792,8 +1792,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * List the files in an execution session
+     * Lists what a session holds, addressed by session id — the uploads a run can read and the artifacts it produced, each then fetched from /v1/download. The listing&#39;s shape is the executor&#39;s own; this module names only that the address is keyed by session id.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1808,8 +1808,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * List the files in an execution session
+     * Lists what a session holds, addressed by session id — the uploads a run can read and the artifacts it produced, each then fetched from /v1/download. The listing&#39;s shape is the executor&#39;s own; this module names only that the address is keyed by session id.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1826,8 +1826,8 @@ public class FilesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * List the files in an execution session (asynchronously)
+     * Lists what a session holds, addressed by session id — the uploads a run can read and the artifacts it produced, each then fetched from /v1/download. The listing&#39;s shape is the executor&#39;s own; this module names only that the address is keyed by session id.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1907,8 +1907,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * The session file surface
+     * The root of the executor&#39;s session-file surface. The contract addresses a session&#39;s files one segment down (/v1/files/{session_id}); this bare address is served because one registration owns the whole prefix, and what it answers is the executor&#39;s to decide.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1922,8 +1922,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * The session file surface
+     * The root of the executor&#39;s session-file surface. The contract addresses a session&#39;s files one segment down (/v1/files/{session_id}); this bare address is served because one registration owns the whole prefix, and what it answers is the executor&#39;s to decide.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1939,8 +1939,8 @@ public class FilesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The session file surface (asynchronously)
+     * The root of the executor&#39;s session-file surface. The contract addresses a session&#39;s files one segment down (/v1/files/{session_id}); this bare address is served because one registration owns the whole prefix, and what it answers is the executor&#39;s to decide.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2026,8 +2026,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * List the files in an execution session
+     * Lists what a session holds, addressed by session id — the uploads a run can read and the artifacts it produced, each then fetched from /v1/download. The listing&#39;s shape is the executor&#39;s own; this module names only that the address is keyed by session id.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2042,8 +2042,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * List the files in an execution session
+     * Lists what a session holds, addressed by session id — the uploads a run can read and the artifacts it produced, each then fetched from /v1/download. The listing&#39;s shape is the executor&#39;s own; this module names only that the address is keyed by session id.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2060,8 +2060,8 @@ public class FilesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * List the files in an execution session (asynchronously)
+     * Lists what a session holds, addressed by session id — the uploads a run can read and the artifacts it produced, each then fetched from /v1/download. The listing&#39;s shape is the executor&#39;s own; this module names only that the address is keyed by session id.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2141,8 +2141,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * The session file surface
+     * The root of the executor&#39;s session-file surface. The contract addresses a session&#39;s files one segment down (/v1/files/{session_id}); this bare address is served because one registration owns the whole prefix, and what it answers is the executor&#39;s to decide.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2156,8 +2156,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * The session file surface
+     * The root of the executor&#39;s session-file surface. The contract addresses a session&#39;s files one segment down (/v1/files/{session_id}); this bare address is served because one registration owns the whole prefix, and what it answers is the executor&#39;s to decide.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2173,8 +2173,8 @@ public class FilesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The session file surface (asynchronously)
+     * The root of the executor&#39;s session-file surface. The contract addresses a session&#39;s files one segment down (/v1/files/{session_id}); this bare address is served because one registration owns the whole prefix, and what it answers is the executor&#39;s to decide.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2260,8 +2260,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * List the files in an execution session
+     * Lists what a session holds, addressed by session id — the uploads a run can read and the artifacts it produced, each then fetched from /v1/download. The listing&#39;s shape is the executor&#39;s own; this module names only that the address is keyed by session id.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2276,8 +2276,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * List the files in an execution session
+     * Lists what a session holds, addressed by session id — the uploads a run can read and the artifacts it produced, each then fetched from /v1/download. The listing&#39;s shape is the executor&#39;s own; this module names only that the address is keyed by session id.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2294,8 +2294,8 @@ public class FilesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * List the files in an execution session (asynchronously)
+     * Lists what a session holds, addressed by session id — the uploads a run can read and the artifacts it produced, each then fetched from /v1/download. The listing&#39;s shape is the executor&#39;s own; this module names only that the address is keyed by session id.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2375,8 +2375,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * The session file surface
+     * The root of the executor&#39;s session-file surface. The contract addresses a session&#39;s files one segment down (/v1/files/{session_id}); this bare address is served because one registration owns the whole prefix, and what it answers is the executor&#39;s to decide.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2390,8 +2390,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * The session file surface
+     * The root of the executor&#39;s session-file surface. The contract addresses a session&#39;s files one segment down (/v1/files/{session_id}); this bare address is served because one registration owns the whole prefix, and what it answers is the executor&#39;s to decide.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2407,8 +2407,8 @@ public class FilesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The session file surface (asynchronously)
+     * The root of the executor&#39;s session-file surface. The contract addresses a session&#39;s files one segment down (/v1/files/{session_id}); this bare address is served because one registration owns the whole prefix, and what it answers is the executor&#39;s to decide.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2494,8 +2494,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * List the files in an execution session
+     * Lists what a session holds, addressed by session id — the uploads a run can read and the artifacts it produced, each then fetched from /v1/download. The listing&#39;s shape is the executor&#39;s own; this module names only that the address is keyed by session id.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2510,8 +2510,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * List the files in an execution session
+     * Lists what a session holds, addressed by session id — the uploads a run can read and the artifacts it produced, each then fetched from /v1/download. The listing&#39;s shape is the executor&#39;s own; this module names only that the address is keyed by session id.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2528,8 +2528,8 @@ public class FilesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * List the files in an execution session (asynchronously)
+     * Lists what a session holds, addressed by session id — the uploads a run can read and the artifacts it produced, each then fetched from /v1/download. The listing&#39;s shape is the executor&#39;s own; this module names only that the address is keyed by session id.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2609,8 +2609,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * The session file surface
+     * The root of the executor&#39;s session-file surface. The contract addresses a session&#39;s files one segment down (/v1/files/{session_id}); this bare address is served because one registration owns the whole prefix, and what it answers is the executor&#39;s to decide.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2624,8 +2624,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * The session file surface
+     * The root of the executor&#39;s session-file surface. The contract addresses a session&#39;s files one segment down (/v1/files/{session_id}); this bare address is served because one registration owns the whole prefix, and what it answers is the executor&#39;s to decide.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2641,8 +2641,8 @@ public class FilesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The session file surface (asynchronously)
+     * The root of the executor&#39;s session-file surface. The contract addresses a session&#39;s files one segment down (/v1/files/{session_id}); this bare address is served because one registration owns the whole prefix, and what it answers is the executor&#39;s to decide.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2728,8 +2728,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * List the files in an execution session
+     * Lists what a session holds, addressed by session id — the uploads a run can read and the artifacts it produced, each then fetched from /v1/download. The listing&#39;s shape is the executor&#39;s own; this module names only that the address is keyed by session id.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2744,8 +2744,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * List the files in an execution session
+     * Lists what a session holds, addressed by session id — the uploads a run can read and the artifacts it produced, each then fetched from /v1/download. The listing&#39;s shape is the executor&#39;s own; this module names only that the address is keyed by session id.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2762,8 +2762,8 @@ public class FilesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * List the files in an execution session (asynchronously)
+     * Lists what a session holds, addressed by session id — the uploads a run can read and the artifacts it produced, each then fetched from /v1/download. The listing&#39;s shape is the executor&#39;s own; this module names only that the address is keyed by session id.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2843,8 +2843,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * The session file surface
+     * The root of the executor&#39;s session-file surface. The contract addresses a session&#39;s files one segment down (/v1/files/{session_id}); this bare address is served because one registration owns the whole prefix, and what it answers is the executor&#39;s to decide.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2858,8 +2858,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * The session file surface
+     * The root of the executor&#39;s session-file surface. The contract addresses a session&#39;s files one segment down (/v1/files/{session_id}); this bare address is served because one registration owns the whole prefix, and what it answers is the executor&#39;s to decide.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2875,8 +2875,8 @@ public class FilesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The session file surface (asynchronously)
+     * The root of the executor&#39;s session-file surface. The contract addresses a session&#39;s files one segment down (/v1/files/{session_id}); this bare address is served because one registration owns the whole prefix, and what it answers is the executor&#39;s to decide.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2962,8 +2962,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * List the files in an execution session
+     * Lists what a session holds, addressed by session id — the uploads a run can read and the artifacts it produced, each then fetched from /v1/download. The listing&#39;s shape is the executor&#39;s own; this module names only that the address is keyed by session id.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2978,8 +2978,8 @@ public class FilesApi {
     }
 
     /**
-     * 
-     * 
+     * List the files in an execution session
+     * Lists what a session holds, addressed by session id — the uploads a run can read and the artifacts it produced, each then fetched from /v1/download. The listing&#39;s shape is the executor&#39;s own; this module names only that the address is keyed by session id.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2996,8 +2996,8 @@ public class FilesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * List the files in an execution session (asynchronously)
+     * Lists what a session holds, addressed by session id — the uploads a run can read and the artifacts it produced, each then fetched from /v1/download. The listing&#39;s shape is the executor&#39;s own; this module names only that the address is keyed by session id.  NOTHING RUNS HERE. cloud forwards the request to the sandboxed executor byte for byte and forwards its answer back the same way — the status, the Content-Type and every field are the executor&#39;s, including fields this repo has never named and including its own 4xx. There is no os/exec anywhere in this process: the sandbox is the isolation boundary, and cloud adds only the credential check and the single public address.  AUTH is a shared SERVICE key on X-API-Key, compared in constant time — not a user JWT. The chat server calls this server-side on a user&#39;s behalf, so this surface carries no org scope and no per-user identity; separation between callers is the executor&#39;s session, not this edge&#39;s. A wrong key is 401, and a deployment with no key configured is 503 rather than open.  One registration owns this address for every method, so which methods actually answer is the executor&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3012,240 +3012,6 @@ public class FilesApi {
     public okhttp3.Call cloudPutV1FilesByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudPutV1FilesByWildcard1ValidateBeforeCall(wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for cloudTraceV1Files
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceV1FilesCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/files";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "TRACE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudTraceV1FilesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudTraceV1FilesCall(_callback);
-
-    }
-
-    /**
-     * 
-     * 
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public void cloudTraceV1Files() throws ApiException {
-        cloudTraceV1FilesWithHttpInfo();
-    }
-
-    /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> cloudTraceV1FilesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudTraceV1FilesValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceV1FilesAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = cloudTraceV1FilesValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for cloudTraceV1FilesByWildcard1
-     * @param wildcard1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceV1FilesByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/files/{wildcard1}"
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "TRACE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudTraceV1FilesByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling cloudTraceV1FilesByWildcard1(Async)");
-        }
-
-        return cloudTraceV1FilesByWildcard1Call(wildcard1, _callback);
-
-    }
-
-    /**
-     * 
-     * 
-     * @param wildcard1  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public void cloudTraceV1FilesByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        cloudTraceV1FilesByWildcard1WithHttpInfo(wildcard1);
-    }
-
-    /**
-     * 
-     * 
-     * @param wildcard1  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> cloudTraceV1FilesByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = cloudTraceV1FilesByWildcard1ValidateBeforeCall(wildcard1, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param wildcard1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceV1FilesByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = cloudTraceV1FilesByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

@@ -136,8 +136,8 @@ public class CommerceApi {
     }
 
     /**
-     * 
-     * 
+     * The catalog projection with cost and margin included
+     * Returns the brand-scoped catalog carrying the administrative economics the public projection withholds — upstream cost and margin percentage — for the margin surface the platform console administrates. The brand comes from the query and defaults to hanzo. PLATFORM admin only, enforced by the handler on top of the route&#39;s IAM gate: an ORG-level admin is refused 403 precisely so upstream cost and margin never reach a tenant.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -151,8 +151,8 @@ public class CommerceApi {
     }
 
     /**
-     * 
-     * 
+     * The catalog projection with cost and margin included
+     * Returns the brand-scoped catalog carrying the administrative economics the public projection withholds — upstream cost and margin percentage — for the margin surface the platform console administrates. The brand comes from the query and defaults to hanzo. PLATFORM admin only, enforced by the handler on top of the route&#39;s IAM gate: an ORG-level admin is refused 403 precisely so upstream cost and margin never reach a tenant.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -168,8 +168,8 @@ public class CommerceApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The catalog projection with cost and margin included (asynchronously)
+     * Returns the brand-scoped catalog carrying the administrative economics the public projection withholds — upstream cost and margin percentage — for the margin surface the platform console administrates. The brand comes from the query and defaults to hanzo. PLATFORM admin only, enforced by the handler on top of the route&#39;s IAM gate: an ORG-level admin is refused 403 precisely so upstream cost and margin never reach a tenant.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -248,8 +248,8 @@ public class CommerceApi {
     }
 
     /**
-     * 
-     * 
+     * The public product catalog projection for a brand
+     * Returns the brand&#39;s published catalog — the shared source docs, the console sidebar and the pricing pages all read — with the brand taken from the query and defaulting to hanzo. It is public and cacheable, and it is the projection that deliberately omits cost and margin; those live only on the platform-admin projection.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -263,8 +263,8 @@ public class CommerceApi {
     }
 
     /**
-     * 
-     * 
+     * The public product catalog projection for a brand
+     * Returns the brand&#39;s published catalog — the shared source docs, the console sidebar and the pricing pages all read — with the brand taken from the query and defaulting to hanzo. It is public and cacheable, and it is the projection that deliberately omits cost and margin; those live only on the platform-admin projection.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -280,8 +280,8 @@ public class CommerceApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The public product catalog projection for a brand (asynchronously)
+     * Returns the brand&#39;s published catalog — the shared source docs, the console sidebar and the pricing pages all read — with the brand taken from the query and defaulting to hanzo. It is public and cacheable, and it is the projection that deliberately omits cost and margin; those live only on the platform-admin projection.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -360,8 +360,8 @@ public class CommerceApi {
     }
 
     /**
-     * 
-     * 
+     * The reference currency list the price and settings pickers render
+     * Returns every reference currency as one global list, so a store settings form or a product price picker binds real rows instead of a hardcoded array. It is a default-namespace read shared by every tenant rather than per-org data, and it is public and cacheable.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -375,8 +375,8 @@ public class CommerceApi {
     }
 
     /**
-     * 
-     * 
+     * The reference currency list the price and settings pickers render
+     * Returns every reference currency as one global list, so a store settings form or a product price picker binds real rows instead of a hardcoded array. It is a default-namespace read shared by every tenant rather than per-org data, and it is public and cacheable.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -392,8 +392,8 @@ public class CommerceApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The reference currency list the price and settings pickers render (asynchronously)
+     * Returns every reference currency as one global list, so a store settings form or a product price picker binds real rows instead of a hardcoded array. It is a default-namespace read shared by every tenant rather than per-org data, and it is public and cacheable.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -479,8 +479,8 @@ public class CommerceApi {
     }
 
     /**
-     * 
-     * 
+     * Poll a deposit&#39;s state until it settles
+     * Returns the deposit&#39;s state as the tenant&#39;s own backend reports it — pending, processing, settled or failed — which is what the checkout page polls until a terminal state or timeout. The tenant is resolved from the request host and the read is forwarded to that tenant&#39;s configured backend with the caller&#39;s Authorization carried through; without that header the answer is 401. An unknown host is 404, a tenant with no backend 503 and an unreachable backend 502.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -495,8 +495,8 @@ public class CommerceApi {
     }
 
     /**
-     * 
-     * 
+     * Poll a deposit&#39;s state until it settles
+     * Returns the deposit&#39;s state as the tenant&#39;s own backend reports it — pending, processing, settled or failed — which is what the checkout page polls until a terminal state or timeout. The tenant is resolved from the request host and the read is forwarded to that tenant&#39;s configured backend with the caller&#39;s Authorization carried through; without that header the answer is 401. An unknown host is 404, a tenant with no backend 503 and an unreachable backend 502.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -513,8 +513,8 @@ public class CommerceApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Poll a deposit&#39;s state until it settles (asynchronously)
+     * Returns the deposit&#39;s state as the tenant&#39;s own backend reports it — pending, processing, settled or failed — which is what the checkout page polls until a terminal state or timeout. The tenant is resolved from the request host and the read is forwarded to that tenant&#39;s configured backend with the caller&#39;s Authorization carried through; without that header the answer is 401. An unknown host is 404, a tenant with no backend 503 and an unreachable backend 502.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -594,8 +594,8 @@ public class CommerceApi {
     }
 
     /**
-     * 
-     * 
+     * The public tenant configuration a checkout page boots from
+     * Answers the branding, identity issuer and client id, identity-verification config, enabled payment providers, return-URL allowlist and public payment application config for the tenant the request HOST resolves to. It is genuinely public and unauthenticated — a checkout page calls it before anyone has signed in — and it carries the same public payment config the authenticated config read does, so the card iframe can never initialize against a different application than the one that will be charged. Only ENABLED providers are listed and no credential path is ever projected. An unresolvable host answers a constant 404 that does not echo the host, so the endpoint cannot be used to enumerate tenants; a successful answer is cacheable for a minute.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -609,8 +609,8 @@ public class CommerceApi {
     }
 
     /**
-     * 
-     * 
+     * The public tenant configuration a checkout page boots from
+     * Answers the branding, identity issuer and client id, identity-verification config, enabled payment providers, return-URL allowlist and public payment application config for the tenant the request HOST resolves to. It is genuinely public and unauthenticated — a checkout page calls it before anyone has signed in — and it carries the same public payment config the authenticated config read does, so the card iframe can never initialize against a different application than the one that will be charged. Only ENABLED providers are listed and no credential path is ever projected. An unresolvable host answers a constant 404 that does not echo the host, so the endpoint cannot be used to enumerate tenants; a successful answer is cacheable for a minute.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -626,8 +626,8 @@ public class CommerceApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The public tenant configuration a checkout page boots from (asynchronously)
+     * Answers the branding, identity issuer and client id, identity-verification config, enabled payment providers, return-URL allowlist and public payment application config for the tenant the request HOST resolves to. It is genuinely public and unauthenticated — a checkout page calls it before anyone has signed in — and it carries the same public payment config the authenticated config read does, so the card iframe can never initialize against a different application than the one that will be charged. Only ENABLED providers are listed and no credential path is ever projected. An unresolvable host answers a constant 404 that does not echo the host, so the endpoint cannot be used to enumerate tenants; a successful answer is cacheable for a minute.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -823,8 +823,8 @@ public class CommerceApi {
     }
 
     /**
-     * 
-     * 
+     * Open a deposit against the tenant&#39;s own backend
+     * Forwards the deposit request to the backend belonging to the tenant the request HOST resolves to, and answers that backend&#39;s status and body verbatim. The upstream is always taken from the resolved tenant&#39;s configured backend and never from the Host header itself, so a spoofed host cannot redirect the forward; only the Authorization and Content-Type headers are carried forward, so cookies and custom headers never leak to the backend. An unknown host is 404 with no echo of the host, a caller with no Authorization is 401, a tenant with no backend configured is 503, and an unreachable backend is 502.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -838,8 +838,8 @@ public class CommerceApi {
     }
 
     /**
-     * 
-     * 
+     * Open a deposit against the tenant&#39;s own backend
+     * Forwards the deposit request to the backend belonging to the tenant the request HOST resolves to, and answers that backend&#39;s status and body verbatim. The upstream is always taken from the resolved tenant&#39;s configured backend and never from the Host header itself, so a spoofed host cannot redirect the forward; only the Authorization and Content-Type headers are carried forward, so cookies and custom headers never leak to the backend. An unknown host is 404 with no echo of the host, a caller with no Authorization is 401, a tenant with no backend configured is 503, and an unreachable backend is 502.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -855,8 +855,8 @@ public class CommerceApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Open a deposit against the tenant&#39;s own backend (asynchronously)
+     * Forwards the deposit request to the backend belonging to the tenant the request HOST resolves to, and answers that backend&#39;s status and body verbatim. The upstream is always taken from the resolved tenant&#39;s configured backend and never from the Host header itself, so a spoofed host cannot redirect the forward; only the Authorization and Content-Type headers are carried forward, so cookies and custom headers never leak to the backend. An unknown host is 404 with no echo of the host, a caller with no Authorization is 401, a tenant with no backend configured is 503, and an unreachable backend is 502.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -942,8 +942,8 @@ public class CommerceApi {
     }
 
     /**
-     * 
-     * 
+     * Confirm a deposit that needed a second step
+     * Forwards the confirmation for the addressed deposit to the resolved tenant&#39;s own backend and answers that backend&#39;s reply verbatim. The tenant comes from the request host, the upstream from that tenant&#39;s configured backend, and an Authorization header is required — the confirmation is the caller&#39;s, and this service only relays it. An unknown host is 404, a missing deposit id 400, a tenant with no backend configured 503 and an unreachable backend 502.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -958,8 +958,8 @@ public class CommerceApi {
     }
 
     /**
-     * 
-     * 
+     * Confirm a deposit that needed a second step
+     * Forwards the confirmation for the addressed deposit to the resolved tenant&#39;s own backend and answers that backend&#39;s reply verbatim. The tenant comes from the request host, the upstream from that tenant&#39;s configured backend, and an Authorization header is required — the confirmation is the caller&#39;s, and this service only relays it. An unknown host is 404, a missing deposit id 400, a tenant with no backend configured 503 and an unreachable backend 502.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -976,8 +976,8 @@ public class CommerceApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Confirm a deposit that needed a second step (asynchronously)
+     * Forwards the confirmation for the addressed deposit to the resolved tenant&#39;s own backend and answers that backend&#39;s reply verbatim. The tenant comes from the request host, the upstream from that tenant&#39;s configured backend, and an Authorization header is required — the confirmation is the caller&#39;s, and this service only relays it. An unknown host is 404, a missing deposit id 400, a tenant with no backend configured 503 and an unreachable backend 502.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1191,8 +1191,8 @@ public class CommerceApi {
     }
 
     /**
-     * 
-     * 
+     * Relay a payment provider&#39;s webhook to the tenant&#39;s own backend
+     * Forwards the provider&#39;s event — body and original signature headers intact — to the backend of the tenant the request host resolves to, so that backend can verify it with its own tenant-scoped signing key. Commerce deliberately does NOT verify the signature here: the keys live with the tenant backend, and holding a second copy would be a second place to rotate and a stale cache that rejects live webhooks. A provider outside the known set is 404, as is an unresolvable host; a tenant with no backend configured is 503.
      * @param provider  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1207,8 +1207,8 @@ public class CommerceApi {
     }
 
     /**
-     * 
-     * 
+     * Relay a payment provider&#39;s webhook to the tenant&#39;s own backend
+     * Forwards the provider&#39;s event — body and original signature headers intact — to the backend of the tenant the request host resolves to, so that backend can verify it with its own tenant-scoped signing key. Commerce deliberately does NOT verify the signature here: the keys live with the tenant backend, and holding a second copy would be a second place to rotate and a stale cache that rejects live webhooks. A provider outside the known set is 404, as is an unresolvable host; a tenant with no backend configured is 503.
      * @param provider  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1225,8 +1225,8 @@ public class CommerceApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Relay a payment provider&#39;s webhook to the tenant&#39;s own backend (asynchronously)
+     * Forwards the provider&#39;s event — body and original signature headers intact — to the backend of the tenant the request host resolves to, so that backend can verify it with its own tenant-scoped signing key. Commerce deliberately does NOT verify the signature here: the keys live with the tenant backend, and holding a second copy would be a second place to rotate and a stale cache that rejects live webhooks. A provider outside the known set is 404, as is an unresolvable host; a tenant with no backend configured is 503.
      * @param provider  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

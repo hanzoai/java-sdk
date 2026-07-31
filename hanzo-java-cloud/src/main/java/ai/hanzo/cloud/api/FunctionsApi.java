@@ -27,6 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.CloudAdminAdminCreatePromo400Response;
+import ai.hanzo.cloud.model.CloudGetV1Functions200Response;
+import ai.hanzo.cloud.model.CloudGetV1FunctionsByNameInvocations200Response;
+import ai.hanzo.cloud.model.CloudGetV1FunctionsByNameLogs200Response;
+import ai.hanzo.cloud.model.CloudGetV1FunctionsSecrets200Response;
+import ai.hanzo.cloud.model.CloudGetV1FunctionsTriggers200Response;
 import ai.hanzo.cloud.model.EdgeDeployFunctionRequest;
 import ai.hanzo.cloud.model.EdgeError;
 import ai.hanzo.cloud.model.EdgeFunction;
@@ -34,6 +40,12 @@ import ai.hanzo.cloud.model.EdgeFunctionCreate;
 import ai.hanzo.cloud.model.EdgeFunctionMetrics;
 import ai.hanzo.cloud.model.EdgeFunctionUpdate;
 import java.io.File;
+import ai.hanzo.cloud.model.FunctionsCreateFunctionRequest;
+import ai.hanzo.cloud.model.FunctionsFunction;
+import ai.hanzo.cloud.model.FunctionsFunctionDetail;
+import ai.hanzo.cloud.model.FunctionsInvocation;
+import ai.hanzo.cloud.model.FunctionsInvokeRequest;
+import ai.hanzo.cloud.model.FunctionsMetrics;
 import java.time.OffsetDateTime;
 
 import java.lang.reflect.Type;
@@ -89,7 +101,9 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Function not found </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudDeleteV1FunctionsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -119,6 +133,7 @@ public class FunctionsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -148,15 +163,17 @@ public class FunctionsApi {
     }
 
     /**
-     * 
-     * 
+     * Delete a function and its entire invocation history
+     * One transaction removes the function record and every invocation row recorded against its name, so that history also leaves the metrics chart and the invocation list. This is not a soft delete and there is no restore.  Deletion is keyed on (org, name): a name owned by another org is not found here, exactly like a name that never existed, so the call cannot be used to probe for or destroy another tenant&#39;s function. A successful delete answers with no body.  Requires a validated principal.
      * @param name  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Function not found </td><td>  -  </td></tr>
      </table>
      */
     public void cloudDeleteV1FunctionsByName(@javax.annotation.Nonnull String name) throws ApiException {
@@ -164,8 +181,8 @@ public class FunctionsApi {
     }
 
     /**
-     * 
-     * 
+     * Delete a function and its entire invocation history
+     * One transaction removes the function record and every invocation row recorded against its name, so that history also leaves the metrics chart and the invocation list. This is not a soft delete and there is no restore.  Deletion is keyed on (org, name): a name owned by another org is not found here, exactly like a name that never existed, so the call cannot be used to probe for or destroy another tenant&#39;s function. A successful delete answers with no body.  Requires a validated principal.
      * @param name  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -173,7 +190,9 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Function not found </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudDeleteV1FunctionsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
@@ -182,8 +201,8 @@ public class FunctionsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Delete a function and its entire invocation history (asynchronously)
+     * One transaction removes the function record and every invocation row recorded against its name, so that history also leaves the metrics chart and the invocation list. This is not a soft delete and there is no restore.  Deletion is keyed on (org, name): a name owned by another org is not found here, exactly like a name that never existed, so the call cannot be used to probe for or destroy another tenant&#39;s function. A successful delete answers with no body.  Requires a validated principal.
      * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -192,7 +211,9 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Function not found </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudDeleteV1FunctionsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
@@ -210,7 +231,8 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Functions </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1FunctionsCall(final ApiCallback _callback) throws ApiException {
@@ -239,6 +261,7 @@ public class FunctionsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -263,40 +286,45 @@ public class FunctionsApi {
     }
 
     /**
-     * 
-     * 
+     * Every serverless function the caller&#39;s org has published, with its real 7-day rollup
+     * A row carries the function&#39;s runtime, resource limits, deployment target and its invoke endpoint, plus envCount — how many secrets it mounts. The registry holds secret NAMES only; a value never enters this store and is never returned.  The rollup (invocations7d, errors7d, successRate, avgDurationMs) is counted from real invocation rows over the trailing 7 days and is OMITTED for a function with no calls in that window rather than sent as zero, so a consumer must render absence as unknown, not as an idle function. Ordered most-recently-deployed first.  Scoped to the caller&#39;s own org — one store per org, with the org column on every query. Requires a validated principal: an org claim with no verified credential behind it is refused, never answered with an empty list.
+     * @return CloudGetV1Functions200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Functions </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1Functions() throws ApiException {
-        cloudGetV1FunctionsWithHttpInfo();
+    public CloudGetV1Functions200Response cloudGetV1Functions() throws ApiException {
+        ApiResponse<CloudGetV1Functions200Response> localVarResp = cloudGetV1FunctionsWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Every serverless function the caller&#39;s org has published, with its real 7-day rollup
+     * A row carries the function&#39;s runtime, resource limits, deployment target and its invoke endpoint, plus envCount — how many secrets it mounts. The registry holds secret NAMES only; a value never enters this store and is never returned.  The rollup (invocations7d, errors7d, successRate, avgDurationMs) is counted from real invocation rows over the trailing 7 days and is OMITTED for a function with no calls in that window rather than sent as zero, so a consumer must render absence as unknown, not as an idle function. Ordered most-recently-deployed first.  Scoped to the caller&#39;s own org — one store per org, with the org column on every query. Requires a validated principal: an org claim with no verified credential behind it is refused, never answered with an empty list.
+     * @return ApiResponse&lt;CloudGetV1Functions200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Functions </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1FunctionsWithHttpInfo() throws ApiException {
+    public ApiResponse<CloudGetV1Functions200Response> cloudGetV1FunctionsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = cloudGetV1FunctionsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<CloudGetV1Functions200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Every serverless function the caller&#39;s org has published, with its real 7-day rollup (asynchronously)
+     * A row carries the function&#39;s runtime, resource limits, deployment target and its invoke endpoint, plus envCount — how many secrets it mounts. The registry holds secret NAMES only; a value never enters this store and is never returned.  The rollup (invocations7d, errors7d, successRate, avgDurationMs) is counted from real invocation rows over the trailing 7 days and is OMITTED for a function with no calls in that window rather than sent as zero, so a consumer must render absence as unknown, not as an idle function. Ordered most-recently-deployed first.  Scoped to the caller&#39;s own org — one store per org, with the org column on every query. Requires a validated principal: an org claim with no verified credential behind it is refused, never answered with an empty list.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -304,13 +332,15 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Functions </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1FunctionsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1FunctionsAsync(final ApiCallback<CloudGetV1Functions200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudGetV1FunctionsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<CloudGetV1Functions200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -323,7 +353,9 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Function detail </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Function not found </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1FunctionsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -353,6 +385,7 @@ public class FunctionsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -382,42 +415,49 @@ public class FunctionsApi {
     }
 
     /**
-     * 
-     * 
+     * One function in full: spec, trailing-7-day rollup, trigger, latest runs and mounted secret names
+     * Extends the list row with the function&#39;s single derived HTTP trigger, its 20 most recent invocations (newest first, metadata only — no captured output), and &#x60;secrets&#x60;, the NAMES of the secrets it mounts. No secret value is stored or returned.  Lookup is keyed on (org, name), so a function that exists but belongs to another org answers exactly as one that never existed — not found, never a signal that the name is taken elsewhere. The 7-day rollup fields are omitted rather than zeroed when the function has not run in the window.  Requires a validated principal.
      * @param name  (required)
+     * @return FunctionsFunctionDetail
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Function detail </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Function not found </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1FunctionsByName(@javax.annotation.Nonnull String name) throws ApiException {
-        cloudGetV1FunctionsByNameWithHttpInfo(name);
+    public FunctionsFunctionDetail cloudGetV1FunctionsByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<FunctionsFunctionDetail> localVarResp = cloudGetV1FunctionsByNameWithHttpInfo(name);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
+     * One function in full: spec, trailing-7-day rollup, trigger, latest runs and mounted secret names
+     * Extends the list row with the function&#39;s single derived HTTP trigger, its 20 most recent invocations (newest first, metadata only — no captured output), and &#x60;secrets&#x60;, the NAMES of the secrets it mounts. No secret value is stored or returned.  Lookup is keyed on (org, name), so a function that exists but belongs to another org answers exactly as one that never existed — not found, never a signal that the name is taken elsewhere. The 7-day rollup fields are omitted rather than zeroed when the function has not run in the window.  Requires a validated principal.
      * @param name  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;FunctionsFunctionDetail&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Function detail </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Function not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1FunctionsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<FunctionsFunctionDetail> cloudGetV1FunctionsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = cloudGetV1FunctionsByNameValidateBeforeCall(name, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<FunctionsFunctionDetail>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * One function in full: spec, trailing-7-day rollup, trigger, latest runs and mounted secret names (asynchronously)
+     * Extends the list row with the function&#39;s single derived HTTP trigger, its 20 most recent invocations (newest first, metadata only — no captured output), and &#x60;secrets&#x60;, the NAMES of the secrets it mounts. No secret value is stored or returned.  Lookup is keyed on (org, name), so a function that exists but belongs to another org answers exactly as one that never existed — not found, never a signal that the name is taken elsewhere. The 7-day rollup fields are omitted rather than zeroed when the function has not run in the window.  Requires a validated principal.
      * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -426,18 +466,22 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Function detail </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Function not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1FunctionsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1FunctionsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<FunctionsFunctionDetail> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudGetV1FunctionsByNameValidateBeforeCall(name, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<FunctionsFunctionDetail>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudGetV1FunctionsByNameInvocations
      * @param name  (required)
+     * @param limit  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -445,10 +489,12 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Invocations </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Function not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1FunctionsByNameInvocationsCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1FunctionsByNameInvocationsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -474,7 +520,12 @@ public class FunctionsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -493,54 +544,64 @@ public class FunctionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudGetV1FunctionsByNameInvocationsValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudGetV1FunctionsByNameInvocationsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling cloudGetV1FunctionsByNameInvocations(Async)");
         }
 
-        return cloudGetV1FunctionsByNameInvocationsCall(name, _callback);
+        return cloudGetV1FunctionsByNameInvocationsCall(name, limit, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Recent invocation history for one function, newest first
+     * Each entry is invocation METADATA — id, status, HTTP status code, wall-clock duration and when it ran. The captured stdout/stderr is not on this path; the logs call returns it, for the latest run only.  &#x60;limit&#x60; defaults to 100 and is clamped: at or below zero, above 500, or not a number at all, it falls back to 100. An unknown function name is NOT an error here — nothing has ever run under it, so the answer is an empty list rather than a not-found, and a caller testing existence must ask for the function itself.  Scoped to the caller&#39;s org, so it can only ever return the calling tenant&#39;s own runs. Requires a validated principal.
      * @param name  (required)
+     * @param limit  (optional)
+     * @return CloudGetV1FunctionsByNameInvocations200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Invocations </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Function not found </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1FunctionsByNameInvocations(@javax.annotation.Nonnull String name) throws ApiException {
-        cloudGetV1FunctionsByNameInvocationsWithHttpInfo(name);
+    public CloudGetV1FunctionsByNameInvocations200Response cloudGetV1FunctionsByNameInvocations(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<CloudGetV1FunctionsByNameInvocations200Response> localVarResp = cloudGetV1FunctionsByNameInvocationsWithHttpInfo(name, limit);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
+     * Recent invocation history for one function, newest first
+     * Each entry is invocation METADATA — id, status, HTTP status code, wall-clock duration and when it ran. The captured stdout/stderr is not on this path; the logs call returns it, for the latest run only.  &#x60;limit&#x60; defaults to 100 and is clamped: at or below zero, above 500, or not a number at all, it falls back to 100. An unknown function name is NOT an error here — nothing has ever run under it, so the answer is an empty list rather than a not-found, and a caller testing existence must ask for the function itself.  Scoped to the caller&#39;s org, so it can only ever return the calling tenant&#39;s own runs. Requires a validated principal.
      * @param name  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @param limit  (optional)
+     * @return ApiResponse&lt;CloudGetV1FunctionsByNameInvocations200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Invocations </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Function not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1FunctionsByNameInvocationsWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = cloudGetV1FunctionsByNameInvocationsValidateBeforeCall(name, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CloudGetV1FunctionsByNameInvocations200Response> cloudGetV1FunctionsByNameInvocationsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = cloudGetV1FunctionsByNameInvocationsValidateBeforeCall(name, limit, null);
+        Type localVarReturnType = new TypeToken<CloudGetV1FunctionsByNameInvocations200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Recent invocation history for one function, newest first (asynchronously)
+     * Each entry is invocation METADATA — id, status, HTTP status code, wall-clock duration and when it ran. The captured stdout/stderr is not on this path; the logs call returns it, for the latest run only.  &#x60;limit&#x60; defaults to 100 and is clamped: at or below zero, above 500, or not a number at all, it falls back to 100. An unknown function name is NOT an error here — nothing has ever run under it, so the answer is an empty list rather than a not-found, and a caller testing existence must ask for the function itself.  Scoped to the caller&#39;s org, so it can only ever return the calling tenant&#39;s own runs. Requires a validated principal.
      * @param name  (required)
+     * @param limit  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -548,13 +609,16 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Invocations </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Function not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1FunctionsByNameInvocationsAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1FunctionsByNameInvocationsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer limit, final ApiCallback<CloudGetV1FunctionsByNameInvocations200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudGetV1FunctionsByNameInvocationsValidateBeforeCall(name, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudGetV1FunctionsByNameInvocationsValidateBeforeCall(name, limit, _callback);
+        Type localVarReturnType = new TypeToken<CloudGetV1FunctionsByNameInvocations200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -567,7 +631,9 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Logs </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Function not found </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1FunctionsByNameLogsCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -597,6 +663,7 @@ public class FunctionsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -626,42 +693,49 @@ public class FunctionsApi {
     }
 
     /**
-     * 
-     * 
+     * The captured output of a function&#39;s most recent invocation
+     * One string, from the LATEST invocation only. This is not a log stream and carries no history; the invocations list is where earlier runs are enumerated.  When that run failed, the string is its ERROR text rather than its stdout — the two share one field, so success cannot be told from failure by this value alone and the invocation&#39;s status is what answers that. Output was truncated to 64 KiB when the run was recorded, error text to 16 KiB.  A function that has never run — or a name that does not exist in the caller&#39;s org — answers with an empty string, not a not-found. Scoped to the caller&#39;s org; requires a validated principal.
      * @param name  (required)
+     * @return CloudGetV1FunctionsByNameLogs200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Logs </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Function not found </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1FunctionsByNameLogs(@javax.annotation.Nonnull String name) throws ApiException {
-        cloudGetV1FunctionsByNameLogsWithHttpInfo(name);
+    public CloudGetV1FunctionsByNameLogs200Response cloudGetV1FunctionsByNameLogs(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<CloudGetV1FunctionsByNameLogs200Response> localVarResp = cloudGetV1FunctionsByNameLogsWithHttpInfo(name);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
+     * The captured output of a function&#39;s most recent invocation
+     * One string, from the LATEST invocation only. This is not a log stream and carries no history; the invocations list is where earlier runs are enumerated.  When that run failed, the string is its ERROR text rather than its stdout — the two share one field, so success cannot be told from failure by this value alone and the invocation&#39;s status is what answers that. Output was truncated to 64 KiB when the run was recorded, error text to 16 KiB.  A function that has never run — or a name that does not exist in the caller&#39;s org — answers with an empty string, not a not-found. Scoped to the caller&#39;s org; requires a validated principal.
      * @param name  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;CloudGetV1FunctionsByNameLogs200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Logs </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Function not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1FunctionsByNameLogsWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<CloudGetV1FunctionsByNameLogs200Response> cloudGetV1FunctionsByNameLogsWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = cloudGetV1FunctionsByNameLogsValidateBeforeCall(name, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<CloudGetV1FunctionsByNameLogs200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The captured output of a function&#39;s most recent invocation (asynchronously)
+     * One string, from the LATEST invocation only. This is not a log stream and carries no history; the invocations list is where earlier runs are enumerated.  When that run failed, the string is its ERROR text rather than its stdout — the two share one field, so success cannot be told from failure by this value alone and the invocation&#39;s status is what answers that. Output was truncated to 64 KiB when the run was recorded, error text to 16 KiB.  A function that has never run — or a name that does not exist in the caller&#39;s org — answers with an empty string, not a not-found. Scoped to the caller&#39;s org; requires a validated principal.
      * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -670,13 +744,16 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Logs </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Function not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1FunctionsByNameLogsAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1FunctionsByNameLogsAsync(@javax.annotation.Nonnull String name, final ApiCallback<CloudGetV1FunctionsByNameLogs200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudGetV1FunctionsByNameLogsValidateBeforeCall(name, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<CloudGetV1FunctionsByNameLogs200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -688,7 +765,8 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Deployments </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1FunctionsDeploymentsCall(final ApiCallback _callback) throws ApiException {
@@ -717,6 +795,7 @@ public class FunctionsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -741,40 +820,45 @@ public class FunctionsApi {
     }
 
     /**
-     * 
-     * 
+     * The live deployment of every function in the caller&#39;s org
+     * A function&#39;s current record IS its deployment, so this answers in the same shape the function list does — runtime, resource limits, target, endpoint, and when it was last deployed.  Two things not to assume. The invocation rollup is never populated here, even for a function that has run: those fields are omitted unconditionally, and the function list is where they are filled in. And this is an inventory of what is live, not a history — there is exactly one entry per function, and a redeploy replaces it rather than appending to it.  Scoped to the caller&#39;s org; requires a validated principal.
+     * @return CloudGetV1Functions200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Deployments </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1FunctionsDeployments() throws ApiException {
-        cloudGetV1FunctionsDeploymentsWithHttpInfo();
+    public CloudGetV1Functions200Response cloudGetV1FunctionsDeployments() throws ApiException {
+        ApiResponse<CloudGetV1Functions200Response> localVarResp = cloudGetV1FunctionsDeploymentsWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * The live deployment of every function in the caller&#39;s org
+     * A function&#39;s current record IS its deployment, so this answers in the same shape the function list does — runtime, resource limits, target, endpoint, and when it was last deployed.  Two things not to assume. The invocation rollup is never populated here, even for a function that has run: those fields are omitted unconditionally, and the function list is where they are filled in. And this is an inventory of what is live, not a history — there is exactly one entry per function, and a redeploy replaces it rather than appending to it.  Scoped to the caller&#39;s org; requires a validated principal.
+     * @return ApiResponse&lt;CloudGetV1Functions200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Deployments </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1FunctionsDeploymentsWithHttpInfo() throws ApiException {
+    public ApiResponse<CloudGetV1Functions200Response> cloudGetV1FunctionsDeploymentsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = cloudGetV1FunctionsDeploymentsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<CloudGetV1Functions200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The live deployment of every function in the caller&#39;s org (asynchronously)
+     * A function&#39;s current record IS its deployment, so this answers in the same shape the function list does — runtime, resource limits, target, endpoint, and when it was last deployed.  Two things not to assume. The invocation rollup is never populated here, even for a function that has run: those fields are omitted unconditionally, and the function list is where they are filled in. And this is an inventory of what is live, not a history — there is exactly one entry per function, and a redeploy replaces it rather than appending to it.  Scoped to the caller&#39;s org; requires a validated principal.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -782,17 +866,20 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Deployments </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1FunctionsDeploymentsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1FunctionsDeploymentsAsync(final ApiCallback<CloudGetV1Functions200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudGetV1FunctionsDeploymentsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<CloudGetV1Functions200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudGetV1FunctionsMetrics
+     * @param range  (optional, default to 24H)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -800,10 +887,11 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Metrics </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1FunctionsMetricsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1FunctionsMetricsCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -828,7 +916,12 @@ public class FunctionsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (range != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("range", range));
+        }
+
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -847,46 +940,54 @@ public class FunctionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudGetV1FunctionsMetricsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudGetV1FunctionsMetricsCall(_callback);
+    private okhttp3.Call cloudGetV1FunctionsMetricsValidateBeforeCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
+        return cloudGetV1FunctionsMetricsCall(range, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Invocation chart and status breakdown across every function in the caller&#39;s org
+     * One series per function that actually ran in the window, bucketed, plus a success/timeout/error donut over the same rows. Every point is a COUNT of real invocation rows that fell in that bucket — nothing is interpolated, and a function with no invocations in the window has no series at all.  The &#x60;range&#x60; query selects the window and its bucket count: 1H, 6H, 24H, 7D or 30D. An absent or unrecognized value falls back to 24H rather than failing. At most the 5000 newest rows are read, so a very busy org&#39;s oldest buckets in a wide range can undercount.  costCents is always null: this view has no per-invocation cost source, and reports nothing rather than a fabricated figure. Scoped to the caller&#39;s org; requires a validated principal.
+     * @param range  (optional, default to 24H)
+     * @return FunctionsMetrics
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Metrics </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1FunctionsMetrics() throws ApiException {
-        cloudGetV1FunctionsMetricsWithHttpInfo();
+    public FunctionsMetrics cloudGetV1FunctionsMetrics(@javax.annotation.Nullable String range) throws ApiException {
+        ApiResponse<FunctionsMetrics> localVarResp = cloudGetV1FunctionsMetricsWithHttpInfo(range);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Invocation chart and status breakdown across every function in the caller&#39;s org
+     * One series per function that actually ran in the window, bucketed, plus a success/timeout/error donut over the same rows. Every point is a COUNT of real invocation rows that fell in that bucket — nothing is interpolated, and a function with no invocations in the window has no series at all.  The &#x60;range&#x60; query selects the window and its bucket count: 1H, 6H, 24H, 7D or 30D. An absent or unrecognized value falls back to 24H rather than failing. At most the 5000 newest rows are read, so a very busy org&#39;s oldest buckets in a wide range can undercount.  costCents is always null: this view has no per-invocation cost source, and reports nothing rather than a fabricated figure. Scoped to the caller&#39;s org; requires a validated principal.
+     * @param range  (optional, default to 24H)
+     * @return ApiResponse&lt;FunctionsMetrics&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Metrics </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1FunctionsMetricsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudGetV1FunctionsMetricsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<FunctionsMetrics> cloudGetV1FunctionsMetricsWithHttpInfo(@javax.annotation.Nullable String range) throws ApiException {
+        okhttp3.Call localVarCall = cloudGetV1FunctionsMetricsValidateBeforeCall(range, null);
+        Type localVarReturnType = new TypeToken<FunctionsMetrics>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Invocation chart and status breakdown across every function in the caller&#39;s org (asynchronously)
+     * One series per function that actually ran in the window, bucketed, plus a success/timeout/error donut over the same rows. Every point is a COUNT of real invocation rows that fell in that bucket — nothing is interpolated, and a function with no invocations in the window has no series at all.  The &#x60;range&#x60; query selects the window and its bucket count: 1H, 6H, 24H, 7D or 30D. An absent or unrecognized value falls back to 24H rather than failing. At most the 5000 newest rows are read, so a very busy org&#39;s oldest buckets in a wide range can undercount.  costCents is always null: this view has no per-invocation cost source, and reports nothing rather than a fabricated figure. Scoped to the caller&#39;s org; requires a validated principal.
+     * @param range  (optional, default to 24H)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -894,13 +995,15 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Metrics </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1FunctionsMetricsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1FunctionsMetricsAsync(@javax.annotation.Nullable String range, final ApiCallback<FunctionsMetrics> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudGetV1FunctionsMetricsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudGetV1FunctionsMetricsValidateBeforeCall(range, _callback);
+        Type localVarReturnType = new TypeToken<FunctionsMetrics>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -912,7 +1015,8 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Secrets </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1FunctionsSecretsCall(final ApiCallback _callback) throws ApiException {
@@ -941,6 +1045,7 @@ public class FunctionsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -965,40 +1070,45 @@ public class FunctionsApi {
     }
 
     /**
-     * 
-     * 
+     * The names of the secrets mounted by the caller&#39;s org&#39;s functions
+     * NAMES only. A secret&#39;s value is not held by this subsystem and is not read on this path — values live in KMS and are resolved sandbox-side when a function runs — so nothing in this answer is a credential.  The list is derived from the mount declarations on the function records and deduplicated by namespace and name, so a name mounted by several functions appears ONCE: mountedBy names the first function that claimed it in deploy order, not every function that mounts it. Read it as a hint about origin, not as a complete usage map.  Scoped to the caller&#39;s org; requires a validated principal.
+     * @return CloudGetV1FunctionsSecrets200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Secrets </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1FunctionsSecrets() throws ApiException {
-        cloudGetV1FunctionsSecretsWithHttpInfo();
+    public CloudGetV1FunctionsSecrets200Response cloudGetV1FunctionsSecrets() throws ApiException {
+        ApiResponse<CloudGetV1FunctionsSecrets200Response> localVarResp = cloudGetV1FunctionsSecretsWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * The names of the secrets mounted by the caller&#39;s org&#39;s functions
+     * NAMES only. A secret&#39;s value is not held by this subsystem and is not read on this path — values live in KMS and are resolved sandbox-side when a function runs — so nothing in this answer is a credential.  The list is derived from the mount declarations on the function records and deduplicated by namespace and name, so a name mounted by several functions appears ONCE: mountedBy names the first function that claimed it in deploy order, not every function that mounts it. Read it as a hint about origin, not as a complete usage map.  Scoped to the caller&#39;s org; requires a validated principal.
+     * @return ApiResponse&lt;CloudGetV1FunctionsSecrets200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Secrets </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1FunctionsSecretsWithHttpInfo() throws ApiException {
+    public ApiResponse<CloudGetV1FunctionsSecrets200Response> cloudGetV1FunctionsSecretsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = cloudGetV1FunctionsSecretsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<CloudGetV1FunctionsSecrets200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The names of the secrets mounted by the caller&#39;s org&#39;s functions (asynchronously)
+     * NAMES only. A secret&#39;s value is not held by this subsystem and is not read on this path — values live in KMS and are resolved sandbox-side when a function runs — so nothing in this answer is a credential.  The list is derived from the mount declarations on the function records and deduplicated by namespace and name, so a name mounted by several functions appears ONCE: mountedBy names the first function that claimed it in deploy order, not every function that mounts it. Read it as a hint about origin, not as a complete usage map.  Scoped to the caller&#39;s org; requires a validated principal.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1006,13 +1116,15 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Secrets </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1FunctionsSecretsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1FunctionsSecretsAsync(final ApiCallback<CloudGetV1FunctionsSecrets200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudGetV1FunctionsSecretsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<CloudGetV1FunctionsSecrets200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1024,7 +1136,8 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Triggers </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1FunctionsTriggersCall(final ApiCallback _callback) throws ApiException {
@@ -1053,6 +1166,7 @@ public class FunctionsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1077,40 +1191,45 @@ public class FunctionsApi {
     }
 
     /**
-     * 
-     * 
+     * Every trigger attached to the caller&#39;s org&#39;s functions
+     * A function has exactly ONE trigger today and it is derived, not stored: an always-enabled HTTP trigger whose target is that function&#39;s own invoke endpoint, listed once per function.  There is no trigger table behind this and no call that creates, disables or deletes one. The list is a projection of the function registry, so it changes only when a function is published or deleted.  Scoped to the caller&#39;s org; requires a validated principal.
+     * @return CloudGetV1FunctionsTriggers200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Triggers </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1FunctionsTriggers() throws ApiException {
-        cloudGetV1FunctionsTriggersWithHttpInfo();
+    public CloudGetV1FunctionsTriggers200Response cloudGetV1FunctionsTriggers() throws ApiException {
+        ApiResponse<CloudGetV1FunctionsTriggers200Response> localVarResp = cloudGetV1FunctionsTriggersWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Every trigger attached to the caller&#39;s org&#39;s functions
+     * A function has exactly ONE trigger today and it is derived, not stored: an always-enabled HTTP trigger whose target is that function&#39;s own invoke endpoint, listed once per function.  There is no trigger table behind this and no call that creates, disables or deletes one. The list is a projection of the function registry, so it changes only when a function is published or deleted.  Scoped to the caller&#39;s org; requires a validated principal.
+     * @return ApiResponse&lt;CloudGetV1FunctionsTriggers200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Triggers </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1FunctionsTriggersWithHttpInfo() throws ApiException {
+    public ApiResponse<CloudGetV1FunctionsTriggers200Response> cloudGetV1FunctionsTriggersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = cloudGetV1FunctionsTriggersValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<CloudGetV1FunctionsTriggers200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Every trigger attached to the caller&#39;s org&#39;s functions (asynchronously)
+     * A function has exactly ONE trigger today and it is derived, not stored: an always-enabled HTTP trigger whose target is that function&#39;s own invoke endpoint, listed once per function.  There is no trigger table behind this and no call that creates, disables or deletes one. The list is a projection of the function registry, so it changes only when a function is published or deleted.  Scoped to the caller&#39;s org; requires a validated principal.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1118,17 +1237,20 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Triggers </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1FunctionsTriggersAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1FunctionsTriggersAsync(final ApiCallback<CloudGetV1FunctionsTriggers200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudGetV1FunctionsTriggersValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<CloudGetV1FunctionsTriggers200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1Functions
+     * @param functionsCreateFunctionRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1136,10 +1258,11 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Function created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1FunctionsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1FunctionsCall(@javax.annotation.Nonnull FunctionsCreateFunctionRequest functionsCreateFunctionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1153,7 +1276,7 @@ public class FunctionsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = functionsCreateFunctionRequest;
 
         // create path and map variables
         String localVarPath = "/v1/functions";
@@ -1165,6 +1288,7 @@ public class FunctionsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1172,6 +1296,7 @@ public class FunctionsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1183,46 +1308,59 @@ public class FunctionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1FunctionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1FunctionsCall(_callback);
+    private okhttp3.Call cloudPostV1FunctionsValidateBeforeCall(@javax.annotation.Nonnull FunctionsCreateFunctionRequest functionsCreateFunctionRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'functionsCreateFunctionRequest' is set
+        if (functionsCreateFunctionRequest == null) {
+            throw new ApiException("Missing the required parameter 'functionsCreateFunctionRequest' when calling cloudPostV1Functions(Async)");
+        }
+
+        return cloudPostV1FunctionsCall(functionsCreateFunctionRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Publish a function, or redeploy an existing one under the same name
+     * Org and name together identify a function, so a second call for a name the org already owns is a REDEPLOY: the spec is replaced, the deploy version advances, and the original creation time is kept. There is no separate update call, and no way to take over a name another org owns.  What is accepted is a closed set. runtime is one of node, python, go, deno, bash or container; name must match ^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$ and may not be one of the reserved static names (metrics, triggers, deployments, secrets); source is capped at 256 KiB. timeoutSec is CLAMPED to the 900s ceiling rather than rejected, and an absent one defaults to 30s with 256Mi of memory. target&#x3D;fleet runs the function on the org&#39;s own linked GPU fleet and is accepted for runtime&#x3D;python only; everything else runs on the shared sandbox.  envNames declares which secrets the function mounts BY NAME — values live in KMS and are resolved sandbox-side at run time, so no secret value is sent here or stored here. Scoped to the caller&#39;s org; requires a validated principal.
+     * @param functionsCreateFunctionRequest  (required)
+     * @return FunctionsFunction
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Function created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1Functions() throws ApiException {
-        cloudPostV1FunctionsWithHttpInfo();
+    public FunctionsFunction cloudPostV1Functions(@javax.annotation.Nonnull FunctionsCreateFunctionRequest functionsCreateFunctionRequest) throws ApiException {
+        ApiResponse<FunctionsFunction> localVarResp = cloudPostV1FunctionsWithHttpInfo(functionsCreateFunctionRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Publish a function, or redeploy an existing one under the same name
+     * Org and name together identify a function, so a second call for a name the org already owns is a REDEPLOY: the spec is replaced, the deploy version advances, and the original creation time is kept. There is no separate update call, and no way to take over a name another org owns.  What is accepted is a closed set. runtime is one of node, python, go, deno, bash or container; name must match ^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$ and may not be one of the reserved static names (metrics, triggers, deployments, secrets); source is capped at 256 KiB. timeoutSec is CLAMPED to the 900s ceiling rather than rejected, and an absent one defaults to 30s with 256Mi of memory. target&#x3D;fleet runs the function on the org&#39;s own linked GPU fleet and is accepted for runtime&#x3D;python only; everything else runs on the shared sandbox.  envNames declares which secrets the function mounts BY NAME — values live in KMS and are resolved sandbox-side at run time, so no secret value is sent here or stored here. Scoped to the caller&#39;s org; requires a validated principal.
+     * @param functionsCreateFunctionRequest  (required)
+     * @return ApiResponse&lt;FunctionsFunction&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Function created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1FunctionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1FunctionsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<FunctionsFunction> cloudPostV1FunctionsWithHttpInfo(@javax.annotation.Nonnull FunctionsCreateFunctionRequest functionsCreateFunctionRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1FunctionsValidateBeforeCall(functionsCreateFunctionRequest, null);
+        Type localVarReturnType = new TypeToken<FunctionsFunction>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Publish a function, or redeploy an existing one under the same name (asynchronously)
+     * Org and name together identify a function, so a second call for a name the org already owns is a REDEPLOY: the spec is replaced, the deploy version advances, and the original creation time is kept. There is no separate update call, and no way to take over a name another org owns.  What is accepted is a closed set. runtime is one of node, python, go, deno, bash or container; name must match ^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$ and may not be one of the reserved static names (metrics, triggers, deployments, secrets); source is capped at 256 KiB. timeoutSec is CLAMPED to the 900s ceiling rather than rejected, and an absent one defaults to 30s with 256Mi of memory. target&#x3D;fleet runs the function on the org&#39;s own linked GPU fleet and is accepted for runtime&#x3D;python only; everything else runs on the shared sandbox.  envNames declares which secrets the function mounts BY NAME — values live in KMS and are resolved sandbox-side at run time, so no secret value is sent here or stored here. Scoped to the caller&#39;s org; requires a validated principal.
+     * @param functionsCreateFunctionRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1230,18 +1368,21 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Function created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1FunctionsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1FunctionsAsync(@javax.annotation.Nonnull FunctionsCreateFunctionRequest functionsCreateFunctionRequest, final ApiCallback<FunctionsFunction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1FunctionsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1FunctionsValidateBeforeCall(functionsCreateFunctionRequest, _callback);
+        Type localVarReturnType = new TypeToken<FunctionsFunction>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1FunctionsByNameInvoke
      * @param name  (required)
+     * @param functionsInvokeRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1249,10 +1390,15 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Invocation result </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Insufficient balance </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Function not found </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Sandbox execution failed (invocation recorded with error status) </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Code execution runtime not configured </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1FunctionsByNameInvokeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1FunctionsByNameInvokeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable FunctionsInvokeRequest functionsInvokeRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1266,7 +1412,7 @@ public class FunctionsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = functionsInvokeRequest;
 
         // create path and map variables
         String localVarPath = "/v1/functions/{name}/invoke"
@@ -1279,6 +1425,7 @@ public class FunctionsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1286,6 +1433,7 @@ public class FunctionsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1297,54 +1445,70 @@ public class FunctionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1FunctionsByNameInvokeValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudPostV1FunctionsByNameInvokeValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable FunctionsInvokeRequest functionsInvokeRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling cloudPostV1FunctionsByNameInvoke(Async)");
         }
 
-        return cloudPostV1FunctionsByNameInvokeCall(name, _callback);
+        return cloudPostV1FunctionsByNameInvokeCall(name, functionsInvokeRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Run a function and get back the recorded invocation
+     * The body&#39;s &#x60;input&#x60; is handed to the function on stdin. Execution NEVER happens in this process: the runtime and source go to the sandboxed code executor, or, for a function published with target&#x3D;fleet, to the org&#39;s own linked GPU fleet as an fn.run job this call blocks on until it finishes. Either way it is bounded by the function&#39;s own timeout, itself capped at 900s.  The answer is the invocation record — id, status, duration — and its HTTP status is about the RUN, not about this API: a function whose own code fails answers 502 with a recorded &#x60;error&#x60; invocation, which is a successful invocation of a failing program. The captured output is not in this reply; the logs call returns it.  MONEY. The caller&#39;s org ledger is gated BEFORE any compute runs, so an org out of credit or over its spend cap is refused 402 and nothing executes, and a billing plane that cannot answer refuses rather than granting free compute. A run that actually executed is then debited twice — a flat per-invocation fee, and GB-seconds of compute derived from the measured duration and the function&#39;s configured memory. A run that never reached its executor (unreachable, or timed out in transport) consumed nothing and is not charged; a run whose code exited non-zero DID consume compute and is. An operator who prices either half at zero makes it a no-op, and a zero request fee removes the balance gate with it.  When the sandbox is not configured on this deployment, a non-fleet function fails closed before anything is recorded — no execution and no fabricated output. Scoped to the caller&#39;s org; requires a validated principal.
      * @param name  (required)
+     * @param functionsInvokeRequest  (optional)
+     * @return FunctionsInvocation
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Invocation result </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Insufficient balance </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Function not found </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Sandbox execution failed (invocation recorded with error status) </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Code execution runtime not configured </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1FunctionsByNameInvoke(@javax.annotation.Nonnull String name) throws ApiException {
-        cloudPostV1FunctionsByNameInvokeWithHttpInfo(name);
+    public FunctionsInvocation cloudPostV1FunctionsByNameInvoke(@javax.annotation.Nonnull String name, @javax.annotation.Nullable FunctionsInvokeRequest functionsInvokeRequest) throws ApiException {
+        ApiResponse<FunctionsInvocation> localVarResp = cloudPostV1FunctionsByNameInvokeWithHttpInfo(name, functionsInvokeRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
+     * Run a function and get back the recorded invocation
+     * The body&#39;s &#x60;input&#x60; is handed to the function on stdin. Execution NEVER happens in this process: the runtime and source go to the sandboxed code executor, or, for a function published with target&#x3D;fleet, to the org&#39;s own linked GPU fleet as an fn.run job this call blocks on until it finishes. Either way it is bounded by the function&#39;s own timeout, itself capped at 900s.  The answer is the invocation record — id, status, duration — and its HTTP status is about the RUN, not about this API: a function whose own code fails answers 502 with a recorded &#x60;error&#x60; invocation, which is a successful invocation of a failing program. The captured output is not in this reply; the logs call returns it.  MONEY. The caller&#39;s org ledger is gated BEFORE any compute runs, so an org out of credit or over its spend cap is refused 402 and nothing executes, and a billing plane that cannot answer refuses rather than granting free compute. A run that actually executed is then debited twice — a flat per-invocation fee, and GB-seconds of compute derived from the measured duration and the function&#39;s configured memory. A run that never reached its executor (unreachable, or timed out in transport) consumed nothing and is not charged; a run whose code exited non-zero DID consume compute and is. An operator who prices either half at zero makes it a no-op, and a zero request fee removes the balance gate with it.  When the sandbox is not configured on this deployment, a non-fleet function fails closed before anything is recorded — no execution and no fabricated output. Scoped to the caller&#39;s org; requires a validated principal.
      * @param name  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @param functionsInvokeRequest  (optional)
+     * @return ApiResponse&lt;FunctionsInvocation&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Invocation result </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Insufficient balance </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Function not found </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Sandbox execution failed (invocation recorded with error status) </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Code execution runtime not configured </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1FunctionsByNameInvokeWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1FunctionsByNameInvokeValidateBeforeCall(name, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<FunctionsInvocation> cloudPostV1FunctionsByNameInvokeWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable FunctionsInvokeRequest functionsInvokeRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1FunctionsByNameInvokeValidateBeforeCall(name, functionsInvokeRequest, null);
+        Type localVarReturnType = new TypeToken<FunctionsInvocation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Run a function and get back the recorded invocation (asynchronously)
+     * The body&#39;s &#x60;input&#x60; is handed to the function on stdin. Execution NEVER happens in this process: the runtime and source go to the sandboxed code executor, or, for a function published with target&#x3D;fleet, to the org&#39;s own linked GPU fleet as an fn.run job this call blocks on until it finishes. Either way it is bounded by the function&#39;s own timeout, itself capped at 900s.  The answer is the invocation record — id, status, duration — and its HTTP status is about the RUN, not about this API: a function whose own code fails answers 502 with a recorded &#x60;error&#x60; invocation, which is a successful invocation of a failing program. The captured output is not in this reply; the logs call returns it.  MONEY. The caller&#39;s org ledger is gated BEFORE any compute runs, so an org out of credit or over its spend cap is refused 402 and nothing executes, and a billing plane that cannot answer refuses rather than granting free compute. A run that actually executed is then debited twice — a flat per-invocation fee, and GB-seconds of compute derived from the measured duration and the function&#39;s configured memory. A run that never reached its executor (unreachable, or timed out in transport) consumed nothing and is not charged; a run whose code exited non-zero DID consume compute and is. An operator who prices either half at zero makes it a no-op, and a zero request fee removes the balance gate with it.  When the sandbox is not configured on this deployment, a non-fleet function fails closed before anything is recorded — no execution and no fabricated output. Scoped to the caller&#39;s org; requires a validated principal.
      * @param name  (required)
+     * @param functionsInvokeRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1352,13 +1516,19 @@ public class FunctionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Invocation result </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Insufficient balance </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Function not found </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Sandbox execution failed (invocation recorded with error status) </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Code execution runtime not configured </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1FunctionsByNameInvokeAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1FunctionsByNameInvokeAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable FunctionsInvokeRequest functionsInvokeRequest, final ApiCallback<FunctionsInvocation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1FunctionsByNameInvokeValidateBeforeCall(name, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1FunctionsByNameInvokeValidateBeforeCall(name, functionsInvokeRequest, _callback);
+        Type localVarReturnType = new TypeToken<FunctionsInvocation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

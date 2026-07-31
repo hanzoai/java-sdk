@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.CloudAdminAdminCreatePromo400Response;
 import ai.hanzo.cloud.model.CloudBlobJSON;
 import ai.hanzo.cloud.model.CloudCommitsJSON;
 import ai.hanzo.cloud.model.CloudCreateReq;
@@ -100,7 +101,7 @@ public class GitApi {
 
     /**
      * Build call for cloudDeleteV1GitKeysId
-     * @param id ID is the key&#39;s identifier (\&quot;gitkey_…\&quot;), from the :id path segment. (required)
+     * @param id Key id (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -170,7 +171,7 @@ public class GitApi {
     /**
      * Removes a registered SSH key, scoped to the caller&#39;s org: an org can only delete its own, and a key id it does not own is not found.
      * Removes a registered SSH key, scoped to the caller&#39;s org: an org can only delete its own, and a key id it does not own is not found. Answers 204 with no body. Once removed the key no longer authenticates any SSH git access.
-     * @param id ID is the key&#39;s identifier (\&quot;gitkey_…\&quot;), from the :id path segment. (required)
+     * @param id Key id (required)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -188,7 +189,7 @@ public class GitApi {
     /**
      * Removes a registered SSH key, scoped to the caller&#39;s org: an org can only delete its own, and a key id it does not own is not found.
      * Removes a registered SSH key, scoped to the caller&#39;s org: an org can only delete its own, and a key id it does not own is not found. Answers 204 with no body. Once removed the key no longer authenticates any SSH git access.
-     * @param id ID is the key&#39;s identifier (\&quot;gitkey_…\&quot;), from the :id path segment. (required)
+     * @param id Key id (required)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -207,7 +208,7 @@ public class GitApi {
     /**
      * Removes a registered SSH key, scoped to the caller&#39;s org: an org can only delete its own, and a key id it does not own is not found. (asynchronously)
      * Removes a registered SSH key, scoped to the caller&#39;s org: an org can only delete its own, and a key id it does not own is not found. Answers 204 with no body. Once removed the key no longer authenticates any SSH git access.
-     * @param id ID is the key&#39;s identifier (\&quot;gitkey_…\&quot;), from the :id path segment. (required)
+     * @param id Key id (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -227,7 +228,7 @@ public class GitApi {
     }
     /**
      * Build call for cloudDeleteV1GitReposName
-     * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
+     * @param name Repo name (a trailing \&quot;.git\&quot; is stripped) (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -297,7 +298,7 @@ public class GitApi {
     /**
      * Removes a repo&#39;s metadata and purges its storage.
      * Removes a repo&#39;s metadata and purges its storage. Answers 204 with no body. The metadata row is the source of truth for existence, so a storage purge that fails is logged and the delete still succeeds — and a second call is a 404, not a second delete.
-     * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
+     * @param name Repo name (a trailing \&quot;.git\&quot; is stripped) (required)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -315,7 +316,7 @@ public class GitApi {
     /**
      * Removes a repo&#39;s metadata and purges its storage.
      * Removes a repo&#39;s metadata and purges its storage. Answers 204 with no body. The metadata row is the source of truth for existence, so a storage purge that fails is logged and the delete still succeeds — and a second call is a 404, not a second delete.
-     * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
+     * @param name Repo name (a trailing \&quot;.git\&quot; is stripped) (required)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -334,7 +335,7 @@ public class GitApi {
     /**
      * Removes a repo&#39;s metadata and purges its storage. (asynchronously)
      * Removes a repo&#39;s metadata and purges its storage. Answers 204 with no body. The metadata row is the source of truth for existence, so a storage purge that fails is logged and the delete still succeeds — and a second call is a 404, not a second delete.
-     * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
+     * @param name Repo name (a trailing \&quot;.git\&quot; is stripped) (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -709,8 +710,8 @@ public class GitApi {
     }
 
     /**
-     * 
-     * 
+     * Advertise a repository&#39;s refs to a git client
+     * The ref-advertisement phase of git&#39;s smart-HTTP protocol — the first request a clone, a fetch and a push all make. &#x60;?service&#x3D;&#x60; selects which: &#x60;git-upload-pack&#x60; advertises for a fetch, &#x60;git-receive-pack&#x60; for a push, and any other value is 400.  ANONYMOUS ONLY FOR FETCH, AND ONLY ON A PUBLIC REPOSITORY. The push advertisement always requires an authenticated org, and where a path org is present it must equal the authenticated one. A private repository reached without its org is 404, indistinguishable from one that does not exist. Addressed under the API prefix, with the PROJECT as a middle path segment: project scope otherwise rides a header a git client cannot send, so this path is the only usable remote for a project-scoped repository. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param project  (required)
      * @param repo  (required)
@@ -727,8 +728,8 @@ public class GitApi {
     }
 
     /**
-     * 
-     * 
+     * Advertise a repository&#39;s refs to a git client
+     * The ref-advertisement phase of git&#39;s smart-HTTP protocol — the first request a clone, a fetch and a push all make. &#x60;?service&#x3D;&#x60; selects which: &#x60;git-upload-pack&#x60; advertises for a fetch, &#x60;git-receive-pack&#x60; for a push, and any other value is 400.  ANONYMOUS ONLY FOR FETCH, AND ONLY ON A PUBLIC REPOSITORY. The push advertisement always requires an authenticated org, and where a path org is present it must equal the authenticated one. A private repository reached without its org is 404, indistinguishable from one that does not exist. Addressed under the API prefix, with the PROJECT as a middle path segment: project scope otherwise rides a header a git client cannot send, so this path is the only usable remote for a project-scoped repository. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param project  (required)
      * @param repo  (required)
@@ -747,8 +748,8 @@ public class GitApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Advertise a repository&#39;s refs to a git client (asynchronously)
+     * The ref-advertisement phase of git&#39;s smart-HTTP protocol — the first request a clone, a fetch and a push all make. &#x60;?service&#x3D;&#x60; selects which: &#x60;git-upload-pack&#x60; advertises for a fetch, &#x60;git-receive-pack&#x60; for a push, and any other value is 400.  ANONYMOUS ONLY FOR FETCH, AND ONLY ON A PUBLIC REPOSITORY. The push advertisement always requires an authenticated org, and where a path org is present it must equal the authenticated one. A private repository reached without its org is 404, indistinguishable from one that does not exist. Addressed under the API prefix, with the PROJECT as a middle path segment: project scope otherwise rides a header a git client cannot send, so this path is the only usable remote for a project-scoped repository. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param project  (required)
      * @param repo  (required)
@@ -772,6 +773,7 @@ public class GitApi {
      * Build call for cloudGetV1GitByOrgByRepoInfoRefs
      * @param org  (required)
      * @param repo  (required)
+     * @param service  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -779,10 +781,13 @@ public class GitApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> pkt-line ref advertisement </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> service must be git-upload-pack or git-receive-pack </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Repo not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1GitByOrgByRepoInfoRefsCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1GitByOrgByRepoInfoRefsCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nonnull String service, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -809,7 +814,14 @@ public class GitApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (service != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("service", service));
+        }
+
         final String[] localVarAccepts = {
+            "application/x-git-upload-pack-advertisement",
+            "application/x-git-receive-pack-advertisement",
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -828,7 +840,7 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudGetV1GitByOrgByRepoInfoRefsValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudGetV1GitByOrgByRepoInfoRefsValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nonnull String service, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'org' is set
         if (org == null) {
             throw new ApiException("Missing the required parameter 'org' when calling cloudGetV1GitByOrgByRepoInfoRefs(Async)");
@@ -839,51 +851,68 @@ public class GitApi {
             throw new ApiException("Missing the required parameter 'repo' when calling cloudGetV1GitByOrgByRepoInfoRefs(Async)");
         }
 
-        return cloudGetV1GitByOrgByRepoInfoRefsCall(org, repo, _callback);
+        // verify the required parameter 'service' is set
+        if (service == null) {
+            throw new ApiException("Missing the required parameter 'service' when calling cloudGetV1GitByOrgByRepoInfoRefs(Async)");
+        }
+
+        return cloudGetV1GitByOrgByRepoInfoRefsCall(org, repo, service, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Advertise a repository&#39;s refs to a git client
+     * The ref-advertisement phase of git&#39;s smart-HTTP protocol — the first request a clone, a fetch and a push all make. &#x60;?service&#x3D;&#x60; selects which: &#x60;git-upload-pack&#x60; advertises for a fetch, &#x60;git-receive-pack&#x60; for a push, and any other value is 400.  ANONYMOUS ONLY FOR FETCH, AND ONLY ON A PUBLIC REPOSITORY. The push advertisement always requires an authenticated org, and where a path org is present it must equal the authenticated one. A private repository reached without its org is 404, indistinguishable from one that does not exist. Addressed under the API prefix, so &#x60;git clone https://&lt;host&gt;/v1/git/&lt;org&gt;/&lt;repo&gt;.git&#x60; works on any host the binary serves. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param repo  (required)
+     * @param service  (required)
+     * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> pkt-line ref advertisement </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> service must be git-upload-pack or git-receive-pack </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Repo not found </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1GitByOrgByRepoInfoRefs(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo) throws ApiException {
-        cloudGetV1GitByOrgByRepoInfoRefsWithHttpInfo(org, repo);
+    public File cloudGetV1GitByOrgByRepoInfoRefs(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nonnull String service) throws ApiException {
+        ApiResponse<File> localVarResp = cloudGetV1GitByOrgByRepoInfoRefsWithHttpInfo(org, repo, service);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
+     * Advertise a repository&#39;s refs to a git client
+     * The ref-advertisement phase of git&#39;s smart-HTTP protocol — the first request a clone, a fetch and a push all make. &#x60;?service&#x3D;&#x60; selects which: &#x60;git-upload-pack&#x60; advertises for a fetch, &#x60;git-receive-pack&#x60; for a push, and any other value is 400.  ANONYMOUS ONLY FOR FETCH, AND ONLY ON A PUBLIC REPOSITORY. The push advertisement always requires an authenticated org, and where a path org is present it must equal the authenticated one. A private repository reached without its org is 404, indistinguishable from one that does not exist. Addressed under the API prefix, so &#x60;git clone https://&lt;host&gt;/v1/git/&lt;org&gt;/&lt;repo&gt;.git&#x60; works on any host the binary serves. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param repo  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @param service  (required)
+     * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> pkt-line ref advertisement </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> service must be git-upload-pack or git-receive-pack </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Repo not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1GitByOrgByRepoInfoRefsWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo) throws ApiException {
-        okhttp3.Call localVarCall = cloudGetV1GitByOrgByRepoInfoRefsValidateBeforeCall(org, repo, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<File> cloudGetV1GitByOrgByRepoInfoRefsWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nonnull String service) throws ApiException {
+        okhttp3.Call localVarCall = cloudGetV1GitByOrgByRepoInfoRefsValidateBeforeCall(org, repo, service, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Advertise a repository&#39;s refs to a git client (asynchronously)
+     * The ref-advertisement phase of git&#39;s smart-HTTP protocol — the first request a clone, a fetch and a push all make. &#x60;?service&#x3D;&#x60; selects which: &#x60;git-upload-pack&#x60; advertises for a fetch, &#x60;git-receive-pack&#x60; for a push, and any other value is 400.  ANONYMOUS ONLY FOR FETCH, AND ONLY ON A PUBLIC REPOSITORY. The push advertisement always requires an authenticated org, and where a path org is present it must equal the authenticated one. A private repository reached without its org is 404, indistinguishable from one that does not exist. Addressed under the API prefix, so &#x60;git clone https://&lt;host&gt;/v1/git/&lt;org&gt;/&lt;repo&gt;.git&#x60; works on any host the binary serves. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param repo  (required)
+     * @param service  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -891,13 +920,17 @@ public class GitApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> pkt-line ref advertisement </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> service must be git-upload-pack or git-receive-pack </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Repo not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1GitByOrgByRepoInfoRefsAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1GitByOrgByRepoInfoRefsAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nonnull String service, final ApiCallback<File> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudGetV1GitByOrgByRepoInfoRefsValidateBeforeCall(org, repo, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudGetV1GitByOrgByRepoInfoRefsValidateBeforeCall(org, repo, service, _callback);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1136,7 +1169,7 @@ public class GitApi {
     }
     /**
      * Build call for cloudGetV1GitReposName
-     * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
+     * @param name Repo name (a trailing \&quot;.git\&quot; is stripped) (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1206,7 +1239,7 @@ public class GitApi {
     /**
      * Returns one repo with its live ref state: every branch name and the resolved HEAD commit.
      * Returns one repo with its live ref state: every branch name and the resolved HEAD commit. Both are read from the object store on each call, so an empty repo reports no branches and an empty head rather than failing. A repo outside the caller&#39;s scope is not found.
-     * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
+     * @param name Repo name (a trailing \&quot;.git\&quot; is stripped) (required)
      * @return CloudRepoView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1224,7 +1257,7 @@ public class GitApi {
     /**
      * Returns one repo with its live ref state: every branch name and the resolved HEAD commit.
      * Returns one repo with its live ref state: every branch name and the resolved HEAD commit. Both are read from the object store on each call, so an empty repo reports no branches and an empty head rather than failing. A repo outside the caller&#39;s scope is not found.
-     * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
+     * @param name Repo name (a trailing \&quot;.git\&quot; is stripped) (required)
      * @return ApiResponse&lt;CloudRepoView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1243,7 +1276,7 @@ public class GitApi {
     /**
      * Returns one repo with its live ref state: every branch name and the resolved HEAD commit. (asynchronously)
      * Returns one repo with its live ref state: every branch name and the resolved HEAD commit. Both are read from the object store on each call, so an empty repo reports no branches and an empty head rather than failing. A repo outside the caller&#39;s scope is not found.
-     * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
+     * @param name Repo name (a trailing \&quot;.git\&quot; is stripped) (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2476,7 +2509,7 @@ public class GitApi {
     }
     /**
      * Build call for cloudPatchV1GitReposName
-     * @param name Name is the repo to update, from the :name path segment. (required)
+     * @param name Repo name (a trailing \&quot;.git\&quot; is stripped) (required)
      * @param cloudPatchIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2553,7 +2586,7 @@ public class GitApi {
     /**
      * Flips a repo&#39;s public bit, the one mutable repo setting today.
      * Flips a repo&#39;s public bit, the one mutable repo setting today. Public grants ANONYMOUS fetch only; push and the whole control plane stay org-authed. Returns the updated repo.
-     * @param name Name is the repo to update, from the :name path segment. (required)
+     * @param name Repo name (a trailing \&quot;.git\&quot; is stripped) (required)
      * @param cloudPatchIn  (required)
      * @return CloudRepoView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2572,7 +2605,7 @@ public class GitApi {
     /**
      * Flips a repo&#39;s public bit, the one mutable repo setting today.
      * Flips a repo&#39;s public bit, the one mutable repo setting today. Public grants ANONYMOUS fetch only; push and the whole control plane stay org-authed. Returns the updated repo.
-     * @param name Name is the repo to update, from the :name path segment. (required)
+     * @param name Repo name (a trailing \&quot;.git\&quot; is stripped) (required)
      * @param cloudPatchIn  (required)
      * @return ApiResponse&lt;CloudRepoView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2592,7 +2625,7 @@ public class GitApi {
     /**
      * Flips a repo&#39;s public bit, the one mutable repo setting today. (asynchronously)
      * Flips a repo&#39;s public bit, the one mutable repo setting today. Public grants ANONYMOUS fetch only; push and the whole control plane stay org-authed. Returns the updated repo.
-     * @param name Name is the repo to update, from the :name path segment. (required)
+     * @param name Repo name (a trailing \&quot;.git\&quot; is stripped) (required)
      * @param cloudPatchIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2696,8 +2729,8 @@ public class GitApi {
     }
 
     /**
-     * 
-     * 
+     * Accept a push, and turn it into a build
+     * The pack-transfer phase of a push, and the point at which a push becomes an EVENT. NEVER ANONYMOUS: a push always requires an authenticated org, and the org in the path must equal it.  Once the pack is on disk the repository&#39;s storage usage is metered and a build is fired for every branch whose tip actually moved, computed from the before/after branch diff rather than from what the client claimed. That runs on a cancel-immune context, so a client that hangs up the moment its push lands still gets its build, and it runs even when git itself exited non-zero — the refs on disk are the ground truth. Repacking housekeeping is detached and never blocks the response.  A Content-Type other than &#x60;application/x-git-receive-pack-request&#x60; is 400. Addressed under the API prefix, with the PROJECT as a middle path segment: project scope otherwise rides a header a git client cannot send, so this path is the only usable remote for a project-scoped repository. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param project  (required)
      * @param repo  (required)
@@ -2715,8 +2748,8 @@ public class GitApi {
     }
 
     /**
-     * 
-     * 
+     * Accept a push, and turn it into a build
+     * The pack-transfer phase of a push, and the point at which a push becomes an EVENT. NEVER ANONYMOUS: a push always requires an authenticated org, and the org in the path must equal it.  Once the pack is on disk the repository&#39;s storage usage is metered and a build is fired for every branch whose tip actually moved, computed from the before/after branch diff rather than from what the client claimed. That runs on a cancel-immune context, so a client that hangs up the moment its push lands still gets its build, and it runs even when git itself exited non-zero — the refs on disk are the ground truth. Repacking housekeeping is detached and never blocks the response.  A Content-Type other than &#x60;application/x-git-receive-pack-request&#x60; is 400. Addressed under the API prefix, with the PROJECT as a middle path segment: project scope otherwise rides a header a git client cannot send, so this path is the only usable remote for a project-scoped repository. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param project  (required)
      * @param repo  (required)
@@ -2736,8 +2769,8 @@ public class GitApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Accept a push, and turn it into a build (asynchronously)
+     * The pack-transfer phase of a push, and the point at which a push becomes an EVENT. NEVER ANONYMOUS: a push always requires an authenticated org, and the org in the path must equal it.  Once the pack is on disk the repository&#39;s storage usage is metered and a build is fired for every branch whose tip actually moved, computed from the before/after branch diff rather than from what the client claimed. That runs on a cancel-immune context, so a client that hangs up the moment its push lands still gets its build, and it runs even when git itself exited non-zero — the refs on disk are the ground truth. Repacking housekeeping is detached and never blocks the response.  A Content-Type other than &#x60;application/x-git-receive-pack-request&#x60; is 400. Addressed under the API prefix, with the PROJECT as a middle path segment: project scope otherwise rides a header a git client cannot send, so this path is the only usable remote for a project-scoped repository. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param project  (required)
      * @param repo  (required)
@@ -2843,8 +2876,8 @@ public class GitApi {
     }
 
     /**
-     * 
-     * 
+     * Serve a clone or fetch
+     * The pack-transfer phase of a clone or fetch: the request and the response are git&#39;s binary pack protocol, streamed straight through git itself — request body to git&#39;s stdin, git&#39;s stdout to the response — so a multi-gigabyte clone never lands in this process&#39;s memory.  A PUBLIC repository is fetched anonymously; a private one requires its own org, and a wrong or absent org is 404 rather than a hint that the repository exists. A Content-Type other than &#x60;application/x-git-upload-pack-request&#x60; is 400. Addressed under the API prefix, with the PROJECT as a middle path segment: project scope otherwise rides a header a git client cannot send, so this path is the only usable remote for a project-scoped repository. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param project  (required)
      * @param repo  (required)
@@ -2862,8 +2895,8 @@ public class GitApi {
     }
 
     /**
-     * 
-     * 
+     * Serve a clone or fetch
+     * The pack-transfer phase of a clone or fetch: the request and the response are git&#39;s binary pack protocol, streamed straight through git itself — request body to git&#39;s stdin, git&#39;s stdout to the response — so a multi-gigabyte clone never lands in this process&#39;s memory.  A PUBLIC repository is fetched anonymously; a private one requires its own org, and a wrong or absent org is 404 rather than a hint that the repository exists. A Content-Type other than &#x60;application/x-git-upload-pack-request&#x60; is 400. Addressed under the API prefix, with the PROJECT as a middle path segment: project scope otherwise rides a header a git client cannot send, so this path is the only usable remote for a project-scoped repository. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param project  (required)
      * @param repo  (required)
@@ -2883,8 +2916,8 @@ public class GitApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Serve a clone or fetch (asynchronously)
+     * The pack-transfer phase of a clone or fetch: the request and the response are git&#39;s binary pack protocol, streamed straight through git itself — request body to git&#39;s stdin, git&#39;s stdout to the response — so a multi-gigabyte clone never lands in this process&#39;s memory.  A PUBLIC repository is fetched anonymously; a private one requires its own org, and a wrong or absent org is 404 rather than a hint that the repository exists. A Content-Type other than &#x60;application/x-git-upload-pack-request&#x60; is 400. Addressed under the API prefix, with the PROJECT as a middle path segment: project scope otherwise rides a header a git client cannot send, so this path is the only usable remote for a project-scoped repository. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param project  (required)
      * @param repo  (required)
@@ -2917,7 +2950,11 @@ public class GitApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> report-status </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Malformed receive-pack request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Repo not found </td><td>  -  </td></tr>
+        <tr><td> 413 </td><td> Request body exceeds 256 MiB </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1GitByOrgByRepoGitReceivePackCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
@@ -2948,6 +2985,8 @@ public class GitApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/x-git-receive-pack-result",
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2983,46 +3022,57 @@ public class GitApi {
     }
 
     /**
-     * 
-     * 
+     * Accept a push, and turn it into a build
+     * The pack-transfer phase of a push, and the point at which a push becomes an EVENT. NEVER ANONYMOUS: a push always requires an authenticated org, and the org in the path must equal it.  Once the pack is on disk the repository&#39;s storage usage is metered and a build is fired for every branch whose tip actually moved, computed from the before/after branch diff rather than from what the client claimed. That runs on a cancel-immune context, so a client that hangs up the moment its push lands still gets its build, and it runs even when git itself exited non-zero — the refs on disk are the ground truth. Repacking housekeeping is detached and never blocks the response.  A Content-Type other than &#x60;application/x-git-receive-pack-request&#x60; is 400. Addressed under the API prefix, so &#x60;git clone https://&lt;host&gt;/v1/git/&lt;org&gt;/&lt;repo&gt;.git&#x60; works on any host the binary serves. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param repo  (required)
      * @param body  (optional)
+     * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> report-status </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Malformed receive-pack request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Repo not found </td><td>  -  </td></tr>
+        <tr><td> 413 </td><td> Request body exceeds 256 MiB </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1GitByOrgByRepoGitReceivePack(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
-        cloudPostV1GitByOrgByRepoGitReceivePackWithHttpInfo(org, repo, body);
+    public File cloudPostV1GitByOrgByRepoGitReceivePack(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
+        ApiResponse<File> localVarResp = cloudPostV1GitByOrgByRepoGitReceivePackWithHttpInfo(org, repo, body);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
+     * Accept a push, and turn it into a build
+     * The pack-transfer phase of a push, and the point at which a push becomes an EVENT. NEVER ANONYMOUS: a push always requires an authenticated org, and the org in the path must equal it.  Once the pack is on disk the repository&#39;s storage usage is metered and a build is fired for every branch whose tip actually moved, computed from the before/after branch diff rather than from what the client claimed. That runs on a cancel-immune context, so a client that hangs up the moment its push lands still gets its build, and it runs even when git itself exited non-zero — the refs on disk are the ground truth. Repacking housekeeping is detached and never blocks the response.  A Content-Type other than &#x60;application/x-git-receive-pack-request&#x60; is 400. Addressed under the API prefix, so &#x60;git clone https://&lt;host&gt;/v1/git/&lt;org&gt;/&lt;repo&gt;.git&#x60; works on any host the binary serves. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param repo  (required)
      * @param body  (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> report-status </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Malformed receive-pack request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Repo not found </td><td>  -  </td></tr>
+        <tr><td> 413 </td><td> Request body exceeds 256 MiB </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1GitByOrgByRepoGitReceivePackWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
+    public ApiResponse<File> cloudPostV1GitByOrgByRepoGitReceivePackWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
         okhttp3.Call localVarCall = cloudPostV1GitByOrgByRepoGitReceivePackValidateBeforeCall(org, repo, body, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Accept a push, and turn it into a build (asynchronously)
+     * The pack-transfer phase of a push, and the point at which a push becomes an EVENT. NEVER ANONYMOUS: a push always requires an authenticated org, and the org in the path must equal it.  Once the pack is on disk the repository&#39;s storage usage is metered and a build is fired for every branch whose tip actually moved, computed from the before/after branch diff rather than from what the client claimed. That runs on a cancel-immune context, so a client that hangs up the moment its push lands still gets its build, and it runs even when git itself exited non-zero — the refs on disk are the ground truth. Repacking housekeeping is detached and never blocks the response.  A Content-Type other than &#x60;application/x-git-receive-pack-request&#x60; is 400. Addressed under the API prefix, so &#x60;git clone https://&lt;host&gt;/v1/git/&lt;org&gt;/&lt;repo&gt;.git&#x60; works on any host the binary serves. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param repo  (required)
      * @param body  (optional)
@@ -3033,13 +3083,18 @@ public class GitApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> report-status </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Malformed receive-pack request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Repo not found </td><td>  -  </td></tr>
+        <tr><td> 413 </td><td> Request body exceeds 256 MiB </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1GitByOrgByRepoGitReceivePackAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1GitByOrgByRepoGitReceivePackAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback<File> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudPostV1GitByOrgByRepoGitReceivePackValidateBeforeCall(org, repo, body, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -3054,7 +3109,11 @@ public class GitApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Packfile result </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Malformed upload-pack request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Repo not found </td><td>  -  </td></tr>
+        <tr><td> 413 </td><td> Request body exceeds 256 MiB </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1GitByOrgByRepoGitUploadPackCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
@@ -3085,6 +3144,8 @@ public class GitApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/x-git-upload-pack-result",
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3120,46 +3181,57 @@ public class GitApi {
     }
 
     /**
-     * 
-     * 
+     * Serve a clone or fetch
+     * The pack-transfer phase of a clone or fetch: the request and the response are git&#39;s binary pack protocol, streamed straight through git itself — request body to git&#39;s stdin, git&#39;s stdout to the response — so a multi-gigabyte clone never lands in this process&#39;s memory.  A PUBLIC repository is fetched anonymously; a private one requires its own org, and a wrong or absent org is 404 rather than a hint that the repository exists. A Content-Type other than &#x60;application/x-git-upload-pack-request&#x60; is 400. Addressed under the API prefix, so &#x60;git clone https://&lt;host&gt;/v1/git/&lt;org&gt;/&lt;repo&gt;.git&#x60; works on any host the binary serves. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param repo  (required)
      * @param body  (optional)
+     * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Packfile result </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Malformed upload-pack request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Repo not found </td><td>  -  </td></tr>
+        <tr><td> 413 </td><td> Request body exceeds 256 MiB </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1GitByOrgByRepoGitUploadPack(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
-        cloudPostV1GitByOrgByRepoGitUploadPackWithHttpInfo(org, repo, body);
+    public File cloudPostV1GitByOrgByRepoGitUploadPack(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
+        ApiResponse<File> localVarResp = cloudPostV1GitByOrgByRepoGitUploadPackWithHttpInfo(org, repo, body);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
+     * Serve a clone or fetch
+     * The pack-transfer phase of a clone or fetch: the request and the response are git&#39;s binary pack protocol, streamed straight through git itself — request body to git&#39;s stdin, git&#39;s stdout to the response — so a multi-gigabyte clone never lands in this process&#39;s memory.  A PUBLIC repository is fetched anonymously; a private one requires its own org, and a wrong or absent org is 404 rather than a hint that the repository exists. A Content-Type other than &#x60;application/x-git-upload-pack-request&#x60; is 400. Addressed under the API prefix, so &#x60;git clone https://&lt;host&gt;/v1/git/&lt;org&gt;/&lt;repo&gt;.git&#x60; works on any host the binary serves. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param repo  (required)
      * @param body  (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Packfile result </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Malformed upload-pack request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Repo not found </td><td>  -  </td></tr>
+        <tr><td> 413 </td><td> Request body exceeds 256 MiB </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1GitByOrgByRepoGitUploadPackWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
+    public ApiResponse<File> cloudPostV1GitByOrgByRepoGitUploadPackWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
         okhttp3.Call localVarCall = cloudPostV1GitByOrgByRepoGitUploadPackValidateBeforeCall(org, repo, body, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Serve a clone or fetch (asynchronously)
+     * The pack-transfer phase of a clone or fetch: the request and the response are git&#39;s binary pack protocol, streamed straight through git itself — request body to git&#39;s stdin, git&#39;s stdout to the response — so a multi-gigabyte clone never lands in this process&#39;s memory.  A PUBLIC repository is fetched anonymously; a private one requires its own org, and a wrong or absent org is 404 rather than a hint that the repository exists. A Content-Type other than &#x60;application/x-git-upload-pack-request&#x60; is 400. Addressed under the API prefix, so &#x60;git clone https://&lt;host&gt;/v1/git/&lt;org&gt;/&lt;repo&gt;.git&#x60; works on any host the binary serves. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param repo  (required)
      * @param body  (optional)
@@ -3170,13 +3242,18 @@ public class GitApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Packfile result </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Malformed upload-pack request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Repo not found </td><td>  -  </td></tr>
+        <tr><td> 413 </td><td> Request body exceeds 256 MiB </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1GitByOrgByRepoGitUploadPackAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1GitByOrgByRepoGitUploadPackAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback<File> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudPostV1GitByOrgByRepoGitUploadPackValidateBeforeCall(org, repo, body, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -3836,7 +3913,7 @@ public class GitApi {
     }
     /**
      * Build call for cloudPostV1GitReposNamePush
-     * @param name Name is the repo to push into, from the :name path segment. It is CREATED on first push if it does not exist. (required)
+     * @param name Repo name (a trailing \&quot;.git\&quot; is stripped) (required)
      * @param cloudPushReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3913,7 +3990,7 @@ public class GitApi {
     /**
      * Lands a set of files as one commit without a git client — the hanzo.app builder&#39;s push.
      * Lands a set of files as one commit without a git client — the hanzo.app builder&#39;s push. The repo is CREATED on first push, the files are merged onto the branch tip (unlisted files survive), and the same push-to-deploy hook a real receive-pack fires is fired, so downstream this is indistinguishable from a &#x60;git push&#x60;.
-     * @param name Name is the repo to push into, from the :name path segment. It is CREATED on first push if it does not exist. (required)
+     * @param name Repo name (a trailing \&quot;.git\&quot; is stripped) (required)
      * @param cloudPushReq  (required)
      * @return CloudPushResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3932,7 +4009,7 @@ public class GitApi {
     /**
      * Lands a set of files as one commit without a git client — the hanzo.app builder&#39;s push.
      * Lands a set of files as one commit without a git client — the hanzo.app builder&#39;s push. The repo is CREATED on first push, the files are merged onto the branch tip (unlisted files survive), and the same push-to-deploy hook a real receive-pack fires is fired, so downstream this is indistinguishable from a &#x60;git push&#x60;.
-     * @param name Name is the repo to push into, from the :name path segment. It is CREATED on first push if it does not exist. (required)
+     * @param name Repo name (a trailing \&quot;.git\&quot; is stripped) (required)
      * @param cloudPushReq  (required)
      * @return ApiResponse&lt;CloudPushResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3952,7 +4029,7 @@ public class GitApi {
     /**
      * Lands a set of files as one commit without a git client — the hanzo.app builder&#39;s push. (asynchronously)
      * Lands a set of files as one commit without a git client — the hanzo.app builder&#39;s push. The repo is CREATED on first push, the files are merged onto the branch tip (unlisted files survive), and the same push-to-deploy hook a real receive-pack fires is fired, so downstream this is indistinguishable from a &#x60;git push&#x60;.
-     * @param name Name is the repo to push into, from the :name path segment. It is CREATED on first push if it does not exist. (required)
+     * @param name Repo name (a trailing \&quot;.git\&quot; is stripped) (required)
      * @param cloudPushReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4172,8 +4249,8 @@ public class GitApi {
     }
 
     /**
-     * 
-     * 
+     * Receive a push from the canonical forge and trigger its build
+     * The canonical forge&#39;s push-to-deploy door. git.hanzo.ai runs as a SEPARATE process, so its pushes never reach this binary&#39;s receive-pack; without this a push to the host we call canonical would build nothing. A verified push is handed to the same single trigger the embedded git server and the GitHub App fire, and the build decision itself stays downstream in the one place that knows what a push means.  PUBLIC at the JWT layer, because the forge carries no Hanzo session: AUTHENTICATION IS THE SIGNATURE. The HMAC covers the raw bytes and is verified BEFORE the payload is parsed, so an unauthenticated body is never decoded — which is also why this cannot be a typed op, since a typed op decodes first. An UNSET webhook secret refuses every delivery rather than trusting it: a door that starts builds fails closed. A bad signature is 401, a payload over 8 MiB is 413, and a malformed one 400.  Every success answers 204 and no body, including the deliveries it deliberately ignores: a non-push event, a payload whose ref is not a ref, a ref DELETE (a zero &#x60;after&#x60; has no commit to build), and a BOT-authored push — release automation pushes as the forge&#39;s own actions user, and a release must never rebuild itself. Every other ref reaches the builder, branches and tags alike, because releases are cut by tag and filtering here would silently stop publishing. A trigger that fails is logged rather than returned, so a push that already landed on the forge is not retried against us.
      * @param cloudPushEvent  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4188,8 +4265,8 @@ public class GitApi {
     }
 
     /**
-     * 
-     * 
+     * Receive a push from the canonical forge and trigger its build
+     * The canonical forge&#39;s push-to-deploy door. git.hanzo.ai runs as a SEPARATE process, so its pushes never reach this binary&#39;s receive-pack; without this a push to the host we call canonical would build nothing. A verified push is handed to the same single trigger the embedded git server and the GitHub App fire, and the build decision itself stays downstream in the one place that knows what a push means.  PUBLIC at the JWT layer, because the forge carries no Hanzo session: AUTHENTICATION IS THE SIGNATURE. The HMAC covers the raw bytes and is verified BEFORE the payload is parsed, so an unauthenticated body is never decoded — which is also why this cannot be a typed op, since a typed op decodes first. An UNSET webhook secret refuses every delivery rather than trusting it: a door that starts builds fails closed. A bad signature is 401, a payload over 8 MiB is 413, and a malformed one 400.  Every success answers 204 and no body, including the deliveries it deliberately ignores: a non-push event, a payload whose ref is not a ref, a ref DELETE (a zero &#x60;after&#x60; has no commit to build), and a BOT-authored push — release automation pushes as the forge&#39;s own actions user, and a release must never rebuild itself. Every other ref reaches the builder, branches and tags alike, because releases are cut by tag and filtering here would silently stop publishing. A trigger that fails is logged rather than returned, so a push that already landed on the forge is not retried against us.
      * @param cloudPushEvent  (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4206,8 +4283,8 @@ public class GitApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Receive a push from the canonical forge and trigger its build (asynchronously)
+     * The canonical forge&#39;s push-to-deploy door. git.hanzo.ai runs as a SEPARATE process, so its pushes never reach this binary&#39;s receive-pack; without this a push to the host we call canonical would build nothing. A verified push is handed to the same single trigger the embedded git server and the GitHub App fire, and the build decision itself stays downstream in the one place that knows what a push means.  PUBLIC at the JWT layer, because the forge carries no Hanzo session: AUTHENTICATION IS THE SIGNATURE. The HMAC covers the raw bytes and is verified BEFORE the payload is parsed, so an unauthenticated body is never decoded — which is also why this cannot be a typed op, since a typed op decodes first. An UNSET webhook secret refuses every delivery rather than trusting it: a door that starts builds fails closed. A bad signature is 401, a payload over 8 MiB is 413, and a malformed one 400.  Every success answers 204 and no body, including the deliveries it deliberately ignores: a non-push event, a payload whose ref is not a ref, a ref DELETE (a zero &#x60;after&#x60; has no commit to build), and a BOT-authored push — release automation pushes as the forge&#39;s own actions user, and a release must never rebuild itself. Every other ref reaches the builder, branches and tags alike, because releases are cut by tag and filtering here would silently stop publishing. A trigger that fails is logged rather than returned, so a push that already landed on the forge is not retried against us.
      * @param cloudPushEvent  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4289,8 +4366,8 @@ public class GitApi {
     }
 
     /**
-     * 
-     * 
+     * Create a repository over the ZAP transport
+     * Creates a repository in the caller&#39;s org and project scope and answers with its record. &#x60;name&#x60; is required and &#x60;description&#x60; is optional; &#x60;project&#x60; narrows the scope within the org. A name already taken in that scope is a 409 envelope and an invalid name a 400.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param cloudZapProcReq  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4305,8 +4382,8 @@ public class GitApi {
     }
 
     /**
-     * 
-     * 
+     * Create a repository over the ZAP transport
+     * Creates a repository in the caller&#39;s org and project scope and answers with its record. &#x60;name&#x60; is required and &#x60;description&#x60; is optional; &#x60;project&#x60; narrows the scope within the org. A name already taken in that scope is a 409 envelope and an invalid name a 400.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param cloudZapProcReq  (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4323,8 +4400,8 @@ public class GitApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Create a repository over the ZAP transport (asynchronously)
+     * Creates a repository in the caller&#39;s org and project scope and answers with its record. &#x60;name&#x60; is required and &#x60;description&#x60; is optional; &#x60;project&#x60; narrows the scope within the org. A name already taken in that scope is a 409 envelope and an invalid name a 400.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param cloudZapProcReq  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4406,8 +4483,8 @@ public class GitApi {
     }
 
     /**
-     * 
-     * 
+     * Delete a repository over the ZAP transport
+     * Deletes the repository named by &#x60;name&#x60; and answers with the deleted name. A repository outside the caller&#39;s org and project scope is a 404 envelope, so a delete can never reach another tenant&#39;s repository.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param cloudZapProcReq  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4422,8 +4499,8 @@ public class GitApi {
     }
 
     /**
-     * 
-     * 
+     * Delete a repository over the ZAP transport
+     * Deletes the repository named by &#x60;name&#x60; and answers with the deleted name. A repository outside the caller&#39;s org and project scope is a 404 envelope, so a delete can never reach another tenant&#39;s repository.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param cloudZapProcReq  (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4440,8 +4517,8 @@ public class GitApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Delete a repository over the ZAP transport (asynchronously)
+     * Deletes the repository named by &#x60;name&#x60; and answers with the deleted name. A repository outside the caller&#39;s org and project scope is a 404 envelope, so a delete can never reach another tenant&#39;s repository.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param cloudZapProcReq  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4523,8 +4600,8 @@ public class GitApi {
     }
 
     /**
-     * 
-     * 
+     * Read one repository over the ZAP transport
+     * Answers a single repository&#39;s record, named by &#x60;name&#x60;. A repository outside the caller&#39;s org and project scope is a 404 envelope, the same answer one that does not exist gets.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param cloudZapProcReq  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4539,8 +4616,8 @@ public class GitApi {
     }
 
     /**
-     * 
-     * 
+     * Read one repository over the ZAP transport
+     * Answers a single repository&#39;s record, named by &#x60;name&#x60;. A repository outside the caller&#39;s org and project scope is a 404 envelope, the same answer one that does not exist gets.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param cloudZapProcReq  (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4557,8 +4634,8 @@ public class GitApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Read one repository over the ZAP transport (asynchronously)
+     * Answers a single repository&#39;s record, named by &#x60;name&#x60;. A repository outside the caller&#39;s org and project scope is a 404 envelope, the same answer one that does not exist gets.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param cloudZapProcReq  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4638,8 +4715,8 @@ public class GitApi {
     }
 
     /**
-     * 
-     * 
+     * List your repositories over the ZAP transport
+     * Answers every repository in the caller&#39;s org and project scope. It reads NO body — the scope is entirely the caller&#39;s identity — so a request with an empty object is correct.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -4653,8 +4730,8 @@ public class GitApi {
     }
 
     /**
-     * 
-     * 
+     * List your repositories over the ZAP transport
+     * Answers every repository in the caller&#39;s org and project scope. It reads NO body — the scope is entirely the caller&#39;s identity — so a request with an empty object is correct.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4670,8 +4747,8 @@ public class GitApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * List your repositories over the ZAP transport (asynchronously)
+     * Answers every repository in the caller&#39;s org and project scope. It reads NO body — the scope is entirely the caller&#39;s identity — so a request with an empty object is correct.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4750,8 +4827,8 @@ public class GitApi {
     }
 
     /**
-     * 
-     * 
+     * Report your org&#39;s git storage footprint over the ZAP transport
+     * Answers every repository in the caller&#39;s org with its size in bytes, plus the org&#39;s total — what git storage is actually being used, and by which repository. It reads NO body, and it is scoped to the caller&#39;s own org, so it is that org&#39;s footprint and never the fleet&#39;s.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -4765,8 +4842,8 @@ public class GitApi {
     }
 
     /**
-     * 
-     * 
+     * Report your org&#39;s git storage footprint over the ZAP transport
+     * Answers every repository in the caller&#39;s org with its size in bytes, plus the org&#39;s total — what git storage is actually being used, and by which repository. It reads NO body, and it is scoped to the caller&#39;s own org, so it is that org&#39;s footprint and never the fleet&#39;s.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4782,8 +4859,8 @@ public class GitApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Report your org&#39;s git storage footprint over the ZAP transport (asynchronously)
+     * Answers every repository in the caller&#39;s org with its size in bytes, plus the org&#39;s total — what git storage is actually being used, and by which repository. It reads NO body, and it is scoped to the caller&#39;s own org, so it is that org&#39;s footprint and never the fleet&#39;s.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

@@ -27,9 +27,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.AdminAdminDeletePromo200Response;
-import ai.hanzo.cloud.model.AdminAdminGetPromo200Response;
+import ai.hanzo.cloud.model.AdminPromoCreate;
 import ai.hanzo.cloud.model.AdminPromoUpdate;
+import ai.hanzo.cloud.model.CloudAdminAdminCreatePromo201Response;
+import ai.hanzo.cloud.model.CloudAdminAdminCreatePromo400Response;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -149,7 +150,7 @@ public class PromotionsApi {
      * Delete a discount promo
      * 
      * @param id  (required)
-     * @return AdminAdminDeletePromo200Response
+     * @return CloudAdminAdminCreatePromo400Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -160,8 +161,8 @@ public class PromotionsApi {
         <tr><td> 404 </td><td> Promo not found </td><td>  -  </td></tr>
      </table>
      */
-    public AdminAdminDeletePromo200Response adminAdminDeletePromo(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<AdminAdminDeletePromo200Response> localVarResp = adminAdminDeletePromoWithHttpInfo(id);
+    public CloudAdminAdminCreatePromo400Response adminAdminDeletePromo(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<CloudAdminAdminCreatePromo400Response> localVarResp = adminAdminDeletePromoWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -169,7 +170,7 @@ public class PromotionsApi {
      * Delete a discount promo
      * 
      * @param id  (required)
-     * @return ApiResponse&lt;AdminAdminDeletePromo200Response&gt;
+     * @return ApiResponse&lt;CloudAdminAdminCreatePromo400Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -180,9 +181,9 @@ public class PromotionsApi {
         <tr><td> 404 </td><td> Promo not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdminAdminDeletePromo200Response> adminAdminDeletePromoWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<CloudAdminAdminCreatePromo400Response> adminAdminDeletePromoWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = adminAdminDeletePromoValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<AdminAdminDeletePromo200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<CloudAdminAdminCreatePromo400Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -202,10 +203,10 @@ public class PromotionsApi {
         <tr><td> 404 </td><td> Promo not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call adminAdminDeletePromoAsync(@javax.annotation.Nonnull String id, final ApiCallback<AdminAdminDeletePromo200Response> _callback) throws ApiException {
+    public okhttp3.Call adminAdminDeletePromoAsync(@javax.annotation.Nonnull String id, final ApiCallback<CloudAdminAdminCreatePromo400Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = adminAdminDeletePromoValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<AdminAdminDeletePromo200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<CloudAdminAdminCreatePromo400Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -284,7 +285,7 @@ public class PromotionsApi {
      * Get one discount promo
      * 
      * @param id  (required)
-     * @return AdminAdminGetPromo200Response
+     * @return CloudAdminAdminCreatePromo201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -295,8 +296,8 @@ public class PromotionsApi {
         <tr><td> 404 </td><td> Promo not found </td><td>  -  </td></tr>
      </table>
      */
-    public AdminAdminGetPromo200Response adminAdminGetPromo(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<AdminAdminGetPromo200Response> localVarResp = adminAdminGetPromoWithHttpInfo(id);
+    public CloudAdminAdminCreatePromo201Response adminAdminGetPromo(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<CloudAdminAdminCreatePromo201Response> localVarResp = adminAdminGetPromoWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -304,7 +305,7 @@ public class PromotionsApi {
      * Get one discount promo
      * 
      * @param id  (required)
-     * @return ApiResponse&lt;AdminAdminGetPromo200Response&gt;
+     * @return ApiResponse&lt;CloudAdminAdminCreatePromo201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -315,9 +316,9 @@ public class PromotionsApi {
         <tr><td> 404 </td><td> Promo not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdminAdminGetPromo200Response> adminAdminGetPromoWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<CloudAdminAdminCreatePromo201Response> adminAdminGetPromoWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = adminAdminGetPromoValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<AdminAdminGetPromo200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<CloudAdminAdminCreatePromo201Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -337,10 +338,10 @@ public class PromotionsApi {
         <tr><td> 404 </td><td> Promo not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call adminAdminGetPromoAsync(@javax.annotation.Nonnull String id, final ApiCallback<AdminAdminGetPromo200Response> _callback) throws ApiException {
+    public okhttp3.Call adminAdminGetPromoAsync(@javax.annotation.Nonnull String id, final ApiCallback<CloudAdminAdminCreatePromo201Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = adminAdminGetPromoValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<AdminAdminGetPromo200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<CloudAdminAdminCreatePromo201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -428,7 +429,7 @@ public class PromotionsApi {
      * Partial update — only fields present in the body change.
      * @param id  (required)
      * @param adminPromoUpdate  (required)
-     * @return AdminAdminGetPromo200Response
+     * @return CloudAdminAdminCreatePromo201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -440,8 +441,8 @@ public class PromotionsApi {
         <tr><td> 404 </td><td> Promo not found </td><td>  -  </td></tr>
      </table>
      */
-    public AdminAdminGetPromo200Response adminAdminUpdatePromo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AdminPromoUpdate adminPromoUpdate) throws ApiException {
-        ApiResponse<AdminAdminGetPromo200Response> localVarResp = adminAdminUpdatePromoWithHttpInfo(id, adminPromoUpdate);
+    public CloudAdminAdminCreatePromo201Response adminAdminUpdatePromo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AdminPromoUpdate adminPromoUpdate) throws ApiException {
+        ApiResponse<CloudAdminAdminCreatePromo201Response> localVarResp = adminAdminUpdatePromoWithHttpInfo(id, adminPromoUpdate);
         return localVarResp.getData();
     }
 
@@ -450,7 +451,7 @@ public class PromotionsApi {
      * Partial update — only fields present in the body change.
      * @param id  (required)
      * @param adminPromoUpdate  (required)
-     * @return ApiResponse&lt;AdminAdminGetPromo200Response&gt;
+     * @return ApiResponse&lt;CloudAdminAdminCreatePromo201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -462,9 +463,9 @@ public class PromotionsApi {
         <tr><td> 404 </td><td> Promo not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdminAdminGetPromo200Response> adminAdminUpdatePromoWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AdminPromoUpdate adminPromoUpdate) throws ApiException {
+    public ApiResponse<CloudAdminAdminCreatePromo201Response> adminAdminUpdatePromoWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AdminPromoUpdate adminPromoUpdate) throws ApiException {
         okhttp3.Call localVarCall = adminAdminUpdatePromoValidateBeforeCall(id, adminPromoUpdate, null);
-        Type localVarReturnType = new TypeToken<AdminAdminGetPromo200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<CloudAdminAdminCreatePromo201Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -486,10 +487,145 @@ public class PromotionsApi {
         <tr><td> 404 </td><td> Promo not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call adminAdminUpdatePromoAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AdminPromoUpdate adminPromoUpdate, final ApiCallback<AdminAdminGetPromo200Response> _callback) throws ApiException {
+    public okhttp3.Call adminAdminUpdatePromoAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AdminPromoUpdate adminPromoUpdate, final ApiCallback<CloudAdminAdminCreatePromo201Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = adminAdminUpdatePromoValidateBeforeCall(id, adminPromoUpdate, _callback);
-        Type localVarReturnType = new TypeToken<AdminAdminGetPromo200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<CloudAdminAdminCreatePromo201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for cloudAdminAdminCreatePromo
+     * @param adminPromoCreate  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request — percentOff out of [0,100] or end &lt;&#x3D; start </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call cloudAdminAdminCreatePromoCall(@javax.annotation.Nonnull AdminPromoCreate adminPromoCreate, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = adminPromoCreate;
+
+        // create path and map variables
+        String localVarPath = "/v1/admin/promos";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call cloudAdminAdminCreatePromoValidateBeforeCall(@javax.annotation.Nonnull AdminPromoCreate adminPromoCreate, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'adminPromoCreate' is set
+        if (adminPromoCreate == null) {
+            throw new ApiException("Missing the required parameter 'adminPromoCreate' when calling cloudAdminAdminCreatePromo(Async)");
+        }
+
+        return cloudAdminAdminCreatePromoCall(adminPromoCreate, _callback);
+
+    }
+
+    /**
+     * Create a discount promo
+     * 
+     * @param adminPromoCreate  (required)
+     * @return CloudAdminAdminCreatePromo201Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request — percentOff out of [0,100] or end &lt;&#x3D; start </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+     </table>
+     */
+    public CloudAdminAdminCreatePromo201Response cloudAdminAdminCreatePromo(@javax.annotation.Nonnull AdminPromoCreate adminPromoCreate) throws ApiException {
+        ApiResponse<CloudAdminAdminCreatePromo201Response> localVarResp = cloudAdminAdminCreatePromoWithHttpInfo(adminPromoCreate);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create a discount promo
+     * 
+     * @param adminPromoCreate  (required)
+     * @return ApiResponse&lt;CloudAdminAdminCreatePromo201Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request — percentOff out of [0,100] or end &lt;&#x3D; start </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CloudAdminAdminCreatePromo201Response> cloudAdminAdminCreatePromoWithHttpInfo(@javax.annotation.Nonnull AdminPromoCreate adminPromoCreate) throws ApiException {
+        okhttp3.Call localVarCall = cloudAdminAdminCreatePromoValidateBeforeCall(adminPromoCreate, null);
+        Type localVarReturnType = new TypeToken<CloudAdminAdminCreatePromo201Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create a discount promo (asynchronously)
+     * 
+     * @param adminPromoCreate  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request — percentOff out of [0,100] or end &lt;&#x3D; start </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call cloudAdminAdminCreatePromoAsync(@javax.annotation.Nonnull AdminPromoCreate adminPromoCreate, final ApiCallback<CloudAdminAdminCreatePromo201Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = cloudAdminAdminCreatePromoValidateBeforeCall(adminPromoCreate, _callback);
+        Type localVarReturnType = new TypeToken<CloudAdminAdminCreatePromo201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

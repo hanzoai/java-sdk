@@ -140,8 +140,8 @@ public class DnsApi {
     }
 
     /**
-     * 
-     * 
+     * Delete a DNS zone or record
+     * Removes a DNS zone or record from the Hanzo DNS control plane. The plane owns the authoritative zone and record store behind every name pointed at Hanzo; this head keeps none of it. The sub-path after /v1/dns and the query string ARE the plane&#39;s own API address, relayed verbatim, and the plane&#39;s answer comes back unchanged — its status code, its Content-Type, and its Location on a redirect this head never follows.  It travels under the CALLER&#39;S OWN identity and substitutes no service credential, which would collapse tenants: the caller&#39;s validated session bearer goes upstream as Authorization and the server-validated org as X-Org-Id, so a caller in one org reaches only that org&#39;s zones, exactly as if it had called the plane directly. The upstream host comes only from deployment config, never from the request, so no path can re-target another host.  Fails closed before a byte leaves cloud: no validated principal is 403; an API key is 401, because an hk-/sk- key is not a JWT the OIDC-gated plane can validate and there is no substitute credential to send in its place; a path that normalizes outside /v1/dns, or still carries a percent-escape or a &#x60;..&#x60; after one decode, is 400; an unconfigured plane is 503 and an unreachable one 502.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -156,8 +156,8 @@ public class DnsApi {
     }
 
     /**
-     * 
-     * 
+     * Delete a DNS zone or record
+     * Removes a DNS zone or record from the Hanzo DNS control plane. The plane owns the authoritative zone and record store behind every name pointed at Hanzo; this head keeps none of it. The sub-path after /v1/dns and the query string ARE the plane&#39;s own API address, relayed verbatim, and the plane&#39;s answer comes back unchanged — its status code, its Content-Type, and its Location on a redirect this head never follows.  It travels under the CALLER&#39;S OWN identity and substitutes no service credential, which would collapse tenants: the caller&#39;s validated session bearer goes upstream as Authorization and the server-validated org as X-Org-Id, so a caller in one org reaches only that org&#39;s zones, exactly as if it had called the plane directly. The upstream host comes only from deployment config, never from the request, so no path can re-target another host.  Fails closed before a byte leaves cloud: no validated principal is 403; an API key is 401, because an hk-/sk- key is not a JWT the OIDC-gated plane can validate and there is no substitute credential to send in its place; a path that normalizes outside /v1/dns, or still carries a percent-escape or a &#x60;..&#x60; after one decode, is 400; an unconfigured plane is 503 and an unreachable one 502.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -174,8 +174,8 @@ public class DnsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Delete a DNS zone or record (asynchronously)
+     * Removes a DNS zone or record from the Hanzo DNS control plane. The plane owns the authoritative zone and record store behind every name pointed at Hanzo; this head keeps none of it. The sub-path after /v1/dns and the query string ARE the plane&#39;s own API address, relayed verbatim, and the plane&#39;s answer comes back unchanged — its status code, its Content-Type, and its Location on a redirect this head never follows.  It travels under the CALLER&#39;S OWN identity and substitutes no service credential, which would collapse tenants: the caller&#39;s validated session bearer goes upstream as Authorization and the server-validated org as X-Org-Id, so a caller in one org reaches only that org&#39;s zones, exactly as if it had called the plane directly. The upstream host comes only from deployment config, never from the request, so no path can re-target another host.  Fails closed before a byte leaves cloud: no validated principal is 403; an API key is 401, because an hk-/sk- key is not a JWT the OIDC-gated plane can validate and there is no substitute credential to send in its place; a path that normalizes outside /v1/dns, or still carries a percent-escape or a &#x60;..&#x60; after one decode, is 400; an unconfigured plane is 503 and an unreachable one 502.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -262,8 +262,8 @@ public class DnsApi {
     }
 
     /**
-     * 
-     * 
+     * Read your org&#39;s DNS zones and records
+     * Reads DNS state — a zone, a record, a listing — from the Hanzo DNS control plane. The plane owns the authoritative zone and record store behind every name pointed at Hanzo; this head keeps none of it. The sub-path after /v1/dns and the query string ARE the plane&#39;s own API address, relayed verbatim, and the plane&#39;s answer comes back unchanged — its status code, its Content-Type, and its Location on a redirect this head never follows.  It travels under the CALLER&#39;S OWN identity and substitutes no service credential, which would collapse tenants: the caller&#39;s validated session bearer goes upstream as Authorization and the server-validated org as X-Org-Id, so a caller in one org reaches only that org&#39;s zones, exactly as if it had called the plane directly. The upstream host comes only from deployment config, never from the request, so no path can re-target another host.  Fails closed before a byte leaves cloud: no validated principal is 403; an API key is 401, because an hk-/sk- key is not a JWT the OIDC-gated plane can validate and there is no substitute credential to send in its place; a path that normalizes outside /v1/dns, or still carries a percent-escape or a &#x60;..&#x60; after one decode, is 400; an unconfigured plane is 503 and an unreachable one 502.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -278,8 +278,8 @@ public class DnsApi {
     }
 
     /**
-     * 
-     * 
+     * Read your org&#39;s DNS zones and records
+     * Reads DNS state — a zone, a record, a listing — from the Hanzo DNS control plane. The plane owns the authoritative zone and record store behind every name pointed at Hanzo; this head keeps none of it. The sub-path after /v1/dns and the query string ARE the plane&#39;s own API address, relayed verbatim, and the plane&#39;s answer comes back unchanged — its status code, its Content-Type, and its Location on a redirect this head never follows.  It travels under the CALLER&#39;S OWN identity and substitutes no service credential, which would collapse tenants: the caller&#39;s validated session bearer goes upstream as Authorization and the server-validated org as X-Org-Id, so a caller in one org reaches only that org&#39;s zones, exactly as if it had called the plane directly. The upstream host comes only from deployment config, never from the request, so no path can re-target another host.  Fails closed before a byte leaves cloud: no validated principal is 403; an API key is 401, because an hk-/sk- key is not a JWT the OIDC-gated plane can validate and there is no substitute credential to send in its place; a path that normalizes outside /v1/dns, or still carries a percent-escape or a &#x60;..&#x60; after one decode, is 400; an unconfigured plane is 503 and an unreachable one 502.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -296,8 +296,8 @@ public class DnsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Read your org&#39;s DNS zones and records (asynchronously)
+     * Reads DNS state — a zone, a record, a listing — from the Hanzo DNS control plane. The plane owns the authoritative zone and record store behind every name pointed at Hanzo; this head keeps none of it. The sub-path after /v1/dns and the query string ARE the plane&#39;s own API address, relayed verbatim, and the plane&#39;s answer comes back unchanged — its status code, its Content-Type, and its Location on a redirect this head never follows.  It travels under the CALLER&#39;S OWN identity and substitutes no service credential, which would collapse tenants: the caller&#39;s validated session bearer goes upstream as Authorization and the server-validated org as X-Org-Id, so a caller in one org reaches only that org&#39;s zones, exactly as if it had called the plane directly. The upstream host comes only from deployment config, never from the request, so no path can re-target another host.  Fails closed before a byte leaves cloud: no validated principal is 403; an API key is 401, because an hk-/sk- key is not a JWT the OIDC-gated plane can validate and there is no substitute credential to send in its place; a path that normalizes outside /v1/dns, or still carries a percent-escape or a &#x60;..&#x60; after one decode, is 400; an unconfigured plane is 503 and an unreachable one 502.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -384,8 +384,8 @@ public class DnsApi {
     }
 
     /**
-     * 
-     * 
+     * Not served by the DNS surface
+     * Published because this address accepts every method, but the DNS surface routes nothing here: no zone or record is read or changed. The plane owns the authoritative zone and record store behind every name pointed at Hanzo; this head keeps none of it. The sub-path after /v1/dns and the query string ARE the plane&#39;s own API address, relayed verbatim, and the plane&#39;s answer comes back unchanged — its status code, its Content-Type, and its Location on a redirect this head never follows.  It travels under the CALLER&#39;S OWN identity and substitutes no service credential, which would collapse tenants: the caller&#39;s validated session bearer goes upstream as Authorization and the server-validated org as X-Org-Id, so a caller in one org reaches only that org&#39;s zones, exactly as if it had called the plane directly. The upstream host comes only from deployment config, never from the request, so no path can re-target another host.  Fails closed before a byte leaves cloud: no validated principal is 403; an API key is 401, because an hk-/sk- key is not a JWT the OIDC-gated plane can validate and there is no substitute credential to send in its place; a path that normalizes outside /v1/dns, or still carries a percent-escape or a &#x60;..&#x60; after one decode, is 400; an unconfigured plane is 503 and an unreachable one 502.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -400,8 +400,8 @@ public class DnsApi {
     }
 
     /**
-     * 
-     * 
+     * Not served by the DNS surface
+     * Published because this address accepts every method, but the DNS surface routes nothing here: no zone or record is read or changed. The plane owns the authoritative zone and record store behind every name pointed at Hanzo; this head keeps none of it. The sub-path after /v1/dns and the query string ARE the plane&#39;s own API address, relayed verbatim, and the plane&#39;s answer comes back unchanged — its status code, its Content-Type, and its Location on a redirect this head never follows.  It travels under the CALLER&#39;S OWN identity and substitutes no service credential, which would collapse tenants: the caller&#39;s validated session bearer goes upstream as Authorization and the server-validated org as X-Org-Id, so a caller in one org reaches only that org&#39;s zones, exactly as if it had called the plane directly. The upstream host comes only from deployment config, never from the request, so no path can re-target another host.  Fails closed before a byte leaves cloud: no validated principal is 403; an API key is 401, because an hk-/sk- key is not a JWT the OIDC-gated plane can validate and there is no substitute credential to send in its place; a path that normalizes outside /v1/dns, or still carries a percent-escape or a &#x60;..&#x60; after one decode, is 400; an unconfigured plane is 503 and an unreachable one 502.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -418,8 +418,8 @@ public class DnsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Not served by the DNS surface (asynchronously)
+     * Published because this address accepts every method, but the DNS surface routes nothing here: no zone or record is read or changed. The plane owns the authoritative zone and record store behind every name pointed at Hanzo; this head keeps none of it. The sub-path after /v1/dns and the query string ARE the plane&#39;s own API address, relayed verbatim, and the plane&#39;s answer comes back unchanged — its status code, its Content-Type, and its Location on a redirect this head never follows.  It travels under the CALLER&#39;S OWN identity and substitutes no service credential, which would collapse tenants: the caller&#39;s validated session bearer goes upstream as Authorization and the server-validated org as X-Org-Id, so a caller in one org reaches only that org&#39;s zones, exactly as if it had called the plane directly. The upstream host comes only from deployment config, never from the request, so no path can re-target another host.  Fails closed before a byte leaves cloud: no validated principal is 403; an API key is 401, because an hk-/sk- key is not a JWT the OIDC-gated plane can validate and there is no substitute credential to send in its place; a path that normalizes outside /v1/dns, or still carries a percent-escape or a &#x60;..&#x60; after one decode, is 400; an unconfigured plane is 503 and an unreachable one 502.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -506,8 +506,8 @@ public class DnsApi {
     }
 
     /**
-     * 
-     * 
+     * Amend a DNS zone or record
+     * Amends a DNS zone or record on the Hanzo DNS control plane. The plane owns the authoritative zone and record store behind every name pointed at Hanzo; this head keeps none of it. The sub-path after /v1/dns and the query string ARE the plane&#39;s own API address, relayed verbatim, and the plane&#39;s answer comes back unchanged — its status code, its Content-Type, and its Location on a redirect this head never follows.  It travels under the CALLER&#39;S OWN identity and substitutes no service credential, which would collapse tenants: the caller&#39;s validated session bearer goes upstream as Authorization and the server-validated org as X-Org-Id, so a caller in one org reaches only that org&#39;s zones, exactly as if it had called the plane directly. The upstream host comes only from deployment config, never from the request, so no path can re-target another host.  Fails closed before a byte leaves cloud: no validated principal is 403; an API key is 401, because an hk-/sk- key is not a JWT the OIDC-gated plane can validate and there is no substitute credential to send in its place; a path that normalizes outside /v1/dns, or still carries a percent-escape or a &#x60;..&#x60; after one decode, is 400; an unconfigured plane is 503 and an unreachable one 502.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -522,8 +522,8 @@ public class DnsApi {
     }
 
     /**
-     * 
-     * 
+     * Amend a DNS zone or record
+     * Amends a DNS zone or record on the Hanzo DNS control plane. The plane owns the authoritative zone and record store behind every name pointed at Hanzo; this head keeps none of it. The sub-path after /v1/dns and the query string ARE the plane&#39;s own API address, relayed verbatim, and the plane&#39;s answer comes back unchanged — its status code, its Content-Type, and its Location on a redirect this head never follows.  It travels under the CALLER&#39;S OWN identity and substitutes no service credential, which would collapse tenants: the caller&#39;s validated session bearer goes upstream as Authorization and the server-validated org as X-Org-Id, so a caller in one org reaches only that org&#39;s zones, exactly as if it had called the plane directly. The upstream host comes only from deployment config, never from the request, so no path can re-target another host.  Fails closed before a byte leaves cloud: no validated principal is 403; an API key is 401, because an hk-/sk- key is not a JWT the OIDC-gated plane can validate and there is no substitute credential to send in its place; a path that normalizes outside /v1/dns, or still carries a percent-escape or a &#x60;..&#x60; after one decode, is 400; an unconfigured plane is 503 and an unreachable one 502.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -540,8 +540,8 @@ public class DnsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Amend a DNS zone or record (asynchronously)
+     * Amends a DNS zone or record on the Hanzo DNS control plane. The plane owns the authoritative zone and record store behind every name pointed at Hanzo; this head keeps none of it. The sub-path after /v1/dns and the query string ARE the plane&#39;s own API address, relayed verbatim, and the plane&#39;s answer comes back unchanged — its status code, its Content-Type, and its Location on a redirect this head never follows.  It travels under the CALLER&#39;S OWN identity and substitutes no service credential, which would collapse tenants: the caller&#39;s validated session bearer goes upstream as Authorization and the server-validated org as X-Org-Id, so a caller in one org reaches only that org&#39;s zones, exactly as if it had called the plane directly. The upstream host comes only from deployment config, never from the request, so no path can re-target another host.  Fails closed before a byte leaves cloud: no validated principal is 403; an API key is 401, because an hk-/sk- key is not a JWT the OIDC-gated plane can validate and there is no substitute credential to send in its place; a path that normalizes outside /v1/dns, or still carries a percent-escape or a &#x60;..&#x60; after one decode, is 400; an unconfigured plane is 503 and an unreachable one 502.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -628,8 +628,8 @@ public class DnsApi {
     }
 
     /**
-     * 
-     * 
+     * Create a DNS zone or record
+     * Creates DNS state — a zone, a record — on the Hanzo DNS control plane. The plane owns the authoritative zone and record store behind every name pointed at Hanzo; this head keeps none of it. The sub-path after /v1/dns and the query string ARE the plane&#39;s own API address, relayed verbatim, and the plane&#39;s answer comes back unchanged — its status code, its Content-Type, and its Location on a redirect this head never follows.  It travels under the CALLER&#39;S OWN identity and substitutes no service credential, which would collapse tenants: the caller&#39;s validated session bearer goes upstream as Authorization and the server-validated org as X-Org-Id, so a caller in one org reaches only that org&#39;s zones, exactly as if it had called the plane directly. The upstream host comes only from deployment config, never from the request, so no path can re-target another host.  Fails closed before a byte leaves cloud: no validated principal is 403; an API key is 401, because an hk-/sk- key is not a JWT the OIDC-gated plane can validate and there is no substitute credential to send in its place; a path that normalizes outside /v1/dns, or still carries a percent-escape or a &#x60;..&#x60; after one decode, is 400; an unconfigured plane is 503 and an unreachable one 502.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -644,8 +644,8 @@ public class DnsApi {
     }
 
     /**
-     * 
-     * 
+     * Create a DNS zone or record
+     * Creates DNS state — a zone, a record — on the Hanzo DNS control plane. The plane owns the authoritative zone and record store behind every name pointed at Hanzo; this head keeps none of it. The sub-path after /v1/dns and the query string ARE the plane&#39;s own API address, relayed verbatim, and the plane&#39;s answer comes back unchanged — its status code, its Content-Type, and its Location on a redirect this head never follows.  It travels under the CALLER&#39;S OWN identity and substitutes no service credential, which would collapse tenants: the caller&#39;s validated session bearer goes upstream as Authorization and the server-validated org as X-Org-Id, so a caller in one org reaches only that org&#39;s zones, exactly as if it had called the plane directly. The upstream host comes only from deployment config, never from the request, so no path can re-target another host.  Fails closed before a byte leaves cloud: no validated principal is 403; an API key is 401, because an hk-/sk- key is not a JWT the OIDC-gated plane can validate and there is no substitute credential to send in its place; a path that normalizes outside /v1/dns, or still carries a percent-escape or a &#x60;..&#x60; after one decode, is 400; an unconfigured plane is 503 and an unreachable one 502.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -662,8 +662,8 @@ public class DnsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Create a DNS zone or record (asynchronously)
+     * Creates DNS state — a zone, a record — on the Hanzo DNS control plane. The plane owns the authoritative zone and record store behind every name pointed at Hanzo; this head keeps none of it. The sub-path after /v1/dns and the query string ARE the plane&#39;s own API address, relayed verbatim, and the plane&#39;s answer comes back unchanged — its status code, its Content-Type, and its Location on a redirect this head never follows.  It travels under the CALLER&#39;S OWN identity and substitutes no service credential, which would collapse tenants: the caller&#39;s validated session bearer goes upstream as Authorization and the server-validated org as X-Org-Id, so a caller in one org reaches only that org&#39;s zones, exactly as if it had called the plane directly. The upstream host comes only from deployment config, never from the request, so no path can re-target another host.  Fails closed before a byte leaves cloud: no validated principal is 403; an API key is 401, because an hk-/sk- key is not a JWT the OIDC-gated plane can validate and there is no substitute credential to send in its place; a path that normalizes outside /v1/dns, or still carries a percent-escape or a &#x60;..&#x60; after one decode, is 400; an unconfigured plane is 503 and an unreachable one 502.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -750,8 +750,8 @@ public class DnsApi {
     }
 
     /**
-     * 
-     * 
+     * Replace a DNS zone or record
+     * Replaces a DNS zone or record on the Hanzo DNS control plane. The plane owns the authoritative zone and record store behind every name pointed at Hanzo; this head keeps none of it. The sub-path after /v1/dns and the query string ARE the plane&#39;s own API address, relayed verbatim, and the plane&#39;s answer comes back unchanged — its status code, its Content-Type, and its Location on a redirect this head never follows.  It travels under the CALLER&#39;S OWN identity and substitutes no service credential, which would collapse tenants: the caller&#39;s validated session bearer goes upstream as Authorization and the server-validated org as X-Org-Id, so a caller in one org reaches only that org&#39;s zones, exactly as if it had called the plane directly. The upstream host comes only from deployment config, never from the request, so no path can re-target another host.  Fails closed before a byte leaves cloud: no validated principal is 403; an API key is 401, because an hk-/sk- key is not a JWT the OIDC-gated plane can validate and there is no substitute credential to send in its place; a path that normalizes outside /v1/dns, or still carries a percent-escape or a &#x60;..&#x60; after one decode, is 400; an unconfigured plane is 503 and an unreachable one 502.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -766,8 +766,8 @@ public class DnsApi {
     }
 
     /**
-     * 
-     * 
+     * Replace a DNS zone or record
+     * Replaces a DNS zone or record on the Hanzo DNS control plane. The plane owns the authoritative zone and record store behind every name pointed at Hanzo; this head keeps none of it. The sub-path after /v1/dns and the query string ARE the plane&#39;s own API address, relayed verbatim, and the plane&#39;s answer comes back unchanged — its status code, its Content-Type, and its Location on a redirect this head never follows.  It travels under the CALLER&#39;S OWN identity and substitutes no service credential, which would collapse tenants: the caller&#39;s validated session bearer goes upstream as Authorization and the server-validated org as X-Org-Id, so a caller in one org reaches only that org&#39;s zones, exactly as if it had called the plane directly. The upstream host comes only from deployment config, never from the request, so no path can re-target another host.  Fails closed before a byte leaves cloud: no validated principal is 403; an API key is 401, because an hk-/sk- key is not a JWT the OIDC-gated plane can validate and there is no substitute credential to send in its place; a path that normalizes outside /v1/dns, or still carries a percent-escape or a &#x60;..&#x60; after one decode, is 400; an unconfigured plane is 503 and an unreachable one 502.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -784,8 +784,8 @@ public class DnsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Replace a DNS zone or record (asynchronously)
+     * Replaces a DNS zone or record on the Hanzo DNS control plane. The plane owns the authoritative zone and record store behind every name pointed at Hanzo; this head keeps none of it. The sub-path after /v1/dns and the query string ARE the plane&#39;s own API address, relayed verbatim, and the plane&#39;s answer comes back unchanged — its status code, its Content-Type, and its Location on a redirect this head never follows.  It travels under the CALLER&#39;S OWN identity and substitutes no service credential, which would collapse tenants: the caller&#39;s validated session bearer goes upstream as Authorization and the server-validated org as X-Org-Id, so a caller in one org reaches only that org&#39;s zones, exactly as if it had called the plane directly. The upstream host comes only from deployment config, never from the request, so no path can re-target another host.  Fails closed before a byte leaves cloud: no validated principal is 403; an API key is 401, because an hk-/sk- key is not a JWT the OIDC-gated plane can validate and there is no substitute credential to send in its place; a path that normalizes outside /v1/dns, or still carries a percent-escape or a &#x60;..&#x60; after one decode, is 400; an unconfigured plane is 503 and an unreachable one 502.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -800,128 +800,6 @@ public class DnsApi {
     public okhttp3.Call cloudPutV1DnsByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudPutV1DnsByWildcard1ValidateBeforeCall(wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for cloudTraceV1DnsByWildcard1
-     * @param wildcard1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceV1DnsByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/dns/{wildcard1}"
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "TRACE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudTraceV1DnsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling cloudTraceV1DnsByWildcard1(Async)");
-        }
-
-        return cloudTraceV1DnsByWildcard1Call(wildcard1, _callback);
-
-    }
-
-    /**
-     * 
-     * 
-     * @param wildcard1  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public void cloudTraceV1DnsByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        cloudTraceV1DnsByWildcard1WithHttpInfo(wildcard1);
-    }
-
-    /**
-     * 
-     * 
-     * @param wildcard1  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> cloudTraceV1DnsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = cloudTraceV1DnsByWildcard1ValidateBeforeCall(wildcard1, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param wildcard1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceV1DnsByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = cloudTraceV1DnsByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

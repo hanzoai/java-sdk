@@ -14,7 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.MlModelArtifacts;
+import ai.hanzo.cloud.model.CloudPostV1MlModelsRequestArtifacts;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -144,7 +144,7 @@ public class MlModel {
   public static final String SERIALIZED_NAME_ARTIFACTS = "artifacts";
   @SerializedName(SERIALIZED_NAME_ARTIFACTS)
   @javax.annotation.Nullable
-  private MlModelArtifacts artifacts;
+  private CloudPostV1MlModelsRequestArtifacts artifacts;
 
   public static final String SERIALIZED_NAME_METRICS = "metrics";
   @SerializedName(SERIALIZED_NAME_METRICS)
@@ -278,7 +278,7 @@ public class MlModel {
   }
 
 
-  public MlModel artifacts(@javax.annotation.Nullable MlModelArtifacts artifacts) {
+  public MlModel artifacts(@javax.annotation.Nullable CloudPostV1MlModelsRequestArtifacts artifacts) {
     this.artifacts = artifacts;
     return this;
   }
@@ -288,11 +288,11 @@ public class MlModel {
    * @return artifacts
    */
   @javax.annotation.Nullable
-  public MlModelArtifacts getArtifacts() {
+  public CloudPostV1MlModelsRequestArtifacts getArtifacts() {
     return artifacts;
   }
 
-  public void setArtifacts(@javax.annotation.Nullable MlModelArtifacts artifacts) {
+  public void setArtifacts(@javax.annotation.Nullable CloudPostV1MlModelsRequestArtifacts artifacts) {
     this.artifacts = artifacts;
   }
 
@@ -483,7 +483,7 @@ public class MlModel {
       }
       // validate the optional field `artifacts`
       if (jsonObj.get("artifacts") != null && !jsonObj.get("artifacts").isJsonNull()) {
-        MlModelArtifacts.validateJsonElement(jsonObj.get("artifacts"));
+        CloudPostV1MlModelsRequestArtifacts.validateJsonElement(jsonObj.get("artifacts"));
       }
   }
 

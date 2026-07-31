@@ -136,8 +136,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * The org&#39;s Base content types
+     * Lists the content types in the org&#39;s managed Base, and creates one. This is what the console&#39;s Bases manager reads to render the schema.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -151,8 +151,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * The org&#39;s Base content types
+     * Lists the content types in the org&#39;s managed Base, and creates one. This is what the console&#39;s Bases manager reads to render the schema.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -168,8 +168,8 @@ public class CollectionsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The org&#39;s Base content types (asynchronously)
+     * Lists the content types in the org&#39;s managed Base, and creates one. This is what the console&#39;s Bases manager reads to render the schema.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -255,8 +255,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * One Base content type, and its records
+     * Reads and writes below the collections root: &#x60;meta/scaffolds&#x60; is the field-template palette a new content type is built from, &#x60;&lt;name&gt;&#x60; is one content type (view, update, delete), &#x60;&lt;name&gt;/records&#x60; is that type&#39;s rows (list, create) and &#x60;&lt;name&gt;/records/&lt;id&gt;&#x60; is one row (get, update, delete). This is the data plane behind the console&#39;s Records browser.  Any other shape below /v1/collections is refused with 404 before it is forwarded, so the wildcard admits exactly those five addresses and nothing more.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -271,8 +271,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * One Base content type, and its records
+     * Reads and writes below the collections root: &#x60;meta/scaffolds&#x60; is the field-template palette a new content type is built from, &#x60;&lt;name&gt;&#x60; is one content type (view, update, delete), &#x60;&lt;name&gt;/records&#x60; is that type&#39;s rows (list, create) and &#x60;&lt;name&gt;/records/&lt;id&gt;&#x60; is one row (get, update, delete). This is the data plane behind the console&#39;s Records browser.  Any other shape below /v1/collections is refused with 404 before it is forwarded, so the wildcard admits exactly those five addresses and nothing more.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -289,8 +289,8 @@ public class CollectionsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * One Base content type, and its records (asynchronously)
+     * Reads and writes below the collections root: &#x60;meta/scaffolds&#x60; is the field-template palette a new content type is built from, &#x60;&lt;name&gt;&#x60; is one content type (view, update, delete), &#x60;&lt;name&gt;/records&#x60; is that type&#39;s rows (list, create) and &#x60;&lt;name&gt;/records/&lt;id&gt;&#x60; is one row (get, update, delete). This is the data plane behind the console&#39;s Records browser.  Any other shape below /v1/collections is refused with 404 before it is forwarded, so the wildcard admits exactly those five addresses and nothing more.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -370,8 +370,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * The org&#39;s Base content types
+     * Lists the content types in the org&#39;s managed Base, and creates one. This is what the console&#39;s Bases manager reads to render the schema.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -385,8 +385,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * The org&#39;s Base content types
+     * Lists the content types in the org&#39;s managed Base, and creates one. This is what the console&#39;s Bases manager reads to render the schema.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -402,8 +402,8 @@ public class CollectionsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The org&#39;s Base content types (asynchronously)
+     * Lists the content types in the org&#39;s managed Base, and creates one. This is what the console&#39;s Bases manager reads to render the schema.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -489,8 +489,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * One Base content type, and its records
+     * Reads and writes below the collections root: &#x60;meta/scaffolds&#x60; is the field-template palette a new content type is built from, &#x60;&lt;name&gt;&#x60; is one content type (view, update, delete), &#x60;&lt;name&gt;/records&#x60; is that type&#39;s rows (list, create) and &#x60;&lt;name&gt;/records/&lt;id&gt;&#x60; is one row (get, update, delete). This is the data plane behind the console&#39;s Records browser.  Any other shape below /v1/collections is refused with 404 before it is forwarded, so the wildcard admits exactly those five addresses and nothing more.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -505,8 +505,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * One Base content type, and its records
+     * Reads and writes below the collections root: &#x60;meta/scaffolds&#x60; is the field-template palette a new content type is built from, &#x60;&lt;name&gt;&#x60; is one content type (view, update, delete), &#x60;&lt;name&gt;/records&#x60; is that type&#39;s rows (list, create) and &#x60;&lt;name&gt;/records/&lt;id&gt;&#x60; is one row (get, update, delete). This is the data plane behind the console&#39;s Records browser.  Any other shape below /v1/collections is refused with 404 before it is forwarded, so the wildcard admits exactly those five addresses and nothing more.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -523,8 +523,8 @@ public class CollectionsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * One Base content type, and its records (asynchronously)
+     * Reads and writes below the collections root: &#x60;meta/scaffolds&#x60; is the field-template palette a new content type is built from, &#x60;&lt;name&gt;&#x60; is one content type (view, update, delete), &#x60;&lt;name&gt;/records&#x60; is that type&#39;s rows (list, create) and &#x60;&lt;name&gt;/records/&lt;id&gt;&#x60; is one row (get, update, delete). This is the data plane behind the console&#39;s Records browser.  Any other shape below /v1/collections is refused with 404 before it is forwarded, so the wildcard admits exactly those five addresses and nothing more.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -604,8 +604,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * The org&#39;s Base content types
+     * Lists the content types in the org&#39;s managed Base, and creates one. This is what the console&#39;s Bases manager reads to render the schema.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -619,8 +619,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * The org&#39;s Base content types
+     * Lists the content types in the org&#39;s managed Base, and creates one. This is what the console&#39;s Bases manager reads to render the schema.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -636,8 +636,8 @@ public class CollectionsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The org&#39;s Base content types (asynchronously)
+     * Lists the content types in the org&#39;s managed Base, and creates one. This is what the console&#39;s Bases manager reads to render the schema.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -723,8 +723,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * One Base content type, and its records
+     * Reads and writes below the collections root: &#x60;meta/scaffolds&#x60; is the field-template palette a new content type is built from, &#x60;&lt;name&gt;&#x60; is one content type (view, update, delete), &#x60;&lt;name&gt;/records&#x60; is that type&#39;s rows (list, create) and &#x60;&lt;name&gt;/records/&lt;id&gt;&#x60; is one row (get, update, delete). This is the data plane behind the console&#39;s Records browser.  Any other shape below /v1/collections is refused with 404 before it is forwarded, so the wildcard admits exactly those five addresses and nothing more.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -739,8 +739,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * One Base content type, and its records
+     * Reads and writes below the collections root: &#x60;meta/scaffolds&#x60; is the field-template palette a new content type is built from, &#x60;&lt;name&gt;&#x60; is one content type (view, update, delete), &#x60;&lt;name&gt;/records&#x60; is that type&#39;s rows (list, create) and &#x60;&lt;name&gt;/records/&lt;id&gt;&#x60; is one row (get, update, delete). This is the data plane behind the console&#39;s Records browser.  Any other shape below /v1/collections is refused with 404 before it is forwarded, so the wildcard admits exactly those five addresses and nothing more.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -757,8 +757,8 @@ public class CollectionsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * One Base content type, and its records (asynchronously)
+     * Reads and writes below the collections root: &#x60;meta/scaffolds&#x60; is the field-template palette a new content type is built from, &#x60;&lt;name&gt;&#x60; is one content type (view, update, delete), &#x60;&lt;name&gt;/records&#x60; is that type&#39;s rows (list, create) and &#x60;&lt;name&gt;/records/&lt;id&gt;&#x60; is one row (get, update, delete). This is the data plane behind the console&#39;s Records browser.  Any other shape below /v1/collections is refused with 404 before it is forwarded, so the wildcard admits exactly those five addresses and nothing more.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -838,8 +838,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * The org&#39;s Base content types
+     * Lists the content types in the org&#39;s managed Base, and creates one. This is what the console&#39;s Bases manager reads to render the schema.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -853,8 +853,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * The org&#39;s Base content types
+     * Lists the content types in the org&#39;s managed Base, and creates one. This is what the console&#39;s Bases manager reads to render the schema.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -870,8 +870,8 @@ public class CollectionsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The org&#39;s Base content types (asynchronously)
+     * Lists the content types in the org&#39;s managed Base, and creates one. This is what the console&#39;s Bases manager reads to render the schema.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -957,8 +957,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * One Base content type, and its records
+     * Reads and writes below the collections root: &#x60;meta/scaffolds&#x60; is the field-template palette a new content type is built from, &#x60;&lt;name&gt;&#x60; is one content type (view, update, delete), &#x60;&lt;name&gt;/records&#x60; is that type&#39;s rows (list, create) and &#x60;&lt;name&gt;/records/&lt;id&gt;&#x60; is one row (get, update, delete). This is the data plane behind the console&#39;s Records browser.  Any other shape below /v1/collections is refused with 404 before it is forwarded, so the wildcard admits exactly those five addresses and nothing more.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -973,8 +973,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * One Base content type, and its records
+     * Reads and writes below the collections root: &#x60;meta/scaffolds&#x60; is the field-template palette a new content type is built from, &#x60;&lt;name&gt;&#x60; is one content type (view, update, delete), &#x60;&lt;name&gt;/records&#x60; is that type&#39;s rows (list, create) and &#x60;&lt;name&gt;/records/&lt;id&gt;&#x60; is one row (get, update, delete). This is the data plane behind the console&#39;s Records browser.  Any other shape below /v1/collections is refused with 404 before it is forwarded, so the wildcard admits exactly those five addresses and nothing more.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -991,8 +991,8 @@ public class CollectionsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * One Base content type, and its records (asynchronously)
+     * Reads and writes below the collections root: &#x60;meta/scaffolds&#x60; is the field-template palette a new content type is built from, &#x60;&lt;name&gt;&#x60; is one content type (view, update, delete), &#x60;&lt;name&gt;/records&#x60; is that type&#39;s rows (list, create) and &#x60;&lt;name&gt;/records/&lt;id&gt;&#x60; is one row (get, update, delete). This is the data plane behind the console&#39;s Records browser.  Any other shape below /v1/collections is refused with 404 before it is forwarded, so the wildcard admits exactly those five addresses and nothing more.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1072,8 +1072,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * The org&#39;s Base content types
+     * Lists the content types in the org&#39;s managed Base, and creates one. This is what the console&#39;s Bases manager reads to render the schema.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1087,8 +1087,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * The org&#39;s Base content types
+     * Lists the content types in the org&#39;s managed Base, and creates one. This is what the console&#39;s Bases manager reads to render the schema.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1104,8 +1104,8 @@ public class CollectionsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The org&#39;s Base content types (asynchronously)
+     * Lists the content types in the org&#39;s managed Base, and creates one. This is what the console&#39;s Bases manager reads to render the schema.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1191,8 +1191,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * One Base content type, and its records
+     * Reads and writes below the collections root: &#x60;meta/scaffolds&#x60; is the field-template palette a new content type is built from, &#x60;&lt;name&gt;&#x60; is one content type (view, update, delete), &#x60;&lt;name&gt;/records&#x60; is that type&#39;s rows (list, create) and &#x60;&lt;name&gt;/records/&lt;id&gt;&#x60; is one row (get, update, delete). This is the data plane behind the console&#39;s Records browser.  Any other shape below /v1/collections is refused with 404 before it is forwarded, so the wildcard admits exactly those five addresses and nothing more.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1207,8 +1207,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * One Base content type, and its records
+     * Reads and writes below the collections root: &#x60;meta/scaffolds&#x60; is the field-template palette a new content type is built from, &#x60;&lt;name&gt;&#x60; is one content type (view, update, delete), &#x60;&lt;name&gt;/records&#x60; is that type&#39;s rows (list, create) and &#x60;&lt;name&gt;/records/&lt;id&gt;&#x60; is one row (get, update, delete). This is the data plane behind the console&#39;s Records browser.  Any other shape below /v1/collections is refused with 404 before it is forwarded, so the wildcard admits exactly those five addresses and nothing more.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1225,8 +1225,8 @@ public class CollectionsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * One Base content type, and its records (asynchronously)
+     * Reads and writes below the collections root: &#x60;meta/scaffolds&#x60; is the field-template palette a new content type is built from, &#x60;&lt;name&gt;&#x60; is one content type (view, update, delete), &#x60;&lt;name&gt;/records&#x60; is that type&#39;s rows (list, create) and &#x60;&lt;name&gt;/records/&lt;id&gt;&#x60; is one row (get, update, delete). This is the data plane behind the console&#39;s Records browser.  Any other shape below /v1/collections is refused with 404 before it is forwarded, so the wildcard admits exactly those five addresses and nothing more.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1306,8 +1306,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * The org&#39;s Base content types
+     * Lists the content types in the org&#39;s managed Base, and creates one. This is what the console&#39;s Bases manager reads to render the schema.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1321,8 +1321,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * The org&#39;s Base content types
+     * Lists the content types in the org&#39;s managed Base, and creates one. This is what the console&#39;s Bases manager reads to render the schema.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1338,8 +1338,8 @@ public class CollectionsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The org&#39;s Base content types (asynchronously)
+     * Lists the content types in the org&#39;s managed Base, and creates one. This is what the console&#39;s Bases manager reads to render the schema.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1425,8 +1425,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * One Base content type, and its records
+     * Reads and writes below the collections root: &#x60;meta/scaffolds&#x60; is the field-template palette a new content type is built from, &#x60;&lt;name&gt;&#x60; is one content type (view, update, delete), &#x60;&lt;name&gt;/records&#x60; is that type&#39;s rows (list, create) and &#x60;&lt;name&gt;/records/&lt;id&gt;&#x60; is one row (get, update, delete). This is the data plane behind the console&#39;s Records browser.  Any other shape below /v1/collections is refused with 404 before it is forwarded, so the wildcard admits exactly those five addresses and nothing more.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1441,8 +1441,8 @@ public class CollectionsApi {
     }
 
     /**
-     * 
-     * 
+     * One Base content type, and its records
+     * Reads and writes below the collections root: &#x60;meta/scaffolds&#x60; is the field-template palette a new content type is built from, &#x60;&lt;name&gt;&#x60; is one content type (view, update, delete), &#x60;&lt;name&gt;/records&#x60; is that type&#39;s rows (list, create) and &#x60;&lt;name&gt;/records/&lt;id&gt;&#x60; is one row (get, update, delete). This is the data plane behind the console&#39;s Records browser.  Any other shape below /v1/collections is refused with 404 before it is forwarded, so the wildcard admits exactly those five addresses and nothing more.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1459,8 +1459,8 @@ public class CollectionsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * One Base content type, and its records (asynchronously)
+     * Reads and writes below the collections root: &#x60;meta/scaffolds&#x60; is the field-template palette a new content type is built from, &#x60;&lt;name&gt;&#x60; is one content type (view, update, delete), &#x60;&lt;name&gt;/records&#x60; is that type&#39;s rows (list, create) and &#x60;&lt;name&gt;/records/&lt;id&gt;&#x60; is one row (get, update, delete). This is the data plane behind the console&#39;s Records browser.  Any other shape below /v1/collections is refused with 404 before it is forwarded, so the wildcard admits exactly those five addresses and nothing more.  The path is forwarded to the managed Base unchanged and its answer comes back verbatim, so the schema, the records and every refusal are the managed Base&#39;s own.  AUTH is one credential, forwarded and never minted: cloud validates the caller&#39;s hanzo.id bearer and passes THAT SAME token on, because the managed Base scopes each row by the token&#39;s own subject. A caller with no validated principal is refused here, before the request leaves the process, and the org header that rides along is the one cloud validated — a client-forged org was stripped upstream.  This is a COLLECTIONS proxy, not a Base tunnel: only the collections data plane is admitted, and everything else the managed Base mounts — settings, backups, logs — is 404 here whatever the caller&#39;s rights on that deployment are.  One registration owns this address for every method, so which methods answer is the managed Base&#39;s decision, not this edge&#39;s.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1475,240 +1475,6 @@ public class CollectionsApi {
     public okhttp3.Call cloudPutV1CollectionsByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudPutV1CollectionsByWildcard1ValidateBeforeCall(wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for cloudTraceV1Collections
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceV1CollectionsCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/collections";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "TRACE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudTraceV1CollectionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudTraceV1CollectionsCall(_callback);
-
-    }
-
-    /**
-     * 
-     * 
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public void cloudTraceV1Collections() throws ApiException {
-        cloudTraceV1CollectionsWithHttpInfo();
-    }
-
-    /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> cloudTraceV1CollectionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudTraceV1CollectionsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceV1CollectionsAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = cloudTraceV1CollectionsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for cloudTraceV1CollectionsByWildcard1
-     * @param wildcard1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceV1CollectionsByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/collections/{wildcard1}"
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "TRACE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudTraceV1CollectionsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling cloudTraceV1CollectionsByWildcard1(Async)");
-        }
-
-        return cloudTraceV1CollectionsByWildcard1Call(wildcard1, _callback);
-
-    }
-
-    /**
-     * 
-     * 
-     * @param wildcard1  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public void cloudTraceV1CollectionsByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        cloudTraceV1CollectionsByWildcard1WithHttpInfo(wildcard1);
-    }
-
-    /**
-     * 
-     * 
-     * @param wildcard1  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> cloudTraceV1CollectionsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = cloudTraceV1CollectionsByWildcard1ValidateBeforeCall(wildcard1, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param wildcard1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceV1CollectionsByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = cloudTraceV1CollectionsByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

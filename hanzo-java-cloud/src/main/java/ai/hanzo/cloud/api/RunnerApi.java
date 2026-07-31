@@ -133,8 +133,8 @@ public class RunnerApi {
     }
 
     /**
-     * 
-     * 
+     * Self-publish releases this process has run
+     * Lists the platform&#39;s own release runs with their current state, so a release that answered 202 with an id can be followed to its end. SuperAdmin only — this is the platform&#39;s own publishing record, not a tenant surface.  The record lives in THIS process&#39;s memory, so it covers the releases this instance started and does not survive a restart.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -148,8 +148,8 @@ public class RunnerApi {
     }
 
     /**
-     * 
-     * 
+     * Self-publish releases this process has run
+     * Lists the platform&#39;s own release runs with their current state, so a release that answered 202 with an id can be followed to its end. SuperAdmin only — this is the platform&#39;s own publishing record, not a tenant surface.  The record lives in THIS process&#39;s memory, so it covers the releases this instance started and does not survive a restart.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -165,8 +165,8 @@ public class RunnerApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Self-publish releases this process has run (asynchronously)
+     * Lists the platform&#39;s own release runs with their current state, so a release that answered 202 with an id can be followed to its end. SuperAdmin only — this is the platform&#39;s own publishing record, not a tenant surface.  The record lives in THIS process&#39;s memory, so it covers the releases this instance started and does not survive a restart.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -252,8 +252,8 @@ public class RunnerApi {
     }
 
     /**
-     * 
-     * 
+     * One self-publish release by the id its 202 returned
+     * Returns the state of one release run — which is the whole reason the trigger answers with an id, because without this a release that died in the detached pipeline would look exactly like one still in flight. SuperAdmin only.  A 404 means the id is unknown OR has aged out of this process&#39;s in-memory record. That is the honest answer either way: the process genuinely cannot tell the two apart.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -268,8 +268,8 @@ public class RunnerApi {
     }
 
     /**
-     * 
-     * 
+     * One self-publish release by the id its 202 returned
+     * Returns the state of one release run — which is the whole reason the trigger answers with an id, because without this a release that died in the detached pipeline would look exactly like one still in flight. SuperAdmin only.  A 404 means the id is unknown OR has aged out of this process&#39;s in-memory record. That is the honest answer either way: the process genuinely cannot tell the two apart.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -286,8 +286,8 @@ public class RunnerApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * One self-publish release by the id its 202 returned (asynchronously)
+     * Returns the state of one release run — which is the whole reason the trigger answers with an id, because without this a release that died in the detached pipeline would look exactly like one still in flight. SuperAdmin only.  A 404 means the id is unknown OR has aged out of this process&#39;s in-memory record. That is the honest answer either way: the process genuinely cannot tell the two apart.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -367,8 +367,8 @@ public class RunnerApi {
     }
 
     /**
-     * 
-     * 
+     * Trigger a native build — an image, or the binaries a repo declares
+     * The fabric&#39;s own build trigger, and what &#x60;hanzo build&#x60;, git-push-to-deploy and cloud&#39;s own self-release all call. It answers 202 with the build job id: a queued build, not a pushed artifact.  Two lanes, and a build is exactly one of them. The IMAGE lane takes &#x60;repo&#x60; and the output &#x60;image&#x60; and launches a BuildKit Job that pushes it. The ARTIFACT lane takes &#x60;binaries&#x60; — the same recipe the repo&#39;s hanzo.yml declares — and publishes to object storage instead; it must carry no &#x60;image&#x60;, because a build produces binaries or an image, never both. &#x60;release: true&#x60; is the third mode: cloud self-publishing its own image, version computed, built, smoke-tested, tagged and announced.  PRIVILEGED, with exactly two credentials and never a third: the shared build-callback token compared in constant time — the machine path, which a user never holds — or a validated IAM principal who is an ADMIN of their org, which is the &#x60;hanzo build&#x60; user path and means one IAM login authorizes a build with no separate build token. A plain member is refused.  Both paths are bounded the same way: the output must push to a registry the fabric owns, and on the IAM path the image&#39;s registry namespace must MATCH the caller&#39;s own validated org — so an org admin can only publish into their own brand and can never overwrite another&#39;s through the shared push credential. The same confinement applies to the artifact lane&#39;s repo owner. Cutting a release is IAM&#39;s decision alone: the build token may enqueue a build but may not cut one.  The output image is parsed and validated as a single well-formed OCI ref before any authorization decision reads it, so a crafted ref cannot smuggle a build-exporter attribute past the check.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -382,8 +382,8 @@ public class RunnerApi {
     }
 
     /**
-     * 
-     * 
+     * Trigger a native build — an image, or the binaries a repo declares
+     * The fabric&#39;s own build trigger, and what &#x60;hanzo build&#x60;, git-push-to-deploy and cloud&#39;s own self-release all call. It answers 202 with the build job id: a queued build, not a pushed artifact.  Two lanes, and a build is exactly one of them. The IMAGE lane takes &#x60;repo&#x60; and the output &#x60;image&#x60; and launches a BuildKit Job that pushes it. The ARTIFACT lane takes &#x60;binaries&#x60; — the same recipe the repo&#39;s hanzo.yml declares — and publishes to object storage instead; it must carry no &#x60;image&#x60;, because a build produces binaries or an image, never both. &#x60;release: true&#x60; is the third mode: cloud self-publishing its own image, version computed, built, smoke-tested, tagged and announced.  PRIVILEGED, with exactly two credentials and never a third: the shared build-callback token compared in constant time — the machine path, which a user never holds — or a validated IAM principal who is an ADMIN of their org, which is the &#x60;hanzo build&#x60; user path and means one IAM login authorizes a build with no separate build token. A plain member is refused.  Both paths are bounded the same way: the output must push to a registry the fabric owns, and on the IAM path the image&#39;s registry namespace must MATCH the caller&#39;s own validated org — so an org admin can only publish into their own brand and can never overwrite another&#39;s through the shared push credential. The same confinement applies to the artifact lane&#39;s repo owner. Cutting a release is IAM&#39;s decision alone: the build token may enqueue a build but may not cut one.  The output image is parsed and validated as a single well-formed OCI ref before any authorization decision reads it, so a crafted ref cannot smuggle a build-exporter attribute past the check.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -399,8 +399,8 @@ public class RunnerApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Trigger a native build — an image, or the binaries a repo declares (asynchronously)
+     * The fabric&#39;s own build trigger, and what &#x60;hanzo build&#x60;, git-push-to-deploy and cloud&#39;s own self-release all call. It answers 202 with the build job id: a queued build, not a pushed artifact.  Two lanes, and a build is exactly one of them. The IMAGE lane takes &#x60;repo&#x60; and the output &#x60;image&#x60; and launches a BuildKit Job that pushes it. The ARTIFACT lane takes &#x60;binaries&#x60; — the same recipe the repo&#39;s hanzo.yml declares — and publishes to object storage instead; it must carry no &#x60;image&#x60;, because a build produces binaries or an image, never both. &#x60;release: true&#x60; is the third mode: cloud self-publishing its own image, version computed, built, smoke-tested, tagged and announced.  PRIVILEGED, with exactly two credentials and never a third: the shared build-callback token compared in constant time — the machine path, which a user never holds — or a validated IAM principal who is an ADMIN of their org, which is the &#x60;hanzo build&#x60; user path and means one IAM login authorizes a build with no separate build token. A plain member is refused.  Both paths are bounded the same way: the output must push to a registry the fabric owns, and on the IAM path the image&#39;s registry namespace must MATCH the caller&#39;s own validated org — so an org admin can only publish into their own brand and can never overwrite another&#39;s through the shared push credential. The same confinement applies to the artifact lane&#39;s repo owner. Cutting a release is IAM&#39;s decision alone: the build token may enqueue a build but may not cut one.  The output image is parsed and validated as a single well-formed OCI ref before any authorization decision reads it, so a crafted ref cannot smuggle a build-exporter attribute past the check.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

@@ -37,6 +37,8 @@ import ai.hanzo.cloud.model.CloudIngestOut;
 import ai.hanzo.cloud.model.CloudIngestRequest;
 import ai.hanzo.cloud.model.CloudProjectsOut;
 import ai.hanzo.cloud.model.CloudResearchTotals;
+import java.io.File;
+import ai.hanzo.cloud.model.ResearchError;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -224,7 +226,8 @@ public class ResearchApi {
     }
     /**
      * Build call for cloudGetV1ResearchArtifactsBySha256
-     * @param sha256  (required)
+     * @param sha256 The artifact content hash. (required)
+     * @param project  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -232,10 +235,12 @@ public class ResearchApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The artifact bytes </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Missing validated principal (X-Org-Id required) </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1ResearchArtifactsBySha256Call(@javax.annotation.Nonnull String sha256, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1ResearchArtifactsBySha256Call(@javax.annotation.Nonnull String sha256, @javax.annotation.Nullable String project, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -261,7 +266,14 @@ public class ResearchApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (project != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("project", project));
+        }
+
         final String[] localVarAccepts = {
+            "application/octet-stream",
+            "image/png",
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -280,54 +292,64 @@ public class ResearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudGetV1ResearchArtifactsBySha256ValidateBeforeCall(@javax.annotation.Nonnull String sha256, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudGetV1ResearchArtifactsBySha256ValidateBeforeCall(@javax.annotation.Nonnull String sha256, @javax.annotation.Nullable String project, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'sha256' is set
         if (sha256 == null) {
             throw new ApiException("Missing the required parameter 'sha256' when calling cloudGetV1ResearchArtifactsBySha256(Async)");
         }
 
-        return cloudGetV1ResearchArtifactsBySha256Call(sha256, _callback);
+        return cloudGetV1ResearchArtifactsBySha256Call(sha256, project, _callback);
 
     }
 
     /**
-     * 
-     * 
-     * @param sha256  (required)
+     * Fetch one recorded artifact&#39;s bytes by its content hash.
+     * Streams the artifact&#39;s stored bytes — the retrieval half of hash-addressing, where the diary feed hands out hashes and this hands back what they name. The Content-Type is image/png when the artifact was recorded as a snapshot and application/octet-stream otherwise; it comes from the recorded KIND, not from sniffing the bytes, so an artifact filed as a report always arrives as opaque bytes.  The hash is an address, and the read is NOT global. The store file IS the org, so the same bytes recorded by two tenants are two artifacts, and a hash that exists but belongs to somebody else is a 404 exactly like one that was never recorded — knowing a content hash is never enough to read it. A caller with no validated org is refused 403 outright.  Project narrows further INSIDE that org: the artifact&#39;s project must equal the caller&#39;s, which is &#x60;?project&#x3D;&#x60; when given and otherwise the caller&#39;s own project scope, defaulting to the default project. So an artifact filed under a named project is not found until the caller names that project — a mismatch is the same 404 an unknown hash gets, never a distinguishable refusal.  The address can be trusted because the WRITE derived it: the server hashes the bytes it stores, inside the trust boundary, and refuses a client-supplied sha256 that disagrees with them, so poisoning a first write would take a preimage. This read does not re-hash — it looks the hash up as a key.  One shape to expect: this route writes its errors IN-BAND as {\&quot;error\&quot;: …} at the real status code, not the {status, error} envelope the typed ops beside it return. It is mounted under an error-flattening filter that would otherwise rewrite its 4xx, so the body is written before that filter runs. A store that cannot be opened is a 500.
+     * @param sha256 The artifact content hash. (required)
+     * @param project  (optional)
+     * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The artifact bytes </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Missing validated principal (X-Org-Id required) </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1ResearchArtifactsBySha256(@javax.annotation.Nonnull String sha256) throws ApiException {
-        cloudGetV1ResearchArtifactsBySha256WithHttpInfo(sha256);
+    public File cloudGetV1ResearchArtifactsBySha256(@javax.annotation.Nonnull String sha256, @javax.annotation.Nullable String project) throws ApiException {
+        ApiResponse<File> localVarResp = cloudGetV1ResearchArtifactsBySha256WithHttpInfo(sha256, project);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param sha256  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Fetch one recorded artifact&#39;s bytes by its content hash.
+     * Streams the artifact&#39;s stored bytes — the retrieval half of hash-addressing, where the diary feed hands out hashes and this hands back what they name. The Content-Type is image/png when the artifact was recorded as a snapshot and application/octet-stream otherwise; it comes from the recorded KIND, not from sniffing the bytes, so an artifact filed as a report always arrives as opaque bytes.  The hash is an address, and the read is NOT global. The store file IS the org, so the same bytes recorded by two tenants are two artifacts, and a hash that exists but belongs to somebody else is a 404 exactly like one that was never recorded — knowing a content hash is never enough to read it. A caller with no validated org is refused 403 outright.  Project narrows further INSIDE that org: the artifact&#39;s project must equal the caller&#39;s, which is &#x60;?project&#x3D;&#x60; when given and otherwise the caller&#39;s own project scope, defaulting to the default project. So an artifact filed under a named project is not found until the caller names that project — a mismatch is the same 404 an unknown hash gets, never a distinguishable refusal.  The address can be trusted because the WRITE derived it: the server hashes the bytes it stores, inside the trust boundary, and refuses a client-supplied sha256 that disagrees with them, so poisoning a first write would take a preimage. This read does not re-hash — it looks the hash up as a key.  One shape to expect: this route writes its errors IN-BAND as {\&quot;error\&quot;: …} at the real status code, not the {status, error} envelope the typed ops beside it return. It is mounted under an error-flattening filter that would otherwise rewrite its 4xx, so the body is written before that filter runs. A store that cannot be opened is a 500.
+     * @param sha256 The artifact content hash. (required)
+     * @param project  (optional)
+     * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The artifact bytes </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Missing validated principal (X-Org-Id required) </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1ResearchArtifactsBySha256WithHttpInfo(@javax.annotation.Nonnull String sha256) throws ApiException {
-        okhttp3.Call localVarCall = cloudGetV1ResearchArtifactsBySha256ValidateBeforeCall(sha256, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<File> cloudGetV1ResearchArtifactsBySha256WithHttpInfo(@javax.annotation.Nonnull String sha256, @javax.annotation.Nullable String project) throws ApiException {
+        okhttp3.Call localVarCall = cloudGetV1ResearchArtifactsBySha256ValidateBeforeCall(sha256, project, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param sha256  (required)
+     * Fetch one recorded artifact&#39;s bytes by its content hash. (asynchronously)
+     * Streams the artifact&#39;s stored bytes — the retrieval half of hash-addressing, where the diary feed hands out hashes and this hands back what they name. The Content-Type is image/png when the artifact was recorded as a snapshot and application/octet-stream otherwise; it comes from the recorded KIND, not from sniffing the bytes, so an artifact filed as a report always arrives as opaque bytes.  The hash is an address, and the read is NOT global. The store file IS the org, so the same bytes recorded by two tenants are two artifacts, and a hash that exists but belongs to somebody else is a 404 exactly like one that was never recorded — knowing a content hash is never enough to read it. A caller with no validated org is refused 403 outright.  Project narrows further INSIDE that org: the artifact&#39;s project must equal the caller&#39;s, which is &#x60;?project&#x3D;&#x60; when given and otherwise the caller&#39;s own project scope, defaulting to the default project. So an artifact filed under a named project is not found until the caller names that project — a mismatch is the same 404 an unknown hash gets, never a distinguishable refusal.  The address can be trusted because the WRITE derived it: the server hashes the bytes it stores, inside the trust boundary, and refuses a client-supplied sha256 that disagrees with them, so poisoning a first write would take a preimage. This read does not re-hash — it looks the hash up as a key.  One shape to expect: this route writes its errors IN-BAND as {\&quot;error\&quot;: …} at the real status code, not the {status, error} envelope the typed ops beside it return. It is mounted under an error-flattening filter that would otherwise rewrite its 4xx, so the body is written before that filter runs. A store that cannot be opened is a 500.
+     * @param sha256 The artifact content hash. (required)
+     * @param project  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -335,13 +357,16 @@ public class ResearchApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The artifact bytes </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Missing validated principal (X-Org-Id required) </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1ResearchArtifactsBySha256Async(@javax.annotation.Nonnull String sha256, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1ResearchArtifactsBySha256Async(@javax.annotation.Nonnull String sha256, @javax.annotation.Nullable String project, final ApiCallback<File> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudGetV1ResearchArtifactsBySha256ValidateBeforeCall(sha256, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudGetV1ResearchArtifactsBySha256ValidateBeforeCall(sha256, project, _callback);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

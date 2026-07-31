@@ -751,8 +751,8 @@ public class TrainApi {
     }
 
     /**
-     * 
-     * 
+     * Whether training and tuning can actually work right now
+     * Reports whether the training plane is genuinely usable: that the Kubernetes API answers, and that BOTH the TrainJob and the Experiment CRDs are served by this cluster. A live check, not a flag read back.  200 only when all of it checks out; otherwise 503 carrying the per-CRD report and the real error. That body is why this is not a typed op — the error envelope a typed refusal renders would drop it.  It names each CRD separately on purpose: a cluster can serve training but not tuning, and the difference decides whether a job submission or only an experiment will fail. Answers about the cluster, not a tenant, so it takes no org and reveals no tenant data.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -766,8 +766,8 @@ public class TrainApi {
     }
 
     /**
-     * 
-     * 
+     * Whether training and tuning can actually work right now
+     * Reports whether the training plane is genuinely usable: that the Kubernetes API answers, and that BOTH the TrainJob and the Experiment CRDs are served by this cluster. A live check, not a flag read back.  200 only when all of it checks out; otherwise 503 carrying the per-CRD report and the real error. That body is why this is not a typed op — the error envelope a typed refusal renders would drop it.  It names each CRD separately on purpose: a cluster can serve training but not tuning, and the difference decides whether a job submission or only an experiment will fail. Answers about the cluster, not a tenant, so it takes no org and reveals no tenant data.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -783,8 +783,8 @@ public class TrainApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Whether training and tuning can actually work right now (asynchronously)
+     * Reports whether the training plane is genuinely usable: that the Kubernetes API answers, and that BOTH the TrainJob and the Experiment CRDs are served by this cluster. A live check, not a flag read back.  200 only when all of it checks out; otherwise 503 carrying the per-CRD report and the real error. That body is why this is not a typed op — the error envelope a typed refusal renders would drop it.  It names each CRD separately on purpose: a cluster can serve training but not tuning, and the difference decides whether a job submission or only an experiment will fail. Answers about the cluster, not a tenant, so it takes no org and reveals no tenant data.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1107,8 +1107,8 @@ public class TrainApi {
     }
 
     /**
-     * 
-     * 
+     * Start a hyperparameter-tuning experiment
+     * Starts a katib hyperparameter search in the caller&#39;s own tenant namespace and answers the created Experiment, 201. The spec is katib&#39;s own, relayed as given, so the whole search-algorithm surface is available without this layer enumerating it.  One experiment fans out into many Trials, and each trial is real compute — so the BALANCE GATE RUNS FIRST, before anything is created, and fails CLOSED when commerce cannot be reached. The refusal carries the fleet&#39;s nested error body, which is why this is not a typed op. The submission fee is debited from the caller org&#39;s own ledger on success, asynchronously and best-effort.  The trials the search creates are read through the experiment&#39;s own trials list. Tenant namespace from the validated org and project, never a field; an unvalidated caller is refused. DNS-1123 name, and a duplicate is a 409.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1122,8 +1122,8 @@ public class TrainApi {
     }
 
     /**
-     * 
-     * 
+     * Start a hyperparameter-tuning experiment
+     * Starts a katib hyperparameter search in the caller&#39;s own tenant namespace and answers the created Experiment, 201. The spec is katib&#39;s own, relayed as given, so the whole search-algorithm surface is available without this layer enumerating it.  One experiment fans out into many Trials, and each trial is real compute — so the BALANCE GATE RUNS FIRST, before anything is created, and fails CLOSED when commerce cannot be reached. The refusal carries the fleet&#39;s nested error body, which is why this is not a typed op. The submission fee is debited from the caller org&#39;s own ledger on success, asynchronously and best-effort.  The trials the search creates are read through the experiment&#39;s own trials list. Tenant namespace from the validated org and project, never a field; an unvalidated caller is refused. DNS-1123 name, and a duplicate is a 409.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1139,8 +1139,8 @@ public class TrainApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Start a hyperparameter-tuning experiment (asynchronously)
+     * Starts a katib hyperparameter search in the caller&#39;s own tenant namespace and answers the created Experiment, 201. The spec is katib&#39;s own, relayed as given, so the whole search-algorithm surface is available without this layer enumerating it.  One experiment fans out into many Trials, and each trial is real compute — so the BALANCE GATE RUNS FIRST, before anything is created, and fails CLOSED when commerce cannot be reached. The refusal carries the fleet&#39;s nested error body, which is why this is not a typed op. The submission fee is debited from the caller org&#39;s own ledger on success, asynchronously and best-effort.  The trials the search creates are read through the experiment&#39;s own trials list. Tenant namespace from the validated org and project, never a field; an unvalidated caller is refused. DNS-1123 name, and a duplicate is a 409.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1219,8 +1219,8 @@ public class TrainApi {
     }
 
     /**
-     * 
-     * 
+     * Submit a training job
+     * Submits a training job into the caller&#39;s own tenant namespace and answers the created resource, 201. The spec is the Kubeflow TrainJob spec, relayed as given, so the trainer&#39;s full surface is reachable without this layer modelling it.  THE BALANCE GATE RUNS FIRST, before the namespace or the job is created, and it fails CLOSED — an unreachable commerce refuses rather than admits. That is what keeps an unfunded org from starting GPU compute. The refusal carries the fleet&#39;s nested error body, which is why this route is not a typed op. On success the submission fee is debited from the caller org&#39;s own ledger, asynchronously and best-effort.  Submitting is not finishing: the answer is the job as accepted, not a result — poll the job read for status. The tenant namespace comes from the validated org and project, never from a field; an unvalidated caller is refused. The name must be a DNS-1123 label, and a name already in use is a 409.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1234,8 +1234,8 @@ public class TrainApi {
     }
 
     /**
-     * 
-     * 
+     * Submit a training job
+     * Submits a training job into the caller&#39;s own tenant namespace and answers the created resource, 201. The spec is the Kubeflow TrainJob spec, relayed as given, so the trainer&#39;s full surface is reachable without this layer modelling it.  THE BALANCE GATE RUNS FIRST, before the namespace or the job is created, and it fails CLOSED — an unreachable commerce refuses rather than admits. That is what keeps an unfunded org from starting GPU compute. The refusal carries the fleet&#39;s nested error body, which is why this route is not a typed op. On success the submission fee is debited from the caller org&#39;s own ledger, asynchronously and best-effort.  Submitting is not finishing: the answer is the job as accepted, not a result — poll the job read for status. The tenant namespace comes from the validated org and project, never from a field; an unvalidated caller is refused. The name must be a DNS-1123 label, and a name already in use is a 409.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1251,8 +1251,8 @@ public class TrainApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Submit a training job (asynchronously)
+     * Submits a training job into the caller&#39;s own tenant namespace and answers the created resource, 201. The spec is the Kubeflow TrainJob spec, relayed as given, so the trainer&#39;s full surface is reachable without this layer modelling it.  THE BALANCE GATE RUNS FIRST, before the namespace or the job is created, and it fails CLOSED — an unreachable commerce refuses rather than admits. That is what keeps an unfunded org from starting GPU compute. The refusal carries the fleet&#39;s nested error body, which is why this route is not a typed op. On success the submission fee is debited from the caller org&#39;s own ledger, asynchronously and best-effort.  Submitting is not finishing: the answer is the job as accepted, not a result — poll the job read for status. The tenant namespace comes from the validated org and project, never from a field; an unvalidated caller is refused. The name must be a DNS-1123 label, and a name already in use is a 409.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

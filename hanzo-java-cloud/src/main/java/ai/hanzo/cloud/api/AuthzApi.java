@@ -27,6 +27,11 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.AuthzCheckResponse;
+import ai.hanzo.cloud.model.AuthzEnforceRequest;
+import ai.hanzo.cloud.model.AuthzError;
+import ai.hanzo.cloud.model.CloudGetV1AuthzHealth200Response;
+import ai.hanzo.cloud.model.CloudGetV1AuthzReadyz200Response;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -80,7 +85,7 @@ public class AuthzApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Service is alive. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1AuthzHealthCall(final ApiCallback _callback) throws ApiException {
@@ -109,6 +114,7 @@ public class AuthzApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -122,7 +128,7 @@ public class AuthzApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -133,40 +139,43 @@ public class AuthzApi {
     }
 
     /**
-     * 
-     * 
+     * Liveness of the policy engine
+     * Reports that the authz process is up. Unauthenticated by design and never org-scoped: it answers while every tenant&#39;s enforcer is still cold, because a probe that needed a tenant would fail for reasons that have nothing to do with the process being alive.
+     * @return CloudGetV1AuthzHealth200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Service is alive. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1AuthzHealth() throws ApiException {
-        cloudGetV1AuthzHealthWithHttpInfo();
+    public CloudGetV1AuthzHealth200Response cloudGetV1AuthzHealth() throws ApiException {
+        ApiResponse<CloudGetV1AuthzHealth200Response> localVarResp = cloudGetV1AuthzHealthWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Liveness of the policy engine
+     * Reports that the authz process is up. Unauthenticated by design and never org-scoped: it answers while every tenant&#39;s enforcer is still cold, because a probe that needed a tenant would fail for reasons that have nothing to do with the process being alive.
+     * @return ApiResponse&lt;CloudGetV1AuthzHealth200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Service is alive. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1AuthzHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<CloudGetV1AuthzHealth200Response> cloudGetV1AuthzHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = cloudGetV1AuthzHealthValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<CloudGetV1AuthzHealth200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Liveness of the policy engine (asynchronously)
+     * Reports that the authz process is up. Unauthenticated by design and never org-scoped: it answers while every tenant&#39;s enforcer is still cold, because a probe that needed a tenant would fail for reasons that have nothing to do with the process being alive.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -174,13 +183,14 @@ public class AuthzApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Service is alive. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1AuthzHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1AuthzHealthAsync(final ApiCallback<CloudGetV1AuthzHealth200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudGetV1AuthzHealthValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<CloudGetV1AuthzHealth200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -192,7 +202,7 @@ public class AuthzApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Service is ready. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1AuthzReadyzCall(final ApiCallback _callback) throws ApiException {
@@ -221,6 +231,7 @@ public class AuthzApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -234,7 +245,7 @@ public class AuthzApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -245,40 +256,43 @@ public class AuthzApi {
     }
 
     /**
-     * 
-     * 
+     * Readiness of the policy engine
+     * Reports that the authz process is ready to serve decisions. Unauthenticated and not org-scoped, for the same reason health is: readiness is a property of this process, not of any one tenant&#39;s policy set.
+     * @return CloudGetV1AuthzReadyz200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Service is ready. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1AuthzReadyz() throws ApiException {
-        cloudGetV1AuthzReadyzWithHttpInfo();
+    public CloudGetV1AuthzReadyz200Response cloudGetV1AuthzReadyz() throws ApiException {
+        ApiResponse<CloudGetV1AuthzReadyz200Response> localVarResp = cloudGetV1AuthzReadyzWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Readiness of the policy engine
+     * Reports that the authz process is ready to serve decisions. Unauthenticated and not org-scoped, for the same reason health is: readiness is a property of this process, not of any one tenant&#39;s policy set.
+     * @return ApiResponse&lt;CloudGetV1AuthzReadyz200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Service is ready. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1AuthzReadyzWithHttpInfo() throws ApiException {
+    public ApiResponse<CloudGetV1AuthzReadyz200Response> cloudGetV1AuthzReadyzWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = cloudGetV1AuthzReadyzValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<CloudGetV1AuthzReadyz200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Readiness of the policy engine (asynchronously)
+     * Reports that the authz process is ready to serve decisions. Unauthenticated and not org-scoped, for the same reason health is: readiness is a property of this process, not of any one tenant&#39;s policy set.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -286,17 +300,19 @@ public class AuthzApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Service is ready. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1AuthzReadyzAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1AuthzReadyzAsync(final ApiCallback<CloudGetV1AuthzReadyz200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudGetV1AuthzReadyzValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<CloudGetV1AuthzReadyz200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1AuthzCheck
+     * @param authzEnforceRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -304,10 +320,13 @@ public class AuthzApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Enforcement decision. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request - Invalid input parameters </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Authentication required </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AuthzCheckCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AuthzCheckCall(@javax.annotation.Nonnull AuthzEnforceRequest authzEnforceRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -321,7 +340,7 @@ public class AuthzApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = authzEnforceRequest;
 
         // create path and map variables
         String localVarPath = "/v1/authz/check";
@@ -333,6 +352,7 @@ public class AuthzApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -340,6 +360,7 @@ public class AuthzApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -351,46 +372,63 @@ public class AuthzApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1AuthzCheckValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1AuthzCheckCall(_callback);
+    private okhttp3.Call cloudPostV1AuthzCheckValidateBeforeCall(@javax.annotation.Nonnull AuthzEnforceRequest authzEnforceRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'authzEnforceRequest' is set
+        if (authzEnforceRequest == null) {
+            throw new ApiException("Missing the required parameter 'authzEnforceRequest' when calling cloudPostV1AuthzCheck(Async)");
+        }
+
+        return cloudPostV1AuthzCheckCall(authzEnforceRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Ask whether a subject may act on an object
+     * Answers one policy question — may this subject take this action on this object — against the CALLER&#39;S OWN org policy set, and answers it with a bare allow/deny.  The org comes from the gateway-minted X-Org-Id and picks the per-org enforcer, so a decision is always rendered by that tenant&#39;s policies and never by another&#39;s. A request carrying no org is refused rather than answered from a shared or default set: collapsing tenants together is the one failure a policy engine must not have.  Body: {sub, obj, act}, all three required. The reply echoes them beside &#x60;allow&#x60; so a cached or logged decision carries the question it answered.
+     * @param authzEnforceRequest  (required)
+     * @return AuthzCheckResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Enforcement decision. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request - Invalid input parameters </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Authentication required </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1AuthzCheck() throws ApiException {
-        cloudPostV1AuthzCheckWithHttpInfo();
+    public AuthzCheckResponse cloudPostV1AuthzCheck(@javax.annotation.Nonnull AuthzEnforceRequest authzEnforceRequest) throws ApiException {
+        ApiResponse<AuthzCheckResponse> localVarResp = cloudPostV1AuthzCheckWithHttpInfo(authzEnforceRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Ask whether a subject may act on an object
+     * Answers one policy question — may this subject take this action on this object — against the CALLER&#39;S OWN org policy set, and answers it with a bare allow/deny.  The org comes from the gateway-minted X-Org-Id and picks the per-org enforcer, so a decision is always rendered by that tenant&#39;s policies and never by another&#39;s. A request carrying no org is refused rather than answered from a shared or default set: collapsing tenants together is the one failure a policy engine must not have.  Body: {sub, obj, act}, all three required. The reply echoes them beside &#x60;allow&#x60; so a cached or logged decision carries the question it answered.
+     * @param authzEnforceRequest  (required)
+     * @return ApiResponse&lt;AuthzCheckResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Enforcement decision. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request - Invalid input parameters </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Authentication required </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1AuthzCheckWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1AuthzCheckValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<AuthzCheckResponse> cloudPostV1AuthzCheckWithHttpInfo(@javax.annotation.Nonnull AuthzEnforceRequest authzEnforceRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1AuthzCheckValidateBeforeCall(authzEnforceRequest, null);
+        Type localVarReturnType = new TypeToken<AuthzCheckResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Ask whether a subject may act on an object (asynchronously)
+     * Answers one policy question — may this subject take this action on this object — against the CALLER&#39;S OWN org policy set, and answers it with a bare allow/deny.  The org comes from the gateway-minted X-Org-Id and picks the per-org enforcer, so a decision is always rendered by that tenant&#39;s policies and never by another&#39;s. A request carrying no org is refused rather than answered from a shared or default set: collapsing tenants together is the one failure a policy engine must not have.  Body: {sub, obj, act}, all three required. The reply echoes them beside &#x60;allow&#x60; so a cached or logged decision carries the question it answered.
+     * @param authzEnforceRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -398,13 +436,17 @@ public class AuthzApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Enforcement decision. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request - Invalid input parameters </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Authentication required </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AuthzCheckAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AuthzCheckAsync(@javax.annotation.Nonnull AuthzEnforceRequest authzEnforceRequest, final ApiCallback<AuthzCheckResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1AuthzCheckValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1AuthzCheckValidateBeforeCall(authzEnforceRequest, _callback);
+        Type localVarReturnType = new TypeToken<AuthzCheckResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }

@@ -76,7 +76,7 @@ public class LoadBalancersApi {
 
     /**
      * Build call for cloudDeleteV1LoadBalancersId
-     * @param id ID is the DigitalOcean resource id (a UUID), from the path. (required)
+     * @param id DO load balancer id (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -145,7 +145,7 @@ public class LoadBalancersApi {
     /**
      * DeleteLoadBalancer removes one of the caller org&#39;s load balancers and answers 204.
      * DeleteLoadBalancer removes one of the caller org&#39;s load balancers and answers 204. Ownership is confirmed by re-fetching the resource before anything is deleted, so a cross-tenant id is a 404 rather than a delete of another org&#39;s load balancer.
-     * @param id ID is the DigitalOcean resource id (a UUID), from the path. (required)
+     * @param id DO load balancer id (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -161,7 +161,7 @@ public class LoadBalancersApi {
     /**
      * DeleteLoadBalancer removes one of the caller org&#39;s load balancers and answers 204.
      * DeleteLoadBalancer removes one of the caller org&#39;s load balancers and answers 204. Ownership is confirmed by re-fetching the resource before anything is deleted, so a cross-tenant id is a 404 rather than a delete of another org&#39;s load balancer.
-     * @param id ID is the DigitalOcean resource id (a UUID), from the path. (required)
+     * @param id DO load balancer id (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -179,7 +179,7 @@ public class LoadBalancersApi {
     /**
      * DeleteLoadBalancer removes one of the caller org&#39;s load balancers and answers 204. (asynchronously)
      * DeleteLoadBalancer removes one of the caller org&#39;s load balancers and answers 204. Ownership is confirmed by re-fetching the resource before anything is deleted, so a cross-tenant id is a 404 rather than a delete of another org&#39;s load balancer.
-     * @param id ID is the DigitalOcean resource id (a UUID), from the path. (required)
+     * @param id DO load balancer id (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -315,7 +315,7 @@ public class LoadBalancersApi {
     }
     /**
      * Build call for cloudGetV1LoadBalancersId
-     * @param id ID is the DigitalOcean resource id (a UUID), from the path. (required)
+     * @param id DO load balancer id (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -385,7 +385,7 @@ public class LoadBalancersApi {
     /**
      * GetLoadBalancer returns one of the caller org&#39;s load balancers by id.
      * GetLoadBalancer returns one of the caller org&#39;s load balancers by id. One that exists in another org&#39;s namespace is reported 404, never 403 — the same existence-oracle guard the VPC read applies.
-     * @param id ID is the DigitalOcean resource id (a UUID), from the path. (required)
+     * @param id DO load balancer id (required)
      * @return CloudLbView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -403,7 +403,7 @@ public class LoadBalancersApi {
     /**
      * GetLoadBalancer returns one of the caller org&#39;s load balancers by id.
      * GetLoadBalancer returns one of the caller org&#39;s load balancers by id. One that exists in another org&#39;s namespace is reported 404, never 403 — the same existence-oracle guard the VPC read applies.
-     * @param id ID is the DigitalOcean resource id (a UUID), from the path. (required)
+     * @param id DO load balancer id (required)
      * @return ApiResponse&lt;CloudLbView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -422,7 +422,7 @@ public class LoadBalancersApi {
     /**
      * GetLoadBalancer returns one of the caller org&#39;s load balancers by id. (asynchronously)
      * GetLoadBalancer returns one of the caller org&#39;s load balancers by id. One that exists in another org&#39;s namespace is reported 404, never 403 — the same existence-oracle guard the VPC read applies.
-     * @param id ID is the DigitalOcean resource id (a UUID), from the path. (required)
+     * @param id DO load balancer id (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

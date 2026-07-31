@@ -76,7 +76,7 @@ public class VpcsApi {
 
     /**
      * Build call for cloudDeleteV1VpcsId
-     * @param id ID is the DigitalOcean resource id (a UUID), from the path. (required)
+     * @param id DO VPC id (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -145,7 +145,7 @@ public class VpcsApi {
     /**
      * DeleteVpc removes one of the caller org&#39;s VPCs and answers 204.
      * DeleteVpc removes one of the caller org&#39;s VPCs and answers 204. Ownership is confirmed by re-fetching the resource and checking its physical name carries the caller&#39;s org prefix BEFORE anything is deleted, so a cross-tenant id is a 404 rather than a delete of another org&#39;s VPC.
-     * @param id ID is the DigitalOcean resource id (a UUID), from the path. (required)
+     * @param id DO VPC id (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -161,7 +161,7 @@ public class VpcsApi {
     /**
      * DeleteVpc removes one of the caller org&#39;s VPCs and answers 204.
      * DeleteVpc removes one of the caller org&#39;s VPCs and answers 204. Ownership is confirmed by re-fetching the resource and checking its physical name carries the caller&#39;s org prefix BEFORE anything is deleted, so a cross-tenant id is a 404 rather than a delete of another org&#39;s VPC.
-     * @param id ID is the DigitalOcean resource id (a UUID), from the path. (required)
+     * @param id DO VPC id (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -179,7 +179,7 @@ public class VpcsApi {
     /**
      * DeleteVpc removes one of the caller org&#39;s VPCs and answers 204. (asynchronously)
      * DeleteVpc removes one of the caller org&#39;s VPCs and answers 204. Ownership is confirmed by re-fetching the resource and checking its physical name carries the caller&#39;s org prefix BEFORE anything is deleted, so a cross-tenant id is a 404 rather than a delete of another org&#39;s VPC.
-     * @param id ID is the DigitalOcean resource id (a UUID), from the path. (required)
+     * @param id DO VPC id (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -315,7 +315,7 @@ public class VpcsApi {
     }
     /**
      * Build call for cloudGetV1VpcsId
-     * @param id ID is the DigitalOcean resource id (a UUID), from the path. (required)
+     * @param id DO VPC id (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -385,7 +385,7 @@ public class VpcsApi {
     /**
      * GetVpc returns one of the caller org&#39;s VPCs by id.
      * GetVpc returns one of the caller org&#39;s VPCs by id. A VPC that exists but sits in another org&#39;s namespace is reported 404, never 403 — the answer must not tell one tenant that another tenant&#39;s resource exists.
-     * @param id ID is the DigitalOcean resource id (a UUID), from the path. (required)
+     * @param id DO VPC id (required)
      * @return CloudVpcView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -403,7 +403,7 @@ public class VpcsApi {
     /**
      * GetVpc returns one of the caller org&#39;s VPCs by id.
      * GetVpc returns one of the caller org&#39;s VPCs by id. A VPC that exists but sits in another org&#39;s namespace is reported 404, never 403 — the answer must not tell one tenant that another tenant&#39;s resource exists.
-     * @param id ID is the DigitalOcean resource id (a UUID), from the path. (required)
+     * @param id DO VPC id (required)
      * @return ApiResponse&lt;CloudVpcView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -422,7 +422,7 @@ public class VpcsApi {
     /**
      * GetVpc returns one of the caller org&#39;s VPCs by id. (asynchronously)
      * GetVpc returns one of the caller org&#39;s VPCs by id. A VPC that exists but sits in another org&#39;s namespace is reported 404, never 403 — the answer must not tell one tenant that another tenant&#39;s resource exists.
-     * @param id ID is the DigitalOcean resource id (a UUID), from the path. (required)
+     * @param id DO VPC id (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

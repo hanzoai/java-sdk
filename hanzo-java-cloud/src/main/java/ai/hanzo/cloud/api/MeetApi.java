@@ -133,8 +133,8 @@ public class MeetApi {
     }
 
     /**
-     * 
-     * 
+     * Whether the office can mint join tokens
+     * Reports whether this deployment holds the LiveKit key pair it needs. &#x60;ready:true&#x60; with 200 when tokens can be minted; the SAME body with &#x60;ready:false&#x60;, &#x60;status:\&quot;degraded\&quot;&#x60; and 503 when they cannot, so a probe and a dashboard both read the degraded state instead of someone grepping a boot log.  It takes no credential and is reachable on every public host, so it withholds both the reason and the signing key&#39;s name on purpose: &#x60;ready&#x60; is the whole dashboard fact, and the reason — which names the key file and the Secret — is written to the boot log where an operator already is.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -148,8 +148,8 @@ public class MeetApi {
     }
 
     /**
-     * 
-     * 
+     * Whether the office can mint join tokens
+     * Reports whether this deployment holds the LiveKit key pair it needs. &#x60;ready:true&#x60; with 200 when tokens can be minted; the SAME body with &#x60;ready:false&#x60;, &#x60;status:\&quot;degraded\&quot;&#x60; and 503 when they cannot, so a probe and a dashboard both read the degraded state instead of someone grepping a boot log.  It takes no credential and is reachable on every public host, so it withholds both the reason and the signing key&#39;s name on purpose: &#x60;ready&#x60; is the whole dashboard fact, and the reason — which names the key file and the Secret — is written to the boot log where an operator already is.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -165,8 +165,8 @@ public class MeetApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Whether the office can mint join tokens (asynchronously)
+     * Reports whether this deployment holds the LiveKit key pair it needs. &#x60;ready:true&#x60; with 200 when tokens can be minted; the SAME body with &#x60;ready:false&#x60;, &#x60;status:\&quot;degraded\&quot;&#x60; and 503 when they cannot, so a probe and a dashboard both read the degraded state instead of someone grepping a boot log.  It takes no credential and is reachable on every public host, so it withholds both the reason and the signing key&#39;s name on purpose: &#x60;ready&#x60; is the whole dashboard fact, and the reason — which names the key file and the Secret — is written to the boot log where an operator already is.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -245,8 +245,8 @@ public class MeetApi {
     }
 
     /**
-     * 
-     * 
+     * Mint a join token for one video room
+     * Answers with a LiveKit join token for exactly the room named in the body. The body is the RAW token as text/plain — one opaque string, not JSON and not wrapped in an envelope, which is what the office client reads.  The caller presents its workspace session as a Bearer. Every clause is a refusal: the session must verify, its SIGNED workspace claim must equal the room&#39;s leading name segment — rooms are named &#x60;&lt;workspace&gt;_&lt;room&gt;_&lt;id&gt;&#x60;, and that prefix is the only thing binding a room to a tenant — and the session must carry a privileged workspace role, so a guest is refused rather than seated.  The participant identity is the SESSION&#39;S, never the body&#39;s. &#x60;_id&#x60; is accepted for compatibility with the published client bundle and deliberately ignored: LiveKit treats the identity as unique and ejects a duplicate, so honouring a caller-chosen one would let anyone in a workspace kick out a colleague and impersonate them. &#x60;participantName&#x60; is a display name only.  An unconfigured deployment answers 503 under its own name rather than 404, and the refusal states only that the office is unconfigured — the reason names key material and stays in the boot log.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -260,8 +260,8 @@ public class MeetApi {
     }
 
     /**
-     * 
-     * 
+     * Mint a join token for one video room
+     * Answers with a LiveKit join token for exactly the room named in the body. The body is the RAW token as text/plain — one opaque string, not JSON and not wrapped in an envelope, which is what the office client reads.  The caller presents its workspace session as a Bearer. Every clause is a refusal: the session must verify, its SIGNED workspace claim must equal the room&#39;s leading name segment — rooms are named &#x60;&lt;workspace&gt;_&lt;room&gt;_&lt;id&gt;&#x60;, and that prefix is the only thing binding a room to a tenant — and the session must carry a privileged workspace role, so a guest is refused rather than seated.  The participant identity is the SESSION&#39;S, never the body&#39;s. &#x60;_id&#x60; is accepted for compatibility with the published client bundle and deliberately ignored: LiveKit treats the identity as unique and ejects a duplicate, so honouring a caller-chosen one would let anyone in a workspace kick out a colleague and impersonate them. &#x60;participantName&#x60; is a display name only.  An unconfigured deployment answers 503 under its own name rather than 404, and the refusal states only that the office is unconfigured — the reason names key material and stays in the boot log.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -277,8 +277,8 @@ public class MeetApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Mint a join token for one video room (asynchronously)
+     * Answers with a LiveKit join token for exactly the room named in the body. The body is the RAW token as text/plain — one opaque string, not JSON and not wrapped in an envelope, which is what the office client reads.  The caller presents its workspace session as a Bearer. Every clause is a refusal: the session must verify, its SIGNED workspace claim must equal the room&#39;s leading name segment — rooms are named &#x60;&lt;workspace&gt;_&lt;room&gt;_&lt;id&gt;&#x60;, and that prefix is the only thing binding a room to a tenant — and the session must carry a privileged workspace role, so a guest is refused rather than seated.  The participant identity is the SESSION&#39;S, never the body&#39;s. &#x60;_id&#x60; is accepted for compatibility with the published client bundle and deliberately ignored: LiveKit treats the identity as unique and ejects a duplicate, so honouring a caller-chosen one would let anyone in a workspace kick out a colleague and impersonate them. &#x60;participantName&#x60; is a display name only.  An unconfigured deployment answers 503 under its own name rather than 404, and the refusal states only that the office is unconfigured — the reason names key material and stays in the boot log.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

@@ -27,12 +27,14 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.AdminAdminDeletePromo200Response;
 import ai.hanzo.cloud.model.AutomationsMcpRequest;
 import ai.hanzo.cloud.model.AutomationsMcpResponse;
+import ai.hanzo.cloud.model.CloudAdminAdminCreatePromo400Response;
 import ai.hanzo.cloud.model.CloudCreateServerReq;
 import ai.hanzo.cloud.model.CloudMCPServer;
 import ai.hanzo.cloud.model.CloudMcpServerList;
+import ai.hanzo.cloud.model.McpRequest;
+import ai.hanzo.cloud.model.McpResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -571,6 +573,133 @@ public class McpApi {
 
         okhttp3.Call localVarCall = cloudPostV1McpServersValidateBeforeCall(cloudCreateServerReq, _callback);
         Type localVarReturnType = new TypeToken<CloudMCPServer>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for mcpRpc
+     * @param mcpRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The JSON-RPC response — &#x60;result&#x60; on success, &#x60;error&#x60; on failure, never both. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call mcpRpcCall(@javax.annotation.Nonnull McpRequest mcpRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = mcpRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/mcp";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call mcpRpcValidateBeforeCall(@javax.annotation.Nonnull McpRequest mcpRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'mcpRequest' is set
+        if (mcpRequest == null) {
+            throw new ApiException("Missing the required parameter 'mcpRequest' when calling mcpRpc(Async)");
+        }
+
+        return mcpRpcCall(mcpRequest, _callback);
+
+    }
+
+    /**
+     * JSON-RPC call
+     * One request, one response, three methods. &#x60;initialize&#x60; reports the protocol version and server capabilities; &#x60;tools/list&#x60; returns every tool this credential can reach; &#x60;tools/call&#x60; runs one by name.  Read &#x60;error&#x60; before &#x60;result&#x60;, and &#x60;result.isError&#x60; before &#x60;result.content&#x60;: both failure channels live inside a 200.  &#x60;id&#x60; is declared a string. The wire accepts a number too — JSON-RPC 2.0 allows either and this door echoes back the type it was given — but a scalar &#x60;oneOf&#x60; generates an empty carrier class in every typed language, so the document declares the one form all of them can send.
+     * @param mcpRequest  (required)
+     * @return McpResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The JSON-RPC response — &#x60;result&#x60; on success, &#x60;error&#x60; on failure, never both. </td><td>  -  </td></tr>
+     </table>
+     */
+    public McpResponse mcpRpc(@javax.annotation.Nonnull McpRequest mcpRequest) throws ApiException {
+        ApiResponse<McpResponse> localVarResp = mcpRpcWithHttpInfo(mcpRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * JSON-RPC call
+     * One request, one response, three methods. &#x60;initialize&#x60; reports the protocol version and server capabilities; &#x60;tools/list&#x60; returns every tool this credential can reach; &#x60;tools/call&#x60; runs one by name.  Read &#x60;error&#x60; before &#x60;result&#x60;, and &#x60;result.isError&#x60; before &#x60;result.content&#x60;: both failure channels live inside a 200.  &#x60;id&#x60; is declared a string. The wire accepts a number too — JSON-RPC 2.0 allows either and this door echoes back the type it was given — but a scalar &#x60;oneOf&#x60; generates an empty carrier class in every typed language, so the document declares the one form all of them can send.
+     * @param mcpRequest  (required)
+     * @return ApiResponse&lt;McpResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The JSON-RPC response — &#x60;result&#x60; on success, &#x60;error&#x60; on failure, never both. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<McpResponse> mcpRpcWithHttpInfo(@javax.annotation.Nonnull McpRequest mcpRequest) throws ApiException {
+        okhttp3.Call localVarCall = mcpRpcValidateBeforeCall(mcpRequest, null);
+        Type localVarReturnType = new TypeToken<McpResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * JSON-RPC call (asynchronously)
+     * One request, one response, three methods. &#x60;initialize&#x60; reports the protocol version and server capabilities; &#x60;tools/list&#x60; returns every tool this credential can reach; &#x60;tools/call&#x60; runs one by name.  Read &#x60;error&#x60; before &#x60;result&#x60;, and &#x60;result.isError&#x60; before &#x60;result.content&#x60;: both failure channels live inside a 200.  &#x60;id&#x60; is declared a string. The wire accepts a number too — JSON-RPC 2.0 allows either and this door echoes back the type it was given — but a scalar &#x60;oneOf&#x60; generates an empty carrier class in every typed language, so the document declares the one form all of them can send.
+     * @param mcpRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The JSON-RPC response — &#x60;result&#x60; on success, &#x60;error&#x60; on failure, never both. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call mcpRpcAsync(@javax.annotation.Nonnull McpRequest mcpRequest, final ApiCallback<McpResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = mcpRpcValidateBeforeCall(mcpRequest, _callback);
+        Type localVarReturnType = new TypeToken<McpResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

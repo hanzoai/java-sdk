@@ -15,6 +15,7 @@ package ai.hanzo.cloud.model;
 
 import java.util.Objects;
 import ai.hanzo.cloud.model.CloudHealthLenses;
+import ai.hanzo.cloud.model.CloudLoss;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -60,6 +61,11 @@ public class CloudHealthReport {
   @SerializedName(SERIALIZED_NAME_LENSES)
   @javax.annotation.Nullable
   private CloudHealthLenses lenses;
+
+  public static final String SERIALIZED_NAME_LOST = "lost";
+  @SerializedName(SERIALIZED_NAME_LOST)
+  @javax.annotation.Nullable
+  private CloudLoss lost;
 
   public static final String SERIALIZED_NAME_REASON = "reason";
   @SerializedName(SERIALIZED_NAME_REASON)
@@ -119,6 +125,25 @@ public class CloudHealthReport {
 
   public void setLenses(@javax.annotation.Nullable CloudHealthLenses lenses) {
     this.lenses = lenses;
+  }
+
+
+  public CloudHealthReport lost(@javax.annotation.Nullable CloudLoss lost) {
+    this.lost = lost;
+    return this;
+  }
+
+  /**
+   * Get lost
+   * @return lost
+   */
+  @javax.annotation.Nullable
+  public CloudLoss getLost() {
+    return lost;
+  }
+
+  public void setLost(@javax.annotation.Nullable CloudLoss lost) {
+    this.lost = lost;
   }
 
 
@@ -210,6 +235,7 @@ public class CloudHealthReport {
     CloudHealthReport cloudHealthReport = (CloudHealthReport) o;
     return Objects.equals(this.datastore, cloudHealthReport.datastore) &&
         Objects.equals(this.lenses, cloudHealthReport.lenses) &&
+        Objects.equals(this.lost, cloudHealthReport.lost) &&
         Objects.equals(this.reason, cloudHealthReport.reason) &&
         Objects.equals(this.service, cloudHealthReport.service) &&
         Objects.equals(this.status, cloudHealthReport.status) &&
@@ -218,7 +244,7 @@ public class CloudHealthReport {
 
   @Override
   public int hashCode() {
-    return Objects.hash(datastore, lenses, reason, service, status, warehouse);
+    return Objects.hash(datastore, lenses, lost, reason, service, status, warehouse);
   }
 
   @Override
@@ -227,6 +253,7 @@ public class CloudHealthReport {
     sb.append("class CloudHealthReport {\n");
     sb.append("    datastore: ").append(toIndentedString(datastore)).append("\n");
     sb.append("    lenses: ").append(toIndentedString(lenses)).append("\n");
+    sb.append("    lost: ").append(toIndentedString(lost)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    service: ").append(toIndentedString(service)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
@@ -252,7 +279,7 @@ public class CloudHealthReport {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("datastore", "lenses", "reason", "service", "status", "warehouse"));
+    openapiFields = new HashSet<String>(Arrays.asList("datastore", "lenses", "lost", "reason", "service", "status", "warehouse"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -282,6 +309,10 @@ public class CloudHealthReport {
       // validate the optional field `lenses`
       if (jsonObj.get("lenses") != null && !jsonObj.get("lenses").isJsonNull()) {
         CloudHealthLenses.validateJsonElement(jsonObj.get("lenses"));
+      }
+      // validate the optional field `lost`
+      if (jsonObj.get("lost") != null && !jsonObj.get("lost").isJsonNull()) {
+        CloudLoss.validateJsonElement(jsonObj.get("lost"));
       }
       if ((jsonObj.get("reason") != null && !jsonObj.get("reason").isJsonNull()) && !jsonObj.get("reason").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `reason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reason").toString()));

@@ -939,7 +939,7 @@ public class TemplatesApi {
     }
     /**
      * Build call for cloudDeleteV1TemplatesSlug
-     * @param slug Slug is the starter kit to act on, from the path. (required)
+     * @param slug  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1008,7 +1008,7 @@ public class TemplatesApi {
     /**
      * Deletes the caller org&#39;s OWN starter kit.
      * Deletes the caller org&#39;s OWN starter kit. A slug they do not own is a 404, never a delete: the DELETE binds org.
-     * @param slug Slug is the starter kit to act on, from the path. (required)
+     * @param slug  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1024,7 +1024,7 @@ public class TemplatesApi {
     /**
      * Deletes the caller org&#39;s OWN starter kit.
      * Deletes the caller org&#39;s OWN starter kit. A slug they do not own is a 404, never a delete: the DELETE binds org.
-     * @param slug Slug is the starter kit to act on, from the path. (required)
+     * @param slug  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1042,7 +1042,7 @@ public class TemplatesApi {
     /**
      * Deletes the caller org&#39;s OWN starter kit. (asynchronously)
      * Deletes the caller org&#39;s OWN starter kit. A slug they do not own is a 404, never a delete: the DELETE binds org.
-     * @param slug Slug is the starter kit to act on, from the path. (required)
+     * @param slug  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1178,7 +1178,7 @@ public class TemplatesApi {
     }
     /**
      * Build call for cloudGetV1TemplatesSlug
-     * @param slug Slug is the starter kit to act on, from the path. (required)
+     * @param slug  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1248,7 +1248,7 @@ public class TemplatesApi {
     /**
      * Returns one starter kit: the caller org&#39;s own by that slug, else the public catalog&#39;s.
      * Returns one starter kit: the caller org&#39;s own by that slug, else the public catalog&#39;s. A slug another org owns reads as not found.
-     * @param slug Slug is the starter kit to act on, from the path. (required)
+     * @param slug  (required)
      * @return CloudStarterKit
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1266,7 +1266,7 @@ public class TemplatesApi {
     /**
      * Returns one starter kit: the caller org&#39;s own by that slug, else the public catalog&#39;s.
      * Returns one starter kit: the caller org&#39;s own by that slug, else the public catalog&#39;s. A slug another org owns reads as not found.
-     * @param slug Slug is the starter kit to act on, from the path. (required)
+     * @param slug  (required)
      * @return ApiResponse&lt;CloudStarterKit&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1285,7 +1285,7 @@ public class TemplatesApi {
     /**
      * Returns one starter kit: the caller org&#39;s own by that slug, else the public catalog&#39;s. (asynchronously)
      * Returns one starter kit: the caller org&#39;s own by that slug, else the public catalog&#39;s. A slug another org owns reads as not found.
-     * @param slug Slug is the starter kit to act on, from the path. (required)
+     * @param slug  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1432,7 +1432,7 @@ public class TemplatesApi {
     }
     /**
      * Build call for cloudPutV1TemplatesSlug
-     * @param slug Slug is the kit to replace, from the path. (required)
+     * @param slug  (required)
      * @param cloudReplaceKitIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1509,7 +1509,7 @@ public class TemplatesApi {
     /**
      * Overwrites the caller org&#39;s OWN starter kit at the path slug, answering the stored kit.
      * Overwrites the caller org&#39;s OWN starter kit at the path slug, answering the stored kit. A slug they do not own is 404, never a create: the UPDATE binds org, so a PUT can never reach another org&#39;s kit.
-     * @param slug Slug is the kit to replace, from the path. (required)
+     * @param slug  (required)
      * @param cloudReplaceKitIn  (required)
      * @return CloudStarterKit
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1528,7 +1528,7 @@ public class TemplatesApi {
     /**
      * Overwrites the caller org&#39;s OWN starter kit at the path slug, answering the stored kit.
      * Overwrites the caller org&#39;s OWN starter kit at the path slug, answering the stored kit. A slug they do not own is 404, never a create: the UPDATE binds org, so a PUT can never reach another org&#39;s kit.
-     * @param slug Slug is the kit to replace, from the path. (required)
+     * @param slug  (required)
      * @param cloudReplaceKitIn  (required)
      * @return ApiResponse&lt;CloudStarterKit&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1548,7 +1548,7 @@ public class TemplatesApi {
     /**
      * Overwrites the caller org&#39;s OWN starter kit at the path slug, answering the stored kit. (asynchronously)
      * Overwrites the caller org&#39;s OWN starter kit at the path slug, answering the stored kit. A slug they do not own is 404, never a create: the UPDATE binds org, so a PUT can never reach another org&#39;s kit.
-     * @param slug Slug is the kit to replace, from the path. (required)
+     * @param slug  (required)
      * @param cloudReplaceKitIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

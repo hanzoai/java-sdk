@@ -2206,8 +2206,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Amend a share class
+     * Rewrites one share class — the amendment path for a class whose authorized count, price, seniority or preference terms have changed.  It REPLACES the class rather than merging into it: every field is taken from this body, so an omitted field resets to the create-time default instead of keeping its current value. Send the full class. The index and the derived prefix are unchanged by an amendment. An id that is not this company&#39;s is not found.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2222,8 +2222,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Amend a share class
+     * Rewrites one share class — the amendment path for a class whose authorized count, price, seniority or preference terms have changed.  It REPLACES the class rather than merging into it: every field is taken from this body, so an omitted field resets to the create-time default instead of keeping its current value. Send the full class. The index and the derived prefix are unchanged by an amendment. An id that is not this company&#39;s is not found.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2240,8 +2240,8 @@ public class CaptableApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Amend a share class (asynchronously)
+     * Rewrites one share class — the amendment path for a class whose authorized count, price, seniority or preference terms have changed.  It REPLACES the class rather than merging into it: every field is taken from this body, so an omitted field resets to the create-time default instead of keeping its current value. Send the full class. The index and the derived prefix are unchanged by an amendment. An id that is not this company&#39;s is not found.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2458,8 +2458,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Record a convertible note
+     * Records a convertible note held by a stakeholder: the principal, the conversion cap, discount and interest rate, MFN, and the issue and board-approval dates.  The stakeholder must already exist in this company, and the note&#39;s public id must be unused there — a reused id is a conflict rather than an overwrite. Like a SAFE, this records the instrument only; conversion is not performed here.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2473,8 +2473,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Record a convertible note
+     * Records a convertible note held by a stakeholder: the principal, the conversion cap, discount and interest rate, MFN, and the issue and board-approval dates.  The stakeholder must already exist in this company, and the note&#39;s public id must be unused there — a reused id is a conflict rather than an overwrite. Like a SAFE, this records the instrument only; conversion is not performed here.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2490,8 +2490,8 @@ public class CaptableApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Record a convertible note (asynchronously)
+     * Records a convertible note held by a stakeholder: the principal, the conversion cap, discount and interest rate, MFN, and the issue and board-approval dates.  The stakeholder must already exist in this company, and the note&#39;s public id must be unused there — a reused id is a conflict rather than an overwrite. Like a SAFE, this records the instrument only; conversion is not performed here.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2570,8 +2570,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Open an equity incentive plan
+     * Reserves a pool of shares out of a share class for option grants, with the board approval and effective dates and what happens to cancelled options.  The share class must already exist in this company — a plan cannot reserve out of nothing. Note the field name the bundle reads for the cancellation behaviour is &#x60;defaultCancellatonBehavior&#x60;; that spelling is the wire, and a correctly spelled key is simply not seen.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2585,8 +2585,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Open an equity incentive plan
+     * Reserves a pool of shares out of a share class for option grants, with the board approval and effective dates and what happens to cancelled options.  The share class must already exist in this company — a plan cannot reserve out of nothing. Note the field name the bundle reads for the cancellation behaviour is &#x60;defaultCancellatonBehavior&#x60;; that spelling is the wire, and a correctly spelled key is simply not seen.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2602,8 +2602,8 @@ public class CaptableApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Open an equity incentive plan (asynchronously)
+     * Reserves a pool of shares out of a share class for option grants, with the board approval and effective dates and what happens to cancelled options.  The share class must already exist in this company — a plan cannot reserve out of nothing. Note the field name the bundle reads for the cancellation behaviour is &#x60;defaultCancellatonBehavior&#x60;; that spelling is the wire, and a correctly spelled key is simply not seen.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2682,8 +2682,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Grant options from an equity plan
+     * Records an option grant to a stakeholder under an equity plan — quantity, exercise price, ISO/NSO type, cliff and vesting years, and the issue, expiration, vesting-start, board-approval and Rule 144 dates.  The stakeholder and the equity plan must both already exist in this company, and the grant id must be unused there — a reused grant id is a conflict, so a grant can never be overwritten by a later one carrying the same number.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2697,8 +2697,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Grant options from an equity plan
+     * Records an option grant to a stakeholder under an equity plan — quantity, exercise price, ISO/NSO type, cliff and vesting years, and the issue, expiration, vesting-start, board-approval and Rule 144 dates.  The stakeholder and the equity plan must both already exist in this company, and the grant id must be unused there — a reused grant id is a conflict, so a grant can never be overwritten by a later one carrying the same number.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2714,8 +2714,8 @@ public class CaptableApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Grant options from an equity plan (asynchronously)
+     * Records an option grant to a stakeholder under an equity plan — quantity, exercise price, ISO/NSO type, cliff and vesting years, and the issue, expiration, vesting-start, board-approval and Rule 144 dates.  The stakeholder and the equity plan must both already exist in this company, and the grant id must be unused there — a reused grant id is a conflict, so a grant can never be overwritten by a later one carrying the same number.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2794,8 +2794,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Open a funding round
+     * Opens a round with its name, type and target amount. It starts OPEN with nothing raised; investments are then added to it, and closing it is its own call.  A PRICED round is the constrained case: it requires a share class that exists in this company and a price per share above zero, because that price is what converts each investment into issued shares. Its pre-money valuation is optional. A non-priced round carries none of the three.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2809,8 +2809,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Open a funding round
+     * Opens a round with its name, type and target amount. It starts OPEN with nothing raised; investments are then added to it, and closing it is its own call.  A PRICED round is the constrained case: it requires a share class that exists in this company and a price per share above zero, because that price is what converts each investment into issued shares. Its pre-money valuation is optional. A non-priced round carries none of the three.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2826,8 +2826,8 @@ public class CaptableApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Open a funding round (asynchronously)
+     * Opens a round with its name, type and target amount. It starts OPEN with nothing raised; investments are then added to it, and closing it is its own call.  A PRICED round is the constrained case: it requires a share class that exists in this company and a price per share above zero, because that price is what converts each investment into issued shares. Its pre-money valuation is optional. A non-priced round carries none of the three.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2913,8 +2913,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Record an investment into a round
+     * Records what a stakeholder put into a round and adds it to the round&#39;s raised total.  On a PRICED round this ISSUES SHARES as well as recording the money: the amount is divided by the round&#39;s price per share, rounded DOWN to whole shares, and a new certificate for them is issued to the investor in the round&#39;s share class — so an amount too small to buy one whole share is refused rather than recorded as a zero-share investment. On a non-priced round the money is recorded and no shares are issued.  The round must exist in this company and still be OPEN — a closed round refuses further investment — and the investor must already be a stakeholder here. The date defaults to today when omitted.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2929,8 +2929,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Record an investment into a round
+     * Records what a stakeholder put into a round and adds it to the round&#39;s raised total.  On a PRICED round this ISSUES SHARES as well as recording the money: the amount is divided by the round&#39;s price per share, rounded DOWN to whole shares, and a new certificate for them is issued to the investor in the round&#39;s share class — so an amount too small to buy one whole share is refused rather than recorded as a zero-share investment. On a non-priced round the money is recorded and no shares are issued.  The round must exist in this company and still be OPEN — a closed round refuses further investment — and the investor must already be a stakeholder here. The date defaults to today when omitted.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2947,8 +2947,8 @@ public class CaptableApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Record an investment into a round (asynchronously)
+     * Records what a stakeholder put into a round and adds it to the round&#39;s raised total.  On a PRICED round this ISSUES SHARES as well as recording the money: the amount is divided by the round&#39;s price per share, rounded DOWN to whole shares, and a new certificate for them is issued to the investor in the round&#39;s share class — so an amount too small to buy one whole share is refused rather than recorded as a zero-share investment. On a non-priced round the money is recorded and no shares are issued.  The round must exist in this company and still be OPEN — a closed round refuses further investment — and the investor must already be a stakeholder here. The date defaults to today when omitted.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3165,8 +3165,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Record a SAFE
+     * Records a Simple Agreement for Future Equity held by a stakeholder: the capital in, the valuation cap and discount, MFN and pro-rata rights, pre- or post-money type, and the issue and board-approval dates.  The stakeholder must already exist in this company, and the SAFE&#39;s public id must be unused there — a reused id is a conflict rather than an overwrite. This records the instrument; it does not convert it, so nothing is issued against a share class until a round does that.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -3180,8 +3180,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Record a SAFE
+     * Records a Simple Agreement for Future Equity held by a stakeholder: the capital in, the valuation cap and discount, MFN and pro-rata rights, pre- or post-money type, and the issue and board-approval dates.  The stakeholder must already exist in this company, and the SAFE&#39;s public id must be unused there — a reused id is a conflict rather than an overwrite. This records the instrument; it does not convert it, so nothing is issued against a share class until a round does that.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3197,8 +3197,8 @@ public class CaptableApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Record a SAFE (asynchronously)
+     * Records a Simple Agreement for Future Equity held by a stakeholder: the capital in, the valuation cap and discount, MFN and pro-rata rights, pre- or post-money type, and the issue and board-approval dates.  The stakeholder must already exist in this company, and the SAFE&#39;s public id must be unused there — a reused id is a conflict rather than an overwrite. This records the instrument; it does not convert it, so nothing is issued against a share class until a round does that.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3277,8 +3277,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Define a share class
+     * Creates a class of stock — its authorized share count, votes per share, par and issue price, seniority, conversion rights and liquidation/participation multiples — which is what shares, priced rounds and equity plans are then issued against.  Two fields are the company&#39;s to assign, not the caller&#39;s: the class index auto-increments per company, and the certificate prefix is DERIVED from the class type (CS for COMMON, PS for anything else), so a prefix in the body is ignored.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -3292,8 +3292,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Define a share class
+     * Creates a class of stock — its authorized share count, votes per share, par and issue price, seniority, conversion rights and liquidation/participation multiples — which is what shares, priced rounds and equity plans are then issued against.  Two fields are the company&#39;s to assign, not the caller&#39;s: the class index auto-increments per company, and the certificate prefix is DERIVED from the class type (CS for COMMON, PS for anything else), so a prefix in the body is ignored.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3309,8 +3309,8 @@ public class CaptableApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Define a share class (asynchronously)
+     * Creates a class of stock — its authorized share count, votes per share, par and issue price, seniority, conversion rights and liquidation/participation multiples — which is what shares, priced rounds and equity plans are then issued against.  Two fields are the company&#39;s to assign, not the caller&#39;s: the class index auto-increments per company, and the certificate prefix is DERIVED from the class type (CS for COMMON, PS for anything else), so a prefix in the body is ignored.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3389,8 +3389,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Issue a share certificate
+     * Issues shares of a class to a stakeholder as a certificate: quantity, price and capital contributed, the vesting cliff and term, the legends on the certificate, and the issue, Rule 144, vesting-start and board-approval dates.  Both the stakeholder and the share class must already exist in this company, and the certificate id must be unused there — a reused id is a conflict, never a silent overwrite of an existing certificate.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -3404,8 +3404,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Issue a share certificate
+     * Issues shares of a class to a stakeholder as a certificate: quantity, price and capital contributed, the vesting cliff and term, the legends on the certificate, and the issue, Rule 144, vesting-start and board-approval dates.  Both the stakeholder and the share class must already exist in this company, and the certificate id must be unused there — a reused id is a conflict, never a silent overwrite of an existing certificate.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3421,8 +3421,8 @@ public class CaptableApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Issue a share certificate (asynchronously)
+     * Issues shares of a class to a stakeholder as a certificate: quantity, price and capital contributed, the vesting cliff and term, the legends on the certificate, and the issue, Rule 144, vesting-start and board-approval dates.  Both the stakeholder and the share class must already exist in this company, and the certificate id must be unused there — a reused id is a conflict, never a silent overwrite of an existing certificate.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3501,8 +3501,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Transfer shares to another stakeholder
+     * Moves shares from one certificate to another stakeholder, in one atomic step.  OMITTING &#x60;quantity&#x60; transfers the WHOLE certificate, which simply reassigns it and answers newShareId null — that is the difference between a full and a partial transfer, and it is why quantity is absent rather than zero. A partial transfer shrinks the source certificate and issues a NEW one to the recipient, so it requires a &#x60;certificateId&#x60; for that new certificate and refuses a reused one. The quantity must be between 1 and what the source certificate actually holds; the recipient must be a stakeholder of this same company.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -3516,8 +3516,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Transfer shares to another stakeholder
+     * Moves shares from one certificate to another stakeholder, in one atomic step.  OMITTING &#x60;quantity&#x60; transfers the WHOLE certificate, which simply reassigns it and answers newShareId null — that is the difference between a full and a partial transfer, and it is why quantity is absent rather than zero. A partial transfer shrinks the source certificate and issues a NEW one to the recipient, so it requires a &#x60;certificateId&#x60; for that new certificate and refuses a reused one. The quantity must be between 1 and what the source certificate actually holds; the recipient must be a stakeholder of this same company.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3533,8 +3533,8 @@ public class CaptableApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Transfer shares to another stakeholder (asynchronously)
+     * Moves shares from one certificate to another stakeholder, in one atomic step.  OMITTING &#x60;quantity&#x60; transfers the WHOLE certificate, which simply reassigns it and answers newShareId null — that is the difference between a full and a partial transfer, and it is why quantity is absent rather than zero. A partial transfer shrinks the source certificate and issues a NEW one to the recipient, so it requires a &#x60;certificateId&#x60; for that new certificate and refuses a reused one. The quantity must be between 1 and what the source certificate actually holds; the recipient must be a stakeholder of this same company.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3613,8 +3613,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Add stakeholders to the cap table
+     * Records the people and institutions that can hold equity — the rows every share, option, SAFE, note and investment is issued to.  The body is ONE stakeholder object or an ARRAY of them, and the array is the point: a whole roster loads in a single call. Email is the identity within the company, so a stakeholder whose email is already on the table is SKIPPED rather than duplicated or rejected — the 201 reports how many rows were actually inserted, which is what makes re-running an import safe. Validation is all-or-nothing across the batch: one bad entry refuses the whole array.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -3628,8 +3628,8 @@ public class CaptableApi {
     }
 
     /**
-     * 
-     * 
+     * Add stakeholders to the cap table
+     * Records the people and institutions that can hold equity — the rows every share, option, SAFE, note and investment is issued to.  The body is ONE stakeholder object or an ARRAY of them, and the array is the point: a whole roster loads in a single call. Email is the identity within the company, so a stakeholder whose email is already on the table is SKIPPED rather than duplicated or rejected — the 201 reports how many rows were actually inserted, which is what makes re-running an import safe. Validation is all-or-nothing across the batch: one bad entry refuses the whole array.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3645,8 +3645,8 @@ public class CaptableApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Add stakeholders to the cap table (asynchronously)
+     * Records the people and institutions that can hold equity — the rows every share, option, SAFE, note and investment is issued to.  The body is ONE stakeholder object or an ARRAY of them, and the array is the point: a whole roster loads in a single call. Email is the identity within the company, so a stakeholder whose email is already on the table is SKIPPED rather than duplicated or rejected — the 201 reports how many rows were actually inserted, which is what makes re-running an import safe. Validation is all-or-nothing across the batch: one bad entry refuses the whole array.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

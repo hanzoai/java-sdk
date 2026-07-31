@@ -27,7 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.AdminAdminDeletePromo200Response;
+import ai.hanzo.cloud.model.CloudAdminAdminCreatePromo400Response;
 import ai.hanzo.cloud.model.CloudBotRuns;
 import ai.hanzo.cloud.model.CloudBotStopped;
 import ai.hanzo.cloud.model.VisorBotLaunchRequest;
@@ -255,8 +255,8 @@ public class BotsApi {
     }
 
     /**
-     * 
-     * 
+     * Reserved address for launching a bot run — not implemented, always 501
+     * Answers 501 to every call. The bot runtime exposes no launch operation, so nothing here can start a sandbox, and this address is published rather than dropped because it is reserved: routes resolve by specificity, so the &#x60;run&#x60; literal can never bind as a run id against its neighbour &#x60;/v1/bots/:runId/stop&#x60;.  The refusal is total and takes no input. The handler never reads the body, so any bytes at all — malformed JSON included — get the same 501; no run id is minted, no session URL is handed back, and no per-run fee is charged. That is the point: the earlier version minted an id the runtime had never heard of, pointed it at a VNC node that did not exist, and took real money for it.  Listing and stopping runs are live and org-scoped. Only the launch is missing, and it returns in the same change that can prove a bot boots.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -270,8 +270,8 @@ public class BotsApi {
     }
 
     /**
-     * 
-     * 
+     * Reserved address for launching a bot run — not implemented, always 501
+     * Answers 501 to every call. The bot runtime exposes no launch operation, so nothing here can start a sandbox, and this address is published rather than dropped because it is reserved: routes resolve by specificity, so the &#x60;run&#x60; literal can never bind as a run id against its neighbour &#x60;/v1/bots/:runId/stop&#x60;.  The refusal is total and takes no input. The handler never reads the body, so any bytes at all — malformed JSON included — get the same 501; no run id is minted, no session URL is handed back, and no per-run fee is charged. That is the point: the earlier version minted an id the runtime had never heard of, pointed it at a VNC node that did not exist, and took real money for it.  Listing and stopping runs are live and org-scoped. Only the launch is missing, and it returns in the same change that can prove a bot boots.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -287,8 +287,8 @@ public class BotsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Reserved address for launching a bot run — not implemented, always 501 (asynchronously)
+     * Answers 501 to every call. The bot runtime exposes no launch operation, so nothing here can start a sandbox, and this address is published rather than dropped because it is reserved: routes resolve by specificity, so the &#x60;run&#x60; literal can never bind as a run id against its neighbour &#x60;/v1/bots/:runId/stop&#x60;.  The refusal is total and takes no input. The handler never reads the body, so any bytes at all — malformed JSON included — get the same 501; no run id is minted, no session URL is handed back, and no per-run fee is charged. That is the point: the earlier version minted an id the runtime had never heard of, pointed it at a VNC node that did not exist, and took real money for it.  Listing and stopping runs are live and org-scoped. Only the launch is missing, and it returns in the same change that can prove a bot boots.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

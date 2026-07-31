@@ -1494,8 +1494,8 @@ public class CloudflareApi {
     }
 
     /**
-     * 
-     * 
+     * Read a Workers KV value as its stored bytes
+     * Answers one KV key&#39;s value from the org&#39;s OWN Cloudflare account as RAW BYTES under the content type it was written with — not wrapped in a JSON envelope, which is why this is not a typed op. Any org member may read. A key that does not exist is Cloudflare&#39;s own 404; an invalid namespace, or a key that is empty, over 512 bytes, not valid UTF-8, or carries a control character, is 400; 503 if the org has never connected a Cloudflare token.
      * @param namespace  (required)
      * @param key  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1511,8 +1511,8 @@ public class CloudflareApi {
     }
 
     /**
-     * 
-     * 
+     * Read a Workers KV value as its stored bytes
+     * Answers one KV key&#39;s value from the org&#39;s OWN Cloudflare account as RAW BYTES under the content type it was written with — not wrapped in a JSON envelope, which is why this is not a typed op. Any org member may read. A key that does not exist is Cloudflare&#39;s own 404; an invalid namespace, or a key that is empty, over 512 bytes, not valid UTF-8, or carries a control character, is 400; 503 if the org has never connected a Cloudflare token.
      * @param namespace  (required)
      * @param key  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -1530,8 +1530,8 @@ public class CloudflareApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Read a Workers KV value as its stored bytes (asynchronously)
+     * Answers one KV key&#39;s value from the org&#39;s OWN Cloudflare account as RAW BYTES under the content type it was written with — not wrapped in a JSON envelope, which is why this is not a typed op. Any org member may read. A key that does not exist is Cloudflare&#39;s own 404; an invalid namespace, or a key that is empty, over 512 bytes, not valid UTF-8, or carries a control character, is 400; 503 if the org has never connected a Cloudflare token.
      * @param namespace  (required)
      * @param key  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2824,8 +2824,8 @@ public class CloudflareApi {
     }
 
     /**
-     * 
-     * 
+     * Run a Cloudflare Workers AI model and get its output back
+     * Runs a Workers AI model — the model id is the rest of the path, e.g. &#x60;@cf/meta/llama-3.1-8b-instruct&#x60; — on the org&#39;s OWN Cloudflare account and relays the model&#39;s output. The request body is whatever the chosen model takes (a prompt, chat messages, a base64 audio clip) and is forwarded unchanged; the response is the model&#39;s own, which for an image or audio model is BYTES under Cloudflare&#39;s content type rather than JSON. Both halves are why this is not a typed op.  It is the ONE PRICED route on this plane, because a run is inference rather than passthrough. The org&#39;s own token already paid Cloudflare for the compute, so Hanzo debits only the thin BYO routing fee — never the full inference cost — and meters it on the SAME &#x60;ai&#x60; product axis and per-project caps as every other model call, so Workers AI spend sums with LLM spend. The fee has a floor, so every run leaves a usage row even for a modality that reports no tokens, and it emits one gen_ai span with &#x60;gen_ai.system &#x3D; cloudflare&#x60;.  Gated by BALANCE, not by the admin bit that guards the destructive verbs here: a validated org is enough, and a frozen, broke or over-cap org is refused with the fleet-wide 402/503 billing contract BEFORE any byte reaches Cloudflare — no run, and no account discovery either. An empty or oversized body is 400, as is a model id that is not a plain Cloudflare model path; 503 if the org has never connected a Cloudflare token.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2840,8 +2840,8 @@ public class CloudflareApi {
     }
 
     /**
-     * 
-     * 
+     * Run a Cloudflare Workers AI model and get its output back
+     * Runs a Workers AI model — the model id is the rest of the path, e.g. &#x60;@cf/meta/llama-3.1-8b-instruct&#x60; — on the org&#39;s OWN Cloudflare account and relays the model&#39;s output. The request body is whatever the chosen model takes (a prompt, chat messages, a base64 audio clip) and is forwarded unchanged; the response is the model&#39;s own, which for an image or audio model is BYTES under Cloudflare&#39;s content type rather than JSON. Both halves are why this is not a typed op.  It is the ONE PRICED route on this plane, because a run is inference rather than passthrough. The org&#39;s own token already paid Cloudflare for the compute, so Hanzo debits only the thin BYO routing fee — never the full inference cost — and meters it on the SAME &#x60;ai&#x60; product axis and per-project caps as every other model call, so Workers AI spend sums with LLM spend. The fee has a floor, so every run leaves a usage row even for a modality that reports no tokens, and it emits one gen_ai span with &#x60;gen_ai.system &#x3D; cloudflare&#x60;.  Gated by BALANCE, not by the admin bit that guards the destructive verbs here: a validated org is enough, and a frozen, broke or over-cap org is refused with the fleet-wide 402/503 billing contract BEFORE any byte reaches Cloudflare — no run, and no account discovery either. An empty or oversized body is 400, as is a model id that is not a plain Cloudflare model path; 503 if the org has never connected a Cloudflare token.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2858,8 +2858,8 @@ public class CloudflareApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Run a Cloudflare Workers AI model and get its output back (asynchronously)
+     * Runs a Workers AI model — the model id is the rest of the path, e.g. &#x60;@cf/meta/llama-3.1-8b-instruct&#x60; — on the org&#39;s OWN Cloudflare account and relays the model&#39;s output. The request body is whatever the chosen model takes (a prompt, chat messages, a base64 audio clip) and is forwarded unchanged; the response is the model&#39;s own, which for an image or audio model is BYTES under Cloudflare&#39;s content type rather than JSON. Both halves are why this is not a typed op.  It is the ONE PRICED route on this plane, because a run is inference rather than passthrough. The org&#39;s own token already paid Cloudflare for the compute, so Hanzo debits only the thin BYO routing fee — never the full inference cost — and meters it on the SAME &#x60;ai&#x60; product axis and per-project caps as every other model call, so Workers AI spend sums with LLM spend. The fee has a floor, so every run leaves a usage row even for a modality that reports no tokens, and it emits one gen_ai span with &#x60;gen_ai.system &#x3D; cloudflare&#x60;.  Gated by BALANCE, not by the admin bit that guards the destructive verbs here: a validated org is enough, and a frozen, broke or over-cap org is refused with the fleet-wide 402/503 billing contract BEFORE any byte reaches Cloudflare — no run, and no account discovery either. An empty or oversized body is 400, as is a model id that is not a plain Cloudflare model path; 503 if the org has never connected a Cloudflare token.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3076,8 +3076,8 @@ public class CloudflareApi {
     }
 
     /**
-     * 
-     * 
+     * Run a SQL statement against a D1 database
+     * Executes a statement on one D1 database on the org&#39;s OWN Cloudflare account and relays D1&#39;s result set. &#x60;sql&#x60; is required and &#x60;params&#x60; carries the bound values in placeholder order — use them rather than interpolating values into the statement.  The body is checked for a non-empty &#x60;sql&#x60; and then forwarded VERBATIM, so every field D1 accepts reaches D1 even though only two are named here; the declared schema is open for that reason. That verbatim forward is why this is not a typed op — decoding and re-encoding the body would drop &#x60;params&#x60;, where the query&#39;s bound values live. Requires ORG ADMIN (403 otherwise); a malformed body or missing &#x60;sql&#x60; is 400; 503 if the org has never connected a Cloudflare token.
      * @param database  (required)
      * @param cloudD1Query  (optional)
      * @return Object
@@ -3095,8 +3095,8 @@ public class CloudflareApi {
     }
 
     /**
-     * 
-     * 
+     * Run a SQL statement against a D1 database
+     * Executes a statement on one D1 database on the org&#39;s OWN Cloudflare account and relays D1&#39;s result set. &#x60;sql&#x60; is required and &#x60;params&#x60; carries the bound values in placeholder order — use them rather than interpolating values into the statement.  The body is checked for a non-empty &#x60;sql&#x60; and then forwarded VERBATIM, so every field D1 accepts reaches D1 even though only two are named here; the declared schema is open for that reason. That verbatim forward is why this is not a typed op — decoding and re-encoding the body would drop &#x60;params&#x60;, where the query&#39;s bound values live. Requires ORG ADMIN (403 otherwise); a malformed body or missing &#x60;sql&#x60; is 400; 503 if the org has never connected a Cloudflare token.
      * @param database  (required)
      * @param cloudD1Query  (optional)
      * @return ApiResponse&lt;Object&gt;
@@ -3115,8 +3115,8 @@ public class CloudflareApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Run a SQL statement against a D1 database (asynchronously)
+     * Executes a statement on one D1 database on the org&#39;s OWN Cloudflare account and relays D1&#39;s result set. &#x60;sql&#x60; is required and &#x60;params&#x60; carries the bound values in placeholder order — use them rather than interpolating values into the statement.  The body is checked for a non-empty &#x60;sql&#x60; and then forwarded VERBATIM, so every field D1 accepts reaches D1 even though only two are named here; the declared schema is open for that reason. That verbatim forward is why this is not a typed op — decoding and re-encoding the body would drop &#x60;params&#x60;, where the query&#39;s bound values live. Requires ORG ADMIN (403 otherwise); a malformed body or missing &#x60;sql&#x60; is 400; 503 if the org has never connected a Cloudflare token.
      * @param database  (required)
      * @param cloudD1Query  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -3462,8 +3462,8 @@ public class CloudflareApi {
     }
 
     /**
-     * 
-     * 
+     * Trigger a new Pages deployment for a project
+     * Starts a build and deployment of one Cloudflare Pages project on the org&#39;s OWN Cloudflare account, and relays Cloudflare&#39;s deployment record back. &#x60;branch&#x60; picks what to build; OMITTING it builds the project&#39;s production branch.  A body it cannot parse is IGNORED rather than refused — the deployment falls back to the production branch — which is the one rule to get right here and the reason this is not a typed op: a typed request would answer 400 where this deploys. Requires ORG ADMIN (403 otherwise), and 503 if the org has never connected a Cloudflare token.
      * @param project  (required)
      * @param cloudPagesDeploy  (optional)
      * @return Object
@@ -3481,8 +3481,8 @@ public class CloudflareApi {
     }
 
     /**
-     * 
-     * 
+     * Trigger a new Pages deployment for a project
+     * Starts a build and deployment of one Cloudflare Pages project on the org&#39;s OWN Cloudflare account, and relays Cloudflare&#39;s deployment record back. &#x60;branch&#x60; picks what to build; OMITTING it builds the project&#39;s production branch.  A body it cannot parse is IGNORED rather than refused — the deployment falls back to the production branch — which is the one rule to get right here and the reason this is not a typed op: a typed request would answer 400 where this deploys. Requires ORG ADMIN (403 otherwise), and 503 if the org has never connected a Cloudflare token.
      * @param project  (required)
      * @param cloudPagesDeploy  (optional)
      * @return ApiResponse&lt;Object&gt;
@@ -3501,8 +3501,8 @@ public class CloudflareApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Trigger a new Pages deployment for a project (asynchronously)
+     * Starts a build and deployment of one Cloudflare Pages project on the org&#39;s OWN Cloudflare account, and relays Cloudflare&#39;s deployment record back. &#x60;branch&#x60; picks what to build; OMITTING it builds the project&#39;s production branch.  A body it cannot parse is IGNORED rather than refused — the deployment falls back to the production branch — which is the one rule to get right here and the reason this is not a typed op: a typed request would answer 400 where this deploys. Requires ORG ADMIN (403 otherwise), and 503 if the org has never connected a Cloudflare token.
      * @param project  (required)
      * @param cloudPagesDeploy  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -4273,8 +4273,8 @@ public class CloudflareApi {
     }
 
     /**
-     * 
-     * 
+     * Write a Workers KV value from the request body
+     * Stores one KV key on the org&#39;s OWN Cloudflare account. The REQUEST BODY IS THE VALUE, forwarded verbatim under the caller&#39;s own Content-Type (&#x60;text/plain&#x60; when none is sent), so a value is never re-encoded on the way in — which is why this is not a typed op. &#x60;expiration&#x60; and &#x60;expiration_ttl&#x60; may ride the query string and are passed through to Cloudflare. Requires ORG ADMIN (403 otherwise); the same namespace and key validation as the read answers 400; 503 if the org has never connected a Cloudflare token.
      * @param namespace  (required)
      * @param key  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4290,8 +4290,8 @@ public class CloudflareApi {
     }
 
     /**
-     * 
-     * 
+     * Write a Workers KV value from the request body
+     * Stores one KV key on the org&#39;s OWN Cloudflare account. The REQUEST BODY IS THE VALUE, forwarded verbatim under the caller&#39;s own Content-Type (&#x60;text/plain&#x60; when none is sent), so a value is never re-encoded on the way in — which is why this is not a typed op. &#x60;expiration&#x60; and &#x60;expiration_ttl&#x60; may ride the query string and are passed through to Cloudflare. Requires ORG ADMIN (403 otherwise); the same namespace and key validation as the read answers 400; 503 if the org has never connected a Cloudflare token.
      * @param namespace  (required)
      * @param key  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -4309,8 +4309,8 @@ public class CloudflareApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Write a Workers KV value from the request body (asynchronously)
+     * Stores one KV key on the org&#39;s OWN Cloudflare account. The REQUEST BODY IS THE VALUE, forwarded verbatim under the caller&#39;s own Content-Type (&#x60;text/plain&#x60; when none is sent), so a value is never re-encoded on the way in — which is why this is not a typed op. &#x60;expiration&#x60; and &#x60;expiration_ttl&#x60; may ride the query string and are passed through to Cloudflare. Requires ORG ADMIN (403 otherwise); the same namespace and key validation as the read answers 400; 503 if the org has never connected a Cloudflare token.
      * @param namespace  (required)
      * @param key  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -4401,8 +4401,8 @@ public class CloudflareApi {
     }
 
     /**
-     * 
-     * 
+     * Upload or replace a module Worker script
+     * Publishes a module Worker to the org&#39;s OWN Cloudflare account under the name in the path, replacing whatever was there, and relays Cloudflare&#39;s result. &#x60;script&#x60; carries the module SOURCE; the optional compatibility date, compatibility flags and bindings are packed into the multipart upload Cloudflare expects.  The path names the script and the body field named &#x60;script&#x60; is its source — two different things that share a name, which is exactly why this cannot be a typed op: a binder that gives the URL the last word would overwrite the source with the script&#39;s name. Requires ORG ADMIN (403 otherwise); an unparseable body or empty source is 400; 503 if the org has never connected a Cloudflare token.
      * @param script  (required)
      * @param cloudWorkerScriptPut  (optional)
      * @return Object
@@ -4420,8 +4420,8 @@ public class CloudflareApi {
     }
 
     /**
-     * 
-     * 
+     * Upload or replace a module Worker script
+     * Publishes a module Worker to the org&#39;s OWN Cloudflare account under the name in the path, replacing whatever was there, and relays Cloudflare&#39;s result. &#x60;script&#x60; carries the module SOURCE; the optional compatibility date, compatibility flags and bindings are packed into the multipart upload Cloudflare expects.  The path names the script and the body field named &#x60;script&#x60; is its source — two different things that share a name, which is exactly why this cannot be a typed op: a binder that gives the URL the last word would overwrite the source with the script&#39;s name. Requires ORG ADMIN (403 otherwise); an unparseable body or empty source is 400; 503 if the org has never connected a Cloudflare token.
      * @param script  (required)
      * @param cloudWorkerScriptPut  (optional)
      * @return ApiResponse&lt;Object&gt;
@@ -4440,8 +4440,8 @@ public class CloudflareApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Upload or replace a module Worker script (asynchronously)
+     * Publishes a module Worker to the org&#39;s OWN Cloudflare account under the name in the path, replacing whatever was there, and relays Cloudflare&#39;s result. &#x60;script&#x60; carries the module SOURCE; the optional compatibility date, compatibility flags and bindings are packed into the multipart upload Cloudflare expects.  The path names the script and the body field named &#x60;script&#x60; is its source — two different things that share a name, which is exactly why this cannot be a typed op: a binder that gives the URL the last word would overwrite the source with the script&#39;s name. Requires ORG ADMIN (403 otherwise); an unparseable body or empty source is 400; 503 if the org has never connected a Cloudflare token.
      * @param script  (required)
      * @param cloudWorkerScriptPut  (optional)
      * @param _callback The callback to be executed when the API call finishes

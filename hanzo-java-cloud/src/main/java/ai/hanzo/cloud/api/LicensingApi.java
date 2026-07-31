@@ -140,8 +140,8 @@ public class LicensingApi {
     }
 
     /**
-     * 
-     * 
+     * Not served — a license is revoked, never deleted
+     * The subtree is mounted as ONE wildcard route, so every method that route can carry is published — but the mux behind it registers GET and POST handlers only. A DELETE to a real licensing path is 405, with an &#x60;Allow&#x60; header naming the methods that path does serve; a DELETE to a path the subtree does not have is 404.  The delete-shaped operation here is revocation, and it is POST /v1/licensing/revoke. It APPENDS a revocation entry rather than removing anything, because a token already in the field cannot be recalled — it can only be denied at verify and download time, and the entry is the record of who denied it and why.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -156,8 +156,8 @@ public class LicensingApi {
     }
 
     /**
-     * 
-     * 
+     * Not served — a license is revoked, never deleted
+     * The subtree is mounted as ONE wildcard route, so every method that route can carry is published — but the mux behind it registers GET and POST handlers only. A DELETE to a real licensing path is 405, with an &#x60;Allow&#x60; header naming the methods that path does serve; a DELETE to a path the subtree does not have is 404.  The delete-shaped operation here is revocation, and it is POST /v1/licensing/revoke. It APPENDS a revocation entry rather than removing anything, because a token already in the field cannot be recalled — it can only be denied at verify and download time, and the entry is the record of who denied it and why.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -174,8 +174,8 @@ public class LicensingApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Not served — a license is revoked, never deleted (asynchronously)
+     * The subtree is mounted as ONE wildcard route, so every method that route can carry is published — but the mux behind it registers GET and POST handlers only. A DELETE to a real licensing path is 405, with an &#x60;Allow&#x60; header naming the methods that path does serve; a DELETE to a path the subtree does not have is 404.  The delete-shaped operation here is revocation, and it is POST /v1/licensing/revoke. It APPENDS a revocation entry rather than removing anything, because a token already in the field cannot be recalled — it can only be denied at verify and download time, and the entry is the record of who denied it and why.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -262,8 +262,8 @@ public class LicensingApi {
     }
 
     /**
-     * 
-     * 
+     * Read the licensing subtree: releases, the public verification key, health
+     * The subtree is mounted as ONE wildcard route, so the path segment selects the real operation. Under GET those are:  - &#x60;/v1/licensing/releases&#x60; — every release the deployment knows. - &#x60;/v1/licensing/releases/{release}&#x60; — one release&#39;s metadata; an unknown id is 404. - &#x60;/v1/licensing/download/{release}&#x60; — the license-gated artifact download. It is gated on the minted LICENSE token rather than the OIDC bearer, because that is exactly what the engine runs on: present it as an &#x60;X-License-Token&#x60; header or a &#x60;?token&#x3D;&#x60; query parameter. No token is 401; a token whose signature, app or expiry fails, or that has been revoked, or that lacks the features the release requires, is 403; a yanked release is 410. The answer carries the artifact AND its cosign signature, so a client verifies the binary before trusting it. - &#x60;/v1/licensing/pubkey&#x60; and &#x60;/v1/licensing/jwks&#x60; — the same Ed25519 PUBLIC key, in raw base64 and as a JWK. This is the only public-safe surface here, and it is what lets an engine verify tokens OFFLINE. The private key never enters this process: signing goes through the KMS signer abstraction, not key material. - &#x60;/v1/licensing/healthz&#x60; — status, deployment env, and which signer provider is in use.  Any other path under the subtree is 404.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -278,8 +278,8 @@ public class LicensingApi {
     }
 
     /**
-     * 
-     * 
+     * Read the licensing subtree: releases, the public verification key, health
+     * The subtree is mounted as ONE wildcard route, so the path segment selects the real operation. Under GET those are:  - &#x60;/v1/licensing/releases&#x60; — every release the deployment knows. - &#x60;/v1/licensing/releases/{release}&#x60; — one release&#39;s metadata; an unknown id is 404. - &#x60;/v1/licensing/download/{release}&#x60; — the license-gated artifact download. It is gated on the minted LICENSE token rather than the OIDC bearer, because that is exactly what the engine runs on: present it as an &#x60;X-License-Token&#x60; header or a &#x60;?token&#x3D;&#x60; query parameter. No token is 401; a token whose signature, app or expiry fails, or that has been revoked, or that lacks the features the release requires, is 403; a yanked release is 410. The answer carries the artifact AND its cosign signature, so a client verifies the binary before trusting it. - &#x60;/v1/licensing/pubkey&#x60; and &#x60;/v1/licensing/jwks&#x60; — the same Ed25519 PUBLIC key, in raw base64 and as a JWK. This is the only public-safe surface here, and it is what lets an engine verify tokens OFFLINE. The private key never enters this process: signing goes through the KMS signer abstraction, not key material. - &#x60;/v1/licensing/healthz&#x60; — status, deployment env, and which signer provider is in use.  Any other path under the subtree is 404.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -296,8 +296,8 @@ public class LicensingApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Read the licensing subtree: releases, the public verification key, health (asynchronously)
+     * The subtree is mounted as ONE wildcard route, so the path segment selects the real operation. Under GET those are:  - &#x60;/v1/licensing/releases&#x60; — every release the deployment knows. - &#x60;/v1/licensing/releases/{release}&#x60; — one release&#39;s metadata; an unknown id is 404. - &#x60;/v1/licensing/download/{release}&#x60; — the license-gated artifact download. It is gated on the minted LICENSE token rather than the OIDC bearer, because that is exactly what the engine runs on: present it as an &#x60;X-License-Token&#x60; header or a &#x60;?token&#x3D;&#x60; query parameter. No token is 401; a token whose signature, app or expiry fails, or that has been revoked, or that lacks the features the release requires, is 403; a yanked release is 410. The answer carries the artifact AND its cosign signature, so a client verifies the binary before trusting it. - &#x60;/v1/licensing/pubkey&#x60; and &#x60;/v1/licensing/jwks&#x60; — the same Ed25519 PUBLIC key, in raw base64 and as a JWK. This is the only public-safe surface here, and it is what lets an engine verify tokens OFFLINE. The private key never enters this process: signing goes through the KMS signer abstraction, not key material. - &#x60;/v1/licensing/healthz&#x60; — status, deployment env, and which signer provider is in use.  Any other path under the subtree is 404.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -384,8 +384,8 @@ public class LicensingApi {
     }
 
     /**
-     * 
-     * 
+     * Not served — but the refusal still names the methods a path allows
+     * The subtree is mounted as ONE wildcard route, so every method that route can carry is published — but the mux behind it registers GET and POST handlers only, and OPTIONS is not among them. An OPTIONS to a real licensing path is therefore 405 rather than a capability answer; it does still carry the &#x60;Allow&#x60; header naming that path&#39;s real methods, which is the part a client was asking for. An OPTIONS to a path the subtree does not have is 404.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -400,8 +400,8 @@ public class LicensingApi {
     }
 
     /**
-     * 
-     * 
+     * Not served — but the refusal still names the methods a path allows
+     * The subtree is mounted as ONE wildcard route, so every method that route can carry is published — but the mux behind it registers GET and POST handlers only, and OPTIONS is not among them. An OPTIONS to a real licensing path is therefore 405 rather than a capability answer; it does still carry the &#x60;Allow&#x60; header naming that path&#39;s real methods, which is the part a client was asking for. An OPTIONS to a path the subtree does not have is 404.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -418,8 +418,8 @@ public class LicensingApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Not served — but the refusal still names the methods a path allows (asynchronously)
+     * The subtree is mounted as ONE wildcard route, so every method that route can carry is published — but the mux behind it registers GET and POST handlers only, and OPTIONS is not among them. An OPTIONS to a real licensing path is therefore 405 rather than a capability answer; it does still carry the &#x60;Allow&#x60; header naming that path&#39;s real methods, which is the part a client was asking for. An OPTIONS to a path the subtree does not have is 404.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -506,8 +506,8 @@ public class LicensingApi {
     }
 
     /**
-     * 
-     * 
+     * Not served — nothing in the licensing subtree is patched
+     * The subtree is mounted as ONE wildcard route, so every method that route can carry is published — but the mux behind it registers GET and POST handlers only. A PATCH to a real licensing path is 405, with an &#x60;Allow&#x60; header naming the methods that path does serve; a PATCH to a path the subtree does not have is 404.  Nothing here is mutable in part. A license is an immutable signed token — you issue a new one — and a release is republished whole.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -522,8 +522,8 @@ public class LicensingApi {
     }
 
     /**
-     * 
-     * 
+     * Not served — nothing in the licensing subtree is patched
+     * The subtree is mounted as ONE wildcard route, so every method that route can carry is published — but the mux behind it registers GET and POST handlers only. A PATCH to a real licensing path is 405, with an &#x60;Allow&#x60; header naming the methods that path does serve; a PATCH to a path the subtree does not have is 404.  Nothing here is mutable in part. A license is an immutable signed token — you issue a new one — and a release is republished whole.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -540,8 +540,8 @@ public class LicensingApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Not served — nothing in the licensing subtree is patched (asynchronously)
+     * The subtree is mounted as ONE wildcard route, so every method that route can carry is published — but the mux behind it registers GET and POST handlers only. A PATCH to a real licensing path is 405, with an &#x60;Allow&#x60; header naming the methods that path does serve; a PATCH to a path the subtree does not have is 404.  Nothing here is mutable in part. A license is an immutable signed token — you issue a new one — and a release is republished whole.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -628,8 +628,8 @@ public class LicensingApi {
     }
 
     /**
-     * 
-     * 
+     * Issue, verify and revoke license tokens, bind a device, publish a release
+     * The subtree is mounted as ONE wildcard route, so the path segment selects the real operation. Under POST those are:  - &#x60;/v1/licensing/issue&#x60; — mints an Ed25519 license token for a paid product. The caller must be authenticated (mounted in cloud, that is an IAM-verified bearer), and the entitlement is then checked in commerce for that caller&#39;s org and subject: a caller who does not own the product is 403, never a token. The token&#39;s &#x60;app_id&#x60; is the DEPLOYMENT&#39;s brand, so a hanzo deployment can never mint a lux- or zoo-scoped token. Device binding comes from a &#x60;fingerprint&#x60; you registered earlier or from &#x60;signals&#x60; bound at issue time, and a deployment configured to require one refuses without it. The lifetime is clamped both to policy and to the entitlement&#39;s own expiry, so a token never outlives the entitlement that justified it. Naming a &#x60;release&#x60; scopes the token to it as a &#x60;release:&lt;id&gt;&#x60; feature, which is what makes release-scoped revocation reach it. - &#x60;/v1/licensing/verify&#x60; — an online, unauthenticated check of a token: signature, app and expiry, then the revocation list. The rule worth knowing is that an INVALID token is still 200 — the answer is &#x60;{valid:false, reason}&#x60;, not an HTTP error — because this read is informational and the engine is what enforces the license, offline, from the public key. - &#x60;/v1/licensing/revoke&#x60; — appends a revocation entry scoped by &#x60;nonce&#x60;, &#x60;holder&#x60;, &#x60;fingerprint&#x60; or &#x60;release&#x60;, stamped with the admin who did it. Authenticated; any other scope, or a missing value, is 400. - &#x60;/v1/licensing/fingerprint&#x60; — turns device signals into the opaque binding value &#x60;/issue&#x60; accepts. Authenticated, and the raw signals are never echoed back. - &#x60;/v1/licensing/releases&#x60; — publishes a release, answering 201. Authenticated, and outside dev a release carrying no cosign signature is refused, so an unsigned binary cannot enter the download path.  Any other path under the subtree is 404.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -644,8 +644,8 @@ public class LicensingApi {
     }
 
     /**
-     * 
-     * 
+     * Issue, verify and revoke license tokens, bind a device, publish a release
+     * The subtree is mounted as ONE wildcard route, so the path segment selects the real operation. Under POST those are:  - &#x60;/v1/licensing/issue&#x60; — mints an Ed25519 license token for a paid product. The caller must be authenticated (mounted in cloud, that is an IAM-verified bearer), and the entitlement is then checked in commerce for that caller&#39;s org and subject: a caller who does not own the product is 403, never a token. The token&#39;s &#x60;app_id&#x60; is the DEPLOYMENT&#39;s brand, so a hanzo deployment can never mint a lux- or zoo-scoped token. Device binding comes from a &#x60;fingerprint&#x60; you registered earlier or from &#x60;signals&#x60; bound at issue time, and a deployment configured to require one refuses without it. The lifetime is clamped both to policy and to the entitlement&#39;s own expiry, so a token never outlives the entitlement that justified it. Naming a &#x60;release&#x60; scopes the token to it as a &#x60;release:&lt;id&gt;&#x60; feature, which is what makes release-scoped revocation reach it. - &#x60;/v1/licensing/verify&#x60; — an online, unauthenticated check of a token: signature, app and expiry, then the revocation list. The rule worth knowing is that an INVALID token is still 200 — the answer is &#x60;{valid:false, reason}&#x60;, not an HTTP error — because this read is informational and the engine is what enforces the license, offline, from the public key. - &#x60;/v1/licensing/revoke&#x60; — appends a revocation entry scoped by &#x60;nonce&#x60;, &#x60;holder&#x60;, &#x60;fingerprint&#x60; or &#x60;release&#x60;, stamped with the admin who did it. Authenticated; any other scope, or a missing value, is 400. - &#x60;/v1/licensing/fingerprint&#x60; — turns device signals into the opaque binding value &#x60;/issue&#x60; accepts. Authenticated, and the raw signals are never echoed back. - &#x60;/v1/licensing/releases&#x60; — publishes a release, answering 201. Authenticated, and outside dev a release carrying no cosign signature is refused, so an unsigned binary cannot enter the download path.  Any other path under the subtree is 404.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -662,8 +662,8 @@ public class LicensingApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Issue, verify and revoke license tokens, bind a device, publish a release (asynchronously)
+     * The subtree is mounted as ONE wildcard route, so the path segment selects the real operation. Under POST those are:  - &#x60;/v1/licensing/issue&#x60; — mints an Ed25519 license token for a paid product. The caller must be authenticated (mounted in cloud, that is an IAM-verified bearer), and the entitlement is then checked in commerce for that caller&#39;s org and subject: a caller who does not own the product is 403, never a token. The token&#39;s &#x60;app_id&#x60; is the DEPLOYMENT&#39;s brand, so a hanzo deployment can never mint a lux- or zoo-scoped token. Device binding comes from a &#x60;fingerprint&#x60; you registered earlier or from &#x60;signals&#x60; bound at issue time, and a deployment configured to require one refuses without it. The lifetime is clamped both to policy and to the entitlement&#39;s own expiry, so a token never outlives the entitlement that justified it. Naming a &#x60;release&#x60; scopes the token to it as a &#x60;release:&lt;id&gt;&#x60; feature, which is what makes release-scoped revocation reach it. - &#x60;/v1/licensing/verify&#x60; — an online, unauthenticated check of a token: signature, app and expiry, then the revocation list. The rule worth knowing is that an INVALID token is still 200 — the answer is &#x60;{valid:false, reason}&#x60;, not an HTTP error — because this read is informational and the engine is what enforces the license, offline, from the public key. - &#x60;/v1/licensing/revoke&#x60; — appends a revocation entry scoped by &#x60;nonce&#x60;, &#x60;holder&#x60;, &#x60;fingerprint&#x60; or &#x60;release&#x60;, stamped with the admin who did it. Authenticated; any other scope, or a missing value, is 400. - &#x60;/v1/licensing/fingerprint&#x60; — turns device signals into the opaque binding value &#x60;/issue&#x60; accepts. Authenticated, and the raw signals are never echoed back. - &#x60;/v1/licensing/releases&#x60; — publishes a release, answering 201. Authenticated, and outside dev a release carrying no cosign signature is refused, so an unsigned binary cannot enter the download path.  Any other path under the subtree is 404.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -750,8 +750,8 @@ public class LicensingApi {
     }
 
     /**
-     * 
-     * 
+     * Not served — nothing in the licensing subtree is replaced by PUT
+     * The subtree is mounted as ONE wildcard route, so every method that route can carry is published — but the mux behind it registers GET and POST handlers only. A PUT to a real licensing path (&#x60;/v1/licensing/issue&#x60;, &#x60;/v1/licensing/releases&#x60;, and the rest) is 405, with an &#x60;Allow&#x60; header naming the methods that path does serve; a PUT to a path the subtree does not have at all is 404.  There is no replace-in-place anywhere here: a release is published again through POST /v1/licensing/releases, and a license is re-issued rather than edited.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -766,8 +766,8 @@ public class LicensingApi {
     }
 
     /**
-     * 
-     * 
+     * Not served — nothing in the licensing subtree is replaced by PUT
+     * The subtree is mounted as ONE wildcard route, so every method that route can carry is published — but the mux behind it registers GET and POST handlers only. A PUT to a real licensing path (&#x60;/v1/licensing/issue&#x60;, &#x60;/v1/licensing/releases&#x60;, and the rest) is 405, with an &#x60;Allow&#x60; header naming the methods that path does serve; a PUT to a path the subtree does not have at all is 404.  There is no replace-in-place anywhere here: a release is published again through POST /v1/licensing/releases, and a license is re-issued rather than edited.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -784,8 +784,8 @@ public class LicensingApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Not served — nothing in the licensing subtree is replaced by PUT (asynchronously)
+     * The subtree is mounted as ONE wildcard route, so every method that route can carry is published — but the mux behind it registers GET and POST handlers only. A PUT to a real licensing path (&#x60;/v1/licensing/issue&#x60;, &#x60;/v1/licensing/releases&#x60;, and the rest) is 405, with an &#x60;Allow&#x60; header naming the methods that path does serve; a PUT to a path the subtree does not have at all is 404.  There is no replace-in-place anywhere here: a release is published again through POST /v1/licensing/releases, and a license is re-issued rather than edited.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -800,128 +800,6 @@ public class LicensingApi {
     public okhttp3.Call cloudPutV1LicensingByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudPutV1LicensingByWildcard1ValidateBeforeCall(wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for cloudTraceV1LicensingByWildcard1
-     * @param wildcard1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceV1LicensingByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/licensing/{wildcard1}"
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "TRACE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudTraceV1LicensingByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling cloudTraceV1LicensingByWildcard1(Async)");
-        }
-
-        return cloudTraceV1LicensingByWildcard1Call(wildcard1, _callback);
-
-    }
-
-    /**
-     * 
-     * 
-     * @param wildcard1  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public void cloudTraceV1LicensingByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        cloudTraceV1LicensingByWildcard1WithHttpInfo(wildcard1);
-    }
-
-    /**
-     * 
-     * 
-     * @param wildcard1  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> cloudTraceV1LicensingByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = cloudTraceV1LicensingByWildcard1ValidateBeforeCall(wildcard1, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param wildcard1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceV1LicensingByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = cloudTraceV1LicensingByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

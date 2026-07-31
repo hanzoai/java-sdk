@@ -27,6 +27,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.AgentsControlRequest;
+import ai.hanzo.cloud.model.AgentsControlResult;
+import ai.hanzo.cloud.model.AgentsError;
+import ai.hanzo.cloud.model.AgentsEventRequest;
+import ai.hanzo.cloud.model.AgentsEventView;
+import ai.hanzo.cloud.model.AgentsRunRequest;
+import ai.hanzo.cloud.model.AgentsRunView;
 import ai.hanzo.cloud.model.CloudActivityFeed;
 import ai.hanzo.cloud.model.CloudAgentDetail;
 import ai.hanzo.cloud.model.CloudAgentList;
@@ -99,7 +106,7 @@ public class AgentsApi {
 
     /**
      * Build call for cloudDeleteV1AgentsRef
-     * @param ref Ref is the agent&#39;s public id (the agent_… handle create and list return) or its org-unique name, from the path. Either resolves the same agent. (required)
+     * @param ref The agent&#39;s public id (the &#x60;agent_...&#x60; handle) OR its org-unique name. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -168,7 +175,7 @@ public class AgentsApi {
     /**
      * DeleteAgent removes an agent and every run recorded against it.
      * DeleteAgent removes an agent and every run recorded against it. Answers 204.
-     * @param ref Ref is the agent&#39;s public id (the agent_… handle create and list return) or its org-unique name, from the path. Either resolves the same agent. (required)
+     * @param ref The agent&#39;s public id (the &#x60;agent_...&#x60; handle) OR its org-unique name. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -184,7 +191,7 @@ public class AgentsApi {
     /**
      * DeleteAgent removes an agent and every run recorded against it.
      * DeleteAgent removes an agent and every run recorded against it. Answers 204.
-     * @param ref Ref is the agent&#39;s public id (the agent_… handle create and list return) or its org-unique name, from the path. Either resolves the same agent. (required)
+     * @param ref The agent&#39;s public id (the &#x60;agent_...&#x60; handle) OR its org-unique name. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -202,7 +209,7 @@ public class AgentsApi {
     /**
      * DeleteAgent removes an agent and every run recorded against it. (asynchronously)
      * DeleteAgent removes an agent and every run recorded against it. Answers 204.
-     * @param ref Ref is the agent&#39;s public id (the agent_… handle create and list return) or its org-unique name, from the path. Either resolves the same agent. (required)
+     * @param ref The agent&#39;s public id (the &#x60;agent_...&#x60; handle) OR its org-unique name. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -969,7 +976,7 @@ public class AgentsApi {
     }
     /**
      * Build call for cloudGetV1AgentsRef
-     * @param ref Ref is the agent&#39;s public id (the agent_… handle create and list return) or its org-unique name, from the path. Either resolves the same agent. (required)
+     * @param ref The agent&#39;s public id (the &#x60;agent_...&#x60; handle) OR its org-unique name. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1039,7 +1046,7 @@ public class AgentsApi {
     /**
      * GetAgent returns one agent with its system prompt and its 20 most recent runs.
      * GetAgent returns one agent with its system prompt and its 20 most recent runs. The ref is the agent&#39;s public id or its org-unique name — a created agent is immediately gettable by whatever create handed back.
-     * @param ref Ref is the agent&#39;s public id (the agent_… handle create and list return) or its org-unique name, from the path. Either resolves the same agent. (required)
+     * @param ref The agent&#39;s public id (the &#x60;agent_...&#x60; handle) OR its org-unique name. (required)
      * @return CloudAgentDetail
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1057,7 +1064,7 @@ public class AgentsApi {
     /**
      * GetAgent returns one agent with its system prompt and its 20 most recent runs.
      * GetAgent returns one agent with its system prompt and its 20 most recent runs. The ref is the agent&#39;s public id or its org-unique name — a created agent is immediately gettable by whatever create handed back.
-     * @param ref Ref is the agent&#39;s public id (the agent_… handle create and list return) or its org-unique name, from the path. Either resolves the same agent. (required)
+     * @param ref The agent&#39;s public id (the &#x60;agent_...&#x60; handle) OR its org-unique name. (required)
      * @return ApiResponse&lt;CloudAgentDetail&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1076,7 +1083,7 @@ public class AgentsApi {
     /**
      * GetAgent returns one agent with its system prompt and its 20 most recent runs. (asynchronously)
      * GetAgent returns one agent with its system prompt and its 20 most recent runs. The ref is the agent&#39;s public id or its org-unique name — a created agent is immediately gettable by whatever create handed back.
-     * @param ref Ref is the agent&#39;s public id (the agent_… handle create and list return) or its org-unique name, from the path. Either resolves the same agent. (required)
+     * @param ref The agent&#39;s public id (the &#x60;agent_...&#x60; handle) OR its org-unique name. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1096,7 +1103,7 @@ public class AgentsApi {
     }
     /**
      * Build call for cloudGetV1AgentsRefRuns
-     * @param ref Ref is the agent&#39;s public id or its org-unique name, from the path. (required)
+     * @param ref The agent&#39;s public id (the &#x60;agent_...&#x60; handle) OR its org-unique name. (required)
      * @param limit Limit caps how many runs come back, newest first. Absent, zero or out of range (1..200) reads as 50. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1171,7 +1178,7 @@ public class AgentsApi {
     /**
      * ListAgentRuns returns one agent&#39;s execution history, newest first — each run&#39;s input, its output or its error, and how long it took.
      * ListAgentRuns returns one agent&#39;s execution history, newest first — each run&#39;s input, its output or its error, and how long it took. Every row is a run that actually happened.
-     * @param ref Ref is the agent&#39;s public id or its org-unique name, from the path. (required)
+     * @param ref The agent&#39;s public id (the &#x60;agent_...&#x60; handle) OR its org-unique name. (required)
      * @param limit Limit caps how many runs come back, newest first. Absent, zero or out of range (1..200) reads as 50. (optional)
      * @return CloudRunList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1190,7 +1197,7 @@ public class AgentsApi {
     /**
      * ListAgentRuns returns one agent&#39;s execution history, newest first — each run&#39;s input, its output or its error, and how long it took.
      * ListAgentRuns returns one agent&#39;s execution history, newest first — each run&#39;s input, its output or its error, and how long it took. Every row is a run that actually happened.
-     * @param ref Ref is the agent&#39;s public id or its org-unique name, from the path. (required)
+     * @param ref The agent&#39;s public id (the &#x60;agent_...&#x60; handle) OR its org-unique name. (required)
      * @param limit Limit caps how many runs come back, newest first. Absent, zero or out of range (1..200) reads as 50. (optional)
      * @return ApiResponse&lt;CloudRunList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1210,7 +1217,7 @@ public class AgentsApi {
     /**
      * ListAgentRuns returns one agent&#39;s execution history, newest first — each run&#39;s input, its output or its error, and how long it took. (asynchronously)
      * ListAgentRuns returns one agent&#39;s execution history, newest first — each run&#39;s input, its output or its error, and how long it took. Every row is a run that actually happened.
-     * @param ref Ref is the agent&#39;s public id or its org-unique name, from the path. (required)
+     * @param ref The agent&#39;s public id (the &#x60;agent_...&#x60; handle) OR its org-unique name. (required)
      * @param limit Limit caps how many runs come back, newest first. Absent, zero or out of range (1..200) reads as 50. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1388,7 +1395,7 @@ public class AgentsApi {
     }
     /**
      * Build call for cloudGetV1AgentsSessionsId
-     * @param id ID is the session to act on, from the path. (required)
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1458,7 +1465,7 @@ public class AgentsApi {
     /**
      * GetSession returns one session with its direct child sessions and its 50 most recent events, oldest of those first.
      * GetSession returns one session with its direct child sessions and its 50 most recent events, oldest of those first.
-     * @param id ID is the session to act on, from the path. (required)
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
      * @return CloudSessionDetail
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1476,7 +1483,7 @@ public class AgentsApi {
     /**
      * GetSession returns one session with its direct child sessions and its 50 most recent events, oldest of those first.
      * GetSession returns one session with its direct child sessions and its 50 most recent events, oldest of those first.
-     * @param id ID is the session to act on, from the path. (required)
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
      * @return ApiResponse&lt;CloudSessionDetail&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1495,7 +1502,7 @@ public class AgentsApi {
     /**
      * GetSession returns one session with its direct child sessions and its 50 most recent events, oldest of those first. (asynchronously)
      * GetSession returns one session with its direct child sessions and its 50 most recent events, oldest of those first.
-     * @param id ID is the session to act on, from the path. (required)
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1650,7 +1657,7 @@ public class AgentsApi {
     }
     /**
      * Build call for cloudGetV1AgentsSessionsIdTree
-     * @param id ID is the session to act on, from the path. (required)
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1720,7 +1727,7 @@ public class AgentsApi {
     /**
      * SessionTree returns the subagent-flow graph rooted at this session: the session, its children, their children, each node carrying its own event count.
      * SessionTree returns the subagent-flow graph rooted at this session: the session, its children, their children, each node carrying its own event count. One indexed read pulls the whole flow (every node of a flow shares a root id), so the shape is assembled in memory rather than by walking the store per node.
-     * @param id ID is the session to act on, from the path. (required)
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
      * @return CloudTreeNode
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1738,7 +1745,7 @@ public class AgentsApi {
     /**
      * SessionTree returns the subagent-flow graph rooted at this session: the session, its children, their children, each node carrying its own event count.
      * SessionTree returns the subagent-flow graph rooted at this session: the session, its children, their children, each node carrying its own event count. One indexed read pulls the whole flow (every node of a flow shares a root id), so the shape is assembled in memory rather than by walking the store per node.
-     * @param id ID is the session to act on, from the path. (required)
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
      * @return ApiResponse&lt;CloudTreeNode&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1757,7 +1764,7 @@ public class AgentsApi {
     /**
      * SessionTree returns the subagent-flow graph rooted at this session: the session, its children, their children, each node carrying its own event count. (asynchronously)
      * SessionTree returns the subagent-flow graph rooted at this session: the session, its children, their children, each node carrying its own event count. One indexed read pulls the whole flow (every node of a flow shares a root id), so the shape is assembled in memory rather than by walking the store per node.
-     * @param id ID is the session to act on, from the path. (required)
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1777,6 +1784,7 @@ public class AgentsApi {
     }
     /**
      * Build call for cloudGetV1AgentsSessionsStream
+     * @param root Scope the stream to one subagent tree by root session id. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1784,10 +1792,12 @@ public class AgentsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> An open &#x60;text/event-stream&#x60; of session/event frames. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1AgentsSessionsStreamCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1AgentsSessionsStreamCall(@javax.annotation.Nullable String root, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1812,7 +1822,13 @@ public class AgentsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (root != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("root", root));
+        }
+
         final String[] localVarAccepts = {
+            "text/event-stream",
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1831,46 +1847,56 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudGetV1AgentsSessionsStreamValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudGetV1AgentsSessionsStreamCall(_callback);
+    private okhttp3.Call cloudGetV1AgentsSessionsStreamValidateBeforeCall(@javax.annotation.Nullable String root, final ApiCallback _callback) throws ApiException {
+        return cloudGetV1AgentsSessionsStreamCall(root, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Live session and event updates for the caller&#39;s org, as Server-Sent Events.
+     * Holds the connection open as text/event-stream and pushes a frame each time the org&#39;s registry moves: an &#x60;event: session&#x60; frame carrying the same session shape the list and detail reads answer with (a registration, an update, or a login-manager revoke tearing a session down), and an &#x60;event: event&#x60; frame carrying one appended turn. Optional ?root&#x3D;&lt;session id&gt; narrows the feed to a single subagent tree.  Requires a validated principal carrying an org; 403 without one. Org-scoped fail-closed: the bus filters on tenant before it fans out, so a subscriber only ever receives its own org&#39;s updates, and ?root&#x3D; narrows that further but can never widen it.  Delivery is best-effort and the GET reads remain the source of truth. A subscriber that falls more than 256 frames behind is DROPPED — its channel is closed and the stream ends — so one stuck dashboard can never back-pressure a session write; the client reconnects and re-reads the session endpoints to resynchronise. A &#x60;: ping&#x60; comment every 25 seconds holds the connection open through proxies and is how a departed client is noticed.
+     * @param root Scope the stream to one subagent tree by root session id. (optional)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> An open &#x60;text/event-stream&#x60; of session/event frames. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1AgentsSessionsStream() throws ApiException {
-        cloudGetV1AgentsSessionsStreamWithHttpInfo();
+    public String cloudGetV1AgentsSessionsStream(@javax.annotation.Nullable String root) throws ApiException {
+        ApiResponse<String> localVarResp = cloudGetV1AgentsSessionsStreamWithHttpInfo(root);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Live session and event updates for the caller&#39;s org, as Server-Sent Events.
+     * Holds the connection open as text/event-stream and pushes a frame each time the org&#39;s registry moves: an &#x60;event: session&#x60; frame carrying the same session shape the list and detail reads answer with (a registration, an update, or a login-manager revoke tearing a session down), and an &#x60;event: event&#x60; frame carrying one appended turn. Optional ?root&#x3D;&lt;session id&gt; narrows the feed to a single subagent tree.  Requires a validated principal carrying an org; 403 without one. Org-scoped fail-closed: the bus filters on tenant before it fans out, so a subscriber only ever receives its own org&#39;s updates, and ?root&#x3D; narrows that further but can never widen it.  Delivery is best-effort and the GET reads remain the source of truth. A subscriber that falls more than 256 frames behind is DROPPED — its channel is closed and the stream ends — so one stuck dashboard can never back-pressure a session write; the client reconnects and re-reads the session endpoints to resynchronise. A &#x60;: ping&#x60; comment every 25 seconds holds the connection open through proxies and is how a departed client is noticed.
+     * @param root Scope the stream to one subagent tree by root session id. (optional)
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> An open &#x60;text/event-stream&#x60; of session/event frames. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1AgentsSessionsStreamWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudGetV1AgentsSessionsStreamValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<String> cloudGetV1AgentsSessionsStreamWithHttpInfo(@javax.annotation.Nullable String root) throws ApiException {
+        okhttp3.Call localVarCall = cloudGetV1AgentsSessionsStreamValidateBeforeCall(root, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Live session and event updates for the caller&#39;s org, as Server-Sent Events. (asynchronously)
+     * Holds the connection open as text/event-stream and pushes a frame each time the org&#39;s registry moves: an &#x60;event: session&#x60; frame carrying the same session shape the list and detail reads answer with (a registration, an update, or a login-manager revoke tearing a session down), and an &#x60;event: event&#x60; frame carrying one appended turn. Optional ?root&#x3D;&lt;session id&gt; narrows the feed to a single subagent tree.  Requires a validated principal carrying an org; 403 without one. Org-scoped fail-closed: the bus filters on tenant before it fans out, so a subscriber only ever receives its own org&#39;s updates, and ?root&#x3D; narrows that further but can never widen it.  Delivery is best-effort and the GET reads remain the source of truth. A subscriber that falls more than 256 frames behind is DROPPED — its channel is closed and the stream ends — so one stuck dashboard can never back-pressure a session write; the client reconnects and re-reads the session endpoints to resynchronise. A &#x60;: ping&#x60; comment every 25 seconds holds the connection open through proxies and is how a departed client is noticed.
+     * @param root Scope the stream to one subagent tree by root session id. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1878,13 +1904,16 @@ public class AgentsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> An open &#x60;text/event-stream&#x60; of session/event frames. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1AgentsSessionsStreamAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1AgentsSessionsStreamAsync(@javax.annotation.Nullable String root, final ApiCallback<String> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudGetV1AgentsSessionsStreamValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudGetV1AgentsSessionsStreamValidateBeforeCall(root, _callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -2133,7 +2162,7 @@ public class AgentsApi {
     }
     /**
      * Build call for cloudPatchV1AgentsRef
-     * @param ref Ref is the agent to update — its public id or org-unique name, from the path. (required)
+     * @param ref The agent&#39;s public id (the &#x60;agent_...&#x60; handle) OR its org-unique name. (required)
      * @param cloudUpdateAgentIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2210,7 +2239,7 @@ public class AgentsApi {
     /**
      * UpdateAgent changes an agent in place.
      * UpdateAgent changes an agent in place. Every field is optional; a field the request omits keeps its stored value. The resulting mode+schedule are re-validated together, so a partial update can never leave a long-running agent without the cron the scheduler needs to fire it, and a transition INTO long-running counts against the per-org cap on scheduled agents.
-     * @param ref Ref is the agent to update — its public id or org-unique name, from the path. (required)
+     * @param ref The agent&#39;s public id (the &#x60;agent_...&#x60; handle) OR its org-unique name. (required)
      * @param cloudUpdateAgentIn  (required)
      * @return CloudAgentView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2229,7 +2258,7 @@ public class AgentsApi {
     /**
      * UpdateAgent changes an agent in place.
      * UpdateAgent changes an agent in place. Every field is optional; a field the request omits keeps its stored value. The resulting mode+schedule are re-validated together, so a partial update can never leave a long-running agent without the cron the scheduler needs to fire it, and a transition INTO long-running counts against the per-org cap on scheduled agents.
-     * @param ref Ref is the agent to update — its public id or org-unique name, from the path. (required)
+     * @param ref The agent&#39;s public id (the &#x60;agent_...&#x60; handle) OR its org-unique name. (required)
      * @param cloudUpdateAgentIn  (required)
      * @return ApiResponse&lt;CloudAgentView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2249,7 +2278,7 @@ public class AgentsApi {
     /**
      * UpdateAgent changes an agent in place. (asynchronously)
      * UpdateAgent changes an agent in place. Every field is optional; a field the request omits keeps its stored value. The resulting mode+schedule are re-validated together, so a partial update can never leave a long-running agent without the cron the scheduler needs to fire it, and a transition INTO long-running counts against the per-org cap on scheduled agents.
-     * @param ref Ref is the agent to update — its public id or org-unique name, from the path. (required)
+     * @param ref The agent&#39;s public id (the &#x60;agent_...&#x60; handle) OR its org-unique name. (required)
      * @param cloudUpdateAgentIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2270,7 +2299,7 @@ public class AgentsApi {
     }
     /**
      * Build call for cloudPatchV1AgentsSessionsId
-     * @param id ID is the session to update, from the path. (required)
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
      * @param cloudPatchSessionIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2347,7 +2376,7 @@ public class AgentsApi {
     /**
      * PatchSession updates a session&#39;s surface-owned truth: its status, its title, the run-target it is dispatched to, and the product it built plus whether that build&#39;s story is public.
      * PatchSession updates a session&#39;s surface-owned truth: its status, its title, the run-target it is dispatched to, and the product it built plus whether that build&#39;s story is public. A FINISHED session stays finished — reopening a done/error run would fabricate liveness — and publishing is refused unless the session names the project it built, because the public build route is keyed on (org, project).
-     * @param id ID is the session to update, from the path. (required)
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
      * @param cloudPatchSessionIn  (required)
      * @return CloudSessionView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2366,7 +2395,7 @@ public class AgentsApi {
     /**
      * PatchSession updates a session&#39;s surface-owned truth: its status, its title, the run-target it is dispatched to, and the product it built plus whether that build&#39;s story is public.
      * PatchSession updates a session&#39;s surface-owned truth: its status, its title, the run-target it is dispatched to, and the product it built plus whether that build&#39;s story is public. A FINISHED session stays finished — reopening a done/error run would fabricate liveness — and publishing is refused unless the session names the project it built, because the public build route is keyed on (org, project).
-     * @param id ID is the session to update, from the path. (required)
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
      * @param cloudPatchSessionIn  (required)
      * @return ApiResponse&lt;CloudSessionView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2386,7 +2415,7 @@ public class AgentsApi {
     /**
      * PatchSession updates a session&#39;s surface-owned truth: its status, its title, the run-target it is dispatched to, and the product it built plus whether that build&#39;s story is public. (asynchronously)
      * PatchSession updates a session&#39;s surface-owned truth: its status, its title, the run-target it is dispatched to, and the product it built plus whether that build&#39;s story is public. A FINISHED session stays finished — reopening a done/error run would fabricate liveness — and publishing is refused unless the session names the project it built, because the public build route is keyed on (org, project).
-     * @param id ID is the session to update, from the path. (required)
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
      * @param cloudPatchSessionIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2671,7 +2700,8 @@ public class AgentsApi {
     }
     /**
      * Build call for cloudPostV1AgentsByRefRun
-     * @param ref  (required)
+     * @param ref The agent&#39;s public id (the &#x60;agent_...&#x60; handle) OR its org-unique name. (required)
+     * @param agentsRunRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2679,10 +2709,17 @@ public class AgentsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The completed run (status \&quot;ok\&quot;). </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Balance gate denied — insufficient funds. No run happened. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> The run executed but the model failed; a recorded error-status run is returned. </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Inference is not configured on this deployment, or commerce is unreachable. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AgentsByRefRunCall(@javax.annotation.Nonnull String ref, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AgentsByRefRunCall(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable AgentsRunRequest agentsRunRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2696,7 +2733,7 @@ public class AgentsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = agentsRunRequest;
 
         // create path and map variables
         String localVarPath = "/v1/agents/{ref}/run"
@@ -2709,6 +2746,7 @@ public class AgentsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2716,6 +2754,7 @@ public class AgentsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -2727,54 +2766,74 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1AgentsByRefRunValidateBeforeCall(@javax.annotation.Nonnull String ref, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudPostV1AgentsByRefRunValidateBeforeCall(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable AgentsRunRequest agentsRunRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'ref' is set
         if (ref == null) {
             throw new ApiException("Missing the required parameter 'ref' when calling cloudPostV1AgentsByRefRun(Async)");
         }
 
-        return cloudPostV1AgentsByRefRunCall(ref, _callback);
+        return cloudPostV1AgentsByRefRunCall(ref, agentsRunRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
-     * @param ref  (required)
+     * Run one of your org&#39;s agents and get the recorded run back.
+     * Composes the agent&#39;s stored instructions with the caller&#39;s &#x60;input&#x60;, executes one real chat completion through the same in-process AI client the rest of the console uses, and answers with the run that was recorded: its id, status, model, output, duration and error. Every run this returns reflects an execution that actually happened — a model failure is recorded and reported, never hidden and never fabricated. A transient upstream failure (429, 5xx, empty choices) is retried up to three times with jittered backoff, and a configured failover model is tried before the run is called an error.  &#x60;ref&#x60; is the agent&#39;s public &#x60;agent_…&#x60; id or its org-unique name; either resolves the same agent, and it must belong to the caller&#39;s org, so an agent in another tenant is a 404 exactly like one that does not exist. A validated principal is required and the check is made twice on purpose: this route MOVES MONEY, so the debit&#39;s principal requirement is asserted where the money moves rather than inherited from the tenant lookup.  The org&#39;s balance is authorized BEFORE any inference, so an unfunded tenant gets 402 and no free compute, and a billing plane that cannot answer gets 503 rather than a free run. The flat per-run fee is an operator knob; setting it to zero makes runs free and removes the balance gate with them. Only a SUCCESSFUL run is billed, attributed to the model actually used — a failover run bills the model it fell over to, not the one it started on. A deployment with no inference wired answers 503 before any of this.  THE RULE A READER GETS WRONG: a failed run is a 502 whose body is the RUN, not an error envelope. The execution happened, the run was persisted to this agent&#39;s history, and its &#x60;error&#x60; field is the product — so a client that treats every non-2xx as an opaque failure throws away the only account of what went wrong. Each run also opens a root session in the live session registry, best-effort: a bookkeeping failure there never fails the run, because the run and its billing already happened.
+     * @param ref The agent&#39;s public id (the &#x60;agent_...&#x60; handle) OR its org-unique name. (required)
+     * @param agentsRunRequest  (optional)
+     * @return AgentsRunView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The completed run (status \&quot;ok\&quot;). </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Balance gate denied — insufficient funds. No run happened. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> The run executed but the model failed; a recorded error-status run is returned. </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Inference is not configured on this deployment, or commerce is unreachable. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1AgentsByRefRun(@javax.annotation.Nonnull String ref) throws ApiException {
-        cloudPostV1AgentsByRefRunWithHttpInfo(ref);
+    public AgentsRunView cloudPostV1AgentsByRefRun(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable AgentsRunRequest agentsRunRequest) throws ApiException {
+        ApiResponse<AgentsRunView> localVarResp = cloudPostV1AgentsByRefRunWithHttpInfo(ref, agentsRunRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param ref  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Run one of your org&#39;s agents and get the recorded run back.
+     * Composes the agent&#39;s stored instructions with the caller&#39;s &#x60;input&#x60;, executes one real chat completion through the same in-process AI client the rest of the console uses, and answers with the run that was recorded: its id, status, model, output, duration and error. Every run this returns reflects an execution that actually happened — a model failure is recorded and reported, never hidden and never fabricated. A transient upstream failure (429, 5xx, empty choices) is retried up to three times with jittered backoff, and a configured failover model is tried before the run is called an error.  &#x60;ref&#x60; is the agent&#39;s public &#x60;agent_…&#x60; id or its org-unique name; either resolves the same agent, and it must belong to the caller&#39;s org, so an agent in another tenant is a 404 exactly like one that does not exist. A validated principal is required and the check is made twice on purpose: this route MOVES MONEY, so the debit&#39;s principal requirement is asserted where the money moves rather than inherited from the tenant lookup.  The org&#39;s balance is authorized BEFORE any inference, so an unfunded tenant gets 402 and no free compute, and a billing plane that cannot answer gets 503 rather than a free run. The flat per-run fee is an operator knob; setting it to zero makes runs free and removes the balance gate with them. Only a SUCCESSFUL run is billed, attributed to the model actually used — a failover run bills the model it fell over to, not the one it started on. A deployment with no inference wired answers 503 before any of this.  THE RULE A READER GETS WRONG: a failed run is a 502 whose body is the RUN, not an error envelope. The execution happened, the run was persisted to this agent&#39;s history, and its &#x60;error&#x60; field is the product — so a client that treats every non-2xx as an opaque failure throws away the only account of what went wrong. Each run also opens a root session in the live session registry, best-effort: a bookkeeping failure there never fails the run, because the run and its billing already happened.
+     * @param ref The agent&#39;s public id (the &#x60;agent_...&#x60; handle) OR its org-unique name. (required)
+     * @param agentsRunRequest  (optional)
+     * @return ApiResponse&lt;AgentsRunView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The completed run (status \&quot;ok\&quot;). </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Balance gate denied — insufficient funds. No run happened. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> The run executed but the model failed; a recorded error-status run is returned. </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Inference is not configured on this deployment, or commerce is unreachable. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1AgentsByRefRunWithHttpInfo(@javax.annotation.Nonnull String ref) throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1AgentsByRefRunValidateBeforeCall(ref, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<AgentsRunView> cloudPostV1AgentsByRefRunWithHttpInfo(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable AgentsRunRequest agentsRunRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1AgentsByRefRunValidateBeforeCall(ref, agentsRunRequest, null);
+        Type localVarReturnType = new TypeToken<AgentsRunView>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param ref  (required)
+     * Run one of your org&#39;s agents and get the recorded run back. (asynchronously)
+     * Composes the agent&#39;s stored instructions with the caller&#39;s &#x60;input&#x60;, executes one real chat completion through the same in-process AI client the rest of the console uses, and answers with the run that was recorded: its id, status, model, output, duration and error. Every run this returns reflects an execution that actually happened — a model failure is recorded and reported, never hidden and never fabricated. A transient upstream failure (429, 5xx, empty choices) is retried up to three times with jittered backoff, and a configured failover model is tried before the run is called an error.  &#x60;ref&#x60; is the agent&#39;s public &#x60;agent_…&#x60; id or its org-unique name; either resolves the same agent, and it must belong to the caller&#39;s org, so an agent in another tenant is a 404 exactly like one that does not exist. A validated principal is required and the check is made twice on purpose: this route MOVES MONEY, so the debit&#39;s principal requirement is asserted where the money moves rather than inherited from the tenant lookup.  The org&#39;s balance is authorized BEFORE any inference, so an unfunded tenant gets 402 and no free compute, and a billing plane that cannot answer gets 503 rather than a free run. The flat per-run fee is an operator knob; setting it to zero makes runs free and removes the balance gate with them. Only a SUCCESSFUL run is billed, attributed to the model actually used — a failover run bills the model it fell over to, not the one it started on. A deployment with no inference wired answers 503 before any of this.  THE RULE A READER GETS WRONG: a failed run is a 502 whose body is the RUN, not an error envelope. The execution happened, the run was persisted to this agent&#39;s history, and its &#x60;error&#x60; field is the product — so a client that treats every non-2xx as an opaque failure throws away the only account of what went wrong. Each run also opens a root session in the live session registry, best-effort: a bookkeeping failure there never fails the run, because the run and its billing already happened.
+     * @param ref The agent&#39;s public id (the &#x60;agent_...&#x60; handle) OR its org-unique name. (required)
+     * @param agentsRunRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2782,13 +2841,21 @@ public class AgentsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The completed run (status \&quot;ok\&quot;). </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Balance gate denied — insufficient funds. No run happened. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> The run executed but the model failed; a recorded error-status run is returned. </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Inference is not configured on this deployment, or commerce is unreachable. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AgentsByRefRunAsync(@javax.annotation.Nonnull String ref, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AgentsByRefRunAsync(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable AgentsRunRequest agentsRunRequest, final ApiCallback<AgentsRunView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1AgentsByRefRunValidateBeforeCall(ref, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1AgentsByRefRunValidateBeforeCall(ref, agentsRunRequest, _callback);
+        Type localVarReturnType = new TypeToken<AgentsRunView>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -2920,7 +2987,8 @@ public class AgentsApi {
     }
     /**
      * Build call for cloudPostV1AgentsSessionsByIdEvents
-     * @param id  (required)
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
+     * @param agentsEventRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2928,10 +2996,14 @@ public class AgentsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The appended event. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AgentsSessionsByIdEventsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AgentsSessionsByIdEventsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AgentsEventRequest agentsEventRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2945,7 +3017,7 @@ public class AgentsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = agentsEventRequest;
 
         // create path and map variables
         String localVarPath = "/v1/agents/sessions/{id}/events"
@@ -2958,6 +3030,7 @@ public class AgentsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2965,6 +3038,7 @@ public class AgentsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -2976,54 +3050,73 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1AgentsSessionsByIdEventsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudPostV1AgentsSessionsByIdEventsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AgentsEventRequest agentsEventRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling cloudPostV1AgentsSessionsByIdEvents(Async)");
         }
 
-        return cloudPostV1AgentsSessionsByIdEventsCall(id, _callback);
+        // verify the required parameter 'agentsEventRequest' is set
+        if (agentsEventRequest == null) {
+            throw new ApiException("Missing the required parameter 'agentsEventRequest' when calling cloudPostV1AgentsSessionsByIdEvents(Async)");
+        }
+
+        return cloudPostV1AgentsSessionsByIdEventsCall(id, agentsEventRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
-     * @param id  (required)
+     * Append one turn to a session&#39;s ordered log.
+     * Records a message, tool-call, spawn, log, status or control turn against the session and answers 201 with the stored event, including the monotonic &#x60;seq&#x60; the store assigned — the cursor every reader pages from. The same turn is fanned out live to every stream subscriber watching that session&#39;s tree.  Requires a validated principal carrying an org, and the session must already exist IN THAT ORG: an id belonging to another tenant is a 404 exactly like one that does not exist, so the log can never be written across a tenant boundary. &#x60;actor&#x60; defaults to the calling principal when the body names none. &#x60;kind&#x60; must be one of the six above, and &#x60;payload&#x60; must be valid JSON of at most 64 KiB.  The payload is scanned for credentials BEFORE it is stored, and a hit REFUSES the write with 422 rather than redacting it: {status, code: \&quot;secret_in_transcript\&quot;, error, findings:[…]}, each finding naming the rule, severity, line, a masked preview and a SHA-256 fingerprint the author can match against the value they rotate. The detected value itself appears nowhere in that body, because it was never stored. That in-band findings array is the reason this operation cannot be typed.
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
+     * @param agentsEventRequest  (required)
+     * @return AgentsEventView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The appended event. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1AgentsSessionsByIdEvents(@javax.annotation.Nonnull String id) throws ApiException {
-        cloudPostV1AgentsSessionsByIdEventsWithHttpInfo(id);
+    public AgentsEventView cloudPostV1AgentsSessionsByIdEvents(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AgentsEventRequest agentsEventRequest) throws ApiException {
+        ApiResponse<AgentsEventView> localVarResp = cloudPostV1AgentsSessionsByIdEventsWithHttpInfo(id, agentsEventRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Append one turn to a session&#39;s ordered log.
+     * Records a message, tool-call, spawn, log, status or control turn against the session and answers 201 with the stored event, including the monotonic &#x60;seq&#x60; the store assigned — the cursor every reader pages from. The same turn is fanned out live to every stream subscriber watching that session&#39;s tree.  Requires a validated principal carrying an org, and the session must already exist IN THAT ORG: an id belonging to another tenant is a 404 exactly like one that does not exist, so the log can never be written across a tenant boundary. &#x60;actor&#x60; defaults to the calling principal when the body names none. &#x60;kind&#x60; must be one of the six above, and &#x60;payload&#x60; must be valid JSON of at most 64 KiB.  The payload is scanned for credentials BEFORE it is stored, and a hit REFUSES the write with 422 rather than redacting it: {status, code: \&quot;secret_in_transcript\&quot;, error, findings:[…]}, each finding naming the rule, severity, line, a masked preview and a SHA-256 fingerprint the author can match against the value they rotate. The detected value itself appears nowhere in that body, because it was never stored. That in-band findings array is the reason this operation cannot be typed.
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
+     * @param agentsEventRequest  (required)
+     * @return ApiResponse&lt;AgentsEventView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The appended event. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1AgentsSessionsByIdEventsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1AgentsSessionsByIdEventsValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<AgentsEventView> cloudPostV1AgentsSessionsByIdEventsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AgentsEventRequest agentsEventRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1AgentsSessionsByIdEventsValidateBeforeCall(id, agentsEventRequest, null);
+        Type localVarReturnType = new TypeToken<AgentsEventView>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param id  (required)
+     * Append one turn to a session&#39;s ordered log. (asynchronously)
+     * Records a message, tool-call, spawn, log, status or control turn against the session and answers 201 with the stored event, including the monotonic &#x60;seq&#x60; the store assigned — the cursor every reader pages from. The same turn is fanned out live to every stream subscriber watching that session&#39;s tree.  Requires a validated principal carrying an org, and the session must already exist IN THAT ORG: an id belonging to another tenant is a 404 exactly like one that does not exist, so the log can never be written across a tenant boundary. &#x60;actor&#x60; defaults to the calling principal when the body names none. &#x60;kind&#x60; must be one of the six above, and &#x60;payload&#x60; must be valid JSON of at most 64 KiB.  The payload is scanned for credentials BEFORE it is stored, and a hit REFUSES the write with 422 rather than redacting it: {status, code: \&quot;secret_in_transcript\&quot;, error, findings:[…]}, each finding naming the rule, severity, line, a masked preview and a SHA-256 fingerprint the author can match against the value they rotate. The detected value itself appears nowhere in that body, because it was never stored. That in-band findings array is the reason this operation cannot be typed.
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
+     * @param agentsEventRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3031,18 +3124,24 @@ public class AgentsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The appended event. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AgentsSessionsByIdEventsAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AgentsSessionsByIdEventsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AgentsEventRequest agentsEventRequest, final ApiCallback<AgentsEventView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1AgentsSessionsByIdEventsValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1AgentsSessionsByIdEventsValidateBeforeCall(id, agentsEventRequest, _callback);
+        Type localVarReturnType = new TypeToken<AgentsEventView>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1AgentsSessionsByIdMessage
-     * @param id  (required)
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
+     * @param agentsControlRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3050,10 +3149,16 @@ public class AgentsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The recorded control result. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Session is finished; cannot control it. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Control recorded but the tasks-engine forward failed. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AgentsSessionsByIdMessageCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AgentsSessionsByIdMessageCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AgentsControlRequest agentsControlRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3067,7 +3172,7 @@ public class AgentsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = agentsControlRequest;
 
         // create path and map variables
         String localVarPath = "/v1/agents/sessions/{id}/message"
@@ -3080,6 +3185,7 @@ public class AgentsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3087,6 +3193,7 @@ public class AgentsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -3098,54 +3205,77 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1AgentsSessionsByIdMessageValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudPostV1AgentsSessionsByIdMessageValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AgentsControlRequest agentsControlRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling cloudPostV1AgentsSessionsByIdMessage(Async)");
         }
 
-        return cloudPostV1AgentsSessionsByIdMessageCall(id, _callback);
+        // verify the required parameter 'agentsControlRequest' is set
+        if (agentsControlRequest == null) {
+            throw new ApiException("Missing the required parameter 'agentsControlRequest' when calling cloudPostV1AgentsSessionsByIdMessage(Async)");
+        }
+
+        return cloudPostV1AgentsSessionsByIdMessageCall(id, agentsControlRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
-     * @param id  (required)
+     * Send text into a running session.
+     * Records &#x60;message&#x60; as a durable control event carrying the caller&#39;s text and answers 200 with {command, event, forwarded} — this is how a dashboard steers an agent mid-run. It is the one command with a required body: a &#x60;message&#x60; (up to 16 KiB) or a &#x60;payload&#x60;, and 400 with neither. The credential scan that guards an appended turn covers &#x60;payload&#x60; here; &#x60;message&#x60; is bounded but not scanned.   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
+     * @param agentsControlRequest  (required)
+     * @return AgentsControlResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The recorded control result. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Session is finished; cannot control it. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Control recorded but the tasks-engine forward failed. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1AgentsSessionsByIdMessage(@javax.annotation.Nonnull String id) throws ApiException {
-        cloudPostV1AgentsSessionsByIdMessageWithHttpInfo(id);
+    public AgentsControlResult cloudPostV1AgentsSessionsByIdMessage(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AgentsControlRequest agentsControlRequest) throws ApiException {
+        ApiResponse<AgentsControlResult> localVarResp = cloudPostV1AgentsSessionsByIdMessageWithHttpInfo(id, agentsControlRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Send text into a running session.
+     * Records &#x60;message&#x60; as a durable control event carrying the caller&#39;s text and answers 200 with {command, event, forwarded} — this is how a dashboard steers an agent mid-run. It is the one command with a required body: a &#x60;message&#x60; (up to 16 KiB) or a &#x60;payload&#x60;, and 400 with neither. The credential scan that guards an appended turn covers &#x60;payload&#x60; here; &#x60;message&#x60; is bounded but not scanned.   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
+     * @param agentsControlRequest  (required)
+     * @return ApiResponse&lt;AgentsControlResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The recorded control result. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Session is finished; cannot control it. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Control recorded but the tasks-engine forward failed. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1AgentsSessionsByIdMessageWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1AgentsSessionsByIdMessageValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<AgentsControlResult> cloudPostV1AgentsSessionsByIdMessageWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AgentsControlRequest agentsControlRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1AgentsSessionsByIdMessageValidateBeforeCall(id, agentsControlRequest, null);
+        Type localVarReturnType = new TypeToken<AgentsControlResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param id  (required)
+     * Send text into a running session. (asynchronously)
+     * Records &#x60;message&#x60; as a durable control event carrying the caller&#39;s text and answers 200 with {command, event, forwarded} — this is how a dashboard steers an agent mid-run. It is the one command with a required body: a &#x60;message&#x60; (up to 16 KiB) or a &#x60;payload&#x60;, and 400 with neither. The credential scan that guards an appended turn covers &#x60;payload&#x60; here; &#x60;message&#x60; is bounded but not scanned.   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
+     * @param agentsControlRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3153,18 +3283,26 @@ public class AgentsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The recorded control result. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Session is finished; cannot control it. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Control recorded but the tasks-engine forward failed. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AgentsSessionsByIdMessageAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AgentsSessionsByIdMessageAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AgentsControlRequest agentsControlRequest, final ApiCallback<AgentsControlResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1AgentsSessionsByIdMessageValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1AgentsSessionsByIdMessageValidateBeforeCall(id, agentsControlRequest, _callback);
+        Type localVarReturnType = new TypeToken<AgentsControlResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1AgentsSessionsByIdPause
-     * @param id  (required)
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
+     * @param agentsControlRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3172,10 +3310,16 @@ public class AgentsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The recorded control result. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Session is finished; cannot control it. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Control recorded but the tasks-engine forward failed. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AgentsSessionsByIdPauseCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AgentsSessionsByIdPauseCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable AgentsControlRequest agentsControlRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3189,7 +3333,7 @@ public class AgentsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = agentsControlRequest;
 
         // create path and map variables
         String localVarPath = "/v1/agents/sessions/{id}/pause"
@@ -3202,6 +3346,7 @@ public class AgentsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3209,6 +3354,7 @@ public class AgentsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -3220,54 +3366,72 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1AgentsSessionsByIdPauseValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudPostV1AgentsSessionsByIdPauseValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable AgentsControlRequest agentsControlRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling cloudPostV1AgentsSessionsByIdPause(Async)");
         }
 
-        return cloudPostV1AgentsSessionsByIdPauseCall(id, _callback);
+        return cloudPostV1AgentsSessionsByIdPauseCall(id, agentsControlRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
-     * @param id  (required)
+     * Ask a running session to pause.
+     * Records &#x60;pause&#x60; as a durable control event on the session and answers 200 with {command, event, forwarded} — the stored event carries the &#x60;seq&#x60; that orders it against every other turn.   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
+     * @param agentsControlRequest  (optional)
+     * @return AgentsControlResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The recorded control result. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Session is finished; cannot control it. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Control recorded but the tasks-engine forward failed. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1AgentsSessionsByIdPause(@javax.annotation.Nonnull String id) throws ApiException {
-        cloudPostV1AgentsSessionsByIdPauseWithHttpInfo(id);
+    public AgentsControlResult cloudPostV1AgentsSessionsByIdPause(@javax.annotation.Nonnull String id, @javax.annotation.Nullable AgentsControlRequest agentsControlRequest) throws ApiException {
+        ApiResponse<AgentsControlResult> localVarResp = cloudPostV1AgentsSessionsByIdPauseWithHttpInfo(id, agentsControlRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Ask a running session to pause.
+     * Records &#x60;pause&#x60; as a durable control event on the session and answers 200 with {command, event, forwarded} — the stored event carries the &#x60;seq&#x60; that orders it against every other turn.   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
+     * @param agentsControlRequest  (optional)
+     * @return ApiResponse&lt;AgentsControlResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The recorded control result. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Session is finished; cannot control it. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Control recorded but the tasks-engine forward failed. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1AgentsSessionsByIdPauseWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1AgentsSessionsByIdPauseValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<AgentsControlResult> cloudPostV1AgentsSessionsByIdPauseWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable AgentsControlRequest agentsControlRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1AgentsSessionsByIdPauseValidateBeforeCall(id, agentsControlRequest, null);
+        Type localVarReturnType = new TypeToken<AgentsControlResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param id  (required)
+     * Ask a running session to pause. (asynchronously)
+     * Records &#x60;pause&#x60; as a durable control event on the session and answers 200 with {command, event, forwarded} — the stored event carries the &#x60;seq&#x60; that orders it against every other turn.   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
+     * @param agentsControlRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3275,18 +3439,26 @@ public class AgentsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The recorded control result. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Session is finished; cannot control it. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Control recorded but the tasks-engine forward failed. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AgentsSessionsByIdPauseAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AgentsSessionsByIdPauseAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable AgentsControlRequest agentsControlRequest, final ApiCallback<AgentsControlResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1AgentsSessionsByIdPauseValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1AgentsSessionsByIdPauseValidateBeforeCall(id, agentsControlRequest, _callback);
+        Type localVarReturnType = new TypeToken<AgentsControlResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1AgentsSessionsByIdResume
-     * @param id  (required)
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
+     * @param agentsControlRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3294,10 +3466,16 @@ public class AgentsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The recorded control result. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Session is finished; cannot control it. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Control recorded but the tasks-engine forward failed. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AgentsSessionsByIdResumeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AgentsSessionsByIdResumeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable AgentsControlRequest agentsControlRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3311,7 +3489,7 @@ public class AgentsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = agentsControlRequest;
 
         // create path and map variables
         String localVarPath = "/v1/agents/sessions/{id}/resume"
@@ -3324,6 +3502,7 @@ public class AgentsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3331,6 +3510,7 @@ public class AgentsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -3342,54 +3522,72 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1AgentsSessionsByIdResumeValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudPostV1AgentsSessionsByIdResumeValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable AgentsControlRequest agentsControlRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling cloudPostV1AgentsSessionsByIdResume(Async)");
         }
 
-        return cloudPostV1AgentsSessionsByIdResumeCall(id, _callback);
+        return cloudPostV1AgentsSessionsByIdResumeCall(id, agentsControlRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
-     * @param id  (required)
+     * Ask a paused session to carry on.
+     * Records &#x60;resume&#x60; as a durable control event on the session and answers 200 with {command, event, forwarded}. The session is NOT required to be paused first: the only status this refuses is a finished one, because the live status is the running surface&#39;s to report rather than this endpoint&#39;s to enforce.   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
+     * @param agentsControlRequest  (optional)
+     * @return AgentsControlResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The recorded control result. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Session is finished; cannot control it. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Control recorded but the tasks-engine forward failed. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1AgentsSessionsByIdResume(@javax.annotation.Nonnull String id) throws ApiException {
-        cloudPostV1AgentsSessionsByIdResumeWithHttpInfo(id);
+    public AgentsControlResult cloudPostV1AgentsSessionsByIdResume(@javax.annotation.Nonnull String id, @javax.annotation.Nullable AgentsControlRequest agentsControlRequest) throws ApiException {
+        ApiResponse<AgentsControlResult> localVarResp = cloudPostV1AgentsSessionsByIdResumeWithHttpInfo(id, agentsControlRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Ask a paused session to carry on.
+     * Records &#x60;resume&#x60; as a durable control event on the session and answers 200 with {command, event, forwarded}. The session is NOT required to be paused first: the only status this refuses is a finished one, because the live status is the running surface&#39;s to report rather than this endpoint&#39;s to enforce.   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
+     * @param agentsControlRequest  (optional)
+     * @return ApiResponse&lt;AgentsControlResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The recorded control result. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Session is finished; cannot control it. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Control recorded but the tasks-engine forward failed. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1AgentsSessionsByIdResumeWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1AgentsSessionsByIdResumeValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<AgentsControlResult> cloudPostV1AgentsSessionsByIdResumeWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable AgentsControlRequest agentsControlRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1AgentsSessionsByIdResumeValidateBeforeCall(id, agentsControlRequest, null);
+        Type localVarReturnType = new TypeToken<AgentsControlResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param id  (required)
+     * Ask a paused session to carry on. (asynchronously)
+     * Records &#x60;resume&#x60; as a durable control event on the session and answers 200 with {command, event, forwarded}. The session is NOT required to be paused first: the only status this refuses is a finished one, because the live status is the running surface&#39;s to report rather than this endpoint&#39;s to enforce.   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
+     * @param agentsControlRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3397,18 +3595,26 @@ public class AgentsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The recorded control result. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Session is finished; cannot control it. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Control recorded but the tasks-engine forward failed. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AgentsSessionsByIdResumeAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AgentsSessionsByIdResumeAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable AgentsControlRequest agentsControlRequest, final ApiCallback<AgentsControlResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1AgentsSessionsByIdResumeValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1AgentsSessionsByIdResumeValidateBeforeCall(id, agentsControlRequest, _callback);
+        Type localVarReturnType = new TypeToken<AgentsControlResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1AgentsSessionsByIdStop
-     * @param id  (required)
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
+     * @param agentsControlRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3416,10 +3622,16 @@ public class AgentsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The recorded control result. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Session is finished; cannot control it. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Control recorded but the tasks-engine forward failed. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AgentsSessionsByIdStopCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AgentsSessionsByIdStopCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable AgentsControlRequest agentsControlRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3433,7 +3645,7 @@ public class AgentsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = agentsControlRequest;
 
         // create path and map variables
         String localVarPath = "/v1/agents/sessions/{id}/stop"
@@ -3446,6 +3658,7 @@ public class AgentsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3453,6 +3666,7 @@ public class AgentsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -3464,54 +3678,72 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1AgentsSessionsByIdStopValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudPostV1AgentsSessionsByIdStopValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable AgentsControlRequest agentsControlRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling cloudPostV1AgentsSessionsByIdStop(Async)");
         }
 
-        return cloudPostV1AgentsSessionsByIdStopCall(id, _callback);
+        return cloudPostV1AgentsSessionsByIdStopCall(id, agentsControlRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
-     * @param id  (required)
+     * Ask a session to stop for good.
+     * Records &#x60;stop&#x60; as a durable control event on the session and answers 200 with {command, event, forwarded}. Stop is the one command that CANCELS a task-backed session&#39;s durable workflow instead of signalling it — pause, resume and message are cooperative signals the workflow decides how to act on, while this tears it down, with the request&#39;s &#x60;message&#x60; recorded as the cancellation reason (a default stands in when none is given).   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
+     * @param agentsControlRequest  (optional)
+     * @return AgentsControlResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The recorded control result. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Session is finished; cannot control it. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Control recorded but the tasks-engine forward failed. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1AgentsSessionsByIdStop(@javax.annotation.Nonnull String id) throws ApiException {
-        cloudPostV1AgentsSessionsByIdStopWithHttpInfo(id);
+    public AgentsControlResult cloudPostV1AgentsSessionsByIdStop(@javax.annotation.Nonnull String id, @javax.annotation.Nullable AgentsControlRequest agentsControlRequest) throws ApiException {
+        ApiResponse<AgentsControlResult> localVarResp = cloudPostV1AgentsSessionsByIdStopWithHttpInfo(id, agentsControlRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Ask a session to stop for good.
+     * Records &#x60;stop&#x60; as a durable control event on the session and answers 200 with {command, event, forwarded}. Stop is the one command that CANCELS a task-backed session&#39;s durable workflow instead of signalling it — pause, resume and message are cooperative signals the workflow decides how to act on, while this tears it down, with the request&#39;s &#x60;message&#x60; recorded as the cancellation reason (a default stands in when none is given).   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
+     * @param agentsControlRequest  (optional)
+     * @return ApiResponse&lt;AgentsControlResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The recorded control result. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Session is finished; cannot control it. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Control recorded but the tasks-engine forward failed. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1AgentsSessionsByIdStopWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1AgentsSessionsByIdStopValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<AgentsControlResult> cloudPostV1AgentsSessionsByIdStopWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable AgentsControlRequest agentsControlRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1AgentsSessionsByIdStopValidateBeforeCall(id, agentsControlRequest, null);
+        Type localVarReturnType = new TypeToken<AgentsControlResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param id  (required)
+     * Ask a session to stop for good. (asynchronously)
+     * Records &#x60;stop&#x60; as a durable control event on the session and answers 200 with {command, event, forwarded}. Stop is the one command that CANCELS a task-backed session&#39;s durable workflow instead of signalling it — pause, resume and message are cooperative signals the workflow decides how to act on, while this tears it down, with the request&#39;s &#x60;message&#x60; recorded as the cancellation reason (a default stands in when none is given).   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
+     * @param id The session id (the &#x60;sess_...&#x60; handle). (required)
+     * @param agentsControlRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3519,13 +3751,20 @@ public class AgentsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The recorded control result. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> X-Org-Id required, or a validated principal is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Session is finished; cannot control it. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Control recorded but the tasks-engine forward failed. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AgentsSessionsByIdStopAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AgentsSessionsByIdStopAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable AgentsControlRequest agentsControlRequest, final ApiCallback<AgentsControlResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1AgentsSessionsByIdStopValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1AgentsSessionsByIdStopValidateBeforeCall(id, agentsControlRequest, _callback);
+        Type localVarReturnType = new TypeToken<AgentsControlResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

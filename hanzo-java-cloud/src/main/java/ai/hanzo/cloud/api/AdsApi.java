@@ -771,8 +771,8 @@ public class AdsApi {
     }
 
     /**
-     * 
-     * 
+     * Run one of your stored campaigns on its ad network
+     * Creates the campaign on its platform under the CALLER ORG&#39;S own connected ad account, records the provider campaign id, flips the stored campaign to active and answers the updated record. No ad-network token is held here: it is resolved from KMS through the org&#39;s connector at launch time, BEFORE any provider call, so an org that has not connected that platform gets 424 and no spend can ever start on a connection the org did not make. Meta is executed for real; a campaign on a platform whose provider is not wired yet answers 501 even when the connector is connected, and an edge failure at the platform is 502. The optional {account} body overrides the target ad account for this launch and is TOLERANT — a malformed or non-JSON body is ignored and the campaign launches on its stored account rather than being refused. A campaign id another org owns reads as not found.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -787,8 +787,8 @@ public class AdsApi {
     }
 
     /**
-     * 
-     * 
+     * Run one of your stored campaigns on its ad network
+     * Creates the campaign on its platform under the CALLER ORG&#39;S own connected ad account, records the provider campaign id, flips the stored campaign to active and answers the updated record. No ad-network token is held here: it is resolved from KMS through the org&#39;s connector at launch time, BEFORE any provider call, so an org that has not connected that platform gets 424 and no spend can ever start on a connection the org did not make. Meta is executed for real; a campaign on a platform whose provider is not wired yet answers 501 even when the connector is connected, and an edge failure at the platform is 502. The optional {account} body overrides the target ad account for this launch and is TOLERANT — a malformed or non-JSON body is ignored and the campaign launches on its stored account rather than being refused. A campaign id another org owns reads as not found.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -805,8 +805,8 @@ public class AdsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Run one of your stored campaigns on its ad network (asynchronously)
+     * Creates the campaign on its platform under the CALLER ORG&#39;S own connected ad account, records the provider campaign id, flips the stored campaign to active and answers the updated record. No ad-network token is held here: it is resolved from KMS through the org&#39;s connector at launch time, BEFORE any provider call, so an org that has not connected that platform gets 424 and no spend can ever start on a connection the org did not make. Meta is executed for real; a campaign on a platform whose provider is not wired yet answers 501 even when the connector is connected, and an edge failure at the platform is 502. The optional {account} body overrides the target ad account for this launch and is TOLERANT — a malformed or non-JSON body is ignored and the campaign launches on its stored account rather than being refused. A campaign id another org owns reads as not found.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

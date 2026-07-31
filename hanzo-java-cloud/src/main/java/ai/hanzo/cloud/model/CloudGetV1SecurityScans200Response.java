@@ -14,14 +14,16 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.AdminPromo;
+import ai.hanzo.cloud.model.SecurityScan;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,68 +49,28 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * AdminAdminGetPromo200Response
+ * CloudGetV1SecurityScans200Response
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class AdminAdminGetPromo200Response {
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  @javax.annotation.Nullable
-  private String status;
-
-  public static final String SERIALIZED_NAME_MSG = "msg";
-  @SerializedName(SERIALIZED_NAME_MSG)
-  @javax.annotation.Nullable
-  private String msg;
-
+public class CloudGetV1SecurityScans200Response {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private AdminPromo data;
+  private List<SecurityScan> data = new ArrayList<>();
 
-  public AdminAdminGetPromo200Response() {
+  public CloudGetV1SecurityScans200Response() {
   }
 
-  public AdminAdminGetPromo200Response status(@javax.annotation.Nullable String status) {
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * Get status
-   * @return status
-   */
-  @javax.annotation.Nullable
-  public String getStatus() {
-    return status;
-  }
-
-  public void setStatus(@javax.annotation.Nullable String status) {
-    this.status = status;
-  }
-
-
-  public AdminAdminGetPromo200Response msg(@javax.annotation.Nullable String msg) {
-    this.msg = msg;
-    return this;
-  }
-
-  /**
-   * Get msg
-   * @return msg
-   */
-  @javax.annotation.Nullable
-  public String getMsg() {
-    return msg;
-  }
-
-  public void setMsg(@javax.annotation.Nullable String msg) {
-    this.msg = msg;
-  }
-
-
-  public AdminAdminGetPromo200Response data(@javax.annotation.Nullable AdminPromo data) {
+  public CloudGetV1SecurityScans200Response data(@javax.annotation.Nullable List<SecurityScan> data) {
     this.data = data;
+    return this;
+  }
+
+  public CloudGetV1SecurityScans200Response addDataItem(SecurityScan dataItem) {
+    if (this.data == null) {
+      this.data = new ArrayList<>();
+    }
+    this.data.add(dataItem);
     return this;
   }
 
@@ -117,11 +79,11 @@ public class AdminAdminGetPromo200Response {
    * @return data
    */
   @javax.annotation.Nullable
-  public AdminPromo getData() {
+  public List<SecurityScan> getData() {
     return data;
   }
 
-  public void setData(@javax.annotation.Nullable AdminPromo data) {
+  public void setData(@javax.annotation.Nullable List<SecurityScan> data) {
     this.data = data;
   }
 
@@ -135,23 +97,19 @@ public class AdminAdminGetPromo200Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AdminAdminGetPromo200Response adminAdminGetPromo200Response = (AdminAdminGetPromo200Response) o;
-    return Objects.equals(this.status, adminAdminGetPromo200Response.status) &&
-        Objects.equals(this.msg, adminAdminGetPromo200Response.msg) &&
-        Objects.equals(this.data, adminAdminGetPromo200Response.data);
+    CloudGetV1SecurityScans200Response cloudGetV1SecurityScans200Response = (CloudGetV1SecurityScans200Response) o;
+    return Objects.equals(this.data, cloudGetV1SecurityScans200Response.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, msg, data);
+    return Objects.hash(data);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AdminAdminGetPromo200Response {\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    msg: ").append(toIndentedString(msg)).append("\n");
+    sb.append("class CloudGetV1SecurityScans200Response {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -174,7 +132,7 @@ public class AdminAdminGetPromo200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("status", "msg", "data"));
+    openapiFields = new HashSet<String>(Arrays.asList("data"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -184,32 +142,36 @@ public class AdminAdminGetPromo200Response {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to AdminAdminGetPromo200Response
+   * @throws IOException if the JSON Element is invalid with respect to CloudGetV1SecurityScans200Response
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!AdminAdminGetPromo200Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AdminAdminGetPromo200Response is not found in the empty JSON string", AdminAdminGetPromo200Response.openapiRequiredFields.toString()));
+        if (!CloudGetV1SecurityScans200Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CloudGetV1SecurityScans200Response is not found in the empty JSON string", CloudGetV1SecurityScans200Response.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!AdminAdminGetPromo200Response.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AdminAdminGetPromo200Response` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!CloudGetV1SecurityScans200Response.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CloudGetV1SecurityScans200Response` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
-      }
-      if ((jsonObj.get("msg") != null && !jsonObj.get("msg").isJsonNull()) && !jsonObj.get("msg").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `msg` to be a primitive type in the JSON string but got `%s`", jsonObj.get("msg").toString()));
-      }
-      // validate the optional field `data`
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        AdminPromo.validateJsonElement(jsonObj.get("data"));
+        JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
+        if (jsonArraydata != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("data").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
+          }
+
+          // validate the optional field `data` (array)
+          for (int i = 0; i < jsonArraydata.size(); i++) {
+            SecurityScan.validateJsonElement(jsonArraydata.get(i));
+          };
+        }
       }
   }
 
@@ -217,22 +179,22 @@ public class AdminAdminGetPromo200Response {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!AdminAdminGetPromo200Response.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'AdminAdminGetPromo200Response' and its subtypes
+       if (!CloudGetV1SecurityScans200Response.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CloudGetV1SecurityScans200Response' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<AdminAdminGetPromo200Response> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(AdminAdminGetPromo200Response.class));
+       final TypeAdapter<CloudGetV1SecurityScans200Response> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CloudGetV1SecurityScans200Response.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<AdminAdminGetPromo200Response>() {
+       return (TypeAdapter<T>) new TypeAdapter<CloudGetV1SecurityScans200Response>() {
            @Override
-           public void write(JsonWriter out, AdminAdminGetPromo200Response value) throws IOException {
+           public void write(JsonWriter out, CloudGetV1SecurityScans200Response value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public AdminAdminGetPromo200Response read(JsonReader in) throws IOException {
+           public CloudGetV1SecurityScans200Response read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -243,18 +205,18 @@ public class AdminAdminGetPromo200Response {
   }
 
   /**
-   * Create an instance of AdminAdminGetPromo200Response given an JSON string
+   * Create an instance of CloudGetV1SecurityScans200Response given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of AdminAdminGetPromo200Response
-   * @throws IOException if the JSON string is invalid with respect to AdminAdminGetPromo200Response
+   * @return An instance of CloudGetV1SecurityScans200Response
+   * @throws IOException if the JSON string is invalid with respect to CloudGetV1SecurityScans200Response
    */
-  public static AdminAdminGetPromo200Response fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, AdminAdminGetPromo200Response.class);
+  public static CloudGetV1SecurityScans200Response fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CloudGetV1SecurityScans200Response.class);
   }
 
   /**
-   * Convert an instance of AdminAdminGetPromo200Response to an JSON string
+   * Convert an instance of CloudGetV1SecurityScans200Response to an JSON string
    *
    * @return JSON string
    */

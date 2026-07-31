@@ -403,8 +403,8 @@ public class TeamApi {
     }
 
     /**
-     * 
-     * 
+     * Start a sign-in at hanzo.id
+     * STARTS the OAuth hop: answers 302 to hanzo.id&#39;s authorize endpoint and sets the short-lived HttpOnly state cookie that binds the flow to this browser. NO TOKEN COMES BACK FROM THIS CALL — the session is minted by the callback below, and a client that expects JSON here gets a redirect with no body.  A browser is the intended caller. Anything else must follow the Location AND keep the Set-Cookie, because the callback refuses a flow whose state it cannot match. That cookie carries the random nonce plus the client&#39;s navigateUrl, so the round trip needs no second channel, and it lives ten minutes — the whole budget for the hop.  The provider segment only picks a hint: the redirect_uri is ALWAYS the canonical openid callback, the one IAM has registered. Measured end to end, hanzo.id strips that hint today, so /auth/google and /auth/openid land on the same Hanzo sign-in page — the federation shortcut is an upstream fix, not a second door here.
      * @param provider  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -419,8 +419,8 @@ public class TeamApi {
     }
 
     /**
-     * 
-     * 
+     * Start a sign-in at hanzo.id
+     * STARTS the OAuth hop: answers 302 to hanzo.id&#39;s authorize endpoint and sets the short-lived HttpOnly state cookie that binds the flow to this browser. NO TOKEN COMES BACK FROM THIS CALL — the session is minted by the callback below, and a client that expects JSON here gets a redirect with no body.  A browser is the intended caller. Anything else must follow the Location AND keep the Set-Cookie, because the callback refuses a flow whose state it cannot match. That cookie carries the random nonce plus the client&#39;s navigateUrl, so the round trip needs no second channel, and it lives ten minutes — the whole budget for the hop.  The provider segment only picks a hint: the redirect_uri is ALWAYS the canonical openid callback, the one IAM has registered. Measured end to end, hanzo.id strips that hint today, so /auth/google and /auth/openid land on the same Hanzo sign-in page — the federation shortcut is an upstream fix, not a second door here.
      * @param provider  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -437,8 +437,8 @@ public class TeamApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Start a sign-in at hanzo.id (asynchronously)
+     * STARTS the OAuth hop: answers 302 to hanzo.id&#39;s authorize endpoint and sets the short-lived HttpOnly state cookie that binds the flow to this browser. NO TOKEN COMES BACK FROM THIS CALL — the session is minted by the callback below, and a client that expects JSON here gets a redirect with no body.  A browser is the intended caller. Anything else must follow the Location AND keep the Set-Cookie, because the callback refuses a flow whose state it cannot match. That cookie carries the random nonce plus the client&#39;s navigateUrl, so the round trip needs no second channel, and it lives ten minutes — the whole budget for the hop.  The provider segment only picks a hint: the redirect_uri is ALWAYS the canonical openid callback, the one IAM has registered. Measured end to end, hanzo.id strips that hint today, so /auth/google and /auth/openid land on the same Hanzo sign-in page — the federation shortcut is an upstream fix, not a second door here.
      * @param provider  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -525,8 +525,8 @@ public class TeamApi {
     }
 
     /**
-     * 
-     * 
+     * Complete a sign-in and hand the browser its session
+     * COMPLETES the OAuth hop: hanzo.id redirects the browser here with ?code and ?state, and the answer is another 302 — back to the client&#39;s login route carrying the freshly minted team session token in the query. Never JSON, and never a token in this response&#39;s own body.  THE STATE IS CHECKED FIRST, before the code is even looked at: the flow cookie is read and cleared one-shot, and a callback whose ?state does not equal the nonce it held is bounced with error&#x3D;state_mismatch and NEVER exchanged. That is what makes a forged or replayed callback inert. Only then is the code exchanged server-side — team is a confidential client with a client_secret, so there is no PKCE and the code never passes through the browser&#39;s JS.  The tenant is derived from the IAM access token VERIFIED RS256 against the JWKS, the same trust anchor the identity boundary uses; a token whose owner claim is empty fails closed with no login at all. Every org that token proves gets a workspace ensured, so a member of two orgs is a counted seat in both. The IAM access token is also parked in an HttpOnly cookie for the same-origin agents proxy — page JS never reads it.  EVERY failure is a redirect, not a status: a denied consent, a missing code, a failed exchange, an unreadable userinfo, an unverifiable org and a token-mint failure each bounce to the login page with an ?error code naming the step.
      * @param provider  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -541,8 +541,8 @@ public class TeamApi {
     }
 
     /**
-     * 
-     * 
+     * Complete a sign-in and hand the browser its session
+     * COMPLETES the OAuth hop: hanzo.id redirects the browser here with ?code and ?state, and the answer is another 302 — back to the client&#39;s login route carrying the freshly minted team session token in the query. Never JSON, and never a token in this response&#39;s own body.  THE STATE IS CHECKED FIRST, before the code is even looked at: the flow cookie is read and cleared one-shot, and a callback whose ?state does not equal the nonce it held is bounced with error&#x3D;state_mismatch and NEVER exchanged. That is what makes a forged or replayed callback inert. Only then is the code exchanged server-side — team is a confidential client with a client_secret, so there is no PKCE and the code never passes through the browser&#39;s JS.  The tenant is derived from the IAM access token VERIFIED RS256 against the JWKS, the same trust anchor the identity boundary uses; a token whose owner claim is empty fails closed with no login at all. Every org that token proves gets a workspace ensured, so a member of two orgs is a counted seat in both. The IAM access token is also parked in an HttpOnly cookie for the same-origin agents proxy — page JS never reads it.  EVERY failure is a redirect, not a status: a denied consent, a missing code, a failed exchange, an unreadable userinfo, an unverifiable org and a token-mint failure each bounce to the login page with an ?error code naming the step.
      * @param provider  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -559,8 +559,8 @@ public class TeamApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Complete a sign-in and hand the browser its session (asynchronously)
+     * COMPLETES the OAuth hop: hanzo.id redirects the browser here with ?code and ?state, and the answer is another 302 — back to the client&#39;s login route carrying the freshly minted team session token in the query. Never JSON, and never a token in this response&#39;s own body.  THE STATE IS CHECKED FIRST, before the code is even looked at: the flow cookie is read and cleared one-shot, and a callback whose ?state does not equal the nonce it held is bounced with error&#x3D;state_mismatch and NEVER exchanged. That is what makes a forged or replayed callback inert. Only then is the code exchanged server-side — team is a confidential client with a client_secret, so there is no PKCE and the code never passes through the browser&#39;s JS.  The tenant is derived from the IAM access token VERIFIED RS256 against the JWKS, the same trust anchor the identity boundary uses; a token whose owner claim is empty fails closed with no login at all. Every org that token proves gets a workspace ensured, so a member of two orgs is a counted seat in both. The IAM access token is also parked in an HttpOnly cookie for the same-origin agents proxy — page JS never reads it.  EVERY failure is a redirect, not a status: a denied consent, a missing code, a failed exchange, an unreadable userinfo, an unverifiable org and a token-mint failure each bounce to the login page with an ?error code naming the step.
      * @param provider  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -874,8 +874,8 @@ public class TeamApi {
     }
 
     /**
-     * 
-     * 
+     * Open the wallet page
+     * Serves the usage-and-wallet page the Team front links to — HTML, not JSON. It is a static React build compiled into this binary, so there is no upstream to be down and no build step at request time.  SESSION-GATED: without a verified team session token — bearer, else the HttpOnly account cookie — the caller gets 401 and not one byte of the page, so an anonymous browser meets a refusal rather than a shell that then fails to load anything.  The page is markup only. It reads money SAME-ORIGIN from cloud&#39;s own balance and usage endpoints, which pin the org from the IAM cookie the team OAuth callback set — nothing under this path proxies a money read, so there is no second auth mechanism here to get wrong. A deployment whose page was never built answers 503 naming the missing bundle, never a blank 200.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -889,8 +889,8 @@ public class TeamApi {
     }
 
     /**
-     * 
-     * 
+     * Open the wallet page
+     * Serves the usage-and-wallet page the Team front links to — HTML, not JSON. It is a static React build compiled into this binary, so there is no upstream to be down and no build step at request time.  SESSION-GATED: without a verified team session token — bearer, else the HttpOnly account cookie — the caller gets 401 and not one byte of the page, so an anonymous browser meets a refusal rather than a shell that then fails to load anything.  The page is markup only. It reads money SAME-ORIGIN from cloud&#39;s own balance and usage endpoints, which pin the org from the IAM cookie the team OAuth callback set — nothing under this path proxies a money read, so there is no second auth mechanism here to get wrong. A deployment whose page was never built answers 503 naming the missing bundle, never a blank 200.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -906,8 +906,8 @@ public class TeamApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Open the wallet page (asynchronously)
+     * Serves the usage-and-wallet page the Team front links to — HTML, not JSON. It is a static React build compiled into this binary, so there is no upstream to be down and no build step at request time.  SESSION-GATED: without a verified team session token — bearer, else the HttpOnly account cookie — the caller gets 401 and not one byte of the page, so an anonymous browser meets a refusal rather than a shell that then fails to load anything.  The page is markup only. It reads money SAME-ORIGIN from cloud&#39;s own balance and usage endpoints, which pin the org from the IAM cookie the team OAuth callback set — nothing under this path proxies a money read, so there is no second auth mechanism here to get wrong. A deployment whose page was never built answers 503 naming the missing bundle, never a blank 200.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -993,8 +993,8 @@ public class TeamApi {
     }
 
     /**
-     * 
-     * 
+     * Load an asset of the wallet page
+     * Serves one file of the embedded wallet bundle — a content-hashed script or stylesheet under assets/, an icon, or the page shell itself.  A path that names NO REAL FILE falls back to the shell instead of 404ing, which is what makes a deep link into the page&#39;s own routes survive a hard refresh. So a 200 here is not proof the asset exists — a typo answers HTML.  assets/ is immutable for a year (the names carry the content hash); the shell is no-cache, so a deploy is picked up on the next load. Gated exactly like the page: 401 without a verified session, 503 when the bundle was never built.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1009,8 +1009,8 @@ public class TeamApi {
     }
 
     /**
-     * 
-     * 
+     * Load an asset of the wallet page
+     * Serves one file of the embedded wallet bundle — a content-hashed script or stylesheet under assets/, an icon, or the page shell itself.  A path that names NO REAL FILE falls back to the shell instead of 404ing, which is what makes a deep link into the page&#39;s own routes survive a hard refresh. So a 200 here is not proof the asset exists — a typo answers HTML.  assets/ is immutable for a year (the names carry the content hash); the shell is no-cache, so a deploy is picked up on the next load. Gated exactly like the page: 401 without a verified session, 503 when the bundle was never built.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1027,8 +1027,8 @@ public class TeamApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Load an asset of the wallet page (asynchronously)
+     * Serves one file of the embedded wallet bundle — a content-hashed script or stylesheet under assets/, an icon, or the page shell itself.  A path that names NO REAL FILE falls back to the shell instead of 404ing, which is what makes a deep link into the page&#39;s own routes survive a hard refresh. So a 200 here is not proof the asset exists — a typo answers HTML.  assets/ is immutable for a year (the names carry the content hash); the shell is no-cache, so a deploy is picked up on the next load. Gated exactly like the page: 401 without a verified session, 503 when the bundle was never built.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1239,8 +1239,8 @@ public class TeamApi {
     }
 
     /**
-     * 
-     * 
+     * Download a workspace file
+     * Streams one blob&#39;s raw BYTES back — this is the read side of the workspace file store, not a JSON envelope around it.  THE BLOB IS NAMED BY THE &#x60;file&#x60; QUERY PARAMETER, NOT BY :filename. The path segment is only the name a browser saves the download under; a request without ?file&#x3D; is a 400 no matter what the path says.  The Content-Type is derived from the STORED BYTES, never from the name: only png, jpeg, gif and webp, recognized by their magic bytes, are served inline under their true type, and everything else is served inert as application/octet-stream with an attachment disposition. Every response carries nosniff, so a file uploaded under an .svg or .html name cannot be talked into executing in a viewer&#39;s origin. Blobs are immutable, so a hit caches privately for a year.  Same gate as the upload: verified token, membership of the workspace. A genuine miss, another tenant&#39;s workspace, a workspace the caller is not in, and a blob id belonging to a different workspace are ONE answer — 404 — because the physical key is org- and workspace-scoped and a foreign id is simply a key that does not exist. An unavailable backend is a 502, never an empty 200.
      * @param workspace  (required)
      * @param filename  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1256,8 +1256,8 @@ public class TeamApi {
     }
 
     /**
-     * 
-     * 
+     * Download a workspace file
+     * Streams one blob&#39;s raw BYTES back — this is the read side of the workspace file store, not a JSON envelope around it.  THE BLOB IS NAMED BY THE &#x60;file&#x60; QUERY PARAMETER, NOT BY :filename. The path segment is only the name a browser saves the download under; a request without ?file&#x3D; is a 400 no matter what the path says.  The Content-Type is derived from the STORED BYTES, never from the name: only png, jpeg, gif and webp, recognized by their magic bytes, are served inline under their true type, and everything else is served inert as application/octet-stream with an attachment disposition. Every response carries nosniff, so a file uploaded under an .svg or .html name cannot be talked into executing in a viewer&#39;s origin. Blobs are immutable, so a hit caches privately for a year.  Same gate as the upload: verified token, membership of the workspace. A genuine miss, another tenant&#39;s workspace, a workspace the caller is not in, and a blob id belonging to a different workspace are ONE answer — 404 — because the physical key is org- and workspace-scoped and a foreign id is simply a key that does not exist. An unavailable backend is a 502, never an empty 200.
      * @param workspace  (required)
      * @param filename  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -1275,8 +1275,8 @@ public class TeamApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Download a workspace file (asynchronously)
+     * Streams one blob&#39;s raw BYTES back — this is the read side of the workspace file store, not a JSON envelope around it.  THE BLOB IS NAMED BY THE &#x60;file&#x60; QUERY PARAMETER, NOT BY :filename. The path segment is only the name a browser saves the download under; a request without ?file&#x3D; is a 400 no matter what the path says.  The Content-Type is derived from the STORED BYTES, never from the name: only png, jpeg, gif and webp, recognized by their magic bytes, are served inline under their true type, and everything else is served inert as application/octet-stream with an attachment disposition. Every response carries nosniff, so a file uploaded under an .svg or .html name cannot be talked into executing in a viewer&#39;s origin. Blobs are immutable, so a hit caches privately for a year.  Same gate as the upload: verified token, membership of the workspace. A genuine miss, another tenant&#39;s workspace, a workspace the caller is not in, and a blob id belonging to a different workspace are ONE answer — 404 — because the physical key is org- and workspace-scoped and a foreign id is simply a key that does not exist. An unavailable backend is a 502, never an empty 200.
      * @param workspace  (required)
      * @param filename  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1489,8 +1489,8 @@ public class TeamApi {
     }
 
     /**
-     * 
-     * 
+     * Open the workspace data-plane socket
+     * Upgrades to the WebSocket the Team client runs an entire workspace over: every frame is a ZAP envelope wrapping one JSON-RPC message — findAll/findOne reads against the workspace&#39;s documents, tx writes that broadcast to the other live sessions, hello negotiating JSON rather than msgpack. The response is a protocol upgrade, so there is no body to read.  THE PATH SEGMENT IS THE CREDENTIAL. It is the workspace token selectWorkspace minted — bearer-equivalent, and sitting in a URL that proxies and access logs record, which is exactly why it expires in twelve hours and is re-minted on demand rather than being long-lived like the session token. It is decoded and verified (signature and expiry) BEFORE the upgrade, so a bad one is a 401 and never a socket that is accepted and then dropped, and it must carry both an account and a workspace claim.  The tenant is the token&#39;s SIGNED org claim and it keys every store path, so no header can name another workspace&#39;s data. The upgrade ALSO refuses a browser Origin outside the team surfaces with 403 — otherwise any page could open an authenticated socket with a token it lured out of a logged-in browser — while a request with no Origin at all is admitted, because that is what a non-browser client sends.  On connect the workspace&#39;s system spaces are seeded once and the roster is reconciled every time, so the org&#39;s human members and its bots are present as workspace people without a separate sync call.
      * @param token  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1505,8 +1505,8 @@ public class TeamApi {
     }
 
     /**
-     * 
-     * 
+     * Open the workspace data-plane socket
+     * Upgrades to the WebSocket the Team client runs an entire workspace over: every frame is a ZAP envelope wrapping one JSON-RPC message — findAll/findOne reads against the workspace&#39;s documents, tx writes that broadcast to the other live sessions, hello negotiating JSON rather than msgpack. The response is a protocol upgrade, so there is no body to read.  THE PATH SEGMENT IS THE CREDENTIAL. It is the workspace token selectWorkspace minted — bearer-equivalent, and sitting in a URL that proxies and access logs record, which is exactly why it expires in twelve hours and is re-minted on demand rather than being long-lived like the session token. It is decoded and verified (signature and expiry) BEFORE the upgrade, so a bad one is a 401 and never a socket that is accepted and then dropped, and it must carry both an account and a workspace claim.  The tenant is the token&#39;s SIGNED org claim and it keys every store path, so no header can name another workspace&#39;s data. The upgrade ALSO refuses a browser Origin outside the team surfaces with 403 — otherwise any page could open an authenticated socket with a token it lured out of a logged-in browser — while a request with no Origin at all is admitted, because that is what a non-browser client sends.  On connect the workspace&#39;s system spaces are seeded once and the roster is reconciled every time, so the org&#39;s human members and its bots are present as workspace people without a separate sync call.
      * @param token  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1523,8 +1523,8 @@ public class TeamApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Open the workspace data-plane socket (asynchronously)
+     * Upgrades to the WebSocket the Team client runs an entire workspace over: every frame is a ZAP envelope wrapping one JSON-RPC message — findAll/findOne reads against the workspace&#39;s documents, tx writes that broadcast to the other live sessions, hello negotiating JSON rather than msgpack. The response is a protocol upgrade, so there is no body to read.  THE PATH SEGMENT IS THE CREDENTIAL. It is the workspace token selectWorkspace minted — bearer-equivalent, and sitting in a URL that proxies and access logs record, which is exactly why it expires in twelve hours and is re-minted on demand rather than being long-lived like the session token. It is decoded and verified (signature and expiry) BEFORE the upgrade, so a bad one is a 401 and never a socket that is accepted and then dropped, and it must carry both an account and a workspace claim.  The tenant is the token&#39;s SIGNED org claim and it keys every store path, so no header can name another workspace&#39;s data. The upgrade ALSO refuses a browser Origin outside the team surfaces with 403 — otherwise any page could open an authenticated socket with a token it lured out of a logged-in browser — while a request with no Origin at all is admitted, because that is what a non-browser client sends.  On connect the workspace&#39;s system spaces are seeded once and the roster is reconciled every time, so the org&#39;s human members and its bots are present as workspace people without a separate sync call.
      * @param token  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1729,8 +1729,8 @@ public class TeamApi {
     }
 
     /**
-     * 
-     * 
+     * Read the caller&#39;s account and switch workspace
+     * The account control plane the Team client speaks: one POST carries a &#x60;method&#x60; verb and its &#x60;params&#x60;, and answers {\&quot;result\&quot;: …}. The verbs are the session&#39;s own reads and the workspace switch — getLoginInfoByToken, getUserWorkspaces, selectWorkspace, getWorkspaceInfo, getMemberships, getPerson, getSocialIds, getRegionInfo, isReadOnlyGuest — plus sendInvite, which adds a member to a workspace and is refused for a caller who is not its owner or admin.  A REFUSAL IS HTTP 200 carrying {\&quot;error\&quot;: {severity, code, params}} — the platform Status the client translates — not a 4xx. An unreadable body, an unauthorized session and an unknown verb all arrive that way, so a caller that reads only the status code reads every failure here as a success.  NO CREDENTIAL IS EVER HANDLED HERE. login, signUp, the OTP verbs, password change and reset, join and the guest-token exchange each answer Unauthorized with \&quot;sign in at hanzo.id\&quot; — a stated policy, not an unknown method, so the door being shut is a fact a test can pin. Sessions come from the OAuth pair under /account/auth.  Auth is the team session token: Authorization: Bearer, else the HttpOnly account-token cookie. The tenant is that token&#39;s SIGNED org claim, never a header, and selectWorkspace resolves only among the orgs the token proves membership of. It also demands an explicit workspaceUrl — it never falls back to a first workspace, and a slug that resolves in two of the caller&#39;s orgs answers Ambiguous rather than picking one.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1744,8 +1744,8 @@ public class TeamApi {
     }
 
     /**
-     * 
-     * 
+     * Read the caller&#39;s account and switch workspace
+     * The account control plane the Team client speaks: one POST carries a &#x60;method&#x60; verb and its &#x60;params&#x60;, and answers {\&quot;result\&quot;: …}. The verbs are the session&#39;s own reads and the workspace switch — getLoginInfoByToken, getUserWorkspaces, selectWorkspace, getWorkspaceInfo, getMemberships, getPerson, getSocialIds, getRegionInfo, isReadOnlyGuest — plus sendInvite, which adds a member to a workspace and is refused for a caller who is not its owner or admin.  A REFUSAL IS HTTP 200 carrying {\&quot;error\&quot;: {severity, code, params}} — the platform Status the client translates — not a 4xx. An unreadable body, an unauthorized session and an unknown verb all arrive that way, so a caller that reads only the status code reads every failure here as a success.  NO CREDENTIAL IS EVER HANDLED HERE. login, signUp, the OTP verbs, password change and reset, join and the guest-token exchange each answer Unauthorized with \&quot;sign in at hanzo.id\&quot; — a stated policy, not an unknown method, so the door being shut is a fact a test can pin. Sessions come from the OAuth pair under /account/auth.  Auth is the team session token: Authorization: Bearer, else the HttpOnly account-token cookie. The tenant is that token&#39;s SIGNED org claim, never a header, and selectWorkspace resolves only among the orgs the token proves membership of. It also demands an explicit workspaceUrl — it never falls back to a first workspace, and a slug that resolves in two of the caller&#39;s orgs answers Ambiguous rather than picking one.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1761,8 +1761,8 @@ public class TeamApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Read the caller&#39;s account and switch workspace (asynchronously)
+     * The account control plane the Team client speaks: one POST carries a &#x60;method&#x60; verb and its &#x60;params&#x60;, and answers {\&quot;result\&quot;: …}. The verbs are the session&#39;s own reads and the workspace switch — getLoginInfoByToken, getUserWorkspaces, selectWorkspace, getWorkspaceInfo, getMemberships, getPerson, getSocialIds, getRegionInfo, isReadOnlyGuest — plus sendInvite, which adds a member to a workspace and is refused for a caller who is not its owner or admin.  A REFUSAL IS HTTP 200 carrying {\&quot;error\&quot;: {severity, code, params}} — the platform Status the client translates — not a 4xx. An unreadable body, an unauthorized session and an unknown verb all arrive that way, so a caller that reads only the status code reads every failure here as a success.  NO CREDENTIAL IS EVER HANDLED HERE. login, signUp, the OTP verbs, password change and reset, join and the guest-token exchange each answer Unauthorized with \&quot;sign in at hanzo.id\&quot; — a stated policy, not an unknown method, so the door being shut is a fact a test can pin. Sessions come from the OAuth pair under /account/auth.  Auth is the team session token: Authorization: Bearer, else the HttpOnly account-token cookie. The tenant is that token&#39;s SIGNED org claim, never a header, and selectWorkspace resolves only among the orgs the token proves membership of. It also demands an explicit workspaceUrl — it never falls back to a first workspace, and a slug that resolves in two of the caller&#39;s orgs answers Ambiguous rather than picking one.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1965,8 +1965,8 @@ public class TeamApi {
     }
 
     /**
-     * 
-     * 
+     * Upload a file into a workspace
+     * Stores one file in a workspace&#39;s blob store and answers the blob id it is addressable by, as plain text — the front discards that body, it is there for a caller driving this by hand.  The body is a multipart form with a &#x60;file&#x60; part, and THAT PART&#39;S FILENAME IS THE BLOB ID: the client mints it (a uuid v4) and the server stores under it, so a part whose filename is not a uuid is refused rather than assigned one. A file over 100 MiB is 413 and an empty one is 400.  The caller must hold a verified session or workspace token AND be a member of the workspace; an unknown workspace, another tenant&#39;s workspace and a workspace the caller is not in all answer the same 404, so a probe learns nothing about what exists. The stored key embeds the verified org and the workspace, so an upload cannot land in another tenant&#39;s box whatever id it names. A storage backend that is unavailable fails closed with 502 rather than reporting a write it never made.
      * @param workspace  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1981,8 +1981,8 @@ public class TeamApi {
     }
 
     /**
-     * 
-     * 
+     * Upload a file into a workspace
+     * Stores one file in a workspace&#39;s blob store and answers the blob id it is addressable by, as plain text — the front discards that body, it is there for a caller driving this by hand.  The body is a multipart form with a &#x60;file&#x60; part, and THAT PART&#39;S FILENAME IS THE BLOB ID: the client mints it (a uuid v4) and the server stores under it, so a part whose filename is not a uuid is refused rather than assigned one. A file over 100 MiB is 413 and an empty one is 400.  The caller must hold a verified session or workspace token AND be a member of the workspace; an unknown workspace, another tenant&#39;s workspace and a workspace the caller is not in all answer the same 404, so a probe learns nothing about what exists. The stored key embeds the verified org and the workspace, so an upload cannot land in another tenant&#39;s box whatever id it names. A storage backend that is unavailable fails closed with 502 rather than reporting a write it never made.
      * @param workspace  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1999,8 +1999,8 @@ public class TeamApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Upload a file into a workspace (asynchronously)
+     * Stores one file in a workspace&#39;s blob store and answers the blob id it is addressable by, as plain text — the front discards that body, it is there for a caller driving this by hand.  The body is a multipart form with a &#x60;file&#x60; part, and THAT PART&#39;S FILENAME IS THE BLOB ID: the client mints it (a uuid v4) and the server stores under it, so a part whose filename is not a uuid is refused rather than assigned one. A file over 100 MiB is 413 and an empty one is 400.  The caller must hold a verified session or workspace token AND be a member of the workspace; an unknown workspace, another tenant&#39;s workspace and a workspace the caller is not in all answer the same 404, so a probe learns nothing about what exists. The stored key embeds the verified org and the workspace, so an upload cannot land in another tenant&#39;s box whatever id it names. A storage backend that is unavailable fails closed with 502 rather than reporting a write it never made.
      * @param workspace  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2080,8 +2080,8 @@ public class TeamApi {
     }
 
     /**
-     * 
-     * 
+     * Store the session token as this browser&#39;s cookie
+     * Writes the team session token into the HttpOnly &#x60;account-token&#x60; cookie — Secure, SameSite&#x3D;Lax, whole-origin scope, thirty days — and answers {\&quot;result\&quot;: true}. This is how the client turns the token it caught off the OAuth bounce into a credential page JS can no longer read, which IS the security property: script that cannot see the cookie cannot exfiltrate it, and every later call on the files, billing and collaborator planes authenticates from it when no bearer is sent.  The token is VERIFIED — signature and expiry, against this service&#39;s own signing secret — BEFORE it is stored. Anything this service did not sign is 401 and nothing is written; persisting a caller-supplied value unchecked would be a session-fixation door, where an attacker pins a cookie the victim&#39;s browser then presents as its own.  The token may arrive as &#x60;token&#x60; in the JSON body or, when the body is absent or unparseable, from the Authorization bearer — an unreadable body is NOT an error here. The sibling DELETE clears this same cookie and signs the browser out of team only: the IAM cookie set alongside it is a different credential with its own lifetime and is left alone.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2095,8 +2095,8 @@ public class TeamApi {
     }
 
     /**
-     * 
-     * 
+     * Store the session token as this browser&#39;s cookie
+     * Writes the team session token into the HttpOnly &#x60;account-token&#x60; cookie — Secure, SameSite&#x3D;Lax, whole-origin scope, thirty days — and answers {\&quot;result\&quot;: true}. This is how the client turns the token it caught off the OAuth bounce into a credential page JS can no longer read, which IS the security property: script that cannot see the cookie cannot exfiltrate it, and every later call on the files, billing and collaborator planes authenticates from it when no bearer is sent.  The token is VERIFIED — signature and expiry, against this service&#39;s own signing secret — BEFORE it is stored. Anything this service did not sign is 401 and nothing is written; persisting a caller-supplied value unchecked would be a session-fixation door, where an attacker pins a cookie the victim&#39;s browser then presents as its own.  The token may arrive as &#x60;token&#x60; in the JSON body or, when the body is absent or unparseable, from the Authorization bearer — an unreadable body is NOT an error here. The sibling DELETE clears this same cookie and signs the browser out of team only: the IAM cookie set alongside it is a different credential with its own lifetime and is left alone.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2112,8 +2112,8 @@ public class TeamApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Store the session token as this browser&#39;s cookie (asynchronously)
+     * Writes the team session token into the HttpOnly &#x60;account-token&#x60; cookie — Secure, SameSite&#x3D;Lax, whole-origin scope, thirty days — and answers {\&quot;result\&quot;: true}. This is how the client turns the token it caught off the OAuth bounce into a credential page JS can no longer read, which IS the security property: script that cannot see the cookie cannot exfiltrate it, and every later call on the files, billing and collaborator planes authenticates from it when no bearer is sent.  The token is VERIFIED — signature and expiry, against this service&#39;s own signing secret — BEFORE it is stored. Anything this service did not sign is 401 and nothing is written; persisting a caller-supplied value unchecked would be a session-fixation door, where an attacker pins a cookie the victim&#39;s browser then presents as its own.  The token may arrive as &#x60;token&#x60; in the JSON body or, when the body is absent or unparseable, from the Authorization bearer — an unreadable body is NOT an error here. The sibling DELETE clears this same cookie and signs the browser out of team only: the IAM cookie set alongside it is a different credential with its own lifetime and is left alone.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

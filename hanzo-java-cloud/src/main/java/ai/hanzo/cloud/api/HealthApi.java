@@ -27,9 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.CloudGetV1KmsHealth200Response;
 import ai.hanzo.cloud.model.GatewayHealthCheck200Response;
 import ai.hanzo.cloud.model.GatewayReadinessCheck200Response;
-import ai.hanzo.cloud.model.KmsGetV1KmsHealthz200Response;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -490,7 +490,7 @@ public class HealthApi {
     /**
      * Liveness
      * status is &#x60;degraded&#x60; when MPC is configured but unreachable -- still 200, so a working secrets surface is not flapped out of rotation.
-     * @return KmsGetV1KmsHealthz200Response
+     * @return CloudGetV1KmsHealth200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -499,15 +499,15 @@ public class HealthApi {
         <tr><td> 200 </td><td> Alive </td><td>  -  </td></tr>
      </table>
      */
-    public KmsGetV1KmsHealthz200Response kmsGetV1KmsHealthz() throws ApiException {
-        ApiResponse<KmsGetV1KmsHealthz200Response> localVarResp = kmsGetV1KmsHealthzWithHttpInfo();
+    public CloudGetV1KmsHealth200Response kmsGetV1KmsHealthz() throws ApiException {
+        ApiResponse<CloudGetV1KmsHealth200Response> localVarResp = kmsGetV1KmsHealthzWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Liveness
      * status is &#x60;degraded&#x60; when MPC is configured but unreachable -- still 200, so a working secrets surface is not flapped out of rotation.
-     * @return ApiResponse&lt;KmsGetV1KmsHealthz200Response&gt;
+     * @return ApiResponse&lt;CloudGetV1KmsHealth200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -516,9 +516,9 @@ public class HealthApi {
         <tr><td> 200 </td><td> Alive </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KmsGetV1KmsHealthz200Response> kmsGetV1KmsHealthzWithHttpInfo() throws ApiException {
+    public ApiResponse<CloudGetV1KmsHealth200Response> kmsGetV1KmsHealthzWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = kmsGetV1KmsHealthzValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<KmsGetV1KmsHealthz200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<CloudGetV1KmsHealth200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -535,10 +535,10 @@ public class HealthApi {
         <tr><td> 200 </td><td> Alive </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call kmsGetV1KmsHealthzAsync(final ApiCallback<KmsGetV1KmsHealthz200Response> _callback) throws ApiException {
+    public okhttp3.Call kmsGetV1KmsHealthzAsync(final ApiCallback<CloudGetV1KmsHealth200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = kmsGetV1KmsHealthzValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<KmsGetV1KmsHealthz200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<CloudGetV1KmsHealth200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -27,6 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.AutomationsFlowOperation;
+import ai.hanzo.cloud.model.AutomationsFlowVersion;
+import ai.hanzo.cloud.model.CloudAdminAdminCreatePromo400Response;
 import ai.hanzo.cloud.model.CloudCatalog;
 import ai.hanzo.cloud.model.CloudCreateFlowReq;
 import ai.hanzo.cloud.model.CloudCreateVersionIn;
@@ -36,6 +39,7 @@ import ai.hanzo.cloud.model.CloudFlowRun;
 import ai.hanzo.cloud.model.CloudFlowVersion;
 import ai.hanzo.cloud.model.CloudPatchFlowIn;
 import ai.hanzo.cloud.model.CloudPopulatedFlow;
+import ai.hanzo.cloud.model.CloudPostV1AutomationsRunsByIdResume200Response;
 import ai.hanzo.cloud.model.CloudRunIn;
 import ai.hanzo.cloud.model.CloudRunPage;
 import ai.hanzo.cloud.model.CloudRunResp;
@@ -86,7 +90,7 @@ public class AutomationsApi {
 
     /**
      * Build call for cloudDeleteV1AutomationsFlowsId
-     * @param id ID is the flow to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -155,7 +159,7 @@ public class AutomationsApi {
     /**
      * DeleteFlow deletes one automation, its versions and its run history.
      * DeleteFlow deletes one automation, its versions and its run history. It answers no content, and a flow of another org answers not-found.
-     * @param id ID is the flow to act on, from the path. (required)
+     * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -171,7 +175,7 @@ public class AutomationsApi {
     /**
      * DeleteFlow deletes one automation, its versions and its run history.
      * DeleteFlow deletes one automation, its versions and its run history. It answers no content, and a flow of another org answers not-found.
-     * @param id ID is the flow to act on, from the path. (required)
+     * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -189,7 +193,7 @@ public class AutomationsApi {
     /**
      * DeleteFlow deletes one automation, its versions and its run history. (asynchronously)
      * DeleteFlow deletes one automation, its versions and its run history. It answers no content, and a flow of another org answers not-found.
-     * @param id ID is the flow to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -450,7 +454,7 @@ public class AutomationsApi {
     }
     /**
      * Build call for cloudGetV1AutomationsFlowsId
-     * @param id ID is the flow to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -520,7 +524,7 @@ public class AutomationsApi {
     /**
      * GetFlow returns one automation and its latest version.
      * GetFlow returns one automation and its latest version. That is the flow record plus the step tree the builder edits; a flow of another org answers not-found.
-     * @param id ID is the flow to act on, from the path. (required)
+     * @param id  (required)
      * @return CloudPopulatedFlow
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -538,7 +542,7 @@ public class AutomationsApi {
     /**
      * GetFlow returns one automation and its latest version.
      * GetFlow returns one automation and its latest version. That is the flow record plus the step tree the builder edits; a flow of another org answers not-found.
-     * @param id ID is the flow to act on, from the path. (required)
+     * @param id  (required)
      * @return ApiResponse&lt;CloudPopulatedFlow&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -557,7 +561,7 @@ public class AutomationsApi {
     /**
      * GetFlow returns one automation and its latest version. (asynchronously)
      * GetFlow returns one automation and its latest version. That is the flow record plus the step tree the builder edits; a flow of another org answers not-found.
-     * @param id ID is the flow to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -577,7 +581,7 @@ public class AutomationsApi {
     }
     /**
      * Build call for cloudGetV1AutomationsFlowsIdVersions
-     * @param id ID is the flow whose versions to list, from the path. (required)
+     * @param id  (required)
      * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -652,7 +656,7 @@ public class AutomationsApi {
     /**
      * ListVersions returns one flow&#39;s versions, newest first.
      * ListVersions returns one flow&#39;s versions, newest first. The optional &#x60;limit&#x60; query bounds the page.
-     * @param id ID is the flow whose versions to list, from the path. (required)
+     * @param id  (required)
      * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
      * @return CloudVersionPage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -671,7 +675,7 @@ public class AutomationsApi {
     /**
      * ListVersions returns one flow&#39;s versions, newest first.
      * ListVersions returns one flow&#39;s versions, newest first. The optional &#x60;limit&#x60; query bounds the page.
-     * @param id ID is the flow whose versions to list, from the path. (required)
+     * @param id  (required)
      * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
      * @return ApiResponse&lt;CloudVersionPage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -691,7 +695,7 @@ public class AutomationsApi {
     /**
      * ListVersions returns one flow&#39;s versions, newest first. (asynchronously)
      * ListVersions returns one flow&#39;s versions, newest first. The optional &#x60;limit&#x60; query bounds the page.
-     * @param id ID is the flow whose versions to list, from the path. (required)
+     * @param id  (required)
      * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -962,7 +966,7 @@ public class AutomationsApi {
     }
     /**
      * Build call for cloudGetV1AutomationsRunsId
-     * @param id ID is the run to read, from the path. (required)
+     * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1032,7 +1036,7 @@ public class AutomationsApi {
     /**
      * GetRun returns one run.
      * GetRun returns one run. A run that has not reached a terminal status is refreshed from the durable engine first — scoped to the org&#39;s own namespace — so the caller sees live progress rather than the last status that happened to be persisted.
-     * @param id ID is the run to read, from the path. (required)
+     * @param id  (required)
      * @return CloudFlowRun
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1050,7 +1054,7 @@ public class AutomationsApi {
     /**
      * GetRun returns one run.
      * GetRun returns one run. A run that has not reached a terminal status is refreshed from the durable engine first — scoped to the org&#39;s own namespace — so the caller sees live progress rather than the last status that happened to be persisted.
-     * @param id ID is the run to read, from the path. (required)
+     * @param id  (required)
      * @return ApiResponse&lt;CloudFlowRun&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1069,7 +1073,7 @@ public class AutomationsApi {
     /**
      * GetRun returns one run. (asynchronously)
      * GetRun returns one run. A run that has not reached a terminal status is refreshed from the durable engine first — scoped to the org&#39;s own namespace — so the caller sees live progress rather than the last status that happened to be persisted.
-     * @param id ID is the run to read, from the path. (required)
+     * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1089,7 +1093,7 @@ public class AutomationsApi {
     }
     /**
      * Build call for cloudPatchV1AutomationsFlowsId
-     * @param id ID is the flow to update, from the path. (required)
+     * @param id  (required)
      * @param cloudPatchFlowIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1166,7 +1170,7 @@ public class AutomationsApi {
     /**
      * UpdateFlow updates one automation&#39;s metadata in place.
      * UpdateFlow updates one automation&#39;s metadata in place. Every field is optional; a field the request omits is left alone. Publishing a version pins which one runs, and is refused unless that version belongs to this flow.
-     * @param id ID is the flow to update, from the path. (required)
+     * @param id  (required)
      * @param cloudPatchFlowIn  (required)
      * @return CloudFlow
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1185,7 +1189,7 @@ public class AutomationsApi {
     /**
      * UpdateFlow updates one automation&#39;s metadata in place.
      * UpdateFlow updates one automation&#39;s metadata in place. Every field is optional; a field the request omits is left alone. Publishing a version pins which one runs, and is refused unless that version belongs to this flow.
-     * @param id ID is the flow to update, from the path. (required)
+     * @param id  (required)
      * @param cloudPatchFlowIn  (required)
      * @return ApiResponse&lt;CloudFlow&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1205,7 +1209,7 @@ public class AutomationsApi {
     /**
      * UpdateFlow updates one automation&#39;s metadata in place. (asynchronously)
      * UpdateFlow updates one automation&#39;s metadata in place. Every field is optional; a field the request omits is left alone. Publishing a version pins which one runs, and is refused unless that version belongs to this flow.
-     * @param id ID is the flow to update, from the path. (required)
+     * @param id  (required)
      * @param cloudPatchFlowIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1491,6 +1495,7 @@ public class AutomationsApi {
     /**
      * Build call for cloudPostV1AutomationsFlowsByIdOperations
      * @param id  (required)
+     * @param automationsFlowOperation  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1498,10 +1503,13 @@ public class AutomationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Updated version or flow </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Flow, version, or step not found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Unsupported or invalid operation </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AutomationsFlowsByIdOperationsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AutomationsFlowsByIdOperationsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutomationsFlowOperation automationsFlowOperation, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1515,7 +1523,7 @@ public class AutomationsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = automationsFlowOperation;
 
         // create path and map variables
         String localVarPath = "/v1/automations/flows/{id}/operations"
@@ -1528,6 +1536,7 @@ public class AutomationsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1535,6 +1544,7 @@ public class AutomationsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1546,54 +1556,71 @@ public class AutomationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1AutomationsFlowsByIdOperationsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudPostV1AutomationsFlowsByIdOperationsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutomationsFlowOperation automationsFlowOperation, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling cloudPostV1AutomationsFlowsByIdOperations(Async)");
         }
 
-        return cloudPostV1AutomationsFlowsByIdOperationsCall(id, _callback);
+        // verify the required parameter 'automationsFlowOperation' is set
+        if (automationsFlowOperation == null) {
+            throw new ApiException("Missing the required parameter 'automationsFlowOperation' when calling cloudPostV1AutomationsFlowsByIdOperations(Async)");
+        }
+
+        return cloudPostV1AutomationsFlowsByIdOperationsCall(id, automationsFlowOperation, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Edit a flow — rename it, retarget its trigger, or add, move and delete steps
+     * Applies ONE flow operation and answers the thing it changed. The operation is named by &#x60;type&#x60;, with its arguments under &#x60;request&#x60;: &#x60;CHANGE_NAME&#x60;, &#x60;UPDATE_TRIGGER&#x60;, &#x60;ADD_ACTION&#x60;, &#x60;UPDATE_ACTION&#x60;, &#x60;MOVE_ACTION&#x60;, &#x60;DELETE_ACTION&#x60; edit the flow&#39;s LATEST version and answer with that version, and &#x60;CHANGE_STATUS&#x60; instead enables or disables the flow and answers with the FLOW. Two response shapes on one address is the rule a reader would otherwise get wrong, and it is why this route is not a typed op.  Edits land on the latest version only — the published version a run executes is untouched until it is republished — and the whole resulting step tree is re-validated against the step-count and size caps after every operation, so a long sequence of &#x60;ADD_ACTION&#x60; calls cannot grow a flow past a bound one step at a time (422 when it would). Org-scoped and fails closed: a validated principal is required (403 without one), the flow and its version are read under the caller&#39;s OWN org so another tenant&#39;s id is a 404, and an operation whose &#x60;request&#x60; does not decode is a 400.
      * @param id  (required)
+     * @param automationsFlowOperation  (required)
+     * @return AutomationsFlowVersion
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Updated version or flow </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Flow, version, or step not found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Unsupported or invalid operation </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1AutomationsFlowsByIdOperations(@javax.annotation.Nonnull String id) throws ApiException {
-        cloudPostV1AutomationsFlowsByIdOperationsWithHttpInfo(id);
+    public AutomationsFlowVersion cloudPostV1AutomationsFlowsByIdOperations(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutomationsFlowOperation automationsFlowOperation) throws ApiException {
+        ApiResponse<AutomationsFlowVersion> localVarResp = cloudPostV1AutomationsFlowsByIdOperationsWithHttpInfo(id, automationsFlowOperation);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
+     * Edit a flow — rename it, retarget its trigger, or add, move and delete steps
+     * Applies ONE flow operation and answers the thing it changed. The operation is named by &#x60;type&#x60;, with its arguments under &#x60;request&#x60;: &#x60;CHANGE_NAME&#x60;, &#x60;UPDATE_TRIGGER&#x60;, &#x60;ADD_ACTION&#x60;, &#x60;UPDATE_ACTION&#x60;, &#x60;MOVE_ACTION&#x60;, &#x60;DELETE_ACTION&#x60; edit the flow&#39;s LATEST version and answer with that version, and &#x60;CHANGE_STATUS&#x60; instead enables or disables the flow and answers with the FLOW. Two response shapes on one address is the rule a reader would otherwise get wrong, and it is why this route is not a typed op.  Edits land on the latest version only — the published version a run executes is untouched until it is republished — and the whole resulting step tree is re-validated against the step-count and size caps after every operation, so a long sequence of &#x60;ADD_ACTION&#x60; calls cannot grow a flow past a bound one step at a time (422 when it would). Org-scoped and fails closed: a validated principal is required (403 without one), the flow and its version are read under the caller&#39;s OWN org so another tenant&#39;s id is a 404, and an operation whose &#x60;request&#x60; does not decode is a 400.
      * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @param automationsFlowOperation  (required)
+     * @return ApiResponse&lt;AutomationsFlowVersion&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Updated version or flow </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Flow, version, or step not found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Unsupported or invalid operation </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1AutomationsFlowsByIdOperationsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1AutomationsFlowsByIdOperationsValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<AutomationsFlowVersion> cloudPostV1AutomationsFlowsByIdOperationsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutomationsFlowOperation automationsFlowOperation) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1AutomationsFlowsByIdOperationsValidateBeforeCall(id, automationsFlowOperation, null);
+        Type localVarReturnType = new TypeToken<AutomationsFlowVersion>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Edit a flow — rename it, retarget its trigger, or add, move and delete steps (asynchronously)
+     * Applies ONE flow operation and answers the thing it changed. The operation is named by &#x60;type&#x60;, with its arguments under &#x60;request&#x60;: &#x60;CHANGE_NAME&#x60;, &#x60;UPDATE_TRIGGER&#x60;, &#x60;ADD_ACTION&#x60;, &#x60;UPDATE_ACTION&#x60;, &#x60;MOVE_ACTION&#x60;, &#x60;DELETE_ACTION&#x60; edit the flow&#39;s LATEST version and answer with that version, and &#x60;CHANGE_STATUS&#x60; instead enables or disables the flow and answers with the FLOW. Two response shapes on one address is the rule a reader would otherwise get wrong, and it is why this route is not a typed op.  Edits land on the latest version only — the published version a run executes is untouched until it is republished — and the whole resulting step tree is re-validated against the step-count and size caps after every operation, so a long sequence of &#x60;ADD_ACTION&#x60; calls cannot grow a flow past a bound one step at a time (422 when it would). Org-scoped and fails closed: a validated principal is required (403 without one), the flow and its version are read under the caller&#39;s OWN org so another tenant&#39;s id is a 404, and an operation whose &#x60;request&#x60; does not decode is a 400.
      * @param id  (required)
+     * @param automationsFlowOperation  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1601,18 +1628,22 @@ public class AutomationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Updated version or flow </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Flow, version, or step not found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Unsupported or invalid operation </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AutomationsFlowsByIdOperationsAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AutomationsFlowsByIdOperationsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutomationsFlowOperation automationsFlowOperation, final ApiCallback<AutomationsFlowVersion> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1AutomationsFlowsByIdOperationsValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1AutomationsFlowsByIdOperationsValidateBeforeCall(id, automationsFlowOperation, _callback);
+        Type localVarReturnType = new TypeToken<AutomationsFlowVersion>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1AutomationsFlowsIdDisable
-     * @param id ID is the flow to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1682,7 +1713,7 @@ public class AutomationsApi {
     /**
      * DisableFlow disarms a flow&#39;s trigger and marks it DISABLED.
      * DisableFlow disarms a flow&#39;s trigger and marks it DISABLED. Its schedule and its event subscriptions are dropped, so a disabled flow is never a live target; runs already in flight are unaffected, and it can still be started on demand.
-     * @param id ID is the flow to act on, from the path. (required)
+     * @param id  (required)
      * @return CloudFlow
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1700,7 +1731,7 @@ public class AutomationsApi {
     /**
      * DisableFlow disarms a flow&#39;s trigger and marks it DISABLED.
      * DisableFlow disarms a flow&#39;s trigger and marks it DISABLED. Its schedule and its event subscriptions are dropped, so a disabled flow is never a live target; runs already in flight are unaffected, and it can still be started on demand.
-     * @param id ID is the flow to act on, from the path. (required)
+     * @param id  (required)
      * @return ApiResponse&lt;CloudFlow&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1719,7 +1750,7 @@ public class AutomationsApi {
     /**
      * DisableFlow disarms a flow&#39;s trigger and marks it DISABLED. (asynchronously)
      * DisableFlow disarms a flow&#39;s trigger and marks it DISABLED. Its schedule and its event subscriptions are dropped, so a disabled flow is never a live target; runs already in flight are unaffected, and it can still be started on demand.
-     * @param id ID is the flow to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1739,7 +1770,7 @@ public class AutomationsApi {
     }
     /**
      * Build call for cloudPostV1AutomationsFlowsIdEnable
-     * @param id ID is the flow to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1809,7 +1840,7 @@ public class AutomationsApi {
     /**
      * EnableFlow arms a flow&#39;s trigger and marks it ENABLED.
      * EnableFlow arms a flow&#39;s trigger and marks it ENABLED. A POLLING trigger gets a cron schedule on the durable engine; a WEBHOOK trigger gets a subscription in the routing index, so an inbound event starts it; a MANUAL trigger arms nothing and still runs on demand.
-     * @param id ID is the flow to act on, from the path. (required)
+     * @param id  (required)
      * @return CloudFlow
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1827,7 +1858,7 @@ public class AutomationsApi {
     /**
      * EnableFlow arms a flow&#39;s trigger and marks it ENABLED.
      * EnableFlow arms a flow&#39;s trigger and marks it ENABLED. A POLLING trigger gets a cron schedule on the durable engine; a WEBHOOK trigger gets a subscription in the routing index, so an inbound event starts it; a MANUAL trigger arms nothing and still runs on demand.
-     * @param id ID is the flow to act on, from the path. (required)
+     * @param id  (required)
      * @return ApiResponse&lt;CloudFlow&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1846,7 +1877,7 @@ public class AutomationsApi {
     /**
      * EnableFlow arms a flow&#39;s trigger and marks it ENABLED. (asynchronously)
      * EnableFlow arms a flow&#39;s trigger and marks it ENABLED. A POLLING trigger gets a cron schedule on the durable engine; a WEBHOOK trigger gets a subscription in the routing index, so an inbound event starts it; a MANUAL trigger arms nothing and still runs on demand.
-     * @param id ID is the flow to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1866,7 +1897,7 @@ public class AutomationsApi {
     }
     /**
      * Build call for cloudPostV1AutomationsFlowsIdRun
-     * @param id ID is the flow to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1936,7 +1967,7 @@ public class AutomationsApi {
     /**
      * RunFlow starts one durable run of a flow now.
      * RunFlow starts one durable run of a flow now. It runs the flow&#39;s published version if one is pinned, else its latest, and answers the run record it created. The run is bounded by the org&#39;s per-minute run-start budget and its in-flight concurrency ceiling; over either, or with the engine not ready, no run is started and no run id is burned.
-     * @param id ID is the flow to act on, from the path. (required)
+     * @param id  (required)
      * @return CloudFlowRun
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1954,7 +1985,7 @@ public class AutomationsApi {
     /**
      * RunFlow starts one durable run of a flow now.
      * RunFlow starts one durable run of a flow now. It runs the flow&#39;s published version if one is pinned, else its latest, and answers the run record it created. The run is bounded by the org&#39;s per-minute run-start budget and its in-flight concurrency ceiling; over either, or with the engine not ready, no run is started and no run id is burned.
-     * @param id ID is the flow to act on, from the path. (required)
+     * @param id  (required)
      * @return ApiResponse&lt;CloudFlowRun&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1973,7 +2004,7 @@ public class AutomationsApi {
     /**
      * RunFlow starts one durable run of a flow now. (asynchronously)
      * RunFlow starts one durable run of a flow now. It runs the flow&#39;s published version if one is pinned, else its latest, and answers the run record it created. The run is bounded by the org&#39;s per-minute run-start budget and its in-flight concurrency ceiling; over either, or with the engine not ready, no run is started and no run id is burned.
-     * @param id ID is the flow to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1993,7 +2024,7 @@ public class AutomationsApi {
     }
     /**
      * Build call for cloudPostV1AutomationsFlowsIdVersions
-     * @param id ID is the flow to add a version to, from the path. (required)
+     * @param id  (required)
      * @param cloudCreateVersionIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2070,7 +2101,7 @@ public class AutomationsApi {
     /**
      * CreateVersion adds a new DRAFT version to a flow.
      * CreateVersion adds a new DRAFT version to a flow. The version is created invalid unless it carries a trigger, and it does not become the running version until it is published (PATCH the flow&#39;s publishedVersionId) or becomes the latest.
-     * @param id ID is the flow to add a version to, from the path. (required)
+     * @param id  (required)
      * @param cloudCreateVersionIn  (required)
      * @return CloudFlowVersion
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2089,7 +2120,7 @@ public class AutomationsApi {
     /**
      * CreateVersion adds a new DRAFT version to a flow.
      * CreateVersion adds a new DRAFT version to a flow. The version is created invalid unless it carries a trigger, and it does not become the running version until it is published (PATCH the flow&#39;s publishedVersionId) or becomes the latest.
-     * @param id ID is the flow to add a version to, from the path. (required)
+     * @param id  (required)
      * @param cloudCreateVersionIn  (required)
      * @return ApiResponse&lt;CloudFlowVersion&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2109,7 +2140,7 @@ public class AutomationsApi {
     /**
      * CreateVersion adds a new DRAFT version to a flow. (asynchronously)
      * CreateVersion adds a new DRAFT version to a flow. The version is created invalid unless it carries a trigger, and it does not become the running version until it is published (PATCH the flow&#39;s publishedVersionId) or becomes the latest.
-     * @param id ID is the flow to add a version to, from the path. (required)
+     * @param id  (required)
      * @param cloudCreateVersionIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2204,8 +2235,8 @@ public class AutomationsApi {
     }
 
     /**
-     * 
-     * 
+     * Fire an event that starts every enabled flow subscribed to it
+     * Delivers one event to the org&#39;s automation triggers and answers &#x60;{matched:n}&#x60; — how many enabled flows had a webhook trigger on this &#x60;(source, event)&#x60; key and were started by it. A zero match is a success, not an error: nothing was subscribed.  The path is the trigger key and the JSON object body is the event payload, threaded into each started run as &#x60;{{trigger.*}}&#x60; with all of its keys intact — which is why this is not a typed op, since a declared input struct would silently DISCARD every payload key it had no field for. Re-delivery is a no-op: an &#x60;X-Idempotency-Key&#x60; header dedupes, and with none the body is content-hashed instead, so a hammer of identical posts collapses to ONE run rather than minting a fresh one per post. An in-platform producer may propagate &#x60;X-Causation-Depth&#x60; so a firing that a flow caused is bounded against a loop; an absent or invalid header reads as depth 0, an external origin.  Authenticated and org-scoped, unlike a provider&#39;s public webhook URL: a validated principal is required (403 without one) and the org is that principal&#39;s, never the body&#39;s, so a producer can only fire into its own tenant&#39;s flows. Both path segments are required (400) and a payload over the size limit is a 413.
      * @param source  (required)
      * @param event  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2221,8 +2252,8 @@ public class AutomationsApi {
     }
 
     /**
-     * 
-     * 
+     * Fire an event that starts every enabled flow subscribed to it
+     * Delivers one event to the org&#39;s automation triggers and answers &#x60;{matched:n}&#x60; — how many enabled flows had a webhook trigger on this &#x60;(source, event)&#x60; key and were started by it. A zero match is a success, not an error: nothing was subscribed.  The path is the trigger key and the JSON object body is the event payload, threaded into each started run as &#x60;{{trigger.*}}&#x60; with all of its keys intact — which is why this is not a typed op, since a declared input struct would silently DISCARD every payload key it had no field for. Re-delivery is a no-op: an &#x60;X-Idempotency-Key&#x60; header dedupes, and with none the body is content-hashed instead, so a hammer of identical posts collapses to ONE run rather than minting a fresh one per post. An in-platform producer may propagate &#x60;X-Causation-Depth&#x60; so a firing that a flow caused is bounded against a loop; an absent or invalid header reads as depth 0, an external origin.  Authenticated and org-scoped, unlike a provider&#39;s public webhook URL: a validated principal is required (403 without one) and the org is that principal&#39;s, never the body&#39;s, so a producer can only fire into its own tenant&#39;s flows. Both path segments are required (400) and a payload over the size limit is a 413.
      * @param source  (required)
      * @param event  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -2240,8 +2271,8 @@ public class AutomationsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Fire an event that starts every enabled flow subscribed to it (asynchronously)
+     * Delivers one event to the org&#39;s automation triggers and answers &#x60;{matched:n}&#x60; — how many enabled flows had a webhook trigger on this &#x60;(source, event)&#x60; key and were started by it. A zero match is a success, not an error: nothing was subscribed.  The path is the trigger key and the JSON object body is the event payload, threaded into each started run as &#x60;{{trigger.*}}&#x60; with all of its keys intact — which is why this is not a typed op, since a declared input struct would silently DISCARD every payload key it had no field for. Re-delivery is a no-op: an &#x60;X-Idempotency-Key&#x60; header dedupes, and with none the body is content-hashed instead, so a hammer of identical posts collapses to ONE run rather than minting a fresh one per post. An in-platform producer may propagate &#x60;X-Causation-Depth&#x60; so a firing that a flow caused is bounded against a loop; an absent or invalid header reads as depth 0, an external origin.  Authenticated and org-scoped, unlike a provider&#39;s public webhook URL: a validated principal is required (403 without one) and the org is that principal&#39;s, never the body&#39;s, so a producer can only fire into its own tenant&#39;s flows. Both path segments are required (400) and a payload over the size limit is a 413.
      * @param source  (required)
      * @param event  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2263,6 +2294,7 @@ public class AutomationsApi {
     /**
      * Build call for cloudPostV1AutomationsRunsByIdResume
      * @param id  (required)
+     * @param body  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2270,10 +2302,14 @@ public class AutomationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Resumed </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Run not found </td><td>  -  </td></tr>
+        <tr><td> 413 </td><td> Resume payload exceeds the 64 KiB limit </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Automation engine not ready </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AutomationsRunsByIdResumeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AutomationsRunsByIdResumeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Object body, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2287,7 +2323,7 @@ public class AutomationsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = body;
 
         // create path and map variables
         String localVarPath = "/v1/automations/runs/{id}/resume"
@@ -2300,6 +2336,7 @@ public class AutomationsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2307,6 +2344,7 @@ public class AutomationsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -2318,54 +2356,68 @@ public class AutomationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1AutomationsRunsByIdResumeValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudPostV1AutomationsRunsByIdResumeValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Object body, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling cloudPostV1AutomationsRunsByIdResume(Async)");
         }
 
-        return cloudPostV1AutomationsRunsByIdResumeCall(id, _callback);
+        return cloudPostV1AutomationsRunsByIdResumeCall(id, body, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Release a run waiting at an approval step, with the approval payload
+     * Delivers the durable &#x60;resume&#x60; signal to a run parked on a &#x60;wait_for_approval&#x60; waitpoint and answers &#x60;{resumed:true}&#x60; once the engine has taken it.  The body is an ARBITRARY JSON value — object, array, string, number — delivered VERBATIM into the workflow as that waitpoint&#39;s output, so it is what the steps after the approval read as their input. An empty body resumes with no payload. That open shape is why this route is not a typed op: an operation&#39;s input can carry the payload or the run address, never both.  Org-scoped and fails closed: a validated principal is required (403 without one), the run is read under the caller&#39;s OWN org so another tenant&#39;s run id is a 404, a body that is not JSON is a 400, and a payload over the size limit is a 413 — it becomes durable engine state, so it is bounded here rather than after it lands. The resume is audited as &#x60;automations.run.resume&#x60;.
      * @param id  (required)
+     * @param body  (optional)
+     * @return CloudPostV1AutomationsRunsByIdResume200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Resumed </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Run not found </td><td>  -  </td></tr>
+        <tr><td> 413 </td><td> Resume payload exceeds the 64 KiB limit </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Automation engine not ready </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1AutomationsRunsByIdResume(@javax.annotation.Nonnull String id) throws ApiException {
-        cloudPostV1AutomationsRunsByIdResumeWithHttpInfo(id);
+    public CloudPostV1AutomationsRunsByIdResume200Response cloudPostV1AutomationsRunsByIdResume(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Object body) throws ApiException {
+        ApiResponse<CloudPostV1AutomationsRunsByIdResume200Response> localVarResp = cloudPostV1AutomationsRunsByIdResumeWithHttpInfo(id, body);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
+     * Release a run waiting at an approval step, with the approval payload
+     * Delivers the durable &#x60;resume&#x60; signal to a run parked on a &#x60;wait_for_approval&#x60; waitpoint and answers &#x60;{resumed:true}&#x60; once the engine has taken it.  The body is an ARBITRARY JSON value — object, array, string, number — delivered VERBATIM into the workflow as that waitpoint&#39;s output, so it is what the steps after the approval read as their input. An empty body resumes with no payload. That open shape is why this route is not a typed op: an operation&#39;s input can carry the payload or the run address, never both.  Org-scoped and fails closed: a validated principal is required (403 without one), the run is read under the caller&#39;s OWN org so another tenant&#39;s run id is a 404, a body that is not JSON is a 400, and a payload over the size limit is a 413 — it becomes durable engine state, so it is bounded here rather than after it lands. The resume is audited as &#x60;automations.run.resume&#x60;.
      * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @param body  (optional)
+     * @return ApiResponse&lt;CloudPostV1AutomationsRunsByIdResume200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Resumed </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Run not found </td><td>  -  </td></tr>
+        <tr><td> 413 </td><td> Resume payload exceeds the 64 KiB limit </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Automation engine not ready </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1AutomationsRunsByIdResumeWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1AutomationsRunsByIdResumeValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CloudPostV1AutomationsRunsByIdResume200Response> cloudPostV1AutomationsRunsByIdResumeWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Object body) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1AutomationsRunsByIdResumeValidateBeforeCall(id, body, null);
+        Type localVarReturnType = new TypeToken<CloudPostV1AutomationsRunsByIdResume200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Release a run waiting at an approval step, with the approval payload (asynchronously)
+     * Delivers the durable &#x60;resume&#x60; signal to a run parked on a &#x60;wait_for_approval&#x60; waitpoint and answers &#x60;{resumed:true}&#x60; once the engine has taken it.  The body is an ARBITRARY JSON value — object, array, string, number — delivered VERBATIM into the workflow as that waitpoint&#39;s output, so it is what the steps after the approval read as their input. An empty body resumes with no payload. That open shape is why this route is not a typed op: an operation&#39;s input can carry the payload or the run address, never both.  Org-scoped and fails closed: a validated principal is required (403 without one), the run is read under the caller&#39;s OWN org so another tenant&#39;s run id is a 404, a body that is not JSON is a 400, and a payload over the size limit is a 413 — it becomes durable engine state, so it is bounded here rather than after it lands. The resume is audited as &#x60;automations.run.resume&#x60;.
      * @param id  (required)
+     * @param body  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2373,13 +2425,18 @@ public class AutomationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Resumed </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Run not found </td><td>  -  </td></tr>
+        <tr><td> 413 </td><td> Resume payload exceeds the 64 KiB limit </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Automation engine not ready </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AutomationsRunsByIdResumeAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AutomationsRunsByIdResumeAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Object body, final ApiCallback<CloudPostV1AutomationsRunsByIdResume200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1AutomationsRunsByIdResumeValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1AutomationsRunsByIdResumeValidateBeforeCall(id, body, _callback);
+        Type localVarReturnType = new TypeToken<CloudPostV1AutomationsRunsByIdResume200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }

@@ -133,8 +133,8 @@ public class ReleasesApi {
     }
 
     /**
-     * 
-     * 
+     * The versions that actually reached the cluster
+     * Lists the org&#39;s releases: the deployments that were genuinely applied to the cluster, with the app they belong to, their version, environment, status and when they were released. A deployment that failed or is still building is NOT a release and is excluded — reaching the cluster is what makes one. Requires a validated principal; 403 without one.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -148,8 +148,8 @@ public class ReleasesApi {
     }
 
     /**
-     * 
-     * 
+     * The versions that actually reached the cluster
+     * Lists the org&#39;s releases: the deployments that were genuinely applied to the cluster, with the app they belong to, their version, environment, status and when they were released. A deployment that failed or is still building is NOT a release and is excluded — reaching the cluster is what makes one. Requires a validated principal; 403 without one.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -165,8 +165,8 @@ public class ReleasesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The versions that actually reached the cluster (asynchronously)
+     * Lists the org&#39;s releases: the deployments that were genuinely applied to the cluster, with the app they belong to, their version, environment, status and when they were released. A deployment that failed or is still building is NOT a release and is excluded — reaching the cluster is what makes one. Requires a validated principal; 403 without one.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

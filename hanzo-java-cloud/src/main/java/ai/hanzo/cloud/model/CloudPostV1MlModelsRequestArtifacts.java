@@ -47,10 +47,10 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * MlModelArtifacts
+ * CloudPostV1MlModelsRequestArtifacts
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class MlModelArtifacts {
+public class CloudPostV1MlModelsRequestArtifacts {
   public static final String SERIALIZED_NAME_WEIGHTS = "weights";
   @SerializedName(SERIALIZED_NAME_WEIGHTS)
   @javax.annotation.Nullable
@@ -66,10 +66,10 @@ public class MlModelArtifacts {
   @javax.annotation.Nullable
   private URI config;
 
-  public MlModelArtifacts() {
+  public CloudPostV1MlModelsRequestArtifacts() {
   }
 
-  public MlModelArtifacts weights(@javax.annotation.Nullable URI weights) {
+  public CloudPostV1MlModelsRequestArtifacts weights(@javax.annotation.Nullable URI weights) {
     this.weights = weights;
     return this;
   }
@@ -88,7 +88,7 @@ public class MlModelArtifacts {
   }
 
 
-  public MlModelArtifacts tokenizer(@javax.annotation.Nullable URI tokenizer) {
+  public CloudPostV1MlModelsRequestArtifacts tokenizer(@javax.annotation.Nullable URI tokenizer) {
     this.tokenizer = tokenizer;
     return this;
   }
@@ -107,7 +107,7 @@ public class MlModelArtifacts {
   }
 
 
-  public MlModelArtifacts config(@javax.annotation.Nullable URI config) {
+  public CloudPostV1MlModelsRequestArtifacts config(@javax.annotation.Nullable URI config) {
     this.config = config;
     return this;
   }
@@ -135,10 +135,10 @@ public class MlModelArtifacts {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MlModelArtifacts mlModelArtifacts = (MlModelArtifacts) o;
-    return Objects.equals(this.weights, mlModelArtifacts.weights) &&
-        Objects.equals(this.tokenizer, mlModelArtifacts.tokenizer) &&
-        Objects.equals(this.config, mlModelArtifacts.config);
+    CloudPostV1MlModelsRequestArtifacts cloudPostV1MlModelsRequestArtifacts = (CloudPostV1MlModelsRequestArtifacts) o;
+    return Objects.equals(this.weights, cloudPostV1MlModelsRequestArtifacts.weights) &&
+        Objects.equals(this.tokenizer, cloudPostV1MlModelsRequestArtifacts.tokenizer) &&
+        Objects.equals(this.config, cloudPostV1MlModelsRequestArtifacts.config);
   }
 
   @Override
@@ -149,7 +149,7 @@ public class MlModelArtifacts {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MlModelArtifacts {\n");
+    sb.append("class CloudPostV1MlModelsRequestArtifacts {\n");
     sb.append("    weights: ").append(toIndentedString(weights)).append("\n");
     sb.append("    tokenizer: ").append(toIndentedString(tokenizer)).append("\n");
     sb.append("    config: ").append(toIndentedString(config)).append("\n");
@@ -184,20 +184,20 @@ public class MlModelArtifacts {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to MlModelArtifacts
+   * @throws IOException if the JSON Element is invalid with respect to CloudPostV1MlModelsRequestArtifacts
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!MlModelArtifacts.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in MlModelArtifacts is not found in the empty JSON string", MlModelArtifacts.openapiRequiredFields.toString()));
+        if (!CloudPostV1MlModelsRequestArtifacts.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CloudPostV1MlModelsRequestArtifacts is not found in the empty JSON string", CloudPostV1MlModelsRequestArtifacts.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!MlModelArtifacts.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MlModelArtifacts` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!CloudPostV1MlModelsRequestArtifacts.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CloudPostV1MlModelsRequestArtifacts` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -216,22 +216,22 @@ public class MlModelArtifacts {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!MlModelArtifacts.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'MlModelArtifacts' and its subtypes
+       if (!CloudPostV1MlModelsRequestArtifacts.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CloudPostV1MlModelsRequestArtifacts' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<MlModelArtifacts> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(MlModelArtifacts.class));
+       final TypeAdapter<CloudPostV1MlModelsRequestArtifacts> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CloudPostV1MlModelsRequestArtifacts.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<MlModelArtifacts>() {
+       return (TypeAdapter<T>) new TypeAdapter<CloudPostV1MlModelsRequestArtifacts>() {
            @Override
-           public void write(JsonWriter out, MlModelArtifacts value) throws IOException {
+           public void write(JsonWriter out, CloudPostV1MlModelsRequestArtifacts value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public MlModelArtifacts read(JsonReader in) throws IOException {
+           public CloudPostV1MlModelsRequestArtifacts read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -242,18 +242,18 @@ public class MlModelArtifacts {
   }
 
   /**
-   * Create an instance of MlModelArtifacts given an JSON string
+   * Create an instance of CloudPostV1MlModelsRequestArtifacts given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of MlModelArtifacts
-   * @throws IOException if the JSON string is invalid with respect to MlModelArtifacts
+   * @return An instance of CloudPostV1MlModelsRequestArtifacts
+   * @throws IOException if the JSON string is invalid with respect to CloudPostV1MlModelsRequestArtifacts
    */
-  public static MlModelArtifacts fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, MlModelArtifacts.class);
+  public static CloudPostV1MlModelsRequestArtifacts fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CloudPostV1MlModelsRequestArtifacts.class);
   }
 
   /**
-   * Convert an instance of MlModelArtifacts to an JSON string
+   * Convert an instance of CloudPostV1MlModelsRequestArtifacts to an JSON string
    *
    * @return JSON string
    */

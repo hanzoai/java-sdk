@@ -2179,8 +2179,8 @@ public class BooksApi {
     }
 
     /**
-     * 
-     * 
+     * Finish connecting a bank account (not yet available)
+     * ANSWERS 501 UNCONDITIONALLY. It is the intended second hop of the bank-linking handshake — trade the provider&#39;s short-lived public token for the durable access credential and seal that credential into KMS — and nothing on the HTTP path reaches an implementation today.  The durable bank credential is the reason this hop exists: it is meant to be sealed server-side and never handed back to the caller. Since the route never succeeds, no credential is stored by it and no bank is connected through it.  Documented as refusing rather than declared with a success body, for the same reason as the first hop: it has never sent one, and stating a shape it has never produced would put a return type in every SDK for a call that always fails. A caller with no principal gets 401 before the 501.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2194,8 +2194,8 @@ public class BooksApi {
     }
 
     /**
-     * 
-     * 
+     * Finish connecting a bank account (not yet available)
+     * ANSWERS 501 UNCONDITIONALLY. It is the intended second hop of the bank-linking handshake — trade the provider&#39;s short-lived public token for the durable access credential and seal that credential into KMS — and nothing on the HTTP path reaches an implementation today.  The durable bank credential is the reason this hop exists: it is meant to be sealed server-side and never handed back to the caller. Since the route never succeeds, no credential is stored by it and no bank is connected through it.  Documented as refusing rather than declared with a success body, for the same reason as the first hop: it has never sent one, and stating a shape it has never produced would put a return type in every SDK for a call that always fails. A caller with no principal gets 401 before the 501.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2211,8 +2211,8 @@ public class BooksApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Finish connecting a bank account (not yet available) (asynchronously)
+     * ANSWERS 501 UNCONDITIONALLY. It is the intended second hop of the bank-linking handshake — trade the provider&#39;s short-lived public token for the durable access credential and seal that credential into KMS — and nothing on the HTTP path reaches an implementation today.  The durable bank credential is the reason this hop exists: it is meant to be sealed server-side and never handed back to the caller. Since the route never succeeds, no credential is stored by it and no bank is connected through it.  Documented as refusing rather than declared with a success body, for the same reason as the first hop: it has never sent one, and stating a shape it has never produced would put a return type in every SDK for a call that always fails. A caller with no principal gets 401 before the 501.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2294,8 +2294,8 @@ public class BooksApi {
     }
 
     /**
-     * 
-     * 
+     * Import a bank statement file into your books
+     * Takes a bank statement as RAW BYTES — the file exactly as downloaded, OFX, QFX or CSV, not wrapped in JSON — parses every row, books it against the caller org&#39;s own ledger, and answers the tally: how many rows were seen, how many vouchers posted, how many inflows reconciled, how many raised a question, how many were own-account transfers, and how many were skipped.  RE-IMPORTING THE SAME STATEMENT DOES NOT DOUBLE-BOOK. Every row goes through the same posting choke point every other source uses, keyed idempotently, so an overlapping statement — the usual case, since exports overlap at the month boundary — lands its new rows and counts the rest as skipped. Skipped is the number to read on a second import.  It is READ-ONLY against the bank: this ingests, it never sends money. Scoped to the caller&#39;s own org from the validated principal, and refused without one; &#x60;sandbox&#x3D;true&#x60; writes the org&#39;s sandbox ledger instead of its real books. An empty body is a 400, and a file the parser cannot read is a 400 carrying the parser&#39;s reason rather than a partial import. On a deployment whose import parser is not built, this answers 501 rather than mishandling the file.
      * @param body  (optional)
      * @return CloudBankTally
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2312,8 +2312,8 @@ public class BooksApi {
     }
 
     /**
-     * 
-     * 
+     * Import a bank statement file into your books
+     * Takes a bank statement as RAW BYTES — the file exactly as downloaded, OFX, QFX or CSV, not wrapped in JSON — parses every row, books it against the caller org&#39;s own ledger, and answers the tally: how many rows were seen, how many vouchers posted, how many inflows reconciled, how many raised a question, how many were own-account transfers, and how many were skipped.  RE-IMPORTING THE SAME STATEMENT DOES NOT DOUBLE-BOOK. Every row goes through the same posting choke point every other source uses, keyed idempotently, so an overlapping statement — the usual case, since exports overlap at the month boundary — lands its new rows and counts the rest as skipped. Skipped is the number to read on a second import.  It is READ-ONLY against the bank: this ingests, it never sends money. Scoped to the caller&#39;s own org from the validated principal, and refused without one; &#x60;sandbox&#x3D;true&#x60; writes the org&#39;s sandbox ledger instead of its real books. An empty body is a 400, and a file the parser cannot read is a 400 carrying the parser&#39;s reason rather than a partial import. On a deployment whose import parser is not built, this answers 501 rather than mishandling the file.
      * @param body  (optional)
      * @return ApiResponse&lt;CloudBankTally&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2331,8 +2331,8 @@ public class BooksApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Import a bank statement file into your books (asynchronously)
+     * Takes a bank statement as RAW BYTES — the file exactly as downloaded, OFX, QFX or CSV, not wrapped in JSON — parses every row, books it against the caller org&#39;s own ledger, and answers the tally: how many rows were seen, how many vouchers posted, how many inflows reconciled, how many raised a question, how many were own-account transfers, and how many were skipped.  RE-IMPORTING THE SAME STATEMENT DOES NOT DOUBLE-BOOK. Every row goes through the same posting choke point every other source uses, keyed idempotently, so an overlapping statement — the usual case, since exports overlap at the month boundary — lands its new rows and counts the rest as skipped. Skipped is the number to read on a second import.  It is READ-ONLY against the bank: this ingests, it never sends money. Scoped to the caller&#39;s own org from the validated principal, and refused without one; &#x60;sandbox&#x3D;true&#x60; writes the org&#39;s sandbox ledger instead of its real books. An empty body is a 400, and a file the parser cannot read is a 400 carrying the parser&#39;s reason rather than a partial import. On a deployment whose import parser is not built, this answers 501 rather than mishandling the file.
      * @param body  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2413,8 +2413,8 @@ public class BooksApi {
     }
 
     /**
-     * 
-     * 
+     * Begin connecting a bank account (not yet available)
+     * ANSWERS 501 UNCONDITIONALLY. It is the intended first hop of the bank-linking handshake — mint the short-lived session token a browser hands to the provider&#39;s link widget — and nothing on the HTTP path reaches an implementation today.  The connectors behind it are written and tested; only the wiring is missing, so an org cannot connect a bank through the API at all. Until that lands, bank data reaches the books by statement import.  It is documented as refusing rather than declared with a success body precisely because it has never sent one. A response schema here would be invention: every generated SDK would carry a return type for a call that has only ever failed. A caller with no principal gets 401 before the 501.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2428,8 +2428,8 @@ public class BooksApi {
     }
 
     /**
-     * 
-     * 
+     * Begin connecting a bank account (not yet available)
+     * ANSWERS 501 UNCONDITIONALLY. It is the intended first hop of the bank-linking handshake — mint the short-lived session token a browser hands to the provider&#39;s link widget — and nothing on the HTTP path reaches an implementation today.  The connectors behind it are written and tested; only the wiring is missing, so an org cannot connect a bank through the API at all. Until that lands, bank data reaches the books by statement import.  It is documented as refusing rather than declared with a success body precisely because it has never sent one. A response schema here would be invention: every generated SDK would carry a return type for a call that has only ever failed. A caller with no principal gets 401 before the 501.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2445,8 +2445,8 @@ public class BooksApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Begin connecting a bank account (not yet available) (asynchronously)
+     * ANSWERS 501 UNCONDITIONALLY. It is the intended first hop of the bank-linking handshake — mint the short-lived session token a browser hands to the provider&#39;s link widget — and nothing on the HTTP path reaches an implementation today.  The connectors behind it are written and tested; only the wiring is missing, so an org cannot connect a bank through the API at all. Until that lands, bank data reaches the books by statement import.  It is documented as refusing rather than declared with a success body precisely because it has never sent one. A response schema here would be invention: every generated SDK would carry a return type for a call that has only ever failed. A caller with no principal gets 401 before the 501.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2645,8 +2645,8 @@ public class BooksApi {
     }
 
     /**
-     * 
-     * 
+     * Queue a document for later scanning
+     * Takes a document as RAW BYTES and queues it in the caller org&#39;s inbox as &#x60;unsorted&#x60;, answering the queued item. It is the drop box: get the paperwork in now, read it later.  It EXTRACTS NOTHING and calls no model — that is what separates it from the scan. Nothing is proposed and nothing is posted; the item simply waits to be scanned, and a booked document leaves the queue.  IDEMPOTENT BY CONTENT: the item&#39;s id is the file hash, so re-uploading the same bytes answers the existing item rather than adding a duplicate row — and it is the same id a scan of those bytes uses, which is how the two routes address one document. Scoped to the caller&#39;s own org from the validated principal and refused without one; &#x60;sandbox&#x3D;true&#x60; targets the sandbox ledger, and &#x60;filename&#x60; is recorded for display. An empty or oversized upload is a 400.
      * @param body  (optional)
      * @return CloudInboxItem
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2663,8 +2663,8 @@ public class BooksApi {
     }
 
     /**
-     * 
-     * 
+     * Queue a document for later scanning
+     * Takes a document as RAW BYTES and queues it in the caller org&#39;s inbox as &#x60;unsorted&#x60;, answering the queued item. It is the drop box: get the paperwork in now, read it later.  It EXTRACTS NOTHING and calls no model — that is what separates it from the scan. Nothing is proposed and nothing is posted; the item simply waits to be scanned, and a booked document leaves the queue.  IDEMPOTENT BY CONTENT: the item&#39;s id is the file hash, so re-uploading the same bytes answers the existing item rather than adding a duplicate row — and it is the same id a scan of those bytes uses, which is how the two routes address one document. Scoped to the caller&#39;s own org from the validated principal and refused without one; &#x60;sandbox&#x3D;true&#x60; targets the sandbox ledger, and &#x60;filename&#x60; is recorded for display. An empty or oversized upload is a 400.
      * @param body  (optional)
      * @return ApiResponse&lt;CloudInboxItem&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2682,8 +2682,8 @@ public class BooksApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Queue a document for later scanning (asynchronously)
+     * Takes a document as RAW BYTES and queues it in the caller org&#39;s inbox as &#x60;unsorted&#x60;, answering the queued item. It is the drop box: get the paperwork in now, read it later.  It EXTRACTS NOTHING and calls no model — that is what separates it from the scan. Nothing is proposed and nothing is posted; the item simply waits to be scanned, and a booked document leaves the queue.  IDEMPOTENT BY CONTENT: the item&#39;s id is the file hash, so re-uploading the same bytes answers the existing item rather than adding a duplicate row — and it is the same id a scan of those bytes uses, which is how the two routes address one document. Scoped to the caller&#39;s own org from the validated principal and refused without one; &#x60;sandbox&#x3D;true&#x60; targets the sandbox ledger, and &#x60;filename&#x60; is recorded for display. An empty or oversized upload is a 400.
      * @param body  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2894,8 +2894,8 @@ public class BooksApi {
     }
 
     /**
-     * 
-     * 
+     * Scan a receipt or invoice into a proposed voucher
+     * Takes a receipt or invoice as RAW BYTES — a PDF, an image or plain text, uploaded under its own content type, not wrapped in JSON — extracts what the document says, resolves the vendor&#39;s expense category, and answers a DRAFT carrying a balanced voucher proposed for it.  NOTHING IS POSTED. That split is the whole design: the model only ever produces a structured reading of the document, the voucher is assembled deterministically in Go from that reading, and the ledger is written only by the separate book call a human confirms. So a misread scan can propose a wrong draft; it cannot move money. Amounts are exact integer cents end to end — the extraction returns cents, never a decimal — so no rounding enters the ledger.  The draft&#39;s id is the FILE HASH, and that is what makes booking idempotent: re-scanning the same bytes addresses the same draft rather than queuing a second one. A row is written to the org&#39;s document inbox as a side effect, moving it from unsorted to draft. Scoped to the caller&#39;s own org from the validated principal and refused without one; &#x60;sandbox&#x3D;true&#x60; targets the sandbox ledger, and &#x60;filename&#x60; is recorded for the inbox. An empty or oversized upload is a 400, and a deployment with no scanner model answers 501.
      * @param body  (optional)
      * @return CloudScanDraft
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2912,8 +2912,8 @@ public class BooksApi {
     }
 
     /**
-     * 
-     * 
+     * Scan a receipt or invoice into a proposed voucher
+     * Takes a receipt or invoice as RAW BYTES — a PDF, an image or plain text, uploaded under its own content type, not wrapped in JSON — extracts what the document says, resolves the vendor&#39;s expense category, and answers a DRAFT carrying a balanced voucher proposed for it.  NOTHING IS POSTED. That split is the whole design: the model only ever produces a structured reading of the document, the voucher is assembled deterministically in Go from that reading, and the ledger is written only by the separate book call a human confirms. So a misread scan can propose a wrong draft; it cannot move money. Amounts are exact integer cents end to end — the extraction returns cents, never a decimal — so no rounding enters the ledger.  The draft&#39;s id is the FILE HASH, and that is what makes booking idempotent: re-scanning the same bytes addresses the same draft rather than queuing a second one. A row is written to the org&#39;s document inbox as a side effect, moving it from unsorted to draft. Scoped to the caller&#39;s own org from the validated principal and refused without one; &#x60;sandbox&#x3D;true&#x60; targets the sandbox ledger, and &#x60;filename&#x60; is recorded for the inbox. An empty or oversized upload is a 400, and a deployment with no scanner model answers 501.
      * @param body  (optional)
      * @return ApiResponse&lt;CloudScanDraft&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2931,8 +2931,8 @@ public class BooksApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Scan a receipt or invoice into a proposed voucher (asynchronously)
+     * Takes a receipt or invoice as RAW BYTES — a PDF, an image or plain text, uploaded under its own content type, not wrapped in JSON — extracts what the document says, resolves the vendor&#39;s expense category, and answers a DRAFT carrying a balanced voucher proposed for it.  NOTHING IS POSTED. That split is the whole design: the model only ever produces a structured reading of the document, the voucher is assembled deterministically in Go from that reading, and the ledger is written only by the separate book call a human confirms. So a misread scan can propose a wrong draft; it cannot move money. Amounts are exact integer cents end to end — the extraction returns cents, never a decimal — so no rounding enters the ledger.  The draft&#39;s id is the FILE HASH, and that is what makes booking idempotent: re-scanning the same bytes addresses the same draft rather than queuing a second one. A row is written to the org&#39;s document inbox as a side effect, moving it from unsorted to draft. Scoped to the caller&#39;s own org from the validated principal and refused without one; &#x60;sandbox&#x3D;true&#x60; targets the sandbox ledger, and &#x60;filename&#x60; is recorded for the inbox. An empty or oversized upload is a 400, and a deployment with no scanner model answers 501.
      * @param body  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

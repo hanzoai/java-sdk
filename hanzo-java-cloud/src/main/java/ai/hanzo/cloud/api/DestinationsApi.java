@@ -518,8 +518,8 @@ public class DestinationsApi {
     }
 
     /**
-     * 
-     * 
+     * Connect one conversion destination for your org, or update the one you have
+     * Stores the addressed platform&#39;s non-secret ids (its measurement, pixel or dataset ids) and seals its API credential into KMS under a path scoped to the caller&#39;s own org, then answers the same status card the read routes do — with live telling you whether the credential actually resolves right now. The body&#39;s property NAMES are the platform&#39;s own: each field the platform declares, plus each secret under its camelCase name, so the accepted keys differ per platform and a missing REQUIRED field is refused. Connecting is an ORG ADMIN action — a validated member without the admin bit gets 403 — and it fails closed with 503 when the KMS master key is unavailable rather than persisting a destination whose secret was never sealed. The secret itself never appears in the response, in the store, or in a log line; only its NAME is ever published. Set enabled to false to keep the connection but stop the analytics fan-out to it.
      * @param platform  (required)
      * @param requestBody  (optional)
      * @return CloudDestinationStatus
@@ -537,8 +537,8 @@ public class DestinationsApi {
     }
 
     /**
-     * 
-     * 
+     * Connect one conversion destination for your org, or update the one you have
+     * Stores the addressed platform&#39;s non-secret ids (its measurement, pixel or dataset ids) and seals its API credential into KMS under a path scoped to the caller&#39;s own org, then answers the same status card the read routes do — with live telling you whether the credential actually resolves right now. The body&#39;s property NAMES are the platform&#39;s own: each field the platform declares, plus each secret under its camelCase name, so the accepted keys differ per platform and a missing REQUIRED field is refused. Connecting is an ORG ADMIN action — a validated member without the admin bit gets 403 — and it fails closed with 503 when the KMS master key is unavailable rather than persisting a destination whose secret was never sealed. The secret itself never appears in the response, in the store, or in a log line; only its NAME is ever published. Set enabled to false to keep the connection but stop the analytics fan-out to it.
      * @param platform  (required)
      * @param requestBody  (optional)
      * @return ApiResponse&lt;CloudDestinationStatus&gt;
@@ -557,8 +557,8 @@ public class DestinationsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Connect one conversion destination for your org, or update the one you have (asynchronously)
+     * Stores the addressed platform&#39;s non-secret ids (its measurement, pixel or dataset ids) and seals its API credential into KMS under a path scoped to the caller&#39;s own org, then answers the same status card the read routes do — with live telling you whether the credential actually resolves right now. The body&#39;s property NAMES are the platform&#39;s own: each field the platform declares, plus each secret under its camelCase name, so the accepted keys differ per platform and a missing REQUIRED field is refused. Connecting is an ORG ADMIN action — a validated member without the admin bit gets 403 — and it fails closed with 503 when the KMS master key is unavailable rather than persisting a destination whose secret was never sealed. The secret itself never appears in the response, in the store, or in a log line; only its NAME is ever published. Set enabled to false to keep the connection but stop the analytics fan-out to it.
      * @param platform  (required)
      * @param requestBody  (optional)
      * @param _callback The callback to be executed when the API call finishes

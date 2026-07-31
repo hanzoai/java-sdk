@@ -268,8 +268,8 @@ public class FinanceApi {
     }
 
     /**
-     * 
-     * 
+     * Spendable prepaid for the caller&#39;s org, in the finance shape
+     * Answers the org&#39;s spendable prepaid balance typed for the finance surfaces: &#x60;availableCents&#x60;, &#x60;pendingCents&#x60;, &#x60;dueCents&#x60; and the &#x60;asOf&#x60; instant it was read.  It is the SAME wallet read /v1/billing/balance answers — one function, called by both, so the two surfaces cannot drift into disagreeing about a customer&#39;s money. Reshaped, never re-metered. Co-resident the number comes straight out of the org&#39;s own double-entry ledger file.  &#x60;dueCents&#x60; is a structural 0: this is a PREPAID wallet with no open-invoice debt, so nothing is ever owed and a non-zero value here would be an invention. &#x60;pendingCents&#x60; is 0 on the co-resident ledger, where authorization holds are never posted; only a split-deploy upstream reports holds, and there spendable is the balance NET of them, floored at 0 — a fully-held wallet reports 0 rather than money the gate would refuse.  Cents are ROUNDED from the ledger&#39;s exact 18-decimal USD. Scoped to the caller&#39;s own org from the validated IAM owner claim; 401 without a validated principal, and a balance that cannot be read is 502 — never 0, because unknown is not broke.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -283,8 +283,8 @@ public class FinanceApi {
     }
 
     /**
-     * 
-     * 
+     * Spendable prepaid for the caller&#39;s org, in the finance shape
+     * Answers the org&#39;s spendable prepaid balance typed for the finance surfaces: &#x60;availableCents&#x60;, &#x60;pendingCents&#x60;, &#x60;dueCents&#x60; and the &#x60;asOf&#x60; instant it was read.  It is the SAME wallet read /v1/billing/balance answers — one function, called by both, so the two surfaces cannot drift into disagreeing about a customer&#39;s money. Reshaped, never re-metered. Co-resident the number comes straight out of the org&#39;s own double-entry ledger file.  &#x60;dueCents&#x60; is a structural 0: this is a PREPAID wallet with no open-invoice debt, so nothing is ever owed and a non-zero value here would be an invention. &#x60;pendingCents&#x60; is 0 on the co-resident ledger, where authorization holds are never posted; only a split-deploy upstream reports holds, and there spendable is the balance NET of them, floored at 0 — a fully-held wallet reports 0 rather than money the gate would refuse.  Cents are ROUNDED from the ledger&#39;s exact 18-decimal USD. Scoped to the caller&#39;s own org from the validated IAM owner claim; 401 without a validated principal, and a balance that cannot be read is 502 — never 0, because unknown is not broke.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -300,8 +300,8 @@ public class FinanceApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Spendable prepaid for the caller&#39;s org, in the finance shape (asynchronously)
+     * Answers the org&#39;s spendable prepaid balance typed for the finance surfaces: &#x60;availableCents&#x60;, &#x60;pendingCents&#x60;, &#x60;dueCents&#x60; and the &#x60;asOf&#x60; instant it was read.  It is the SAME wallet read /v1/billing/balance answers — one function, called by both, so the two surfaces cannot drift into disagreeing about a customer&#39;s money. Reshaped, never re-metered. Co-resident the number comes straight out of the org&#39;s own double-entry ledger file.  &#x60;dueCents&#x60; is a structural 0: this is a PREPAID wallet with no open-invoice debt, so nothing is ever owed and a non-zero value here would be an invention. &#x60;pendingCents&#x60; is 0 on the co-resident ledger, where authorization holds are never posted; only a split-deploy upstream reports holds, and there spendable is the balance NET of them, floored at 0 — a fully-held wallet reports 0 rather than money the gate would refuse.  Cents are ROUNDED from the ledger&#39;s exact 18-decimal USD. Scoped to the caller&#39;s own org from the validated IAM owner claim; 401 without a validated principal, and a balance that cannot be read is 502 — never 0, because unknown is not broke.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -380,8 +380,8 @@ public class FinanceApi {
     }
 
     /**
-     * 
-     * 
+     * Credit grants and top-ups on the caller&#39;s org wallet
+     * Answers the money PUT IN to the org&#39;s wallet — each staff grant, promo and settled top-up as a positive row with its id, label, cents and grant time.  Spend is not a credit. A posting counts here only when it moved money IN; debits belong to /v1/finance/usage (aggregated) and /v1/finance/ledger (signed). All three project ONE read of the same ledger through ONE vocabulary for what a posting means, so they cannot disagree about a row — nor silently drop one, which is what an empty credits page against a funded wallet was.  &#x60;label&#x60; falls back through the posting&#39;s notes, then its tags, then a bare Credit — it is a description, never an identifier. &#x60;remainingCents&#x60; is OMITTED: the wallet is one running balance, not per-grant buckets, so no grant has a remainder to report and spend cannot be attributed to the credit that funded it.  Cents are ROUNDED from the ledger&#39;s exact 18-decimal USD. Scoped to the caller&#39;s own org; 401 without a validated principal. An org with no grants gets an empty array — honest, never a fabricated figure.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -395,8 +395,8 @@ public class FinanceApi {
     }
 
     /**
-     * 
-     * 
+     * Credit grants and top-ups on the caller&#39;s org wallet
+     * Answers the money PUT IN to the org&#39;s wallet — each staff grant, promo and settled top-up as a positive row with its id, label, cents and grant time.  Spend is not a credit. A posting counts here only when it moved money IN; debits belong to /v1/finance/usage (aggregated) and /v1/finance/ledger (signed). All three project ONE read of the same ledger through ONE vocabulary for what a posting means, so they cannot disagree about a row — nor silently drop one, which is what an empty credits page against a funded wallet was.  &#x60;label&#x60; falls back through the posting&#39;s notes, then its tags, then a bare Credit — it is a description, never an identifier. &#x60;remainingCents&#x60; is OMITTED: the wallet is one running balance, not per-grant buckets, so no grant has a remainder to report and spend cannot be attributed to the credit that funded it.  Cents are ROUNDED from the ledger&#39;s exact 18-decimal USD. Scoped to the caller&#39;s own org; 401 without a validated principal. An org with no grants gets an empty array — honest, never a fabricated figure.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -412,8 +412,8 @@ public class FinanceApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Credit grants and top-ups on the caller&#39;s org wallet (asynchronously)
+     * Answers the money PUT IN to the org&#39;s wallet — each staff grant, promo and settled top-up as a positive row with its id, label, cents and grant time.  Spend is not a credit. A posting counts here only when it moved money IN; debits belong to /v1/finance/usage (aggregated) and /v1/finance/ledger (signed). All three project ONE read of the same ledger through ONE vocabulary for what a posting means, so they cannot disagree about a row — nor silently drop one, which is what an empty credits page against a funded wallet was.  &#x60;label&#x60; falls back through the posting&#39;s notes, then its tags, then a bare Credit — it is a description, never an identifier. &#x60;remainingCents&#x60; is OMITTED: the wallet is one running balance, not per-grant buckets, so no grant has a remainder to report and spend cannot be attributed to the credit that funded it.  Cents are ROUNDED from the ledger&#39;s exact 18-decimal USD. Scoped to the caller&#39;s own org; 401 without a validated principal. An org with no grants gets an empty array — honest, never a fabricated figure.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -492,8 +492,8 @@ public class FinanceApi {
     }
 
     /**
-     * 
-     * 
+     * Issued invoices — none exist, and that is the honest answer
+     * Answers an empty typed array, always. The fleet bills a PREPAID wallet — money in, metered debits out — and issues no customer invoices, so there is no invoice ledger to project. Nothing here is a fabricated figure and nothing is hidden behind a filter.  The shape is fixed, so the finance UI renders this lane today and the day an invoice ledger exists it fills with ZERO client change. Spend that actually happened is /v1/finance/usage; money in and out is /v1/finance/ledger; what is left to spend is /v1/finance/balance.  The gate is real even though the body is empty: 401 without a validated principal. It is the only finance read that touches no store, so it is also the only one that cannot 502.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -507,8 +507,8 @@ public class FinanceApi {
     }
 
     /**
-     * 
-     * 
+     * Issued invoices — none exist, and that is the honest answer
+     * Answers an empty typed array, always. The fleet bills a PREPAID wallet — money in, metered debits out — and issues no customer invoices, so there is no invoice ledger to project. Nothing here is a fabricated figure and nothing is hidden behind a filter.  The shape is fixed, so the finance UI renders this lane today and the day an invoice ledger exists it fills with ZERO client change. Spend that actually happened is /v1/finance/usage; money in and out is /v1/finance/ledger; what is left to spend is /v1/finance/balance.  The gate is real even though the body is empty: 401 without a validated principal. It is the only finance read that touches no store, so it is also the only one that cannot 502.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -524,8 +524,8 @@ public class FinanceApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Issued invoices — none exist, and that is the honest answer (asynchronously)
+     * Answers an empty typed array, always. The fleet bills a PREPAID wallet — money in, metered debits out — and issues no customer invoices, so there is no invoice ledger to project. Nothing here is a fabricated figure and nothing is hidden behind a filter.  The shape is fixed, so the finance UI renders this lane today and the day an invoice ledger exists it fills with ZERO client change. Spend that actually happened is /v1/finance/usage; money in and out is /v1/finance/ledger; what is left to spend is /v1/finance/balance.  The gate is real even though the body is empty: 401 without a validated principal. It is the only finance read that touches no store, so it is also the only one that cannot 502.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -604,8 +604,8 @@ public class FinanceApi {
     }
 
     /**
-     * 
-     * 
+     * Money in and out of the caller&#39;s org wallet, signed
+     * Answers the org&#39;s own postings inside &#x60;range&#x3D;&#x60;, each as a signed entry: a DEPOSIT CREDITS the wallet (positive, account &#x60;credits:&lt;org&gt;&#x60;) and every other posting DEBITS it (negative, account &#x60;usage:&lt;org&gt;&#x60;), described by its notes or its tags. The sign is the posting&#39;s own meaning, read through ONE vocabulary shared with the ledger that wrote it — a reader with its own spelling for &#x60;deposit&#x60; rendered a customer&#39;s grant as a charge.  This is the closest projection of the truth. The org&#39;s double-entry postings are the source of record — balanced, only ever appended, one file per org — and this lane is that list, widest of the three: /v1/finance/credits is its deposit half and /v1/finance/usage is its withdrawal half rolled up. All three come from ONE read, which is why they cannot contradict each other, and all three answer 501 where no commerce link is configured rather than reporting an empty wallet.  &#x60;range&#x60; is 24h, 7d, 30d or 90d, defaulting to 30d. A row whose timestamp will not parse is KEPT rather than dropped — a malformed date must show up in a money list, not vanish from it. &#x60;balanceCents&#x60; is omitted: these are MOVEMENTS, and the standing balance is /v1/finance/balance.  Cents are ROUNDED from the ledger&#39;s exact 18-decimal USD. Scoped to the caller&#39;s own org, where the org&#39;s ledger file is the tenant boundary; 401 without a validated principal.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -619,8 +619,8 @@ public class FinanceApi {
     }
 
     /**
-     * 
-     * 
+     * Money in and out of the caller&#39;s org wallet, signed
+     * Answers the org&#39;s own postings inside &#x60;range&#x3D;&#x60;, each as a signed entry: a DEPOSIT CREDITS the wallet (positive, account &#x60;credits:&lt;org&gt;&#x60;) and every other posting DEBITS it (negative, account &#x60;usage:&lt;org&gt;&#x60;), described by its notes or its tags. The sign is the posting&#39;s own meaning, read through ONE vocabulary shared with the ledger that wrote it — a reader with its own spelling for &#x60;deposit&#x60; rendered a customer&#39;s grant as a charge.  This is the closest projection of the truth. The org&#39;s double-entry postings are the source of record — balanced, only ever appended, one file per org — and this lane is that list, widest of the three: /v1/finance/credits is its deposit half and /v1/finance/usage is its withdrawal half rolled up. All three come from ONE read, which is why they cannot contradict each other, and all three answer 501 where no commerce link is configured rather than reporting an empty wallet.  &#x60;range&#x60; is 24h, 7d, 30d or 90d, defaulting to 30d. A row whose timestamp will not parse is KEPT rather than dropped — a malformed date must show up in a money list, not vanish from it. &#x60;balanceCents&#x60; is omitted: these are MOVEMENTS, and the standing balance is /v1/finance/balance.  Cents are ROUNDED from the ledger&#39;s exact 18-decimal USD. Scoped to the caller&#39;s own org, where the org&#39;s ledger file is the tenant boundary; 401 without a validated principal.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -636,8 +636,8 @@ public class FinanceApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Money in and out of the caller&#39;s org wallet, signed (asynchronously)
+     * Answers the org&#39;s own postings inside &#x60;range&#x3D;&#x60;, each as a signed entry: a DEPOSIT CREDITS the wallet (positive, account &#x60;credits:&lt;org&gt;&#x60;) and every other posting DEBITS it (negative, account &#x60;usage:&lt;org&gt;&#x60;), described by its notes or its tags. The sign is the posting&#39;s own meaning, read through ONE vocabulary shared with the ledger that wrote it — a reader with its own spelling for &#x60;deposit&#x60; rendered a customer&#39;s grant as a charge.  This is the closest projection of the truth. The org&#39;s double-entry postings are the source of record — balanced, only ever appended, one file per org — and this lane is that list, widest of the three: /v1/finance/credits is its deposit half and /v1/finance/usage is its withdrawal half rolled up. All three come from ONE read, which is why they cannot contradict each other, and all three answer 501 where no commerce link is configured rather than reporting an empty wallet.  &#x60;range&#x60; is 24h, 7d, 30d or 90d, defaulting to 30d. A row whose timestamp will not parse is KEPT rather than dropped — a malformed date must show up in a money list, not vanish from it. &#x60;balanceCents&#x60; is omitted: these are MOVEMENTS, and the standing balance is /v1/finance/balance.  Cents are ROUNDED from the ledger&#39;s exact 18-decimal USD. Scoped to the caller&#39;s own org, where the org&#39;s ledger file is the tenant boundary; 401 without a validated principal.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -716,8 +716,8 @@ public class FinanceApi {
     }
 
     /**
-     * 
-     * 
+     * Saved cards for the wallet the caller pays from
+     * Answers the masked card descriptors for the caller&#39;s resolved WALLET — id, brand, last four, expiry, default flag — reshaped into the finance contract.  It re-masks defensively: whatever the upstream sends, at most the trailing four DIGITS survive into &#x60;last4&#x60;. No card number, no security code and no processor token exists in this shape at all, so an over-returning upstream still cannot leak one through this lane.  Read the sibling difference before trusting a mismatch. This keys the store on the resolved wallet; /v1/billing/payment-methods keys it on the org SLUG, which is also the key a card is SAVED under — identical for an org paying from its shared pool, different wherever the payer is a person. When the two lists disagree, the billing one is what was saved.  401 without a validated principal. An upstream that answers non-2xx or cannot be reached is 502 — never an empty list, because no cards and could not ask must not look alike.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -731,8 +731,8 @@ public class FinanceApi {
     }
 
     /**
-     * 
-     * 
+     * Saved cards for the wallet the caller pays from
+     * Answers the masked card descriptors for the caller&#39;s resolved WALLET — id, brand, last four, expiry, default flag — reshaped into the finance contract.  It re-masks defensively: whatever the upstream sends, at most the trailing four DIGITS survive into &#x60;last4&#x60;. No card number, no security code and no processor token exists in this shape at all, so an over-returning upstream still cannot leak one through this lane.  Read the sibling difference before trusting a mismatch. This keys the store on the resolved wallet; /v1/billing/payment-methods keys it on the org SLUG, which is also the key a card is SAVED under — identical for an org paying from its shared pool, different wherever the payer is a person. When the two lists disagree, the billing one is what was saved.  401 without a validated principal. An upstream that answers non-2xx or cannot be reached is 502 — never an empty list, because no cards and could not ask must not look alike.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -748,8 +748,8 @@ public class FinanceApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Saved cards for the wallet the caller pays from (asynchronously)
+     * Answers the masked card descriptors for the caller&#39;s resolved WALLET — id, brand, last four, expiry, default flag — reshaped into the finance contract.  It re-masks defensively: whatever the upstream sends, at most the trailing four DIGITS survive into &#x60;last4&#x60;. No card number, no security code and no processor token exists in this shape at all, so an over-returning upstream still cannot leak one through this lane.  Read the sibling difference before trusting a mismatch. This keys the store on the resolved wallet; /v1/billing/payment-methods keys it on the org SLUG, which is also the key a card is SAVED under — identical for an org paying from its shared pool, different wherever the payer is a person. When the two lists disagree, the billing one is what was saved.  401 without a validated principal. An upstream that answers non-2xx or cannot be reached is 502 — never an empty list, because no cards and could not ask must not look alike.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -945,8 +945,8 @@ public class FinanceApi {
     }
 
     /**
-     * 
-     * 
+     * What the caller&#39;s org spent over a window, as a series and by tag
+     * Answers metered spend inside &#x60;range&#x3D;&#x60;: the window total, a time series to plot, and one line per usage TAG. Aggregated from the same charged ledger the balance comes off — projected, never re-metered.  Only DEBIT postings count; deposits are credits and are excluded. &#x60;range&#x60; is 24h, 7d, 30d or 90d, and anything else — including absent — is 30d, so a typo silently widens the window to a month rather than failing. Buckets are hourly at 24h and daily otherwise, in UTC; a posting whose timestamp will not parse is dropped rather than mis-bucketed.  Lines group by the posting&#39;s tag (&#x60;Usage&#x60; where it carries none) and &#x60;units&#x60; counts POSTINGS, not tokens. The dimensions here are time and tag. For per-request rows and a per-PRODUCT breakdown, read /v1/billing/usage instead — the same money, cut a different way.  Cents are ROUNDED from the ledger&#39;s exact 18-decimal USD, so a window made of sub-cent token calls totals LOW here. Scoped to the caller&#39;s own org; 401 without a validated principal.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -960,8 +960,8 @@ public class FinanceApi {
     }
 
     /**
-     * 
-     * 
+     * What the caller&#39;s org spent over a window, as a series and by tag
+     * Answers metered spend inside &#x60;range&#x3D;&#x60;: the window total, a time series to plot, and one line per usage TAG. Aggregated from the same charged ledger the balance comes off — projected, never re-metered.  Only DEBIT postings count; deposits are credits and are excluded. &#x60;range&#x60; is 24h, 7d, 30d or 90d, and anything else — including absent — is 30d, so a typo silently widens the window to a month rather than failing. Buckets are hourly at 24h and daily otherwise, in UTC; a posting whose timestamp will not parse is dropped rather than mis-bucketed.  Lines group by the posting&#39;s tag (&#x60;Usage&#x60; where it carries none) and &#x60;units&#x60; counts POSTINGS, not tokens. The dimensions here are time and tag. For per-request rows and a per-PRODUCT breakdown, read /v1/billing/usage instead — the same money, cut a different way.  Cents are ROUNDED from the ledger&#39;s exact 18-decimal USD, so a window made of sub-cent token calls totals LOW here. Scoped to the caller&#39;s own org; 401 without a validated principal.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -977,8 +977,8 @@ public class FinanceApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * What the caller&#39;s org spent over a window, as a series and by tag (asynchronously)
+     * Answers metered spend inside &#x60;range&#x3D;&#x60;: the window total, a time series to plot, and one line per usage TAG. Aggregated from the same charged ledger the balance comes off — projected, never re-metered.  Only DEBIT postings count; deposits are credits and are excluded. &#x60;range&#x60; is 24h, 7d, 30d or 90d, and anything else — including absent — is 30d, so a typo silently widens the window to a month rather than failing. Buckets are hourly at 24h and daily otherwise, in UTC; a posting whose timestamp will not parse is dropped rather than mis-bucketed.  Lines group by the posting&#39;s tag (&#x60;Usage&#x60; where it carries none) and &#x60;units&#x60; counts POSTINGS, not tokens. The dimensions here are time and tag. For per-request rows and a per-PRODUCT breakdown, read /v1/billing/usage instead — the same money, cut a different way.  Cents are ROUNDED from the ledger&#39;s exact 18-decimal USD, so a window made of sub-cent token calls totals LOW here. Scoped to the caller&#39;s own org; 401 without a validated principal.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

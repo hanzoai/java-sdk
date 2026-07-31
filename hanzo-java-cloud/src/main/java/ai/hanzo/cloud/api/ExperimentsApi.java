@@ -141,8 +141,8 @@ public class ExperimentsApi {
     }
 
     /**
-     * 
-     * 
+     * Every experiment in the caller&#39;s org, with its variants, status and decision.
+     * Returns {data, total} ordered by project then id. Scoped to the org resolved from the validated principal — a distinct org is a distinct physical store, so no query here can reach another tenant&#39;s rows — and further narrowed to the caller&#39;s project scope when the credential carries one. A principal with NO project scope sees the org&#39;s experiments across all of its projects, which is the answer a reader most often expects to be filtered and is not.  Requires a validated principal; refuses without one rather than answering an empty list.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -156,8 +156,8 @@ public class ExperimentsApi {
     }
 
     /**
-     * 
-     * 
+     * Every experiment in the caller&#39;s org, with its variants, status and decision.
+     * Returns {data, total} ordered by project then id. Scoped to the org resolved from the validated principal — a distinct org is a distinct physical store, so no query here can reach another tenant&#39;s rows — and further narrowed to the caller&#39;s project scope when the credential carries one. A principal with NO project scope sees the org&#39;s experiments across all of its projects, which is the answer a reader most often expects to be filtered and is not.  Requires a validated principal; refuses without one rather than answering an empty list.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -173,8 +173,8 @@ public class ExperimentsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Every experiment in the caller&#39;s org, with its variants, status and decision. (asynchronously)
+     * Returns {data, total} ordered by project then id. Scoped to the org resolved from the validated principal — a distinct org is a distinct physical store, so no query here can reach another tenant&#39;s rows — and further narrowed to the caller&#39;s project scope when the credential carries one. A principal with NO project scope sees the org&#39;s experiments across all of its projects, which is the answer a reader most often expects to be filtered and is not.  Requires a validated principal; refuses without one rather than answering an empty list.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -260,8 +260,8 @@ public class ExperimentsApi {
     }
 
     /**
-     * 
-     * 
+     * One experiment&#39;s definition and lifecycle: variants, weights, control arm, status and winner.
+     * Reads the registry row only — the definition and the decision, never live measurements. Assignment lives in the flags plane and outcomes in analytics; this is the value that names both.  Scoped to the caller&#39;s org and project from the validated principal, so another tenant&#39;s experiment of the same id is simply not found. An id that is not a legal slug is answered the same way, without a store read — the shape check and the existence check are one answer, so neither leaks the other.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -276,8 +276,8 @@ public class ExperimentsApi {
     }
 
     /**
-     * 
-     * 
+     * One experiment&#39;s definition and lifecycle: variants, weights, control arm, status and winner.
+     * Reads the registry row only — the definition and the decision, never live measurements. Assignment lives in the flags plane and outcomes in analytics; this is the value that names both.  Scoped to the caller&#39;s org and project from the validated principal, so another tenant&#39;s experiment of the same id is simply not found. An id that is not a legal slug is answered the same way, without a store read — the shape check and the existence check are one answer, so neither leaks the other.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -294,8 +294,8 @@ public class ExperimentsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * One experiment&#39;s definition and lifecycle: variants, weights, control arm, status and winner. (asynchronously)
+     * Reads the registry row only — the definition and the decision, never live measurements. Assignment lives in the flags plane and outcomes in analytics; this is the value that names both.  Scoped to the caller&#39;s org and project from the validated principal, so another tenant&#39;s experiment of the same id is simply not found. An id that is not a legal slug is answered the same way, without a store read — the shape check and the existence check are one answer, so neither leaks the other.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -382,8 +382,8 @@ public class ExperimentsApi {
     }
 
     /**
-     * 
-     * 
+     * The variant one subject is bucketed into, and the payload that variant carries.
+     * Evaluates the experiment&#39;s assignment flag for the &#x60;subject&#x60; in the query and answers {experiment, subject, variant, on, payload}. The bucketing is a deterministic hash of the subject, so the same subject gets the same arm on every call for as long as the flag definition is unchanged — and this is a pure READ: it records nothing. In particular it does NOT record an exposure. The caller&#39;s SDK must emit the experiment&#39;s exposure event itself, or the analysis has an empty denominator and every arm measures zero.  &#x60;subject&#x60; is required. &#x60;props&#x60; may carry a JSON object of person properties for targeting; a &#x60;props&#x60; value that is not valid JSON is dropped silently rather than refused, so a malformed one changes the bucketing without saying so.  An empty &#x60;variant&#x60; with &#x60;on&#x60; false is not an error — it means the flag returned nothing for this subject, so the subject is not enrolled. A flags engine that is unavailable refuses rather than defaulting to an arm. Requires a validated principal, and the experiment must exist in the caller&#39;s org and project.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -398,8 +398,8 @@ public class ExperimentsApi {
     }
 
     /**
-     * 
-     * 
+     * The variant one subject is bucketed into, and the payload that variant carries.
+     * Evaluates the experiment&#39;s assignment flag for the &#x60;subject&#x60; in the query and answers {experiment, subject, variant, on, payload}. The bucketing is a deterministic hash of the subject, so the same subject gets the same arm on every call for as long as the flag definition is unchanged — and this is a pure READ: it records nothing. In particular it does NOT record an exposure. The caller&#39;s SDK must emit the experiment&#39;s exposure event itself, or the analysis has an empty denominator and every arm measures zero.  &#x60;subject&#x60; is required. &#x60;props&#x60; may carry a JSON object of person properties for targeting; a &#x60;props&#x60; value that is not valid JSON is dropped silently rather than refused, so a malformed one changes the bucketing without saying so.  An empty &#x60;variant&#x60; with &#x60;on&#x60; false is not an error — it means the flag returned nothing for this subject, so the subject is not enrolled. A flags engine that is unavailable refuses rather than defaulting to an arm. Requires a validated principal, and the experiment must exist in the caller&#39;s org and project.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -416,8 +416,8 @@ public class ExperimentsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The variant one subject is bucketed into, and the payload that variant carries. (asynchronously)
+     * Evaluates the experiment&#39;s assignment flag for the &#x60;subject&#x60; in the query and answers {experiment, subject, variant, on, payload}. The bucketing is a deterministic hash of the subject, so the same subject gets the same arm on every call for as long as the flag definition is unchanged — and this is a pure READ: it records nothing. In particular it does NOT record an exposure. The caller&#39;s SDK must emit the experiment&#39;s exposure event itself, or the analysis has an empty denominator and every arm measures zero.  &#x60;subject&#x60; is required. &#x60;props&#x60; may carry a JSON object of person properties for targeting; a &#x60;props&#x60; value that is not valid JSON is dropped silently rather than refused, so a malformed one changes the bucketing without saying so.  An empty &#x60;variant&#x60; with &#x60;on&#x60; false is not an error — it means the flag returned nothing for this subject, so the subject is not enrolled. A flags engine that is unavailable refuses rather than defaulting to an arm. Requires a validated principal, and the experiment must exist in the caller&#39;s org and project.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -497,8 +497,8 @@ public class ExperimentsApi {
     }
 
     /**
-     * 
-     * 
+     * Whether the experiments subsystem is mounted and serving in this process.
+     * Answers {\&quot;ok\&quot;:true,\&quot;subsystem\&quot;:\&quot;experiments\&quot;} unconditionally. It proves exactly one thing — that this binary registered the experiments routes and is dispatching them — and deliberately no more: it reads no principal, opens no per-org registry, and touches neither the flags engine nor the analytics plane, so a 200 here says nothing about whether a given tenant&#39;s store will open or whether an analysis can run. It is the only route on this surface that needs no org.  The static path is registered ahead of the /:id read, so it always wins the first-match scan. &#x60;health&#x60; is a legal experiment id, which means an experiment created under that id can never be fetched by id — pick another.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -512,8 +512,8 @@ public class ExperimentsApi {
     }
 
     /**
-     * 
-     * 
+     * Whether the experiments subsystem is mounted and serving in this process.
+     * Answers {\&quot;ok\&quot;:true,\&quot;subsystem\&quot;:\&quot;experiments\&quot;} unconditionally. It proves exactly one thing — that this binary registered the experiments routes and is dispatching them — and deliberately no more: it reads no principal, opens no per-org registry, and touches neither the flags engine nor the analytics plane, so a 200 here says nothing about whether a given tenant&#39;s store will open or whether an analysis can run. It is the only route on this surface that needs no org.  The static path is registered ahead of the /:id read, so it always wins the first-match scan. &#x60;health&#x60; is a legal experiment id, which means an experiment created under that id can never be fetched by id — pick another.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -529,8 +529,8 @@ public class ExperimentsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Whether the experiments subsystem is mounted and serving in this process. (asynchronously)
+     * Answers {\&quot;ok\&quot;:true,\&quot;subsystem\&quot;:\&quot;experiments\&quot;} unconditionally. It proves exactly one thing — that this binary registered the experiments routes and is dispatching them — and deliberately no more: it reads no principal, opens no per-org registry, and touches neither the flags engine nor the analytics plane, so a 200 here says nothing about whether a given tenant&#39;s store will open or whether an analysis can run. It is the only route on this surface that needs no org.  The static path is registered ahead of the /:id read, so it always wins the first-match scan. &#x60;health&#x60; is a legal experiment id, which means an experiment created under that id can never be fetched by id — pick another.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -609,8 +609,8 @@ public class ExperimentsApi {
     }
 
     /**
-     * 
-     * 
+     * Create a controlled experiment and put its assignment flag live.
+     * Registers the experiment AND writes its multivariate assignment flag, in that order, so the arms start bucketing subjects the moment this returns 201 — the flag is created active at 100% rollout, with each variant weighted as declared. There is no separate start call; creating IS starting.  The body names the experiment (&#x60;id&#x60;, a slug that is claimed once), what it measures (&#x60;metricEvent&#x60;, required; &#x60;exposureEvent&#x60; defaults to the SDK&#39;s &#x60;$feature_flag_called&#x60; marker), the unit it assigns (&#x60;subjectKind&#x60;: user, org, session or audience — user by default), and at least two &#x60;variants&#x60;. A variant carries an opaque &#x60;payload&#x60; this primitive never interprets: a feature config, an ad-creative id, a subject line, a model id. Weights that are all zero become an even split; otherwise they must sum to 100. At most one variant may be flagged &#x60;control&#x60;; with none, the first arm is the baseline. &#x60;flagKey&#x60; defaults to &#x60;exp_&lt;id&gt;&#x60;.  Requires a validated principal, and refuses without one. The org and project are taken from that principal and the creator is stamped from the credential — none of the three is a body field, so an experiment cannot be filed against another tenant. An id already used in this project is a conflict, never a silent overwrite: re-creating would stomp the assignment flag of a run in progress.  It fails closed on the flag write. An experiment whose assignment flag does not exist would assign nobody, so if that write fails nothing is registered.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -624,8 +624,8 @@ public class ExperimentsApi {
     }
 
     /**
-     * 
-     * 
+     * Create a controlled experiment and put its assignment flag live.
+     * Registers the experiment AND writes its multivariate assignment flag, in that order, so the arms start bucketing subjects the moment this returns 201 — the flag is created active at 100% rollout, with each variant weighted as declared. There is no separate start call; creating IS starting.  The body names the experiment (&#x60;id&#x60;, a slug that is claimed once), what it measures (&#x60;metricEvent&#x60;, required; &#x60;exposureEvent&#x60; defaults to the SDK&#39;s &#x60;$feature_flag_called&#x60; marker), the unit it assigns (&#x60;subjectKind&#x60;: user, org, session or audience — user by default), and at least two &#x60;variants&#x60;. A variant carries an opaque &#x60;payload&#x60; this primitive never interprets: a feature config, an ad-creative id, a subject line, a model id. Weights that are all zero become an even split; otherwise they must sum to 100. At most one variant may be flagged &#x60;control&#x60;; with none, the first arm is the baseline. &#x60;flagKey&#x60; defaults to &#x60;exp_&lt;id&gt;&#x60;.  Requires a validated principal, and refuses without one. The org and project are taken from that principal and the creator is stamped from the credential — none of the three is a body field, so an experiment cannot be filed against another tenant. An id already used in this project is a conflict, never a silent overwrite: re-creating would stomp the assignment flag of a run in progress.  It fails closed on the flag write. An experiment whose assignment flag does not exist would assign nobody, so if that write fails nothing is registered.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -641,8 +641,8 @@ public class ExperimentsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Create a controlled experiment and put its assignment flag live. (asynchronously)
+     * Registers the experiment AND writes its multivariate assignment flag, in that order, so the arms start bucketing subjects the moment this returns 201 — the flag is created active at 100% rollout, with each variant weighted as declared. There is no separate start call; creating IS starting.  The body names the experiment (&#x60;id&#x60;, a slug that is claimed once), what it measures (&#x60;metricEvent&#x60;, required; &#x60;exposureEvent&#x60; defaults to the SDK&#39;s &#x60;$feature_flag_called&#x60; marker), the unit it assigns (&#x60;subjectKind&#x60;: user, org, session or audience — user by default), and at least two &#x60;variants&#x60;. A variant carries an opaque &#x60;payload&#x60; this primitive never interprets: a feature config, an ad-creative id, a subject line, a model id. Weights that are all zero become an even split; otherwise they must sum to 100. At most one variant may be flagged &#x60;control&#x60;; with none, the first arm is the baseline. &#x60;flagKey&#x60; defaults to &#x60;exp_&lt;id&gt;&#x60;.  Requires a validated principal, and refuses without one. The org and project are taken from that principal and the creator is stamped from the credential — none of the three is a body field, so an experiment cannot be filed against another tenant. An id already used in this project is a conflict, never a silent overwrite: re-creating would stomp the assignment flag of a run in progress.  It fails closed on the flag write. An experiment whose assignment flag does not exist would assign nobody, so if that write fails nothing is registered.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -728,8 +728,8 @@ public class ExperimentsApi {
     }
 
     /**
-     * 
-     * 
+     * Per-variant conversion, lift and statistical significance against the control arm.
+     * Reads per-subject outcomes from the analytics plane over a window, folds them into per-variant samples, and returns each arm&#39;s exposed count, conversions, rate, lift versus control, two-proportion z, two-tailed p-value and whether it clears alpha. Arms with no data still appear with zero exposed, so the read is complete over the experiment&#39;s declared arms; the control arm sorts first. The pooled-variance estimator is used and the p-value is exact; a degenerate comparison (an empty arm, no variance) answers z 0 and p 1 — not significant, never an error.  The window is &#x60;start&#x60;/&#x60;end&#x60; in RFC3339 if given, otherwise the last &#x60;days&#x60; (1 to 365, 30 by default) up to now. &#x60;alpha&#x60; overrides the 0.05 two-tailed threshold when it lies strictly between 0 and 1; anything else leaves the default in place.  Only EXPOSED subjects are counted, and each is joined to its arm by re-evaluating the assignment flag AT ANALYSIS TIME — not from what was in force during the window. That is the one rule to get right: analyzing an experiment after its winner has been promoted re-buckets every subject into the promoted arm, collapsing the control to zero exposed and making the result meaningless. Read the analysis before deciding. A subject the flag cannot place is dropped rather than allowed to poison the fold.  &#x60;winner&#x60; in the response is ADVISORY — the significant, control-beating arm with the highest rate, or empty when inconclusive. It promotes nothing; the decision is a separate, explicit act.  Every plane read is scoped to the caller&#39;s org. Per-variant samples are also written to the research evidence plane as immutable &#x60;ab&#x60; rows, best-effort: the analysis is still returned if that write fails, because the samples are recomputable, and the failure is logged rather than swallowed.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -744,8 +744,8 @@ public class ExperimentsApi {
     }
 
     /**
-     * 
-     * 
+     * Per-variant conversion, lift and statistical significance against the control arm.
+     * Reads per-subject outcomes from the analytics plane over a window, folds them into per-variant samples, and returns each arm&#39;s exposed count, conversions, rate, lift versus control, two-proportion z, two-tailed p-value and whether it clears alpha. Arms with no data still appear with zero exposed, so the read is complete over the experiment&#39;s declared arms; the control arm sorts first. The pooled-variance estimator is used and the p-value is exact; a degenerate comparison (an empty arm, no variance) answers z 0 and p 1 — not significant, never an error.  The window is &#x60;start&#x60;/&#x60;end&#x60; in RFC3339 if given, otherwise the last &#x60;days&#x60; (1 to 365, 30 by default) up to now. &#x60;alpha&#x60; overrides the 0.05 two-tailed threshold when it lies strictly between 0 and 1; anything else leaves the default in place.  Only EXPOSED subjects are counted, and each is joined to its arm by re-evaluating the assignment flag AT ANALYSIS TIME — not from what was in force during the window. That is the one rule to get right: analyzing an experiment after its winner has been promoted re-buckets every subject into the promoted arm, collapsing the control to zero exposed and making the result meaningless. Read the analysis before deciding. A subject the flag cannot place is dropped rather than allowed to poison the fold.  &#x60;winner&#x60; in the response is ADVISORY — the significant, control-beating arm with the highest rate, or empty when inconclusive. It promotes nothing; the decision is a separate, explicit act.  Every plane read is scoped to the caller&#39;s org. Per-variant samples are also written to the research evidence plane as immutable &#x60;ab&#x60; rows, best-effort: the analysis is still returned if that write fails, because the samples are recomputable, and the failure is logged rather than swallowed.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -762,8 +762,8 @@ public class ExperimentsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Per-variant conversion, lift and statistical significance against the control arm. (asynchronously)
+     * Reads per-subject outcomes from the analytics plane over a window, folds them into per-variant samples, and returns each arm&#39;s exposed count, conversions, rate, lift versus control, two-proportion z, two-tailed p-value and whether it clears alpha. Arms with no data still appear with zero exposed, so the read is complete over the experiment&#39;s declared arms; the control arm sorts first. The pooled-variance estimator is used and the p-value is exact; a degenerate comparison (an empty arm, no variance) answers z 0 and p 1 — not significant, never an error.  The window is &#x60;start&#x60;/&#x60;end&#x60; in RFC3339 if given, otherwise the last &#x60;days&#x60; (1 to 365, 30 by default) up to now. &#x60;alpha&#x60; overrides the 0.05 two-tailed threshold when it lies strictly between 0 and 1; anything else leaves the default in place.  Only EXPOSED subjects are counted, and each is joined to its arm by re-evaluating the assignment flag AT ANALYSIS TIME — not from what was in force during the window. That is the one rule to get right: analyzing an experiment after its winner has been promoted re-buckets every subject into the promoted arm, collapsing the control to zero exposed and making the result meaningless. Read the analysis before deciding. A subject the flag cannot place is dropped rather than allowed to poison the fold.  &#x60;winner&#x60; in the response is ADVISORY — the significant, control-beating arm with the highest rate, or empty when inconclusive. It promotes nothing; the decision is a separate, explicit act.  Every plane read is scoped to the caller&#39;s org. Per-variant samples are also written to the research evidence plane as immutable &#x60;ab&#x60; rows, best-effort: the analysis is still returned if that write fails, because the samples are recomputable, and the failure is logged rather than swallowed.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -850,8 +850,8 @@ public class ExperimentsApi {
     }
 
     /**
-     * 
-     * 
+     * Promote one variant to the whole rollout and record who decided.
+     * Rewrites the assignment flag so the named &#x60;winner&#x60; serves 100% of the rollout and every other arm 0%, preserving the flag&#39;s targeting groups and payloads, then stamps the experiment decided with the winner, the deciding credential and the time. This is a production behaviour change that takes effect immediately for every subject the flag evaluates.  Requires an ORG ADMIN of the caller&#39;s own org — a stricter gate than the rest of this surface, matching the flags write plane, because promoting is a flag write. The admin check runs AFTER the experiment is found, so a caller from another tenant is answered not-found rather than forbidden and learns nothing about what exists.  &#x60;winner&#x60; is required and must name one of the experiment&#39;s own variants. An experiment whose assignment flag has gone missing is a conflict rather than a silent no-op — there is nothing to promote.  Deciding is NOT terminal. A second call re-promotes a different variant and re-stamps the row; the status stays decided and the previous winner is overwritten with no record that it was ever chosen. Nothing here reverts the flag to its original weights either, so an experiment cannot be un-decided through this route — restoring a split means writing the flag definition back through the flags plane.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -866,8 +866,8 @@ public class ExperimentsApi {
     }
 
     /**
-     * 
-     * 
+     * Promote one variant to the whole rollout and record who decided.
+     * Rewrites the assignment flag so the named &#x60;winner&#x60; serves 100% of the rollout and every other arm 0%, preserving the flag&#39;s targeting groups and payloads, then stamps the experiment decided with the winner, the deciding credential and the time. This is a production behaviour change that takes effect immediately for every subject the flag evaluates.  Requires an ORG ADMIN of the caller&#39;s own org — a stricter gate than the rest of this surface, matching the flags write plane, because promoting is a flag write. The admin check runs AFTER the experiment is found, so a caller from another tenant is answered not-found rather than forbidden and learns nothing about what exists.  &#x60;winner&#x60; is required and must name one of the experiment&#39;s own variants. An experiment whose assignment flag has gone missing is a conflict rather than a silent no-op — there is nothing to promote.  Deciding is NOT terminal. A second call re-promotes a different variant and re-stamps the row; the status stays decided and the previous winner is overwritten with no record that it was ever chosen. Nothing here reverts the flag to its original weights either, so an experiment cannot be un-decided through this route — restoring a split means writing the flag definition back through the flags plane.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -884,8 +884,8 @@ public class ExperimentsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Promote one variant to the whole rollout and record who decided. (asynchronously)
+     * Rewrites the assignment flag so the named &#x60;winner&#x60; serves 100% of the rollout and every other arm 0%, preserving the flag&#39;s targeting groups and payloads, then stamps the experiment decided with the winner, the deciding credential and the time. This is a production behaviour change that takes effect immediately for every subject the flag evaluates.  Requires an ORG ADMIN of the caller&#39;s own org — a stricter gate than the rest of this surface, matching the flags write plane, because promoting is a flag write. The admin check runs AFTER the experiment is found, so a caller from another tenant is answered not-found rather than forbidden and learns nothing about what exists.  &#x60;winner&#x60; is required and must name one of the experiment&#39;s own variants. An experiment whose assignment flag has gone missing is a conflict rather than a silent no-op — there is nothing to promote.  Deciding is NOT terminal. A second call re-promotes a different variant and re-stamps the row; the status stays decided and the previous winner is overwritten with no record that it was ever chosen. Nothing here reverts the flag to its original weights either, so an experiment cannot be un-decided through this route — restoring a split means writing the flag definition back through the flags plane.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

@@ -27,6 +27,15 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.CloudAdminAdminCreatePromo400Response;
+import ai.hanzo.cloud.model.CloudGetV1SecurityFindings200Response;
+import ai.hanzo.cloud.model.CloudGetV1SecurityHealth200Response;
+import ai.hanzo.cloud.model.CloudGetV1SecurityRules200Response;
+import ai.hanzo.cloud.model.CloudGetV1SecurityScans200Response;
+import ai.hanzo.cloud.model.CloudGetV1SecurityScansById200Response;
+import ai.hanzo.cloud.model.SecurityFinding;
+import ai.hanzo.cloud.model.SecurityScan;
+import ai.hanzo.cloud.model.SecurityScanRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -73,6 +82,9 @@ public class SecurityApi {
 
     /**
      * Build call for cloudGetV1SecurityFindings
+     * @param scanId  (optional)
+     * @param minSeverity  (optional)
+     * @param limit  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -80,10 +92,11 @@ public class SecurityApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Findings </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1SecurityFindingsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1SecurityFindingsCall(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -108,7 +121,20 @@ public class SecurityApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (scanId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("scanId", scanId));
+        }
+
+        if (minSeverity != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("minSeverity", minSeverity));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -127,46 +153,60 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudGetV1SecurityFindingsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudGetV1SecurityFindingsCall(_callback);
+    private okhttp3.Call cloudGetV1SecurityFindingsValidateBeforeCall(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return cloudGetV1SecurityFindingsCall(scanId, minSeverity, limit, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * The org&#39;s findings, across scans or within one
+     * Lists the caller org&#39;s findings — rule, severity, path, line, masked preview and fingerprint — newest first. &#x60;scanId&#x60; narrows to a single scan, &#x60;minSeverity&#x60; (critical | high | medium | low) drops everything below that rank, and &#x60;limit&#x60; caps the page; a minSeverity outside that set is refused with 400 rather than quietly ignored, so a filter typo cannot read as \&quot;no findings\&quot;. Strictly org-scoped, and a caller with no validated org is refused.
+     * @param scanId  (optional)
+     * @param minSeverity  (optional)
+     * @param limit  (optional)
+     * @return CloudGetV1SecurityFindings200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Findings </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1SecurityFindings() throws ApiException {
-        cloudGetV1SecurityFindingsWithHttpInfo();
+    public CloudGetV1SecurityFindings200Response cloudGetV1SecurityFindings(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<CloudGetV1SecurityFindings200Response> localVarResp = cloudGetV1SecurityFindingsWithHttpInfo(scanId, minSeverity, limit);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * The org&#39;s findings, across scans or within one
+     * Lists the caller org&#39;s findings — rule, severity, path, line, masked preview and fingerprint — newest first. &#x60;scanId&#x60; narrows to a single scan, &#x60;minSeverity&#x60; (critical | high | medium | low) drops everything below that rank, and &#x60;limit&#x60; caps the page; a minSeverity outside that set is refused with 400 rather than quietly ignored, so a filter typo cannot read as \&quot;no findings\&quot;. Strictly org-scoped, and a caller with no validated org is refused.
+     * @param scanId  (optional)
+     * @param minSeverity  (optional)
+     * @param limit  (optional)
+     * @return ApiResponse&lt;CloudGetV1SecurityFindings200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Findings </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1SecurityFindingsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudGetV1SecurityFindingsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CloudGetV1SecurityFindings200Response> cloudGetV1SecurityFindingsWithHttpInfo(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = cloudGetV1SecurityFindingsValidateBeforeCall(scanId, minSeverity, limit, null);
+        Type localVarReturnType = new TypeToken<CloudGetV1SecurityFindings200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The org&#39;s findings, across scans or within one (asynchronously)
+     * Lists the caller org&#39;s findings — rule, severity, path, line, masked preview and fingerprint — newest first. &#x60;scanId&#x60; narrows to a single scan, &#x60;minSeverity&#x60; (critical | high | medium | low) drops everything below that rank, and &#x60;limit&#x60; caps the page; a minSeverity outside that set is refused with 400 rather than quietly ignored, so a filter typo cannot read as \&quot;no findings\&quot;. Strictly org-scoped, and a caller with no validated org is refused.
+     * @param scanId  (optional)
+     * @param minSeverity  (optional)
+     * @param limit  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -174,13 +214,15 @@ public class SecurityApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Findings </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1SecurityFindingsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1SecurityFindingsAsync(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Integer limit, final ApiCallback<CloudGetV1SecurityFindings200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudGetV1SecurityFindingsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudGetV1SecurityFindingsValidateBeforeCall(scanId, minSeverity, limit, _callback);
+        Type localVarReturnType = new TypeToken<CloudGetV1SecurityFindings200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -193,7 +235,9 @@ public class SecurityApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Finding </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Finding not found </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1SecurityFindingsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -223,6 +267,7 @@ public class SecurityApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -252,42 +297,49 @@ public class SecurityApi {
     }
 
     /**
-     * 
-     * 
+     * One finding
+     * Returns a single finding: which rule fired, where (path and line), the masked preview and the SHA-256 fingerprint of the secret — the raw secret is not stored and cannot be read back. Scoped to the caller&#39;s org, and a finding belonging to another org is the same 404 as one that never existed.
      * @param id  (required)
+     * @return SecurityFinding
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Finding </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Finding not found </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1SecurityFindingsById(@javax.annotation.Nonnull String id) throws ApiException {
-        cloudGetV1SecurityFindingsByIdWithHttpInfo(id);
+    public SecurityFinding cloudGetV1SecurityFindingsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SecurityFinding> localVarResp = cloudGetV1SecurityFindingsByIdWithHttpInfo(id);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
+     * One finding
+     * Returns a single finding: which rule fired, where (path and line), the masked preview and the SHA-256 fingerprint of the secret — the raw secret is not stored and cannot be read back. Scoped to the caller&#39;s org, and a finding belonging to another org is the same 404 as one that never existed.
      * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SecurityFinding&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Finding </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Finding not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1SecurityFindingsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<SecurityFinding> cloudGetV1SecurityFindingsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = cloudGetV1SecurityFindingsByIdValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<SecurityFinding>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * One finding (asynchronously)
+     * Returns a single finding: which rule fired, where (path and line), the masked preview and the SHA-256 fingerprint of the secret — the raw secret is not stored and cannot be read back. Scoped to the caller&#39;s org, and a finding belonging to another org is the same 404 as one that never existed.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -296,13 +348,16 @@ public class SecurityApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Finding </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Finding not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1SecurityFindingsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1SecurityFindingsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<SecurityFinding> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudGetV1SecurityFindingsByIdValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<SecurityFinding>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -314,7 +369,7 @@ public class SecurityApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Service healthy </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1SecurityHealthCall(final ApiCallback _callback) throws ApiException {
@@ -343,6 +398,7 @@ public class SecurityApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -356,7 +412,7 @@ public class SecurityApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -367,40 +423,43 @@ public class SecurityApi {
     }
 
     /**
-     * 
-     * 
+     * Liveness, and how many detection rules are loaded
+     * Reports that the scanning subsystem is serving and how many secret-detection rules the engine holds. It has no external dependency — the answer is ok whenever the findings store opened — so it measures this process rather than anything downstream. Reads no tenant: a prober that sends no principal is answered, not refused.
+     * @return CloudGetV1SecurityHealth200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Service healthy </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1SecurityHealth() throws ApiException {
-        cloudGetV1SecurityHealthWithHttpInfo();
+    public CloudGetV1SecurityHealth200Response cloudGetV1SecurityHealth() throws ApiException {
+        ApiResponse<CloudGetV1SecurityHealth200Response> localVarResp = cloudGetV1SecurityHealthWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Liveness, and how many detection rules are loaded
+     * Reports that the scanning subsystem is serving and how many secret-detection rules the engine holds. It has no external dependency — the answer is ok whenever the findings store opened — so it measures this process rather than anything downstream. Reads no tenant: a prober that sends no principal is answered, not refused.
+     * @return ApiResponse&lt;CloudGetV1SecurityHealth200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Service healthy </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1SecurityHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<CloudGetV1SecurityHealth200Response> cloudGetV1SecurityHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = cloudGetV1SecurityHealthValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<CloudGetV1SecurityHealth200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Liveness, and how many detection rules are loaded (asynchronously)
+     * Reports that the scanning subsystem is serving and how many secret-detection rules the engine holds. It has no external dependency — the answer is ok whenever the findings store opened — so it measures this process rather than anything downstream. Reads no tenant: a prober that sends no principal is answered, not refused.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -408,13 +467,14 @@ public class SecurityApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Service healthy </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1SecurityHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1SecurityHealthAsync(final ApiCallback<CloudGetV1SecurityHealth200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudGetV1SecurityHealthValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<CloudGetV1SecurityHealth200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -426,7 +486,8 @@ public class SecurityApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Rules </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1SecurityRulesCall(final ApiCallback _callback) throws ApiException {
@@ -455,6 +516,7 @@ public class SecurityApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -479,40 +541,45 @@ public class SecurityApi {
     }
 
     /**
-     * 
-     * 
+     * The secret-detection catalog the engine scans with
+     * Returns every rule a scan can fire — the id, name and severity a finding cites — so a caller can render or triage results without hard-coding the catalog. It is the same for everyone and discloses nothing tenant-specific, so it carries no org scope.
+     * @return CloudGetV1SecurityRules200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Rules </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1SecurityRules() throws ApiException {
-        cloudGetV1SecurityRulesWithHttpInfo();
+    public CloudGetV1SecurityRules200Response cloudGetV1SecurityRules() throws ApiException {
+        ApiResponse<CloudGetV1SecurityRules200Response> localVarResp = cloudGetV1SecurityRulesWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * The secret-detection catalog the engine scans with
+     * Returns every rule a scan can fire — the id, name and severity a finding cites — so a caller can render or triage results without hard-coding the catalog. It is the same for everyone and discloses nothing tenant-specific, so it carries no org scope.
+     * @return ApiResponse&lt;CloudGetV1SecurityRules200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Rules </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1SecurityRulesWithHttpInfo() throws ApiException {
+    public ApiResponse<CloudGetV1SecurityRules200Response> cloudGetV1SecurityRulesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = cloudGetV1SecurityRulesValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<CloudGetV1SecurityRules200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The secret-detection catalog the engine scans with (asynchronously)
+     * Returns every rule a scan can fire — the id, name and severity a finding cites — so a caller can render or triage results without hard-coding the catalog. It is the same for everyone and discloses nothing tenant-specific, so it carries no org scope.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -520,17 +587,20 @@ public class SecurityApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Rules </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1SecurityRulesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1SecurityRulesAsync(final ApiCallback<CloudGetV1SecurityRules200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudGetV1SecurityRulesValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<CloudGetV1SecurityRules200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudGetV1SecurityScans
+     * @param limit  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -538,10 +608,11 @@ public class SecurityApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Scans </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1SecurityScansCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1SecurityScansCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -566,7 +637,12 @@ public class SecurityApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -585,46 +661,54 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudGetV1SecurityScansValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudGetV1SecurityScansCall(_callback);
+    private okhttp3.Call cloudGetV1SecurityScansValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return cloudGetV1SecurityScansCall(limit, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * The org&#39;s scan history
+     * Lists the caller org&#39;s scans, newest first, each as the same summary the submission answered — files read, findings fired, tally by severity. &#x60;limit&#x60; caps the page. Strictly org-scoped: a caller only ever sees its own scans, and one with no validated org is refused.
+     * @param limit  (optional)
+     * @return CloudGetV1SecurityScans200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Scans </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1SecurityScans() throws ApiException {
-        cloudGetV1SecurityScansWithHttpInfo();
+    public CloudGetV1SecurityScans200Response cloudGetV1SecurityScans(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<CloudGetV1SecurityScans200Response> localVarResp = cloudGetV1SecurityScansWithHttpInfo(limit);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * The org&#39;s scan history
+     * Lists the caller org&#39;s scans, newest first, each as the same summary the submission answered — files read, findings fired, tally by severity. &#x60;limit&#x60; caps the page. Strictly org-scoped: a caller only ever sees its own scans, and one with no validated org is refused.
+     * @param limit  (optional)
+     * @return ApiResponse&lt;CloudGetV1SecurityScans200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Scans </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1SecurityScansWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudGetV1SecurityScansValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CloudGetV1SecurityScans200Response> cloudGetV1SecurityScansWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = cloudGetV1SecurityScansValidateBeforeCall(limit, null);
+        Type localVarReturnType = new TypeToken<CloudGetV1SecurityScans200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The org&#39;s scan history (asynchronously)
+     * Lists the caller org&#39;s scans, newest first, each as the same summary the submission answered — files read, findings fired, tally by severity. &#x60;limit&#x60; caps the page. Strictly org-scoped: a caller only ever sees its own scans, and one with no validated org is refused.
+     * @param limit  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -632,13 +716,15 @@ public class SecurityApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Scans </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1SecurityScansAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1SecurityScansAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<CloudGetV1SecurityScans200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudGetV1SecurityScansValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudGetV1SecurityScansValidateBeforeCall(limit, _callback);
+        Type localVarReturnType = new TypeToken<CloudGetV1SecurityScans200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -651,7 +737,9 @@ public class SecurityApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Scan detail </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Scan not found </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1SecurityScansByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -681,6 +769,7 @@ public class SecurityApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -710,42 +799,49 @@ public class SecurityApi {
     }
 
     /**
-     * 
-     * 
+     * One scan and every finding on it
+     * Returns the scan summary together with all of its findings, so the detail view is one round-trip rather than a list call per scan. The findings carry masked previews and fingerprints, never secrets.  Scoped to the caller&#39;s org: a scan id belonging to another org is the same 404 as an id that never existed, so a probe learns nothing about what exists elsewhere. No validated org is refused.
      * @param id  (required)
+     * @return CloudGetV1SecurityScansById200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Scan detail </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Scan not found </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1SecurityScansById(@javax.annotation.Nonnull String id) throws ApiException {
-        cloudGetV1SecurityScansByIdWithHttpInfo(id);
+    public CloudGetV1SecurityScansById200Response cloudGetV1SecurityScansById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<CloudGetV1SecurityScansById200Response> localVarResp = cloudGetV1SecurityScansByIdWithHttpInfo(id);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
+     * One scan and every finding on it
+     * Returns the scan summary together with all of its findings, so the detail view is one round-trip rather than a list call per scan. The findings carry masked previews and fingerprints, never secrets.  Scoped to the caller&#39;s org: a scan id belonging to another org is the same 404 as an id that never existed, so a probe learns nothing about what exists elsewhere. No validated org is refused.
      * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;CloudGetV1SecurityScansById200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Scan detail </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Scan not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1SecurityScansByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<CloudGetV1SecurityScansById200Response> cloudGetV1SecurityScansByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = cloudGetV1SecurityScansByIdValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<CloudGetV1SecurityScansById200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * One scan and every finding on it (asynchronously)
+     * Returns the scan summary together with all of its findings, so the detail view is one round-trip rather than a list call per scan. The findings carry masked previews and fingerprints, never secrets.  Scoped to the caller&#39;s org: a scan id belonging to another org is the same 404 as an id that never existed, so a probe learns nothing about what exists elsewhere. No validated org is refused.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -754,17 +850,21 @@ public class SecurityApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Scan detail </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Scan not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1SecurityScansByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1SecurityScansByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CloudGetV1SecurityScansById200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudGetV1SecurityScansByIdValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<CloudGetV1SecurityScansById200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1SecurityScans
+     * @param securityScanRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -772,10 +872,12 @@ public class SecurityApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Scan summary </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Missing files, too many files, or scan too large </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1SecurityScansCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1SecurityScansCall(@javax.annotation.Nonnull SecurityScanRequest securityScanRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -789,7 +891,7 @@ public class SecurityApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = securityScanRequest;
 
         // create path and map variables
         String localVarPath = "/v1/security/scans";
@@ -801,6 +903,7 @@ public class SecurityApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -808,6 +911,7 @@ public class SecurityApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -819,46 +923,61 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1SecurityScansValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1SecurityScansCall(_callback);
+    private okhttp3.Call cloudPostV1SecurityScansValidateBeforeCall(@javax.annotation.Nonnull SecurityScanRequest securityScanRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'securityScanRequest' is set
+        if (securityScanRequest == null) {
+            throw new ApiException("Missing the required parameter 'securityScanRequest' when calling cloudPostV1SecurityScans(Async)");
+        }
+
+        return cloudPostV1SecurityScansCall(securityScanRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Scan submitted source for hardcoded secrets
+     * Runs the detection engine over a batch of {path, content} files and answers 201 with the scan summary: how many files were read, how many findings fired, and the tally by severity.  THE SUBMITTED CONTENT IS NEVER STORED. It is scanned in memory; what persists is the finding — its rule, its path and line, a MASKED preview (first and last characters kept, the middle starred) and the SHA-256 fingerprint of the raw secret. The fingerprint is what makes the same secret recognisable across scans and after rotation without the secret ever being written down.  Requires a validated org, which scopes the stored scan and every finding on it; a caller with no org is refused. &#x60;project&#x60; in the body names the sub-scope and is refused with 400 if it is not a valid slug; omit it and the caller&#39;s project header is used instead, where an unusable value is simply ignored. Bounded at 500 files and 8 MiB of total content per submission — split a larger tree across scans. One scan is one metered unit, and the scan is recorded in the audit log with its tally, never with its findings.
+     * @param securityScanRequest  (required)
+     * @return SecurityScan
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Scan summary </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Missing files, too many files, or scan too large </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1SecurityScans() throws ApiException {
-        cloudPostV1SecurityScansWithHttpInfo();
+    public SecurityScan cloudPostV1SecurityScans(@javax.annotation.Nonnull SecurityScanRequest securityScanRequest) throws ApiException {
+        ApiResponse<SecurityScan> localVarResp = cloudPostV1SecurityScansWithHttpInfo(securityScanRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Scan submitted source for hardcoded secrets
+     * Runs the detection engine over a batch of {path, content} files and answers 201 with the scan summary: how many files were read, how many findings fired, and the tally by severity.  THE SUBMITTED CONTENT IS NEVER STORED. It is scanned in memory; what persists is the finding — its rule, its path and line, a MASKED preview (first and last characters kept, the middle starred) and the SHA-256 fingerprint of the raw secret. The fingerprint is what makes the same secret recognisable across scans and after rotation without the secret ever being written down.  Requires a validated org, which scopes the stored scan and every finding on it; a caller with no org is refused. &#x60;project&#x60; in the body names the sub-scope and is refused with 400 if it is not a valid slug; omit it and the caller&#39;s project header is used instead, where an unusable value is simply ignored. Bounded at 500 files and 8 MiB of total content per submission — split a larger tree across scans. One scan is one metered unit, and the scan is recorded in the audit log with its tally, never with its findings.
+     * @param securityScanRequest  (required)
+     * @return ApiResponse&lt;SecurityScan&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Scan summary </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Missing files, too many files, or scan too large </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1SecurityScansWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1SecurityScansValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<SecurityScan> cloudPostV1SecurityScansWithHttpInfo(@javax.annotation.Nonnull SecurityScanRequest securityScanRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1SecurityScansValidateBeforeCall(securityScanRequest, null);
+        Type localVarReturnType = new TypeToken<SecurityScan>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Scan submitted source for hardcoded secrets (asynchronously)
+     * Runs the detection engine over a batch of {path, content} files and answers 201 with the scan summary: how many files were read, how many findings fired, and the tally by severity.  THE SUBMITTED CONTENT IS NEVER STORED. It is scanned in memory; what persists is the finding — its rule, its path and line, a MASKED preview (first and last characters kept, the middle starred) and the SHA-256 fingerprint of the raw secret. The fingerprint is what makes the same secret recognisable across scans and after rotation without the secret ever being written down.  Requires a validated org, which scopes the stored scan and every finding on it; a caller with no org is refused. &#x60;project&#x60; in the body names the sub-scope and is refused with 400 if it is not a valid slug; omit it and the caller&#39;s project header is used instead, where an unusable value is simply ignored. Bounded at 500 files and 8 MiB of total content per submission — split a larger tree across scans. One scan is one metered unit, and the scan is recorded in the audit log with its tally, never with its findings.
+     * @param securityScanRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -866,13 +985,16 @@ public class SecurityApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Scan summary </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Missing files, too many files, or scan too large </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1SecurityScansAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1SecurityScansAsync(@javax.annotation.Nonnull SecurityScanRequest securityScanRequest, final ApiCallback<SecurityScan> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1SecurityScansValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1SecurityScansValidateBeforeCall(securityScanRequest, _callback);
+        Type localVarReturnType = new TypeToken<SecurityScan>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }

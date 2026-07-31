@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.CloudAdminAdminCreatePromo400Response;
 import ai.hanzo.cloud.model.CloudDocType;
 import ai.hanzo.cloud.model.CloudDocTypeList;
 import ai.hanzo.cloud.model.CloudDocumentList;
@@ -36,6 +37,7 @@ import ai.hanzo.cloud.model.CloudModuleState;
 import ai.hanzo.cloud.model.CloudRole;
 import ai.hanzo.cloud.model.CloudRoleList;
 import ai.hanzo.cloud.model.CloudSummaryView;
+import ai.hanzo.cloud.model.FrameworkDocument;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -82,8 +84,8 @@ public class FrameworkApi {
 
     /**
      * Build call for cloudDeleteV1FrameworkDoctypeName
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
-     * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param doctype  (required)
+     * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -158,8 +160,8 @@ public class FrameworkApi {
     /**
      * Removes one document, after its on_trash hooks agree.
      * Removes one document, after its on_trash hooks agree. A SUBMITTED document cannot be deleted — cancel it first. Answers 204.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
-     * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param doctype  (required)
+     * @param name  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -175,8 +177,8 @@ public class FrameworkApi {
     /**
      * Removes one document, after its on_trash hooks agree.
      * Removes one document, after its on_trash hooks agree. A SUBMITTED document cannot be deleted — cancel it first. Answers 204.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
-     * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param doctype  (required)
+     * @param name  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -194,8 +196,8 @@ public class FrameworkApi {
     /**
      * Removes one document, after its on_trash hooks agree. (asynchronously)
      * Removes one document, after its on_trash hooks agree. A SUBMITTED document cannot be deleted — cancel it first. Answers 204.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
-     * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param doctype  (required)
+     * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -214,7 +216,7 @@ public class FrameworkApi {
     }
     /**
      * Build call for cloudDeleteV1FrameworkDoctypesName
-     * @param name Name is the DocType&#39;s name, from the path. A name containing a space (\&quot;Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -283,7 +285,7 @@ public class FrameworkApi {
     /**
      * Removes a DocType and every document stored under it.
      * Removes a DocType and every document stored under it. The definition and its data go together — a document with no schema can be neither validated nor read back — so there is no undo. Manager-only. Answers 204.
-     * @param name Name is the DocType&#39;s name, from the path. A name containing a space (\&quot;Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param name  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -299,7 +301,7 @@ public class FrameworkApi {
     /**
      * Removes a DocType and every document stored under it.
      * Removes a DocType and every document stored under it. The definition and its data go together — a document with no schema can be neither validated nor read back — so there is no undo. Manager-only. Answers 204.
-     * @param name Name is the DocType&#39;s name, from the path. A name containing a space (\&quot;Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param name  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -317,7 +319,7 @@ public class FrameworkApi {
     /**
      * Removes a DocType and every document stored under it. (asynchronously)
      * Removes a DocType and every document stored under it. The definition and its data go together — a document with no schema can be neither validated nor read back — so there is no undo. Manager-only. Answers 204.
-     * @param name Name is the DocType&#39;s name, from the path. A name containing a space (\&quot;Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -336,8 +338,8 @@ public class FrameworkApi {
     }
     /**
      * Build call for cloudDeleteV1FrameworkRolesUserRole
-     * @param user User is the assignee whose grant is being revoked, from the path. (required)
-     * @param role Role is the role to revoke, from the path. A role name containing a space (\&quot;System Manager\&quot;) arrives percent-encoded and is decoded before it is matched against the stored assignment. (required)
+     * @param user  (required)
+     * @param role  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -412,8 +414,8 @@ public class FrameworkApi {
     /**
      * Removes one (user, role) grant in the caller&#39;s org.
      * Removes one (user, role) grant in the caller&#39;s org. Manager-only. Answers 204; a grant that does not exist is not found.
-     * @param user User is the assignee whose grant is being revoked, from the path. (required)
-     * @param role Role is the role to revoke, from the path. A role name containing a space (\&quot;System Manager\&quot;) arrives percent-encoded and is decoded before it is matched against the stored assignment. (required)
+     * @param user  (required)
+     * @param role  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -429,8 +431,8 @@ public class FrameworkApi {
     /**
      * Removes one (user, role) grant in the caller&#39;s org.
      * Removes one (user, role) grant in the caller&#39;s org. Manager-only. Answers 204; a grant that does not exist is not found.
-     * @param user User is the assignee whose grant is being revoked, from the path. (required)
-     * @param role Role is the role to revoke, from the path. A role name containing a space (\&quot;System Manager\&quot;) arrives percent-encoded and is decoded before it is matched against the stored assignment. (required)
+     * @param user  (required)
+     * @param role  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -448,8 +450,8 @@ public class FrameworkApi {
     /**
      * Removes one (user, role) grant in the caller&#39;s org. (asynchronously)
      * Removes one (user, role) grant in the caller&#39;s org. Manager-only. Answers 204; a grant that does not exist is not found.
-     * @param user User is the assignee whose grant is being revoked, from the path. (required)
-     * @param role Role is the role to revoke, from the path. A role name containing a space (\&quot;System Manager\&quot;) arrives percent-encoded and is decoded before it is matched against the stored assignment. (required)
+     * @param user  (required)
+     * @param role  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -468,7 +470,7 @@ public class FrameworkApi {
     }
     /**
      * Build call for cloudGetV1FrameworkDoctype
-     * @param doctype DocType is the DocType to list, from the path. (required)
+     * @param doctype  (required)
      * @param filters Filters is a JSON object of equality matches, e.g. {\&quot;priority\&quot;:\&quot;High\&quot;}. Every key must be a field the DocType declares (or the managed name / docstatus); an undeclared one is refused rather than silently ignored. (optional)
      * @param fields Fields projects the response to a subset — a JSON array [\&quot;a\&quot;,\&quot;b\&quot;] or a comma list \&quot;a,b\&quot;. The envelope keys are always returned. (optional)
      * @param orderBy OrderBy is \&quot;&lt;field&gt; [asc|desc]\&quot;. Empty means most-recently-updated first. (optional)
@@ -558,7 +560,7 @@ public class FrameworkApi {
     /**
      * Returns the caller org&#39;s documents of one DocType, filtered, ordered and projected by the query.
      * Returns the caller org&#39;s documents of one DocType, filtered, ordered and projected by the query. The DocType is resolved FIRST — through the same permission gate the list itself uses — because the query is validated against its schema: a filter, sort or field name the DocType does not declare is refused rather than reaching the store.
-     * @param doctype DocType is the DocType to list, from the path. (required)
+     * @param doctype  (required)
      * @param filters Filters is a JSON object of equality matches, e.g. {\&quot;priority\&quot;:\&quot;High\&quot;}. Every key must be a field the DocType declares (or the managed name / docstatus); an undeclared one is refused rather than silently ignored. (optional)
      * @param fields Fields projects the response to a subset — a JSON array [\&quot;a\&quot;,\&quot;b\&quot;] or a comma list \&quot;a,b\&quot;. The envelope keys are always returned. (optional)
      * @param orderBy OrderBy is \&quot;&lt;field&gt; [asc|desc]\&quot;. Empty means most-recently-updated first. (optional)
@@ -580,7 +582,7 @@ public class FrameworkApi {
     /**
      * Returns the caller org&#39;s documents of one DocType, filtered, ordered and projected by the query.
      * Returns the caller org&#39;s documents of one DocType, filtered, ordered and projected by the query. The DocType is resolved FIRST — through the same permission gate the list itself uses — because the query is validated against its schema: a filter, sort or field name the DocType does not declare is refused rather than reaching the store.
-     * @param doctype DocType is the DocType to list, from the path. (required)
+     * @param doctype  (required)
      * @param filters Filters is a JSON object of equality matches, e.g. {\&quot;priority\&quot;:\&quot;High\&quot;}. Every key must be a field the DocType declares (or the managed name / docstatus); an undeclared one is refused rather than silently ignored. (optional)
      * @param fields Fields projects the response to a subset — a JSON array [\&quot;a\&quot;,\&quot;b\&quot;] or a comma list \&quot;a,b\&quot;. The envelope keys are always returned. (optional)
      * @param orderBy OrderBy is \&quot;&lt;field&gt; [asc|desc]\&quot;. Empty means most-recently-updated first. (optional)
@@ -603,7 +605,7 @@ public class FrameworkApi {
     /**
      * Returns the caller org&#39;s documents of one DocType, filtered, ordered and projected by the query. (asynchronously)
      * Returns the caller org&#39;s documents of one DocType, filtered, ordered and projected by the query. The DocType is resolved FIRST — through the same permission gate the list itself uses — because the query is validated against its schema: a filter, sort or field name the DocType does not declare is refused rather than reaching the store.
-     * @param doctype DocType is the DocType to list, from the path. (required)
+     * @param doctype  (required)
      * @param filters Filters is a JSON object of equality matches, e.g. {\&quot;priority\&quot;:\&quot;High\&quot;}. Every key must be a field the DocType declares (or the managed name / docstatus); an undeclared one is refused rather than silently ignored. (optional)
      * @param fields Fields projects the response to a subset — a JSON array [\&quot;a\&quot;,\&quot;b\&quot;] or a comma list \&quot;a,b\&quot;. The envelope keys are always returned. (optional)
      * @param orderBy OrderBy is \&quot;&lt;field&gt; [asc|desc]\&quot;. Empty means most-recently-updated first. (optional)
@@ -627,8 +629,8 @@ public class FrameworkApi {
     }
     /**
      * Build call for cloudGetV1FrameworkDoctypeName
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
-     * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param doctype  (required)
+     * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -704,8 +706,8 @@ public class FrameworkApi {
     /**
      * Returns one document by name, with Password fields redacted.
      * Returns one document by name, with Password fields redacted.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
-     * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param doctype  (required)
+     * @param name  (required)
      * @return Map&lt;String, Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -723,8 +725,8 @@ public class FrameworkApi {
     /**
      * Returns one document by name, with Password fields redacted.
      * Returns one document by name, with Password fields redacted.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
-     * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param doctype  (required)
+     * @param name  (required)
      * @return ApiResponse&lt;Map&lt;String, Object&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -743,8 +745,8 @@ public class FrameworkApi {
     /**
      * Returns one document by name, with Password fields redacted. (asynchronously)
      * Returns one document by name, with Password fields redacted.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
-     * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param doctype  (required)
+     * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -881,7 +883,7 @@ public class FrameworkApi {
     }
     /**
      * Build call for cloudGetV1FrameworkDoctypesName
-     * @param name Name is the DocType&#39;s name, from the path. A name containing a space (\&quot;Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -951,7 +953,7 @@ public class FrameworkApi {
     /**
      * Returns one DocType definition — its fields, naming rule, permissions and lifecycle flags.
      * Returns one DocType definition — its fields, naming rule, permissions and lifecycle flags. Scoped to the caller&#39;s org, so another tenant&#39;s DocType of the same name is simply not found.
-     * @param name Name is the DocType&#39;s name, from the path. A name containing a space (\&quot;Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param name  (required)
      * @return CloudDocType
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -969,7 +971,7 @@ public class FrameworkApi {
     /**
      * Returns one DocType definition — its fields, naming rule, permissions and lifecycle flags.
      * Returns one DocType definition — its fields, naming rule, permissions and lifecycle flags. Scoped to the caller&#39;s org, so another tenant&#39;s DocType of the same name is simply not found.
-     * @param name Name is the DocType&#39;s name, from the path. A name containing a space (\&quot;Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param name  (required)
      * @return ApiResponse&lt;CloudDocType&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -988,7 +990,7 @@ public class FrameworkApi {
     /**
      * Returns one DocType definition — its fields, naming rule, permissions and lifecycle flags. (asynchronously)
      * Returns one DocType definition — its fields, naming rule, permissions and lifecycle flags. Scoped to the caller&#39;s org, so another tenant&#39;s DocType of the same name is simply not found.
-     * @param name Name is the DocType&#39;s name, from the path. A name containing a space (\&quot;Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1125,7 +1127,7 @@ public class FrameworkApi {
     }
     /**
      * Build call for cloudGetV1FrameworkModulesModule
-     * @param module Module is the lane&#39;s registered name (\&quot;cms\&quot;, \&quot;erp\&quot;), from the path. (required)
+     * @param module  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1195,7 +1197,7 @@ public class FrameworkApi {
     /**
      * Returns one app lane&#39;s install state for the caller&#39;s org: the DocTypes the lane declares, and which of them already exist in the org.
      * Returns one app lane&#39;s install state for the caller&#39;s org: the DocTypes the lane declares, and which of them already exist in the org. That is the honest \&quot;set up\&quot; versus \&quot;installed\&quot; answer a console renders.
-     * @param module Module is the lane&#39;s registered name (\&quot;cms\&quot;, \&quot;erp\&quot;), from the path. (required)
+     * @param module  (required)
      * @return CloudModuleState
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1213,7 +1215,7 @@ public class FrameworkApi {
     /**
      * Returns one app lane&#39;s install state for the caller&#39;s org: the DocTypes the lane declares, and which of them already exist in the org.
      * Returns one app lane&#39;s install state for the caller&#39;s org: the DocTypes the lane declares, and which of them already exist in the org. That is the honest \&quot;set up\&quot; versus \&quot;installed\&quot; answer a console renders.
-     * @param module Module is the lane&#39;s registered name (\&quot;cms\&quot;, \&quot;erp\&quot;), from the path. (required)
+     * @param module  (required)
      * @return ApiResponse&lt;CloudModuleState&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1232,7 +1234,7 @@ public class FrameworkApi {
     /**
      * Returns one app lane&#39;s install state for the caller&#39;s org: the DocTypes the lane declares, and which of them already exist in the org. (asynchronously)
      * Returns one app lane&#39;s install state for the caller&#39;s org: the DocTypes the lane declares, and which of them already exist in the org. That is the honest \&quot;set up\&quot; versus \&quot;installed\&quot; answer a console renders.
-     * @param module Module is the lane&#39;s registered name (\&quot;cms\&quot;, \&quot;erp\&quot;), from the path. (required)
+     * @param module  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1487,6 +1489,7 @@ public class FrameworkApi {
     /**
      * Build call for cloudPostV1FrameworkByDoctype
      * @param doctype  (required)
+     * @param frameworkDocument  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1494,10 +1497,13 @@ public class FrameworkApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Document created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1FrameworkByDoctypeCall(@javax.annotation.Nonnull String doctype, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1FrameworkByDoctypeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull FrameworkDocument frameworkDocument, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1511,7 +1517,7 @@ public class FrameworkApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = frameworkDocument;
 
         // create path and map variables
         String localVarPath = "/v1/framework/{doctype}"
@@ -1524,6 +1530,7 @@ public class FrameworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1531,6 +1538,7 @@ public class FrameworkApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1542,54 +1550,71 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1FrameworkByDoctypeValidateBeforeCall(@javax.annotation.Nonnull String doctype, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudPostV1FrameworkByDoctypeValidateBeforeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull FrameworkDocument frameworkDocument, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'doctype' is set
         if (doctype == null) {
             throw new ApiException("Missing the required parameter 'doctype' when calling cloudPostV1FrameworkByDoctype(Async)");
         }
 
-        return cloudPostV1FrameworkByDoctypeCall(doctype, _callback);
+        // verify the required parameter 'frameworkDocument' is set
+        if (frameworkDocument == null) {
+            throw new ApiException("Missing the required parameter 'frameworkDocument' when calling cloudPostV1FrameworkByDoctype(Async)");
+        }
+
+        return cloudPostV1FrameworkByDoctypeCall(doctype, frameworkDocument, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Create one document of a DocType, from that DocType&#39;s own fields.
+     * The body is the DOCUMENT&#39;S field data: a flat JSON object whose properties are the fieldnames the DocType declares, not a fixed envelope. That is why this operation publishes no request schema — the shape is metadata the DocType defines at run time, and no Go struct both accepts it verbatim and describes it, so nothing is asserted rather than something false.  The engine validates and coerces every field against the DocType, runs the before_insert and before_save hooks (either may reject the write), stores the document, then runs the after hooks. It answers 201 with the stored document: the field data plus the managed envelope — &#x60;name&#x60;, &#x60;doctype&#x60;, &#x60;docstatus&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;. A Password field comes back as a fixed redaction marker and is dropped when empty; its stored value is never returned by this or any other read on this surface.  &#x60;name&#x60; in the body is the REQUESTED DOCUMENT NAME, not a data field. A DocType with an autoname rule names the document itself and ignores it; a prompt-named DocType takes it. This collision is also why the two path segments cannot be folded into the body, and so why the route stays untyped.  Scoped to the org of the validated principal, and the engine&#39;s own permission calculus decides the rest: the caller needs create rights on this DocType through a role it holds, or a platform admin bit. A caller with no validated principal reaches the engine as the zero Caller and is refused before any store is opened — a forged org header alone buys nothing.  A DocType declared Single has exactly ONE document per org, so this writes that one instance instead of adding a row. The body is size-bounded by the engine, the same bound on every host.
      * @param doctype  (required)
+     * @param frameworkDocument  (required)
+     * @return FrameworkDocument
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Document created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1FrameworkByDoctype(@javax.annotation.Nonnull String doctype) throws ApiException {
-        cloudPostV1FrameworkByDoctypeWithHttpInfo(doctype);
+    public FrameworkDocument cloudPostV1FrameworkByDoctype(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull FrameworkDocument frameworkDocument) throws ApiException {
+        ApiResponse<FrameworkDocument> localVarResp = cloudPostV1FrameworkByDoctypeWithHttpInfo(doctype, frameworkDocument);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
+     * Create one document of a DocType, from that DocType&#39;s own fields.
+     * The body is the DOCUMENT&#39;S field data: a flat JSON object whose properties are the fieldnames the DocType declares, not a fixed envelope. That is why this operation publishes no request schema — the shape is metadata the DocType defines at run time, and no Go struct both accepts it verbatim and describes it, so nothing is asserted rather than something false.  The engine validates and coerces every field against the DocType, runs the before_insert and before_save hooks (either may reject the write), stores the document, then runs the after hooks. It answers 201 with the stored document: the field data plus the managed envelope — &#x60;name&#x60;, &#x60;doctype&#x60;, &#x60;docstatus&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;. A Password field comes back as a fixed redaction marker and is dropped when empty; its stored value is never returned by this or any other read on this surface.  &#x60;name&#x60; in the body is the REQUESTED DOCUMENT NAME, not a data field. A DocType with an autoname rule names the document itself and ignores it; a prompt-named DocType takes it. This collision is also why the two path segments cannot be folded into the body, and so why the route stays untyped.  Scoped to the org of the validated principal, and the engine&#39;s own permission calculus decides the rest: the caller needs create rights on this DocType through a role it holds, or a platform admin bit. A caller with no validated principal reaches the engine as the zero Caller and is refused before any store is opened — a forged org header alone buys nothing.  A DocType declared Single has exactly ONE document per org, so this writes that one instance instead of adding a row. The body is size-bounded by the engine, the same bound on every host.
      * @param doctype  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @param frameworkDocument  (required)
+     * @return ApiResponse&lt;FrameworkDocument&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Document created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1FrameworkByDoctypeWithHttpInfo(@javax.annotation.Nonnull String doctype) throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1FrameworkByDoctypeValidateBeforeCall(doctype, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<FrameworkDocument> cloudPostV1FrameworkByDoctypeWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull FrameworkDocument frameworkDocument) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1FrameworkByDoctypeValidateBeforeCall(doctype, frameworkDocument, null);
+        Type localVarReturnType = new TypeToken<FrameworkDocument>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Create one document of a DocType, from that DocType&#39;s own fields. (asynchronously)
+     * The body is the DOCUMENT&#39;S field data: a flat JSON object whose properties are the fieldnames the DocType declares, not a fixed envelope. That is why this operation publishes no request schema — the shape is metadata the DocType defines at run time, and no Go struct both accepts it verbatim and describes it, so nothing is asserted rather than something false.  The engine validates and coerces every field against the DocType, runs the before_insert and before_save hooks (either may reject the write), stores the document, then runs the after hooks. It answers 201 with the stored document: the field data plus the managed envelope — &#x60;name&#x60;, &#x60;doctype&#x60;, &#x60;docstatus&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;. A Password field comes back as a fixed redaction marker and is dropped when empty; its stored value is never returned by this or any other read on this surface.  &#x60;name&#x60; in the body is the REQUESTED DOCUMENT NAME, not a data field. A DocType with an autoname rule names the document itself and ignores it; a prompt-named DocType takes it. This collision is also why the two path segments cannot be folded into the body, and so why the route stays untyped.  Scoped to the org of the validated principal, and the engine&#39;s own permission calculus decides the rest: the caller needs create rights on this DocType through a role it holds, or a platform admin bit. A caller with no validated principal reaches the engine as the zero Caller and is refused before any store is opened — a forged org header alone buys nothing.  A DocType declared Single has exactly ONE document per org, so this writes that one instance instead of adding a row. The body is size-bounded by the engine, the same bound on every host.
      * @param doctype  (required)
+     * @param frameworkDocument  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1597,19 +1622,23 @@ public class FrameworkApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Document created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1FrameworkByDoctypeAsync(@javax.annotation.Nonnull String doctype, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1FrameworkByDoctypeAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull FrameworkDocument frameworkDocument, final ApiCallback<FrameworkDocument> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1FrameworkByDoctypeValidateBeforeCall(doctype, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1FrameworkByDoctypeValidateBeforeCall(doctype, frameworkDocument, _callback);
+        Type localVarReturnType = new TypeToken<FrameworkDocument>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1FrameworkDoctypeNameCancel
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
-     * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param doctype  (required)
+     * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1685,8 +1714,8 @@ public class FrameworkApi {
     /**
      * Moves a submitted document to cancelled (docstatus 1 → 2) after its on_cancel hooks agree.
      * Moves a submitted document to cancelled (docstatus 1 → 2) after its on_cancel hooks agree. Cancelling is terminal — a cancelled document cannot be re-submitted — but it CAN then be deleted.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
-     * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param doctype  (required)
+     * @param name  (required)
      * @return Map&lt;String, Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1704,8 +1733,8 @@ public class FrameworkApi {
     /**
      * Moves a submitted document to cancelled (docstatus 1 → 2) after its on_cancel hooks agree.
      * Moves a submitted document to cancelled (docstatus 1 → 2) after its on_cancel hooks agree. Cancelling is terminal — a cancelled document cannot be re-submitted — but it CAN then be deleted.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
-     * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param doctype  (required)
+     * @param name  (required)
      * @return ApiResponse&lt;Map&lt;String, Object&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1724,8 +1753,8 @@ public class FrameworkApi {
     /**
      * Moves a submitted document to cancelled (docstatus 1 → 2) after its on_cancel hooks agree. (asynchronously)
      * Moves a submitted document to cancelled (docstatus 1 → 2) after its on_cancel hooks agree. Cancelling is terminal — a cancelled document cannot be re-submitted — but it CAN then be deleted.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
-     * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param doctype  (required)
+     * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1745,8 +1774,8 @@ public class FrameworkApi {
     }
     /**
      * Build call for cloudPostV1FrameworkDoctypeNameSubmit
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
-     * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param doctype  (required)
+     * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1822,8 +1851,8 @@ public class FrameworkApi {
     /**
      * Moves a draft to submitted (docstatus 0 → 1) after its on_submit hooks agree.
      * Moves a draft to submitted (docstatus 0 → 1) after its on_submit hooks agree. A submitted document is IMMUTABLE: further writes and deletes are refused until it is cancelled. Only a submittable DocType has this lifecycle; any other docstatus is an illegal transition.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
-     * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param doctype  (required)
+     * @param name  (required)
      * @return Map&lt;String, Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1841,8 +1870,8 @@ public class FrameworkApi {
     /**
      * Moves a draft to submitted (docstatus 0 → 1) after its on_submit hooks agree.
      * Moves a draft to submitted (docstatus 0 → 1) after its on_submit hooks agree. A submitted document is IMMUTABLE: further writes and deletes are refused until it is cancelled. Only a submittable DocType has this lifecycle; any other docstatus is an illegal transition.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
-     * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param doctype  (required)
+     * @param name  (required)
      * @return ApiResponse&lt;Map&lt;String, Object&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1861,8 +1890,8 @@ public class FrameworkApi {
     /**
      * Moves a draft to submitted (docstatus 0 → 1) after its on_submit hooks agree. (asynchronously)
      * Moves a draft to submitted (docstatus 0 → 1) after its on_submit hooks agree. A submitted document is IMMUTABLE: further writes and deletes are refused until it is cancelled. Only a submittable DocType has this lifecycle; any other docstatus is an illegal transition.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
-     * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param doctype  (required)
+     * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2009,7 +2038,7 @@ public class FrameworkApi {
     }
     /**
      * Build call for cloudPostV1FrameworkModulesModuleInstall
-     * @param module Module is the lane&#39;s registered name (\&quot;cms\&quot;, \&quot;erp\&quot;), from the path. (required)
+     * @param module  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2079,7 +2108,7 @@ public class FrameworkApi {
     /**
      * Creates an app lane&#39;s DocTypes in the caller&#39;s org.
      * Creates an app lane&#39;s DocTypes in the caller&#39;s org. Idempotent and create-if-absent: a DocType the org already has is reported as existing and never replaced, so re-installing cannot clobber a definition the org has since edited. Manager-only.
-     * @param module Module is the lane&#39;s registered name (\&quot;cms\&quot;, \&quot;erp\&quot;), from the path. (required)
+     * @param module  (required)
      * @return CloudInstall
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2097,7 +2126,7 @@ public class FrameworkApi {
     /**
      * Creates an app lane&#39;s DocTypes in the caller&#39;s org.
      * Creates an app lane&#39;s DocTypes in the caller&#39;s org. Idempotent and create-if-absent: a DocType the org already has is reported as existing and never replaced, so re-installing cannot clobber a definition the org has since edited. Manager-only.
-     * @param module Module is the lane&#39;s registered name (\&quot;cms\&quot;, \&quot;erp\&quot;), from the path. (required)
+     * @param module  (required)
      * @return ApiResponse&lt;CloudInstall&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2116,7 +2145,7 @@ public class FrameworkApi {
     /**
      * Creates an app lane&#39;s DocTypes in the caller&#39;s org. (asynchronously)
      * Creates an app lane&#39;s DocTypes in the caller&#39;s org. Idempotent and create-if-absent: a DocType the org already has is reported as existing and never replaced, so re-installing cannot clobber a definition the org has since edited. Manager-only.
-     * @param module Module is the lane&#39;s registered name (\&quot;cms\&quot;, \&quot;erp\&quot;), from the path. (required)
+     * @param module  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2265,6 +2294,7 @@ public class FrameworkApi {
      * Build call for cloudPutV1FrameworkByDoctypeByName
      * @param doctype  (required)
      * @param name  (required)
+     * @param frameworkDocument  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2272,10 +2302,14 @@ public class FrameworkApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Document updated </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Document is not a draft </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPutV1FrameworkByDoctypeByNameCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPutV1FrameworkByDoctypeByNameCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull FrameworkDocument frameworkDocument, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2289,7 +2323,7 @@ public class FrameworkApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = frameworkDocument;
 
         // create path and map variables
         String localVarPath = "/v1/framework/{doctype}/{name}"
@@ -2303,6 +2337,7 @@ public class FrameworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2310,6 +2345,7 @@ public class FrameworkApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -2321,7 +2357,7 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPutV1FrameworkByDoctypeByNameValidateBeforeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudPutV1FrameworkByDoctypeByNameValidateBeforeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull FrameworkDocument frameworkDocument, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'doctype' is set
         if (doctype == null) {
             throw new ApiException("Missing the required parameter 'doctype' when calling cloudPutV1FrameworkByDoctypeByName(Async)");
@@ -2332,51 +2368,70 @@ public class FrameworkApi {
             throw new ApiException("Missing the required parameter 'name' when calling cloudPutV1FrameworkByDoctypeByName(Async)");
         }
 
-        return cloudPutV1FrameworkByDoctypeByNameCall(doctype, name, _callback);
+        // verify the required parameter 'frameworkDocument' is set
+        if (frameworkDocument == null) {
+            throw new ApiException("Missing the required parameter 'frameworkDocument' when calling cloudPutV1FrameworkByDoctypeByName(Async)");
+        }
+
+        return cloudPutV1FrameworkByDoctypeByNameCall(doctype, name, frameworkDocument, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Replace a draft document&#39;s field data wholesale.
+     * PUT semantics: the stored field data BECOMES the body, so a field the body omits is not left at its previous value. The body is the document&#39;s own field data — the same metadata-defined open object the create takes, and the same reason this operation publishes no request schema.  Only a DRAFT can be edited. A document that has been submitted or cancelled is immutable and the write is refused as a conflict, so the submit lifecycle cannot be bypassed by a plain update — cancel it first, and note that a cancelled document can be deleted but never re-submitted or re-edited. The engine validates the new data against the DocType, runs before_save (which may reject), writes, then runs the after hooks, and answers 200 with the stored document plus its managed envelope, Password fields redacted.  The document name in the path is percent-decoded before it is matched, so a name containing a space is addressed as it is stored. An unknown DocType or document is not found, and the same answer covers a document that exists in another tenant: the org comes from the validated principal and is part of the store key, so a caller cannot learn that another org&#39;s document exists. Write rights on the DocType are required, decided by the engine&#39;s permission calculus.  For a Single DocType the path name is ignored — there is one instance per org and this writes it.
      * @param doctype  (required)
      * @param name  (required)
+     * @param frameworkDocument  (required)
+     * @return FrameworkDocument
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Document updated </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Document is not a draft </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPutV1FrameworkByDoctypeByName(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
-        cloudPutV1FrameworkByDoctypeByNameWithHttpInfo(doctype, name);
+    public FrameworkDocument cloudPutV1FrameworkByDoctypeByName(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull FrameworkDocument frameworkDocument) throws ApiException {
+        ApiResponse<FrameworkDocument> localVarResp = cloudPutV1FrameworkByDoctypeByNameWithHttpInfo(doctype, name, frameworkDocument);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
+     * Replace a draft document&#39;s field data wholesale.
+     * PUT semantics: the stored field data BECOMES the body, so a field the body omits is not left at its previous value. The body is the document&#39;s own field data — the same metadata-defined open object the create takes, and the same reason this operation publishes no request schema.  Only a DRAFT can be edited. A document that has been submitted or cancelled is immutable and the write is refused as a conflict, so the submit lifecycle cannot be bypassed by a plain update — cancel it first, and note that a cancelled document can be deleted but never re-submitted or re-edited. The engine validates the new data against the DocType, runs before_save (which may reject), writes, then runs the after hooks, and answers 200 with the stored document plus its managed envelope, Password fields redacted.  The document name in the path is percent-decoded before it is matched, so a name containing a space is addressed as it is stored. An unknown DocType or document is not found, and the same answer covers a document that exists in another tenant: the org comes from the validated principal and is part of the store key, so a caller cannot learn that another org&#39;s document exists. Write rights on the DocType are required, decided by the engine&#39;s permission calculus.  For a Single DocType the path name is ignored — there is one instance per org and this writes it.
      * @param doctype  (required)
      * @param name  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @param frameworkDocument  (required)
+     * @return ApiResponse&lt;FrameworkDocument&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Document updated </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Document is not a draft </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPutV1FrameworkByDoctypeByNameWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = cloudPutV1FrameworkByDoctypeByNameValidateBeforeCall(doctype, name, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<FrameworkDocument> cloudPutV1FrameworkByDoctypeByNameWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull FrameworkDocument frameworkDocument) throws ApiException {
+        okhttp3.Call localVarCall = cloudPutV1FrameworkByDoctypeByNameValidateBeforeCall(doctype, name, frameworkDocument, null);
+        Type localVarReturnType = new TypeToken<FrameworkDocument>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Replace a draft document&#39;s field data wholesale. (asynchronously)
+     * PUT semantics: the stored field data BECOMES the body, so a field the body omits is not left at its previous value. The body is the document&#39;s own field data — the same metadata-defined open object the create takes, and the same reason this operation publishes no request schema.  Only a DRAFT can be edited. A document that has been submitted or cancelled is immutable and the write is refused as a conflict, so the submit lifecycle cannot be bypassed by a plain update — cancel it first, and note that a cancelled document can be deleted but never re-submitted or re-edited. The engine validates the new data against the DocType, runs before_save (which may reject), writes, then runs the after hooks, and answers 200 with the stored document plus its managed envelope, Password fields redacted.  The document name in the path is percent-decoded before it is matched, so a name containing a space is addressed as it is stored. An unknown DocType or document is not found, and the same answer covers a document that exists in another tenant: the org comes from the validated principal and is part of the store key, so a caller cannot learn that another org&#39;s document exists. Write rights on the DocType are required, decided by the engine&#39;s permission calculus.  For a Single DocType the path name is ignored — there is one instance per org and this writes it.
      * @param doctype  (required)
      * @param name  (required)
+     * @param frameworkDocument  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2384,13 +2439,18 @@ public class FrameworkApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Document updated </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Resource not found </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Document is not a draft </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPutV1FrameworkByDoctypeByNameAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPutV1FrameworkByDoctypeByNameAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull FrameworkDocument frameworkDocument, final ApiCallback<FrameworkDocument> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPutV1FrameworkByDoctypeByNameValidateBeforeCall(doctype, name, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPutV1FrameworkByDoctypeByNameValidateBeforeCall(doctype, name, frameworkDocument, _callback);
+        Type localVarReturnType = new TypeToken<FrameworkDocument>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

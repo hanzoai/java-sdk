@@ -149,8 +149,8 @@ public class PlansApi {
     }
 
     /**
-     * 
-     * 
+     * Remove a plan from the authority
+     * Deletes the addressed plan and answers 204. It removes the plan from the catalog buyers choose from; it does not touch subscriptions already sold against it, which keep their stored plan id. PLATFORM admin only — an org-level admin is refused 403 — and an unknown slug is 404.
      * @param slug  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -165,8 +165,8 @@ public class PlansApi {
     }
 
     /**
-     * 
-     * 
+     * Remove a plan from the authority
+     * Deletes the addressed plan and answers 204. It removes the plan from the catalog buyers choose from; it does not touch subscriptions already sold against it, which keep their stored plan id. PLATFORM admin only — an org-level admin is refused 403 — and an unknown slug is 404.
      * @param slug  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -183,8 +183,8 @@ public class PlansApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Remove a plan from the authority (asynchronously)
+     * Deletes the addressed plan and answers 204. It removes the plan from the catalog buyers choose from; it does not touch subscriptions already sold against it, which keep their stored plan id. PLATFORM admin only — an org-level admin is refused 403 — and an unknown slug is 404.
      * @param slug  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -859,8 +859,8 @@ public class PlansApi {
     }
 
     /**
-     * 
-     * 
+     * The raw plan authority rows
+     * Returns every plan row as stored — the administrative view behind the public plan catalog. The plan authority is cross-tenant pricing data, so the gate is a PLATFORM admin enforced by the handler itself: an org-level admin is refused 403 no matter what they may do inside their own org.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -874,8 +874,8 @@ public class PlansApi {
     }
 
     /**
-     * 
-     * 
+     * The raw plan authority rows
+     * Returns every plan row as stored — the administrative view behind the public plan catalog. The plan authority is cross-tenant pricing data, so the gate is a PLATFORM admin enforced by the handler itself: an org-level admin is refused 403 no matter what they may do inside their own org.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -891,8 +891,8 @@ public class PlansApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The raw plan authority rows (asynchronously)
+     * Returns every plan row as stored — the administrative view behind the public plan catalog. The plan authority is cross-tenant pricing data, so the gate is a PLATFORM admin enforced by the handler itself: an org-level admin is refused 403 no matter what they may do inside their own org.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1078,7 +1078,7 @@ public class PlansApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -2151,8 +2151,8 @@ public class PlansApi {
     }
 
     /**
-     * 
-     * 
+     * Add a subscription plan
+     * Creates a plan from the body and answers it at 201. The slug is required and globally unique — a duplicate is 409 — and the row is marked authoritative on creation, so the corrective seed will leave it alone. Price, annual price and the contact-sales flag are stored exactly as sent, never coerced, so the difference between a free plan and a quote-only plan survives. PLATFORM admin only.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2166,8 +2166,8 @@ public class PlansApi {
     }
 
     /**
-     * 
-     * 
+     * Add a subscription plan
+     * Creates a plan from the body and answers it at 201. The slug is required and globally unique — a duplicate is 409 — and the row is marked authoritative on creation, so the corrective seed will leave it alone. Price, annual price and the contact-sales flag are stored exactly as sent, never coerced, so the difference between a free plan and a quote-only plan survives. PLATFORM admin only.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2183,8 +2183,8 @@ public class PlansApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Add a subscription plan (asynchronously)
+     * Creates a plan from the body and answers it at 201. The slug is required and globally unique — a duplicate is 409 — and the row is marked authoritative on creation, so the corrective seed will leave it alone. Price, annual price and the contact-sales flag are stored exactly as sent, never coerced, so the difference between a free plan and a quote-only plan survives. PLATFORM admin only.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2263,8 +2263,8 @@ public class PlansApi {
     }
 
     /**
-     * 
-     * 
+     * Seed the embedded plan catalog, without overwriting administrative edits
+     * Upserts the shipped plan rows and answers how many were created and how many corrected. It is idempotent and non-destructive — a row an administrator authored or edited is left as it stands — so it is safe against a live authority and fills only what is missing or has drifted. PLATFORM admin only, and a deployment with no seed source wired answers 500 rather than quietly seeding nothing.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2278,8 +2278,8 @@ public class PlansApi {
     }
 
     /**
-     * 
-     * 
+     * Seed the embedded plan catalog, without overwriting administrative edits
+     * Upserts the shipped plan rows and answers how many were created and how many corrected. It is idempotent and non-destructive — a row an administrator authored or edited is left as it stands — so it is safe against a live authority and fills only what is missing or has drifted. PLATFORM admin only, and a deployment with no seed source wired answers 500 rather than quietly seeding nothing.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2295,8 +2295,8 @@ public class PlansApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Seed the embedded plan catalog, without overwriting administrative edits (asynchronously)
+     * Upserts the shipped plan rows and answers how many were created and how many corrected. It is idempotent and non-destructive — a row an administrator authored or edited is left as it stands — so it is safe against a live authority and fills only what is missing or has drifted. PLATFORM admin only, and a deployment with no seed source wired answers 500 rather than quietly seeding nothing.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2382,8 +2382,8 @@ public class PlansApi {
     }
 
     /**
-     * 
-     * 
+     * Edit a plan, leaving the fields you omit alone
+     * Loads the addressed plan, applies the body over it and answers the stored result, so a partial edit never silently zeroes a price or the contact-sales flag. The slug is IMMUTABLE: a body naming a different slug is rejected outright before anything is written, because a rename would orphan every subscription that stored the old id — deprecate and create instead. An admin edit marks the row authoritative so the seed stops correcting it. PLATFORM admin only; an unknown slug is 404.
      * @param slug  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2398,8 +2398,8 @@ public class PlansApi {
     }
 
     /**
-     * 
-     * 
+     * Edit a plan, leaving the fields you omit alone
+     * Loads the addressed plan, applies the body over it and answers the stored result, so a partial edit never silently zeroes a price or the contact-sales flag. The slug is IMMUTABLE: a body naming a different slug is rejected outright before anything is written, because a rename would orphan every subscription that stored the old id — deprecate and create instead. An admin edit marks the row authoritative so the seed stops correcting it. PLATFORM admin only; an unknown slug is 404.
      * @param slug  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2416,8 +2416,8 @@ public class PlansApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Edit a plan, leaving the fields you omit alone (asynchronously)
+     * Loads the addressed plan, applies the body over it and answers the stored result, so a partial edit never silently zeroes a price or the contact-sales flag. The slug is IMMUTABLE: a body naming a different slug is rejected outright before anything is written, because a rename would orphan every subscription that stored the old id — deprecate and create instead. An admin edit marks the row authoritative so the seed stops correcting it. PLATFORM admin only; an unknown slug is 404.
      * @param slug  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

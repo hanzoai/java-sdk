@@ -78,7 +78,7 @@ public class PromptsApi {
 
     /**
      * Build call for cloudDeleteV1PromptsName
-     * @param name Name is the prompt to act on, from the path. (required)
+     * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -147,7 +147,7 @@ public class PromptsApi {
     /**
      * Delete removes one of the caller org&#39;s prompts and every version of it, answering 204.
      * Delete removes one of the caller org&#39;s prompts and every version of it, answering 204. It is scoped to the caller&#39;s org, so a name another tenant owns is the same 404 an unknown name gives. There is no undo: the version history goes with it.
-     * @param name Name is the prompt to act on, from the path. (required)
+     * @param name  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -163,7 +163,7 @@ public class PromptsApi {
     /**
      * Delete removes one of the caller org&#39;s prompts and every version of it, answering 204.
      * Delete removes one of the caller org&#39;s prompts and every version of it, answering 204. It is scoped to the caller&#39;s org, so a name another tenant owns is the same 404 an unknown name gives. There is no undo: the version history goes with it.
-     * @param name Name is the prompt to act on, from the path. (required)
+     * @param name  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -181,7 +181,7 @@ public class PromptsApi {
     /**
      * Delete removes one of the caller org&#39;s prompts and every version of it, answering 204. (asynchronously)
      * Delete removes one of the caller org&#39;s prompts and every version of it, answering 204. It is scoped to the caller&#39;s org, so a name another tenant owns is the same 404 an unknown name gives. There is no undo: the version history goes with it.
-     * @param name Name is the prompt to act on, from the path. (required)
+     * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -551,7 +551,7 @@ public class PromptsApi {
     }
     /**
      * Build call for cloudGetV1PromptsName
-     * @param name Name is the prompt to act on, from the path. (required)
+     * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -621,7 +621,7 @@ public class PromptsApi {
     /**
      * Get returns one of the caller org&#39;s prompts: its CURRENT template text plus the metadata of every version it has had.
      * Get returns one of the caller org&#39;s prompts: its CURRENT template text plus the metadata of every version it has had. The history carries version numbers, types and timestamps only — not each version&#39;s body — so a long history cannot inflate this response. A name the caller&#39;s org does not own is 404, whoever owns it.
-     * @param name Name is the prompt to act on, from the path. (required)
+     * @param name  (required)
      * @return CloudPromptDetail
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -639,7 +639,7 @@ public class PromptsApi {
     /**
      * Get returns one of the caller org&#39;s prompts: its CURRENT template text plus the metadata of every version it has had.
      * Get returns one of the caller org&#39;s prompts: its CURRENT template text plus the metadata of every version it has had. The history carries version numbers, types and timestamps only — not each version&#39;s body — so a long history cannot inflate this response. A name the caller&#39;s org does not own is 404, whoever owns it.
-     * @param name Name is the prompt to act on, from the path. (required)
+     * @param name  (required)
      * @return ApiResponse&lt;CloudPromptDetail&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -658,7 +658,7 @@ public class PromptsApi {
     /**
      * Get returns one of the caller org&#39;s prompts: its CURRENT template text plus the metadata of every version it has had. (asynchronously)
      * Get returns one of the caller org&#39;s prompts: its CURRENT template text plus the metadata of every version it has had. The history carries version numbers, types and timestamps only — not each version&#39;s body — so a long history cannot inflate this response. A name the caller&#39;s org does not own is 404, whoever owns it.
-     * @param name Name is the prompt to act on, from the path. (required)
+     * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

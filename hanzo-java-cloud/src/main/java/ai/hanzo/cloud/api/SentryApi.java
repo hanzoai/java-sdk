@@ -140,8 +140,8 @@ public class SentryApi {
     }
 
     /**
-     * 
-     * 
+     * Delete a Sentry project
+     * The one delete on the Sentry surface: removing a PROJECT, answering 204. Error issues, events and traces are not individually deletable — they are append-only telemetry, and their lifetime is retention&#39;s business, not an API call&#39;s.  Requires a validated, org-scoped principal with edit rights; a viewer is refused. The delete is confined to the org minted from that principal&#39;s claim, so a project id belonging to another tenant is not found rather than removed. Deleting a project retires the DSN that fed it, so any SDK still pointed at that key stops being accepted. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -156,8 +156,8 @@ public class SentryApi {
     }
 
     /**
-     * 
-     * 
+     * Delete a Sentry project
+     * The one delete on the Sentry surface: removing a PROJECT, answering 204. Error issues, events and traces are not individually deletable — they are append-only telemetry, and their lifetime is retention&#39;s business, not an API call&#39;s.  Requires a validated, org-scoped principal with edit rights; a viewer is refused. The delete is confined to the org minted from that principal&#39;s claim, so a project id belonging to another tenant is not found rather than removed. Deleting a project retires the DSN that fed it, so any SDK still pointed at that key stops being accepted. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -174,8 +174,8 @@ public class SentryApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Delete a Sentry project (asynchronously)
+     * The one delete on the Sentry surface: removing a PROJECT, answering 204. Error issues, events and traces are not individually deletable — they are append-only telemetry, and their lifetime is retention&#39;s business, not an API call&#39;s.  Requires a validated, org-scoped principal with edit rights; a viewer is refused. The delete is confined to the org minted from that principal&#39;s claim, so a project id belonging to another tenant is not found rather than removed. Deleting a project retires the DSN that fed it, so any SDK still pointed at that key stops being accepted. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -262,8 +262,8 @@ public class SentryApi {
     }
 
     /**
-     * 
-     * 
+     * Read the caller org&#39;s errors on the Sentry surface
+     * Serves the Sentry-compatible read surface — projects, error issues and one issue&#39;s occurrences, a single event, error logs, error-correlated traces and one trace&#39;s waterfall, and the event-rate stats — so a Sentry client or the error console reads its errors at the paths it already speaks.  It is the SAME runtime the observability surface serves, reached under a second path family, and there is NO rewrite: the runtime carries these routes literally. That is what makes this a product face rather than a translation layer. One runtime, two path families.  A validated principal is required and the read is scoped to that principal&#39;s own org. Errors are a tenant&#39;s OWN data, so org membership is the whole admission test and there is deliberately no admin term on it — gating the product on platform sudo would make the only way to see your own errors a scope that shows you everyone&#39;s. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -278,8 +278,8 @@ public class SentryApi {
     }
 
     /**
-     * 
-     * 
+     * Read the caller org&#39;s errors on the Sentry surface
+     * Serves the Sentry-compatible read surface — projects, error issues and one issue&#39;s occurrences, a single event, error logs, error-correlated traces and one trace&#39;s waterfall, and the event-rate stats — so a Sentry client or the error console reads its errors at the paths it already speaks.  It is the SAME runtime the observability surface serves, reached under a second path family, and there is NO rewrite: the runtime carries these routes literally. That is what makes this a product face rather than a translation layer. One runtime, two path families.  A validated principal is required and the read is scoped to that principal&#39;s own org. Errors are a tenant&#39;s OWN data, so org membership is the whole admission test and there is deliberately no admin term on it — gating the product on platform sudo would make the only way to see your own errors a scope that shows you everyone&#39;s. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -296,8 +296,8 @@ public class SentryApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Read the caller org&#39;s errors on the Sentry surface (asynchronously)
+     * Serves the Sentry-compatible read surface — projects, error issues and one issue&#39;s occurrences, a single event, error logs, error-correlated traces and one trace&#39;s waterfall, and the event-rate stats — so a Sentry client or the error console reads its errors at the paths it already speaks.  It is the SAME runtime the observability surface serves, reached under a second path family, and there is NO rewrite: the runtime carries these routes literally. That is what makes this a product face rather than a translation layer. One runtime, two path families.  A validated principal is required and the read is scoped to that principal&#39;s own org. Errors are a tenant&#39;s OWN data, so org membership is the whole admission test and there is deliberately no admin term on it — gating the product on platform sudo would make the only way to see your own errors a scope that shows you everyone&#39;s. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -384,8 +384,8 @@ public class SentryApi {
     }
 
     /**
-     * 
-     * 
+     * Not served by the Sentry face
+     * Published because this address accepts every method, but the Sentry face routes nothing here: the request reaches the runtime as an unrouted path and no issue, event or trace is touched.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -400,8 +400,8 @@ public class SentryApi {
     }
 
     /**
-     * 
-     * 
+     * Not served by the Sentry face
+     * Published because this address accepts every method, but the Sentry face routes nothing here: the request reaches the runtime as an unrouted path and no issue, event or trace is touched.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -418,8 +418,8 @@ public class SentryApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Not served by the Sentry face (asynchronously)
+     * Published because this address accepts every method, but the Sentry face routes nothing here: the request reaches the runtime as an unrouted path and no issue, event or trace is touched.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -506,8 +506,8 @@ public class SentryApi {
     }
 
     /**
-     * 
-     * 
+     * Not served — the Sentry surface has no partial update
+     * The Sentry face carries NO route for a partial update. The wildcard admits every method, so this operation exists as an address, but nothing behind it answers and a request lands on the runtime as an unrouted path.  It is documented rather than silently omitted because the useful thing to say is where to go instead: an issue&#39;s lifecycle — resolve, ignore, assign — is a REPLACE on that issue, not a patch, and it is the only mutable state on this surface. A client that reaches for a partial update here is looking for that call.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -522,8 +522,8 @@ public class SentryApi {
     }
 
     /**
-     * 
-     * 
+     * Not served — the Sentry surface has no partial update
+     * The Sentry face carries NO route for a partial update. The wildcard admits every method, so this operation exists as an address, but nothing behind it answers and a request lands on the runtime as an unrouted path.  It is documented rather than silently omitted because the useful thing to say is where to go instead: an issue&#39;s lifecycle — resolve, ignore, assign — is a REPLACE on that issue, not a patch, and it is the only mutable state on this surface. A client that reaches for a partial update here is looking for that call.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -540,8 +540,8 @@ public class SentryApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Not served — the Sentry surface has no partial update (asynchronously)
+     * The Sentry face carries NO route for a partial update. The wildcard admits every method, so this operation exists as an address, but nothing behind it answers and a request lands on the runtime as an unrouted path.  It is documented rather than silently omitted because the useful thing to say is where to go instead: an issue&#39;s lifecycle — resolve, ignore, assign — is a REPLACE on that issue, not a patch, and it is the only mutable state on this surface. A client that reaches for a partial update here is looking for that call.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -628,8 +628,8 @@ public class SentryApi {
     }
 
     /**
-     * 
-     * 
+     * Send events to the Sentry surface, or write on it
+     * Carries every write on the Sentry-compatible surface: the SDK&#39;s error ingest, and the authenticated writes the console makes — creating a project, rotating a project&#39;s DSN key, and running a discover query over the events plane.  THE TWO ARE AUTHENTICATED DIFFERENTLY, and that is the rule to get right. An envelope or store submission presents a DSN public key, never a Hanzo session, so it is exempt from the principal gate and verified by the ingest key check instead — which derives the org from the DSN and fails closed. A keyless submission is a 401 from that verifier, not a 403 from the gate, and telling those two apart is how you tell the hops apart. Every other write here needs a validated, org-scoped principal, and creating or rotating requires an editor rather than a viewer.  The ingest exemption is matched by method plus prefix plus suffix, never a bare prefix, and the project segment must be a UUID — so no read is reachable through it. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -644,8 +644,8 @@ public class SentryApi {
     }
 
     /**
-     * 
-     * 
+     * Send events to the Sentry surface, or write on it
+     * Carries every write on the Sentry-compatible surface: the SDK&#39;s error ingest, and the authenticated writes the console makes — creating a project, rotating a project&#39;s DSN key, and running a discover query over the events plane.  THE TWO ARE AUTHENTICATED DIFFERENTLY, and that is the rule to get right. An envelope or store submission presents a DSN public key, never a Hanzo session, so it is exempt from the principal gate and verified by the ingest key check instead — which derives the org from the DSN and fails closed. A keyless submission is a 401 from that verifier, not a 403 from the gate, and telling those two apart is how you tell the hops apart. Every other write here needs a validated, org-scoped principal, and creating or rotating requires an editor rather than a viewer.  The ingest exemption is matched by method plus prefix plus suffix, never a bare prefix, and the project segment must be a UUID — so no read is reachable through it. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -662,8 +662,8 @@ public class SentryApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Send events to the Sentry surface, or write on it (asynchronously)
+     * Carries every write on the Sentry-compatible surface: the SDK&#39;s error ingest, and the authenticated writes the console makes — creating a project, rotating a project&#39;s DSN key, and running a discover query over the events plane.  THE TWO ARE AUTHENTICATED DIFFERENTLY, and that is the rule to get right. An envelope or store submission presents a DSN public key, never a Hanzo session, so it is exempt from the principal gate and verified by the ingest key check instead — which derives the org from the DSN and fails closed. A keyless submission is a 401 from that verifier, not a 403 from the gate, and telling those two apart is how you tell the hops apart. Every other write here needs a validated, org-scoped principal, and creating or rotating requires an editor rather than a viewer.  The ingest exemption is matched by method plus prefix plus suffix, never a bare prefix, and the project segment must be a UUID — so no read is reachable through it. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -750,8 +750,8 @@ public class SentryApi {
     }
 
     /**
-     * 
-     * 
+     * Move an error issue through its lifecycle
+     * The one replace on the Sentry surface: updating an error ISSUE — resolving it, ignoring it, or assigning it — and answering the updated issue.  Nothing else here takes a replace. A project is created and deleted but never replaced, and the event and trace planes are append-only telemetry, so an issue&#39;s lifecycle is the only mutable state this face exposes.  Requires a validated, org-scoped principal with edit rights; a viewer is refused. The write is confined to the org minted from that principal&#39;s claim, so an issue id belonging to another tenant is simply not found. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -766,8 +766,8 @@ public class SentryApi {
     }
 
     /**
-     * 
-     * 
+     * Move an error issue through its lifecycle
+     * The one replace on the Sentry surface: updating an error ISSUE — resolving it, ignoring it, or assigning it — and answering the updated issue.  Nothing else here takes a replace. A project is created and deleted but never replaced, and the event and trace planes are append-only telemetry, so an issue&#39;s lifecycle is the only mutable state this face exposes.  Requires a validated, org-scoped principal with edit rights; a viewer is refused. The write is confined to the org minted from that principal&#39;s claim, so an issue id belonging to another tenant is simply not found. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -784,8 +784,8 @@ public class SentryApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Move an error issue through its lifecycle (asynchronously)
+     * The one replace on the Sentry surface: updating an error ISSUE — resolving it, ignoring it, or assigning it — and answering the updated issue.  Nothing else here takes a replace. A project is created and deleted but never replaced, and the event and trace planes are append-only telemetry, so an issue&#39;s lifecycle is the only mutable state this face exposes.  Requires a validated, org-scoped principal with edit rights; a viewer is refused. The write is confined to the org minted from that principal&#39;s claim, so an issue id belonging to another tenant is simply not found. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -800,128 +800,6 @@ public class SentryApi {
     public okhttp3.Call cloudPutV1SentryByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudPutV1SentryByWildcard1ValidateBeforeCall(wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for cloudTraceV1SentryByWildcard1
-     * @param wildcard1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceV1SentryByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/sentry/{wildcard1}"
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "TRACE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudTraceV1SentryByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling cloudTraceV1SentryByWildcard1(Async)");
-        }
-
-        return cloudTraceV1SentryByWildcard1Call(wildcard1, _callback);
-
-    }
-
-    /**
-     * 
-     * 
-     * @param wildcard1  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public void cloudTraceV1SentryByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        cloudTraceV1SentryByWildcard1WithHttpInfo(wildcard1);
-    }
-
-    /**
-     * 
-     * 
-     * @param wildcard1  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> cloudTraceV1SentryByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = cloudTraceV1SentryByWildcard1ValidateBeforeCall(wildcard1, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param wildcard1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceV1SentryByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = cloudTraceV1SentryByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

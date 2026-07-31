@@ -1352,8 +1352,8 @@ public class GuideApi {
     }
 
     /**
-     * 
-     * 
+     * Edit — or retire — one item of the brand blueprint
+     * Edits a single item of the brand blueprint by id and saves it as a NEW VERSION, answering the whole blueprint after the edit. &#x60;collection&#x60; is one of &#x60;sections&#x60;, &#x60;steps&#x60;, &#x60;strategies&#x60; or &#x60;templates&#x60;; anything else is 400, and an id that collection does not hold is 404. This is also the retire lever: &#x60;{\&quot;enabled\&quot;: false}&#x60; takes an item out of every org&#39;s journey without deleting it or its history.  SuperAdmin ONLY, like the rest of the authoring plane; a per-org admin is 403. The write is audited.  The patch is a SHALLOW merge over the item&#39;s own top-level keys — a key you send replaces that key whole, a key you omit is left alone — and &#x60;id&#x60; is dropped from the patch before it is applied, so an edit can never rekey an item. That is why the body has no declarable shape: its keys are the patched item&#39;s, not this route&#39;s.  Fail-closed on the WHOLE document, not just the item: the blueprint is re-validated after the merge, so a patch that would dangle a dependency, break the step DAG or empty the journey is 422 and nothing is saved. An empty patch is 400 and one over 16 MiB is 413.
      * @param collection  (required)
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1369,8 +1369,8 @@ public class GuideApi {
     }
 
     /**
-     * 
-     * 
+     * Edit — or retire — one item of the brand blueprint
+     * Edits a single item of the brand blueprint by id and saves it as a NEW VERSION, answering the whole blueprint after the edit. &#x60;collection&#x60; is one of &#x60;sections&#x60;, &#x60;steps&#x60;, &#x60;strategies&#x60; or &#x60;templates&#x60;; anything else is 400, and an id that collection does not hold is 404. This is also the retire lever: &#x60;{\&quot;enabled\&quot;: false}&#x60; takes an item out of every org&#39;s journey without deleting it or its history.  SuperAdmin ONLY, like the rest of the authoring plane; a per-org admin is 403. The write is audited.  The patch is a SHALLOW merge over the item&#39;s own top-level keys — a key you send replaces that key whole, a key you omit is left alone — and &#x60;id&#x60; is dropped from the patch before it is applied, so an edit can never rekey an item. That is why the body has no declarable shape: its keys are the patched item&#39;s, not this route&#39;s.  Fail-closed on the WHOLE document, not just the item: the blueprint is re-validated after the merge, so a patch that would dangle a dependency, break the step DAG or empty the journey is 422 and nothing is saved. An empty patch is 400 and one over 16 MiB is 413.
      * @param collection  (required)
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -1388,8 +1388,8 @@ public class GuideApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Edit — or retire — one item of the brand blueprint (asynchronously)
+     * Edits a single item of the brand blueprint by id and saves it as a NEW VERSION, answering the whole blueprint after the edit. &#x60;collection&#x60; is one of &#x60;sections&#x60;, &#x60;steps&#x60;, &#x60;strategies&#x60; or &#x60;templates&#x60;; anything else is 400, and an id that collection does not hold is 404. This is also the retire lever: &#x60;{\&quot;enabled\&quot;: false}&#x60; takes an item out of every org&#39;s journey without deleting it or its history.  SuperAdmin ONLY, like the rest of the authoring plane; a per-org admin is 403. The write is audited.  The patch is a SHALLOW merge over the item&#39;s own top-level keys — a key you send replaces that key whole, a key you omit is left alone — and &#x60;id&#x60; is dropped from the patch before it is applied, so an edit can never rekey an item. That is why the body has no declarable shape: its keys are the patched item&#39;s, not this route&#39;s.  Fail-closed on the WHOLE document, not just the item: the blueprint is re-validated after the merge, so a patch that would dangle a dependency, break the step DAG or empty the journey is 422 and nothing is saved. An empty patch is 400 and one over 16 MiB is 413.
      * @param collection  (required)
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1604,8 +1604,8 @@ public class GuideApi {
     }
 
     /**
-     * 
-     * 
+     * Have the Business AI actually do the step for you
+     * Executes one step of the caller org&#39;s journey through that principal&#39;s OWN tool plane and answers the action log — &#x60;{step, events, state}&#x60; — so the caller sees every tool call the agent made and where the step ended up. This is the ONE executing path in guide: suggest and chat advise, this acts, and the work is charged to the calling principal&#39;s ledger.  Ask for it live and the same actions arrive as Server-Sent Events instead, on either of two triggers — &#x60;Accept: text/event-stream&#x60; or &#x60;?stream&#x3D;1&#x60;. The stream opens with a comment, emits one frame per action as it happens, and closes with an &#x60;end&#x60; frame carrying &#x60;ok&#x60; and the final state. The streamed run is detached and bounded at 120 seconds, so it finishes on its own clock once the response has begun.  An agent that FAILS is not a failed request: the JSON answer still comes back 200 with &#x60;error&#x60; beside the events it did manage, and the stream still ends with &#x60;ok:false&#x60;. The refusals are the ones before the agent runs — 409 with &#x60;{error, step, blockedBy}&#x60; for a step whose dependencies are unfinished, 404 for an id the journey does not contain, 403 without a validated org.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1620,8 +1620,8 @@ public class GuideApi {
     }
 
     /**
-     * 
-     * 
+     * Have the Business AI actually do the step for you
+     * Executes one step of the caller org&#39;s journey through that principal&#39;s OWN tool plane and answers the action log — &#x60;{step, events, state}&#x60; — so the caller sees every tool call the agent made and where the step ended up. This is the ONE executing path in guide: suggest and chat advise, this acts, and the work is charged to the calling principal&#39;s ledger.  Ask for it live and the same actions arrive as Server-Sent Events instead, on either of two triggers — &#x60;Accept: text/event-stream&#x60; or &#x60;?stream&#x3D;1&#x60;. The stream opens with a comment, emits one frame per action as it happens, and closes with an &#x60;end&#x60; frame carrying &#x60;ok&#x60; and the final state. The streamed run is detached and bounded at 120 seconds, so it finishes on its own clock once the response has begun.  An agent that FAILS is not a failed request: the JSON answer still comes back 200 with &#x60;error&#x60; beside the events it did manage, and the stream still ends with &#x60;ok:false&#x60;. The refusals are the ones before the agent runs — 409 with &#x60;{error, step, blockedBy}&#x60; for a step whose dependencies are unfinished, 404 for an id the journey does not contain, 403 without a validated org.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1638,8 +1638,8 @@ public class GuideApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Have the Business AI actually do the step for you (asynchronously)
+     * Executes one step of the caller org&#39;s journey through that principal&#39;s OWN tool plane and answers the action log — &#x60;{step, events, state}&#x60; — so the caller sees every tool call the agent made and where the step ended up. This is the ONE executing path in guide: suggest and chat advise, this acts, and the work is charged to the calling principal&#39;s ledger.  Ask for it live and the same actions arrive as Server-Sent Events instead, on either of two triggers — &#x60;Accept: text/event-stream&#x60; or &#x60;?stream&#x3D;1&#x60;. The stream opens with a comment, emits one frame per action as it happens, and closes with an &#x60;end&#x60; frame carrying &#x60;ok&#x60; and the final state. The streamed run is detached and bounded at 120 seconds, so it finishes on its own clock once the response has begun.  An agent that FAILS is not a failed request: the JSON answer still comes back 200 with &#x60;error&#x60; beside the events it did manage, and the stream still ends with &#x60;ok:false&#x60;. The refusals are the ones before the agent runs — 409 with &#x60;{error, step, blockedBy}&#x60; for a step whose dependencies are unfinished, 404 for an id the journey does not contain, 403 without a validated org.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1726,8 +1726,8 @@ public class GuideApi {
     }
 
     /**
-     * 
-     * 
+     * Mark a step of your org&#39;s journey finished
+     * Moves one step of the caller org&#39;s journey to done and answers the whole refreshed journey, which is what unblocks everything downstream of it.  Dependency-GATED like start: finishing a step whose prerequisites are themselves unfinished is 409 carrying &#x60;{error, step, blockedBy}&#x60; naming what is in the way, not a silent success. A step id the org&#39;s active journey does not contain is 404. Skipping is the ungated alternative — a founder declaring a step does not apply — and it lives at /skip.  Requires a validated org; 403 without one. The mark is recorded as &#x60;manual&#x60;, and /reset returns the step to todo.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1742,8 +1742,8 @@ public class GuideApi {
     }
 
     /**
-     * 
-     * 
+     * Mark a step of your org&#39;s journey finished
+     * Moves one step of the caller org&#39;s journey to done and answers the whole refreshed journey, which is what unblocks everything downstream of it.  Dependency-GATED like start: finishing a step whose prerequisites are themselves unfinished is 409 carrying &#x60;{error, step, blockedBy}&#x60; naming what is in the way, not a silent success. A step id the org&#39;s active journey does not contain is 404. Skipping is the ungated alternative — a founder declaring a step does not apply — and it lives at /skip.  Requires a validated org; 403 without one. The mark is recorded as &#x60;manual&#x60;, and /reset returns the step to todo.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1760,8 +1760,8 @@ public class GuideApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Mark a step of your org&#39;s journey finished (asynchronously)
+     * Moves one step of the caller org&#39;s journey to done and answers the whole refreshed journey, which is what unblocks everything downstream of it.  Dependency-GATED like start: finishing a step whose prerequisites are themselves unfinished is 409 carrying &#x60;{error, step, blockedBy}&#x60; naming what is in the way, not a silent success. A step id the org&#39;s active journey does not contain is 404. Skipping is the ungated alternative — a founder declaring a step does not apply — and it lives at /skip.  Requires a validated org; 403 without one. The mark is recorded as &#x60;manual&#x60;, and /reset returns the step to todo.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1848,8 +1848,8 @@ public class GuideApi {
     }
 
     /**
-     * 
-     * 
+     * Mark a step of your org&#39;s journey started
+     * Moves one step of the caller org&#39;s journey to in-progress and answers the whole refreshed journey, so a console needs no second read.  The transition is dependency-GATED, and that is why the answer set is wider than a success: a step whose prerequisites are unfinished is 409 carrying &#x60;{error, step, blockedBy}&#x60;, where &#x60;blockedBy&#x60; names the exact steps in the way — enough to render the blockage rather than merely report it. A step id the org&#39;s active journey does not contain is 404.  Requires a validated org; 403 without one, and the journey read and written is that org&#39;s alone. The mark is recorded as &#x60;manual&#x60;, and the journey is reconciled against the auto-detectors on every read, so a step the org has demonstrably completed elsewhere can still be moved to done underneath it.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1864,8 +1864,8 @@ public class GuideApi {
     }
 
     /**
-     * 
-     * 
+     * Mark a step of your org&#39;s journey started
+     * Moves one step of the caller org&#39;s journey to in-progress and answers the whole refreshed journey, so a console needs no second read.  The transition is dependency-GATED, and that is why the answer set is wider than a success: a step whose prerequisites are unfinished is 409 carrying &#x60;{error, step, blockedBy}&#x60;, where &#x60;blockedBy&#x60; names the exact steps in the way — enough to render the blockage rather than merely report it. A step id the org&#39;s active journey does not contain is 404.  Requires a validated org; 403 without one, and the journey read and written is that org&#39;s alone. The mark is recorded as &#x60;manual&#x60;, and the journey is reconciled against the auto-detectors on every read, so a step the org has demonstrably completed elsewhere can still be moved to done underneath it.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1882,8 +1882,8 @@ public class GuideApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Mark a step of your org&#39;s journey started (asynchronously)
+     * Moves one step of the caller org&#39;s journey to in-progress and answers the whole refreshed journey, so a console needs no second read.  The transition is dependency-GATED, and that is why the answer set is wider than a success: a step whose prerequisites are unfinished is 409 carrying &#x60;{error, step, blockedBy}&#x60;, where &#x60;blockedBy&#x60; names the exact steps in the way — enough to render the blockage rather than merely report it. A step id the org&#39;s active journey does not contain is 404.  Requires a validated org; 403 without one, and the journey read and written is that org&#39;s alone. The mark is recorded as &#x60;manual&#x60;, and the journey is reconciled against the auto-detectors on every read, so a step the org has demonstrably completed elsewhere can still be moved to done underneath it.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2217,8 +2217,8 @@ public class GuideApi {
     }
 
     /**
-     * 
-     * 
+     * Publish a new version of the brand blueprint
+     * Replaces the deployment&#39;s brand blueprint — the shared journey, sections, strategies and templates every org starts from — as a NEW VERSION, and answers the stored document with its key and version number. The previous versions are kept, so /blueprint/versions is a real recovery trail.  SuperAdmin ONLY. A per-org admin is 403: this is platform content, not a per-customer surface — the per-customer surface is /v1/guide/curriculum. The write is audited.  The body is a blueprint document accepted as YAML **or** JSON, which is the caller-visible reason it takes a raw body. It must parse AND validate — unique ids throughout, an acyclic step graph with no dangling dependencies, every step&#39;s section and every strategy&#39;s principle resolving to a real one — or it is 422 and never becomes active, leaving the version already serving authoritative. An empty body is 400 and one over 16 MiB is 413.  Edits are live: the next resolve reads the newest version. A stored document that is itself corrupt or schema-drifted does not block this write — the target is resolved without parsing what is there — so a bad version can always be published over.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2232,8 +2232,8 @@ public class GuideApi {
     }
 
     /**
-     * 
-     * 
+     * Publish a new version of the brand blueprint
+     * Replaces the deployment&#39;s brand blueprint — the shared journey, sections, strategies and templates every org starts from — as a NEW VERSION, and answers the stored document with its key and version number. The previous versions are kept, so /blueprint/versions is a real recovery trail.  SuperAdmin ONLY. A per-org admin is 403: this is platform content, not a per-customer surface — the per-customer surface is /v1/guide/curriculum. The write is audited.  The body is a blueprint document accepted as YAML **or** JSON, which is the caller-visible reason it takes a raw body. It must parse AND validate — unique ids throughout, an acyclic step graph with no dangling dependencies, every step&#39;s section and every strategy&#39;s principle resolving to a real one — or it is 422 and never becomes active, leaving the version already serving authoritative. An empty body is 400 and one over 16 MiB is 413.  Edits are live: the next resolve reads the newest version. A stored document that is itself corrupt or schema-drifted does not block this write — the target is resolved without parsing what is there — so a bad version can always be published over.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2249,8 +2249,8 @@ public class GuideApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Publish a new version of the brand blueprint (asynchronously)
+     * Replaces the deployment&#39;s brand blueprint — the shared journey, sections, strategies and templates every org starts from — as a NEW VERSION, and answers the stored document with its key and version number. The previous versions are kept, so /blueprint/versions is a real recovery trail.  SuperAdmin ONLY. A per-org admin is 403: this is platform content, not a per-customer surface — the per-customer surface is /v1/guide/curriculum. The write is audited.  The body is a blueprint document accepted as YAML **or** JSON, which is the caller-visible reason it takes a raw body. It must parse AND validate — unique ids throughout, an acyclic step graph with no dangling dependencies, every step&#39;s section and every strategy&#39;s principle resolving to a real one — or it is 422 and never becomes active, leaving the version already serving authoritative. An empty body is 400 and one over 16 MiB is 413.  Edits are live: the next resolve reads the newest version. A stored document that is itself corrupt or schema-drifted does not block this write — the target is resolved without parsing what is there — so a bad version can always be published over.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2329,8 +2329,8 @@ public class GuideApi {
     }
 
     /**
-     * 
-     * 
+     * Replace your org&#39;s journey with a curriculum you author
+     * Sets the caller org&#39;s OWN curriculum — the per-customer override — and answers the journey now in force with &#x60;custom: true&#x60;. The body is a curriculum document, and it is accepted as YAML **or** JSON: that is the caller-visible reason this takes a raw body rather than a declared shape. Whatever the syntax, the CANONICAL parsed form is what is stored, so the document the engine runs never depends on how it was written.  Fail-closed: a body that does not parse, or parses but is not a valid journey (unique step ids, no dangling or cyclic dependencies), is 422 and NEVER becomes active — the org keeps the journey it had. Requires a validated org; 403 without one. An empty body is 400 and one over 256 KiB is 413.  This is tier one only. It overrides nothing but this org&#39;s own journey; the shared brand blueprint is a different surface with a different gate. DELETE the same path to drop the override and fall back to it.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2344,8 +2344,8 @@ public class GuideApi {
     }
 
     /**
-     * 
-     * 
+     * Replace your org&#39;s journey with a curriculum you author
+     * Sets the caller org&#39;s OWN curriculum — the per-customer override — and answers the journey now in force with &#x60;custom: true&#x60;. The body is a curriculum document, and it is accepted as YAML **or** JSON: that is the caller-visible reason this takes a raw body rather than a declared shape. Whatever the syntax, the CANONICAL parsed form is what is stored, so the document the engine runs never depends on how it was written.  Fail-closed: a body that does not parse, or parses but is not a valid journey (unique step ids, no dangling or cyclic dependencies), is 422 and NEVER becomes active — the org keeps the journey it had. Requires a validated org; 403 without one. An empty body is 400 and one over 256 KiB is 413.  This is tier one only. It overrides nothing but this org&#39;s own journey; the shared brand blueprint is a different surface with a different gate. DELETE the same path to drop the override and fall back to it.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2361,8 +2361,8 @@ public class GuideApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Replace your org&#39;s journey with a curriculum you author (asynchronously)
+     * Sets the caller org&#39;s OWN curriculum — the per-customer override — and answers the journey now in force with &#x60;custom: true&#x60;. The body is a curriculum document, and it is accepted as YAML **or** JSON: that is the caller-visible reason this takes a raw body rather than a declared shape. Whatever the syntax, the CANONICAL parsed form is what is stored, so the document the engine runs never depends on how it was written.  Fail-closed: a body that does not parse, or parses but is not a valid journey (unique step ids, no dangling or cyclic dependencies), is 422 and NEVER becomes active — the org keeps the journey it had. Requires a validated org; 403 without one. An empty body is 400 and one over 256 KiB is 413.  This is tier one only. It overrides nothing but this org&#39;s own journey; the shared brand blueprint is a different surface with a different gate. DELETE the same path to drop the override and fall back to it.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

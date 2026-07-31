@@ -27,7 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.AdminAdminDeletePromo200Response;
+import ai.hanzo.cloud.model.CloudAdminAdminCreatePromo400Response;
 import ai.hanzo.cloud.model.VisorAgentBinding;
 import ai.hanzo.cloud.model.VisorBindAgentRequest;
 

@@ -151,8 +151,8 @@ public class DeployApi {
     }
 
     /**
-     * 
-     * 
+     * Compatibility answer the console UI asks before enabling its buttons
+     * Always answers &#x60;yes&#x60;, whatever resource, action or subresource the path names. It exists for the ArgoCD-compatible console, which asks this before enabling a control, and it is NOT the authorization decision: nothing downstream consults it, and every route that returns fleet data or mutates a CR carries its own gate. Reaching it at all already requires SuperAdmin, so a caller who can read the &#x60;yes&#x60; is one for whom it is true.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -167,8 +167,8 @@ public class DeployApi {
     }
 
     /**
-     * 
-     * 
+     * Compatibility answer the console UI asks before enabling its buttons
+     * Always answers &#x60;yes&#x60;, whatever resource, action or subresource the path names. It exists for the ArgoCD-compatible console, which asks this before enabling a control, and it is NOT the authorization decision: nothing downstream consults it, and every route that returns fleet data or mutates a CR carries its own gate. Reaching it at all already requires SuperAdmin, so a caller who can read the &#x60;yes&#x60; is one for whom it is true.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -185,8 +185,8 @@ public class DeployApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Compatibility answer the console UI asks before enabling its buttons (asynchronously)
+     * Always answers &#x60;yes&#x60;, whatever resource, action or subresource the path names. It exists for the ArgoCD-compatible console, which asks this before enabling a control, and it is NOT the authorization decision: nothing downstream consults it, and every route that returns fleet data or mutates a CR carries its own gate. Reaching it at all already requires SuperAdmin, so a caller who can read the &#x60;yes&#x60; is one for whom it is true.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -901,8 +901,8 @@ public class DeployApi {
     }
 
     /**
-     * 
-     * 
+     * Finish the sign-in round trip and mint the console session
+     * Completes the redirect from IAM: it validates &#x60;state&#x60; against the single-use flow cookie in constant time, redeems the authorization code with the PKCE verifier, and then VERIFIES the resulting token exactly as this deployment&#39;s identity boundary will on every later request — so a token that would be refused next request fails here with the real reason instead of producing a sign-in loop. On success it sets the session cookie, bounded by the token&#39;s own expiry, and redirects to the validated return path.  It fails closed, and closes on the ADMIN ORG: a principal whose verified owner claim is not the reserved admin org is told plainly that it lacks the role (403) and no cookie is minted for it. That check is not the authorization decision — every gated route re-derives SuperAdmin from the verified JWT — it exists so nobody is handed a session that silently 403s everything. No flow in progress, or a mismatched &#x60;state&#x60;, is a 400; a refused or unexchangeable code is a 401.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -916,8 +916,8 @@ public class DeployApi {
     }
 
     /**
-     * 
-     * 
+     * Finish the sign-in round trip and mint the console session
+     * Completes the redirect from IAM: it validates &#x60;state&#x60; against the single-use flow cookie in constant time, redeems the authorization code with the PKCE verifier, and then VERIFIES the resulting token exactly as this deployment&#39;s identity boundary will on every later request — so a token that would be refused next request fails here with the real reason instead of producing a sign-in loop. On success it sets the session cookie, bounded by the token&#39;s own expiry, and redirects to the validated return path.  It fails closed, and closes on the ADMIN ORG: a principal whose verified owner claim is not the reserved admin org is told plainly that it lacks the role (403) and no cookie is minted for it. That check is not the authorization decision — every gated route re-derives SuperAdmin from the verified JWT — it exists so nobody is handed a session that silently 403s everything. No flow in progress, or a mismatched &#x60;state&#x60;, is a 400; a refused or unexchangeable code is a 401.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -933,8 +933,8 @@ public class DeployApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Finish the sign-in round trip and mint the console session (asynchronously)
+     * Completes the redirect from IAM: it validates &#x60;state&#x60; against the single-use flow cookie in constant time, redeems the authorization code with the PKCE verifier, and then VERIFIES the resulting token exactly as this deployment&#39;s identity boundary will on every later request — so a token that would be refused next request fails here with the real reason instead of producing a sign-in loop. On success it sets the session cookie, bounded by the token&#39;s own expiry, and redirects to the validated return path.  It fails closed, and closes on the ADMIN ORG: a principal whose verified owner claim is not the reserved admin org is told plainly that it lacks the role (403) and no cookie is minted for it. That check is not the authorization decision — every gated route re-derives SuperAdmin from the verified JWT — it exists so nobody is handed a session that silently 403s everything. No flow in progress, or a mismatched &#x60;state&#x60;, is a 400; a refused or unexchangeable code is a 401.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1247,8 +1247,8 @@ public class DeployApi {
     }
 
     /**
-     * 
-     * 
+     * Whether this control plane can actually reach the cluster it deploys to
+     * Reports the plane&#39;s real reachability: 200 only when the Kubernetes API server answers AND the App CRD is served, 503 with the same body shape otherwise, so a caller reads the same &#x60;k8s&#x60; and &#x60;crd&#x60; booleans either way rather than parsing an error envelope. It is a genuine dependency probe, not a process liveness ping — a running plane with no cluster behind it reports degraded.  This is the ONE unauthenticated route that reports state, because liveness must be probe-able without a JWT. It therefore discloses booleans only: the underlying failure — the API server address, an RBAC refusal — is logged server-side and never put on the wire.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1262,8 +1262,8 @@ public class DeployApi {
     }
 
     /**
-     * 
-     * 
+     * Whether this control plane can actually reach the cluster it deploys to
+     * Reports the plane&#39;s real reachability: 200 only when the Kubernetes API server answers AND the App CRD is served, 503 with the same body shape otherwise, so a caller reads the same &#x60;k8s&#x60; and &#x60;crd&#x60; booleans either way rather than parsing an error envelope. It is a genuine dependency probe, not a process liveness ping — a running plane with no cluster behind it reports degraded.  This is the ONE unauthenticated route that reports state, because liveness must be probe-able without a JWT. It therefore discloses booleans only: the underlying failure — the API server address, an RBAC refusal — is logged server-side and never put on the wire.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1279,8 +1279,8 @@ public class DeployApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Whether this control plane can actually reach the cluster it deploys to (asynchronously)
+     * Reports the plane&#39;s real reachability: 200 only when the Kubernetes API server answers AND the App CRD is served, 503 with the same body shape otherwise, so a caller reads the same &#x60;k8s&#x60; and &#x60;crd&#x60; booleans either way rather than parsing an error envelope. It is a genuine dependency probe, not a process liveness ping — a running plane with no cluster behind it reports degraded.  This is the ONE unauthenticated route that reports state, because liveness must be probe-able without a JWT. It therefore discloses booleans only: the underlying failure — the API server address, an RBAC refusal — is logged server-side and never put on the wire.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1359,8 +1359,8 @@ public class DeployApi {
     }
 
     /**
-     * 
-     * 
+     * Start the sign-in round trip for this console
+     * Redirects the browser to IAM&#39;s authorize endpoint, having minted a nonce and a PKCE verifier into a short-lived, single-use flow cookie. The nonce comes back as &#x60;state&#x60; and is what proves the code belongs to the round trip THIS browser started; the verifier never appears in the address bar.  Necessarily public — this is how a browser gets a principal for this host in the first place — and it grants nothing by itself. An optional &#x60;returnTo&#x60; names where to land afterwards and is run through the open-redirect guard, so only a same-host path survives. A deployment with no sign-in configured answers 503 rather than redirecting nowhere.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1374,8 +1374,8 @@ public class DeployApi {
     }
 
     /**
-     * 
-     * 
+     * Start the sign-in round trip for this console
+     * Redirects the browser to IAM&#39;s authorize endpoint, having minted a nonce and a PKCE verifier into a short-lived, single-use flow cookie. The nonce comes back as &#x60;state&#x60; and is what proves the code belongs to the round trip THIS browser started; the verifier never appears in the address bar.  Necessarily public — this is how a browser gets a principal for this host in the first place — and it grants nothing by itself. An optional &#x60;returnTo&#x60; names where to land afterwards and is run through the open-redirect guard, so only a same-host path survives. A deployment with no sign-in configured answers 503 rather than redirecting nowhere.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1391,8 +1391,8 @@ public class DeployApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Start the sign-in round trip for this console (asynchronously)
+     * Redirects the browser to IAM&#39;s authorize endpoint, having minted a nonce and a PKCE verifier into a short-lived, single-use flow cookie. The nonce comes back as &#x60;state&#x60; and is what proves the code belongs to the round trip THIS browser started; the verifier never appears in the address bar.  Necessarily public — this is how a browser gets a principal for this host in the first place — and it grants nothing by itself. An optional &#x60;returnTo&#x60; names where to land afterwards and is run through the open-redirect guard, so only a same-host path survives. A deployment with no sign-in configured answers 503 rather than redirecting nowhere.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1822,8 +1822,8 @@ public class DeployApi {
     }
 
     /**
-     * 
-     * 
+     * Live application fleet updates as Server-Sent Events
+     * Holds the connection open as text/event-stream and pushes one watch event per application change. It opens with an &#x60;ADDED&#x60; frame for every application currently present — the same projection the applications list serves, so a client renders a complete fleet from the stream alone — and then forwards &#x60;ADDED&#x60;, &#x60;MODIFIED&#x60; and &#x60;DELETED&#x60; as they happen, with a keep-alive every 25 seconds that is also how a vanished client is noticed and its watch torn down.  Read-only and TENANT-SCOPED, fail-closed: a platform SuperAdmin streams the whole fleet, a validated org member streams only its own org&#39;s applications, anyone else gets 403 and no stream. No cluster client configured is 503. If the deployment is not granted the watch verb the stream degrades to keep-alives only — the initial state still renders, it simply stops updating — rather than failing the connection.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1837,8 +1837,8 @@ public class DeployApi {
     }
 
     /**
-     * 
-     * 
+     * Live application fleet updates as Server-Sent Events
+     * Holds the connection open as text/event-stream and pushes one watch event per application change. It opens with an &#x60;ADDED&#x60; frame for every application currently present — the same projection the applications list serves, so a client renders a complete fleet from the stream alone — and then forwards &#x60;ADDED&#x60;, &#x60;MODIFIED&#x60; and &#x60;DELETED&#x60; as they happen, with a keep-alive every 25 seconds that is also how a vanished client is noticed and its watch torn down.  Read-only and TENANT-SCOPED, fail-closed: a platform SuperAdmin streams the whole fleet, a validated org member streams only its own org&#39;s applications, anyone else gets 403 and no stream. No cluster client configured is 503. If the deployment is not granted the watch verb the stream degrades to keep-alives only — the initial state still renders, it simply stops updating — rather than failing the connection.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1854,8 +1854,8 @@ public class DeployApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Live application fleet updates as Server-Sent Events (asynchronously)
+     * Holds the connection open as text/event-stream and pushes one watch event per application change. It opens with an &#x60;ADDED&#x60; frame for every application currently present — the same projection the applications list serves, so a client renders a complete fleet from the stream alone — and then forwards &#x60;ADDED&#x60;, &#x60;MODIFIED&#x60; and &#x60;DELETED&#x60; as they happen, with a keep-alive every 25 seconds that is also how a vanished client is noticed and its watch torn down.  Read-only and TENANT-SCOPED, fail-closed: a platform SuperAdmin streams the whole fleet, a validated org member streams only its own org&#39;s applications, anyone else gets 403 and no stream. No cluster client configured is 503. If the deployment is not granted the watch verb the stream degrades to keep-alives only — the initial state still renders, it simply stops updating — rather than failing the connection.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1941,8 +1941,8 @@ public class DeployApi {
     }
 
     /**
-     * 
-     * 
+     * Live resource tree for one application, as Server-Sent Events
+     * Holds the connection open as text/event-stream and pushes the application&#39;s whole resource tree — its live child objects and each one&#39;s derived health — once immediately and again on every keep-alive tick, so a client always has a current picture without polling. The refresh IS the keep-alive: it is a cheap rebuild rather than a watch, so there is no multi-resource watch to leak.  TENANT-SCOPED and fail-closed BEFORE the stream opens, which is the rule that matters: the caller&#39;s scope and the application&#39;s namespace are resolved first, so an unvalidated caller gets a plain 403 and an application belonging to another tenant gets a plain 404 — never an opened stream that emits nothing. A SuperAdmin reaches the whole fleet, an org member only its own org&#39;s applications. No cluster client configured is 503.
      * @param name  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1957,8 +1957,8 @@ public class DeployApi {
     }
 
     /**
-     * 
-     * 
+     * Live resource tree for one application, as Server-Sent Events
+     * Holds the connection open as text/event-stream and pushes the application&#39;s whole resource tree — its live child objects and each one&#39;s derived health — once immediately and again on every keep-alive tick, so a client always has a current picture without polling. The refresh IS the keep-alive: it is a cheap rebuild rather than a watch, so there is no multi-resource watch to leak.  TENANT-SCOPED and fail-closed BEFORE the stream opens, which is the rule that matters: the caller&#39;s scope and the application&#39;s namespace are resolved first, so an unvalidated caller gets a plain 403 and an application belonging to another tenant gets a plain 404 — never an opened stream that emits nothing. A SuperAdmin reaches the whole fleet, an org member only its own org&#39;s applications. No cluster client configured is 503.
      * @param name  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1975,8 +1975,8 @@ public class DeployApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Live resource tree for one application, as Server-Sent Events (asynchronously)
+     * Holds the connection open as text/event-stream and pushes the application&#39;s whole resource tree — its live child objects and each one&#39;s derived health — once immediately and again on every keep-alive tick, so a client always has a current picture without polling. The refresh IS the keep-alive: it is a cheap rebuild rather than a watch, so there is no multi-resource watch to leak.  TENANT-SCOPED and fail-closed BEFORE the stream opens, which is the rule that matters: the caller&#39;s scope and the application&#39;s namespace are resolved first, so an unvalidated caller gets a plain 403 and an application belonging to another tenant gets a plain 404 — never an opened stream that emits nothing. A SuperAdmin reaches the whole fleet, an org member only its own org&#39;s applications. No cluster client configured is 503.
      * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2180,8 +2180,8 @@ public class DeployApi {
     }
 
     /**
-     * 
-     * 
+     * The console&#39;s rollback control — today it requests a reconcile, nothing more
+     * Performs exactly what the sync action performs: it stamps the sync-requested timestamp onto the application&#39;s App CR and answers the application re-projected. It does NOT select, pin or revert to a prior image tag, and that is the one thing to know before wiring anything to it — the name is the console&#39;s, the behaviour is the sync. Pinning a previous release rides the release seam, which this address does not call yet.  SuperAdmin-only and fail-closed, reading no request body, with an unknown application name a 404 and no cluster client a 503 — the same gate and the same failures as the sync it shares a handler with.
      * @param name  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2196,8 +2196,8 @@ public class DeployApi {
     }
 
     /**
-     * 
-     * 
+     * The console&#39;s rollback control — today it requests a reconcile, nothing more
+     * Performs exactly what the sync action performs: it stamps the sync-requested timestamp onto the application&#39;s App CR and answers the application re-projected. It does NOT select, pin or revert to a prior image tag, and that is the one thing to know before wiring anything to it — the name is the console&#39;s, the behaviour is the sync. Pinning a previous release rides the release seam, which this address does not call yet.  SuperAdmin-only and fail-closed, reading no request body, with an unknown application name a 404 and no cluster client a 503 — the same gate and the same failures as the sync it shares a handler with.
      * @param name  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2214,8 +2214,8 @@ public class DeployApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The console&#39;s rollback control — today it requests a reconcile, nothing more (asynchronously)
+     * Performs exactly what the sync action performs: it stamps the sync-requested timestamp onto the application&#39;s App CR and answers the application re-projected. It does NOT select, pin or revert to a prior image tag, and that is the one thing to know before wiring anything to it — the name is the console&#39;s, the behaviour is the sync. Pinning a previous release rides the release seam, which this address does not call yet.  SuperAdmin-only and fail-closed, reading no request body, with an unknown application name a 404 and no cluster client a 503 — the same gate and the same failures as the sync it shares a handler with.
      * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2302,8 +2302,8 @@ public class DeployApi {
     }
 
     /**
-     * 
-     * 
+     * Ask the operator to reconcile one application now
+     * Requests an immediate reconcile of one application by stamping a sync-requested timestamp onto its App CR, which the operator&#39;s watch observes, and answers the application re-projected. It ASKS, it does not apply: the operator performs the reconcile on its own clock, so a 200 means the request landed, not that the rollout finished — the returned row&#39;s running version still lags until it does. The CR is the desired source today, so this is a nudge; when git becomes the source the same address becomes apply-from-git.  SuperAdmin-only and fail-closed — a non-SuperAdmin is refused before any cluster object is read or patched, and the write surface stays admin-only while the tenant surface is read-only reflection. It reads no request body. An unknown application name is a 404; no cluster client configured is a 503.
      * @param name  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2318,8 +2318,8 @@ public class DeployApi {
     }
 
     /**
-     * 
-     * 
+     * Ask the operator to reconcile one application now
+     * Requests an immediate reconcile of one application by stamping a sync-requested timestamp onto its App CR, which the operator&#39;s watch observes, and answers the application re-projected. It ASKS, it does not apply: the operator performs the reconcile on its own clock, so a 200 means the request landed, not that the rollout finished — the returned row&#39;s running version still lags until it does. The CR is the desired source today, so this is a nudge; when git becomes the source the same address becomes apply-from-git.  SuperAdmin-only and fail-closed — a non-SuperAdmin is refused before any cluster object is read or patched, and the write surface stays admin-only while the tenant surface is read-only reflection. It reads no request body. An unknown application name is a 404; no cluster client configured is a 503.
      * @param name  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2336,8 +2336,8 @@ public class DeployApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Ask the operator to reconcile one application now (asynchronously)
+     * Requests an immediate reconcile of one application by stamping a sync-requested timestamp onto its App CR, which the operator&#39;s watch observes, and answers the application re-projected. It ASKS, it does not apply: the operator performs the reconcile on its own clock, so a 200 means the request landed, not that the rollout finished — the returned row&#39;s running version still lags until it does. The CR is the desired source today, so this is a nudge; when git becomes the source the same address becomes apply-from-git.  SuperAdmin-only and fail-closed — a non-SuperAdmin is refused before any cluster object is read or patched, and the write surface stays admin-only while the tenant surface is read-only reflection. It reads no request body. An unknown application name is a 404; no cluster client configured is a 503.
      * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2417,8 +2417,8 @@ public class DeployApi {
     }
 
     /**
-     * 
-     * 
+     * End the console session on this host
+     * Clears this console&#39;s session cookie and answers the signed-out state with the sign-in URL to start again. IAM&#39;s own session is untouched — this ends the console session only, so signing back in may not prompt for credentials.  It is a POST because it changes state. As a GET it was reachable by a cross-site top-level navigation, which a SameSite&#x3D;Lax cookie still rides, so any page could sign a SuperAdmin out; a POST is not carried cross-site by that cookie.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2432,8 +2432,8 @@ public class DeployApi {
     }
 
     /**
-     * 
-     * 
+     * End the console session on this host
+     * Clears this console&#39;s session cookie and answers the signed-out state with the sign-in URL to start again. IAM&#39;s own session is untouched — this ends the console session only, so signing back in may not prompt for credentials.  It is a POST because it changes state. As a GET it was reachable by a cross-site top-level navigation, which a SameSite&#x3D;Lax cookie still rides, so any page could sign a SuperAdmin out; a POST is not carried cross-site by that cookie.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2449,8 +2449,8 @@ public class DeployApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * End the console session on this host (asynchronously)
+     * Clears this console&#39;s session cookie and answers the signed-out state with the sign-in URL to start again. IAM&#39;s own session is untouched — this ends the console session only, so signing back in may not prompt for credentials.  It is a POST because it changes state. As a GET it was reachable by a cross-site top-level navigation, which a SameSite&#x3D;Lax cookie still rides, so any page could sign a SuperAdmin out; a POST is not carried cross-site by that cookie.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2529,8 +2529,8 @@ public class DeployApi {
     }
 
     /**
-     * 
-     * 
+     * Render the configured git source and apply it to the cluster, once
+     * Runs one full GitOps sync through the embedded engine — render the configured repo, ref and path, then three-way server-side apply with scoped prune — and answers the revision it applied, the source it came from, the declared/synced/pruned/failed counts and a per-resource result. This is the WRITE half of the plane: it mutates live cluster objects and, with prune enabled, deletes objects the source no longer declares.  SuperAdmin-only and fail-closed — a non-SuperAdmin is refused before any cluster object is read or touched. The git source is read AS THE CALLER, so the source plane scopes the answer itself rather than trusting this one to have scoped it. It reads no request body; the source is configuration, not a parameter. A deployment with the engine switched off, or with no usable cluster config, answers 503; a failure to start, render or sync is a 502.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2544,8 +2544,8 @@ public class DeployApi {
     }
 
     /**
-     * 
-     * 
+     * Render the configured git source and apply it to the cluster, once
+     * Runs one full GitOps sync through the embedded engine — render the configured repo, ref and path, then three-way server-side apply with scoped prune — and answers the revision it applied, the source it came from, the declared/synced/pruned/failed counts and a per-resource result. This is the WRITE half of the plane: it mutates live cluster objects and, with prune enabled, deletes objects the source no longer declares.  SuperAdmin-only and fail-closed — a non-SuperAdmin is refused before any cluster object is read or touched. The git source is read AS THE CALLER, so the source plane scopes the answer itself rather than trusting this one to have scoped it. It reads no request body; the source is configuration, not a parameter. A deployment with the engine switched off, or with no usable cluster config, answers 503; a failure to start, render or sync is a 502.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2561,8 +2561,8 @@ public class DeployApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Render the configured git source and apply it to the cluster, once (asynchronously)
+     * Runs one full GitOps sync through the embedded engine — render the configured repo, ref and path, then three-way server-side apply with scoped prune — and answers the revision it applied, the source it came from, the declared/synced/pruned/failed counts and a per-resource result. This is the WRITE half of the plane: it mutates live cluster objects and, with prune enabled, deletes objects the source no longer declares.  SuperAdmin-only and fail-closed — a non-SuperAdmin is refused before any cluster object is read or touched. The git source is read AS THE CALLER, so the source plane scopes the answer itself rather than trusting this one to have scoped it. It reads no request body; the source is configuration, not a parameter. A deployment with the engine switched off, or with no usable cluster config, answers 503; a failure to start, render or sync is a 502.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

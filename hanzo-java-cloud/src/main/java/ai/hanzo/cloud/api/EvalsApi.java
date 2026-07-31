@@ -27,6 +27,15 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.CloudAdminAdminCreatePromo400Response;
+import ai.hanzo.cloud.model.CloudGetV1EvalsScores200Response;
+import ai.hanzo.cloud.model.EvalsDataset;
+import ai.hanzo.cloud.model.EvalsDatasetCreate;
+import ai.hanzo.cloud.model.EvalsDatasetItem;
+import ai.hanzo.cloud.model.EvalsDatasetItemCreate;
+import ai.hanzo.cloud.model.EvalsEvaluator;
+import ai.hanzo.cloud.model.EvalsRunRequest;
+import ai.hanzo.cloud.model.EvalsRunSummary;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -140,8 +149,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * Delete a dataset and every example in it
+     * Removes the named dataset of the caller&#39;s org AND all of its items, in one transaction, and answers 204. This is not a detach: the examples are gone with the set, so a dataset cannot be resurrected by re-creating the name.  A name this org does not have is 404 — never a silent success — and a name belonging to another tenant is the same 404, because the delete is predicated on the validated org. Requires a validated principal; 403 without one. Runs and scores already recorded against the dataset are telemetry events and are NOT deleted with it.
      * @param name  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -156,8 +165,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * Delete a dataset and every example in it
+     * Removes the named dataset of the caller&#39;s org AND all of its items, in one transaction, and answers 204. This is not a detach: the examples are gone with the set, so a dataset cannot be resurrected by re-creating the name.  A name this org does not have is 404 — never a silent success — and a name belonging to another tenant is the same 404, because the delete is predicated on the validated org. Requires a validated principal; 403 without one. Runs and scores already recorded against the dataset are telemetry events and are NOT deleted with it.
      * @param name  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -174,8 +183,8 @@ public class EvalsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Delete a dataset and every example in it (asynchronously)
+     * Removes the named dataset of the caller&#39;s org AND all of its items, in one transaction, and answers 204. This is not a detach: the examples are gone with the set, so a dataset cannot be resurrected by re-creating the name.  A name this org does not have is 404 — never a silent success — and a name belonging to another tenant is the same 404, because the delete is predicated on the validated org. Requires a validated principal; 403 without one. Runs and scores already recorded against the dataset are telemetry events and are NOT deleted with it.
      * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -255,8 +264,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * The examples in one of your datasets
+     * Lists the examples of ONE dataset as &#x60;{data:[…]}&#x60; — &#x60;datasetName&#x60; is a required query parameter, and its absence is 400, because this collection is only meaningful per set. Archived examples are included, so the caller sees the whole set rather than only what a run would use. &#x60;limit&#x60; defaults to 100 and is capped at 500.  Requires a validated principal; 403 without one, and the read is filtered on the validated org, so naming another tenant&#39;s dataset returns nothing rather than its contents.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -270,8 +279,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * The examples in one of your datasets
+     * Lists the examples of ONE dataset as &#x60;{data:[…]}&#x60; — &#x60;datasetName&#x60; is a required query parameter, and its absence is 400, because this collection is only meaningful per set. Archived examples are included, so the caller sees the whole set rather than only what a run would use. &#x60;limit&#x60; defaults to 100 and is capped at 500.  Requires a validated principal; 403 without one, and the read is filtered on the validated org, so naming another tenant&#39;s dataset returns nothing rather than its contents.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -287,8 +296,8 @@ public class EvalsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The examples in one of your datasets (asynchronously)
+     * Lists the examples of ONE dataset as &#x60;{data:[…]}&#x60; — &#x60;datasetName&#x60; is a required query parameter, and its absence is 400, because this collection is only meaningful per set. Archived examples are included, so the caller sees the whole set rather than only what a run would use. &#x60;limit&#x60; defaults to 100 and is capped at 500.  Requires a validated principal; 403 without one, and the read is filtered on the validated org, so naming another tenant&#39;s dataset returns nothing rather than its contents.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -367,8 +376,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * The datasets your org has
+     * Lists the caller org&#39;s datasets as &#x60;{data:[…]}&#x60;, each with its name, description, metadata and timestamps. &#x60;limit&#x60; defaults to 100 and is capped at 500; an unparseable or non-positive value falls back to the default rather than failing.  Requires a validated principal; 403 without one. Every row is filtered on the validated org, so there is no parameter that reaches another tenant&#39;s datasets. The &#x60;items&#x60; count is NOT populated here — read one dataset to get it.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -382,8 +391,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * The datasets your org has
+     * Lists the caller org&#39;s datasets as &#x60;{data:[…]}&#x60;, each with its name, description, metadata and timestamps. &#x60;limit&#x60; defaults to 100 and is capped at 500; an unparseable or non-positive value falls back to the default rather than failing.  Requires a validated principal; 403 without one. Every row is filtered on the validated org, so there is no parameter that reaches another tenant&#39;s datasets. The &#x60;items&#x60; count is NOT populated here — read one dataset to get it.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -399,8 +408,8 @@ public class EvalsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The datasets your org has (asynchronously)
+     * Lists the caller org&#39;s datasets as &#x60;{data:[…]}&#x60;, each with its name, description, metadata and timestamps. &#x60;limit&#x60; defaults to 100 and is capped at 500; an unparseable or non-positive value falls back to the default rather than failing.  Requires a validated principal; 403 without one. Every row is filtered on the validated org, so there is no parameter that reaches another tenant&#39;s datasets. The &#x60;items&#x60; count is NOT populated here — read one dataset to get it.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -486,8 +495,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * One dataset, with how many examples it holds
+     * Returns a single dataset of the caller&#39;s org by name, together with its live item count — the one read that answers how big the set actually is. A name this org does not have is 404, which is also what another tenant&#39;s dataset looks like from here. Requires a validated principal; 403 without one.
      * @param name  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -502,8 +511,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * One dataset, with how many examples it holds
+     * Returns a single dataset of the caller&#39;s org by name, together with its live item count — the one read that answers how big the set actually is. A name this org does not have is 404, which is also what another tenant&#39;s dataset looks like from here. Requires a validated principal; 403 without one.
      * @param name  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -520,8 +529,8 @@ public class EvalsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * One dataset, with how many examples it holds (asynchronously)
+     * Returns a single dataset of the caller&#39;s org by name, together with its live item count — the one read that answers how big the set actually is. A name this org does not have is 404, which is also what another tenant&#39;s dataset looks like from here. Requires a validated principal; 403 without one.
      * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -601,8 +610,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * The judges your org has defined
+     * Lists the caller org&#39;s evaluators as &#x60;{data:[…]}&#x60;, each with its judge model, criteria and the score name it writes under. &#x60;limit&#x60; defaults to 100 and is capped at 500. Requires a validated principal; 403 without one, and the listing is filtered on the validated org.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -616,8 +625,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * The judges your org has defined
+     * Lists the caller org&#39;s evaluators as &#x60;{data:[…]}&#x60;, each with its judge model, criteria and the score name it writes under. &#x60;limit&#x60; defaults to 100 and is capped at 500. Requires a validated principal; 403 without one, and the listing is filtered on the validated org.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -633,8 +642,8 @@ public class EvalsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The judges your org has defined (asynchronously)
+     * Lists the caller org&#39;s evaluators as &#x60;{data:[…]}&#x60;, each with its judge model, criteria and the score name it writes under. &#x60;limit&#x60; defaults to 100 and is capped at 500. Requires a validated principal; 403 without one, and the listing is filtered on the validated org.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -713,8 +722,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * Your org&#39;s AI overview board
+     * Returns the whole observability board for the caller&#39;s org over a window: totals (generations, prompt and completion tokens, cost in cents, errors, success rate, distinct models and users), a gap-filled time series, a per-model breakdown with the long tail folded into &#x60;other&#x60;, and latency percentiles read from the GenAI spans.  &#x60;range&#x60; is &#x60;24h&#x60; (the default), &#x60;7d&#x60; or &#x60;30d&#x60;, and anything else normalises to &#x60;24h&#x60; rather than failing; &#x60;interval&#x60; overrides the bucket with &#x60;hour&#x60; or &#x60;day&#x60;. The window the answer was actually computed over is echoed back, so a client never has to infer it. A platform admin sees the board across ALL orgs; everyone else sees their own.  The board is HONEST-EMPTY where it cannot be computed: with no datastore wired, or under a named project scope the usage ledger does not yet carry, it answers a valid board with zero totals and a flat series rather than a fabricated number or a 500. Requires a validated principal; 403 without one.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -728,8 +737,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * Your org&#39;s AI overview board
+     * Returns the whole observability board for the caller&#39;s org over a window: totals (generations, prompt and completion tokens, cost in cents, errors, success rate, distinct models and users), a gap-filled time series, a per-model breakdown with the long tail folded into &#x60;other&#x60;, and latency percentiles read from the GenAI spans.  &#x60;range&#x60; is &#x60;24h&#x60; (the default), &#x60;7d&#x60; or &#x60;30d&#x60;, and anything else normalises to &#x60;24h&#x60; rather than failing; &#x60;interval&#x60; overrides the bucket with &#x60;hour&#x60; or &#x60;day&#x60;. The window the answer was actually computed over is echoed back, so a client never has to infer it. A platform admin sees the board across ALL orgs; everyone else sees their own.  The board is HONEST-EMPTY where it cannot be computed: with no datastore wired, or under a named project scope the usage ledger does not yet carry, it answers a valid board with zero totals and a flat series rather than a fabricated number or a 500. Requires a validated principal; 403 without one.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -745,8 +754,8 @@ public class EvalsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Your org&#39;s AI overview board (asynchronously)
+     * Returns the whole observability board for the caller&#39;s org over a window: totals (generations, prompt and completion tokens, cost in cents, errors, success rate, distinct models and users), a gap-filled time series, a per-model breakdown with the long tail folded into &#x60;other&#x60;, and latency percentiles read from the GenAI spans.  &#x60;range&#x60; is &#x60;24h&#x60; (the default), &#x60;7d&#x60; or &#x60;30d&#x60;, and anything else normalises to &#x60;24h&#x60; rather than failing; &#x60;interval&#x60; overrides the bucket with &#x60;hour&#x60; or &#x60;day&#x60;. The window the answer was actually computed over is echoed back, so a client never has to infer it. A platform admin sees the board across ALL orgs; everyone else sees their own.  The board is HONEST-EMPTY where it cannot be computed: with no datastore wired, or under a named project scope the usage ledger does not yet carry, it answers a valid board with zero totals and a flat series rather than a fabricated number or a 500. Requires a validated principal; 403 without one.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -825,8 +834,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * Past runs and how they scored
+     * Lists the caller org&#39;s durable run records as &#x60;{data:[…]}&#x60; — the dataset and model, the judge model, how many examples were attempted and how many scored, the average score, and when it happened. Narrow to one dataset with &#x60;datasetName&#x60;; &#x60;limit&#x60; defaults to 100 and is capped at 500.  Requires a validated principal; 403 without one, and rows are filtered on the validated org. These records come from the metastore rather than the datastore, so they are readable on a deployment with no telemetry wired — but a run&#39;s traces and scores are not.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -840,8 +849,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * Past runs and how they scored
+     * Lists the caller org&#39;s durable run records as &#x60;{data:[…]}&#x60; — the dataset and model, the judge model, how many examples were attempted and how many scored, the average score, and when it happened. Narrow to one dataset with &#x60;datasetName&#x60;; &#x60;limit&#x60; defaults to 100 and is capped at 500.  Requires a validated principal; 403 without one, and rows are filtered on the validated org. These records come from the metastore rather than the datastore, so they are readable on a deployment with no telemetry wired — but a run&#39;s traces and scores are not.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -857,8 +866,8 @@ public class EvalsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Past runs and how they scored (asynchronously)
+     * Lists the caller org&#39;s durable run records as &#x60;{data:[…]}&#x60; — the dataset and model, the judge model, how many examples were attempted and how many scored, the average score, and when it happened. Narrow to one dataset with &#x60;datasetName&#x60;; &#x60;limit&#x60; defaults to 100 and is capped at 500.  Requires a validated principal; 403 without one, and rows are filtered on the validated org. These records come from the metastore rather than the datastore, so they are readable on a deployment with no telemetry wired — but a run&#39;s traces and scores are not.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -937,8 +946,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * The score shapes your org has declared
+     * Lists the caller org&#39;s score configs as &#x60;{data:[…]}&#x60; — each name&#39;s data type, its numeric bounds and its allowed categories. &#x60;limit&#x60; defaults to 100 and is capped at 500. Requires a validated principal; 403 without one, and the listing is filtered on the validated org.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -952,8 +961,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * The score shapes your org has declared
+     * Lists the caller org&#39;s score configs as &#x60;{data:[…]}&#x60; — each name&#39;s data type, its numeric bounds and its allowed categories. &#x60;limit&#x60; defaults to 100 and is capped at 500. Requires a validated principal; 403 without one, and the listing is filtered on the validated org.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -969,8 +978,8 @@ public class EvalsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The score shapes your org has declared (asynchronously)
+     * Lists the caller org&#39;s score configs as &#x60;{data:[…]}&#x60; — each name&#39;s data type, its numeric bounds and its allowed categories. &#x60;limit&#x60; defaults to 100 and is capped at 500. Requires a validated principal; 403 without one, and the listing is filtered on the validated org.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -989,6 +998,8 @@ public class EvalsApi {
     }
     /**
      * Build call for cloudGetV1EvalsScores
+     * @param runName  (optional)
+     * @param limit  (optional, default to 50)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -996,10 +1007,11 @@ public class EvalsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Scores </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1EvalsScoresCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1EvalsScoresCall(@javax.annotation.Nullable String runName, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1024,7 +1036,16 @@ public class EvalsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (runName != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("runName", runName));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1043,46 +1064,57 @@ public class EvalsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudGetV1EvalsScoresValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudGetV1EvalsScoresCall(_callback);
+    private okhttp3.Call cloudGetV1EvalsScoresValidateBeforeCall(@javax.annotation.Nullable String runName, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return cloudGetV1EvalsScoresCall(runName, limit, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Score events, filtered
+     * Lists the caller org&#39;s score events as &#x60;{data:[…]}&#x60;, narrowed by any of &#x60;name&#x60;, &#x60;runName&#x60; and &#x60;traceId&#x60;; an absent filter simply does not narrow. &#x60;limit&#x60; defaults to 100 and is capped at 500.  The org is bound as an authoritative predicate on the query, never taken from a header, so a filter can narrow the caller&#39;s own scores but can never widen past them. Requires a validated principal; 403 without one. Scores live in the datastore, so a deployment with none wired answers 503 rather than an empty page that would read as &#39;no scores&#39;.
+     * @param runName  (optional)
+     * @param limit  (optional, default to 50)
+     * @return CloudGetV1EvalsScores200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Scores </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1EvalsScores() throws ApiException {
-        cloudGetV1EvalsScoresWithHttpInfo();
+    public CloudGetV1EvalsScores200Response cloudGetV1EvalsScores(@javax.annotation.Nullable String runName, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<CloudGetV1EvalsScores200Response> localVarResp = cloudGetV1EvalsScoresWithHttpInfo(runName, limit);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Score events, filtered
+     * Lists the caller org&#39;s score events as &#x60;{data:[…]}&#x60;, narrowed by any of &#x60;name&#x60;, &#x60;runName&#x60; and &#x60;traceId&#x60;; an absent filter simply does not narrow. &#x60;limit&#x60; defaults to 100 and is capped at 500.  The org is bound as an authoritative predicate on the query, never taken from a header, so a filter can narrow the caller&#39;s own scores but can never widen past them. Requires a validated principal; 403 without one. Scores live in the datastore, so a deployment with none wired answers 503 rather than an empty page that would read as &#39;no scores&#39;.
+     * @param runName  (optional)
+     * @param limit  (optional, default to 50)
+     * @return ApiResponse&lt;CloudGetV1EvalsScores200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Scores </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1EvalsScoresWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudGetV1EvalsScoresValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CloudGetV1EvalsScores200Response> cloudGetV1EvalsScoresWithHttpInfo(@javax.annotation.Nullable String runName, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = cloudGetV1EvalsScoresValidateBeforeCall(runName, limit, null);
+        Type localVarReturnType = new TypeToken<CloudGetV1EvalsScores200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Score events, filtered (asynchronously)
+     * Lists the caller org&#39;s score events as &#x60;{data:[…]}&#x60;, narrowed by any of &#x60;name&#x60;, &#x60;runName&#x60; and &#x60;traceId&#x60;; an absent filter simply does not narrow. &#x60;limit&#x60; defaults to 100 and is capped at 500.  The org is bound as an authoritative predicate on the query, never taken from a header, so a filter can narrow the caller&#39;s own scores but can never widen past them. Requires a validated principal; 403 without one. Scores live in the datastore, so a deployment with none wired answers 503 rather than an empty page that would read as &#39;no scores&#39;.
+     * @param runName  (optional)
+     * @param limit  (optional, default to 50)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1090,13 +1122,15 @@ public class EvalsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Scores </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1EvalsScoresAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1EvalsScoresAsync(@javax.annotation.Nullable String runName, @javax.annotation.Nullable Integer limit, final ApiCallback<CloudGetV1EvalsScores200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudGetV1EvalsScoresValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudGetV1EvalsScoresValidateBeforeCall(runName, limit, _callback);
+        Type localVarReturnType = new TypeToken<CloudGetV1EvalsScores200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1161,8 +1195,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * The traces behind your evaluations
+     * Lists the caller org&#39;s traces as &#x60;{data:[…]}&#x60; — one per model call an evaluation made, carrying its input, output, model and timing — narrowed by any of &#x60;sessionId&#x60;, &#x60;runName&#x60; and &#x60;datasetName&#x60;. &#x60;limit&#x60; defaults to 100 and is capped at 500.  Scoped by org AND by project: the project is the caller&#39;s server-minted scope, not a parameter, so it cannot be widened by asking. Requires a validated principal; 403 without one. Traces live in the datastore, so a deployment with none wired answers 503 rather than an empty page.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1176,8 +1210,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * The traces behind your evaluations
+     * Lists the caller org&#39;s traces as &#x60;{data:[…]}&#x60; — one per model call an evaluation made, carrying its input, output, model and timing — narrowed by any of &#x60;sessionId&#x60;, &#x60;runName&#x60; and &#x60;datasetName&#x60;. &#x60;limit&#x60; defaults to 100 and is capped at 500.  Scoped by org AND by project: the project is the caller&#39;s server-minted scope, not a parameter, so it cannot be widened by asking. Requires a validated principal; 403 without one. Traces live in the datastore, so a deployment with none wired answers 503 rather than an empty page.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1193,8 +1227,8 @@ public class EvalsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The traces behind your evaluations (asynchronously)
+     * Lists the caller org&#39;s traces as &#x60;{data:[…]}&#x60; — one per model call an evaluation made, carrying its input, output, model and timing — narrowed by any of &#x60;sessionId&#x60;, &#x60;runName&#x60; and &#x60;datasetName&#x60;. &#x60;limit&#x60; defaults to 100 and is capped at 500.  Scoped by org AND by project: the project is the caller&#39;s server-minted scope, not a parameter, so it cannot be widened by asking. Requires a validated principal; 403 without one. Traces live in the datastore, so a deployment with none wired answers 503 rather than an empty page.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1213,6 +1247,7 @@ public class EvalsApi {
     }
     /**
      * Build call for cloudPostV1EvalsDatasetItems
+     * @param evalsDatasetItemCreate  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1220,10 +1255,11 @@ public class EvalsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Item added </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1EvalsDatasetItemsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1EvalsDatasetItemsCall(@javax.annotation.Nonnull EvalsDatasetItemCreate evalsDatasetItemCreate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1237,7 +1273,7 @@ public class EvalsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = evalsDatasetItemCreate;
 
         // create path and map variables
         String localVarPath = "/v1/evals/dataset-items";
@@ -1249,6 +1285,7 @@ public class EvalsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1256,6 +1293,7 @@ public class EvalsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1267,46 +1305,59 @@ public class EvalsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1EvalsDatasetItemsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1EvalsDatasetItemsCall(_callback);
+    private okhttp3.Call cloudPostV1EvalsDatasetItemsValidateBeforeCall(@javax.annotation.Nonnull EvalsDatasetItemCreate evalsDatasetItemCreate, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'evalsDatasetItemCreate' is set
+        if (evalsDatasetItemCreate == null) {
+            throw new ApiException("Missing the required parameter 'evalsDatasetItemCreate' when calling cloudPostV1EvalsDatasetItems(Async)");
+        }
+
+        return cloudPostV1EvalsDatasetItemsCall(evalsDatasetItemCreate, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Add a graded example to one of your datasets
+     * Writes one example — its &#x60;input&#x60;, its &#x60;expectedOutput&#x60;, free-form metadata and a status — into a dataset the caller&#39;s org owns, and answers 201 with it. &#x60;datasetName&#x60; is required and the dataset MUST already exist for this org: an unknown one is 404, never a silent create, so an example can never be attached to a set the caller does not own.  Supply &#x60;id&#x60; to make the write idempotent — re-posting the same id replaces that example in place — or omit it and one is generated. An id that already exists in a DIFFERENT dataset is 409 rather than a move. &#x60;status&#x60; is &#x60;ACTIVE&#x60; (the default) or &#x60;ARCHIVED&#x60;; only ACTIVE examples are fed to a run, which is how an example is retired without deleting it. &#x60;input&#x60; and &#x60;expectedOutput&#x60; are stored as raw JSON exactly as sent. Requires a validated principal; 403 without one.
+     * @param evalsDatasetItemCreate  (required)
+     * @return EvalsDatasetItem
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Item added </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1EvalsDatasetItems() throws ApiException {
-        cloudPostV1EvalsDatasetItemsWithHttpInfo();
+    public EvalsDatasetItem cloudPostV1EvalsDatasetItems(@javax.annotation.Nonnull EvalsDatasetItemCreate evalsDatasetItemCreate) throws ApiException {
+        ApiResponse<EvalsDatasetItem> localVarResp = cloudPostV1EvalsDatasetItemsWithHttpInfo(evalsDatasetItemCreate);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Add a graded example to one of your datasets
+     * Writes one example — its &#x60;input&#x60;, its &#x60;expectedOutput&#x60;, free-form metadata and a status — into a dataset the caller&#39;s org owns, and answers 201 with it. &#x60;datasetName&#x60; is required and the dataset MUST already exist for this org: an unknown one is 404, never a silent create, so an example can never be attached to a set the caller does not own.  Supply &#x60;id&#x60; to make the write idempotent — re-posting the same id replaces that example in place — or omit it and one is generated. An id that already exists in a DIFFERENT dataset is 409 rather than a move. &#x60;status&#x60; is &#x60;ACTIVE&#x60; (the default) or &#x60;ARCHIVED&#x60;; only ACTIVE examples are fed to a run, which is how an example is retired without deleting it. &#x60;input&#x60; and &#x60;expectedOutput&#x60; are stored as raw JSON exactly as sent. Requires a validated principal; 403 without one.
+     * @param evalsDatasetItemCreate  (required)
+     * @return ApiResponse&lt;EvalsDatasetItem&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Item added </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1EvalsDatasetItemsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1EvalsDatasetItemsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<EvalsDatasetItem> cloudPostV1EvalsDatasetItemsWithHttpInfo(@javax.annotation.Nonnull EvalsDatasetItemCreate evalsDatasetItemCreate) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1EvalsDatasetItemsValidateBeforeCall(evalsDatasetItemCreate, null);
+        Type localVarReturnType = new TypeToken<EvalsDatasetItem>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Add a graded example to one of your datasets (asynchronously)
+     * Writes one example — its &#x60;input&#x60;, its &#x60;expectedOutput&#x60;, free-form metadata and a status — into a dataset the caller&#39;s org owns, and answers 201 with it. &#x60;datasetName&#x60; is required and the dataset MUST already exist for this org: an unknown one is 404, never a silent create, so an example can never be attached to a set the caller does not own.  Supply &#x60;id&#x60; to make the write idempotent — re-posting the same id replaces that example in place — or omit it and one is generated. An id that already exists in a DIFFERENT dataset is 409 rather than a move. &#x60;status&#x60; is &#x60;ACTIVE&#x60; (the default) or &#x60;ARCHIVED&#x60;; only ACTIVE examples are fed to a run, which is how an example is retired without deleting it. &#x60;input&#x60; and &#x60;expectedOutput&#x60; are stored as raw JSON exactly as sent. Requires a validated principal; 403 without one.
+     * @param evalsDatasetItemCreate  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1314,17 +1365,20 @@ public class EvalsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Item added </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1EvalsDatasetItemsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1EvalsDatasetItemsAsync(@javax.annotation.Nonnull EvalsDatasetItemCreate evalsDatasetItemCreate, final ApiCallback<EvalsDatasetItem> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1EvalsDatasetItemsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1EvalsDatasetItemsValidateBeforeCall(evalsDatasetItemCreate, _callback);
+        Type localVarReturnType = new TypeToken<EvalsDatasetItem>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1EvalsDatasets
+     * @param evalsDatasetCreate  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1332,10 +1386,11 @@ public class EvalsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Dataset created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1EvalsDatasetsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1EvalsDatasetsCall(@javax.annotation.Nonnull EvalsDatasetCreate evalsDatasetCreate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1349,7 +1404,7 @@ public class EvalsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = evalsDatasetCreate;
 
         // create path and map variables
         String localVarPath = "/v1/evals/datasets";
@@ -1361,6 +1416,7 @@ public class EvalsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1368,6 +1424,7 @@ public class EvalsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1379,46 +1436,59 @@ public class EvalsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1EvalsDatasetsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1EvalsDatasetsCall(_callback);
+    private okhttp3.Call cloudPostV1EvalsDatasetsValidateBeforeCall(@javax.annotation.Nonnull EvalsDatasetCreate evalsDatasetCreate, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'evalsDatasetCreate' is set
+        if (evalsDatasetCreate == null) {
+            throw new ApiException("Missing the required parameter 'evalsDatasetCreate' when calling cloudPostV1EvalsDatasets(Async)");
+        }
+
+        return cloudPostV1EvalsDatasetsCall(evalsDatasetCreate, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Create a dataset, or edit the one with that name
+     * Writes a dataset — the named set of graded examples a run scores a model against — under the caller&#39;s org and answers 201 with it. The NAME is the key, not an id: posting a name the org already has updates that dataset&#39;s description and metadata and keeps its original creation time, so this is create-or-edit and never a duplicate. Its items are untouched.  Requires a validated principal; 403 without one. The org comes from the validated owner claim, never from a client &#x60;X-Org-Id&#x60;, so a dataset can only ever be written under the caller&#39;s own tenant. &#x60;name&#x60; is required and must match &#x60;^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$&#x60;; a description over 64 KiB is 400.
+     * @param evalsDatasetCreate  (required)
+     * @return EvalsDataset
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Dataset created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1EvalsDatasets() throws ApiException {
-        cloudPostV1EvalsDatasetsWithHttpInfo();
+    public EvalsDataset cloudPostV1EvalsDatasets(@javax.annotation.Nonnull EvalsDatasetCreate evalsDatasetCreate) throws ApiException {
+        ApiResponse<EvalsDataset> localVarResp = cloudPostV1EvalsDatasetsWithHttpInfo(evalsDatasetCreate);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Create a dataset, or edit the one with that name
+     * Writes a dataset — the named set of graded examples a run scores a model against — under the caller&#39;s org and answers 201 with it. The NAME is the key, not an id: posting a name the org already has updates that dataset&#39;s description and metadata and keeps its original creation time, so this is create-or-edit and never a duplicate. Its items are untouched.  Requires a validated principal; 403 without one. The org comes from the validated owner claim, never from a client &#x60;X-Org-Id&#x60;, so a dataset can only ever be written under the caller&#39;s own tenant. &#x60;name&#x60; is required and must match &#x60;^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$&#x60;; a description over 64 KiB is 400.
+     * @param evalsDatasetCreate  (required)
+     * @return ApiResponse&lt;EvalsDataset&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Dataset created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1EvalsDatasetsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1EvalsDatasetsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<EvalsDataset> cloudPostV1EvalsDatasetsWithHttpInfo(@javax.annotation.Nonnull EvalsDatasetCreate evalsDatasetCreate) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1EvalsDatasetsValidateBeforeCall(evalsDatasetCreate, null);
+        Type localVarReturnType = new TypeToken<EvalsDataset>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Create a dataset, or edit the one with that name (asynchronously)
+     * Writes a dataset — the named set of graded examples a run scores a model against — under the caller&#39;s org and answers 201 with it. The NAME is the key, not an id: posting a name the org already has updates that dataset&#39;s description and metadata and keeps its original creation time, so this is create-or-edit and never a duplicate. Its items are untouched.  Requires a validated principal; 403 without one. The org comes from the validated owner claim, never from a client &#x60;X-Org-Id&#x60;, so a dataset can only ever be written under the caller&#39;s own tenant. &#x60;name&#x60; is required and must match &#x60;^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$&#x60;; a description over 64 KiB is 400.
+     * @param evalsDatasetCreate  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1426,17 +1496,20 @@ public class EvalsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Dataset created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1EvalsDatasetsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1EvalsDatasetsAsync(@javax.annotation.Nonnull EvalsDatasetCreate evalsDatasetCreate, final ApiCallback<EvalsDataset> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1EvalsDatasetsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1EvalsDatasetsValidateBeforeCall(evalsDatasetCreate, _callback);
+        Type localVarReturnType = new TypeToken<EvalsDataset>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1EvalsEvaluators
+     * @param evalsEvaluator  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1444,10 +1517,11 @@ public class EvalsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Evaluator registered </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1EvalsEvaluatorsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1EvalsEvaluatorsCall(@javax.annotation.Nonnull EvalsEvaluator evalsEvaluator, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1461,7 +1535,7 @@ public class EvalsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = evalsEvaluator;
 
         // create path and map variables
         String localVarPath = "/v1/evals/evaluators";
@@ -1473,6 +1547,7 @@ public class EvalsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1480,6 +1555,7 @@ public class EvalsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1491,46 +1567,56 @@ public class EvalsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1EvalsEvaluatorsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1EvalsEvaluatorsCall(_callback);
+    private okhttp3.Call cloudPostV1EvalsEvaluatorsValidateBeforeCall(@javax.annotation.Nonnull EvalsEvaluator evalsEvaluator, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'evalsEvaluator' is set
+        if (evalsEvaluator == null) {
+            throw new ApiException("Missing the required parameter 'evalsEvaluator' when calling cloudPostV1EvalsEvaluators(Async)");
+        }
+
+        return cloudPostV1EvalsEvaluatorsCall(evalsEvaluator, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Define a judge: a model plus the criteria it grades by
+     * Saves a reusable evaluator for the caller&#39;s org — the judge model and the written criteria it grades against — and answers 201 with it. Like a dataset, the NAME is the key: re-posting a name edits that evaluator rather than adding a second one.  &#x60;scoreName&#x60; is the name the resulting scores are filed under and defaults to the evaluator&#39;s own name; both must match &#x60;^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$&#x60;. Criteria over 64 KiB is 400. Requires a validated principal; 403 without one.
+     * @param evalsEvaluator  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Evaluator registered </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1EvalsEvaluators() throws ApiException {
-        cloudPostV1EvalsEvaluatorsWithHttpInfo();
+    public void cloudPostV1EvalsEvaluators(@javax.annotation.Nonnull EvalsEvaluator evalsEvaluator) throws ApiException {
+        cloudPostV1EvalsEvaluatorsWithHttpInfo(evalsEvaluator);
     }
 
     /**
-     * 
-     * 
+     * Define a judge: a model plus the criteria it grades by
+     * Saves a reusable evaluator for the caller&#39;s org — the judge model and the written criteria it grades against — and answers 201 with it. Like a dataset, the NAME is the key: re-posting a name edits that evaluator rather than adding a second one.  &#x60;scoreName&#x60; is the name the resulting scores are filed under and defaults to the evaluator&#39;s own name; both must match &#x60;^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$&#x60;. Criteria over 64 KiB is 400. Requires a validated principal; 403 without one.
+     * @param evalsEvaluator  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Evaluator registered </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1EvalsEvaluatorsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1EvalsEvaluatorsValidateBeforeCall(null);
+    public ApiResponse<Void> cloudPostV1EvalsEvaluatorsWithHttpInfo(@javax.annotation.Nonnull EvalsEvaluator evalsEvaluator) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1EvalsEvaluatorsValidateBeforeCall(evalsEvaluator, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Define a judge: a model plus the criteria it grades by (asynchronously)
+     * Saves a reusable evaluator for the caller&#39;s org — the judge model and the written criteria it grades against — and answers 201 with it. Like a dataset, the NAME is the key: re-posting a name edits that evaluator rather than adding a second one.  &#x60;scoreName&#x60; is the name the resulting scores are filed under and defaults to the evaluator&#39;s own name; both must match &#x60;^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$&#x60;. Criteria over 64 KiB is 400. Requires a validated principal; 403 without one.
+     * @param evalsEvaluator  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1538,17 +1624,19 @@ public class EvalsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Evaluator registered </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1EvalsEvaluatorsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1EvalsEvaluatorsAsync(@javax.annotation.Nonnull EvalsEvaluator evalsEvaluator, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1EvalsEvaluatorsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = cloudPostV1EvalsEvaluatorsValidateBeforeCall(evalsEvaluator, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1EvalsRuns
+     * @param evalsRunRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1556,10 +1644,12 @@ public class EvalsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Run summary </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Dataset has no active items </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1EvalsRunsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1EvalsRunsCall(@javax.annotation.Nonnull EvalsRunRequest evalsRunRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1573,7 +1663,7 @@ public class EvalsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = evalsRunRequest;
 
         // create path and map variables
         String localVarPath = "/v1/evals/runs";
@@ -1585,6 +1675,7 @@ public class EvalsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1592,6 +1683,7 @@ public class EvalsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1603,46 +1695,61 @@ public class EvalsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1EvalsRunsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1EvalsRunsCall(_callback);
+    private okhttp3.Call cloudPostV1EvalsRunsValidateBeforeCall(@javax.annotation.Nonnull EvalsRunRequest evalsRunRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'evalsRunRequest' is set
+        if (evalsRunRequest == null) {
+            throw new ApiException("Missing the required parameter 'evalsRunRequest' when calling cloudPostV1EvalsRuns(Async)");
+        }
+
+        return cloudPostV1EvalsRunsCall(evalsRunRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Score a dataset through a model and a judge, now
+     * Runs a real evaluation and answers the summary when it is finished — this is synchronous work, not a job id. For each ACTIVE example in the dataset it calls the model under test, records a trace, calls the LLM-as-judge, and records the judge&#39;s score with its reasoning. The answer carries the per-item results (item id, trace id, score, output or error) alongside &#x60;items&#x60;, &#x60;scored&#x60; and &#x60;avgScore&#x60;.  &#x60;dataset&#x60; and &#x60;model&#x60; are required; the dataset must belong to the caller&#39;s org (404 otherwise) and must have at least one ACTIVE example (422 otherwise). &#x60;judge&#x60; is optional — omitted, the model under test grades itself against a default correctness criterion under the score name &#x60;llm-judge&#x60;. &#x60;limit&#x60; defaults to 20 and anything above 100 falls back to the default. &#x60;runName&#x60; is generated from the clock when omitted.  It runs as YOU: the caller&#39;s own &#x60;Authorization&#x60; bearer drives the model gateway, so a request without one is 401 rather than a run made anonymously or under a service identity. Only a non-reversible hash of that credential is recorded on the traces.  Bounded and honest about it: an org may have at most 4 runs in flight and the fifth is 429 rather than queued, and the whole run is capped at 10 minutes — items past the deadline come back with an error instead of a score, and &#x60;scored&#x60; counts only real successes. A run where NOTHING scored answers 502, not a 200 that looks like an evaluation. A run must be able to persist what it produces, so a deployment with no datastore wired is 503 up front. Requires a validated principal; 403 without one.
+     * @param evalsRunRequest  (required)
+     * @return EvalsRunSummary
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Run summary </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Dataset has no active items </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1EvalsRuns() throws ApiException {
-        cloudPostV1EvalsRunsWithHttpInfo();
+    public EvalsRunSummary cloudPostV1EvalsRuns(@javax.annotation.Nonnull EvalsRunRequest evalsRunRequest) throws ApiException {
+        ApiResponse<EvalsRunSummary> localVarResp = cloudPostV1EvalsRunsWithHttpInfo(evalsRunRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Score a dataset through a model and a judge, now
+     * Runs a real evaluation and answers the summary when it is finished — this is synchronous work, not a job id. For each ACTIVE example in the dataset it calls the model under test, records a trace, calls the LLM-as-judge, and records the judge&#39;s score with its reasoning. The answer carries the per-item results (item id, trace id, score, output or error) alongside &#x60;items&#x60;, &#x60;scored&#x60; and &#x60;avgScore&#x60;.  &#x60;dataset&#x60; and &#x60;model&#x60; are required; the dataset must belong to the caller&#39;s org (404 otherwise) and must have at least one ACTIVE example (422 otherwise). &#x60;judge&#x60; is optional — omitted, the model under test grades itself against a default correctness criterion under the score name &#x60;llm-judge&#x60;. &#x60;limit&#x60; defaults to 20 and anything above 100 falls back to the default. &#x60;runName&#x60; is generated from the clock when omitted.  It runs as YOU: the caller&#39;s own &#x60;Authorization&#x60; bearer drives the model gateway, so a request without one is 401 rather than a run made anonymously or under a service identity. Only a non-reversible hash of that credential is recorded on the traces.  Bounded and honest about it: an org may have at most 4 runs in flight and the fifth is 429 rather than queued, and the whole run is capped at 10 minutes — items past the deadline come back with an error instead of a score, and &#x60;scored&#x60; counts only real successes. A run where NOTHING scored answers 502, not a 200 that looks like an evaluation. A run must be able to persist what it produces, so a deployment with no datastore wired is 503 up front. Requires a validated principal; 403 without one.
+     * @param evalsRunRequest  (required)
+     * @return ApiResponse&lt;EvalsRunSummary&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Run summary </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Dataset has no active items </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1EvalsRunsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1EvalsRunsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<EvalsRunSummary> cloudPostV1EvalsRunsWithHttpInfo(@javax.annotation.Nonnull EvalsRunRequest evalsRunRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1EvalsRunsValidateBeforeCall(evalsRunRequest, null);
+        Type localVarReturnType = new TypeToken<EvalsRunSummary>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Score a dataset through a model and a judge, now (asynchronously)
+     * Runs a real evaluation and answers the summary when it is finished — this is synchronous work, not a job id. For each ACTIVE example in the dataset it calls the model under test, records a trace, calls the LLM-as-judge, and records the judge&#39;s score with its reasoning. The answer carries the per-item results (item id, trace id, score, output or error) alongside &#x60;items&#x60;, &#x60;scored&#x60; and &#x60;avgScore&#x60;.  &#x60;dataset&#x60; and &#x60;model&#x60; are required; the dataset must belong to the caller&#39;s org (404 otherwise) and must have at least one ACTIVE example (422 otherwise). &#x60;judge&#x60; is optional — omitted, the model under test grades itself against a default correctness criterion under the score name &#x60;llm-judge&#x60;. &#x60;limit&#x60; defaults to 20 and anything above 100 falls back to the default. &#x60;runName&#x60; is generated from the clock when omitted.  It runs as YOU: the caller&#39;s own &#x60;Authorization&#x60; bearer drives the model gateway, so a request without one is 401 rather than a run made anonymously or under a service identity. Only a non-reversible hash of that credential is recorded on the traces.  Bounded and honest about it: an org may have at most 4 runs in flight and the fifth is 429 rather than queued, and the whole run is capped at 10 minutes — items past the deadline come back with an error instead of a score, and &#x60;scored&#x60; counts only real successes. A run where NOTHING scored answers 502, not a 200 that looks like an evaluation. A run must be able to persist what it produces, so a deployment with no datastore wired is 503 up front. Requires a validated principal; 403 without one.
+     * @param evalsRunRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1650,13 +1757,16 @@ public class EvalsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Run summary </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Dataset has no active items </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1EvalsRunsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1EvalsRunsAsync(@javax.annotation.Nonnull EvalsRunRequest evalsRunRequest, final ApiCallback<EvalsRunSummary> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1EvalsRunsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1EvalsRunsValidateBeforeCall(evalsRunRequest, _callback);
+        Type localVarReturnType = new TypeToken<EvalsRunSummary>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1721,8 +1831,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * Declare what a score named X is allowed to be
+     * Defines the shape of one score name for the caller&#39;s org — &#x60;NUMERIC&#x60; (the default, optionally bounded by &#x60;minValue&#x60;/&#x60;maxValue&#x60;), &#x60;CATEGORICAL&#x60; (a closed set of &#x60;categories&#x60;) or &#x60;BOOLEAN&#x60; — and answers 201 with it. The NAME is the key, so re-posting a name replaces its rules.  This is the integrity contract, not documentation: once a config exists for a name, every score recorded under that name is checked against it and the config&#39;s data type is AUTHORITATIVE — a caller cannot claim a different one. Out-of-range values, unlisted labels and non-finite numbers are refused at write time.  A &#x60;CATEGORICAL&#x60; config with no categories is 400, as is a non-finite bound or a &#x60;minValue&#x60; above &#x60;maxValue&#x60;. Requires a validated principal; 403 without one.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1736,8 +1846,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * Declare what a score named X is allowed to be
+     * Defines the shape of one score name for the caller&#39;s org — &#x60;NUMERIC&#x60; (the default, optionally bounded by &#x60;minValue&#x60;/&#x60;maxValue&#x60;), &#x60;CATEGORICAL&#x60; (a closed set of &#x60;categories&#x60;) or &#x60;BOOLEAN&#x60; — and answers 201 with it. The NAME is the key, so re-posting a name replaces its rules.  This is the integrity contract, not documentation: once a config exists for a name, every score recorded under that name is checked against it and the config&#39;s data type is AUTHORITATIVE — a caller cannot claim a different one. Out-of-range values, unlisted labels and non-finite numbers are refused at write time.  A &#x60;CATEGORICAL&#x60; config with no categories is 400, as is a non-finite bound or a &#x60;minValue&#x60; above &#x60;maxValue&#x60;. Requires a validated principal; 403 without one.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1753,8 +1863,8 @@ public class EvalsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Declare what a score named X is allowed to be (asynchronously)
+     * Defines the shape of one score name for the caller&#39;s org — &#x60;NUMERIC&#x60; (the default, optionally bounded by &#x60;minValue&#x60;/&#x60;maxValue&#x60;), &#x60;CATEGORICAL&#x60; (a closed set of &#x60;categories&#x60;) or &#x60;BOOLEAN&#x60; — and answers 201 with it. The NAME is the key, so re-posting a name replaces its rules.  This is the integrity contract, not documentation: once a config exists for a name, every score recorded under that name is checked against it and the config&#39;s data type is AUTHORITATIVE — a caller cannot claim a different one. Out-of-range values, unlisted labels and non-finite numbers are refused at write time.  A &#x60;CATEGORICAL&#x60; config with no categories is 400, as is a non-finite bound or a &#x60;minValue&#x60; above &#x60;maxValue&#x60;. Requires a validated principal; 403 without one.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1833,8 +1943,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * Record a score against a trace, a run or an example
+     * Files one score event for the caller&#39;s org and answers 201 with it. This is how human review and out-of-band graders land beside the automatic ones: name the score, give it a &#x60;value&#x60; (or a &#x60;stringValue&#x60; for a categorical label), and attach it to a &#x60;traceId&#x60;, a &#x60;runName&#x60;, a &#x60;datasetName&#x60;/&#x60;datasetItemId&#x60;, or any combination.  Scores are validated fail-closed. A value must be FINITE — NaN and Inf are 400 — and if the org has declared a score config for this name, that config decides the type and the value must satisfy it: inside the numeric bounds, or one of the allowed categories. A caller cannot override the declared type by sending a different &#x60;dataType&#x60;. Comments are truncated at 2000 characters.  A score is TELEMETRY, not metadata, so it needs the datastore: a deployment with no datastore wired answers 503 rather than accepting a score it cannot persist. Requires a validated principal; 403 without one, and the org is stamped from the validated claim rather than read off the body.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1848,8 +1958,8 @@ public class EvalsApi {
     }
 
     /**
-     * 
-     * 
+     * Record a score against a trace, a run or an example
+     * Files one score event for the caller&#39;s org and answers 201 with it. This is how human review and out-of-band graders land beside the automatic ones: name the score, give it a &#x60;value&#x60; (or a &#x60;stringValue&#x60; for a categorical label), and attach it to a &#x60;traceId&#x60;, a &#x60;runName&#x60;, a &#x60;datasetName&#x60;/&#x60;datasetItemId&#x60;, or any combination.  Scores are validated fail-closed. A value must be FINITE — NaN and Inf are 400 — and if the org has declared a score config for this name, that config decides the type and the value must satisfy it: inside the numeric bounds, or one of the allowed categories. A caller cannot override the declared type by sending a different &#x60;dataType&#x60;. Comments are truncated at 2000 characters.  A score is TELEMETRY, not metadata, so it needs the datastore: a deployment with no datastore wired answers 503 rather than accepting a score it cannot persist. Requires a validated principal; 403 without one, and the org is stamped from the validated claim rather than read off the body.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1865,8 +1975,8 @@ public class EvalsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Record a score against a trace, a run or an example (asynchronously)
+     * Files one score event for the caller&#39;s org and answers 201 with it. This is how human review and out-of-band graders land beside the automatic ones: name the score, give it a &#x60;value&#x60; (or a &#x60;stringValue&#x60; for a categorical label), and attach it to a &#x60;traceId&#x60;, a &#x60;runName&#x60;, a &#x60;datasetName&#x60;/&#x60;datasetItemId&#x60;, or any combination.  Scores are validated fail-closed. A value must be FINITE — NaN and Inf are 400 — and if the org has declared a score config for this name, that config decides the type and the value must satisfy it: inside the numeric bounds, or one of the allowed categories. A caller cannot override the declared type by sending a different &#x60;dataType&#x60;. Comments are truncated at 2000 characters.  A score is TELEMETRY, not metadata, so it needs the datastore: a deployment with no datastore wired answers 503 rather than accepting a score it cannot persist. Requires a validated principal; 403 without one, and the org is stamped from the validated claim rather than read off the body.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

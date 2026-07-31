@@ -46,58 +46,34 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * KmsGetV1KmsSecretsRest401Response
+ * McpServerCapabilitiesTools
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class KmsGetV1KmsSecretsRest401Response {
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
+public class McpServerCapabilitiesTools {
+  public static final String SERIALIZED_NAME_LIST_CHANGED = "listChanged";
+  @SerializedName(SERIALIZED_NAME_LIST_CHANGED)
   @javax.annotation.Nullable
-  private String message;
+  private Boolean listChanged;
 
-  public static final String SERIALIZED_NAME_STATUS_CODE = "statusCode";
-  @SerializedName(SERIALIZED_NAME_STATUS_CODE)
-  @javax.annotation.Nullable
-  private Integer statusCode;
-
-  public KmsGetV1KmsSecretsRest401Response() {
+  public McpServerCapabilitiesTools() {
   }
 
-  public KmsGetV1KmsSecretsRest401Response message(@javax.annotation.Nullable String message) {
-    this.message = message;
+  public McpServerCapabilitiesTools listChanged(@javax.annotation.Nullable Boolean listChanged) {
+    this.listChanged = listChanged;
     return this;
   }
 
   /**
-   * Get message
-   * @return message
+   * Get listChanged
+   * @return listChanged
    */
   @javax.annotation.Nullable
-  public String getMessage() {
-    return message;
+  public Boolean getListChanged() {
+    return listChanged;
   }
 
-  public void setMessage(@javax.annotation.Nullable String message) {
-    this.message = message;
-  }
-
-
-  public KmsGetV1KmsSecretsRest401Response statusCode(@javax.annotation.Nullable Integer statusCode) {
-    this.statusCode = statusCode;
-    return this;
-  }
-
-  /**
-   * Get statusCode
-   * @return statusCode
-   */
-  @javax.annotation.Nullable
-  public Integer getStatusCode() {
-    return statusCode;
-  }
-
-  public void setStatusCode(@javax.annotation.Nullable Integer statusCode) {
-    this.statusCode = statusCode;
+  public void setListChanged(@javax.annotation.Nullable Boolean listChanged) {
+    this.listChanged = listChanged;
   }
 
 
@@ -110,22 +86,20 @@ public class KmsGetV1KmsSecretsRest401Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    KmsGetV1KmsSecretsRest401Response kmsGetV1KmsSecretsRest401Response = (KmsGetV1KmsSecretsRest401Response) o;
-    return Objects.equals(this.message, kmsGetV1KmsSecretsRest401Response.message) &&
-        Objects.equals(this.statusCode, kmsGetV1KmsSecretsRest401Response.statusCode);
+    McpServerCapabilitiesTools mcpServerCapabilitiesTools = (McpServerCapabilitiesTools) o;
+    return Objects.equals(this.listChanged, mcpServerCapabilitiesTools.listChanged);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(message, statusCode);
+    return Objects.hash(listChanged);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class KmsGetV1KmsSecretsRest401Response {\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    statusCode: ").append(toIndentedString(statusCode)).append("\n");
+    sb.append("class McpServerCapabilitiesTools {\n");
+    sb.append("    listChanged: ").append(toIndentedString(listChanged)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -147,7 +121,7 @@ public class KmsGetV1KmsSecretsRest401Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("message", "statusCode"));
+    openapiFields = new HashSet<String>(Arrays.asList("listChanged"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -157,48 +131,45 @@ public class KmsGetV1KmsSecretsRest401Response {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to KmsGetV1KmsSecretsRest401Response
+   * @throws IOException if the JSON Element is invalid with respect to McpServerCapabilitiesTools
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!KmsGetV1KmsSecretsRest401Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in KmsGetV1KmsSecretsRest401Response is not found in the empty JSON string", KmsGetV1KmsSecretsRest401Response.openapiRequiredFields.toString()));
+        if (!McpServerCapabilitiesTools.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in McpServerCapabilitiesTools is not found in the empty JSON string", McpServerCapabilitiesTools.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!KmsGetV1KmsSecretsRest401Response.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `KmsGetV1KmsSecretsRest401Response` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!McpServerCapabilitiesTools.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `McpServerCapabilitiesTools` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!KmsGetV1KmsSecretsRest401Response.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'KmsGetV1KmsSecretsRest401Response' and its subtypes
+       if (!McpServerCapabilitiesTools.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'McpServerCapabilitiesTools' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<KmsGetV1KmsSecretsRest401Response> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(KmsGetV1KmsSecretsRest401Response.class));
+       final TypeAdapter<McpServerCapabilitiesTools> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(McpServerCapabilitiesTools.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<KmsGetV1KmsSecretsRest401Response>() {
+       return (TypeAdapter<T>) new TypeAdapter<McpServerCapabilitiesTools>() {
            @Override
-           public void write(JsonWriter out, KmsGetV1KmsSecretsRest401Response value) throws IOException {
+           public void write(JsonWriter out, McpServerCapabilitiesTools value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public KmsGetV1KmsSecretsRest401Response read(JsonReader in) throws IOException {
+           public McpServerCapabilitiesTools read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -209,18 +180,18 @@ public class KmsGetV1KmsSecretsRest401Response {
   }
 
   /**
-   * Create an instance of KmsGetV1KmsSecretsRest401Response given an JSON string
+   * Create an instance of McpServerCapabilitiesTools given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of KmsGetV1KmsSecretsRest401Response
-   * @throws IOException if the JSON string is invalid with respect to KmsGetV1KmsSecretsRest401Response
+   * @return An instance of McpServerCapabilitiesTools
+   * @throws IOException if the JSON string is invalid with respect to McpServerCapabilitiesTools
    */
-  public static KmsGetV1KmsSecretsRest401Response fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, KmsGetV1KmsSecretsRest401Response.class);
+  public static McpServerCapabilitiesTools fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, McpServerCapabilitiesTools.class);
   }
 
   /**
-   * Convert an instance of KmsGetV1KmsSecretsRest401Response to an JSON string
+   * Convert an instance of McpServerCapabilitiesTools to an JSON string
    *
    * @return JSON string
    */

@@ -46,58 +46,34 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * KmsGetV1KmsHealthz200Response
+ * CloudGetV1FunctionsByNameLogs200Response
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class KmsGetV1KmsHealthz200Response {
-  public static final String SERIALIZED_NAME_SERVICE = "service";
-  @SerializedName(SERIALIZED_NAME_SERVICE)
+public class CloudGetV1FunctionsByNameLogs200Response {
+  public static final String SERIALIZED_NAME_LOGS = "logs";
+  @SerializedName(SERIALIZED_NAME_LOGS)
   @javax.annotation.Nullable
-  private String service;
+  private String logs;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  @javax.annotation.Nullable
-  private String status;
-
-  public KmsGetV1KmsHealthz200Response() {
+  public CloudGetV1FunctionsByNameLogs200Response() {
   }
 
-  public KmsGetV1KmsHealthz200Response service(@javax.annotation.Nullable String service) {
-    this.service = service;
+  public CloudGetV1FunctionsByNameLogs200Response logs(@javax.annotation.Nullable String logs) {
+    this.logs = logs;
     return this;
   }
 
   /**
-   * Get service
-   * @return service
+   * Get logs
+   * @return logs
    */
   @javax.annotation.Nullable
-  public String getService() {
-    return service;
+  public String getLogs() {
+    return logs;
   }
 
-  public void setService(@javax.annotation.Nullable String service) {
-    this.service = service;
-  }
-
-
-  public KmsGetV1KmsHealthz200Response status(@javax.annotation.Nullable String status) {
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * Get status
-   * @return status
-   */
-  @javax.annotation.Nullable
-  public String getStatus() {
-    return status;
-  }
-
-  public void setStatus(@javax.annotation.Nullable String status) {
-    this.status = status;
+  public void setLogs(@javax.annotation.Nullable String logs) {
+    this.logs = logs;
   }
 
 
@@ -110,22 +86,20 @@ public class KmsGetV1KmsHealthz200Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    KmsGetV1KmsHealthz200Response kmsGetV1KmsHealthz200Response = (KmsGetV1KmsHealthz200Response) o;
-    return Objects.equals(this.service, kmsGetV1KmsHealthz200Response.service) &&
-        Objects.equals(this.status, kmsGetV1KmsHealthz200Response.status);
+    CloudGetV1FunctionsByNameLogs200Response cloudGetV1FunctionsByNameLogs200Response = (CloudGetV1FunctionsByNameLogs200Response) o;
+    return Objects.equals(this.logs, cloudGetV1FunctionsByNameLogs200Response.logs);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(service, status);
+    return Objects.hash(logs);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class KmsGetV1KmsHealthz200Response {\n");
-    sb.append("    service: ").append(toIndentedString(service)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("class CloudGetV1FunctionsByNameLogs200Response {\n");
+    sb.append("    logs: ").append(toIndentedString(logs)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -147,7 +121,7 @@ public class KmsGetV1KmsHealthz200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("service", "status"));
+    openapiFields = new HashSet<String>(Arrays.asList("logs"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -157,28 +131,25 @@ public class KmsGetV1KmsHealthz200Response {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to KmsGetV1KmsHealthz200Response
+   * @throws IOException if the JSON Element is invalid with respect to CloudGetV1FunctionsByNameLogs200Response
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!KmsGetV1KmsHealthz200Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in KmsGetV1KmsHealthz200Response is not found in the empty JSON string", KmsGetV1KmsHealthz200Response.openapiRequiredFields.toString()));
+        if (!CloudGetV1FunctionsByNameLogs200Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CloudGetV1FunctionsByNameLogs200Response is not found in the empty JSON string", CloudGetV1FunctionsByNameLogs200Response.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!KmsGetV1KmsHealthz200Response.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `KmsGetV1KmsHealthz200Response` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!CloudGetV1FunctionsByNameLogs200Response.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CloudGetV1FunctionsByNameLogs200Response` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("service") != null && !jsonObj.get("service").isJsonNull()) && !jsonObj.get("service").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `service` to be a primitive type in the JSON string but got `%s`", jsonObj.get("service").toString()));
-      }
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      if ((jsonObj.get("logs") != null && !jsonObj.get("logs").isJsonNull()) && !jsonObj.get("logs").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `logs` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logs").toString()));
       }
   }
 
@@ -186,22 +157,22 @@ public class KmsGetV1KmsHealthz200Response {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!KmsGetV1KmsHealthz200Response.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'KmsGetV1KmsHealthz200Response' and its subtypes
+       if (!CloudGetV1FunctionsByNameLogs200Response.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CloudGetV1FunctionsByNameLogs200Response' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<KmsGetV1KmsHealthz200Response> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(KmsGetV1KmsHealthz200Response.class));
+       final TypeAdapter<CloudGetV1FunctionsByNameLogs200Response> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CloudGetV1FunctionsByNameLogs200Response.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<KmsGetV1KmsHealthz200Response>() {
+       return (TypeAdapter<T>) new TypeAdapter<CloudGetV1FunctionsByNameLogs200Response>() {
            @Override
-           public void write(JsonWriter out, KmsGetV1KmsHealthz200Response value) throws IOException {
+           public void write(JsonWriter out, CloudGetV1FunctionsByNameLogs200Response value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public KmsGetV1KmsHealthz200Response read(JsonReader in) throws IOException {
+           public CloudGetV1FunctionsByNameLogs200Response read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -212,18 +183,18 @@ public class KmsGetV1KmsHealthz200Response {
   }
 
   /**
-   * Create an instance of KmsGetV1KmsHealthz200Response given an JSON string
+   * Create an instance of CloudGetV1FunctionsByNameLogs200Response given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of KmsGetV1KmsHealthz200Response
-   * @throws IOException if the JSON string is invalid with respect to KmsGetV1KmsHealthz200Response
+   * @return An instance of CloudGetV1FunctionsByNameLogs200Response
+   * @throws IOException if the JSON string is invalid with respect to CloudGetV1FunctionsByNameLogs200Response
    */
-  public static KmsGetV1KmsHealthz200Response fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, KmsGetV1KmsHealthz200Response.class);
+  public static CloudGetV1FunctionsByNameLogs200Response fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CloudGetV1FunctionsByNameLogs200Response.class);
   }
 
   /**
-   * Convert an instance of KmsGetV1KmsHealthz200Response to an JSON string
+   * Convert an instance of CloudGetV1FunctionsByNameLogs200Response to an JSON string
    *
    * @return JSON string
    */

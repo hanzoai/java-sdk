@@ -133,8 +133,8 @@ public class TracesApi {
     }
 
     /**
-     * 
-     * 
+     * How many spans this deployment holds for your org
+     * Reports the native trace store&#39;s live state for the calling tenant: the subsystem version and &#x60;spans&#x60;, the count actually held right now. Not a dependency probe — the store is in-process, so this answers 200 whenever the process is up.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -148,8 +148,8 @@ public class TracesApi {
     }
 
     /**
-     * 
-     * 
+     * How many spans this deployment holds for your org
+     * Reports the native trace store&#39;s live state for the calling tenant: the subsystem version and &#x60;spans&#x60;, the count actually held right now. Not a dependency probe — the store is in-process, so this answers 200 whenever the process is up.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -165,8 +165,8 @@ public class TracesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * How many spans this deployment holds for your org (asynchronously)
+     * Reports the native trace store&#39;s live state for the calling tenant: the subsystem version and &#x60;spans&#x60;, the count actually held right now. Not a dependency probe — the store is in-process, so this answers 200 whenever the process is up.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -245,8 +245,8 @@ public class TracesApi {
     }
 
     /**
-     * 
-     * 
+     * Recent spans for your org over a time range
+     * Answers &#x60;{count, spans}&#x60;, newest first, filtered on each span&#39;s START time. &#x60;start&#x60; and &#x60;end&#x60; are nanosecond bounds where 0 — which is what an absent, empty or unparseable value becomes — means UNBOUNDED, so a malformed bound widens the listing instead of failing it. &#x60;limit&#x60; defaults to 100 when absent or non-positive.  It lists SPANS, not traces: several spans of one trace each count separately and each take a slot against &#x60;limit&#x60;. Assembling one trace is /v1/traces/trace. The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -260,8 +260,8 @@ public class TracesApi {
     }
 
     /**
-     * 
-     * 
+     * Recent spans for your org over a time range
+     * Answers &#x60;{count, spans}&#x60;, newest first, filtered on each span&#39;s START time. &#x60;start&#x60; and &#x60;end&#x60; are nanosecond bounds where 0 — which is what an absent, empty or unparseable value becomes — means UNBOUNDED, so a malformed bound widens the listing instead of failing it. &#x60;limit&#x60; defaults to 100 when absent or non-positive.  It lists SPANS, not traces: several spans of one trace each count separately and each take a slot against &#x60;limit&#x60;. Assembling one trace is /v1/traces/trace. The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -277,8 +277,8 @@ public class TracesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Recent spans for your org over a time range (asynchronously)
+     * Answers &#x60;{count, spans}&#x60;, newest first, filtered on each span&#39;s START time. &#x60;start&#x60; and &#x60;end&#x60; are nanosecond bounds where 0 — which is what an absent, empty or unparseable value becomes — means UNBOUNDED, so a malformed bound widens the listing instead of failing it. &#x60;limit&#x60; defaults to 100 when absent or non-positive.  It lists SPANS, not traces: several spans of one trace each count separately and each take a slot against &#x60;limit&#x60;. Assembling one trace is /v1/traces/trace. The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -357,8 +357,8 @@ public class TracesApi {
     }
 
     /**
-     * 
-     * 
+     * Every span of one trace — the waterfall
+     * Answers &#x60;{spans}&#x60;: every span the org holds for the trace id in &#x60;id&#x60;, in the order they were appended, which is what a waterfall view renders. Unlike the other reads there is no count, no time range and no limit — a trace is addressed by id or not at all.  An id with no spans answers an EMPTY list, never a 404: the store cannot tell a trace that never existed from one whose spans retention has already dropped, so it does not pretend to. The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;, and a trace id belonging to another org is simply not in this org&#39;s store.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -372,8 +372,8 @@ public class TracesApi {
     }
 
     /**
-     * 
-     * 
+     * Every span of one trace — the waterfall
+     * Answers &#x60;{spans}&#x60;: every span the org holds for the trace id in &#x60;id&#x60;, in the order they were appended, which is what a waterfall view renders. Unlike the other reads there is no count, no time range and no limit — a trace is addressed by id or not at all.  An id with no spans answers an EMPTY list, never a 404: the store cannot tell a trace that never existed from one whose spans retention has already dropped, so it does not pretend to. The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;, and a trace id belonging to another org is simply not in this org&#39;s store.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -389,8 +389,8 @@ public class TracesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Every span of one trace — the waterfall (asynchronously)
+     * Answers &#x60;{spans}&#x60;: every span the org holds for the trace id in &#x60;id&#x60;, in the order they were appended, which is what a waterfall view renders. Unlike the other reads there is no count, no time range and no limit — a trace is addressed by id or not at all.  An id with no spans answers an EMPTY list, never a 404: the store cannot tell a trace that never existed from one whose spans retention has already dropped, so it does not pretend to. The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;, and a trace id belonging to another org is simply not in this org&#39;s store.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -469,8 +469,8 @@ public class TracesApi {
     }
 
     /**
-     * 
-     * 
+     * Append spans for your org
+     * Takes &#x60;{spans:[{traceId, spanId, parentId, name, startNs, endNs, attrs}]}&#x60;, appends each, and answers &#x60;{written}&#x60; — the number of spans sent. Every span is indexed by its trace id as it lands, which is what makes the waterfall read possible without a second store.  Times are NANOSECONDS since the Unix epoch. Retention is a bounded ring of 1048576 spans per org: past that the OLDEST are evicted to keep the newest 1048576, and the trace index is rebuilt — so a long-lived trace can lose its early spans while its later ones survive, and a waterfall read is best-effort against retention, not a guarantee.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;. A body that does not decode is 400.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -484,8 +484,8 @@ public class TracesApi {
     }
 
     /**
-     * 
-     * 
+     * Append spans for your org
+     * Takes &#x60;{spans:[{traceId, spanId, parentId, name, startNs, endNs, attrs}]}&#x60;, appends each, and answers &#x60;{written}&#x60; — the number of spans sent. Every span is indexed by its trace id as it lands, which is what makes the waterfall read possible without a second store.  Times are NANOSECONDS since the Unix epoch. Retention is a bounded ring of 1048576 spans per org: past that the OLDEST are evicted to keep the newest 1048576, and the trace index is rebuilt — so a long-lived trace can lose its early spans while its later ones survive, and a waterfall read is best-effort against retention, not a guarantee.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;. A body that does not decode is 400.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -501,8 +501,8 @@ public class TracesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Append spans for your org (asynchronously)
+     * Takes &#x60;{spans:[{traceId, spanId, parentId, name, startNs, endNs, attrs}]}&#x60;, appends each, and answers &#x60;{written}&#x60; — the number of spans sent. Every span is indexed by its trace id as it lands, which is what makes the waterfall read possible without a second store.  Times are NANOSECONDS since the Unix epoch. Retention is a bounded ring of 1048576 spans per org: past that the OLDEST are evicted to keep the newest 1048576, and the trace index is rebuilt — so a long-lived trace can lose its early spans while its later ones survive, and a waterfall read is best-effort against retention, not a guarantee.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;. A body that does not decode is 400.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
