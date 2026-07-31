@@ -1,0 +1,70 @@
+// File generated from our OpenAPI spec by Stainless.
+
+package ai.hanzo.api.services.async
+
+import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
+import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Test
+
+internal class AzureServiceAsyncTest {
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun create() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val azureServiceAsync = client.azure()
+
+        val azureFuture = azureServiceAsync.create("endpoint")
+
+        val azure = azureFuture.get()
+        azure.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun update() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val azureServiceAsync = client.azure()
+
+        val azureFuture = azureServiceAsync.update("endpoint")
+
+        val azure = azureFuture.get()
+        azure.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun delete() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val azureServiceAsync = client.azure()
+
+        val azureFuture = azureServiceAsync.delete("endpoint")
+
+        val azure = azureFuture.get()
+        azure.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun call() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val azureServiceAsync = client.azure()
+
+        val responseFuture = azureServiceAsync.call("endpoint")
+
+        val response = responseFuture.get()
+        response.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun patch() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val azureServiceAsync = client.azure()
+
+        val responseFuture = azureServiceAsync.patch("endpoint")
+
+        val response = responseFuture.get()
+        response.validate()
+    }
+}
