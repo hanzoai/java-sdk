@@ -1,0 +1,70 @@
+// File generated from our OpenAPI spec by Stainless.
+
+package ai.hanzo.api.services.async
+
+import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
+import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Test
+
+internal class LangfuseServiceAsyncTest {
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun create() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val langfuseServiceAsync = client.langfuse()
+
+        val langfuseFuture = langfuseServiceAsync.create("endpoint")
+
+        val langfuse = langfuseFuture.get()
+        langfuse.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun retrieve() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val langfuseServiceAsync = client.langfuse()
+
+        val langfuseFuture = langfuseServiceAsync.retrieve("endpoint")
+
+        val langfuse = langfuseFuture.get()
+        langfuse.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun update() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val langfuseServiceAsync = client.langfuse()
+
+        val langfuseFuture = langfuseServiceAsync.update("endpoint")
+
+        val langfuse = langfuseFuture.get()
+        langfuse.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun delete() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val langfuseServiceAsync = client.langfuse()
+
+        val langfuseFuture = langfuseServiceAsync.delete("endpoint")
+
+        val langfuse = langfuseFuture.get()
+        langfuse.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun patch() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val langfuseServiceAsync = client.langfuse()
+
+        val responseFuture = langfuseServiceAsync.patch("endpoint")
+
+        val response = responseFuture.get()
+        response.validate()
+    }
+}

@@ -1,0 +1,24 @@
+// File generated from our OpenAPI spec by Stainless.
+
+package ai.hanzo.api.services.async
+
+import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
+import ai.hanzo.api.models.add.IpAddress
+import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Test
+
+internal class DeleteServiceAsyncTest {
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun createAllowedIp() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val deleteServiceAsync = client.delete()
+
+        val responseFuture =
+            deleteServiceAsync.createAllowedIp(IpAddress.builder().ip("ip").build())
+
+        val response = responseFuture.get()
+        response.validate()
+    }
+}

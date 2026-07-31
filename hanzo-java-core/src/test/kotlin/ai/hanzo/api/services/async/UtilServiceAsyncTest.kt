@@ -1,0 +1,66 @@
+// File generated from our OpenAPI spec by Stainless.
+
+package ai.hanzo.api.services.async
+
+import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
+import ai.hanzo.api.core.JsonValue
+import ai.hanzo.api.models.utils.UtilGetSupportedOpenAIParamsParams
+import ai.hanzo.api.models.utils.UtilTokenCounterParams
+import ai.hanzo.api.models.utils.UtilTransformRequestParams
+import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Test
+
+internal class UtilServiceAsyncTest {
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun getSupportedOpenAIParams() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val utilServiceAsync = client.utils()
+
+        val responseFuture =
+            utilServiceAsync.getSupportedOpenAIParams(
+                UtilGetSupportedOpenAIParamsParams.builder().model("model").build()
+            )
+
+        val response = responseFuture.get()
+        response.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun tokenCounter() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val utilServiceAsync = client.utils()
+
+        val responseFuture =
+            utilServiceAsync.tokenCounter(
+                UtilTokenCounterParams.builder()
+                    .model("model")
+                    .addMessage(JsonValue.from(mapOf<String, Any>()))
+                    .prompt("prompt")
+                    .build()
+            )
+
+        val response = responseFuture.get()
+        response.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun transformRequest() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val utilServiceAsync = client.utils()
+
+        val responseFuture =
+            utilServiceAsync.transformRequest(
+                UtilTransformRequestParams.builder()
+                    .callType(UtilTransformRequestParams.CallType.EMBEDDING)
+                    .requestBody(JsonValue.from(mapOf<String, Any>()))
+                    .build()
+            )
+
+        val response = responseFuture.get()
+        response.validate()
+    }
+}

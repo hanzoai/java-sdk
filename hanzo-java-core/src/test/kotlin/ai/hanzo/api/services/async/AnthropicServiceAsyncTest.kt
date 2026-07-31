@@ -1,0 +1,70 @@
+// File generated from our OpenAPI spec by Stainless.
+
+package ai.hanzo.api.services.async
+
+import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
+import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Test
+
+internal class AnthropicServiceAsyncTest {
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun create() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val anthropicServiceAsync = client.anthropic()
+
+        val anthropicFuture = anthropicServiceAsync.create("endpoint")
+
+        val anthropic = anthropicFuture.get()
+        anthropic.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun retrieve() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val anthropicServiceAsync = client.anthropic()
+
+        val anthropicFuture = anthropicServiceAsync.retrieve("endpoint")
+
+        val anthropic = anthropicFuture.get()
+        anthropic.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun update() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val anthropicServiceAsync = client.anthropic()
+
+        val anthropicFuture = anthropicServiceAsync.update("endpoint")
+
+        val anthropic = anthropicFuture.get()
+        anthropic.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun delete() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val anthropicServiceAsync = client.anthropic()
+
+        val anthropicFuture = anthropicServiceAsync.delete("endpoint")
+
+        val anthropic = anthropicFuture.get()
+        anthropic.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun modify() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val anthropicServiceAsync = client.anthropic()
+
+        val responseFuture = anthropicServiceAsync.modify("endpoint")
+
+        val response = responseFuture.get()
+        response.validate()
+    }
+}
