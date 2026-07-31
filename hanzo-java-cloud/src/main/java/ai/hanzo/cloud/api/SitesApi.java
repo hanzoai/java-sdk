@@ -27,6 +27,11 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.ProjectsBuildSiteRequest;
+import ai.hanzo.cloud.model.ProjectsDeploySiteRequest;
+import ai.hanzo.cloud.model.ProjectsError;
+import ai.hanzo.cloud.model.ProjectsSite;
+import ai.hanzo.cloud.model.ProjectsSiteDeployResult;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -80,7 +85,9 @@ public class SitesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The org&#39;s live sites. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1SitesCall(final ApiCallback _callback) throws ApiException {
@@ -109,6 +116,7 @@ public class SitesApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -133,40 +141,47 @@ public class SitesApi {
     }
 
     /**
-     * 
-     * 
+     * Your org&#39;s live sites and their URLs
+     * Lists only the projects that are actually LIVE, each with its pretty URL, name and last update — narrower than the project list, which includes drafts and failures, and the right read for &#39;what is my org currently serving&#39;. Requires a validated principal (403 without one) and is keyed by that principal&#39;s org.
+     * @return List&lt;ProjectsSite&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The org&#39;s live sites. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1Sites() throws ApiException {
-        cloudGetV1SitesWithHttpInfo();
+    public List<ProjectsSite> cloudGetV1Sites() throws ApiException {
+        ApiResponse<List<ProjectsSite>> localVarResp = cloudGetV1SitesWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Your org&#39;s live sites and their URLs
+     * Lists only the projects that are actually LIVE, each with its pretty URL, name and last update — narrower than the project list, which includes drafts and failures, and the right read for &#39;what is my org currently serving&#39;. Requires a validated principal (403 without one) and is keyed by that principal&#39;s org.
+     * @return ApiResponse&lt;List&lt;ProjectsSite&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The org&#39;s live sites. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1SitesWithHttpInfo() throws ApiException {
+    public ApiResponse<List<ProjectsSite>> cloudGetV1SitesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = cloudGetV1SitesValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<List<ProjectsSite>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Your org&#39;s live sites and their URLs (asynchronously)
+     * Lists only the projects that are actually LIVE, each with its pretty URL, name and last update — narrower than the project list, which includes drafts and failures, and the right read for &#39;what is my org currently serving&#39;. Requires a validated principal (403 without one) and is keyed by that principal&#39;s org.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -174,13 +189,16 @@ public class SitesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The org&#39;s live sites. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1SitesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1SitesAsync(final ApiCallback<List<ProjectsSite>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudGetV1SitesValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<List<ProjectsSite>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -252,8 +270,8 @@ public class SitesApi {
     }
 
     /**
-     * 
-     * 
+     * The site&#39;s releases, newest first — the rollback menu
+     * Lists the site&#39;s retained releases with their id, object and byte counts, source and creation time, marking which one is currently active. This is what a rollback picks from, so the retention bound matters: each publish reclaims releases past the retention depth, and the live release is never a reclaim candidate. Requires a validated principal (403 without one); the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -268,8 +286,8 @@ public class SitesApi {
     }
 
     /**
-     * 
-     * 
+     * The site&#39;s releases, newest first — the rollback menu
+     * Lists the site&#39;s retained releases with their id, object and byte counts, source and creation time, marking which one is currently active. This is what a rollback picks from, so the retention bound matters: each publish reclaims releases past the retention depth, and the live release is never a reclaim candidate. Requires a validated principal (403 without one); the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -286,8 +304,8 @@ public class SitesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The site&#39;s releases, newest first — the rollback menu (asynchronously)
+     * Lists the site&#39;s retained releases with their id, object and byte counts, source and creation time, marking which one is currently active. This is what a rollback picks from, so the retention bound matters: each publish reclaims releases past the retention depth, and the live release is never a reclaim candidate. Requires a validated principal (403 without one); the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -307,6 +325,7 @@ public class SitesApi {
     }
     /**
      * Build call for cloudPostV1Sites
+     * @param projectsBuildSiteRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -314,10 +333,15 @@ public class SitesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Site generated and deployed live. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway — the upload to the S3 origin failed. </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable — a required backend is not configured (the S3 origin, or the inference gateway for brief builds). </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1SitesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1SitesCall(@javax.annotation.Nonnull ProjectsBuildSiteRequest projectsBuildSiteRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -331,7 +355,7 @@ public class SitesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = projectsBuildSiteRequest;
 
         // create path and map variables
         String localVarPath = "/v1/sites";
@@ -343,6 +367,7 @@ public class SitesApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -350,6 +375,7 @@ public class SitesApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -361,46 +387,67 @@ public class SitesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1SitesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1SitesCall(_callback);
+    private okhttp3.Call cloudPostV1SitesValidateBeforeCall(@javax.annotation.Nonnull ProjectsBuildSiteRequest projectsBuildSiteRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'projectsBuildSiteRequest' is set
+        if (projectsBuildSiteRequest == null) {
+            throw new ApiException("Missing the required parameter 'projectsBuildSiteRequest' when calling cloudPostV1Sites(Async)");
+        }
+
+        return cloudPostV1SitesCall(projectsBuildSiteRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Describe a site in words and get it generated and deployed live
+     * Generates a responsive static site from a natural-language &#x60;brief&#x60;, deploys it, and answers the live URL with the resolved slug, the deployment id and the file list. The project is created if the slug does not exist yet and reused if it does, so this one call covers both the first publish and a regeneration. &#x60;slug&#x60; and &#x60;name&#x60; are optional — a slug is derived from the generated title, and a usable one is minted when nothing good can be derived, so a deploy never fails purely for lack of a name.  Order matters and is fail-closed: the hosting gate runs BEFORE any inference, so a denied caller is 402 or 503 with nothing generated, nothing uploaded and no model tokens spent. Generation and hosting are billed to the same payer. A brief that is empty or over the cap is a 400, as is a generation that does not parse; a failed upload is never billed.  Scope: a validated principal is required (403 without one) and the site is created and stored under THAT principal&#39;s org — the same org rule as the project plane, which is why a site made here is an ordinary project visible at &#x60;/v1/projects&#x60;. Object storage must be configured (503), and so must inference (503).
+     * @param projectsBuildSiteRequest  (required)
+     * @return ProjectsSiteDeployResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Site generated and deployed live. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway — the upload to the S3 origin failed. </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable — a required backend is not configured (the S3 origin, or the inference gateway for brief builds). </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1Sites() throws ApiException {
-        cloudPostV1SitesWithHttpInfo();
+    public ProjectsSiteDeployResult cloudPostV1Sites(@javax.annotation.Nonnull ProjectsBuildSiteRequest projectsBuildSiteRequest) throws ApiException {
+        ApiResponse<ProjectsSiteDeployResult> localVarResp = cloudPostV1SitesWithHttpInfo(projectsBuildSiteRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Describe a site in words and get it generated and deployed live
+     * Generates a responsive static site from a natural-language &#x60;brief&#x60;, deploys it, and answers the live URL with the resolved slug, the deployment id and the file list. The project is created if the slug does not exist yet and reused if it does, so this one call covers both the first publish and a regeneration. &#x60;slug&#x60; and &#x60;name&#x60; are optional — a slug is derived from the generated title, and a usable one is minted when nothing good can be derived, so a deploy never fails purely for lack of a name.  Order matters and is fail-closed: the hosting gate runs BEFORE any inference, so a denied caller is 402 or 503 with nothing generated, nothing uploaded and no model tokens spent. Generation and hosting are billed to the same payer. A brief that is empty or over the cap is a 400, as is a generation that does not parse; a failed upload is never billed.  Scope: a validated principal is required (403 without one) and the site is created and stored under THAT principal&#39;s org — the same org rule as the project plane, which is why a site made here is an ordinary project visible at &#x60;/v1/projects&#x60;. Object storage must be configured (503), and so must inference (503).
+     * @param projectsBuildSiteRequest  (required)
+     * @return ApiResponse&lt;ProjectsSiteDeployResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Site generated and deployed live. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway — the upload to the S3 origin failed. </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable — a required backend is not configured (the S3 origin, or the inference gateway for brief builds). </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1SitesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1SitesValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<ProjectsSiteDeployResult> cloudPostV1SitesWithHttpInfo(@javax.annotation.Nonnull ProjectsBuildSiteRequest projectsBuildSiteRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1SitesValidateBeforeCall(projectsBuildSiteRequest, null);
+        Type localVarReturnType = new TypeToken<ProjectsSiteDeployResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Describe a site in words and get it generated and deployed live (asynchronously)
+     * Generates a responsive static site from a natural-language &#x60;brief&#x60;, deploys it, and answers the live URL with the resolved slug, the deployment id and the file list. The project is created if the slug does not exist yet and reused if it does, so this one call covers both the first publish and a regeneration. &#x60;slug&#x60; and &#x60;name&#x60; are optional — a slug is derived from the generated title, and a usable one is minted when nothing good can be derived, so a deploy never fails purely for lack of a name.  Order matters and is fail-closed: the hosting gate runs BEFORE any inference, so a denied caller is 402 or 503 with nothing generated, nothing uploaded and no model tokens spent. Generation and hosting are billed to the same payer. A brief that is empty or over the cap is a 400, as is a generation that does not parse; a failed upload is never billed.  Scope: a validated principal is required (403 without one) and the site is created and stored under THAT principal&#39;s org — the same org rule as the project plane, which is why a site made here is an ordinary project visible at &#x60;/v1/projects&#x60;. Object storage must be configured (503), and so must inference (503).
+     * @param projectsBuildSiteRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -408,13 +455,19 @@ public class SitesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Site generated and deployed live. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway — the upload to the S3 origin failed. </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable — a required backend is not configured (the S3 origin, or the inference gateway for brief builds). </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1SitesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1SitesAsync(@javax.annotation.Nonnull ProjectsBuildSiteRequest projectsBuildSiteRequest, final ApiCallback<ProjectsSiteDeployResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1SitesValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1SitesValidateBeforeCall(projectsBuildSiteRequest, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsSiteDeployResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -486,8 +539,8 @@ public class SitesApi {
     }
 
     /**
-     * 
-     * 
+     * Publish a build output and take it live in one call
+     * Promotes a build output into a new immutable release and points the site at it, answering the release marked active with the live URL. This is create-plus-activate in sequence with no extra semantics — the two halves stay separately callable for a staged rollout, and they cannot drift because this path is literally both.  No bytes traverse the API. &#x60;source&#x60; is a path RELATIVE to the caller org&#39;s own storage space, and the org segment is prepended server-side from the validated principal while the bucket never appears in the request at all — so the worst a hostile source can name is something the caller&#39;s own org already owns, and no client ever holds a storage credential. A release id is a digest of the manifest it was built from, which makes re-publishing identical bytes idempotent by construction: same content, same id, no copy.  Promoting is the billable work and the hosting gate runs before any copy, so this can never become a way to deploy for free: 402 unfunded, 503 unreachable. Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503); a source that breaks the object or byte guards is a 400 or 413 and a source that moved under the scan is a 409.
      * @param slug  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -502,8 +555,8 @@ public class SitesApi {
     }
 
     /**
-     * 
-     * 
+     * Publish a build output and take it live in one call
+     * Promotes a build output into a new immutable release and points the site at it, answering the release marked active with the live URL. This is create-plus-activate in sequence with no extra semantics — the two halves stay separately callable for a staged rollout, and they cannot drift because this path is literally both.  No bytes traverse the API. &#x60;source&#x60; is a path RELATIVE to the caller org&#39;s own storage space, and the org segment is prepended server-side from the validated principal while the bucket never appears in the request at all — so the worst a hostile source can name is something the caller&#39;s own org already owns, and no client ever holds a storage credential. A release id is a digest of the manifest it was built from, which makes re-publishing identical bytes idempotent by construction: same content, same id, no copy.  Promoting is the billable work and the hosting gate runs before any copy, so this can never become a way to deploy for free: 402 unfunded, 503 unreachable. Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503); a source that breaks the object or byte guards is a 400 or 413 and a source that moved under the scan is a 409.
      * @param slug  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -520,8 +573,8 @@ public class SitesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Publish a build output and take it live in one call (asynchronously)
+     * Promotes a build output into a new immutable release and points the site at it, answering the release marked active with the live URL. This is create-plus-activate in sequence with no extra semantics — the two halves stay separately callable for a staged rollout, and they cannot drift because this path is literally both.  No bytes traverse the API. &#x60;source&#x60; is a path RELATIVE to the caller org&#39;s own storage space, and the org segment is prepended server-side from the validated principal while the bucket never appears in the request at all — so the worst a hostile source can name is something the caller&#39;s own org already owns, and no client ever holds a storage credential. A release id is a digest of the manifest it was built from, which makes re-publishing identical bytes idempotent by construction: same content, same id, no copy.  Promoting is the billable work and the hosting gate runs before any copy, so this can never become a way to deploy for free: 402 unfunded, 503 unreachable. Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503); a source that breaks the object or byte guards is a 400 or 413 and a source that moved under the scan is a 409.
      * @param slug  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -608,8 +661,8 @@ public class SitesApi {
     }
 
     /**
-     * 
-     * 
+     * Promote a build output into a release WITHOUT serving it
+     * Creates a new immutable release from &#x60;source&#x60; and answers 201 with it — the staged half of publishing, for running whatever check you want against a release before anyone sees it. Nothing is served until the activate call; the live site is untouched.  The source is a path relative to the caller org&#39;s OWN storage space, with the org segment prepended server-side from the validated principal and the bucket never in the request, so a release can only ever be built from bytes the caller&#39;s org already owns. The id is a digest of the manifest, so promoting unchanged content returns the existing release rather than copying again.  This is where the copy happens, so this is where the hosting gate runs: 402 for an unfunded org, 503 for unreachable commerce, before any bytes move. Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503).
      * @param slug  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -624,8 +677,8 @@ public class SitesApi {
     }
 
     /**
-     * 
-     * 
+     * Promote a build output into a release WITHOUT serving it
+     * Creates a new immutable release from &#x60;source&#x60; and answers 201 with it — the staged half of publishing, for running whatever check you want against a release before anyone sees it. Nothing is served until the activate call; the live site is untouched.  The source is a path relative to the caller org&#39;s OWN storage space, with the org segment prepended server-side from the validated principal and the bucket never in the request, so a release can only ever be built from bytes the caller&#39;s org already owns. The id is a digest of the manifest, so promoting unchanged content returns the existing release rather than copying again.  This is where the copy happens, so this is where the hosting gate runs: 402 for an unfunded org, 503 for unreachable commerce, before any bytes move. Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503).
      * @param slug  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -642,8 +695,8 @@ public class SitesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Promote a build output into a release WITHOUT serving it (asynchronously)
+     * Creates a new immutable release from &#x60;source&#x60; and answers 201 with it — the staged half of publishing, for running whatever check you want against a release before anyone sees it. Nothing is served until the activate call; the live site is untouched.  The source is a path relative to the caller org&#39;s OWN storage space, with the org segment prepended server-side from the validated principal and the bucket never in the request, so a release can only ever be built from bytes the caller&#39;s org already owns. The id is a digest of the manifest, so promoting unchanged content returns the existing release rather than copying again.  This is where the copy happens, so this is where the hosting gate runs: 402 for an unfunded org, 503 for unreachable commerce, before any bytes move. Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503).
      * @param slug  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -737,8 +790,8 @@ public class SitesApi {
     }
 
     /**
-     * 
-     * 
+     * Point the site at a release — going live, and equally rolling back
+     * Flips the site&#39;s pointer to an existing release and answers it marked active. Serving reads through that pointer, so the change is one atomic update with nothing rebuilt and nothing re-copied — which is exactly why rolling back is the SAME operation aimed at an older release, and is free.  It verifies the bytes before it flips, so it can fail two distinguishable ways and the difference is the fix: a release nobody can name, or whose row is gone, is a 404; a release still listed but whose bytes were reclaimed by retention is a 410, meaning that rollback target is not coming back and the content must be published again. Not billed — no new content is produced, only a pointer moved.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @param release  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -754,8 +807,8 @@ public class SitesApi {
     }
 
     /**
-     * 
-     * 
+     * Point the site at a release — going live, and equally rolling back
+     * Flips the site&#39;s pointer to an existing release and answers it marked active. Serving reads through that pointer, so the change is one atomic update with nothing rebuilt and nothing re-copied — which is exactly why rolling back is the SAME operation aimed at an older release, and is free.  It verifies the bytes before it flips, so it can fail two distinguishable ways and the difference is the fix: a release nobody can name, or whose row is gone, is a 404; a release still listed but whose bytes were reclaimed by retention is a 410, meaning that rollback target is not coming back and the content must be published again. Not billed — no new content is produced, only a pointer moved.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @param release  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -773,8 +826,8 @@ public class SitesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Point the site at a release — going live, and equally rolling back (asynchronously)
+     * Flips the site&#39;s pointer to an existing release and answers it marked active. Serving reads through that pointer, so the change is one atomic update with nothing rebuilt and nothing re-copied — which is exactly why rolling back is the SAME operation aimed at an older release, and is free.  It verifies the bytes before it flips, so it can fail two distinguishable ways and the difference is the fix: a release nobody can name, or whose row is gone, is a 404; a release still listed but whose bytes were reclaimed by retention is a 410, meaning that rollback target is not coming back and the content must be published again. Not billed — no new content is produced, only a pointer moved.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @param release  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -795,6 +848,7 @@ public class SitesApi {
     }
     /**
      * Build call for cloudPostV1SitesDeploy
+     * @param projectsDeploySiteRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -802,10 +856,15 @@ public class SitesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Manifest deployed live. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway — the upload to the S3 origin failed. </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable — a required backend is not configured (the S3 origin, or the inference gateway for brief builds). </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1SitesDeployCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1SitesDeployCall(@javax.annotation.Nonnull ProjectsDeploySiteRequest projectsDeploySiteRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -819,7 +878,7 @@ public class SitesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = projectsDeploySiteRequest;
 
         // create path and map variables
         String localVarPath = "/v1/sites/deploy";
@@ -831,6 +890,7 @@ public class SitesApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -838,6 +898,7 @@ public class SitesApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -849,46 +910,67 @@ public class SitesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1SitesDeployValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1SitesDeployCall(_callback);
+    private okhttp3.Call cloudPostV1SitesDeployValidateBeforeCall(@javax.annotation.Nonnull ProjectsDeploySiteRequest projectsDeploySiteRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'projectsDeploySiteRequest' is set
+        if (projectsDeploySiteRequest == null) {
+            throw new ApiException("Missing the required parameter 'projectsDeploySiteRequest' when calling cloudPostV1SitesDeploy(Async)");
+        }
+
+        return cloudPostV1SitesDeployCall(projectsDeploySiteRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Deploy a site from a file manifest you supply
+     * Takes a map of path to file content, deploys it, and answers the live URL with the resolved slug, the deployment id and the file list — the raw half of the site capability, for a site that is already written rather than generated. The project is created if the slug is new and reused if not.  Hand-built files run through the SAME validation, viewport injection and guards a generated site does, so they are exactly as safe and as responsive; and it funnels into the same publish core as every other deploy path, so versioning, host binding and metering happen once, in one place. The hosting gate is fail-closed and runs before the upload: 402 unfunded, 503 unreachable, nothing written. &#x60;files&#x60; is required (400), a manifest over the file-count cap is a 400, and a file set that does not validate is a 400 naming why.  Scope: a validated principal is required (403 without one) and the site is stored under THAT principal&#39;s org. Object storage must be configured, else 503.
+     * @param projectsDeploySiteRequest  (required)
+     * @return ProjectsSiteDeployResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Manifest deployed live. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway — the upload to the S3 origin failed. </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable — a required backend is not configured (the S3 origin, or the inference gateway for brief builds). </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1SitesDeploy() throws ApiException {
-        cloudPostV1SitesDeployWithHttpInfo();
+    public ProjectsSiteDeployResult cloudPostV1SitesDeploy(@javax.annotation.Nonnull ProjectsDeploySiteRequest projectsDeploySiteRequest) throws ApiException {
+        ApiResponse<ProjectsSiteDeployResult> localVarResp = cloudPostV1SitesDeployWithHttpInfo(projectsDeploySiteRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Deploy a site from a file manifest you supply
+     * Takes a map of path to file content, deploys it, and answers the live URL with the resolved slug, the deployment id and the file list — the raw half of the site capability, for a site that is already written rather than generated. The project is created if the slug is new and reused if not.  Hand-built files run through the SAME validation, viewport injection and guards a generated site does, so they are exactly as safe and as responsive; and it funnels into the same publish core as every other deploy path, so versioning, host binding and metering happen once, in one place. The hosting gate is fail-closed and runs before the upload: 402 unfunded, 503 unreachable, nothing written. &#x60;files&#x60; is required (400), a manifest over the file-count cap is a 400, and a file set that does not validate is a 400 naming why.  Scope: a validated principal is required (403 without one) and the site is stored under THAT principal&#39;s org. Object storage must be configured, else 503.
+     * @param projectsDeploySiteRequest  (required)
+     * @return ApiResponse&lt;ProjectsSiteDeployResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Manifest deployed live. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway — the upload to the S3 origin failed. </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable — a required backend is not configured (the S3 origin, or the inference gateway for brief builds). </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1SitesDeployWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1SitesDeployValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<ProjectsSiteDeployResult> cloudPostV1SitesDeployWithHttpInfo(@javax.annotation.Nonnull ProjectsDeploySiteRequest projectsDeploySiteRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1SitesDeployValidateBeforeCall(projectsDeploySiteRequest, null);
+        Type localVarReturnType = new TypeToken<ProjectsSiteDeployResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Deploy a site from a file manifest you supply (asynchronously)
+     * Takes a map of path to file content, deploys it, and answers the live URL with the resolved slug, the deployment id and the file list — the raw half of the site capability, for a site that is already written rather than generated. The project is created if the slug is new and reused if not.  Hand-built files run through the SAME validation, viewport injection and guards a generated site does, so they are exactly as safe and as responsive; and it funnels into the same publish core as every other deploy path, so versioning, host binding and metering happen once, in one place. The hosting gate is fail-closed and runs before the upload: 402 unfunded, 503 unreachable, nothing written. &#x60;files&#x60; is required (400), a manifest over the file-count cap is a 400, and a file set that does not validate is a 400 naming why.  Scope: a validated principal is required (403 without one) and the site is stored under THAT principal&#39;s org. Object storage must be configured, else 503.
+     * @param projectsDeploySiteRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -896,13 +978,19 @@ public class SitesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Manifest deployed live. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway — the upload to the S3 origin failed. </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable — a required backend is not configured (the S3 origin, or the inference gateway for brief builds). </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1SitesDeployAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1SitesDeployAsync(@javax.annotation.Nonnull ProjectsDeploySiteRequest projectsDeploySiteRequest, final ApiCallback<ProjectsSiteDeployResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1SitesDeployValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1SitesDeployValidateBeforeCall(projectsDeploySiteRequest, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsSiteDeployResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }

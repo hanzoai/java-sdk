@@ -42,12 +42,15 @@ import ai.hanzo.cloud.model.CloudStatusResult;
 import ai.hanzo.cloud.model.CloudUpdateItemIn;
 import ai.hanzo.cloud.model.CloudUpdateQueueIn;
 import ai.hanzo.cloud.model.O11yAlertRule;
+import ai.hanzo.cloud.model.O11yBuilderQuery;
+import ai.hanzo.cloud.model.O11yBuilderQueryResult;
 import ai.hanzo.cloud.model.O11yDashboardSummary;
 import ai.hanzo.cloud.model.O11yError;
 import ai.hanzo.cloud.model.O11yHealthResponse;
 import ai.hanzo.cloud.model.O11yIngestBatch;
 import ai.hanzo.cloud.model.O11yIngestResult;
 import ai.hanzo.cloud.model.O11yO11yServices200Response;
+import ai.hanzo.cloud.model.O11yPrometheusResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -288,8 +291,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Remove a runtime object
+     * Removes one of the observability runtime&#39;s own objects — a dashboard, an alert rule, a saved view — passing the runtime&#39;s answer through unchanged. The fallthrough for the resources only the runtime knows.  A validated, org-scoped principal is required, and the delete is confined to that principal&#39;s own tenant, pinned server-side from its claim, so one tenant can never reach another&#39;s object. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -304,8 +307,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Remove a runtime object
+     * Removes one of the observability runtime&#39;s own objects — a dashboard, an alert rule, a saved view — passing the runtime&#39;s answer through unchanged. The fallthrough for the resources only the runtime knows.  A validated, org-scoped principal is required, and the delete is confined to that principal&#39;s own tenant, pinned server-side from its claim, so one tenant can never reach another&#39;s object. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -322,8 +325,8 @@ public class O11yApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Remove a runtime object (asynchronously)
+     * Removes one of the observability runtime&#39;s own objects — a dashboard, an alert rule, a saved view — passing the runtime&#39;s answer through unchanged. The fallthrough for the resources only the runtime knows.  A validated, org-scoped principal is required, and the delete is confined to that principal&#39;s own tenant, pinned server-side from its claim, so one tenant can never reach another&#39;s object. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -403,8 +406,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Replay the page-delivery receipts this process took
+     * Answers the most recent Alertmanager deliveries THIS process received, as plain text — one greppable &#x60;PAGE-DELIVERED&#x60; line per alert, newest last, so piping to &#x60;tail&#x60; reads in arrival order. &#x60;(none)&#x60; when nothing has landed.  It answers the question Alertmanager cannot: Alertmanager can tell you it dispatched a notification, never that anything received it. This ring is the far side of that hop, and it is the only record that a page actually arrived.  The ring is PROCESS-LOCAL and bounded to the last 200 lines. Both are the point: a receipt that outlived the process that took the call would be a claim about something nobody observed, and an unbounded receipt log is a memory leak with a nice name. A restart empties it.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -418,8 +421,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Replay the page-delivery receipts this process took
+     * Answers the most recent Alertmanager deliveries THIS process received, as plain text — one greppable &#x60;PAGE-DELIVERED&#x60; line per alert, newest last, so piping to &#x60;tail&#x60; reads in arrival order. &#x60;(none)&#x60; when nothing has landed.  It answers the question Alertmanager cannot: Alertmanager can tell you it dispatched a notification, never that anything received it. This ring is the far side of that hop, and it is the only record that a page actually arrived.  The ring is PROCESS-LOCAL and bounded to the last 200 lines. Both are the point: a receipt that outlived the process that took the call would be a claim about something nobody observed, and an unbounded receipt log is a memory leak with a nice name. A restart empties it.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -435,8 +438,8 @@ public class O11yApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Replay the page-delivery receipts this process took (asynchronously)
+     * Answers the most recent Alertmanager deliveries THIS process received, as plain text — one greppable &#x60;PAGE-DELIVERED&#x60; line per alert, newest last, so piping to &#x60;tail&#x60; reads in arrival order. &#x60;(none)&#x60; when nothing has landed.  It answers the question Alertmanager cannot: Alertmanager can tell you it dispatched a notification, never that anything received it. This ring is the far side of that hop, and it is the only record that a page actually arrived.  The ring is PROCESS-LOCAL and bounded to the last 200 lines. Both are the point: a receipt that outlived the process that took the call would be a claim about something nobody observed, and an unbounded receipt log is a memory leak with a nice name. A restart empties it.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -926,8 +929,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Health of the observability runtime&#39;s services
+     * Reports whether every service in the runtime&#39;s registry is healthy, and names them grouped by state — so a failure says WHICH component is down, not merely that something is. An unhealthy registry answers 503, not a 200 with a false flag inside, so a plain status check cannot read a sick runtime as well.  UNAUTHENTICATED by design, like the other two probes: it carries no tenant data and is reached by k8s and by external checks that hold no principal.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -941,8 +944,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Health of the observability runtime&#39;s services
+     * Reports whether every service in the runtime&#39;s registry is healthy, and names them grouped by state — so a failure says WHICH component is down, not merely that something is. An unhealthy registry answers 503, not a 200 with a false flag inside, so a plain status check cannot read a sick runtime as well.  UNAUTHENTICATED by design, like the other two probes: it carries no tenant data and is reached by k8s and by external checks that hold no principal.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -958,8 +961,8 @@ public class O11yApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Health of the observability runtime&#39;s services (asynchronously)
+     * Reports whether every service in the runtime&#39;s registry is healthy, and names them grouped by state — so a failure says WHICH component is down, not merely that something is. An unhealthy registry answers 503, not a 200 with a false flag inside, so a plain status check cannot read a sick runtime as well.  UNAUTHENTICATED by design, like the other two probes: it carries no tenant data and is reached by k8s and by external checks that hold no principal.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1038,8 +1041,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Liveness of the observability process
+     * Answers 200 unconditionally while the process is running, and asserts NOTHING about the telemetry stores behind it. That is what makes it a liveness probe: a container that answers this is worth leaving alive, and restarting on a store outage would only remove the thing reporting the outage.  UNAUTHENTICATED by design, and one of exactly three /v1/o11y paths that are. It carries no tenant data, and gating it would break the k8s probes and the external health checks without protecting anything. Use the health probe, not this one, to ask whether the runtime can actually serve.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1053,8 +1056,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Liveness of the observability process
+     * Answers 200 unconditionally while the process is running, and asserts NOTHING about the telemetry stores behind it. That is what makes it a liveness probe: a container that answers this is worth leaving alive, and restarting on a store outage would only remove the thing reporting the outage.  UNAUTHENTICATED by design, and one of exactly three /v1/o11y paths that are. It carries no tenant data, and gating it would break the k8s probes and the external health checks without protecting anything. Use the health probe, not this one, to ask whether the runtime can actually serve.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1070,8 +1073,8 @@ public class O11yApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Liveness of the observability process (asynchronously)
+     * Answers 200 unconditionally while the process is running, and asserts NOTHING about the telemetry stores behind it. That is what makes it a liveness probe: a container that answers this is worth leaving alive, and restarting on a store outage would only remove the thing reporting the outage.  UNAUTHENTICATED by design, and one of exactly three /v1/o11y paths that are. It carries no tenant data, and gating it would break the k8s probes and the external health checks without protecting anything. Use the health probe, not this one, to ask whether the runtime can actually serve.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1150,8 +1153,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Readiness of the observability runtime to serve
+     * Reports whether the runtime&#39;s registered services are healthy enough to take traffic, and answers 503 when they are not — which is what takes a booting or degraded replica out of the load balancer instead of letting it serve errors.  UNAUTHENTICATED by design, like the other two probes. It reads the same service registry the health probe reads, so the two agree by construction; readiness is the question a router asks and health is the question an operator asks.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1165,8 +1168,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Readiness of the observability runtime to serve
+     * Reports whether the runtime&#39;s registered services are healthy enough to take traffic, and answers 503 when they are not — which is what takes a booting or degraded replica out of the load balancer instead of letting it serve errors.  UNAUTHENTICATED by design, like the other two probes. It reads the same service registry the health probe reads, so the two agree by construction; readiness is the question a router asks and health is the question an operator asks.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1182,8 +1185,8 @@ public class O11yApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Readiness of the observability runtime to serve (asynchronously)
+     * Reports whether the runtime&#39;s registered services are healthy enough to take traffic, and answers 503 when they are not — which is what takes a booting or degraded replica out of the load balancer instead of letting it serve errors.  UNAUTHENTICATED by design, like the other two probes. It reads the same service registry the health probe reads, so the two agree by construction; readiness is the question a router asks and health is the question an operator asks.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1269,8 +1272,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Read a resource from the observability runtime
+     * Serves the observability runtime&#39;s own read surface — dashboards, alert rules, saved views, the service and dependency inventory, and the trace, log and metric explorers — in the runtime&#39;s own shapes, passed through unchanged.  It is the FALLTHROUGH, not the front door. Every path this repo owns the shape of is registered ahead of it and wins the match; what reaches here is what only the runtime knows how to answer. The public contract is flat — one /v1/, no nested version — and the mapping onto the runtime&#39;s internal namespace happens at this one seam, so a caller never spells an engine version.  A validated principal is required and the read is scoped to that principal&#39;s own org, pinned server-side from its claim; a client-supplied org header never survives ingress and there is no query parameter that widens the scope. Platform sudo passes without an org — the admin console reads before one is selected — and buys reach, not data: the runtime still scopes every read from the tenant it was given, so an org-less request answers org-less, never the fleet. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1285,8 +1288,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Read a resource from the observability runtime
+     * Serves the observability runtime&#39;s own read surface — dashboards, alert rules, saved views, the service and dependency inventory, and the trace, log and metric explorers — in the runtime&#39;s own shapes, passed through unchanged.  It is the FALLTHROUGH, not the front door. Every path this repo owns the shape of is registered ahead of it and wins the match; what reaches here is what only the runtime knows how to answer. The public contract is flat — one /v1/, no nested version — and the mapping onto the runtime&#39;s internal namespace happens at this one seam, so a caller never spells an engine version.  A validated principal is required and the read is scoped to that principal&#39;s own org, pinned server-side from its claim; a client-supplied org header never survives ingress and there is no query parameter that widens the scope. Platform sudo passes without an org — the admin console reads before one is selected — and buys reach, not data: the runtime still scopes every read from the tenant it was given, so an org-less request answers org-less, never the fleet. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1303,8 +1306,8 @@ public class O11yApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Read a resource from the observability runtime (asynchronously)
+     * Serves the observability runtime&#39;s own read surface — dashboards, alert rules, saved views, the service and dependency inventory, and the trace, log and metric explorers — in the runtime&#39;s own shapes, passed through unchanged.  It is the FALLTHROUGH, not the front door. Every path this repo owns the shape of is registered ahead of it and wins the match; what reaches here is what only the runtime knows how to answer. The public contract is flat — one /v1/, no nested version — and the mapping onto the runtime&#39;s internal namespace happens at this one seam, so a caller never spells an engine version.  A validated principal is required and the read is scoped to that principal&#39;s own org, pinned server-side from its claim; a client-supplied org header never survives ingress and there is no query parameter that widens the scope. Platform sudo passes without an org — the admin console reads before one is selected — and buys reach, not data: the runtime still scopes every read from the tenant it was given, so an org-less request answers org-less, never the fleet. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1674,8 +1677,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * List the caller org&#39;s LLM sessions
+     * Answers the caller org&#39;s LLM-observability sessions — traces grouped by session id on the gen_ai span plane — paged by limit and offset, in the runtime&#39;s own envelope, passed through unchanged.  An org-less caller is refused HERE, at the cloud boundary, before the request reaches the runtime, and the org the runtime then scopes on is that SAME validated tenant. The two cannot disagree: the tenant is minted from the principal&#39;s own claim at ingress and a client copy never survives it.  There is deliberately no session-detail route to pair with this. The runtime serves the list only; detail is composed client-side from this list plus the traces filtered by session, so a caller looking for one is looking for something that was never served rather than something that broke.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1689,8 +1692,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * List the caller org&#39;s LLM sessions
+     * Answers the caller org&#39;s LLM-observability sessions — traces grouped by session id on the gen_ai span plane — paged by limit and offset, in the runtime&#39;s own envelope, passed through unchanged.  An org-less caller is refused HERE, at the cloud boundary, before the request reaches the runtime, and the org the runtime then scopes on is that SAME validated tenant. The two cannot disagree: the tenant is minted from the principal&#39;s own claim at ingress and a client copy never survives it.  There is deliberately no session-detail route to pair with this. The runtime serves the list only; detail is composed client-side from this list plus the traces filtered by session, so a caller looking for one is looking for something that was never served rather than something that broke.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1706,8 +1709,8 @@ public class O11yApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * List the caller org&#39;s LLM sessions (asynchronously)
+     * Answers the caller org&#39;s LLM-observability sessions — traces grouped by session id on the gen_ai span plane — paged by limit and offset, in the runtime&#39;s own envelope, passed through unchanged.  An org-less caller is refused HERE, at the cloud boundary, before the request reaches the runtime, and the org the runtime then scopes on is that SAME validated tenant. The two cannot disagree: the tenant is minted from the principal&#39;s own claim at ingress and a client copy never survives it.  There is deliberately no session-detail route to pair with this. The runtime serves the list only; detail is composed client-side from this list plus the traces filtered by session, so a caller looking for one is looking for something that was never served rather than something that broke.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1851,6 +1854,7 @@ public class O11yApi {
     }
     /**
      * Build call for cloudGetV1O11yVmQuery
+     * @param query Allowlisted PromQL. Only up, sum(up), and count(up) are permitted. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1858,10 +1862,12 @@ public class O11yApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Prometheus instant result </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated principal (or, for platform infra health, a SuperAdmin) is required. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1O11yVmQueryCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1O11yVmQueryCall(@javax.annotation.Nonnull String query, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1886,7 +1892,12 @@ public class O11yApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (query != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("query", query));
+        }
+
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1905,46 +1916,61 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudGetV1O11yVmQueryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudGetV1O11yVmQueryCall(_callback);
+    private okhttp3.Call cloudGetV1O11yVmQueryValidateBeforeCall(@javax.annotation.Nonnull String query, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'query' is set
+        if (query == null) {
+            throw new ApiException("Missing the required parameter 'query' when calling cloudGetV1O11yVmQuery(Async)");
+        }
+
+        return cloudGetV1O11yVmQueryCall(query, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Instant platform-infrastructure metric, for platform administrators
+     * Answers VictoriaMetrics&#39; native Prometheus JSON for one instant query, byte-for-byte — its own status code and envelope, unwrapped and un-reshaped, so the console&#39;s infrastructure-health board parses the response it was written against.  PLATFORM SUDO ONLY. This is not tenant data: it is the whole fleet&#39;s &#x60;up{}&#x60; inventory, so it takes the same platform-sudo predicate the infra-log god-view takes, and every customer is 403. VictoriaMetrics has no per-request auth of its own — it is an internal ClusterIP — so this handler IS the access boundary, and it fails closed at every step.  The query is ALLOWLISTED, not passed through. The &#x60;query&#x60; parameter must equal one of the exact PromQL strings the boards issue, or it is a 400; there is no way to phrase a new one. That is what keeps a read proxy from becoming a generic PromQL exfiltration and DoS endpoint.
+     * @param query Allowlisted PromQL. Only up, sum(up), and count(up) are permitted. (required)
+     * @return O11yPrometheusResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Prometheus instant result </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated principal (or, for platform infra health, a SuperAdmin) is required. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1O11yVmQuery() throws ApiException {
-        cloudGetV1O11yVmQueryWithHttpInfo();
+    public O11yPrometheusResponse cloudGetV1O11yVmQuery(@javax.annotation.Nonnull String query) throws ApiException {
+        ApiResponse<O11yPrometheusResponse> localVarResp = cloudGetV1O11yVmQueryWithHttpInfo(query);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Instant platform-infrastructure metric, for platform administrators
+     * Answers VictoriaMetrics&#39; native Prometheus JSON for one instant query, byte-for-byte — its own status code and envelope, unwrapped and un-reshaped, so the console&#39;s infrastructure-health board parses the response it was written against.  PLATFORM SUDO ONLY. This is not tenant data: it is the whole fleet&#39;s &#x60;up{}&#x60; inventory, so it takes the same platform-sudo predicate the infra-log god-view takes, and every customer is 403. VictoriaMetrics has no per-request auth of its own — it is an internal ClusterIP — so this handler IS the access boundary, and it fails closed at every step.  The query is ALLOWLISTED, not passed through. The &#x60;query&#x60; parameter must equal one of the exact PromQL strings the boards issue, or it is a 400; there is no way to phrase a new one. That is what keeps a read proxy from becoming a generic PromQL exfiltration and DoS endpoint.
+     * @param query Allowlisted PromQL. Only up, sum(up), and count(up) are permitted. (required)
+     * @return ApiResponse&lt;O11yPrometheusResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Prometheus instant result </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated principal (or, for platform infra health, a SuperAdmin) is required. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1O11yVmQueryWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudGetV1O11yVmQueryValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<O11yPrometheusResponse> cloudGetV1O11yVmQueryWithHttpInfo(@javax.annotation.Nonnull String query) throws ApiException {
+        okhttp3.Call localVarCall = cloudGetV1O11yVmQueryValidateBeforeCall(query, null);
+        Type localVarReturnType = new TypeToken<O11yPrometheusResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Instant platform-infrastructure metric, for platform administrators (asynchronously)
+     * Answers VictoriaMetrics&#39; native Prometheus JSON for one instant query, byte-for-byte — its own status code and envelope, unwrapped and un-reshaped, so the console&#39;s infrastructure-health board parses the response it was written against.  PLATFORM SUDO ONLY. This is not tenant data: it is the whole fleet&#39;s &#x60;up{}&#x60; inventory, so it takes the same platform-sudo predicate the infra-log god-view takes, and every customer is 403. VictoriaMetrics has no per-request auth of its own — it is an internal ClusterIP — so this handler IS the access boundary, and it fails closed at every step.  The query is ALLOWLISTED, not passed through. The &#x60;query&#x60; parameter must equal one of the exact PromQL strings the boards issue, or it is a 400; there is no way to phrase a new one. That is what keeps a read proxy from becoming a generic PromQL exfiltration and DoS endpoint.
+     * @param query Allowlisted PromQL. Only up, sum(up), and count(up) are permitted. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1952,17 +1978,24 @@ public class O11yApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Prometheus instant result </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated principal (or, for platform infra health, a SuperAdmin) is required. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1O11yVmQueryAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1O11yVmQueryAsync(@javax.annotation.Nonnull String query, final ApiCallback<O11yPrometheusResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudGetV1O11yVmQueryValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudGetV1O11yVmQueryValidateBeforeCall(query, _callback);
+        Type localVarReturnType = new TypeToken<O11yPrometheusResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudGetV1O11yVmQueryRange
+     * @param query Allowlisted PromQL. Only up, sum(up), and count(up) are permitted. (required)
+     * @param start Range start (Unix seconds, positive integer). (required)
+     * @param end Range end (Unix seconds, positive integer). (required)
+     * @param step Step resolution (seconds, positive integer). (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1970,10 +2003,12 @@ public class O11yApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Prometheus range result </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated principal (or, for platform infra health, a SuperAdmin) is required. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1O11yVmQueryRangeCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1O11yVmQueryRangeCall(@javax.annotation.Nonnull String query, @javax.annotation.Nonnull Long start, @javax.annotation.Nonnull Long end, @javax.annotation.Nonnull Integer step, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1998,7 +2033,24 @@ public class O11yApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (query != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("query", query));
+        }
+
+        if (start != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
+        }
+
+        if (end != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("end", end));
+        }
+
+        if (step != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("step", step));
+        }
+
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2017,46 +2069,85 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudGetV1O11yVmQueryRangeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudGetV1O11yVmQueryRangeCall(_callback);
+    private okhttp3.Call cloudGetV1O11yVmQueryRangeValidateBeforeCall(@javax.annotation.Nonnull String query, @javax.annotation.Nonnull Long start, @javax.annotation.Nonnull Long end, @javax.annotation.Nonnull Integer step, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'query' is set
+        if (query == null) {
+            throw new ApiException("Missing the required parameter 'query' when calling cloudGetV1O11yVmQueryRange(Async)");
+        }
+
+        // verify the required parameter 'start' is set
+        if (start == null) {
+            throw new ApiException("Missing the required parameter 'start' when calling cloudGetV1O11yVmQueryRange(Async)");
+        }
+
+        // verify the required parameter 'end' is set
+        if (end == null) {
+            throw new ApiException("Missing the required parameter 'end' when calling cloudGetV1O11yVmQueryRange(Async)");
+        }
+
+        // verify the required parameter 'step' is set
+        if (step == null) {
+            throw new ApiException("Missing the required parameter 'step' when calling cloudGetV1O11yVmQueryRange(Async)");
+        }
+
+        return cloudGetV1O11yVmQueryRangeCall(query, start, end, step, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Ranged platform-infrastructure metric, for platform administrators
+     * Answers VictoriaMetrics&#39; native Prometheus JSON for one ranged query over start/end/step, byte-for-byte — its own status code and envelope, so the console&#39;s infrastructure trends render off the response as-is.  PLATFORM SUDO ONLY, on the same fleet-wide &#x60;up{}&#x60; inventory and the same fixed board queries as the instant read; a customer is 403. VictoriaMetrics carries no per-request auth, so this handler is the access boundary.  The query is ALLOWLISTED to the exact PromQL the boards issue — anything else is a 400 — and start, end and step must each be positive integers before the request is forwarded. Range arguments are the other half of the same boundary: an unbounded step over an unbounded window is a DoS whether or not the query is on the list.
+     * @param query Allowlisted PromQL. Only up, sum(up), and count(up) are permitted. (required)
+     * @param start Range start (Unix seconds, positive integer). (required)
+     * @param end Range end (Unix seconds, positive integer). (required)
+     * @param step Step resolution (seconds, positive integer). (required)
+     * @return O11yPrometheusResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Prometheus range result </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated principal (or, for platform infra health, a SuperAdmin) is required. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1O11yVmQueryRange() throws ApiException {
-        cloudGetV1O11yVmQueryRangeWithHttpInfo();
+    public O11yPrometheusResponse cloudGetV1O11yVmQueryRange(@javax.annotation.Nonnull String query, @javax.annotation.Nonnull Long start, @javax.annotation.Nonnull Long end, @javax.annotation.Nonnull Integer step) throws ApiException {
+        ApiResponse<O11yPrometheusResponse> localVarResp = cloudGetV1O11yVmQueryRangeWithHttpInfo(query, start, end, step);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Ranged platform-infrastructure metric, for platform administrators
+     * Answers VictoriaMetrics&#39; native Prometheus JSON for one ranged query over start/end/step, byte-for-byte — its own status code and envelope, so the console&#39;s infrastructure trends render off the response as-is.  PLATFORM SUDO ONLY, on the same fleet-wide &#x60;up{}&#x60; inventory and the same fixed board queries as the instant read; a customer is 403. VictoriaMetrics carries no per-request auth, so this handler is the access boundary.  The query is ALLOWLISTED to the exact PromQL the boards issue — anything else is a 400 — and start, end and step must each be positive integers before the request is forwarded. Range arguments are the other half of the same boundary: an unbounded step over an unbounded window is a DoS whether or not the query is on the list.
+     * @param query Allowlisted PromQL. Only up, sum(up), and count(up) are permitted. (required)
+     * @param start Range start (Unix seconds, positive integer). (required)
+     * @param end Range end (Unix seconds, positive integer). (required)
+     * @param step Step resolution (seconds, positive integer). (required)
+     * @return ApiResponse&lt;O11yPrometheusResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Prometheus range result </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated principal (or, for platform infra health, a SuperAdmin) is required. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1O11yVmQueryRangeWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudGetV1O11yVmQueryRangeValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<O11yPrometheusResponse> cloudGetV1O11yVmQueryRangeWithHttpInfo(@javax.annotation.Nonnull String query, @javax.annotation.Nonnull Long start, @javax.annotation.Nonnull Long end, @javax.annotation.Nonnull Integer step) throws ApiException {
+        okhttp3.Call localVarCall = cloudGetV1O11yVmQueryRangeValidateBeforeCall(query, start, end, step, null);
+        Type localVarReturnType = new TypeToken<O11yPrometheusResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Ranged platform-infrastructure metric, for platform administrators (asynchronously)
+     * Answers VictoriaMetrics&#39; native Prometheus JSON for one ranged query over start/end/step, byte-for-byte — its own status code and envelope, so the console&#39;s infrastructure trends render off the response as-is.  PLATFORM SUDO ONLY, on the same fleet-wide &#x60;up{}&#x60; inventory and the same fixed board queries as the instant read; a customer is 403. VictoriaMetrics carries no per-request auth, so this handler is the access boundary.  The query is ALLOWLISTED to the exact PromQL the boards issue — anything else is a 400 — and start, end and step must each be positive integers before the request is forwarded. Range arguments are the other half of the same boundary: an unbounded step over an unbounded window is a DoS whether or not the query is on the list.
+     * @param query Allowlisted PromQL. Only up, sum(up), and count(up) are permitted. (required)
+     * @param start Range start (Unix seconds, positive integer). (required)
+     * @param end Range end (Unix seconds, positive integer). (required)
+     * @param step Step resolution (seconds, positive integer). (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2064,13 +2155,16 @@ public class O11yApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Prometheus range result </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated principal (or, for platform infra health, a SuperAdmin) is required. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1O11yVmQueryRangeAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1O11yVmQueryRangeAsync(@javax.annotation.Nonnull String query, @javax.annotation.Nonnull Long start, @javax.annotation.Nonnull Long end, @javax.annotation.Nonnull Integer step, final ApiCallback<O11yPrometheusResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudGetV1O11yVmQueryRangeValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudGetV1O11yVmQueryRangeValidateBeforeCall(query, start, end, step, _callback);
+        Type localVarReturnType = new TypeToken<O11yPrometheusResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -2142,8 +2236,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Not served by the observability runtime
+     * Published because this address accepts every method, but the runtime routes nothing here: the request reaches it as an unrouted path and no telemetry is read or written.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2158,8 +2252,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Not served by the observability runtime
+     * Published because this address accepts every method, but the runtime routes nothing here: the request reaches it as an unrouted path and no telemetry is read or written.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2176,8 +2270,8 @@ public class O11yApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Not served by the observability runtime (asynchronously)
+     * Published because this address accepts every method, but the runtime routes nothing here: the request reaches it as an unrouted path and no telemetry is read or written.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2548,8 +2642,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Update part of a runtime object
+     * Applies a partial update to one of the observability runtime&#39;s own objects, in the runtime&#39;s own shapes, passed through unchanged. The fallthrough for the resources only the runtime knows.  A validated, org-scoped principal is required, and the write is confined to that principal&#39;s own tenant, pinned server-side from its claim. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2564,8 +2658,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Update part of a runtime object
+     * Applies a partial update to one of the observability runtime&#39;s own objects, in the runtime&#39;s own shapes, passed through unchanged. The fallthrough for the resources only the runtime knows.  A validated, org-scoped principal is required, and the write is confined to that principal&#39;s own tenant, pinned server-side from its claim. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2582,8 +2676,8 @@ public class O11yApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Update part of a runtime object (asynchronously)
+     * Applies a partial update to one of the observability runtime&#39;s own objects, in the runtime&#39;s own shapes, passed through unchanged. The fallthrough for the resources only the runtime knows.  A validated, org-scoped principal is required, and the write is confined to that principal&#39;s own tenant, pinned server-side from its claim. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2670,8 +2764,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Take an Alertmanager notification and page Slack
+     * Records one Alertmanager webhook delivery and pages the on-call. Each alert in the payload prints a &#x60;PAGE-DELIVERED&#x60; line to the process log and joins the ring the receipt replay serves, then the batch is posted to Slack with the org&#39;s KMS-custodied bot token — the ONE Slack egress the product already has, not a second webhook credential. Resolved notifications page too: \&quot;it recovered\&quot; is the half of an incident people are actually waiting for.  It ALWAYS answers 200 with the body &#x60;ok&#x60;, and a body that will not parse is recorded with empty fields rather than rejected. Alertmanager retries on any other status, so a receipt that pushes back changes the thing it is measuring, and a 400 on a malformed payload would make it retry forever — the delivery still happened, which is the fact being recorded.  The receiver segment is Alertmanager&#39;s own receiver name, a parameter rather than a hand-listed route because the receiver set is config, not code. Paging is detached and fail-soft: with no channel configured nothing is posted and the receipt still lands, and a Slack failure prints its own line instead of failing the request.
      * @param receiver  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2686,8 +2780,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Take an Alertmanager notification and page Slack
+     * Records one Alertmanager webhook delivery and pages the on-call. Each alert in the payload prints a &#x60;PAGE-DELIVERED&#x60; line to the process log and joins the ring the receipt replay serves, then the batch is posted to Slack with the org&#39;s KMS-custodied bot token — the ONE Slack egress the product already has, not a second webhook credential. Resolved notifications page too: \&quot;it recovered\&quot; is the half of an incident people are actually waiting for.  It ALWAYS answers 200 with the body &#x60;ok&#x60;, and a body that will not parse is recorded with empty fields rather than rejected. Alertmanager retries on any other status, so a receipt that pushes back changes the thing it is measuring, and a 400 on a malformed payload would make it retry forever — the delivery still happened, which is the fact being recorded.  The receiver segment is Alertmanager&#39;s own receiver name, a parameter rather than a hand-listed route because the receiver set is config, not code. Paging is detached and fail-soft: with no channel configured nothing is posted and the receipt still lands, and a Slack failure prints its own line instead of failing the request.
      * @param receiver  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2704,8 +2798,8 @@ public class O11yApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Take an Alertmanager notification and page Slack (asynchronously)
+     * Records one Alertmanager webhook delivery and pages the on-call. Each alert in the payload prints a &#x60;PAGE-DELIVERED&#x60; line to the process log and joins the ring the receipt replay serves, then the batch is posted to Slack with the org&#39;s KMS-custodied bot token — the ONE Slack egress the product already has, not a second webhook credential. Resolved notifications page too: \&quot;it recovered\&quot; is the half of an incident people are actually waiting for.  It ALWAYS answers 200 with the body &#x60;ok&#x60;, and a body that will not parse is recorded with empty fields rather than rejected. Alertmanager retries on any other status, so a receipt that pushes back changes the thing it is measuring, and a 400 on a malformed payload would make it retry forever — the delivery still happened, which is the fact being recorded.  The receiver segment is Alertmanager&#39;s own receiver name, a parameter rather than a hand-listed route because the receiver set is config, not code. Paging is detached and fail-soft: with no channel configured nothing is posted and the receipt still lands, and a Slack failure prints its own line instead of failing the request.
      * @param receiver  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3056,8 +3150,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Create a runtime object, or run a query against telemetry
+     * Carries the runtime&#39;s own writes and query posts — creating a dashboard, an alert rule or a saved view, and running the query bodies the explorers submit — in the runtime&#39;s own shapes, passed through unchanged.  It is the FALLTHROUGH: the builder query and the ingest routes this repo owns are registered ahead of it and win the match. A validated, org-scoped principal is required and the write lands in that principal&#39;s own tenant, pinned server-side.  ONE EXEMPTION, and it is deliberate: a Sentry error-ingest write presents a DSN public key, never a Hanzo session, so those two paths bypass the principal gate and are authenticated by the ingest verifier instead — which derives the org from the DSN itself and fails closed. The exemption is matched by method plus prefix plus suffix, never a broad prefix, so every read under the same subtree stays gated. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3072,8 +3166,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Create a runtime object, or run a query against telemetry
+     * Carries the runtime&#39;s own writes and query posts — creating a dashboard, an alert rule or a saved view, and running the query bodies the explorers submit — in the runtime&#39;s own shapes, passed through unchanged.  It is the FALLTHROUGH: the builder query and the ingest routes this repo owns are registered ahead of it and win the match. A validated, org-scoped principal is required and the write lands in that principal&#39;s own tenant, pinned server-side.  ONE EXEMPTION, and it is deliberate: a Sentry error-ingest write presents a DSN public key, never a Hanzo session, so those two paths bypass the principal gate and are authenticated by the ingest verifier instead — which derives the org from the DSN itself and fails closed. The exemption is matched by method plus prefix plus suffix, never a broad prefix, so every read under the same subtree stays gated. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3090,8 +3184,8 @@ public class O11yApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Create a runtime object, or run a query against telemetry (asynchronously)
+     * Carries the runtime&#39;s own writes and query posts — creating a dashboard, an alert rule or a saved view, and running the query bodies the explorers submit — in the runtime&#39;s own shapes, passed through unchanged.  It is the FALLTHROUGH: the builder query and the ingest routes this repo owns are registered ahead of it and win the match. A validated, org-scoped principal is required and the write lands in that principal&#39;s own tenant, pinned server-side.  ONE EXEMPTION, and it is deliberate: a Sentry error-ingest write presents a DSN public key, never a Hanzo session, so those two paths bypass the principal gate and are authenticated by the ingest verifier instead — which derives the org from the DSN itself and fails closed. The exemption is matched by method plus prefix plus suffix, never a broad prefix, so every read under the same subtree stays gated. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3111,6 +3205,7 @@ public class O11yApi {
     }
     /**
      * Build call for cloudPostV1O11yQuery
+     * @param o11yBuilderQuery  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3118,10 +3213,12 @@ public class O11yApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Query result </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated principal (or, for platform infra health, a SuperAdmin) is required. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1O11yQueryCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1O11yQueryCall(@javax.annotation.Nonnull O11yBuilderQuery o11yBuilderQuery, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3135,7 +3232,7 @@ public class O11yApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = o11yBuilderQuery;
 
         // create path and map variables
         String localVarPath = "/v1/o11y/query";
@@ -3147,6 +3244,7 @@ public class O11yApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3154,6 +3252,7 @@ public class O11yApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -3165,46 +3264,61 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1O11yQueryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1O11yQueryCall(_callback);
+    private okhttp3.Call cloudPostV1O11yQueryValidateBeforeCall(@javax.annotation.Nonnull O11yBuilderQuery o11yBuilderQuery, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'o11yBuilderQuery' is set
+        if (o11yBuilderQuery == null) {
+            throw new ApiException("Missing the required parameter 'o11yBuilderQuery' when calling cloudPostV1O11yQuery(Async)");
+        }
+
+        return cloudPostV1O11yQueryCall(o11yBuilderQuery, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Run one builder query against the caller&#39;s telemetry
+     * Runs the console&#39;s composite builder query and answers the engine&#39;s own response untouched — body, status and headers ride through both ways, because the shape here is the query engine&#39;s, not this layer&#39;s.  This flat path is the ONE canonical public address for the builder query, and pinning it server-side is the point: the version-less alias resolves to the engine&#39;s highest version, which rejects the v3-shaped composite payload the console speaks. So the engine version is resolved INSIDE the handler and the client never names one — a caller that spells a version into the path is coupling itself to an internal detail that is free to move.  Requires a validated principal, and the tenant is the principal&#39;s own org, pinned server-side from the validated claim; there is no org selector in the payload or the query string that could widen it. Before the runtime is initialized this answers 503 rather than an empty result.
+     * @param o11yBuilderQuery  (required)
+     * @return O11yBuilderQueryResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Query result </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated principal (or, for platform infra health, a SuperAdmin) is required. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1O11yQuery() throws ApiException {
-        cloudPostV1O11yQueryWithHttpInfo();
+    public O11yBuilderQueryResult cloudPostV1O11yQuery(@javax.annotation.Nonnull O11yBuilderQuery o11yBuilderQuery) throws ApiException {
+        ApiResponse<O11yBuilderQueryResult> localVarResp = cloudPostV1O11yQueryWithHttpInfo(o11yBuilderQuery);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Run one builder query against the caller&#39;s telemetry
+     * Runs the console&#39;s composite builder query and answers the engine&#39;s own response untouched — body, status and headers ride through both ways, because the shape here is the query engine&#39;s, not this layer&#39;s.  This flat path is the ONE canonical public address for the builder query, and pinning it server-side is the point: the version-less alias resolves to the engine&#39;s highest version, which rejects the v3-shaped composite payload the console speaks. So the engine version is resolved INSIDE the handler and the client never names one — a caller that spells a version into the path is coupling itself to an internal detail that is free to move.  Requires a validated principal, and the tenant is the principal&#39;s own org, pinned server-side from the validated claim; there is no org selector in the payload or the query string that could widen it. Before the runtime is initialized this answers 503 rather than an empty result.
+     * @param o11yBuilderQuery  (required)
+     * @return ApiResponse&lt;O11yBuilderQueryResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Query result </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated principal (or, for platform infra health, a SuperAdmin) is required. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1O11yQueryWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1O11yQueryValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<O11yBuilderQueryResult> cloudPostV1O11yQueryWithHttpInfo(@javax.annotation.Nonnull O11yBuilderQuery o11yBuilderQuery) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1O11yQueryValidateBeforeCall(o11yBuilderQuery, null);
+        Type localVarReturnType = new TypeToken<O11yBuilderQueryResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Run one builder query against the caller&#39;s telemetry (asynchronously)
+     * Runs the console&#39;s composite builder query and answers the engine&#39;s own response untouched — body, status and headers ride through both ways, because the shape here is the query engine&#39;s, not this layer&#39;s.  This flat path is the ONE canonical public address for the builder query, and pinning it server-side is the point: the version-less alias resolves to the engine&#39;s highest version, which rejects the v3-shaped composite payload the console speaks. So the engine version is resolved INSIDE the handler and the client never names one — a caller that spells a version into the path is coupling itself to an internal detail that is free to move.  Requires a validated principal, and the tenant is the principal&#39;s own org, pinned server-side from the validated claim; there is no org selector in the payload or the query string that could widen it. Before the runtime is initialized this answers 503 rather than an empty result.
+     * @param o11yBuilderQuery  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3212,17 +3326,21 @@ public class O11yApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Query result </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated principal (or, for platform infra health, a SuperAdmin) is required. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1O11yQueryAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1O11yQueryAsync(@javax.annotation.Nonnull O11yBuilderQuery o11yBuilderQuery, final ApiCallback<O11yBuilderQueryResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1O11yQueryValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1O11yQueryValidateBeforeCall(o11yBuilderQuery, _callback);
+        Type localVarReturnType = new TypeToken<O11yBuilderQueryResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1O11yQueryRange
+     * @param o11yBuilderQuery  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3230,10 +3348,12 @@ public class O11yApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Range query result </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated principal (or, for platform infra health, a SuperAdmin) is required. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1O11yQueryRangeCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1O11yQueryRangeCall(@javax.annotation.Nonnull O11yBuilderQuery o11yBuilderQuery, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3247,7 +3367,7 @@ public class O11yApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = o11yBuilderQuery;
 
         // create path and map variables
         String localVarPath = "/v1/o11y/query_range";
@@ -3259,6 +3379,7 @@ public class O11yApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3266,6 +3387,7 @@ public class O11yApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -3277,46 +3399,61 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1O11yQueryRangeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1O11yQueryRangeCall(_callback);
+    private okhttp3.Call cloudPostV1O11yQueryRangeValidateBeforeCall(@javax.annotation.Nonnull O11yBuilderQuery o11yBuilderQuery, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'o11yBuilderQuery' is set
+        if (o11yBuilderQuery == null) {
+            throw new ApiException("Missing the required parameter 'o11yBuilderQuery' when calling cloudPostV1O11yQueryRange(Async)");
+        }
+
+        return cloudPostV1O11yQueryRangeCall(o11yBuilderQuery, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Run one ranged builder query against the caller&#39;s telemetry
+     * Runs the console&#39;s composite builder query over a time range — the list and series the trace, log and metric explorers render — and answers the engine&#39;s own response untouched, body, status and headers alike.  Same pin as the instant form and for the same reason: the flat path resolves to a specific engine version INSIDE the handler, because the version-less alias resolves to one that rejects the composite payload the console sends. The client speaks only this path.  Requires a validated principal, and the tenant is that principal&#39;s own org, pinned server-side; nothing in the request can widen it. Before the runtime is initialized this answers 503.
+     * @param o11yBuilderQuery  (required)
+     * @return O11yBuilderQueryResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Range query result </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated principal (or, for platform infra health, a SuperAdmin) is required. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1O11yQueryRange() throws ApiException {
-        cloudPostV1O11yQueryRangeWithHttpInfo();
+    public O11yBuilderQueryResult cloudPostV1O11yQueryRange(@javax.annotation.Nonnull O11yBuilderQuery o11yBuilderQuery) throws ApiException {
+        ApiResponse<O11yBuilderQueryResult> localVarResp = cloudPostV1O11yQueryRangeWithHttpInfo(o11yBuilderQuery);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Run one ranged builder query against the caller&#39;s telemetry
+     * Runs the console&#39;s composite builder query over a time range — the list and series the trace, log and metric explorers render — and answers the engine&#39;s own response untouched, body, status and headers alike.  Same pin as the instant form and for the same reason: the flat path resolves to a specific engine version INSIDE the handler, because the version-less alias resolves to one that rejects the composite payload the console sends. The client speaks only this path.  Requires a validated principal, and the tenant is that principal&#39;s own org, pinned server-side; nothing in the request can widen it. Before the runtime is initialized this answers 503.
+     * @param o11yBuilderQuery  (required)
+     * @return ApiResponse&lt;O11yBuilderQueryResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Range query result </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated principal (or, for platform infra health, a SuperAdmin) is required. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1O11yQueryRangeWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1O11yQueryRangeValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<O11yBuilderQueryResult> cloudPostV1O11yQueryRangeWithHttpInfo(@javax.annotation.Nonnull O11yBuilderQuery o11yBuilderQuery) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1O11yQueryRangeValidateBeforeCall(o11yBuilderQuery, null);
+        Type localVarReturnType = new TypeToken<O11yBuilderQueryResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Run one ranged builder query against the caller&#39;s telemetry (asynchronously)
+     * Runs the console&#39;s composite builder query over a time range — the list and series the trace, log and metric explorers render — and answers the engine&#39;s own response untouched, body, status and headers alike.  Same pin as the instant form and for the same reason: the flat path resolves to a specific engine version INSIDE the handler, because the version-less alias resolves to one that rejects the composite payload the console sends. The client speaks only this path.  Requires a validated principal, and the tenant is that principal&#39;s own org, pinned server-side; nothing in the request can widen it. Before the runtime is initialized this answers 503.
+     * @param o11yBuilderQuery  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3324,13 +3461,16 @@ public class O11yApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Range query result </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated principal (or, for platform infra health, a SuperAdmin) is required. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1O11yQueryRangeAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1O11yQueryRangeAsync(@javax.annotation.Nonnull O11yBuilderQuery o11yBuilderQuery, final ApiCallback<O11yBuilderQueryResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1O11yQueryRangeValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1O11yQueryRangeValidateBeforeCall(o11yBuilderQuery, _callback);
+        Type localVarReturnType = new TypeToken<O11yBuilderQueryResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -3402,8 +3542,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Replace a runtime object
+     * Replaces one of the observability runtime&#39;s own objects — a dashboard, an alert rule, a saved view — in the runtime&#39;s own shapes, passed through unchanged. The fallthrough for the resources only the runtime knows.  A validated, org-scoped principal is required, and the write is confined to that principal&#39;s own tenant: the org is minted from its claim at ingress, a client copy never survives, and nothing in the request can widen the scope. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3418,8 +3558,8 @@ public class O11yApi {
     }
 
     /**
-     * 
-     * 
+     * Replace a runtime object
+     * Replaces one of the observability runtime&#39;s own objects — a dashboard, an alert rule, a saved view — in the runtime&#39;s own shapes, passed through unchanged. The fallthrough for the resources only the runtime knows.  A validated, org-scoped principal is required, and the write is confined to that principal&#39;s own tenant: the org is minted from its claim at ingress, a client copy never survives, and nothing in the request can widen the scope. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3436,8 +3576,8 @@ public class O11yApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Replace a runtime object (asynchronously)
+     * Replaces one of the observability runtime&#39;s own objects — a dashboard, an alert rule, a saved view — in the runtime&#39;s own shapes, passed through unchanged. The fallthrough for the resources only the runtime knows.  A validated, org-scoped principal is required, and the write is confined to that principal&#39;s own tenant: the org is minted from its claim at ingress, a client copy never survives, and nothing in the request can widen the scope. Before the runtime is initialized, 503.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3452,128 +3592,6 @@ public class O11yApi {
     public okhttp3.Call cloudPutV1O11yByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudPutV1O11yByWildcard1ValidateBeforeCall(wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for cloudTraceV1O11yByWildcard1
-     * @param wildcard1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceV1O11yByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/o11y/{wildcard1}"
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "TRACE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudTraceV1O11yByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling cloudTraceV1O11yByWildcard1(Async)");
-        }
-
-        return cloudTraceV1O11yByWildcard1Call(wildcard1, _callback);
-
-    }
-
-    /**
-     * 
-     * 
-     * @param wildcard1  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public void cloudTraceV1O11yByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        cloudTraceV1O11yByWildcard1WithHttpInfo(wildcard1);
-    }
-
-    /**
-     * 
-     * 
-     * @param wildcard1  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> cloudTraceV1O11yByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = cloudTraceV1O11yByWildcard1ValidateBeforeCall(wildcard1, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param wildcard1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceV1O11yByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = cloudTraceV1O11yByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

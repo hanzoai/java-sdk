@@ -27,6 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.InlineObject;
+import ai.hanzo.cloud.model.WebsearchSearchResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -133,8 +135,8 @@ public class WebsearchApi {
     }
 
     /**
-     * 
-     * 
+     * Keyless web meta-search, in the SearXNG JSON envelope.
+     * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 20. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -148,8 +150,8 @@ public class WebsearchApi {
     }
 
     /**
-     * 
-     * 
+     * Keyless web meta-search, in the SearXNG JSON envelope.
+     * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 20. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -165,8 +167,8 @@ public class WebsearchApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Keyless web meta-search, in the SearXNG JSON envelope. (asynchronously)
+     * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 20. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -185,6 +187,8 @@ public class WebsearchApi {
     }
     /**
      * Build call for cloudGetV1WebsearchSearch
+     * @param q Search query (required)
+     * @param format  (optional, default to json)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -192,10 +196,12 @@ public class WebsearchApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Search results (SearXNG JSON) </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Web search not configured on this deployment (service key unset — fail-closed) </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1WebsearchSearchCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1WebsearchSearchCall(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String format, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -220,7 +226,16 @@ public class WebsearchApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (format != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("format", format));
+        }
+
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -234,51 +249,69 @@ public class WebsearchApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        String[] localVarAuthNames = new String[] { "serviceKey" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudGetV1WebsearchSearchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudGetV1WebsearchSearchCall(_callback);
+    private okhttp3.Call cloudGetV1WebsearchSearchValidateBeforeCall(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String format, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'q' is set
+        if (q == null) {
+            throw new ApiException("Missing the required parameter 'q' when calling cloudGetV1WebsearchSearch(Async)");
+        }
+
+        return cloudGetV1WebsearchSearchCall(q, format, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Keyless web meta-search, in the SearXNG JSON envelope.
+     * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 20. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
+     * @param q Search query (required)
+     * @param format  (optional, default to json)
+     * @return WebsearchSearchResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Search results (SearXNG JSON) </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Web search not configured on this deployment (service key unset — fail-closed) </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1WebsearchSearch() throws ApiException {
-        cloudGetV1WebsearchSearchWithHttpInfo();
+    public WebsearchSearchResponse cloudGetV1WebsearchSearch(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String format) throws ApiException {
+        ApiResponse<WebsearchSearchResponse> localVarResp = cloudGetV1WebsearchSearchWithHttpInfo(q, format);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Keyless web meta-search, in the SearXNG JSON envelope.
+     * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 20. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
+     * @param q Search query (required)
+     * @param format  (optional, default to json)
+     * @return ApiResponse&lt;WebsearchSearchResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Search results (SearXNG JSON) </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Web search not configured on this deployment (service key unset — fail-closed) </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1WebsearchSearchWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudGetV1WebsearchSearchValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<WebsearchSearchResponse> cloudGetV1WebsearchSearchWithHttpInfo(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String format) throws ApiException {
+        okhttp3.Call localVarCall = cloudGetV1WebsearchSearchValidateBeforeCall(q, format, null);
+        Type localVarReturnType = new TypeToken<WebsearchSearchResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Keyless web meta-search, in the SearXNG JSON envelope. (asynchronously)
+     * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 20. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
+     * @param q Search query (required)
+     * @param format  (optional, default to json)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -286,13 +319,16 @@ public class WebsearchApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Search results (SearXNG JSON) </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Web search not configured on this deployment (service key unset — fail-closed) </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1WebsearchSearchAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1WebsearchSearchAsync(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String format, final ApiCallback<WebsearchSearchResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudGetV1WebsearchSearchValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudGetV1WebsearchSearchValidateBeforeCall(q, format, _callback);
+        Type localVarReturnType = new TypeToken<WebsearchSearchResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -357,8 +393,8 @@ public class WebsearchApi {
     }
 
     /**
-     * 
-     * 
+     * Keyless web meta-search, in the SearXNG JSON envelope.
+     * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 20. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -372,8 +408,8 @@ public class WebsearchApi {
     }
 
     /**
-     * 
-     * 
+     * Keyless web meta-search, in the SearXNG JSON envelope.
+     * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 20. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -389,8 +425,8 @@ public class WebsearchApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Keyless web meta-search, in the SearXNG JSON envelope. (asynchronously)
+     * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 20. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -469,8 +505,8 @@ public class WebsearchApi {
     }
 
     /**
-     * 
-     * 
+     * Keyless web meta-search, in the SearXNG JSON envelope.
+     * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 20. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -484,8 +520,8 @@ public class WebsearchApi {
     }
 
     /**
-     * 
-     * 
+     * Keyless web meta-search, in the SearXNG JSON envelope.
+     * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 20. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -501,8 +537,8 @@ public class WebsearchApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Keyless web meta-search, in the SearXNG JSON envelope. (asynchronously)
+     * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 20. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -581,8 +617,8 @@ public class WebsearchApi {
     }
 
     /**
-     * 
-     * 
+     * Keyless web meta-search, in the SearXNG JSON envelope.
+     * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 20. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -596,8 +632,8 @@ public class WebsearchApi {
     }
 
     /**
-     * 
-     * 
+     * Keyless web meta-search, in the SearXNG JSON envelope.
+     * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 20. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -613,8 +649,8 @@ public class WebsearchApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Keyless web meta-search, in the SearXNG JSON envelope. (asynchronously)
+     * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 20. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -693,8 +729,8 @@ public class WebsearchApi {
     }
 
     /**
-     * 
-     * 
+     * Keyless web meta-search, in the SearXNG JSON envelope.
+     * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 20. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -708,8 +744,8 @@ public class WebsearchApi {
     }
 
     /**
-     * 
-     * 
+     * Keyless web meta-search, in the SearXNG JSON envelope.
+     * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 20. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -725,8 +761,8 @@ public class WebsearchApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Keyless web meta-search, in the SearXNG JSON envelope. (asynchronously)
+     * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 20. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -740,118 +776,6 @@ public class WebsearchApi {
     public okhttp3.Call cloudPutV1WebsearchSearchAsync(final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudPutV1WebsearchSearchValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for cloudTraceV1WebsearchSearch
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceV1WebsearchSearchCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/websearch/search";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "TRACE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudTraceV1WebsearchSearchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudTraceV1WebsearchSearchCall(_callback);
-
-    }
-
-    /**
-     * 
-     * 
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public void cloudTraceV1WebsearchSearch() throws ApiException {
-        cloudTraceV1WebsearchSearchWithHttpInfo();
-    }
-
-    /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> cloudTraceV1WebsearchSearchWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudTraceV1WebsearchSearchValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceV1WebsearchSearchAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = cloudTraceV1WebsearchSearchValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

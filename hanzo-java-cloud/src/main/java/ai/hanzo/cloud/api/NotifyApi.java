@@ -28,6 +28,9 @@ import java.io.IOException;
 
 
 import ai.hanzo.cloud.model.CloudNotifyHealth;
+import ai.hanzo.cloud.model.CloudPostV1NotifySend200Response;
+import ai.hanzo.cloud.model.NotifyError;
+import ai.hanzo.cloud.model.NotifySendRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -124,7 +127,7 @@ public class NotifyApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -191,6 +194,8 @@ public class NotifyApi {
     }
     /**
      * Build call for cloudPostV1NotifySend
+     * @param sync Must be &#x60;true&#x60;. Async dispatch is not available in the cloud fold; any other value yields &#x60;503&#x60;.  (required)
+     * @param notifySendRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -198,10 +203,13 @@ public class NotifyApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Delivery attempted. Single recipient returns a bare &#x60;SendResponse&#x60;; multiple recipients return an items wrapper. A &#x60;status&#x60; of &#x60;failed&#x60; with a populated &#x60;error&#x60; is a per-recipient terminal failure, still returned as &#x60;200&#x60;.  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request - Invalid input parameters </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Authentication required </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable - Temporary outage </td><td>  * Retry-After - Seconds to wait before retry <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1NotifySendCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1NotifySendCall(@javax.annotation.Nonnull String sync, @javax.annotation.Nonnull NotifySendRequest notifySendRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -215,7 +223,7 @@ public class NotifyApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = notifySendRequest;
 
         // create path and map variables
         String localVarPath = "/v1/notify/send";
@@ -226,7 +234,12 @@ public class NotifyApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (sync != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sync", sync));
+        }
+
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -234,6 +247,7 @@ public class NotifyApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -245,46 +259,71 @@ public class NotifyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1NotifySendValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1NotifySendCall(_callback);
+    private okhttp3.Call cloudPostV1NotifySendValidateBeforeCall(@javax.annotation.Nonnull String sync, @javax.annotation.Nonnull NotifySendRequest notifySendRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'sync' is set
+        if (sync == null) {
+            throw new ApiException("Missing the required parameter 'sync' when calling cloudPostV1NotifySend(Async)");
+        }
+
+        // verify the required parameter 'notifySendRequest' is set
+        if (notifySendRequest == null) {
+            throw new ApiException("Missing the required parameter 'notifySendRequest' when calling cloudPostV1NotifySend(Async)");
+        }
+
+        return cloudPostV1NotifySendCall(sync, notifySendRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Send one transactional message by email or SMS through your org&#39;s own provider credential
+     * Delivers a message to each address in &#x60;to&#x60; over the channel the body names — sms or email — using the CALLER ORG&#39;S own provider credential, read from KMS at orgs/&lt;org&gt;/notify/&lt;service&gt;/&lt;key&gt; and never from the environment. The org is the validated principal&#39;s, never a client-supplied header, so a caller can only ever send as their own tenant; an unauthenticated caller gets 401. Naming no provider picks the one whose credentials are actually configured (Twilio, then Plivo for SMS; Twilio Email, then SMTP for email) and fails closed when none is. Delivery is synchronous and per recipient: one recipient answers the bare {messageId,status} SendResponse, several answer the {items:[…]} envelope. A terminal provider failure is a 200 whose status is failed with the reason in error, never a transport error. ?sync&#x3D;true is REQUIRED — an async dispatch answers 503, because the queue plane that would run it is owned elsewhere and is not folded in here. The message body wins verbatim when present; otherwise template_id (or the event name) selects a built-in template rendered against template_vars.
+     * @param sync Must be &#x60;true&#x60;. Async dispatch is not available in the cloud fold; any other value yields &#x60;503&#x60;.  (required)
+     * @param notifySendRequest  (required)
+     * @return CloudPostV1NotifySend200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Delivery attempted. Single recipient returns a bare &#x60;SendResponse&#x60;; multiple recipients return an items wrapper. A &#x60;status&#x60; of &#x60;failed&#x60; with a populated &#x60;error&#x60; is a per-recipient terminal failure, still returned as &#x60;200&#x60;.  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request - Invalid input parameters </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Authentication required </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable - Temporary outage </td><td>  * Retry-After - Seconds to wait before retry <br>  </td></tr>
      </table>
      */
-    public void cloudPostV1NotifySend() throws ApiException {
-        cloudPostV1NotifySendWithHttpInfo();
+    public CloudPostV1NotifySend200Response cloudPostV1NotifySend(@javax.annotation.Nonnull String sync, @javax.annotation.Nonnull NotifySendRequest notifySendRequest) throws ApiException {
+        ApiResponse<CloudPostV1NotifySend200Response> localVarResp = cloudPostV1NotifySendWithHttpInfo(sync, notifySendRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Send one transactional message by email or SMS through your org&#39;s own provider credential
+     * Delivers a message to each address in &#x60;to&#x60; over the channel the body names — sms or email — using the CALLER ORG&#39;S own provider credential, read from KMS at orgs/&lt;org&gt;/notify/&lt;service&gt;/&lt;key&gt; and never from the environment. The org is the validated principal&#39;s, never a client-supplied header, so a caller can only ever send as their own tenant; an unauthenticated caller gets 401. Naming no provider picks the one whose credentials are actually configured (Twilio, then Plivo for SMS; Twilio Email, then SMTP for email) and fails closed when none is. Delivery is synchronous and per recipient: one recipient answers the bare {messageId,status} SendResponse, several answer the {items:[…]} envelope. A terminal provider failure is a 200 whose status is failed with the reason in error, never a transport error. ?sync&#x3D;true is REQUIRED — an async dispatch answers 503, because the queue plane that would run it is owned elsewhere and is not folded in here. The message body wins verbatim when present; otherwise template_id (or the event name) selects a built-in template rendered against template_vars.
+     * @param sync Must be &#x60;true&#x60;. Async dispatch is not available in the cloud fold; any other value yields &#x60;503&#x60;.  (required)
+     * @param notifySendRequest  (required)
+     * @return ApiResponse&lt;CloudPostV1NotifySend200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Delivery attempted. Single recipient returns a bare &#x60;SendResponse&#x60;; multiple recipients return an items wrapper. A &#x60;status&#x60; of &#x60;failed&#x60; with a populated &#x60;error&#x60; is a per-recipient terminal failure, still returned as &#x60;200&#x60;.  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request - Invalid input parameters </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Authentication required </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable - Temporary outage </td><td>  * Retry-After - Seconds to wait before retry <br>  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1NotifySendWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1NotifySendValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CloudPostV1NotifySend200Response> cloudPostV1NotifySendWithHttpInfo(@javax.annotation.Nonnull String sync, @javax.annotation.Nonnull NotifySendRequest notifySendRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1NotifySendValidateBeforeCall(sync, notifySendRequest, null);
+        Type localVarReturnType = new TypeToken<CloudPostV1NotifySend200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Send one transactional message by email or SMS through your org&#39;s own provider credential (asynchronously)
+     * Delivers a message to each address in &#x60;to&#x60; over the channel the body names — sms or email — using the CALLER ORG&#39;S own provider credential, read from KMS at orgs/&lt;org&gt;/notify/&lt;service&gt;/&lt;key&gt; and never from the environment. The org is the validated principal&#39;s, never a client-supplied header, so a caller can only ever send as their own tenant; an unauthenticated caller gets 401. Naming no provider picks the one whose credentials are actually configured (Twilio, then Plivo for SMS; Twilio Email, then SMTP for email) and fails closed when none is. Delivery is synchronous and per recipient: one recipient answers the bare {messageId,status} SendResponse, several answer the {items:[…]} envelope. A terminal provider failure is a 200 whose status is failed with the reason in error, never a transport error. ?sync&#x3D;true is REQUIRED — an async dispatch answers 503, because the queue plane that would run it is owned elsewhere and is not folded in here. The message body wins verbatim when present; otherwise template_id (or the event name) selects a built-in template rendered against template_vars.
+     * @param sync Must be &#x60;true&#x60;. Async dispatch is not available in the cloud fold; any other value yields &#x60;503&#x60;.  (required)
+     * @param notifySendRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -292,17 +331,23 @@ public class NotifyApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Delivery attempted. Single recipient returns a bare &#x60;SendResponse&#x60;; multiple recipients return an items wrapper. A &#x60;status&#x60; of &#x60;failed&#x60; with a populated &#x60;error&#x60; is a per-recipient terminal failure, still returned as &#x60;200&#x60;.  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request - Invalid input parameters </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Authentication required </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable - Temporary outage </td><td>  * Retry-After - Seconds to wait before retry <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1NotifySendAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1NotifySendAsync(@javax.annotation.Nonnull String sync, @javax.annotation.Nonnull NotifySendRequest notifySendRequest, final ApiCallback<CloudPostV1NotifySend200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1NotifySendValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1NotifySendValidateBeforeCall(sync, notifySendRequest, _callback);
+        Type localVarReturnType = new TypeToken<CloudPostV1NotifySend200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1NotifySendEmail
+     * @param sync Must be &#x60;true&#x60;; otherwise &#x60;503&#x60;. (required)
+     * @param notifySendRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -310,10 +355,13 @@ public class NotifyApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Delivery attempted. See &#x60;POST /v1/notify/send&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request - Invalid input parameters </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Authentication required </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable - Temporary outage </td><td>  * Retry-After - Seconds to wait before retry <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1NotifySendEmailCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1NotifySendEmailCall(@javax.annotation.Nonnull String sync, @javax.annotation.Nonnull NotifySendRequest notifySendRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -327,7 +375,7 @@ public class NotifyApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = notifySendRequest;
 
         // create path and map variables
         String localVarPath = "/v1/notify/send/email";
@@ -338,7 +386,12 @@ public class NotifyApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (sync != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sync", sync));
+        }
+
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -346,6 +399,7 @@ public class NotifyApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -357,46 +411,71 @@ public class NotifyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1NotifySendEmailValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1NotifySendEmailCall(_callback);
+    private okhttp3.Call cloudPostV1NotifySendEmailValidateBeforeCall(@javax.annotation.Nonnull String sync, @javax.annotation.Nonnull NotifySendRequest notifySendRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'sync' is set
+        if (sync == null) {
+            throw new ApiException("Missing the required parameter 'sync' when calling cloudPostV1NotifySendEmail(Async)");
+        }
+
+        // verify the required parameter 'notifySendRequest' is set
+        if (notifySendRequest == null) {
+            throw new ApiException("Missing the required parameter 'notifySendRequest' when calling cloudPostV1NotifySendEmail(Async)");
+        }
+
+        return cloudPostV1NotifySendEmailCall(sync, notifySendRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Send one transactional email through your org&#39;s own provider credential
+     * The channel-pinned form of the generic send: identical in every respect except that the channel is fixed to email, OVERRIDING whatever the body names — so a body that says sms still goes out as mail. The provider is the org&#39;s own email credential from KMS (Twilio Email, then SMTP), resolved for the validated principal&#39;s org and never from a client-supplied header; an unauthenticated caller gets 401. Subject is carried on the email channel only. Delivery is synchronous and per recipient: one recipient answers the bare {messageId,status} SendResponse, several answer the {items:[…]} envelope. A terminal provider failure is a 200 whose status is failed with the reason in error, never a transport error. ?sync&#x3D;true is REQUIRED — an async dispatch answers 503, because the queue plane that would run it is owned elsewhere and is not folded in here. The message body wins verbatim when present; otherwise template_id (or the event name) selects a built-in template rendered against template_vars.
+     * @param sync Must be &#x60;true&#x60;; otherwise &#x60;503&#x60;. (required)
+     * @param notifySendRequest  (required)
+     * @return CloudPostV1NotifySend200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Delivery attempted. See &#x60;POST /v1/notify/send&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request - Invalid input parameters </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Authentication required </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable - Temporary outage </td><td>  * Retry-After - Seconds to wait before retry <br>  </td></tr>
      </table>
      */
-    public void cloudPostV1NotifySendEmail() throws ApiException {
-        cloudPostV1NotifySendEmailWithHttpInfo();
+    public CloudPostV1NotifySend200Response cloudPostV1NotifySendEmail(@javax.annotation.Nonnull String sync, @javax.annotation.Nonnull NotifySendRequest notifySendRequest) throws ApiException {
+        ApiResponse<CloudPostV1NotifySend200Response> localVarResp = cloudPostV1NotifySendEmailWithHttpInfo(sync, notifySendRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Send one transactional email through your org&#39;s own provider credential
+     * The channel-pinned form of the generic send: identical in every respect except that the channel is fixed to email, OVERRIDING whatever the body names — so a body that says sms still goes out as mail. The provider is the org&#39;s own email credential from KMS (Twilio Email, then SMTP), resolved for the validated principal&#39;s org and never from a client-supplied header; an unauthenticated caller gets 401. Subject is carried on the email channel only. Delivery is synchronous and per recipient: one recipient answers the bare {messageId,status} SendResponse, several answer the {items:[…]} envelope. A terminal provider failure is a 200 whose status is failed with the reason in error, never a transport error. ?sync&#x3D;true is REQUIRED — an async dispatch answers 503, because the queue plane that would run it is owned elsewhere and is not folded in here. The message body wins verbatim when present; otherwise template_id (or the event name) selects a built-in template rendered against template_vars.
+     * @param sync Must be &#x60;true&#x60;; otherwise &#x60;503&#x60;. (required)
+     * @param notifySendRequest  (required)
+     * @return ApiResponse&lt;CloudPostV1NotifySend200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Delivery attempted. See &#x60;POST /v1/notify/send&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request - Invalid input parameters </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Authentication required </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable - Temporary outage </td><td>  * Retry-After - Seconds to wait before retry <br>  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1NotifySendEmailWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1NotifySendEmailValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CloudPostV1NotifySend200Response> cloudPostV1NotifySendEmailWithHttpInfo(@javax.annotation.Nonnull String sync, @javax.annotation.Nonnull NotifySendRequest notifySendRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1NotifySendEmailValidateBeforeCall(sync, notifySendRequest, null);
+        Type localVarReturnType = new TypeToken<CloudPostV1NotifySend200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Send one transactional email through your org&#39;s own provider credential (asynchronously)
+     * The channel-pinned form of the generic send: identical in every respect except that the channel is fixed to email, OVERRIDING whatever the body names — so a body that says sms still goes out as mail. The provider is the org&#39;s own email credential from KMS (Twilio Email, then SMTP), resolved for the validated principal&#39;s org and never from a client-supplied header; an unauthenticated caller gets 401. Subject is carried on the email channel only. Delivery is synchronous and per recipient: one recipient answers the bare {messageId,status} SendResponse, several answer the {items:[…]} envelope. A terminal provider failure is a 200 whose status is failed with the reason in error, never a transport error. ?sync&#x3D;true is REQUIRED — an async dispatch answers 503, because the queue plane that would run it is owned elsewhere and is not folded in here. The message body wins verbatim when present; otherwise template_id (or the event name) selects a built-in template rendered against template_vars.
+     * @param sync Must be &#x60;true&#x60;; otherwise &#x60;503&#x60;. (required)
+     * @param notifySendRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -404,17 +483,23 @@ public class NotifyApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Delivery attempted. See &#x60;POST /v1/notify/send&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request - Invalid input parameters </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Authentication required </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable - Temporary outage </td><td>  * Retry-After - Seconds to wait before retry <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1NotifySendEmailAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1NotifySendEmailAsync(@javax.annotation.Nonnull String sync, @javax.annotation.Nonnull NotifySendRequest notifySendRequest, final ApiCallback<CloudPostV1NotifySend200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1NotifySendEmailValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1NotifySendEmailValidateBeforeCall(sync, notifySendRequest, _callback);
+        Type localVarReturnType = new TypeToken<CloudPostV1NotifySend200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1NotifySendSms
+     * @param sync Must be &#x60;true&#x60;; otherwise &#x60;503&#x60;. (required)
+     * @param notifySendRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -422,10 +507,13 @@ public class NotifyApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Delivery attempted. See &#x60;POST /v1/notify/send&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request - Invalid input parameters </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Authentication required </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable - Temporary outage </td><td>  * Retry-After - Seconds to wait before retry <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1NotifySendSmsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1NotifySendSmsCall(@javax.annotation.Nonnull String sync, @javax.annotation.Nonnull NotifySendRequest notifySendRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -439,7 +527,7 @@ public class NotifyApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = notifySendRequest;
 
         // create path and map variables
         String localVarPath = "/v1/notify/send/sms";
@@ -450,7 +538,12 @@ public class NotifyApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (sync != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sync", sync));
+        }
+
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -458,6 +551,7 @@ public class NotifyApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -469,46 +563,71 @@ public class NotifyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1NotifySendSmsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1NotifySendSmsCall(_callback);
+    private okhttp3.Call cloudPostV1NotifySendSmsValidateBeforeCall(@javax.annotation.Nonnull String sync, @javax.annotation.Nonnull NotifySendRequest notifySendRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'sync' is set
+        if (sync == null) {
+            throw new ApiException("Missing the required parameter 'sync' when calling cloudPostV1NotifySendSms(Async)");
+        }
+
+        // verify the required parameter 'notifySendRequest' is set
+        if (notifySendRequest == null) {
+            throw new ApiException("Missing the required parameter 'notifySendRequest' when calling cloudPostV1NotifySendSms(Async)");
+        }
+
+        return cloudPostV1NotifySendSmsCall(sync, notifySendRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Send one transactional SMS through your org&#39;s own provider credential
+     * The channel-pinned form of the generic send: identical in every respect except that the channel is fixed to sms, OVERRIDING whatever the body names — so a body that says email still goes out as a text message. The provider is the org&#39;s own SMS credential from KMS (Twilio, then Plivo), resolved for the validated principal&#39;s org and never from a client-supplied header; an unauthenticated caller gets 401. Delivery is synchronous and per recipient: one recipient answers the bare {messageId,status} SendResponse, several answer the {items:[…]} envelope. A terminal provider failure is a 200 whose status is failed with the reason in error, never a transport error. ?sync&#x3D;true is REQUIRED — an async dispatch answers 503, because the queue plane that would run it is owned elsewhere and is not folded in here. The message body wins verbatim when present; otherwise template_id (or the event name) selects a built-in template rendered against template_vars.
+     * @param sync Must be &#x60;true&#x60;; otherwise &#x60;503&#x60;. (required)
+     * @param notifySendRequest  (required)
+     * @return CloudPostV1NotifySend200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Delivery attempted. See &#x60;POST /v1/notify/send&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request - Invalid input parameters </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Authentication required </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable - Temporary outage </td><td>  * Retry-After - Seconds to wait before retry <br>  </td></tr>
      </table>
      */
-    public void cloudPostV1NotifySendSms() throws ApiException {
-        cloudPostV1NotifySendSmsWithHttpInfo();
+    public CloudPostV1NotifySend200Response cloudPostV1NotifySendSms(@javax.annotation.Nonnull String sync, @javax.annotation.Nonnull NotifySendRequest notifySendRequest) throws ApiException {
+        ApiResponse<CloudPostV1NotifySend200Response> localVarResp = cloudPostV1NotifySendSmsWithHttpInfo(sync, notifySendRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Send one transactional SMS through your org&#39;s own provider credential
+     * The channel-pinned form of the generic send: identical in every respect except that the channel is fixed to sms, OVERRIDING whatever the body names — so a body that says email still goes out as a text message. The provider is the org&#39;s own SMS credential from KMS (Twilio, then Plivo), resolved for the validated principal&#39;s org and never from a client-supplied header; an unauthenticated caller gets 401. Delivery is synchronous and per recipient: one recipient answers the bare {messageId,status} SendResponse, several answer the {items:[…]} envelope. A terminal provider failure is a 200 whose status is failed with the reason in error, never a transport error. ?sync&#x3D;true is REQUIRED — an async dispatch answers 503, because the queue plane that would run it is owned elsewhere and is not folded in here. The message body wins verbatim when present; otherwise template_id (or the event name) selects a built-in template rendered against template_vars.
+     * @param sync Must be &#x60;true&#x60;; otherwise &#x60;503&#x60;. (required)
+     * @param notifySendRequest  (required)
+     * @return ApiResponse&lt;CloudPostV1NotifySend200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Delivery attempted. See &#x60;POST /v1/notify/send&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request - Invalid input parameters </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Authentication required </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable - Temporary outage </td><td>  * Retry-After - Seconds to wait before retry <br>  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1NotifySendSmsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1NotifySendSmsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CloudPostV1NotifySend200Response> cloudPostV1NotifySendSmsWithHttpInfo(@javax.annotation.Nonnull String sync, @javax.annotation.Nonnull NotifySendRequest notifySendRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1NotifySendSmsValidateBeforeCall(sync, notifySendRequest, null);
+        Type localVarReturnType = new TypeToken<CloudPostV1NotifySend200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Send one transactional SMS through your org&#39;s own provider credential (asynchronously)
+     * The channel-pinned form of the generic send: identical in every respect except that the channel is fixed to sms, OVERRIDING whatever the body names — so a body that says email still goes out as a text message. The provider is the org&#39;s own SMS credential from KMS (Twilio, then Plivo), resolved for the validated principal&#39;s org and never from a client-supplied header; an unauthenticated caller gets 401. Delivery is synchronous and per recipient: one recipient answers the bare {messageId,status} SendResponse, several answer the {items:[…]} envelope. A terminal provider failure is a 200 whose status is failed with the reason in error, never a transport error. ?sync&#x3D;true is REQUIRED — an async dispatch answers 503, because the queue plane that would run it is owned elsewhere and is not folded in here. The message body wins verbatim when present; otherwise template_id (or the event name) selects a built-in template rendered against template_vars.
+     * @param sync Must be &#x60;true&#x60;; otherwise &#x60;503&#x60;. (required)
+     * @param notifySendRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -516,13 +635,17 @@ public class NotifyApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Delivery attempted. See &#x60;POST /v1/notify/send&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request - Invalid input parameters </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Authentication required </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable - Temporary outage </td><td>  * Retry-After - Seconds to wait before retry <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1NotifySendSmsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1NotifySendSmsAsync(@javax.annotation.Nonnull String sync, @javax.annotation.Nonnull NotifySendRequest notifySendRequest, final ApiCallback<CloudPostV1NotifySend200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1NotifySendSmsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1NotifySendSmsValidateBeforeCall(sync, notifySendRequest, _callback);
+        Type localVarReturnType = new TypeToken<CloudPostV1NotifySend200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }

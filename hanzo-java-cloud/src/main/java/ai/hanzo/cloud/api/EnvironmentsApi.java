@@ -133,8 +133,8 @@ public class EnvironmentsApi {
     }
 
     /**
-     * 
-     * 
+     * Your deploy targets, and what is running on each
+     * Returns the org&#39;s environments — the distinct deploy targets its applications name, &#x60;production&#x60; for anything that names none — each aggregating the apps that target it, a rolled-up status and when it last changed.  An environment is DERIVED, not stored: there is nothing to create or delete here, and an environment exists exactly as long as an app points at it. Requires a validated principal; 403 without one.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -148,8 +148,8 @@ public class EnvironmentsApi {
     }
 
     /**
-     * 
-     * 
+     * Your deploy targets, and what is running on each
+     * Returns the org&#39;s environments — the distinct deploy targets its applications name, &#x60;production&#x60; for anything that names none — each aggregating the apps that target it, a rolled-up status and when it last changed.  An environment is DERIVED, not stored: there is nothing to create or delete here, and an environment exists exactly as long as an app points at it. Requires a validated principal; 403 without one.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -165,8 +165,8 @@ public class EnvironmentsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Your deploy targets, and what is running on each (asynchronously)
+     * Returns the org&#39;s environments — the distinct deploy targets its applications name, &#x60;production&#x60; for anything that names none — each aggregating the apps that target it, a rolled-up status and when it last changed.  An environment is DERIVED, not stored: there is nothing to create or delete here, and an environment exists exactly as long as an app points at it. Requires a validated principal; 403 without one.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

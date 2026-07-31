@@ -2,8 +2,6 @@ package ai.hanzo.cloud.examples;
 
 import ai.hanzo.cloud.ApiClient;
 
-import java.util.function.Consumer;
-
 /**
  * The one place the six examples resolve their environment.
  *
@@ -36,26 +34,6 @@ final class Hanzo {
         if (org != null && !org.isBlank()) {
             client.addDefaultHeader("X-Org-Id", org);
         }
-        return client;
-    }
-
-    /**
-     * The same client, plus {@code sink} for each raw response body.
-     *
-     * <p>Some routes are declared in hanzo.yaml with {@code default:} and no
-     * {@code content}, so the generator types them {@code void} and the body is
-     * the only place their answer exists. {@code peekBody} copies rather than
-     * consumes, so typed calls on this client still deserialize normally.
-     */
-    static ApiClient client(Consumer<String> sink) {
-        ApiClient client = client();
-        client.setHttpClient(client.getHttpClient().newBuilder()
-                .addInterceptor(chain -> {
-                    okhttp3.Response response = chain.proceed(chain.request());
-                    sink.accept(response.peekBody(Long.MAX_VALUE).string());
-                    return response;
-                })
-                .build());
         return client;
     }
 

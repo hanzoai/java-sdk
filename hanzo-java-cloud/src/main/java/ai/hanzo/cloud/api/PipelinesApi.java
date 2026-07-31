@@ -139,8 +139,8 @@ public class PipelinesApi {
     }
 
     /**
-     * 
-     * 
+     * One build-and-deploy pipeline per app, with its latest run
+     * Returns one pipeline per application in the caller&#39;s org — its repo or image source, its current status, and when its most recent deployment ran and how long it took. A pipeline is a PROJECTION of an app plus its newest deployment, not a separate record: it comes into existence with the app and is triggered only through /deploy, never here. Requires a validated principal; 403 without one.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -154,8 +154,8 @@ public class PipelinesApi {
     }
 
     /**
-     * 
-     * 
+     * One build-and-deploy pipeline per app, with its latest run
+     * Returns one pipeline per application in the caller&#39;s org — its repo or image source, its current status, and when its most recent deployment ran and how long it took. A pipeline is a PROJECTION of an app plus its newest deployment, not a separate record: it comes into existence with the app and is triggered only through /deploy, never here. Requires a validated principal; 403 without one.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -171,8 +171,8 @@ public class PipelinesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * One build-and-deploy pipeline per app, with its latest run (asynchronously)
+     * Returns one pipeline per application in the caller&#39;s org — its repo or image source, its current status, and when its most recent deployment ran and how long it took. A pipeline is a PROJECTION of an app plus its newest deployment, not a separate record: it comes into existence with the app and is triggered only through /deploy, never here. Requires a validated principal; 403 without one.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

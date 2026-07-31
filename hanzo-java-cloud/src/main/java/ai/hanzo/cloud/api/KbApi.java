@@ -81,7 +81,7 @@ public class KbApi {
 
     /**
      * Build call for cloudDeleteV1KbConnectorsProvider
-     * @param provider Provider is the connector to act on: github, slack, google or notion. (required)
+     * @param provider  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -151,7 +151,7 @@ public class KbApi {
     /**
      * DisconnectConnector revokes a connection: it tombstones the stored credential so a later sync cannot reuse it, purges this provider&#39;s points from the org&#39;s vector namespace, and marks the connector disconnected.
      * DisconnectConnector revokes a connection: it tombstones the stored credential so a later sync cannot reuse it, purges this provider&#39;s points from the org&#39;s vector namespace, and marks the connector disconnected. The documents already ingested stay in the org&#39;s store — they are the org&#39;s own data — but stop being retrievable by search; a caller deletes them through the document surface.
-     * @param provider Provider is the connector to act on: github, slack, google or notion. (required)
+     * @param provider  (required)
      * @return CloudConnectionOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -169,7 +169,7 @@ public class KbApi {
     /**
      * DisconnectConnector revokes a connection: it tombstones the stored credential so a later sync cannot reuse it, purges this provider&#39;s points from the org&#39;s vector namespace, and marks the connector disconnected.
      * DisconnectConnector revokes a connection: it tombstones the stored credential so a later sync cannot reuse it, purges this provider&#39;s points from the org&#39;s vector namespace, and marks the connector disconnected. The documents already ingested stay in the org&#39;s store — they are the org&#39;s own data — but stop being retrievable by search; a caller deletes them through the document surface.
-     * @param provider Provider is the connector to act on: github, slack, google or notion. (required)
+     * @param provider  (required)
      * @return ApiResponse&lt;CloudConnectionOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -188,7 +188,7 @@ public class KbApi {
     /**
      * DisconnectConnector revokes a connection: it tombstones the stored credential so a later sync cannot reuse it, purges this provider&#39;s points from the org&#39;s vector namespace, and marks the connector disconnected. (asynchronously)
      * DisconnectConnector revokes a connection: it tombstones the stored credential so a later sync cannot reuse it, purges this provider&#39;s points from the org&#39;s vector namespace, and marks the connector disconnected. The documents already ingested stay in the org&#39;s store — they are the org&#39;s own data — but stop being retrievable by search; a caller deletes them through the document surface.
-     * @param provider Provider is the connector to act on: github, slack, google or notion. (required)
+     * @param provider  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -442,7 +442,7 @@ public class KbApi {
     }
     /**
      * Build call for cloudGetV1KbConnectorsProviderCallback
-     * @param provider Provider is the connector completing its flow, from the path. (required)
+     * @param provider  (required)
      * @param code Code is the provider&#39;s authorization code, exchanged for a token. (optional)
      * @param state State is the org-bound value this server signed at connect time. (optional)
      * @param error Error is the provider&#39;s denial reason when the user refused consent. (optional)
@@ -509,7 +509,7 @@ public class KbApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -527,7 +527,7 @@ public class KbApi {
     /**
      * CompleteConnectorOAuth finishes an OAuth connection: it exchanges the provider&#39;s code for a token, seals that token in KMS, and records the connection.
      * CompleteConnectorOAuth finishes an OAuth connection: it exchanges the provider&#39;s code for a token, seals that token in KMS, and records the connection. THE ORG COMES FROM THE SIGNED STATE, not from a header and not from the provider, so an attacker cannot bind their own account to someone else&#39;s org — a tampered, expired or foreign-provider state is refused outright. The token itself is never returned, never written into the document, and never logged; the document holds only its KMS path.
-     * @param provider Provider is the connector completing its flow, from the path. (required)
+     * @param provider  (required)
      * @param code Code is the provider&#39;s authorization code, exchanged for a token. (optional)
      * @param state State is the org-bound value this server signed at connect time. (optional)
      * @param error Error is the provider&#39;s denial reason when the user refused consent. (optional)
@@ -548,7 +548,7 @@ public class KbApi {
     /**
      * CompleteConnectorOAuth finishes an OAuth connection: it exchanges the provider&#39;s code for a token, seals that token in KMS, and records the connection.
      * CompleteConnectorOAuth finishes an OAuth connection: it exchanges the provider&#39;s code for a token, seals that token in KMS, and records the connection. THE ORG COMES FROM THE SIGNED STATE, not from a header and not from the provider, so an attacker cannot bind their own account to someone else&#39;s org — a tampered, expired or foreign-provider state is refused outright. The token itself is never returned, never written into the document, and never logged; the document holds only its KMS path.
-     * @param provider Provider is the connector completing its flow, from the path. (required)
+     * @param provider  (required)
      * @param code Code is the provider&#39;s authorization code, exchanged for a token. (optional)
      * @param state State is the org-bound value this server signed at connect time. (optional)
      * @param error Error is the provider&#39;s denial reason when the user refused consent. (optional)
@@ -570,7 +570,7 @@ public class KbApi {
     /**
      * CompleteConnectorOAuth finishes an OAuth connection: it exchanges the provider&#39;s code for a token, seals that token in KMS, and records the connection. (asynchronously)
      * CompleteConnectorOAuth finishes an OAuth connection: it exchanges the provider&#39;s code for a token, seals that token in KMS, and records the connection. THE ORG COMES FROM THE SIGNED STATE, not from a header and not from the provider, so an attacker cannot bind their own account to someone else&#39;s org — a tampered, expired or foreign-provider state is refused outright. The token itself is never returned, never written into the document, and never logged; the document holds only its KMS path.
-     * @param provider Provider is the connector completing its flow, from the path. (required)
+     * @param provider  (required)
      * @param code Code is the provider&#39;s authorization code, exchanged for a token. (optional)
      * @param state State is the org-bound value this server signed at connect time. (optional)
      * @param error Error is the provider&#39;s denial reason when the user refused consent. (optional)
@@ -593,7 +593,7 @@ public class KbApi {
     }
     /**
      * Build call for cloudGetV1KbConnectorsProviderConnect
-     * @param provider Provider is the connector to act on: github, slack, google or notion. (required)
+     * @param provider  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -663,7 +663,7 @@ public class KbApi {
     /**
      * StartConnectorOAuth returns the provider authorize URL the console opens to connect this org&#39;s account.
      * StartConnectorOAuth returns the provider authorize URL the console opens to connect this org&#39;s account. There is no server-side redirect — the console stays in control of the navigation. The URL carries a state this server SIGNED over the caller&#39;s validated org, so the connection the callback completes can only ever land in that org.
-     * @param provider Provider is the connector to act on: github, slack, google or notion. (required)
+     * @param provider  (required)
      * @return CloudKbAuthorizeOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -681,7 +681,7 @@ public class KbApi {
     /**
      * StartConnectorOAuth returns the provider authorize URL the console opens to connect this org&#39;s account.
      * StartConnectorOAuth returns the provider authorize URL the console opens to connect this org&#39;s account. There is no server-side redirect — the console stays in control of the navigation. The URL carries a state this server SIGNED over the caller&#39;s validated org, so the connection the callback completes can only ever land in that org.
-     * @param provider Provider is the connector to act on: github, slack, google or notion. (required)
+     * @param provider  (required)
      * @return ApiResponse&lt;CloudKbAuthorizeOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -700,7 +700,7 @@ public class KbApi {
     /**
      * StartConnectorOAuth returns the provider authorize URL the console opens to connect this org&#39;s account. (asynchronously)
      * StartConnectorOAuth returns the provider authorize URL the console opens to connect this org&#39;s account. There is no server-side redirect — the console stays in control of the navigation. The URL carries a state this server SIGNED over the caller&#39;s validated org, so the connection the callback completes can only ever land in that org.
-     * @param provider Provider is the connector to act on: github, slack, google or notion. (required)
+     * @param provider  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -845,7 +845,7 @@ public class KbApi {
     }
     /**
      * Build call for cloudPostV1KbConnectorsProviderSync
-     * @param provider Provider is the connector to act on: github, slack, google or notion. (required)
+     * @param provider  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -915,7 +915,7 @@ public class KbApi {
     /**
      * SyncConnector pulls the provider&#39;s documents for the caller&#39;s org and files them as knowledge sources, which the store&#39;s own hook then indexes — so a synced document is retrievable exactly like a hand-written page.
      * SyncConnector pulls the provider&#39;s documents for the caller&#39;s org and files them as knowledge sources, which the store&#39;s own hook then indexes — so a synced document is retrievable exactly like a hand-written page. The org is the validated tenant and the credential is read from KMS, so an org can only ever sync its own connection. A provider failure is reported honestly (502) and recorded on the connector rather than silently swallowed.
-     * @param provider Provider is the connector to act on: github, slack, google or notion. (required)
+     * @param provider  (required)
      * @return CloudKbSyncOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -933,7 +933,7 @@ public class KbApi {
     /**
      * SyncConnector pulls the provider&#39;s documents for the caller&#39;s org and files them as knowledge sources, which the store&#39;s own hook then indexes — so a synced document is retrievable exactly like a hand-written page.
      * SyncConnector pulls the provider&#39;s documents for the caller&#39;s org and files them as knowledge sources, which the store&#39;s own hook then indexes — so a synced document is retrievable exactly like a hand-written page. The org is the validated tenant and the credential is read from KMS, so an org can only ever sync its own connection. A provider failure is reported honestly (502) and recorded on the connector rather than silently swallowed.
-     * @param provider Provider is the connector to act on: github, slack, google or notion. (required)
+     * @param provider  (required)
      * @return ApiResponse&lt;CloudKbSyncOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -952,7 +952,7 @@ public class KbApi {
     /**
      * SyncConnector pulls the provider&#39;s documents for the caller&#39;s org and files them as knowledge sources, which the store&#39;s own hook then indexes — so a synced document is retrievable exactly like a hand-written page. (asynchronously)
      * SyncConnector pulls the provider&#39;s documents for the caller&#39;s org and files them as knowledge sources, which the store&#39;s own hook then indexes — so a synced document is retrievable exactly like a hand-written page. The org is the validated tenant and the credential is read from KMS, so an org can only ever sync its own connection. A provider failure is reported honestly (502) and recorded on the connector rather than silently swallowed.
-     * @param provider Provider is the connector to act on: github, slack, google or notion. (required)
+     * @param provider  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1032,8 +1032,8 @@ public class KbApi {
     }
 
     /**
-     * 
-     * 
+     * Import an Obsidian, Notion, Roam or Evernote export into the org&#39;s knowledge base
+     * Ingests an uploaded export as a tree of kb-page documents with its link structure intact. &#x60;?format&#x3D;&#x60; picks the normalizer — obsidian, notion, roam or evernote — and the export arrives as a multipart &#x60;file&#x60; part, or as the raw request body when there is no multipart part: an Obsidian or Notion vault zip, a Roam JSON (raw or inside the zip Roam downloads), or an Evernote .enex.  The pages are filed through the SAME ingest path a connector sync uses, so the kb-page hook indexes each one for retrieval AND extracts its &#x60;[[wikilinks]]&#x60; into kb-link edges — the imported vault is searchable and its graph is navigable without a second pass. Parents are filed before their children, and each page takes a slug unique within the org (suffixed -2, -3, … on collision), so a re-import adds pages rather than overwriting the ones already there.  Scoped to the caller&#39;s validated org; &#x60;?project&#x3D;&#x60; narrows every imported page to one project. No validated principal is 403, and an org that has not installed the kb module is refused with the install call to make first. The bounds are 64 MB per upload, 5000 pages and 8 MB per archive entry: pages past the five-thousandth are dropped and a larger entry is truncated at its bound, and a page the store rejects is skipped — so the answer&#39;s &#x60;imported&#x60; count is what was actually filed, not what was sent.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1047,8 +1047,8 @@ public class KbApi {
     }
 
     /**
-     * 
-     * 
+     * Import an Obsidian, Notion, Roam or Evernote export into the org&#39;s knowledge base
+     * Ingests an uploaded export as a tree of kb-page documents with its link structure intact. &#x60;?format&#x3D;&#x60; picks the normalizer — obsidian, notion, roam or evernote — and the export arrives as a multipart &#x60;file&#x60; part, or as the raw request body when there is no multipart part: an Obsidian or Notion vault zip, a Roam JSON (raw or inside the zip Roam downloads), or an Evernote .enex.  The pages are filed through the SAME ingest path a connector sync uses, so the kb-page hook indexes each one for retrieval AND extracts its &#x60;[[wikilinks]]&#x60; into kb-link edges — the imported vault is searchable and its graph is navigable without a second pass. Parents are filed before their children, and each page takes a slug unique within the org (suffixed -2, -3, … on collision), so a re-import adds pages rather than overwriting the ones already there.  Scoped to the caller&#39;s validated org; &#x60;?project&#x3D;&#x60; narrows every imported page to one project. No validated principal is 403, and an org that has not installed the kb module is refused with the install call to make first. The bounds are 64 MB per upload, 5000 pages and 8 MB per archive entry: pages past the five-thousandth are dropped and a larger entry is truncated at its bound, and a page the store rejects is skipped — so the answer&#39;s &#x60;imported&#x60; count is what was actually filed, not what was sent.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1064,8 +1064,8 @@ public class KbApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Import an Obsidian, Notion, Roam or Evernote export into the org&#39;s knowledge base (asynchronously)
+     * Ingests an uploaded export as a tree of kb-page documents with its link structure intact. &#x60;?format&#x3D;&#x60; picks the normalizer — obsidian, notion, roam or evernote — and the export arrives as a multipart &#x60;file&#x60; part, or as the raw request body when there is no multipart part: an Obsidian or Notion vault zip, a Roam JSON (raw or inside the zip Roam downloads), or an Evernote .enex.  The pages are filed through the SAME ingest path a connector sync uses, so the kb-page hook indexes each one for retrieval AND extracts its &#x60;[[wikilinks]]&#x60; into kb-link edges — the imported vault is searchable and its graph is navigable without a second pass. Parents are filed before their children, and each page takes a slug unique within the org (suffixed -2, -3, … on collision), so a re-import adds pages rather than overwriting the ones already there.  Scoped to the caller&#39;s validated org; &#x60;?project&#x3D;&#x60; narrows every imported page to one project. No validated principal is 403, and an org that has not installed the kb module is refused with the install call to make first. The bounds are 64 MB per upload, 5000 pages and 8 MB per archive entry: pages past the five-thousandth are dropped and a larger entry is truncated at its bound, and a page the store rejects is skipped — so the answer&#39;s &#x60;imported&#x60; count is what was actually filed, not what was sent.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

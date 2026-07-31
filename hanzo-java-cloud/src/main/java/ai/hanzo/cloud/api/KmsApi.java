@@ -27,6 +27,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.AnalyticsHeartbeat200Response;
+import ai.hanzo.cloud.model.CloudGetV1KmsHealth200Response;
+import ai.hanzo.cloud.model.CloudGetV1KmsSecrets200Response;
+import ai.hanzo.cloud.model.CloudGetV1KmsSecrets401Response;
+import ai.hanzo.cloud.model.CloudPostV1KmsAuthLogin200Response;
+import ai.hanzo.cloud.model.CloudPostV1KmsAuthLoginRequest;
+import ai.hanzo.cloud.model.CloudPostV1KmsSecretsRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -140,8 +147,8 @@ public class KmsApi {
     }
 
     /**
-     * 
-     * 
+     * Delete one secret from your org
+     * Removes one secret from the caller&#39;s own org and confirms the name and environment that were removed. Deleting a secret that is not there is a 404, not a silent success, so a caller can tell a real deletion from a typo.  The trailing path is the secret&#39;s subpath and name beneath the caller&#39;s org root, and &#x60;env&#x60; selects the environment, defaulting when omitted. Scoped to the caller&#39;s own org — the store root comes from the validated claim, never from the request — under the same fail-closed admission as the reads.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -156,8 +163,8 @@ public class KmsApi {
     }
 
     /**
-     * 
-     * 
+     * Delete one secret from your org
+     * Removes one secret from the caller&#39;s own org and confirms the name and environment that were removed. Deleting a secret that is not there is a 404, not a silent success, so a caller can tell a real deletion from a typo.  The trailing path is the secret&#39;s subpath and name beneath the caller&#39;s org root, and &#x60;env&#x60; selects the environment, defaulting when omitted. Scoped to the caller&#39;s own org — the store root comes from the validated claim, never from the request — under the same fail-closed admission as the reads.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -174,8 +181,8 @@ public class KmsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Delete one secret from your org (asynchronously)
+     * Removes one secret from the caller&#39;s own org and confirms the name and environment that were removed. Deleting a secret that is not there is a 404, not a silent success, so a caller can tell a real deletion from a typo.  The trailing path is the secret&#39;s subpath and name beneath the caller&#39;s org root, and &#x60;env&#x60; selects the environment, defaulting when omitted. Scoped to the caller&#39;s own org — the store root comes from the validated claim, never from the request — under the same fail-closed admission as the reads.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -255,8 +262,8 @@ public class KmsApi {
     }
 
     /**
-     * 
-     * 
+     * Runtime configuration for the KMS console
+     * Returns what the console needs before anyone has signed in: the brand, the OIDC issuer it authenticates against, the API base for this subsystem and the path of the login exchange.  Public on purpose, and it holds nothing sensitive — it is deliberately kept under this subsystem&#39;s own namespace rather than under an admin prefix, so a gateway that admin-gates the admin routes cannot break the console&#39;s legitimate pre-login fetch.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -270,8 +277,8 @@ public class KmsApi {
     }
 
     /**
-     * 
-     * 
+     * Runtime configuration for the KMS console
+     * Returns what the console needs before anyone has signed in: the brand, the OIDC issuer it authenticates against, the API base for this subsystem and the path of the login exchange.  Public on purpose, and it holds nothing sensitive — it is deliberately kept under this subsystem&#39;s own namespace rather than under an admin prefix, so a gateway that admin-gates the admin routes cannot break the console&#39;s legitimate pre-login fetch.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -287,8 +294,8 @@ public class KmsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Runtime configuration for the KMS console (asynchronously)
+     * Returns what the console needs before anyone has signed in: the brand, the OIDC issuer it authenticates against, the API base for this subsystem and the path of the login exchange.  Public on purpose, and it holds nothing sensitive — it is deliberately kept under this subsystem&#39;s own namespace rather than under an admin prefix, so a gateway that admin-gates the admin routes cannot break the console&#39;s legitimate pre-login fetch.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -314,7 +321,7 @@ public class KmsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Alive </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1KmsHealthCall(final ApiCallback _callback) throws ApiException {
@@ -343,6 +350,7 @@ public class KmsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -356,7 +364,7 @@ public class KmsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -367,40 +375,43 @@ public class KmsApi {
     }
 
     /**
-     * 
-     * 
+     * Whether this broker can actually serve secrets
+     * A real readiness probe, not a liveness stub: 200 only when the store is open AND a master key is configured, with &#x60;signing&#x60; reporting whether signing keys are set up too. Anything less answers 503 with &#x60;ready:false&#x60; and the reason — no in-process store, or no master key — which are exactly the two states in which the secret operations refuse.  Not token-gated, because the platform must be able to probe it without a credential. It reports the broker&#39;s configuration state only; no secret, no key material and no tenant name appears in it.
+     * @return CloudGetV1KmsHealth200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Alive </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1KmsHealth() throws ApiException {
-        cloudGetV1KmsHealthWithHttpInfo();
+    public CloudGetV1KmsHealth200Response cloudGetV1KmsHealth() throws ApiException {
+        ApiResponse<CloudGetV1KmsHealth200Response> localVarResp = cloudGetV1KmsHealthWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Whether this broker can actually serve secrets
+     * A real readiness probe, not a liveness stub: 200 only when the store is open AND a master key is configured, with &#x60;signing&#x60; reporting whether signing keys are set up too. Anything less answers 503 with &#x60;ready:false&#x60; and the reason — no in-process store, or no master key — which are exactly the two states in which the secret operations refuse.  Not token-gated, because the platform must be able to probe it without a credential. It reports the broker&#39;s configuration state only; no secret, no key material and no tenant name appears in it.
+     * @return ApiResponse&lt;CloudGetV1KmsHealth200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Alive </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1KmsHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<CloudGetV1KmsHealth200Response> cloudGetV1KmsHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = cloudGetV1KmsHealthValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<CloudGetV1KmsHealth200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Whether this broker can actually serve secrets (asynchronously)
+     * A real readiness probe, not a liveness stub: 200 only when the store is open AND a master key is configured, with &#x60;signing&#x60; reporting whether signing keys are set up too. Anything less answers 503 with &#x60;ready:false&#x60; and the reason — no in-process store, or no master key — which are exactly the two states in which the secret operations refuse.  Not token-gated, because the platform must be able to probe it without a credential. It reports the broker&#39;s configuration state only; no secret, no key material and no tenant name appears in it.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -408,17 +419,20 @@ public class KmsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Alive </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1KmsHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1KmsHealthAsync(final ApiCallback<CloudGetV1KmsHealth200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudGetV1KmsHealthValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<CloudGetV1KmsHealth200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudGetV1KmsSecrets
+     * @param path Grouping path, e.g. gateway (optional)
+     * @param env Environment slug; defaults to &#x60;default&#x60; (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -426,10 +440,11 @@ public class KmsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Names under the path </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid bearer token </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1KmsSecretsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1KmsSecretsCall(@javax.annotation.Nullable String path, @javax.annotation.Nullable String env, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -454,7 +469,16 @@ public class KmsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (path != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("path", path));
+        }
+
+        if (env != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("env", env));
+        }
+
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -473,46 +497,57 @@ public class KmsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudGetV1KmsSecretsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudGetV1KmsSecretsCall(_callback);
+    private okhttp3.Call cloudGetV1KmsSecretsValidateBeforeCall(@javax.annotation.Nullable String path, @javax.annotation.Nullable String env, final ApiCallback _callback) throws ApiException {
+        return cloudGetV1KmsSecretsCall(path, env, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * List the secrets your org holds, without their values
+     * Returns the METADATA of the caller&#39;s own secrets: each one&#39;s name, path, environment and sealing scheme. No value and no ciphertext is included — this operation exists to enumerate what is held, and reading a value is a separate, per-secret call.  Scoped to the caller&#39;s own org and nothing else, structurally: there is no org in the path, the store root is derived from the validated org claim, and a caller therefore has no way to name another tenant&#39;s namespace. &#x60;path&#x60; narrows to a subpath and &#x60;env&#x60; selects the environment; both are also accepted under the operator&#39;s spellings, &#x60;secretPath&#x60; and &#x60;environment&#x60;.  Admission is fail-closed and in order: a validated member, an org that is a DNS-1123 label, and a store holding a master key — 403, 400 and 503 respectively, all decided before any record is touched.
+     * @param path Grouping path, e.g. gateway (optional)
+     * @param env Environment slug; defaults to &#x60;default&#x60; (optional)
+     * @return CloudGetV1KmsSecrets200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Names under the path </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid bearer token </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1KmsSecrets() throws ApiException {
-        cloudGetV1KmsSecretsWithHttpInfo();
+    public CloudGetV1KmsSecrets200Response cloudGetV1KmsSecrets(@javax.annotation.Nullable String path, @javax.annotation.Nullable String env) throws ApiException {
+        ApiResponse<CloudGetV1KmsSecrets200Response> localVarResp = cloudGetV1KmsSecretsWithHttpInfo(path, env);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * List the secrets your org holds, without their values
+     * Returns the METADATA of the caller&#39;s own secrets: each one&#39;s name, path, environment and sealing scheme. No value and no ciphertext is included — this operation exists to enumerate what is held, and reading a value is a separate, per-secret call.  Scoped to the caller&#39;s own org and nothing else, structurally: there is no org in the path, the store root is derived from the validated org claim, and a caller therefore has no way to name another tenant&#39;s namespace. &#x60;path&#x60; narrows to a subpath and &#x60;env&#x60; selects the environment; both are also accepted under the operator&#39;s spellings, &#x60;secretPath&#x60; and &#x60;environment&#x60;.  Admission is fail-closed and in order: a validated member, an org that is a DNS-1123 label, and a store holding a master key — 403, 400 and 503 respectively, all decided before any record is touched.
+     * @param path Grouping path, e.g. gateway (optional)
+     * @param env Environment slug; defaults to &#x60;default&#x60; (optional)
+     * @return ApiResponse&lt;CloudGetV1KmsSecrets200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Names under the path </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid bearer token </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1KmsSecretsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudGetV1KmsSecretsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CloudGetV1KmsSecrets200Response> cloudGetV1KmsSecretsWithHttpInfo(@javax.annotation.Nullable String path, @javax.annotation.Nullable String env) throws ApiException {
+        okhttp3.Call localVarCall = cloudGetV1KmsSecretsValidateBeforeCall(path, env, null);
+        Type localVarReturnType = new TypeToken<CloudGetV1KmsSecrets200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * List the secrets your org holds, without their values (asynchronously)
+     * Returns the METADATA of the caller&#39;s own secrets: each one&#39;s name, path, environment and sealing scheme. No value and no ciphertext is included — this operation exists to enumerate what is held, and reading a value is a separate, per-secret call.  Scoped to the caller&#39;s own org and nothing else, structurally: there is no org in the path, the store root is derived from the validated org claim, and a caller therefore has no way to name another tenant&#39;s namespace. &#x60;path&#x60; narrows to a subpath and &#x60;env&#x60; selects the environment; both are also accepted under the operator&#39;s spellings, &#x60;secretPath&#x60; and &#x60;environment&#x60;.  Admission is fail-closed and in order: a validated member, an org that is a DNS-1123 label, and a store holding a master key — 403, 400 and 503 respectively, all decided before any record is touched.
+     * @param path Grouping path, e.g. gateway (optional)
+     * @param env Environment slug; defaults to &#x60;default&#x60; (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -520,13 +555,15 @@ public class KmsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Names under the path </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid bearer token </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1KmsSecretsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1KmsSecretsAsync(@javax.annotation.Nullable String path, @javax.annotation.Nullable String env, final ApiCallback<CloudGetV1KmsSecrets200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudGetV1KmsSecretsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudGetV1KmsSecretsValidateBeforeCall(path, env, _callback);
+        Type localVarReturnType = new TypeToken<CloudGetV1KmsSecrets200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -598,8 +635,8 @@ public class KmsApi {
     }
 
     /**
-     * 
-     * 
+     * Read one secret&#39;s value
+     * Opens one sealed secret belonging to the caller&#39;s own org and returns its value in the response body, with the name and environment it was resolved under. This is the broker&#39;s purpose, and the response body is the ONLY place the value appears — it is not logged, and it is never carried in an error.  The trailing path is the secret&#39;s subpath and name beneath the caller&#39;s org root; &#x60;env&#x60; selects the environment and falls back to the default when omitted. A secret that is not there is a plain 404 that names nothing about the store.  Scoped to the caller&#39;s own org and nothing else: there is no org in the path, so another tenant&#39;s secret is not merely refused, it is unnameable. Admission is fail-closed — validated member, well-formed org, master key present — and an unconfigured master key is 503 rather than an empty read.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -614,8 +651,8 @@ public class KmsApi {
     }
 
     /**
-     * 
-     * 
+     * Read one secret&#39;s value
+     * Opens one sealed secret belonging to the caller&#39;s own org and returns its value in the response body, with the name and environment it was resolved under. This is the broker&#39;s purpose, and the response body is the ONLY place the value appears — it is not logged, and it is never carried in an error.  The trailing path is the secret&#39;s subpath and name beneath the caller&#39;s org root; &#x60;env&#x60; selects the environment and falls back to the default when omitted. A secret that is not there is a plain 404 that names nothing about the store.  Scoped to the caller&#39;s own org and nothing else: there is no org in the path, so another tenant&#39;s secret is not merely refused, it is unnameable. Admission is fail-closed — validated member, well-formed org, master key present — and an unconfigured master key is 503 rather than an empty read.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -632,8 +669,8 @@ public class KmsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Read one secret&#39;s value (asynchronously)
+     * Opens one sealed secret belonging to the caller&#39;s own org and returns its value in the response body, with the name and environment it was resolved under. This is the broker&#39;s purpose, and the response body is the ONLY place the value appears — it is not logged, and it is never carried in an error.  The trailing path is the secret&#39;s subpath and name beneath the caller&#39;s org root; &#x60;env&#x60; selects the environment and falls back to the default when omitted. A secret that is not there is a plain 404 that names nothing about the store.  Scoped to the caller&#39;s own org and nothing else: there is no org in the path, so another tenant&#39;s secret is not merely refused, it is unnameable. Admission is fail-closed — validated member, well-formed org, master key present — and an unconfigured master key is 503 rather than an empty read.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -653,6 +690,7 @@ public class KmsApi {
     }
     /**
      * Build call for cloudPostV1KmsAuthLogin
+     * @param cloudPostV1KmsAuthLoginRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -660,10 +698,12 @@ public class KmsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Token issued </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> clientId and clientSecret required </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1KmsAuthLoginCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1KmsAuthLoginCall(@javax.annotation.Nonnull CloudPostV1KmsAuthLoginRequest cloudPostV1KmsAuthLoginRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -677,7 +717,7 @@ public class KmsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = cloudPostV1KmsAuthLoginRequest;
 
         // create path and map variables
         String localVarPath = "/v1/kms/auth/login";
@@ -689,6 +729,7 @@ public class KmsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -696,57 +737,73 @@ public class KmsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1KmsAuthLoginValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1KmsAuthLoginCall(_callback);
+    private okhttp3.Call cloudPostV1KmsAuthLoginValidateBeforeCall(@javax.annotation.Nonnull CloudPostV1KmsAuthLoginRequest cloudPostV1KmsAuthLoginRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'cloudPostV1KmsAuthLoginRequest' is set
+        if (cloudPostV1KmsAuthLoginRequest == null) {
+            throw new ApiException("Missing the required parameter 'cloudPostV1KmsAuthLoginRequest' when calling cloudPostV1KmsAuthLogin(Async)");
+        }
+
+        return cloudPostV1KmsAuthLoginCall(cloudPostV1KmsAuthLoginRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Exchange a machine credential for an IAM bearer token
+     * Takes a tenant&#39;s machine credential — a client id and client secret — and returns an owner-scoped IAM access token with its lifetime, which is the bearer the caller then carries on the org-scoped secret operations.  It is deliberately public and unauthenticated, because it IS the credential exchange and runs before any principal exists. That makes it the one route in this subsystem rate-limited PER SOURCE IP, keyed on the real TCP peer rather than on any caller-supplied header.  The submitted secret is never logged and never echoed, and failures collapse to one clean status with no upstream detail: 401 when the credential does not authenticate, 502 when the identity provider is unreachable, 503 when no issuer is configured. That is on purpose — a richer error would be a validity oracle for guessed credentials.
+     * @param cloudPostV1KmsAuthLoginRequest  (required)
+     * @return CloudPostV1KmsAuthLogin200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Token issued </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> clientId and clientSecret required </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1KmsAuthLogin() throws ApiException {
-        cloudPostV1KmsAuthLoginWithHttpInfo();
+    public CloudPostV1KmsAuthLogin200Response cloudPostV1KmsAuthLogin(@javax.annotation.Nonnull CloudPostV1KmsAuthLoginRequest cloudPostV1KmsAuthLoginRequest) throws ApiException {
+        ApiResponse<CloudPostV1KmsAuthLogin200Response> localVarResp = cloudPostV1KmsAuthLoginWithHttpInfo(cloudPostV1KmsAuthLoginRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Exchange a machine credential for an IAM bearer token
+     * Takes a tenant&#39;s machine credential — a client id and client secret — and returns an owner-scoped IAM access token with its lifetime, which is the bearer the caller then carries on the org-scoped secret operations.  It is deliberately public and unauthenticated, because it IS the credential exchange and runs before any principal exists. That makes it the one route in this subsystem rate-limited PER SOURCE IP, keyed on the real TCP peer rather than on any caller-supplied header.  The submitted secret is never logged and never echoed, and failures collapse to one clean status with no upstream detail: 401 when the credential does not authenticate, 502 when the identity provider is unreachable, 503 when no issuer is configured. That is on purpose — a richer error would be a validity oracle for guessed credentials.
+     * @param cloudPostV1KmsAuthLoginRequest  (required)
+     * @return ApiResponse&lt;CloudPostV1KmsAuthLogin200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Token issued </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> clientId and clientSecret required </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1KmsAuthLoginWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1KmsAuthLoginValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CloudPostV1KmsAuthLogin200Response> cloudPostV1KmsAuthLoginWithHttpInfo(@javax.annotation.Nonnull CloudPostV1KmsAuthLoginRequest cloudPostV1KmsAuthLoginRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1KmsAuthLoginValidateBeforeCall(cloudPostV1KmsAuthLoginRequest, null);
+        Type localVarReturnType = new TypeToken<CloudPostV1KmsAuthLogin200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Exchange a machine credential for an IAM bearer token (asynchronously)
+     * Takes a tenant&#39;s machine credential — a client id and client secret — and returns an owner-scoped IAM access token with its lifetime, which is the bearer the caller then carries on the org-scoped secret operations.  It is deliberately public and unauthenticated, because it IS the credential exchange and runs before any principal exists. That makes it the one route in this subsystem rate-limited PER SOURCE IP, keyed on the real TCP peer rather than on any caller-supplied header.  The submitted secret is never logged and never echoed, and failures collapse to one clean status with no upstream detail: 401 when the credential does not authenticate, 502 when the identity provider is unreachable, 503 when no issuer is configured. That is on purpose — a richer error would be a validity oracle for guessed credentials.
+     * @param cloudPostV1KmsAuthLoginRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -754,17 +811,21 @@ public class KmsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Token issued </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> clientId and clientSecret required </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1KmsAuthLoginAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1KmsAuthLoginAsync(@javax.annotation.Nonnull CloudPostV1KmsAuthLoginRequest cloudPostV1KmsAuthLoginRequest, final ApiCallback<CloudPostV1KmsAuthLogin200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1KmsAuthLoginValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1KmsAuthLoginValidateBeforeCall(cloudPostV1KmsAuthLoginRequest, _callback);
+        Type localVarReturnType = new TypeToken<CloudPostV1KmsAuthLogin200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1KmsSecrets
+     * @param cloudPostV1KmsSecretsRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -772,10 +833,12 @@ public class KmsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Stored </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> name and value required, or env missing </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid bearer token </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1KmsSecretsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1KmsSecretsCall(@javax.annotation.Nonnull CloudPostV1KmsSecretsRequest cloudPostV1KmsSecretsRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -789,7 +852,7 @@ public class KmsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = cloudPostV1KmsSecretsRequest;
 
         // create path and map variables
         String localVarPath = "/v1/kms/secrets";
@@ -801,6 +864,7 @@ public class KmsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -808,6 +872,7 @@ public class KmsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -819,46 +884,61 @@ public class KmsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1KmsSecretsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1KmsSecretsCall(_callback);
+    private okhttp3.Call cloudPostV1KmsSecretsValidateBeforeCall(@javax.annotation.Nonnull CloudPostV1KmsSecretsRequest cloudPostV1KmsSecretsRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'cloudPostV1KmsSecretsRequest' is set
+        if (cloudPostV1KmsSecretsRequest == null) {
+            throw new ApiException("Missing the required parameter 'cloudPostV1KmsSecretsRequest' when calling cloudPostV1KmsSecrets(Async)");
+        }
+
+        return cloudPostV1KmsSecretsCall(cloudPostV1KmsSecretsRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Store or replace one secret in your org
+     * Upserts one secret under the caller&#39;s own org. The value is sealed before it is written — a fresh per-secret data key, itself wrapped by the master key — so plaintext never reaches disk. The receipt confirms the name and environment that were written and does not echo the value.  &#x60;env&#x60; is REQUIRED on a write and has no default, which is the rule most easily got wrong here: reads and deletes still fall back to the default environment for older callers, but a write must not, because the environment is part of the storage key. A silently defaulted write lands in a bucket the readers that resolve project, environment and path never look in, and the stale value keeps being served — so the write fails loudly instead.  &#x60;name&#x60; is required, &#x60;path&#x60; is an optional subpath beneath the org root, and the org is taken from the validated claim rather than the body. Same fail-closed admission as the rest of the secret surface: validated member, well-formed org, master key present.
+     * @param cloudPostV1KmsSecretsRequest  (required)
+     * @return AnalyticsHeartbeat200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Stored </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> name and value required, or env missing </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid bearer token </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1KmsSecrets() throws ApiException {
-        cloudPostV1KmsSecretsWithHttpInfo();
+    public AnalyticsHeartbeat200Response cloudPostV1KmsSecrets(@javax.annotation.Nonnull CloudPostV1KmsSecretsRequest cloudPostV1KmsSecretsRequest) throws ApiException {
+        ApiResponse<AnalyticsHeartbeat200Response> localVarResp = cloudPostV1KmsSecretsWithHttpInfo(cloudPostV1KmsSecretsRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Store or replace one secret in your org
+     * Upserts one secret under the caller&#39;s own org. The value is sealed before it is written — a fresh per-secret data key, itself wrapped by the master key — so plaintext never reaches disk. The receipt confirms the name and environment that were written and does not echo the value.  &#x60;env&#x60; is REQUIRED on a write and has no default, which is the rule most easily got wrong here: reads and deletes still fall back to the default environment for older callers, but a write must not, because the environment is part of the storage key. A silently defaulted write lands in a bucket the readers that resolve project, environment and path never look in, and the stale value keeps being served — so the write fails loudly instead.  &#x60;name&#x60; is required, &#x60;path&#x60; is an optional subpath beneath the org root, and the org is taken from the validated claim rather than the body. Same fail-closed admission as the rest of the secret surface: validated member, well-formed org, master key present.
+     * @param cloudPostV1KmsSecretsRequest  (required)
+     * @return ApiResponse&lt;AnalyticsHeartbeat200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Stored </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> name and value required, or env missing </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid bearer token </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1KmsSecretsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1KmsSecretsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<AnalyticsHeartbeat200Response> cloudPostV1KmsSecretsWithHttpInfo(@javax.annotation.Nonnull CloudPostV1KmsSecretsRequest cloudPostV1KmsSecretsRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1KmsSecretsValidateBeforeCall(cloudPostV1KmsSecretsRequest, null);
+        Type localVarReturnType = new TypeToken<AnalyticsHeartbeat200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Store or replace one secret in your org (asynchronously)
+     * Upserts one secret under the caller&#39;s own org. The value is sealed before it is written — a fresh per-secret data key, itself wrapped by the master key — so plaintext never reaches disk. The receipt confirms the name and environment that were written and does not echo the value.  &#x60;env&#x60; is REQUIRED on a write and has no default, which is the rule most easily got wrong here: reads and deletes still fall back to the default environment for older callers, but a write must not, because the environment is part of the storage key. A silently defaulted write lands in a bucket the readers that resolve project, environment and path never look in, and the stale value keeps being served — so the write fails loudly instead.  &#x60;name&#x60; is required, &#x60;path&#x60; is an optional subpath beneath the org root, and the org is taken from the validated claim rather than the body. Same fail-closed admission as the rest of the secret surface: validated member, well-formed org, master key present.
+     * @param cloudPostV1KmsSecretsRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -866,13 +946,16 @@ public class KmsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Stored </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> name and value required, or env missing </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid bearer token </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1KmsSecretsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1KmsSecretsAsync(@javax.annotation.Nonnull CloudPostV1KmsSecretsRequest cloudPostV1KmsSecretsRequest, final ApiCallback<AnalyticsHeartbeat200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1KmsSecretsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1KmsSecretsValidateBeforeCall(cloudPostV1KmsSecretsRequest, _callback);
+        Type localVarReturnType = new TypeToken<AnalyticsHeartbeat200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }

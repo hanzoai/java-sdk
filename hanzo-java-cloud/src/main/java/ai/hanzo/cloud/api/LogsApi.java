@@ -139,8 +139,8 @@ public class LogsApi {
     }
 
     /**
-     * 
-     * 
+     * How many log records this deployment holds for your org
+     * Reports the native log store&#39;s live state for the calling tenant: the subsystem version and &#x60;records&#x60;, the count actually held right now rather than a constant. Not a dependency probe — the store is in-process, so this answers 200 whenever the process is up.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -154,8 +154,8 @@ public class LogsApi {
     }
 
     /**
-     * 
-     * 
+     * How many log records this deployment holds for your org
+     * Reports the native log store&#39;s live state for the calling tenant: the subsystem version and &#x60;records&#x60;, the count actually held right now rather than a constant. Not a dependency probe — the store is in-process, so this answers 200 whenever the process is up.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -171,8 +171,8 @@ public class LogsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * How many log records this deployment holds for your org (asynchronously)
+     * Reports the native log store&#39;s live state for the calling tenant: the subsystem version and &#x60;records&#x60;, the count actually held right now rather than a constant. Not a dependency probe — the store is in-process, so this answers 200 whenever the process is up.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -251,8 +251,8 @@ public class LogsApi {
     }
 
     /**
-     * 
-     * 
+     * Search your org&#39;s logs by label, time and substring
+     * Answers &#x60;{count, records}&#x60;, newest first. &#x60;match&#x60; is the same &#x60;k&#x3D;v,k2&#x3D;v2&#x60; superset label matcher the metrics query uses; &#x60;contains&#x60; is a case-insensitive substring test against the record body; &#x60;start&#x60; and &#x60;end&#x60; are nanosecond bounds.  A bound that is absent, empty or unparseable becomes 0, which means UNBOUNDED — a malformed &#x60;start&#x60; widens the search rather than failing it. &#x60;limit&#x60; caps the page and defaults to 100 when absent or non-positive, so an unfiltered read is never the whole ring.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;, so a search can only reach the org the edge asserted.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -266,8 +266,8 @@ public class LogsApi {
     }
 
     /**
-     * 
-     * 
+     * Search your org&#39;s logs by label, time and substring
+     * Answers &#x60;{count, records}&#x60;, newest first. &#x60;match&#x60; is the same &#x60;k&#x3D;v,k2&#x3D;v2&#x60; superset label matcher the metrics query uses; &#x60;contains&#x60; is a case-insensitive substring test against the record body; &#x60;start&#x60; and &#x60;end&#x60; are nanosecond bounds.  A bound that is absent, empty or unparseable becomes 0, which means UNBOUNDED — a malformed &#x60;start&#x60; widens the search rather than failing it. &#x60;limit&#x60; caps the page and defaults to 100 when absent or non-positive, so an unfiltered read is never the whole ring.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;, so a search can only reach the org the edge asserted.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -283,8 +283,8 @@ public class LogsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Search your org&#39;s logs by label, time and substring (asynchronously)
+     * Answers &#x60;{count, records}&#x60;, newest first. &#x60;match&#x60; is the same &#x60;k&#x3D;v,k2&#x3D;v2&#x60; superset label matcher the metrics query uses; &#x60;contains&#x60; is a case-insensitive substring test against the record body; &#x60;start&#x60; and &#x60;end&#x60; are nanosecond bounds.  A bound that is absent, empty or unparseable becomes 0, which means UNBOUNDED — a malformed &#x60;start&#x60; widens the search rather than failing it. &#x60;limit&#x60; caps the page and defaults to 100 when absent or non-positive, so an unfiltered read is never the whole ring.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;, so a search can only reach the org the edge asserted.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -363,8 +363,8 @@ public class LogsApi {
     }
 
     /**
-     * 
-     * 
+     * Append structured log records for your org
+     * Takes &#x60;{records:[{t, level, body, labels}]}&#x60;, appends each one, and answers &#x60;{written}&#x60;. Bodies are stored verbatim; &#x60;labels&#x60; are the indexed dimensions a query filters on, so what you do not label you can only find by substring.  &#x60;t&#x60; is NANOSECONDS since the Unix epoch. A record sent without one is stored at 0 and then falls outside any query carrying a lower bound — the usual reason a successful write does not read back. Retention is a bounded ring, 1048576 records per org, oldest evicted first. No record is validated or rejected, so &#x60;written&#x60; is the number of records SENT; only a body that does not decode at all is 400.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;; each org&#39;s records live in its own WAL-durable store.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -378,8 +378,8 @@ public class LogsApi {
     }
 
     /**
-     * 
-     * 
+     * Append structured log records for your org
+     * Takes &#x60;{records:[{t, level, body, labels}]}&#x60;, appends each one, and answers &#x60;{written}&#x60;. Bodies are stored verbatim; &#x60;labels&#x60; are the indexed dimensions a query filters on, so what you do not label you can only find by substring.  &#x60;t&#x60; is NANOSECONDS since the Unix epoch. A record sent without one is stored at 0 and then falls outside any query carrying a lower bound — the usual reason a successful write does not read back. Retention is a bounded ring, 1048576 records per org, oldest evicted first. No record is validated or rejected, so &#x60;written&#x60; is the number of records SENT; only a body that does not decode at all is 400.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;; each org&#39;s records live in its own WAL-durable store.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -395,8 +395,8 @@ public class LogsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Append structured log records for your org (asynchronously)
+     * Takes &#x60;{records:[{t, level, body, labels}]}&#x60;, appends each one, and answers &#x60;{written}&#x60;. Bodies are stored verbatim; &#x60;labels&#x60; are the indexed dimensions a query filters on, so what you do not label you can only find by substring.  &#x60;t&#x60; is NANOSECONDS since the Unix epoch. A record sent without one is stored at 0 and then falls outside any query carrying a lower bound — the usual reason a successful write does not read back. Retention is a bounded ring, 1048576 records per org, oldest evicted first. No record is validated or rejected, so &#x60;written&#x60; is the number of records SENT; only a body that does not decode at all is 400.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;; each org&#39;s records live in its own WAL-durable store.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

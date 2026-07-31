@@ -46,58 +46,58 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * AdminAdminDeletePromo200Response
+ * McpServerServerInfo
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class AdminAdminDeletePromo200Response {
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
+public class McpServerServerInfo {
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
   @javax.annotation.Nullable
-  private String status;
+  private String name;
 
-  public static final String SERIALIZED_NAME_MSG = "msg";
-  @SerializedName(SERIALIZED_NAME_MSG)
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
   @javax.annotation.Nullable
-  private String msg;
+  private String version;
 
-  public AdminAdminDeletePromo200Response() {
+  public McpServerServerInfo() {
   }
 
-  public AdminAdminDeletePromo200Response status(@javax.annotation.Nullable String status) {
-    this.status = status;
+  public McpServerServerInfo name(@javax.annotation.Nullable String name) {
+    this.name = name;
     return this;
   }
 
   /**
-   * Get status
-   * @return status
+   * Get name
+   * @return name
    */
   @javax.annotation.Nullable
-  public String getStatus() {
-    return status;
+  public String getName() {
+    return name;
   }
 
-  public void setStatus(@javax.annotation.Nullable String status) {
-    this.status = status;
+  public void setName(@javax.annotation.Nullable String name) {
+    this.name = name;
   }
 
 
-  public AdminAdminDeletePromo200Response msg(@javax.annotation.Nullable String msg) {
-    this.msg = msg;
+  public McpServerServerInfo version(@javax.annotation.Nullable String version) {
+    this.version = version;
     return this;
   }
 
   /**
-   * Get msg
-   * @return msg
+   * Get version
+   * @return version
    */
   @javax.annotation.Nullable
-  public String getMsg() {
-    return msg;
+  public String getVersion() {
+    return version;
   }
 
-  public void setMsg(@javax.annotation.Nullable String msg) {
-    this.msg = msg;
+  public void setVersion(@javax.annotation.Nullable String version) {
+    this.version = version;
   }
 
 
@@ -110,22 +110,22 @@ public class AdminAdminDeletePromo200Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AdminAdminDeletePromo200Response adminAdminDeletePromo200Response = (AdminAdminDeletePromo200Response) o;
-    return Objects.equals(this.status, adminAdminDeletePromo200Response.status) &&
-        Objects.equals(this.msg, adminAdminDeletePromo200Response.msg);
+    McpServerServerInfo mcpServerServerInfo = (McpServerServerInfo) o;
+    return Objects.equals(this.name, mcpServerServerInfo.name) &&
+        Objects.equals(this.version, mcpServerServerInfo.version);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, msg);
+    return Objects.hash(name, version);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AdminAdminDeletePromo200Response {\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    msg: ").append(toIndentedString(msg)).append("\n");
+    sb.append("class McpServerServerInfo {\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -147,7 +147,7 @@ public class AdminAdminDeletePromo200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("status", "msg"));
+    openapiFields = new HashSet<String>(Arrays.asList("name", "version"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -157,28 +157,28 @@ public class AdminAdminDeletePromo200Response {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to AdminAdminDeletePromo200Response
+   * @throws IOException if the JSON Element is invalid with respect to McpServerServerInfo
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!AdminAdminDeletePromo200Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AdminAdminDeletePromo200Response is not found in the empty JSON string", AdminAdminDeletePromo200Response.openapiRequiredFields.toString()));
+        if (!McpServerServerInfo.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in McpServerServerInfo is not found in the empty JSON string", McpServerServerInfo.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!AdminAdminDeletePromo200Response.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AdminAdminDeletePromo200Response` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!McpServerServerInfo.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `McpServerServerInfo` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("msg") != null && !jsonObj.get("msg").isJsonNull()) && !jsonObj.get("msg").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `msg` to be a primitive type in the JSON string but got `%s`", jsonObj.get("msg").toString()));
+      if ((jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) && !jsonObj.get("version").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("version").toString()));
       }
   }
 
@@ -186,22 +186,22 @@ public class AdminAdminDeletePromo200Response {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!AdminAdminDeletePromo200Response.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'AdminAdminDeletePromo200Response' and its subtypes
+       if (!McpServerServerInfo.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'McpServerServerInfo' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<AdminAdminDeletePromo200Response> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(AdminAdminDeletePromo200Response.class));
+       final TypeAdapter<McpServerServerInfo> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(McpServerServerInfo.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<AdminAdminDeletePromo200Response>() {
+       return (TypeAdapter<T>) new TypeAdapter<McpServerServerInfo>() {
            @Override
-           public void write(JsonWriter out, AdminAdminDeletePromo200Response value) throws IOException {
+           public void write(JsonWriter out, McpServerServerInfo value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public AdminAdminDeletePromo200Response read(JsonReader in) throws IOException {
+           public McpServerServerInfo read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -212,18 +212,18 @@ public class AdminAdminDeletePromo200Response {
   }
 
   /**
-   * Create an instance of AdminAdminDeletePromo200Response given an JSON string
+   * Create an instance of McpServerServerInfo given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of AdminAdminDeletePromo200Response
-   * @throws IOException if the JSON string is invalid with respect to AdminAdminDeletePromo200Response
+   * @return An instance of McpServerServerInfo
+   * @throws IOException if the JSON string is invalid with respect to McpServerServerInfo
    */
-  public static AdminAdminDeletePromo200Response fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, AdminAdminDeletePromo200Response.class);
+  public static McpServerServerInfo fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, McpServerServerInfo.class);
   }
 
   /**
-   * Convert an instance of AdminAdminDeletePromo200Response to an JSON string
+   * Convert an instance of McpServerServerInfo to an JSON string
    *
    * @return JSON string
    */

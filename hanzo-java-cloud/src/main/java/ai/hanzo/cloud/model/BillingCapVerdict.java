@@ -14,7 +14,6 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.BillingCapReason;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -59,7 +58,7 @@ public class BillingCapVerdict {
   public static final String SERIALIZED_NAME_REASON = "reason";
   @SerializedName(SERIALIZED_NAME_REASON)
   @javax.annotation.Nonnull
-  private BillingCapReason reason;
+  private String reason;
 
   public static final String SERIALIZED_NAME_CAP_CENTS = "capCents";
   @SerializedName(SERIALIZED_NAME_CAP_CENTS)
@@ -98,21 +97,21 @@ public class BillingCapVerdict {
   }
 
 
-  public BillingCapVerdict reason(@javax.annotation.Nonnull BillingCapReason reason) {
+  public BillingCapVerdict reason(@javax.annotation.Nonnull String reason) {
     this.reason = reason;
     return this;
   }
 
   /**
-   * Get reason
+   * The cap/funds verdict reason. \&quot;\&quot; &#x3D; allowed (funded and under every covering cap). &#x60;spend_cap&#x60; &#x3D; funded but a HARD-enforced per-scope cap would be exceeded (the tenant&#39;s OWN policy ceiling). &#x60;insufficient_balance&#x60; &#x3D; out of prepaid funds. &#x60;spend_cap&#x60; and &#x60;insufficient_balance&#x60; are DISTINCT — one is policy, one is funds. The &#x60;/spend-alerts/authorize&#x60; endpoint (a pure cap check) emits only \&quot;\&quot; or &#x60;spend_cap&#x60;; the cloud money-path composite (metering) adds &#x60;insufficient_balance&#x60;. 
    * @return reason
    */
   @javax.annotation.Nonnull
-  public BillingCapReason getReason() {
+  public String getReason() {
     return reason;
   }
 
-  public void setReason(@javax.annotation.Nonnull BillingCapReason reason) {
+  public void setReason(@javax.annotation.Nonnull String reason) {
     this.reason = reason;
   }
 
@@ -298,8 +297,9 @@ public class BillingCapVerdict {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `reason`
-      BillingCapReason.validateJsonElement(jsonObj.get("reason"));
+      if (!jsonObj.get("reason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `reason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reason").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

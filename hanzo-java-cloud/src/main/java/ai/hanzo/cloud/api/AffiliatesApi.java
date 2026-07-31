@@ -27,6 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.AffiliatesApplyRequest;
+import ai.hanzo.cloud.model.AffiliatesApplyResponse;
+import ai.hanzo.cloud.model.AffiliatesAttributeRequest;
+import ai.hanzo.cloud.model.AffiliatesAttributeResponse;
+import ai.hanzo.cloud.model.AffiliatesError;
+import ai.hanzo.cloud.model.CloudGetV1Affiliates200Response;
 import ai.hanzo.cloud.model.CommerceAffiliate;
 import ai.hanzo.cloud.model.CommerceError;
 import ai.hanzo.cloud.model.CommercePaginatedAffiliates;
@@ -83,7 +89,9 @@ public class AffiliatesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The affiliate dashboard, or a not-enrolled shape. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1AffiliatesCall(final ApiCallback _callback) throws ApiException {
@@ -112,6 +120,7 @@ public class AffiliatesApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -136,40 +145,47 @@ public class AffiliatesApi {
     }
 
     /**
-     * 
-     * 
+     * Your org&#39;s affiliate standing and commission dashboard
+     * Answers the caller org&#39;s OWN affiliate standing: status, referral code and share link, commission rate, how many orgs it has referred, and its lifetime accrued, still-pending and already-paid commission in integer cents, with its payout history.  An org that never applied gets an honest &#x60;isAffiliate:false&#x60; and the default rate rather than a 404 — the console renders the apply form off that answer.  The affiliate is resolved from the VALIDATED org, never from a field, so this can only ever read the caller&#39;s own row; without a principal it is refused. For an approved affiliate the read first runs the accrual sweep over its own downline, so the dashboard is self-updating — bounded and best-effort, so a commerce hiccup shows slightly stale numbers instead of failing the page. Commission is earned on Hanzo&#39;s MARGIN, never on the referred customer&#39;s bill, so nothing here changes what that customer pays.
+     * @return CloudGetV1Affiliates200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The affiliate dashboard, or a not-enrolled shape. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1Affiliates() throws ApiException {
-        cloudGetV1AffiliatesWithHttpInfo();
+    public CloudGetV1Affiliates200Response cloudGetV1Affiliates() throws ApiException {
+        ApiResponse<CloudGetV1Affiliates200Response> localVarResp = cloudGetV1AffiliatesWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Your org&#39;s affiliate standing and commission dashboard
+     * Answers the caller org&#39;s OWN affiliate standing: status, referral code and share link, commission rate, how many orgs it has referred, and its lifetime accrued, still-pending and already-paid commission in integer cents, with its payout history.  An org that never applied gets an honest &#x60;isAffiliate:false&#x60; and the default rate rather than a 404 — the console renders the apply form off that answer.  The affiliate is resolved from the VALIDATED org, never from a field, so this can only ever read the caller&#39;s own row; without a principal it is refused. For an approved affiliate the read first runs the accrual sweep over its own downline, so the dashboard is self-updating — bounded and best-effort, so a commerce hiccup shows slightly stale numbers instead of failing the page. Commission is earned on Hanzo&#39;s MARGIN, never on the referred customer&#39;s bill, so nothing here changes what that customer pays.
+     * @return ApiResponse&lt;CloudGetV1Affiliates200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The affiliate dashboard, or a not-enrolled shape. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1AffiliatesWithHttpInfo() throws ApiException {
+    public ApiResponse<CloudGetV1Affiliates200Response> cloudGetV1AffiliatesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = cloudGetV1AffiliatesValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<CloudGetV1Affiliates200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Your org&#39;s affiliate standing and commission dashboard (asynchronously)
+     * Answers the caller org&#39;s OWN affiliate standing: status, referral code and share link, commission rate, how many orgs it has referred, and its lifetime accrued, still-pending and already-paid commission in integer cents, with its payout history.  An org that never applied gets an honest &#x60;isAffiliate:false&#x60; and the default rate rather than a 404 — the console renders the apply form off that answer.  The affiliate is resolved from the VALIDATED org, never from a field, so this can only ever read the caller&#39;s own row; without a principal it is refused. For an approved affiliate the read first runs the accrual sweep over its own downline, so the dashboard is self-updating — bounded and best-effort, so a commerce hiccup shows slightly stale numbers instead of failing the page. Commission is earned on Hanzo&#39;s MARGIN, never on the referred customer&#39;s bill, so nothing here changes what that customer pays.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -177,13 +193,16 @@ public class AffiliatesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The affiliate dashboard, or a not-enrolled shape. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1AffiliatesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1AffiliatesAsync(final ApiCallback<CloudGetV1Affiliates200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudGetV1AffiliatesValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<CloudGetV1Affiliates200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -248,8 +267,8 @@ public class AffiliatesApi {
     }
 
     /**
-     * 
-     * 
+     * The partner leaderboard, plus your own rank
+     * The top affiliates by lifetime accrued commission, shown by OPT-IN HANDLE with aggregate figures only, plus the caller&#39;s own exact rank.  It never discloses an org identity and never a referred org&#39;s usage. An affiliate that has set no handle still OCCUPIES its rank but is not listed — so opting out hides the name, not the position, and the visible board must not be read as a complete roster.  The caller&#39;s own row carries its exact GLOBAL rank, computed over the whole approved set rather than over the page, so it is right well outside the top of the board. Only an approved affiliate has a rank. Requires a validated principal; a signed-in non-affiliate may read the board but gets no personal row.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -263,8 +282,8 @@ public class AffiliatesApi {
     }
 
     /**
-     * 
-     * 
+     * The partner leaderboard, plus your own rank
+     * The top affiliates by lifetime accrued commission, shown by OPT-IN HANDLE with aggregate figures only, plus the caller&#39;s own exact rank.  It never discloses an org identity and never a referred org&#39;s usage. An affiliate that has set no handle still OCCUPIES its rank but is not listed — so opting out hides the name, not the position, and the visible board must not be read as a complete roster.  The caller&#39;s own row carries its exact GLOBAL rank, computed over the whole approved set rather than over the page, so it is right well outside the top of the board. Only an approved affiliate has a rank. Requires a validated principal; a signed-in non-affiliate may read the board but gets no personal row.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -280,8 +299,8 @@ public class AffiliatesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The partner leaderboard, plus your own rank (asynchronously)
+     * The top affiliates by lifetime accrued commission, shown by OPT-IN HANDLE with aggregate figures only, plus the caller&#39;s own exact rank.  It never discloses an org identity and never a referred org&#39;s usage. An affiliate that has set no handle still OCCUPIES its rank but is not listed — so opting out hides the name, not the position, and the visible board must not be read as a complete roster.  The caller&#39;s own row carries its exact GLOBAL rank, computed over the whole approved set rather than over the page, so it is right well outside the top of the board. Only an approved affiliate has a rank. Requires a validated principal; a signed-in non-affiliate may read the board but gets no personal row.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -360,8 +379,8 @@ public class AffiliatesApi {
     }
 
     /**
-     * 
-     * 
+     * Your affiliate self-view, with the downline broken out by level
+     * The richer self-view: the same lifetime accrued, pending and paid commission and payout history, plus the caller&#39;s downline broken out by upline LEVEL — direct, second, third — each with the rate paid at that level and how many orgs sit there.  Commission is MULTI-LEVEL: a referred org&#39;s spend pays up its referral chain, three levels deep and no further. The direct level is the affiliate&#39;s own negotiated rate; the second and third are platform-wide switches, read live, so the schedule shown is the one actually in force rather than one compiled in. A caller that has not applied still gets that schedule alongside &#x60;isAffiliate:false&#x60;, so the console can show what it would earn.  Scoped to the validated org and nothing else, and refused without a principal. An approved affiliate&#39;s figures are refreshed by a bounded, best-effort sweep before the read.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -375,8 +394,8 @@ public class AffiliatesApi {
     }
 
     /**
-     * 
-     * 
+     * Your affiliate self-view, with the downline broken out by level
+     * The richer self-view: the same lifetime accrued, pending and paid commission and payout history, plus the caller&#39;s downline broken out by upline LEVEL — direct, second, third — each with the rate paid at that level and how many orgs sit there.  Commission is MULTI-LEVEL: a referred org&#39;s spend pays up its referral chain, three levels deep and no further. The direct level is the affiliate&#39;s own negotiated rate; the second and third are platform-wide switches, read live, so the schedule shown is the one actually in force rather than one compiled in. A caller that has not applied still gets that schedule alongside &#x60;isAffiliate:false&#x60;, so the console can show what it would earn.  Scoped to the validated org and nothing else, and refused without a principal. An approved affiliate&#39;s figures are refreshed by a bounded, best-effort sweep before the read.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -392,8 +411,8 @@ public class AffiliatesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Your affiliate self-view, with the downline broken out by level (asynchronously)
+     * The richer self-view: the same lifetime accrued, pending and paid commission and payout history, plus the caller&#39;s downline broken out by upline LEVEL — direct, second, third — each with the rate paid at that level and how many orgs sit there.  Commission is MULTI-LEVEL: a referred org&#39;s spend pays up its referral chain, three levels deep and no further. The direct level is the affiliate&#39;s own negotiated rate; the second and third are platform-wide switches, read live, so the schedule shown is the one actually in force rather than one compiled in. A caller that has not applied still gets that schedule alongside &#x60;isAffiliate:false&#x60;, so the console can show what it would earn.  Scoped to the validated org and nothing else, and refused without a principal. An approved affiliate&#39;s figures are refreshed by a bounded, best-effort sweep before the read.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -472,8 +491,8 @@ public class AffiliatesApi {
     }
 
     /**
-     * 
-     * 
+     * Your commission ledger, by period and by referred org
+     * The caller&#39;s own commission ledger: per period, the margin it earned against and the commission taken from that margin; and per referred org, that referral&#39;s aggregate contribution. Integer cents throughout.  The per-org view deliberately carries the affiliate&#39;s OWN earned share and NOT the referred org&#39;s spend or margin. An affiliate is entitled to what it earned, not to a restatement of its customer&#39;s usage — the period view is where the margin base appears, aggregated across every referral.  Scoped server-side to the validated caller&#39;s affiliate; a caller that is not one gets &#x60;isAffiliate:false&#x60;. An approved affiliate&#39;s ledger is refreshed by a bounded, best-effort sweep first, so the figures are current.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -487,8 +506,8 @@ public class AffiliatesApi {
     }
 
     /**
-     * 
-     * 
+     * Your commission ledger, by period and by referred org
+     * The caller&#39;s own commission ledger: per period, the margin it earned against and the commission taken from that margin; and per referred org, that referral&#39;s aggregate contribution. Integer cents throughout.  The per-org view deliberately carries the affiliate&#39;s OWN earned share and NOT the referred org&#39;s spend or margin. An affiliate is entitled to what it earned, not to a restatement of its customer&#39;s usage — the period view is where the margin base appears, aggregated across every referral.  Scoped server-side to the validated caller&#39;s affiliate; a caller that is not one gets &#x60;isAffiliate:false&#x60;. An approved affiliate&#39;s ledger is refreshed by a bounded, best-effort sweep first, so the figures are current.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -504,8 +523,8 @@ public class AffiliatesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Your commission ledger, by period and by referred org (asynchronously)
+     * The caller&#39;s own commission ledger: per period, the margin it earned against and the commission taken from that margin; and per referred org, that referral&#39;s aggregate contribution. Integer cents throughout.  The per-org view deliberately carries the affiliate&#39;s OWN earned share and NOT the referred org&#39;s spend or margin. An affiliate is entitled to what it earned, not to a restatement of its customer&#39;s usage — the period view is where the margin base appears, aggregated across every referral.  Scoped server-side to the validated caller&#39;s affiliate; a caller that is not one gets &#x60;isAffiliate:false&#x60;. An approved affiliate&#39;s ledger is refreshed by a bounded, best-effort sweep first, so the figures are current.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -584,8 +603,8 @@ public class AffiliatesApi {
     }
 
     /**
-     * 
-     * 
+     * Your share links and their funnel
+     * The caller&#39;s share links, each with its URL and its funnel: clicks tracked, signups — orgs attributed with that code — and conversions, meaning how many of those signups have actually produced commission.  Signups and conversions are DERIVED from the commission ledger and never stored, so they cannot drift from the money. Clicks are the one stored counter and the one that is pure vanity.  Any pending public click pings are folded into the store before the read, in one batch — which is how the counters stay current without a database write per click. Scoped to the validated caller&#39;s own affiliate; a non-affiliate gets &#x60;isAffiliate:false&#x60; and the link cap.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -599,8 +618,8 @@ public class AffiliatesApi {
     }
 
     /**
-     * 
-     * 
+     * Your share links and their funnel
+     * The caller&#39;s share links, each with its URL and its funnel: clicks tracked, signups — orgs attributed with that code — and conversions, meaning how many of those signups have actually produced commission.  Signups and conversions are DERIVED from the commission ledger and never stored, so they cannot drift from the money. Clicks are the one stored counter and the one that is pure vanity.  Any pending public click pings are folded into the store before the read, in one batch — which is how the counters stay current without a database write per click. Scoped to the validated caller&#39;s own affiliate; a non-affiliate gets &#x60;isAffiliate:false&#x60; and the link cap.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -616,8 +635,8 @@ public class AffiliatesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Your share links and their funnel (asynchronously)
+     * The caller&#39;s share links, each with its URL and its funnel: clicks tracked, signups — orgs attributed with that code — and conversions, meaning how many of those signups have actually produced commission.  Signups and conversions are DERIVED from the commission ledger and never stored, so they cannot drift from the money. Clicks are the one stored counter and the one that is pure vanity.  Any pending public click pings are folded into the store before the read, in one batch — which is how the counters stay current without a database write per click. Scoped to the validated caller&#39;s own affiliate; a non-affiliate gets &#x60;isAffiliate:false&#x60; and the link cap.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -636,6 +655,7 @@ public class AffiliatesApi {
     }
     /**
      * Build call for cloudPostV1AffiliatesApply
+     * @param affiliatesApplyRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -643,10 +663,14 @@ public class AffiliatesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Already enrolled (idempotent). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Newly enrolled. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AffiliatesApplyCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AffiliatesApplyCall(@javax.annotation.Nullable AffiliatesApplyRequest affiliatesApplyRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -660,7 +684,7 @@ public class AffiliatesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = affiliatesApplyRequest;
 
         // create path and map variables
         String localVarPath = "/v1/affiliates/apply";
@@ -672,6 +696,7 @@ public class AffiliatesApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -679,6 +704,7 @@ public class AffiliatesApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -690,46 +716,60 @@ public class AffiliatesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1AffiliatesApplyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1AffiliatesApplyCall(_callback);
+    private okhttp3.Call cloudPostV1AffiliatesApplyValidateBeforeCall(@javax.annotation.Nullable AffiliatesApplyRequest affiliatesApplyRequest, final ApiCallback _callback) throws ApiException {
+        return cloudPostV1AffiliatesApplyCall(affiliatesApplyRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Enroll your org in the partner program
+     * Enrolls the caller&#39;s OWN org as an affiliate at status &#x60;applied&#x60;, optionally requesting a vanity code, and answers the record — 201 on the first apply, 200 with &#x60;created:false&#x60; afterwards.  IDEMPOTENT, first apply wins: one affiliate per org, so re-applying never creates a second row and never resets an existing approval. Applying is not joining — no code is minted and nothing accrues until staff approve, which is where both the code and the commission rate come from.  The org is the validated caller&#39;s, never a field. A malformed vanity code is refused up front; the code is only REQUESTED here, and approval may mint a different one if the requested code is taken.
+     * @param affiliatesApplyRequest  (optional)
+     * @return AffiliatesApplyResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Already enrolled (idempotent). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Newly enrolled. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1AffiliatesApply() throws ApiException {
-        cloudPostV1AffiliatesApplyWithHttpInfo();
+    public AffiliatesApplyResponse cloudPostV1AffiliatesApply(@javax.annotation.Nullable AffiliatesApplyRequest affiliatesApplyRequest) throws ApiException {
+        ApiResponse<AffiliatesApplyResponse> localVarResp = cloudPostV1AffiliatesApplyWithHttpInfo(affiliatesApplyRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Enroll your org in the partner program
+     * Enrolls the caller&#39;s OWN org as an affiliate at status &#x60;applied&#x60;, optionally requesting a vanity code, and answers the record — 201 on the first apply, 200 with &#x60;created:false&#x60; afterwards.  IDEMPOTENT, first apply wins: one affiliate per org, so re-applying never creates a second row and never resets an existing approval. Applying is not joining — no code is minted and nothing accrues until staff approve, which is where both the code and the commission rate come from.  The org is the validated caller&#39;s, never a field. A malformed vanity code is refused up front; the code is only REQUESTED here, and approval may mint a different one if the requested code is taken.
+     * @param affiliatesApplyRequest  (optional)
+     * @return ApiResponse&lt;AffiliatesApplyResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Already enrolled (idempotent). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Newly enrolled. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1AffiliatesApplyWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1AffiliatesApplyValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<AffiliatesApplyResponse> cloudPostV1AffiliatesApplyWithHttpInfo(@javax.annotation.Nullable AffiliatesApplyRequest affiliatesApplyRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1AffiliatesApplyValidateBeforeCall(affiliatesApplyRequest, null);
+        Type localVarReturnType = new TypeToken<AffiliatesApplyResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Enroll your org in the partner program (asynchronously)
+     * Enrolls the caller&#39;s OWN org as an affiliate at status &#x60;applied&#x60;, optionally requesting a vanity code, and answers the record — 201 on the first apply, 200 with &#x60;created:false&#x60; afterwards.  IDEMPOTENT, first apply wins: one affiliate per org, so re-applying never creates a second row and never resets an existing approval. Applying is not joining — no code is minted and nothing accrues until staff approve, which is where both the code and the commission rate come from.  The org is the validated caller&#39;s, never a field. A malformed vanity code is refused up front; the code is only REQUESTED here, and approval may mint a different one if the requested code is taken.
+     * @param affiliatesApplyRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -737,17 +777,23 @@ public class AffiliatesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Already enrolled (idempotent). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Newly enrolled. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AffiliatesApplyAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AffiliatesApplyAsync(@javax.annotation.Nullable AffiliatesApplyRequest affiliatesApplyRequest, final ApiCallback<AffiliatesApplyResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1AffiliatesApplyValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1AffiliatesApplyValidateBeforeCall(affiliatesApplyRequest, _callback);
+        Type localVarReturnType = new TypeToken<AffiliatesApplyResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1AffiliatesAttribute
+     * @param affiliatesAttributeRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -755,10 +801,15 @@ public class AffiliatesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Already attributed (idempotent). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Attribution recorded. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Affiliate or code not found. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AffiliatesAttributeCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AffiliatesAttributeCall(@javax.annotation.Nonnull AffiliatesAttributeRequest affiliatesAttributeRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -772,7 +823,7 @@ public class AffiliatesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = affiliatesAttributeRequest;
 
         // create path and map variables
         String localVarPath = "/v1/affiliates/attribute";
@@ -784,6 +835,7 @@ public class AffiliatesApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -791,6 +843,7 @@ public class AffiliatesApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -802,46 +855,67 @@ public class AffiliatesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1AffiliatesAttributeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1AffiliatesAttributeCall(_callback);
+    private okhttp3.Call cloudPostV1AffiliatesAttributeValidateBeforeCall(@javax.annotation.Nonnull AffiliatesAttributeRequest affiliatesAttributeRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'affiliatesAttributeRequest' is set
+        if (affiliatesAttributeRequest == null) {
+            throw new ApiException("Missing the required parameter 'affiliatesAttributeRequest' when calling cloudPostV1AffiliatesAttribute(Async)");
+        }
+
+        return cloudPostV1AffiliatesAttributeCall(affiliatesAttributeRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Record that your org arrived through an affiliate&#39;s code
+     * Records the first-touch edge every later commission is computed from: the caller&#39;s org was referred by the affiliate that owns this code.  The REFERRED org is the validated caller, never a field. A caller that could name the referred org could attach itself to somebody else&#39;s revenue. The affiliate is resolved from the code, and only an APPROVED affiliate&#39;s code resolves.  FIRST TOUCH WINS, set once: one affiliate per referred org, so a re-post answers the existing edge with &#x60;created:false&#x60; rather than moving the attribution. Self-attribution is refused, and so is a code that would make a cycle in the upline chain. An unknown code is a 404, deliberately: an affiliate code IS a public shareable link, so whether one is real is public by design, and the caller legitimately needs to know its link resolved.  A user-level mirror of the edge is written best-effort; a conflict there never fails the org attribution, which is the money-bearing one.
+     * @param affiliatesAttributeRequest  (required)
+     * @return AffiliatesAttributeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Already attributed (idempotent). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Attribution recorded. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Affiliate or code not found. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1AffiliatesAttribute() throws ApiException {
-        cloudPostV1AffiliatesAttributeWithHttpInfo();
+    public AffiliatesAttributeResponse cloudPostV1AffiliatesAttribute(@javax.annotation.Nonnull AffiliatesAttributeRequest affiliatesAttributeRequest) throws ApiException {
+        ApiResponse<AffiliatesAttributeResponse> localVarResp = cloudPostV1AffiliatesAttributeWithHttpInfo(affiliatesAttributeRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Record that your org arrived through an affiliate&#39;s code
+     * Records the first-touch edge every later commission is computed from: the caller&#39;s org was referred by the affiliate that owns this code.  The REFERRED org is the validated caller, never a field. A caller that could name the referred org could attach itself to somebody else&#39;s revenue. The affiliate is resolved from the code, and only an APPROVED affiliate&#39;s code resolves.  FIRST TOUCH WINS, set once: one affiliate per referred org, so a re-post answers the existing edge with &#x60;created:false&#x60; rather than moving the attribution. Self-attribution is refused, and so is a code that would make a cycle in the upline chain. An unknown code is a 404, deliberately: an affiliate code IS a public shareable link, so whether one is real is public by design, and the caller legitimately needs to know its link resolved.  A user-level mirror of the edge is written best-effort; a conflict there never fails the org attribution, which is the money-bearing one.
+     * @param affiliatesAttributeRequest  (required)
+     * @return ApiResponse&lt;AffiliatesAttributeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Already attributed (idempotent). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Attribution recorded. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Affiliate or code not found. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1AffiliatesAttributeWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1AffiliatesAttributeValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<AffiliatesAttributeResponse> cloudPostV1AffiliatesAttributeWithHttpInfo(@javax.annotation.Nonnull AffiliatesAttributeRequest affiliatesAttributeRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1AffiliatesAttributeValidateBeforeCall(affiliatesAttributeRequest, null);
+        Type localVarReturnType = new TypeToken<AffiliatesAttributeResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Record that your org arrived through an affiliate&#39;s code (asynchronously)
+     * Records the first-touch edge every later commission is computed from: the caller&#39;s org was referred by the affiliate that owns this code.  The REFERRED org is the validated caller, never a field. A caller that could name the referred org could attach itself to somebody else&#39;s revenue. The affiliate is resolved from the code, and only an APPROVED affiliate&#39;s code resolves.  FIRST TOUCH WINS, set once: one affiliate per referred org, so a re-post answers the existing edge with &#x60;created:false&#x60; rather than moving the attribution. Self-attribution is refused, and so is a code that would make a cycle in the upline chain. An unknown code is a 404, deliberately: an affiliate code IS a public shareable link, so whether one is real is public by design, and the caller legitimately needs to know its link resolved.  A user-level mirror of the edge is written best-effort; a conflict there never fails the org attribution, which is the money-bearing one.
+     * @param affiliatesAttributeRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -849,13 +923,19 @@ public class AffiliatesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Already attributed (idempotent). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Attribution recorded. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Affiliate or code not found. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AffiliatesAttributeAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AffiliatesAttributeAsync(@javax.annotation.Nonnull AffiliatesAttributeRequest affiliatesAttributeRequest, final ApiCallback<AffiliatesAttributeResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1AffiliatesAttributeValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1AffiliatesAttributeValidateBeforeCall(affiliatesAttributeRequest, _callback);
+        Type localVarReturnType = new TypeToken<AffiliatesAttributeResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -920,8 +1000,8 @@ public class AffiliatesApi {
     }
 
     /**
-     * 
-     * 
+     * Count a click on a share link
+     * Counts a click on a share link. PUBLIC — it takes no principal, because a visitor clicking a shareable link has no session yet.  The ping folds into an in-memory buffer and NEVER writes the money database synchronously, so a click flood cannot contend with the accrual and payout write path; tallies are flushed in one batch on the next authenticated links read and at shutdown. Clicks are a vanity metric: no accrual and no payout ever reads them — those key on real metered spend — so click inflation cannot move money.  Any well-formed code is accepted WITHOUT checking that it exists, deliberately: this is not a code-existence oracle. &#x60;counted&#x60; reports that the buffer took the ping, not that the code is real; an unknown code simply no-ops at flush time.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -935,8 +1015,8 @@ public class AffiliatesApi {
     }
 
     /**
-     * 
-     * 
+     * Count a click on a share link
+     * Counts a click on a share link. PUBLIC — it takes no principal, because a visitor clicking a shareable link has no session yet.  The ping folds into an in-memory buffer and NEVER writes the money database synchronously, so a click flood cannot contend with the accrual and payout write path; tallies are flushed in one batch on the next authenticated links read and at shutdown. Clicks are a vanity metric: no accrual and no payout ever reads them — those key on real metered spend — so click inflation cannot move money.  Any well-formed code is accepted WITHOUT checking that it exists, deliberately: this is not a code-existence oracle. &#x60;counted&#x60; reports that the buffer took the ping, not that the code is real; an unknown code simply no-ops at flush time.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -952,8 +1032,8 @@ public class AffiliatesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Count a click on a share link (asynchronously)
+     * Counts a click on a share link. PUBLIC — it takes no principal, because a visitor clicking a shareable link has no session yet.  The ping folds into an in-memory buffer and NEVER writes the money database synchronously, so a click flood cannot contend with the accrual and payout write path; tallies are flushed in one batch on the next authenticated links read and at shutdown. Clicks are a vanity metric: no accrual and no payout ever reads them — those key on real metered spend — so click inflation cannot move money.  Any well-formed code is accepted WITHOUT checking that it exists, deliberately: this is not a code-existence oracle. &#x60;counted&#x60; reports that the buffer took the ping, not that the code is real; an unknown code simply no-ops at flush time.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1032,8 +1112,8 @@ public class AffiliatesApi {
     }
 
     /**
-     * 
-     * 
+     * Set or clear your public leaderboard name
+     * Sets the caller&#39;s public leaderboard display name, or clears it.  The handle IS the opt-in. An empty handle opts out: the affiliate keeps its rank and can still see its own row, it simply stops being listed to anyone else. That is the whole privacy control — there is no separate visibility flag, and no way to be listed without choosing a name.  Requires a validated principal and an existing affiliate record; apply first. The handle is bounded and restricted to letters, digits, space, hyphen, underscore and dot.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1047,8 +1127,8 @@ public class AffiliatesApi {
     }
 
     /**
-     * 
-     * 
+     * Set or clear your public leaderboard name
+     * Sets the caller&#39;s public leaderboard display name, or clears it.  The handle IS the opt-in. An empty handle opts out: the affiliate keeps its rank and can still see its own row, it simply stops being listed to anyone else. That is the whole privacy control — there is no separate visibility flag, and no way to be listed without choosing a name.  Requires a validated principal and an existing affiliate record; apply first. The handle is bounded and restricted to letters, digits, space, hyphen, underscore and dot.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1064,8 +1144,8 @@ public class AffiliatesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Set or clear your public leaderboard name (asynchronously)
+     * Sets the caller&#39;s public leaderboard display name, or clears it.  The handle IS the opt-in. An empty handle opts out: the affiliate keeps its rank and can still see its own row, it simply stops being listed to anyone else. That is the whole privacy control — there is no separate visibility flag, and no way to be listed without choosing a name.  Requires a validated principal and an existing affiliate record; apply first. The handle is bounded and restricted to letters, digits, space, hyphen, underscore and dot.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1144,8 +1224,8 @@ public class AffiliatesApi {
     }
 
     /**
-     * 
-     * 
+     * Mint a new share link
+     * Mints a new share link for the caller&#39;s own affiliate and answers it with its full URL, 201.  APPROVAL IS REQUIRED: an org that has applied but is not approved is refused, because a link that cannot accrue is a link that quietly loses the referral. A requested vanity code must be valid and free across the WHOLE directory — codes are one global namespace, so a taken code is a 409 rather than a silent alias. Omit the code and a random one is minted.  Bounded per affiliate. The label is cosmetic: it is trimmed, stripped of control characters and capped, and it is never part of a code.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1159,8 +1239,8 @@ public class AffiliatesApi {
     }
 
     /**
-     * 
-     * 
+     * Mint a new share link
+     * Mints a new share link for the caller&#39;s own affiliate and answers it with its full URL, 201.  APPROVAL IS REQUIRED: an org that has applied but is not approved is refused, because a link that cannot accrue is a link that quietly loses the referral. A requested vanity code must be valid and free across the WHOLE directory — codes are one global namespace, so a taken code is a 409 rather than a silent alias. Omit the code and a random one is minted.  Bounded per affiliate. The label is cosmetic: it is trimmed, stripped of control characters and capped, and it is never part of a code.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1176,8 +1256,8 @@ public class AffiliatesApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Mint a new share link (asynchronously)
+     * Mints a new share link for the caller&#39;s own affiliate and answers it with its full URL, 201.  APPROVAL IS REQUIRED: an org that has applied but is not approved is refused, because a link that cannot accrue is a link that quietly loses the referral. A requested vanity code must be valid and free across the WHOLE directory — codes are one global namespace, so a taken code is a 409 rather than a silent alias. Omit the code and a random one is minted.  Bounded per affiliate. The label is cosmetic: it is trimmed, stripped of control characters and capped, and it is never part of a code.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

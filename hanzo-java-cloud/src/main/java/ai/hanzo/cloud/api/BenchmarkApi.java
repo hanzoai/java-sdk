@@ -133,8 +133,8 @@ public class BenchmarkApi {
     }
 
     /**
-     * 
-     * 
+     * The canonical public benchmarks this arena runs
+     * Lists the top-14 set every major provider reports — the id, title, axis, item count and upstream source of each — with &#x60;native&#x60; marking the ones the standardized harness runs today; the rest are registered and adapter-pending. These ids are the vocabulary the rest of the surface takes: a run names them, and the leaderboard and compare read them from &#x60;?benchmark&#x3D;&#x60;. The catalog is deployment-wide and identical for every caller — there is no tenant in it.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -148,8 +148,8 @@ public class BenchmarkApi {
     }
 
     /**
-     * 
-     * 
+     * The canonical public benchmarks this arena runs
+     * Lists the top-14 set every major provider reports — the id, title, axis, item count and upstream source of each — with &#x60;native&#x60; marking the ones the standardized harness runs today; the rest are registered and adapter-pending. These ids are the vocabulary the rest of the surface takes: a run names them, and the leaderboard and compare read them from &#x60;?benchmark&#x3D;&#x60;. The catalog is deployment-wide and identical for every caller — there is no tenant in it.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -165,8 +165,8 @@ public class BenchmarkApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The canonical public benchmarks this arena runs (asynchronously)
+     * Lists the top-14 set every major provider reports — the id, title, axis, item count and upstream source of each — with &#x60;native&#x60; marking the ones the standardized harness runs today; the rest are registered and adapter-pending. These ids are the vocabulary the rest of the surface takes: a run names them, and the leaderboard and compare read them from &#x60;?benchmark&#x3D;&#x60;. The catalog is deployment-wide and identical for every caller — there is no tenant in it.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -245,8 +245,8 @@ public class BenchmarkApi {
     }
 
     /**
-     * 
-     * 
+     * The only sound head-to-head: two models on the items they BOTH answered
+     * Scores model &#x60;?a&#x3D;&#x60; against model &#x60;?b&#x3D;&#x60; on one benchmark, paired over the items both arms actually completed. It answers the common-item count, each arm&#39;s correct count, the rescues each way (items one got right and the other did not), the net, and a two-sided exact McNemar p over the discordant pairs.  Pairing is what makes it valid. Reading two leaderboard rows against each other compares one model&#39;s coverage with another&#39;s, so an arm that only ran the easy subset looks better than it is; this endpoint refuses that by construction — items only one arm attempted are dropped before anything is counted. A p of 1 with zero discordant pairs means the arms never disagreed, not that they are identical. Both &#x60;a&#x60; and &#x60;b&#x60; are required (400 without them); the benchmark defaults to GPQA-Diamond.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -260,8 +260,8 @@ public class BenchmarkApi {
     }
 
     /**
-     * 
-     * 
+     * The only sound head-to-head: two models on the items they BOTH answered
+     * Scores model &#x60;?a&#x3D;&#x60; against model &#x60;?b&#x3D;&#x60; on one benchmark, paired over the items both arms actually completed. It answers the common-item count, each arm&#39;s correct count, the rescues each way (items one got right and the other did not), the net, and a two-sided exact McNemar p over the discordant pairs.  Pairing is what makes it valid. Reading two leaderboard rows against each other compares one model&#39;s coverage with another&#39;s, so an arm that only ran the easy subset looks better than it is; this endpoint refuses that by construction — items only one arm attempted are dropped before anything is counted. A p of 1 with zero discordant pairs means the arms never disagreed, not that they are identical. Both &#x60;a&#x60; and &#x60;b&#x60; are required (400 without them); the benchmark defaults to GPQA-Diamond.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -277,8 +277,8 @@ public class BenchmarkApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The only sound head-to-head: two models on the items they BOTH answered (asynchronously)
+     * Scores model &#x60;?a&#x3D;&#x60; against model &#x60;?b&#x3D;&#x60; on one benchmark, paired over the items both arms actually completed. It answers the common-item count, each arm&#39;s correct count, the rescues each way (items one got right and the other did not), the net, and a two-sided exact McNemar p over the discordant pairs.  Pairing is what makes it valid. Reading two leaderboard rows against each other compares one model&#39;s coverage with another&#39;s, so an arm that only ran the easy subset looks better than it is; this endpoint refuses that by construction — items only one arm attempted are dropped before anything is counted. A p of 1 with zero discordant pairs means the arms never disagreed, not that they are identical. Both &#x60;a&#x60; and &#x60;b&#x60; are required (400 without them); the benchmark defaults to GPQA-Diamond.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -357,8 +357,8 @@ public class BenchmarkApi {
     }
 
     /**
-     * 
-     * 
+     * Per-model scores for one benchmark: what we measured beside what the vendor claims
+     * Answers one row per model for the benchmark named by &#x60;?benchmark&#x3D;&#x60; (GPQA-Diamond when omitted), carrying &#x60;measured&#x60; — the accuracy our own harness got — beside &#x60;published&#x60;, the provider&#39;s own claim, and &#x60;gap&#x60;, the claim minus the measurement. The gap is the point of the arena; provider-reported claims have run materially hot against one standardized harness.  The two planes are NEVER blended, and that is the rule to read the rows by: a model we have measured but no vendor has claimed for shows &#x60;published&#x60; null, a model with only a claim shows &#x60;measured&#x60; null, and &#x60;gap&#x60; exists only where both do. Each row also carries &#x60;n&#x60;, the number of items actually attempted — coverage differs between models, so two &#x60;measured&#x60; values at different &#x60;n&#x60; are not comparable and the compare endpoint is what settles that properly. Rows are ordered by measured accuracy, unmeasured last. Scores are deployment-wide evidence, not per-tenant.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -372,8 +372,8 @@ public class BenchmarkApi {
     }
 
     /**
-     * 
-     * 
+     * Per-model scores for one benchmark: what we measured beside what the vendor claims
+     * Answers one row per model for the benchmark named by &#x60;?benchmark&#x3D;&#x60; (GPQA-Diamond when omitted), carrying &#x60;measured&#x60; — the accuracy our own harness got — beside &#x60;published&#x60;, the provider&#39;s own claim, and &#x60;gap&#x60;, the claim minus the measurement. The gap is the point of the arena; provider-reported claims have run materially hot against one standardized harness.  The two planes are NEVER blended, and that is the rule to read the rows by: a model we have measured but no vendor has claimed for shows &#x60;published&#x60; null, a model with only a claim shows &#x60;measured&#x60; null, and &#x60;gap&#x60; exists only where both do. Each row also carries &#x60;n&#x60;, the number of items actually attempted — coverage differs between models, so two &#x60;measured&#x60; values at different &#x60;n&#x60; are not comparable and the compare endpoint is what settles that properly. Rows are ordered by measured accuracy, unmeasured last. Scores are deployment-wide evidence, not per-tenant.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -389,8 +389,8 @@ public class BenchmarkApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Per-model scores for one benchmark: what we measured beside what the vendor claims (asynchronously)
+     * Answers one row per model for the benchmark named by &#x60;?benchmark&#x3D;&#x60; (GPQA-Diamond when omitted), carrying &#x60;measured&#x60; — the accuracy our own harness got — beside &#x60;published&#x60;, the provider&#39;s own claim, and &#x60;gap&#x60;, the claim minus the measurement. The gap is the point of the arena; provider-reported claims have run materially hot against one standardized harness.  The two planes are NEVER blended, and that is the rule to read the rows by: a model we have measured but no vendor has claimed for shows &#x60;published&#x60; null, a model with only a claim shows &#x60;measured&#x60; null, and &#x60;gap&#x60; exists only where both do. Each row also carries &#x60;n&#x60;, the number of items actually attempted — coverage differs between models, so two &#x60;measured&#x60; values at different &#x60;n&#x60; are not comparable and the compare endpoint is what settles that properly. Rows are ordered by measured accuracy, unmeasured last. Scores are deployment-wide evidence, not per-tenant.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -469,8 +469,8 @@ public class BenchmarkApi {
     }
 
     /**
-     * 
-     * 
+     * The router blends available to compose from
+     * Lists preset router blends — a named set of model &#x60;arms&#x60;, the &#x60;rank&#x60; they escalate through and the &#x60;panel&#x60; width that bounds fan-out — each served by the model layer as &#x60;enso-&lt;name&gt;&#x60;. Today it answers exactly one row, the reference blend: a worked example written in models we name, published as an example of the FORM. It is deliberately not the composition of a Hanzo-served tier — the tier name exists to abstract that — so fork it and swap arms by what the leaderboard measures on your own tasks rather than reading it as a disclosure.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -484,8 +484,8 @@ public class BenchmarkApi {
     }
 
     /**
-     * 
-     * 
+     * The router blends available to compose from
+     * Lists preset router blends — a named set of model &#x60;arms&#x60;, the &#x60;rank&#x60; they escalate through and the &#x60;panel&#x60; width that bounds fan-out — each served by the model layer as &#x60;enso-&lt;name&gt;&#x60;. Today it answers exactly one row, the reference blend: a worked example written in models we name, published as an example of the FORM. It is deliberately not the composition of a Hanzo-served tier — the tier name exists to abstract that — so fork it and swap arms by what the leaderboard measures on your own tasks rather than reading it as a disclosure.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -501,8 +501,8 @@ public class BenchmarkApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The router blends available to compose from (asynchronously)
+     * Lists preset router blends — a named set of model &#x60;arms&#x60;, the &#x60;rank&#x60; they escalate through and the &#x60;panel&#x60; width that bounds fan-out — each served by the model layer as &#x60;enso-&lt;name&gt;&#x60;. Today it answers exactly one row, the reference blend: a worked example written in models we name, published as an example of the FORM. It is deliberately not the composition of a Hanzo-served tier — the tier name exists to abstract that — so fork it and swap arms by what the leaderboard measures on your own tasks rather than reading it as a disclosure.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -581,8 +581,8 @@ public class BenchmarkApi {
     }
 
     /**
-     * 
-     * 
+     * Compose a router blend from the arms that win your tasks
+     * Validates a blend — &#x60;name&#x60;, its &#x60;arms&#x60;, the &#x60;rank&#x60; they escalate through and the &#x60;panel&#x60; fan-out width — and answers 202 with the preset and the &#x60;enso-&lt;name&gt;&#x60; it would be served as. It VALIDATES AND ECHOES: the definition is not persisted yet, so a preset accepted here is not one the model layer will resolve. Treat the response as a check on the blend, not a promise to serve it.  Defaults fill the shape rather than refusing it: an omitted &#x60;rank&#x60; becomes the arms in declared order and a &#x60;panel&#x60; below 1 becomes 1. The one real invariant is that rank may only name arms the blend declares — the same rule the model catalog enforces — and a rank naming anything else is a 422 listing exactly which entries were undeclared. A blend with no name or no arms is a 400.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -596,8 +596,8 @@ public class BenchmarkApi {
     }
 
     /**
-     * 
-     * 
+     * Compose a router blend from the arms that win your tasks
+     * Validates a blend — &#x60;name&#x60;, its &#x60;arms&#x60;, the &#x60;rank&#x60; they escalate through and the &#x60;panel&#x60; fan-out width — and answers 202 with the preset and the &#x60;enso-&lt;name&gt;&#x60; it would be served as. It VALIDATES AND ECHOES: the definition is not persisted yet, so a preset accepted here is not one the model layer will resolve. Treat the response as a check on the blend, not a promise to serve it.  Defaults fill the shape rather than refusing it: an omitted &#x60;rank&#x60; becomes the arms in declared order and a &#x60;panel&#x60; below 1 becomes 1. The one real invariant is that rank may only name arms the blend declares — the same rule the model catalog enforces — and a rank naming anything else is a 422 listing exactly which entries were undeclared. A blend with no name or no arms is a 400.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -613,8 +613,8 @@ public class BenchmarkApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Compose a router blend from the arms that win your tasks (asynchronously)
+     * Validates a blend — &#x60;name&#x60;, its &#x60;arms&#x60;, the &#x60;rank&#x60; they escalate through and the &#x60;panel&#x60; fan-out width — and answers 202 with the preset and the &#x60;enso-&lt;name&gt;&#x60; it would be served as. It VALIDATES AND ECHOES: the definition is not persisted yet, so a preset accepted here is not one the model layer will resolve. Treat the response as a check on the blend, not a promise to serve it.  Defaults fill the shape rather than refusing it: an omitted &#x60;rank&#x60; becomes the arms in declared order and a &#x60;panel&#x60; below 1 becomes 1. The one real invariant is that rank may only name arms the blend declares — the same rule the model catalog enforces — and a rank naming anything else is a 422 listing exactly which entries were undeclared. A blend with no name or no arms is a 400.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -693,8 +693,8 @@ public class BenchmarkApi {
     }
 
     /**
-     * 
-     * 
+     * Queue a benchmark run against a catalog model or your own endpoint
+     * Admits a request to run one or more catalog benchmarks against &#x60;model&#x60; — a catalog model id — or against &#x60;endpoint&#x60;, your own OpenAI-compatible endpoint, and answers 202 with what was queued. It ADMITS AND QUEUES ONLY: nothing is executed on this call and no scores come back with it. Results land in the leaderboard as the worker completes them.  Cost is bounded by the store rather than by a quota: attempts are append-only and keyed by (benchmark, item, model), so an (item, model) pair already attempted is skipped instead of re-spent, and re-queuing the same run is close to free. Validation is up front and total — a request with neither &#x60;model&#x60; nor &#x60;endpoint&#x60; is a 400, one with no benchmarks is a 400, and any benchmark id outside the catalog is a 422 naming exactly which ids were unknown, so a typo never silently queues a partial run.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -708,8 +708,8 @@ public class BenchmarkApi {
     }
 
     /**
-     * 
-     * 
+     * Queue a benchmark run against a catalog model or your own endpoint
+     * Admits a request to run one or more catalog benchmarks against &#x60;model&#x60; — a catalog model id — or against &#x60;endpoint&#x60;, your own OpenAI-compatible endpoint, and answers 202 with what was queued. It ADMITS AND QUEUES ONLY: nothing is executed on this call and no scores come back with it. Results land in the leaderboard as the worker completes them.  Cost is bounded by the store rather than by a quota: attempts are append-only and keyed by (benchmark, item, model), so an (item, model) pair already attempted is skipped instead of re-spent, and re-queuing the same run is close to free. Validation is up front and total — a request with neither &#x60;model&#x60; nor &#x60;endpoint&#x60; is a 400, one with no benchmarks is a 400, and any benchmark id outside the catalog is a 422 naming exactly which ids were unknown, so a typo never silently queues a partial run.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -725,8 +725,8 @@ public class BenchmarkApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Queue a benchmark run against a catalog model or your own endpoint (asynchronously)
+     * Admits a request to run one or more catalog benchmarks against &#x60;model&#x60; — a catalog model id — or against &#x60;endpoint&#x60;, your own OpenAI-compatible endpoint, and answers 202 with what was queued. It ADMITS AND QUEUES ONLY: nothing is executed on this call and no scores come back with it. Results land in the leaderboard as the worker completes them.  Cost is bounded by the store rather than by a quota: attempts are append-only and keyed by (benchmark, item, model), so an (item, model) pair already attempted is skipped instead of re-spent, and re-queuing the same run is close to free. Validation is up front and total — a request with neither &#x60;model&#x60; nor &#x60;endpoint&#x60; is a 400, one with no benchmarks is a 400, and any benchmark id outside the catalog is a 422 naming exactly which ids were unknown, so a typo never silently queues a partial run.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

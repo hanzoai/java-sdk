@@ -148,8 +148,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Delete a storefront, keeping a recoverable copy
+     * Removes the addressed store and answers 204 with no body. Before the live row goes, the entity is written once more under a tombstone kind, so the deletion leaves a recoverable copy rather than destroying the record outright; the store&#39;s listing overrides live inside that row and go with it. The id is resolved inside the caller org&#39;s own namespace, so an unknown or foreign id is 404. Requires an admin or store-write token.
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -164,8 +164,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Delete a storefront, keeping a recoverable copy
+     * Removes the addressed store and answers 204 with no body. Before the live row goes, the entity is written once more under a tombstone kind, so the deletion leaves a recoverable copy rather than destroying the record outright; the store&#39;s listing overrides live inside that row and go with it. The id is resolved inside the caller org&#39;s own namespace, so an unknown or foreign id is 404. Requires an admin or store-write token.
      * @param storeid  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -182,8 +182,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Delete a storefront, keeping a recoverable copy (asynchronously)
+     * Removes the addressed store and answers 204 with no body. Before the live row goes, the entity is written once more under a tombstone kind, so the deletion leaves a recoverable copy rather than destroying the record outright; the store&#39;s listing overrides live inside that row and go with it. The id is resolved inside the caller org&#39;s own namespace, so an unknown or foreign id is 404. Requires an admin or store-write token.
      * @param storeid  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -277,8 +277,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Remove a listing override
+     * Drops the key from the store&#39;s listing map and re-saves the store, answering 204 with no body. It UN-OVERRIDES rather than deletes: the product, variant or bundle itself is untouched and simply reverts to its catalog values on this storefront. A key that is not present is 404, and so is a store id outside the caller org&#39;s namespace. Admin-gated.
      * @param storeid  (required)
      * @param key  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -294,8 +294,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Remove a listing override
+     * Drops the key from the store&#39;s listing map and re-saves the store, answering 204 with no body. It UN-OVERRIDES rather than deletes: the product, variant or bundle itself is untouched and simply reverts to its catalog values on this storefront. A key that is not present is 404, and so is a store id outside the caller org&#39;s namespace. Admin-gated.
      * @param storeid  (required)
      * @param key  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -313,8 +313,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Remove a listing override (asynchronously)
+     * Drops the key from the store&#39;s listing map and re-saves the store, answering 204 with no body. It UN-OVERRIDES rather than deletes: the product, variant or bundle itself is untouched and simply reverts to its catalog values on this storefront. A key that is not present is 404, and so is a store id outside the caller org&#39;s namespace. Admin-gated.
      * @param storeid  (required)
      * @param key  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -395,8 +395,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * List your org&#39;s storefronts as a page
+     * Answers a pagination envelope — page, display, the rows, and a total count — read from the caller org&#39;s OWN namespaced database, so one tenant can never list another&#39;s stores. Sorting defaults to the store slug and is overridable with sort; display is the page size and page applies only alongside it, and either one that is not a positive integer is refused rather than silently ignored. The limit query overrides the reported COUNT only and never the rows returned. A request that resolves no org namespace is served an empty page, never an unscoped scan. Readable with an admin token, a store-scoped token, or the anonymous published storefront key.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -410,8 +410,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * List your org&#39;s storefronts as a page
+     * Answers a pagination envelope — page, display, the rows, and a total count — read from the caller org&#39;s OWN namespaced database, so one tenant can never list another&#39;s stores. Sorting defaults to the store slug and is overridable with sort; display is the page size and page applies only alongside it, and either one that is not a positive integer is refused rather than silently ignored. The limit query overrides the reported COUNT only and never the rows returned. A request that resolves no org namespace is served an empty page, never an unscoped scan. Readable with an admin token, a store-scoped token, or the anonymous published storefront key.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -427,8 +427,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * List your org&#39;s storefronts as a page (asynchronously)
+     * Answers a pagination envelope — page, display, the rows, and a total count — read from the caller org&#39;s OWN namespaced database, so one tenant can never list another&#39;s stores. Sorting defaults to the store slug and is overridable with sort; display is the page size and page applies only alongside it, and either one that is not a positive integer is refused rather than silently ignored. The limit query overrides the reported COUNT only and never the rows returned. A request that resolves no org namespace is served an empty page, never an unscoped scan. Readable with an admin token, a store-scoped token, or the anonymous published storefront key.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -507,8 +507,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Whether a store is entitled to trade, and why
+     * Answers allowed, the store id, and a status of trial, active, payment_required, store_required or unavailable — the entitlement check a merchant surface gates on. The rule that surprises people is that entitlement is PER STORE, not per org: the store needs its own current subscription on the entry plan, either trialing with a trial end still ahead or active with a period end still ahead, so an org-wide balance or a sibling store&#39;s plan unlocks nothing here. The store comes from the X-Store-Id header and otherwise falls back to the org&#39;s first store; neither resolving is store_required with allowed false, and a backing-store failure is 503 with status unavailable — a retry signal, not a denial.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -522,8 +522,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Whether a store is entitled to trade, and why
+     * Answers allowed, the store id, and a status of trial, active, payment_required, store_required or unavailable — the entitlement check a merchant surface gates on. The rule that surprises people is that entitlement is PER STORE, not per org: the store needs its own current subscription on the entry plan, either trialing with a trial end still ahead or active with a period end still ahead, so an org-wide balance or a sibling store&#39;s plan unlocks nothing here. The store comes from the X-Store-Id header and otherwise falls back to the org&#39;s first store; neither resolving is store_required with allowed false, and a backing-store failure is 503 with status unavailable — a retry signal, not a denial.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -539,8 +539,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Whether a store is entitled to trade, and why (asynchronously)
+     * Answers allowed, the store id, and a status of trial, active, payment_required, store_required or unavailable — the entitlement check a merchant surface gates on. The rule that surprises people is that entitlement is PER STORE, not per org: the store needs its own current subscription on the entry plan, either trialing with a trial end still ahead or active with a period end still ahead, so an org-wide balance or a sibling store&#39;s plan unlocks nothing here. The store comes from the X-Store-Id header and otherwise falls back to the org&#39;s first store; neither resolving is store_required with allowed false, and a backing-store failure is 503 with status unavailable — a retry signal, not a denial.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -626,8 +626,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Fetch one storefront
+     * Reads the addressed store from the caller org&#39;s own namespaced database, so an id belonging to another tenant is simply absent there and answers 404 rather than leaking its existence. The body is the stored entity including its embedded listing override map. Readable with an admin or store-read token and also with the anonymous published storefront key, which is what lets a logged-out storefront resolve the store it is rendering.
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -642,8 +642,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Fetch one storefront
+     * Reads the addressed store from the caller org&#39;s own namespaced database, so an id belonging to another tenant is simply absent there and answers 404 rather than leaking its existence. The body is the stored entity including its embedded listing override map. Readable with an admin or store-read token and also with the anonymous published storefront key, which is what lets a logged-out storefront resolve the store it is rendering.
      * @param storeid  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -660,8 +660,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Fetch one storefront (asynchronously)
+     * Reads the addressed store from the caller org&#39;s own namespaced database, so an id belonging to another tenant is simply absent there and answers 404 rather than leaking its existence. The body is the stored entity including its embedded listing override map. Readable with an admin or store-read token and also with the anonymous published storefront key, which is what lets a logged-out storefront resolve the store it is rendering.
      * @param storeid  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -755,8 +755,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Fetch a bundle as this storefront sells it
+     * Returns the stored bundle with the store&#39;s listing for it laid over the top — every non-empty listing field wins, and the currency is forced to the store&#39;s own — so the caller reads what this storefront actually sells rather than the catalog-wide record. The overlay is keyed by the item&#39;s ID: a listing filed only under a slug or SKU does not reach it, unlike the listing reads, which do fall back to those. An unknown store or key is 404. Readable with an admin token or the anonymous published storefront key.
      * @param storeid  (required)
      * @param key  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -772,8 +772,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Fetch a bundle as this storefront sells it
+     * Returns the stored bundle with the store&#39;s listing for it laid over the top — every non-empty listing field wins, and the currency is forced to the store&#39;s own — so the caller reads what this storefront actually sells rather than the catalog-wide record. The overlay is keyed by the item&#39;s ID: a listing filed only under a slug or SKU does not reach it, unlike the listing reads, which do fall back to those. An unknown store or key is 404. Readable with an admin token or the anonymous published storefront key.
      * @param storeid  (required)
      * @param key  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -791,8 +791,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Fetch a bundle as this storefront sells it (asynchronously)
+     * Returns the stored bundle with the store&#39;s listing for it laid over the top — every non-empty listing field wins, and the currency is forced to the store&#39;s own — so the caller reads what this storefront actually sells rather than the catalog-wide record. The overlay is keyed by the item&#39;s ID: a listing filed only under a slug or SKU does not reach it, unlike the listing reads, which do fall back to those. An unknown store or key is 404. Readable with an admin token or the anonymous published storefront key.
      * @param storeid  (required)
      * @param key  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -880,8 +880,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * The storefront&#39;s whole listing override map
+     * Returns every override this store applies to catalog items — name, price, list price, media, availability and the hidden flag — keyed by product or variant id, in one read. A listing is an OVERRIDE, not a product: the catalog item exists independently and this map only says how this storefront presents it. Read from the caller org&#39;s own namespaced database, so a store id belonging to another tenant is 404. Readable with an admin token or the anonymous published storefront key.
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -896,8 +896,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * The storefront&#39;s whole listing override map
+     * Returns every override this store applies to catalog items — name, price, list price, media, availability and the hidden flag — keyed by product or variant id, in one read. A listing is an OVERRIDE, not a product: the catalog item exists independently and this map only says how this storefront presents it. Read from the caller org&#39;s own namespaced database, so a store id belonging to another tenant is 404. Readable with an admin token or the anonymous published storefront key.
      * @param storeid  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -914,8 +914,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The storefront&#39;s whole listing override map (asynchronously)
+     * Returns every override this store applies to catalog items — name, price, list price, media, availability and the hidden flag — keyed by product or variant id, in one read. A listing is an OVERRIDE, not a product: the catalog item exists independently and this map only says how this storefront presents it. Read from the caller org&#39;s own namespaced database, so a store id belonging to another tenant is 404. Readable with an admin token or the anonymous published storefront key.
      * @param storeid  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1009,8 +1009,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Fetch one listing override, by item id or by its slug or SKU
+     * Looks the key up in the store&#39;s listing map first and, failing that, matches it against each listing&#39;s slug and then its SKU — so a storefront holding only a product&#39;s URL slug can still resolve the override. That fallback is unique to the listing reads; the item overlay routes match by id alone. A key matching none of the three is 404, as is a store id outside the caller org&#39;s namespace. Readable with an admin token or the anonymous published storefront key.
      * @param storeid  (required)
      * @param key  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1026,8 +1026,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Fetch one listing override, by item id or by its slug or SKU
+     * Looks the key up in the store&#39;s listing map first and, failing that, matches it against each listing&#39;s slug and then its SKU — so a storefront holding only a product&#39;s URL slug can still resolve the override. That fallback is unique to the listing reads; the item overlay routes match by id alone. A key matching none of the three is 404, as is a store id outside the caller org&#39;s namespace. Readable with an admin token or the anonymous published storefront key.
      * @param storeid  (required)
      * @param key  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -1045,8 +1045,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Fetch one listing override, by item id or by its slug or SKU (asynchronously)
+     * Looks the key up in the store&#39;s listing map first and, failing that, matches it against each listing&#39;s slug and then its SKU — so a storefront holding only a product&#39;s URL slug can still resolve the override. That fallback is unique to the listing reads; the item overlay routes match by id alone. A key matching none of the three is 404, as is a store id outside the caller org&#39;s namespace. Readable with an admin token or the anonymous published storefront key.
      * @param storeid  (required)
      * @param key  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1141,8 +1141,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Fetch a product as this storefront sells it
+     * Returns the stored product with the store&#39;s listing for it laid over the top — non-empty listing fields replace the catalog values and the currency is forced to the store&#39;s own — which is what lets two storefronts sell the same catalog product at their own price, name and media. The overlay is keyed by the product&#39;s ID, so a listing filed only under a slug or SKU does not apply here. An unknown store or key is 404. Readable with an admin token or the anonymous published storefront key.
      * @param storeid  (required)
      * @param key  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1158,8 +1158,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Fetch a product as this storefront sells it
+     * Returns the stored product with the store&#39;s listing for it laid over the top — non-empty listing fields replace the catalog values and the currency is forced to the store&#39;s own — which is what lets two storefronts sell the same catalog product at their own price, name and media. The overlay is keyed by the product&#39;s ID, so a listing filed only under a slug or SKU does not apply here. An unknown store or key is 404. Readable with an admin token or the anonymous published storefront key.
      * @param storeid  (required)
      * @param key  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -1177,8 +1177,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Fetch a product as this storefront sells it (asynchronously)
+     * Returns the stored product with the store&#39;s listing for it laid over the top — non-empty listing fields replace the catalog values and the currency is forced to the store&#39;s own — which is what lets two storefronts sell the same catalog product at their own price, name and media. The overlay is keyed by the product&#39;s ID, so a listing filed only under a slug or SKU does not apply here. An unknown store or key is 404. Readable with an admin token or the anonymous published storefront key.
      * @param storeid  (required)
      * @param key  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1273,8 +1273,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Fetch a variant as this storefront sells it
+     * Returns the stored variant with the store&#39;s listing for it overlaid — non-empty listing fields replace the catalog values and the currency is forced to the store&#39;s own — which is what makes per-storefront pricing of a shared variant possible. The overlay is keyed by the variant&#39;s ID, never by its slug or SKU. An unknown store or key is 404. Readable with an admin token or the anonymous published storefront key.
      * @param storeid  (required)
      * @param key  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1290,8 +1290,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Fetch a variant as this storefront sells it
+     * Returns the stored variant with the store&#39;s listing for it overlaid — non-empty listing fields replace the catalog values and the currency is forced to the store&#39;s own — which is what makes per-storefront pricing of a shared variant possible. The overlay is keyed by the variant&#39;s ID, never by its slug or SKU. An unknown store or key is 404. Readable with an admin token or the anonymous published storefront key.
      * @param storeid  (required)
      * @param key  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -1309,8 +1309,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Fetch a variant as this storefront sells it (asynchronously)
+     * Returns the stored variant with the store&#39;s listing for it overlaid — non-empty listing fields replace the catalog values and the currency is forced to the store&#39;s own — which is what makes per-storefront pricing of a shared variant possible. The overlay is keyed by the variant&#39;s ID, never by its slug or SKU. An unknown store or key is 404. Readable with an admin token or the anonymous published storefront key.
      * @param storeid  (required)
      * @param key  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1391,8 +1391,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Resolve your org&#39;s active storefront without naming an id
+     * Returns the caller org&#39;s store resolved FROM THE AUTHENTICATED ORG rather than from a path id — which is how an admin dashboard or a storefront edge learns the store id it should then read and write against. An X-Store-Id header selects a specific store, resolved only inside the caller&#39;s own namespace, so a foreign id cannot cross the tenant boundary and answers 404 instead. With no header the org&#39;s first store is returned, and an org that has none yet has its canonical default provisioned lazily and idempotently, carrying no payment credentials. Only when there is no org in context, or provisioning fails, does it fall back to a placeholder store literally named default, which a storefront edge should treat as unconfigured.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1406,8 +1406,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Resolve your org&#39;s active storefront without naming an id
+     * Returns the caller org&#39;s store resolved FROM THE AUTHENTICATED ORG rather than from a path id — which is how an admin dashboard or a storefront edge learns the store id it should then read and write against. An X-Store-Id header selects a specific store, resolved only inside the caller&#39;s own namespace, so a foreign id cannot cross the tenant boundary and answers 404 instead. With no header the org&#39;s first store is returned, and an org that has none yet has its canonical default provisioned lazily and idempotently, carrying no payment credentials. Only when there is no org in context, or provisioning fails, does it fall back to a placeholder store literally named default, which a storefront edge should treat as unconfigured.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1423,8 +1423,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Resolve your org&#39;s active storefront without naming an id (asynchronously)
+     * Returns the caller org&#39;s store resolved FROM THE AUTHENTICATED ORG rather than from a path id — which is how an admin dashboard or a storefront edge learns the store id it should then read and write against. An X-Store-Id header selects a specific store, resolved only inside the caller&#39;s own namespace, so a foreign id cannot cross the tenant boundary and answers 404 instead. With no header the org&#39;s first store is returned, and an org that has none yet has its canonical default provisioned lazily and idempotently, carrying no payment credentials. Only when there is no org in context, or provisioning fails, does it fall back to a placeholder store literally named default, which a storefront edge should treat as unconfigured.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1510,8 +1510,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Change part of a storefront
+     * Loads the stored store and decodes the body over it, so only the fields the body names change and everything else keeps its stored value — the difference from the full replace, which clears what it is not told. Answers the merged entity. The id is resolved inside the caller org&#39;s own namespace, so an unknown or foreign id is 404. Requires an admin token, or one holding both store read and store write.
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1526,8 +1526,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Change part of a storefront
+     * Loads the stored store and decodes the body over it, so only the fields the body names change and everything else keeps its stored value — the difference from the full replace, which clears what it is not told. Answers the merged entity. The id is resolved inside the caller org&#39;s own namespace, so an unknown or foreign id is 404. Requires an admin token, or one holding both store read and store write.
      * @param storeid  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1544,8 +1544,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Change part of a storefront (asynchronously)
+     * Loads the stored store and decodes the body over it, so only the fields the body names change and everything else keeps its stored value — the difference from the full replace, which clears what it is not told. Answers the merged entity. The id is resolved inside the caller org&#39;s own namespace, so an unknown or foreign id is 404. Requires an admin token, or one holding both store read and store write.
      * @param storeid  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1639,8 +1639,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Confirm a listing override exists and re-save the store
+     * Requires the key to already be present — an absent one is 404 — and answers the store&#39;s listing map at 200. Read the behaviour before relying on it: the decoded body is applied to a COPY taken out of the map and is never assigned back, so the stored listing is unchanged and the map returned is exactly the map that was already there. An actual edit to an existing listing has to go through the upsert, which does write its result back into the store. A body that fails to decode is still 400. Admin-gated and namespaced to the caller&#39;s org.
      * @param storeid  (required)
      * @param key  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1656,8 +1656,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Confirm a listing override exists and re-save the store
+     * Requires the key to already be present — an absent one is 404 — and answers the store&#39;s listing map at 200. Read the behaviour before relying on it: the decoded body is applied to a COPY taken out of the map and is never assigned back, so the stored listing is unchanged and the map returned is exactly the map that was already there. An actual edit to an existing listing has to go through the upsert, which does write its result back into the store. A body that fails to decode is still 400. Admin-gated and namespaced to the caller&#39;s org.
      * @param storeid  (required)
      * @param key  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -1675,8 +1675,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Confirm a listing override exists and re-save the store (asynchronously)
+     * Requires the key to already be present — an absent one is 404 — and answers the store&#39;s listing map at 200. Read the behaviour before relying on it: the decoded body is applied to a COPY taken out of the map and is never assigned back, so the stored listing is unchanged and the map returned is exactly the map that was already there. An actual edit to an existing listing has to go through the upsert, which does write its result back into the store. A body that fails to decode is still 400. Admin-gated and namespaced to the caller&#39;s org.
      * @param storeid  (required)
      * @param key  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1757,8 +1757,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Create a storefront
+     * Creates a store from the body inside the caller org&#39;s own namespaced database, so the row is physically isolated to that tenant from its first write, and answers it at 201 with a Location header naming its id. Requires an admin or store-write token: the anonymous published storefront key may READ stores but never create one. A body that fails to decode is 400.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1772,8 +1772,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Create a storefront
+     * Creates a store from the body inside the caller org&#39;s own namespaced database, so the row is physically isolated to that tenant from its first write, and answers it at 201 with a Location header naming its id. Requires an admin or store-write token: the anonymous published storefront key may READ stores but never create one. A body that fails to decode is 400.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1789,8 +1789,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Create a storefront (asynchronously)
+     * Creates a store from the body inside the caller org&#39;s own namespaced database, so the row is physically isolated to that tenant from its first write, and answers it at 201 with a Location header naming its id. Requires an admin or store-write token: the anonymous published storefront key may READ stores but never create one. A body that fails to decode is 400.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1876,8 +1876,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Method-override tunnel for clients that cannot send PUT, PATCH or DELETE
+     * Re-dispatches the request into the handler the intended verb would have reached, taking that verb from a _method form value or query parameter and then from the X-HTTP-Method-Override header, the header winning when both are present. Only PUT, PATCH and DELETE are accepted; anything else resolves to 405. The trap is the default: naming NO override at all is treated as a partial update, never as a create. Authorization is whatever the underlying operation requires, since the real handler runs.
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1892,8 +1892,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Method-override tunnel for clients that cannot send PUT, PATCH or DELETE
+     * Re-dispatches the request into the handler the intended verb would have reached, taking that verb from a _method form value or query parameter and then from the X-HTTP-Method-Override header, the header winning when both are present. Only PUT, PATCH and DELETE are accepted; anything else resolves to 405. The trap is the default: naming NO override at all is treated as a partial update, never as a create. Authorization is whatever the underlying operation requires, since the real handler runs.
      * @param storeid  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1910,8 +1910,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Method-override tunnel for clients that cannot send PUT, PATCH or DELETE (asynchronously)
+     * Re-dispatches the request into the handler the intended verb would have reached, taking that verb from a _method form value or query parameter and then from the X-HTTP-Method-Override header, the header winning when both are present. Only PUT, PATCH and DELETE are accepted; anything else resolves to 405. The trap is the default: naming NO override at all is treated as a partial update, never as a create. Authorization is whatever the underlying operation requires, since the real handler runs.
      * @param storeid  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1998,8 +1998,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Authorize a new order against a storefront, holding the funds without settling them
+     * Tallies a new order for the addressed store from the user, payment and order body, reserves its items, runs the processor authorization and answers the saved order with a Location header pointing at it. The gate is a token carrying admin or published scope, so a published storefront key is enough; no token is 401 and a token with neither bit is 403. The store is loaded BEFORE any payment work and its currency OVERRIDES whatever the body asked for, so a store that will not load ends the call with 500 and nothing is charged. On any authorization failure the reservations are released and the order and payment are persisted as cancelled, so a failed attempt still leaves a durable record. Capture is a separate call.
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2014,8 +2014,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Authorize a new order against a storefront, holding the funds without settling them
+     * Tallies a new order for the addressed store from the user, payment and order body, reserves its items, runs the processor authorization and answers the saved order with a Location header pointing at it. The gate is a token carrying admin or published scope, so a published storefront key is enough; no token is 401 and a token with neither bit is 403. The store is loaded BEFORE any payment work and its currency OVERRIDES whatever the body asked for, so a store that will not load ends the call with 500 and nothing is charged. On any authorization failure the reservations are released and the order and payment are persisted as cancelled, so a failed attempt still leaves a durable record. Capture is a separate call.
      * @param storeid  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2032,8 +2032,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Authorize a new order against a storefront, holding the funds without settling them (asynchronously)
+     * Tallies a new order for the addressed store from the user, payment and order body, reserves its items, runs the processor authorization and answers the saved order with a Location header pointing at it. The gate is a token carrying admin or published scope, so a published storefront key is enough; no token is 401 and a token with neither bit is 403. The store is loaded BEFORE any payment work and its currency OVERRIDES whatever the body asked for, so a store that will not load ends the call with 500 and nothing is charged. On any authorization failure the reservations are released and the order and payment are persisted as cancelled, so a failed attempt still leaves a durable record. Capture is a separate call.
      * @param storeid  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2127,8 +2127,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Authorize an order that already exists, holding the funds without settling them
+     * Continues the order named in the path rather than minting a new one, holding funds for it. The order is loaded from the caller org&#39;s own store, so an id belonging to another tenant is a 404. The rule most callers get wrong is that the body&#39;s order object is MERGED onto the loaded order before the tally — this is not a read-only reference, and a field sent here overwrites what is stored. The gate, the store resolution and the currency override behave exactly as on the bodiless-id sibling, and settling is still the capture call&#39;s job.
      * @param storeid  (required)
      * @param orderid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2144,8 +2144,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Authorize an order that already exists, holding the funds without settling them
+     * Continues the order named in the path rather than minting a new one, holding funds for it. The order is loaded from the caller org&#39;s own store, so an id belonging to another tenant is a 404. The rule most callers get wrong is that the body&#39;s order object is MERGED onto the loaded order before the tally — this is not a read-only reference, and a field sent here overwrites what is stored. The gate, the store resolution and the currency override behave exactly as on the bodiless-id sibling, and settling is still the capture call&#39;s job.
      * @param storeid  (required)
      * @param orderid  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -2163,8 +2163,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Authorize an order that already exists, holding the funds without settling them (asynchronously)
+     * Continues the order named in the path rather than minting a new one, holding funds for it. The order is loaded from the caller org&#39;s own store, so an id belonging to another tenant is a 404. The rule most callers get wrong is that the body&#39;s order object is MERGED onto the loaded order before the tally — this is not a read-only reference, and a field sent here overwrites what is stored. The gate, the store resolution and the currency override behave exactly as on the bodiless-id sibling, and settling is still the capture call&#39;s job.
      * @param storeid  (required)
      * @param orderid  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2259,8 +2259,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Capture a previously authorized order and settle the payment
+     * Settles the order named in the path — the second half of the two-step flow — and answers the updated order with a Location header. Dispatch follows the order&#39;s STORED payment type, and a successful capture is the moment the rest of the system learns about the sale: order and payment rows are updated, coupon redemptions, referral, cart and stats are written, the confirmation email goes out, and the paid and completed events are emitted. A capture failure releases the order&#39;s inventory reservations and answers 400, so a failed settlement never leaves items held.
      * @param storeid  (required)
      * @param orderid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2276,8 +2276,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Capture a previously authorized order and settle the payment
+     * Settles the order named in the path — the second half of the two-step flow — and answers the updated order with a Location header. Dispatch follows the order&#39;s STORED payment type, and a successful capture is the moment the rest of the system learns about the sale: order and payment rows are updated, coupon redemptions, referral, cart and stats are written, the confirmation email goes out, and the paid and completed events are emitted. A capture failure releases the order&#39;s inventory reservations and answers 400, so a failed settlement never leaves items held.
      * @param storeid  (required)
      * @param orderid  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -2295,8 +2295,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Capture a previously authorized order and settle the payment (asynchronously)
+     * Settles the order named in the path — the second half of the two-step flow — and answers the updated order with a Location header. Dispatch follows the order&#39;s STORED payment type, and a successful capture is the moment the rest of the system learns about the sale: order and payment rows are updated, coupon redemptions, referral, cart and stats are written, the confirmation email goes out, and the paid and completed events are emitted. A capture failure releases the order&#39;s inventory reservations and answers 400, so a failed settlement never leaves items held.
      * @param storeid  (required)
      * @param orderid  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2384,8 +2384,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Authorize and capture a new order in one call
+     * Runs authorization and capture back to back against a freshly created order — the one-step flow for callers with no reason to hold funds. It takes the authorize body and inherits every authorize rule: the store&#39;s currency wins over the body, the items are reserved before the processor is called, and the amount bounds the processor enforces still apply. There is no order id on this address, so it can never continue an existing order. Either half failing answers 400, and the capture side effects — confirmation email, redemptions, stats, the paid and completed events — run only when both halves succeed.
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2400,8 +2400,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Authorize and capture a new order in one call
+     * Runs authorization and capture back to back against a freshly created order — the one-step flow for callers with no reason to hold funds. It takes the authorize body and inherits every authorize rule: the store&#39;s currency wins over the body, the items are reserved before the processor is called, and the amount bounds the processor enforces still apply. There is no order id on this address, so it can never continue an existing order. Either half failing answers 400, and the capture side effects — confirmation email, redemptions, stats, the paid and completed events — run only when both halves succeed.
      * @param storeid  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2418,8 +2418,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Authorize and capture a new order in one call (asynchronously)
+     * Runs authorization and capture back to back against a freshly created order — the one-step flow for callers with no reason to hold funds. It takes the authorize body and inherits every authorize rule: the store&#39;s currency wins over the body, the items are reserved before the processor is called, and the amount bounds the processor enforces still apply. There is no order id on this address, so it can never continue an existing order. Either half failing answers 400, and the capture side effects — confirmation email, redemptions, stats, the paid and completed events — run only when both halves succeed.
      * @param storeid  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2506,8 +2506,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Authorize a new order against a storefront, holding the funds — the checkout spelling
+     * Authorizes a new order for the addressed store and holds the funds, answering the saved order with a Location header. It binds the identical handler as the shorter authorize address, so the two are ONE operation at two spellings and not two behaviours; the checkout prefix is the newer one. Every rule carries over: admin or published scope on the token, the store loaded first with its currency overriding the body, items reserved before the processor call, and reservations released with the order persisted cancelled on failure. Nothing is settled here.
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2522,8 +2522,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Authorize a new order against a storefront, holding the funds — the checkout spelling
+     * Authorizes a new order for the addressed store and holds the funds, answering the saved order with a Location header. It binds the identical handler as the shorter authorize address, so the two are ONE operation at two spellings and not two behaviours; the checkout prefix is the newer one. Every rule carries over: admin or published scope on the token, the store loaded first with its currency overriding the body, items reserved before the processor call, and reservations released with the order persisted cancelled on failure. Nothing is settled here.
      * @param storeid  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2540,8 +2540,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Authorize a new order against a storefront, holding the funds — the checkout spelling (asynchronously)
+     * Authorizes a new order for the addressed store and holds the funds, answering the saved order with a Location header. It binds the identical handler as the shorter authorize address, so the two are ONE operation at two spellings and not two behaviours; the checkout prefix is the newer one. Every rule carries over: admin or published scope on the token, the store loaded first with its currency overriding the body, items reserved before the processor call, and reservations released with the order persisted cancelled on failure. Nothing is settled here.
      * @param storeid  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2635,8 +2635,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Authorize an existing order, holding the funds — the checkout spelling
+     * Continues the order named in the path rather than minting one, and shares its handler byte for byte with the unprefixed authorize-by-id address. The order is loaded from the caller org&#39;s own store, so another tenant&#39;s id is a 404, and the body&#39;s order object is merged onto the loaded row before the tally — a field sent here overwrites what is stored. Store resolution, the token gate and the currency override behave as on every other authorize address; settle with the capture address and the same order id.
      * @param storeid  (required)
      * @param orderid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2652,8 +2652,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Authorize an existing order, holding the funds — the checkout spelling
+     * Continues the order named in the path rather than minting one, and shares its handler byte for byte with the unprefixed authorize-by-id address. The order is loaded from the caller org&#39;s own store, so another tenant&#39;s id is a 404, and the body&#39;s order object is merged onto the loaded row before the tally — a field sent here overwrites what is stored. Store resolution, the token gate and the currency override behave as on every other authorize address; settle with the capture address and the same order id.
      * @param storeid  (required)
      * @param orderid  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -2671,8 +2671,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Authorize an existing order, holding the funds — the checkout spelling (asynchronously)
+     * Continues the order named in the path rather than minting one, and shares its handler byte for byte with the unprefixed authorize-by-id address. The order is loaded from the caller org&#39;s own store, so another tenant&#39;s id is a 404, and the body&#39;s order object is merged onto the loaded row before the tally — a field sent here overwrites what is stored. Store resolution, the token gate and the currency override behave as on every other authorize address; settle with the capture address and the same order id.
      * @param storeid  (required)
      * @param orderid  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2767,8 +2767,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Capture a previously authorized order and settle it — the checkout spelling
+     * Settles the authorized order named in the path and answers the updated order with a Location header, running the same handler as the unprefixed capture address. Dispatch follows the order&#39;s stored payment type. Success is what triggers the downstream work — order and payment updates, redemptions, referral, cart and stats, the confirmation email, and the paid and completed events — while a failure releases the order&#39;s inventory reservations and answers 400.
      * @param storeid  (required)
      * @param orderid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2784,8 +2784,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Capture a previously authorized order and settle it — the checkout spelling
+     * Settles the authorized order named in the path and answers the updated order with a Location header, running the same handler as the unprefixed capture address. Dispatch follows the order&#39;s stored payment type. Success is what triggers the downstream work — order and payment updates, redemptions, referral, cart and stats, the confirmation email, and the paid and completed events — while a failure releases the order&#39;s inventory reservations and answers 400.
      * @param storeid  (required)
      * @param orderid  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -2803,8 +2803,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Capture a previously authorized order and settle it — the checkout spelling (asynchronously)
+     * Settles the authorized order named in the path and answers the updated order with a Location header, running the same handler as the unprefixed capture address. Dispatch follows the order&#39;s stored payment type. Success is what triggers the downstream work — order and payment updates, redemptions, referral, cart and stats, the confirmation email, and the paid and completed events — while a failure releases the order&#39;s inventory reservations and answers 400.
      * @param storeid  (required)
      * @param orderid  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2892,8 +2892,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Authorize and capture a new order in one call — the checkout spelling
+     * Performs authorization and capture back to back against a newly created order for the addressed store, on the same handler as the unprefixed charge address. It takes the authorize body and inherits every authorize rule, including the store&#39;s currency winning over the body and the items being reserved before the processor is called. There is no order id on this address, so it can never continue an existing order. Either half failing answers 400, and the capture side effects run only when both succeed.
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2908,8 +2908,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Authorize and capture a new order in one call — the checkout spelling
+     * Performs authorization and capture back to back against a newly created order for the addressed store, on the same handler as the unprefixed charge address. It takes the authorize body and inherits every authorize rule, including the store&#39;s currency winning over the body and the items being reserved before the processor is called. There is no order id on this address, so it can never continue an existing order. Either half failing answers 400, and the capture side effects run only when both succeed.
      * @param storeid  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2926,8 +2926,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Authorize and capture a new order in one call — the checkout spelling (asynchronously)
+     * Performs authorization and capture back to back against a newly created order for the addressed store, on the same handler as the unprefixed charge address. It takes the authorize body and inherits every authorize rule, including the store&#39;s currency winning over the body and the items being reserved before the processor is called. There is no order id on this address, so it can never continue an existing order. Either half failing answers 400, and the capture side effects run only when both succeed.
      * @param storeid  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3021,8 +3021,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * PayPal cancel by pay key — refuses, exactly as the unprefixed address does
+     * Meant to void the payments carrying the given pay key, stamp them cancelled and cancel the order, but the shared checkout handler resolves its order from an ORDER ID path parameter this route does not carry. The result is an untyped order and a cancel dispatch that refuses with 400 before the pay key lookup ever runs. Token gate, namespacing and store resolution happen first, so a missing token is still 401 and an unloadable store still 500. It is the same handler as the unprefixed cancel address, with the same outcome.
      * @param storeid  (required)
      * @param payKey  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3038,8 +3038,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * PayPal cancel by pay key — refuses, exactly as the unprefixed address does
+     * Meant to void the payments carrying the given pay key, stamp them cancelled and cancel the order, but the shared checkout handler resolves its order from an ORDER ID path parameter this route does not carry. The result is an untyped order and a cancel dispatch that refuses with 400 before the pay key lookup ever runs. Token gate, namespacing and store resolution happen first, so a missing token is still 401 and an unloadable store still 500. It is the same handler as the unprefixed cancel address, with the same outcome.
      * @param storeid  (required)
      * @param payKey  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -3057,8 +3057,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * PayPal cancel by pay key — refuses, exactly as the unprefixed address does (asynchronously)
+     * Meant to void the payments carrying the given pay key, stamp them cancelled and cancel the order, but the shared checkout handler resolves its order from an ORDER ID path parameter this route does not carry. The result is an untyped order and a cancel dispatch that refuses with 400 before the pay key lookup ever runs. Token gate, namespacing and store resolution happen first, so a missing token is still 401 and an unloadable store still 500. It is the same handler as the unprefixed cancel address, with the same outcome.
      * @param storeid  (required)
      * @param payKey  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -3153,8 +3153,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * PayPal confirm by pay key — refuses, exactly as the unprefixed address does
+     * Meant to mark the payments carrying the given pay key as paid and set the order to paid, it cannot reach that work from this address: the shared checkout handler takes its order from an ORDER ID path parameter this route does not carry, so the order is always fresh and untyped and the confirm dispatch refuses with 400 before the pay key is queried. The token gate, the namespace middleware and the store lookup all run ahead of that, so authentication and store failures surface first. Behaviour is identical to the unprefixed confirm address; the checkout prefix changes nothing here.
      * @param storeid  (required)
      * @param payKey  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3170,8 +3170,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * PayPal confirm by pay key — refuses, exactly as the unprefixed address does
+     * Meant to mark the payments carrying the given pay key as paid and set the order to paid, it cannot reach that work from this address: the shared checkout handler takes its order from an ORDER ID path parameter this route does not carry, so the order is always fresh and untyped and the confirm dispatch refuses with 400 before the pay key is queried. The token gate, the namespace middleware and the store lookup all run ahead of that, so authentication and store failures surface first. Behaviour is identical to the unprefixed confirm address; the checkout prefix changes nothing here.
      * @param storeid  (required)
      * @param payKey  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -3189,8 +3189,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * PayPal confirm by pay key — refuses, exactly as the unprefixed address does (asynchronously)
+     * Meant to mark the payments carrying the given pay key as paid and set the order to paid, it cannot reach that work from this address: the shared checkout handler takes its order from an ORDER ID path parameter this route does not carry, so the order is always fresh and untyped and the confirm dispatch refuses with 400 before the pay key is queried. The token gate, the namespace middleware and the store lookup all run ahead of that, so authentication and store failures surface first. Behaviour is identical to the unprefixed confirm address; the checkout prefix changes nothing here.
      * @param storeid  (required)
      * @param payKey  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -3278,8 +3278,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Start a PayPal authorization for a new order — the checkout spelling
+     * Begins a PayPal authorization by running the ordinary store authorize flow, since the route binds that exact handler — body, store resolution, tally, reservations and failure behaviour are the authorize address&#39;s, unchanged. The processor is chosen from the body&#39;s payment type, so this path reaches PayPal only when that type says so. A successful PayPal authorization stamps a pay key onto the payment, which is the key the confirm and cancel addresses filter on. Build against the plain authorize address instead.
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3294,8 +3294,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Start a PayPal authorization for a new order — the checkout spelling
+     * Begins a PayPal authorization by running the ordinary store authorize flow, since the route binds that exact handler — body, store resolution, tally, reservations and failure behaviour are the authorize address&#39;s, unchanged. The processor is chosen from the body&#39;s payment type, so this path reaches PayPal only when that type says so. A successful PayPal authorization stamps a pay key onto the payment, which is the key the confirm and cancel addresses filter on. Build against the plain authorize address instead.
      * @param storeid  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3312,8 +3312,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Start a PayPal authorization for a new order — the checkout spelling (asynchronously)
+     * Begins a PayPal authorization by running the ordinary store authorize flow, since the route binds that exact handler — body, store resolution, tally, reservations and failure behaviour are the authorize address&#39;s, unchanged. The processor is chosen from the body&#39;s payment type, so this path reaches PayPal only when that type says so. A successful PayPal authorization stamps a pay key onto the payment, which is the key the confirm and cancel addresses filter on. Build against the plain authorize address instead.
      * @param storeid  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3407,8 +3407,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Add a listing override under a new key
+     * Creates the override and answers the store&#39;s ENTIRE listing map at 201 with a Location header — not just the entry that was added. A key already present is refused 400: creation never silently overwrites, so changing an existing listing has to be an explicit replace. The stored listing has its currency stamped from the store&#39;s own, which the replace path does not do. The key is matched exactly here, with none of the slug or SKU fallback the read allows. Admin-gated and resolved inside the caller org&#39;s namespace.
      * @param storeid  (required)
      * @param key  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3424,8 +3424,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Add a listing override under a new key
+     * Creates the override and answers the store&#39;s ENTIRE listing map at 201 with a Location header — not just the entry that was added. A key already present is refused 400: creation never silently overwrites, so changing an existing listing has to be an explicit replace. The stored listing has its currency stamped from the store&#39;s own, which the replace path does not do. The key is matched exactly here, with none of the slug or SKU fallback the read allows. Admin-gated and resolved inside the caller org&#39;s namespace.
      * @param storeid  (required)
      * @param key  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -3443,8 +3443,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Add a listing override under a new key (asynchronously)
+     * Creates the override and answers the store&#39;s ENTIRE listing map at 201 with a Location header — not just the entry that was added. A key already present is refused 400: creation never silently overwrites, so changing an existing listing has to be an explicit replace. The stored listing has its currency stamped from the store&#39;s own, which the replace path does not do. The key is matched exactly here, with none of the slug or SKU fallback the read allows. Admin-gated and resolved inside the caller org&#39;s namespace.
      * @param storeid  (required)
      * @param key  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -3539,8 +3539,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * PayPal cancel by pay key — refuses, because a pay key alone does not identify the order
+     * Intended to void the payments carrying the given pay key, stamp them cancelled and cancel the order, it never reaches that work: the shared checkout handler reads its order from an ORDER ID path parameter this route does not carry, leaving an untyped order that the cancel dispatch refuses with 400 before the pay key lookup runs. Authentication, namespacing and store resolution happen ahead of the refusal, so a missing token is 401 and an unloadable store 500. Cancelling a real PayPal authorization needs an address that carries the order id.
      * @param storeid  (required)
      * @param payKey  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3556,8 +3556,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * PayPal cancel by pay key — refuses, because a pay key alone does not identify the order
+     * Intended to void the payments carrying the given pay key, stamp them cancelled and cancel the order, it never reaches that work: the shared checkout handler reads its order from an ORDER ID path parameter this route does not carry, leaving an untyped order that the cancel dispatch refuses with 400 before the pay key lookup runs. Authentication, namespacing and store resolution happen ahead of the refusal, so a missing token is 401 and an unloadable store 500. Cancelling a real PayPal authorization needs an address that carries the order id.
      * @param storeid  (required)
      * @param payKey  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -3575,8 +3575,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * PayPal cancel by pay key — refuses, because a pay key alone does not identify the order (asynchronously)
+     * Intended to void the payments carrying the given pay key, stamp them cancelled and cancel the order, it never reaches that work: the shared checkout handler reads its order from an ORDER ID path parameter this route does not carry, leaving an untyped order that the cancel dispatch refuses with 400 before the pay key lookup runs. Authentication, namespacing and store resolution happen ahead of the refusal, so a missing token is 401 and an unloadable store 500. Cancelling a real PayPal authorization needs an address that carries the order id.
      * @param storeid  (required)
      * @param payKey  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -3671,8 +3671,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * PayPal confirm by pay key — refuses, because a pay key alone does not identify the order
+     * Intended to mark every payment carrying the given pay key as paid and flip the order to paid, it cannot do that from this address and does not pretend to: the shared checkout handler resolves its order from an ORDER ID path parameter that this route does not carry, so it always works against a fresh untyped order and the confirm dispatch refuses it with 400 before the pay key is ever queried. The token gate, the namespace and the store lookup all run ahead of that, so a missing token is still 401 and an unloadable store still 500. Drive a PayPal return through an address that carries the order id.
      * @param storeid  (required)
      * @param payKey  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3688,8 +3688,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * PayPal confirm by pay key — refuses, because a pay key alone does not identify the order
+     * Intended to mark every payment carrying the given pay key as paid and flip the order to paid, it cannot do that from this address and does not pretend to: the shared checkout handler resolves its order from an ORDER ID path parameter that this route does not carry, so it always works against a fresh untyped order and the confirm dispatch refuses it with 400 before the pay key is ever queried. The token gate, the namespace and the store lookup all run ahead of that, so a missing token is still 401 and an unloadable store still 500. Drive a PayPal return through an address that carries the order id.
      * @param storeid  (required)
      * @param payKey  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -3707,8 +3707,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * PayPal confirm by pay key — refuses, because a pay key alone does not identify the order (asynchronously)
+     * Intended to mark every payment carrying the given pay key as paid and flip the order to paid, it cannot do that from this address and does not pretend to: the shared checkout handler resolves its order from an ORDER ID path parameter that this route does not carry, so it always works against a fresh untyped order and the confirm dispatch refuses it with 400 before the pay key is ever queried. The token gate, the namespace and the store lookup all run ahead of that, so a missing token is still 401 and an unloadable store still 500. Drive a PayPal return through an address that carries the order id.
      * @param storeid  (required)
      * @param payKey  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -3796,8 +3796,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Start a PayPal authorization for a new order
+     * Runs the ordinary store authorize flow — the route binds that very handler, so the body, the store resolution, the tally, the reservations and the failure behaviour are the authorize address&#39;s, unchanged. It reaches PayPal only when the body&#39;s payment type says so; nothing about this path forces the processor, so a card-typed payment posted here authorizes on the card processor instead. A successful PayPal authorization stamps a pay key onto the payment, which is the key the confirm and cancel addresses filter on. It is the older entry point; the plain authorize address is the one to build against.
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3812,8 +3812,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Start a PayPal authorization for a new order
+     * Runs the ordinary store authorize flow — the route binds that very handler, so the body, the store resolution, the tally, the reservations and the failure behaviour are the authorize address&#39;s, unchanged. It reaches PayPal only when the body&#39;s payment type says so; nothing about this path forces the processor, so a card-typed payment posted here authorizes on the card processor instead. A successful PayPal authorization stamps a pay key onto the payment, which is the key the confirm and cancel addresses filter on. It is the older entry point; the plain authorize address is the one to build against.
      * @param storeid  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3830,8 +3830,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Start a PayPal authorization for a new order (asynchronously)
+     * Runs the ordinary store authorize flow — the route binds that very handler, so the body, the store resolution, the tally, the reservations and the failure behaviour are the authorize address&#39;s, unchanged. It reaches PayPal only when the body&#39;s payment type says so; nothing about this path forces the processor, so a card-typed payment posted here authorizes on the card processor instead. A successful PayPal authorization stamps a pay key onto the payment, which is the key the confirm and cancel addresses filter on. It is the older entry point; the plain authorize address is the one to build against.
      * @param storeid  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3918,8 +3918,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Start this store&#39;s no-card trial on the entry plan
+     * Creates a trialing subscription for the addressed store on the entry plan and grants that plan&#39;s trial credit, answering 201 when this call actually started one and 200 with a reason otherwise — not_new when the store already has billing history, trial_not_configured when no entry plan is wired. The window is always the SEVEN-DAY no-card trial, because this address never presents a card; the longer card-present window is reached only by adding a card afterwards. Entitlement is per store while the billing subject is the org, so every store an org owns takes its own trial. Admin-gated and namespaced to the caller&#39;s org: no resolvable store is 404 with store_required, and a backing-store failure is 503.
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3934,8 +3934,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Start this store&#39;s no-card trial on the entry plan
+     * Creates a trialing subscription for the addressed store on the entry plan and grants that plan&#39;s trial credit, answering 201 when this call actually started one and 200 with a reason otherwise — not_new when the store already has billing history, trial_not_configured when no entry plan is wired. The window is always the SEVEN-DAY no-card trial, because this address never presents a card; the longer card-present window is reached only by adding a card afterwards. Entitlement is per store while the billing subject is the org, so every store an org owns takes its own trial. Admin-gated and namespaced to the caller&#39;s org: no resolvable store is 404 with store_required, and a backing-store failure is 503.
      * @param storeid  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3952,8 +3952,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Start this store&#39;s no-card trial on the entry plan (asynchronously)
+     * Creates a trialing subscription for the addressed store on the entry plan and grants that plan&#39;s trial credit, answering 201 when this call actually started one and 200 with a reason otherwise — not_new when the store already has billing history, trial_not_configured when no entry plan is wired. The window is always the SEVEN-DAY no-card trial, because this address never presents a card; the longer card-present window is reached only by adding a card afterwards. Entitlement is per store while the billing subject is the org, so every store an org owns takes its own trial. Admin-gated and namespaced to the caller&#39;s org: no resolvable store is 404 with store_required, and a backing-store failure is 503.
      * @param storeid  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4033,8 +4033,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Mint your org&#39;s least-privilege storefront read key
+     * Answers a freshly minted token carrying ONLY the published-read permission — enough for a logged-out shopper&#39;s storefront to read your published catalog and nothing more, with no write and no admin scope. It is org-bound, signed with the org&#39;s own secret and subject to the org id, so unlike a shared service token it can never act on another tenant. Minting ROTATES rather than accumulates: the previous storefront token is dropped first and is invalid immediately, so re-minting is how you revoke. Admin is enforced by the handler as well as the route, because the route&#39;s token gate does not apply on the identity path and a plain member must not be able to mint their org&#39;s key.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -4048,8 +4048,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Mint your org&#39;s least-privilege storefront read key
+     * Answers a freshly minted token carrying ONLY the published-read permission — enough for a logged-out shopper&#39;s storefront to read your published catalog and nothing more, with no write and no admin scope. It is org-bound, signed with the org&#39;s own secret and subject to the org id, so unlike a shared service token it can never act on another tenant. Minting ROTATES rather than accumulates: the previous storefront token is dropped first and is invalid immediately, so re-minting is how you revoke. Admin is enforced by the handler as well as the route, because the route&#39;s token gate does not apply on the identity path and a plain member must not be able to mint their org&#39;s key.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4065,8 +4065,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Mint your org&#39;s least-privilege storefront read key (asynchronously)
+     * Answers a freshly minted token carrying ONLY the published-read permission — enough for a logged-out shopper&#39;s storefront to read your published catalog and nothing more, with no write and no admin scope. It is org-bound, signed with the org&#39;s own secret and subject to the org id, so unlike a shared service token it can never act on another tenant. Minting ROTATES rather than accumulates: the previous storefront token is dropped first and is invalid immediately, so re-minting is how you revoke. Admin is enforced by the handler as well as the route, because the route&#39;s token gate does not apply on the identity path and a plain member must not be able to mint their org&#39;s key.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4152,8 +4152,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Replace a storefront outright
+     * This is a true REPLACEMENT, not a merge: the stored key is preserved but the body is decoded onto a fresh entity, so every field the body omits is written back as its zero value. Use the partial update when you mean to change part of a store. The id is resolved inside the caller org&#39;s own namespace, so an unknown or foreign id is a 404 before anything is written. Requires an admin token, or one holding both store read and store write.
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4168,8 +4168,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Replace a storefront outright
+     * This is a true REPLACEMENT, not a merge: the stored key is preserved but the body is decoded onto a fresh entity, so every field the body omits is written back as its zero value. Use the partial update when you mean to change part of a store. The id is resolved inside the caller org&#39;s own namespace, so an unknown or foreign id is a 404 before anything is written. Requires an admin token, or one holding both store read and store write.
      * @param storeid  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4186,8 +4186,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Replace a storefront outright (asynchronously)
+     * This is a true REPLACEMENT, not a merge: the stored key is preserved but the body is decoded onto a fresh entity, so every field the body omits is written back as its zero value. Use the partial update when you mean to change part of a store. The id is resolved inside the caller org&#39;s own namespace, so an unknown or foreign id is a 404 before anything is written. Requires an admin token, or one holding both store read and store write.
      * @param storeid  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4281,8 +4281,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Upsert a listing override
+     * Decodes the body over the existing listing when the key is present, so fields it omits keep their stored values, and builds the listing from the body alone when the key is new. Answers 200 when it replaced something and 201 with a Location header when it created it; either way the body is the store&#39;s entire listing map, not the single entry. Unlike creation, this path does NOT restamp the listing&#39;s currency from the store. Admin-gated, with the store resolved inside the caller org&#39;s namespace.
      * @param storeid  (required)
      * @param key  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4298,8 +4298,8 @@ public class StoreApi {
     }
 
     /**
-     * 
-     * 
+     * Upsert a listing override
+     * Decodes the body over the existing listing when the key is present, so fields it omits keep their stored values, and builds the listing from the body alone when the key is new. Answers 200 when it replaced something and 201 with a Location header when it created it; either way the body is the store&#39;s entire listing map, not the single entry. Unlike creation, this path does NOT restamp the listing&#39;s currency from the store. Admin-gated, with the store resolved inside the caller org&#39;s namespace.
      * @param storeid  (required)
      * @param key  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -4317,8 +4317,8 @@ public class StoreApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Upsert a listing override (asynchronously)
+     * Decodes the body over the existing listing when the key is present, so fields it omits keep their stored values, and builds the listing from the body alone when the key is new. Answers 200 when it replaced something and 201 with a Location header when it created it; either way the body is the store&#39;s entire listing map, not the single entry. Unlike creation, this path does NOT restamp the listing&#39;s currency from the store. Admin-gated, with the store resolved inside the caller org&#39;s namespace.
      * @param storeid  (required)
      * @param key  (required)
      * @param _callback The callback to be executed when the API call finishes

@@ -27,6 +27,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.AffiliatesAdminAffiliateEnvelope;
+import ai.hanzo.cloud.model.AffiliatesAdminListEnvelope;
+import ai.hanzo.cloud.model.AffiliatesAdminPayoutEnvelope;
+import ai.hanzo.cloud.model.AffiliatesAdminSweepEnvelope;
+import ai.hanzo.cloud.model.AffiliatesApproveRequest;
+import ai.hanzo.cloud.model.AffiliatesError;
+import ai.hanzo.cloud.model.AffiliatesPayoutRequest;
 import ai.hanzo.cloud.model.AnalyticsAdminListUsers200ResponseInner;
 import ai.hanzo.cloud.model.AnalyticsWebsite;
 import ai.hanzo.cloud.model.CloudAccessOut;
@@ -107,6 +114,8 @@ import ai.hanzo.cloud.model.CloudVerifyOut;
 import ai.hanzo.cloud.model.CloudVolumeIn;
 import ai.hanzo.cloud.model.CloudVolumeSnapshotOut;
 import ai.hanzo.cloud.model.CloudWaitlistBoostRequest;
+import ai.hanzo.cloud.model.ReferralsAdminListEnvelope;
+import ai.hanzo.cloud.model.ReferralsError;
 import ai.hanzo.cloud.model.S3AdminInfo200Response;
 import ai.hanzo.cloud.model.S3CreateServiceAccountRequest;
 import ai.hanzo.cloud.model.S3ListServiceAccounts200Response;
@@ -8469,6 +8478,7 @@ public class AdminApi {
     }
     /**
      * Build call for cloudGetV1AdminAffiliates
+     * @param limit Max rows to return (default 500, max 1000). (optional, default to 500)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -8476,10 +8486,12 @@ public class AdminApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Affiliate directory and summary. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1AdminAffiliatesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1AdminAffiliatesCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8504,7 +8516,12 @@ public class AdminApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -8523,46 +8540,56 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudGetV1AdminAffiliatesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudGetV1AdminAffiliatesCall(_callback);
+    private okhttp3.Call cloudGetV1AdminAffiliatesValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return cloudGetV1AdminAffiliatesCall(limit, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Every affiliate in the fleet, with a summary
+     * Lists every affiliate across the fleet with its ORG exposed, plus a fleet summary of lifetime accrued, still-pending and paid commission in integer cents.  PLATFORM SUDO ONLY, and a non-admin is refused outright. This is the cross-tenant view and it names orgs — exactly what the partner-facing leaderboard refuses to do. There is deliberately no org-scoped variant of this read; a partner sees its own standing through its own dashboard. Bounded per request.
+     * @param limit Max rows to return (default 500, max 1000). (optional, default to 500)
+     * @return AffiliatesAdminListEnvelope
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Affiliate directory and summary. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1AdminAffiliates() throws ApiException {
-        cloudGetV1AdminAffiliatesWithHttpInfo();
+    public AffiliatesAdminListEnvelope cloudGetV1AdminAffiliates(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<AffiliatesAdminListEnvelope> localVarResp = cloudGetV1AdminAffiliatesWithHttpInfo(limit);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Every affiliate in the fleet, with a summary
+     * Lists every affiliate across the fleet with its ORG exposed, plus a fleet summary of lifetime accrued, still-pending and paid commission in integer cents.  PLATFORM SUDO ONLY, and a non-admin is refused outright. This is the cross-tenant view and it names orgs — exactly what the partner-facing leaderboard refuses to do. There is deliberately no org-scoped variant of this read; a partner sees its own standing through its own dashboard. Bounded per request.
+     * @param limit Max rows to return (default 500, max 1000). (optional, default to 500)
+     * @return ApiResponse&lt;AffiliatesAdminListEnvelope&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Affiliate directory and summary. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1AdminAffiliatesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudGetV1AdminAffiliatesValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<AffiliatesAdminListEnvelope> cloudGetV1AdminAffiliatesWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = cloudGetV1AdminAffiliatesValidateBeforeCall(limit, null);
+        Type localVarReturnType = new TypeToken<AffiliatesAdminListEnvelope>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Every affiliate in the fleet, with a summary (asynchronously)
+     * Lists every affiliate across the fleet with its ORG exposed, plus a fleet summary of lifetime accrued, still-pending and paid commission in integer cents.  PLATFORM SUDO ONLY, and a non-admin is refused outright. This is the cross-tenant view and it names orgs — exactly what the partner-facing leaderboard refuses to do. There is deliberately no org-scoped variant of this read; a partner sees its own standing through its own dashboard. Bounded per request.
+     * @param limit Max rows to return (default 500, max 1000). (optional, default to 500)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -8570,13 +8597,16 @@ public class AdminApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Affiliate directory and summary. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1AdminAffiliatesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1AdminAffiliatesAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<AffiliatesAdminListEnvelope> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudGetV1AdminAffiliatesValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudGetV1AdminAffiliatesValidateBeforeCall(limit, _callback);
+        Type localVarReturnType = new TypeToken<AffiliatesAdminListEnvelope>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -9075,6 +9105,7 @@ public class AdminApi {
     }
     /**
      * Build call for cloudGetV1AdminReferrals
+     * @param limit Max rows to return. Defaults to 500 when absent/invalid/&lt;&#x3D;0; capped at 1000.  (optional, default to 500)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -9082,10 +9113,12 @@ public class AdminApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The referral directory and summary, in the admin envelope. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden - Insufficient permissions </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1AdminReferralsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1AdminReferralsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9110,7 +9143,12 @@ public class AdminApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -9129,46 +9167,56 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudGetV1AdminReferralsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudGetV1AdminReferralsCall(_callback);
+    private okhttp3.Call cloudGetV1AdminReferralsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return cloudGetV1AdminReferralsCall(limit, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Referral analytics: top referrers, conversion, and liability
+     * The referral board: the top referrers by lifetime commission, the funnel conversion rate (referred orgs that have actually produced commission, over all referred orgs), and the accrual LIABILITY the platform owes, broken out by upline level.  Read the liability figure carefully — it is commission accrued and NOT yet paid, so it is money owed, not money spent, and the per-level split says how much of it comes from direct referrals versus the second and third levels.  PLATFORM SUDO ONLY, cross-tenant, and it names orgs. It reads the SAME single attribution spine the accrual itself walks, so the board and the ledger cannot disagree. Amounts are integer cents.
+     * @param limit Max rows to return. Defaults to 500 when absent/invalid/&lt;&#x3D;0; capped at 1000.  (optional, default to 500)
+     * @return ReferralsAdminListEnvelope
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The referral directory and summary, in the admin envelope. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden - Insufficient permissions </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1AdminReferrals() throws ApiException {
-        cloudGetV1AdminReferralsWithHttpInfo();
+    public ReferralsAdminListEnvelope cloudGetV1AdminReferrals(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<ReferralsAdminListEnvelope> localVarResp = cloudGetV1AdminReferralsWithHttpInfo(limit);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Referral analytics: top referrers, conversion, and liability
+     * The referral board: the top referrers by lifetime commission, the funnel conversion rate (referred orgs that have actually produced commission, over all referred orgs), and the accrual LIABILITY the platform owes, broken out by upline level.  Read the liability figure carefully — it is commission accrued and NOT yet paid, so it is money owed, not money spent, and the per-level split says how much of it comes from direct referrals versus the second and third levels.  PLATFORM SUDO ONLY, cross-tenant, and it names orgs. It reads the SAME single attribution spine the accrual itself walks, so the board and the ledger cannot disagree. Amounts are integer cents.
+     * @param limit Max rows to return. Defaults to 500 when absent/invalid/&lt;&#x3D;0; capped at 1000.  (optional, default to 500)
+     * @return ApiResponse&lt;ReferralsAdminListEnvelope&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The referral directory and summary, in the admin envelope. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden - Insufficient permissions </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1AdminReferralsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudGetV1AdminReferralsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<ReferralsAdminListEnvelope> cloudGetV1AdminReferralsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = cloudGetV1AdminReferralsValidateBeforeCall(limit, null);
+        Type localVarReturnType = new TypeToken<ReferralsAdminListEnvelope>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Referral analytics: top referrers, conversion, and liability (asynchronously)
+     * The referral board: the top referrers by lifetime commission, the funnel conversion rate (referred orgs that have actually produced commission, over all referred orgs), and the accrual LIABILITY the platform owes, broken out by upline level.  Read the liability figure carefully — it is commission accrued and NOT yet paid, so it is money owed, not money spent, and the per-level split says how much of it comes from direct referrals versus the second and third levels.  PLATFORM SUDO ONLY, cross-tenant, and it names orgs. It reads the SAME single attribution spine the accrual itself walks, so the board and the ledger cannot disagree. Amounts are integer cents.
+     * @param limit Max rows to return. Defaults to 500 when absent/invalid/&lt;&#x3D;0; capped at 1000.  (optional, default to 500)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -9176,13 +9224,16 @@ public class AdminApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The referral directory and summary, in the admin envelope. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden - Insufficient permissions </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1AdminReferralsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1AdminReferralsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<ReferralsAdminListEnvelope> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudGetV1AdminReferralsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudGetV1AdminReferralsValidateBeforeCall(limit, _callback);
+        Type localVarReturnType = new TypeToken<ReferralsAdminListEnvelope>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -9504,8 +9555,8 @@ public class AdminApi {
     }
 
     /**
-     * 
-     * 
+     * Turn one model off, into beta for named orgs, or generally available
+     * Sets one model&#39;s availability overlay — and the price overrides applied on top of the catalog — then answers the new effective overlay, so a console needs no second read. The model id is the whole remaining path, so a slashed id like &#x60;anthropic/claude-opus-4.6&#x60; addresses intact.  SuperAdmin only; every other caller is 403, decided before the body is read. The overlay is PLATFORM-WIDE — this is the catalog every org prices against, not a per-org setting — and &#x60;betaOrgs&#x60; is what narrows a beta to named orgs.  Only the fields the patch names change; an entry with no overlay yet starts from the catalog default, which is enabled. &#x60;state&#x60; is the coherent tri-state setter (&#x60;off&#x60;|&#x60;beta&#x60;|&#x60;ga&#x60;) and the low-level &#x60;enabled&#x60;/&#x60;beta&#x60; flags are applied AFTER it, so they win where both are sent; anything else in &#x60;state&#x60; is 400. A field sent as an explicit &#x60;null&#x60; arrives indistinguishable from an absent one, so null does not clear anything.  The rule worth reading twice: a disabled entry that still carries beta orgs IS a beta — &#x60;{\&quot;enabled\&quot;:false,\&quot;betaOrgs\&quot;:[\&quot;acme\&quot;]}&#x60; leaves acme seeing the model. Only an explicit &#x60;off&#x60; (or &#x60;beta:false&#x60;) with an empty list is the absolute kill switch that a user&#39;s own beta opt-in can never re-open.  &#x60;overrides&#x60; is an RFC 7386 merge patch, stored and echoed back verbatim; it must be a JSON object or null — an array or a scalar is refused — and is bounded in size and nesting depth. An uninitialised overlay store answers 503.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -9520,8 +9571,8 @@ public class AdminApi {
     }
 
     /**
-     * 
-     * 
+     * Turn one model off, into beta for named orgs, or generally available
+     * Sets one model&#39;s availability overlay — and the price overrides applied on top of the catalog — then answers the new effective overlay, so a console needs no second read. The model id is the whole remaining path, so a slashed id like &#x60;anthropic/claude-opus-4.6&#x60; addresses intact.  SuperAdmin only; every other caller is 403, decided before the body is read. The overlay is PLATFORM-WIDE — this is the catalog every org prices against, not a per-org setting — and &#x60;betaOrgs&#x60; is what narrows a beta to named orgs.  Only the fields the patch names change; an entry with no overlay yet starts from the catalog default, which is enabled. &#x60;state&#x60; is the coherent tri-state setter (&#x60;off&#x60;|&#x60;beta&#x60;|&#x60;ga&#x60;) and the low-level &#x60;enabled&#x60;/&#x60;beta&#x60; flags are applied AFTER it, so they win where both are sent; anything else in &#x60;state&#x60; is 400. A field sent as an explicit &#x60;null&#x60; arrives indistinguishable from an absent one, so null does not clear anything.  The rule worth reading twice: a disabled entry that still carries beta orgs IS a beta — &#x60;{\&quot;enabled\&quot;:false,\&quot;betaOrgs\&quot;:[\&quot;acme\&quot;]}&#x60; leaves acme seeing the model. Only an explicit &#x60;off&#x60; (or &#x60;beta:false&#x60;) with an empty list is the absolute kill switch that a user&#39;s own beta opt-in can never re-open.  &#x60;overrides&#x60; is an RFC 7386 merge patch, stored and echoed back verbatim; it must be a JSON object or null — an array or a scalar is refused — and is bounded in size and nesting depth. An uninitialised overlay store answers 503.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -9538,8 +9589,8 @@ public class AdminApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Turn one model off, into beta for named orgs, or generally available (asynchronously)
+     * Sets one model&#39;s availability overlay — and the price overrides applied on top of the catalog — then answers the new effective overlay, so a console needs no second read. The model id is the whole remaining path, so a slashed id like &#x60;anthropic/claude-opus-4.6&#x60; addresses intact.  SuperAdmin only; every other caller is 403, decided before the body is read. The overlay is PLATFORM-WIDE — this is the catalog every org prices against, not a per-org setting — and &#x60;betaOrgs&#x60; is what narrows a beta to named orgs.  Only the fields the patch names change; an entry with no overlay yet starts from the catalog default, which is enabled. &#x60;state&#x60; is the coherent tri-state setter (&#x60;off&#x60;|&#x60;beta&#x60;|&#x60;ga&#x60;) and the low-level &#x60;enabled&#x60;/&#x60;beta&#x60; flags are applied AFTER it, so they win where both are sent; anything else in &#x60;state&#x60; is 400. A field sent as an explicit &#x60;null&#x60; arrives indistinguishable from an absent one, so null does not clear anything.  The rule worth reading twice: a disabled entry that still carries beta orgs IS a beta — &#x60;{\&quot;enabled\&quot;:false,\&quot;betaOrgs\&quot;:[\&quot;acme\&quot;]}&#x60; leaves acme seeing the model. Only an explicit &#x60;off&#x60; (or &#x60;beta:false&#x60;) with an empty list is the absolute kill switch that a user&#39;s own beta opt-in can never re-open.  &#x60;overrides&#x60; is an RFC 7386 merge patch, stored and echoed back verbatim; it must be a JSON object or null — an array or a scalar is refused — and is bounded in size and nesting depth. An uninitialised overlay store answers 503.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -9697,6 +9748,7 @@ public class AdminApi {
     /**
      * Build call for cloudPostV1AdminAffiliatesByIdApprove
      * @param id  (required)
+     * @param affiliatesApproveRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -9704,10 +9756,15 @@ public class AdminApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The approved affiliate. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Affiliate or code not found. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> The requested code is already taken. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AdminAffiliatesByIdApproveCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AdminAffiliatesByIdApproveCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable AffiliatesApproveRequest affiliatesApproveRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9721,7 +9778,7 @@ public class AdminApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = affiliatesApproveRequest;
 
         // create path and map variables
         String localVarPath = "/v1/admin/affiliates/{id}/approve"
@@ -9734,6 +9791,7 @@ public class AdminApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -9741,6 +9799,7 @@ public class AdminApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -9752,54 +9811,70 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1AdminAffiliatesByIdApproveValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudPostV1AdminAffiliatesByIdApproveValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable AffiliatesApproveRequest affiliatesApproveRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling cloudPostV1AdminAffiliatesByIdApprove(Async)");
         }
 
-        return cloudPostV1AdminAffiliatesByIdApproveCall(id, _callback);
+        return cloudPostV1AdminAffiliatesByIdApproveCall(id, affiliatesApproveRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Approve an affiliate and mint its code
+     * Approves an affiliate and MINTS its referral code — the moment the partner has a working share link and starts accruing.  The code is taken from the body if one is given, else the vanity code the applicant requested, else a slug derived for them. Codes are ONE global namespace, so a taken code is a 409 and nothing is approved. The minted code is also mirrored as a link row so click tracking is uniform across every code the affiliate holds; that mirror is best-effort and its failure never fails the approval.  Approval is what makes an affiliate eligible: before it, attribution against its code does not resolve and no sweep accrues to it. PLATFORM SUDO ONLY. Audited.
      * @param id  (required)
+     * @param affiliatesApproveRequest  (optional)
+     * @return AffiliatesAdminAffiliateEnvelope
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The approved affiliate. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Affiliate or code not found. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> The requested code is already taken. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1AdminAffiliatesByIdApprove(@javax.annotation.Nonnull String id) throws ApiException {
-        cloudPostV1AdminAffiliatesByIdApproveWithHttpInfo(id);
+    public AffiliatesAdminAffiliateEnvelope cloudPostV1AdminAffiliatesByIdApprove(@javax.annotation.Nonnull String id, @javax.annotation.Nullable AffiliatesApproveRequest affiliatesApproveRequest) throws ApiException {
+        ApiResponse<AffiliatesAdminAffiliateEnvelope> localVarResp = cloudPostV1AdminAffiliatesByIdApproveWithHttpInfo(id, affiliatesApproveRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
+     * Approve an affiliate and mint its code
+     * Approves an affiliate and MINTS its referral code — the moment the partner has a working share link and starts accruing.  The code is taken from the body if one is given, else the vanity code the applicant requested, else a slug derived for them. Codes are ONE global namespace, so a taken code is a 409 and nothing is approved. The minted code is also mirrored as a link row so click tracking is uniform across every code the affiliate holds; that mirror is best-effort and its failure never fails the approval.  Approval is what makes an affiliate eligible: before it, attribution against its code does not resolve and no sweep accrues to it. PLATFORM SUDO ONLY. Audited.
      * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @param affiliatesApproveRequest  (optional)
+     * @return ApiResponse&lt;AffiliatesAdminAffiliateEnvelope&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The approved affiliate. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Affiliate or code not found. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> The requested code is already taken. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1AdminAffiliatesByIdApproveWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1AdminAffiliatesByIdApproveValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<AffiliatesAdminAffiliateEnvelope> cloudPostV1AdminAffiliatesByIdApproveWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable AffiliatesApproveRequest affiliatesApproveRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1AdminAffiliatesByIdApproveValidateBeforeCall(id, affiliatesApproveRequest, null);
+        Type localVarReturnType = new TypeToken<AffiliatesAdminAffiliateEnvelope>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Approve an affiliate and mint its code (asynchronously)
+     * Approves an affiliate and MINTS its referral code — the moment the partner has a working share link and starts accruing.  The code is taken from the body if one is given, else the vanity code the applicant requested, else a slug derived for them. Codes are ONE global namespace, so a taken code is a 409 and nothing is approved. The minted code is also mirrored as a link row so click tracking is uniform across every code the affiliate holds; that mirror is best-effort and its failure never fails the approval.  Approval is what makes an affiliate eligible: before it, attribution against its code does not resolve and no sweep accrues to it. PLATFORM SUDO ONLY. Audited.
      * @param id  (required)
+     * @param affiliatesApproveRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -9807,18 +9882,25 @@ public class AdminApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The approved affiliate. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Affiliate or code not found. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> The requested code is already taken. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AdminAffiliatesByIdApproveAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AdminAffiliatesByIdApproveAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable AffiliatesApproveRequest affiliatesApproveRequest, final ApiCallback<AffiliatesAdminAffiliateEnvelope> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1AdminAffiliatesByIdApproveValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1AdminAffiliatesByIdApproveValidateBeforeCall(id, affiliatesApproveRequest, _callback);
+        Type localVarReturnType = new TypeToken<AffiliatesAdminAffiliateEnvelope>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1AdminAffiliatesByIdPayout
      * @param id  (required)
+     * @param affiliatesPayoutRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -9826,10 +9908,14 @@ public class AdminApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The recorded payout and the updated affiliate. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Affiliate or code not found. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AdminAffiliatesByIdPayoutCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AdminAffiliatesByIdPayoutCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AffiliatesPayoutRequest affiliatesPayoutRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9843,7 +9929,7 @@ public class AdminApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = affiliatesPayoutRequest;
 
         // create path and map variables
         String localVarPath = "/v1/admin/affiliates/{id}/payout"
@@ -9856,6 +9942,7 @@ public class AdminApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -9863,6 +9950,7 @@ public class AdminApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -9874,54 +9962,73 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1AdminAffiliatesByIdPayoutValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudPostV1AdminAffiliatesByIdPayoutValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AffiliatesPayoutRequest affiliatesPayoutRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling cloudPostV1AdminAffiliatesByIdPayout(Async)");
         }
 
-        return cloudPostV1AdminAffiliatesByIdPayoutCall(id, _callback);
+        // verify the required parameter 'affiliatesPayoutRequest' is set
+        if (affiliatesPayoutRequest == null) {
+            throw new ApiException("Missing the required parameter 'affiliatesPayoutRequest' when calling cloudPostV1AdminAffiliatesByIdPayout(Async)");
+        }
+
+        return cloudPostV1AdminAffiliatesByIdPayoutCall(id, affiliatesPayoutRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Pay out an affiliate&#39;s accrued commission
+     * Pays out accrued commission and answers the payout row with the affiliate&#39;s updated balances.  TWO reservations guard it, both taken before any money moves. First the amount is reserved atomically against the affiliate&#39;s PENDING commission — accrued minus paid — so a payout can never exceed what is owed. Then it must be BACKED by the platform treasury reserve; if it is not, the pending reservation is voided and the call is refused with the available reserve quoted, so an unbacked payout leaves neither a row nor a phantom liability.  The METHOD decides whether money actually moves. &#x60;credits&#x60; issues a commerce grant into the affiliate ORG&#39;s own wallet, tagged so the ledger can tell an affiliate payout apart from an admin or referral grant. Every other method — wire, paypal and the rest — is RECORD-ONLY: the payout row and the balances move, the cash is disbursed out of band.  The amount is integer cents and must be positive. A grant that fails after both reservations is logged loudly and never silently retried; the payout row and the audit entry are what an operator reconciles from. PLATFORM SUDO ONLY.
      * @param id  (required)
+     * @param affiliatesPayoutRequest  (required)
+     * @return AffiliatesAdminPayoutEnvelope
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The recorded payout and the updated affiliate. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Affiliate or code not found. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1AdminAffiliatesByIdPayout(@javax.annotation.Nonnull String id) throws ApiException {
-        cloudPostV1AdminAffiliatesByIdPayoutWithHttpInfo(id);
+    public AffiliatesAdminPayoutEnvelope cloudPostV1AdminAffiliatesByIdPayout(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AffiliatesPayoutRequest affiliatesPayoutRequest) throws ApiException {
+        ApiResponse<AffiliatesAdminPayoutEnvelope> localVarResp = cloudPostV1AdminAffiliatesByIdPayoutWithHttpInfo(id, affiliatesPayoutRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
+     * Pay out an affiliate&#39;s accrued commission
+     * Pays out accrued commission and answers the payout row with the affiliate&#39;s updated balances.  TWO reservations guard it, both taken before any money moves. First the amount is reserved atomically against the affiliate&#39;s PENDING commission — accrued minus paid — so a payout can never exceed what is owed. Then it must be BACKED by the platform treasury reserve; if it is not, the pending reservation is voided and the call is refused with the available reserve quoted, so an unbacked payout leaves neither a row nor a phantom liability.  The METHOD decides whether money actually moves. &#x60;credits&#x60; issues a commerce grant into the affiliate ORG&#39;s own wallet, tagged so the ledger can tell an affiliate payout apart from an admin or referral grant. Every other method — wire, paypal and the rest — is RECORD-ONLY: the payout row and the balances move, the cash is disbursed out of band.  The amount is integer cents and must be positive. A grant that fails after both reservations is logged loudly and never silently retried; the payout row and the audit entry are what an operator reconciles from. PLATFORM SUDO ONLY.
      * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @param affiliatesPayoutRequest  (required)
+     * @return ApiResponse&lt;AffiliatesAdminPayoutEnvelope&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The recorded payout and the updated affiliate. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Affiliate or code not found. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1AdminAffiliatesByIdPayoutWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1AdminAffiliatesByIdPayoutValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<AffiliatesAdminPayoutEnvelope> cloudPostV1AdminAffiliatesByIdPayoutWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AffiliatesPayoutRequest affiliatesPayoutRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1AdminAffiliatesByIdPayoutValidateBeforeCall(id, affiliatesPayoutRequest, null);
+        Type localVarReturnType = new TypeToken<AffiliatesAdminPayoutEnvelope>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Pay out an affiliate&#39;s accrued commission (asynchronously)
+     * Pays out accrued commission and answers the payout row with the affiliate&#39;s updated balances.  TWO reservations guard it, both taken before any money moves. First the amount is reserved atomically against the affiliate&#39;s PENDING commission — accrued minus paid — so a payout can never exceed what is owed. Then it must be BACKED by the platform treasury reserve; if it is not, the pending reservation is voided and the call is refused with the available reserve quoted, so an unbacked payout leaves neither a row nor a phantom liability.  The METHOD decides whether money actually moves. &#x60;credits&#x60; issues a commerce grant into the affiliate ORG&#39;s own wallet, tagged so the ledger can tell an affiliate payout apart from an admin or referral grant. Every other method — wire, paypal and the rest — is RECORD-ONLY: the payout row and the balances move, the cash is disbursed out of band.  The amount is integer cents and must be positive. A grant that fails after both reservations is logged loudly and never silently retried; the payout row and the audit entry are what an operator reconciles from. PLATFORM SUDO ONLY.
      * @param id  (required)
+     * @param affiliatesPayoutRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -9929,13 +10036,18 @@ public class AdminApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The recorded payout and the updated affiliate. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Affiliate or code not found. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AdminAffiliatesByIdPayoutAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AdminAffiliatesByIdPayoutAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AffiliatesPayoutRequest affiliatesPayoutRequest, final ApiCallback<AffiliatesAdminPayoutEnvelope> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1AdminAffiliatesByIdPayoutValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1AdminAffiliatesByIdPayoutValidateBeforeCall(id, affiliatesPayoutRequest, _callback);
+        Type localVarReturnType = new TypeToken<AffiliatesAdminPayoutEnvelope>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -10007,8 +10119,8 @@ public class AdminApi {
     }
 
     /**
-     * 
-     * 
+     * Set an affiliate&#39;s direct commission rate
+     * Sets one affiliate&#39;s DIRECT commission rate, in basis points of Hanzo&#39;s margin.  The rate is CAPPED so that the direct rate plus the platform-wide second- and third-level rates can never exceed the whole margin — the structural guarantee that everything paid on one source event stays inside the margin actually earned. The cap is resolved from the rates in force at the moment of the call and quoted in the refusal, because those switches move; a hardcoded bound would start lying the moment somebody edits the schedule.  Only the direct level is per-affiliate. The second and third levels are platform switches and are not settable here. The change applies to FUTURE accruals — commission already latched for a period is not recomputed. PLATFORM SUDO ONLY. Audited.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -10023,8 +10135,8 @@ public class AdminApi {
     }
 
     /**
-     * 
-     * 
+     * Set an affiliate&#39;s direct commission rate
+     * Sets one affiliate&#39;s DIRECT commission rate, in basis points of Hanzo&#39;s margin.  The rate is CAPPED so that the direct rate plus the platform-wide second- and third-level rates can never exceed the whole margin — the structural guarantee that everything paid on one source event stays inside the margin actually earned. The cap is resolved from the rates in force at the moment of the call and quoted in the refusal, because those switches move; a hardcoded bound would start lying the moment somebody edits the schedule.  Only the direct level is per-affiliate. The second and third levels are platform switches and are not settable here. The change applies to FUTURE accruals — commission already latched for a period is not recomputed. PLATFORM SUDO ONLY. Audited.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -10041,8 +10153,8 @@ public class AdminApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Set an affiliate&#39;s direct commission rate (asynchronously)
+     * Sets one affiliate&#39;s DIRECT commission rate, in basis points of Hanzo&#39;s margin.  The rate is CAPPED so that the direct rate plus the platform-wide second- and third-level rates can never exceed the whole margin — the structural guarantee that everything paid on one source event stays inside the margin actually earned. The cap is resolved from the rates in force at the moment of the call and quoted in the refusal, because those switches move; a hardcoded bound would start lying the moment somebody edits the schedule.  Only the direct level is per-affiliate. The second and third levels are platform switches and are not settable here. The change applies to FUTURE accruals — commission already latched for a period is not recomputed. PLATFORM SUDO ONLY. Audited.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -10070,7 +10182,10 @@ public class AdminApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The suspended affiliate. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Affiliate or code not found. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1AdminAffiliatesByIdSuspendCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -10100,6 +10215,7 @@ public class AdminApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -10129,42 +10245,51 @@ public class AdminApi {
     }
 
     /**
-     * 
-     * 
+     * Suspend an affiliate
+     * Suspends an affiliate: it stops accruing on the next sweep, and its code stops resolving for new attributions.  It CLAWS NOTHING BACK. Commission already accrued stays accrued and stays payable, and existing attribution edges are left standing — suspension ends earning, it does not unwind history. PLATFORM SUDO ONLY. Audited.
      * @param id  (required)
+     * @return AffiliatesAdminAffiliateEnvelope
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The suspended affiliate. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Affiliate or code not found. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1AdminAffiliatesByIdSuspend(@javax.annotation.Nonnull String id) throws ApiException {
-        cloudPostV1AdminAffiliatesByIdSuspendWithHttpInfo(id);
+    public AffiliatesAdminAffiliateEnvelope cloudPostV1AdminAffiliatesByIdSuspend(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<AffiliatesAdminAffiliateEnvelope> localVarResp = cloudPostV1AdminAffiliatesByIdSuspendWithHttpInfo(id);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
+     * Suspend an affiliate
+     * Suspends an affiliate: it stops accruing on the next sweep, and its code stops resolving for new attributions.  It CLAWS NOTHING BACK. Commission already accrued stays accrued and stays payable, and existing attribution edges are left standing — suspension ends earning, it does not unwind history. PLATFORM SUDO ONLY. Audited.
      * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;AffiliatesAdminAffiliateEnvelope&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The suspended affiliate. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Affiliate or code not found. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1AdminAffiliatesByIdSuspendWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<AffiliatesAdminAffiliateEnvelope> cloudPostV1AdminAffiliatesByIdSuspendWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = cloudPostV1AdminAffiliatesByIdSuspendValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<AffiliatesAdminAffiliateEnvelope>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Suspend an affiliate (asynchronously)
+     * Suspends an affiliate: it stops accruing on the next sweep, and its code stops resolving for new attributions.  It CLAWS NOTHING BACK. Commission already accrued stays accrued and stays payable, and existing attribution edges are left standing — suspension ends earning, it does not unwind history. PLATFORM SUDO ONLY. Audited.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -10173,13 +10298,17 @@ public class AdminApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The suspended affiliate. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Affiliate or code not found. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AdminAffiliatesByIdSuspendAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AdminAffiliatesByIdSuspendAsync(@javax.annotation.Nonnull String id, final ApiCallback<AffiliatesAdminAffiliateEnvelope> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudPostV1AdminAffiliatesByIdSuspendValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<AffiliatesAdminAffiliateEnvelope>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -10191,7 +10320,9 @@ public class AdminApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Sweep result (edges checked and accruals created). </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1AdminAffiliatesSweepCall(final ApiCallback _callback) throws ApiException {
@@ -10220,6 +10351,7 @@ public class AdminApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -10244,40 +10376,47 @@ public class AdminApi {
     }
 
     /**
-     * 
-     * 
+     * Accrue this period&#39;s commission for every referred org
+     * Runs the accrual: for each referred org it reads that org&#39;s metered spend for the current period and accrues commission to every affiliate up its referral chain, then answers how many sources were swept and how many NEW accruals landed.  This is the cron path, and it is LATCHED at most once per affiliate, source org and period — so re-running it inside the same period accrues nothing further. Safe to retry, and safe to run by hand beside the schedule.  Commission is a rate of Hanzo&#39;s MARGIN on that spend, never of the customer&#39;s gross bill, so every level&#39;s share summed over one source event stays within the margin actually earned and the customer&#39;s charge is untouched. Nothing accrues past the third upline level, and only an APPROVED affiliate accrues at all.  The same spend read drives the OSS author royalty — one read, both programs — so the answer reports royalties accrued alongside. PLATFORM SUDO ONLY. Bounded per run; a source whose spend cannot be read is skipped and picked up next time, never half-accrued.
+     * @return AffiliatesAdminSweepEnvelope
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Sweep result (edges checked and accruals created). </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1AdminAffiliatesSweep() throws ApiException {
-        cloudPostV1AdminAffiliatesSweepWithHttpInfo();
+    public AffiliatesAdminSweepEnvelope cloudPostV1AdminAffiliatesSweep() throws ApiException {
+        ApiResponse<AffiliatesAdminSweepEnvelope> localVarResp = cloudPostV1AdminAffiliatesSweepWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Accrue this period&#39;s commission for every referred org
+     * Runs the accrual: for each referred org it reads that org&#39;s metered spend for the current period and accrues commission to every affiliate up its referral chain, then answers how many sources were swept and how many NEW accruals landed.  This is the cron path, and it is LATCHED at most once per affiliate, source org and period — so re-running it inside the same period accrues nothing further. Safe to retry, and safe to run by hand beside the schedule.  Commission is a rate of Hanzo&#39;s MARGIN on that spend, never of the customer&#39;s gross bill, so every level&#39;s share summed over one source event stays within the margin actually earned and the customer&#39;s charge is untouched. Nothing accrues past the third upline level, and only an APPROVED affiliate accrues at all.  The same spend read drives the OSS author royalty — one read, both programs — so the answer reports royalties accrued alongside. PLATFORM SUDO ONLY. Bounded per run; a source whose spend cannot be read is skipped and picked up next time, never half-accrued.
+     * @return ApiResponse&lt;AffiliatesAdminSweepEnvelope&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Sweep result (edges checked and accruals created). </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1AdminAffiliatesSweepWithHttpInfo() throws ApiException {
+    public ApiResponse<AffiliatesAdminSweepEnvelope> cloudPostV1AdminAffiliatesSweepWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = cloudPostV1AdminAffiliatesSweepValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<AffiliatesAdminSweepEnvelope>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Accrue this period&#39;s commission for every referred org (asynchronously)
+     * Runs the accrual: for each referred org it reads that org&#39;s metered spend for the current period and accrues commission to every affiliate up its referral chain, then answers how many sources were swept and how many NEW accruals landed.  This is the cron path, and it is LATCHED at most once per affiliate, source org and period — so re-running it inside the same period accrues nothing further. Safe to retry, and safe to run by hand beside the schedule.  Commission is a rate of Hanzo&#39;s MARGIN on that spend, never of the customer&#39;s gross bill, so every level&#39;s share summed over one source event stays within the margin actually earned and the customer&#39;s charge is untouched. Nothing accrues past the third upline level, and only an APPROVED affiliate accrues at all.  The same spend read drives the OSS author royalty — one read, both programs — so the answer reports royalties accrued alongside. PLATFORM SUDO ONLY. Bounded per run; a source whose spend cannot be read is skipped and picked up next time, never half-accrued.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -10285,13 +10424,16 @@ public class AdminApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Sweep result (edges checked and accruals created). </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Not signed in, or global admin required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1AdminAffiliatesSweepAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1AdminAffiliatesSweepAsync(final ApiCallback<AffiliatesAdminSweepEnvelope> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudPostV1AdminAffiliatesSweepValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<AffiliatesAdminSweepEnvelope>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

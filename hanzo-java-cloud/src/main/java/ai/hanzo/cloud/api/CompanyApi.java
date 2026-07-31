@@ -1409,8 +1409,8 @@ public class CompanyApi {
     }
 
     /**
-     * 
-     * 
+     * Share a pitch deck in the org&#39;s data room
+     * Stores the request body as a document in the caller org&#39;s data room and answers with the data room id to reference it by. The deck is RAW BYTES of whatever content type is sent — a PDF, a slide export — not a JSON document: the Content-Type header is carried through to the data room as given, and &#x60;?name&#x3D;&#x60; names the document, defaulting to &#x60;pitch-deck&#x60;.  Scoped to the caller&#39;s validated org, and only after incorporation: a formation still short of stage &#x60;company&#x60; is refused 409 and an org that never began one is 404. The route is registered AHEAD of the surface&#39;s JSON body cap deliberately, so a deck&#39;s size ceiling is the edge&#39;s rather than the cap meant for small structured records. An empty body is 400; a data room that will not take the bytes is 502.
      * @param body  (optional)
      * @return CloudDeckOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1427,8 +1427,8 @@ public class CompanyApi {
     }
 
     /**
-     * 
-     * 
+     * Share a pitch deck in the org&#39;s data room
+     * Stores the request body as a document in the caller org&#39;s data room and answers with the data room id to reference it by. The deck is RAW BYTES of whatever content type is sent — a PDF, a slide export — not a JSON document: the Content-Type header is carried through to the data room as given, and &#x60;?name&#x3D;&#x60; names the document, defaulting to &#x60;pitch-deck&#x60;.  Scoped to the caller&#39;s validated org, and only after incorporation: a formation still short of stage &#x60;company&#x60; is refused 409 and an org that never began one is 404. The route is registered AHEAD of the surface&#39;s JSON body cap deliberately, so a deck&#39;s size ceiling is the edge&#39;s rather than the cap meant for small structured records. An empty body is 400; a data room that will not take the bytes is 502.
      * @param body  (optional)
      * @return ApiResponse&lt;CloudDeckOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1446,8 +1446,8 @@ public class CompanyApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Share a pitch deck in the org&#39;s data room (asynchronously)
+     * Stores the request body as a document in the caller org&#39;s data room and answers with the data room id to reference it by. The deck is RAW BYTES of whatever content type is sent — a PDF, a slide export — not a JSON document: the Content-Type header is carried through to the data room as given, and &#x60;?name&#x3D;&#x60; names the document, defaulting to &#x60;pitch-deck&#x60;.  Scoped to the caller&#39;s validated org, and only after incorporation: a formation still short of stage &#x60;company&#x60; is refused 409 and an org that never began one is 404. The route is registered AHEAD of the surface&#39;s JSON body cap deliberately, so a deck&#39;s size ceiling is the edge&#39;s rather than the cap meant for small structured records. An empty body is 400; a data room that will not take the bytes is 502.
      * @param body  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2515,8 +2515,8 @@ public class CompanyApi {
     }
 
     /**
-     * 
-     * 
+     * Charge the one-time formation fee and mark the formation paid
+     * Bills the caller&#39;s own org the one-time Hanzo Company formation fee — $999 unless the deployment sets another — and answers with the formation record carrying its paid flag and the charge reference. Takes no body: the org is the validated tenant and the amount is the platform&#39;s, never the caller&#39;s to assert.  IDEMPOTENT on the formation rather than on the request: an already-paid formation answers 200 with the same record and is not charged again, so a retry or a double-clicked button costs nothing. Available only at the &#x60;payment&#x60; stage (409 anywhere else) and only for an org that has begun a formation (404 otherwise).  A refused charge answers the fleet-wide billing contract, not a formation error — 402 when the org cannot pay, 503 when metering is unavailable — which is exactly why this route is not a typed op.
      * @return CloudFormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2532,8 +2532,8 @@ public class CompanyApi {
     }
 
     /**
-     * 
-     * 
+     * Charge the one-time formation fee and mark the formation paid
+     * Bills the caller&#39;s own org the one-time Hanzo Company formation fee — $999 unless the deployment sets another — and answers with the formation record carrying its paid flag and the charge reference. Takes no body: the org is the validated tenant and the amount is the platform&#39;s, never the caller&#39;s to assert.  IDEMPOTENT on the formation rather than on the request: an already-paid formation answers 200 with the same record and is not charged again, so a retry or a double-clicked button costs nothing. Available only at the &#x60;payment&#x60; stage (409 anywhere else) and only for an org that has begun a formation (404 otherwise).  A refused charge answers the fleet-wide billing contract, not a formation error — 402 when the org cannot pay, 503 when metering is unavailable — which is exactly why this route is not a typed op.
      * @return ApiResponse&lt;CloudFormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2550,8 +2550,8 @@ public class CompanyApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Charge the one-time formation fee and mark the formation paid (asynchronously)
+     * Bills the caller&#39;s own org the one-time Hanzo Company formation fee — $999 unless the deployment sets another — and answers with the formation record carrying its paid flag and the charge reference. Takes no body: the org is the validated tenant and the amount is the platform&#39;s, never the caller&#39;s to assert.  IDEMPOTENT on the formation rather than on the request: an already-paid formation answers 200 with the same record and is not charged again, so a retry or a double-clicked button costs nothing. Available only at the &#x60;payment&#x60; stage (409 anywhere else) and only for an org that has begun a formation (404 otherwise).  A refused charge answers the fleet-wide billing contract, not a formation error — 402 when the org cannot pay, 503 when metering is unavailable — which is exactly why this route is not a typed op.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

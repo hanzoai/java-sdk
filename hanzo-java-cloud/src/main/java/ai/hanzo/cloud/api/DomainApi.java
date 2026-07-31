@@ -133,8 +133,8 @@ public class DomainApi {
     }
 
     /**
-     * 
-     * 
+     * Availability and price for names you already have in mind
+     * Checks exact names rather than searching for them, and answers the same quote shape search does — purchasable, premium, first-term and renewal price in cents. Pass &#x60;domain&#x60; with one name or several comma-separated to check them in one call; names are lowercased. An empty &#x60;domain&#x60; is 400.  Requires a validated principal; 403 without one. Nothing is charged and nothing is held. A deployment with no registrar credentials answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -148,8 +148,8 @@ public class DomainApi {
     }
 
     /**
-     * 
-     * 
+     * Availability and price for names you already have in mind
+     * Checks exact names rather than searching for them, and answers the same quote shape search does — purchasable, premium, first-term and renewal price in cents. Pass &#x60;domain&#x60; with one name or several comma-separated to check them in one call; names are lowercased. An empty &#x60;domain&#x60; is 400.  Requires a validated principal; 403 without one. Nothing is charged and nothing is held. A deployment with no registrar credentials answers 503.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -165,8 +165,8 @@ public class DomainApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Availability and price for names you already have in mind (asynchronously)
+     * Checks exact names rather than searching for them, and answers the same quote shape search does — purchasable, premium, first-term and renewal price in cents. Pass &#x60;domain&#x60; with one name or several comma-separated to check them in one call; names are lowercased. An empty &#x60;domain&#x60; is 400.  Requires a validated principal; 403 without one. Nothing is charged and nothing is held. A deployment with no registrar credentials answers 503.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -245,8 +245,8 @@ public class DomainApi {
     }
 
     /**
-     * 
-     * 
+     * The domains your org has bought here
+     * Lists the caller org&#39;s domains, newest registration first, each carrying the name, when it was registered, when it expires, what the org paid, the registrar order id and the nameservers it points at. Scoped to the validated principal&#39;s org — 403 without one, and there is no parameter that reaches another org&#39;s holdings.  This is the deployment&#39;s OWN ownership record, not a query to the registrar: it lists what was bought THROUGH this surface, so a domain the org holds elsewhere is not here. The default store is in-process, so a deployment that has not swapped in a durable store answers from what this process registered.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -260,8 +260,8 @@ public class DomainApi {
     }
 
     /**
-     * 
-     * 
+     * The domains your org has bought here
+     * Lists the caller org&#39;s domains, newest registration first, each carrying the name, when it was registered, when it expires, what the org paid, the registrar order id and the nameservers it points at. Scoped to the validated principal&#39;s org — 403 without one, and there is no parameter that reaches another org&#39;s holdings.  This is the deployment&#39;s OWN ownership record, not a query to the registrar: it lists what was bought THROUGH this surface, so a domain the org holds elsewhere is not here. The default store is in-process, so a deployment that has not swapped in a durable store answers from what this process registered.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -277,8 +277,8 @@ public class DomainApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The domains your org has bought here (asynchronously)
+     * Lists the caller org&#39;s domains, newest registration first, each carrying the name, when it was registered, when it expires, what the org paid, the registrar order id and the nameservers it points at. Scoped to the validated principal&#39;s org — 403 without one, and there is no parameter that reaches another org&#39;s holdings.  This is the deployment&#39;s OWN ownership record, not a query to the registrar: it lists what was bought THROUGH this surface, so a domain the org holds elsewhere is not here. The default store is in-process, so a deployment that has not swapped in a durable store answers from what this process registered.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -357,8 +357,8 @@ public class DomainApi {
     }
 
     /**
-     * 
-     * 
+     * Whether this deployment can actually sell domains, and why not when it cannot
+     * Reports registrar reachability honestly: &#x60;ok&#x60; only when the wholesale credentials are present AND name.com accepted them on a live call made while you waited. Missing credentials or an unreachable registrar is 503 carrying &#x60;configured&#x60;, &#x60;reachable&#x60; and the reason, so an operator reads the blocker instead of guessing at it. Takes no principal, like every subsystem health probe. The answer also names the registrar &#x60;env&#x60;, which is the fact that decides whether money moves: only &#x60;prod&#x60; reaches the live, billable registrar — anything else, including unset, is the sandbox.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -372,8 +372,8 @@ public class DomainApi {
     }
 
     /**
-     * 
-     * 
+     * Whether this deployment can actually sell domains, and why not when it cannot
+     * Reports registrar reachability honestly: &#x60;ok&#x60; only when the wholesale credentials are present AND name.com accepted them on a live call made while you waited. Missing credentials or an unreachable registrar is 503 carrying &#x60;configured&#x60;, &#x60;reachable&#x60; and the reason, so an operator reads the blocker instead of guessing at it. Takes no principal, like every subsystem health probe. The answer also names the registrar &#x60;env&#x60;, which is the fact that decides whether money moves: only &#x60;prod&#x60; reaches the live, billable registrar — anything else, including unset, is the sandbox.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -389,8 +389,8 @@ public class DomainApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Whether this deployment can actually sell domains, and why not when it cannot (asynchronously)
+     * Reports registrar reachability honestly: &#x60;ok&#x60; only when the wholesale credentials are present AND name.com accepted them on a live call made while you waited. Missing credentials or an unreachable registrar is 503 carrying &#x60;configured&#x60;, &#x60;reachable&#x60; and the reason, so an operator reads the blocker instead of guessing at it. Takes no principal, like every subsystem health probe. The answer also names the registrar &#x60;env&#x60;, which is the fact that decides whether money moves: only &#x60;prod&#x60; reaches the live, billable registrar — anything else, including unset, is the sandbox.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -469,8 +469,8 @@ public class DomainApi {
     }
 
     /**
-     * 
-     * 
+     * Buyable names for a keyword, priced
+     * Searches the registrar for names built from the keyword &#x60;q&#x60;, plus its alternate-TLD suggestions, and answers a quote for each: the name, whether it is purchasable, whether it is premium, the first-term and renewal price in cents, and the TLD. Prices are RETAIL — this deployment&#39;s markup is already applied and the wholesale cost is never on the wire. Narrow the TLDs with a comma-separated &#x60;tld&#x60;; &#x60;q&#x60; is required and its absence is 400.  Requires a validated principal; 403 without one. Nothing is charged and nothing is held — a quote is not a reservation, and the price is re-quoted at purchase, so a name quoted here can be gone or dearer by the time you buy it. A deployment with no registrar credentials answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -484,8 +484,8 @@ public class DomainApi {
     }
 
     /**
-     * 
-     * 
+     * Buyable names for a keyword, priced
+     * Searches the registrar for names built from the keyword &#x60;q&#x60;, plus its alternate-TLD suggestions, and answers a quote for each: the name, whether it is purchasable, whether it is premium, the first-term and renewal price in cents, and the TLD. Prices are RETAIL — this deployment&#39;s markup is already applied and the wholesale cost is never on the wire. Narrow the TLDs with a comma-separated &#x60;tld&#x60;; &#x60;q&#x60; is required and its absence is 400.  Requires a validated principal; 403 without one. Nothing is charged and nothing is held — a quote is not a reservation, and the price is re-quoted at purchase, so a name quoted here can be gone or dearer by the time you buy it. A deployment with no registrar credentials answers 503.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -501,8 +501,8 @@ public class DomainApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Buyable names for a keyword, priced (asynchronously)
+     * Searches the registrar for names built from the keyword &#x60;q&#x60;, plus its alternate-TLD suggestions, and answers a quote for each: the name, whether it is purchasable, whether it is premium, the first-term and renewal price in cents, and the TLD. Prices are RETAIL — this deployment&#39;s markup is already applied and the wholesale cost is never on the wire. Narrow the TLDs with a comma-separated &#x60;tld&#x60;; &#x60;q&#x60; is required and its absence is 400.  Requires a validated principal; 403 without one. Nothing is charged and nothing is held — a quote is not a reservation, and the price is re-quoted at purchase, so a name quoted here can be gone or dearer by the time you buy it. A deployment with no registrar credentials answers 503.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -581,8 +581,8 @@ public class DomainApi {
     }
 
     /**
-     * 
-     * 
+     * Buy a domain for your org — charged only once the registrar confirms
+     * Buys &#x60;domain&#x60; for &#x60;years&#x60; (default 1) and answers the ownership record together with the quote it was bought at. The order of operations is the product guarantee: quote, refuse anything unpurchasable or unpriced, AUTHORIZE the org&#39;s prepaid balance, provision the authoritative zone in Hanzo DNS, register at the registrar already pointing at Hanzo&#39;s nameservers, and only then CAPTURE the charge and record ownership. A registrar failure therefore leaves the balance untouched — the org is never billed for a domain it did not get.  Requires a validated principal; that principal&#39;s org owns the domain and is the ledger the charge lands on. Re-buying a name the org already holds is 409, not a second purchase. &#x60;contacts&#x60; is optional — omit it and the registrar uses the reseller account&#39;s default WHOIS contacts.  Refusals are distinct on purpose: 402 when the prepaid balance cannot cover the quoted price, 409 when the name is not available, 503 when the deployment has no registrar credentials, and the registrar&#39;s own message with its own 4xx — or 502 for its 5xx — when it rejects the purchase. Zone provisioning is best-effort: if the zone service is down the domain is still registered against Hanzo&#39;s nameservers and the zone reconciles afterwards, rather than the purchase failing.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -596,8 +596,8 @@ public class DomainApi {
     }
 
     /**
-     * 
-     * 
+     * Buy a domain for your org — charged only once the registrar confirms
+     * Buys &#x60;domain&#x60; for &#x60;years&#x60; (default 1) and answers the ownership record together with the quote it was bought at. The order of operations is the product guarantee: quote, refuse anything unpurchasable or unpriced, AUTHORIZE the org&#39;s prepaid balance, provision the authoritative zone in Hanzo DNS, register at the registrar already pointing at Hanzo&#39;s nameservers, and only then CAPTURE the charge and record ownership. A registrar failure therefore leaves the balance untouched — the org is never billed for a domain it did not get.  Requires a validated principal; that principal&#39;s org owns the domain and is the ledger the charge lands on. Re-buying a name the org already holds is 409, not a second purchase. &#x60;contacts&#x60; is optional — omit it and the registrar uses the reseller account&#39;s default WHOIS contacts.  Refusals are distinct on purpose: 402 when the prepaid balance cannot cover the quoted price, 409 when the name is not available, 503 when the deployment has no registrar credentials, and the registrar&#39;s own message with its own 4xx — or 502 for its 5xx — when it rejects the purchase. Zone provisioning is best-effort: if the zone service is down the domain is still registered against Hanzo&#39;s nameservers and the zone reconciles afterwards, rather than the purchase failing.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -613,8 +613,8 @@ public class DomainApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Buy a domain for your org — charged only once the registrar confirms (asynchronously)
+     * Buys &#x60;domain&#x60; for &#x60;years&#x60; (default 1) and answers the ownership record together with the quote it was bought at. The order of operations is the product guarantee: quote, refuse anything unpurchasable or unpriced, AUTHORIZE the org&#39;s prepaid balance, provision the authoritative zone in Hanzo DNS, register at the registrar already pointing at Hanzo&#39;s nameservers, and only then CAPTURE the charge and record ownership. A registrar failure therefore leaves the balance untouched — the org is never billed for a domain it did not get.  Requires a validated principal; that principal&#39;s org owns the domain and is the ledger the charge lands on. Re-buying a name the org already holds is 409, not a second purchase. &#x60;contacts&#x60; is optional — omit it and the registrar uses the reseller account&#39;s default WHOIS contacts.  Refusals are distinct on purpose: 402 when the prepaid balance cannot cover the quoted price, 409 when the name is not available, 503 when the deployment has no registrar credentials, and the registrar&#39;s own message with its own 4xx — or 502 for its 5xx — when it rejects the purchase. Zone provisioning is best-effort: if the zone service is down the domain is still registered against Hanzo&#39;s nameservers and the zone reconciles afterwards, rather than the purchase failing.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -693,8 +693,8 @@ public class DomainApi {
     }
 
     /**
-     * 
-     * 
+     * Extend a domain your org already owns
+     * Renews &#x60;domain&#x60; for &#x60;years&#x60; (default 1) and answers the updated record with its new expiry alongside what was paid. Ownership is the gate: a name the caller&#39;s org does not hold is 404, so a renewal can never reach another tenant&#39;s domain.  The price is re-quoted at the CURRENT renewal rate rather than the one paid at purchase. If the registrar returns no renewal price the org&#39;s original price is charged instead, so a renewal is never accidentally free. Balance is authorized before the registrar is called and captured after it confirms — 402 when the prepaid balance cannot cover it, 503 when the deployment has no registrar credentials. Requires a validated principal.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -708,8 +708,8 @@ public class DomainApi {
     }
 
     /**
-     * 
-     * 
+     * Extend a domain your org already owns
+     * Renews &#x60;domain&#x60; for &#x60;years&#x60; (default 1) and answers the updated record with its new expiry alongside what was paid. Ownership is the gate: a name the caller&#39;s org does not hold is 404, so a renewal can never reach another tenant&#39;s domain.  The price is re-quoted at the CURRENT renewal rate rather than the one paid at purchase. If the registrar returns no renewal price the org&#39;s original price is charged instead, so a renewal is never accidentally free. Balance is authorized before the registrar is called and captured after it confirms — 402 when the prepaid balance cannot cover it, 503 when the deployment has no registrar credentials. Requires a validated principal.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -725,8 +725,8 @@ public class DomainApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Extend a domain your org already owns (asynchronously)
+     * Renews &#x60;domain&#x60; for &#x60;years&#x60; (default 1) and answers the updated record with its new expiry alongside what was paid. Ownership is the gate: a name the caller&#39;s org does not hold is 404, so a renewal can never reach another tenant&#39;s domain.  The price is re-quoted at the CURRENT renewal rate rather than the one paid at purchase. If the registrar returns no renewal price the org&#39;s original price is charged instead, so a renewal is never accidentally free. Balance is authorized before the registrar is called and captured after it confirms — 402 when the prepaid balance cannot cover it, 503 when the deployment has no registrar credentials. Requires a validated principal.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -805,8 +805,8 @@ public class DomainApi {
     }
 
     /**
-     * 
-     * 
+     * Move a domain you own at another registrar onto your org here
+     * Transfers &#x60;domain&#x60; in using its &#x60;authCode&#x60; — both required, 400 otherwise — for &#x60;years&#x60; (default 1), and answers the same record-plus-quote a purchase does. It is priced and charged exactly like a registration: authorize the org&#39;s prepaid balance, ask the registrar for the transfer, capture only after the registrar accepts. A name the registrar will not price is 409, an insufficient balance is 402, and a deployment with no registrar credentials is 503.  Requires a validated principal; the ownership record is written under that org as soon as the registrar ACCEPTS the request, which is not the same instant the transfer completes at the losing registrar. Unlike a registration this does not provision a zone, so the record carries this deployment&#39;s configured nameservers.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -820,8 +820,8 @@ public class DomainApi {
     }
 
     /**
-     * 
-     * 
+     * Move a domain you own at another registrar onto your org here
+     * Transfers &#x60;domain&#x60; in using its &#x60;authCode&#x60; — both required, 400 otherwise — for &#x60;years&#x60; (default 1), and answers the same record-plus-quote a purchase does. It is priced and charged exactly like a registration: authorize the org&#39;s prepaid balance, ask the registrar for the transfer, capture only after the registrar accepts. A name the registrar will not price is 409, an insufficient balance is 402, and a deployment with no registrar credentials is 503.  Requires a validated principal; the ownership record is written under that org as soon as the registrar ACCEPTS the request, which is not the same instant the transfer completes at the losing registrar. Unlike a registration this does not provision a zone, so the record carries this deployment&#39;s configured nameservers.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -837,8 +837,8 @@ public class DomainApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Move a domain you own at another registrar onto your org here (asynchronously)
+     * Transfers &#x60;domain&#x60; in using its &#x60;authCode&#x60; — both required, 400 otherwise — for &#x60;years&#x60; (default 1), and answers the same record-plus-quote a purchase does. It is priced and charged exactly like a registration: authorize the org&#39;s prepaid balance, ask the registrar for the transfer, capture only after the registrar accepts. A name the registrar will not price is 409, an insufficient balance is 402, and a deployment with no registrar credentials is 503.  Requires a validated principal; the ownership record is written under that org as soon as the registrar ACCEPTS the request, which is not the same instant the transfer completes at the losing registrar. Unlike a registration this does not provision a zone, so the record carries this deployment&#39;s configured nameservers.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

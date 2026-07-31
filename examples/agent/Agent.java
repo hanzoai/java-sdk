@@ -2,6 +2,8 @@ package ai.hanzo.cloud.examples;
 
 import ai.hanzo.cloud.ApiException;
 import ai.hanzo.cloud.api.AgentsApi;
+import ai.hanzo.cloud.model.AgentsRunRequest;
+import ai.hanzo.cloud.model.AgentsRunView;
 import ai.hanzo.cloud.model.CloudAgentRunView;
 import ai.hanzo.cloud.model.CloudAgentView;
 import ai.hanzo.cloud.model.CloudCreateAgentIn;
@@ -23,10 +25,12 @@ import java.util.UUID;
  * the read both use the name just created. Names are org-unique, so this makes
  * a fresh one rather than hardcoding it.
  *
- * <p>A run is asynchronous and the run route's response shape is not declared
- * in the document, so there is no run id to hold on to. This records the run
- * ids that existed beforehand and polls the run list until the one that appeared
- * is terminal — the last step is the run list, not the agent read.
+ * <p>The run route now carries a typed body IN and a typed {@link AgentsRunView}
+ * back, both restored to the document, so the call takes real input and its
+ * acknowledgement is read rather than discarded. A run is still asynchronous,
+ * so the example records the run ids that existed beforehand and polls the run
+ * list until the one that appeared is terminal — the last step is the RUN LIST,
+ * not the agent read.
  *
  * <p>Agents are org-scoped: without {@code X-Org-Id} these are
  * 403 {@code "X-Org-Id required"}.
@@ -56,8 +60,9 @@ public final class Agent {
 
             Set<String> before = runIds(agents.cloudGetV1AgentsRefRuns(name, 100));
 
-            agents.cloudPostV1AgentsByRefRun(name);
-            System.out.printf("ran      %s%n", name);
+            AgentsRunView started = agents.cloudPostV1AgentsByRefRun(name,
+                    new AgentsRunRequest().input("What is the capital of Japan?"));
+            System.out.printf("ran      %s %s%n", name, started.getStatus());
 
             for (int attempt = 0; attempt < POLL_ATTEMPTS; attempt++) {
                 CloudRunList runs = agents.cloudGetV1AgentsRefRuns(name, 100);

@@ -27,6 +27,15 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import java.io.File;
+import ai.hanzo.cloud.model.ProjectsCompleteDeploymentRequest;
+import ai.hanzo.cloud.model.ProjectsCreateProjectRequest;
+import ai.hanzo.cloud.model.ProjectsDeployment;
+import ai.hanzo.cloud.model.ProjectsError;
+import ai.hanzo.cloud.model.ProjectsForkProjectRequest;
+import ai.hanzo.cloud.model.ProjectsGitDeployRequest;
+import ai.hanzo.cloud.model.ProjectsProject;
+import ai.hanzo.cloud.model.ProjectsUpdateProjectRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -73,7 +82,7 @@ public class ProjectsApi {
 
     /**
      * Build call for cloudDeleteV1ProjectsBySlug
-     * @param slug  (required)
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -81,7 +90,10 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Project deleted. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudDeleteV1ProjectsBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
@@ -111,6 +123,7 @@ public class ProjectsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -140,15 +153,18 @@ public class ProjectsApi {
     }
 
     /**
-     * 
-     * 
-     * @param slug  (required)
+     * Delete a project and take its site down
+     * Removes the project and answers 204. This is not just a row: the public subdomain binding is released so the slug can be reclaimed, every release row is dropped so a future owner of that slug never inherits the previous one&#39;s rollback menu, the stored site objects are purged from both the live prefix and the release space, and the edge cache tag is flushed so nothing keeps serving from cache.  The metadata delete is the point of no return — the cleanup that follows is best-effort and a failure in it is logged rather than resurrecting the project, so a successful 204 means the project is gone even if some bytes are reclaimed late. Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404 and cannot be deleted.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Project deleted. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
     public void cloudDeleteV1ProjectsBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -156,16 +172,19 @@ public class ProjectsApi {
     }
 
     /**
-     * 
-     * 
-     * @param slug  (required)
+     * Delete a project and take its site down
+     * Removes the project and answers 204. This is not just a row: the public subdomain binding is released so the slug can be reclaimed, every release row is dropped so a future owner of that slug never inherits the previous one&#39;s rollback menu, the stored site objects are purged from both the live prefix and the release space, and the edge cache tag is flushed so nothing keeps serving from cache.  The metadata delete is the point of no return — the cleanup that follows is best-effort and a failure in it is logged rather than resurrecting the project, so a successful 204 means the project is gone even if some bytes are reclaimed late. Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404 and cannot be deleted.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Project deleted. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudDeleteV1ProjectsBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -174,9 +193,9 @@ public class ProjectsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param slug  (required)
+     * Delete a project and take its site down (asynchronously)
+     * Removes the project and answers 204. This is not just a row: the public subdomain binding is released so the slug can be reclaimed, every release row is dropped so a future owner of that slug never inherits the previous one&#39;s rollback menu, the stored site objects are purged from both the live prefix and the release space, and the edge cache tag is flushed so nothing keeps serving from cache.  The metadata delete is the point of no return — the cleanup that follows is best-effort and a failure in it is logged rather than resurrecting the project, so a successful 204 means the project is gone even if some bytes are reclaimed late. Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404 and cannot be deleted.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -184,7 +203,10 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Project deleted. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudDeleteV1ProjectsBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
@@ -269,8 +291,8 @@ public class ProjectsApi {
     }
 
     /**
-     * 
-     * 
+     * Stop serving this site on a custom domain
+     * Unbinds the hostname from the site and answers 204. The host stops routing here and the edge cache is flushed so nothing keeps answering from cache; the name is released, so it can then be claimed again — by this site or by any other. The site itself is untouched and keeps serving at its own &#x60;&lt;slug&gt;.hanzo.app&#x60; host.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404 and its domains cannot be released from here.
      * @param slug  (required)
      * @param host  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -286,8 +308,8 @@ public class ProjectsApi {
     }
 
     /**
-     * 
-     * 
+     * Stop serving this site on a custom domain
+     * Unbinds the hostname from the site and answers 204. The host stops routing here and the edge cache is flushed so nothing keeps answering from cache; the name is released, so it can then be claimed again — by this site or by any other. The site itself is untouched and keeps serving at its own &#x60;&lt;slug&gt;.hanzo.app&#x60; host.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404 and its domains cannot be released from here.
      * @param slug  (required)
      * @param host  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -305,8 +327,8 @@ public class ProjectsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Stop serving this site on a custom domain (asynchronously)
+     * Unbinds the hostname from the site and answers 204. The host stops routing here and the edge cache is flushed so nothing keeps answering from cache; the name is released, so it can then be claimed again — by this site or by any other. The site itself is untouched and keeps serving at its own &#x60;&lt;slug&gt;.hanzo.app&#x60; host.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404 and its domains cannot be released from here.
      * @param slug  (required)
      * @param host  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -334,7 +356,9 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Projects for the org. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1ProjectsCall(final ApiCallback _callback) throws ApiException {
@@ -363,6 +387,7 @@ public class ProjectsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -387,40 +412,47 @@ public class ProjectsApi {
     }
 
     /**
-     * 
-     * 
+     * Every project your org owns
+     * Lists the caller org&#39;s projects with their slug, name, framework, visibility, status and live URL — the same rows console and the builder render, because there is only one store behind both. Requires a validated principal (403 without one) and is keyed by that principal&#39;s org, so it never contains another tenant&#39;s project.
+     * @return List&lt;ProjectsProject&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Projects for the org. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1Projects() throws ApiException {
-        cloudGetV1ProjectsWithHttpInfo();
+    public List<ProjectsProject> cloudGetV1Projects() throws ApiException {
+        ApiResponse<List<ProjectsProject>> localVarResp = cloudGetV1ProjectsWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Every project your org owns
+     * Lists the caller org&#39;s projects with their slug, name, framework, visibility, status and live URL — the same rows console and the builder render, because there is only one store behind both. Requires a validated principal (403 without one) and is keyed by that principal&#39;s org, so it never contains another tenant&#39;s project.
+     * @return ApiResponse&lt;List&lt;ProjectsProject&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Projects for the org. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1ProjectsWithHttpInfo() throws ApiException {
+    public ApiResponse<List<ProjectsProject>> cloudGetV1ProjectsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = cloudGetV1ProjectsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<List<ProjectsProject>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Every project your org owns (asynchronously)
+     * Lists the caller org&#39;s projects with their slug, name, framework, visibility, status and live URL — the same rows console and the builder render, because there is only one store behind both. Requires a validated principal (403 without one) and is keyed by that principal&#39;s org, so it never contains another tenant&#39;s project.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -428,18 +460,21 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Projects for the org. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1ProjectsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1ProjectsAsync(final ApiCallback<List<ProjectsProject>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudGetV1ProjectsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<List<ProjectsProject>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudGetV1ProjectsBySlug
-     * @param slug  (required)
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -447,7 +482,10 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The project. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1ProjectsBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
@@ -477,6 +515,7 @@ public class ProjectsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -506,43 +545,52 @@ public class ProjectsApi {
     }
 
     /**
-     * 
-     * 
-     * @param slug  (required)
+     * One project by its slug
+     * Answers the project — its name, framework, visibility, status, linked repo, live URL and timestamps. Requires a validated principal (403 without one) and resolves the slug within THAT principal&#39;s org, so a slug that belongs to another tenant is a 404, indistinguishable from one that was never created.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @return ProjectsProject
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The project. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1ProjectsBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
-        cloudGetV1ProjectsBySlugWithHttpInfo(slug);
+    public ProjectsProject cloudGetV1ProjectsBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
+        ApiResponse<ProjectsProject> localVarResp = cloudGetV1ProjectsBySlugWithHttpInfo(slug);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param slug  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * One project by its slug
+     * Answers the project — its name, framework, visibility, status, linked repo, live URL and timestamps. Requires a validated principal (403 without one) and resolves the slug within THAT principal&#39;s org, so a slug that belongs to another tenant is a 404, indistinguishable from one that was never created.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @return ApiResponse&lt;ProjectsProject&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The project. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1ProjectsBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+    public ApiResponse<ProjectsProject> cloudGetV1ProjectsBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
         okhttp3.Call localVarCall = cloudGetV1ProjectsBySlugValidateBeforeCall(slug, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param slug  (required)
+     * One project by its slug (asynchronously)
+     * Answers the project — its name, framework, visibility, status, linked repo, live URL and timestamps. Requires a validated principal (403 without one) and resolves the slug within THAT principal&#39;s org, so a slug that belongs to another tenant is a 404, indistinguishable from one that was never created.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -550,18 +598,22 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The project. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1ProjectsBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1ProjectsBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<ProjectsProject> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudGetV1ProjectsBySlugValidateBeforeCall(slug, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudGetV1ProjectsBySlugDeployments
-     * @param slug  (required)
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -569,7 +621,10 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Deployment history for the project. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1ProjectsBySlugDeploymentsCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
@@ -599,6 +654,7 @@ public class ProjectsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -628,43 +684,52 @@ public class ProjectsApi {
     }
 
     /**
-     * 
-     * 
-     * @param slug  (required)
+     * The project&#39;s deploy history
+     * Lists the project&#39;s deployments — version, status, source, commit, file and byte counts, live URL and timestamps — which is where a deployment id for the detail and completion routes comes from. Requires a validated principal (403 without one); the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404 and its deployments are unreachable.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @return List&lt;ProjectsDeployment&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Deployment history for the project. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1ProjectsBySlugDeployments(@javax.annotation.Nonnull String slug) throws ApiException {
-        cloudGetV1ProjectsBySlugDeploymentsWithHttpInfo(slug);
+    public List<ProjectsDeployment> cloudGetV1ProjectsBySlugDeployments(@javax.annotation.Nonnull String slug) throws ApiException {
+        ApiResponse<List<ProjectsDeployment>> localVarResp = cloudGetV1ProjectsBySlugDeploymentsWithHttpInfo(slug);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param slug  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * The project&#39;s deploy history
+     * Lists the project&#39;s deployments — version, status, source, commit, file and byte counts, live URL and timestamps — which is where a deployment id for the detail and completion routes comes from. Requires a validated principal (403 without one); the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404 and its deployments are unreachable.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @return ApiResponse&lt;List&lt;ProjectsDeployment&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Deployment history for the project. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1ProjectsBySlugDeploymentsWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+    public ApiResponse<List<ProjectsDeployment>> cloudGetV1ProjectsBySlugDeploymentsWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
         okhttp3.Call localVarCall = cloudGetV1ProjectsBySlugDeploymentsValidateBeforeCall(slug, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<List<ProjectsDeployment>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param slug  (required)
+     * The project&#39;s deploy history (asynchronously)
+     * Lists the project&#39;s deployments — version, status, source, commit, file and byte counts, live URL and timestamps — which is where a deployment id for the detail and completion routes comes from. Requires a validated principal (403 without one); the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404 and its deployments are unreachable.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -672,19 +737,23 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Deployment history for the project. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1ProjectsBySlugDeploymentsAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1ProjectsBySlugDeploymentsAsync(@javax.annotation.Nonnull String slug, final ApiCallback<List<ProjectsDeployment>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudGetV1ProjectsBySlugDeploymentsValidateBeforeCall(slug, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<List<ProjectsDeployment>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudGetV1ProjectsBySlugDeploymentsById
-     * @param slug  (required)
-     * @param id  (required)
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @param id Deployment id (e.g. dep_...). (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -692,7 +761,10 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The deployment. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1ProjectsBySlugDeploymentsByIdCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -723,6 +795,7 @@ public class ProjectsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -757,46 +830,55 @@ public class ProjectsApi {
     }
 
     /**
-     * 
-     * 
-     * @param slug  (required)
-     * @param id  (required)
+     * One deployment
+     * Answers a single deployment&#39;s status, version, source, commit, counts and live URL — how a queued git build is polled to completion. Requires a validated principal (403 without one); both the project and the deployment are read within that principal&#39;s org, so a deployment id belonging to another tenant, or to another project, is a 404.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @param id Deployment id (e.g. dep_...). (required)
+     * @return ProjectsDeployment
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The deployment. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1ProjectsBySlugDeploymentsById(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id) throws ApiException {
-        cloudGetV1ProjectsBySlugDeploymentsByIdWithHttpInfo(slug, id);
+    public ProjectsDeployment cloudGetV1ProjectsBySlugDeploymentsById(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<ProjectsDeployment> localVarResp = cloudGetV1ProjectsBySlugDeploymentsByIdWithHttpInfo(slug, id);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param slug  (required)
-     * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * One deployment
+     * Answers a single deployment&#39;s status, version, source, commit, counts and live URL — how a queued git build is polled to completion. Requires a validated principal (403 without one); both the project and the deployment are read within that principal&#39;s org, so a deployment id belonging to another tenant, or to another project, is a 404.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @param id Deployment id (e.g. dep_...). (required)
+     * @return ApiResponse&lt;ProjectsDeployment&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The deployment. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1ProjectsBySlugDeploymentsByIdWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<ProjectsDeployment> cloudGetV1ProjectsBySlugDeploymentsByIdWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = cloudGetV1ProjectsBySlugDeploymentsByIdValidateBeforeCall(slug, id, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param slug  (required)
-     * @param id  (required)
+     * One deployment (asynchronously)
+     * Answers a single deployment&#39;s status, version, source, commit, counts and live URL — how a queued git build is polled to completion. Requires a validated principal (403 without one); both the project and the deployment are read within that principal&#39;s org, so a deployment id belonging to another tenant, or to another project, is a 404.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @param id Deployment id (e.g. dep_...). (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -804,13 +886,17 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The deployment. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1ProjectsBySlugDeploymentsByIdAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1ProjectsBySlugDeploymentsByIdAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, final ApiCallback<ProjectsDeployment> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudGetV1ProjectsBySlugDeploymentsByIdValidateBeforeCall(slug, id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -882,8 +968,8 @@ public class ProjectsApi {
     }
 
     /**
-     * 
-     * 
+     * Every custom hostname this site holds, live or pending
+     * Answers the site&#39;s verified hosts plus every pending claim, and for each pending one the EXACT DNS records still owed and the hostname to point them at. It is the domains panel in one call: a claim holds the name so nobody else can take it, but only a verified host actually routes. Requires a validated principal (403 without one); the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -898,8 +984,8 @@ public class ProjectsApi {
     }
 
     /**
-     * 
-     * 
+     * Every custom hostname this site holds, live or pending
+     * Answers the site&#39;s verified hosts plus every pending claim, and for each pending one the EXACT DNS records still owed and the hostname to point them at. It is the domains panel in one call: a claim holds the name so nobody else can take it, but only a verified host actually routes. Requires a validated principal (403 without one); the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -916,8 +1002,8 @@ public class ProjectsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Every custom hostname this site holds, live or pending (asynchronously)
+     * Answers the site&#39;s verified hosts plus every pending claim, and for each pending one the EXACT DNS records still owed and the hostname to point them at. It is the domains panel in one call: a claim holds the name so nobody else can take it, but only a verified host actually routes. Requires a validated principal (403 without one); the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -937,7 +1023,8 @@ public class ProjectsApi {
     }
     /**
      * Build call for cloudPatchV1ProjectsBySlug
-     * @param slug  (required)
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @param projectsUpdateProjectRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -945,10 +1032,14 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated project. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPatchV1ProjectsBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPatchV1ProjectsBySlugCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsUpdateProjectRequest projectsUpdateProjectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -962,7 +1053,7 @@ public class ProjectsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = projectsUpdateProjectRequest;
 
         // create path and map variables
         String localVarPath = "/v1/projects/{slug}"
@@ -975,6 +1066,7 @@ public class ProjectsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -982,6 +1074,7 @@ public class ProjectsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -993,54 +1086,73 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPatchV1ProjectsBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudPatchV1ProjectsBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsUpdateProjectRequest projectsUpdateProjectRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
             throw new ApiException("Missing the required parameter 'slug' when calling cloudPatchV1ProjectsBySlug(Async)");
         }
 
-        return cloudPatchV1ProjectsBySlugCall(slug, _callback);
+        // verify the required parameter 'projectsUpdateProjectRequest' is set
+        if (projectsUpdateProjectRequest == null) {
+            throw new ApiException("Missing the required parameter 'projectsUpdateProjectRequest' when calling cloudPatchV1ProjectsBySlug(Async)");
+        }
+
+        return cloudPatchV1ProjectsBySlugCall(slug, projectsUpdateProjectRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
-     * @param slug  (required)
+     * Change a project&#39;s settings, leaving the rest alone
+     * Updates only the fields present in the body and answers the whole project after the change. &#x60;name&#x60;, &#x60;description&#x60;, &#x60;framework&#x60;, &#x60;cacheControl&#x60;, the linked &#x60;repo&#x60;, &#x60;visibility&#x60; and the &#x60;upstream&#x60;/&#x60;license&#x60; credits are all settable; an omitted field is untouched, and a credit sent as an empty string is cleared.  The SLUG IS NOT SETTABLE. It is the public host and the storage prefix, so renaming it would move a live site out from under its own URL — create a new project instead. Flipping &#x60;visibility&#x60; to private runs the same paid gate as at create and answers 402 for an unfunded org rather than leaving it public. &#x60;hidden&#x60; and &#x60;hiddenReason&#x60; are MODERATION and are honoured only for a global admin; a tenant sending them is silently ignored, which is deliberate — moderation must not edit the publisher&#39;s own visibility choice, so lifting it restores exactly what they asked for.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @param projectsUpdateProjectRequest  (required)
+     * @return ProjectsProject
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated project. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPatchV1ProjectsBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
-        cloudPatchV1ProjectsBySlugWithHttpInfo(slug);
+    public ProjectsProject cloudPatchV1ProjectsBySlug(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsUpdateProjectRequest projectsUpdateProjectRequest) throws ApiException {
+        ApiResponse<ProjectsProject> localVarResp = cloudPatchV1ProjectsBySlugWithHttpInfo(slug, projectsUpdateProjectRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param slug  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Change a project&#39;s settings, leaving the rest alone
+     * Updates only the fields present in the body and answers the whole project after the change. &#x60;name&#x60;, &#x60;description&#x60;, &#x60;framework&#x60;, &#x60;cacheControl&#x60;, the linked &#x60;repo&#x60;, &#x60;visibility&#x60; and the &#x60;upstream&#x60;/&#x60;license&#x60; credits are all settable; an omitted field is untouched, and a credit sent as an empty string is cleared.  The SLUG IS NOT SETTABLE. It is the public host and the storage prefix, so renaming it would move a live site out from under its own URL — create a new project instead. Flipping &#x60;visibility&#x60; to private runs the same paid gate as at create and answers 402 for an unfunded org rather than leaving it public. &#x60;hidden&#x60; and &#x60;hiddenReason&#x60; are MODERATION and are honoured only for a global admin; a tenant sending them is silently ignored, which is deliberate — moderation must not edit the publisher&#39;s own visibility choice, so lifting it restores exactly what they asked for.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @param projectsUpdateProjectRequest  (required)
+     * @return ApiResponse&lt;ProjectsProject&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated project. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPatchV1ProjectsBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
-        okhttp3.Call localVarCall = cloudPatchV1ProjectsBySlugValidateBeforeCall(slug, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<ProjectsProject> cloudPatchV1ProjectsBySlugWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsUpdateProjectRequest projectsUpdateProjectRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPatchV1ProjectsBySlugValidateBeforeCall(slug, projectsUpdateProjectRequest, null);
+        Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param slug  (required)
+     * Change a project&#39;s settings, leaving the rest alone (asynchronously)
+     * Updates only the fields present in the body and answers the whole project after the change. &#x60;name&#x60;, &#x60;description&#x60;, &#x60;framework&#x60;, &#x60;cacheControl&#x60;, the linked &#x60;repo&#x60;, &#x60;visibility&#x60; and the &#x60;upstream&#x60;/&#x60;license&#x60; credits are all settable; an omitted field is untouched, and a credit sent as an empty string is cleared.  The SLUG IS NOT SETTABLE. It is the public host and the storage prefix, so renaming it would move a live site out from under its own URL — create a new project instead. Flipping &#x60;visibility&#x60; to private runs the same paid gate as at create and answers 402 for an unfunded org rather than leaving it public. &#x60;hidden&#x60; and &#x60;hiddenReason&#x60; are MODERATION and are honoured only for a global admin; a tenant sending them is silently ignored, which is deliberate — moderation must not edit the publisher&#39;s own visibility choice, so lifting it restores exactly what they asked for.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @param projectsUpdateProjectRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1048,17 +1160,23 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated project. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPatchV1ProjectsBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPatchV1ProjectsBySlugAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsUpdateProjectRequest projectsUpdateProjectRequest, final ApiCallback<ProjectsProject> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPatchV1ProjectsBySlugValidateBeforeCall(slug, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPatchV1ProjectsBySlugValidateBeforeCall(slug, projectsUpdateProjectRequest, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1Projects
+     * @param projectsCreateProjectRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1066,10 +1184,14 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Project created. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict — a project with this slug already exists in the org. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1ProjectsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1ProjectsCall(@javax.annotation.Nonnull ProjectsCreateProjectRequest projectsCreateProjectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1083,7 +1205,7 @@ public class ProjectsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = projectsCreateProjectRequest;
 
         // create path and map variables
         String localVarPath = "/v1/projects";
@@ -1095,6 +1217,7 @@ public class ProjectsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1102,6 +1225,7 @@ public class ProjectsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1113,46 +1237,65 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1ProjectsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1ProjectsCall(_callback);
+    private okhttp3.Call cloudPostV1ProjectsValidateBeforeCall(@javax.annotation.Nonnull ProjectsCreateProjectRequest projectsCreateProjectRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'projectsCreateProjectRequest' is set
+        if (projectsCreateProjectRequest == null) {
+            throw new ApiException("Missing the required parameter 'projectsCreateProjectRequest' when calling cloudPostV1Projects(Async)");
+        }
+
+        return cloudPostV1ProjectsCall(projectsCreateProjectRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Create a project — the handle a site is deployed and served under
+     * Creates a project and answers 201 with it in &#x60;draft&#x60;. &#x60;name&#x60; is required; &#x60;slug&#x60; is derived from the name when omitted and is the identifier that matters — it becomes the S3 key segment, the public host &#x60;&lt;slug&gt;.hanzo.app&#x60;, and the handle every later call addresses, so it must match &#x60;^[a-z0-9]([a-z0-9-]{0,38}[a-z0-9])?$&#x60; and may not be a reserved label such as &#x60;api&#x60; or &#x60;admin&#x60;. &#x60;framework&#x60; is a build hint from a closed set, defaulting to &#x60;static&#x60;; it never gates a deploy, it only tells CI how to build a linked repo.  Two defaults are worth knowing: the analytics beacon is ON unless &#x60;analytics&#x60; is explicitly false, and &#x60;visibility&#x60; is &#x60;public&#x60; unless asked otherwise. Publishing publicly is free; PRIVATE is the paid feature, and an unfunded org asking for it is refused with 402 rather than quietly published as public. Creation also provisions the project&#39;s data space and a canonical git repo, both best-effort — neither can fail the create.  Scope: a validated principal is required (403 without one) and the project is created in THAT principal&#39;s org. The slug is unique per org, so a slug already used in the caller&#39;s own org is a 409 while the same slug in another org is irrelevant.
+     * @param projectsCreateProjectRequest  (required)
+     * @return ProjectsProject
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Project created. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict — a project with this slug already exists in the org. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1Projects() throws ApiException {
-        cloudPostV1ProjectsWithHttpInfo();
+    public ProjectsProject cloudPostV1Projects(@javax.annotation.Nonnull ProjectsCreateProjectRequest projectsCreateProjectRequest) throws ApiException {
+        ApiResponse<ProjectsProject> localVarResp = cloudPostV1ProjectsWithHttpInfo(projectsCreateProjectRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Create a project — the handle a site is deployed and served under
+     * Creates a project and answers 201 with it in &#x60;draft&#x60;. &#x60;name&#x60; is required; &#x60;slug&#x60; is derived from the name when omitted and is the identifier that matters — it becomes the S3 key segment, the public host &#x60;&lt;slug&gt;.hanzo.app&#x60;, and the handle every later call addresses, so it must match &#x60;^[a-z0-9]([a-z0-9-]{0,38}[a-z0-9])?$&#x60; and may not be a reserved label such as &#x60;api&#x60; or &#x60;admin&#x60;. &#x60;framework&#x60; is a build hint from a closed set, defaulting to &#x60;static&#x60;; it never gates a deploy, it only tells CI how to build a linked repo.  Two defaults are worth knowing: the analytics beacon is ON unless &#x60;analytics&#x60; is explicitly false, and &#x60;visibility&#x60; is &#x60;public&#x60; unless asked otherwise. Publishing publicly is free; PRIVATE is the paid feature, and an unfunded org asking for it is refused with 402 rather than quietly published as public. Creation also provisions the project&#39;s data space and a canonical git repo, both best-effort — neither can fail the create.  Scope: a validated principal is required (403 without one) and the project is created in THAT principal&#39;s org. The slug is unique per org, so a slug already used in the caller&#39;s own org is a 409 while the same slug in another org is irrelevant.
+     * @param projectsCreateProjectRequest  (required)
+     * @return ApiResponse&lt;ProjectsProject&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Project created. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict — a project with this slug already exists in the org. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1ProjectsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1ProjectsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<ProjectsProject> cloudPostV1ProjectsWithHttpInfo(@javax.annotation.Nonnull ProjectsCreateProjectRequest projectsCreateProjectRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1ProjectsValidateBeforeCall(projectsCreateProjectRequest, null);
+        Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Create a project — the handle a site is deployed and served under (asynchronously)
+     * Creates a project and answers 201 with it in &#x60;draft&#x60;. &#x60;name&#x60; is required; &#x60;slug&#x60; is derived from the name when omitted and is the identifier that matters — it becomes the S3 key segment, the public host &#x60;&lt;slug&gt;.hanzo.app&#x60;, and the handle every later call addresses, so it must match &#x60;^[a-z0-9]([a-z0-9-]{0,38}[a-z0-9])?$&#x60; and may not be a reserved label such as &#x60;api&#x60; or &#x60;admin&#x60;. &#x60;framework&#x60; is a build hint from a closed set, defaulting to &#x60;static&#x60;; it never gates a deploy, it only tells CI how to build a linked repo.  Two defaults are worth knowing: the analytics beacon is ON unless &#x60;analytics&#x60; is explicitly false, and &#x60;visibility&#x60; is &#x60;public&#x60; unless asked otherwise. Publishing publicly is free; PRIVATE is the paid feature, and an unfunded org asking for it is refused with 402 rather than quietly published as public. Creation also provisions the project&#39;s data space and a canonical git repo, both best-effort — neither can fail the create.  Scope: a validated principal is required (403 without one) and the project is created in THAT principal&#39;s org. The slug is unique per org, so a slug already used in the caller&#39;s own org is a 409 while the same slug in another org is irrelevant.
+     * @param projectsCreateProjectRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1160,18 +1303,24 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Project created. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict — a project with this slug already exists in the org. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1ProjectsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1ProjectsAsync(@javax.annotation.Nonnull ProjectsCreateProjectRequest projectsCreateProjectRequest, final ApiCallback<ProjectsProject> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1ProjectsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1ProjectsValidateBeforeCall(projectsCreateProjectRequest, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1ProjectsBySlugDeploy
-     * @param slug  (required)
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @param projectsGitDeployRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1179,10 +1328,17 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Artifact deployed live. </td><td>  -  </td></tr>
+        <tr><td> 202 </td><td> Git deployment queued for CI build. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway — the upload to the S3 origin failed. </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable — a required backend is not configured (the S3 origin, or the inference gateway for brief builds). </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1ProjectsBySlugDeployCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1ProjectsBySlugDeployCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsGitDeployRequest projectsGitDeployRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1196,7 +1352,7 @@ public class ProjectsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = projectsGitDeployRequest;
 
         // create path and map variables
         String localVarPath = "/v1/projects/{slug}/deploy"
@@ -1209,6 +1365,7 @@ public class ProjectsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1216,6 +1373,8 @@ public class ProjectsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json",
+            "application/octet-stream"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1227,54 +1386,79 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1ProjectsBySlugDeployValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudPostV1ProjectsBySlugDeployValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsGitDeployRequest projectsGitDeployRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
             throw new ApiException("Missing the required parameter 'slug' when calling cloudPostV1ProjectsBySlugDeploy(Async)");
         }
 
-        return cloudPostV1ProjectsBySlugDeployCall(slug, _callback);
+        // verify the required parameter 'projectsGitDeployRequest' is set
+        if (projectsGitDeployRequest == null) {
+            throw new ApiException("Missing the required parameter 'projectsGitDeployRequest' when calling cloudPostV1ProjectsBySlugDeploy(Async)");
+        }
+
+        return cloudPostV1ProjectsBySlugDeployCall(slug, projectsGitDeployRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
-     * @param slug  (required)
+     * Deploy a build — upload an archive, or trigger a build from the linked repo
+     * Takes a built site live at &#x60;https://&lt;slug&gt;.hanzo.app&#x60;. It accepts BOTH shapes on one address and the content type decides which: a &#x60;zip&#x60; or &#x60;tar.gz&#x60; archive — raw in the body or as a multipart file part — is uploaded and served immediately, answering 200 with the finished deployment; a JSON body instead queues a build from the project&#39;s linked repo and answers 202 with a queued deployment and, where one could be minted, a scoped upload grant for CI to write with. The git path needs a linked repo (400 without one) and is finished later by the completion hook.  Billing is fail-closed and fails FIRST: the hosting gate runs before anything is parsed or uploaded, so an unfunded org is 402 and an unreachable commerce is 503 with nothing written. The debit lands only on success — a failed upload is never billed and never flips the live site, and a queued build is billed at completion rather than at queue time. A redeploy returns the SAME URL, because slug and apex are stable.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured, else 503; an archive that does not walk is a 400 and one over the size cap is a 413.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @param projectsGitDeployRequest  (required)
+     * @return ProjectsDeployment
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Artifact deployed live. </td><td>  -  </td></tr>
+        <tr><td> 202 </td><td> Git deployment queued for CI build. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway — the upload to the S3 origin failed. </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable — a required backend is not configured (the S3 origin, or the inference gateway for brief builds). </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1ProjectsBySlugDeploy(@javax.annotation.Nonnull String slug) throws ApiException {
-        cloudPostV1ProjectsBySlugDeployWithHttpInfo(slug);
+    public ProjectsDeployment cloudPostV1ProjectsBySlugDeploy(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsGitDeployRequest projectsGitDeployRequest) throws ApiException {
+        ApiResponse<ProjectsDeployment> localVarResp = cloudPostV1ProjectsBySlugDeployWithHttpInfo(slug, projectsGitDeployRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param slug  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Deploy a build — upload an archive, or trigger a build from the linked repo
+     * Takes a built site live at &#x60;https://&lt;slug&gt;.hanzo.app&#x60;. It accepts BOTH shapes on one address and the content type decides which: a &#x60;zip&#x60; or &#x60;tar.gz&#x60; archive — raw in the body or as a multipart file part — is uploaded and served immediately, answering 200 with the finished deployment; a JSON body instead queues a build from the project&#39;s linked repo and answers 202 with a queued deployment and, where one could be minted, a scoped upload grant for CI to write with. The git path needs a linked repo (400 without one) and is finished later by the completion hook.  Billing is fail-closed and fails FIRST: the hosting gate runs before anything is parsed or uploaded, so an unfunded org is 402 and an unreachable commerce is 503 with nothing written. The debit lands only on success — a failed upload is never billed and never flips the live site, and a queued build is billed at completion rather than at queue time. A redeploy returns the SAME URL, because slug and apex are stable.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured, else 503; an archive that does not walk is a 400 and one over the size cap is a 413.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @param projectsGitDeployRequest  (required)
+     * @return ApiResponse&lt;ProjectsDeployment&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Artifact deployed live. </td><td>  -  </td></tr>
+        <tr><td> 202 </td><td> Git deployment queued for CI build. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway — the upload to the S3 origin failed. </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable — a required backend is not configured (the S3 origin, or the inference gateway for brief builds). </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1ProjectsBySlugDeployWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1ProjectsBySlugDeployValidateBeforeCall(slug, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<ProjectsDeployment> cloudPostV1ProjectsBySlugDeployWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsGitDeployRequest projectsGitDeployRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1ProjectsBySlugDeployValidateBeforeCall(slug, projectsGitDeployRequest, null);
+        Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param slug  (required)
+     * Deploy a build — upload an archive, or trigger a build from the linked repo (asynchronously)
+     * Takes a built site live at &#x60;https://&lt;slug&gt;.hanzo.app&#x60;. It accepts BOTH shapes on one address and the content type decides which: a &#x60;zip&#x60; or &#x60;tar.gz&#x60; archive — raw in the body or as a multipart file part — is uploaded and served immediately, answering 200 with the finished deployment; a JSON body instead queues a build from the project&#39;s linked repo and answers 202 with a queued deployment and, where one could be minted, a scoped upload grant for CI to write with. The git path needs a linked repo (400 without one) and is finished later by the completion hook.  Billing is fail-closed and fails FIRST: the hosting gate runs before anything is parsed or uploaded, so an unfunded org is 402 and an unreachable commerce is 503 with nothing written. The debit lands only on success — a failed upload is never billed and never flips the live site, and a queued build is billed at completion rather than at queue time. A redeploy returns the SAME URL, because slug and apex are stable.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured, else 503; an archive that does not walk is a 400 and one over the size cap is a 413.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @param projectsGitDeployRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1282,19 +1466,28 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Artifact deployed live. </td><td>  -  </td></tr>
+        <tr><td> 202 </td><td> Git deployment queued for CI build. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway — the upload to the S3 origin failed. </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable — a required backend is not configured (the S3 origin, or the inference gateway for brief builds). </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1ProjectsBySlugDeployAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1ProjectsBySlugDeployAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsGitDeployRequest projectsGitDeployRequest, final ApiCallback<ProjectsDeployment> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1ProjectsBySlugDeployValidateBeforeCall(slug, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1ProjectsBySlugDeployValidateBeforeCall(slug, projectsGitDeployRequest, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1ProjectsBySlugDeploymentsByIdComplete
-     * @param slug  (required)
-     * @param id  (required)
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @param id Deployment id (e.g. dep_...). (required)
+     * @param projectsCompleteDeploymentRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1302,10 +1495,14 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated deployment. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1ProjectsBySlugDeploymentsByIdCompleteCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1ProjectsBySlugDeploymentsByIdCompleteCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull ProjectsCompleteDeploymentRequest projectsCompleteDeploymentRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1319,7 +1516,7 @@ public class ProjectsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = projectsCompleteDeploymentRequest;
 
         // create path and map variables
         String localVarPath = "/v1/projects/{slug}/deployments/{id}/complete"
@@ -1333,6 +1530,7 @@ public class ProjectsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1340,6 +1538,7 @@ public class ProjectsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1351,7 +1550,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1ProjectsBySlugDeploymentsByIdCompleteValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudPostV1ProjectsBySlugDeploymentsByIdCompleteValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull ProjectsCompleteDeploymentRequest projectsCompleteDeploymentRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
             throw new ApiException("Missing the required parameter 'slug' when calling cloudPostV1ProjectsBySlugDeploymentsByIdComplete(Async)");
@@ -1362,51 +1561,70 @@ public class ProjectsApi {
             throw new ApiException("Missing the required parameter 'id' when calling cloudPostV1ProjectsBySlugDeploymentsByIdComplete(Async)");
         }
 
-        return cloudPostV1ProjectsBySlugDeploymentsByIdCompleteCall(slug, id, _callback);
+        // verify the required parameter 'projectsCompleteDeploymentRequest' is set
+        if (projectsCompleteDeploymentRequest == null) {
+            throw new ApiException("Missing the required parameter 'projectsCompleteDeploymentRequest' when calling cloudPostV1ProjectsBySlugDeploymentsByIdComplete(Async)");
+        }
+
+        return cloudPostV1ProjectsBySlugDeploymentsByIdCompleteCall(slug, id, projectsCompleteDeploymentRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
-     * @param slug  (required)
-     * @param id  (required)
+     * Finish a queued build — the CI completion hook
+     * Closes out a deployment that the git path queued, flipping it to &#x60;live&#x60; or &#x60;error&#x60; and answering the deployment. &#x60;status&#x60; is required and must be exactly one of those two (400 otherwise); &#x60;commit&#x60;, &#x60;message&#x60;, &#x60;files&#x60; and &#x60;bytes&#x60; are recorded as reported.  On a live completion the platform claims the public host itself and reports the URL it OWNS — a &#x60;liveUrl&#x60; in the body is a hint that can refine that, never a way to assert a subdomain another tenant holds. &#x60;keys&#x60;, the manifest CI just uploaded, is what replaces a delete-enabled sync: an upload grant authorizes writes only, so CI cannot remove anything, and the prefix is reconciled against this list instead. Omit &#x60;keys&#x60; and NOTHING is deleted — the prefix only grows, which is the safe default. Reconciliation runs only on a live completion, so a failed build can never prune the site the previous good one published.  Scope: this is an ordinary org-scoped route, not an unauthenticated webhook — CI calls it with an org-scoped token, and the project and deployment are both resolved within that org, so another tenant&#39;s deployment is a 404.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @param id Deployment id (e.g. dep_...). (required)
+     * @param projectsCompleteDeploymentRequest  (required)
+     * @return ProjectsDeployment
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated deployment. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1ProjectsBySlugDeploymentsByIdComplete(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id) throws ApiException {
-        cloudPostV1ProjectsBySlugDeploymentsByIdCompleteWithHttpInfo(slug, id);
+    public ProjectsDeployment cloudPostV1ProjectsBySlugDeploymentsByIdComplete(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull ProjectsCompleteDeploymentRequest projectsCompleteDeploymentRequest) throws ApiException {
+        ApiResponse<ProjectsDeployment> localVarResp = cloudPostV1ProjectsBySlugDeploymentsByIdCompleteWithHttpInfo(slug, id, projectsCompleteDeploymentRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param slug  (required)
-     * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Finish a queued build — the CI completion hook
+     * Closes out a deployment that the git path queued, flipping it to &#x60;live&#x60; or &#x60;error&#x60; and answering the deployment. &#x60;status&#x60; is required and must be exactly one of those two (400 otherwise); &#x60;commit&#x60;, &#x60;message&#x60;, &#x60;files&#x60; and &#x60;bytes&#x60; are recorded as reported.  On a live completion the platform claims the public host itself and reports the URL it OWNS — a &#x60;liveUrl&#x60; in the body is a hint that can refine that, never a way to assert a subdomain another tenant holds. &#x60;keys&#x60;, the manifest CI just uploaded, is what replaces a delete-enabled sync: an upload grant authorizes writes only, so CI cannot remove anything, and the prefix is reconciled against this list instead. Omit &#x60;keys&#x60; and NOTHING is deleted — the prefix only grows, which is the safe default. Reconciliation runs only on a live completion, so a failed build can never prune the site the previous good one published.  Scope: this is an ordinary org-scoped route, not an unauthenticated webhook — CI calls it with an org-scoped token, and the project and deployment are both resolved within that org, so another tenant&#39;s deployment is a 404.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @param id Deployment id (e.g. dep_...). (required)
+     * @param projectsCompleteDeploymentRequest  (required)
+     * @return ApiResponse&lt;ProjectsDeployment&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated deployment. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1ProjectsBySlugDeploymentsByIdCompleteWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1ProjectsBySlugDeploymentsByIdCompleteValidateBeforeCall(slug, id, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<ProjectsDeployment> cloudPostV1ProjectsBySlugDeploymentsByIdCompleteWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull ProjectsCompleteDeploymentRequest projectsCompleteDeploymentRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1ProjectsBySlugDeploymentsByIdCompleteValidateBeforeCall(slug, id, projectsCompleteDeploymentRequest, null);
+        Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param slug  (required)
-     * @param id  (required)
+     * Finish a queued build — the CI completion hook (asynchronously)
+     * Closes out a deployment that the git path queued, flipping it to &#x60;live&#x60; or &#x60;error&#x60; and answering the deployment. &#x60;status&#x60; is required and must be exactly one of those two (400 otherwise); &#x60;commit&#x60;, &#x60;message&#x60;, &#x60;files&#x60; and &#x60;bytes&#x60; are recorded as reported.  On a live completion the platform claims the public host itself and reports the URL it OWNS — a &#x60;liveUrl&#x60; in the body is a hint that can refine that, never a way to assert a subdomain another tenant holds. &#x60;keys&#x60;, the manifest CI just uploaded, is what replaces a delete-enabled sync: an upload grant authorizes writes only, so CI cannot remove anything, and the prefix is reconciled against this list instead. Omit &#x60;keys&#x60; and NOTHING is deleted — the prefix only grows, which is the safe default. Reconciliation runs only on a live completion, so a failed build can never prune the site the previous good one published.  Scope: this is an ordinary org-scoped route, not an unauthenticated webhook — CI calls it with an org-scoped token, and the project and deployment are both resolved within that org, so another tenant&#39;s deployment is a 404.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @param id Deployment id (e.g. dep_...). (required)
+     * @param projectsCompleteDeploymentRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1414,13 +1632,18 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated deployment. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1ProjectsBySlugDeploymentsByIdCompleteAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1ProjectsBySlugDeploymentsByIdCompleteAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull ProjectsCompleteDeploymentRequest projectsCompleteDeploymentRequest, final ApiCallback<ProjectsDeployment> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1ProjectsBySlugDeploymentsByIdCompleteValidateBeforeCall(slug, id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1ProjectsBySlugDeploymentsByIdCompleteValidateBeforeCall(slug, id, projectsCompleteDeploymentRequest, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1492,8 +1715,8 @@ public class ProjectsApi {
     }
 
     /**
-     * 
-     * 
+     * Point your own domain at this site
+     * Attaches one or more custom hostnames and answers a row per host. WHICH OUTCOME YOU GET depends on whether ownership is already established: a global admin, or the platform-operator org that manages customer DNS, binds VERIFIED immediately, because that bind is itself the vouch; every other org gets a PENDING claim plus the DNS challenge to publish, and the host does not route until the verify call proves control.  Claims are first-come and idempotent for the same site: repeating the call returns the SAME token rather than invalidating a record the customer has already published. A host already bound to another site is a 409, a reserved label is a 400, and a hostname we operate is refused with 403 for a non-vouched caller — those names are assigned by the platform, and no DNS proof is even possible in a zone we run.  Scope: a validated principal is required (403 without one), the project is resolved within that principal&#39;s org, and the claim is recorded against that org — so proving a domain for one tenant never lets another bind it.
      * @param slug  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1508,8 +1731,8 @@ public class ProjectsApi {
     }
 
     /**
-     * 
-     * 
+     * Point your own domain at this site
+     * Attaches one or more custom hostnames and answers a row per host. WHICH OUTCOME YOU GET depends on whether ownership is already established: a global admin, or the platform-operator org that manages customer DNS, binds VERIFIED immediately, because that bind is itself the vouch; every other org gets a PENDING claim plus the DNS challenge to publish, and the host does not route until the verify call proves control.  Claims are first-come and idempotent for the same site: repeating the call returns the SAME token rather than invalidating a record the customer has already published. A host already bound to another site is a 409, a reserved label is a 400, and a hostname we operate is refused with 403 for a non-vouched caller — those names are assigned by the platform, and no DNS proof is even possible in a zone we run.  Scope: a validated principal is required (403 without one), the project is resolved within that principal&#39;s org, and the claim is recorded against that org — so proving a domain for one tenant never lets another bind it.
      * @param slug  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1526,8 +1749,8 @@ public class ProjectsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Point your own domain at this site (asynchronously)
+     * Attaches one or more custom hostnames and answers a row per host. WHICH OUTCOME YOU GET depends on whether ownership is already established: a global admin, or the platform-operator org that manages customer DNS, binds VERIFIED immediately, because that bind is itself the vouch; every other org gets a PENDING claim plus the DNS challenge to publish, and the host does not route until the verify call proves control.  Claims are first-come and idempotent for the same site: repeating the call returns the SAME token rather than invalidating a record the customer has already published. A host already bound to another site is a 409, a reserved label is a 400, and a hostname we operate is refused with 403 for a non-vouched caller — those names are assigned by the platform, and no DNS proof is even possible in a zone we run.  Scope: a validated principal is required (403 without one), the project is resolved within that principal&#39;s org, and the claim is recorded against that org — so proving a domain for one tenant never lets another bind it.
      * @param slug  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1621,8 +1844,8 @@ public class ProjectsApi {
     }
 
     /**
-     * 
-     * 
+     * Check the DNS proof for a claimed domain and go live if it passes
+     * Resolves the ownership challenge for a pending claim. On success the host is promoted and starts routing at the edge immediately, and the edge cache is flushed so it serves the right site from the first request. An already-verified host answers its current state unchanged, so the call is safe to repeat.  A proof that is NOT yet visible is not an error: the answer is 200 with the claim still pending and a detail saying what the lookup found, because the check genuinely ran and DNS simply has not propagated — retry rather than re-claiming. A host this site has not claimed is a 404.  Scope: a validated principal is required (403 without one), and both the project and the claim are looked up within that principal&#39;s org, so a claim held by another tenant cannot be verified from here.
      * @param slug  (required)
      * @param host  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1638,8 +1861,8 @@ public class ProjectsApi {
     }
 
     /**
-     * 
-     * 
+     * Check the DNS proof for a claimed domain and go live if it passes
+     * Resolves the ownership challenge for a pending claim. On success the host is promoted and starts routing at the edge immediately, and the edge cache is flushed so it serves the right site from the first request. An already-verified host answers its current state unchanged, so the call is safe to repeat.  A proof that is NOT yet visible is not an error: the answer is 200 with the claim still pending and a detail saying what the lookup found, because the check genuinely ran and DNS simply has not propagated — retry rather than re-claiming. A host this site has not claimed is a 404.  Scope: a validated principal is required (403 without one), and both the project and the claim are looked up within that principal&#39;s org, so a claim held by another tenant cannot be verified from here.
      * @param slug  (required)
      * @param host  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -1657,8 +1880,8 @@ public class ProjectsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Check the DNS proof for a claimed domain and go live if it passes (asynchronously)
+     * Resolves the ownership challenge for a pending claim. On success the host is promoted and starts routing at the edge immediately, and the edge cache is flushed so it serves the right site from the first request. An already-verified host answers its current state unchanged, so the call is safe to repeat.  A proof that is NOT yet visible is not an error: the answer is 200 with the claim still pending and a detail saying what the lookup found, because the check genuinely ran and DNS simply has not propagated — retry rather than re-claiming. A host this site has not claimed is a 404.  Scope: a validated principal is required (403 without one), and both the project and the claim are looked up within that principal&#39;s org, so a claim held by another tenant cannot be verified from here.
      * @param slug  (required)
      * @param host  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1679,7 +1902,7 @@ public class ProjectsApi {
     }
     /**
      * Build call for cloudPostV1ProjectsBySlugPurge
-     * @param slug  (required)
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1687,7 +1910,10 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Edge cache purged; the project with an updated lastPurgeAt. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1ProjectsBySlugPurgeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
@@ -1717,6 +1943,7 @@ public class ProjectsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1746,43 +1973,52 @@ public class ProjectsApi {
     }
 
     /**
-     * 
-     * 
-     * @param slug  (required)
+     * Flush the edge cache for a site without redeploying it
+     * Purges the project&#39;s edge cache tag so stale copies stop being served, stamps the purge time, and answers the updated project. It NEVER writes or deletes stored objects — the live build keeps serving from the origin, only cached copies drop — so it is safe to call at any time and is the right tool when the origin is already correct and the edge is not.  A purge that cannot reach the edge is non-fatal: the timestamp is still stamped and the answer is still 200, so treat the response as &#39;the purge was requested&#39;, not &#39;every edge node has dropped it&#39;. Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @return ProjectsProject
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Edge cache purged; the project with an updated lastPurgeAt. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1ProjectsBySlugPurge(@javax.annotation.Nonnull String slug) throws ApiException {
-        cloudPostV1ProjectsBySlugPurgeWithHttpInfo(slug);
+    public ProjectsProject cloudPostV1ProjectsBySlugPurge(@javax.annotation.Nonnull String slug) throws ApiException {
+        ApiResponse<ProjectsProject> localVarResp = cloudPostV1ProjectsBySlugPurgeWithHttpInfo(slug);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param slug  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Flush the edge cache for a site without redeploying it
+     * Purges the project&#39;s edge cache tag so stale copies stop being served, stamps the purge time, and answers the updated project. It NEVER writes or deletes stored objects — the live build keeps serving from the origin, only cached copies drop — so it is safe to call at any time and is the right tool when the origin is already correct and the edge is not.  A purge that cannot reach the edge is non-fatal: the timestamp is still stamped and the answer is still 200, so treat the response as &#39;the purge was requested&#39;, not &#39;every edge node has dropped it&#39;. Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
+     * @return ApiResponse&lt;ProjectsProject&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Edge cache purged; the project with an updated lastPurgeAt. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1ProjectsBySlugPurgeWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+    public ApiResponse<ProjectsProject> cloudPostV1ProjectsBySlugPurgeWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
         okhttp3.Call localVarCall = cloudPostV1ProjectsBySlugPurgeValidateBeforeCall(slug, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param slug  (required)
+     * Flush the edge cache for a site without redeploying it (asynchronously)
+     * Purges the project&#39;s edge cache tag so stale copies stop being served, stamps the purge time, and answers the updated project. It NEVER writes or deletes stored objects — the live build keeps serving from the origin, only cached copies drop — so it is safe to call at any time and is the right tool when the origin is already correct and the edge is not.  A purge that cannot reach the edge is non-fatal: the timestamp is still stamped and the answer is still 200, so treat the response as &#39;the purge was requested&#39;, not &#39;every edge node has dropped it&#39;. Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Org-unique project handle (lowercased); also the S3-origin key segment and the subdomain label. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1790,17 +2026,22 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Edge cache purged; the project with an updated lastPurgeAt. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1ProjectsBySlugPurgeAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1ProjectsBySlugPurgeAsync(@javax.annotation.Nonnull String slug, final ApiCallback<ProjectsProject> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudPostV1ProjectsBySlugPurgeValidateBeforeCall(slug, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1ProjectsFork
+     * @param projectsForkProjectRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1808,10 +2049,15 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Project created from template. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict — a project with this slug already exists in the org. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1ProjectsForkCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1ProjectsForkCall(@javax.annotation.Nonnull ProjectsForkProjectRequest projectsForkProjectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1825,7 +2071,7 @@ public class ProjectsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = projectsForkProjectRequest;
 
         // create path and map variables
         String localVarPath = "/v1/projects/fork";
@@ -1837,6 +2083,7 @@ public class ProjectsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1844,6 +2091,7 @@ public class ProjectsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1855,46 +2103,67 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1ProjectsForkValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1ProjectsForkCall(_callback);
+    private okhttp3.Call cloudPostV1ProjectsForkValidateBeforeCall(@javax.annotation.Nonnull ProjectsForkProjectRequest projectsForkProjectRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'projectsForkProjectRequest' is set
+        if (projectsForkProjectRequest == null) {
+            throw new ApiException("Missing the required parameter 'projectsForkProjectRequest' when calling cloudPostV1ProjectsFork(Async)");
+        }
+
+        return cloudPostV1ProjectsForkCall(projectsForkProjectRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Fork a starter template or a published project into your own org
+     * Creates a NEW project in the caller&#39;s org seeded from a parent named by &#x60;slug&#x60;, and answers 201 with the child. The parent is resolved templates FIRST — the caller org&#39;s own private templates ahead of the public gallery — and only then as the live project uniquely serving that slug, which is the same resolution the edge uses to serve &#x60;&lt;slug&gt;.hanzo.app&#x60;: what you can browse is what you can fork. A template&#39;s &#x60;variant&#x60; picks its format, page or theme.  A fork copies the recipe, not the bytes. A live parent contributes its linked repo so the child builds from the same source, but the parent&#39;s deployed release is never copied — releases are per-tenant, and the fork publishes its own. &#x60;name&#x60; and &#x60;target&#x60; override the child&#39;s name and slug, defaulting to the parent&#39;s. Lineage is stamped server-side from the parent actually resolved and cannot be supplied by the caller, so an attribution edge always names a real ancestor.  Scope: a validated principal is required (403 without one) and the child lands in that principal&#39;s org. It goes through the same create path as a plain create, so the same slug rules, the same 409 on a slug already taken in the caller&#39;s org, and the same 402 when an unfunded org asks for private all apply. An unknown parent slug, or a template variant that does not exist, is a 404.
+     * @param projectsForkProjectRequest  (required)
+     * @return ProjectsProject
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Project created from template. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict — a project with this slug already exists in the org. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1ProjectsFork() throws ApiException {
-        cloudPostV1ProjectsForkWithHttpInfo();
+    public ProjectsProject cloudPostV1ProjectsFork(@javax.annotation.Nonnull ProjectsForkProjectRequest projectsForkProjectRequest) throws ApiException {
+        ApiResponse<ProjectsProject> localVarResp = cloudPostV1ProjectsForkWithHttpInfo(projectsForkProjectRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Fork a starter template or a published project into your own org
+     * Creates a NEW project in the caller&#39;s org seeded from a parent named by &#x60;slug&#x60;, and answers 201 with the child. The parent is resolved templates FIRST — the caller org&#39;s own private templates ahead of the public gallery — and only then as the live project uniquely serving that slug, which is the same resolution the edge uses to serve &#x60;&lt;slug&gt;.hanzo.app&#x60;: what you can browse is what you can fork. A template&#39;s &#x60;variant&#x60; picks its format, page or theme.  A fork copies the recipe, not the bytes. A live parent contributes its linked repo so the child builds from the same source, but the parent&#39;s deployed release is never copied — releases are per-tenant, and the fork publishes its own. &#x60;name&#x60; and &#x60;target&#x60; override the child&#39;s name and slug, defaulting to the parent&#39;s. Lineage is stamped server-side from the parent actually resolved and cannot be supplied by the caller, so an attribution edge always names a real ancestor.  Scope: a validated principal is required (403 without one) and the child lands in that principal&#39;s org. It goes through the same create path as a plain create, so the same slug rules, the same 409 on a slug already taken in the caller&#39;s org, and the same 402 when an unfunded org asks for private all apply. An unknown parent slug, or a template variant that does not exist, is a 404.
+     * @param projectsForkProjectRequest  (required)
+     * @return ApiResponse&lt;ProjectsProject&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Project created from template. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict — a project with this slug already exists in the org. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1ProjectsForkWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1ProjectsForkValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<ProjectsProject> cloudPostV1ProjectsForkWithHttpInfo(@javax.annotation.Nonnull ProjectsForkProjectRequest projectsForkProjectRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1ProjectsForkValidateBeforeCall(projectsForkProjectRequest, null);
+        Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Fork a starter template or a published project into your own org (asynchronously)
+     * Creates a NEW project in the caller&#39;s org seeded from a parent named by &#x60;slug&#x60;, and answers 201 with the child. The parent is resolved templates FIRST — the caller org&#39;s own private templates ahead of the public gallery — and only then as the live project uniquely serving that slug, which is the same resolution the edge uses to serve &#x60;&lt;slug&gt;.hanzo.app&#x60;: what you can browse is what you can fork. A template&#39;s &#x60;variant&#x60; picks its format, page or theme.  A fork copies the recipe, not the bytes. A live parent contributes its linked repo so the child builds from the same source, but the parent&#39;s deployed release is never copied — releases are per-tenant, and the fork publishes its own. &#x60;name&#x60; and &#x60;target&#x60; override the child&#39;s name and slug, defaulting to the parent&#39;s. Lineage is stamped server-side from the parent actually resolved and cannot be supplied by the caller, so an attribution edge always names a real ancestor.  Scope: a validated principal is required (403 without one) and the child lands in that principal&#39;s org. It goes through the same create path as a plain create, so the same slug rules, the same 409 on a slug already taken in the caller&#39;s org, and the same 402 when an unfunded org asks for private all apply. An unknown parent slug, or a template variant that does not exist, is a 404.
+     * @param projectsForkProjectRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1902,13 +2171,19 @@ public class ProjectsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Project created from template. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request — invalid input. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden — a validated org (X-Org-Id) is required. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found — the project or deployment does not exist. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict — a project with this slug already exists in the org. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1ProjectsForkAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1ProjectsForkAsync(@javax.annotation.Nonnull ProjectsForkProjectRequest projectsForkProjectRequest, final ApiCallback<ProjectsProject> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1ProjectsForkValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1ProjectsForkValidateBeforeCall(projectsForkProjectRequest, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }

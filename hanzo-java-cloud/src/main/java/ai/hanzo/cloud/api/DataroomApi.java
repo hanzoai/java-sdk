@@ -140,8 +140,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Per-page view analytics for a data room, across all its links
+     * Rolls up every link pointing at the room: session and page-view totals for the room, plus the same per-page breakdown for each link beneath it.  Requires a validated principal; 403 without one, and a room id outside the caller&#39;s own tenant store is a 404. Only links that NAME the room are counted — a link created over a single document contributes nothing here, even when that document also sits in the room.
      * @param dataroomId  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -156,8 +156,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Per-page view analytics for a data room, across all its links
+     * Rolls up every link pointing at the room: session and page-view totals for the room, plus the same per-page breakdown for each link beneath it.  Requires a validated principal; 403 without one, and a room id outside the caller&#39;s own tenant store is a 404. Only links that NAME the room are counted — a link created over a single document contributes nothing here, even when that document also sits in the room.
      * @param dataroomId  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -174,8 +174,8 @@ public class DataroomApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Per-page view analytics for a data room, across all its links (asynchronously)
+     * Rolls up every link pointing at the room: session and page-view totals for the room, plus the same per-page breakdown for each link beneath it.  Requires a validated principal; 403 without one, and a room id outside the caller&#39;s own tenant store is a 404. Only links that NAME the room are counted — a link created over a single document contributes nothing here, even when that document also sits in the room.
      * @param dataroomId  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -262,8 +262,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Per-page view analytics for one share link
+     * Returns how the link was actually read: total viewing sessions, total page views, and per page the view count, the summed dwell measure and its average.  Requires a validated principal; 403 without one. The link is resolved in the caller&#39;s OWN tenant store, so another org&#39;s link id is a 404 — knowing a link id is enough to open the room it shares, and never enough to read who has been reading it.
      * @param linkId  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -278,8 +278,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Per-page view analytics for one share link
+     * Returns how the link was actually read: total viewing sessions, total page views, and per page the view count, the summed dwell measure and its average.  Requires a validated principal; 403 without one. The link is resolved in the caller&#39;s OWN tenant store, so another org&#39;s link id is a 404 — knowing a link id is enough to open the room it shares, and never enough to read who has been reading it.
      * @param linkId  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -296,8 +296,8 @@ public class DataroomApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Per-page view analytics for one share link (asynchronously)
+     * Returns how the link was actually read: total viewing sessions, total page views, and per page the view count, the summed dwell measure and its average.  Requires a validated principal; 403 without one. The link is resolved in the caller&#39;s OWN tenant store, so another org&#39;s link id is a 404 — knowing a link id is enough to open the room it shares, and never enough to read who has been reading it.
      * @param linkId  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -377,8 +377,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * List the org&#39;s data rooms, newest first
+     * Returns every data room in the caller&#39;s own tenant store with its short public id, name, description and timestamps, newest first.  Requires a validated principal; 403 without one. Documents are not included — a room&#39;s contents come from the single-room read.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -392,8 +392,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * List the org&#39;s data rooms, newest first
+     * Returns every data room in the caller&#39;s own tenant store with its short public id, name, description and timestamps, newest first.  Requires a validated principal; 403 without one. Documents are not included — a room&#39;s contents come from the single-room read.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -409,8 +409,8 @@ public class DataroomApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * List the org&#39;s data rooms, newest first (asynchronously)
+     * Returns every data room in the caller&#39;s own tenant store with its short public id, name, description and timestamps, newest first.  Requires a validated principal; 403 without one. Documents are not included — a room&#39;s contents come from the single-room read.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -496,8 +496,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Read one data room with its documents in display order
+     * Returns the room and every document attached to it, each carrying its membership id and order index, sorted by that index with unordered documents last and creation time breaking ties — the same order a link&#39;s visitor sees.  Requires a validated principal; 403 without one, and a room id outside the caller&#39;s own tenant store is a 404.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -512,8 +512,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Read one data room with its documents in display order
+     * Returns the room and every document attached to it, each carrying its membership id and order index, sorted by that index with unordered documents last and creation time breaking ties — the same order a link&#39;s visitor sees.  Requires a validated principal; 403 without one, and a room id outside the caller&#39;s own tenant store is a 404.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -530,8 +530,8 @@ public class DataroomApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Read one data room with its documents in display order (asynchronously)
+     * Returns the room and every document attached to it, each carrying its membership id and order index, sorted by that index with unordered documents last and creation time breaking ties — the same order a link&#39;s visitor sees.  Requires a validated principal; 403 without one, and a room id outside the caller&#39;s own tenant store is a 404.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -611,8 +611,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * List the org&#39;s documents, newest first
+     * Returns every document in the caller&#39;s own tenant store — name, opaque storage key, content type, page count, size and timestamps — ordered newest first.  Requires a validated principal; 403 without one. Tenant isolation is the per-org store itself: there is one SQLite file per org and the org is never a parameter, so no input the caller controls can address another tenant&#39;s documents. Metadata only — the bytes come from the file route.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -626,8 +626,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * List the org&#39;s documents, newest first
+     * Returns every document in the caller&#39;s own tenant store — name, opaque storage key, content type, page count, size and timestamps — ordered newest first.  Requires a validated principal; 403 without one. Tenant isolation is the per-org store itself: there is one SQLite file per org and the org is never a parameter, so no input the caller controls can address another tenant&#39;s documents. Metadata only — the bytes come from the file route.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -643,8 +643,8 @@ public class DataroomApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * List the org&#39;s documents, newest first (asynchronously)
+     * Returns every document in the caller&#39;s own tenant store — name, opaque storage key, content type, page count, size and timestamps — ordered newest first.  Requires a validated principal; 403 without one. Tenant isolation is the per-org store itself: there is one SQLite file per org and the org is never a parameter, so no input the caller controls can address another tenant&#39;s documents. Metadata only — the bytes come from the file route.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -730,8 +730,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Read one document&#39;s metadata
+     * Returns the document&#39;s name, opaque storage key, content type, page count, size and timestamps.  Requires a validated principal; 403 without one. The lookup runs in the caller&#39;s own tenant store, so an id belonging to another org is a 404 exactly like one that never existed. Metadata only — the bytes are a separate read.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -746,8 +746,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Read one document&#39;s metadata
+     * Returns the document&#39;s name, opaque storage key, content type, page count, size and timestamps.  Requires a validated principal; 403 without one. The lookup runs in the caller&#39;s own tenant store, so an id belonging to another org is a 404 exactly like one that never existed. Metadata only — the bytes are a separate read.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -764,8 +764,8 @@ public class DataroomApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Read one document&#39;s metadata (asynchronously)
+     * Returns the document&#39;s name, opaque storage key, content type, page count, size and timestamps.  Requires a validated principal; 403 without one. The lookup runs in the caller&#39;s own tenant store, so an id belonging to another org is a 404 exactly like one that never existed. Metadata only — the bytes are a separate read.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -852,8 +852,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Download a document&#39;s bytes as its owner
+     * Streams the stored file back under its recorded content type, falling back to application/octet-stream when none was recorded.  Requires a validated principal; 403 without one, and the document is resolved in the caller&#39;s own tenant store, so another org&#39;s id is a 404. This is the OWNER&#39;s path and applies no link gate at all — the per-link password, email and download controls live on the viewer surface, not here. Bytes that cannot be fetched from object storage are 502, never a truncated or empty file.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -868,8 +868,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Download a document&#39;s bytes as its owner
+     * Streams the stored file back under its recorded content type, falling back to application/octet-stream when none was recorded.  Requires a validated principal; 403 without one, and the document is resolved in the caller&#39;s own tenant store, so another org&#39;s id is a 404. This is the OWNER&#39;s path and applies no link gate at all — the per-link password, email and download controls live on the viewer surface, not here. Bytes that cannot be fetched from object storage are 502, never a truncated or empty file.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -886,8 +886,8 @@ public class DataroomApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Download a document&#39;s bytes as its owner (asynchronously)
+     * Streams the stored file back under its recorded content type, falling back to application/octet-stream when none was recorded.  Requires a validated principal; 403 without one, and the document is resolved in the caller&#39;s own tenant store, so another org&#39;s id is a 404. This is the OWNER&#39;s path and applies no link gate at all — the per-link password, email and download controls live on the viewer surface, not here. Bytes that cannot be fetched from object storage are 502, never a truncated or empty file.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -967,8 +967,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Liveness of the dataroom subsystem
+     * Answers {service, status} unconditionally — no principal, no tenant. It is registered BEFORE the bundle, the link index and the object-storage seam are wired, so it keeps answering when any of those fail and the subsystem degrades to health-only. That is the point, and the limit: a 200 here says the process is alive, never that a data room can be read or written.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -982,8 +982,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Liveness of the dataroom subsystem
+     * Answers {service, status} unconditionally — no principal, no tenant. It is registered BEFORE the bundle, the link index and the object-storage seam are wired, so it keeps answering when any of those fail and the subsystem degrades to health-only. That is the point, and the limit: a 200 here says the process is alive, never that a data room can be read or written.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -999,8 +999,8 @@ public class DataroomApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Liveness of the dataroom subsystem (asynchronously)
+     * Answers {service, status} unconditionally — no principal, no tenant. It is registered BEFORE the bundle, the link index and the object-storage seam are wired, so it keeps answering when any of those fail and the subsystem degrades to health-only. That is the point, and the limit: a 200 here says the process is alive, never that a data room can be read or written.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1079,8 +1079,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * List the org&#39;s live share links and the gates they enforce
+     * Returns every non-archived link with the controls a visitor will meet: whether an address is required, whether a password is set, the allow and deny lists, whether download is permitted, and when the link expires.  Requires a validated principal; 403 without one. Archived links are omitted entirely. A link reports only THAT a password is set — the stored form is a bcrypt hash and no route returns it.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1094,8 +1094,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * List the org&#39;s live share links and the gates they enforce
+     * Returns every non-archived link with the controls a visitor will meet: whether an address is required, whether a password is set, the allow and deny lists, whether download is permitted, and when the link expires.  Requires a validated principal; 403 without one. Archived links are omitted entirely. A link reports only THAT a password is set — the stored form is a bcrypt hash and no route returns it.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1111,8 +1111,8 @@ public class DataroomApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * List the org&#39;s live share links and the gates they enforce (asynchronously)
+     * Returns every non-archived link with the controls a visitor will meet: whether an address is required, whether a password is set, the allow and deny lists, whether download is permitted, and when the link expires.  Requires a validated principal; 403 without one. Archived links are omitted entirely. A link reports only THAT a password is set — the stored form is a bcrypt hash and no route returns it.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1198,8 +1198,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * What a share link&#39;s visitor sees before authenticating
+     * Answers the pre-auth face of a link to anyone holding its id: name and type, which gates apply (whether an address is required, whether a password is set), whether download is permitted, whether it has expired, and the name and description of the room behind it — or, for a single-document link, that document&#39;s name and page count.  No principal is involved: the owning org is resolved from the link id through dataroom&#39;s one cross-tenant routing table, and an unknown or archived link is a 404.  It is metadata only — a room&#39;s document list and every file stay behind the authenticate step. An expired link is REPORTED as expired here rather than refused, so a visitor learns why the next step will fail; nothing about the password beyond its existence is disclosed.
      * @param linkId  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1214,8 +1214,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * What a share link&#39;s visitor sees before authenticating
+     * Answers the pre-auth face of a link to anyone holding its id: name and type, which gates apply (whether an address is required, whether a password is set), whether download is permitted, whether it has expired, and the name and description of the room behind it — or, for a single-document link, that document&#39;s name and page count.  No principal is involved: the owning org is resolved from the link id through dataroom&#39;s one cross-tenant routing table, and an unknown or archived link is a 404.  It is metadata only — a room&#39;s document list and every file stay behind the authenticate step. An expired link is REPORTED as expired here rather than refused, so a visitor learns why the next step will fail; nothing about the password beyond its existence is disclosed.
      * @param linkId  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1232,8 +1232,8 @@ public class DataroomApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * What a share link&#39;s visitor sees before authenticating (asynchronously)
+     * Answers the pre-auth face of a link to anyone holding its id: name and type, which gates apply (whether an address is required, whether a password is set), whether download is permitted, whether it has expired, and the name and description of the room behind it — or, for a single-document link, that document&#39;s name and page count.  No principal is involved: the owning org is resolved from the link id through dataroom&#39;s one cross-tenant routing table, and an unknown or archived link is a 404.  It is metadata only — a room&#39;s document list and every file stay behind the authenticate step. An expired link is REPORTED as expired here rather than refused, so a visitor learns why the next step will fail; nothing about the password beyond its existence is disclosed.
      * @param linkId  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1327,8 +1327,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Read a document&#39;s bytes as an authorised link visitor
+     * Streams a document&#39;s bytes under its recorded content type to a visitor holding an open viewing session.  No principal: &#x60;?viewId&#x3D;&#x60; from the authenticate step is the authorisation and must belong to this link, or the call is 403 — holding the link id alone gets no bytes. The document must be reachable THROUGH this link (a member of the room the link opens, or the single document the link names), so a visitor cannot walk to an unrelated document by guessing an id; anything else is a 404, as is an unknown or archived link. Bytes that cannot be fetched from object storage are 502.  &#x60;?download&#x3D;1&#x60; additionally requires the link&#39;s &#x60;allowDownload&#x60; and is 403 when the owner did not permit it. Read that flag precisely: it gates the DOWNLOAD intent, not access to the bytes — without the parameter an authorised visitor is served the file for in-place viewing whether or not downloads are allowed.
      * @param linkId  (required)
      * @param documentId  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1344,8 +1344,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Read a document&#39;s bytes as an authorised link visitor
+     * Streams a document&#39;s bytes under its recorded content type to a visitor holding an open viewing session.  No principal: &#x60;?viewId&#x3D;&#x60; from the authenticate step is the authorisation and must belong to this link, or the call is 403 — holding the link id alone gets no bytes. The document must be reachable THROUGH this link (a member of the room the link opens, or the single document the link names), so a visitor cannot walk to an unrelated document by guessing an id; anything else is a 404, as is an unknown or archived link. Bytes that cannot be fetched from object storage are 502.  &#x60;?download&#x3D;1&#x60; additionally requires the link&#39;s &#x60;allowDownload&#x60; and is 403 when the owner did not permit it. Read that flag precisely: it gates the DOWNLOAD intent, not access to the bytes — without the parameter an authorised visitor is served the file for in-place viewing whether or not downloads are allowed.
      * @param linkId  (required)
      * @param documentId  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -1363,8 +1363,8 @@ public class DataroomApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Read a document&#39;s bytes as an authorised link visitor (asynchronously)
+     * Streams a document&#39;s bytes under its recorded content type to a visitor holding an open viewing session.  No principal: &#x60;?viewId&#x3D;&#x60; from the authenticate step is the authorisation and must belong to this link, or the call is 403 — holding the link id alone gets no bytes. The document must be reachable THROUGH this link (a member of the room the link opens, or the single document the link names), so a visitor cannot walk to an unrelated document by guessing an id; anything else is a 404, as is an unknown or archived link. Bytes that cannot be fetched from object storage are 502.  &#x60;?download&#x3D;1&#x60; additionally requires the link&#39;s &#x60;allowDownload&#x60; and is 403 when the owner did not permit it. Read that flag precisely: it gates the DOWNLOAD intent, not access to the bytes — without the parameter an authorised visitor is served the file for in-place viewing whether or not downloads are allowed.
      * @param linkId  (required)
      * @param documentId  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1445,8 +1445,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Create a data room
+     * Creates an empty data room from {name, description} and answers with it, including the short public id it is addressed by.  Requires a validated principal; 403 without one. &#x60;name&#x60; is required; without it the call is 400 and the tenant store is untouched, because a dispatch answering 4xx rolls its transaction back. A new room holds no documents and is reachable by nobody until a share link is created over it.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1460,8 +1460,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Create a data room
+     * Creates an empty data room from {name, description} and answers with it, including the short public id it is addressed by.  Requires a validated principal; 403 without one. &#x60;name&#x60; is required; without it the call is 400 and the tenant store is untouched, because a dispatch answering 4xx rolls its transaction back. A new room holds no documents and is reachable by nobody until a share link is created over it.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1477,8 +1477,8 @@ public class DataroomApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Create a data room (asynchronously)
+     * Creates an empty data room from {name, description} and answers with it, including the short public id it is addressed by.  Requires a validated principal; 403 without one. &#x60;name&#x60; is required; without it the call is 400 and the tenant store is untouched, because a dispatch answering 4xx rolls its transaction back. A new room holds no documents and is reachable by nobody until a share link is created over it.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1564,8 +1564,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Attach an existing document to a data room
+     * Adds an already-uploaded document to the room by {documentId} and answers with the new membership id. An optional &#x60;orderIndex&#x60; fixes its place in the viewer&#39;s list.  Requires a validated principal; 403 without one. Both the room and the document must exist in the caller&#39;s own tenant store — either missing is a 404 — and a document already in the room is a 409 rather than a duplicate row. It attaches, it never uploads: the bytes must already be stored.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1580,8 +1580,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Attach an existing document to a data room
+     * Adds an already-uploaded document to the room by {documentId} and answers with the new membership id. An optional &#x60;orderIndex&#x60; fixes its place in the viewer&#39;s list.  Requires a validated principal; 403 without one. Both the room and the document must exist in the caller&#39;s own tenant store — either missing is a 404 — and a document already in the room is a 409 rather than a duplicate row. It attaches, it never uploads: the bytes must already be stored.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1598,8 +1598,8 @@ public class DataroomApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Attach an existing document to a data room (asynchronously)
+     * Adds an already-uploaded document to the room by {documentId} and answers with the new membership id. An optional &#x60;orderIndex&#x60; fixes its place in the viewer&#39;s list.  Requires a validated principal; 403 without one. Both the room and the document must exist in the caller&#39;s own tenant store — either missing is a 404 — and a document already in the room is a 409 rather than a duplicate row. It attaches, it never uploads: the bytes must already be stored.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1679,8 +1679,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Upload a document&#39;s bytes and record it
+     * Takes the file ITSELF as the raw request body — not a JSON envelope, not multipart — stores it on the object-storage seam, and records the metadata row, answering with the new document. &#x60;?name&#x3D;&#x60; names it (default \&quot;document\&quot;), the request&#39;s Content-Type becomes the recorded mime type, and &#x60;?numPages&#x3D;&#x60; is optional.  Requires a validated principal; 403 without one. An empty body is 400 and anything over 64 MiB is 413 — a data room holds decks and PDFs, not a media library.  The storage key is 128 random bits under the tenant&#39;s own key prefix, minted before the bytes are written: if the system&#39;s randomness is unavailable the upload fails 500 rather than fall back to a predictable key that could overwrite another document&#39;s bytes. A storage write that fails is 502 and no metadata row is recorded, so a document never exists without its file.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1694,8 +1694,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Upload a document&#39;s bytes and record it
+     * Takes the file ITSELF as the raw request body — not a JSON envelope, not multipart — stores it on the object-storage seam, and records the metadata row, answering with the new document. &#x60;?name&#x3D;&#x60; names it (default \&quot;document\&quot;), the request&#39;s Content-Type becomes the recorded mime type, and &#x60;?numPages&#x3D;&#x60; is optional.  Requires a validated principal; 403 without one. An empty body is 400 and anything over 64 MiB is 413 — a data room holds decks and PDFs, not a media library.  The storage key is 128 random bits under the tenant&#39;s own key prefix, minted before the bytes are written: if the system&#39;s randomness is unavailable the upload fails 500 rather than fall back to a predictable key that could overwrite another document&#39;s bytes. A storage write that fails is 502 and no metadata row is recorded, so a document never exists without its file.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1711,8 +1711,8 @@ public class DataroomApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Upload a document&#39;s bytes and record it (asynchronously)
+     * Takes the file ITSELF as the raw request body — not a JSON envelope, not multipart — stores it on the object-storage seam, and records the metadata row, answering with the new document. &#x60;?name&#x3D;&#x60; names it (default \&quot;document\&quot;), the request&#39;s Content-Type becomes the recorded mime type, and &#x60;?numPages&#x3D;&#x60; is optional.  Requires a validated principal; 403 without one. An empty body is 400 and anything over 64 MiB is 413 — a data room holds decks and PDFs, not a media library.  The storage key is 128 random bits under the tenant&#39;s own key prefix, minted before the bytes are written: if the system&#39;s randomness is unavailable the upload fails 500 rather than fall back to a predictable key that could overwrite another document&#39;s bytes. A storage write that fails is 502 and no metadata row is recorded, so a document never exists without its file.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1791,8 +1791,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Create a share link with its access controls
+     * Mints a public link over one data room (&#x60;dataroomId&#x60;) or one document (&#x60;documentId&#x60;) — one of the two is required — and answers with it. The controls are declared here and enforced only on the viewer surface: &#x60;password&#x60; is hashed with bcrypt before storage and is never readable back, &#x60;emailProtected&#x60; (on by default) makes a visitor state an address, &#x60;allowList&#x60;/&#x60;denyList&#x60; narrow which addresses pass, &#x60;allowDownload&#x60; (off by default) governs downloads, and &#x60;expiresAt&#x60; closes the link.  Requires a validated principal; 403 without one, and the target room or document must exist in the caller&#39;s own tenant store or it is a 404.  Creating a link also writes dataroom&#39;s ONE cross-tenant row: the link id to owning org mapping an anonymous visitor is routed through. That write is part of the operation — if it fails the call is 500, so a link that no visitor could open is never handed back as usable.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1806,8 +1806,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Create a share link with its access controls
+     * Mints a public link over one data room (&#x60;dataroomId&#x60;) or one document (&#x60;documentId&#x60;) — one of the two is required — and answers with it. The controls are declared here and enforced only on the viewer surface: &#x60;password&#x60; is hashed with bcrypt before storage and is never readable back, &#x60;emailProtected&#x60; (on by default) makes a visitor state an address, &#x60;allowList&#x60;/&#x60;denyList&#x60; narrow which addresses pass, &#x60;allowDownload&#x60; (off by default) governs downloads, and &#x60;expiresAt&#x60; closes the link.  Requires a validated principal; 403 without one, and the target room or document must exist in the caller&#39;s own tenant store or it is a 404.  Creating a link also writes dataroom&#39;s ONE cross-tenant row: the link id to owning org mapping an anonymous visitor is routed through. That write is part of the operation — if it fails the call is 500, so a link that no visitor could open is never handed back as usable.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1823,8 +1823,8 @@ public class DataroomApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Create a share link with its access controls (asynchronously)
+     * Mints a public link over one data room (&#x60;dataroomId&#x60;) or one document (&#x60;documentId&#x60;) — one of the two is required — and answers with it. The controls are declared here and enforced only on the viewer surface: &#x60;password&#x60; is hashed with bcrypt before storage and is never readable back, &#x60;emailProtected&#x60; (on by default) makes a visitor state an address, &#x60;allowList&#x60;/&#x60;denyList&#x60; narrow which addresses pass, &#x60;allowDownload&#x60; (off by default) governs downloads, and &#x60;expiresAt&#x60; closes the link.  Requires a validated principal; 403 without one, and the target room or document must exist in the caller&#39;s own tenant store or it is a 404.  Creating a link also writes dataroom&#39;s ONE cross-tenant row: the link id to owning org mapping an anonymous visitor is routed through. That write is part of the operation — if it fails the call is 500, so a link that no visitor could open is never handed back as usable.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1910,8 +1910,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Pass a share link&#39;s gates and open a viewing session
+     * Clears the link&#39;s access controls and answers with the viewing session — a &#x60;viewId&#x60;, whether download is permitted, and the documents behind the link — which every later viewer call is authorised by.  No principal: the visitor is whoever holds the link id, and the org is resolved from it. The gates run in a fixed order and each is a flat refusal, never a hint. An archived or unknown link is 404 and an expired one 403. A missing address on an email-protected link is 401. An address on the deny list is 403, checked BEFORE the allow list so deny always wins. An address the allow list does not admit is 403 — an EMPTY allow list admits everyone, so a link with no list enforces the email gate alone. A wrong or absent password is 401, decided against the stored bcrypt hash.  The address is taken as stated and recorded UNVERIFIED: it names a viewer for analytics and repeat visits from it reuse one viewer record, but it proves nothing about who is on the other end. A link gated only by email is openable by anyone the link reaches.
      * @param linkId  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1926,8 +1926,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Pass a share link&#39;s gates and open a viewing session
+     * Clears the link&#39;s access controls and answers with the viewing session — a &#x60;viewId&#x60;, whether download is permitted, and the documents behind the link — which every later viewer call is authorised by.  No principal: the visitor is whoever holds the link id, and the org is resolved from it. The gates run in a fixed order and each is a flat refusal, never a hint. An archived or unknown link is 404 and an expired one 403. A missing address on an email-protected link is 401. An address on the deny list is 403, checked BEFORE the allow list so deny always wins. An address the allow list does not admit is 403 — an EMPTY allow list admits everyone, so a link with no list enforces the email gate alone. A wrong or absent password is 401, decided against the stored bcrypt hash.  The address is taken as stated and recorded UNVERIFIED: it names a viewer for analytics and repeat visits from it reuse one viewer record, but it proves nothing about who is on the other end. A link gated only by email is openable by anyone the link reaches.
      * @param linkId  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1944,8 +1944,8 @@ public class DataroomApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Pass a share link&#39;s gates and open a viewing session (asynchronously)
+     * Clears the link&#39;s access controls and answers with the viewing session — a &#x60;viewId&#x60;, whether download is permitted, and the documents behind the link — which every later viewer call is authorised by.  No principal: the visitor is whoever holds the link id, and the org is resolved from it. The gates run in a fixed order and each is a flat refusal, never a hint. An archived or unknown link is 404 and an expired one 403. A missing address on an email-protected link is 401. An address on the deny list is 403, checked BEFORE the allow list so deny always wins. An address the allow list does not admit is 403 — an EMPTY allow list admits everyone, so a link with no list enforces the email gate alone. A wrong or absent password is 401, decided against the stored bcrypt hash.  The address is taken as stated and recorded UNVERIFIED: it names a viewer for analytics and repeat visits from it reuse one viewer record, but it proves nothing about who is on the other end. A link gated only by email is openable by anyone the link reaches.
      * @param linkId  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2032,8 +2032,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Record one page-view against an open viewing session
+     * Appends a single per-page analytics event — {viewId, pageNumber, documentId, versionNumber, duration} — and answers with its id. These events are what the owner&#39;s analytics count.  No principal: the &#x60;viewId&#x60; from the authenticate step IS the authorisation, and it must belong to THIS link or the call is 404, so a session opened on one link cannot write events onto another. &#x60;pageNumber&#x60; is required (400 without it); &#x60;documentId&#x60; falls back to the document the session was opened on, and &#x60;duration&#x60; is the caller&#39;s own dwell measure, summed per page by analytics.  Events are additive: the same page reported twice is two views, which is the metric&#39;s whole point.
      * @param linkId  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2048,8 +2048,8 @@ public class DataroomApi {
     }
 
     /**
-     * 
-     * 
+     * Record one page-view against an open viewing session
+     * Appends a single per-page analytics event — {viewId, pageNumber, documentId, versionNumber, duration} — and answers with its id. These events are what the owner&#39;s analytics count.  No principal: the &#x60;viewId&#x60; from the authenticate step IS the authorisation, and it must belong to THIS link or the call is 404, so a session opened on one link cannot write events onto another. &#x60;pageNumber&#x60; is required (400 without it); &#x60;documentId&#x60; falls back to the document the session was opened on, and &#x60;duration&#x60; is the caller&#39;s own dwell measure, summed per page by analytics.  Events are additive: the same page reported twice is two views, which is the metric&#39;s whole point.
      * @param linkId  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2066,8 +2066,8 @@ public class DataroomApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Record one page-view against an open viewing session (asynchronously)
+     * Appends a single per-page analytics event — {viewId, pageNumber, documentId, versionNumber, duration} — and answers with its id. These events are what the owner&#39;s analytics count.  No principal: the &#x60;viewId&#x60; from the authenticate step IS the authorisation, and it must belong to THIS link or the call is 404, so a session opened on one link cannot write events onto another. &#x60;pageNumber&#x60; is required (400 without it); &#x60;documentId&#x60; falls back to the document the session was opened on, and &#x60;duration&#x60; is the caller&#39;s own dwell measure, summed per page by analytics.  Events are additive: the same page reported twice is two views, which is the metric&#39;s whole point.
      * @param linkId  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

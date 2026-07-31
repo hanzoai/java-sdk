@@ -140,8 +140,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Disconnect one account
+     * Removes one connected account from the org and answers 204 with no body; an id that is not there is 404.  It removes the account record only. Posts that already published through it keep their published state and their recorded external ids — this does not retract anything from the network.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -156,8 +156,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Disconnect one account
+     * Removes one connected account from the org and answers 204 with no body; an id that is not there is 404.  It removes the account record only. Posts that already published through it keep their published state and their recorded external ids — this does not retract anything from the network.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -174,8 +174,8 @@ public class SocialApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Disconnect one account (asynchronously)
+     * Removes one connected account from the org and answers 204 with no body; an id that is not there is 404.  It removes the account record only. Posts that already published through it keep their published state and their recorded external ids — this does not retract anything from the network.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -262,8 +262,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Delete one post
+     * Removes one post from the org and answers 204 with no body; an id that is not there is 404.  It deletes the record here only. A post that has already published is not retracted from the network by deleting it.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -278,8 +278,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Delete one post
+     * Removes one post from the org and answers 204 with no body; an id that is not there is 404.  It deletes the record here only. A post that has already published is not retracted from the network by deleting it.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -296,8 +296,8 @@ public class SocialApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Delete one post (asynchronously)
+     * Removes one post from the org and answers 204 with no body; an id that is not there is 404.  It deletes the record here only. A post that has already published is not retracted from the network by deleting it.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -377,8 +377,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * List the social accounts connected to your org
+     * Returns the org&#39;s connected accounts — each one&#39;s id, network, handle, status and timestamps. &#x60;provider&#x60; filters to one network; &#x60;limit&#x60; bounds the page, defaulting to 200 and capped at 1000.  An account&#39;s provider access token is NEVER included in any response on this surface. Only the publisher reads it.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -392,8 +392,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * List the social accounts connected to your org
+     * Returns the org&#39;s connected accounts — each one&#39;s id, network, handle, status and timestamps. &#x60;provider&#x60; filters to one network; &#x60;limit&#x60; bounds the page, defaulting to 200 and capped at 1000.  An account&#39;s provider access token is NEVER included in any response on this surface. Only the publisher reads it.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -409,8 +409,8 @@ public class SocialApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * List the social accounts connected to your org (asynchronously)
+     * Returns the org&#39;s connected accounts — each one&#39;s id, network, handle, status and timestamps. &#x60;provider&#x60; filters to one network; &#x60;limit&#x60; bounds the page, defaulting to 200 and capped at 1000.  An account&#39;s provider access token is NEVER included in any response on this surface. Only the publisher reads it.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -496,8 +496,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Read one connected account
+     * Returns one of the org&#39;s connected accounts by id — its network, handle, status and timestamps — or 404. The provider access token is not part of the response.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -512,8 +512,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Read one connected account
+     * Returns one of the org&#39;s connected accounts by id — its network, handle, status and timestamps — or 404. The provider access token is not part of the response.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -530,8 +530,8 @@ public class SocialApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Read one connected account (asynchronously)
+     * Returns one of the org&#39;s connected accounts by id — its network, handle, status and timestamps — or 404. The provider access token is not part of the response.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -611,8 +611,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * List your org&#39;s posts
+     * Returns the org&#39;s posts — content, channel, status, scheduled time, media and timestamps. &#x60;status&#x60; filters to one of draft, scheduled, published or failed; &#x60;limit&#x60; bounds the page, defaulting to 200 and capped at 1000.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -626,8 +626,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * List your org&#39;s posts
+     * Returns the org&#39;s posts — content, channel, status, scheduled time, media and timestamps. &#x60;status&#x60; filters to one of draft, scheduled, published or failed; &#x60;limit&#x60; bounds the page, defaulting to 200 and capped at 1000.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -643,8 +643,8 @@ public class SocialApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * List your org&#39;s posts (asynchronously)
+     * Returns the org&#39;s posts — content, channel, status, scheduled time, media and timestamps. &#x60;status&#x60; filters to one of draft, scheduled, published or failed; &#x60;limit&#x60; bounds the page, defaulting to 200 and capped at 1000.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -730,8 +730,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Read one post
+     * Returns one of the org&#39;s posts by id, with its current status, scheduled time, media and — once it has published — the account and external id it published under. 404 when there is no such post for this org.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -746,8 +746,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Read one post
+     * Returns one of the org&#39;s posts by id, with its current status, scheduled time, media and — once it has published — the account and external id it published under. 404 when there is no such post for this org.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -764,8 +764,8 @@ public class SocialApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Read one post (asynchronously)
+     * Returns one of the org&#39;s posts by id, with its current status, scheduled time, media and — once it has published — the account and external id it published under. 404 when there is no such post for this org.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -845,8 +845,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Which networks this deployment can actually publish to
+     * Reports each supported network&#39;s publish-readiness: whether this deployment holds the OAuth application credentials for it and, when it does not, exactly which environment variables are missing.  This is a live read of the deployment&#39;s own configuration, not a static list of networks — it answers \&quot;can I connect this today\&quot;, which is what a connect affordance and a pre-cutover checklist both need. It says nothing about whether the caller has connected an account; that is the accounts listing.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -860,8 +860,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Which networks this deployment can actually publish to
+     * Reports each supported network&#39;s publish-readiness: whether this deployment holds the OAuth application credentials for it and, when it does not, exactly which environment variables are missing.  This is a live read of the deployment&#39;s own configuration, not a static list of networks — it answers \&quot;can I connect this today\&quot;, which is what a connect affordance and a pre-cutover checklist both need. It says nothing about whether the caller has connected an account; that is the accounts listing.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -877,8 +877,8 @@ public class SocialApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Which networks this deployment can actually publish to (asynchronously)
+     * Reports each supported network&#39;s publish-readiness: whether this deployment holds the OAuth application credentials for it and, when it does not, exactly which environment variables are missing.  This is a live read of the deployment&#39;s own configuration, not a static list of networks — it answers \&quot;can I connect this today\&quot;, which is what a connect affordance and a pre-cutover checklist both need. It says nothing about whether the caller has connected an account; that is the accounts listing.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -957,8 +957,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Counts across your org&#39;s social presence
+     * Returns four counts for the caller&#39;s org: total posts, how many are scheduled, how many have published, and how many accounts are connected. It is the dashboard roll-up, computed over the org&#39;s own rows in one read.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -972,8 +972,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Counts across your org&#39;s social presence
+     * Returns four counts for the caller&#39;s org: total posts, how many are scheduled, how many have published, and how many accounts are connected. It is the dashboard roll-up, computed over the org&#39;s own rows in one read.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -989,8 +989,8 @@ public class SocialApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Counts across your org&#39;s social presence (asynchronously)
+     * Returns four counts for the caller&#39;s org: total posts, how many are scheduled, how many have published, and how many accounts are connected. It is the dashboard roll-up, computed over the org&#39;s own rows in one read.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1069,8 +1069,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Connect a social account to your org
+     * Records a social account for the org and answers 201 with the stored row, including the generated id later calls address it by.  &#x60;provider&#x60; must be one of x, facebook, instagram, linkedin, tiktok, youtube or threads, defaulting to x when omitted. &#x60;status&#x60; is one of connected, disconnected or error, defaulting to connected. The handle is trimmed and bounded at 1024 characters.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1084,8 +1084,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Connect a social account to your org
+     * Records a social account for the org and answers 201 with the stored row, including the generated id later calls address it by.  &#x60;provider&#x60; must be one of x, facebook, instagram, linkedin, tiktok, youtube or threads, defaulting to x when omitted. &#x60;status&#x60; is one of connected, disconnected or error, defaulting to connected. The handle is trimmed and bounded at 1024 characters.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1101,8 +1101,8 @@ public class SocialApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Connect a social account to your org (asynchronously)
+     * Records a social account for the org and answers 201 with the stored row, including the generated id later calls address it by.  &#x60;provider&#x60; must be one of x, facebook, instagram, linkedin, tiktok, youtube or threads, defaulting to x when omitted. &#x60;status&#x60; is one of connected, disconnected or error, defaulting to connected. The handle is trimmed and bounded at 1024 characters.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1181,8 +1181,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Create a post, and publish it if it is already due
+     * Stores a post for the org and answers 201 with the stored row.  A post created as scheduled for a time that has already passed is published IMMEDIATELY, and the row returned carries that outcome — this is the one behaviour a reader would otherwise miss. A future-scheduled post is left for the scheduler, and a draft is left alone. Publishing never fails the creation: the post is stored either way, and a publish that could not run leaves the row for the scheduler to retry.  &#x60;content&#x60; is required and bounded at 8192 characters; &#x60;channel&#x60; is one of the seven supported networks, defaulting to x; &#x60;status&#x60; is one of draft, scheduled, published or failed, defaulting to draft; up to 10 media URLs are kept, each bounded at 1024 characters.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1196,8 +1196,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Create a post, and publish it if it is already due
+     * Stores a post for the org and answers 201 with the stored row.  A post created as scheduled for a time that has already passed is published IMMEDIATELY, and the row returned carries that outcome — this is the one behaviour a reader would otherwise miss. A future-scheduled post is left for the scheduler, and a draft is left alone. Publishing never fails the creation: the post is stored either way, and a publish that could not run leaves the row for the scheduler to retry.  &#x60;content&#x60; is required and bounded at 8192 characters; &#x60;channel&#x60; is one of the seven supported networks, defaulting to x; &#x60;status&#x60; is one of draft, scheduled, published or failed, defaulting to draft; up to 10 media URLs are kept, each bounded at 1024 characters.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1213,8 +1213,8 @@ public class SocialApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Create a post, and publish it if it is already due (asynchronously)
+     * Stores a post for the org and answers 201 with the stored row.  A post created as scheduled for a time that has already passed is published IMMEDIATELY, and the row returned carries that outcome — this is the one behaviour a reader would otherwise miss. A future-scheduled post is left for the scheduler, and a draft is left alone. Publishing never fails the creation: the post is stored either way, and a publish that could not run leaves the row for the scheduler to retry.  &#x60;content&#x60; is required and bounded at 8192 characters; &#x60;channel&#x60; is one of the seven supported networks, defaulting to x; &#x60;status&#x60; is one of draft, scheduled, published or failed, defaulting to draft; up to 10 media URLs are kept, each bounded at 1024 characters.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1300,8 +1300,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Publish one post now
+     * Publishes the post immediately to the connected accounts on its channel and answers with the updated row, carrying the account and external id it published under.  It is IDEMPOTENT: a post that has already published, or that another caller is publishing right now, comes back unchanged rather than being posted twice. That claim is taken before any network call, which is what makes a double submit safe.  The two failure shapes differ on purpose. Having no connected account for the channel is the caller&#39;s to fix, so it is recorded ON the post as failed with the reason and answers normally. A deployment that lacks the network&#39;s own credentials cannot publish for anyone, so that is a 503 naming exactly what is missing.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1316,8 +1316,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Publish one post now
+     * Publishes the post immediately to the connected accounts on its channel and answers with the updated row, carrying the account and external id it published under.  It is IDEMPOTENT: a post that has already published, or that another caller is publishing right now, comes back unchanged rather than being posted twice. That claim is taken before any network call, which is what makes a double submit safe.  The two failure shapes differ on purpose. Having no connected account for the channel is the caller&#39;s to fix, so it is recorded ON the post as failed with the reason and answers normally. A deployment that lacks the network&#39;s own credentials cannot publish for anyone, so that is a 503 naming exactly what is missing.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1334,8 +1334,8 @@ public class SocialApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Publish one post now (asynchronously)
+     * Publishes the post immediately to the connected accounts on its channel and answers with the updated row, carrying the account and external id it published under.  It is IDEMPOTENT: a post that has already published, or that another caller is publishing right now, comes back unchanged rather than being posted twice. That claim is taken before any network call, which is what makes a double submit safe.  The two failure shapes differ on purpose. Having no connected account for the channel is the caller&#39;s to fix, so it is recorded ON the post as failed with the reason and answers normally. A deployment that lacks the network&#39;s own credentials cannot publish for anyone, so that is a 503 naming exactly what is missing.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1422,8 +1422,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Replace one connected account
+     * Replaces the account&#39;s network, handle and status with what the body carries, and answers with the stored row.  This is a REPLACEMENT, not a merge, which is the rule most easily got wrong: a field the body omits is written as its default, so leaving out the handle blanks it and leaving out the status resets it to connected. Send the whole record. The same vocabularies as create apply, and an unknown network or status is refused rather than coerced.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1438,8 +1438,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Replace one connected account
+     * Replaces the account&#39;s network, handle and status with what the body carries, and answers with the stored row.  This is a REPLACEMENT, not a merge, which is the rule most easily got wrong: a field the body omits is written as its default, so leaving out the handle blanks it and leaving out the status resets it to connected. Send the whole record. The same vocabularies as create apply, and an unknown network or status is refused rather than coerced.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1456,8 +1456,8 @@ public class SocialApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Replace one connected account (asynchronously)
+     * Replaces the account&#39;s network, handle and status with what the body carries, and answers with the stored row.  This is a REPLACEMENT, not a merge, which is the rule most easily got wrong: a field the body omits is written as its default, so leaving out the handle blanks it and leaving out the status resets it to connected. Send the whole record. The same vocabularies as create apply, and an unknown network or status is refused rather than coerced.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1544,8 +1544,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Replace one post
+     * Replaces the post&#39;s content, channel, status, scheduled time and media with what the body carries, and answers with the stored row.  A REPLACEMENT, not a merge: an omitted field is written as its default, so omitting media clears it and omitting the status resets the post to draft. &#x60;content&#x60; is required on every update. Unlike create, this never triggers a publish — moving a post&#39;s scheduled time into the past here leaves it for the scheduler; publish now is its own operation.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1560,8 +1560,8 @@ public class SocialApi {
     }
 
     /**
-     * 
-     * 
+     * Replace one post
+     * Replaces the post&#39;s content, channel, status, scheduled time and media with what the body carries, and answers with the stored row.  A REPLACEMENT, not a merge: an omitted field is written as its default, so omitting media clears it and omitting the status resets the post to draft. &#x60;content&#x60; is required on every update. Unlike create, this never triggers a publish — moving a post&#39;s scheduled time into the past here leaves it for the scheduler; publish now is its own operation.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1578,8 +1578,8 @@ public class SocialApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Replace one post (asynchronously)
+     * Replaces the post&#39;s content, channel, status, scheduled time and media with what the body carries, and answers with the stored row.  A REPLACEMENT, not a merge: an omitted field is written as its default, so omitting media clears it and omitting the status resets the post to draft. &#x60;content&#x60; is required on every update. Unlike create, this never triggers a publish — moving a post&#39;s scheduled time into the past here leaves it for the scheduler; publish now is its own operation.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

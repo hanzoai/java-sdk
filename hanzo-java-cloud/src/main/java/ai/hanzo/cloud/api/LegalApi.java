@@ -1017,8 +1017,8 @@ public class LegalApi {
     }
 
     /**
-     * 
-     * 
+     * Record that a generated document&#39;s signature request completed
+     * Records completion of the signature request opened over a generated document and answers the document with a &#x60;signed&#x60; flag.  The e-sign provider&#39;s own status is consulted FIRST and is the default answer; an explicit &#x60;signed&#x60; field in the body overrides it. That override is the whole point: the default &#x60;manual&#x60; provider never self-completes, so a reviewer (or a real provider&#39;s webhook) is what moves the document. A completion flips the document to &#x60;signed&#x60;, stamps &#x60;signedAt&#x60;, and writes a &#x60;legal.document.signed&#x60; audit event; a provider still reporting incomplete answers 200 with the document unchanged, so the call is safe to repeat and never fabricates a signature.  Org-scoped and fails closed: a validated principal is required (403 without one), the document is read under the caller&#39;s OWN org so another tenant&#39;s id is a 404, a document with no open signature request is a 400, and a provider whose status call errors is a 502.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1033,8 +1033,8 @@ public class LegalApi {
     }
 
     /**
-     * 
-     * 
+     * Record that a generated document&#39;s signature request completed
+     * Records completion of the signature request opened over a generated document and answers the document with a &#x60;signed&#x60; flag.  The e-sign provider&#39;s own status is consulted FIRST and is the default answer; an explicit &#x60;signed&#x60; field in the body overrides it. That override is the whole point: the default &#x60;manual&#x60; provider never self-completes, so a reviewer (or a real provider&#39;s webhook) is what moves the document. A completion flips the document to &#x60;signed&#x60;, stamps &#x60;signedAt&#x60;, and writes a &#x60;legal.document.signed&#x60; audit event; a provider still reporting incomplete answers 200 with the document unchanged, so the call is safe to repeat and never fabricates a signature.  Org-scoped and fails closed: a validated principal is required (403 without one), the document is read under the caller&#39;s OWN org so another tenant&#39;s id is a 404, a document with no open signature request is a 400, and a provider whose status call errors is a 502.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1051,8 +1051,8 @@ public class LegalApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Record that a generated document&#39;s signature request completed (asynchronously)
+     * Records completion of the signature request opened over a generated document and answers the document with a &#x60;signed&#x60; flag.  The e-sign provider&#39;s own status is consulted FIRST and is the default answer; an explicit &#x60;signed&#x60; field in the body overrides it. That override is the whole point: the default &#x60;manual&#x60; provider never self-completes, so a reviewer (or a real provider&#39;s webhook) is what moves the document. A completion flips the document to &#x60;signed&#x60;, stamps &#x60;signedAt&#x60;, and writes a &#x60;legal.document.signed&#x60; audit event; a provider still reporting incomplete answers 200 with the document unchanged, so the call is safe to repeat and never fabricates a signature.  Org-scoped and fails closed: a validated principal is required (403 without one), the document is read under the caller&#39;s OWN org so another tenant&#39;s id is a 404, a document with no open signature request is a 400, and a provider whose status call errors is a 502.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

@@ -86,7 +86,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudDeleteV1PlatformProjectsByProjectAppsByAppCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
@@ -151,8 +151,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Delete an application and tear down what it runs
+     * Removes the application record and tears down what it owns in the org&#39;s tenant namespace — its operator Service CR and its KMSSecret — then answers 204. An app this org and project do not have is 404, never a silent success.  Teardown is best-effort by design: a cluster that refuses or is unreachable does not block the delete, so the record cannot be left orphaned behind a broken cluster; the failure is logged for operators and the orphan reaper reconciles it. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -160,7 +160,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudDeleteV1PlatformProjectsByProjectAppsByApp(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -168,8 +168,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Delete an application and tear down what it runs
+     * Removes the application record and tears down what it owns in the org&#39;s tenant namespace — its operator Service CR and its KMSSecret — then answers 204. An app this org and project do not have is 404, never a silent success.  Teardown is best-effort by design: a cluster that refuses or is unreachable does not block the delete, so the record cannot be left orphaned behind a broken cluster; the failure is logged for operators and the orphan reaper reconciles it. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -178,7 +178,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudDeleteV1PlatformProjectsByProjectAppsByAppWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -187,8 +187,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Delete an application and tear down what it runs (asynchronously)
+     * Removes the application record and tears down what it owns in the org&#39;s tenant namespace — its operator Service CR and its KMSSecret — then answers 204. An app this org and project do not have is 404, never a silent success.  Teardown is best-effort by design: a cluster that refuses or is unreachable does not block the delete, so the record cannot be left orphaned behind a broken cluster; the failure is logged for operators and the orphan reaper reconciles it. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -198,7 +198,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudDeleteV1PlatformProjectsByProjectAppsByAppAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<Void> _callback) throws ApiException {
@@ -219,7 +219,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudDeleteV1PlatformProjectsByProjectAppsByAppDomainsByHostCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
@@ -290,8 +290,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Detach a hostname and release the claim
+     * Drops the host from the app&#39;s ingress and releases any custom claim on it, so the name becomes claimable again — by this org or any other. Answers 204.  The default host is permanent and cannot be removed: that is 400, not 404. A host that is neither attached nor claimed here is 404. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param host  (required)
@@ -300,7 +300,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudDeleteV1PlatformProjectsByProjectAppsByAppDomainsByHost(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host) throws ApiException {
@@ -308,8 +308,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Detach a hostname and release the claim
+     * Drops the host from the app&#39;s ingress and releases any custom claim on it, so the name becomes claimable again — by this org or any other. Answers 204.  The default host is permanent and cannot be removed: that is 400, not 404. A host that is neither attached nor claimed here is 404. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param host  (required)
@@ -319,7 +319,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudDeleteV1PlatformProjectsByProjectAppsByAppDomainsByHostWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host) throws ApiException {
@@ -328,8 +328,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Detach a hostname and release the claim (asynchronously)
+     * Drops the host from the app&#39;s ingress and releases any custom claim on it, so the name becomes claimable again — by this org or any other. Answers 204.  The default host is permanent and cannot be removed: that is 400, not 404. A host that is neither attached nor claimed here is 404. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param host  (required)
@@ -340,7 +340,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudDeleteV1PlatformProjectsByProjectAppsByAppDomainsByHostAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host, final ApiCallback<Void> _callback) throws ApiException {
@@ -359,7 +359,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudDeleteV1PlatformSitesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
@@ -418,15 +418,15 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Delete a static site and take it down
+     * Removes the site and answers 204, releasing its subdomain binding so the slug can be reclaimed, dropping its release rows so a future owner inherits no rollback menu, purging the stored objects from both the live prefix and the release space, and flushing the edge cache. The metadata delete is the point of no return; the cleanup after it is best-effort, so a 204 means the site is gone even where some bytes are reclaimed late.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudDeleteV1PlatformSitesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -434,8 +434,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Delete a static site and take it down
+     * Removes the site and answers 204, releasing its subdomain binding so the slug can be reclaimed, dropping its release rows so a future owner inherits no rollback menu, purging the stored objects from both the live prefix and the release space, and flushing the edge cache. The metadata delete is the point of no return; the cleanup after it is best-effort, so a 204 means the site is gone even where some bytes are reclaimed late.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -443,7 +443,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudDeleteV1PlatformSitesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -452,8 +452,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Delete a static site and take it down (asynchronously)
+     * Removes the site and answers 204, releasing its subdomain binding so the slug can be reclaimed, dropping its release rows so a future owner inherits no rollback menu, purging the stored objects from both the live prefix and the release space, and flushing the edge cache. The metadata delete is the point of no return; the cleanup after it is best-effort, so a 204 means the site is gone even where some bytes are reclaimed late.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -462,7 +462,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudDeleteV1PlatformSitesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
@@ -482,7 +482,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudDeleteV1PlatformSitesBySlugDomainsByHostCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
@@ -547,8 +547,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Stop serving this site on a custom domain
+     * Unbinds the hostname and answers 204. The host stops routing here and the edge cache is flushed so nothing keeps answering from cache; the name is released and can be claimed again by this or any other site. The site itself is untouched and keeps serving at its own &#x60;&lt;slug&gt;.hanzo.app&#x60; host.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @param host  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -556,7 +556,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudDeleteV1PlatformSitesBySlugDomainsByHost(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host) throws ApiException {
@@ -564,8 +564,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Stop serving this site on a custom domain
+     * Unbinds the hostname and answers 204. The host stops routing here and the edge cache is flushed so nothing keeps answering from cache; the name is released and can be claimed again by this or any other site. The site itself is untouched and keeps serving at its own &#x60;&lt;slug&gt;.hanzo.app&#x60; host.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @param host  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -574,7 +574,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudDeleteV1PlatformSitesBySlugDomainsByHostWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host) throws ApiException {
@@ -583,8 +583,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Stop serving this site on a custom domain (asynchronously)
+     * Unbinds the hostname and answers 204. The host stops routing here and the edge cache is flushed so nothing keeps answering from cache; the name is released and can be claimed again by this or any other site. The site itself is untouched and keeps serving at its own &#x60;&lt;slug&gt;.hanzo.app&#x60; host.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @param host  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -594,7 +594,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudDeleteV1PlatformSitesBySlugDomainsByHostAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback<Void> _callback) throws ApiException {
@@ -605,6 +605,9 @@ public class PlatformApi {
     }
     /**
      * Build call for cloudGetV1PlatformFleet
+     * @param env Only rows in this environment (namespace). (optional)
+     * @param health Only rows at this health: green | yellow | red. (optional)
+     * @param drift 1 or true — only rows whose live state differs from declared. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -612,10 +615,10 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1PlatformFleetCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1PlatformFleetCall(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String drift, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -640,6 +643,18 @@ public class PlatformApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (env != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("env", env));
+        }
+
+        if (health != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("health", health));
+        }
+
+        if (drift != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("drift", drift));
+        }
+
         final String[] localVarAccepts = {
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -659,46 +674,55 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudGetV1PlatformFleetValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudGetV1PlatformFleetCall(_callback);
+    private okhttp3.Call cloudGetV1PlatformFleetValidateBeforeCall(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String drift, final ApiCallback _callback) throws ApiException {
+        return cloudGetV1PlatformFleetCall(env, health, drift, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * The platform&#39;s own service tier, and where it has drifted
+     * Returns the board for the services the PLATFORM itself runs — iam, kms, gateway and the rest — as &#x60;{apps, summary}&#x60;: per service its environment, health, phase, the image tag its CR DECLARES, the tag actually running, and the drift between them, plus a summary counting the board green, yellow and red.  This is not a customer surface. &#x60;/v1/platform/projects/:project/apps&#x60; is a tenant&#39;s apps; this is the tier those tenants run ON, which is why the two are named differently rather than sharing a prefix.  Admission is scoped at the SCAN, before any CR is read: a platform SuperAdmin observes the whole fleet, an org admin observes only their own org&#39;s namespaces, and an org that owns none gets an empty board — a non-super caller never even lists another org&#39;s services. Narrow further with &#x60;env&#x60;, &#x60;health&#x60;, &#x60;org&#x60;, or &#x60;drift&#x3D;1&#x60; for only what has drifted.  It degrades honestly rather than failing whole: a namespace that does not exist is skipped, and a running-state read the caller cannot make leaves the running tag empty — an unknown, never a guess — while the declared, health and phase columns still render.
+     * @param env Only rows in this environment (namespace). (optional)
+     * @param health Only rows at this health: green | yellow | red. (optional)
+     * @param drift 1 or true — only rows whose live state differs from declared. (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1PlatformFleet() throws ApiException {
-        cloudGetV1PlatformFleetWithHttpInfo();
+    public void cloudGetV1PlatformFleet(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String drift) throws ApiException {
+        cloudGetV1PlatformFleetWithHttpInfo(env, health, drift);
     }
 
     /**
-     * 
-     * 
+     * The platform&#39;s own service tier, and where it has drifted
+     * Returns the board for the services the PLATFORM itself runs — iam, kms, gateway and the rest — as &#x60;{apps, summary}&#x60;: per service its environment, health, phase, the image tag its CR DECLARES, the tag actually running, and the drift between them, plus a summary counting the board green, yellow and red.  This is not a customer surface. &#x60;/v1/platform/projects/:project/apps&#x60; is a tenant&#39;s apps; this is the tier those tenants run ON, which is why the two are named differently rather than sharing a prefix.  Admission is scoped at the SCAN, before any CR is read: a platform SuperAdmin observes the whole fleet, an org admin observes only their own org&#39;s namespaces, and an org that owns none gets an empty board — a non-super caller never even lists another org&#39;s services. Narrow further with &#x60;env&#x60;, &#x60;health&#x60;, &#x60;org&#x60;, or &#x60;drift&#x3D;1&#x60; for only what has drifted.  It degrades honestly rather than failing whole: a namespace that does not exist is skipped, and a running-state read the caller cannot make leaves the running tag empty — an unknown, never a guess — while the declared, health and phase columns still render.
+     * @param env Only rows in this environment (namespace). (optional)
+     * @param health Only rows at this health: green | yellow | red. (optional)
+     * @param drift 1 or true — only rows whose live state differs from declared. (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1PlatformFleetWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudGetV1PlatformFleetValidateBeforeCall(null);
+    public ApiResponse<Void> cloudGetV1PlatformFleetWithHttpInfo(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String drift) throws ApiException {
+        okhttp3.Call localVarCall = cloudGetV1PlatformFleetValidateBeforeCall(env, health, drift, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The platform&#39;s own service tier, and where it has drifted (asynchronously)
+     * Returns the board for the services the PLATFORM itself runs — iam, kms, gateway and the rest — as &#x60;{apps, summary}&#x60;: per service its environment, health, phase, the image tag its CR DECLARES, the tag actually running, and the drift between them, plus a summary counting the board green, yellow and red.  This is not a customer surface. &#x60;/v1/platform/projects/:project/apps&#x60; is a tenant&#39;s apps; this is the tier those tenants run ON, which is why the two are named differently rather than sharing a prefix.  Admission is scoped at the SCAN, before any CR is read: a platform SuperAdmin observes the whole fleet, an org admin observes only their own org&#39;s namespaces, and an org that owns none gets an empty board — a non-super caller never even lists another org&#39;s services. Narrow further with &#x60;env&#x60;, &#x60;health&#x60;, &#x60;org&#x60;, or &#x60;drift&#x3D;1&#x60; for only what has drifted.  It degrades honestly rather than failing whole: a namespace that does not exist is skipped, and a running-state read the caller cannot make leaves the running tag empty — an unknown, never a guess — while the declared, health and phase columns still render.
+     * @param env Only rows in this environment (namespace). (optional)
+     * @param health Only rows at this health: green | yellow | red. (optional)
+     * @param drift 1 or true — only rows whose live state differs from declared. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -706,12 +730,12 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1PlatformFleetAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1PlatformFleetAsync(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String drift, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudGetV1PlatformFleetValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = cloudGetV1PlatformFleetValidateBeforeCall(env, health, drift, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -725,7 +749,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformFleetByAppCall(@javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
@@ -784,15 +808,15 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * One platform service, resolved to production by default
+     * Returns a single platform service by its CR name, with the same declared-versus-running and drift facts the board carries. The name must be a DNS-1123 label; anything else is 400.  Namespaces are scanned in lifecycle order — main, then test, then dev — and the first match wins, so a bare name resolves to PRODUCTION. The scan covers only the namespaces the caller is authorized for, so an org admin can never read a service outside their own org, and a name found in none of them is 404 rather than a leak.
      * @param app  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudGetV1PlatformFleetByApp(@javax.annotation.Nonnull String app) throws ApiException {
@@ -800,8 +824,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * One platform service, resolved to production by default
+     * Returns a single platform service by its CR name, with the same declared-versus-running and drift facts the board carries. The name must be a DNS-1123 label; anything else is 400.  Namespaces are scanned in lifecycle order — main, then test, then dev — and the first match wins, so a bare name resolves to PRODUCTION. The scan covers only the namespaces the caller is authorized for, so an org admin can never read a service outside their own org, and a name found in none of them is 404 rather than a leak.
      * @param app  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -809,7 +833,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudGetV1PlatformFleetByAppWithHttpInfo(@javax.annotation.Nonnull String app) throws ApiException {
@@ -818,8 +842,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * One platform service, resolved to production by default (asynchronously)
+     * Returns a single platform service by its CR name, with the same declared-versus-running and drift facts the board carries. The name must be a DNS-1123 label; anything else is 400.  Namespaces are scanned in lifecycle order — main, then test, then dev — and the first match wins, so a bare name resolves to PRODUCTION. The scan covers only the namespaces the caller is authorized for, so an org admin can never read a service outside their own org, and a name found in none of them is 404 rather than a leak.
      * @param app  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -828,7 +852,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformFleetByAppAsync(@javax.annotation.Nonnull String app, final ApiCallback<Void> _callback) throws ApiException {
@@ -846,7 +870,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformHealthCall(final ApiCallback _callback) throws ApiException {
@@ -899,14 +923,14 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Whether this control plane can actually deploy anything
+     * A real probe, not a status page. It answers 200 only when the metadata store is open AND the cluster is genuinely reachable — proved by LISTING the operator App CRD, which settles reachability and CRD presence in one bounded call, and which is the exact question every deploy depends on. Anything else is 503 carrying the real reason and whether the CRD was found.  A constructed cluster client proves nothing — it is built from a kubeconfig, not from a reachable apiserver — so this deliberately spends a round trip rather than reporting &#x60;ok&#x60; while every deploy fails. Not admin-gated: liveness has to be probe-able without a credential.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudGetV1PlatformHealth() throws ApiException {
@@ -914,15 +938,15 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Whether this control plane can actually deploy anything
+     * A real probe, not a status page. It answers 200 only when the metadata store is open AND the cluster is genuinely reachable — proved by LISTING the operator App CRD, which settles reachability and CRD presence in one bounded call, and which is the exact question every deploy depends on. Anything else is 503 carrying the real reason and whether the CRD was found.  A constructed cluster client proves nothing — it is built from a kubeconfig, not from a reachable apiserver — so this deliberately spends a round trip rather than reporting &#x60;ok&#x60; while every deploy fails. Not admin-gated: liveness has to be probe-able without a credential.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudGetV1PlatformHealthWithHttpInfo() throws ApiException {
@@ -931,8 +955,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Whether this control plane can actually deploy anything (asynchronously)
+     * A real probe, not a status page. It answers 200 only when the metadata store is open AND the cluster is genuinely reachable — proved by LISTING the operator App CRD, which settles reachability and CRD presence in one bounded call, and which is the exact question every deploy depends on. Anything else is 503 carrying the real reason and whether the CRD was found.  A constructed cluster client proves nothing — it is built from a kubeconfig, not from a reachable apiserver — so this deliberately spends a round trip rather than reporting &#x60;ok&#x60; while every deploy fails. Not admin-gated: liveness has to be probe-able without a credential.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -940,7 +964,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
@@ -1012,8 +1036,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Your org&#39;s projects, each with how many apps live under it
+     * Lists the caller org&#39;s projects with the number of platform applications in each. A project is IAM&#39;s resource — it is created and deleted at /v1/iam/projects, never here — so this is the ONE projection IAM cannot serve: the project plus what the platform has put under it.  Requires a validated principal; 403 without one, and the org comes from that validated identity rather than a request header. This is the console&#39;s first authenticated read, so a project store that is not yet initialised degrades to an EMPTY list rather than a 500 — a new org genuinely has zero projects — and the real cause is surfaced to operators instead of to the caller.
      * @return List&lt;CloudProjectView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1029,8 +1053,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Your org&#39;s projects, each with how many apps live under it
+     * Lists the caller org&#39;s projects with the number of platform applications in each. A project is IAM&#39;s resource — it is created and deleted at /v1/iam/projects, never here — so this is the ONE projection IAM cannot serve: the project plus what the platform has put under it.  Requires a validated principal; 403 without one, and the org comes from that validated identity rather than a request header. This is the console&#39;s first authenticated read, so a project store that is not yet initialised degrades to an EMPTY list rather than a 500 — a new org genuinely has zero projects — and the real cause is surfaced to operators instead of to the caller.
      * @return ApiResponse&lt;List&lt;CloudProjectView&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1047,8 +1071,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Your org&#39;s projects, each with how many apps live under it (asynchronously)
+     * Lists the caller org&#39;s projects with the number of platform applications in each. A project is IAM&#39;s resource — it is created and deleted at /v1/iam/projects, never here — so this is the ONE projection IAM cannot serve: the project plus what the platform has put under it.  Requires a validated principal; 403 without one, and the org comes from that validated identity rather than a request header. This is the console&#39;s first authenticated read, so a project store that is not yet initialised degrades to an EMPTY list rather than a 500 — a new org genuinely has zero projects — and the real cause is surfaced to operators instead of to the caller.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1136,8 +1160,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * One project and its app count
+     * Returns a single project of the caller&#39;s org with the number of platform applications under it. A project this org does not have is 404, which is also what another tenant&#39;s project looks like from here. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @return CloudProjectView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1154,8 +1178,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * One project and its app count
+     * Returns a single project of the caller&#39;s org with the number of platform applications under it. A project this org does not have is 404, which is also what another tenant&#39;s project looks like from here. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @return ApiResponse&lt;CloudProjectView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1173,8 +1197,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * One project and its app count (asynchronously)
+     * Returns a single project of the caller&#39;s org with the number of platform applications under it. A project this org does not have is 404, which is also what another tenant&#39;s project looks like from here. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1263,8 +1287,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * The applications in one project, with what the cluster says about them
+     * Lists the caller org&#39;s applications under one project. Each row carries the stored record and, for an app that is live or deploying, the LIVE phase and health read from its operator Service CR; an app with sealed env also carries its secret-sync state. Those cluster reads are best-effort — an unreachable cluster leaves those fields empty and never blocks the listing.  The project must exist in IAM for this org, or the answer is 404; the &#x60;default&#x60; project is implicit and always accepted, because it is part of what an org IS. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @return List&lt;CloudAppView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1281,8 +1305,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * The applications in one project, with what the cluster says about them
+     * Lists the caller org&#39;s applications under one project. Each row carries the stored record and, for an app that is live or deploying, the LIVE phase and health read from its operator Service CR; an app with sealed env also carries its secret-sync state. Those cluster reads are best-effort — an unreachable cluster leaves those fields empty and never blocks the listing.  The project must exist in IAM for this org, or the answer is 404; the &#x60;default&#x60; project is implicit and always accepted, because it is part of what an org IS. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @return ApiResponse&lt;List&lt;CloudAppView&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1300,8 +1324,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The applications in one project, with what the cluster says about them (asynchronously)
+     * Lists the caller org&#39;s applications under one project. Each row carries the stored record and, for an app that is live or deploying, the LIVE phase and health read from its operator Service CR; an app with sealed env also carries its secret-sync state. Those cluster reads are best-effort — an unreachable cluster leaves those fields empty and never blocks the listing.  The project must exist in IAM for this org, or the answer is 404; the &#x60;default&#x60; project is implicit and always accepted, because it is part of what an org IS. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1397,8 +1421,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * One application, with its live phase, health and secret sync
+     * Returns a single application of the caller&#39;s org together with what the cluster currently reports for it: the operator Service CR&#39;s phase and health, and whether its sealed env has synced. An app this org and project do not have is 404. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @return CloudAppView
@@ -1416,8 +1440,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * One application, with its live phase, health and secret sync
+     * Returns a single application of the caller&#39;s org together with what the cluster currently reports for it: the operator Service CR&#39;s phase and health, and whether its sealed env has synced. An app this org and project do not have is 404. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @return ApiResponse&lt;CloudAppView&gt;
@@ -1436,8 +1460,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * One application, with its live phase, health and secret sync (asynchronously)
+     * Returns a single application of the caller&#39;s org together with what the cluster currently reports for it: the operator Service CR&#39;s phase and health, and whether its sealed env has synced. An app this org and project do not have is 404. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1468,7 +1492,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformProjectsByProjectAppsByAppDeploymentsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
@@ -1533,8 +1557,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * An app&#39;s deployment history
+     * Lists every deployment recorded for one of the caller org&#39;s applications, newest version first, each with its version, status, source, commit and image. Failed and superseded attempts are included — that is the point of a history. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1542,7 +1566,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudGetV1PlatformProjectsByProjectAppsByAppDeployments(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -1550,8 +1574,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * An app&#39;s deployment history
+     * Lists every deployment recorded for one of the caller org&#39;s applications, newest version first, each with its version, status, source, commit and image. Failed and superseded attempts are included — that is the point of a history. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -1560,7 +1584,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudGetV1PlatformProjectsByProjectAppsByAppDeploymentsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -1569,8 +1593,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * An app&#39;s deployment history (asynchronously)
+     * Lists every deployment recorded for one of the caller org&#39;s applications, newest version first, each with its version, status, source, commit and image. Failed and superseded attempts are included — that is the point of a history. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1580,7 +1604,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformProjectsByProjectAppsByAppDeploymentsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<Void> _callback) throws ApiException {
@@ -1601,7 +1625,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformProjectsByProjectAppsByAppDeploymentsByIdCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1672,8 +1696,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * One deployment of one app
+     * Returns a single deployment by id, scoped to the named application of the caller&#39;s org — so an id belonging to another app or another tenant is 404, not a read. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param id  (required)
@@ -1682,7 +1706,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudGetV1PlatformProjectsByProjectAppsByAppDeploymentsById(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id) throws ApiException {
@@ -1690,8 +1714,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * One deployment of one app
+     * Returns a single deployment by id, scoped to the named application of the caller&#39;s org — so an id belonging to another app or another tenant is 404, not a read. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param id  (required)
@@ -1701,7 +1725,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudGetV1PlatformProjectsByProjectAppsByAppDeploymentsByIdWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id) throws ApiException {
@@ -1710,8 +1734,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * One deployment of one app (asynchronously)
+     * Returns a single deployment by id, scoped to the named application of the caller&#39;s org — so an id belonging to another app or another tenant is 404, not a read. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param id  (required)
@@ -1722,7 +1746,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformProjectsByProjectAppsByAppDeploymentsByIdAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
@@ -1743,7 +1767,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformProjectsByProjectAppsByAppDeploymentsByIdLogsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1814,8 +1838,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Real logs for a deployment — the build&#39;s, then the app&#39;s
+     * Returns the deployment&#39;s recorded status timeline together with LIVE pod logs pulled from the cluster: the build pod&#39;s output while a git build is running, and the running app&#39;s output once it is deployed. The &#x60;source&#x60; field says which of the two the body is — &#x60;build&#x60;, &#x60;app&#x60; or &#x60;none&#x60; — so a console can label the pane honestly.  It never fabricates log content. When no pod exists yet, or the cluster is unreachable, it degrades to the recorded timeline and says so. Every cluster read is confined to the caller org&#39;s own namespaces and time-boxed. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param id  (required)
@@ -1824,7 +1848,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudGetV1PlatformProjectsByProjectAppsByAppDeploymentsByIdLogs(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id) throws ApiException {
@@ -1832,8 +1856,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Real logs for a deployment — the build&#39;s, then the app&#39;s
+     * Returns the deployment&#39;s recorded status timeline together with LIVE pod logs pulled from the cluster: the build pod&#39;s output while a git build is running, and the running app&#39;s output once it is deployed. The &#x60;source&#x60; field says which of the two the body is — &#x60;build&#x60;, &#x60;app&#x60; or &#x60;none&#x60; — so a console can label the pane honestly.  It never fabricates log content. When no pod exists yet, or the cluster is unreachable, it degrades to the recorded timeline and says so. Every cluster read is confined to the caller org&#39;s own namespaces and time-boxed. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param id  (required)
@@ -1843,7 +1867,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudGetV1PlatformProjectsByProjectAppsByAppDeploymentsByIdLogsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id) throws ApiException {
@@ -1852,8 +1876,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Real logs for a deployment — the build&#39;s, then the app&#39;s (asynchronously)
+     * Returns the deployment&#39;s recorded status timeline together with LIVE pod logs pulled from the cluster: the build pod&#39;s output while a git build is running, and the running app&#39;s output once it is deployed. The &#x60;source&#x60; field says which of the two the body is — &#x60;build&#x60;, &#x60;app&#x60; or &#x60;none&#x60; — so a console can label the pane honestly.  It never fabricates log content. When no pod exists yet, or the cluster is unreachable, it degrades to the recorded timeline and says so. Every cluster read is confined to the caller org&#39;s own namespaces and time-boxed. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param id  (required)
@@ -1864,7 +1888,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformProjectsByProjectAppsByAppDeploymentsByIdLogsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
@@ -1884,7 +1908,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformProjectsByProjectAppsByAppDomainsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
@@ -1949,8 +1973,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Every hostname this app answers on
+     * Lists the app&#39;s hosts: the permanent default host it was born with, any org-subtree hosts attached to it, and every custom host claimed for it with its verification state and, while pending, the DNS challenge records to publish. Live endpoint status for each host is observed from the cluster. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1958,7 +1982,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudGetV1PlatformProjectsByProjectAppsByAppDomains(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -1966,8 +1990,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Every hostname this app answers on
+     * Lists the app&#39;s hosts: the permanent default host it was born with, any org-subtree hosts attached to it, and every custom host claimed for it with its verification state and, while pending, the DNS challenge records to publish. Live endpoint status for each host is observed from the cluster. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -1976,7 +2000,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudGetV1PlatformProjectsByProjectAppsByAppDomainsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -1985,8 +2009,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Every hostname this app answers on (asynchronously)
+     * Lists the app&#39;s hosts: the permanent default host it was born with, any org-subtree hosts attached to it, and every custom host claimed for it with its verification state and, while pending, the DNS challenge records to publish. Live endpoint status for each host is observed from the cluster. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1996,7 +2020,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformProjectsByProjectAppsByAppDomainsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<Void> _callback) throws ApiException {
@@ -2014,7 +2038,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformSitesCall(final ApiCallback _callback) throws ApiException {
@@ -2067,14 +2091,14 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Every static site your org owns
+     * Lists the caller org&#39;s sites with their slug, name, framework, visibility, status and live URL. The same rows the project list answers — one store, two namespaces — so nothing created through either surface is missing here. Requires a validated principal (403 without one) and is keyed by that principal&#39;s org.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudGetV1PlatformSites() throws ApiException {
@@ -2082,15 +2106,15 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Every static site your org owns
+     * Lists the caller org&#39;s sites with their slug, name, framework, visibility, status and live URL. The same rows the project list answers — one store, two namespaces — so nothing created through either surface is missing here. Requires a validated principal (403 without one) and is keyed by that principal&#39;s org.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudGetV1PlatformSitesWithHttpInfo() throws ApiException {
@@ -2099,8 +2123,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Every static site your org owns (asynchronously)
+     * Lists the caller org&#39;s sites with their slug, name, framework, visibility, status and live URL. The same rows the project list answers — one store, two namespaces — so nothing created through either surface is missing here. Requires a validated principal (403 without one) and is keyed by that principal&#39;s org.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2108,7 +2132,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformSitesAsync(final ApiCallback<Void> _callback) throws ApiException {
@@ -2127,7 +2151,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformSitesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
@@ -2186,15 +2210,15 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * One static site by its slug
+     * Answers the site&#39;s name, framework, visibility, status, linked repo, live URL and timestamps. Requires a validated principal (403 without one) and resolves the slug within THAT principal&#39;s org, so another tenant&#39;s slug is a 404 and cannot be distinguished from one that never existed.
      * @param slug  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudGetV1PlatformSitesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -2202,8 +2226,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * One static site by its slug
+     * Answers the site&#39;s name, framework, visibility, status, linked repo, live URL and timestamps. Requires a validated principal (403 without one) and resolves the slug within THAT principal&#39;s org, so another tenant&#39;s slug is a 404 and cannot be distinguished from one that never existed.
      * @param slug  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2211,7 +2235,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudGetV1PlatformSitesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -2220,8 +2244,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * One static site by its slug (asynchronously)
+     * Answers the site&#39;s name, framework, visibility, status, linked repo, live URL and timestamps. Requires a validated principal (403 without one) and resolves the slug within THAT principal&#39;s org, so another tenant&#39;s slug is a 404 and cannot be distinguished from one that never existed.
      * @param slug  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2230,7 +2254,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformSitesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
@@ -2249,7 +2273,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformSitesBySlugDeploymentsCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
@@ -2308,15 +2332,15 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * The site&#39;s deploy history
+     * Lists the site&#39;s deployments — version, status, source, commit, file and byte counts, live URL and timestamps — and is where a deployment id for the detail route comes from. Requires a validated principal (403 without one); the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudGetV1PlatformSitesBySlugDeployments(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -2324,8 +2348,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * The site&#39;s deploy history
+     * Lists the site&#39;s deployments — version, status, source, commit, file and byte counts, live URL and timestamps — and is where a deployment id for the detail route comes from. Requires a validated principal (403 without one); the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2333,7 +2357,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudGetV1PlatformSitesBySlugDeploymentsWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -2342,8 +2366,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The site&#39;s deploy history (asynchronously)
+     * Lists the site&#39;s deployments — version, status, source, commit, file and byte counts, live URL and timestamps — and is where a deployment id for the detail route comes from. Requires a validated principal (403 without one); the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2352,7 +2376,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformSitesBySlugDeploymentsAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
@@ -2372,7 +2396,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformSitesBySlugDeploymentsByIdCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -2437,8 +2461,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * One deployment
+     * Answers a single deployment&#39;s status, version, source, commit, counts and live URL — how a queued build is polled to completion. Requires a validated principal (403 without one); both the site and the deployment are read within that principal&#39;s org, so a deployment belonging to another tenant, or to another site, is a 404. The completion hook that finishes a queued build lives on the project surface.
      * @param slug  (required)
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2446,7 +2470,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudGetV1PlatformSitesBySlugDeploymentsById(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id) throws ApiException {
@@ -2454,8 +2478,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * One deployment
+     * Answers a single deployment&#39;s status, version, source, commit, counts and live URL — how a queued build is polled to completion. Requires a validated principal (403 without one); both the site and the deployment are read within that principal&#39;s org, so a deployment belonging to another tenant, or to another site, is a 404. The completion hook that finishes a queued build lives on the project surface.
      * @param slug  (required)
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -2464,7 +2488,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudGetV1PlatformSitesBySlugDeploymentsByIdWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id) throws ApiException {
@@ -2473,8 +2497,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * One deployment (asynchronously)
+     * Answers a single deployment&#39;s status, version, source, commit, counts and live URL — how a queued build is polled to completion. Requires a validated principal (403 without one); both the site and the deployment are read within that principal&#39;s org, so a deployment belonging to another tenant, or to another site, is a 404. The completion hook that finishes a queued build lives on the project surface.
      * @param slug  (required)
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2484,7 +2508,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformSitesBySlugDeploymentsByIdAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
@@ -2503,7 +2527,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformSitesBySlugDomainsCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
@@ -2562,15 +2586,15 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Every custom hostname this site holds, live or pending
+     * Answers the site&#39;s verified hosts plus every pending claim, and for each pending one the exact DNS records still owed and the hostname to point them at. A claim holds the name against anyone else taking it, but only a verified host actually routes. Requires a validated principal (403 without one); the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudGetV1PlatformSitesBySlugDomains(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -2578,8 +2602,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Every custom hostname this site holds, live or pending
+     * Answers the site&#39;s verified hosts plus every pending claim, and for each pending one the exact DNS records still owed and the hostname to point them at. A claim holds the name against anyone else taking it, but only a verified host actually routes. Requires a validated principal (403 without one); the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2587,7 +2611,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudGetV1PlatformSitesBySlugDomainsWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -2596,8 +2620,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Every custom hostname this site holds, live or pending (asynchronously)
+     * Answers the site&#39;s verified hosts plus every pending claim, and for each pending one the exact DNS records still owed and the hostname to point them at. A claim holds the name against anyone else taking it, but only a verified host actually routes. Requires a validated principal (403 without one); the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2606,7 +2630,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformSitesBySlugDomainsAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
@@ -2625,7 +2649,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformSitesBySlugReleasesCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
@@ -2684,15 +2708,15 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * The site&#39;s releases, newest first — the rollback menu
+     * Lists the site&#39;s retained releases with their id, object and byte counts, source and creation time, marking which is active. Retention is bounded: each publish reclaims releases past the retention depth, and the live release is never a reclaim candidate — so this list is what a rollback can actually reach. Requires a validated principal (403 without one); the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudGetV1PlatformSitesBySlugReleases(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -2700,8 +2724,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * The site&#39;s releases, newest first — the rollback menu
+     * Lists the site&#39;s retained releases with their id, object and byte counts, source and creation time, marking which is active. Retention is bounded: each publish reclaims releases past the retention depth, and the live release is never a reclaim candidate — so this list is what a rollback can actually reach. Requires a validated principal (403 without one); the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2709,7 +2733,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudGetV1PlatformSitesBySlugReleasesWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -2718,8 +2742,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The site&#39;s releases, newest first — the rollback menu (asynchronously)
+     * Lists the site&#39;s retained releases with their id, object and byte counts, source and creation time, marking which is active. Retention is bounded: each publish reclaims releases past the retention depth, and the live release is never a reclaim candidate — so this list is what a rollback can actually reach. Requires a validated principal (403 without one); the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2728,7 +2752,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1PlatformSitesBySlugReleasesAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
@@ -2747,7 +2771,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPatchV1PlatformSitesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
@@ -2806,15 +2830,15 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Change a site&#39;s settings, leaving the rest alone
+     * Updates only the fields present in the body — &#x60;name&#x60;, &#x60;description&#x60;, &#x60;framework&#x60;, &#x60;cacheControl&#x60;, the linked &#x60;repo&#x60;, &#x60;visibility&#x60; and the &#x60;upstream&#x60;/&#x60;license&#x60; credits — and answers the whole site afterwards. The SLUG IS NOT SETTABLE: it is the public host and the storage prefix, so a rename would move a live site out from under its own URL. Going private runs the paid gate and answers 402 for an unfunded org; &#x60;hidden&#x60; is moderation and is honoured only for a global admin, ignored from a tenant.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudPatchV1PlatformSitesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -2822,8 +2846,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Change a site&#39;s settings, leaving the rest alone
+     * Updates only the fields present in the body — &#x60;name&#x60;, &#x60;description&#x60;, &#x60;framework&#x60;, &#x60;cacheControl&#x60;, the linked &#x60;repo&#x60;, &#x60;visibility&#x60; and the &#x60;upstream&#x60;/&#x60;license&#x60; credits — and answers the whole site afterwards. The SLUG IS NOT SETTABLE: it is the public host and the storage prefix, so a rename would move a live site out from under its own URL. Going private runs the paid gate and answers 402 for an unfunded org; &#x60;hidden&#x60; is moderation and is honoured only for a global admin, ignored from a tenant.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2831,7 +2855,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudPatchV1PlatformSitesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -2840,8 +2864,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Change a site&#39;s settings, leaving the rest alone (asynchronously)
+     * Updates only the fields present in the body — &#x60;name&#x60;, &#x60;description&#x60;, &#x60;framework&#x60;, &#x60;cacheControl&#x60;, the linked &#x60;repo&#x60;, &#x60;visibility&#x60; and the &#x60;upstream&#x60;/&#x60;license&#x60; credits — and answers the whole site afterwards. The SLUG IS NOT SETTABLE: it is the public host and the storage prefix, so a rename would move a live site out from under its own URL. Going private runs the paid gate and answers 402 for an unfunded org; &#x60;hidden&#x60; is moderation and is honoured only for a global admin, ignored from a tenant.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2850,7 +2874,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPatchV1PlatformSitesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
@@ -2862,6 +2886,7 @@ public class PlatformApi {
     /**
      * Build call for cloudPostV1PlatformFleetByAppDeploy
      * @param app  (required)
+     * @param env Environment (namespace) holding the Deployment to restart. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2869,10 +2894,10 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1PlatformFleetByAppDeployCall(@javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1PlatformFleetByAppDeployCall(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2898,6 +2923,10 @@ public class PlatformApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (env != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("env", env));
+        }
+
         final String[] localVarAccepts = {
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -2917,54 +2946,57 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1PlatformFleetByAppDeployValidateBeforeCall(@javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudPostV1PlatformFleetByAppDeployValidateBeforeCall(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'app' is set
         if (app == null) {
             throw new ApiException("Missing the required parameter 'app' when calling cloudPostV1PlatformFleetByAppDeploy(Async)");
         }
 
-        return cloudPostV1PlatformFleetByAppDeployCall(app, _callback);
+        return cloudPostV1PlatformFleetByAppDeployCall(app, env, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Roll a platform service&#39;s pods, in a named environment
+     * Triggers a rolling restart of one platform service&#39;s Deployment by stamping a fresh restart annotation, and answers 202 with the app, the namespace, the environment and the timestamp. It restarts pods; it does NOT change the image — a version change is the release path, not this.  SuperAdmin ONLY, and deliberately narrower than the read gate beside it. The only namespaces this board touches are the platform&#39;s own tier, so a restart here recycles a SHARED service every tenant depends on. A brand-org admin is a customer-org admin, not a platform operator: observing the board is bounded and audited, and restarting production identity is not.  &#x60;?env&#x3D;main|test|dev&#x60; is REQUIRED — a bare call does not default to production, which is what closes the fat-finger and confused-deputy hazard — and any other value is 400. A service with no Deployment to restart in that environment is 404.
      * @param app  (required)
+     * @param env Environment (namespace) holding the Deployment to restart. (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1PlatformFleetByAppDeploy(@javax.annotation.Nonnull String app) throws ApiException {
-        cloudPostV1PlatformFleetByAppDeployWithHttpInfo(app);
+    public void cloudPostV1PlatformFleetByAppDeploy(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env) throws ApiException {
+        cloudPostV1PlatformFleetByAppDeployWithHttpInfo(app, env);
     }
 
     /**
-     * 
-     * 
+     * Roll a platform service&#39;s pods, in a named environment
+     * Triggers a rolling restart of one platform service&#39;s Deployment by stamping a fresh restart annotation, and answers 202 with the app, the namespace, the environment and the timestamp. It restarts pods; it does NOT change the image — a version change is the release path, not this.  SuperAdmin ONLY, and deliberately narrower than the read gate beside it. The only namespaces this board touches are the platform&#39;s own tier, so a restart here recycles a SHARED service every tenant depends on. A brand-org admin is a customer-org admin, not a platform operator: observing the board is bounded and audited, and restarting production identity is not.  &#x60;?env&#x3D;main|test|dev&#x60; is REQUIRED — a bare call does not default to production, which is what closes the fat-finger and confused-deputy hazard — and any other value is 400. A service with no Deployment to restart in that environment is 404.
      * @param app  (required)
+     * @param env Environment (namespace) holding the Deployment to restart. (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1PlatformFleetByAppDeployWithHttpInfo(@javax.annotation.Nonnull String app) throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1PlatformFleetByAppDeployValidateBeforeCall(app, null);
+    public ApiResponse<Void> cloudPostV1PlatformFleetByAppDeployWithHttpInfo(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1PlatformFleetByAppDeployValidateBeforeCall(app, env, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Roll a platform service&#39;s pods, in a named environment (asynchronously)
+     * Triggers a rolling restart of one platform service&#39;s Deployment by stamping a fresh restart annotation, and answers 202 with the app, the namespace, the environment and the timestamp. It restarts pods; it does NOT change the image — a version change is the release path, not this.  SuperAdmin ONLY, and deliberately narrower than the read gate beside it. The only namespaces this board touches are the platform&#39;s own tier, so a restart here recycles a SHARED service every tenant depends on. A brand-org admin is a customer-org admin, not a platform operator: observing the board is bounded and audited, and restarting production identity is not.  &#x60;?env&#x3D;main|test|dev&#x60; is REQUIRED — a bare call does not default to production, which is what closes the fat-finger and confused-deputy hazard — and any other value is 400. A service with no Deployment to restart in that environment is 404.
      * @param app  (required)
+     * @param env Environment (namespace) holding the Deployment to restart. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2972,12 +3004,12 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1PlatformFleetByAppDeployAsync(@javax.annotation.Nonnull String app, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1PlatformFleetByAppDeployAsync(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1PlatformFleetByAppDeployValidateBeforeCall(app, _callback);
+        okhttp3.Call localVarCall = cloudPostV1PlatformFleetByAppDeployValidateBeforeCall(app, env, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -3053,8 +3085,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Create an application from a git repo or a container image
+     * Registers a new application under one of the caller org&#39;s projects and answers 201 with it. Creating does NOT deploy: the app lands in &#x60;draft&#x60; and nothing reaches the cluster until /deploy.  &#x60;source&#x60; is &#x60;git&#x60; — which requires &#x60;repo.url&#x60; — or &#x60;image&#x60;, which requires &#x60;image.repository&#x60;; anything else is 400. A git app builds with zero-config &#x60;pack&#x60; by default and may opt into &#x60;dockerfile&#x60;; an image app never builds. The repo URL and Dockerfile path are validated here against the SAME allowlist the privileged build enforces, so an unsafe source is refused before it is ever persisted.  The &#x60;slug&#x60; is the app&#39;s identity in the cluster: given or derived from &#x60;name&#x60;, it must match &#x60;^[a-z0-9]([a-z0-9-]{0,38}[a-z0-9])?$&#x60;, and a slug already used in this project is 409. &#x60;replicas&#x60; and &#x60;storageGb&#x60; are clamped to the deployment&#39;s limits rather than refused.  Env keys must match &#x60;^[A-Za-z_][A-Za-z0-9_]*$&#x60;. A variable marked &#x60;secret: true&#x60; is SEALED into KMS and its plaintext is never written to the database — and if KMS is unavailable the create fails 503 rather than falling back to storing a secret in the clear.  The app is seeded with its canonical default host, so it has a working HTTPS URL the moment it deploys. A bare custom domain cannot be attached here — it has to go through add-domain and DNS verification first. Requires a validated principal; 403 without one, and every cluster object it will later create lands in that org&#39;s own &#x60;tenant-&lt;org&gt;&#x60; namespace.
      * @param project  (required)
      * @param cloudCreateAppReq  (optional)
      * @return CloudAppView
@@ -3072,8 +3104,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Create an application from a git repo or a container image
+     * Registers a new application under one of the caller org&#39;s projects and answers 201 with it. Creating does NOT deploy: the app lands in &#x60;draft&#x60; and nothing reaches the cluster until /deploy.  &#x60;source&#x60; is &#x60;git&#x60; — which requires &#x60;repo.url&#x60; — or &#x60;image&#x60;, which requires &#x60;image.repository&#x60;; anything else is 400. A git app builds with zero-config &#x60;pack&#x60; by default and may opt into &#x60;dockerfile&#x60;; an image app never builds. The repo URL and Dockerfile path are validated here against the SAME allowlist the privileged build enforces, so an unsafe source is refused before it is ever persisted.  The &#x60;slug&#x60; is the app&#39;s identity in the cluster: given or derived from &#x60;name&#x60;, it must match &#x60;^[a-z0-9]([a-z0-9-]{0,38}[a-z0-9])?$&#x60;, and a slug already used in this project is 409. &#x60;replicas&#x60; and &#x60;storageGb&#x60; are clamped to the deployment&#39;s limits rather than refused.  Env keys must match &#x60;^[A-Za-z_][A-Za-z0-9_]*$&#x60;. A variable marked &#x60;secret: true&#x60; is SEALED into KMS and its plaintext is never written to the database — and if KMS is unavailable the create fails 503 rather than falling back to storing a secret in the clear.  The app is seeded with its canonical default host, so it has a working HTTPS URL the moment it deploys. A bare custom domain cannot be attached here — it has to go through add-domain and DNS verification first. Requires a validated principal; 403 without one, and every cluster object it will later create lands in that org&#39;s own &#x60;tenant-&lt;org&gt;&#x60; namespace.
      * @param project  (required)
      * @param cloudCreateAppReq  (optional)
      * @return ApiResponse&lt;CloudAppView&gt;
@@ -3092,8 +3124,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Create an application from a git repo or a container image (asynchronously)
+     * Registers a new application under one of the caller org&#39;s projects and answers 201 with it. Creating does NOT deploy: the app lands in &#x60;draft&#x60; and nothing reaches the cluster until /deploy.  &#x60;source&#x60; is &#x60;git&#x60; — which requires &#x60;repo.url&#x60; — or &#x60;image&#x60;, which requires &#x60;image.repository&#x60;; anything else is 400. A git app builds with zero-config &#x60;pack&#x60; by default and may opt into &#x60;dockerfile&#x60;; an image app never builds. The repo URL and Dockerfile path are validated here against the SAME allowlist the privileged build enforces, so an unsafe source is refused before it is ever persisted.  The &#x60;slug&#x60; is the app&#39;s identity in the cluster: given or derived from &#x60;name&#x60;, it must match &#x60;^[a-z0-9]([a-z0-9-]{0,38}[a-z0-9])?$&#x60;, and a slug already used in this project is 409. &#x60;replicas&#x60; and &#x60;storageGb&#x60; are clamped to the deployment&#39;s limits rather than refused.  Env keys must match &#x60;^[A-Za-z_][A-Za-z0-9_]*$&#x60;. A variable marked &#x60;secret: true&#x60; is SEALED into KMS and its plaintext is never written to the database — and if KMS is unavailable the create fails 503 rather than falling back to storing a secret in the clear.  The app is seeded with its canonical default host, so it has a working HTTPS URL the moment it deploys. A bare custom domain cannot be attached here — it has to go through add-domain and DNS verification first. Requires a validated principal; 403 without one, and every cluster object it will later create lands in that org&#39;s own &#x60;tenant-&lt;org&gt;&#x60; namespace.
      * @param project  (required)
      * @param cloudCreateAppReq  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -3124,7 +3156,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformProjectsByProjectAppsByAppDeployCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
@@ -3189,8 +3221,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Deploy the app — build it first if it comes from git
+     * Starts a new, monotonically versioned deployment of the app and answers 202 with the deployment record. A 202 is an ACCEPTED deployment, not a live one.  An IMAGE app deploys the tag you name (falling back to the app&#39;s tag, then &#x60;latest&#x60;) by writing its operator Service CR; the operator reconciles it to running. A GIT app launches an in-cluster BuildKit Job at &#x60;commit&#x60; — or the app&#39;s branch — and comes back in &#x60;building&#x60;; the Service CR is applied later, by the reconciler, once the Job succeeds. The reconciler is restart-safe, so a build in flight survives a cloud restart.  Deploys are bounded per org: over the concurrent-deploy cap is 429 and NOTHING is recorded, so a rejected deploy leaves no phantom in the history. An unreachable cluster is 503 but still records an honest &#x60;error&#x60; deployment, because a deploy that was attempted and failed must not be indistinguishable from one never made. Every other failure is likewise recorded in its real terminal state.  This is metered work: a git build is billed to the org&#39;s ledger in wall-clock build minutes once the Job finishes, and the running deployment is billed for its compute per tick for as long as it stays live. Requires a validated principal; 403 without one, and everything is written into that org&#39;s own &#x60;tenant-&lt;org&gt;&#x60; namespace.
      * @param project  (required)
      * @param app  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3198,7 +3230,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudPostV1PlatformProjectsByProjectAppsByAppDeploy(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -3206,8 +3238,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Deploy the app — build it first if it comes from git
+     * Starts a new, monotonically versioned deployment of the app and answers 202 with the deployment record. A 202 is an ACCEPTED deployment, not a live one.  An IMAGE app deploys the tag you name (falling back to the app&#39;s tag, then &#x60;latest&#x60;) by writing its operator Service CR; the operator reconciles it to running. A GIT app launches an in-cluster BuildKit Job at &#x60;commit&#x60; — or the app&#39;s branch — and comes back in &#x60;building&#x60;; the Service CR is applied later, by the reconciler, once the Job succeeds. The reconciler is restart-safe, so a build in flight survives a cloud restart.  Deploys are bounded per org: over the concurrent-deploy cap is 429 and NOTHING is recorded, so a rejected deploy leaves no phantom in the history. An unreachable cluster is 503 but still records an honest &#x60;error&#x60; deployment, because a deploy that was attempted and failed must not be indistinguishable from one never made. Every other failure is likewise recorded in its real terminal state.  This is metered work: a git build is billed to the org&#39;s ledger in wall-clock build minutes once the Job finishes, and the running deployment is billed for its compute per tick for as long as it stays live. Requires a validated principal; 403 without one, and everything is written into that org&#39;s own &#x60;tenant-&lt;org&gt;&#x60; namespace.
      * @param project  (required)
      * @param app  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -3216,7 +3248,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudPostV1PlatformProjectsByProjectAppsByAppDeployWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -3225,8 +3257,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Deploy the app — build it first if it comes from git (asynchronously)
+     * Starts a new, monotonically versioned deployment of the app and answers 202 with the deployment record. A 202 is an ACCEPTED deployment, not a live one.  An IMAGE app deploys the tag you name (falling back to the app&#39;s tag, then &#x60;latest&#x60;) by writing its operator Service CR; the operator reconciles it to running. A GIT app launches an in-cluster BuildKit Job at &#x60;commit&#x60; — or the app&#39;s branch — and comes back in &#x60;building&#x60;; the Service CR is applied later, by the reconciler, once the Job succeeds. The reconciler is restart-safe, so a build in flight survives a cloud restart.  Deploys are bounded per org: over the concurrent-deploy cap is 429 and NOTHING is recorded, so a rejected deploy leaves no phantom in the history. An unreachable cluster is 503 but still records an honest &#x60;error&#x60; deployment, because a deploy that was attempted and failed must not be indistinguishable from one never made. Every other failure is likewise recorded in its real terminal state.  This is metered work: a git build is billed to the org&#39;s ledger in wall-clock build minutes once the Job finishes, and the running deployment is billed for its compute per tick for as long as it stays live. Requires a validated principal; 403 without one, and everything is written into that org&#39;s own &#x60;tenant-&lt;org&gt;&#x60; namespace.
      * @param project  (required)
      * @param app  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -3236,7 +3268,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformProjectsByProjectAppsByAppDeployAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<Void> _callback) throws ApiException {
@@ -3256,7 +3288,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformProjectsByProjectAppsByAppDomainsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
@@ -3321,8 +3353,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Attach a hostname — instantly if you already own it, otherwise with a DNS challenge
+     * Attaches &#x60;host&#x60; to the app, and which of two things happens depends on who owns the name. A host inside the caller org&#39;s own subtree is structurally owned, so it goes ACTIVE immediately and answers 201. A bring-your-own host is claimed as PENDING and answers the DNS challenge records to publish; it is NOT rendered into the app&#39;s ingress until /verify passes.  Claims are globally unique. A host already claimed by another organization is 409, and so is one claimed by a different app in your own; re-adding this app&#39;s OWN claim is idempotent and answers its current state at 200. The default host is always attached and re-adding it is 409. A host under the platform&#39;s shared apex that is not the caller&#39;s own subtree is 403 — it belongs to whoever owns that subtree and can never be grabbed through the custom path.  &#x60;host&#x60; must be a valid DNS hostname; anything else is 400. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3330,7 +3362,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudPostV1PlatformProjectsByProjectAppsByAppDomains(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -3338,8 +3370,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Attach a hostname — instantly if you already own it, otherwise with a DNS challenge
+     * Attaches &#x60;host&#x60; to the app, and which of two things happens depends on who owns the name. A host inside the caller org&#39;s own subtree is structurally owned, so it goes ACTIVE immediately and answers 201. A bring-your-own host is claimed as PENDING and answers the DNS challenge records to publish; it is NOT rendered into the app&#39;s ingress until /verify passes.  Claims are globally unique. A host already claimed by another organization is 409, and so is one claimed by a different app in your own; re-adding this app&#39;s OWN claim is idempotent and answers its current state at 200. The default host is always attached and re-adding it is 409. A host under the platform&#39;s shared apex that is not the caller&#39;s own subtree is 403 — it belongs to whoever owns that subtree and can never be grabbed through the custom path.  &#x60;host&#x60; must be a valid DNS hostname; anything else is 400. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -3348,7 +3380,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudPostV1PlatformProjectsByProjectAppsByAppDomainsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -3357,8 +3389,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Attach a hostname — instantly if you already own it, otherwise with a DNS challenge (asynchronously)
+     * Attaches &#x60;host&#x60; to the app, and which of two things happens depends on who owns the name. A host inside the caller org&#39;s own subtree is structurally owned, so it goes ACTIVE immediately and answers 201. A bring-your-own host is claimed as PENDING and answers the DNS challenge records to publish; it is NOT rendered into the app&#39;s ingress until /verify passes.  Claims are globally unique. A host already claimed by another organization is 409, and so is one claimed by a different app in your own; re-adding this app&#39;s OWN claim is idempotent and answers its current state at 200. The default host is always attached and re-adding it is 409. A host under the platform&#39;s shared apex that is not the caller&#39;s own subtree is 403 — it belongs to whoever owns that subtree and can never be grabbed through the custom path.  &#x60;host&#x60; must be a valid DNS hostname; anything else is 400. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -3368,7 +3400,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformProjectsByProjectAppsByAppDomainsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<Void> _callback) throws ApiException {
@@ -3389,7 +3421,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformProjectsByProjectAppsByAppDomainsByHostVerifyCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
@@ -3460,8 +3492,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Check a custom domain&#39;s DNS and turn it on if it passes
+     * Runs the DNS challenge check for a pending custom host and, when it passes, marks the host verified and renders it into the app&#39;s ingress so it starts serving.  A check that RAN and did not pass is not an error: it answers 200 with the host still pending and the reason in &#x60;detail&#x60;, so a console can show the operator what DNS is actually returning. An already-verified host answers as-is without re-checking. A host not claimed by this app is 404. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param host  (required)
@@ -3470,7 +3502,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudPostV1PlatformProjectsByProjectAppsByAppDomainsByHostVerify(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host) throws ApiException {
@@ -3478,8 +3510,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Check a custom domain&#39;s DNS and turn it on if it passes
+     * Runs the DNS challenge check for a pending custom host and, when it passes, marks the host verified and renders it into the app&#39;s ingress so it starts serving.  A check that RAN and did not pass is not an error: it answers 200 with the host still pending and the reason in &#x60;detail&#x60;, so a console can show the operator what DNS is actually returning. An already-verified host answers as-is without re-checking. A host not claimed by this app is 404. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param host  (required)
@@ -3489,7 +3521,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudPostV1PlatformProjectsByProjectAppsByAppDomainsByHostVerifyWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host) throws ApiException {
@@ -3498,8 +3530,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Check a custom domain&#39;s DNS and turn it on if it passes (asynchronously)
+     * Runs the DNS challenge check for a pending custom host and, when it passes, marks the host verified and renders it into the app&#39;s ingress so it starts serving.  A check that RAN and did not pass is not an error: it answers 200 with the host still pending and the reason in &#x60;detail&#x60;, so a console can show the operator what DNS is actually returning. An already-verified host answers as-is without re-checking. A host not claimed by this app is 404. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param host  (required)
@@ -3510,7 +3542,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformProjectsByProjectAppsByAppDomainsByHostVerifyAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host, final ApiCallback<Void> _callback) throws ApiException {
@@ -3530,7 +3562,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformProjectsByProjectAppsByAppPreviewCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
@@ -3595,8 +3627,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Put a branch on its own URL
+     * Deploys an already-built &#x60;image&#x60; to a per-branch preview and answers its URL, the branch, the preview&#39;s slug and the deployment. The preview is a FIRST-CLASS application named &#x60;&lt;app&gt;-&lt;branch&gt;&#x60; in the same project and tenant namespace, with its own default host — so it is completely isolated from production while reusing the same deploy mechanic. Re-previewing a branch converges that same target in place rather than stacking another one.  It carries NO environment variables, deliberately: a preview never inherits production&#39;s secrets. It also does not build — &#x60;image&#x60; is required and must already exist, and &#x60;branch&#x60; defaults to the parent app&#39;s. A branch that does not resolve to a valid slug distinct from the parent&#39;s is 400. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3604,7 +3636,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudPostV1PlatformProjectsByProjectAppsByAppPreview(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -3612,8 +3644,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Put a branch on its own URL
+     * Deploys an already-built &#x60;image&#x60; to a per-branch preview and answers its URL, the branch, the preview&#39;s slug and the deployment. The preview is a FIRST-CLASS application named &#x60;&lt;app&gt;-&lt;branch&gt;&#x60; in the same project and tenant namespace, with its own default host — so it is completely isolated from production while reusing the same deploy mechanic. Re-previewing a branch converges that same target in place rather than stacking another one.  It carries NO environment variables, deliberately: a preview never inherits production&#39;s secrets. It also does not build — &#x60;image&#x60; is required and must already exist, and &#x60;branch&#x60; defaults to the parent app&#39;s. A branch that does not resolve to a valid slug distinct from the parent&#39;s is 400. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -3622,7 +3654,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudPostV1PlatformProjectsByProjectAppsByAppPreviewWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -3631,8 +3663,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Put a branch on its own URL (asynchronously)
+     * Deploys an already-built &#x60;image&#x60; to a per-branch preview and answers its URL, the branch, the preview&#39;s slug and the deployment. The preview is a FIRST-CLASS application named &#x60;&lt;app&gt;-&lt;branch&gt;&#x60; in the same project and tenant namespace, with its own default host — so it is completely isolated from production while reusing the same deploy mechanic. Re-previewing a branch converges that same target in place rather than stacking another one.  It carries NO environment variables, deliberately: a preview never inherits production&#39;s secrets. It also does not build — &#x60;image&#x60; is required and must already exist, and &#x60;branch&#x60; defaults to the parent app&#39;s. A branch that does not resolve to a valid slug distinct from the parent&#39;s is 400. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -3642,7 +3674,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformProjectsByProjectAppsByAppPreviewAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<Void> _callback) throws ApiException {
@@ -3662,7 +3694,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformProjectsByProjectAppsByAppPromoteCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
@@ -3727,8 +3759,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Promote an already-built release to the app
+     * Redeploys an image that already exists — named either by &#x60;deploymentId&#x60;, which promotes that deployment&#39;s exact built image, or by &#x60;tag&#x60;, resolved the same way a deploy resolves one. One of the two is required; neither is 400.  Promotion never builds. A deployment that carries no built image cannot be promoted and is 400, and a deployment id outside this app is 404. It runs through the same deploy core as everything else, so it takes a NEW version number and is subject to the same per-org concurrency cap. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3736,7 +3768,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudPostV1PlatformProjectsByProjectAppsByAppPromote(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -3744,8 +3776,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Promote an already-built release to the app
+     * Redeploys an image that already exists — named either by &#x60;deploymentId&#x60;, which promotes that deployment&#39;s exact built image, or by &#x60;tag&#x60;, resolved the same way a deploy resolves one. One of the two is required; neither is 400.  Promotion never builds. A deployment that carries no built image cannot be promoted and is 400, and a deployment id outside this app is 404. It runs through the same deploy core as everything else, so it takes a NEW version number and is subject to the same per-org concurrency cap. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -3754,7 +3786,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudPostV1PlatformProjectsByProjectAppsByAppPromoteWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -3763,8 +3795,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Promote an already-built release to the app (asynchronously)
+     * Redeploys an image that already exists — named either by &#x60;deploymentId&#x60;, which promotes that deployment&#39;s exact built image, or by &#x60;tag&#x60;, resolved the same way a deploy resolves one. One of the two is required; neither is 400.  Promotion never builds. A deployment that carries no built image cannot be promoted and is 400, and a deployment id outside this app is 404. It runs through the same deploy core as everything else, so it takes a NEW version number and is subject to the same per-org concurrency cap. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -3774,7 +3806,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformProjectsByProjectAppsByAppPromoteAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<Void> _callback) throws ApiException {
@@ -3794,7 +3826,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformProjectsByProjectAppsByAppRollbackCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
@@ -3859,8 +3891,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Go back to the previous release
+     * Redeploys a prior image: the one named by &#x60;deploymentId&#x60;, or — with no body — the newest earlier deployment that carries a real built image and did not error, skipping the release currently live. An app with nothing earlier to return to is 400.  A rollback is a deploy of an old image, not a rewind: it takes a NEW version number and appends to the history rather than erasing what came after. Both lookups are scoped to this app and org, so another tenant&#39;s image can never be rolled in. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3868,7 +3900,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudPostV1PlatformProjectsByProjectAppsByAppRollback(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -3876,8 +3908,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Go back to the previous release
+     * Redeploys a prior image: the one named by &#x60;deploymentId&#x60;, or — with no body — the newest earlier deployment that carries a real built image and did not error, skipping the release currently live. An app with nothing earlier to return to is 400.  A rollback is a deploy of an old image, not a rewind: it takes a NEW version number and appends to the history rather than erasing what came after. Both lookups are scoped to this app and org, so another tenant&#39;s image can never be rolled in. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -3886,7 +3918,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudPostV1PlatformProjectsByProjectAppsByAppRollbackWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -3895,8 +3927,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Go back to the previous release (asynchronously)
+     * Redeploys a prior image: the one named by &#x60;deploymentId&#x60;, or — with no body — the newest earlier deployment that carries a real built image and did not error, skipping the release currently live. An app with nothing earlier to return to is 400.  A rollback is a deploy of an old image, not a rewind: it takes a NEW version number and appends to the history rather than erasing what came after. Both lookups are scoped to this app and org, so another tenant&#39;s image can never be rolled in. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -3906,7 +3938,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformProjectsByProjectAppsByAppRollbackAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<Void> _callback) throws ApiException {
@@ -3926,7 +3958,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformProjectsByProjectAppsByAppStartCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
@@ -3991,8 +4023,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Start a stopped app back up
+     * Scales the app&#39;s Service back to its configured replica count and marks it live, answering the updated application. It does not redeploy: the image already on the Service CR is what comes back.  The billing watermark is reset to now as part of starting, so the org is charged for THIS live span and never for the gap the app spent stopped. An app with no Service CR is 404, an unreachable cluster is 503, and a cluster that refuses the scale is 502. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4000,7 +4032,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudPostV1PlatformProjectsByProjectAppsByAppStart(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -4008,8 +4040,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Start a stopped app back up
+     * Scales the app&#39;s Service back to its configured replica count and marks it live, answering the updated application. It does not redeploy: the image already on the Service CR is what comes back.  The billing watermark is reset to now as part of starting, so the org is charged for THIS live span and never for the gap the app spent stopped. An app with no Service CR is 404, an unreachable cluster is 503, and a cluster that refuses the scale is 502. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -4018,7 +4050,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudPostV1PlatformProjectsByProjectAppsByAppStartWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -4027,8 +4059,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Start a stopped app back up (asynchronously)
+     * Scales the app&#39;s Service back to its configured replica count and marks it live, answering the updated application. It does not redeploy: the image already on the Service CR is what comes back.  The billing watermark is reset to now as part of starting, so the org is charged for THIS live span and never for the gap the app spent stopped. An app with no Service CR is 404, an unreachable cluster is 503, and a cluster that refuses the scale is 502. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -4038,7 +4070,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformProjectsByProjectAppsByAppStartAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<Void> _callback) throws ApiException {
@@ -4058,7 +4090,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformProjectsByProjectAppsByAppStopCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
@@ -4123,8 +4155,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Stop an app without deleting it
+     * Scales the app&#39;s Service to zero replicas and marks it stopped, answering the updated application. Nothing else is removed — the record, its env, its domains and its deployment history all survive, and /start brings it back at the same replica count.  An app that is not deployed has no Service CR to scale and is 404. An unreachable cluster is 503 and a cluster that refuses the scale is 502. Because the pods stop, so does the compute metering. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4132,7 +4164,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudPostV1PlatformProjectsByProjectAppsByAppStop(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -4140,8 +4172,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Stop an app without deleting it
+     * Scales the app&#39;s Service to zero replicas and marks it stopped, answering the updated application. Nothing else is removed — the record, its env, its domains and its deployment history all survive, and /start brings it back at the same replica count.  An app that is not deployed has no Service CR to scale and is 404. An unreachable cluster is 503 and a cluster that refuses the scale is 502. Because the pods stop, so does the compute metering. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -4150,7 +4182,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudPostV1PlatformProjectsByProjectAppsByAppStopWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -4159,8 +4191,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Stop an app without deleting it (asynchronously)
+     * Scales the app&#39;s Service to zero replicas and marks it stopped, answering the updated application. Nothing else is removed — the record, its env, its domains and its deployment history all survive, and /start brings it back at the same replica count.  An app that is not deployed has no Service CR to scale and is 404. An unreachable cluster is 503 and a cluster that refuses the scale is 502. Because the pods stop, so does the compute metering. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -4170,7 +4202,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformProjectsByProjectAppsByAppStopAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<Void> _callback) throws ApiException {
@@ -4188,7 +4220,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformSitesCall(final ApiCallback _callback) throws ApiException {
@@ -4241,14 +4273,14 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Create a static site on the platform
+     * Creates a site and answers 201 with it in &#x60;draft&#x60;. It is the SAME operation as creating a project — one engine, one store — surfaced under the platform namespace where container apps live next door, so a site created here is the same row a project call sees. &#x60;name&#x60; is required and &#x60;slug&#x60; defaults from it; the slug becomes the storage prefix and the public host &#x60;&lt;slug&gt;.hanzo.app&#x60;, so it must match &#x60;^[a-z0-9]([a-z0-9-]{0,38}[a-z0-9])?$&#x60; and may not be a reserved label. Analytics is on unless explicitly disabled, and &#x60;private&#x60; visibility is the paid option — an unfunded org asking for it is 402, never silently public.  Scope: a validated principal is required (403 without one) and the site is created in that principal&#39;s org, where its slug must be unique — a collision within the caller&#39;s own org is a 409.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudPostV1PlatformSites() throws ApiException {
@@ -4256,15 +4288,15 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Create a static site on the platform
+     * Creates a site and answers 201 with it in &#x60;draft&#x60;. It is the SAME operation as creating a project — one engine, one store — surfaced under the platform namespace where container apps live next door, so a site created here is the same row a project call sees. &#x60;name&#x60; is required and &#x60;slug&#x60; defaults from it; the slug becomes the storage prefix and the public host &#x60;&lt;slug&gt;.hanzo.app&#x60;, so it must match &#x60;^[a-z0-9]([a-z0-9-]{0,38}[a-z0-9])?$&#x60; and may not be a reserved label. Analytics is on unless explicitly disabled, and &#x60;private&#x60; visibility is the paid option — an unfunded org asking for it is 402, never silently public.  Scope: a validated principal is required (403 without one) and the site is created in that principal&#39;s org, where its slug must be unique — a collision within the caller&#39;s own org is a 409.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudPostV1PlatformSitesWithHttpInfo() throws ApiException {
@@ -4273,8 +4305,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Create a static site on the platform (asynchronously)
+     * Creates a site and answers 201 with it in &#x60;draft&#x60;. It is the SAME operation as creating a project — one engine, one store — surfaced under the platform namespace where container apps live next door, so a site created here is the same row a project call sees. &#x60;name&#x60; is required and &#x60;slug&#x60; defaults from it; the slug becomes the storage prefix and the public host &#x60;&lt;slug&gt;.hanzo.app&#x60;, so it must match &#x60;^[a-z0-9]([a-z0-9-]{0,38}[a-z0-9])?$&#x60; and may not be a reserved label. Analytics is on unless explicitly disabled, and &#x60;private&#x60; visibility is the paid option — an unfunded org asking for it is 402, never silently public.  Scope: a validated principal is required (403 without one) and the site is created in that principal&#39;s org, where its slug must be unique — a collision within the caller&#39;s own org is a 409.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4282,7 +4314,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformSitesAsync(final ApiCallback<Void> _callback) throws ApiException {
@@ -4301,7 +4333,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformSitesBySlugDeployCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
@@ -4360,15 +4392,15 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Upload a built site — this is where a zip goes live
+     * Takes a built site live at &#x60;https://&lt;slug&gt;.hanzo.app&#x60;. The content type decides the shape: a &#x60;zip&#x60; or &#x60;tar.gz&#x60; — raw in the body or as a multipart file part, which is what the platform&#39;s upload UI posts — is stored and served immediately, answering 200 with the finished deployment; a JSON body instead queues a build from the site&#39;s linked repo and answers 202 with a queued deployment plus, where one could be minted, a scoped upload grant for CI. The git path requires a linked repo (400 without one).  The hosting gate is fail-closed and runs first, before anything is parsed or uploaded: 402 for an unfunded org, 503 for unreachable commerce, nothing written. The debit lands only on success — a failed upload is never billed and never flips the live site — and a redeploy answers the SAME URL, because slug and apex are stable.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503); an archive that does not walk is a 400 and one over the size cap is a 413.
      * @param slug  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudPostV1PlatformSitesBySlugDeploy(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -4376,8 +4408,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Upload a built site — this is where a zip goes live
+     * Takes a built site live at &#x60;https://&lt;slug&gt;.hanzo.app&#x60;. The content type decides the shape: a &#x60;zip&#x60; or &#x60;tar.gz&#x60; — raw in the body or as a multipart file part, which is what the platform&#39;s upload UI posts — is stored and served immediately, answering 200 with the finished deployment; a JSON body instead queues a build from the site&#39;s linked repo and answers 202 with a queued deployment plus, where one could be minted, a scoped upload grant for CI. The git path requires a linked repo (400 without one).  The hosting gate is fail-closed and runs first, before anything is parsed or uploaded: 402 for an unfunded org, 503 for unreachable commerce, nothing written. The debit lands only on success — a failed upload is never billed and never flips the live site — and a redeploy answers the SAME URL, because slug and apex are stable.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503); an archive that does not walk is a 400 and one over the size cap is a 413.
      * @param slug  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4385,7 +4417,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudPostV1PlatformSitesBySlugDeployWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -4394,8 +4426,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Upload a built site — this is where a zip goes live (asynchronously)
+     * Takes a built site live at &#x60;https://&lt;slug&gt;.hanzo.app&#x60;. The content type decides the shape: a &#x60;zip&#x60; or &#x60;tar.gz&#x60; — raw in the body or as a multipart file part, which is what the platform&#39;s upload UI posts — is stored and served immediately, answering 200 with the finished deployment; a JSON body instead queues a build from the site&#39;s linked repo and answers 202 with a queued deployment plus, where one could be minted, a scoped upload grant for CI. The git path requires a linked repo (400 without one).  The hosting gate is fail-closed and runs first, before anything is parsed or uploaded: 402 for an unfunded org, 503 for unreachable commerce, nothing written. The debit lands only on success — a failed upload is never billed and never flips the live site — and a redeploy answers the SAME URL, because slug and apex are stable.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503); an archive that does not walk is a 400 and one over the size cap is a 413.
      * @param slug  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4404,7 +4436,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformSitesBySlugDeployAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
@@ -4423,7 +4455,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformSitesBySlugDomainsCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
@@ -4482,15 +4514,15 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Point your own domain at this site
+     * Attaches one or more custom hostnames and answers a row per host. A global admin, or the platform-operator org that manages customer DNS, binds VERIFIED immediately — that bind is itself the vouch; every other org gets a PENDING claim plus the DNS challenge to publish, and the host does not route until it is verified. Claims are first-come and idempotent for the same site, so repeating the call returns the SAME token rather than invalidating a record already published.  A host already bound to another site is a 409, a reserved label is a 400, and a hostname we operate is 403 for a non-vouched caller — those are assigned by the platform, and no DNS proof is possible in a zone we run. Scope: a validated principal is required (403 without one), the site is resolved within that principal&#39;s org, and the claim is recorded against that org.
      * @param slug  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudPostV1PlatformSitesBySlugDomains(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -4498,8 +4530,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Point your own domain at this site
+     * Attaches one or more custom hostnames and answers a row per host. A global admin, or the platform-operator org that manages customer DNS, binds VERIFIED immediately — that bind is itself the vouch; every other org gets a PENDING claim plus the DNS challenge to publish, and the host does not route until it is verified. Claims are first-come and idempotent for the same site, so repeating the call returns the SAME token rather than invalidating a record already published.  A host already bound to another site is a 409, a reserved label is a 400, and a hostname we operate is 403 for a non-vouched caller — those are assigned by the platform, and no DNS proof is possible in a zone we run. Scope: a validated principal is required (403 without one), the site is resolved within that principal&#39;s org, and the claim is recorded against that org.
      * @param slug  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4507,7 +4539,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudPostV1PlatformSitesBySlugDomainsWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -4516,8 +4548,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Point your own domain at this site (asynchronously)
+     * Attaches one or more custom hostnames and answers a row per host. A global admin, or the platform-operator org that manages customer DNS, binds VERIFIED immediately — that bind is itself the vouch; every other org gets a PENDING claim plus the DNS challenge to publish, and the host does not route until it is verified. Claims are first-come and idempotent for the same site, so repeating the call returns the SAME token rather than invalidating a record already published.  A host already bound to another site is a 409, a reserved label is a 400, and a hostname we operate is 403 for a non-vouched caller — those are assigned by the platform, and no DNS proof is possible in a zone we run. Scope: a validated principal is required (403 without one), the site is resolved within that principal&#39;s org, and the claim is recorded against that org.
      * @param slug  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4526,7 +4558,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformSitesBySlugDomainsAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
@@ -4546,7 +4578,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformSitesBySlugDomainsByHostVerifyCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
@@ -4611,8 +4643,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Check the DNS proof for a claimed domain and go live if it passes
+     * Resolves the ownership challenge for a pending claim. On success the host is promoted, starts routing at the edge immediately, and the edge cache is flushed so it serves the right site from the first request; an already-verified host answers unchanged, so the call is safe to repeat. A proof not yet visible is NOT an error — the answer is 200 with the claim still pending and a detail saying what the lookup found, because the check ran and DNS has simply not propagated. A host this site has not claimed is a 404.  Scope: a validated principal is required (403 without one), and both the site and the claim are looked up within that principal&#39;s org, so another tenant&#39;s claim cannot be verified from here.
      * @param slug  (required)
      * @param host  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4620,7 +4652,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudPostV1PlatformSitesBySlugDomainsByHostVerify(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host) throws ApiException {
@@ -4628,8 +4660,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Check the DNS proof for a claimed domain and go live if it passes
+     * Resolves the ownership challenge for a pending claim. On success the host is promoted, starts routing at the edge immediately, and the edge cache is flushed so it serves the right site from the first request; an already-verified host answers unchanged, so the call is safe to repeat. A proof not yet visible is NOT an error — the answer is 200 with the claim still pending and a detail saying what the lookup found, because the check ran and DNS has simply not propagated. A host this site has not claimed is a 404.  Scope: a validated principal is required (403 without one), and both the site and the claim are looked up within that principal&#39;s org, so another tenant&#39;s claim cannot be verified from here.
      * @param slug  (required)
      * @param host  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -4638,7 +4670,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudPostV1PlatformSitesBySlugDomainsByHostVerifyWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host) throws ApiException {
@@ -4647,8 +4679,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Check the DNS proof for a claimed domain and go live if it passes (asynchronously)
+     * Resolves the ownership challenge for a pending claim. On success the host is promoted, starts routing at the edge immediately, and the edge cache is flushed so it serves the right site from the first request; an already-verified host answers unchanged, so the call is safe to repeat. A proof not yet visible is NOT an error — the answer is 200 with the claim still pending and a detail saying what the lookup found, because the check ran and DNS has simply not propagated. A host this site has not claimed is a 404.  Scope: a validated principal is required (403 without one), and both the site and the claim are looked up within that principal&#39;s org, so another tenant&#39;s claim cannot be verified from here.
      * @param slug  (required)
      * @param host  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -4658,7 +4690,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformSitesBySlugDomainsByHostVerifyAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback<Void> _callback) throws ApiException {
@@ -4677,7 +4709,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformSitesBySlugPublishCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
@@ -4736,15 +4768,15 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Publish a build output and take it live in one call
+     * Promotes a build output into a new immutable release and points the site at it, answering the release marked active with the live URL — create-plus-activate in one call, the same operation the sites surface offers, over the same single store.  No bytes traverse the API: &#x60;source&#x60; is a path RELATIVE to the caller org&#39;s own storage space, the org segment is prepended server-side from the validated principal, and the bucket never appears in the request — so a source can only ever name bytes the caller&#39;s org already owns, and no client holds a storage credential. A release id is a digest of its manifest, making re-publishing identical bytes idempotent by construction.  Promoting is the billable work and the gate runs before any copy: 402 unfunded, 503 unreachable. Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503); a source breaking the object or byte guards is a 400 or 413, and one that moved under the scan is a 409.
      * @param slug  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudPostV1PlatformSitesBySlugPublish(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -4752,8 +4784,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Publish a build output and take it live in one call
+     * Promotes a build output into a new immutable release and points the site at it, answering the release marked active with the live URL — create-plus-activate in one call, the same operation the sites surface offers, over the same single store.  No bytes traverse the API: &#x60;source&#x60; is a path RELATIVE to the caller org&#39;s own storage space, the org segment is prepended server-side from the validated principal, and the bucket never appears in the request — so a source can only ever name bytes the caller&#39;s org already owns, and no client holds a storage credential. A release id is a digest of its manifest, making re-publishing identical bytes idempotent by construction.  Promoting is the billable work and the gate runs before any copy: 402 unfunded, 503 unreachable. Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503); a source breaking the object or byte guards is a 400 or 413, and one that moved under the scan is a 409.
      * @param slug  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4761,7 +4793,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudPostV1PlatformSitesBySlugPublishWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -4770,8 +4802,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Publish a build output and take it live in one call (asynchronously)
+     * Promotes a build output into a new immutable release and points the site at it, answering the release marked active with the live URL — create-plus-activate in one call, the same operation the sites surface offers, over the same single store.  No bytes traverse the API: &#x60;source&#x60; is a path RELATIVE to the caller org&#39;s own storage space, the org segment is prepended server-side from the validated principal, and the bucket never appears in the request — so a source can only ever name bytes the caller&#39;s org already owns, and no client holds a storage credential. A release id is a digest of its manifest, making re-publishing identical bytes idempotent by construction.  Promoting is the billable work and the gate runs before any copy: 402 unfunded, 503 unreachable. Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503); a source breaking the object or byte guards is a 400 or 413, and one that moved under the scan is a 409.
      * @param slug  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4780,7 +4812,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformSitesBySlugPublishAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
@@ -4799,7 +4831,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformSitesBySlugPurgeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
@@ -4858,15 +4890,15 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Flush the edge cache for a site without redeploying it
+     * Purges the site&#39;s edge cache tag, stamps the purge time, and answers the updated site. Stored objects are never written or deleted — the live build keeps serving from the origin and only cached copies drop — so this is the right tool when the origin is already correct and the edge is stale. An edge that cannot be reached is non-fatal: the timestamp is stamped and the answer is still 200, so read it as &#39;requested&#39;, not &#39;every node has dropped it&#39;.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudPostV1PlatformSitesBySlugPurge(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -4874,8 +4906,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Flush the edge cache for a site without redeploying it
+     * Purges the site&#39;s edge cache tag, stamps the purge time, and answers the updated site. Stored objects are never written or deleted — the live build keeps serving from the origin and only cached copies drop — so this is the right tool when the origin is already correct and the edge is stale. An edge that cannot be reached is non-fatal: the timestamp is stamped and the answer is still 200, so read it as &#39;requested&#39;, not &#39;every node has dropped it&#39;.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4883,7 +4915,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudPostV1PlatformSitesBySlugPurgeWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -4892,8 +4924,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Flush the edge cache for a site without redeploying it (asynchronously)
+     * Purges the site&#39;s edge cache tag, stamps the purge time, and answers the updated site. Stored objects are never written or deleted — the live build keeps serving from the origin and only cached copies drop — so this is the right tool when the origin is already correct and the edge is stale. An edge that cannot be reached is non-fatal: the timestamp is stamped and the answer is still 200, so read it as &#39;requested&#39;, not &#39;every node has dropped it&#39;.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4902,7 +4934,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformSitesBySlugPurgeAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
@@ -4921,7 +4953,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformSitesBySlugReleasesCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
@@ -4980,15 +5012,15 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Promote a build output into a release WITHOUT serving it
+     * Creates a new immutable release from &#x60;source&#x60; and answers 201 with it — the staged half of publishing, for checking a release before anyone sees it. The live site is untouched until the activate call.  The source is relative to the caller org&#39;s OWN storage space, with the org segment prepended server-side and the bucket never in the request, so a release can only be built from bytes that org already owns; the id is a digest of the manifest, so promoting unchanged content returns the existing release instead of copying again. The copy happens here, so the hosting gate runs here: 402 unfunded, 503 unreachable, before any bytes move.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503).
      * @param slug  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudPostV1PlatformSitesBySlugReleases(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -4996,8 +5028,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Promote a build output into a release WITHOUT serving it
+     * Creates a new immutable release from &#x60;source&#x60; and answers 201 with it — the staged half of publishing, for checking a release before anyone sees it. The live site is untouched until the activate call.  The source is relative to the caller org&#39;s OWN storage space, with the org segment prepended server-side and the bucket never in the request, so a release can only be built from bytes that org already owns; the id is a digest of the manifest, so promoting unchanged content returns the existing release instead of copying again. The copy happens here, so the hosting gate runs here: 402 unfunded, 503 unreachable, before any bytes move.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503).
      * @param slug  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5005,7 +5037,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudPostV1PlatformSitesBySlugReleasesWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -5014,8 +5046,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Promote a build output into a release WITHOUT serving it (asynchronously)
+     * Creates a new immutable release from &#x60;source&#x60; and answers 201 with it — the staged half of publishing, for checking a release before anyone sees it. The live site is untouched until the activate call.  The source is relative to the caller org&#39;s OWN storage space, with the org segment prepended server-side and the bucket never in the request, so a release can only be built from bytes that org already owns; the id is a digest of the manifest, so promoting unchanged content returns the existing release instead of copying again. The copy happens here, so the hosting gate runs here: 402 unfunded, 503 unreachable, before any bytes move.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503).
      * @param slug  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -5024,7 +5056,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformSitesBySlugReleasesAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
@@ -5044,7 +5076,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformSitesBySlugReleasesByReleaseActivateCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release, final ApiCallback _callback) throws ApiException {
@@ -5109,8 +5141,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Point the site at a release — going live, and equally rolling back
+     * Flips the site&#39;s pointer to an existing release and answers it marked active. Serving reads through that pointer, so this is one atomic update with nothing rebuilt and nothing re-copied, and rolling back is the SAME operation aimed at an older release, for free.  The bytes are checked before the flip, so the two failures are distinguishable and the difference is the fix: an unknown release, or one whose row is gone, is a 404; a release still listed but whose bytes were reclaimed by retention is a 410 — that target is not coming back and the content must be published again. Not billed: no new content is produced, only a pointer moved.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @param release  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5118,7 +5150,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public void cloudPostV1PlatformSitesBySlugReleasesByReleaseActivate(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release) throws ApiException {
@@ -5126,8 +5158,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Point the site at a release — going live, and equally rolling back
+     * Flips the site&#39;s pointer to an existing release and answers it marked active. Serving reads through that pointer, so this is one atomic update with nothing rebuilt and nothing re-copied, and rolling back is the SAME operation aimed at an older release, for free.  The bytes are checked before the flip, so the two failures are distinguishable and the difference is the fix: an unknown release, or one whose row is gone, is a 404; a release still listed but whose bytes were reclaimed by retention is a 410 — that target is not coming back and the content must be published again. Not billed: no new content is produced, only a pointer moved.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @param release  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -5136,7 +5168,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> cloudPostV1PlatformSitesBySlugReleasesByReleaseActivateWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release) throws ApiException {
@@ -5145,8 +5177,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Point the site at a release — going live, and equally rolling back (asynchronously)
+     * Flips the site&#39;s pointer to an existing release and answers it marked active. Serving reads through that pointer, so this is one atomic update with nothing rebuilt and nothing re-copied, and rolling back is the SAME operation aimed at an older release, for free.  The bytes are checked before the flip, so the two failures are distinguishable and the difference is the fix: an unknown release, or one whose row is gone, is a 404; a release still listed but whose bytes were reclaimed by retention is a 410 — that target is not coming back and the content must be published again. Not billed: no new content is produced, only a pointer moved.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
      * @param slug  (required)
      * @param release  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -5156,7 +5188,7 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudPostV1PlatformSitesBySlugReleasesByReleaseActivateAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release, final ApiCallback<Void> _callback) throws ApiException {
@@ -5244,8 +5276,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Replace an app&#39;s environment variables
+     * Writes the app&#39;s whole environment set and answers the updated application. This is the one post-create write path for env, and it REPLACES rather than merges: a variable absent from the body is gone, and a secret dropped from the set leaves the app&#39;s Secret on its next deploy.  Keys must match &#x60;^[A-Za-z_][A-Za-z0-9_]*$&#x60;. A value marked &#x60;secret: true&#x60; is sealed into KMS and blanked in the database, so plaintext is never persisted — and the write fails 503 if KMS is unavailable rather than storing one in the clear.  The rule worth knowing: this does not restart anything. Once the app has been deployed the secret sync is re-declared immediately so the operator re-materialises the Secret, but RUNNING pods keep the environment they started with until their next deploy or restart. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param cloudSetEnvReq  (optional)
@@ -5264,8 +5296,8 @@ public class PlatformApi {
     }
 
     /**
-     * 
-     * 
+     * Replace an app&#39;s environment variables
+     * Writes the app&#39;s whole environment set and answers the updated application. This is the one post-create write path for env, and it REPLACES rather than merges: a variable absent from the body is gone, and a secret dropped from the set leaves the app&#39;s Secret on its next deploy.  Keys must match &#x60;^[A-Za-z_][A-Za-z0-9_]*$&#x60;. A value marked &#x60;secret: true&#x60; is sealed into KMS and blanked in the database, so plaintext is never persisted — and the write fails 503 if KMS is unavailable rather than storing one in the clear.  The rule worth knowing: this does not restart anything. Once the app has been deployed the secret sync is re-declared immediately so the operator re-materialises the Secret, but RUNNING pods keep the environment they started with until their next deploy or restart. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param cloudSetEnvReq  (optional)
@@ -5285,8 +5317,8 @@ public class PlatformApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Replace an app&#39;s environment variables (asynchronously)
+     * Writes the app&#39;s whole environment set and answers the updated application. This is the one post-create write path for env, and it REPLACES rather than merges: a variable absent from the body is gone, and a secret dropped from the set leaves the app&#39;s Secret on its next deploy.  Keys must match &#x60;^[A-Za-z_][A-Za-z0-9_]*$&#x60;. A value marked &#x60;secret: true&#x60; is sealed into KMS and blanked in the database, so plaintext is never persisted — and the write fails 503 if KMS is unavailable rather than storing one in the clear.  The rule worth knowing: this does not restart anything. Once the app has been deployed the secret sync is re-declared immediately so the operator re-materialises the Secret, but RUNNING pods keep the environment they started with until their next deploy or restart. Requires a validated principal; 403 without one.
      * @param project  (required)
      * @param app  (required)
      * @param cloudSetEnvReq  (optional)

@@ -138,8 +138,8 @@ public class CrawlApi {
     }
 
     /**
-     * 
-     * 
+     * Fetch one URL and read it back as markdown
+     * Fetches a single URL from inside the cluster and answers with the page&#39;s title, its content rendered to markdown, and whatever metadata the document carried.  A page that could not be fetched is a NORMAL outcome, not a fault: an unreachable host, a refused address or a non-document content type all answer 200 with &#x60;success:false&#x60; and the reason in &#x60;error&#x60;. Non-2xx is reserved for a caller problem — 401 for a bad key, 400 for a missing url, 503 when the surface is unconfigured — so error handling can trust the status.  Admission is either a validated principal or the shared service key, presented as X-API-Key or a Bearer; neither is refused, and an unset key fails closed rather than opening the fetcher to the private network. Crawled pages are archived under the scope of the VERIFIED principal, never a scope named in the body; a service caller has no org and its pages land in the shared corpus. One URL per call, and the request body is bounded at 1 MiB.
      * @param cloudCrawlRequest  (optional)
      * @return CloudCrawlResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -156,8 +156,8 @@ public class CrawlApi {
     }
 
     /**
-     * 
-     * 
+     * Fetch one URL and read it back as markdown
+     * Fetches a single URL from inside the cluster and answers with the page&#39;s title, its content rendered to markdown, and whatever metadata the document carried.  A page that could not be fetched is a NORMAL outcome, not a fault: an unreachable host, a refused address or a non-document content type all answer 200 with &#x60;success:false&#x60; and the reason in &#x60;error&#x60;. Non-2xx is reserved for a caller problem — 401 for a bad key, 400 for a missing url, 503 when the surface is unconfigured — so error handling can trust the status.  Admission is either a validated principal or the shared service key, presented as X-API-Key or a Bearer; neither is refused, and an unset key fails closed rather than opening the fetcher to the private network. Crawled pages are archived under the scope of the VERIFIED principal, never a scope named in the body; a service caller has no org and its pages land in the shared corpus. One URL per call, and the request body is bounded at 1 MiB.
      * @param cloudCrawlRequest  (optional)
      * @return ApiResponse&lt;CloudCrawlResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -175,8 +175,8 @@ public class CrawlApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Fetch one URL and read it back as markdown (asynchronously)
+     * Fetches a single URL from inside the cluster and answers with the page&#39;s title, its content rendered to markdown, and whatever metadata the document carried.  A page that could not be fetched is a NORMAL outcome, not a fault: an unreachable host, a refused address or a non-document content type all answer 200 with &#x60;success:false&#x60; and the reason in &#x60;error&#x60;. Non-2xx is reserved for a caller problem — 401 for a bad key, 400 for a missing url, 503 when the surface is unconfigured — so error handling can trust the status.  Admission is either a validated principal or the shared service key, presented as X-API-Key or a Bearer; neither is refused, and an unset key fails closed rather than opening the fetcher to the private network. Crawled pages are archived under the scope of the VERIFIED principal, never a scope named in the body; a service caller has no org and its pages land in the shared corpus. One URL per call, and the request body is bounded at 1 MiB.
      * @param cloudCrawlRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

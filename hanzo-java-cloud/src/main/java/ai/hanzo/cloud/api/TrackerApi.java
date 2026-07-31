@@ -27,10 +27,15 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.CloudAdminAdminCreatePromo400Response;
 import ai.hanzo.cloud.model.CloudIssuePatch;
 import ai.hanzo.cloud.model.CloudIssueView;
 import ai.hanzo.cloud.model.CloudProjectPatch;
 import ai.hanzo.cloud.model.CloudTrackerProject;
+import ai.hanzo.cloud.model.TrackerCreateIssueRequest;
+import ai.hanzo.cloud.model.TrackerCreateProjectRequest;
+import ai.hanzo.cloud.model.TrackerIssue;
+import ai.hanzo.cloud.model.TrackerProject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -77,7 +82,7 @@ public class TrackerApi {
 
     /**
      * Build call for cloudDeleteV1TrackerProjectsKey
-     * @param key Key is the project&#39;s org-unique handle: 2-8 uppercase alphanumerics starting with a letter (\&quot;ENG\&quot;, \&quot;OPS2\&quot;). Matched case-insensitively. (required)
+     * @param key Project key (uppercase, ^[A-Z][A-Z0-9]{1,7}$) (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -146,7 +151,7 @@ public class TrackerApi {
     /**
      * DeleteProject removes one tracker project of the caller&#39;s org AND every issue filed under it, and answers 204 with no body.
      * DeleteProject removes one tracker project of the caller&#39;s org AND every issue filed under it, and answers 204 with no body. 404 when the org has no project under that key.  The cascade is the point: an issue has no meaning without the board whose key names it, so deleting the board deletes them together rather than leaving orphans addressable by an identifier that no longer resolves.
-     * @param key Key is the project&#39;s org-unique handle: 2-8 uppercase alphanumerics starting with a letter (\&quot;ENG\&quot;, \&quot;OPS2\&quot;). Matched case-insensitively. (required)
+     * @param key Project key (uppercase, ^[A-Z][A-Z0-9]{1,7}$) (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -162,7 +167,7 @@ public class TrackerApi {
     /**
      * DeleteProject removes one tracker project of the caller&#39;s org AND every issue filed under it, and answers 204 with no body.
      * DeleteProject removes one tracker project of the caller&#39;s org AND every issue filed under it, and answers 204 with no body. 404 when the org has no project under that key.  The cascade is the point: an issue has no meaning without the board whose key names it, so deleting the board deletes them together rather than leaving orphans addressable by an identifier that no longer resolves.
-     * @param key Key is the project&#39;s org-unique handle: 2-8 uppercase alphanumerics starting with a letter (\&quot;ENG\&quot;, \&quot;OPS2\&quot;). Matched case-insensitively. (required)
+     * @param key Project key (uppercase, ^[A-Z][A-Z0-9]{1,7}$) (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -180,7 +185,7 @@ public class TrackerApi {
     /**
      * DeleteProject removes one tracker project of the caller&#39;s org AND every issue filed under it, and answers 204 with no body. (asynchronously)
      * DeleteProject removes one tracker project of the caller&#39;s org AND every issue filed under it, and answers 204 with no body. 404 when the org has no project under that key.  The cascade is the point: an issue has no meaning without the board whose key names it, so deleting the board deletes them together rather than leaving orphans addressable by an identifier that no longer resolves.
-     * @param key Key is the project&#39;s org-unique handle: 2-8 uppercase alphanumerics starting with a letter (\&quot;ENG\&quot;, \&quot;OPS2\&quot;). Matched case-insensitively. (required)
+     * @param key Project key (uppercase, ^[A-Z][A-Z0-9]{1,7}$) (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -199,8 +204,8 @@ public class TrackerApi {
     }
     /**
      * Build call for cloudDeleteV1TrackerProjectsKeyIssuesNum
-     * @param key Key is the issue&#39;s project, from the path. (required)
-     * @param num Num is the issue&#39;s number within that project — the digits of KEY-14. Positive; anything else is refused with 400. (required)
+     * @param key Project key (required)
+     * @param num Per-project issue number (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -275,8 +280,8 @@ public class TrackerApi {
     /**
      * DeleteIssue removes one issue from a tracker project and answers 204 with no body.
      * DeleteIssue removes one issue from a tracker project and answers 204 with no body. 404 when the project or the issue does not exist in the caller&#39;s org.  The issue&#39;s number is NOT reused: the next issue on the board takes the next number, so a deleted identifier stays retired rather than silently pointing at different work.
-     * @param key Key is the issue&#39;s project, from the path. (required)
-     * @param num Num is the issue&#39;s number within that project — the digits of KEY-14. Positive; anything else is refused with 400. (required)
+     * @param key Project key (required)
+     * @param num Per-project issue number (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -292,8 +297,8 @@ public class TrackerApi {
     /**
      * DeleteIssue removes one issue from a tracker project and answers 204 with no body.
      * DeleteIssue removes one issue from a tracker project and answers 204 with no body. 404 when the project or the issue does not exist in the caller&#39;s org.  The issue&#39;s number is NOT reused: the next issue on the board takes the next number, so a deleted identifier stays retired rather than silently pointing at different work.
-     * @param key Key is the issue&#39;s project, from the path. (required)
-     * @param num Num is the issue&#39;s number within that project — the digits of KEY-14. Positive; anything else is refused with 400. (required)
+     * @param key Project key (required)
+     * @param num Per-project issue number (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -311,8 +316,8 @@ public class TrackerApi {
     /**
      * DeleteIssue removes one issue from a tracker project and answers 204 with no body. (asynchronously)
      * DeleteIssue removes one issue from a tracker project and answers 204 with no body. 404 when the project or the issue does not exist in the caller&#39;s org.  The issue&#39;s number is NOT reused: the next issue on the board takes the next number, so a deleted identifier stays retired rather than silently pointing at different work.
-     * @param key Key is the issue&#39;s project, from the path. (required)
-     * @param num Num is the issue&#39;s number within that project — the digits of KEY-14. Positive; anything else is refused with 400. (required)
+     * @param key Project key (required)
+     * @param num Per-project issue number (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -448,7 +453,7 @@ public class TrackerApi {
     }
     /**
      * Build call for cloudGetV1TrackerProjectsKey
-     * @param key Key is the project&#39;s org-unique handle: 2-8 uppercase alphanumerics starting with a letter (\&quot;ENG\&quot;, \&quot;OPS2\&quot;). Matched case-insensitively. (required)
+     * @param key Project key (uppercase, ^[A-Z][A-Z0-9]{1,7}$) (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -518,7 +523,7 @@ public class TrackerApi {
     /**
      * GetProject returns one tracker project of the caller&#39;s org by its key — its name, description and timestamps.
      * GetProject returns one tracker project of the caller&#39;s org by its key — its name, description and timestamps. 404 when the org has no project under that key.
-     * @param key Key is the project&#39;s org-unique handle: 2-8 uppercase alphanumerics starting with a letter (\&quot;ENG\&quot;, \&quot;OPS2\&quot;). Matched case-insensitively. (required)
+     * @param key Project key (uppercase, ^[A-Z][A-Z0-9]{1,7}$) (required)
      * @return CloudTrackerProject
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -536,7 +541,7 @@ public class TrackerApi {
     /**
      * GetProject returns one tracker project of the caller&#39;s org by its key — its name, description and timestamps.
      * GetProject returns one tracker project of the caller&#39;s org by its key — its name, description and timestamps. 404 when the org has no project under that key.
-     * @param key Key is the project&#39;s org-unique handle: 2-8 uppercase alphanumerics starting with a letter (\&quot;ENG\&quot;, \&quot;OPS2\&quot;). Matched case-insensitively. (required)
+     * @param key Project key (uppercase, ^[A-Z][A-Z0-9]{1,7}$) (required)
      * @return ApiResponse&lt;CloudTrackerProject&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -555,7 +560,7 @@ public class TrackerApi {
     /**
      * GetProject returns one tracker project of the caller&#39;s org by its key — its name, description and timestamps. (asynchronously)
      * GetProject returns one tracker project of the caller&#39;s org by its key — its name, description and timestamps. 404 when the org has no project under that key.
-     * @param key Key is the project&#39;s org-unique handle: 2-8 uppercase alphanumerics starting with a letter (\&quot;ENG\&quot;, \&quot;OPS2\&quot;). Matched case-insensitively. (required)
+     * @param key Project key (uppercase, ^[A-Z][A-Z0-9]{1,7}$) (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -575,7 +580,7 @@ public class TrackerApi {
     }
     /**
      * Build call for cloudGetV1TrackerProjectsKeyIssues
-     * @param key Key is the project whose issues to list, from the path. (required)
+     * @param key Project key (required)
      * @param status Status keeps only issues in that board column: backlog, todo, in_progress, done or canceled. An unknown value is refused with 400. (optional)
      * @param kind Kind keeps only work items of that shape: issue, pr or epic. An unknown value is refused with 400. (optional)
      * @param repo Repo keeps only issues bound to that git repository. (optional)
@@ -665,7 +670,7 @@ public class TrackerApi {
     /**
      * ListIssues returns the issues of one tracker project, optionally filtered by status, kind, repo and source.
      * ListIssues returns the issues of one tracker project, optionally filtered by status, kind, repo and source.  This is the ONE place a surface takes its slice of the shared issue table: hanzo.team passes no filter or a status, a git repository&#39;s Issues tab passes kind&#x3D;issue&amp;repo&#x3D;&lt;r&gt; and its Pull Requests tab kind&#x3D;pr&amp;repo&#x3D;&lt;r&gt;. A filter value outside its closed set is refused with 400 rather than silently returning an empty board.
-     * @param key Key is the project whose issues to list, from the path. (required)
+     * @param key Project key (required)
      * @param status Status keeps only issues in that board column: backlog, todo, in_progress, done or canceled. An unknown value is refused with 400. (optional)
      * @param kind Kind keeps only work items of that shape: issue, pr or epic. An unknown value is refused with 400. (optional)
      * @param repo Repo keeps only issues bound to that git repository. (optional)
@@ -687,7 +692,7 @@ public class TrackerApi {
     /**
      * ListIssues returns the issues of one tracker project, optionally filtered by status, kind, repo and source.
      * ListIssues returns the issues of one tracker project, optionally filtered by status, kind, repo and source.  This is the ONE place a surface takes its slice of the shared issue table: hanzo.team passes no filter or a status, a git repository&#39;s Issues tab passes kind&#x3D;issue&amp;repo&#x3D;&lt;r&gt; and its Pull Requests tab kind&#x3D;pr&amp;repo&#x3D;&lt;r&gt;. A filter value outside its closed set is refused with 400 rather than silently returning an empty board.
-     * @param key Key is the project whose issues to list, from the path. (required)
+     * @param key Project key (required)
      * @param status Status keeps only issues in that board column: backlog, todo, in_progress, done or canceled. An unknown value is refused with 400. (optional)
      * @param kind Kind keeps only work items of that shape: issue, pr or epic. An unknown value is refused with 400. (optional)
      * @param repo Repo keeps only issues bound to that git repository. (optional)
@@ -710,7 +715,7 @@ public class TrackerApi {
     /**
      * ListIssues returns the issues of one tracker project, optionally filtered by status, kind, repo and source. (asynchronously)
      * ListIssues returns the issues of one tracker project, optionally filtered by status, kind, repo and source.  This is the ONE place a surface takes its slice of the shared issue table: hanzo.team passes no filter or a status, a git repository&#39;s Issues tab passes kind&#x3D;issue&amp;repo&#x3D;&lt;r&gt; and its Pull Requests tab kind&#x3D;pr&amp;repo&#x3D;&lt;r&gt;. A filter value outside its closed set is refused with 400 rather than silently returning an empty board.
-     * @param key Key is the project whose issues to list, from the path. (required)
+     * @param key Project key (required)
      * @param status Status keeps only issues in that board column: backlog, todo, in_progress, done or canceled. An unknown value is refused with 400. (optional)
      * @param kind Kind keeps only work items of that shape: issue, pr or epic. An unknown value is refused with 400. (optional)
      * @param repo Repo keeps only issues bound to that git repository. (optional)
@@ -734,8 +739,8 @@ public class TrackerApi {
     }
     /**
      * Build call for cloudGetV1TrackerProjectsKeyIssuesNum
-     * @param key Key is the issue&#39;s project, from the path. (required)
-     * @param num Num is the issue&#39;s number within that project — the digits of KEY-14. Positive; anything else is refused with 400. (required)
+     * @param key Project key (required)
+     * @param num Per-project issue number (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -811,8 +816,8 @@ public class TrackerApi {
     /**
      * GetIssue returns one issue of one tracker project by its per-project number — title, description, status, priority, assignee, labels, kind, source and its git bindings.
      * GetIssue returns one issue of one tracker project by its per-project number — title, description, status, priority, assignee, labels, kind, source and its git bindings. 404 when the project or the issue does not exist in the caller&#39;s org.
-     * @param key Key is the issue&#39;s project, from the path. (required)
-     * @param num Num is the issue&#39;s number within that project — the digits of KEY-14. Positive; anything else is refused with 400. (required)
+     * @param key Project key (required)
+     * @param num Per-project issue number (required)
      * @return CloudIssueView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -830,8 +835,8 @@ public class TrackerApi {
     /**
      * GetIssue returns one issue of one tracker project by its per-project number — title, description, status, priority, assignee, labels, kind, source and its git bindings.
      * GetIssue returns one issue of one tracker project by its per-project number — title, description, status, priority, assignee, labels, kind, source and its git bindings. 404 when the project or the issue does not exist in the caller&#39;s org.
-     * @param key Key is the issue&#39;s project, from the path. (required)
-     * @param num Num is the issue&#39;s number within that project — the digits of KEY-14. Positive; anything else is refused with 400. (required)
+     * @param key Project key (required)
+     * @param num Per-project issue number (required)
      * @return ApiResponse&lt;CloudIssueView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -850,8 +855,8 @@ public class TrackerApi {
     /**
      * GetIssue returns one issue of one tracker project by its per-project number — title, description, status, priority, assignee, labels, kind, source and its git bindings. (asynchronously)
      * GetIssue returns one issue of one tracker project by its per-project number — title, description, status, priority, assignee, labels, kind, source and its git bindings. 404 when the project or the issue does not exist in the caller&#39;s org.
-     * @param key Key is the issue&#39;s project, from the path. (required)
-     * @param num Num is the issue&#39;s number within that project — the digits of KEY-14. Positive; anything else is refused with 400. (required)
+     * @param key Project key (required)
+     * @param num Per-project issue number (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -871,7 +876,7 @@ public class TrackerApi {
     }
     /**
      * Build call for cloudPatchV1TrackerProjectsKey
-     * @param key Key is the project to update, from the path. (required)
+     * @param key Project key (uppercase, ^[A-Z][A-Z0-9]{1,7}$) (required)
      * @param cloudProjectPatch  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -948,7 +953,7 @@ public class TrackerApi {
     /**
      * UpdateProject renames a tracker project or rewrites its description, and returns the updated project.
      * UpdateProject renames a tracker project or rewrites its description, and returns the updated project. Both fields are optional: one the caller omits keeps its stored value.  The project KEY is never editable — it prefixes every issue identifier already filed under the board, so changing it would rewrite the human handle of every issue in it.
-     * @param key Key is the project to update, from the path. (required)
+     * @param key Project key (uppercase, ^[A-Z][A-Z0-9]{1,7}$) (required)
      * @param cloudProjectPatch  (required)
      * @return CloudTrackerProject
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -967,7 +972,7 @@ public class TrackerApi {
     /**
      * UpdateProject renames a tracker project or rewrites its description, and returns the updated project.
      * UpdateProject renames a tracker project or rewrites its description, and returns the updated project. Both fields are optional: one the caller omits keeps its stored value.  The project KEY is never editable — it prefixes every issue identifier already filed under the board, so changing it would rewrite the human handle of every issue in it.
-     * @param key Key is the project to update, from the path. (required)
+     * @param key Project key (uppercase, ^[A-Z][A-Z0-9]{1,7}$) (required)
      * @param cloudProjectPatch  (required)
      * @return ApiResponse&lt;CloudTrackerProject&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -987,7 +992,7 @@ public class TrackerApi {
     /**
      * UpdateProject renames a tracker project or rewrites its description, and returns the updated project. (asynchronously)
      * UpdateProject renames a tracker project or rewrites its description, and returns the updated project. Both fields are optional: one the caller omits keeps its stored value.  The project KEY is never editable — it prefixes every issue identifier already filed under the board, so changing it would rewrite the human handle of every issue in it.
-     * @param key Key is the project to update, from the path. (required)
+     * @param key Project key (uppercase, ^[A-Z][A-Z0-9]{1,7}$) (required)
      * @param cloudProjectPatch  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1008,8 +1013,8 @@ public class TrackerApi {
     }
     /**
      * Build call for cloudPatchV1TrackerProjectsKeyIssuesNum
-     * @param key Key is the issue&#39;s project, from the path. (required)
-     * @param num Num is the issue&#39;s number within that project, from the path. (required)
+     * @param key Project key (required)
+     * @param num Per-project issue number (required)
      * @param cloudIssuePatch  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1092,8 +1097,8 @@ public class TrackerApi {
     /**
      * UpdateIssue edits one issue in place and returns it — retitle it, rewrite its body, move it between board columns, reprioritize, reassign, or replace its labels.
      * UpdateIssue edits one issue in place and returns it — retitle it, rewrite its body, move it between board columns, reprioritize, reassign, or replace its labels. Every field is optional: one the caller omits keeps its stored value, and &#x60;labels&#x60; REPLACES the set rather than adding to it.  The issue&#39;s kind, source and git bindings are not editable here: they record where the work item came FROM, which is a fact about its origin rather than its current state.
-     * @param key Key is the issue&#39;s project, from the path. (required)
-     * @param num Num is the issue&#39;s number within that project, from the path. (required)
+     * @param key Project key (required)
+     * @param num Per-project issue number (required)
      * @param cloudIssuePatch  (required)
      * @return CloudIssueView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1112,8 +1117,8 @@ public class TrackerApi {
     /**
      * UpdateIssue edits one issue in place and returns it — retitle it, rewrite its body, move it between board columns, reprioritize, reassign, or replace its labels.
      * UpdateIssue edits one issue in place and returns it — retitle it, rewrite its body, move it between board columns, reprioritize, reassign, or replace its labels. Every field is optional: one the caller omits keeps its stored value, and &#x60;labels&#x60; REPLACES the set rather than adding to it.  The issue&#39;s kind, source and git bindings are not editable here: they record where the work item came FROM, which is a fact about its origin rather than its current state.
-     * @param key Key is the issue&#39;s project, from the path. (required)
-     * @param num Num is the issue&#39;s number within that project, from the path. (required)
+     * @param key Project key (required)
+     * @param num Per-project issue number (required)
      * @param cloudIssuePatch  (required)
      * @return ApiResponse&lt;CloudIssueView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1133,8 +1138,8 @@ public class TrackerApi {
     /**
      * UpdateIssue edits one issue in place and returns it — retitle it, rewrite its body, move it between board columns, reprioritize, reassign, or replace its labels. (asynchronously)
      * UpdateIssue edits one issue in place and returns it — retitle it, rewrite its body, move it between board columns, reprioritize, reassign, or replace its labels. Every field is optional: one the caller omits keeps its stored value, and &#x60;labels&#x60; REPLACES the set rather than adding to it.  The issue&#39;s kind, source and git bindings are not editable here: they record where the work item came FROM, which is a fact about its origin rather than its current state.
-     * @param key Key is the issue&#39;s project, from the path. (required)
-     * @param num Num is the issue&#39;s number within that project, from the path. (required)
+     * @param key Project key (required)
+     * @param num Per-project issue number (required)
      * @param cloudIssuePatch  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1155,6 +1160,7 @@ public class TrackerApi {
     }
     /**
      * Build call for cloudPostV1TrackerProjects
+     * @param trackerCreateProjectRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1162,10 +1168,12 @@ public class TrackerApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Project created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Project key already exists in this org </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1TrackerProjectsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1TrackerProjectsCall(@javax.annotation.Nonnull TrackerCreateProjectRequest trackerCreateProjectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1179,7 +1187,7 @@ public class TrackerApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = trackerCreateProjectRequest;
 
         // create path and map variables
         String localVarPath = "/v1/tracker/projects";
@@ -1191,6 +1199,7 @@ public class TrackerApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1198,6 +1207,7 @@ public class TrackerApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1209,46 +1219,61 @@ public class TrackerApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1TrackerProjectsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1TrackerProjectsCall(_callback);
+    private okhttp3.Call cloudPostV1TrackerProjectsValidateBeforeCall(@javax.annotation.Nonnull TrackerCreateProjectRequest trackerCreateProjectRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'trackerCreateProjectRequest' is set
+        if (trackerCreateProjectRequest == null) {
+            throw new ApiException("Missing the required parameter 'trackerCreateProjectRequest' when calling cloudPostV1TrackerProjects(Async)");
+        }
+
+        return cloudPostV1TrackerProjectsCall(trackerCreateProjectRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Open a tracker board in your org
+     * Creates a board and returns it, including the KEY that will prefix every issue identifier filed under it — the same key GET, PATCH and DELETE address the board by, and the ENG in ENG-14.  &#x60;name&#x60; is required. &#x60;key&#x60; is optional and is UPPERCASED: omit it and one is derived from the name — its first four letters and digits, or PRJ when that yields nothing usable. A key that is not 2-8 characters starting with a letter is 400.  THE KEY IS UNIQUE PER ORG AND A COLLISION IS REFUSED, NOT MERGED: a second board on a key already taken is 409, and the derived key is not made unique for you, so two similarly named boards collide and the second caller must name a key. Re-POSTing is therefore not idempotent — it fails rather than returning the existing board.  The org is the validated bearer&#39;s own, never a client header, and the board is stored under the caller&#39;s selected IAM PROJECT: the same key in two IAM projects is two unrelated boards. 403 without a validated org.  Free by default. The create runs the shared per-org balance gate at a fee of zero unless a deployment prices it, and a priced deployment out of balance refuses with the nested {\&quot;error\&quot;:{\&quot;code\&quot;,\&quot;message\&quot;}} body at 402/503 rather than a flat error.
+     * @param trackerCreateProjectRequest  (required)
+     * @return TrackerProject
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Project created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Project key already exists in this org </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1TrackerProjects() throws ApiException {
-        cloudPostV1TrackerProjectsWithHttpInfo();
+    public TrackerProject cloudPostV1TrackerProjects(@javax.annotation.Nonnull TrackerCreateProjectRequest trackerCreateProjectRequest) throws ApiException {
+        ApiResponse<TrackerProject> localVarResp = cloudPostV1TrackerProjectsWithHttpInfo(trackerCreateProjectRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Open a tracker board in your org
+     * Creates a board and returns it, including the KEY that will prefix every issue identifier filed under it — the same key GET, PATCH and DELETE address the board by, and the ENG in ENG-14.  &#x60;name&#x60; is required. &#x60;key&#x60; is optional and is UPPERCASED: omit it and one is derived from the name — its first four letters and digits, or PRJ when that yields nothing usable. A key that is not 2-8 characters starting with a letter is 400.  THE KEY IS UNIQUE PER ORG AND A COLLISION IS REFUSED, NOT MERGED: a second board on a key already taken is 409, and the derived key is not made unique for you, so two similarly named boards collide and the second caller must name a key. Re-POSTing is therefore not idempotent — it fails rather than returning the existing board.  The org is the validated bearer&#39;s own, never a client header, and the board is stored under the caller&#39;s selected IAM PROJECT: the same key in two IAM projects is two unrelated boards. 403 without a validated org.  Free by default. The create runs the shared per-org balance gate at a fee of zero unless a deployment prices it, and a priced deployment out of balance refuses with the nested {\&quot;error\&quot;:{\&quot;code\&quot;,\&quot;message\&quot;}} body at 402/503 rather than a flat error.
+     * @param trackerCreateProjectRequest  (required)
+     * @return ApiResponse&lt;TrackerProject&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Project created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Project key already exists in this org </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1TrackerProjectsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1TrackerProjectsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<TrackerProject> cloudPostV1TrackerProjectsWithHttpInfo(@javax.annotation.Nonnull TrackerCreateProjectRequest trackerCreateProjectRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1TrackerProjectsValidateBeforeCall(trackerCreateProjectRequest, null);
+        Type localVarReturnType = new TypeToken<TrackerProject>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Open a tracker board in your org (asynchronously)
+     * Creates a board and returns it, including the KEY that will prefix every issue identifier filed under it — the same key GET, PATCH and DELETE address the board by, and the ENG in ENG-14.  &#x60;name&#x60; is required. &#x60;key&#x60; is optional and is UPPERCASED: omit it and one is derived from the name — its first four letters and digits, or PRJ when that yields nothing usable. A key that is not 2-8 characters starting with a letter is 400.  THE KEY IS UNIQUE PER ORG AND A COLLISION IS REFUSED, NOT MERGED: a second board on a key already taken is 409, and the derived key is not made unique for you, so two similarly named boards collide and the second caller must name a key. Re-POSTing is therefore not idempotent — it fails rather than returning the existing board.  The org is the validated bearer&#39;s own, never a client header, and the board is stored under the caller&#39;s selected IAM PROJECT: the same key in two IAM projects is two unrelated boards. 403 without a validated org.  Free by default. The create runs the shared per-org balance gate at a fee of zero unless a deployment prices it, and a priced deployment out of balance refuses with the nested {\&quot;error\&quot;:{\&quot;code\&quot;,\&quot;message\&quot;}} body at 402/503 rather than a flat error.
+     * @param trackerCreateProjectRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1256,18 +1281,22 @@ public class TrackerApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Project created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Project key already exists in this org </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1TrackerProjectsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1TrackerProjectsAsync(@javax.annotation.Nonnull TrackerCreateProjectRequest trackerCreateProjectRequest, final ApiCallback<TrackerProject> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1TrackerProjectsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1TrackerProjectsValidateBeforeCall(trackerCreateProjectRequest, _callback);
+        Type localVarReturnType = new TypeToken<TrackerProject>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1TrackerProjectsByKeyIssues
-     * @param key  (required)
+     * @param key Project key (required)
+     * @param trackerCreateIssueRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1275,10 +1304,12 @@ public class TrackerApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Issue created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Project not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1TrackerProjectsByKeyIssuesCall(@javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1TrackerProjectsByKeyIssuesCall(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull TrackerCreateIssueRequest trackerCreateIssueRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1292,7 +1323,7 @@ public class TrackerApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = trackerCreateIssueRequest;
 
         // create path and map variables
         String localVarPath = "/v1/tracker/projects/{key}/issues"
@@ -1305,6 +1336,7 @@ public class TrackerApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1312,6 +1344,7 @@ public class TrackerApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1323,54 +1356,69 @@ public class TrackerApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1TrackerProjectsByKeyIssuesValidateBeforeCall(@javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudPostV1TrackerProjectsByKeyIssuesValidateBeforeCall(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull TrackerCreateIssueRequest trackerCreateIssueRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'key' is set
         if (key == null) {
             throw new ApiException("Missing the required parameter 'key' when calling cloudPostV1TrackerProjectsByKeyIssues(Async)");
         }
 
-        return cloudPostV1TrackerProjectsByKeyIssuesCall(key, _callback);
+        // verify the required parameter 'trackerCreateIssueRequest' is set
+        if (trackerCreateIssueRequest == null) {
+            throw new ApiException("Missing the required parameter 'trackerCreateIssueRequest' when calling cloudPostV1TrackerProjectsByKeyIssues(Async)");
+        }
+
+        return cloudPostV1TrackerProjectsByKeyIssuesCall(key, trackerCreateIssueRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
-     * @param key  (required)
+     * File an issue on a tracker board
+     * Files a work item on one board and returns it, carrying the &#x60;identifier&#x60; — KEY-&lt;number&gt; — it will be known by everywhere else.  THE NUMBER IS THE SERVER&#39;S TO ASSIGN and is not accepted from the caller: it is the board&#39;s highest plus one, taken inside the insert&#39;s own transaction, and it counts PER BOARD — ENG-1 and OPS-1 are different issues.  &#x60;title&#x60; is required; everything else is optional and defaults. &#x60;kind&#x60; (issue, pr, epic) says what the item IS, &#x60;source&#x60; (team, git, crm, helpdesk, cms, agent) says which surface OPENED it, and the two are orthogonal — an issue escalated from support is kind&#x3D;issue&amp;source&#x3D;helpdesk. &#x60;status&#x60; defaults to backlog, &#x60;priority&#x60; to none. A value outside one of these closed sets is 400, never silently defaulted. &#x60;labels&#x60; may not contain a comma, the storage separator.  &#x60;repo&#x60; and &#x60;extRef&#x60; RECORD an external binding; they do not create one. Filing here writes to your tracker and reaches no external system — nothing is pushed to GitHub. The GitHub integration runs the other way, mirroring upstream issues INTO this tracker.  404 when the caller&#39;s org has no board under that key. The org is the validated bearer&#39;s own and the board is resolved within the caller&#39;s selected IAM project; 403 without a validated org. Free by default, on the same balance gate as the board create — an epic, a pull request and an issue are priced identically, since the fee is per work item rather than per kind.
+     * @param key Project key (required)
+     * @param trackerCreateIssueRequest  (required)
+     * @return TrackerIssue
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Issue created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Project not found </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1TrackerProjectsByKeyIssues(@javax.annotation.Nonnull String key) throws ApiException {
-        cloudPostV1TrackerProjectsByKeyIssuesWithHttpInfo(key);
+    public TrackerIssue cloudPostV1TrackerProjectsByKeyIssues(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull TrackerCreateIssueRequest trackerCreateIssueRequest) throws ApiException {
+        ApiResponse<TrackerIssue> localVarResp = cloudPostV1TrackerProjectsByKeyIssuesWithHttpInfo(key, trackerCreateIssueRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param key  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * File an issue on a tracker board
+     * Files a work item on one board and returns it, carrying the &#x60;identifier&#x60; — KEY-&lt;number&gt; — it will be known by everywhere else.  THE NUMBER IS THE SERVER&#39;S TO ASSIGN and is not accepted from the caller: it is the board&#39;s highest plus one, taken inside the insert&#39;s own transaction, and it counts PER BOARD — ENG-1 and OPS-1 are different issues.  &#x60;title&#x60; is required; everything else is optional and defaults. &#x60;kind&#x60; (issue, pr, epic) says what the item IS, &#x60;source&#x60; (team, git, crm, helpdesk, cms, agent) says which surface OPENED it, and the two are orthogonal — an issue escalated from support is kind&#x3D;issue&amp;source&#x3D;helpdesk. &#x60;status&#x60; defaults to backlog, &#x60;priority&#x60; to none. A value outside one of these closed sets is 400, never silently defaulted. &#x60;labels&#x60; may not contain a comma, the storage separator.  &#x60;repo&#x60; and &#x60;extRef&#x60; RECORD an external binding; they do not create one. Filing here writes to your tracker and reaches no external system — nothing is pushed to GitHub. The GitHub integration runs the other way, mirroring upstream issues INTO this tracker.  404 when the caller&#39;s org has no board under that key. The org is the validated bearer&#39;s own and the board is resolved within the caller&#39;s selected IAM project; 403 without a validated org. Free by default, on the same balance gate as the board create — an epic, a pull request and an issue are priced identically, since the fee is per work item rather than per kind.
+     * @param key Project key (required)
+     * @param trackerCreateIssueRequest  (required)
+     * @return ApiResponse&lt;TrackerIssue&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Issue created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Project not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1TrackerProjectsByKeyIssuesWithHttpInfo(@javax.annotation.Nonnull String key) throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1TrackerProjectsByKeyIssuesValidateBeforeCall(key, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<TrackerIssue> cloudPostV1TrackerProjectsByKeyIssuesWithHttpInfo(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull TrackerCreateIssueRequest trackerCreateIssueRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1TrackerProjectsByKeyIssuesValidateBeforeCall(key, trackerCreateIssueRequest, null);
+        Type localVarReturnType = new TypeToken<TrackerIssue>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param key  (required)
+     * File an issue on a tracker board (asynchronously)
+     * Files a work item on one board and returns it, carrying the &#x60;identifier&#x60; — KEY-&lt;number&gt; — it will be known by everywhere else.  THE NUMBER IS THE SERVER&#39;S TO ASSIGN and is not accepted from the caller: it is the board&#39;s highest plus one, taken inside the insert&#39;s own transaction, and it counts PER BOARD — ENG-1 and OPS-1 are different issues.  &#x60;title&#x60; is required; everything else is optional and defaults. &#x60;kind&#x60; (issue, pr, epic) says what the item IS, &#x60;source&#x60; (team, git, crm, helpdesk, cms, agent) says which surface OPENED it, and the two are orthogonal — an issue escalated from support is kind&#x3D;issue&amp;source&#x3D;helpdesk. &#x60;status&#x60; defaults to backlog, &#x60;priority&#x60; to none. A value outside one of these closed sets is 400, never silently defaulted. &#x60;labels&#x60; may not contain a comma, the storage separator.  &#x60;repo&#x60; and &#x60;extRef&#x60; RECORD an external binding; they do not create one. Filing here writes to your tracker and reaches no external system — nothing is pushed to GitHub. The GitHub integration runs the other way, mirroring upstream issues INTO this tracker.  404 when the caller&#39;s org has no board under that key. The org is the validated bearer&#39;s own and the board is resolved within the caller&#39;s selected IAM project; 403 without a validated org. Free by default, on the same balance gate as the board create — an epic, a pull request and an issue are priced identically, since the fee is per work item rather than per kind.
+     * @param key Project key (required)
+     * @param trackerCreateIssueRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1378,13 +1426,16 @@ public class TrackerApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Issue created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Project not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1TrackerProjectsByKeyIssuesAsync(@javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1TrackerProjectsByKeyIssuesAsync(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull TrackerCreateIssueRequest trackerCreateIssueRequest, final ApiCallback<TrackerIssue> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1TrackerProjectsByKeyIssuesValidateBeforeCall(key, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1TrackerProjectsByKeyIssuesValidateBeforeCall(key, trackerCreateIssueRequest, _callback);
+        Type localVarReturnType = new TypeToken<TrackerIssue>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }

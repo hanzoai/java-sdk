@@ -136,8 +136,8 @@ public class AskApi {
     }
 
     /**
-     * 
-     * 
+     * Ask a grounded question about your own org
+     * Answers a natural-language question about the CALLER&#39;S OWN org, from real figures rather than from the model&#39;s memory.  The question is classified to a grounded domain, that domain&#39;s read runs IN-PROCESS under the caller&#39;s own credentials, and only then is the result narrated. So the figures and their sources are the domain&#39;s, resolved before any model call and never altered by one — a wrong answer is a wrong query, never an invention.  Domains: books (the org&#39;s ledger) and web (search, news, research, deep). A validated principal is required; the answer is scoped to that principal&#39;s org and nothing else.
      * @param cloudAskRequest  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -152,8 +152,8 @@ public class AskApi {
     }
 
     /**
-     * 
-     * 
+     * Ask a grounded question about your own org
+     * Answers a natural-language question about the CALLER&#39;S OWN org, from real figures rather than from the model&#39;s memory.  The question is classified to a grounded domain, that domain&#39;s read runs IN-PROCESS under the caller&#39;s own credentials, and only then is the result narrated. So the figures and their sources are the domain&#39;s, resolved before any model call and never altered by one — a wrong answer is a wrong query, never an invention.  Domains: books (the org&#39;s ledger) and web (search, news, research, deep). A validated principal is required; the answer is scoped to that principal&#39;s org and nothing else.
      * @param cloudAskRequest  (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -170,8 +170,8 @@ public class AskApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Ask a grounded question about your own org (asynchronously)
+     * Answers a natural-language question about the CALLER&#39;S OWN org, from real figures rather than from the model&#39;s memory.  The question is classified to a grounded domain, that domain&#39;s read runs IN-PROCESS under the caller&#39;s own credentials, and only then is the result narrated. So the figures and their sources are the domain&#39;s, resolved before any model call and never altered by one — a wrong answer is a wrong query, never an invention.  Domains: books (the org&#39;s ledger) and web (search, news, research, deep). A validated principal is required; the answer is scoped to that principal&#39;s org and nothing else.
      * @param cloudAskRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

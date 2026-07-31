@@ -135,8 +135,8 @@ public class MetricsApi {
     }
 
     /**
-     * 
-     * 
+     * How many metric series this deployment holds for your org
+     * Reports the native metrics store&#39;s live state for the calling tenant: the subsystem version, the resolved &#x60;org&#x60;, and &#x60;series&#x60; — the number of distinct series actually held right now, read out of the store rather than a constant. It is not a dependency probe and has nothing downstream to fail on: the store is in-process, so this answers 200 whenever the process is up.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;. This surface trusts the edge rather than re-deriving the org from a validated claim of its own, so it belongs behind the gateway and nowhere else.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -150,8 +150,8 @@ public class MetricsApi {
     }
 
     /**
-     * 
-     * 
+     * How many metric series this deployment holds for your org
+     * Reports the native metrics store&#39;s live state for the calling tenant: the subsystem version, the resolved &#x60;org&#x60;, and &#x60;series&#x60; — the number of distinct series actually held right now, read out of the store rather than a constant. It is not a dependency probe and has nothing downstream to fail on: the store is in-process, so this answers 200 whenever the process is up.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;. This surface trusts the edge rather than re-deriving the org from a validated claim of its own, so it belongs behind the gateway and nowhere else.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -167,8 +167,8 @@ public class MetricsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * How many metric series this deployment holds for your org (asynchronously)
+     * Reports the native metrics store&#39;s live state for the calling tenant: the subsystem version, the resolved &#x60;org&#x60;, and &#x60;series&#x60; — the number of distinct series actually held right now, read out of the store rather than a constant. It is not a dependency probe and has nothing downstream to fail on: the store is in-process, so this answers 200 whenever the process is up.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;. This surface trusts the edge rather than re-deriving the org from a validated claim of its own, so it belongs behind the gateway and nowhere else.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -247,8 +247,8 @@ public class MetricsApi {
     }
 
     /**
-     * 
-     * 
+     * Read your org&#39;s series back over a time range
+     * Answers &#x60;{count, series}&#x60;, where &#x60;count&#x60; is the number of matching SERIES and each series carries the samples that fall inside the window. &#x60;name&#x60; selects one series name, and an absent or empty &#x60;name&#x60; returns every series the org holds. &#x60;match&#x60; is a &#x60;k&#x3D;v,k2&#x3D;v2&#x60; label matcher applied as a SUPERSET test: a series matches when it carries all the named labels with those values, extra labels and all.  &#x60;start&#x60; and &#x60;end&#x60; are nanoseconds since the Unix epoch, and here is the rule worth knowing: a bound that is absent, empty or unparseable becomes 0, which this store reads as UNBOUNDED. A malformed &#x60;start&#x60; therefore silently widens the query instead of failing it. There is no limit parameter — the window and the matcher are the whole of what bounds the answer.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;, so a query can only ever read the org the edge asserted.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -262,8 +262,8 @@ public class MetricsApi {
     }
 
     /**
-     * 
-     * 
+     * Read your org&#39;s series back over a time range
+     * Answers &#x60;{count, series}&#x60;, where &#x60;count&#x60; is the number of matching SERIES and each series carries the samples that fall inside the window. &#x60;name&#x60; selects one series name, and an absent or empty &#x60;name&#x60; returns every series the org holds. &#x60;match&#x60; is a &#x60;k&#x3D;v,k2&#x3D;v2&#x60; label matcher applied as a SUPERSET test: a series matches when it carries all the named labels with those values, extra labels and all.  &#x60;start&#x60; and &#x60;end&#x60; are nanoseconds since the Unix epoch, and here is the rule worth knowing: a bound that is absent, empty or unparseable becomes 0, which this store reads as UNBOUNDED. A malformed &#x60;start&#x60; therefore silently widens the query instead of failing it. There is no limit parameter — the window and the matcher are the whole of what bounds the answer.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;, so a query can only ever read the org the edge asserted.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -279,8 +279,8 @@ public class MetricsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Read your org&#39;s series back over a time range (asynchronously)
+     * Answers &#x60;{count, series}&#x60;, where &#x60;count&#x60; is the number of matching SERIES and each series carries the samples that fall inside the window. &#x60;name&#x60; selects one series name, and an absent or empty &#x60;name&#x60; returns every series the org holds. &#x60;match&#x60; is a &#x60;k&#x3D;v,k2&#x3D;v2&#x60; label matcher applied as a SUPERSET test: a series matches when it carries all the named labels with those values, extra labels and all.  &#x60;start&#x60; and &#x60;end&#x60; are nanoseconds since the Unix epoch, and here is the rule worth knowing: a bound that is absent, empty or unparseable becomes 0, which this store reads as UNBOUNDED. A malformed &#x60;start&#x60; therefore silently widens the query instead of failing it. There is no limit parameter — the window and the matcher are the whole of what bounds the answer.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;, so a query can only ever read the org the edge asserted.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -359,8 +359,8 @@ public class MetricsApi {
     }
 
     /**
-     * 
-     * 
+     * Ingest a MetricBatch — the same payload the ZAP transport carries
+     * Writes every sample in a luxfi/metric &#x60;MetricBatch&#x60; into the calling org&#39;s store and answers &#x60;{written}&#x60;: the number of SAMPLES stored, not families and not metrics. This is the exact wire shape the ZAP &#x60;MsgMetricBatch&#x60; transport carries, so the HTTP door and the optional ZAP push receiver share one code path and one meaning — the transport is an optimisation, never a different contract.  A counter or gauge lands as one sample. A histogram or summary contributes DERIVED &#x60;&lt;name&gt;_sum&#x60; and &#x60;&lt;name&gt;_count&#x60; series, so one metric can write more than one sample and &#x60;written&#x60; can exceed the number of metrics you sent. The batch&#39;s own &#x60;TimestampNs&#x60; stamps every sample it carries.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;; each org gets its own store, WAL-durable under the deployment&#39;s data dir. A body that does not decode is 400.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -374,8 +374,8 @@ public class MetricsApi {
     }
 
     /**
-     * 
-     * 
+     * Ingest a MetricBatch — the same payload the ZAP transport carries
+     * Writes every sample in a luxfi/metric &#x60;MetricBatch&#x60; into the calling org&#39;s store and answers &#x60;{written}&#x60;: the number of SAMPLES stored, not families and not metrics. This is the exact wire shape the ZAP &#x60;MsgMetricBatch&#x60; transport carries, so the HTTP door and the optional ZAP push receiver share one code path and one meaning — the transport is an optimisation, never a different contract.  A counter or gauge lands as one sample. A histogram or summary contributes DERIVED &#x60;&lt;name&gt;_sum&#x60; and &#x60;&lt;name&gt;_count&#x60; series, so one metric can write more than one sample and &#x60;written&#x60; can exceed the number of metrics you sent. The batch&#39;s own &#x60;TimestampNs&#x60; stamps every sample it carries.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;; each org gets its own store, WAL-durable under the deployment&#39;s data dir. A body that does not decode is 400.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -391,8 +391,8 @@ public class MetricsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Ingest a MetricBatch — the same payload the ZAP transport carries (asynchronously)
+     * Writes every sample in a luxfi/metric &#x60;MetricBatch&#x60; into the calling org&#39;s store and answers &#x60;{written}&#x60;: the number of SAMPLES stored, not families and not metrics. This is the exact wire shape the ZAP &#x60;MsgMetricBatch&#x60; transport carries, so the HTTP door and the optional ZAP push receiver share one code path and one meaning — the transport is an optimisation, never a different contract.  A counter or gauge lands as one sample. A histogram or summary contributes DERIVED &#x60;&lt;name&gt;_sum&#x60; and &#x60;&lt;name&gt;_count&#x60; series, so one metric can write more than one sample and &#x60;written&#x60; can exceed the number of metrics you sent. The batch&#39;s own &#x60;TimestampNs&#x60; stamps every sample it carries.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;; each org gets its own store, WAL-durable under the deployment&#39;s data dir. A body that does not decode is 400.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -471,8 +471,8 @@ public class MetricsApi {
     }
 
     /**
-     * 
-     * 
+     * Append samples to your org&#39;s named, labelled series
+     * Takes &#x60;{series:[{name, labels, samples:[{t, v}]}]}&#x60;, appends every sample, creating each series on first write, and answers &#x60;{written}&#x60; — again counting SAMPLES, so three series of ten samples is 30.  A series is identified by its name PLUS its whole label set, so adding one label makes a different series rather than annotating an existing one. Timestamps &#x60;t&#x60; are NANOSECONDS since the Unix epoch; a sample sent without one is stored at 0 and is then excluded by any query that sets a lower bound, which is the usual reason a write that reported success does not read back. Retention is per series and bounded — past 65536 samples the oldest are evicted.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;. A body that does not decode is 400; nothing else is validated or rejected.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -486,8 +486,8 @@ public class MetricsApi {
     }
 
     /**
-     * 
-     * 
+     * Append samples to your org&#39;s named, labelled series
+     * Takes &#x60;{series:[{name, labels, samples:[{t, v}]}]}&#x60;, appends every sample, creating each series on first write, and answers &#x60;{written}&#x60; — again counting SAMPLES, so three series of ten samples is 30.  A series is identified by its name PLUS its whole label set, so adding one label makes a different series rather than annotating an existing one. Timestamps &#x60;t&#x60; are NANOSECONDS since the Unix epoch; a sample sent without one is stored at 0 and is then excluded by any query that sets a lower bound, which is the usual reason a write that reported success does not read back. Retention is per series and bounded — past 65536 samples the oldest are evicted.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;. A body that does not decode is 400; nothing else is validated or rejected.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -503,8 +503,8 @@ public class MetricsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Append samples to your org&#39;s named, labelled series (asynchronously)
+     * Takes &#x60;{series:[{name, labels, samples:[{t, v}]}]}&#x60;, appends every sample, creating each series on first write, and answers &#x60;{written}&#x60; — again counting SAMPLES, so three series of ten samples is 30.  A series is identified by its name PLUS its whole label set, so adding one label makes a different series rather than annotating an existing one. Timestamps &#x60;t&#x60; are NANOSECONDS since the Unix epoch; a sample sent without one is stored at 0 and is then excluded by any query that sets a lower bound, which is the usual reason a write that reported success does not read back. Retention is per series and bounded — past 65536 samples the oldest are evicted.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;. A body that does not decode is 400; nothing else is validated or rejected.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

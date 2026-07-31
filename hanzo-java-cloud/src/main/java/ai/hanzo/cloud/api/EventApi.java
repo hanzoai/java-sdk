@@ -139,8 +139,8 @@ public class EventApi {
     }
 
     /**
-     * 
-     * 
+     * Capture product events into your org&#39;s warehouse
+     * Stores pageviews, browser errors, identifies and custom commerce events as rows in the caller&#39;s own tenant, and answers a receipt {accepted, dropped} that always totals what was sent — a beacon is never silently discarded.  ONE door for every wire a Hanzo surface emits, dispatched by the SHAPE of the body and never by a second path: a bare event object, a bare array of them, the {batch:[…]} / {events:[…]} envelope, the team console&#39;s snake_case array, and the PostHog wire (spelled &#x60;distinct_id&#x60;/&#x60;api_key&#x60;, which the canonical wire never uses). BATCH IS A BODY, NOT A PATH — there is no /v1/event/batch, because an array already is one.  WHAT THE CALLER PRESENTS DECIDES WHAT IT MAY WRITE, and the door itself grants nothing. A validated bearer or an org API key writes the full event at full fidelity. A PUBLISHABLE key (pk-, on Authorization: Bearer, x-hanzo-ingest-key, or ?ingest_key&#x3D; for navigator.sendBeacon, which cannot set headers) does the same, and is the credential a browser bundle ships: it is deliberately NOT a secret, it resolves WHICH tenant a beacon belongs to and nothing more. A pk- never authenticates and can READ NOTHING — not this org&#39;s errors, not a lens, not any other route on this API — so a leaked one lets a stranger write into your stream, and never lets one read out of it. Reading these rows back always takes a real bearer. A Hanzo Team workspace token resolves its org at REDUCED capability: the signed account names the person, so a &#x60;distinctId&#x60; in the body cannot pin events on a colleague.  NO CREDENTIAL IS ALSO ADMITTED, and that is the point — a logged-out visitor has none. Such a write is PROJECTED: filed under the reserved &#x60;$public&#x60; tenant, narrowed to pageview and error, renamed server-side to $pageview/$error, and stripped to the fields the projection names, so revenue, personId, groupId and the whole client property bag cannot reach a row. Everything refused is counted in &#x60;dropped&#x60;. On a published-site host the same projection applies with that site&#39;s org as the tenant. But a credential that IS presented and does NOT resolve is 403, never quietly downgraded: filing a misconfigured key&#39;s events under $public would hide them in a partition their owner cannot read.  The anonymous lane alone is bounded: 413 over 64 KiB, 400 over 50 events, 429 on the per-client-IP and per-peer caps, and a DNT:1 or Sec-GPC:1 request stores nothing and says so in the receipt. Where a deployment switches anonymous capture off, a credential-less write is 403 instead. Authenticated bodies are offered to the observability plane first, which claims LLM-observability ingestion batches and declines everything else.
      * @param cloudPostV1EventRequest  (optional)
      * @return CloudCaptureResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -157,8 +157,8 @@ public class EventApi {
     }
 
     /**
-     * 
-     * 
+     * Capture product events into your org&#39;s warehouse
+     * Stores pageviews, browser errors, identifies and custom commerce events as rows in the caller&#39;s own tenant, and answers a receipt {accepted, dropped} that always totals what was sent — a beacon is never silently discarded.  ONE door for every wire a Hanzo surface emits, dispatched by the SHAPE of the body and never by a second path: a bare event object, a bare array of them, the {batch:[…]} / {events:[…]} envelope, the team console&#39;s snake_case array, and the PostHog wire (spelled &#x60;distinct_id&#x60;/&#x60;api_key&#x60;, which the canonical wire never uses). BATCH IS A BODY, NOT A PATH — there is no /v1/event/batch, because an array already is one.  WHAT THE CALLER PRESENTS DECIDES WHAT IT MAY WRITE, and the door itself grants nothing. A validated bearer or an org API key writes the full event at full fidelity. A PUBLISHABLE key (pk-, on Authorization: Bearer, x-hanzo-ingest-key, or ?ingest_key&#x3D; for navigator.sendBeacon, which cannot set headers) does the same, and is the credential a browser bundle ships: it is deliberately NOT a secret, it resolves WHICH tenant a beacon belongs to and nothing more. A pk- never authenticates and can READ NOTHING — not this org&#39;s errors, not a lens, not any other route on this API — so a leaked one lets a stranger write into your stream, and never lets one read out of it. Reading these rows back always takes a real bearer. A Hanzo Team workspace token resolves its org at REDUCED capability: the signed account names the person, so a &#x60;distinctId&#x60; in the body cannot pin events on a colleague.  NO CREDENTIAL IS ALSO ADMITTED, and that is the point — a logged-out visitor has none. Such a write is PROJECTED: filed under the reserved &#x60;$public&#x60; tenant, narrowed to pageview and error, renamed server-side to $pageview/$error, and stripped to the fields the projection names, so revenue, personId, groupId and the whole client property bag cannot reach a row. Everything refused is counted in &#x60;dropped&#x60;. On a published-site host the same projection applies with that site&#39;s org as the tenant. But a credential that IS presented and does NOT resolve is 403, never quietly downgraded: filing a misconfigured key&#39;s events under $public would hide them in a partition their owner cannot read.  The anonymous lane alone is bounded: 413 over 64 KiB, 400 over 50 events, 429 on the per-client-IP and per-peer caps, and a DNT:1 or Sec-GPC:1 request stores nothing and says so in the receipt. Where a deployment switches anonymous capture off, a credential-less write is 403 instead. Authenticated bodies are offered to the observability plane first, which claims LLM-observability ingestion batches and declines everything else.
      * @param cloudPostV1EventRequest  (optional)
      * @return ApiResponse&lt;CloudCaptureResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -176,8 +176,8 @@ public class EventApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Capture product events into your org&#39;s warehouse (asynchronously)
+     * Stores pageviews, browser errors, identifies and custom commerce events as rows in the caller&#39;s own tenant, and answers a receipt {accepted, dropped} that always totals what was sent — a beacon is never silently discarded.  ONE door for every wire a Hanzo surface emits, dispatched by the SHAPE of the body and never by a second path: a bare event object, a bare array of them, the {batch:[…]} / {events:[…]} envelope, the team console&#39;s snake_case array, and the PostHog wire (spelled &#x60;distinct_id&#x60;/&#x60;api_key&#x60;, which the canonical wire never uses). BATCH IS A BODY, NOT A PATH — there is no /v1/event/batch, because an array already is one.  WHAT THE CALLER PRESENTS DECIDES WHAT IT MAY WRITE, and the door itself grants nothing. A validated bearer or an org API key writes the full event at full fidelity. A PUBLISHABLE key (pk-, on Authorization: Bearer, x-hanzo-ingest-key, or ?ingest_key&#x3D; for navigator.sendBeacon, which cannot set headers) does the same, and is the credential a browser bundle ships: it is deliberately NOT a secret, it resolves WHICH tenant a beacon belongs to and nothing more. A pk- never authenticates and can READ NOTHING — not this org&#39;s errors, not a lens, not any other route on this API — so a leaked one lets a stranger write into your stream, and never lets one read out of it. Reading these rows back always takes a real bearer. A Hanzo Team workspace token resolves its org at REDUCED capability: the signed account names the person, so a &#x60;distinctId&#x60; in the body cannot pin events on a colleague.  NO CREDENTIAL IS ALSO ADMITTED, and that is the point — a logged-out visitor has none. Such a write is PROJECTED: filed under the reserved &#x60;$public&#x60; tenant, narrowed to pageview and error, renamed server-side to $pageview/$error, and stripped to the fields the projection names, so revenue, personId, groupId and the whole client property bag cannot reach a row. Everything refused is counted in &#x60;dropped&#x60;. On a published-site host the same projection applies with that site&#39;s org as the tenant. But a credential that IS presented and does NOT resolve is 403, never quietly downgraded: filing a misconfigured key&#39;s events under $public would hide them in a partition their owner cannot read.  The anonymous lane alone is bounded: 413 over 64 KiB, 400 over 50 events, 429 on the per-client-IP and per-peer caps, and a DNT:1 or Sec-GPC:1 request stores nothing and says so in the receipt. Where a deployment switches anonymous capture off, a credential-less write is 403 instead. Authenticated bodies are offered to the observability plane first, which claims LLM-observability ingestion batches and declines everything else.
      * @param cloudPostV1EventRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -267,8 +267,8 @@ public class EventApi {
     }
 
     /**
-     * 
-     * 
+     * Sentry SDK envelope ingest — errors and traces from an unmodified Sentry client
+     * Accepts the CURRENT Sentry wire — the framed envelope a modern SDK posts, carrying its items in one request — so an application already instrumented with Sentry reports into Hanzo&#39;s error tracking by pointing its DSN here and changing nothing else.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this door declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a tracker project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
      * @param project  (required)
      * @param body  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -284,8 +284,8 @@ public class EventApi {
     }
 
     /**
-     * 
-     * 
+     * Sentry SDK envelope ingest — errors and traces from an unmodified Sentry client
+     * Accepts the CURRENT Sentry wire — the framed envelope a modern SDK posts, carrying its items in one request — so an application already instrumented with Sentry reports into Hanzo&#39;s error tracking by pointing its DSN here and changing nothing else.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this door declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a tracker project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
      * @param project  (required)
      * @param body  (optional)
      * @return ApiResponse&lt;Void&gt;
@@ -303,8 +303,8 @@ public class EventApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Sentry SDK envelope ingest — errors and traces from an unmodified Sentry client (asynchronously)
+     * Accepts the CURRENT Sentry wire — the framed envelope a modern SDK posts, carrying its items in one request — so an application already instrumented with Sentry reports into Hanzo&#39;s error tracking by pointing its DSN here and changing nothing else.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this door declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a tracker project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
      * @param project  (required)
      * @param body  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -394,8 +394,8 @@ public class EventApi {
     }
 
     /**
-     * 
-     * 
+     * Sentry SDK store ingest — the legacy single-event wire
+     * Accepts the LEGACY Sentry wire: one event per request, what an SDK predating envelopes sends. Same door, same credential, same destination as the envelope endpoint — kept open so an old client reports without being upgraded first. New instrumentation has no reason to choose it.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this door declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a tracker project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
      * @param project  (required)
      * @param body  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -411,8 +411,8 @@ public class EventApi {
     }
 
     /**
-     * 
-     * 
+     * Sentry SDK store ingest — the legacy single-event wire
+     * Accepts the LEGACY Sentry wire: one event per request, what an SDK predating envelopes sends. Same door, same credential, same destination as the envelope endpoint — kept open so an old client reports without being upgraded first. New instrumentation has no reason to choose it.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this door declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a tracker project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
      * @param project  (required)
      * @param body  (optional)
      * @return ApiResponse&lt;Void&gt;
@@ -430,8 +430,8 @@ public class EventApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Sentry SDK store ingest — the legacy single-event wire (asynchronously)
+     * Accepts the LEGACY Sentry wire: one event per request, what an SDK predating envelopes sends. Same door, same credential, same destination as the envelope endpoint — kept open so an old client reports without being upgraded first. New instrumentation has no reason to choose it.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this door declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a tracker project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
      * @param project  (required)
      * @param body  (optional)
      * @param _callback The callback to be executed when the API call finishes

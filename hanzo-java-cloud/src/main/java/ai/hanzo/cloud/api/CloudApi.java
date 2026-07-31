@@ -141,8 +141,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -156,8 +156,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -173,8 +173,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane. (asynchronously)
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -260,8 +260,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -276,8 +276,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -294,8 +294,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane. (asynchronously)
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -375,8 +375,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The tasks console
+     * Serves the console&#39;s application shell on GET, which is the entry point a browser loads before it calls anything under /v1/tasks/.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -390,8 +390,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The tasks console
+     * Serves the console&#39;s application shell on GET, which is the entry point a browser loads before it calls anything under /v1/tasks/.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -407,8 +407,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The tasks console (asynchronously)
+     * Serves the console&#39;s application shell on GET, which is the entry point a browser loads before it calls anything under /v1/tasks/.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -494,8 +494,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The tasks console&#39;s assets and client-side routes
+     * Serves the console&#39;s static assets on GET, and returns the application shell for any path that is not a file — client-side routing means a deep link into the console is a shell load, not a 404.  A path that looks like a missing asset therefore answers 200 with HTML rather than 404; look at the content type, not the status, when a resource seems to be missing.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -510,8 +510,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The tasks console&#39;s assets and client-side routes
+     * Serves the console&#39;s static assets on GET, and returns the application shell for any path that is not a file — client-side routing means a deep link into the console is a shell load, not a 404.  A path that looks like a missing asset therefore answers 200 with HTML rather than 404; look at the content type, not the status, when a resource seems to be missing.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -528,8 +528,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The tasks console&#39;s assets and client-side routes (asynchronously)
+     * Serves the console&#39;s static assets on GET, and returns the application shell for any path that is not a file — client-side routing means a deep link into the console is a shell load, not a 404.  A path that looks like a missing asset therefore answers 200 with HTML rather than 404; look at the content type, not the status, when a resource seems to be missing.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -616,8 +616,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Remove an AI resource, connection or indexed document
+     * Removes a member of one of the AI subsystem&#39;s managed collections, a connected provider (which revokes the stored connection for the caller&#39;s org), or documents from the RAG index.  Deleting a provider connection is the one a reader most easily underestimates: it does not merely hide the provider, it drops the org&#39;s stored authorization for it, and every later call routed to that provider fails until it is connected again.  This address is a FALLBACK, not a front door. It is registered last, so every subsystem that claims a specific path under /v1 — billing, plans, pricing, the per-app health routes — still serves its own, and this catches the rest. The wildcard is the remainder of the path, and the answer is relayed with the model API&#39;s own status, headers and content type, so a streamed response streams and an upstream refusal arrives as itself.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -632,8 +632,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Remove an AI resource, connection or indexed document
+     * Removes a member of one of the AI subsystem&#39;s managed collections, a connected provider (which revokes the stored connection for the caller&#39;s org), or documents from the RAG index.  Deleting a provider connection is the one a reader most easily underestimates: it does not merely hide the provider, it drops the org&#39;s stored authorization for it, and every later call routed to that provider fails until it is connected again.  This address is a FALLBACK, not a front door. It is registered last, so every subsystem that claims a specific path under /v1 — billing, plans, pricing, the per-app health routes — still serves its own, and this catches the rest. The wildcard is the remainder of the path, and the answer is relayed with the model API&#39;s own status, headers and content type, so a streamed response streams and an upstream refusal arrives as itself.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -650,8 +650,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Remove an AI resource, connection or indexed document (asynchronously)
+     * Removes a member of one of the AI subsystem&#39;s managed collections, a connected provider (which revokes the stored connection for the caller&#39;s org), or documents from the RAG index.  Deleting a provider connection is the one a reader most easily underestimates: it does not merely hide the provider, it drops the org&#39;s stored authorization for it, and every later call routed to that provider fails until it is connected again.  This address is a FALLBACK, not a front door. It is registered last, so every subsystem that claims a specific path under /v1 — billing, plans, pricing, the per-app health routes — still serves its own, and this catches the rest. The wildcard is the remainder of the path, and the answer is relayed with the model API&#39;s own status, headers and content type, so a streamed response streams and an upstream refusal arrives as itself.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -875,8 +875,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * OIDC discovery and the JWKS at the issuer root, where a relying party looks before it can do anything else.
+     * Serves the two documents every OpenID Connect client reads first: /.well-known/openid-configuration (also at /.well-known/oauth-authorization-server, RFC 8414) and /.well-known/jwks. Public by construction — a client has no token yet — and minted per request by IAM from the deployment&#39;s own registered applications and signing certs, with the issuer derived from the host that was asked, so a strict client never has to reconcile two spellings of the origin. What is advertised is what IAM implements: the authorization-code flow, S256 PKCE, the grants it honours, and the signing algorithms whose public keys the JWKS actually publishes.  The wildcard sits at the ROOT because the spec puts it there, not because it is a catch-all, and it is narrow by construction: zip matches the most specific pattern regardless of registration order, so the deeper routes under it — agentskills&#39; /.well-known/agent-skills/_* — still win. A method IAM does not serve at one of these documents is its 405, and an unknown name under the prefix is its 404; neither reaches the console.  Fail-closed matters most here, because this is the FIRST call a relying party makes. Before the degraded half covered this wildcard, a discovery request during an IAM outage fell through to the console catch-all and answered 200 with the single-page app&#39;s HTML, which the client then parsed as its discovery document. It now answers a JSON 503.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -891,8 +891,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * OIDC discovery and the JWKS at the issuer root, where a relying party looks before it can do anything else.
+     * Serves the two documents every OpenID Connect client reads first: /.well-known/openid-configuration (also at /.well-known/oauth-authorization-server, RFC 8414) and /.well-known/jwks. Public by construction — a client has no token yet — and minted per request by IAM from the deployment&#39;s own registered applications and signing certs, with the issuer derived from the host that was asked, so a strict client never has to reconcile two spellings of the origin. What is advertised is what IAM implements: the authorization-code flow, S256 PKCE, the grants it honours, and the signing algorithms whose public keys the JWKS actually publishes.  The wildcard sits at the ROOT because the spec puts it there, not because it is a catch-all, and it is narrow by construction: zip matches the most specific pattern regardless of registration order, so the deeper routes under it — agentskills&#39; /.well-known/agent-skills/_* — still win. A method IAM does not serve at one of these documents is its 405, and an unknown name under the prefix is its 404; neither reaches the console.  Fail-closed matters most here, because this is the FIRST call a relying party makes. Before the degraded half covered this wildcard, a discovery request during an IAM outage fell through to the console catch-all and answered 200 with the single-page app&#39;s HTML, which the client then parsed as its discovery document. It now answers a JSON 503.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -909,8 +909,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * OIDC discovery and the JWKS at the issuer root, where a relying party looks before it can do anything else. (asynchronously)
+     * Serves the two documents every OpenID Connect client reads first: /.well-known/openid-configuration (also at /.well-known/oauth-authorization-server, RFC 8414) and /.well-known/jwks. Public by construction — a client has no token yet — and minted per request by IAM from the deployment&#39;s own registered applications and signing certs, with the issuer derived from the host that was asked, so a strict client never has to reconcile two spellings of the origin. What is advertised is what IAM implements: the authorization-code flow, S256 PKCE, the grants it honours, and the signing algorithms whose public keys the JWKS actually publishes.  The wildcard sits at the ROOT because the spec puts it there, not because it is a catch-all, and it is narrow by construction: zip matches the most specific pattern regardless of registration order, so the deeper routes under it — agentskills&#39; /.well-known/agent-skills/_* — still win. A method IAM does not serve at one of these documents is its 405, and an unknown name under the prefix is its 404; neither reaches the console.  Fail-closed matters most here, because this is the FIRST call a relying party makes. Before the degraded half covered this wildcard, a discovery request during an IAM outage fell through to the console catch-all and answered 200 with the single-page app&#39;s HTML, which the client then parsed as its discovery document. It now answers a JSON 503.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -990,8 +990,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Browse your org&#39;s repositories
+     * The repository list for the signed-in caller&#39;s org — each repo with its description, default branch, size and last update. SIGNED OUT it renders the public explore page instead of refusing, because most Hanzo repos are open source and the open face is the default one; signed in, the caller&#39;s own org shows its private repositories alongside its public ones. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served only on the dedicated git host, where a browse URL matches the clone URL; on the API and console hosts it falls through to their own routes, so it can never shadow them.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1005,8 +1005,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Browse your org&#39;s repositories
+     * The repository list for the signed-in caller&#39;s org — each repo with its description, default branch, size and last update. SIGNED OUT it renders the public explore page instead of refusing, because most Hanzo repos are open source and the open face is the default one; signed in, the caller&#39;s own org shows its private repositories alongside its public ones. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served only on the dedicated git host, where a browse URL matches the clone URL; on the API and console hosts it falls through to their own routes, so it can never shadow them.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1022,8 +1022,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Browse your org&#39;s repositories (asynchronously)
+     * The repository list for the signed-in caller&#39;s org — each repo with its description, default branch, size and last update. SIGNED OUT it renders the public explore page instead of refusing, because most Hanzo repos are open source and the open face is the default one; signed in, the caller&#39;s own org shows its private repositories alongside its public ones. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served only on the dedicated git host, where a browse URL matches the clone URL; on the API and console hosts it falls through to their own routes, so it can never shadow them.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1123,8 +1123,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Advertise a repository&#39;s refs to a git client
+     * The ref-advertisement phase of git&#39;s smart-HTTP protocol — the first request a clone, a fetch and a push all make. &#x60;?service&#x3D;&#x60; selects which: &#x60;git-upload-pack&#x60; advertises for a fetch, &#x60;git-receive-pack&#x60; for a push, and any other value is 400.  ANONYMOUS ONLY FOR FETCH, AND ONLY ON A PUBLIC REPOSITORY. The push advertisement always requires an authenticated org, and where a path org is present it must equal the authenticated one. A private repository reached without its org is 404, indistinguishable from one that does not exist. Addressed at the git host&#39;s root with the PROJECT as a middle path segment — the canonical-URL form of the project-scoped remote, since a git client has no header to carry a project. Served only on the dedicated git host; elsewhere it falls through. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param project  (required)
      * @param repo  (required)
@@ -1141,8 +1141,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Advertise a repository&#39;s refs to a git client
+     * The ref-advertisement phase of git&#39;s smart-HTTP protocol — the first request a clone, a fetch and a push all make. &#x60;?service&#x3D;&#x60; selects which: &#x60;git-upload-pack&#x60; advertises for a fetch, &#x60;git-receive-pack&#x60; for a push, and any other value is 400.  ANONYMOUS ONLY FOR FETCH, AND ONLY ON A PUBLIC REPOSITORY. The push advertisement always requires an authenticated org, and where a path org is present it must equal the authenticated one. A private repository reached without its org is 404, indistinguishable from one that does not exist. Addressed at the git host&#39;s root with the PROJECT as a middle path segment — the canonical-URL form of the project-scoped remote, since a git client has no header to carry a project. Served only on the dedicated git host; elsewhere it falls through. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param project  (required)
      * @param repo  (required)
@@ -1161,8 +1161,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Advertise a repository&#39;s refs to a git client (asynchronously)
+     * The ref-advertisement phase of git&#39;s smart-HTTP protocol — the first request a clone, a fetch and a push all make. &#x60;?service&#x3D;&#x60; selects which: &#x60;git-upload-pack&#x60; advertises for a fetch, &#x60;git-receive-pack&#x60; for a push, and any other value is 400.  ANONYMOUS ONLY FOR FETCH, AND ONLY ON A PUBLIC REPOSITORY. The push advertisement always requires an authenticated org, and where a path org is present it must equal the authenticated one. A private repository reached without its org is 404, indistinguishable from one that does not exist. Addressed at the git host&#39;s root with the PROJECT as a middle path segment — the canonical-URL form of the project-scoped remote, since a git client has no header to carry a project. Served only on the dedicated git host; elsewhere it falls through. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param project  (required)
      * @param repo  (required)
@@ -1258,8 +1258,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Open a repository&#39;s home page
+     * A repository at a glance: its branches, the tree at the tip, its most recent commits, its README rendered, and the HTTPS and SSH clone URLs. &#x60;?ref&#x3D;&#x60; selects a branch, tag or commit; the default branch is used when it is omitted. A repository with no commits yet renders its clone instructions rather than an error, which is what a caller who has just created one needs to see. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served only on the dedicated git host, where a browse URL matches the clone URL; on the API and console hosts it falls through to their own routes, so it can never shadow them.
      * @param org  (required)
      * @param repo  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1275,8 +1275,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Open a repository&#39;s home page
+     * A repository at a glance: its branches, the tree at the tip, its most recent commits, its README rendered, and the HTTPS and SSH clone URLs. &#x60;?ref&#x3D;&#x60; selects a branch, tag or commit; the default branch is used when it is omitted. A repository with no commits yet renders its clone instructions rather than an error, which is what a caller who has just created one needs to see. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served only on the dedicated git host, where a browse URL matches the clone URL; on the API and console hosts it falls through to their own routes, so it can never shadow them.
      * @param org  (required)
      * @param repo  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -1294,8 +1294,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Open a repository&#39;s home page (asynchronously)
+     * A repository at a glance: its branches, the tree at the tip, its most recent commits, its README rendered, and the HTTPS and SSH clone URLs. &#x60;?ref&#x3D;&#x60; selects a branch, tag or commit; the default branch is used when it is omitted. A repository with no commits yet renders its clone instructions rather than an error, which is what a caller who has just created one needs to see. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served only on the dedicated git host, where a browse URL matches the clone URL; on the API and console hosts it falls through to their own routes, so it can never shadow them.
      * @param org  (required)
      * @param repo  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1397,8 +1397,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * View a file in a repository
+     * One file&#39;s contents at one revision, with its size and line count. A BINARY file is reported as binary rather than dumped into the page. The path after /blob/ is the file and &#x60;?ref&#x3D;&#x60; selects the branch, tag or commit. An unknown ref or a path that is not a file in it is 404. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served only on the dedicated git host, where a browse URL matches the clone URL; on the API and console hosts it falls through to their own routes, so it can never shadow them.
      * @param org  (required)
      * @param repo  (required)
      * @param wildcard1  (required)
@@ -1415,8 +1415,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * View a file in a repository
+     * One file&#39;s contents at one revision, with its size and line count. A BINARY file is reported as binary rather than dumped into the page. The path after /blob/ is the file and &#x60;?ref&#x3D;&#x60; selects the branch, tag or commit. An unknown ref or a path that is not a file in it is 404. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served only on the dedicated git host, where a browse URL matches the clone URL; on the API and console hosts it falls through to their own routes, so it can never shadow them.
      * @param org  (required)
      * @param repo  (required)
      * @param wildcard1  (required)
@@ -1435,8 +1435,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * View a file in a repository (asynchronously)
+     * One file&#39;s contents at one revision, with its size and line count. A BINARY file is reported as binary rather than dumped into the page. The path after /blob/ is the file and &#x60;?ref&#x3D;&#x60; selects the branch, tag or commit. An unknown ref or a path that is not a file in it is 404. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served only on the dedicated git host, where a browse URL matches the clone URL; on the API and console hosts it falls through to their own routes, so it can never shadow them.
      * @param org  (required)
      * @param repo  (required)
      * @param wildcard1  (required)
@@ -1532,8 +1532,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Read a repository&#39;s commit log
+     * The hundred most recent commits on one ref, each with its author, message and date. &#x60;?ref&#x3D;&#x60; selects the branch, tag or commit, defaulting to the repository&#39;s default branch; an unknown one is 404. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served only on the dedicated git host, where a browse URL matches the clone URL; on the API and console hosts it falls through to their own routes, so it can never shadow them.
      * @param org  (required)
      * @param repo  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1549,8 +1549,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Read a repository&#39;s commit log
+     * The hundred most recent commits on one ref, each with its author, message and date. &#x60;?ref&#x3D;&#x60; selects the branch, tag or commit, defaulting to the repository&#39;s default branch; an unknown one is 404. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served only on the dedicated git host, where a browse URL matches the clone URL; on the API and console hosts it falls through to their own routes, so it can never shadow them.
      * @param org  (required)
      * @param repo  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -1568,8 +1568,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Read a repository&#39;s commit log (asynchronously)
+     * The hundred most recent commits on one ref, each with its author, message and date. &#x60;?ref&#x3D;&#x60; selects the branch, tag or commit, defaulting to the repository&#39;s default branch; an unknown one is 404. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served only on the dedicated git host, where a browse URL matches the clone URL; on the API and console hosts it falls through to their own routes, so it can never shadow them.
      * @param org  (required)
      * @param repo  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1664,8 +1664,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Advertise a repository&#39;s refs to a git client
+     * The ref-advertisement phase of git&#39;s smart-HTTP protocol — the first request a clone, a fetch and a push all make. &#x60;?service&#x3D;&#x60; selects which: &#x60;git-upload-pack&#x60; advertises for a fetch, &#x60;git-receive-pack&#x60; for a push, and any other value is 400.  ANONYMOUS ONLY FOR FETCH, AND ONLY ON A PUBLIC REPOSITORY. The push advertisement always requires an authenticated org, and where a path org is present it must equal the authenticated one. A private repository reached without its org is 404, indistinguishable from one that does not exist. Addressed at the git host&#39;s root, so &#x60;git clone https://&lt;git-host&gt;/&lt;org&gt;/&lt;repo&gt;.git&#x60; works with the canonical URL and no prefix. Served ONLY on the dedicated git host; on the API and console hosts it falls through, so a bare /:org/:repo can never shadow another surface. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param repo  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1681,8 +1681,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Advertise a repository&#39;s refs to a git client
+     * The ref-advertisement phase of git&#39;s smart-HTTP protocol — the first request a clone, a fetch and a push all make. &#x60;?service&#x3D;&#x60; selects which: &#x60;git-upload-pack&#x60; advertises for a fetch, &#x60;git-receive-pack&#x60; for a push, and any other value is 400.  ANONYMOUS ONLY FOR FETCH, AND ONLY ON A PUBLIC REPOSITORY. The push advertisement always requires an authenticated org, and where a path org is present it must equal the authenticated one. A private repository reached without its org is 404, indistinguishable from one that does not exist. Addressed at the git host&#39;s root, so &#x60;git clone https://&lt;git-host&gt;/&lt;org&gt;/&lt;repo&gt;.git&#x60; works with the canonical URL and no prefix. Served ONLY on the dedicated git host; on the API and console hosts it falls through, so a bare /:org/:repo can never shadow another surface. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param repo  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -1700,8 +1700,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Advertise a repository&#39;s refs to a git client (asynchronously)
+     * The ref-advertisement phase of git&#39;s smart-HTTP protocol — the first request a clone, a fetch and a push all make. &#x60;?service&#x3D;&#x60; selects which: &#x60;git-upload-pack&#x60; advertises for a fetch, &#x60;git-receive-pack&#x60; for a push, and any other value is 400.  ANONYMOUS ONLY FOR FETCH, AND ONLY ON A PUBLIC REPOSITORY. The push advertisement always requires an authenticated org, and where a path org is present it must equal the authenticated one. A private repository reached without its org is 404, indistinguishable from one that does not exist. Addressed at the git host&#39;s root, so &#x60;git clone https://&lt;git-host&gt;/&lt;org&gt;/&lt;repo&gt;.git&#x60; works with the canonical URL and no prefix. Served ONLY on the dedicated git host; on the API and console hosts it falls through, so a bare /:org/:repo can never shadow another surface. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param repo  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1803,8 +1803,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Browse a directory inside a repository
+     * The contents of one directory at one revision, with breadcrumbs back up and links onward into subdirectories and files. The path after /tree/ is the directory and &#x60;?ref&#x3D;&#x60; selects the branch, tag or commit, defaulting to the repository&#39;s own default branch. An unknown ref is 404, as is a repository with no commits. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served only on the dedicated git host, where a browse URL matches the clone URL; on the API and console hosts it falls through to their own routes, so it can never shadow them.
      * @param org  (required)
      * @param repo  (required)
      * @param wildcard1  (required)
@@ -1821,8 +1821,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Browse a directory inside a repository
+     * The contents of one directory at one revision, with breadcrumbs back up and links onward into subdirectories and files. The path after /tree/ is the directory and &#x60;?ref&#x3D;&#x60; selects the branch, tag or commit, defaulting to the repository&#39;s own default branch. An unknown ref is 404, as is a repository with no commits. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served only on the dedicated git host, where a browse URL matches the clone URL; on the API and console hosts it falls through to their own routes, so it can never shadow them.
      * @param org  (required)
      * @param repo  (required)
      * @param wildcard1  (required)
@@ -1841,8 +1841,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Browse a directory inside a repository (asynchronously)
+     * The contents of one directory at one revision, with breadcrumbs back up and links onward into subdirectories and files. The path after /tree/ is the directory and &#x60;?ref&#x3D;&#x60; selects the branch, tag or commit, defaulting to the repository&#39;s own default branch. An unknown ref is 404, as is a repository with no commits. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served only on the dedicated git host, where a browse URL matches the clone URL; on the API and console hosts it falls through to their own routes, so it can never shadow them.
      * @param org  (required)
      * @param repo  (required)
      * @param wildcard1  (required)
@@ -1924,8 +1924,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Open the live collaborative-editing socket
+     * Upgrades to the hocuspocus WebSocket the Team editor syncs its Y.js documents over: binary frames of document name, message type and payload, with ONE socket multiplexing every document a tab has open. The server is a relay and an ordered update log, not a CRDT engine — it replays the log to each joining peer and broadcasts every update to the rest, which converges because Y.js updates are commutative and idempotent. There is no body; the response is a protocol upgrade.  IT SITS OUTSIDE /v1 ON PURPOSE. The client derives both collaborator lanes from one configured URL — this socket at its root, the markup-snapshot RPC one segment in — so the path is fixed by the editor library&#39;s contract rather than chosen by this service.  AUTH IS IN-BAND, PER DOCUMENT, NOT ON THE UPGRADE. The handshake gates only on browser Origin (403 outside the team surfaces; no Origin at all is admitted, which is what a non-browser sends), and then the first frame for a document must be an Auth message carrying the same session or workspace token every other team route verifies — a browser WebSocket cannot set an Authorization header, which is why the token rides inside the protocol. Anything else on an unauthenticated document is answered with one permission denial and nothing further.  Every document is authorized on its own: the document&#39;s workspace must be the token&#39;s workspace when the token pins one, and the caller must be a member of it. A mismatch, an unknown workspace and a non-member deny alike with \&quot;document not found\&quot;. Rooms are keyed by org and workspace and the persisted log&#39;s key embeds both, so a foreign document id can neither join a room nor read a blob.  The server pings every twenty seconds and drops a socket silent for sixty, so a backgrounded tab — whose JS timers are throttled but whose network stack still auto-pongs — stays connected instead of dying into a reconnect loop.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1939,8 +1939,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Open the live collaborative-editing socket
+     * Upgrades to the hocuspocus WebSocket the Team editor syncs its Y.js documents over: binary frames of document name, message type and payload, with ONE socket multiplexing every document a tab has open. The server is a relay and an ordered update log, not a CRDT engine — it replays the log to each joining peer and broadcasts every update to the rest, which converges because Y.js updates are commutative and idempotent. There is no body; the response is a protocol upgrade.  IT SITS OUTSIDE /v1 ON PURPOSE. The client derives both collaborator lanes from one configured URL — this socket at its root, the markup-snapshot RPC one segment in — so the path is fixed by the editor library&#39;s contract rather than chosen by this service.  AUTH IS IN-BAND, PER DOCUMENT, NOT ON THE UPGRADE. The handshake gates only on browser Origin (403 outside the team surfaces; no Origin at all is admitted, which is what a non-browser sends), and then the first frame for a document must be an Auth message carrying the same session or workspace token every other team route verifies — a browser WebSocket cannot set an Authorization header, which is why the token rides inside the protocol. Anything else on an unauthenticated document is answered with one permission denial and nothing further.  Every document is authorized on its own: the document&#39;s workspace must be the token&#39;s workspace when the token pins one, and the caller must be a member of it. A mismatch, an unknown workspace and a non-member deny alike with \&quot;document not found\&quot;. Rooms are keyed by org and workspace and the persisted log&#39;s key embeds both, so a foreign document id can neither join a room nor read a blob.  The server pings every twenty seconds and drops a socket silent for sixty, so a backgrounded tab — whose JS timers are throttled but whose network stack still auto-pongs — stays connected instead of dying into a reconnect loop.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1956,8 +1956,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Open the live collaborative-editing socket (asynchronously)
+     * Upgrades to the hocuspocus WebSocket the Team editor syncs its Y.js documents over: binary frames of document name, message type and payload, with ONE socket multiplexing every document a tab has open. The server is a relay and an ordered update log, not a CRDT engine — it replays the log to each joining peer and broadcasts every update to the rest, which converges because Y.js updates are commutative and idempotent. There is no body; the response is a protocol upgrade.  IT SITS OUTSIDE /v1 ON PURPOSE. The client derives both collaborator lanes from one configured URL — this socket at its root, the markup-snapshot RPC one segment in — so the path is fixed by the editor library&#39;s contract rather than chosen by this service.  AUTH IS IN-BAND, PER DOCUMENT, NOT ON THE UPGRADE. The handshake gates only on browser Origin (403 outside the team surfaces; no Origin at all is admitted, which is what a non-browser sends), and then the first frame for a document must be an Auth message carrying the same session or workspace token every other team route verifies — a browser WebSocket cannot set an Authorization header, which is why the token rides inside the protocol. Anything else on an unauthenticated document is answered with one permission denial and nothing further.  Every document is authorized on its own: the document&#39;s workspace must be the token&#39;s workspace when the token pins one, and the caller must be a member of it. A mismatch, an unknown workspace and a non-member deny alike with \&quot;document not found\&quot;. Rooms are keyed by org and workspace and the persisted log&#39;s key embeds both, so a foreign document id can neither join a room nor read a blob.  The server pings every twenty seconds and drops a socket silent for sixty, so a backgrounded tab — whose JS timers are throttled but whose network stack still auto-pongs — stays connected instead of dying into a reconnect loop.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2036,8 +2036,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Liveness for the commerce subsystem
+     * Answers ok whenever the commerce subsystem is mounted. It is registered BEFORE the module embed boots, so it keeps answering even when the embed failed and every business route is serving a fail-closed 503 — which is the point: it reports that the process is reachable, never that the money plane is healthy. Unauthenticated, and under /_ so the ingress does not expose it publicly.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2051,8 +2051,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Liveness for the commerce subsystem
+     * Answers ok whenever the commerce subsystem is mounted. It is registered BEFORE the module embed boots, so it keeps answering even when the embed failed and every business route is serving a fail-closed 503 — which is the point: it reports that the process is reachable, never that the money plane is healthy. Unauthenticated, and under /_ so the ingress does not expose it publicly.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2068,8 +2068,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Liveness for the commerce subsystem (asynchronously)
+     * Answers ok whenever the commerce subsystem is mounted. It is registered BEFORE the module embed boots, so it keeps answering even when the embed failed and every business route is serving a fail-closed 503 — which is the point: it reports that the process is reachable, never that the money plane is healthy. Unauthenticated, and under /_ so the ingress does not expose it publicly.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2148,8 +2148,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * List the payment providers configured for your own tenant
+     * Returns the caller&#39;s own tenant row projected to a public view with the KMS paths stripped, so a provider&#39;s name and enabled flag are visible and its credential location never is. The tenant is derived from the IAM owner claim and from nothing else — there is no tenant parameter to supply, so a cross-tenant read is not expressible. A tenant admin or a platform admin may call it; a plain authenticated user is refused 403 and an anonymous one 401. A caller whose owner claim has no tenant row gets a 404 byte-identical to the one a cross-tenant probe would get.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2163,8 +2163,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * List the payment providers configured for your own tenant
+     * Returns the caller&#39;s own tenant row projected to a public view with the KMS paths stripped, so a provider&#39;s name and enabled flag are visible and its credential location never is. The tenant is derived from the IAM owner claim and from nothing else — there is no tenant parameter to supply, so a cross-tenant read is not expressible. A tenant admin or a platform admin may call it; a plain authenticated user is refused 403 and an anonymous one 401. A caller whose owner claim has no tenant row gets a 404 byte-identical to the one a cross-tenant probe would get.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2180,8 +2180,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * List the payment providers configured for your own tenant (asynchronously)
+     * Returns the caller&#39;s own tenant row projected to a public view with the KMS paths stripped, so a provider&#39;s name and enabled flag are visible and its credential location never is. The tenant is derived from the IAM owner claim and from nothing else — there is no tenant parameter to supply, so a cross-tenant read is not expressible. A tenant admin or a platform admin may call it; a plain authenticated user is refused 403 and an anonymous one 401. A caller whose owner claim has no tenant row gets a 404 byte-identical to the one a cross-tenant probe would get.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2260,8 +2260,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Discover public repositories across every org
+     * The open, unauthenticated face of the git host: every PUBLIC repository in the fleet, org-qualified, so a project can be found and cloned with no account at all — signing in is for private repos and for writes. Repositories live in per-org stores with no global index, so this unions each org&#39;s public rows and is bounded to a fixed number of stores per request, keeping discovery quick however many orgs exist. A fleet with no orgs yet is an empty page, not an error. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served only on the dedicated git host, where a browse URL matches the clone URL; on the API and console hosts it falls through to their own routes, so it can never shadow them.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2275,8 +2275,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Discover public repositories across every org
+     * The open, unauthenticated face of the git host: every PUBLIC repository in the fleet, org-qualified, so a project can be found and cloned with no account at all — signing in is for private repos and for writes. Repositories live in per-org stores with no global index, so this unions each org&#39;s public rows and is bounded to a fixed number of stores per request, keeping discovery quick however many orgs exist. A fleet with no orgs yet is an empty page, not an error. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served only on the dedicated git host, where a browse URL matches the clone URL; on the API and console hosts it falls through to their own routes, so it can never shadow them.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2292,8 +2292,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Discover public repositories across every org (asynchronously)
+     * The open, unauthenticated face of the git host: every PUBLIC repository in the fleet, org-qualified, so a project can be found and cloned with no account at all — signing in is for private repos and for writes. Repositories live in per-org stores with no global index, so this unions each org&#39;s public rows and is bounded to a fixed number of stores per request, keeping discovery quick however many orgs exist. A fleet with no orgs yet is an empty page, not an error. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served only on the dedicated git host, where a browse URL matches the clone URL; on the API and console hosts it falls through to their own routes, so it can never shadow them.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2372,8 +2372,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Browse your org&#39;s repositories
+     * The repository list for the signed-in caller&#39;s org — each repo with its description, default branch, size and last update. SIGNED OUT it renders the public explore page instead of refusing, because most Hanzo repos are open source and the open face is the default one; signed in, the caller&#39;s own org shows its private repositories alongside its public ones. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served on every host, which is how the console embeds the git browser under /git.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2387,8 +2387,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Browse your org&#39;s repositories
+     * The repository list for the signed-in caller&#39;s org — each repo with its description, default branch, size and last update. SIGNED OUT it renders the public explore page instead of refusing, because most Hanzo repos are open source and the open face is the default one; signed in, the caller&#39;s own org shows its private repositories alongside its public ones. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served on every host, which is how the console embeds the git browser under /git.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2404,8 +2404,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Browse your org&#39;s repositories (asynchronously)
+     * The repository list for the signed-in caller&#39;s org — each repo with its description, default branch, size and last update. SIGNED OUT it renders the public explore page instead of refusing, because most Hanzo repos are open source and the open face is the default one; signed in, the caller&#39;s own org shows its private repositories alongside its public ones. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served on every host, which is how the console embeds the git browser under /git.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2498,8 +2498,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Open a repository&#39;s home page
+     * A repository at a glance: its branches, the tree at the tip, its most recent commits, its README rendered, and the HTTPS and SSH clone URLs. &#x60;?ref&#x3D;&#x60; selects a branch, tag or commit; the default branch is used when it is omitted. A repository with no commits yet renders its clone instructions rather than an error, which is what a caller who has just created one needs to see. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served on every host, which is how the console embeds the git browser under /git.
      * @param org  (required)
      * @param repo  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2515,8 +2515,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Open a repository&#39;s home page
+     * A repository at a glance: its branches, the tree at the tip, its most recent commits, its README rendered, and the HTTPS and SSH clone URLs. &#x60;?ref&#x3D;&#x60; selects a branch, tag or commit; the default branch is used when it is omitted. A repository with no commits yet renders its clone instructions rather than an error, which is what a caller who has just created one needs to see. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served on every host, which is how the console embeds the git browser under /git.
      * @param org  (required)
      * @param repo  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -2534,8 +2534,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Open a repository&#39;s home page (asynchronously)
+     * A repository at a glance: its branches, the tree at the tip, its most recent commits, its README rendered, and the HTTPS and SSH clone URLs. &#x60;?ref&#x3D;&#x60; selects a branch, tag or commit; the default branch is used when it is omitted. A repository with no commits yet renders its clone instructions rather than an error, which is what a caller who has just created one needs to see. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served on every host, which is how the console embeds the git browser under /git.
      * @param org  (required)
      * @param repo  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2637,8 +2637,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * View a file in a repository
+     * One file&#39;s contents at one revision, with its size and line count. A BINARY file is reported as binary rather than dumped into the page. The path after /blob/ is the file and &#x60;?ref&#x3D;&#x60; selects the branch, tag or commit. An unknown ref or a path that is not a file in it is 404. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served on every host, which is how the console embeds the git browser under /git.
      * @param org  (required)
      * @param repo  (required)
      * @param wildcard1  (required)
@@ -2655,8 +2655,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * View a file in a repository
+     * One file&#39;s contents at one revision, with its size and line count. A BINARY file is reported as binary rather than dumped into the page. The path after /blob/ is the file and &#x60;?ref&#x3D;&#x60; selects the branch, tag or commit. An unknown ref or a path that is not a file in it is 404. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served on every host, which is how the console embeds the git browser under /git.
      * @param org  (required)
      * @param repo  (required)
      * @param wildcard1  (required)
@@ -2675,8 +2675,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * View a file in a repository (asynchronously)
+     * One file&#39;s contents at one revision, with its size and line count. A BINARY file is reported as binary rather than dumped into the page. The path after /blob/ is the file and &#x60;?ref&#x3D;&#x60; selects the branch, tag or commit. An unknown ref or a path that is not a file in it is 404. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served on every host, which is how the console embeds the git browser under /git.
      * @param org  (required)
      * @param repo  (required)
      * @param wildcard1  (required)
@@ -2772,8 +2772,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Read a repository&#39;s commit log
+     * The hundred most recent commits on one ref, each with its author, message and date. &#x60;?ref&#x3D;&#x60; selects the branch, tag or commit, defaulting to the repository&#39;s default branch; an unknown one is 404. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served on every host, which is how the console embeds the git browser under /git.
      * @param org  (required)
      * @param repo  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2789,8 +2789,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Read a repository&#39;s commit log
+     * The hundred most recent commits on one ref, each with its author, message and date. &#x60;?ref&#x3D;&#x60; selects the branch, tag or commit, defaulting to the repository&#39;s default branch; an unknown one is 404. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served on every host, which is how the console embeds the git browser under /git.
      * @param org  (required)
      * @param repo  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -2808,8 +2808,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Read a repository&#39;s commit log (asynchronously)
+     * The hundred most recent commits on one ref, each with its author, message and date. &#x60;?ref&#x3D;&#x60; selects the branch, tag or commit, defaulting to the repository&#39;s default branch; an unknown one is 404. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served on every host, which is how the console embeds the git browser under /git.
      * @param org  (required)
      * @param repo  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2911,8 +2911,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Browse a directory inside a repository
+     * The contents of one directory at one revision, with breadcrumbs back up and links onward into subdirectories and files. The path after /tree/ is the directory and &#x60;?ref&#x3D;&#x60; selects the branch, tag or commit, defaulting to the repository&#39;s own default branch. An unknown ref is 404, as is a repository with no commits. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served on every host, which is how the console embeds the git browser under /git.
      * @param org  (required)
      * @param repo  (required)
      * @param wildcard1  (required)
@@ -2929,8 +2929,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Browse a directory inside a repository
+     * The contents of one directory at one revision, with breadcrumbs back up and links onward into subdirectories and files. The path after /tree/ is the directory and &#x60;?ref&#x3D;&#x60; selects the branch, tag or commit, defaulting to the repository&#39;s own default branch. An unknown ref is 404, as is a repository with no commits. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served on every host, which is how the console embeds the git browser under /git.
      * @param org  (required)
      * @param repo  (required)
      * @param wildcard1  (required)
@@ -2949,8 +2949,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Browse a directory inside a repository (asynchronously)
+     * The contents of one directory at one revision, with breadcrumbs back up and links onward into subdirectories and files. The path after /tree/ is the directory and &#x60;?ref&#x3D;&#x60; selects the branch, tag or commit, defaulting to the repository&#39;s own default branch. An unknown ref is 404, as is a repository with no commits. A public repository is readable by anyone; a private one only by its own org. A repository that does not exist and one belonging to another org answer the SAME 404, so the page is never an existence oracle. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served on every host, which is how the console embeds the git browser under /git.
      * @param org  (required)
      * @param repo  (required)
      * @param wildcard1  (required)
@@ -3032,8 +3032,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Discover public repositories across every org
+     * The open, unauthenticated face of the git host: every PUBLIC repository in the fleet, org-qualified, so a project can be found and cloned with no account at all — signing in is for private repos and for writes. Repositories live in per-org stores with no global index, so this unions each org&#39;s public rows and is bounded to a fixed number of stores per request, keeping discovery quick however many orgs exist. A fleet with no orgs yet is an empty page, not an error. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served on every host, which is how the console embeds the git browser under /git.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -3047,8 +3047,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Discover public repositories across every org
+     * The open, unauthenticated face of the git host: every PUBLIC repository in the fleet, org-qualified, so a project can be found and cloned with no account at all — signing in is for private repos and for writes. Repositories live in per-org stores with no global index, so this unions each org&#39;s public rows and is bounded to a fixed number of stores per request, keeping discovery quick however many orgs exist. A fleet with no orgs yet is an empty page, not an error. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served on every host, which is how the console embeds the git browser under /git.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3064,8 +3064,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Discover public repositories across every org (asynchronously)
+     * The open, unauthenticated face of the git host: every PUBLIC repository in the fleet, org-qualified, so a project can be found and cloned with no account at all — signing in is for private repos and for writes. Repositories live in per-org stores with no global index, so this unions each org&#39;s public rows and is bounded to a fixed number of stores per request, keeping discovery quick however many orgs exist. A fleet with no orgs yet is an empty page, not an error. This is a server-rendered browser page, not JSON — the console repo-browser reads the same repository through the JSON ops under /v1/git. Repository names, paths and file contents all render through auto-escaping templates rather than being concatenated into HTML. Served on every host, which is how the console embeds the git browser under /git.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3144,8 +3144,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -3159,8 +3159,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3176,8 +3176,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane. (asynchronously)
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3263,8 +3263,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3279,8 +3279,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3297,8 +3297,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane. (asynchronously)
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3378,8 +3378,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The tasks console
+     * Serves the console&#39;s application shell on GET, which is the entry point a browser loads before it calls anything under /v1/tasks/.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -3393,8 +3393,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The tasks console
+     * Serves the console&#39;s application shell on GET, which is the entry point a browser loads before it calls anything under /v1/tasks/.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3410,8 +3410,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The tasks console (asynchronously)
+     * Serves the console&#39;s application shell on GET, which is the entry point a browser loads before it calls anything under /v1/tasks/.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3497,8 +3497,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The tasks console&#39;s assets and client-side routes
+     * Serves the console&#39;s static assets on GET, and returns the application shell for any path that is not a file — client-side routing means a deep link into the console is a shell load, not a 404.  A path that looks like a missing asset therefore answers 200 with HTML rather than 404; look at the content type, not the status, when a resource seems to be missing.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3513,8 +3513,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The tasks console&#39;s assets and client-side routes
+     * Serves the console&#39;s static assets on GET, and returns the application shell for any path that is not a file — client-side routing means a deep link into the console is a shell load, not a 404.  A path that looks like a missing asset therefore answers 200 with HTML rather than 404; look at the content type, not the status, when a resource seems to be missing.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3531,8 +3531,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The tasks console&#39;s assets and client-side routes (asynchronously)
+     * Serves the console&#39;s static assets on GET, and returns the application shell for any path that is not a file — client-side routing means a deep link into the console is a shell load, not a 404.  A path that looks like a missing asset therefore answers 200 with HTML rather than 404; look at the content type, not the status, when a resource seems to be missing.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3619,8 +3619,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Read the model catalogue and the AI subsystem&#39;s own resources
+     * Covers the reads: the model catalogue and a model&#39;s access status, connected providers and their usage, fine-tune jobs and presets, Hugging Face model, dataset and repository search, the subsystem&#39;s health and metrics, and the collection and member reads on the managed resources behind /v1.  Reads are scoped to the calling org by the identity the gateway validated; the catalogue a caller sees is the one its own org has access to, not the whole provider list.  This address is a FALLBACK, not a front door. It is registered last, so every subsystem that claims a specific path under /v1 — billing, plans, pricing, the per-app health routes — still serves its own, and this catches the rest. The wildcard is the remainder of the path, and the answer is relayed with the model API&#39;s own status, headers and content type, so a streamed response streams and an upstream refusal arrives as itself.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3635,8 +3635,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Read the model catalogue and the AI subsystem&#39;s own resources
+     * Covers the reads: the model catalogue and a model&#39;s access status, connected providers and their usage, fine-tune jobs and presets, Hugging Face model, dataset and repository search, the subsystem&#39;s health and metrics, and the collection and member reads on the managed resources behind /v1.  Reads are scoped to the calling org by the identity the gateway validated; the catalogue a caller sees is the one its own org has access to, not the whole provider list.  This address is a FALLBACK, not a front door. It is registered last, so every subsystem that claims a specific path under /v1 — billing, plans, pricing, the per-app health routes — still serves its own, and this catches the rest. The wildcard is the remainder of the path, and the answer is relayed with the model API&#39;s own status, headers and content type, so a streamed response streams and an upstream refusal arrives as itself.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3653,8 +3653,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Read the model catalogue and the AI subsystem&#39;s own resources (asynchronously)
+     * Covers the reads: the model catalogue and a model&#39;s access status, connected providers and their usage, fine-tune jobs and presets, Hugging Face model, dataset and repository search, the subsystem&#39;s health and metrics, and the collection and member reads on the managed resources behind /v1.  Reads are scoped to the calling org by the identity the gateway validated; the catalogue a caller sees is the one its own org has access to, not the whole provider list.  This address is a FALLBACK, not a front door. It is registered last, so every subsystem that claims a specific path under /v1 — billing, plans, pricing, the per-app health routes — still serves its own, and this catches the rest. The wildcard is the remainder of the path, and the answer is relayed with the model API&#39;s own status, headers and content type, so a streamed response streams and an upstream refusal arrives as itself.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3968,8 +3968,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The API description this SDK was generated from
+     * Serves the OpenAPI document for the routes this process actually answers — generated from the live router at request time, not from a checked-in file that can disagree with it.  On an app it is that app&#39;s own surface; on the fleet&#39;s front door it is the woven document for every mounted app. Unauthenticated by design: a client has to be able to read the contract before it holds a credential, and the document grants nothing.  Rendered once and served as bytes thereafter, so the route table&#39;s immutability is what makes a repeat request a memcpy rather than a re-encode of a megabyte document.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -3983,8 +3983,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The API description this SDK was generated from
+     * Serves the OpenAPI document for the routes this process actually answers — generated from the live router at request time, not from a checked-in file that can disagree with it.  On an app it is that app&#39;s own surface; on the fleet&#39;s front door it is the woven document for every mounted app. Unauthenticated by design: a client has to be able to read the contract before it holds a credential, and the document grants nothing.  Rendered once and served as bytes thereafter, so the route table&#39;s immutability is what makes a repeat request a memcpy rather than a re-encode of a megabyte document.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4000,8 +4000,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The API description this SDK was generated from (asynchronously)
+     * Serves the OpenAPI document for the routes this process actually answers — generated from the live router at request time, not from a checked-in file that can disagree with it.  On an app it is that app&#39;s own surface; on the fleet&#39;s front door it is the woven document for every mounted app. Unauthenticated by design: a client has to be able to read the contract before it holds a credential, and the document grants nothing.  Rendered once and served as bytes thereafter, so the route table&#39;s immutability is what makes a repeat request a memcpy rather than a re-encode of a megabyte document.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4087,8 +4087,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * One skill&#39;s document, as markdown
+     * Serves a single agent skill&#39;s SKILL.md as text/markdown — the instructions a client follows once index.json has told it the skill exists, and byte for byte the document that index.json&#39;s sha256 for that skill was computed over.  The skill segment is a flat, service-prefixed id (&#x60;ai_models&#x60;): one path segment with no separators, so a request can never address anything outside the embedded catalogue. An id of any other shape, or a skill the serving brand does not carry, is &#x60;{\&quot;error\&quot;:…}&#x60; at 404 — the same answer, so a probe learns nothing about which is which.  Brand resolution and caching are index.json&#39;s: the Host picks the catalogue, and the response is &#x60;Cache-Control: public, max-age&#x3D;300&#x60;. Public — no bearer, no tenant scope.
      * @param skill  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4103,8 +4103,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * One skill&#39;s document, as markdown
+     * Serves a single agent skill&#39;s SKILL.md as text/markdown — the instructions a client follows once index.json has told it the skill exists, and byte for byte the document that index.json&#39;s sha256 for that skill was computed over.  The skill segment is a flat, service-prefixed id (&#x60;ai_models&#x60;): one path segment with no separators, so a request can never address anything outside the embedded catalogue. An id of any other shape, or a skill the serving brand does not carry, is &#x60;{\&quot;error\&quot;:…}&#x60; at 404 — the same answer, so a probe learns nothing about which is which.  Brand resolution and caching are index.json&#39;s: the Host picks the catalogue, and the response is &#x60;Cache-Control: public, max-age&#x3D;300&#x60;. Public — no bearer, no tenant scope.
      * @param skill  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4121,8 +4121,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * One skill&#39;s document, as markdown (asynchronously)
+     * Serves a single agent skill&#39;s SKILL.md as text/markdown — the instructions a client follows once index.json has told it the skill exists, and byte for byte the document that index.json&#39;s sha256 for that skill was computed over.  The skill segment is a flat, service-prefixed id (&#x60;ai_models&#x60;): one path segment with no separators, so a request can never address anything outside the embedded catalogue. An id of any other shape, or a skill the serving brand does not carry, is &#x60;{\&quot;error\&quot;:…}&#x60; at 404 — the same answer, so a probe learns nothing about which is which.  Brand resolution and caching are index.json&#39;s: the Host picks the catalogue, and the response is &#x60;Cache-Control: public, max-age&#x3D;300&#x60;. Public — no bearer, no tenant scope.
      * @param skill  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4202,8 +4202,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The brand&#39;s master catalogue of agent skills
+     * The Agent Skills Discovery catalogue an AI client reads to learn what this deployment can do: every skill, with the sha256 of the SKILL.md that is actually served for it, so a client can verify the document it then fetches.  The catalogue is GENERATED from the per-service OpenAPI specs and embedded in the binary; this route serves those bytes verbatim and never re-derives them, which is what makes the digests hold. Which brand&#39;s catalogue you get is decided per request from the Host — api.hanzo.ai answers the Hanzo catalogue, api.lux.network the Lux one, api.zoo.ngo the Zoo one — never one brand&#39;s skills on another&#39;s surface; a Host whose brand has no embedded catalogue falls back to the deployment brand, then to hanzo.  Public by design: the discovery surface carries no secrets, so there is no bearer and no tenant scope. Answers &#x60;Cache-Control: public, max-age&#x3D;300&#x60;, and a catalogue that is not embedded is &#x60;{\&quot;error\&quot;:…}&#x60; at 404.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -4217,8 +4217,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The brand&#39;s master catalogue of agent skills
+     * The Agent Skills Discovery catalogue an AI client reads to learn what this deployment can do: every skill, with the sha256 of the SKILL.md that is actually served for it, so a client can verify the document it then fetches.  The catalogue is GENERATED from the per-service OpenAPI specs and embedded in the binary; this route serves those bytes verbatim and never re-derives them, which is what makes the digests hold. Which brand&#39;s catalogue you get is decided per request from the Host — api.hanzo.ai answers the Hanzo catalogue, api.lux.network the Lux one, api.zoo.ngo the Zoo one — never one brand&#39;s skills on another&#39;s surface; a Host whose brand has no embedded catalogue falls back to the deployment brand, then to hanzo.  Public by design: the discovery surface carries no secrets, so there is no bearer and no tenant scope. Answers &#x60;Cache-Control: public, max-age&#x3D;300&#x60;, and a catalogue that is not embedded is &#x60;{\&quot;error\&quot;:…}&#x60; at 404.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4234,8 +4234,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The brand&#39;s master catalogue of agent skills (asynchronously)
+     * The Agent Skills Discovery catalogue an AI client reads to learn what this deployment can do: every skill, with the sha256 of the SKILL.md that is actually served for it, so a client can verify the document it then fetches.  The catalogue is GENERATED from the per-service OpenAPI specs and embedded in the binary; this route serves those bytes verbatim and never re-derives them, which is what makes the digests hold. Which brand&#39;s catalogue you get is decided per request from the Host — api.hanzo.ai answers the Hanzo catalogue, api.lux.network the Lux one, api.zoo.ngo the Zoo one — never one brand&#39;s skills on another&#39;s surface; a Host whose brand has no embedded catalogue falls back to the deployment brand, then to hanzo.  Public by design: the discovery surface carries no secrets, so there is no bearer and no tenant scope. Answers &#x60;Cache-Control: public, max-age&#x3D;300&#x60;, and a catalogue that is not embedded is &#x60;{\&quot;error\&quot;:…}&#x60; at 404.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4321,8 +4321,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * OIDC discovery and the JWKS at the issuer root, where a relying party looks before it can do anything else.
+     * Serves the two documents every OpenID Connect client reads first: /.well-known/openid-configuration (also at /.well-known/oauth-authorization-server, RFC 8414) and /.well-known/jwks. Public by construction — a client has no token yet — and minted per request by IAM from the deployment&#39;s own registered applications and signing certs, with the issuer derived from the host that was asked, so a strict client never has to reconcile two spellings of the origin. What is advertised is what IAM implements: the authorization-code flow, S256 PKCE, the grants it honours, and the signing algorithms whose public keys the JWKS actually publishes.  The wildcard sits at the ROOT because the spec puts it there, not because it is a catch-all, and it is narrow by construction: zip matches the most specific pattern regardless of registration order, so the deeper routes under it — agentskills&#39; /.well-known/agent-skills/_* — still win. A method IAM does not serve at one of these documents is its 405, and an unknown name under the prefix is its 404; neither reaches the console.  Fail-closed matters most here, because this is the FIRST call a relying party makes. Before the degraded half covered this wildcard, a discovery request during an IAM outage fell through to the console catch-all and answered 200 with the single-page app&#39;s HTML, which the client then parsed as its discovery document. It now answers a JSON 503.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4337,8 +4337,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * OIDC discovery and the JWKS at the issuer root, where a relying party looks before it can do anything else.
+     * Serves the two documents every OpenID Connect client reads first: /.well-known/openid-configuration (also at /.well-known/oauth-authorization-server, RFC 8414) and /.well-known/jwks. Public by construction — a client has no token yet — and minted per request by IAM from the deployment&#39;s own registered applications and signing certs, with the issuer derived from the host that was asked, so a strict client never has to reconcile two spellings of the origin. What is advertised is what IAM implements: the authorization-code flow, S256 PKCE, the grants it honours, and the signing algorithms whose public keys the JWKS actually publishes.  The wildcard sits at the ROOT because the spec puts it there, not because it is a catch-all, and it is narrow by construction: zip matches the most specific pattern regardless of registration order, so the deeper routes under it — agentskills&#39; /.well-known/agent-skills/_* — still win. A method IAM does not serve at one of these documents is its 405, and an unknown name under the prefix is its 404; neither reaches the console.  Fail-closed matters most here, because this is the FIRST call a relying party makes. Before the degraded half covered this wildcard, a discovery request during an IAM outage fell through to the console catch-all and answered 200 with the single-page app&#39;s HTML, which the client then parsed as its discovery document. It now answers a JSON 503.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4355,8 +4355,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * OIDC discovery and the JWKS at the issuer root, where a relying party looks before it can do anything else. (asynchronously)
+     * Serves the two documents every OpenID Connect client reads first: /.well-known/openid-configuration (also at /.well-known/oauth-authorization-server, RFC 8414) and /.well-known/jwks. Public by construction — a client has no token yet — and minted per request by IAM from the deployment&#39;s own registered applications and signing certs, with the issuer derived from the host that was asked, so a strict client never has to reconcile two spellings of the origin. What is advertised is what IAM implements: the authorization-code flow, S256 PKCE, the grants it honours, and the signing algorithms whose public keys the JWKS actually publishes.  The wildcard sits at the ROOT because the spec puts it there, not because it is a catch-all, and it is narrow by construction: zip matches the most specific pattern regardless of registration order, so the deeper routes under it — agentskills&#39; /.well-known/agent-skills/_* — still win. A method IAM does not serve at one of these documents is its 405, and an unknown name under the prefix is its 404; neither reaches the console.  Fail-closed matters most here, because this is the FIRST call a relying party makes. Before the degraded half covered this wildcard, a discovery request during an IAM outage fell through to the console catch-all and answered 200 with the single-page app&#39;s HTML, which the client then parsed as its discovery document. It now answers a JSON 503.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4436,8 +4436,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -4451,8 +4451,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4468,8 +4468,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane. (asynchronously)
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4555,8 +4555,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4571,8 +4571,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4589,8 +4589,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane. (asynchronously)
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4670,8 +4670,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Not routed by the durable engine
+     * Published because this address accepts every method, but the engine routes nothing here: the request arrives as an unrouted path and no workflow is read or started.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -4685,8 +4685,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Not routed by the durable engine
+     * Published because this address accepts every method, but the engine routes nothing here: the request arrives as an unrouted path and no workflow is read or started.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4702,8 +4702,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Not routed by the durable engine (asynchronously)
+     * Published because this address accepts every method, but the engine routes nothing here: the request arrives as an unrouted path and no workflow is read or started.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4789,8 +4789,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Not routed by the durable engine
+     * Published because this address accepts every method, but the engine routes nothing here: the request arrives as an unrouted path and no workflow is read or started.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4805,8 +4805,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Not routed by the durable engine
+     * Published because this address accepts every method, but the engine routes nothing here: the request arrives as an unrouted path and no workflow is read or started.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4823,8 +4823,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Not routed by the durable engine (asynchronously)
+     * Published because this address accepts every method, but the engine routes nothing here: the request arrives as an unrouted path and no workflow is read or started.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4911,8 +4911,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Not served by the inference surface
+     * Published because this catch-all accepts every method, but the inference surface answers none of them here — the request falls through to whatever owns the path, and reaches no model.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4927,8 +4927,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Not served by the inference surface
+     * Published because this catch-all accepts every method, but the inference surface answers none of them here — the request falls through to whatever owns the path, and reaches no model.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4945,8 +4945,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Not served by the inference surface (asynchronously)
+     * Published because this catch-all accepts every method, but the inference surface answers none of them here — the request falls through to whatever owns the path, and reaches no model.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -5033,8 +5033,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * OIDC discovery and the JWKS at the issuer root, where a relying party looks before it can do anything else.
+     * Serves the two documents every OpenID Connect client reads first: /.well-known/openid-configuration (also at /.well-known/oauth-authorization-server, RFC 8414) and /.well-known/jwks. Public by construction — a client has no token yet — and minted per request by IAM from the deployment&#39;s own registered applications and signing certs, with the issuer derived from the host that was asked, so a strict client never has to reconcile two spellings of the origin. What is advertised is what IAM implements: the authorization-code flow, S256 PKCE, the grants it honours, and the signing algorithms whose public keys the JWKS actually publishes.  The wildcard sits at the ROOT because the spec puts it there, not because it is a catch-all, and it is narrow by construction: zip matches the most specific pattern regardless of registration order, so the deeper routes under it — agentskills&#39; /.well-known/agent-skills/_* — still win. A method IAM does not serve at one of these documents is its 405, and an unknown name under the prefix is its 404; neither reaches the console.  Fail-closed matters most here, because this is the FIRST call a relying party makes. Before the degraded half covered this wildcard, a discovery request during an IAM outage fell through to the console catch-all and answered 200 with the single-page app&#39;s HTML, which the client then parsed as its discovery document. It now answers a JSON 503.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5049,8 +5049,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * OIDC discovery and the JWKS at the issuer root, where a relying party looks before it can do anything else.
+     * Serves the two documents every OpenID Connect client reads first: /.well-known/openid-configuration (also at /.well-known/oauth-authorization-server, RFC 8414) and /.well-known/jwks. Public by construction — a client has no token yet — and minted per request by IAM from the deployment&#39;s own registered applications and signing certs, with the issuer derived from the host that was asked, so a strict client never has to reconcile two spellings of the origin. What is advertised is what IAM implements: the authorization-code flow, S256 PKCE, the grants it honours, and the signing algorithms whose public keys the JWKS actually publishes.  The wildcard sits at the ROOT because the spec puts it there, not because it is a catch-all, and it is narrow by construction: zip matches the most specific pattern regardless of registration order, so the deeper routes under it — agentskills&#39; /.well-known/agent-skills/_* — still win. A method IAM does not serve at one of these documents is its 405, and an unknown name under the prefix is its 404; neither reaches the console.  Fail-closed matters most here, because this is the FIRST call a relying party makes. Before the degraded half covered this wildcard, a discovery request during an IAM outage fell through to the console catch-all and answered 200 with the single-page app&#39;s HTML, which the client then parsed as its discovery document. It now answers a JSON 503.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5067,8 +5067,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * OIDC discovery and the JWKS at the issuer root, where a relying party looks before it can do anything else. (asynchronously)
+     * Serves the two documents every OpenID Connect client reads first: /.well-known/openid-configuration (also at /.well-known/oauth-authorization-server, RFC 8414) and /.well-known/jwks. Public by construction — a client has no token yet — and minted per request by IAM from the deployment&#39;s own registered applications and signing certs, with the issuer derived from the host that was asked, so a strict client never has to reconcile two spellings of the origin. What is advertised is what IAM implements: the authorization-code flow, S256 PKCE, the grants it honours, and the signing algorithms whose public keys the JWKS actually publishes.  The wildcard sits at the ROOT because the spec puts it there, not because it is a catch-all, and it is narrow by construction: zip matches the most specific pattern regardless of registration order, so the deeper routes under it — agentskills&#39; /.well-known/agent-skills/_* — still win. A method IAM does not serve at one of these documents is its 405, and an unknown name under the prefix is its 404; neither reaches the console.  Fail-closed matters most here, because this is the FIRST call a relying party makes. Before the degraded half covered this wildcard, a discovery request during an IAM outage fell through to the console catch-all and answered 200 with the single-page app&#39;s HTML, which the client then parsed as its discovery document. It now answers a JSON 503.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -5148,8 +5148,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -5163,8 +5163,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5180,8 +5180,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane. (asynchronously)
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -5267,8 +5267,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5283,8 +5283,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5301,8 +5301,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane. (asynchronously)
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -5382,8 +5382,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The tasks console
+     * Serves the console&#39;s application shell on GET, which is the entry point a browser loads before it calls anything under /v1/tasks/.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -5397,8 +5397,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The tasks console
+     * Serves the console&#39;s application shell on GET, which is the entry point a browser loads before it calls anything under /v1/tasks/.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5414,8 +5414,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The tasks console (asynchronously)
+     * Serves the console&#39;s application shell on GET, which is the entry point a browser loads before it calls anything under /v1/tasks/.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -5501,8 +5501,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The tasks console&#39;s assets and client-side routes
+     * Serves the console&#39;s static assets on GET, and returns the application shell for any path that is not a file — client-side routing means a deep link into the console is a shell load, not a 404.  A path that looks like a missing asset therefore answers 200 with HTML rather than 404; look at the content type, not the status, when a resource seems to be missing.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5517,8 +5517,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The tasks console&#39;s assets and client-side routes
+     * Serves the console&#39;s static assets on GET, and returns the application shell for any path that is not a file — client-side routing means a deep link into the console is a shell load, not a 404.  A path that looks like a missing asset therefore answers 200 with HTML rather than 404; look at the content type, not the status, when a resource seems to be missing.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5535,8 +5535,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The tasks console&#39;s assets and client-side routes (asynchronously)
+     * Serves the console&#39;s static assets on GET, and returns the application shell for any path that is not a file — client-side routing means a deep link into the console is a shell load, not a 404.  A path that looks like a missing asset therefore answers 200 with HTML rather than 404; look at the content type, not the status, when a resource seems to be missing.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -5623,8 +5623,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Update one AI resource in place
+     * Updates a member of one of the AI subsystem&#39;s managed collections with the fields given, leaving the rest as they were. It is the same update PUT reaches, so either verb is accepted on these resources.  Nothing under this method reaches the generating model API; that is the POST surface.  This address is a FALLBACK, not a front door. It is registered last, so every subsystem that claims a specific path under /v1 — billing, plans, pricing, the per-app health routes — still serves its own, and this catches the rest. The wildcard is the remainder of the path, and the answer is relayed with the model API&#39;s own status, headers and content type, so a streamed response streams and an upstream refusal arrives as itself.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5639,8 +5639,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Update one AI resource in place
+     * Updates a member of one of the AI subsystem&#39;s managed collections with the fields given, leaving the rest as they were. It is the same update PUT reaches, so either verb is accepted on these resources.  Nothing under this method reaches the generating model API; that is the POST surface.  This address is a FALLBACK, not a front door. It is registered last, so every subsystem that claims a specific path under /v1 — billing, plans, pricing, the per-app health routes — still serves its own, and this catches the rest. The wildcard is the remainder of the path, and the answer is relayed with the model API&#39;s own status, headers and content type, so a streamed response streams and an upstream refusal arrives as itself.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5657,8 +5657,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Update one AI resource in place (asynchronously)
+     * Updates a member of one of the AI subsystem&#39;s managed collections with the fields given, leaving the rest as they were. It is the same update PUT reaches, so either verb is accepted on these resources.  Nothing under this method reaches the generating model API; that is the POST surface.  This address is a FALLBACK, not a front door. It is registered last, so every subsystem that claims a specific path under /v1 — billing, plans, pricing, the per-app health routes — still serves its own, and this catches the rest. The wildcard is the remainder of the path, and the answer is relayed with the model API&#39;s own status, headers and content type, so a streamed response streams and an upstream refusal arrives as itself.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -5745,8 +5745,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * OIDC discovery and the JWKS at the issuer root, where a relying party looks before it can do anything else.
+     * Serves the two documents every OpenID Connect client reads first: /.well-known/openid-configuration (also at /.well-known/oauth-authorization-server, RFC 8414) and /.well-known/jwks. Public by construction — a client has no token yet — and minted per request by IAM from the deployment&#39;s own registered applications and signing certs, with the issuer derived from the host that was asked, so a strict client never has to reconcile two spellings of the origin. What is advertised is what IAM implements: the authorization-code flow, S256 PKCE, the grants it honours, and the signing algorithms whose public keys the JWKS actually publishes.  The wildcard sits at the ROOT because the spec puts it there, not because it is a catch-all, and it is narrow by construction: zip matches the most specific pattern regardless of registration order, so the deeper routes under it — agentskills&#39; /.well-known/agent-skills/_* — still win. A method IAM does not serve at one of these documents is its 405, and an unknown name under the prefix is its 404; neither reaches the console.  Fail-closed matters most here, because this is the FIRST call a relying party makes. Before the degraded half covered this wildcard, a discovery request during an IAM outage fell through to the console catch-all and answered 200 with the single-page app&#39;s HTML, which the client then parsed as its discovery document. It now answers a JSON 503.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5761,8 +5761,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * OIDC discovery and the JWKS at the issuer root, where a relying party looks before it can do anything else.
+     * Serves the two documents every OpenID Connect client reads first: /.well-known/openid-configuration (also at /.well-known/oauth-authorization-server, RFC 8414) and /.well-known/jwks. Public by construction — a client has no token yet — and minted per request by IAM from the deployment&#39;s own registered applications and signing certs, with the issuer derived from the host that was asked, so a strict client never has to reconcile two spellings of the origin. What is advertised is what IAM implements: the authorization-code flow, S256 PKCE, the grants it honours, and the signing algorithms whose public keys the JWKS actually publishes.  The wildcard sits at the ROOT because the spec puts it there, not because it is a catch-all, and it is narrow by construction: zip matches the most specific pattern regardless of registration order, so the deeper routes under it — agentskills&#39; /.well-known/agent-skills/_* — still win. A method IAM does not serve at one of these documents is its 405, and an unknown name under the prefix is its 404; neither reaches the console.  Fail-closed matters most here, because this is the FIRST call a relying party makes. Before the degraded half covered this wildcard, a discovery request during an IAM outage fell through to the console catch-all and answered 200 with the single-page app&#39;s HTML, which the client then parsed as its discovery document. It now answers a JSON 503.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5779,8 +5779,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * OIDC discovery and the JWKS at the issuer root, where a relying party looks before it can do anything else. (asynchronously)
+     * Serves the two documents every OpenID Connect client reads first: /.well-known/openid-configuration (also at /.well-known/oauth-authorization-server, RFC 8414) and /.well-known/jwks. Public by construction — a client has no token yet — and minted per request by IAM from the deployment&#39;s own registered applications and signing certs, with the issuer derived from the host that was asked, so a strict client never has to reconcile two spellings of the origin. What is advertised is what IAM implements: the authorization-code flow, S256 PKCE, the grants it honours, and the signing algorithms whose public keys the JWKS actually publishes.  The wildcard sits at the ROOT because the spec puts it there, not because it is a catch-all, and it is narrow by construction: zip matches the most specific pattern regardless of registration order, so the deeper routes under it — agentskills&#39; /.well-known/agent-skills/_* — still win. A method IAM does not serve at one of these documents is its 405, and an unknown name under the prefix is its 404; neither reaches the console.  Fail-closed matters most here, because this is the FIRST call a relying party makes. Before the degraded half covered this wildcard, a discovery request during an IAM outage fell through to the console catch-all and answered 200 with the single-page app&#39;s HTML, which the client then parsed as its discovery document. It now answers a JSON 503.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -5883,8 +5883,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Accept a push, and turn it into a build
+     * The pack-transfer phase of a push, and the point at which a push becomes an EVENT. NEVER ANONYMOUS: a push always requires an authenticated org, and the org in the path must equal it.  Once the pack is on disk the repository&#39;s storage usage is metered and a build is fired for every branch whose tip actually moved, computed from the before/after branch diff rather than from what the client claimed. That runs on a cancel-immune context, so a client that hangs up the moment its push lands still gets its build, and it runs even when git itself exited non-zero — the refs on disk are the ground truth. Repacking housekeeping is detached and never blocks the response.  A Content-Type other than &#x60;application/x-git-receive-pack-request&#x60; is 400. Addressed at the git host&#39;s root with the PROJECT as a middle path segment — the canonical-URL form of the project-scoped remote, since a git client has no header to carry a project. Served only on the dedicated git host; elsewhere it falls through. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param project  (required)
      * @param repo  (required)
@@ -5902,8 +5902,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Accept a push, and turn it into a build
+     * The pack-transfer phase of a push, and the point at which a push becomes an EVENT. NEVER ANONYMOUS: a push always requires an authenticated org, and the org in the path must equal it.  Once the pack is on disk the repository&#39;s storage usage is metered and a build is fired for every branch whose tip actually moved, computed from the before/after branch diff rather than from what the client claimed. That runs on a cancel-immune context, so a client that hangs up the moment its push lands still gets its build, and it runs even when git itself exited non-zero — the refs on disk are the ground truth. Repacking housekeeping is detached and never blocks the response.  A Content-Type other than &#x60;application/x-git-receive-pack-request&#x60; is 400. Addressed at the git host&#39;s root with the PROJECT as a middle path segment — the canonical-URL form of the project-scoped remote, since a git client has no header to carry a project. Served only on the dedicated git host; elsewhere it falls through. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param project  (required)
      * @param repo  (required)
@@ -5923,8 +5923,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Accept a push, and turn it into a build (asynchronously)
+     * The pack-transfer phase of a push, and the point at which a push becomes an EVENT. NEVER ANONYMOUS: a push always requires an authenticated org, and the org in the path must equal it.  Once the pack is on disk the repository&#39;s storage usage is metered and a build is fired for every branch whose tip actually moved, computed from the before/after branch diff rather than from what the client claimed. That runs on a cancel-immune context, so a client that hangs up the moment its push lands still gets its build, and it runs even when git itself exited non-zero — the refs on disk are the ground truth. Repacking housekeeping is detached and never blocks the response.  A Content-Type other than &#x60;application/x-git-receive-pack-request&#x60; is 400. Addressed at the git host&#39;s root with the PROJECT as a middle path segment — the canonical-URL form of the project-scoped remote, since a git client has no header to carry a project. Served only on the dedicated git host; elsewhere it falls through. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param project  (required)
      * @param repo  (required)
@@ -6030,8 +6030,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Serve a clone or fetch
+     * The pack-transfer phase of a clone or fetch: the request and the response are git&#39;s binary pack protocol, streamed straight through git itself — request body to git&#39;s stdin, git&#39;s stdout to the response — so a multi-gigabyte clone never lands in this process&#39;s memory.  A PUBLIC repository is fetched anonymously; a private one requires its own org, and a wrong or absent org is 404 rather than a hint that the repository exists. A Content-Type other than &#x60;application/x-git-upload-pack-request&#x60; is 400. Addressed at the git host&#39;s root with the PROJECT as a middle path segment — the canonical-URL form of the project-scoped remote, since a git client has no header to carry a project. Served only on the dedicated git host; elsewhere it falls through. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param project  (required)
      * @param repo  (required)
@@ -6049,8 +6049,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Serve a clone or fetch
+     * The pack-transfer phase of a clone or fetch: the request and the response are git&#39;s binary pack protocol, streamed straight through git itself — request body to git&#39;s stdin, git&#39;s stdout to the response — so a multi-gigabyte clone never lands in this process&#39;s memory.  A PUBLIC repository is fetched anonymously; a private one requires its own org, and a wrong or absent org is 404 rather than a hint that the repository exists. A Content-Type other than &#x60;application/x-git-upload-pack-request&#x60; is 400. Addressed at the git host&#39;s root with the PROJECT as a middle path segment — the canonical-URL form of the project-scoped remote, since a git client has no header to carry a project. Served only on the dedicated git host; elsewhere it falls through. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param project  (required)
      * @param repo  (required)
@@ -6070,8 +6070,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Serve a clone or fetch (asynchronously)
+     * The pack-transfer phase of a clone or fetch: the request and the response are git&#39;s binary pack protocol, streamed straight through git itself — request body to git&#39;s stdin, git&#39;s stdout to the response — so a multi-gigabyte clone never lands in this process&#39;s memory.  A PUBLIC repository is fetched anonymously; a private one requires its own org, and a wrong or absent org is 404 rather than a hint that the repository exists. A Content-Type other than &#x60;application/x-git-upload-pack-request&#x60; is 400. Addressed at the git host&#39;s root with the PROJECT as a middle path segment — the canonical-URL form of the project-scoped remote, since a git client has no header to carry a project. Served only on the dedicated git host; elsewhere it falls through. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param project  (required)
      * @param repo  (required)
@@ -6170,8 +6170,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Accept a push, and turn it into a build
+     * The pack-transfer phase of a push, and the point at which a push becomes an EVENT. NEVER ANONYMOUS: a push always requires an authenticated org, and the org in the path must equal it.  Once the pack is on disk the repository&#39;s storage usage is metered and a build is fired for every branch whose tip actually moved, computed from the before/after branch diff rather than from what the client claimed. That runs on a cancel-immune context, so a client that hangs up the moment its push lands still gets its build, and it runs even when git itself exited non-zero — the refs on disk are the ground truth. Repacking housekeeping is detached and never blocks the response.  A Content-Type other than &#x60;application/x-git-receive-pack-request&#x60; is 400. Addressed at the git host&#39;s root, so &#x60;git clone https://&lt;git-host&gt;/&lt;org&gt;/&lt;repo&gt;.git&#x60; works with the canonical URL and no prefix. Served ONLY on the dedicated git host; on the API and console hosts it falls through, so a bare /:org/:repo can never shadow another surface. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param repo  (required)
      * @param body  (optional)
@@ -6188,8 +6188,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Accept a push, and turn it into a build
+     * The pack-transfer phase of a push, and the point at which a push becomes an EVENT. NEVER ANONYMOUS: a push always requires an authenticated org, and the org in the path must equal it.  Once the pack is on disk the repository&#39;s storage usage is metered and a build is fired for every branch whose tip actually moved, computed from the before/after branch diff rather than from what the client claimed. That runs on a cancel-immune context, so a client that hangs up the moment its push lands still gets its build, and it runs even when git itself exited non-zero — the refs on disk are the ground truth. Repacking housekeeping is detached and never blocks the response.  A Content-Type other than &#x60;application/x-git-receive-pack-request&#x60; is 400. Addressed at the git host&#39;s root, so &#x60;git clone https://&lt;git-host&gt;/&lt;org&gt;/&lt;repo&gt;.git&#x60; works with the canonical URL and no prefix. Served ONLY on the dedicated git host; on the API and console hosts it falls through, so a bare /:org/:repo can never shadow another surface. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param repo  (required)
      * @param body  (optional)
@@ -6208,8 +6208,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Accept a push, and turn it into a build (asynchronously)
+     * The pack-transfer phase of a push, and the point at which a push becomes an EVENT. NEVER ANONYMOUS: a push always requires an authenticated org, and the org in the path must equal it.  Once the pack is on disk the repository&#39;s storage usage is metered and a build is fired for every branch whose tip actually moved, computed from the before/after branch diff rather than from what the client claimed. That runs on a cancel-immune context, so a client that hangs up the moment its push lands still gets its build, and it runs even when git itself exited non-zero — the refs on disk are the ground truth. Repacking housekeeping is detached and never blocks the response.  A Content-Type other than &#x60;application/x-git-receive-pack-request&#x60; is 400. Addressed at the git host&#39;s root, so &#x60;git clone https://&lt;git-host&gt;/&lt;org&gt;/&lt;repo&gt;.git&#x60; works with the canonical URL and no prefix. Served ONLY on the dedicated git host; on the API and console hosts it falls through, so a bare /:org/:repo can never shadow another surface. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param repo  (required)
      * @param body  (optional)
@@ -6307,8 +6307,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Serve a clone or fetch
+     * The pack-transfer phase of a clone or fetch: the request and the response are git&#39;s binary pack protocol, streamed straight through git itself — request body to git&#39;s stdin, git&#39;s stdout to the response — so a multi-gigabyte clone never lands in this process&#39;s memory.  A PUBLIC repository is fetched anonymously; a private one requires its own org, and a wrong or absent org is 404 rather than a hint that the repository exists. A Content-Type other than &#x60;application/x-git-upload-pack-request&#x60; is 400. Addressed at the git host&#39;s root, so &#x60;git clone https://&lt;git-host&gt;/&lt;org&gt;/&lt;repo&gt;.git&#x60; works with the canonical URL and no prefix. Served ONLY on the dedicated git host; on the API and console hosts it falls through, so a bare /:org/:repo can never shadow another surface. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param repo  (required)
      * @param body  (optional)
@@ -6325,8 +6325,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Serve a clone or fetch
+     * The pack-transfer phase of a clone or fetch: the request and the response are git&#39;s binary pack protocol, streamed straight through git itself — request body to git&#39;s stdin, git&#39;s stdout to the response — so a multi-gigabyte clone never lands in this process&#39;s memory.  A PUBLIC repository is fetched anonymously; a private one requires its own org, and a wrong or absent org is 404 rather than a hint that the repository exists. A Content-Type other than &#x60;application/x-git-upload-pack-request&#x60; is 400. Addressed at the git host&#39;s root, so &#x60;git clone https://&lt;git-host&gt;/&lt;org&gt;/&lt;repo&gt;.git&#x60; works with the canonical URL and no prefix. Served ONLY on the dedicated git host; on the API and console hosts it falls through, so a bare /:org/:repo can never shadow another surface. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param repo  (required)
      * @param body  (optional)
@@ -6345,8 +6345,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Serve a clone or fetch (asynchronously)
+     * The pack-transfer phase of a clone or fetch: the request and the response are git&#39;s binary pack protocol, streamed straight through git itself — request body to git&#39;s stdin, git&#39;s stdout to the response — so a multi-gigabyte clone never lands in this process&#39;s memory.  A PUBLIC repository is fetched anonymously; a private one requires its own org, and a wrong or absent org is 404 rather than a hint that the repository exists. A Content-Type other than &#x60;application/x-git-upload-pack-request&#x60; is 400. Addressed at the git host&#39;s root, so &#x60;git clone https://&lt;git-host&gt;/&lt;org&gt;/&lt;repo&gt;.git&#x60; works with the canonical URL and no prefix. Served ONLY on the dedicated git host; on the API and console hosts it falls through, so a bare /:org/:repo can never shadow another surface. This is git&#39;s own wire protocol, not an API call to make by hand: point a git client at the clone URL and it makes this request itself.
      * @param org  (required)
      * @param repo  (required)
      * @param body  (optional)
@@ -6565,8 +6565,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Create a checkout tenant: hostnames, brand, IAM, IDV, providers and backend
+     * Registers a new hosted-checkout tenant so its hostnames resolve to their own branding, identity config, payment providers and broker backend. PLATFORM admin only — the reserved admin org&#39;s owner claim; an org owner with the org-level admin bit is refused 403 and an anonymous caller 401, so a tenant can never be minted from inside a tenant. A duplicate name is 409 and a malformed hostname 400. The response echoes only the identity and timestamps, never the provider records the caller just sent, and the mutation is audited by hash rather than by content so a credential that slips into the body is not replayable from the log.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -6580,8 +6580,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Create a checkout tenant: hostnames, brand, IAM, IDV, providers and backend
+     * Registers a new hosted-checkout tenant so its hostnames resolve to their own branding, identity config, payment providers and broker backend. PLATFORM admin only — the reserved admin org&#39;s owner claim; an org owner with the org-level admin bit is refused 403 and an anonymous caller 401, so a tenant can never be minted from inside a tenant. A duplicate name is 409 and a malformed hostname 400. The response echoes only the identity and timestamps, never the provider records the caller just sent, and the mutation is audited by hash rather than by content so a credential that slips into the body is not replayable from the log.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -6597,8 +6597,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Create a checkout tenant: hostnames, brand, IAM, IDV, providers and backend (asynchronously)
+     * Registers a new hosted-checkout tenant so its hostnames resolve to their own branding, identity config, payment providers and broker backend. PLATFORM admin only — the reserved admin org&#39;s owner claim; an org owner with the org-level admin bit is refused 403 and an anonymous caller 401, so a tenant can never be minted from inside a tenant. A duplicate name is 409 and a malformed hostname 400. The response echoes only the identity and timestamps, never the provider records the caller just sent, and the mutation is audited by hash rather than by content so a credential that slips into the body is not replayable from the log.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -6677,8 +6677,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -6692,8 +6692,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -6709,8 +6709,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane. (asynchronously)
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -6796,8 +6796,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -6812,8 +6812,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6830,8 +6830,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane. (asynchronously)
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -6911,8 +6911,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The tasks console
+     * Serves the console&#39;s application shell on GET, which is the entry point a browser loads before it calls anything under /v1/tasks/.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -6926,8 +6926,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The tasks console
+     * Serves the console&#39;s application shell on GET, which is the entry point a browser loads before it calls anything under /v1/tasks/.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -6943,8 +6943,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The tasks console (asynchronously)
+     * Serves the console&#39;s application shell on GET, which is the entry point a browser loads before it calls anything under /v1/tasks/.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -7030,8 +7030,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The tasks console&#39;s assets and client-side routes
+     * Serves the console&#39;s static assets on GET, and returns the application shell for any path that is not a file — client-side routing means a deep link into the console is a shell load, not a 404.  A path that looks like a missing asset therefore answers 200 with HTML rather than 404; look at the content type, not the status, when a resource seems to be missing.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -7046,8 +7046,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The tasks console&#39;s assets and client-side routes
+     * Serves the console&#39;s static assets on GET, and returns the application shell for any path that is not a file — client-side routing means a deep link into the console is a shell load, not a 404.  A path that looks like a missing asset therefore answers 200 with HTML rather than 404; look at the content type, not the status, when a resource seems to be missing.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -7064,8 +7064,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The tasks console&#39;s assets and client-side routes (asynchronously)
+     * Serves the console&#39;s static assets on GET, and returns the application shell for any path that is not a file — client-side routing means a deep link into the console is a shell load, not a 404.  A path that looks like a missing asset therefore answers 200 with HTML rather than 404; look at the content type, not the status, when a resource seems to be missing.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -7152,8 +7152,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The Hanzo AI model API
+     * Carries every generating call in the model API: chat completions and responses (streamed when the body asks for it), embeddings, reranking, image, video and speech generation, speech-to-text, RAG ingest, and fine-tune jobs — plus the creates on the managed collections behind /v1.  This is the billed half of the surface. A call is metered per org against the balance the commerce subsystem holds, and the balance gate is FAIL-CLOSED: when no native balance reader is wired into the process the call is refused rather than guessed at, and an insufficient balance answers 402 with its own message intact.  This address is a FALLBACK, not a front door. It is registered last, so every subsystem that claims a specific path under /v1 — billing, plans, pricing, the per-app health routes — still serves its own, and this catches the rest. The wildcard is the remainder of the path, and the answer is relayed with the model API&#39;s own status, headers and content type, so a streamed response streams and an upstream refusal arrives as itself.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -7168,8 +7168,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The Hanzo AI model API
+     * Carries every generating call in the model API: chat completions and responses (streamed when the body asks for it), embeddings, reranking, image, video and speech generation, speech-to-text, RAG ingest, and fine-tune jobs — plus the creates on the managed collections behind /v1.  This is the billed half of the surface. A call is metered per org against the balance the commerce subsystem holds, and the balance gate is FAIL-CLOSED: when no native balance reader is wired into the process the call is refused rather than guessed at, and an insufficient balance answers 402 with its own message intact.  This address is a FALLBACK, not a front door. It is registered last, so every subsystem that claims a specific path under /v1 — billing, plans, pricing, the per-app health routes — still serves its own, and this catches the rest. The wildcard is the remainder of the path, and the answer is relayed with the model API&#39;s own status, headers and content type, so a streamed response streams and an upstream refusal arrives as itself.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -7186,8 +7186,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The Hanzo AI model API (asynchronously)
+     * Carries every generating call in the model API: chat completions and responses (streamed when the body asks for it), embeddings, reranking, image, video and speech generation, speech-to-text, RAG ingest, and fine-tune jobs — plus the creates on the managed collections behind /v1.  This is the billed half of the surface. A call is metered per org against the balance the commerce subsystem holds, and the balance gate is FAIL-CLOSED: when no native balance reader is wired into the process the call is refused rather than guessed at, and an insufficient balance answers 402 with its own message intact.  This address is a FALLBACK, not a front door. It is registered last, so every subsystem that claims a specific path under /v1 — billing, plans, pricing, the per-app health routes — still serves its own, and this catches the rest. The wildcard is the remainder of the path, and the answer is relayed with the model API&#39;s own status, headers and content type, so a streamed response streams and an upstream refusal arrives as itself.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -7548,8 +7548,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * OIDC discovery and the JWKS at the issuer root, where a relying party looks before it can do anything else.
+     * Serves the two documents every OpenID Connect client reads first: /.well-known/openid-configuration (also at /.well-known/oauth-authorization-server, RFC 8414) and /.well-known/jwks. Public by construction — a client has no token yet — and minted per request by IAM from the deployment&#39;s own registered applications and signing certs, with the issuer derived from the host that was asked, so a strict client never has to reconcile two spellings of the origin. What is advertised is what IAM implements: the authorization-code flow, S256 PKCE, the grants it honours, and the signing algorithms whose public keys the JWKS actually publishes.  The wildcard sits at the ROOT because the spec puts it there, not because it is a catch-all, and it is narrow by construction: zip matches the most specific pattern regardless of registration order, so the deeper routes under it — agentskills&#39; /.well-known/agent-skills/_* — still win. A method IAM does not serve at one of these documents is its 405, and an unknown name under the prefix is its 404; neither reaches the console.  Fail-closed matters most here, because this is the FIRST call a relying party makes. Before the degraded half covered this wildcard, a discovery request during an IAM outage fell through to the console catch-all and answered 200 with the single-page app&#39;s HTML, which the client then parsed as its discovery document. It now answers a JSON 503.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -7564,8 +7564,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * OIDC discovery and the JWKS at the issuer root, where a relying party looks before it can do anything else.
+     * Serves the two documents every OpenID Connect client reads first: /.well-known/openid-configuration (also at /.well-known/oauth-authorization-server, RFC 8414) and /.well-known/jwks. Public by construction — a client has no token yet — and minted per request by IAM from the deployment&#39;s own registered applications and signing certs, with the issuer derived from the host that was asked, so a strict client never has to reconcile two spellings of the origin. What is advertised is what IAM implements: the authorization-code flow, S256 PKCE, the grants it honours, and the signing algorithms whose public keys the JWKS actually publishes.  The wildcard sits at the ROOT because the spec puts it there, not because it is a catch-all, and it is narrow by construction: zip matches the most specific pattern regardless of registration order, so the deeper routes under it — agentskills&#39; /.well-known/agent-skills/_* — still win. A method IAM does not serve at one of these documents is its 405, and an unknown name under the prefix is its 404; neither reaches the console.  Fail-closed matters most here, because this is the FIRST call a relying party makes. Before the degraded half covered this wildcard, a discovery request during an IAM outage fell through to the console catch-all and answered 200 with the single-page app&#39;s HTML, which the client then parsed as its discovery document. It now answers a JSON 503.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -7582,8 +7582,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * OIDC discovery and the JWKS at the issuer root, where a relying party looks before it can do anything else. (asynchronously)
+     * Serves the two documents every OpenID Connect client reads first: /.well-known/openid-configuration (also at /.well-known/oauth-authorization-server, RFC 8414) and /.well-known/jwks. Public by construction — a client has no token yet — and minted per request by IAM from the deployment&#39;s own registered applications and signing certs, with the issuer derived from the host that was asked, so a strict client never has to reconcile two spellings of the origin. What is advertised is what IAM implements: the authorization-code flow, S256 PKCE, the grants it honours, and the signing algorithms whose public keys the JWKS actually publishes.  The wildcard sits at the ROOT because the spec puts it there, not because it is a catch-all, and it is narrow by construction: zip matches the most specific pattern regardless of registration order, so the deeper routes under it — agentskills&#39; /.well-known/agent-skills/_* — still win. A method IAM does not serve at one of these documents is its 405, and an unknown name under the prefix is its 404; neither reaches the console.  Fail-closed matters most here, because this is the FIRST call a relying party makes. Before the degraded half covered this wildcard, a discovery request during an IAM outage fell through to the console catch-all and answered 200 with the single-page app&#39;s HTML, which the client then parsed as its discovery document. It now answers a JSON 503.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -7663,8 +7663,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -7678,8 +7678,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -7695,8 +7695,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane. (asynchronously)
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -7782,8 +7782,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -7798,8 +7798,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane.
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -7816,8 +7816,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The interactive browser leg of the authorize flow, claimed by the identity plane. (asynchronously)
+     * This is where /v1/iam/oauth/authorize sends a human. Having validated the client, the redirect URI and S256 PKCE, that endpoint answers 302 to the requesting application&#39;s own signinUrl — or, when the application record carries none, to /login/oauth/authorize here, with the request re-encoded as a clean query string built from known parameters only. RFC 8628&#39;s device verification page (/login/oauth/device) is the other address beneath the prefix.  Both are PAGES a person opens, not JSON operations, and IAM registers no route under this prefix at all — it claims the prefix so its Guard covers it. What this relay actually returns is therefore IAM&#39;s refusal rather than a rendered sign-in form: with no verified bearer, the same {\&quot;status\&quot;:401,\&quot;error\&quot;:\&quot;authentication required\&quot;} envelope every gated IAM path answers, identically for every method, since there is no route here for the method to select. An application configured with its own signinUrl never reaches this prefix.  The address is claimed rather than answered, and claiming it is the point: it is more specific than the console&#39;s terminal catch-all, so while IAM is mounted nothing else in the binary can serve the target the authorize endpoint redirects to. When IAM cannot boot it answers the same fail-closed JSON 503 the rest of the identity plane does.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -7897,8 +7897,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The tasks console
+     * Serves the console&#39;s application shell on GET, which is the entry point a browser loads before it calls anything under /v1/tasks/.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -7912,8 +7912,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The tasks console
+     * Serves the console&#39;s application shell on GET, which is the entry point a browser loads before it calls anything under /v1/tasks/.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -7929,8 +7929,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The tasks console (asynchronously)
+     * Serves the console&#39;s application shell on GET, which is the entry point a browser loads before it calls anything under /v1/tasks/.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -8016,8 +8016,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The tasks console&#39;s assets and client-side routes
+     * Serves the console&#39;s static assets on GET, and returns the application shell for any path that is not a file — client-side routing means a deep link into the console is a shell load, not a 404.  A path that looks like a missing asset therefore answers 200 with HTML rather than 404; look at the content type, not the status, when a resource seems to be missing.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -8032,8 +8032,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * The tasks console&#39;s assets and client-side routes
+     * Serves the console&#39;s static assets on GET, and returns the application shell for any path that is not a file — client-side routing means a deep link into the console is a shell load, not a 404.  A path that looks like a missing asset therefore answers 200 with HTML rather than 404; look at the content type, not the status, when a resource seems to be missing.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -8050,8 +8050,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The tasks console&#39;s assets and client-side routes (asynchronously)
+     * Serves the console&#39;s static assets on GET, and returns the application shell for any path that is not a file — client-side routing means a deep link into the console is a shell load, not a 404.  A path that looks like a missing asset therefore answers 200 with HTML rather than 404; look at the content type, not the status, when a resource seems to be missing.  This is the task console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale console on the next request.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -8138,8 +8138,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Replace one AI resource in full
+     * Replaces a member of one of the AI subsystem&#39;s managed collections with the body given. PUT and PATCH reach the SAME update — a full replacement and a partial one are accepted at one address so a client need not know which verb a given collection prefers — so the difference is in what the caller sends, not in what the server does with it.  This address is a FALLBACK, not a front door. It is registered last, so every subsystem that claims a specific path under /v1 — billing, plans, pricing, the per-app health routes — still serves its own, and this catches the rest. The wildcard is the remainder of the path, and the answer is relayed with the model API&#39;s own status, headers and content type, so a streamed response streams and an upstream refusal arrives as itself.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -8154,8 +8154,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * Replace one AI resource in full
+     * Replaces a member of one of the AI subsystem&#39;s managed collections with the body given. PUT and PATCH reach the SAME update — a full replacement and a partial one are accepted at one address so a client need not know which verb a given collection prefers — so the difference is in what the caller sends, not in what the server does with it.  This address is a FALLBACK, not a front door. It is registered last, so every subsystem that claims a specific path under /v1 — billing, plans, pricing, the per-app health routes — still serves its own, and this catches the rest. The wildcard is the remainder of the path, and the answer is relayed with the model API&#39;s own status, headers and content type, so a streamed response streams and an upstream refusal arrives as itself.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -8172,8 +8172,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Replace one AI resource in full (asynchronously)
+     * Replaces a member of one of the AI subsystem&#39;s managed collections with the body given. PUT and PATCH reach the SAME update — a full replacement and a partial one are accepted at one address so a client need not know which verb a given collection prefers — so the difference is in what the caller sends, not in what the server does with it.  This address is a FALLBACK, not a front door. It is registered last, so every subsystem that claims a specific path under /v1 — billing, plans, pricing, the per-app health routes — still serves its own, and this catches the rest. The wildcard is the remainder of the path, and the answer is relayed with the model API&#39;s own status, headers and content type, so a streamed response streams and an upstream refusal arrives as itself.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -8260,8 +8260,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * OIDC discovery and the JWKS at the issuer root, where a relying party looks before it can do anything else.
+     * Serves the two documents every OpenID Connect client reads first: /.well-known/openid-configuration (also at /.well-known/oauth-authorization-server, RFC 8414) and /.well-known/jwks. Public by construction — a client has no token yet — and minted per request by IAM from the deployment&#39;s own registered applications and signing certs, with the issuer derived from the host that was asked, so a strict client never has to reconcile two spellings of the origin. What is advertised is what IAM implements: the authorization-code flow, S256 PKCE, the grants it honours, and the signing algorithms whose public keys the JWKS actually publishes.  The wildcard sits at the ROOT because the spec puts it there, not because it is a catch-all, and it is narrow by construction: zip matches the most specific pattern regardless of registration order, so the deeper routes under it — agentskills&#39; /.well-known/agent-skills/_* — still win. A method IAM does not serve at one of these documents is its 405, and an unknown name under the prefix is its 404; neither reaches the console.  Fail-closed matters most here, because this is the FIRST call a relying party makes. Before the degraded half covered this wildcard, a discovery request during an IAM outage fell through to the console catch-all and answered 200 with the single-page app&#39;s HTML, which the client then parsed as its discovery document. It now answers a JSON 503.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -8276,8 +8276,8 @@ public class CloudApi {
     }
 
     /**
-     * 
-     * 
+     * OIDC discovery and the JWKS at the issuer root, where a relying party looks before it can do anything else.
+     * Serves the two documents every OpenID Connect client reads first: /.well-known/openid-configuration (also at /.well-known/oauth-authorization-server, RFC 8414) and /.well-known/jwks. Public by construction — a client has no token yet — and minted per request by IAM from the deployment&#39;s own registered applications and signing certs, with the issuer derived from the host that was asked, so a strict client never has to reconcile two spellings of the origin. What is advertised is what IAM implements: the authorization-code flow, S256 PKCE, the grants it honours, and the signing algorithms whose public keys the JWKS actually publishes.  The wildcard sits at the ROOT because the spec puts it there, not because it is a catch-all, and it is narrow by construction: zip matches the most specific pattern regardless of registration order, so the deeper routes under it — agentskills&#39; /.well-known/agent-skills/_* — still win. A method IAM does not serve at one of these documents is its 405, and an unknown name under the prefix is its 404; neither reaches the console.  Fail-closed matters most here, because this is the FIRST call a relying party makes. Before the degraded half covered this wildcard, a discovery request during an IAM outage fell through to the console catch-all and answered 200 with the single-page app&#39;s HTML, which the client then parsed as its discovery document. It now answers a JSON 503.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -8294,8 +8294,8 @@ public class CloudApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * OIDC discovery and the JWKS at the issuer root, where a relying party looks before it can do anything else. (asynchronously)
+     * Serves the two documents every OpenID Connect client reads first: /.well-known/openid-configuration (also at /.well-known/oauth-authorization-server, RFC 8414) and /.well-known/jwks. Public by construction — a client has no token yet — and minted per request by IAM from the deployment&#39;s own registered applications and signing certs, with the issuer derived from the host that was asked, so a strict client never has to reconcile two spellings of the origin. What is advertised is what IAM implements: the authorization-code flow, S256 PKCE, the grants it honours, and the signing algorithms whose public keys the JWKS actually publishes.  The wildcard sits at the ROOT because the spec puts it there, not because it is a catch-all, and it is narrow by construction: zip matches the most specific pattern regardless of registration order, so the deeper routes under it — agentskills&#39; /.well-known/agent-skills/_* — still win. A method IAM does not serve at one of these documents is its 405, and an unknown name under the prefix is its 404; neither reaches the console.  Fail-closed matters most here, because this is the FIRST call a relying party makes. Before the degraded half covered this wildcard, a discovery request during an IAM outage fell through to the console catch-all and answered 200 with the single-page app&#39;s HTML, which the client then parsed as its discovery document. It now answers a JSON 503.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -8310,718 +8310,6 @@ public class CloudApi {
     public okhttp3.Call cloudPutWellKnownByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudPutWellKnownByWildcard1ValidateBeforeCall(wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for cloudTraceLoginOauth
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceLoginOauthCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/login/oauth";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "TRACE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudTraceLoginOauthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudTraceLoginOauthCall(_callback);
-
-    }
-
-    /**
-     * 
-     * 
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public void cloudTraceLoginOauth() throws ApiException {
-        cloudTraceLoginOauthWithHttpInfo();
-    }
-
-    /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> cloudTraceLoginOauthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudTraceLoginOauthValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceLoginOauthAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = cloudTraceLoginOauthValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for cloudTraceLoginOauthByWildcard1
-     * @param wildcard1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceLoginOauthByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/login/oauth/{wildcard1}"
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "TRACE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudTraceLoginOauthByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling cloudTraceLoginOauthByWildcard1(Async)");
-        }
-
-        return cloudTraceLoginOauthByWildcard1Call(wildcard1, _callback);
-
-    }
-
-    /**
-     * 
-     * 
-     * @param wildcard1  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public void cloudTraceLoginOauthByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        cloudTraceLoginOauthByWildcard1WithHttpInfo(wildcard1);
-    }
-
-    /**
-     * 
-     * 
-     * @param wildcard1  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> cloudTraceLoginOauthByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = cloudTraceLoginOauthByWildcard1ValidateBeforeCall(wildcard1, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param wildcard1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceLoginOauthByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = cloudTraceLoginOauthByWildcard1ValidateBeforeCall(wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for cloudTraceTasks
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceTasksCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/tasks";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "TRACE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudTraceTasksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudTraceTasksCall(_callback);
-
-    }
-
-    /**
-     * 
-     * 
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public void cloudTraceTasks() throws ApiException {
-        cloudTraceTasksWithHttpInfo();
-    }
-
-    /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> cloudTraceTasksWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudTraceTasksValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceTasksAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = cloudTraceTasksValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for cloudTraceTasksByWildcard1
-     * @param wildcard1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceTasksByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/tasks/{wildcard1}"
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "TRACE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudTraceTasksByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling cloudTraceTasksByWildcard1(Async)");
-        }
-
-        return cloudTraceTasksByWildcard1Call(wildcard1, _callback);
-
-    }
-
-    /**
-     * 
-     * 
-     * @param wildcard1  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public void cloudTraceTasksByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        cloudTraceTasksByWildcard1WithHttpInfo(wildcard1);
-    }
-
-    /**
-     * 
-     * 
-     * @param wildcard1  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> cloudTraceTasksByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = cloudTraceTasksByWildcard1ValidateBeforeCall(wildcard1, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param wildcard1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceTasksByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = cloudTraceTasksByWildcard1ValidateBeforeCall(wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for cloudTraceV1ByWildcard1
-     * @param wildcard1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceV1ByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/{wildcard1}"
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "TRACE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudTraceV1ByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling cloudTraceV1ByWildcard1(Async)");
-        }
-
-        return cloudTraceV1ByWildcard1Call(wildcard1, _callback);
-
-    }
-
-    /**
-     * 
-     * 
-     * @param wildcard1  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public void cloudTraceV1ByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        cloudTraceV1ByWildcard1WithHttpInfo(wildcard1);
-    }
-
-    /**
-     * 
-     * 
-     * @param wildcard1  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> cloudTraceV1ByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = cloudTraceV1ByWildcard1ValidateBeforeCall(wildcard1, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param wildcard1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceV1ByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = cloudTraceV1ByWildcard1ValidateBeforeCall(wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for cloudTraceWellKnownByWildcard1
-     * @param wildcard1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceWellKnownByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/.well-known/{wildcard1}"
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "TRACE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudTraceWellKnownByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling cloudTraceWellKnownByWildcard1(Async)");
-        }
-
-        return cloudTraceWellKnownByWildcard1Call(wildcard1, _callback);
-
-    }
-
-    /**
-     * 
-     * 
-     * @param wildcard1  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public void cloudTraceWellKnownByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        cloudTraceWellKnownByWildcard1WithHttpInfo(wildcard1);
-    }
-
-    /**
-     * 
-     * 
-     * @param wildcard1  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> cloudTraceWellKnownByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = cloudTraceWellKnownByWildcard1ValidateBeforeCall(wildcard1, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param wildcard1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cloudTraceWellKnownByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = cloudTraceWellKnownByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

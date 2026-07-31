@@ -121,64 +121,10 @@ public class CommerceOrder {
   @javax.annotation.Nullable
   private String currency;
 
-  /**
-   * Gets or Sets mode
-   */
-  @JsonAdapter(ModeEnum.Adapter.class)
-  public enum ModeEnum {
-    EMPTY(""),
-    
-    DEPOSIT("deposit"),
-    
-    CONTRIBUTION("contribution");
-
-    private String value;
-
-    ModeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ModeEnum fromValue(String value) {
-      for (ModeEnum b : ModeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ModeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ModeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ModeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ModeEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      ModeEnum.fromValue(value);
-    }
-  }
-
   public static final String SERIALIZED_NAME_MODE = "mode";
   @SerializedName(SERIALIZED_NAME_MODE)
   @javax.annotation.Nullable
-  private ModeEnum mode;
+  private String mode;
 
   public static final String SERIALIZED_NAME_SHIPPING_METHOD = "shippingMethod";
   @SerializedName(SERIALIZED_NAME_SHIPPING_METHOD)
@@ -523,21 +469,21 @@ public class CommerceOrder {
   }
 
 
-  public CommerceOrder mode(@javax.annotation.Nullable ModeEnum mode) {
+  public CommerceOrder mode(@javax.annotation.Nullable String mode) {
     this.mode = mode;
     return this;
   }
 
   /**
-   * Get mode
+   * Order mode: &#x60;deposit&#x60;, &#x60;contribution&#x60;, or \&quot;\&quot; for an ordinary order. 
    * @return mode
    */
   @javax.annotation.Nullable
-  public ModeEnum getMode() {
+  public String getMode() {
     return mode;
   }
 
-  public void setMode(@javax.annotation.Nullable ModeEnum mode) {
+  public void setMode(@javax.annotation.Nullable String mode) {
     this.mode = mode;
   }
 
@@ -1170,10 +1116,6 @@ public class CommerceOrder {
       }
       if ((jsonObj.get("mode") != null && !jsonObj.get("mode").isJsonNull()) && !jsonObj.get("mode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `mode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mode").toString()));
-      }
-      // validate the optional field `mode`
-      if (jsonObj.get("mode") != null && !jsonObj.get("mode").isJsonNull()) {
-        ModeEnum.validateJsonElement(jsonObj.get("mode"));
       }
       if ((jsonObj.get("shippingMethod") != null && !jsonObj.get("shippingMethod").isJsonNull()) && !jsonObj.get("shippingMethod").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `shippingMethod` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shippingMethod").toString()));

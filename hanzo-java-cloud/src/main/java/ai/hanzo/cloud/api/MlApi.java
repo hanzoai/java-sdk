@@ -29,6 +29,8 @@ import java.io.IOException;
 
 import ai.hanzo.cloud.model.CloudMlResource;
 import ai.hanzo.cloud.model.CloudMlResourceList;
+import ai.hanzo.cloud.model.CloudPostV1MlModelsRequest;
+import ai.hanzo.cloud.model.MlModel;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -257,8 +259,8 @@ public class MlApi {
     }
 
     /**
-     * 
-     * 
+     * Whether model serving can actually work right now
+     * Reports whether the model-serving plane is genuinely usable: that the Kubernetes API answers, and that the InferenceService CRD is actually served by this cluster. It is a REAL probe, not status theatre — it makes a live call rather than reporting a flag set at boot.  200 only when everything checks out. Otherwise 503 CARRYING THE REPORT — which component failed, and the real error — and that body is the reason this is not a typed op: a typed op reaches a non-2xx by returning an error, and the envelope that produces would drop exactly the detail the probe exists to deliver.  It answers about the cluster, not about a tenant, so it takes no org and reveals no tenant data. A cluster with no kserve CRD reports degraded honestly rather than failing later at the first deploy.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -272,8 +274,8 @@ public class MlApi {
     }
 
     /**
-     * 
-     * 
+     * Whether model serving can actually work right now
+     * Reports whether the model-serving plane is genuinely usable: that the Kubernetes API answers, and that the InferenceService CRD is actually served by this cluster. It is a REAL probe, not status theatre — it makes a live call rather than reporting a flag set at boot.  200 only when everything checks out. Otherwise 503 CARRYING THE REPORT — which component failed, and the real error — and that body is the reason this is not a typed op: a typed op reaches a non-2xx by returning an error, and the envelope that produces would drop exactly the detail the probe exists to deliver.  It answers about the cluster, not about a tenant, so it takes no org and reveals no tenant data. A cluster with no kserve CRD reports degraded honestly rather than failing later at the first deploy.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -289,8 +291,8 @@ public class MlApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Whether model serving can actually work right now (asynchronously)
+     * Reports whether the model-serving plane is genuinely usable: that the Kubernetes API answers, and that the InferenceService CRD is actually served by this cluster. It is a REAL probe, not status theatre — it makes a live call rather than reporting a flag set at boot.  200 only when everything checks out. Otherwise 503 CARRYING THE REPORT — which component failed, and the real error — and that body is the reason this is not a typed op: a typed op reaches a non-2xx by returning an error, and the envelope that produces would drop exactly the detail the probe exists to deliver.  It answers about the cluster, not about a tenant, so it takes no org and reveals no tenant data. A cluster with no kserve CRD reports degraded honestly rather than failing later at the first deploy.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -309,6 +311,8 @@ public class MlApi {
     }
     /**
      * Build call for cloudGetV1MlModels
+     * @param stage  (optional)
+     * @param search  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -319,7 +323,7 @@ public class MlApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1MlModelsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1MlModelsCall(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String search, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -344,6 +348,14 @@ public class MlApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (stage != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("stage", stage));
+        }
+
+        if (search != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("search", search));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -364,14 +376,16 @@ public class MlApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudGetV1MlModelsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudGetV1MlModelsCall(_callback);
+    private okhttp3.Call cloudGetV1MlModelsValidateBeforeCall(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String search, final ApiCallback _callback) throws ApiException {
+        return cloudGetV1MlModelsCall(stage, search, _callback);
 
     }
 
     /**
      * ListModels lists the inference models deployed in the caller&#39;s org.
      * ListModels lists the inference models deployed in the caller&#39;s org. Each entry carries the model&#39;s name, when Kubernetes admitted it, and kserve&#39;s live status — the spec is on the single-model read. An org that has deployed nothing gets an empty list.
+     * @param stage  (optional)
+     * @param search  (optional)
      * @return CloudMlResourceList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -381,14 +395,16 @@ public class MlApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CloudMlResourceList cloudGetV1MlModels() throws ApiException {
-        ApiResponse<CloudMlResourceList> localVarResp = cloudGetV1MlModelsWithHttpInfo();
+    public CloudMlResourceList cloudGetV1MlModels(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String search) throws ApiException {
+        ApiResponse<CloudMlResourceList> localVarResp = cloudGetV1MlModelsWithHttpInfo(stage, search);
         return localVarResp.getData();
     }
 
     /**
      * ListModels lists the inference models deployed in the caller&#39;s org.
      * ListModels lists the inference models deployed in the caller&#39;s org. Each entry carries the model&#39;s name, when Kubernetes admitted it, and kserve&#39;s live status — the spec is on the single-model read. An org that has deployed nothing gets an empty list.
+     * @param stage  (optional)
+     * @param search  (optional)
      * @return ApiResponse&lt;CloudMlResourceList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -398,8 +414,8 @@ public class MlApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CloudMlResourceList> cloudGetV1MlModelsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudGetV1MlModelsValidateBeforeCall(null);
+    public ApiResponse<CloudMlResourceList> cloudGetV1MlModelsWithHttpInfo(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String search) throws ApiException {
+        okhttp3.Call localVarCall = cloudGetV1MlModelsValidateBeforeCall(stage, search, null);
         Type localVarReturnType = new TypeToken<CloudMlResourceList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -407,6 +423,8 @@ public class MlApi {
     /**
      * ListModels lists the inference models deployed in the caller&#39;s org. (asynchronously)
      * ListModels lists the inference models deployed in the caller&#39;s org. Each entry carries the model&#39;s name, when Kubernetes admitted it, and kserve&#39;s live status — the spec is on the single-model read. An org that has deployed nothing gets an empty list.
+     * @param stage  (optional)
+     * @param search  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -417,9 +435,9 @@ public class MlApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1MlModelsAsync(final ApiCallback<CloudMlResourceList> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1MlModelsAsync(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String search, final ApiCallback<CloudMlResourceList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudGetV1MlModelsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = cloudGetV1MlModelsValidateBeforeCall(stage, search, _callback);
         Type localVarReturnType = new TypeToken<CloudMlResourceList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -620,8 +638,8 @@ public class MlApi {
     }
 
     /**
-     * 
-     * 
+     * Change a deployed model in place
+     * Applies a JSON merge patch to one of the caller org&#39;s deployed models and answers the updated resource — the way to change a model&#39;s image, replica count or resource requests without tearing the deployment down.  The body is relayed to Kubernetes VERBATIM. That is deliberate and it is why this route is not a typed op: re-encoding a merge patch changes what it means, because an integer that round-trips through a generic decoder comes back a float. Merge-patch semantics apply as written — a null removes a field, and a list is replaced whole rather than merged.  Scoped to the caller&#39;s own tenant namespace, resolved from the validated org and project; a name the caller&#39;s tenant does not hold is a 404, never another tenant&#39;s resource. An empty body is refused, and a patch Kubernetes rejects comes back 422 with its reason rather than being silently dropped.
      * @param name  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -636,8 +654,8 @@ public class MlApi {
     }
 
     /**
-     * 
-     * 
+     * Change a deployed model in place
+     * Applies a JSON merge patch to one of the caller org&#39;s deployed models and answers the updated resource — the way to change a model&#39;s image, replica count or resource requests without tearing the deployment down.  The body is relayed to Kubernetes VERBATIM. That is deliberate and it is why this route is not a typed op: re-encoding a merge patch changes what it means, because an integer that round-trips through a generic decoder comes back a float. Merge-patch semantics apply as written — a null removes a field, and a list is replaced whole rather than merged.  Scoped to the caller&#39;s own tenant namespace, resolved from the validated org and project; a name the caller&#39;s tenant does not hold is a 404, never another tenant&#39;s resource. An empty body is refused, and a patch Kubernetes rejects comes back 422 with its reason rather than being silently dropped.
      * @param name  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -654,8 +672,8 @@ public class MlApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Change a deployed model in place (asynchronously)
+     * Applies a JSON merge patch to one of the caller org&#39;s deployed models and answers the updated resource — the way to change a model&#39;s image, replica count or resource requests without tearing the deployment down.  The body is relayed to Kubernetes VERBATIM. That is deliberate and it is why this route is not a typed op: re-encoding a merge patch changes what it means, because an integer that round-trips through a generic decoder comes back a float. Merge-patch semantics apply as written — a null removes a field, and a list is replaced whole rather than merged.  Scoped to the caller&#39;s own tenant namespace, resolved from the validated org and project; a name the caller&#39;s tenant does not hold is a 404, never another tenant&#39;s resource. An empty body is refused, and a patch Kubernetes rejects comes back 422 with its reason rather than being silently dropped.
      * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -675,6 +693,7 @@ public class MlApi {
     }
     /**
      * Build call for cloudPostV1MlModels
+     * @param cloudPostV1MlModelsRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -682,10 +701,10 @@ public class MlApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Model registered </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1MlModelsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1MlModelsCall(@javax.annotation.Nonnull CloudPostV1MlModelsRequest cloudPostV1MlModelsRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -699,7 +718,7 @@ public class MlApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = cloudPostV1MlModelsRequest;
 
         // create path and map variables
         String localVarPath = "/v1/ml/models";
@@ -711,6 +730,7 @@ public class MlApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -718,6 +738,7 @@ public class MlApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -729,46 +750,57 @@ public class MlApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1MlModelsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1MlModelsCall(_callback);
+    private okhttp3.Call cloudPostV1MlModelsValidateBeforeCall(@javax.annotation.Nonnull CloudPostV1MlModelsRequest cloudPostV1MlModelsRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'cloudPostV1MlModelsRequest' is set
+        if (cloudPostV1MlModelsRequest == null) {
+            throw new ApiException("Missing the required parameter 'cloudPostV1MlModelsRequest' when calling cloudPostV1MlModels(Async)");
+        }
+
+        return cloudPostV1MlModelsCall(cloudPostV1MlModelsRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Deploy an inference model
+     * Deploys a model into the caller&#39;s own tenant namespace and answers the created resource, 201. The spec is the kserve InferenceService spec, relayed as given, so anything kserve serves is deployable here without this layer knowing what it is.  THE BALANCE GATE RUNS FIRST, before a namespace or a resource exists, so an unfunded org cannot start GPU compute and then be billed for it. It fails CLOSED: a commerce that cannot be reached refuses rather than admits. The refusal carries the fleet&#39;s nested error body — the 402 shape a funded-balance client already parses — which is precisely why this route is not a typed op. On success the submission fee is debited from the caller org&#39;s own ledger, asynchronously and best-effort; ongoing GPU-hour cost is metered elsewhere.  The tenant namespace is derived from the VALIDATED org and project — never from a field — and the mapping is injective in both, so two tenants can never land in one namespace. An unvalidated caller is refused before any of that. The name must be a DNS-1123 label; a name already taken in the tenant&#39;s namespace is a 409.
+     * @param cloudPostV1MlModelsRequest  (required)
+     * @return MlModel
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Model registered </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1MlModels() throws ApiException {
-        cloudPostV1MlModelsWithHttpInfo();
+    public MlModel cloudPostV1MlModels(@javax.annotation.Nonnull CloudPostV1MlModelsRequest cloudPostV1MlModelsRequest) throws ApiException {
+        ApiResponse<MlModel> localVarResp = cloudPostV1MlModelsWithHttpInfo(cloudPostV1MlModelsRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Deploy an inference model
+     * Deploys a model into the caller&#39;s own tenant namespace and answers the created resource, 201. The spec is the kserve InferenceService spec, relayed as given, so anything kserve serves is deployable here without this layer knowing what it is.  THE BALANCE GATE RUNS FIRST, before a namespace or a resource exists, so an unfunded org cannot start GPU compute and then be billed for it. It fails CLOSED: a commerce that cannot be reached refuses rather than admits. The refusal carries the fleet&#39;s nested error body — the 402 shape a funded-balance client already parses — which is precisely why this route is not a typed op. On success the submission fee is debited from the caller org&#39;s own ledger, asynchronously and best-effort; ongoing GPU-hour cost is metered elsewhere.  The tenant namespace is derived from the VALIDATED org and project — never from a field — and the mapping is injective in both, so two tenants can never land in one namespace. An unvalidated caller is refused before any of that. The name must be a DNS-1123 label; a name already taken in the tenant&#39;s namespace is a 409.
+     * @param cloudPostV1MlModelsRequest  (required)
+     * @return ApiResponse&lt;MlModel&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Model registered </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1MlModelsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1MlModelsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<MlModel> cloudPostV1MlModelsWithHttpInfo(@javax.annotation.Nonnull CloudPostV1MlModelsRequest cloudPostV1MlModelsRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1MlModelsValidateBeforeCall(cloudPostV1MlModelsRequest, null);
+        Type localVarReturnType = new TypeToken<MlModel>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Deploy an inference model (asynchronously)
+     * Deploys a model into the caller&#39;s own tenant namespace and answers the created resource, 201. The spec is the kserve InferenceService spec, relayed as given, so anything kserve serves is deployable here without this layer knowing what it is.  THE BALANCE GATE RUNS FIRST, before a namespace or a resource exists, so an unfunded org cannot start GPU compute and then be billed for it. It fails CLOSED: a commerce that cannot be reached refuses rather than admits. The refusal carries the fleet&#39;s nested error body — the 402 shape a funded-balance client already parses — which is precisely why this route is not a typed op. On success the submission fee is debited from the caller org&#39;s own ledger, asynchronously and best-effort; ongoing GPU-hour cost is metered elsewhere.  The tenant namespace is derived from the VALIDATED org and project — never from a field — and the mapping is injective in both, so two tenants can never land in one namespace. An unvalidated caller is refused before any of that. The name must be a DNS-1123 label; a name already taken in the tenant&#39;s namespace is a 409.
+     * @param cloudPostV1MlModelsRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -776,13 +808,14 @@ public class MlApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Model registered </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1MlModelsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1MlModelsAsync(@javax.annotation.Nonnull CloudPostV1MlModelsRequest cloudPostV1MlModelsRequest, final ApiCallback<MlModel> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1MlModelsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1MlModelsValidateBeforeCall(cloudPostV1MlModelsRequest, _callback);
+        Type localVarReturnType = new TypeToken<MlModel>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -854,8 +887,8 @@ public class MlApi {
     }
 
     /**
-     * 
-     * 
+     * Run inference against one of your deployed models
+     * Sends the request body to the named model&#39;s predictor and answers the predictor&#39;s reply — its status code, its body bytes and its Content-Type, all unchanged. This is the inference call itself, not a description of one.  VERBATIM IS THE CONTRACT, and it is why this route is not a typed op: a model-side error has to surface as the model&#39;s own error, not as this layer&#39;s paraphrase of it. The body shape is the kserve v2 inference protocol&#39;s, which means the runtime decides it, not this API. The v2 model name defaults to the resource name — kserve&#39;s single-model convention — and a multi-model runtime selects one with the &#x60;model&#x60; query parameter.  A model that exists but has no serving address yet answers 503 &#39;not ready&#39; rather than a confusing connection error: deployed is not the same as serving. Scoped to the caller&#39;s own tenant namespace from the validated org and project, so a name another tenant owns is simply a 404. The predictor&#39;s response body is read up to a fixed ceiling.
      * @param name  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -870,8 +903,8 @@ public class MlApi {
     }
 
     /**
-     * 
-     * 
+     * Run inference against one of your deployed models
+     * Sends the request body to the named model&#39;s predictor and answers the predictor&#39;s reply — its status code, its body bytes and its Content-Type, all unchanged. This is the inference call itself, not a description of one.  VERBATIM IS THE CONTRACT, and it is why this route is not a typed op: a model-side error has to surface as the model&#39;s own error, not as this layer&#39;s paraphrase of it. The body shape is the kserve v2 inference protocol&#39;s, which means the runtime decides it, not this API. The v2 model name defaults to the resource name — kserve&#39;s single-model convention — and a multi-model runtime selects one with the &#x60;model&#x60; query parameter.  A model that exists but has no serving address yet answers 503 &#39;not ready&#39; rather than a confusing connection error: deployed is not the same as serving. Scoped to the caller&#39;s own tenant namespace from the validated org and project, so a name another tenant owns is simply a 404. The predictor&#39;s response body is read up to a fixed ceiling.
      * @param name  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -888,8 +921,8 @@ public class MlApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Run inference against one of your deployed models (asynchronously)
+     * Sends the request body to the named model&#39;s predictor and answers the predictor&#39;s reply — its status code, its body bytes and its Content-Type, all unchanged. This is the inference call itself, not a description of one.  VERBATIM IS THE CONTRACT, and it is why this route is not a typed op: a model-side error has to surface as the model&#39;s own error, not as this layer&#39;s paraphrase of it. The body shape is the kserve v2 inference protocol&#39;s, which means the runtime decides it, not this API. The v2 model name defaults to the resource name — kserve&#39;s single-model convention — and a multi-model runtime selects one with the &#x60;model&#x60; query parameter.  A model that exists but has no serving address yet answers 503 &#39;not ready&#39; rather than a confusing connection error: deployed is not the same as serving. Scoped to the caller&#39;s own tenant namespace from the validated org and project, so a name another tenant owns is simply a 404. The predictor&#39;s response body is read up to a fixed ceiling.
      * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

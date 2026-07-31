@@ -369,8 +369,8 @@ public class BlueprintApi {
     }
 
     /**
-     * 
-     * 
+     * A blueprint&#39;s bill of images and what running it costs
+     * Answers a blueprint&#39;s SBOM — the container images its compose stack runs, each with the CPU/memory footprint that was applied to it — together with the compute cost that footprint prices out to on the active rate card.  ONE address, TWO shapes at 200: &#x60;?template&#x3D;&lt;id&gt;&#x60; returns that blueprint&#39;s Estimate alone (404 on an id no embedded blueprint carries), and no &#x60;template&#x60; returns &#x60;{data:[Estimate]}&#x60; for every blueprint — the batch the console&#39;s template gallery reads in one round-trip.  The blueprints are reference content embedded in the binary and validated at mount, so this read is the same for every caller and is scoped to no tenant. The per-hour figure it returns is the one the deploy path meters the deploying org on and the 20% author royalty is taken from; GET /v1/blueprint/health echoes the rate card it was priced from.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -384,8 +384,8 @@ public class BlueprintApi {
     }
 
     /**
-     * 
-     * 
+     * A blueprint&#39;s bill of images and what running it costs
+     * Answers a blueprint&#39;s SBOM — the container images its compose stack runs, each with the CPU/memory footprint that was applied to it — together with the compute cost that footprint prices out to on the active rate card.  ONE address, TWO shapes at 200: &#x60;?template&#x3D;&lt;id&gt;&#x60; returns that blueprint&#39;s Estimate alone (404 on an id no embedded blueprint carries), and no &#x60;template&#x60; returns &#x60;{data:[Estimate]}&#x60; for every blueprint — the batch the console&#39;s template gallery reads in one round-trip.  The blueprints are reference content embedded in the binary and validated at mount, so this read is the same for every caller and is scoped to no tenant. The per-hour figure it returns is the one the deploy path meters the deploying org on and the 20% author royalty is taken from; GET /v1/blueprint/health echoes the rate card it was priced from.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -401,8 +401,8 @@ public class BlueprintApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * A blueprint&#39;s bill of images and what running it costs (asynchronously)
+     * Answers a blueprint&#39;s SBOM — the container images its compose stack runs, each with the CPU/memory footprint that was applied to it — together with the compute cost that footprint prices out to on the active rate card.  ONE address, TWO shapes at 200: &#x60;?template&#x3D;&lt;id&gt;&#x60; returns that blueprint&#39;s Estimate alone (404 on an id no embedded blueprint carries), and no &#x60;template&#x60; returns &#x60;{data:[Estimate]}&#x60; for every blueprint — the batch the console&#39;s template gallery reads in one round-trip.  The blueprints are reference content embedded in the binary and validated at mount, so this read is the same for every caller and is scoped to no tenant. The per-hour figure it returns is the one the deploy path meters the deploying org on and the 20% author royalty is taken from; GET /v1/blueprint/health echoes the rate card it was priced from.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

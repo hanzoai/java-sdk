@@ -86,7 +86,7 @@ public class CrmApi {
 
     /**
      * Build call for cloudDeleteV1CrmCompaniesId
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -155,7 +155,7 @@ public class CrmApi {
     /**
      * DeleteCompany removes one of the caller org&#39;s companies and answers 204.
      * DeleteCompany removes one of the caller org&#39;s companies and answers 204. Any contact or opportunity in the org that referenced it keeps existing with the reference cleared, so nothing is left pointing at a company that is gone.
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -171,7 +171,7 @@ public class CrmApi {
     /**
      * DeleteCompany removes one of the caller org&#39;s companies and answers 204.
      * DeleteCompany removes one of the caller org&#39;s companies and answers 204. Any contact or opportunity in the org that referenced it keeps existing with the reference cleared, so nothing is left pointing at a company that is gone.
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -189,7 +189,7 @@ public class CrmApi {
     /**
      * DeleteCompany removes one of the caller org&#39;s companies and answers 204. (asynchronously)
      * DeleteCompany removes one of the caller org&#39;s companies and answers 204. Any contact or opportunity in the org that referenced it keeps existing with the reference cleared, so nothing is left pointing at a company that is gone.
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -208,7 +208,7 @@ public class CrmApi {
     }
     /**
      * Build call for cloudDeleteV1CrmContactsId
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -277,7 +277,7 @@ public class CrmApi {
     /**
      * DeleteContact removes one of the caller org&#39;s contacts and answers 204.
      * DeleteContact removes one of the caller org&#39;s contacts and answers 204. Any opportunity in the org that named it point of contact keeps existing with that reference cleared.
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -293,7 +293,7 @@ public class CrmApi {
     /**
      * DeleteContact removes one of the caller org&#39;s contacts and answers 204.
      * DeleteContact removes one of the caller org&#39;s contacts and answers 204. Any opportunity in the org that named it point of contact keeps existing with that reference cleared.
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -311,7 +311,7 @@ public class CrmApi {
     /**
      * DeleteContact removes one of the caller org&#39;s contacts and answers 204. (asynchronously)
      * DeleteContact removes one of the caller org&#39;s contacts and answers 204. Any opportunity in the org that named it point of contact keeps existing with that reference cleared.
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -330,7 +330,7 @@ public class CrmApi {
     }
     /**
      * Build call for cloudDeleteV1CrmOpportunitiesId
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -399,7 +399,7 @@ public class CrmApi {
     /**
      * DeleteOpportunity removes one of the caller org&#39;s deals and answers 204.
      * DeleteOpportunity removes one of the caller org&#39;s deals and answers 204.
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -415,7 +415,7 @@ public class CrmApi {
     /**
      * DeleteOpportunity removes one of the caller org&#39;s deals and answers 204.
      * DeleteOpportunity removes one of the caller org&#39;s deals and answers 204.
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -433,7 +433,7 @@ public class CrmApi {
     /**
      * DeleteOpportunity removes one of the caller org&#39;s deals and answers 204. (asynchronously)
      * DeleteOpportunity removes one of the caller org&#39;s deals and answers 204.
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -837,7 +837,7 @@ public class CrmApi {
     }
     /**
      * Build call for cloudGetV1CrmCompaniesId
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -907,7 +907,7 @@ public class CrmApi {
     /**
      * GetCompany returns one of the caller org&#39;s companies.
      * GetCompany returns one of the caller org&#39;s companies. An id belonging to another org reads as not found.
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @return CloudCompany
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -925,7 +925,7 @@ public class CrmApi {
     /**
      * GetCompany returns one of the caller org&#39;s companies.
      * GetCompany returns one of the caller org&#39;s companies. An id belonging to another org reads as not found.
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @return ApiResponse&lt;CloudCompany&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -944,7 +944,7 @@ public class CrmApi {
     /**
      * GetCompany returns one of the caller org&#39;s companies. (asynchronously)
      * GetCompany returns one of the caller org&#39;s companies. An id belonging to another org reads as not found.
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1097,7 +1097,7 @@ public class CrmApi {
     }
     /**
      * Build call for cloudGetV1CrmContactsId
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1167,7 +1167,7 @@ public class CrmApi {
     /**
      * GetContact returns one of the caller org&#39;s contacts.
      * GetContact returns one of the caller org&#39;s contacts. An id belonging to another org reads as not found.
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @return CloudContact
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1185,7 +1185,7 @@ public class CrmApi {
     /**
      * GetContact returns one of the caller org&#39;s contacts.
      * GetContact returns one of the caller org&#39;s contacts. An id belonging to another org reads as not found.
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @return ApiResponse&lt;CloudContact&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1204,7 +1204,7 @@ public class CrmApi {
     /**
      * GetContact returns one of the caller org&#39;s contacts. (asynchronously)
      * GetContact returns one of the caller org&#39;s contacts. An id belonging to another org reads as not found.
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1357,7 +1357,7 @@ public class CrmApi {
     }
     /**
      * Build call for cloudGetV1CrmOpportunitiesId
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1427,7 +1427,7 @@ public class CrmApi {
     /**
      * GetOpportunity returns one of the caller org&#39;s deals.
      * GetOpportunity returns one of the caller org&#39;s deals. An id belonging to another org reads as not found.
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @return CloudOpportunity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1445,7 +1445,7 @@ public class CrmApi {
     /**
      * GetOpportunity returns one of the caller org&#39;s deals.
      * GetOpportunity returns one of the caller org&#39;s deals. An id belonging to another org reads as not found.
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @return ApiResponse&lt;CloudOpportunity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1464,7 +1464,7 @@ public class CrmApi {
     /**
      * GetOpportunity returns one of the caller org&#39;s deals. (asynchronously)
      * GetOpportunity returns one of the caller org&#39;s deals. An id belonging to another org reads as not found.
-     * @param id ID is the record to act on, from the path. (required)
+     * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1798,8 +1798,8 @@ public class CrmApi {
     }
 
     /**
-     * 
-     * 
+     * Apply to the Startup Program from the public form
+     * Files an application to the Startup Program and answers the id and pipeline stage it landed at.  This is the ONE unauthenticated route in crm. It takes no principal and never reads a caller org: the application is filed against the DEPLOYMENT&#39;s own program org — the brand, hanzo unless white-labelled — so there is no tenant to name and none to leak. Reading the application back is staff-only and lives elsewhere.  company, contactName and a parseable email are required; everything else is optional context. Re-submitting the same (email, company) REFRESHES the existing application instead of filing a second one, so an impatient applicant cannot duplicate their own lead — that is a 200 where a first submission is a 201. A filled &#x60;hp&#x60; honeypot field is answered exactly like a success and stored nowhere, so a bot cannot tell a drop from an accept.  Filing is not screening: the application lands at stage &#x60;applied&#x60; with its AI screen still pending, and the screen runs afterwards on its own clock. A company and contact are also projected into the program org&#39;s ordinary CRM lists, best-effort — that projection failing does not fail the application. Bodies over 64 KiB are refused, and submissions are rate-limited.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1813,8 +1813,8 @@ public class CrmApi {
     }
 
     /**
-     * 
-     * 
+     * Apply to the Startup Program from the public form
+     * Files an application to the Startup Program and answers the id and pipeline stage it landed at.  This is the ONE unauthenticated route in crm. It takes no principal and never reads a caller org: the application is filed against the DEPLOYMENT&#39;s own program org — the brand, hanzo unless white-labelled — so there is no tenant to name and none to leak. Reading the application back is staff-only and lives elsewhere.  company, contactName and a parseable email are required; everything else is optional context. Re-submitting the same (email, company) REFRESHES the existing application instead of filing a second one, so an impatient applicant cannot duplicate their own lead — that is a 200 where a first submission is a 201. A filled &#x60;hp&#x60; honeypot field is answered exactly like a success and stored nowhere, so a bot cannot tell a drop from an accept.  Filing is not screening: the application lands at stage &#x60;applied&#x60; with its AI screen still pending, and the screen runs afterwards on its own clock. A company and contact are also projected into the program org&#39;s ordinary CRM lists, best-effort — that projection failing does not fail the application. Bodies over 64 KiB are refused, and submissions are rate-limited.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1830,8 +1830,8 @@ public class CrmApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Apply to the Startup Program from the public form (asynchronously)
+     * Files an application to the Startup Program and answers the id and pipeline stage it landed at.  This is the ONE unauthenticated route in crm. It takes no principal and never reads a caller org: the application is filed against the DEPLOYMENT&#39;s own program org — the brand, hanzo unless white-labelled — so there is no tenant to name and none to leak. Reading the application back is staff-only and lives elsewhere.  company, contactName and a parseable email are required; everything else is optional context. Re-submitting the same (email, company) REFRESHES the existing application instead of filing a second one, so an impatient applicant cannot duplicate their own lead — that is a 200 where a first submission is a 201. A filled &#x60;hp&#x60; honeypot field is answered exactly like a success and stored nowhere, so a bot cannot tell a drop from an accept.  Filing is not screening: the application lands at stage &#x60;applied&#x60; with its AI screen still pending, and the screen runs afterwards on its own clock. A company and contact are also projected into the program org&#39;s ordinary CRM lists, best-effort — that projection failing does not fail the application. Bodies over 64 KiB are refused, and submissions are rate-limited.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2231,7 +2231,7 @@ public class CrmApi {
     }
     /**
      * Build call for cloudPutV1CrmCompaniesId
-     * @param id ID names the company to update and comes from the path. A create ignores it: the server mints the id. (required)
+     * @param id  (required)
      * @param cloudCompanyReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2308,7 +2308,7 @@ public class CrmApi {
     /**
      * UpdateCompany replaces one of the caller org&#39;s companies.
      * UpdateCompany replaces one of the caller org&#39;s companies. Every writable field is taken from the request, so a field the request omits is CLEARED — send the whole record. A name is required.
-     * @param id ID names the company to update and comes from the path. A create ignores it: the server mints the id. (required)
+     * @param id  (required)
      * @param cloudCompanyReq  (required)
      * @return CloudCompany
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2327,7 +2327,7 @@ public class CrmApi {
     /**
      * UpdateCompany replaces one of the caller org&#39;s companies.
      * UpdateCompany replaces one of the caller org&#39;s companies. Every writable field is taken from the request, so a field the request omits is CLEARED — send the whole record. A name is required.
-     * @param id ID names the company to update and comes from the path. A create ignores it: the server mints the id. (required)
+     * @param id  (required)
      * @param cloudCompanyReq  (required)
      * @return ApiResponse&lt;CloudCompany&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2347,7 +2347,7 @@ public class CrmApi {
     /**
      * UpdateCompany replaces one of the caller org&#39;s companies. (asynchronously)
      * UpdateCompany replaces one of the caller org&#39;s companies. Every writable field is taken from the request, so a field the request omits is CLEARED — send the whole record. A name is required.
-     * @param id ID names the company to update and comes from the path. A create ignores it: the server mints the id. (required)
+     * @param id  (required)
      * @param cloudCompanyReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2368,7 +2368,7 @@ public class CrmApi {
     }
     /**
      * Build call for cloudPutV1CrmContactsId
-     * @param id ID names the contact to update and comes from the path. A create ignores it: the server mints the id. (required)
+     * @param id  (required)
      * @param cloudContactReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2445,7 +2445,7 @@ public class CrmApi {
     /**
      * UpdateContact replaces one of the caller org&#39;s contacts.
      * UpdateContact replaces one of the caller org&#39;s contacts. Every writable field is taken from the request, so a field the request omits is CLEARED — send the whole record. One of firstName, lastName or email is required.
-     * @param id ID names the contact to update and comes from the path. A create ignores it: the server mints the id. (required)
+     * @param id  (required)
      * @param cloudContactReq  (required)
      * @return CloudContact
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2464,7 +2464,7 @@ public class CrmApi {
     /**
      * UpdateContact replaces one of the caller org&#39;s contacts.
      * UpdateContact replaces one of the caller org&#39;s contacts. Every writable field is taken from the request, so a field the request omits is CLEARED — send the whole record. One of firstName, lastName or email is required.
-     * @param id ID names the contact to update and comes from the path. A create ignores it: the server mints the id. (required)
+     * @param id  (required)
      * @param cloudContactReq  (required)
      * @return ApiResponse&lt;CloudContact&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2484,7 +2484,7 @@ public class CrmApi {
     /**
      * UpdateContact replaces one of the caller org&#39;s contacts. (asynchronously)
      * UpdateContact replaces one of the caller org&#39;s contacts. Every writable field is taken from the request, so a field the request omits is CLEARED — send the whole record. One of firstName, lastName or email is required.
-     * @param id ID names the contact to update and comes from the path. A create ignores it: the server mints the id. (required)
+     * @param id  (required)
      * @param cloudContactReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2505,7 +2505,7 @@ public class CrmApi {
     }
     /**
      * Build call for cloudPutV1CrmOpportunitiesId
-     * @param id ID names the opportunity to update and comes from the path. A create ignores it: the server mints the id. (required)
+     * @param id  (required)
      * @param cloudOppReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2582,7 +2582,7 @@ public class CrmApi {
     /**
      * UpdateOpportunity replaces one of the caller org&#39;s deals.
      * UpdateOpportunity replaces one of the caller org&#39;s deals. Every writable field is taken from the request, so a field the request omits is CLEARED — send the whole record. A name is required and the stage must be a pipeline stage.
-     * @param id ID names the opportunity to update and comes from the path. A create ignores it: the server mints the id. (required)
+     * @param id  (required)
      * @param cloudOppReq  (required)
      * @return CloudOpportunity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2601,7 +2601,7 @@ public class CrmApi {
     /**
      * UpdateOpportunity replaces one of the caller org&#39;s deals.
      * UpdateOpportunity replaces one of the caller org&#39;s deals. Every writable field is taken from the request, so a field the request omits is CLEARED — send the whole record. A name is required and the stage must be a pipeline stage.
-     * @param id ID names the opportunity to update and comes from the path. A create ignores it: the server mints the id. (required)
+     * @param id  (required)
      * @param cloudOppReq  (required)
      * @return ApiResponse&lt;CloudOpportunity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2621,7 +2621,7 @@ public class CrmApi {
     /**
      * UpdateOpportunity replaces one of the caller org&#39;s deals. (asynchronously)
      * UpdateOpportunity replaces one of the caller org&#39;s deals. Every writable field is taken from the request, so a field the request omits is CLEARED — send the whole record. A name is required and the stage must be a pipeline stage.
-     * @param id ID names the opportunity to update and comes from the path. A create ignores it: the server mints the id. (required)
+     * @param id  (required)
      * @param cloudOppReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

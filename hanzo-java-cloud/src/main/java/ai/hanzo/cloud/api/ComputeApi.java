@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.CloudAdminAdminCreatePromo400Response;
 import ai.hanzo.cloud.model.CloudBotList;
 import ai.hanzo.cloud.model.CloudBotView;
 
@@ -331,7 +332,8 @@ public class ComputeApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Regions — Visor authoritative catalog, verbatim </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1ComputeRegionsCall(final ApiCallback _callback) throws ApiException {
@@ -360,6 +362,7 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -384,40 +387,45 @@ public class ComputeApi {
     }
 
     /**
-     * 
-     * 
+     * The regions a machine or GPU can be launched into
+     * Lists the launch regions the compute catalog offers, passed through verbatim from the provider so the shape stays the provider&#39;s single source of truth. The catalog is GLOBAL, not per-tenant: no owner is forwarded and every org sees the same list. It is still gated — a validated principal is required, 403 without one — because the catalog is what backs the launch drawer, not public marketing copy.
+     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Regions — Visor authoritative catalog, verbatim </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1ComputeRegions() throws ApiException {
-        cloudGetV1ComputeRegionsWithHttpInfo();
+    public Object cloudGetV1ComputeRegions() throws ApiException {
+        ApiResponse<Object> localVarResp = cloudGetV1ComputeRegionsWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * The regions a machine or GPU can be launched into
+     * Lists the launch regions the compute catalog offers, passed through verbatim from the provider so the shape stays the provider&#39;s single source of truth. The catalog is GLOBAL, not per-tenant: no owner is forwarded and every org sees the same list. It is still gated — a validated principal is required, 403 without one — because the catalog is what backs the launch drawer, not public marketing copy.
+     * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Regions — Visor authoritative catalog, verbatim </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1ComputeRegionsWithHttpInfo() throws ApiException {
+    public ApiResponse<Object> cloudGetV1ComputeRegionsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = cloudGetV1ComputeRegionsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The regions a machine or GPU can be launched into (asynchronously)
+     * Lists the launch regions the compute catalog offers, passed through verbatim from the provider so the shape stays the provider&#39;s single source of truth. The catalog is GLOBAL, not per-tenant: no owner is forwarded and every org sees the same list. It is still gated — a validated principal is required, 403 without one — because the catalog is what backs the launch drawer, not public marketing copy.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -425,13 +433,15 @@ public class ComputeApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Regions — Visor authoritative catalog, verbatim </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1ComputeRegionsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1ComputeRegionsAsync(final ApiCallback<Object> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudGetV1ComputeRegionsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -443,7 +453,8 @@ public class ComputeApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Sizes — Visor authoritative catalog, verbatim </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudGetV1ComputeSizesCall(final ApiCallback _callback) throws ApiException {
@@ -472,6 +483,7 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -496,40 +508,45 @@ public class ComputeApi {
     }
 
     /**
-     * 
-     * 
+     * The machine and GPU sizes that can be launched
+     * Lists the instance sizes the compute catalog offers, passed through verbatim from the provider so the shape stays the provider&#39;s single source of truth. These are the values &#x60;size&#x60; accepts on a launch. The catalog is GLOBAL, not per-tenant: no owner is forwarded and every org sees the same list. It is still gated — a validated principal is required, 403 without one.
+     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Sizes — Visor authoritative catalog, verbatim </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1ComputeSizes() throws ApiException {
-        cloudGetV1ComputeSizesWithHttpInfo();
+    public Object cloudGetV1ComputeSizes() throws ApiException {
+        ApiResponse<Object> localVarResp = cloudGetV1ComputeSizesWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * The machine and GPU sizes that can be launched
+     * Lists the instance sizes the compute catalog offers, passed through verbatim from the provider so the shape stays the provider&#39;s single source of truth. These are the values &#x60;size&#x60; accepts on a launch. The catalog is GLOBAL, not per-tenant: no owner is forwarded and every org sees the same list. It is still gated — a validated principal is required, 403 without one.
+     * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Sizes — Visor authoritative catalog, verbatim </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1ComputeSizesWithHttpInfo() throws ApiException {
+    public ApiResponse<Object> cloudGetV1ComputeSizesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = cloudGetV1ComputeSizesValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * The machine and GPU sizes that can be launched (asynchronously)
+     * Lists the instance sizes the compute catalog offers, passed through verbatim from the provider so the shape stays the provider&#39;s single source of truth. These are the values &#x60;size&#x60; accepts on a launch. The catalog is GLOBAL, not per-tenant: no owner is forwarded and every org sees the same list. It is still gated — a validated principal is required, 403 without one.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -537,13 +554,15 @@ public class ComputeApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Sizes — Visor authoritative catalog, verbatim </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1ComputeSizesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1ComputeSizesAsync(final ApiCallback<Object> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudGetV1ComputeSizesValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -739,8 +758,8 @@ public class ComputeApi {
     }
 
     /**
-     * 
-     * 
+     * Message a bot, or stop it, by naming the action in the path
+     * Dispatches one verb against a bot the caller&#39;s org owns. &#x60;message&#x60; runs the bot&#39;s bound agent with the request body as the message and streams the agent&#39;s answer back VERBATIM — the upstream body, its content type and its status — so a message is a real agent run, recorded, billed and traced exactly like any other, under the caller&#39;s own identity rather than a fabricated one. &#x60;stop&#x60; and &#x60;pause&#x60; are the same single honest capability: they halt the runtime by unbinding the agent while LEAVING THE MACHINE UP, so the bot stops answering but keeps costing — rebind to resume, or delete the bot to tear it down. Stopping is idempotent; a bot with no binding still reports stopped.  Org-scoped and fails closed: a validated principal is required (403 without one) and the bot is addressed under the caller&#39;s OWN org, so another tenant&#39;s id is not reachable. An unknown action is a clean 400 naming the three it accepts, never a silent no-op, and messaging a bot with no bound agent is a 400.
      * @param id  (required)
      * @param action  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -756,8 +775,8 @@ public class ComputeApi {
     }
 
     /**
-     * 
-     * 
+     * Message a bot, or stop it, by naming the action in the path
+     * Dispatches one verb against a bot the caller&#39;s org owns. &#x60;message&#x60; runs the bot&#39;s bound agent with the request body as the message and streams the agent&#39;s answer back VERBATIM — the upstream body, its content type and its status — so a message is a real agent run, recorded, billed and traced exactly like any other, under the caller&#39;s own identity rather than a fabricated one. &#x60;stop&#x60; and &#x60;pause&#x60; are the same single honest capability: they halt the runtime by unbinding the agent while LEAVING THE MACHINE UP, so the bot stops answering but keeps costing — rebind to resume, or delete the bot to tear it down. Stopping is idempotent; a bot with no binding still reports stopped.  Org-scoped and fails closed: a validated principal is required (403 without one) and the bot is addressed under the caller&#39;s OWN org, so another tenant&#39;s id is not reachable. An unknown action is a clean 400 naming the three it accepts, never a silent no-op, and messaging a bot with no bound agent is a 400.
      * @param id  (required)
      * @param action  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -775,8 +794,8 @@ public class ComputeApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Message a bot, or stop it, by naming the action in the path (asynchronously)
+     * Dispatches one verb against a bot the caller&#39;s org owns. &#x60;message&#x60; runs the bot&#39;s bound agent with the request body as the message and streams the agent&#39;s answer back VERBATIM — the upstream body, its content type and its status — so a message is a real agent run, recorded, billed and traced exactly like any other, under the caller&#39;s own identity rather than a fabricated one. &#x60;stop&#x60; and &#x60;pause&#x60; are the same single honest capability: they halt the runtime by unbinding the agent while LEAVING THE MACHINE UP, so the bot stops answering but keeps costing — rebind to resume, or delete the bot to tear it down. Stopping is idempotent; a bot with no binding still reports stopped.  Org-scoped and fails closed: a validated principal is required (403 without one) and the bot is addressed under the caller&#39;s OWN org, so another tenant&#39;s id is not reachable. An unknown action is a clean 400 naming the three it accepts, never a silent no-op, and messaging a bot with no bound agent is a 400.
      * @param id  (required)
      * @param action  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -857,8 +876,8 @@ public class ComputeApi {
     }
 
     /**
-     * 
-     * 
+     * Launch a bot machine — an agent plus the machine that runs it — or price one
+     * Creates BOTH halves of a bot in one call and answers 201 with the bot: the cloud agent it runs, then a bot-kind machine bootstrapped with the bot runtime, then the binding between them, so a launched bot is immediately messageable. Send &#x60;dryRun: true&#x60; for a price quote instead — 200 with the upstream quote verbatim, no agent created, no machine launched, nothing spent.  The agent is created FIRST and on purpose: it is create-if-absent (an agent that already exists is reused, so a relaunch is fine and several bots may share one explicit &#x60;agent&#x60;), and doing it before the machine means a bad request — a model that is not in the catalog, say — fails with the real reason BEFORE any metered machine is provisioned. &#x60;agent&#x60; defaults to the bot&#39;s name and an empty &#x60;model&#x60; takes the deployment default.  Org-scoped and fails closed: a validated principal is required (403 without one), the owning org is that principal&#39;s and never a body field, &#x60;size&#x60; is required (400), and &#x60;name&#x60; is required for a real launch though not for a quote.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -872,8 +891,8 @@ public class ComputeApi {
     }
 
     /**
-     * 
-     * 
+     * Launch a bot machine — an agent plus the machine that runs it — or price one
+     * Creates BOTH halves of a bot in one call and answers 201 with the bot: the cloud agent it runs, then a bot-kind machine bootstrapped with the bot runtime, then the binding between them, so a launched bot is immediately messageable. Send &#x60;dryRun: true&#x60; for a price quote instead — 200 with the upstream quote verbatim, no agent created, no machine launched, nothing spent.  The agent is created FIRST and on purpose: it is create-if-absent (an agent that already exists is reused, so a relaunch is fine and several bots may share one explicit &#x60;agent&#x60;), and doing it before the machine means a bad request — a model that is not in the catalog, say — fails with the real reason BEFORE any metered machine is provisioned. &#x60;agent&#x60; defaults to the bot&#39;s name and an empty &#x60;model&#x60; takes the deployment default.  Org-scoped and fails closed: a validated principal is required (403 without one), the owning org is that principal&#39;s and never a body field, &#x60;size&#x60; is required (400), and &#x60;name&#x60; is required for a real launch though not for a quote.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -889,8 +908,8 @@ public class ComputeApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Launch a bot machine — an agent plus the machine that runs it — or price one (asynchronously)
+     * Creates BOTH halves of a bot in one call and answers 201 with the bot: the cloud agent it runs, then a bot-kind machine bootstrapped with the bot runtime, then the binding between them, so a launched bot is immediately messageable. Send &#x60;dryRun: true&#x60; for a price quote instead — 200 with the upstream quote verbatim, no agent created, no machine launched, nothing spent.  The agent is created FIRST and on purpose: it is create-if-absent (an agent that already exists is reused, so a relaunch is fine and several bots may share one explicit &#x60;agent&#x60;), and doing it before the machine means a bad request — a model that is not in the catalog, say — fails with the real reason BEFORE any metered machine is provisioned. &#x60;agent&#x60; defaults to the bot&#39;s name and an empty &#x60;model&#x60; takes the deployment default.  Org-scoped and fails closed: a validated principal is required (403 without one), the owning org is that principal&#39;s and never a body field, &#x60;size&#x60; is required (400), and &#x60;name&#x60; is required for a real launch though not for a quote.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

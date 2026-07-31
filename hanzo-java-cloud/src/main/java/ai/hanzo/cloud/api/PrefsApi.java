@@ -251,8 +251,8 @@ public class PrefsApi {
     }
 
     /**
-     * 
-     * 
+     * Save the preference keys your surface owns, leaving every other key alone
+     * Merges a JSON object key-wise into the signed-in caller&#39;s OWN preference document and answers with the whole document after the merge, so a surface saves &#x60;theme&#x60; without having to send back the &#x60;density&#x60; another surface owns. The merge is SHALLOW and the key space is open: an unnamed key is left untouched, a named key is replaced whole, and a key sent with a &#x60;null&#x60; value is DELETED. The subject is the &#x60;&lt;owner&gt;/&lt;name&gt;&#x60; identity built from the validated credential and is the mandatory predicate on the write, so there is no path to another user&#39;s preferences — not for an org admin, not for a platform SuperAdmin. Fails closed: no validated principal is 403; an empty body or a literal &#x60;null&#x60; is 400; and a patch or a resulting document over 16 KiB or 128 keys is 413.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -266,8 +266,8 @@ public class PrefsApi {
     }
 
     /**
-     * 
-     * 
+     * Save the preference keys your surface owns, leaving every other key alone
+     * Merges a JSON object key-wise into the signed-in caller&#39;s OWN preference document and answers with the whole document after the merge, so a surface saves &#x60;theme&#x60; without having to send back the &#x60;density&#x60; another surface owns. The merge is SHALLOW and the key space is open: an unnamed key is left untouched, a named key is replaced whole, and a key sent with a &#x60;null&#x60; value is DELETED. The subject is the &#x60;&lt;owner&gt;/&lt;name&gt;&#x60; identity built from the validated credential and is the mandatory predicate on the write, so there is no path to another user&#39;s preferences — not for an org admin, not for a platform SuperAdmin. Fails closed: no validated principal is 403; an empty body or a literal &#x60;null&#x60; is 400; and a patch or a resulting document over 16 KiB or 128 keys is 413.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -283,8 +283,8 @@ public class PrefsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Save the preference keys your surface owns, leaving every other key alone (asynchronously)
+     * Merges a JSON object key-wise into the signed-in caller&#39;s OWN preference document and answers with the whole document after the merge, so a surface saves &#x60;theme&#x60; without having to send back the &#x60;density&#x60; another surface owns. The merge is SHALLOW and the key space is open: an unnamed key is left untouched, a named key is replaced whole, and a key sent with a &#x60;null&#x60; value is DELETED. The subject is the &#x60;&lt;owner&gt;/&lt;name&gt;&#x60; identity built from the validated credential and is the mandatory predicate on the write, so there is no path to another user&#39;s preferences — not for an org admin, not for a platform SuperAdmin. Fails closed: no validated principal is 403; an empty body or a literal &#x60;null&#x60; is 400; and a patch or a resulting document over 16 KiB or 128 keys is 413.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

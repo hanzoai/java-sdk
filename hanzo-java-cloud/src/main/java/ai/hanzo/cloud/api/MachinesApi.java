@@ -27,11 +27,14 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.CloudAdminAdminCreatePromo400Response;
 import ai.hanzo.cloud.model.CloudAgentBinding;
 import ai.hanzo.cloud.model.CloudBindAgentReq;
 import ai.hanzo.cloud.model.CloudBindingList;
 import ai.hanzo.cloud.model.CloudMachineList;
 import ai.hanzo.cloud.model.CloudMachineView;
+import ai.hanzo.cloud.model.VisorLaunchRequest;
+import ai.hanzo.cloud.model.VisorMachineView;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -825,6 +828,7 @@ public class MachinesApi {
     }
     /**
      * Build call for cloudPostV1Machines
+     * @param visorLaunchRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -832,10 +836,13 @@ public class MachinesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Price quote (dryRun) — Visor authoritative quote, verbatim </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Machine launched </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> size is required </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1MachinesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1MachinesCall(@javax.annotation.Nonnull VisorLaunchRequest visorLaunchRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -849,7 +856,7 @@ public class MachinesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = visorLaunchRequest;
 
         // create path and map variables
         String localVarPath = "/v1/machines";
@@ -861,6 +868,7 @@ public class MachinesApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -868,6 +876,7 @@ public class MachinesApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -879,46 +888,63 @@ public class MachinesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1MachinesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1MachinesCall(_callback);
+    private okhttp3.Call cloudPostV1MachinesValidateBeforeCall(@javax.annotation.Nonnull VisorLaunchRequest visorLaunchRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'visorLaunchRequest' is set
+        if (visorLaunchRequest == null) {
+            throw new ApiException("Missing the required parameter 'visorLaunchRequest' when calling cloudPostV1Machines(Async)");
+        }
+
+        return cloudPostV1MachinesCall(visorLaunchRequest, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Launch a metered machine for your org, or price one first with dryRun
+     * Provisions a machine owned by the caller&#39;s org and answers 201 with the machine. Send &#x60;dryRun: true&#x60; to get a PRICE QUOTE instead: 200 with the upstream quote passed through verbatim, nothing launched and nothing spent. Two response shapes on one address is the rule to know, and it is why this is not a typed op.  Metering is not this plane&#39;s: the launch fronts the compute provider&#39;s resell endpoint, which owns the balance gate and the per-hour meter, and cloud only forwards the tenant. Ownership is the validated principal&#39;s org and is never read from the body, so a launch always lands in the caller&#39;s OWN tenant and the machine it creates is only ever visible to that tenant. Fails closed: a validated principal is required (403 without one) and &#x60;size&#x60; (or its &#x60;instanceType&#x60; alias) is required (400).
+     * @param visorLaunchRequest  (required)
+     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Price quote (dryRun) — Visor authoritative quote, verbatim </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Machine launched </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> size is required </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1Machines() throws ApiException {
-        cloudPostV1MachinesWithHttpInfo();
+    public Object cloudPostV1Machines(@javax.annotation.Nonnull VisorLaunchRequest visorLaunchRequest) throws ApiException {
+        ApiResponse<Object> localVarResp = cloudPostV1MachinesWithHttpInfo(visorLaunchRequest);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Launch a metered machine for your org, or price one first with dryRun
+     * Provisions a machine owned by the caller&#39;s org and answers 201 with the machine. Send &#x60;dryRun: true&#x60; to get a PRICE QUOTE instead: 200 with the upstream quote passed through verbatim, nothing launched and nothing spent. Two response shapes on one address is the rule to know, and it is why this is not a typed op.  Metering is not this plane&#39;s: the launch fronts the compute provider&#39;s resell endpoint, which owns the balance gate and the per-hour meter, and cloud only forwards the tenant. Ownership is the validated principal&#39;s org and is never read from the body, so a launch always lands in the caller&#39;s OWN tenant and the machine it creates is only ever visible to that tenant. Fails closed: a validated principal is required (403 without one) and &#x60;size&#x60; (or its &#x60;instanceType&#x60; alias) is required (400).
+     * @param visorLaunchRequest  (required)
+     * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Price quote (dryRun) — Visor authoritative quote, verbatim </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Machine launched </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> size is required </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1MachinesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1MachinesValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<Object> cloudPostV1MachinesWithHttpInfo(@javax.annotation.Nonnull VisorLaunchRequest visorLaunchRequest) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1MachinesValidateBeforeCall(visorLaunchRequest, null);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Launch a metered machine for your org, or price one first with dryRun (asynchronously)
+     * Provisions a machine owned by the caller&#39;s org and answers 201 with the machine. Send &#x60;dryRun: true&#x60; to get a PRICE QUOTE instead: 200 with the upstream quote passed through verbatim, nothing launched and nothing spent. Two response shapes on one address is the rule to know, and it is why this is not a typed op.  Metering is not this plane&#39;s: the launch fronts the compute provider&#39;s resell endpoint, which owns the balance gate and the per-hour meter, and cloud only forwards the tenant. Ownership is the validated principal&#39;s org and is never read from the body, so a launch always lands in the caller&#39;s OWN tenant and the machine it creates is only ever visible to that tenant. Fails closed: a validated principal is required (403 without one) and &#x60;size&#x60; (or its &#x60;instanceType&#x60; alias) is required (400).
+     * @param visorLaunchRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -926,13 +952,17 @@ public class MachinesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Price quote (dryRun) — Visor authoritative quote, verbatim </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Machine launched </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> size is required </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Missing or invalid credentials </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1MachinesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1MachinesAsync(@javax.annotation.Nonnull VisorLaunchRequest visorLaunchRequest, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1MachinesValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudPostV1MachinesValidateBeforeCall(visorLaunchRequest, _callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

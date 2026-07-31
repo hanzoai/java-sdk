@@ -47,6 +47,7 @@ import ai.hanzo.cloud.model.CloudGithubReposOut;
 import ai.hanzo.cloud.model.CloudListOut;
 import ai.hanzo.cloud.model.CloudProviderView;
 import ai.hanzo.cloud.model.CloudVerifyOut;
+import ai.hanzo.cloud.model.IntegrationsSlackEventEnvelope;
 import java.time.OffsetDateTime;
 
 import java.lang.reflect.Type;
@@ -610,7 +611,10 @@ public class IntegrationsApi {
     }
     /**
      * Build call for cloudGetV1IntegrationsByProviderCallback
+     * @param state  (required)
      * @param provider  (required)
+     * @param code  (optional)
+     * @param error  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -618,10 +622,10 @@ public class IntegrationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 302 </td><td> Redirect to console (connected or error) </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1IntegrationsByProviderCallbackCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1IntegrationsByProviderCallbackCall(@javax.annotation.Nonnull String state, @javax.annotation.Nonnull String provider, @javax.annotation.Nullable String code, @javax.annotation.Nullable String error, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -647,6 +651,18 @@ public class IntegrationsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (state != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("state", state));
+        }
+
+        if (code != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("code", code));
+        }
+
+        if (error != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("error", error));
+        }
+
         final String[] localVarAccepts = {
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -661,59 +677,73 @@ public class IntegrationsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudGetV1IntegrationsByProviderCallbackValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cloudGetV1IntegrationsByProviderCallbackValidateBeforeCall(@javax.annotation.Nonnull String state, @javax.annotation.Nonnull String provider, @javax.annotation.Nullable String code, @javax.annotation.Nullable String error, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'state' is set
+        if (state == null) {
+            throw new ApiException("Missing the required parameter 'state' when calling cloudGetV1IntegrationsByProviderCallback(Async)");
+        }
+
         // verify the required parameter 'provider' is set
         if (provider == null) {
             throw new ApiException("Missing the required parameter 'provider' when calling cloudGetV1IntegrationsByProviderCallback(Async)");
         }
 
-        return cloudGetV1IntegrationsByProviderCallbackCall(provider, _callback);
+        return cloudGetV1IntegrationsByProviderCallbackCall(state, provider, code, error, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * OAuth return for any connector
+     * The single address every connector&#39;s OAuth flow returns to. It exchanges the authorization the provider granted, records the connection, and ALWAYS redirects the browser back to the console — on success and on every labeled failure alike, so a user never lands on a raw JSON dead end.  It is public and carries no principal, so the org is taken ONLY from the signed state minted when the flow began; no header is trusted here. That state is single-use and is burned BEFORE the exchange, so one authorization is one attempt and a replayed return fails instead of exchanging twice.  Tokens are sealed into the org&#39;s KMS namespace BEFORE the connection row is written, so a failure of the secret store leaves no half-connected integration advertising a credential that was never stored. Token values never appear in the redirect, in a log line or in an error.  One generalization is worth knowing: a GitHub App installation returns an installation identifier instead of an OAuth code, and it is accepted in the code&#39;s place so the App model needs no second address.
+     * @param state  (required)
      * @param provider  (required)
+     * @param code  (optional)
+     * @param error  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 302 </td><td> Redirect to console (connected or error) </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1IntegrationsByProviderCallback(@javax.annotation.Nonnull String provider) throws ApiException {
-        cloudGetV1IntegrationsByProviderCallbackWithHttpInfo(provider);
+    public void cloudGetV1IntegrationsByProviderCallback(@javax.annotation.Nonnull String state, @javax.annotation.Nonnull String provider, @javax.annotation.Nullable String code, @javax.annotation.Nullable String error) throws ApiException {
+        cloudGetV1IntegrationsByProviderCallbackWithHttpInfo(state, provider, code, error);
     }
 
     /**
-     * 
-     * 
+     * OAuth return for any connector
+     * The single address every connector&#39;s OAuth flow returns to. It exchanges the authorization the provider granted, records the connection, and ALWAYS redirects the browser back to the console — on success and on every labeled failure alike, so a user never lands on a raw JSON dead end.  It is public and carries no principal, so the org is taken ONLY from the signed state minted when the flow began; no header is trusted here. That state is single-use and is burned BEFORE the exchange, so one authorization is one attempt and a replayed return fails instead of exchanging twice.  Tokens are sealed into the org&#39;s KMS namespace BEFORE the connection row is written, so a failure of the secret store leaves no half-connected integration advertising a credential that was never stored. Token values never appear in the redirect, in a log line or in an error.  One generalization is worth knowing: a GitHub App installation returns an installation identifier instead of an OAuth code, and it is accepted in the code&#39;s place so the App model needs no second address.
+     * @param state  (required)
      * @param provider  (required)
+     * @param code  (optional)
+     * @param error  (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 302 </td><td> Redirect to console (connected or error) </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1IntegrationsByProviderCallbackWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
-        okhttp3.Call localVarCall = cloudGetV1IntegrationsByProviderCallbackValidateBeforeCall(provider, null);
+    public ApiResponse<Void> cloudGetV1IntegrationsByProviderCallbackWithHttpInfo(@javax.annotation.Nonnull String state, @javax.annotation.Nonnull String provider, @javax.annotation.Nullable String code, @javax.annotation.Nullable String error) throws ApiException {
+        okhttp3.Call localVarCall = cloudGetV1IntegrationsByProviderCallbackValidateBeforeCall(state, provider, code, error, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * OAuth return for any connector (asynchronously)
+     * The single address every connector&#39;s OAuth flow returns to. It exchanges the authorization the provider granted, records the connection, and ALWAYS redirects the browser back to the console — on success and on every labeled failure alike, so a user never lands on a raw JSON dead end.  It is public and carries no principal, so the org is taken ONLY from the signed state minted when the flow began; no header is trusted here. That state is single-use and is burned BEFORE the exchange, so one authorization is one attempt and a replayed return fails instead of exchanging twice.  Tokens are sealed into the org&#39;s KMS namespace BEFORE the connection row is written, so a failure of the secret store leaves no half-connected integration advertising a credential that was never stored. Token values never appear in the redirect, in a log line or in an error.  One generalization is worth knowing: a GitHub App installation returns an installation identifier instead of an OAuth code, and it is accepted in the code&#39;s place so the App model needs no second address.
+     * @param state  (required)
      * @param provider  (required)
+     * @param code  (optional)
+     * @param error  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -721,12 +751,12 @@ public class IntegrationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 302 </td><td> Redirect to console (connected or error) </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1IntegrationsByProviderCallbackAsync(@javax.annotation.Nonnull String provider, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1IntegrationsByProviderCallbackAsync(@javax.annotation.Nonnull String state, @javax.annotation.Nonnull String provider, @javax.annotation.Nullable String code, @javax.annotation.Nullable String error, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudGetV1IntegrationsByProviderCallbackValidateBeforeCall(provider, _callback);
+        okhttp3.Call localVarCall = cloudGetV1IntegrationsByProviderCallbackValidateBeforeCall(state, provider, code, error, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -792,8 +822,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Begin linking a Hanzo account from Discord
+     * The entry point behind the connect prompt Hanzo shows in a Discord server. It starts a link session and redirects to Discord&#39;s OAuth &#x60;identify&#x60; consent — the narrowest scope that establishes which Discord user is asking, and nothing more.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -807,8 +837,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Begin linking a Hanzo account from Discord
+     * The entry point behind the connect prompt Hanzo shows in a Discord server. It starts a link session and redirects to Discord&#39;s OAuth &#x60;identify&#x60; consent — the narrowest scope that establishes which Discord user is asking, and nothing more.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -824,8 +854,8 @@ public class IntegrationsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Begin linking a Hanzo account from Discord (asynchronously)
+     * The entry point behind the connect prompt Hanzo shows in a Discord server. It starts a link session and redirects to Discord&#39;s OAuth &#x60;identify&#x60; consent — the narrowest scope that establishes which Discord user is asking, and nothing more.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -904,8 +934,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Complete the Discord account link
+     * The final leg: it binds the verified Discord user to the Hanzo account that just signed in, and answers a short confirmation page telling them to return to Discord. The Hanzo credential is sealed into the connected org&#39;s KMS namespace rather than stored beside the link.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -919,8 +949,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Complete the Discord account link
+     * The final leg: it binds the verified Discord user to the Hanzo account that just signed in, and answers a short confirmation page telling them to return to Discord. The Hanzo credential is sealed into the connected org&#39;s KMS namespace rather than stored beside the link.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -936,8 +966,8 @@ public class IntegrationsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Complete the Discord account link (asynchronously)
+     * The final leg: it binds the verified Discord user to the Hanzo account that just signed in, and answers a short confirmation page telling them to return to Discord. The Hanzo credential is sealed into the connected org&#39;s KMS namespace rather than stored beside the link.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1016,8 +1046,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Discord sign-in return leg
+     * Where Discord returns the user after the identify consent. It resolves the verified Discord user, confirms the server is connected to an org, and hands the browser to the Hanzo sign-in that completes the link.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1031,8 +1061,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Discord sign-in return leg
+     * Where Discord returns the user after the identify consent. It resolves the verified Discord user, confirms the server is connected to an org, and hands the browser to the Hanzo sign-in that completes the link.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1048,8 +1078,8 @@ public class IntegrationsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Discord sign-in return leg (asynchronously)
+     * Where Discord returns the user after the identify consent. It resolves the verified Discord user, confirms the server is connected to an org, and hands the browser to the Hanzo sign-in that completes the link.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1312,7 +1342,7 @@ public class IntegrationsApi {
     }
     /**
      * Build call for cloudGetV1IntegrationsProvider
-     * @param provider Provider is the registry id of the connector — \&quot;slack\&quot;, \&quot;github\&quot;, \&quot;cloudflare\&quot;. Unknown ids are 404, as are the user-plane (/v1/connectors) providers, which this surface never resolves. (required)
+     * @param provider Provider slug (e.g. slack, github) (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1382,7 +1412,7 @@ public class IntegrationsApi {
     /**
      * Returns ONE provider with this org&#39;s connection status — the same view list carries, for a single id.
      * Returns ONE provider with this org&#39;s connection status — the same view list carries, for a single id. An unknown id is 404, and so is a user-plane provider: the org surface never resolves one.
-     * @param provider Provider is the registry id of the connector — \&quot;slack\&quot;, \&quot;github\&quot;, \&quot;cloudflare\&quot;. Unknown ids are 404, as are the user-plane (/v1/connectors) providers, which this surface never resolves. (required)
+     * @param provider Provider slug (e.g. slack, github) (required)
      * @return CloudProviderView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1400,7 +1430,7 @@ public class IntegrationsApi {
     /**
      * Returns ONE provider with this org&#39;s connection status — the same view list carries, for a single id.
      * Returns ONE provider with this org&#39;s connection status — the same view list carries, for a single id. An unknown id is 404, and so is a user-plane provider: the org surface never resolves one.
-     * @param provider Provider is the registry id of the connector — \&quot;slack\&quot;, \&quot;github\&quot;, \&quot;cloudflare\&quot;. Unknown ids are 404, as are the user-plane (/v1/connectors) providers, which this surface never resolves. (required)
+     * @param provider Provider slug (e.g. slack, github) (required)
      * @return ApiResponse&lt;CloudProviderView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1419,7 +1449,7 @@ public class IntegrationsApi {
     /**
      * Returns ONE provider with this org&#39;s connection status — the same view list carries, for a single id. (asynchronously)
      * Returns ONE provider with this org&#39;s connection status — the same view list carries, for a single id. An unknown id is 404, and so is a user-plane provider: the org surface never resolves one.
-     * @param provider Provider is the registry id of the connector — \&quot;slack\&quot;, \&quot;github\&quot;, \&quot;cloudflare\&quot;. Unknown ids are 404, as are the user-plane (/v1/connectors) providers, which this surface never resolves. (required)
+     * @param provider Provider slug (e.g. slack, github) (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1439,6 +1469,7 @@ public class IntegrationsApi {
     }
     /**
      * Build call for cloudGetV1IntegrationsSlackLink
+     * @param state Signed, single-use link state (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1446,10 +1477,12 @@ public class IntegrationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 302 </td><td> Redirect to Slack sign-in </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid or expired link </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Account linking not configured </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1IntegrationsSlackLinkCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1IntegrationsSlackLinkCall(@javax.annotation.Nonnull String state, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1474,6 +1507,10 @@ public class IntegrationsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (state != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("state", state));
+        }
+
         final String[] localVarAccepts = {
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -1488,51 +1525,63 @@ public class IntegrationsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudGetV1IntegrationsSlackLinkValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudGetV1IntegrationsSlackLinkCall(_callback);
+    private okhttp3.Call cloudGetV1IntegrationsSlackLinkValidateBeforeCall(@javax.annotation.Nonnull String state, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'state' is set
+        if (state == null) {
+            throw new ApiException("Missing the required parameter 'state' when calling cloudGetV1IntegrationsSlackLink(Async)");
+        }
+
+        return cloudGetV1IntegrationsSlackLinkCall(state, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Begin linking a Hanzo account from Slack
+     * The entry point behind the connect prompt Hanzo posts in Slack. It starts a link session in the browser and redirects to Slack&#39;s own sign-in, which is what proves which Slack user is asking.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
+     * @param state Signed, single-use link state (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 302 </td><td> Redirect to Slack sign-in </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid or expired link </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Account linking not configured </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1IntegrationsSlackLink() throws ApiException {
-        cloudGetV1IntegrationsSlackLinkWithHttpInfo();
+    public void cloudGetV1IntegrationsSlackLink(@javax.annotation.Nonnull String state) throws ApiException {
+        cloudGetV1IntegrationsSlackLinkWithHttpInfo(state);
     }
 
     /**
-     * 
-     * 
+     * Begin linking a Hanzo account from Slack
+     * The entry point behind the connect prompt Hanzo posts in Slack. It starts a link session in the browser and redirects to Slack&#39;s own sign-in, which is what proves which Slack user is asking.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
+     * @param state Signed, single-use link state (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 302 </td><td> Redirect to Slack sign-in </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid or expired link </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Account linking not configured </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1IntegrationsSlackLinkWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudGetV1IntegrationsSlackLinkValidateBeforeCall(null);
+    public ApiResponse<Void> cloudGetV1IntegrationsSlackLinkWithHttpInfo(@javax.annotation.Nonnull String state) throws ApiException {
+        okhttp3.Call localVarCall = cloudGetV1IntegrationsSlackLinkValidateBeforeCall(state, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Begin linking a Hanzo account from Slack (asynchronously)
+     * The entry point behind the connect prompt Hanzo posts in Slack. It starts a link session in the browser and redirects to Slack&#39;s own sign-in, which is what proves which Slack user is asking.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
+     * @param state Signed, single-use link state (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1540,17 +1589,22 @@ public class IntegrationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 302 </td><td> Redirect to Slack sign-in </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid or expired link </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Account linking not configured </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1IntegrationsSlackLinkAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1IntegrationsSlackLinkAsync(@javax.annotation.Nonnull String state, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudGetV1IntegrationsSlackLinkValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = cloudGetV1IntegrationsSlackLinkValidateBeforeCall(state, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudGetV1IntegrationsSlackLinkCallback
+     * @param code  (optional)
+     * @param state  (optional)
+     * @param error  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1558,10 +1612,12 @@ public class IntegrationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Account linked </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Missing/mismatched state or workspace not connected </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Secret store unavailable or linking not configured </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1IntegrationsSlackLinkCallbackCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1IntegrationsSlackLinkCallbackCall(@javax.annotation.Nullable String code, @javax.annotation.Nullable String state, @javax.annotation.Nullable String error, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1586,7 +1642,20 @@ public class IntegrationsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (code != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("code", code));
+        }
+
+        if (state != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("state", state));
+        }
+
+        if (error != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("error", error));
+        }
+
         final String[] localVarAccepts = {
+            "text/html"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1600,51 +1669,67 @@ public class IntegrationsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudGetV1IntegrationsSlackLinkCallbackValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudGetV1IntegrationsSlackLinkCallbackCall(_callback);
+    private okhttp3.Call cloudGetV1IntegrationsSlackLinkCallbackValidateBeforeCall(@javax.annotation.Nullable String code, @javax.annotation.Nullable String state, @javax.annotation.Nullable String error, final ApiCallback _callback) throws ApiException {
+        return cloudGetV1IntegrationsSlackLinkCallbackCall(code, state, error, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Complete the Slack account link
+     * The final leg: the user has proved both who they are in Slack and who they are in Hanzo, and this binds the two. It answers a short confirmation page telling them to return to Slack.  The Hanzo credential obtained here is sealed into the connected workspace&#39;s own KMS namespace; it is never written to a database column and never logged. A deployment whose secret store is unavailable refuses the link rather than completing it without custody of the credential.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
+     * @param code  (optional)
+     * @param state  (optional)
+     * @param error  (optional)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Account linked </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Missing/mismatched state or workspace not connected </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Secret store unavailable or linking not configured </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1IntegrationsSlackLinkCallback() throws ApiException {
-        cloudGetV1IntegrationsSlackLinkCallbackWithHttpInfo();
+    public String cloudGetV1IntegrationsSlackLinkCallback(@javax.annotation.Nullable String code, @javax.annotation.Nullable String state, @javax.annotation.Nullable String error) throws ApiException {
+        ApiResponse<String> localVarResp = cloudGetV1IntegrationsSlackLinkCallbackWithHttpInfo(code, state, error);
+        return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @return ApiResponse&lt;Void&gt;
+     * Complete the Slack account link
+     * The final leg: the user has proved both who they are in Slack and who they are in Hanzo, and this binds the two. It answers a short confirmation page telling them to return to Slack.  The Hanzo credential obtained here is sealed into the connected workspace&#39;s own KMS namespace; it is never written to a database column and never logged. A deployment whose secret store is unavailable refuses the link rather than completing it without custody of the credential.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
+     * @param code  (optional)
+     * @param state  (optional)
+     * @param error  (optional)
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Account linked </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Missing/mismatched state or workspace not connected </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Secret store unavailable or linking not configured </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1IntegrationsSlackLinkCallbackWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudGetV1IntegrationsSlackLinkCallbackValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<String> cloudGetV1IntegrationsSlackLinkCallbackWithHttpInfo(@javax.annotation.Nullable String code, @javax.annotation.Nullable String state, @javax.annotation.Nullable String error) throws ApiException {
+        okhttp3.Call localVarCall = cloudGetV1IntegrationsSlackLinkCallbackValidateBeforeCall(code, state, error, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Complete the Slack account link (asynchronously)
+     * The final leg: the user has proved both who they are in Slack and who they are in Hanzo, and this binds the two. It answers a short confirmation page telling them to return to Slack.  The Hanzo credential obtained here is sealed into the connected workspace&#39;s own KMS namespace; it is never written to a database column and never logged. A deployment whose secret store is unavailable refuses the link rather than completing it without custody of the credential.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
+     * @param code  (optional)
+     * @param state  (optional)
+     * @param error  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1652,17 +1737,23 @@ public class IntegrationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Account linked </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Missing/mismatched state or workspace not connected </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Secret store unavailable or linking not configured </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1IntegrationsSlackLinkCallbackAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1IntegrationsSlackLinkCallbackAsync(@javax.annotation.Nullable String code, @javax.annotation.Nullable String state, @javax.annotation.Nullable String error, final ApiCallback<String> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudGetV1IntegrationsSlackLinkCallbackValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = cloudGetV1IntegrationsSlackLinkCallbackValidateBeforeCall(code, state, error, _callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudGetV1IntegrationsSlackLinkSlack
+     * @param code  (optional)
+     * @param state  (optional)
+     * @param error  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1670,10 +1761,12 @@ public class IntegrationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 302 </td><td> Redirect to hanzo.id OIDC authorize </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid state, session mismatch, or sign-in failed </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Account linking not configured </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1IntegrationsSlackLinkSlackCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1IntegrationsSlackLinkSlackCall(@javax.annotation.Nullable String code, @javax.annotation.Nullable String state, @javax.annotation.Nullable String error, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1698,6 +1791,18 @@ public class IntegrationsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (code != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("code", code));
+        }
+
+        if (state != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("state", state));
+        }
+
+        if (error != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("error", error));
+        }
+
         final String[] localVarAccepts = {
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -1712,51 +1817,64 @@ public class IntegrationsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudGetV1IntegrationsSlackLinkSlackValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudGetV1IntegrationsSlackLinkSlackCall(_callback);
+    private okhttp3.Call cloudGetV1IntegrationsSlackLinkSlackValidateBeforeCall(@javax.annotation.Nullable String code, @javax.annotation.Nullable String state, @javax.annotation.Nullable String error, final ApiCallback _callback) throws ApiException {
+        return cloudGetV1IntegrationsSlackLinkSlackCall(code, state, error, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Slack sign-in return leg
+     * Where Slack returns the user after they sign in. It establishes the verified Slack workspace and user, confirms that workspace is connected to an org, and hands the browser on to the Hanzo sign-in that completes the link.  The verified pair is carried onward in a host-bound cookie rather than in the URL, so the identity being linked cannot be edited in transit.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
+     * @param code  (optional)
+     * @param state  (optional)
+     * @param error  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 302 </td><td> Redirect to hanzo.id OIDC authorize </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid state, session mismatch, or sign-in failed </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Account linking not configured </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudGetV1IntegrationsSlackLinkSlack() throws ApiException {
-        cloudGetV1IntegrationsSlackLinkSlackWithHttpInfo();
+    public void cloudGetV1IntegrationsSlackLinkSlack(@javax.annotation.Nullable String code, @javax.annotation.Nullable String state, @javax.annotation.Nullable String error) throws ApiException {
+        cloudGetV1IntegrationsSlackLinkSlackWithHttpInfo(code, state, error);
     }
 
     /**
-     * 
-     * 
+     * Slack sign-in return leg
+     * Where Slack returns the user after they sign in. It establishes the verified Slack workspace and user, confirms that workspace is connected to an org, and hands the browser on to the Hanzo sign-in that completes the link.  The verified pair is carried onward in a host-bound cookie rather than in the URL, so the identity being linked cannot be edited in transit.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
+     * @param code  (optional)
+     * @param state  (optional)
+     * @param error  (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 302 </td><td> Redirect to hanzo.id OIDC authorize </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid state, session mismatch, or sign-in failed </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Account linking not configured </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudGetV1IntegrationsSlackLinkSlackWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudGetV1IntegrationsSlackLinkSlackValidateBeforeCall(null);
+    public ApiResponse<Void> cloudGetV1IntegrationsSlackLinkSlackWithHttpInfo(@javax.annotation.Nullable String code, @javax.annotation.Nullable String state, @javax.annotation.Nullable String error) throws ApiException {
+        okhttp3.Call localVarCall = cloudGetV1IntegrationsSlackLinkSlackValidateBeforeCall(code, state, error, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Slack sign-in return leg (asynchronously)
+     * Where Slack returns the user after they sign in. It establishes the verified Slack workspace and user, confirms that workspace is connected to an org, and hands the browser on to the Hanzo sign-in that completes the link.  The verified pair is carried onward in a host-bound cookie rather than in the URL, so the identity being linked cannot be edited in transit.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
+     * @param code  (optional)
+     * @param state  (optional)
+     * @param error  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1764,12 +1882,14 @@ public class IntegrationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 302 </td><td> Redirect to hanzo.id OIDC authorize </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid state, session mismatch, or sign-in failed </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Account linking not configured </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudGetV1IntegrationsSlackLinkSlackAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudGetV1IntegrationsSlackLinkSlackAsync(@javax.annotation.Nullable String code, @javax.annotation.Nullable String state, @javax.annotation.Nullable String error, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudGetV1IntegrationsSlackLinkSlackValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = cloudGetV1IntegrationsSlackLinkSlackValidateBeforeCall(code, state, error, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -1835,8 +1955,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Begin linking a Hanzo account from Teams
+     * The entry point behind the connect prompt Hanzo shows in Teams. It starts a link session and redirects to Microsoft sign-in addressed to the CHAT&#39;S OWN tenant, not the common endpoint, so only a member of that tenant can complete it.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1850,8 +1970,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Begin linking a Hanzo account from Teams
+     * The entry point behind the connect prompt Hanzo shows in Teams. It starts a link session and redirects to Microsoft sign-in addressed to the CHAT&#39;S OWN tenant, not the common endpoint, so only a member of that tenant can complete it.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1867,8 +1987,8 @@ public class IntegrationsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Begin linking a Hanzo account from Teams (asynchronously)
+     * The entry point behind the connect prompt Hanzo shows in Teams. It starts a link session and redirects to Microsoft sign-in addressed to the CHAT&#39;S OWN tenant, not the common endpoint, so only a member of that tenant can complete it.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1947,8 +2067,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Microsoft sign-in return leg
+     * Where Microsoft returns the user after sign-in. It resolves the verified directory identity and then re-checks the tenant: the signed-in user&#39;s tenant must equal the tenant of the chat the link started from, so a valid Microsoft sign-in from a different organization is refused here rather than accepted.  This is the leg Teams has and the other platforms do not, which is why the Teams flow has an extra address.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1962,8 +2082,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Microsoft sign-in return leg
+     * Where Microsoft returns the user after sign-in. It resolves the verified directory identity and then re-checks the tenant: the signed-in user&#39;s tenant must equal the tenant of the chat the link started from, so a valid Microsoft sign-in from a different organization is refused here rather than accepted.  This is the leg Teams has and the other platforms do not, which is why the Teams flow has an extra address.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1979,8 +2099,8 @@ public class IntegrationsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Microsoft sign-in return leg (asynchronously)
+     * Where Microsoft returns the user after sign-in. It resolves the verified directory identity and then re-checks the tenant: the signed-in user&#39;s tenant must equal the tenant of the chat the link started from, so a valid Microsoft sign-in from a different organization is refused here rather than accepted.  This is the leg Teams has and the other platforms do not, which is why the Teams flow has an extra address.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2059,8 +2179,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Complete the Teams account link
+     * The final leg: it binds the verified directory identity to the Hanzo account that just signed in, and answers a short confirmation page telling them to return to Teams. The Hanzo credential is sealed into the connected org&#39;s KMS namespace.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2074,8 +2194,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Complete the Teams account link
+     * The final leg: it binds the verified directory identity to the Hanzo account that just signed in, and answers a short confirmation page telling them to return to Teams. The Hanzo credential is sealed into the connected org&#39;s KMS namespace.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2091,8 +2211,8 @@ public class IntegrationsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Complete the Teams account link (asynchronously)
+     * The final leg: it binds the verified directory identity to the Hanzo account that just signed in, and answers a short confirmation page telling them to return to Teams. The Hanzo credential is sealed into the connected org&#39;s KMS namespace.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2171,8 +2291,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Begin linking a Hanzo account from Telegram
+     * The entry point behind the connect prompt Hanzo sends in Telegram. Unlike the other platforms it answers an HTML PAGE rather than a redirect: Telegram has no OAuth flow, so the page hosts Telegram&#39;s Login Widget, and the browser is sent onward only after the user signs in through it.  The widget only appears on the domain registered for the bot, so a deployment whose bot domain is unset renders a page with nothing on it.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2186,8 +2306,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Begin linking a Hanzo account from Telegram
+     * The entry point behind the connect prompt Hanzo sends in Telegram. Unlike the other platforms it answers an HTML PAGE rather than a redirect: Telegram has no OAuth flow, so the page hosts Telegram&#39;s Login Widget, and the browser is sent onward only after the user signs in through it.  The widget only appears on the domain registered for the bot, so a deployment whose bot domain is unset renders a page with nothing on it.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2203,8 +2323,8 @@ public class IntegrationsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Begin linking a Hanzo account from Telegram (asynchronously)
+     * The entry point behind the connect prompt Hanzo sends in Telegram. Unlike the other platforms it answers an HTML PAGE rather than a redirect: Telegram has no OAuth flow, so the page hosts Telegram&#39;s Login Widget, and the browser is sent onward only after the user signs in through it.  The widget only appears on the domain registered for the bot, so a deployment whose bot domain is unset renders a page with nothing on it.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2283,8 +2403,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Telegram Login Widget return leg
+     * Where Telegram&#39;s Login Widget sends the user with its signed authentication data. That data is verified against the bot token — this is the identity source, and it is the widget&#39;s signature rather than a code exchange — and the chat is confirmed to be bound to an org before the browser is handed to the Hanzo sign-in.  Widget data is only accepted while it is fresh, so a captured sign-in blob cannot be replayed later even though its signature stays valid.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2298,8 +2418,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Telegram Login Widget return leg
+     * Where Telegram&#39;s Login Widget sends the user with its signed authentication data. That data is verified against the bot token — this is the identity source, and it is the widget&#39;s signature rather than a code exchange — and the chat is confirmed to be bound to an org before the browser is handed to the Hanzo sign-in.  Widget data is only accepted while it is fresh, so a captured sign-in blob cannot be replayed later even though its signature stays valid.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2315,8 +2435,8 @@ public class IntegrationsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Telegram Login Widget return leg (asynchronously)
+     * Where Telegram&#39;s Login Widget sends the user with its signed authentication data. That data is verified against the bot token — this is the identity source, and it is the widget&#39;s signature rather than a code exchange — and the chat is confirmed to be bound to an org before the browser is handed to the Hanzo sign-in.  Widget data is only accepted while it is fresh, so a captured sign-in blob cannot be replayed later even though its signature stays valid.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2395,8 +2515,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Complete the Telegram account link
+     * The final leg: it binds the verified Telegram user to the Hanzo account that just signed in, and answers a short confirmation page telling them to return to Telegram. The Hanzo credential is sealed into the connected org&#39;s KMS namespace.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2410,8 +2530,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Complete the Telegram account link
+     * The final leg: it binds the verified Telegram user to the Hanzo account that just signed in, and answers a short confirmation page telling them to return to Telegram. The Hanzo credential is sealed into the connected org&#39;s KMS namespace.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2427,8 +2547,8 @@ public class IntegrationsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Complete the Telegram account link (asynchronously)
+     * The final leg: it binds the verified Telegram user to the Hanzo account that just signed in, and answers a short confirmation page telling them to return to Telegram. The Hanzo credential is sealed into the connected org&#39;s KMS namespace.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2507,8 +2627,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Discord interactions endpoint
+     * The Interactions Endpoint URL for the Discord app. It answers Discord&#39;s PING with a PONG, and handles the &#x60;/hanzo&#x60; slash command by acknowledging with a deferred ephemeral reply and editing that reply with the answer once the agent has run. Any other interaction is acknowledged and ignored.  Requests are verified by ED25519 SIGNATURE over the timestamp and body against the app&#39;s public key — not by HMAC, unlike the Slack webhooks. Interactions work over plain HTTP, so no gateway connection and no message-content intent is involved.  Discord does not retry, so this is the one bridge where being at capacity is shown to the user as an ephemeral ask-to-run-it-again rather than answered as a retriable failure — nothing is recorded either way, so the next attempt is clean.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2522,8 +2642,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Discord interactions endpoint
+     * The Interactions Endpoint URL for the Discord app. It answers Discord&#39;s PING with a PONG, and handles the &#x60;/hanzo&#x60; slash command by acknowledging with a deferred ephemeral reply and editing that reply with the answer once the agent has run. Any other interaction is acknowledged and ignored.  Requests are verified by ED25519 SIGNATURE over the timestamp and body against the app&#39;s public key — not by HMAC, unlike the Slack webhooks. Interactions work over plain HTTP, so no gateway connection and no message-content intent is involved.  Discord does not retry, so this is the one bridge where being at capacity is shown to the user as an ephemeral ask-to-run-it-again rather than answered as a retriable failure — nothing is recorded either way, so the next attempt is clean.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2539,8 +2659,8 @@ public class IntegrationsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Discord interactions endpoint (asynchronously)
+     * The Interactions Endpoint URL for the Discord app. It answers Discord&#39;s PING with a PONG, and handles the &#x60;/hanzo&#x60; slash command by acknowledging with a deferred ephemeral reply and editing that reply with the answer once the agent has run. Any other interaction is acknowledged and ignored.  Requests are verified by ED25519 SIGNATURE over the timestamp and body against the app&#39;s public key — not by HMAC, unlike the Slack webhooks. Interactions work over plain HTTP, so no gateway connection and no message-content intent is involved.  Discord does not retry, so this is the one bridge where being at capacity is shown to the user as an ephemeral ask-to-run-it-again rather than answered as a retriable failure — nothing is recorded either way, so the next attempt is clean.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3077,7 +3197,7 @@ public class IntegrationsApi {
     }
     /**
      * Build call for cloudPostV1IntegrationsProviderConnect
-     * @param provider Provider is the connector&#39;s registry id, from the :provider path segment. (required)
+     * @param provider  (required)
      * @param cloudConnectIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3154,7 +3274,7 @@ public class IntegrationsApi {
     /**
      * Acquires the org&#39;s credential for one provider.
      * Acquires the org&#39;s credential for one provider. It has TWO paths and the REQUEST picks which: a \&quot;token\&quot; key in the body seals that credential directly (verify-before-store), and its absence begins the 3-legged OAuth flow — minting a single-use nonce plus an HMAC-signed state that binds this org to this provider, and answering with the provider&#39;s authorize URL for the caller to redirect to.  Fail-closed order, unchanged: no principal → 403; unknown provider → 404; an AdminOnly connector without the caller&#39;s own-org admin bit → 403; not configured → 503; KMS not ready → 503 (the flow WILL need to seal a token, so refuse now rather than dead-end at the callback).
-     * @param provider Provider is the connector&#39;s registry id, from the :provider path segment. (required)
+     * @param provider  (required)
      * @param cloudConnectIn  (required)
      * @return CloudConnectOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3173,7 +3293,7 @@ public class IntegrationsApi {
     /**
      * Acquires the org&#39;s credential for one provider.
      * Acquires the org&#39;s credential for one provider. It has TWO paths and the REQUEST picks which: a \&quot;token\&quot; key in the body seals that credential directly (verify-before-store), and its absence begins the 3-legged OAuth flow — minting a single-use nonce plus an HMAC-signed state that binds this org to this provider, and answering with the provider&#39;s authorize URL for the caller to redirect to.  Fail-closed order, unchanged: no principal → 403; unknown provider → 404; an AdminOnly connector without the caller&#39;s own-org admin bit → 403; not configured → 503; KMS not ready → 503 (the flow WILL need to seal a token, so refuse now rather than dead-end at the callback).
-     * @param provider Provider is the connector&#39;s registry id, from the :provider path segment. (required)
+     * @param provider  (required)
      * @param cloudConnectIn  (required)
      * @return ApiResponse&lt;CloudConnectOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3193,7 +3313,7 @@ public class IntegrationsApi {
     /**
      * Acquires the org&#39;s credential for one provider. (asynchronously)
      * Acquires the org&#39;s credential for one provider. It has TWO paths and the REQUEST picks which: a \&quot;token\&quot; key in the body seals that credential directly (verify-before-store), and its absence begins the 3-legged OAuth flow — minting a single-use nonce plus an HMAC-signed state that binds this org to this provider, and answering with the provider&#39;s authorize URL for the caller to redirect to.  Fail-closed order, unchanged: no principal → 403; unknown provider → 404; an AdminOnly connector without the caller&#39;s own-org admin bit → 403; not configured → 503; KMS not ready → 503 (the flow WILL need to seal a token, so refuse now rather than dead-end at the callback).
-     * @param provider Provider is the connector&#39;s registry id, from the :provider path segment. (required)
+     * @param provider  (required)
      * @param cloudConnectIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3214,7 +3334,7 @@ public class IntegrationsApi {
     }
     /**
      * Build call for cloudPostV1IntegrationsProviderDisconnect
-     * @param provider Provider is the registry id of the connector — \&quot;slack\&quot;, \&quot;github\&quot;, \&quot;cloudflare\&quot;. Unknown ids are 404, as are the user-plane (/v1/connectors) providers, which this surface never resolves. (required)
+     * @param provider  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3284,7 +3404,7 @@ public class IntegrationsApi {
     /**
      * Revokes (best-effort) and forgets an org&#39;s connection: it deletes every custodied KMS secret and the connection row.
      * Revokes (best-effort) and forgets an org&#39;s connection: it deletes every custodied KMS secret and the connection row. Idempotent — disconnecting a provider that was never connected still returns {disconnected:true}. Symmetric with connect: an AdminOnly connector needs the caller&#39;s own-org admin bit.
-     * @param provider Provider is the registry id of the connector — \&quot;slack\&quot;, \&quot;github\&quot;, \&quot;cloudflare\&quot;. Unknown ids are 404, as are the user-plane (/v1/connectors) providers, which this surface never resolves. (required)
+     * @param provider  (required)
      * @return CloudDisconnectOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3302,7 +3422,7 @@ public class IntegrationsApi {
     /**
      * Revokes (best-effort) and forgets an org&#39;s connection: it deletes every custodied KMS secret and the connection row.
      * Revokes (best-effort) and forgets an org&#39;s connection: it deletes every custodied KMS secret and the connection row. Idempotent — disconnecting a provider that was never connected still returns {disconnected:true}. Symmetric with connect: an AdminOnly connector needs the caller&#39;s own-org admin bit.
-     * @param provider Provider is the registry id of the connector — \&quot;slack\&quot;, \&quot;github\&quot;, \&quot;cloudflare\&quot;. Unknown ids are 404, as are the user-plane (/v1/connectors) providers, which this surface never resolves. (required)
+     * @param provider  (required)
      * @return ApiResponse&lt;CloudDisconnectOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3321,7 +3441,7 @@ public class IntegrationsApi {
     /**
      * Revokes (best-effort) and forgets an org&#39;s connection: it deletes every custodied KMS secret and the connection row. (asynchronously)
      * Revokes (best-effort) and forgets an org&#39;s connection: it deletes every custodied KMS secret and the connection row. Idempotent — disconnecting a provider that was never connected still returns {disconnected:true}. Symmetric with connect: an AdminOnly connector needs the caller&#39;s own-org admin bit.
-     * @param provider Provider is the registry id of the connector — \&quot;slack\&quot;, \&quot;github\&quot;, \&quot;cloudflare\&quot;. Unknown ids are 404, as are the user-plane (/v1/connectors) providers, which this surface never resolves. (required)
+     * @param provider  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3468,6 +3588,12 @@ public class IntegrationsApi {
     }
     /**
      * Build call for cloudPostV1IntegrationsSlackCommands
+     * @param command  (optional)
+     * @param text  (optional)
+     * @param teamId  (optional)
+     * @param userId  (optional)
+     * @param channelId  (optional)
+     * @param responseUrl  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3475,10 +3601,10 @@ public class IntegrationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Slash command acknowledged </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1IntegrationsSlackCommandsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1IntegrationsSlackCommandsCall(@javax.annotation.Nullable String command, @javax.annotation.Nullable String text, @javax.annotation.Nullable String teamId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String channelId, @javax.annotation.Nullable String responseUrl, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3503,6 +3629,30 @@ public class IntegrationsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (command != null) {
+            localVarFormParams.put("command", command);
+        }
+
+        if (text != null) {
+            localVarFormParams.put("text", text);
+        }
+
+        if (teamId != null) {
+            localVarFormParams.put("team_id", teamId);
+        }
+
+        if (userId != null) {
+            localVarFormParams.put("user_id", userId);
+        }
+
+        if (channelId != null) {
+            localVarFormParams.put("channel_id", channelId);
+        }
+
+        if (responseUrl != null) {
+            localVarFormParams.put("response_url", responseUrl);
+        }
+
         final String[] localVarAccepts = {
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -3511,57 +3661,76 @@ public class IntegrationsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/x-www-form-urlencoded"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1IntegrationsSlackCommandsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1IntegrationsSlackCommandsCall(_callback);
+    private okhttp3.Call cloudPostV1IntegrationsSlackCommandsValidateBeforeCall(@javax.annotation.Nullable String command, @javax.annotation.Nullable String text, @javax.annotation.Nullable String teamId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String channelId, @javax.annotation.Nullable String responseUrl, final ApiCallback _callback) throws ApiException {
+        return cloudPostV1IntegrationsSlackCommandsCall(command, text, teamId, userId, channelId, responseUrl, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Slack slash command webhook
+     * The address Slack posts a slash command to, form-encoded. It acknowledges inside Slack&#39;s three-second budget and posts the answer afterwards to the command&#39;s own response URL, which is why the immediate reply is empty.  The body is verified against the same app signing secret as the events webhook, and a repeat of the same command invocation is absorbed rather than answered twice.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.  The answer is acknowledged immediately and the work happens afterwards, because every one of these platforms times out a slow webhook. Duplicate deliveries are absorbed durably, so a platform retry of an event that already ran never runs it a second time or bills for it twice. When the agent pool is full nothing at all is recorded and the delivery is refused as retriable, so the message is re-delivered later rather than being lost or half-processed.
+     * @param command  (optional)
+     * @param text  (optional)
+     * @param teamId  (optional)
+     * @param userId  (optional)
+     * @param channelId  (optional)
+     * @param responseUrl  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Slash command acknowledged </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1IntegrationsSlackCommands() throws ApiException {
-        cloudPostV1IntegrationsSlackCommandsWithHttpInfo();
+    public void cloudPostV1IntegrationsSlackCommands(@javax.annotation.Nullable String command, @javax.annotation.Nullable String text, @javax.annotation.Nullable String teamId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String channelId, @javax.annotation.Nullable String responseUrl) throws ApiException {
+        cloudPostV1IntegrationsSlackCommandsWithHttpInfo(command, text, teamId, userId, channelId, responseUrl);
     }
 
     /**
-     * 
-     * 
+     * Slack slash command webhook
+     * The address Slack posts a slash command to, form-encoded. It acknowledges inside Slack&#39;s three-second budget and posts the answer afterwards to the command&#39;s own response URL, which is why the immediate reply is empty.  The body is verified against the same app signing secret as the events webhook, and a repeat of the same command invocation is absorbed rather than answered twice.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.  The answer is acknowledged immediately and the work happens afterwards, because every one of these platforms times out a slow webhook. Duplicate deliveries are absorbed durably, so a platform retry of an event that already ran never runs it a second time or bills for it twice. When the agent pool is full nothing at all is recorded and the delivery is refused as retriable, so the message is re-delivered later rather than being lost or half-processed.
+     * @param command  (optional)
+     * @param text  (optional)
+     * @param teamId  (optional)
+     * @param userId  (optional)
+     * @param channelId  (optional)
+     * @param responseUrl  (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Slash command acknowledged </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1IntegrationsSlackCommandsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1IntegrationsSlackCommandsValidateBeforeCall(null);
+    public ApiResponse<Void> cloudPostV1IntegrationsSlackCommandsWithHttpInfo(@javax.annotation.Nullable String command, @javax.annotation.Nullable String text, @javax.annotation.Nullable String teamId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String channelId, @javax.annotation.Nullable String responseUrl) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1IntegrationsSlackCommandsValidateBeforeCall(command, text, teamId, userId, channelId, responseUrl, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Slack slash command webhook (asynchronously)
+     * The address Slack posts a slash command to, form-encoded. It acknowledges inside Slack&#39;s three-second budget and posts the answer afterwards to the command&#39;s own response URL, which is why the immediate reply is empty.  The body is verified against the same app signing secret as the events webhook, and a repeat of the same command invocation is absorbed rather than answered twice.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.  The answer is acknowledged immediately and the work happens afterwards, because every one of these platforms times out a slow webhook. Duplicate deliveries are absorbed durably, so a platform retry of an event that already ran never runs it a second time or bills for it twice. When the agent pool is full nothing at all is recorded and the delivery is refused as retriable, so the message is re-delivered later rather than being lost or half-processed.
+     * @param command  (optional)
+     * @param text  (optional)
+     * @param teamId  (optional)
+     * @param userId  (optional)
+     * @param channelId  (optional)
+     * @param responseUrl  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3569,17 +3738,18 @@ public class IntegrationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Slash command acknowledged </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1IntegrationsSlackCommandsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1IntegrationsSlackCommandsAsync(@javax.annotation.Nullable String command, @javax.annotation.Nullable String text, @javax.annotation.Nullable String teamId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String channelId, @javax.annotation.Nullable String responseUrl, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1IntegrationsSlackCommandsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = cloudPostV1IntegrationsSlackCommandsValidateBeforeCall(command, text, teamId, userId, channelId, responseUrl, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
      * Build call for cloudPostV1IntegrationsSlackEvents
+     * @param integrationsSlackEventEnvelope  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3587,10 +3757,10 @@ public class IntegrationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Acknowledged (challenge echo, or empty ack) </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1IntegrationsSlackEventsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1IntegrationsSlackEventsCall(@javax.annotation.Nonnull IntegrationsSlackEventEnvelope integrationsSlackEventEnvelope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3604,7 +3774,7 @@ public class IntegrationsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = integrationsSlackEventEnvelope;
 
         // create path and map variables
         String localVarPath = "/v1/integrations/slack/events";
@@ -3623,57 +3793,66 @@ public class IntegrationsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cloudPostV1IntegrationsSlackEventsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return cloudPostV1IntegrationsSlackEventsCall(_callback);
+    private okhttp3.Call cloudPostV1IntegrationsSlackEventsValidateBeforeCall(@javax.annotation.Nonnull IntegrationsSlackEventEnvelope integrationsSlackEventEnvelope, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'integrationsSlackEventEnvelope' is set
+        if (integrationsSlackEventEnvelope == null) {
+            throw new ApiException("Missing the required parameter 'integrationsSlackEventEnvelope' when calling cloudPostV1IntegrationsSlackEvents(Async)");
+        }
+
+        return cloudPostV1IntegrationsSlackEventsCall(integrationsSlackEventEnvelope, _callback);
 
     }
 
     /**
-     * 
-     * 
+     * Slack Events API webhook
+     * The address a Slack app posts workspace events to. It answers Slack&#39;s url_verification handshake with the challenge, and routes an @mention or a direct message to an agent turn that replies in the same thread. A prompt beginning with &#x60;code:&#x60; is routed to the coding flow instead, which runs under its own pool.  The raw body and its timestamp are verified against the app&#39;s signing secret before anything is read from them. Hanzo&#39;s own bot messages are dropped, so a reply cannot trigger another reply.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.  The answer is acknowledged immediately and the work happens afterwards, because every one of these platforms times out a slow webhook. Duplicate deliveries are absorbed durably, so a platform retry of an event that already ran never runs it a second time or bills for it twice. When the agent pool is full nothing at all is recorded and the delivery is refused as retriable, so the message is re-delivered later rather than being lost or half-processed.
+     * @param integrationsSlackEventEnvelope  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Acknowledged (challenge echo, or empty ack) </td><td>  -  </td></tr>
      </table>
      */
-    public void cloudPostV1IntegrationsSlackEvents() throws ApiException {
-        cloudPostV1IntegrationsSlackEventsWithHttpInfo();
+    public void cloudPostV1IntegrationsSlackEvents(@javax.annotation.Nonnull IntegrationsSlackEventEnvelope integrationsSlackEventEnvelope) throws ApiException {
+        cloudPostV1IntegrationsSlackEventsWithHttpInfo(integrationsSlackEventEnvelope);
     }
 
     /**
-     * 
-     * 
+     * Slack Events API webhook
+     * The address a Slack app posts workspace events to. It answers Slack&#39;s url_verification handshake with the challenge, and routes an @mention or a direct message to an agent turn that replies in the same thread. A prompt beginning with &#x60;code:&#x60; is routed to the coding flow instead, which runs under its own pool.  The raw body and its timestamp are verified against the app&#39;s signing secret before anything is read from them. Hanzo&#39;s own bot messages are dropped, so a reply cannot trigger another reply.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.  The answer is acknowledged immediately and the work happens afterwards, because every one of these platforms times out a slow webhook. Duplicate deliveries are absorbed durably, so a platform retry of an event that already ran never runs it a second time or bills for it twice. When the agent pool is full nothing at all is recorded and the delivery is refused as retriable, so the message is re-delivered later rather than being lost or half-processed.
+     * @param integrationsSlackEventEnvelope  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Acknowledged (challenge echo, or empty ack) </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cloudPostV1IntegrationsSlackEventsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = cloudPostV1IntegrationsSlackEventsValidateBeforeCall(null);
+    public ApiResponse<Void> cloudPostV1IntegrationsSlackEventsWithHttpInfo(@javax.annotation.Nonnull IntegrationsSlackEventEnvelope integrationsSlackEventEnvelope) throws ApiException {
+        okhttp3.Call localVarCall = cloudPostV1IntegrationsSlackEventsValidateBeforeCall(integrationsSlackEventEnvelope, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Slack Events API webhook (asynchronously)
+     * The address a Slack app posts workspace events to. It answers Slack&#39;s url_verification handshake with the challenge, and routes an @mention or a direct message to an agent turn that replies in the same thread. A prompt beginning with &#x60;code:&#x60; is routed to the coding flow instead, which runs under its own pool.  The raw body and its timestamp are verified against the app&#39;s signing secret before anything is read from them. Hanzo&#39;s own bot messages are dropped, so a reply cannot trigger another reply.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.  The answer is acknowledged immediately and the work happens afterwards, because every one of these platforms times out a slow webhook. Duplicate deliveries are absorbed durably, so a platform retry of an event that already ran never runs it a second time or bills for it twice. When the agent pool is full nothing at all is recorded and the delivery is refused as retriable, so the message is re-delivered later rather than being lost or half-processed.
+     * @param integrationsSlackEventEnvelope  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3681,12 +3860,12 @@ public class IntegrationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 0 </td><td> The route answers; its response shape is not declared at the source (not a typed op). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Acknowledged (challenge echo, or empty ack) </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudPostV1IntegrationsSlackEventsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cloudPostV1IntegrationsSlackEventsAsync(@javax.annotation.Nonnull IntegrationsSlackEventEnvelope integrationsSlackEventEnvelope, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cloudPostV1IntegrationsSlackEventsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = cloudPostV1IntegrationsSlackEventsValidateBeforeCall(integrationsSlackEventEnvelope, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -3752,8 +3931,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Microsoft Teams Bot Framework webhook
+     * The messaging endpoint for the Teams bot. A message activity is routed to an agent turn and answered proactively through the Bot Connector; anything that is not a message with text is acknowledged and ignored.  Authentication is the Bot Framework&#39;s RS256 JWT, verified against its published keys and bound BOTH to this deployment&#39;s app id and to the activity&#39;s own service URL. The service-URL binding is the part that matters: without it a token valid for one activity could point the outbound reply somewhere else.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.  The answer is acknowledged immediately and the work happens afterwards, because every one of these platforms times out a slow webhook. Duplicate deliveries are absorbed durably, so a platform retry of an event that already ran never runs it a second time or bills for it twice. When the agent pool is full nothing at all is recorded and the delivery is refused as retriable, so the message is re-delivered later rather than being lost or half-processed.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -3767,8 +3946,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Microsoft Teams Bot Framework webhook
+     * The messaging endpoint for the Teams bot. A message activity is routed to an agent turn and answered proactively through the Bot Connector; anything that is not a message with text is acknowledged and ignored.  Authentication is the Bot Framework&#39;s RS256 JWT, verified against its published keys and bound BOTH to this deployment&#39;s app id and to the activity&#39;s own service URL. The service-URL binding is the part that matters: without it a token valid for one activity could point the outbound reply somewhere else.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.  The answer is acknowledged immediately and the work happens afterwards, because every one of these platforms times out a slow webhook. Duplicate deliveries are absorbed durably, so a platform retry of an event that already ran never runs it a second time or bills for it twice. When the agent pool is full nothing at all is recorded and the delivery is refused as retriable, so the message is re-delivered later rather than being lost or half-processed.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3784,8 +3963,8 @@ public class IntegrationsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Microsoft Teams Bot Framework webhook (asynchronously)
+     * The messaging endpoint for the Teams bot. A message activity is routed to an agent turn and answered proactively through the Bot Connector; anything that is not a message with text is acknowledged and ignored.  Authentication is the Bot Framework&#39;s RS256 JWT, verified against its published keys and bound BOTH to this deployment&#39;s app id and to the activity&#39;s own service URL. The service-URL binding is the part that matters: without it a token valid for one activity could point the outbound reply somewhere else.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.  The answer is acknowledged immediately and the work happens afterwards, because every one of these platforms times out a slow webhook. Duplicate deliveries are absorbed durably, so a platform retry of an event that already ran never runs it a second time or bills for it twice. When the agent pool is full nothing at all is recorded and the delivery is refused as retriable, so the message is re-delivered later rather than being lost or half-processed.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3981,8 +4160,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Telegram Bot API webhook
+     * The update webhook for the Telegram bot. It does two jobs: &#x60;/start &lt;code&gt;&#x60; or &#x60;/connect &lt;code&gt;&#x60; binds the chat it was sent from to an org, idempotently; anything else is treated as a possible agent trigger.  What counts as a trigger differs by chat type, and it is easy to get wrong: in a private chat every message is a trigger, while in a group the message must mention the bot or use the &#x60;/hanzo&#x60; command. Non-triggers and non-message updates are acknowledged and dropped.  Authentication is the secret token Telegram echoes on every update, compared in constant time. A message in a chat that has never been bound is dropped, which is why the bind command exists.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.  The answer is acknowledged immediately and the work happens afterwards, because every one of these platforms times out a slow webhook. Duplicate deliveries are absorbed durably, so a platform retry of an event that already ran never runs it a second time or bills for it twice. When the agent pool is full nothing at all is recorded and the delivery is refused as retriable, so the message is re-delivered later rather than being lost or half-processed.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -3996,8 +4175,8 @@ public class IntegrationsApi {
     }
 
     /**
-     * 
-     * 
+     * Telegram Bot API webhook
+     * The update webhook for the Telegram bot. It does two jobs: &#x60;/start &lt;code&gt;&#x60; or &#x60;/connect &lt;code&gt;&#x60; binds the chat it was sent from to an org, idempotently; anything else is treated as a possible agent trigger.  What counts as a trigger differs by chat type, and it is easy to get wrong: in a private chat every message is a trigger, while in a group the message must mention the bot or use the &#x60;/hanzo&#x60; command. Non-triggers and non-message updates are acknowledged and dropped.  Authentication is the secret token Telegram echoes on every update, compared in constant time. A message in a chat that has never been bound is dropped, which is why the bind command exists.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.  The answer is acknowledged immediately and the work happens afterwards, because every one of these platforms times out a slow webhook. Duplicate deliveries are absorbed durably, so a platform retry of an event that already ran never runs it a second time or bills for it twice. When the agent pool is full nothing at all is recorded and the delivery is refused as retriable, so the message is re-delivered later rather than being lost or half-processed.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4013,8 +4192,8 @@ public class IntegrationsApi {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Telegram Bot API webhook (asynchronously)
+     * The update webhook for the Telegram bot. It does two jobs: &#x60;/start &lt;code&gt;&#x60; or &#x60;/connect &lt;code&gt;&#x60; binds the chat it was sent from to an org, idempotently; anything else is treated as a possible agent trigger.  What counts as a trigger differs by chat type, and it is easy to get wrong: in a private chat every message is a trigger, while in a group the message must mention the bot or use the &#x60;/hanzo&#x60; command. Non-triggers and non-message updates are acknowledged and dropped.  Authentication is the secret token Telegram echoes on every update, compared in constant time. A message in a chat that has never been bound is dropped, which is why the bind command exists.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.  The answer is acknowledged immediately and the work happens afterwards, because every one of these platforms times out a slow webhook. Duplicate deliveries are absorbed durably, so a platform retry of an event that already ran never runs it a second time or bills for it twice. When the agent pool is full nothing at all is recorded and the delivery is refused as retriable, so the message is re-delivered later rather than being lost or half-processed.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
