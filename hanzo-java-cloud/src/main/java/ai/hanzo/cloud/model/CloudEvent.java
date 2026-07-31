@@ -72,6 +72,11 @@ public class CloudEvent {
   @javax.annotation.Nullable
   private String time;
 
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
+  private String type;
+
   public CloudEvent() {
   }
 
@@ -159,6 +164,25 @@ public class CloudEvent {
   }
 
 
+  public CloudEvent type(@javax.annotation.Nullable String type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Get type
+   * @return type
+   */
+  @javax.annotation.Nullable
+  public String getType() {
+    return type;
+  }
+
+  public void setType(@javax.annotation.Nullable String type) {
+    this.type = type;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -172,12 +196,13 @@ public class CloudEvent {
     return Objects.equals(this.distinctId, cloudEvent.distinctId) &&
         Objects.equals(this.event, cloudEvent.event) &&
         Objects.equals(this.properties, cloudEvent.properties) &&
-        Objects.equals(this.time, cloudEvent.time);
+        Objects.equals(this.time, cloudEvent.time) &&
+        Objects.equals(this.type, cloudEvent.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(distinctId, event, properties, time);
+    return Objects.hash(distinctId, event, properties, time, type);
   }
 
   @Override
@@ -188,6 +213,7 @@ public class CloudEvent {
     sb.append("    event: ").append(toIndentedString(event)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    time: ").append(toIndentedString(time)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -209,7 +235,7 @@ public class CloudEvent {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("distinctId", "event", "properties", "time"));
+    openapiFields = new HashSet<String>(Arrays.asList("distinctId", "event", "properties", "time", "type"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -244,6 +270,9 @@ public class CloudEvent {
       }
       if ((jsonObj.get("time") != null && !jsonObj.get("time").isJsonNull()) && !jsonObj.get("time").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `time` to be a primitive type in the JSON string but got `%s`", jsonObj.get("time").toString()));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

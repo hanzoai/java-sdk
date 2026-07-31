@@ -109,7 +109,7 @@ public class GitApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudDeleteV1GitKeysIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -139,7 +139,6 @@ public class GitApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -172,37 +171,34 @@ public class GitApi {
      * Removes a registered SSH key, scoped to the caller&#39;s org: an org can only delete its own, and a key id it does not own is not found.
      * Removes a registered SSH key, scoped to the caller&#39;s org: an org can only delete its own, and a key id it does not own is not found. Answers 204 with no body. Once removed the key no longer authenticates any SSH git access.
      * @param id Key id (required)
-     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public Object cloudDeleteV1GitKeysId(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Object> localVarResp = cloudDeleteV1GitKeysIdWithHttpInfo(id);
-        return localVarResp.getData();
+    public void cloudDeleteV1GitKeysId(@javax.annotation.Nonnull String id) throws ApiException {
+        cloudDeleteV1GitKeysIdWithHttpInfo(id);
     }
 
     /**
      * Removes a registered SSH key, scoped to the caller&#39;s org: an org can only delete its own, and a key id it does not own is not found.
      * Removes a registered SSH key, scoped to the caller&#39;s org: an org can only delete its own, and a key id it does not own is not found. Answers 204 with no body. Once removed the key no longer authenticates any SSH git access.
      * @param id Key id (required)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> cloudDeleteV1GitKeysIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<Void> cloudDeleteV1GitKeysIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = cloudDeleteV1GitKeysIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -216,14 +212,13 @@ public class GitApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudDeleteV1GitKeysIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call cloudDeleteV1GitKeysIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudDeleteV1GitKeysIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -236,7 +231,7 @@ public class GitApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudDeleteV1GitReposNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -266,7 +261,6 @@ public class GitApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -299,37 +293,34 @@ public class GitApi {
      * Removes a repo&#39;s metadata and purges its storage.
      * Removes a repo&#39;s metadata and purges its storage. Answers 204 with no body. The metadata row is the source of truth for existence, so a storage purge that fails is logged and the delete still succeeds — and a second call is a 404, not a second delete.
      * @param name Repo name (a trailing \&quot;.git\&quot; is stripped) (required)
-     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public Object cloudDeleteV1GitReposName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<Object> localVarResp = cloudDeleteV1GitReposNameWithHttpInfo(name);
-        return localVarResp.getData();
+    public void cloudDeleteV1GitReposName(@javax.annotation.Nonnull String name) throws ApiException {
+        cloudDeleteV1GitReposNameWithHttpInfo(name);
     }
 
     /**
      * Removes a repo&#39;s metadata and purges its storage.
      * Removes a repo&#39;s metadata and purges its storage. Answers 204 with no body. The metadata row is the source of truth for existence, so a storage purge that fails is logged and the delete still succeeds — and a second call is a 404, not a second delete.
      * @param name Repo name (a trailing \&quot;.git\&quot; is stripped) (required)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> cloudDeleteV1GitReposNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<Void> cloudDeleteV1GitReposNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = cloudDeleteV1GitReposNameValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -343,14 +334,13 @@ public class GitApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudDeleteV1GitReposNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call cloudDeleteV1GitReposNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudDeleteV1GitReposNameValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -364,7 +354,7 @@ public class GitApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudDeleteV1GitReposNameMirrorsIdCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -395,7 +385,6 @@ public class GitApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -434,18 +423,16 @@ public class GitApi {
      * Removes one outbound mirror target; later pushes stop being forwarded to it. Answers 204 with no body. Nothing is done to the downstream remote itself — only this repo&#39;s intent to push there is dropped.
      * @param name Name is the repo, from the :name path segment. (required)
      * @param id ID is the row to remove, from the :id path segment. (required)
-     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public Object cloudDeleteV1GitReposNameMirrorsId(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Object> localVarResp = cloudDeleteV1GitReposNameMirrorsIdWithHttpInfo(name, id);
-        return localVarResp.getData();
+    public void cloudDeleteV1GitReposNameMirrorsId(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id) throws ApiException {
+        cloudDeleteV1GitReposNameMirrorsIdWithHttpInfo(name, id);
     }
 
     /**
@@ -453,19 +440,18 @@ public class GitApi {
      * Removes one outbound mirror target; later pushes stop being forwarded to it. Answers 204 with no body. Nothing is done to the downstream remote itself — only this repo&#39;s intent to push there is dropped.
      * @param name Name is the repo, from the :name path segment. (required)
      * @param id ID is the row to remove, from the :id path segment. (required)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> cloudDeleteV1GitReposNameMirrorsIdWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<Void> cloudDeleteV1GitReposNameMirrorsIdWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = cloudDeleteV1GitReposNameMirrorsIdValidateBeforeCall(name, id, null);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -480,14 +466,13 @@ public class GitApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudDeleteV1GitReposNameMirrorsIdAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call cloudDeleteV1GitReposNameMirrorsIdAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudDeleteV1GitReposNameMirrorsIdValidateBeforeCall(name, id, _callback);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -501,7 +486,7 @@ public class GitApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call cloudDeleteV1GitReposNameSubscriptionsIdCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -532,7 +517,6 @@ public class GitApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -571,18 +555,16 @@ public class GitApi {
      * Removes one Slack subscription from a repo; the notifier stops posting that repo&#39;s events to that channel. Answers 204 with no body. An id that is not this repo&#39;s subscription is not found.
      * @param name Name is the repo, from the :name path segment. (required)
      * @param id ID is the row to remove, from the :id path segment. (required)
-     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public Object cloudDeleteV1GitReposNameSubscriptionsId(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Object> localVarResp = cloudDeleteV1GitReposNameSubscriptionsIdWithHttpInfo(name, id);
-        return localVarResp.getData();
+    public void cloudDeleteV1GitReposNameSubscriptionsId(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id) throws ApiException {
+        cloudDeleteV1GitReposNameSubscriptionsIdWithHttpInfo(name, id);
     }
 
     /**
@@ -590,19 +572,18 @@ public class GitApi {
      * Removes one Slack subscription from a repo; the notifier stops posting that repo&#39;s events to that channel. Answers 204 with no body. An id that is not this repo&#39;s subscription is not found.
      * @param name Name is the repo, from the :name path segment. (required)
      * @param id ID is the row to remove, from the :id path segment. (required)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> cloudDeleteV1GitReposNameSubscriptionsIdWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<Void> cloudDeleteV1GitReposNameSubscriptionsIdWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = cloudDeleteV1GitReposNameSubscriptionsIdValidateBeforeCall(name, id, null);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -617,14 +598,13 @@ public class GitApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cloudDeleteV1GitReposNameSubscriptionsIdAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call cloudDeleteV1GitReposNameSubscriptionsIdAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cloudDeleteV1GitReposNameSubscriptionsIdValidateBeforeCall(name, id, _callback);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
