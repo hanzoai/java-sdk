@@ -1,0 +1,66 @@
+// File generated from our OpenAPI spec by Stainless.
+
+package ai.hanzo.api.models.key
+
+import ai.hanzo.api.core.http.Headers
+import kotlin.jvm.optionals.getOrNull
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Test
+
+internal class KeyDeleteParamsTest {
+
+    @Test
+    fun create() {
+        KeyDeleteParams.builder()
+            .llmChangedBy("llm-changed-by")
+            .addKeyAlias("string")
+            .addKey("string")
+            .build()
+    }
+
+    @Test
+    fun headers() {
+        val params =
+            KeyDeleteParams.builder()
+                .llmChangedBy("llm-changed-by")
+                .addKeyAlias("string")
+                .addKey("string")
+                .build()
+
+        val headers = params._headers()
+
+        assertThat(headers)
+            .isEqualTo(Headers.builder().put("llm-changed-by", "llm-changed-by").build())
+    }
+
+    @Test
+    fun headersWithoutOptionalFields() {
+        val params = KeyDeleteParams.builder().build()
+
+        val headers = params._headers()
+
+        assertThat(headers).isEqualTo(Headers.builder().build())
+    }
+
+    @Test
+    fun body() {
+        val params =
+            KeyDeleteParams.builder()
+                .llmChangedBy("llm-changed-by")
+                .addKeyAlias("string")
+                .addKey("string")
+                .build()
+
+        val body = params._body()
+
+        assertThat(body.keyAliases().getOrNull()).containsExactly("string")
+        assertThat(body.keys().getOrNull()).containsExactly("string")
+    }
+
+    @Test
+    fun bodyWithoutOptionalFields() {
+        val params = KeyDeleteParams.builder().build()
+
+        val body = params._body()
+    }
+}

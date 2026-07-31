@@ -1,0 +1,13 @@
+// File generated from our OpenAPI spec by Stainless.
+
+package ai.hanzo.api.models.organization
+
+import org.junit.jupiter.api.Test
+
+internal class OrganizationListParamsTest {
+
+    @Test
+    fun create() {
+        OrganizationListParams.builder().build()
+    }
+}

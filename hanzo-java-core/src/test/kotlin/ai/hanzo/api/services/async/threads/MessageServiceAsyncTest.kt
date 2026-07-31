@@ -1,0 +1,34 @@
+// File generated from our OpenAPI spec by Stainless.
+
+package ai.hanzo.api.services.async.threads
+
+import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
+import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Test
+
+internal class MessageServiceAsyncTest {
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun create() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val messageServiceAsync = client.threads().messages()
+
+        val messageFuture = messageServiceAsync.create("thread_id")
+
+        val message = messageFuture.get()
+        message.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun list() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val messageServiceAsync = client.threads().messages()
+
+        val messagesFuture = messageServiceAsync.list("thread_id")
+
+        val messages = messagesFuture.get()
+        messages.validate()
+    }
+}

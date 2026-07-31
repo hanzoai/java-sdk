@@ -1,0 +1,24 @@
+// File generated from our OpenAPI spec by Stainless.
+
+package ai.hanzo.api.services.async
+
+import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
+import ai.hanzo.api.models.completions.CompletionCreateParams
+import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Test
+
+internal class CompletionServiceAsyncTest {
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun create() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val completionServiceAsync = client.completions()
+
+        val completionFuture =
+            completionServiceAsync.create(CompletionCreateParams.builder().model("model").build())
+
+        val completion = completionFuture.get()
+        completion.validate()
+    }
+}

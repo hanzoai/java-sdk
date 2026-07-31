@@ -1,0 +1,26 @@
+// File generated from our OpenAPI spec by Stainless.
+
+package ai.hanzo.api.services.async.audio
+
+import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
+import ai.hanzo.api.models.audio.transcriptions.TranscriptionCreateParams
+import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Test
+
+internal class TranscriptionServiceAsyncTest {
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun create() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val transcriptionServiceAsync = client.audio().transcriptions()
+
+        val transcriptionFuture =
+            transcriptionServiceAsync.create(
+                TranscriptionCreateParams.builder().file("Example data".byteInputStream()).build()
+            )
+
+        val transcription = transcriptionFuture.get()
+        transcription.validate()
+    }
+}
