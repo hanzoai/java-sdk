@@ -81,9 +81,14 @@ export HANZO_ORG_ID=my-org      # store and agent only
 ./gradlew :examples:hello
 ```
 
-`HANZO_BASE_URL` (default `https://api.hanzo.ai`) and `HANZO_MODEL` (default
-`zen-1`) override the rest. All of it is resolved in one place,
+`HANZO_BASE_URL` (default `https://api.hanzo.ai`) and `HANZO_MODEL` override the
+rest. All of it is resolved in one place,
 [`examples/Hanzo.java`](examples/Hanzo.java).
+
+Set `HANZO_MODEL`: the fallback compiled into `Hanzo.java` is `zen-1`, which is
+not a model the gateway serves, so the examples fail on the model id without it.
+`zen5`, `zen5-coder` and `enso` are real; `curl https://catalog.hanzo.ai/v1/models`
+lists the rest.
 
 ## Build
 
