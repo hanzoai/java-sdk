@@ -2,7 +2,7 @@
 
 Java client for the [Hanzo Cloud](https://hanzo.ai) unified API: **2452
 operations over 1737 paths, across 263 tags**, generated from `hanzo.yaml` in
-[hanzoai/openapi](https://github.com/hanzoai/openapi), which is the single
+`hanzoai/openapi`, which is the single
 source of truth for every Hanzo SDK.
 
 Nothing under `hanzo-java-cloud/src/main/java/ai/hanzo/cloud` is written by
