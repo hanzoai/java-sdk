@@ -1,44 +1,27 @@
 #!/usr/bin/env bash
-# Regenerate hanzo-java-cloud/ from the Hanzo OpenAPI document.
+# Regenerate hanzo-java-cloud/ from the Hanzo Cloud API document.
 #
-# This is a CALL SITE, not a generator invocation. The invocation is logic and
-# lives once, in hanzoai/openapi `generate.py`; every per-language knob —
-# generator, library, coordinates, packages — is data in `sdks.yaml` beside it.
-# Nothing about how this client is produced is written down in this repo, so
-# there is nothing here that can drift on its own.
+# A CALL SITE, not a generator invocation. The invocation is logic and lives
+# once, in `generate.py`; every per-language knob — generator, library,
+# coordinates, packages — is data in `sdks.yaml` beside it.
 #
 #   ./scripts/generate.sh            # regenerate in place
 #   ./scripts/generate.sh --check    # non-zero if the committed client drifted
 #
-# hanzoai/openapi is PRIVATE, so raw.githubusercontent.com 404s it and a clone
-# needs credentials: SPEC_TOKEN, else GH_TOKEN, else GITHUB_TOKEN, else ssh.
-# Point OPENAPI at a checkout you already have to skip the clone entirely.
+# BOTH INPUTS ARRIVE AS VALUES. $SPEC is the document, already fetched at a
+# pinned ref and digest-checked; $OPENAPI is the checkout holding the driver.
+# hanzoai/ci's client lane sets both, because it holds the one credential that
+# reads the forge the driver lives on. What stood here instead was a four-deep
+# credential chain — SPEC_TOKEN, GH_TOKEN, GITHUB_TOKEN, then ssh — pointed at
+# github.com, where the driver is not canonical and none of those four are
+# provisioned. Set OPENAPI by hand to run it by hand.
 #
-# Requires: python3 (+pyyaml), java 11+, git.
+# Requires: python3 (+pyyaml), java 11+.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-OPENAPI="${OPENAPI:-}"
-SPEC_REPO="${SPEC_REPO:-hanzoai/openapi}"
-SPEC_REF="${SPEC_REF:-main}"
+: "${OPENAPI:?the generator lives in hanzoai/openapi; hanzoai/ci's client lane sets OPENAPI, or point it at a checkout}"
 
-if [ -z "$OPENAPI" ]; then
-  OPENAPI="$(mktemp -d "${TMPDIR:-/tmp}/hanzo-openapi.XXXXXX")"
-  trap 'rm -rf "$OPENAPI"' EXIT
-  TOKEN="${SPEC_TOKEN:-${GH_TOKEN:-${GITHUB_TOKEN:-}}}"
-  if [ -n "$TOKEN" ]; then
-    echo "cloning private ${SPEC_REPO}@${SPEC_REF} with a token (raw.githubusercontent.com 404s private paths)"
-    git clone --depth 1 --branch "$SPEC_REF" \
-      "https://x-access-token:${TOKEN}@github.com/${SPEC_REPO}.git" "$OPENAPI" >/dev/null 2>&1
-  else
-    echo "cloning ${SPEC_REPO}@${SPEC_REF} over ssh; set SPEC_TOKEN/GH_TOKEN/GITHUB_TOKEN or OPENAPI to override"
-    git clone --depth 1 --branch "$SPEC_REF" "git@github.com:${SPEC_REPO}.git" "$OPENAPI" >/dev/null
-  fi
-fi
-
-# THE DOCUMENT AS AN ARGUMENT. hanzoai/ci's client: lane fetches openapi.yaml at
-# the sha hanzoai/cloud just deployed and exports SPEC; the driver projects THAT
-# rather than the checkout's own hanzo.yaml. With SPEC unset nothing changes —
-# a maintainer regenerating by hand still gets the checkout's document.
 if [ -n "${SPEC:-}" ]; then set -- --spec "$SPEC" "$@"; fi
+
 exec python3 "$OPENAPI/generate.py" java --repo "$PWD" "$@"
