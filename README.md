@@ -1,12 +1,16 @@
 # Hanzo Cloud — Java SDK
 
-Java client for the [Hanzo Cloud](https://hanzo.ai) unified API: **2452
-operations over 1737 paths, across 263 tags**, generated from `hanzo.yaml` in
-`hanzoai/openapi`, which is the single
-source of truth for every Hanzo SDK.
+Java client for the [Hanzo Cloud](https://hanzo.ai) unified API: **2468
+operations over 1797 paths, across 189 tags**, generated from the `openapi.yaml`
+hanzoai/cloud emits from its own routers — so every method here is a route the
+subsystem that publishes it registered.
+
+Which release this client is a projection of is a fact about the repo, in
+[`.spec-lock`](.spec-lock): the ref, and the digest of the bytes it was cut
+from.
 
 Nothing under `hanzo-java-cloud/src/main/java/ai/hanzo/cloud` is written by
-hand. To change the client, change the spec.
+hand. To change the client, change the code that emits the document.
 
 ## Install
 
@@ -34,10 +38,14 @@ A bearer token — an IAM-issued JWT or an `hk-` Cloud API key. Some routes (KV,
 agents) are org-scoped and also need `X-Org-Id`; the rest take the tenant from
 the token's `owner` claim.
 
+Set it as a default header. The document declares no `securitySchemes`, so the
+generator registers no authentication: `setAccessToken` is a stub that throws,
+and a client that does not set the header itself sends no credential at all.
+
 ```java
 ApiClient client = new ApiClient();
 client.setBasePath("https://api.hanzo.ai");
-client.setBearerToken(System.getenv("HANZO_API_KEY"));
+client.addDefaultHeader("Authorization", "Bearer " + System.getenv("HANZO_API_KEY"));
 client.addDefaultHeader("X-Org-Id", System.getenv("HANZO_ORG_ID")); // org-scoped routes
 ```
 
@@ -46,17 +54,18 @@ client.addDefaultHeader("X-Org-Id", System.getenv("HANZO_ORG_ID")); // org-scope
 ```java
 import ai.hanzo.cloud.ApiClient;
 import ai.hanzo.cloud.ApiException;
-import ai.hanzo.cloud.api.AuthApi;
-import ai.hanzo.cloud.model.BotUser;
+import ai.hanzo.cloud.api.KeysApi;
+import ai.hanzo.cloud.model.ApiKey;
 
 public class Whoami {
     public static void main(String[] args) throws ApiException {
         ApiClient client = new ApiClient();
         client.setBasePath("https://api.hanzo.ai");
-        client.setBearerToken(System.getenv("HANZO_API_KEY"));
+        client.addDefaultHeader("Authorization", "Bearer " + System.getenv("HANZO_API_KEY"));
 
-        BotUser me = new AuthApi(client).botAuthMe();
-        System.out.println(me.getHandle() + " <" + me.getEmail() + ">");
+        for (ApiKey key : new KeysApi(client).getV1Keys().getKeys()) {
+            System.out.println(key.getType() + " " + key.getPrefix());
+        }
     }
 }
 ```
@@ -68,7 +77,7 @@ are compiled by the build, so they cannot rot.
 
 | flow | what it does |
 |---|---|
-| [`hello`](examples/hello) | `GET /v1/bot/auth/me` — prove the key works, and print who it belongs to |
+| [`hello`](examples/hello) | `GET /v1/keys` — the call that says no, so a 200 proves the key works |
 | [`chat`](examples/chat) | `POST /v1/chat/completions` — one completion, OpenAI-compatible |
 | [`money`](examples/money) | `GET /v1/billing/balance`, `GET /v1/billing/usage` |
 | [`store`](examples/store) | `POST /v1/kv`, `GET`/`DELETE /v1/kv/{name}` — provision, read, drop |
@@ -100,18 +109,19 @@ lists the rest.
 ## Regenerate
 
 ```
-./scripts/generate.sh            # regenerate from hanzoai/openapi
-./scripts/generate.sh --check    # non-zero if the committed client drifted
+SPEC=/path/to/openapi.yaml OPENAPI=/path/to/hanzoai/openapi ./scripts/generate.sh
 ```
 
 `scripts/generate.sh` is a call site, not a generator invocation: the invocation
 lives once in `hanzoai/openapi/generate.py` and every knob — generator, HTTP
-library, coordinates, packages — is data in `sdks.yaml` beside it. `--check` is
-what makes "this client is the spec" a fact rather than a convention, and it
-runs in CI.
+library, coordinates, packages — is data in `sdks.yaml` beside it. Both inputs
+arrive as values: `SPEC` is the document, `OPENAPI` is the checkout holding the
+driver. CI's client lane sets both, because it holds the one credential that
+reads the forge they live on; by hand, point them at checkouts you already have.
 
-hanzoai/openapi is private, so regenerating needs `SPEC_TOKEN` (or `GH_TOKEN` /
-`GITHUB_TOKEN`), or `OPENAPI=` pointing at a checkout you already have.
+The examples are the gate. `./gradlew build` compiles the client and all six
+flows against it, so a document change that renames or drops an operation goes
+red here instead of in someone's app.
 
 ## License
 

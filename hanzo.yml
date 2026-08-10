@@ -6,7 +6,7 @@
 
 test:
   - name: sdk-build
-    # 2316 generated sources in one compile. If a regeneration produces
+    # 2646 generated sources in one compile. If a regeneration produces
     # something that does not compile, it must not reach a tag.
     run: ./gradlew --no-daemon :hanzo-java-cloud:compileJava
 

@@ -1,35 +1,45 @@
 package ai.hanzo.cloud.examples;
 
 import ai.hanzo.cloud.ApiException;
-import ai.hanzo.cloud.api.AuthApi;
-import ai.hanzo.cloud.model.BotUser;
+import ai.hanzo.cloud.api.KeysApi;
+import ai.hanzo.cloud.model.ApiKey;
+import ai.hanzo.cloud.model.ApiKeyList;
+
+import java.util.List;
 
 /**
- * hello — prove the key works, and print who it belongs to.
+ * hello — prove the key works, and print what it can reach.
  *
- * <p>Operation: {@code bot_authMe} — GET /v1/bot/auth/me.
+ * <p>Operation: {@code get_v1_keys} — GET /v1/keys.
  *
- * <p>This is the call that says no: with no key, or a bogus one, the route
- * answers 403 {@code {"error":"no validated principal"}} rather than a cheerful
- * anonymous identity. That refusal is the whole point of a hello, so the
- * failure is printed as deliberately as the success.
+ * <p>This is the call that says no. With no key, or a bogus one, the route
+ * answers 403 {@code {"code":"forbidden","error":"sign in to manage API keys"}}
+ * while the nonsense sibling GET /v1/keys-zzq9 answers 404 — so the refusal is
+ * this route refusing rather than a wildcard door, which is what makes it a
+ * usable proof that a credential works. The three obvious identity routes were
+ * disqualified for answering 200 to a caller with no credential at all;
+ * {@code flows.yaml} records the probe.
  *
  * <pre>
- *   HANZO_API_KEY=sk-... ./gradlew :examples:hello
+ *   HANZO_API_KEY=hk-... ./gradlew :examples:hello
  * </pre>
  */
 public final class Hello {
 
     public static void main(String[] args) {
-        AuthApi auth = new AuthApi(Hanzo.client());
+        KeysApi keys = new KeysApi(Hanzo.client());
         try {
-            BotUser me = auth.botAuthMe();
-            System.out.printf("id       %s%n", me.getId());
-            System.out.printf("handle   %s%n", me.getHandle());
-            System.out.printf("name     %s%n", me.getDisplayName());
-            System.out.printf("email    %s%n", me.getEmail());
+            ApiKeyList mine = keys.getV1Keys();
+            List<ApiKey> owned = mine.getKeys();
+            if (owned == null || owned.isEmpty()) {
+                System.out.println("the key is good, and it owns no keys of its own");
+                return;
+            }
+            for (ApiKey key : owned) {
+                System.out.printf("%-8s %-24s %s%n", key.getType(), key.getPrefix(), key.getCreatedAt());
+            }
         } catch (ApiException e) {
-            System.err.printf("whoami failed: HTTP %d %s%n", e.getCode(), e.getResponseBody());
+            System.err.printf("keys refused: HTTP %d %s%n", e.getCode(), e.getResponseBody());
             System.exit(1);
         }
     }

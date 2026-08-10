@@ -20,7 +20,7 @@ subprojects {
         // Schema descriptions are copied into the sources as UTF-8; the
         // platform default would mangle them.
         options.encoding = 'UTF-8'
-        // 2452 operations across 2295 classes in one compile. The Gradle daemon
+        // 2468 operations across 2646 sources in one compile. The Gradle daemon
         // heap in gradle.properties is not the compiler's, so fork one.
         options.fork = true
         options.forkOptions.jvmArgs = ['-Xmx6g']

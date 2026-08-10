@@ -2,12 +2,10 @@ package ai.hanzo.cloud.examples;
 
 import ai.hanzo.cloud.ApiException;
 import ai.hanzo.cloud.api.AgentsApi;
-import ai.hanzo.cloud.model.AgentsRunRequest;
-import ai.hanzo.cloud.model.AgentsRunView;
-import ai.hanzo.cloud.model.CloudAgentRunView;
-import ai.hanzo.cloud.model.CloudAgentView;
-import ai.hanzo.cloud.model.CloudCreateAgentIn;
-import ai.hanzo.cloud.model.CloudRunList;
+import ai.hanzo.cloud.model.AgentRunView;
+import ai.hanzo.cloud.model.AgentView;
+import ai.hanzo.cloud.model.CreateAgentIn;
+import ai.hanzo.cloud.model.RunList;
 
 import java.util.HashSet;
 import java.util.List;
@@ -17,26 +15,25 @@ import java.util.UUID;
 /**
  * agent — create one, run it, watch the run land.
  *
- * <p>Operations: {@code cloud_post_v1_agents} — POST /v1/agents,
- * {@code cloud_post_v1_agents_by_ref_run} — POST /v1/agents/{ref}/run,
- * {@code cloud_get_v1_agents_ref_runs} — GET /v1/agents/{ref}/runs.
+ * <p>Operations: {@code post_v1_agents} — POST /v1/agents,
+ * {@code post_v1_agents_by_ref_run} — POST /v1/agents/{ref}/run,
+ * {@code get_v1_agents_by_ref_runs} — GET /v1/agents/{ref}/runs.
  *
  * <p>{@code ref} accepts the public id or the org-unique name, so the run and
  * the read both use the name just created. Names are org-unique, so this makes
  * a fresh one rather than hardcoding it.
  *
- * <p>The run route now carries a typed body IN and a typed {@link AgentsRunView}
- * back, both restored to the document, so the call takes real input and its
- * acknowledgement is read rather than discarded. A run is still asynchronous,
- * so the example records the run ids that existed beforehand and polls the run
- * list until the one that appeared is terminal — the last step is the RUN LIST,
- * not the agent read.
+ * <p>The run route carries neither a body nor an acknowledgement in the
+ * document, so the input the agent works on is its {@code instructions} and the
+ * only evidence a run started is the RUN LIST. That is why the example records
+ * the run ids that existed beforehand and polls until the one that appeared is
+ * terminal — the last step is the list, not the agent read.
  *
  * <p>Agents are org-scoped: without {@code X-Org-Id} these are
  * 403 {@code "X-Org-Id required"}.
  *
  * <pre>
- *   HANZO_API_KEY=sk-... HANZO_ORG_ID=my-org ./gradlew :examples:agent
+ *   HANZO_API_KEY=hk-... HANZO_ORG_ID=my-org ./gradlew :examples:agent
  * </pre>
  */
 public final class Agent {
@@ -52,21 +49,19 @@ public final class Agent {
         String name = "sdk-example-" + UUID.randomUUID().toString().substring(0, 8);
 
         try {
-            CloudAgentView created = agents.cloudPostV1Agents(new CloudCreateAgentIn()
+            AgentView created = agents.postV1Agents(new CreateAgentIn()
                     .name(name)
                     .model(Hanzo.model())
-                    .instructions("You answer in exactly one sentence."));
+                    .instructions("Answer in exactly one sentence: what is the capital of Japan?"));
             System.out.printf("created  %s (%s)%n", created.getName(), created.getId());
 
-            Set<String> before = runIds(agents.cloudGetV1AgentsRefRuns(name, 100));
+            Set<String> before = runIds(agents.getV1AgentsByRefRuns(name, 100));
 
-            AgentsRunView started = agents.cloudPostV1AgentsByRefRun(name,
-                    new AgentsRunRequest().input("What is the capital of Japan?"));
-            System.out.printf("ran      %s %s%n", name, started.getStatus());
+            agents.postV1AgentsByRefRun(name);
+            System.out.printf("ran      %s%n", name);
 
             for (int attempt = 0; attempt < POLL_ATTEMPTS; attempt++) {
-                CloudRunList runs = agents.cloudGetV1AgentsRefRuns(name, 100);
-                CloudAgentRunView run = newest(runs, before);
+                AgentRunView run = started(agents.getV1AgentsByRefRuns(name, 100), before);
                 if (run != null && !RUNNING.contains(String.valueOf(run.getStatus()))) {
                     System.out.printf("run      %s %s%n", run.getId(), run.getStatus());
                     System.out.printf("output   %s%n", run.getOutput());
@@ -82,9 +77,9 @@ public final class Agent {
         }
     }
 
-    private static Set<String> runIds(CloudRunList list) {
+    private static Set<String> runIds(RunList list) {
         Set<String> ids = new HashSet<>();
-        List<CloudAgentRunView> runs = list == null ? null : list.getRuns();
+        List<AgentRunView> runs = list == null ? null : list.getRuns();
         if (runs != null) {
             runs.forEach(run -> ids.add(run.getId()));
         }
@@ -92,8 +87,8 @@ public final class Agent {
     }
 
     /** The run this example started: the one that was not there before. */
-    private static CloudAgentRunView newest(CloudRunList list, Set<String> before) {
-        List<CloudAgentRunView> runs = list == null ? null : list.getRuns();
+    private static AgentRunView started(RunList list, Set<String> before) {
+        List<AgentRunView> runs = list == null ? null : list.getRuns();
         if (runs == null) {
             return null;
         }

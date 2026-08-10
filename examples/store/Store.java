@@ -2,18 +2,18 @@ package ai.hanzo.cloud.examples;
 
 import ai.hanzo.cloud.ApiException;
 import ai.hanzo.cloud.api.KvApi;
-import ai.hanzo.cloud.model.CloudProvisionRequest;
-import ai.hanzo.cloud.model.CloudProvisionResult;
-import ai.hanzo.cloud.model.CloudProvisionedResource;
+import ai.hanzo.cloud.model.ProvisionRequest;
+import ai.hanzo.cloud.model.ProvisionResult;
+import ai.hanzo.cloud.model.ProvisionedResource;
 
 import java.util.UUID;
 
 /**
  * store — provision a KV store, read it back, drop it.
  *
- * <p>Operations: {@code cloud_post_v1_kv} — POST /v1/kv,
- * {@code cloud_get_v1_kv_name} — GET /v1/kv/{name},
- * {@code cloud_delete_v1_kv_name} — DELETE /v1/kv/{name}.
+ * <p>Operations: {@code post_v1_kv} — POST /v1/kv,
+ * {@code get_v1_kv_by_name} — GET /v1/kv/{name},
+ * {@code delete_v1_kv_by_name} — DELETE /v1/kv/{name}.
  *
  * <p>This is the provisioning plane, and it is the one that answers: the value
  * plane (/v1/kv/keys/{key}) is authored in the document but does not route.
@@ -24,7 +24,7 @@ import java.util.UUID;
  * run to collide with.
  *
  * <pre>
- *   HANZO_API_KEY=sk-... HANZO_ORG_ID=my-org ./gradlew :examples:store
+ *   HANZO_API_KEY=hk-... HANZO_ORG_ID=my-org ./gradlew :examples:store
  * </pre>
  */
 public final class Store {
@@ -37,10 +37,10 @@ public final class Store {
         String name = "sdk-example-" + UUID.randomUUID().toString().substring(0, 8);
 
         try {
-            CloudProvisionResult created = kv.cloudPostV1Kv(new CloudProvisionRequest().name(name));
+            ProvisionResult created = kv.postV1Kv(new ProvisionRequest().name(name));
             System.out.printf("created  %s (%s)%n", created.getName(), created.getStatus());
 
-            CloudProvisionedResource read = kv.cloudGetV1KvName(name);
+            ProvisionedResource read = kv.getV1KvByName(name);
             System.out.printf("read     %s host=%s port=%s status=%s%n",
                     read.getName(), read.getHost(), read.getPort(), read.getStatus());
         } catch (ApiException e) {
@@ -48,7 +48,7 @@ public final class Store {
             System.exit(1);
         } finally {
             try {
-                kv.cloudDeleteV1KvName(name);
+                kv.deleteV1KvByName(name);
                 System.out.printf("deleted  %s%n", name);
             } catch (ApiException e) {
                 System.err.printf("delete %s failed: HTTP %d %s%n", name, e.getCode(), e.getResponseBody());
