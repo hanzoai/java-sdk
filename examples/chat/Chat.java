@@ -1,60 +1,45 @@
 package ai.hanzo.cloud.examples;
 
 import ai.hanzo.cloud.ApiException;
-import ai.hanzo.cloud.api.OpenAiCompatibleApi;
-import ai.hanzo.cloud.model.AiChatChoice;
-import ai.hanzo.cloud.model.AiChatCompletionRequest;
-import ai.hanzo.cloud.model.AiChatCompletionResponse;
-import ai.hanzo.cloud.model.AiChatMessage;
-import ai.hanzo.cloud.model.AiUsage;
-
-import java.util.List;
+import ai.hanzo.cloud.api.ChatApi;
 
 /**
  * chat — one completion.
  *
- * <p>Operation: {@code ai_createChatCompletion} — POST /v1/chat/completions,
- * the OpenAI-compatible surface.
+ * <p>Operation: {@code post_v1_chat_completions} — POST /v1/chat/completions,
+ * the gateway's own inference route.
  *
  * <p>Non-streaming on purpose: streaming is SSE, a different transport that a
  * generated client hands back as an opaque body, so demonstrating it here would
  * teach the wrong shape.
  *
+ * <p>THE ROUTE IS UNTYPED AT THE SOURCE, so the generated method takes no
+ * argument and returns {@code void}: there is no request schema to carry a
+ * prompt and no response schema to read a reply from. That is a hanzoai/cloud
+ * gap — the route is not a {@code zip.Get[In, Out]} yet, so its emitter has no
+ * shape to publish — and the one thing this example must not do is invent one.
+ * A request hand-rolled inside a generated client is precisely the second
+ * authority these SDKs exist to remove; it would compile, look right, and be an
+ * opinion about the API rather than a projection of it.
+ *
+ * <p>So the flow calls the operation the document declares and prints what the
+ * route answered. When the shapes land, this becomes
+ * {@code chat.postV1ChatCompletions(request)} and prints
+ * {@code choices[0].message.content} — a regeneration away, with no decision
+ * left in this file.
+ *
  * <pre>
- *   HANZO_API_KEY=sk-... ./gradlew :examples:chat
+ *   HANZO_API_KEY=hk-... ./gradlew :examples:chat
  * </pre>
  */
 public final class Chat {
 
     public static void main(String[] args) {
-        AiChatMessage message = new AiChatMessage()
-                .role(AiChatMessage.RoleEnum.USER)
-                .content("In one sentence: what is Hanzo?");
-
-        AiChatCompletionRequest request = new AiChatCompletionRequest()
-                .model(Hanzo.model())
-                .messages(List.of(message));
-
-        OpenAiCompatibleApi ai = new OpenAiCompatibleApi(Hanzo.client());
+        ChatApi chat = new ChatApi(Hanzo.client());
         try {
-            AiChatCompletionResponse response = ai.aiCreateChatCompletion(request);
-
-            List<AiChatChoice> choices = response.getChoices();
-            if (choices == null || choices.isEmpty()) {
-                System.err.println("no choices returned");
-                System.exit(1);
-            }
-            // `content` is `{}` in the document — a string for a plain reply, an
-            // array of parts for a multimodal one — so it arrives as Object.
-            System.out.println(choices.get(0).getMessage().getContent());
-
-            AiUsage usage = response.getUsage();
-            if (usage != null) {
-                System.out.printf("%ntokens: %d prompt + %d completion%n",
-                        usage.getPromptTokens(), usage.getCompletionTokens());
-            }
+            System.out.printf("completion  HTTP %d%n", chat.postV1ChatCompletionsWithHttpInfo().getStatusCode());
         } catch (ApiException e) {
-            System.err.printf("chat completion failed: HTTP %d %s%n", e.getCode(), e.getResponseBody());
+            System.err.printf("chat failed: HTTP %d %s%n", e.getCode(), e.getResponseBody());
             System.exit(1);
         }
     }
