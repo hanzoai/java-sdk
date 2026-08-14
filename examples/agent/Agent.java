@@ -1,5 +1,6 @@
 package ai.hanzo.cloud.examples;
 
+import ai.hanzo.Hanzo;
 import ai.hanzo.cloud.ApiException;
 import ai.hanzo.cloud.api.AgentsApi;
 import ai.hanzo.cloud.model.AgentRunView;
@@ -44,6 +45,9 @@ public final class Agent {
     private static final int POLL_ATTEMPTS = 60;
     private static final long POLL_INTERVAL_MS = 1000L;
 
+    /** The only flow that names a model. {@code HANZO_MODEL} overrides it. */
+    private static final String DEFAULT_MODEL = "zen5";
+
     public static void main(String[] args) throws InterruptedException {
         AgentsApi agents = new AgentsApi(Hanzo.client());
         String name = "sdk-example-" + UUID.randomUUID().toString().substring(0, 8);
@@ -51,7 +55,7 @@ public final class Agent {
         try {
             AgentView created = agents.postAgents(new CreateAgentIn()
                     .name(name)
-                    .model(Hanzo.model())
+                    .model(model())
                     .instructions("Answer in exactly one sentence: what is the capital of Japan?"));
             System.out.printf("created  %s (%s)%n", created.getName(), created.getId());
 
@@ -75,6 +79,11 @@ public final class Agent {
             System.err.printf("agent failed: HTTP %d %s%n", e.getCode(), e.getResponseBody());
             System.exit(1);
         }
+    }
+
+    private static String model() {
+        String model = System.getenv("HANZO_MODEL");
+        return model == null || model.trim().isEmpty() ? DEFAULT_MODEL : model;
     }
 
     private static Set<String> runIds(RunList list) {

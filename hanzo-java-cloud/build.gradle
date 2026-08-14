@@ -1,22 +1,25 @@
 // The published artifact: ai.hanzo:hanzo-java-cloud.
 //
-// src/main/java/ai/hanzo/cloud is generated in full from hanzoai/openapi and is
-// replaced wholesale on every regeneration — never edit it, and never add a
-// file to it. This build file is the repo's, and lives outside that path on
-// purpose.
+// src/main/java/ai/hanzo/cloud is generated in full from the API document and
+// is replaced wholesale on every regeneration — never edit it, and never add a
+// file to it. Everything else in the module is the repo's: this build file, and
+// ai/hanzo/Hanzo.java beside the generated package.
 
 apply plugin: 'java-library'
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
 group = 'ai.hanzo'
-// The spec's own info.version. One document, one version: the ruby and rust
-// rows in sdks.yaml pin the same 8.0.0.
+// The artifact's own number, not the document's: the document versions itself
+// `v1` and says nothing about a client. The ruby and rust rows in sdks.yaml
+// carry the same 8.0.0, so the JVM, ruby and rust projections of one document
+// answer to one number.
 version = '8.0.0'
 
 dependencies {
-    // The set the okhttp-gson library generates against — see the java row in
-    // hanzoai/openapi sdks.yaml for why this library and not `native`.
+    // What the generated sources actually import — see the java row in
+    // hanzoai/openapi sdks.yaml for why the okhttp-gson library and not
+    // `native`.
     //
     // okhttp and gson are `api`, not `implementation`: ApiClient hands back an
     // OkHttpClient and JSON hands back a Gson, and every model has a public
@@ -26,14 +29,16 @@ dependencies {
     api 'com.google.code.gson:gson:2.9.1'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.12.0'
     implementation 'io.gsonfire:gson-fire:1.9.0'
-    implementation 'jakarta.ws.rs:jakarta.ws.rs-api:2.1.6'
+    // JsonNullable, in 191 models — private equals/hashCode helpers, so it
+    // stays off the public surface.
     implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
-    // hanzo.yaml declares an oauth2 security scheme, so the generator emits
-    // RetryingOAuth and OAuthOkHttpClient against Oltu.
-    implementation 'org.apache.oltu.oauth2:org.apache.oltu.oauth2.client:1.0.2'
-    implementation 'org.apache.commons:commons-lang3:3.17.0'
-    implementation 'jakarta.annotation:jakarta.annotation-api:1.3.5'
+    // @javax.annotation.Nullable and @Nonnull, written fully qualified in 2611
+    // sources.
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
+    // @javax.annotation.Generated, on every generated type. The 1.x line still
+    // publishes the javax namespace — jakarta.annotation.* only arrives in 2.0,
+    // where this stops compiling.
+    implementation 'jakarta.annotation:jakarta.annotation-api:1.3.5'
 }
 
 // Maven Central requires -sources and -javadoc beside the jar.

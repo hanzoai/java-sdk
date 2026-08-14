@@ -1,5 +1,6 @@
 package ai.hanzo.cloud.examples;
 
+import ai.hanzo.Hanzo;
 import ai.hanzo.cloud.ApiException;
 import ai.hanzo.cloud.api.KeysApi;
 import ai.hanzo.cloud.model.ApiKey;
@@ -13,8 +14,8 @@ import java.util.List;
  * <p>Operation: {@code get_v1_keys} — GET /v1/keys.
  *
  * <p>This is the call that says no. With no key, or a bogus one, the route
- * answers 403 {@code {"code":"forbidden","error":"sign in to manage API keys"}}
- * while the nonsense sibling GET /v1/keys-zzq9 answers 404 — so the refusal is
+ * answers 403 {@code {"status":403,"code":"forbidden","error":"sign in to
+ * manage API keys"}} while GET /v1/keys-zzq9 answers 404 — so the refusal is
  * this route refusing rather than a wildcard door, which is what makes it a
  * usable proof that a credential works. The three obvious identity routes were
  * disqualified for answering 200 to a caller with no credential at all;

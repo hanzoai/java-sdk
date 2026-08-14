@@ -5,9 +5,10 @@
 // They are compiled by `./gradlew build`, which is the point: an example that
 // does not compile is worse than no example.
 
-// One source directory: examples/<flow>/<Flow>.java, plus Hanzo.java beside
-// them, which is the single place HANZO_API_KEY, HANZO_BASE_URL and
-// HANZO_ORG_ID are resolved.
+// One source directory: examples/<flow>/<Flow>.java. Nothing else lives here —
+// HANZO_API_KEY, HANZO_BASE_URL and HANZO_ORG_ID are resolved by ai.hanzo.Hanzo
+// in the client itself, so an example wires up the same way a reader's program
+// does instead of demonstrating a helper only the examples have.
 sourceSets.main.java {
     srcDirs = ['.']
     exclude 'build/**'

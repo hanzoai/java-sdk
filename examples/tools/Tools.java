@@ -1,5 +1,6 @@
 package ai.hanzo.cloud.examples;
 
+import ai.hanzo.Hanzo;
 import ai.hanzo.cloud.ApiException;
 import ai.hanzo.cloud.api.ToolsApi;
 import ai.hanzo.cloud.model.Tool;
