@@ -89,7 +89,7 @@ public class CaptableApi {
     }
 
     /**
-     * Build call for deleteV1CaptableConvertiblesById
+     * Build call for deleteCaptableConvertiblesById
      * @param id ID is the convertible note to delete. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -101,7 +101,7 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CaptableConvertiblesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCaptableConvertiblesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -147,13 +147,13 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CaptableConvertiblesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCaptableConvertiblesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1CaptableConvertiblesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteCaptableConvertiblesById(Async)");
         }
 
-        return deleteV1CaptableConvertiblesByIdCall(id, _callback);
+        return deleteCaptableConvertiblesByIdCall(id, _callback);
 
     }
 
@@ -170,8 +170,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableDeleted deleteV1CaptableConvertiblesById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<CaptableDeleted> localVarResp = deleteV1CaptableConvertiblesByIdWithHttpInfo(id);
+    public CaptableDeleted deleteCaptableConvertiblesById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<CaptableDeleted> localVarResp = deleteCaptableConvertiblesByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -188,8 +188,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableDeleted> deleteV1CaptableConvertiblesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CaptableConvertiblesByIdValidateBeforeCall(id, null);
+    public ApiResponse<CaptableDeleted> deleteCaptableConvertiblesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteCaptableConvertiblesByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<CaptableDeleted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -208,15 +208,15 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CaptableConvertiblesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableDeleted> _callback) throws ApiException {
+    public okhttp3.Call deleteCaptableConvertiblesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableDeleted> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CaptableConvertiblesByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteCaptableConvertiblesByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<CaptableDeleted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CaptableOptionsById
+     * Build call for deleteCaptableOptionsById
      * @param id ID is the option grant to delete. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -228,7 +228,7 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CaptableOptionsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCaptableOptionsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -274,13 +274,13 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CaptableOptionsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCaptableOptionsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1CaptableOptionsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteCaptableOptionsById(Async)");
         }
 
-        return deleteV1CaptableOptionsByIdCall(id, _callback);
+        return deleteCaptableOptionsByIdCall(id, _callback);
 
     }
 
@@ -297,8 +297,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableDeleted deleteV1CaptableOptionsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<CaptableDeleted> localVarResp = deleteV1CaptableOptionsByIdWithHttpInfo(id);
+    public CaptableDeleted deleteCaptableOptionsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<CaptableDeleted> localVarResp = deleteCaptableOptionsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -315,8 +315,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableDeleted> deleteV1CaptableOptionsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CaptableOptionsByIdValidateBeforeCall(id, null);
+    public ApiResponse<CaptableDeleted> deleteCaptableOptionsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteCaptableOptionsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<CaptableDeleted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -335,15 +335,15 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CaptableOptionsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableDeleted> _callback) throws ApiException {
+    public okhttp3.Call deleteCaptableOptionsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableDeleted> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CaptableOptionsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteCaptableOptionsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<CaptableDeleted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CaptableSafesById
+     * Build call for deleteCaptableSafesById
      * @param id ID is the SAFE to delete. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -355,7 +355,7 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CaptableSafesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCaptableSafesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -401,13 +401,13 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CaptableSafesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCaptableSafesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1CaptableSafesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteCaptableSafesById(Async)");
         }
 
-        return deleteV1CaptableSafesByIdCall(id, _callback);
+        return deleteCaptableSafesByIdCall(id, _callback);
 
     }
 
@@ -424,8 +424,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableDeleted deleteV1CaptableSafesById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<CaptableDeleted> localVarResp = deleteV1CaptableSafesByIdWithHttpInfo(id);
+    public CaptableDeleted deleteCaptableSafesById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<CaptableDeleted> localVarResp = deleteCaptableSafesByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -442,8 +442,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableDeleted> deleteV1CaptableSafesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CaptableSafesByIdValidateBeforeCall(id, null);
+    public ApiResponse<CaptableDeleted> deleteCaptableSafesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteCaptableSafesByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<CaptableDeleted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -462,15 +462,15 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CaptableSafesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableDeleted> _callback) throws ApiException {
+    public okhttp3.Call deleteCaptableSafesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableDeleted> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CaptableSafesByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteCaptableSafesByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<CaptableDeleted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CaptableSharesById
+     * Build call for deleteCaptableSharesById
      * @param id ID is the share certificate to delete. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -482,7 +482,7 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CaptableSharesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCaptableSharesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -528,13 +528,13 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CaptableSharesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCaptableSharesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1CaptableSharesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteCaptableSharesById(Async)");
         }
 
-        return deleteV1CaptableSharesByIdCall(id, _callback);
+        return deleteCaptableSharesByIdCall(id, _callback);
 
     }
 
@@ -551,8 +551,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableDeleted deleteV1CaptableSharesById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<CaptableDeleted> localVarResp = deleteV1CaptableSharesByIdWithHttpInfo(id);
+    public CaptableDeleted deleteCaptableSharesById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<CaptableDeleted> localVarResp = deleteCaptableSharesByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -569,8 +569,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableDeleted> deleteV1CaptableSharesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CaptableSharesByIdValidateBeforeCall(id, null);
+    public ApiResponse<CaptableDeleted> deleteCaptableSharesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteCaptableSharesByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<CaptableDeleted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -589,15 +589,15 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CaptableSharesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableDeleted> _callback) throws ApiException {
+    public okhttp3.Call deleteCaptableSharesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableDeleted> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CaptableSharesByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteCaptableSharesByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<CaptableDeleted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CaptableStakeholdersById
+     * Build call for deleteCaptableStakeholdersById
      * @param id ID is the stakeholder to delete. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -609,7 +609,7 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CaptableStakeholdersByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCaptableStakeholdersByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -655,13 +655,13 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CaptableStakeholdersByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCaptableStakeholdersByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1CaptableStakeholdersById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteCaptableStakeholdersById(Async)");
         }
 
-        return deleteV1CaptableStakeholdersByIdCall(id, _callback);
+        return deleteCaptableStakeholdersByIdCall(id, _callback);
 
     }
 
@@ -678,8 +678,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableDeleted deleteV1CaptableStakeholdersById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<CaptableDeleted> localVarResp = deleteV1CaptableStakeholdersByIdWithHttpInfo(id);
+    public CaptableDeleted deleteCaptableStakeholdersById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<CaptableDeleted> localVarResp = deleteCaptableStakeholdersByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -696,8 +696,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableDeleted> deleteV1CaptableStakeholdersByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CaptableStakeholdersByIdValidateBeforeCall(id, null);
+    public ApiResponse<CaptableDeleted> deleteCaptableStakeholdersByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteCaptableStakeholdersByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<CaptableDeleted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -716,15 +716,15 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CaptableStakeholdersByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableDeleted> _callback) throws ApiException {
+    public okhttp3.Call deleteCaptableStakeholdersByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableDeleted> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CaptableStakeholdersByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteCaptableStakeholdersByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<CaptableDeleted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CaptableClasses
+     * Build call for getCaptableClasses
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -735,7 +735,7 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableClassesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCaptableClassesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -780,8 +780,8 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CaptableClassesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CaptableClassesCall(_callback);
+    private okhttp3.Call getCaptableClassesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCaptableClassesCall(_callback);
 
     }
 
@@ -797,8 +797,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<CaptableShareClass> getV1CaptableClasses() throws ApiException {
-        ApiResponse<List<CaptableShareClass>> localVarResp = getV1CaptableClassesWithHttpInfo();
+    public List<CaptableShareClass> getCaptableClasses() throws ApiException {
+        ApiResponse<List<CaptableShareClass>> localVarResp = getCaptableClassesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -814,8 +814,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<CaptableShareClass>> getV1CaptableClassesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CaptableClassesValidateBeforeCall(null);
+    public ApiResponse<List<CaptableShareClass>> getCaptableClassesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCaptableClassesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<List<CaptableShareClass>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -833,15 +833,15 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableClassesAsync(final ApiCallback<List<CaptableShareClass>> _callback) throws ApiException {
+    public okhttp3.Call getCaptableClassesAsync(final ApiCallback<List<CaptableShareClass>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CaptableClassesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCaptableClassesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<List<CaptableShareClass>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CaptableCompany
+     * Build call for getCaptableCompany
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -852,7 +852,7 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableCompanyCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCaptableCompanyCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -897,8 +897,8 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CaptableCompanyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CaptableCompanyCall(_callback);
+    private okhttp3.Call getCaptableCompanyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCaptableCompanyCall(_callback);
 
     }
 
@@ -914,8 +914,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableCompany getV1CaptableCompany() throws ApiException {
-        ApiResponse<CaptableCompany> localVarResp = getV1CaptableCompanyWithHttpInfo();
+    public CaptableCompany getCaptableCompany() throws ApiException {
+        ApiResponse<CaptableCompany> localVarResp = getCaptableCompanyWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -931,8 +931,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableCompany> getV1CaptableCompanyWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CaptableCompanyValidateBeforeCall(null);
+    public ApiResponse<CaptableCompany> getCaptableCompanyWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCaptableCompanyValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<CaptableCompany>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -950,15 +950,15 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableCompanyAsync(final ApiCallback<CaptableCompany> _callback) throws ApiException {
+    public okhttp3.Call getCaptableCompanyAsync(final ApiCallback<CaptableCompany> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CaptableCompanyValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCaptableCompanyValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CaptableCompany>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CaptableConvertibles
+     * Build call for getCaptableConvertibles
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -969,7 +969,7 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableConvertiblesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCaptableConvertiblesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1014,8 +1014,8 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CaptableConvertiblesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CaptableConvertiblesCall(_callback);
+    private okhttp3.Call getCaptableConvertiblesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCaptableConvertiblesCall(_callback);
 
     }
 
@@ -1031,8 +1031,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableNotes getV1CaptableConvertibles() throws ApiException {
-        ApiResponse<CaptableNotes> localVarResp = getV1CaptableConvertiblesWithHttpInfo();
+    public CaptableNotes getCaptableConvertibles() throws ApiException {
+        ApiResponse<CaptableNotes> localVarResp = getCaptableConvertiblesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1048,8 +1048,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableNotes> getV1CaptableConvertiblesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CaptableConvertiblesValidateBeforeCall(null);
+    public ApiResponse<CaptableNotes> getCaptableConvertiblesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCaptableConvertiblesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<CaptableNotes>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1067,15 +1067,15 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableConvertiblesAsync(final ApiCallback<CaptableNotes> _callback) throws ApiException {
+    public okhttp3.Call getCaptableConvertiblesAsync(final ApiCallback<CaptableNotes> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CaptableConvertiblesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCaptableConvertiblesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CaptableNotes>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CaptableInvestments
+     * Build call for getCaptableInvestments
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1086,7 +1086,7 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableInvestmentsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCaptableInvestmentsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1131,8 +1131,8 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CaptableInvestmentsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CaptableInvestmentsCall(_callback);
+    private okhttp3.Call getCaptableInvestmentsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCaptableInvestmentsCall(_callback);
 
     }
 
@@ -1148,8 +1148,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableInvestments getV1CaptableInvestments() throws ApiException {
-        ApiResponse<CaptableInvestments> localVarResp = getV1CaptableInvestmentsWithHttpInfo();
+    public CaptableInvestments getCaptableInvestments() throws ApiException {
+        ApiResponse<CaptableInvestments> localVarResp = getCaptableInvestmentsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1165,8 +1165,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableInvestments> getV1CaptableInvestmentsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CaptableInvestmentsValidateBeforeCall(null);
+    public ApiResponse<CaptableInvestments> getCaptableInvestmentsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCaptableInvestmentsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<CaptableInvestments>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1184,15 +1184,15 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableInvestmentsAsync(final ApiCallback<CaptableInvestments> _callback) throws ApiException {
+    public okhttp3.Call getCaptableInvestmentsAsync(final ApiCallback<CaptableInvestments> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CaptableInvestmentsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCaptableInvestmentsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CaptableInvestments>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CaptableOptions
+     * Build call for getCaptableOptions
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1203,7 +1203,7 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableOptionsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCaptableOptionsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1248,8 +1248,8 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CaptableOptionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CaptableOptionsCall(_callback);
+    private okhttp3.Call getCaptableOptionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCaptableOptionsCall(_callback);
 
     }
 
@@ -1265,8 +1265,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableOptions getV1CaptableOptions() throws ApiException {
-        ApiResponse<CaptableOptions> localVarResp = getV1CaptableOptionsWithHttpInfo();
+    public CaptableOptions getCaptableOptions() throws ApiException {
+        ApiResponse<CaptableOptions> localVarResp = getCaptableOptionsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1282,8 +1282,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableOptions> getV1CaptableOptionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CaptableOptionsValidateBeforeCall(null);
+    public ApiResponse<CaptableOptions> getCaptableOptionsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCaptableOptionsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<CaptableOptions>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1301,15 +1301,15 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableOptionsAsync(final ApiCallback<CaptableOptions> _callback) throws ApiException {
+    public okhttp3.Call getCaptableOptionsAsync(final ApiCallback<CaptableOptions> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CaptableOptionsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCaptableOptionsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CaptableOptions>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CaptablePlans
+     * Build call for getCaptablePlans
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1320,7 +1320,7 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptablePlansCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCaptablePlansCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1365,8 +1365,8 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CaptablePlansValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CaptablePlansCall(_callback);
+    private okhttp3.Call getCaptablePlansValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCaptablePlansCall(_callback);
 
     }
 
@@ -1382,8 +1382,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableEquityPlans getV1CaptablePlans() throws ApiException {
-        ApiResponse<CaptableEquityPlans> localVarResp = getV1CaptablePlansWithHttpInfo();
+    public CaptableEquityPlans getCaptablePlans() throws ApiException {
+        ApiResponse<CaptableEquityPlans> localVarResp = getCaptablePlansWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1399,8 +1399,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableEquityPlans> getV1CaptablePlansWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CaptablePlansValidateBeforeCall(null);
+    public ApiResponse<CaptableEquityPlans> getCaptablePlansWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCaptablePlansValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<CaptableEquityPlans>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1418,15 +1418,15 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptablePlansAsync(final ApiCallback<CaptableEquityPlans> _callback) throws ApiException {
+    public okhttp3.Call getCaptablePlansAsync(final ApiCallback<CaptableEquityPlans> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CaptablePlansValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCaptablePlansValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CaptableEquityPlans>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CaptableRounds
+     * Build call for getCaptableRounds
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1437,7 +1437,7 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableRoundsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCaptableRoundsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1482,8 +1482,8 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CaptableRoundsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CaptableRoundsCall(_callback);
+    private okhttp3.Call getCaptableRoundsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCaptableRoundsCall(_callback);
 
     }
 
@@ -1499,8 +1499,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableRounds getV1CaptableRounds() throws ApiException {
-        ApiResponse<CaptableRounds> localVarResp = getV1CaptableRoundsWithHttpInfo();
+    public CaptableRounds getCaptableRounds() throws ApiException {
+        ApiResponse<CaptableRounds> localVarResp = getCaptableRoundsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1516,8 +1516,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableRounds> getV1CaptableRoundsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CaptableRoundsValidateBeforeCall(null);
+    public ApiResponse<CaptableRounds> getCaptableRoundsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCaptableRoundsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<CaptableRounds>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1535,15 +1535,15 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableRoundsAsync(final ApiCallback<CaptableRounds> _callback) throws ApiException {
+    public okhttp3.Call getCaptableRoundsAsync(final ApiCallback<CaptableRounds> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CaptableRoundsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCaptableRoundsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CaptableRounds>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CaptableRoundsById
+     * Build call for getCaptableRoundsById
      * @param id ID is the round to read. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1555,7 +1555,7 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableRoundsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCaptableRoundsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1601,13 +1601,13 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CaptableRoundsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCaptableRoundsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1CaptableRoundsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getCaptableRoundsById(Async)");
         }
 
-        return getV1CaptableRoundsByIdCall(id, _callback);
+        return getCaptableRoundsByIdCall(id, _callback);
 
     }
 
@@ -1624,8 +1624,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableRoundDetail getV1CaptableRoundsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<CaptableRoundDetail> localVarResp = getV1CaptableRoundsByIdWithHttpInfo(id);
+    public CaptableRoundDetail getCaptableRoundsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<CaptableRoundDetail> localVarResp = getCaptableRoundsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1642,8 +1642,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableRoundDetail> getV1CaptableRoundsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1CaptableRoundsByIdValidateBeforeCall(id, null);
+    public ApiResponse<CaptableRoundDetail> getCaptableRoundsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getCaptableRoundsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<CaptableRoundDetail>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1662,15 +1662,15 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableRoundsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableRoundDetail> _callback) throws ApiException {
+    public okhttp3.Call getCaptableRoundsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableRoundDetail> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CaptableRoundsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getCaptableRoundsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<CaptableRoundDetail>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CaptableSafes
+     * Build call for getCaptableSafes
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1681,7 +1681,7 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableSafesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCaptableSafesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1726,8 +1726,8 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CaptableSafesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CaptableSafesCall(_callback);
+    private okhttp3.Call getCaptableSafesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCaptableSafesCall(_callback);
 
     }
 
@@ -1743,8 +1743,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableSafes getV1CaptableSafes() throws ApiException {
-        ApiResponse<CaptableSafes> localVarResp = getV1CaptableSafesWithHttpInfo();
+    public CaptableSafes getCaptableSafes() throws ApiException {
+        ApiResponse<CaptableSafes> localVarResp = getCaptableSafesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1760,8 +1760,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableSafes> getV1CaptableSafesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CaptableSafesValidateBeforeCall(null);
+    public ApiResponse<CaptableSafes> getCaptableSafesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCaptableSafesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<CaptableSafes>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1779,15 +1779,15 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableSafesAsync(final ApiCallback<CaptableSafes> _callback) throws ApiException {
+    public okhttp3.Call getCaptableSafesAsync(final ApiCallback<CaptableSafes> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CaptableSafesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCaptableSafesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CaptableSafes>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CaptableShares
+     * Build call for getCaptableShares
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1798,7 +1798,7 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableSharesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCaptableSharesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1843,8 +1843,8 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CaptableSharesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CaptableSharesCall(_callback);
+    private okhttp3.Call getCaptableSharesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCaptableSharesCall(_callback);
 
     }
 
@@ -1860,8 +1860,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableShares getV1CaptableShares() throws ApiException {
-        ApiResponse<CaptableShares> localVarResp = getV1CaptableSharesWithHttpInfo();
+    public CaptableShares getCaptableShares() throws ApiException {
+        ApiResponse<CaptableShares> localVarResp = getCaptableSharesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1877,8 +1877,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableShares> getV1CaptableSharesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CaptableSharesValidateBeforeCall(null);
+    public ApiResponse<CaptableShares> getCaptableSharesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCaptableSharesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<CaptableShares>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1896,15 +1896,15 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableSharesAsync(final ApiCallback<CaptableShares> _callback) throws ApiException {
+    public okhttp3.Call getCaptableSharesAsync(final ApiCallback<CaptableShares> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CaptableSharesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCaptableSharesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CaptableShares>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CaptableStakeholders
+     * Build call for getCaptableStakeholders
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1915,7 +1915,7 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableStakeholdersCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCaptableStakeholdersCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1960,8 +1960,8 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CaptableStakeholdersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CaptableStakeholdersCall(_callback);
+    private okhttp3.Call getCaptableStakeholdersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCaptableStakeholdersCall(_callback);
 
     }
 
@@ -1977,8 +1977,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<CaptableStakeholder> getV1CaptableStakeholders() throws ApiException {
-        ApiResponse<List<CaptableStakeholder>> localVarResp = getV1CaptableStakeholdersWithHttpInfo();
+    public List<CaptableStakeholder> getCaptableStakeholders() throws ApiException {
+        ApiResponse<List<CaptableStakeholder>> localVarResp = getCaptableStakeholdersWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1994,8 +1994,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<CaptableStakeholder>> getV1CaptableStakeholdersWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CaptableStakeholdersValidateBeforeCall(null);
+    public ApiResponse<List<CaptableStakeholder>> getCaptableStakeholdersWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCaptableStakeholdersValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<List<CaptableStakeholder>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2013,15 +2013,15 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableStakeholdersAsync(final ApiCallback<List<CaptableStakeholder>> _callback) throws ApiException {
+    public okhttp3.Call getCaptableStakeholdersAsync(final ApiCallback<List<CaptableStakeholder>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CaptableStakeholdersValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCaptableStakeholdersValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<List<CaptableStakeholder>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CaptableSummary
+     * Build call for getCaptableSummary
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2032,7 +2032,7 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableSummaryCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCaptableSummaryCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2077,8 +2077,8 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CaptableSummaryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CaptableSummaryCall(_callback);
+    private okhttp3.Call getCaptableSummaryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCaptableSummaryCall(_callback);
 
     }
 
@@ -2094,8 +2094,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableSummary getV1CaptableSummary() throws ApiException {
-        ApiResponse<CaptableSummary> localVarResp = getV1CaptableSummaryWithHttpInfo();
+    public CaptableSummary getCaptableSummary() throws ApiException {
+        ApiResponse<CaptableSummary> localVarResp = getCaptableSummaryWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -2111,8 +2111,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableSummary> getV1CaptableSummaryWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CaptableSummaryValidateBeforeCall(null);
+    public ApiResponse<CaptableSummary> getCaptableSummaryWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCaptableSummaryValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<CaptableSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2130,21 +2130,21 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CaptableSummaryAsync(final ApiCallback<CaptableSummary> _callback) throws ApiException {
+    public okhttp3.Call getCaptableSummaryAsync(final ApiCallback<CaptableSummary> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CaptableSummaryValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCaptableSummaryValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CaptableSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1CaptableClassesById
+     * Build call for patchCaptableClassesById
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1CaptableClassesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCaptableClassesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2189,13 +2189,13 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1CaptableClassesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCaptableClassesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling patchV1CaptableClassesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling patchCaptableClassesById(Async)");
         }
 
-        return patchV1CaptableClassesByIdCall(id, _callback);
+        return patchCaptableClassesByIdCall(id, _callback);
 
     }
 
@@ -2205,8 +2205,8 @@ public class CaptableApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1CaptableClassesById(@javax.annotation.Nonnull String id) throws ApiException {
-        patchV1CaptableClassesByIdWithHttpInfo(id);
+    public void patchCaptableClassesById(@javax.annotation.Nonnull String id) throws ApiException {
+        patchCaptableClassesByIdWithHttpInfo(id);
     }
 
     /**
@@ -2216,8 +2216,8 @@ public class CaptableApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1CaptableClassesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = patchV1CaptableClassesByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> patchCaptableClassesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = patchCaptableClassesByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2229,14 +2229,14 @@ public class CaptableApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1CaptableClassesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchCaptableClassesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1CaptableClassesByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = patchCaptableClassesByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1CaptableStakeholdersById
+     * Build call for patchCaptableStakeholdersById
      * @param id ID is the stakeholder to update. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
      * @param captableStakeholderPatch  (required)
      * @param _callback Callback for upload/download progress
@@ -2249,7 +2249,7 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchV1CaptableStakeholdersByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableStakeholderPatch captableStakeholderPatch, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCaptableStakeholdersByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableStakeholderPatch captableStakeholderPatch, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2296,18 +2296,18 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1CaptableStakeholdersByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableStakeholderPatch captableStakeholderPatch, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCaptableStakeholdersByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableStakeholderPatch captableStakeholderPatch, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling patchV1CaptableStakeholdersById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling patchCaptableStakeholdersById(Async)");
         }
 
         // verify the required parameter 'captableStakeholderPatch' is set
         if (captableStakeholderPatch == null) {
-            throw new ApiException("Missing the required parameter 'captableStakeholderPatch' when calling patchV1CaptableStakeholdersById(Async)");
+            throw new ApiException("Missing the required parameter 'captableStakeholderPatch' when calling patchCaptableStakeholdersById(Async)");
         }
 
-        return patchV1CaptableStakeholdersByIdCall(id, captableStakeholderPatch, _callback);
+        return patchCaptableStakeholdersByIdCall(id, captableStakeholderPatch, _callback);
 
     }
 
@@ -2325,8 +2325,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableUpdated patchV1CaptableStakeholdersById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableStakeholderPatch captableStakeholderPatch) throws ApiException {
-        ApiResponse<CaptableUpdated> localVarResp = patchV1CaptableStakeholdersByIdWithHttpInfo(id, captableStakeholderPatch);
+    public CaptableUpdated patchCaptableStakeholdersById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableStakeholderPatch captableStakeholderPatch) throws ApiException {
+        ApiResponse<CaptableUpdated> localVarResp = patchCaptableStakeholdersByIdWithHttpInfo(id, captableStakeholderPatch);
         return localVarResp.getData();
     }
 
@@ -2344,8 +2344,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableUpdated> patchV1CaptableStakeholdersByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableStakeholderPatch captableStakeholderPatch) throws ApiException {
-        okhttp3.Call localVarCall = patchV1CaptableStakeholdersByIdValidateBeforeCall(id, captableStakeholderPatch, null);
+    public ApiResponse<CaptableUpdated> patchCaptableStakeholdersByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableStakeholderPatch captableStakeholderPatch) throws ApiException {
+        okhttp3.Call localVarCall = patchCaptableStakeholdersByIdValidateBeforeCall(id, captableStakeholderPatch, null);
         Type localVarReturnType = new TypeToken<CaptableUpdated>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2365,20 +2365,20 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchV1CaptableStakeholdersByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableStakeholderPatch captableStakeholderPatch, final ApiCallback<CaptableUpdated> _callback) throws ApiException {
+    public okhttp3.Call patchCaptableStakeholdersByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableStakeholderPatch captableStakeholderPatch, final ApiCallback<CaptableUpdated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1CaptableStakeholdersByIdValidateBeforeCall(id, captableStakeholderPatch, _callback);
+        okhttp3.Call localVarCall = patchCaptableStakeholdersByIdValidateBeforeCall(id, captableStakeholderPatch, _callback);
         Type localVarReturnType = new TypeToken<CaptableUpdated>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CaptableClasses
+     * Build call for postCaptableClasses
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CaptableClassesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableClassesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2422,8 +2422,8 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CaptableClassesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CaptableClassesCall(_callback);
+    private okhttp3.Call postCaptableClassesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCaptableClassesCall(_callback);
 
     }
 
@@ -2432,8 +2432,8 @@ public class CaptableApi {
      * Creates a class of stock — its authorized share count, votes per share, par and issue price, seniority, conversion rights and liquidation/participation multiples — which is what shares, priced rounds and equity plans are then issued against.  Two fields are the company&#39;s to assign, not the caller&#39;s: the class index auto-increments per company, and the certificate prefix is DERIVED from the class type (CS for COMMON, PS for anything else), so a prefix in the body is ignored.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CaptableClasses() throws ApiException {
-        postV1CaptableClassesWithHttpInfo();
+    public void postCaptableClasses() throws ApiException {
+        postCaptableClassesWithHttpInfo();
     }
 
     /**
@@ -2442,8 +2442,8 @@ public class CaptableApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CaptableClassesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CaptableClassesValidateBeforeCall(null);
+    public ApiResponse<Void> postCaptableClassesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCaptableClassesValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2454,19 +2454,19 @@ public class CaptableApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CaptableClassesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCaptableClassesAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CaptableClassesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCaptableClassesValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CaptableConvertibles
+     * Build call for postCaptableConvertibles
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CaptableConvertiblesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableConvertiblesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2510,8 +2510,8 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CaptableConvertiblesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CaptableConvertiblesCall(_callback);
+    private okhttp3.Call postCaptableConvertiblesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCaptableConvertiblesCall(_callback);
 
     }
 
@@ -2520,8 +2520,8 @@ public class CaptableApi {
      * Records a convertible note held by a stakeholder: the principal, the conversion cap, discount and interest rate, MFN, and the issue and board-approval dates.  The stakeholder must already exist in this company, and the note&#39;s public id must be unused there — a reused id is a conflict rather than an overwrite. Like a SAFE, this records the instrument only; conversion is not performed here.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CaptableConvertibles() throws ApiException {
-        postV1CaptableConvertiblesWithHttpInfo();
+    public void postCaptableConvertibles() throws ApiException {
+        postCaptableConvertiblesWithHttpInfo();
     }
 
     /**
@@ -2530,8 +2530,8 @@ public class CaptableApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CaptableConvertiblesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CaptableConvertiblesValidateBeforeCall(null);
+    public ApiResponse<Void> postCaptableConvertiblesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCaptableConvertiblesValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2542,19 +2542,19 @@ public class CaptableApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CaptableConvertiblesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCaptableConvertiblesAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CaptableConvertiblesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCaptableConvertiblesValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CaptableOptions
+     * Build call for postCaptableOptions
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CaptableOptionsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableOptionsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2598,8 +2598,8 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CaptableOptionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CaptableOptionsCall(_callback);
+    private okhttp3.Call postCaptableOptionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCaptableOptionsCall(_callback);
 
     }
 
@@ -2608,8 +2608,8 @@ public class CaptableApi {
      * Records an option grant to a stakeholder under an equity plan — quantity, exercise price, ISO/NSO type, cliff and vesting years, and the issue, expiration, vesting-start, board-approval and Rule 144 dates.  The stakeholder and the equity plan must both already exist in this company, and the grant id must be unused there — a reused grant id is a conflict, so a grant can never be overwritten by a later one carrying the same number.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CaptableOptions() throws ApiException {
-        postV1CaptableOptionsWithHttpInfo();
+    public void postCaptableOptions() throws ApiException {
+        postCaptableOptionsWithHttpInfo();
     }
 
     /**
@@ -2618,8 +2618,8 @@ public class CaptableApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CaptableOptionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CaptableOptionsValidateBeforeCall(null);
+    public ApiResponse<Void> postCaptableOptionsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCaptableOptionsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2630,19 +2630,19 @@ public class CaptableApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CaptableOptionsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCaptableOptionsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CaptableOptionsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCaptableOptionsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CaptablePlans
+     * Build call for postCaptablePlans
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CaptablePlansCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptablePlansCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2686,8 +2686,8 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CaptablePlansValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CaptablePlansCall(_callback);
+    private okhttp3.Call postCaptablePlansValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCaptablePlansCall(_callback);
 
     }
 
@@ -2696,8 +2696,8 @@ public class CaptableApi {
      * Reserves a pool of shares out of a share class for option grants, with the board approval and effective dates and what happens to cancelled options.  The share class must already exist in this company — a plan cannot reserve out of nothing. Note the field name the bundle reads for the cancellation behaviour is &#x60;defaultCancellatonBehavior&#x60;; that spelling is the wire, and a correctly spelled key is simply not seen.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CaptablePlans() throws ApiException {
-        postV1CaptablePlansWithHttpInfo();
+    public void postCaptablePlans() throws ApiException {
+        postCaptablePlansWithHttpInfo();
     }
 
     /**
@@ -2706,8 +2706,8 @@ public class CaptableApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CaptablePlansWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CaptablePlansValidateBeforeCall(null);
+    public ApiResponse<Void> postCaptablePlansWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCaptablePlansValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2718,19 +2718,19 @@ public class CaptableApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CaptablePlansAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCaptablePlansAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CaptablePlansValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCaptablePlansValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CaptableRounds
+     * Build call for postCaptableRounds
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CaptableRoundsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableRoundsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2774,8 +2774,8 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CaptableRoundsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CaptableRoundsCall(_callback);
+    private okhttp3.Call postCaptableRoundsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCaptableRoundsCall(_callback);
 
     }
 
@@ -2784,8 +2784,8 @@ public class CaptableApi {
      * Opens a round with its name, type and target amount. It starts OPEN with nothing raised; investments are then added to it, and closing it is its own call.  A PRICED round is the constrained case: it requires a share class that exists in this company and a price per share above zero, because that price is what converts each investment into issued shares. Its pre-money valuation is optional. A non-priced round carries none of the three.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CaptableRounds() throws ApiException {
-        postV1CaptableRoundsWithHttpInfo();
+    public void postCaptableRounds() throws ApiException {
+        postCaptableRoundsWithHttpInfo();
     }
 
     /**
@@ -2794,8 +2794,8 @@ public class CaptableApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CaptableRoundsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CaptableRoundsValidateBeforeCall(null);
+    public ApiResponse<Void> postCaptableRoundsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCaptableRoundsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2806,14 +2806,14 @@ public class CaptableApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CaptableRoundsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCaptableRoundsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CaptableRoundsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCaptableRoundsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CaptableRoundsByIdClose
+     * Build call for postCaptableRoundsByIdClose
      * @param id ID is the round to close. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
      * @param captableRoundCloseRequest  (required)
      * @param _callback Callback for upload/download progress
@@ -2826,7 +2826,7 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CaptableRoundsByIdCloseCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableRoundCloseRequest captableRoundCloseRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableRoundsByIdCloseCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableRoundCloseRequest captableRoundCloseRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2873,18 +2873,18 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CaptableRoundsByIdCloseValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableRoundCloseRequest captableRoundCloseRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCaptableRoundsByIdCloseValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableRoundCloseRequest captableRoundCloseRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1CaptableRoundsByIdClose(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postCaptableRoundsByIdClose(Async)");
         }
 
         // verify the required parameter 'captableRoundCloseRequest' is set
         if (captableRoundCloseRequest == null) {
-            throw new ApiException("Missing the required parameter 'captableRoundCloseRequest' when calling postV1CaptableRoundsByIdClose(Async)");
+            throw new ApiException("Missing the required parameter 'captableRoundCloseRequest' when calling postCaptableRoundsByIdClose(Async)");
         }
 
-        return postV1CaptableRoundsByIdCloseCall(id, captableRoundCloseRequest, _callback);
+        return postCaptableRoundsByIdCloseCall(id, captableRoundCloseRequest, _callback);
 
     }
 
@@ -2902,8 +2902,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableUpdated postV1CaptableRoundsByIdClose(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableRoundCloseRequest captableRoundCloseRequest) throws ApiException {
-        ApiResponse<CaptableUpdated> localVarResp = postV1CaptableRoundsByIdCloseWithHttpInfo(id, captableRoundCloseRequest);
+    public CaptableUpdated postCaptableRoundsByIdClose(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableRoundCloseRequest captableRoundCloseRequest) throws ApiException {
+        ApiResponse<CaptableUpdated> localVarResp = postCaptableRoundsByIdCloseWithHttpInfo(id, captableRoundCloseRequest);
         return localVarResp.getData();
     }
 
@@ -2921,8 +2921,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableUpdated> postV1CaptableRoundsByIdCloseWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableRoundCloseRequest captableRoundCloseRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1CaptableRoundsByIdCloseValidateBeforeCall(id, captableRoundCloseRequest, null);
+    public ApiResponse<CaptableUpdated> postCaptableRoundsByIdCloseWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableRoundCloseRequest captableRoundCloseRequest) throws ApiException {
+        okhttp3.Call localVarCall = postCaptableRoundsByIdCloseValidateBeforeCall(id, captableRoundCloseRequest, null);
         Type localVarReturnType = new TypeToken<CaptableUpdated>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2942,21 +2942,21 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CaptableRoundsByIdCloseAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableRoundCloseRequest captableRoundCloseRequest, final ApiCallback<CaptableUpdated> _callback) throws ApiException {
+    public okhttp3.Call postCaptableRoundsByIdCloseAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableRoundCloseRequest captableRoundCloseRequest, final ApiCallback<CaptableUpdated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CaptableRoundsByIdCloseValidateBeforeCall(id, captableRoundCloseRequest, _callback);
+        okhttp3.Call localVarCall = postCaptableRoundsByIdCloseValidateBeforeCall(id, captableRoundCloseRequest, _callback);
         Type localVarReturnType = new TypeToken<CaptableUpdated>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CaptableRoundsByIdInvestments
+     * Build call for postCaptableRoundsByIdInvestments
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CaptableRoundsByIdInvestmentsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableRoundsByIdInvestmentsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3001,13 +3001,13 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CaptableRoundsByIdInvestmentsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCaptableRoundsByIdInvestmentsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1CaptableRoundsByIdInvestments(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postCaptableRoundsByIdInvestments(Async)");
         }
 
-        return postV1CaptableRoundsByIdInvestmentsCall(id, _callback);
+        return postCaptableRoundsByIdInvestmentsCall(id, _callback);
 
     }
 
@@ -3017,8 +3017,8 @@ public class CaptableApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CaptableRoundsByIdInvestments(@javax.annotation.Nonnull String id) throws ApiException {
-        postV1CaptableRoundsByIdInvestmentsWithHttpInfo(id);
+    public void postCaptableRoundsByIdInvestments(@javax.annotation.Nonnull String id) throws ApiException {
+        postCaptableRoundsByIdInvestmentsWithHttpInfo(id);
     }
 
     /**
@@ -3028,8 +3028,8 @@ public class CaptableApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CaptableRoundsByIdInvestmentsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1CaptableRoundsByIdInvestmentsValidateBeforeCall(id, null);
+    public ApiResponse<Void> postCaptableRoundsByIdInvestmentsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postCaptableRoundsByIdInvestmentsValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3041,19 +3041,19 @@ public class CaptableApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CaptableRoundsByIdInvestmentsAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCaptableRoundsByIdInvestmentsAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CaptableRoundsByIdInvestmentsValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postCaptableRoundsByIdInvestmentsValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CaptableSafes
+     * Build call for postCaptableSafes
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CaptableSafesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableSafesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3097,8 +3097,8 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CaptableSafesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CaptableSafesCall(_callback);
+    private okhttp3.Call postCaptableSafesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCaptableSafesCall(_callback);
 
     }
 
@@ -3107,8 +3107,8 @@ public class CaptableApi {
      * Records a Simple Agreement for Future Equity held by a stakeholder: the capital in, the valuation cap and discount, MFN and pro-rata rights, pre- or post-money type, and the issue and board-approval dates.  The stakeholder must already exist in this company, and the SAFE&#39;s public id must be unused there — a reused id is a conflict rather than an overwrite. This records the instrument; it does not convert it, so nothing is issued against a share class until a round does that.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CaptableSafes() throws ApiException {
-        postV1CaptableSafesWithHttpInfo();
+    public void postCaptableSafes() throws ApiException {
+        postCaptableSafesWithHttpInfo();
     }
 
     /**
@@ -3117,8 +3117,8 @@ public class CaptableApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CaptableSafesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CaptableSafesValidateBeforeCall(null);
+    public ApiResponse<Void> postCaptableSafesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCaptableSafesValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3129,19 +3129,19 @@ public class CaptableApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CaptableSafesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCaptableSafesAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CaptableSafesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCaptableSafesValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CaptableShares
+     * Build call for postCaptableShares
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CaptableSharesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableSharesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3185,8 +3185,8 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CaptableSharesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CaptableSharesCall(_callback);
+    private okhttp3.Call postCaptableSharesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCaptableSharesCall(_callback);
 
     }
 
@@ -3195,8 +3195,8 @@ public class CaptableApi {
      * Issues shares of a class to a stakeholder as a certificate: quantity, price and capital contributed, the vesting cliff and term, the legends on the certificate, and the issue, Rule 144, vesting-start and board-approval dates.  Both the stakeholder and the share class must already exist in this company, and the certificate id must be unused there — a reused id is a conflict, never a silent overwrite of an existing certificate.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CaptableShares() throws ApiException {
-        postV1CaptableSharesWithHttpInfo();
+    public void postCaptableShares() throws ApiException {
+        postCaptableSharesWithHttpInfo();
     }
 
     /**
@@ -3205,8 +3205,8 @@ public class CaptableApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CaptableSharesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CaptableSharesValidateBeforeCall(null);
+    public ApiResponse<Void> postCaptableSharesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCaptableSharesValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3217,19 +3217,19 @@ public class CaptableApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CaptableSharesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCaptableSharesAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CaptableSharesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCaptableSharesValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CaptableSharesTransfer
+     * Build call for postCaptableSharesTransfer
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CaptableSharesTransferCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableSharesTransferCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3273,8 +3273,8 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CaptableSharesTransferValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CaptableSharesTransferCall(_callback);
+    private okhttp3.Call postCaptableSharesTransferValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCaptableSharesTransferCall(_callback);
 
     }
 
@@ -3283,8 +3283,8 @@ public class CaptableApi {
      * Moves shares from one certificate to another stakeholder, in one atomic step.  OMITTING &#x60;quantity&#x60; transfers the WHOLE certificate, which simply reassigns it and answers newShareId null — that is the difference between a full and a partial transfer, and it is why quantity is absent rather than zero. A partial transfer shrinks the source certificate and issues a NEW one to the recipient, so it requires a &#x60;certificateId&#x60; for that new certificate and refuses a reused one. The quantity must be between 1 and what the source certificate actually holds; the recipient must be a stakeholder of this same company.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CaptableSharesTransfer() throws ApiException {
-        postV1CaptableSharesTransferWithHttpInfo();
+    public void postCaptableSharesTransfer() throws ApiException {
+        postCaptableSharesTransferWithHttpInfo();
     }
 
     /**
@@ -3293,8 +3293,8 @@ public class CaptableApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CaptableSharesTransferWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CaptableSharesTransferValidateBeforeCall(null);
+    public ApiResponse<Void> postCaptableSharesTransferWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCaptableSharesTransferValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3305,19 +3305,19 @@ public class CaptableApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CaptableSharesTransferAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCaptableSharesTransferAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CaptableSharesTransferValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCaptableSharesTransferValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CaptableStakeholders
+     * Build call for postCaptableStakeholders
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CaptableStakeholdersCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableStakeholdersCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3361,8 +3361,8 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CaptableStakeholdersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CaptableStakeholdersCall(_callback);
+    private okhttp3.Call postCaptableStakeholdersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCaptableStakeholdersCall(_callback);
 
     }
 
@@ -3371,8 +3371,8 @@ public class CaptableApi {
      * Records the people and institutions that can hold equity — the rows every share, option, SAFE, note and investment is issued to.  The body is ONE stakeholder object or an ARRAY of them, and the array is the point: a whole roster loads in a single call. Email is the identity within the company, so a stakeholder whose email is already on the table is SKIPPED rather than duplicated or rejected — the 201 reports how many rows were actually inserted, which is what makes re-running an import safe. Validation is all-or-nothing across the batch: one bad entry refuses the whole array.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CaptableStakeholders() throws ApiException {
-        postV1CaptableStakeholdersWithHttpInfo();
+    public void postCaptableStakeholders() throws ApiException {
+        postCaptableStakeholdersWithHttpInfo();
     }
 
     /**
@@ -3381,8 +3381,8 @@ public class CaptableApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CaptableStakeholdersWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CaptableStakeholdersValidateBeforeCall(null);
+    public ApiResponse<Void> postCaptableStakeholdersWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCaptableStakeholdersValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3393,14 +3393,14 @@ public class CaptableApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CaptableStakeholdersAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCaptableStakeholdersAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CaptableStakeholdersValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCaptableStakeholdersValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CaptableCompany
+     * Build call for putCaptableCompany
      * @param captableCompanyUpdate  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3412,7 +3412,7 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1CaptableCompanyCall(@javax.annotation.Nonnull CaptableCompanyUpdate captableCompanyUpdate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCaptableCompanyCall(@javax.annotation.Nonnull CaptableCompanyUpdate captableCompanyUpdate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3458,13 +3458,13 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CaptableCompanyValidateBeforeCall(@javax.annotation.Nonnull CaptableCompanyUpdate captableCompanyUpdate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCaptableCompanyValidateBeforeCall(@javax.annotation.Nonnull CaptableCompanyUpdate captableCompanyUpdate, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'captableCompanyUpdate' is set
         if (captableCompanyUpdate == null) {
-            throw new ApiException("Missing the required parameter 'captableCompanyUpdate' when calling putV1CaptableCompany(Async)");
+            throw new ApiException("Missing the required parameter 'captableCompanyUpdate' when calling putCaptableCompany(Async)");
         }
 
-        return putV1CaptableCompanyCall(captableCompanyUpdate, _callback);
+        return putCaptableCompanyCall(captableCompanyUpdate, _callback);
 
     }
 
@@ -3481,8 +3481,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableUpdated putV1CaptableCompany(@javax.annotation.Nonnull CaptableCompanyUpdate captableCompanyUpdate) throws ApiException {
-        ApiResponse<CaptableUpdated> localVarResp = putV1CaptableCompanyWithHttpInfo(captableCompanyUpdate);
+    public CaptableUpdated putCaptableCompany(@javax.annotation.Nonnull CaptableCompanyUpdate captableCompanyUpdate) throws ApiException {
+        ApiResponse<CaptableUpdated> localVarResp = putCaptableCompanyWithHttpInfo(captableCompanyUpdate);
         return localVarResp.getData();
     }
 
@@ -3499,8 +3499,8 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableUpdated> putV1CaptableCompanyWithHttpInfo(@javax.annotation.Nonnull CaptableCompanyUpdate captableCompanyUpdate) throws ApiException {
-        okhttp3.Call localVarCall = putV1CaptableCompanyValidateBeforeCall(captableCompanyUpdate, null);
+    public ApiResponse<CaptableUpdated> putCaptableCompanyWithHttpInfo(@javax.annotation.Nonnull CaptableCompanyUpdate captableCompanyUpdate) throws ApiException {
+        okhttp3.Call localVarCall = putCaptableCompanyValidateBeforeCall(captableCompanyUpdate, null);
         Type localVarReturnType = new TypeToken<CaptableUpdated>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3519,9 +3519,9 @@ public class CaptableApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1CaptableCompanyAsync(@javax.annotation.Nonnull CaptableCompanyUpdate captableCompanyUpdate, final ApiCallback<CaptableUpdated> _callback) throws ApiException {
+    public okhttp3.Call putCaptableCompanyAsync(@javax.annotation.Nonnull CaptableCompanyUpdate captableCompanyUpdate, final ApiCallback<CaptableUpdated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CaptableCompanyValidateBeforeCall(captableCompanyUpdate, _callback);
+        okhttp3.Call localVarCall = putCaptableCompanyValidateBeforeCall(captableCompanyUpdate, _callback);
         Type localVarReturnType = new TypeToken<CaptableUpdated>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

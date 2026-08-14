@@ -76,7 +76,7 @@ public class FlowApi {
     }
 
     /**
-     * Build call for deleteV1FlowWorkflowsByWorkflow
+     * Build call for deleteFlowWorkflowsByWorkflow
      * @param workflow Workflow is the workflow&#39;s UUID, taken from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -88,7 +88,7 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1FlowWorkflowsByWorkflowCall(@javax.annotation.Nonnull String workflow, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteFlowWorkflowsByWorkflowCall(@javax.annotation.Nonnull String workflow, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,13 +134,13 @@ public class FlowApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1FlowWorkflowsByWorkflowValidateBeforeCall(@javax.annotation.Nonnull String workflow, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteFlowWorkflowsByWorkflowValidateBeforeCall(@javax.annotation.Nonnull String workflow, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'workflow' is set
         if (workflow == null) {
-            throw new ApiException("Missing the required parameter 'workflow' when calling deleteV1FlowWorkflowsByWorkflow(Async)");
+            throw new ApiException("Missing the required parameter 'workflow' when calling deleteFlowWorkflowsByWorkflow(Async)");
         }
 
-        return deleteV1FlowWorkflowsByWorkflowCall(workflow, _callback);
+        return deleteFlowWorkflowsByWorkflowCall(workflow, _callback);
 
     }
 
@@ -157,8 +157,8 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object deleteV1FlowWorkflowsByWorkflow(@javax.annotation.Nonnull String workflow) throws ApiException {
-        ApiResponse<Object> localVarResp = deleteV1FlowWorkflowsByWorkflowWithHttpInfo(workflow);
+    public Object deleteFlowWorkflowsByWorkflow(@javax.annotation.Nonnull String workflow) throws ApiException {
+        ApiResponse<Object> localVarResp = deleteFlowWorkflowsByWorkflowWithHttpInfo(workflow);
         return localVarResp.getData();
     }
 
@@ -175,8 +175,8 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> deleteV1FlowWorkflowsByWorkflowWithHttpInfo(@javax.annotation.Nonnull String workflow) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1FlowWorkflowsByWorkflowValidateBeforeCall(workflow, null);
+    public ApiResponse<Object> deleteFlowWorkflowsByWorkflowWithHttpInfo(@javax.annotation.Nonnull String workflow) throws ApiException {
+        okhttp3.Call localVarCall = deleteFlowWorkflowsByWorkflowValidateBeforeCall(workflow, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -195,15 +195,15 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1FlowWorkflowsByWorkflowAsync(@javax.annotation.Nonnull String workflow, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call deleteFlowWorkflowsByWorkflowAsync(@javax.annotation.Nonnull String workflow, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1FlowWorkflowsByWorkflowValidateBeforeCall(workflow, _callback);
+        okhttp3.Call localVarCall = deleteFlowWorkflowsByWorkflowValidateBeforeCall(workflow, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FlowRuns
+     * Build call for getFlowRuns
      * @param workflow Workflow is the UUID of the workflow whose run records to read. It rides the query string. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -215,7 +215,7 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FlowRunsCall(@javax.annotation.Nullable String workflow, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFlowRunsCall(@javax.annotation.Nullable String workflow, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -264,8 +264,8 @@ public class FlowApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FlowRunsValidateBeforeCall(@javax.annotation.Nullable String workflow, final ApiCallback _callback) throws ApiException {
-        return getV1FlowRunsCall(workflow, _callback);
+    private okhttp3.Call getFlowRunsValidateBeforeCall(@javax.annotation.Nullable String workflow, final ApiCallback _callback) throws ApiException {
+        return getFlowRunsCall(workflow, _callback);
 
     }
 
@@ -282,8 +282,8 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object getV1FlowRuns(@javax.annotation.Nullable String workflow) throws ApiException {
-        ApiResponse<Object> localVarResp = getV1FlowRunsWithHttpInfo(workflow);
+    public Object getFlowRuns(@javax.annotation.Nullable String workflow) throws ApiException {
+        ApiResponse<Object> localVarResp = getFlowRunsWithHttpInfo(workflow);
         return localVarResp.getData();
     }
 
@@ -300,8 +300,8 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getV1FlowRunsWithHttpInfo(@javax.annotation.Nullable String workflow) throws ApiException {
-        okhttp3.Call localVarCall = getV1FlowRunsValidateBeforeCall(workflow, null);
+    public ApiResponse<Object> getFlowRunsWithHttpInfo(@javax.annotation.Nullable String workflow) throws ApiException {
+        okhttp3.Call localVarCall = getFlowRunsValidateBeforeCall(workflow, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -320,15 +320,15 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FlowRunsAsync(@javax.annotation.Nullable String workflow, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getFlowRunsAsync(@javax.annotation.Nullable String workflow, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FlowRunsValidateBeforeCall(workflow, _callback);
+        okhttp3.Call localVarCall = getFlowRunsValidateBeforeCall(workflow, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FlowStatus
+     * Build call for getFlowStatus
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -339,7 +339,7 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FlowStatusCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFlowStatusCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -384,8 +384,8 @@ public class FlowApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FlowStatusValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1FlowStatusCall(_callback);
+    private okhttp3.Call getFlowStatusValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFlowStatusCall(_callback);
 
     }
 
@@ -401,8 +401,8 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FlowStatus getV1FlowStatus() throws ApiException {
-        ApiResponse<FlowStatus> localVarResp = getV1FlowStatusWithHttpInfo();
+    public FlowStatus getFlowStatus() throws ApiException {
+        ApiResponse<FlowStatus> localVarResp = getFlowStatusWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -418,8 +418,8 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FlowStatus> getV1FlowStatusWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1FlowStatusValidateBeforeCall(null);
+    public ApiResponse<FlowStatus> getFlowStatusWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFlowStatusValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<FlowStatus>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -437,15 +437,15 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FlowStatusAsync(final ApiCallback<FlowStatus> _callback) throws ApiException {
+    public okhttp3.Call getFlowStatusAsync(final ApiCallback<FlowStatus> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FlowStatusValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFlowStatusValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<FlowStatus>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FlowWorkflows
+     * Build call for getFlowWorkflows
      * @param page Page is the 1-based page of workflows to return. (optional)
      * @param size Size is how many workflows one page holds (the product caps it at 100). (optional)
      * @param _callback Callback for upload/download progress
@@ -458,7 +458,7 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FlowWorkflowsCall(@javax.annotation.Nullable String page, @javax.annotation.Nullable String size, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFlowWorkflowsCall(@javax.annotation.Nullable String page, @javax.annotation.Nullable String size, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -511,8 +511,8 @@ public class FlowApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FlowWorkflowsValidateBeforeCall(@javax.annotation.Nullable String page, @javax.annotation.Nullable String size, final ApiCallback _callback) throws ApiException {
-        return getV1FlowWorkflowsCall(page, size, _callback);
+    private okhttp3.Call getFlowWorkflowsValidateBeforeCall(@javax.annotation.Nullable String page, @javax.annotation.Nullable String size, final ApiCallback _callback) throws ApiException {
+        return getFlowWorkflowsCall(page, size, _callback);
 
     }
 
@@ -530,8 +530,8 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object getV1FlowWorkflows(@javax.annotation.Nullable String page, @javax.annotation.Nullable String size) throws ApiException {
-        ApiResponse<Object> localVarResp = getV1FlowWorkflowsWithHttpInfo(page, size);
+    public Object getFlowWorkflows(@javax.annotation.Nullable String page, @javax.annotation.Nullable String size) throws ApiException {
+        ApiResponse<Object> localVarResp = getFlowWorkflowsWithHttpInfo(page, size);
         return localVarResp.getData();
     }
 
@@ -549,8 +549,8 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getV1FlowWorkflowsWithHttpInfo(@javax.annotation.Nullable String page, @javax.annotation.Nullable String size) throws ApiException {
-        okhttp3.Call localVarCall = getV1FlowWorkflowsValidateBeforeCall(page, size, null);
+    public ApiResponse<Object> getFlowWorkflowsWithHttpInfo(@javax.annotation.Nullable String page, @javax.annotation.Nullable String size) throws ApiException {
+        okhttp3.Call localVarCall = getFlowWorkflowsValidateBeforeCall(page, size, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -570,15 +570,15 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FlowWorkflowsAsync(@javax.annotation.Nullable String page, @javax.annotation.Nullable String size, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getFlowWorkflowsAsync(@javax.annotation.Nullable String page, @javax.annotation.Nullable String size, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FlowWorkflowsValidateBeforeCall(page, size, _callback);
+        okhttp3.Call localVarCall = getFlowWorkflowsValidateBeforeCall(page, size, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FlowWorkflowsByWorkflow
+     * Build call for getFlowWorkflowsByWorkflow
      * @param workflow Workflow is the workflow&#39;s UUID, taken from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -590,7 +590,7 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FlowWorkflowsByWorkflowCall(@javax.annotation.Nonnull String workflow, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFlowWorkflowsByWorkflowCall(@javax.annotation.Nonnull String workflow, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -636,13 +636,13 @@ public class FlowApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FlowWorkflowsByWorkflowValidateBeforeCall(@javax.annotation.Nonnull String workflow, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getFlowWorkflowsByWorkflowValidateBeforeCall(@javax.annotation.Nonnull String workflow, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'workflow' is set
         if (workflow == null) {
-            throw new ApiException("Missing the required parameter 'workflow' when calling getV1FlowWorkflowsByWorkflow(Async)");
+            throw new ApiException("Missing the required parameter 'workflow' when calling getFlowWorkflowsByWorkflow(Async)");
         }
 
-        return getV1FlowWorkflowsByWorkflowCall(workflow, _callback);
+        return getFlowWorkflowsByWorkflowCall(workflow, _callback);
 
     }
 
@@ -659,8 +659,8 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object getV1FlowWorkflowsByWorkflow(@javax.annotation.Nonnull String workflow) throws ApiException {
-        ApiResponse<Object> localVarResp = getV1FlowWorkflowsByWorkflowWithHttpInfo(workflow);
+    public Object getFlowWorkflowsByWorkflow(@javax.annotation.Nonnull String workflow) throws ApiException {
+        ApiResponse<Object> localVarResp = getFlowWorkflowsByWorkflowWithHttpInfo(workflow);
         return localVarResp.getData();
     }
 
@@ -677,8 +677,8 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getV1FlowWorkflowsByWorkflowWithHttpInfo(@javax.annotation.Nonnull String workflow) throws ApiException {
-        okhttp3.Call localVarCall = getV1FlowWorkflowsByWorkflowValidateBeforeCall(workflow, null);
+    public ApiResponse<Object> getFlowWorkflowsByWorkflowWithHttpInfo(@javax.annotation.Nonnull String workflow) throws ApiException {
+        okhttp3.Call localVarCall = getFlowWorkflowsByWorkflowValidateBeforeCall(workflow, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -697,15 +697,15 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FlowWorkflowsByWorkflowAsync(@javax.annotation.Nonnull String workflow, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getFlowWorkflowsByWorkflowAsync(@javax.annotation.Nonnull String workflow, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FlowWorkflowsByWorkflowValidateBeforeCall(workflow, _callback);
+        okhttp3.Call localVarCall = getFlowWorkflowsByWorkflowValidateBeforeCall(workflow, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1FlowWorkflowsByWorkflow
+     * Build call for patchFlowWorkflowsByWorkflow
      * @param workflow Workflow is the workflow&#39;s UUID, taken from the path. (required)
      * @param flowUpdate  (required)
      * @param _callback Callback for upload/download progress
@@ -718,7 +718,7 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchV1FlowWorkflowsByWorkflowCall(@javax.annotation.Nonnull String workflow, @javax.annotation.Nonnull FlowUpdate flowUpdate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchFlowWorkflowsByWorkflowCall(@javax.annotation.Nonnull String workflow, @javax.annotation.Nonnull FlowUpdate flowUpdate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -765,18 +765,18 @@ public class FlowApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1FlowWorkflowsByWorkflowValidateBeforeCall(@javax.annotation.Nonnull String workflow, @javax.annotation.Nonnull FlowUpdate flowUpdate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchFlowWorkflowsByWorkflowValidateBeforeCall(@javax.annotation.Nonnull String workflow, @javax.annotation.Nonnull FlowUpdate flowUpdate, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'workflow' is set
         if (workflow == null) {
-            throw new ApiException("Missing the required parameter 'workflow' when calling patchV1FlowWorkflowsByWorkflow(Async)");
+            throw new ApiException("Missing the required parameter 'workflow' when calling patchFlowWorkflowsByWorkflow(Async)");
         }
 
         // verify the required parameter 'flowUpdate' is set
         if (flowUpdate == null) {
-            throw new ApiException("Missing the required parameter 'flowUpdate' when calling patchV1FlowWorkflowsByWorkflow(Async)");
+            throw new ApiException("Missing the required parameter 'flowUpdate' when calling patchFlowWorkflowsByWorkflow(Async)");
         }
 
-        return patchV1FlowWorkflowsByWorkflowCall(workflow, flowUpdate, _callback);
+        return patchFlowWorkflowsByWorkflowCall(workflow, flowUpdate, _callback);
 
     }
 
@@ -794,8 +794,8 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object patchV1FlowWorkflowsByWorkflow(@javax.annotation.Nonnull String workflow, @javax.annotation.Nonnull FlowUpdate flowUpdate) throws ApiException {
-        ApiResponse<Object> localVarResp = patchV1FlowWorkflowsByWorkflowWithHttpInfo(workflow, flowUpdate);
+    public Object patchFlowWorkflowsByWorkflow(@javax.annotation.Nonnull String workflow, @javax.annotation.Nonnull FlowUpdate flowUpdate) throws ApiException {
+        ApiResponse<Object> localVarResp = patchFlowWorkflowsByWorkflowWithHttpInfo(workflow, flowUpdate);
         return localVarResp.getData();
     }
 
@@ -813,8 +813,8 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> patchV1FlowWorkflowsByWorkflowWithHttpInfo(@javax.annotation.Nonnull String workflow, @javax.annotation.Nonnull FlowUpdate flowUpdate) throws ApiException {
-        okhttp3.Call localVarCall = patchV1FlowWorkflowsByWorkflowValidateBeforeCall(workflow, flowUpdate, null);
+    public ApiResponse<Object> patchFlowWorkflowsByWorkflowWithHttpInfo(@javax.annotation.Nonnull String workflow, @javax.annotation.Nonnull FlowUpdate flowUpdate) throws ApiException {
+        okhttp3.Call localVarCall = patchFlowWorkflowsByWorkflowValidateBeforeCall(workflow, flowUpdate, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -834,15 +834,15 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchV1FlowWorkflowsByWorkflowAsync(@javax.annotation.Nonnull String workflow, @javax.annotation.Nonnull FlowUpdate flowUpdate, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call patchFlowWorkflowsByWorkflowAsync(@javax.annotation.Nonnull String workflow, @javax.annotation.Nonnull FlowUpdate flowUpdate, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1FlowWorkflowsByWorkflowValidateBeforeCall(workflow, flowUpdate, _callback);
+        okhttp3.Call localVarCall = patchFlowWorkflowsByWorkflowValidateBeforeCall(workflow, flowUpdate, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1FlowRuns
+     * Build call for postFlowRuns
      * @param flowRun  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -854,7 +854,7 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1FlowRunsCall(@javax.annotation.Nonnull FlowRun flowRun, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFlowRunsCall(@javax.annotation.Nonnull FlowRun flowRun, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -900,13 +900,13 @@ public class FlowApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1FlowRunsValidateBeforeCall(@javax.annotation.Nonnull FlowRun flowRun, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postFlowRunsValidateBeforeCall(@javax.annotation.Nonnull FlowRun flowRun, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'flowRun' is set
         if (flowRun == null) {
-            throw new ApiException("Missing the required parameter 'flowRun' when calling postV1FlowRuns(Async)");
+            throw new ApiException("Missing the required parameter 'flowRun' when calling postFlowRuns(Async)");
         }
 
-        return postV1FlowRunsCall(flowRun, _callback);
+        return postFlowRunsCall(flowRun, _callback);
 
     }
 
@@ -923,8 +923,8 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object postV1FlowRuns(@javax.annotation.Nonnull FlowRun flowRun) throws ApiException {
-        ApiResponse<Object> localVarResp = postV1FlowRunsWithHttpInfo(flowRun);
+    public Object postFlowRuns(@javax.annotation.Nonnull FlowRun flowRun) throws ApiException {
+        ApiResponse<Object> localVarResp = postFlowRunsWithHttpInfo(flowRun);
         return localVarResp.getData();
     }
 
@@ -941,8 +941,8 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postV1FlowRunsWithHttpInfo(@javax.annotation.Nonnull FlowRun flowRun) throws ApiException {
-        okhttp3.Call localVarCall = postV1FlowRunsValidateBeforeCall(flowRun, null);
+    public ApiResponse<Object> postFlowRunsWithHttpInfo(@javax.annotation.Nonnull FlowRun flowRun) throws ApiException {
+        okhttp3.Call localVarCall = postFlowRunsValidateBeforeCall(flowRun, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -961,15 +961,15 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1FlowRunsAsync(@javax.annotation.Nonnull FlowRun flowRun, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postFlowRunsAsync(@javax.annotation.Nonnull FlowRun flowRun, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1FlowRunsValidateBeforeCall(flowRun, _callback);
+        okhttp3.Call localVarCall = postFlowRunsValidateBeforeCall(flowRun, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1FlowWorkflows
+     * Build call for postFlowWorkflows
      * @param flowCreate  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -981,7 +981,7 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1FlowWorkflowsCall(@javax.annotation.Nonnull FlowCreate flowCreate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFlowWorkflowsCall(@javax.annotation.Nonnull FlowCreate flowCreate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1027,13 +1027,13 @@ public class FlowApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1FlowWorkflowsValidateBeforeCall(@javax.annotation.Nonnull FlowCreate flowCreate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postFlowWorkflowsValidateBeforeCall(@javax.annotation.Nonnull FlowCreate flowCreate, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'flowCreate' is set
         if (flowCreate == null) {
-            throw new ApiException("Missing the required parameter 'flowCreate' when calling postV1FlowWorkflows(Async)");
+            throw new ApiException("Missing the required parameter 'flowCreate' when calling postFlowWorkflows(Async)");
         }
 
-        return postV1FlowWorkflowsCall(flowCreate, _callback);
+        return postFlowWorkflowsCall(flowCreate, _callback);
 
     }
 
@@ -1050,8 +1050,8 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object postV1FlowWorkflows(@javax.annotation.Nonnull FlowCreate flowCreate) throws ApiException {
-        ApiResponse<Object> localVarResp = postV1FlowWorkflowsWithHttpInfo(flowCreate);
+    public Object postFlowWorkflows(@javax.annotation.Nonnull FlowCreate flowCreate) throws ApiException {
+        ApiResponse<Object> localVarResp = postFlowWorkflowsWithHttpInfo(flowCreate);
         return localVarResp.getData();
     }
 
@@ -1068,8 +1068,8 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postV1FlowWorkflowsWithHttpInfo(@javax.annotation.Nonnull FlowCreate flowCreate) throws ApiException {
-        okhttp3.Call localVarCall = postV1FlowWorkflowsValidateBeforeCall(flowCreate, null);
+    public ApiResponse<Object> postFlowWorkflowsWithHttpInfo(@javax.annotation.Nonnull FlowCreate flowCreate) throws ApiException {
+        okhttp3.Call localVarCall = postFlowWorkflowsValidateBeforeCall(flowCreate, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1088,9 +1088,9 @@ public class FlowApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1FlowWorkflowsAsync(@javax.annotation.Nonnull FlowCreate flowCreate, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postFlowWorkflowsAsync(@javax.annotation.Nonnull FlowCreate flowCreate, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1FlowWorkflowsValidateBeforeCall(flowCreate, _callback);
+        okhttp3.Call localVarCall = postFlowWorkflowsValidateBeforeCall(flowCreate, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

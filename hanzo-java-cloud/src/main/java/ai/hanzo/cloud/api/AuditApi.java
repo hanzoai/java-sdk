@@ -73,7 +73,7 @@ public class AuditApi {
     }
 
     /**
-     * Build call for getV1Audit
+     * Build call for getAudit
      * @param sub Sub narrows the trail to one actor — the validated subject that made the request. Blank means every actor in the org. (optional)
      * @param action Action narrows it to one action name, e.g. \&quot;machine.create\&quot;. (optional)
      * @param resource Resource narrows it to one resource TYPE, e.g. \&quot;apikey\&quot;. (optional)
@@ -93,7 +93,7 @@ public class AuditApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AuditCall(@javax.annotation.Nullable String sub, @javax.annotation.Nullable String action, @javax.annotation.Nullable String resource, @javax.annotation.Nullable String resourceId, @javax.annotation.Nullable String result, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String pageSize, @javax.annotation.Nullable String p, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAuditCall(@javax.annotation.Nullable String sub, @javax.annotation.Nullable String action, @javax.annotation.Nullable String resource, @javax.annotation.Nullable String resourceId, @javax.annotation.Nullable String result, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String pageSize, @javax.annotation.Nullable String p, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -174,8 +174,8 @@ public class AuditApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AuditValidateBeforeCall(@javax.annotation.Nullable String sub, @javax.annotation.Nullable String action, @javax.annotation.Nullable String resource, @javax.annotation.Nullable String resourceId, @javax.annotation.Nullable String result, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String pageSize, @javax.annotation.Nullable String p, final ApiCallback _callback) throws ApiException {
-        return getV1AuditCall(sub, action, resource, resourceId, result, since, until, pageSize, p, _callback);
+    private okhttp3.Call getAuditValidateBeforeCall(@javax.annotation.Nullable String sub, @javax.annotation.Nullable String action, @javax.annotation.Nullable String resource, @javax.annotation.Nullable String resourceId, @javax.annotation.Nullable String result, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String pageSize, @javax.annotation.Nullable String p, final ApiCallback _callback) throws ApiException {
+        return getAuditCall(sub, action, resource, resourceId, result, since, until, pageSize, p, _callback);
 
     }
 
@@ -200,8 +200,8 @@ public class AuditApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public TrailPage getV1Audit(@javax.annotation.Nullable String sub, @javax.annotation.Nullable String action, @javax.annotation.Nullable String resource, @javax.annotation.Nullable String resourceId, @javax.annotation.Nullable String result, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String pageSize, @javax.annotation.Nullable String p) throws ApiException {
-        ApiResponse<TrailPage> localVarResp = getV1AuditWithHttpInfo(sub, action, resource, resourceId, result, since, until, pageSize, p);
+    public TrailPage getAudit(@javax.annotation.Nullable String sub, @javax.annotation.Nullable String action, @javax.annotation.Nullable String resource, @javax.annotation.Nullable String resourceId, @javax.annotation.Nullable String result, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String pageSize, @javax.annotation.Nullable String p) throws ApiException {
+        ApiResponse<TrailPage> localVarResp = getAuditWithHttpInfo(sub, action, resource, resourceId, result, since, until, pageSize, p);
         return localVarResp.getData();
     }
 
@@ -226,8 +226,8 @@ public class AuditApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TrailPage> getV1AuditWithHttpInfo(@javax.annotation.Nullable String sub, @javax.annotation.Nullable String action, @javax.annotation.Nullable String resource, @javax.annotation.Nullable String resourceId, @javax.annotation.Nullable String result, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String pageSize, @javax.annotation.Nullable String p) throws ApiException {
-        okhttp3.Call localVarCall = getV1AuditValidateBeforeCall(sub, action, resource, resourceId, result, since, until, pageSize, p, null);
+    public ApiResponse<TrailPage> getAuditWithHttpInfo(@javax.annotation.Nullable String sub, @javax.annotation.Nullable String action, @javax.annotation.Nullable String resource, @javax.annotation.Nullable String resourceId, @javax.annotation.Nullable String result, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String pageSize, @javax.annotation.Nullable String p) throws ApiException {
+        okhttp3.Call localVarCall = getAuditValidateBeforeCall(sub, action, resource, resourceId, result, since, until, pageSize, p, null);
         Type localVarReturnType = new TypeToken<TrailPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -254,9 +254,9 @@ public class AuditApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AuditAsync(@javax.annotation.Nullable String sub, @javax.annotation.Nullable String action, @javax.annotation.Nullable String resource, @javax.annotation.Nullable String resourceId, @javax.annotation.Nullable String result, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String pageSize, @javax.annotation.Nullable String p, final ApiCallback<TrailPage> _callback) throws ApiException {
+    public okhttp3.Call getAuditAsync(@javax.annotation.Nullable String sub, @javax.annotation.Nullable String action, @javax.annotation.Nullable String resource, @javax.annotation.Nullable String resourceId, @javax.annotation.Nullable String result, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String pageSize, @javax.annotation.Nullable String p, final ApiCallback<TrailPage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AuditValidateBeforeCall(sub, action, resource, resourceId, result, since, until, pageSize, p, _callback);
+        okhttp3.Call localVarCall = getAuditValidateBeforeCall(sub, action, resource, resourceId, result, since, until, pageSize, p, _callback);
         Type localVarReturnType = new TypeToken<TrailPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -32,7 +32,7 @@ public final class Tools {
         ToolsApi tools = new ToolsApi(Hanzo.client());
 
         try {
-            ToolList catalog = tools.getV1Tools(null, null);
+            ToolList catalog = tools.getTools(null, null);
             List<Tool> listed = catalog.getTools();
             if (listed == null || listed.isEmpty()) {
                 System.out.println("no tools reachable with this key");

@@ -72,12 +72,12 @@ public class FinetuneApi {
     }
 
     /**
-     * Build call for getV1FinetuneHfDatasets
+     * Build call for getFinetuneHfDatasets
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1FinetuneHfDatasetsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFinetuneHfDatasetsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class FinetuneApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FinetuneHfDatasetsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1FinetuneHfDatasetsCall(_callback);
+    private okhttp3.Call getFinetuneHfDatasetsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFinetuneHfDatasetsCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class FinetuneApi {
      * Proxies a HuggingFace dataset search (dataset picker).
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1FinetuneHfDatasets() throws ApiException {
-        getV1FinetuneHfDatasetsWithHttpInfo();
+    public void getFinetuneHfDatasets() throws ApiException {
+        getFinetuneHfDatasetsWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class FinetuneApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1FinetuneHfDatasetsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1FinetuneHfDatasetsValidateBeforeCall(null);
+    public ApiResponse<Void> getFinetuneHfDatasetsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFinetuneHfDatasetsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,19 +153,19 @@ public class FinetuneApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1FinetuneHfDatasetsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getFinetuneHfDatasetsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FinetuneHfDatasetsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFinetuneHfDatasetsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FinetuneHfModels
+     * Build call for getFinetuneHfModels
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1FinetuneHfModelsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFinetuneHfModelsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -209,8 +209,8 @@ public class FinetuneApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FinetuneHfModelsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1FinetuneHfModelsCall(_callback);
+    private okhttp3.Call getFinetuneHfModelsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFinetuneHfModelsCall(_callback);
 
     }
 
@@ -219,8 +219,8 @@ public class FinetuneApi {
      * Proxies a HuggingFace model search (base-model picker).
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1FinetuneHfModels() throws ApiException {
-        getV1FinetuneHfModelsWithHttpInfo();
+    public void getFinetuneHfModels() throws ApiException {
+        getFinetuneHfModelsWithHttpInfo();
     }
 
     /**
@@ -229,8 +229,8 @@ public class FinetuneApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1FinetuneHfModelsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1FinetuneHfModelsValidateBeforeCall(null);
+    public ApiResponse<Void> getFinetuneHfModelsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFinetuneHfModelsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -241,19 +241,19 @@ public class FinetuneApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1FinetuneHfModelsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getFinetuneHfModelsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FinetuneHfModelsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFinetuneHfModelsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FinetuneHfRepo
+     * Build call for getFinetuneHfRepo
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1FinetuneHfRepoCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFinetuneHfRepoCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -297,8 +297,8 @@ public class FinetuneApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FinetuneHfRepoValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1FinetuneHfRepoCall(_callback);
+    private okhttp3.Call getFinetuneHfRepoValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFinetuneHfRepoCall(_callback);
 
     }
 
@@ -307,8 +307,8 @@ public class FinetuneApi {
      * Returns a repo&#39;s detail (files, gated/private state). ?id&#x3D;&amp;kind&#x3D;model|dataset
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1FinetuneHfRepo() throws ApiException {
-        getV1FinetuneHfRepoWithHttpInfo();
+    public void getFinetuneHfRepo() throws ApiException {
+        getFinetuneHfRepoWithHttpInfo();
     }
 
     /**
@@ -317,8 +317,8 @@ public class FinetuneApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1FinetuneHfRepoWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1FinetuneHfRepoValidateBeforeCall(null);
+    public ApiResponse<Void> getFinetuneHfRepoWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFinetuneHfRepoValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -329,19 +329,19 @@ public class FinetuneApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1FinetuneHfRepoAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getFinetuneHfRepoAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FinetuneHfRepoValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFinetuneHfRepoValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FinetuneJob
+     * Build call for getFinetuneJob
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1FinetuneJobCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFinetuneJobCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -385,8 +385,8 @@ public class FinetuneApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FinetuneJobValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1FinetuneJobCall(_callback);
+    private okhttp3.Call getFinetuneJobValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFinetuneJobCall(_callback);
 
     }
 
@@ -395,8 +395,8 @@ public class FinetuneApi {
      * Returns one job with refreshed live status. ?id&#x3D;owner/name or ?name&#x3D;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1FinetuneJob() throws ApiException {
-        getV1FinetuneJobWithHttpInfo();
+    public void getFinetuneJob() throws ApiException {
+        getFinetuneJobWithHttpInfo();
     }
 
     /**
@@ -405,8 +405,8 @@ public class FinetuneApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1FinetuneJobWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1FinetuneJobValidateBeforeCall(null);
+    public ApiResponse<Void> getFinetuneJobWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFinetuneJobValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -417,19 +417,19 @@ public class FinetuneApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1FinetuneJobAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getFinetuneJobAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FinetuneJobValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFinetuneJobValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FinetuneJobs
+     * Build call for getFinetuneJobs
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1FinetuneJobsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFinetuneJobsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -473,8 +473,8 @@ public class FinetuneApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FinetuneJobsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1FinetuneJobsCall(_callback);
+    private okhttp3.Call getFinetuneJobsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFinetuneJobsCall(_callback);
 
     }
 
@@ -483,8 +483,8 @@ public class FinetuneApi {
      * Returns the org&#39;s jobs, refreshing live status for active ones.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1FinetuneJobs() throws ApiException {
-        getV1FinetuneJobsWithHttpInfo();
+    public void getFinetuneJobs() throws ApiException {
+        getFinetuneJobsWithHttpInfo();
     }
 
     /**
@@ -493,8 +493,8 @@ public class FinetuneApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1FinetuneJobsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1FinetuneJobsValidateBeforeCall(null);
+    public ApiResponse<Void> getFinetuneJobsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFinetuneJobsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -505,19 +505,19 @@ public class FinetuneApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1FinetuneJobsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getFinetuneJobsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FinetuneJobsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFinetuneJobsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FinetunePresets
+     * Build call for getFinetunePresets
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1FinetunePresetsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFinetunePresetsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -561,8 +561,8 @@ public class FinetuneApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FinetunePresetsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1FinetunePresetsCall(_callback);
+    private okhttp3.Call getFinetunePresetsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFinetunePresetsCall(_callback);
 
     }
 
@@ -571,8 +571,8 @@ public class FinetuneApi {
      * Returns the new-job catalog plus, when a selection is passed (?baseModel&amp;method&amp;task&amp;preset[&amp;datasetExamples]), the recommended config so the console can render \&quot;Recommended\&quot; as a one-click, ready-to-run default.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1FinetunePresets() throws ApiException {
-        getV1FinetunePresetsWithHttpInfo();
+    public void getFinetunePresets() throws ApiException {
+        getFinetunePresetsWithHttpInfo();
     }
 
     /**
@@ -581,8 +581,8 @@ public class FinetuneApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1FinetunePresetsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1FinetunePresetsValidateBeforeCall(null);
+    public ApiResponse<Void> getFinetunePresetsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFinetunePresetsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -593,19 +593,19 @@ public class FinetuneApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1FinetunePresetsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getFinetunePresetsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FinetunePresetsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFinetunePresetsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1FinetuneCancel
+     * Build call for postFinetuneCancel
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1FinetuneCancelCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFinetuneCancelCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -649,8 +649,8 @@ public class FinetuneApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1FinetuneCancelValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1FinetuneCancelCall(_callback);
+    private okhttp3.Call postFinetuneCancelValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postFinetuneCancelCall(_callback);
 
     }
 
@@ -659,8 +659,8 @@ public class FinetuneApi {
      * Deletes the TrainJob CR, meters the GPU-hours used so far, and marks the job cancelled. ?id&#x3D; or ?name&#x3D;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1FinetuneCancel() throws ApiException {
-        postV1FinetuneCancelWithHttpInfo();
+    public void postFinetuneCancel() throws ApiException {
+        postFinetuneCancelWithHttpInfo();
     }
 
     /**
@@ -669,8 +669,8 @@ public class FinetuneApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1FinetuneCancelWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1FinetuneCancelValidateBeforeCall(null);
+    public ApiResponse<Void> postFinetuneCancelWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postFinetuneCancelValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -681,19 +681,19 @@ public class FinetuneApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1FinetuneCancelAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postFinetuneCancelAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1FinetuneCancelValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postFinetuneCancelValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1FinetuneDeploy
+     * Build call for postFinetuneDeploy
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1FinetuneDeployCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFinetuneDeployCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -737,8 +737,8 @@ public class FinetuneApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1FinetuneDeployValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1FinetuneDeployCall(_callback);
+    private okhttp3.Call postFinetuneDeployValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postFinetuneDeployCall(_callback);
 
     }
 
@@ -747,8 +747,8 @@ public class FinetuneApi {
      * Serves a completed job&#39;s checkpoints and registers the result as a routable model on api.hanzo.ai. ?id&#x3D; or ?name&#x3D;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1FinetuneDeploy() throws ApiException {
-        postV1FinetuneDeployWithHttpInfo();
+    public void postFinetuneDeploy() throws ApiException {
+        postFinetuneDeployWithHttpInfo();
     }
 
     /**
@@ -757,8 +757,8 @@ public class FinetuneApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1FinetuneDeployWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1FinetuneDeployValidateBeforeCall(null);
+    public ApiResponse<Void> postFinetuneDeployWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postFinetuneDeployValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -769,19 +769,19 @@ public class FinetuneApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1FinetuneDeployAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postFinetuneDeployAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1FinetuneDeployValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postFinetuneDeployValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1FinetuneJobs
+     * Build call for postFinetuneJobs
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1FinetuneJobsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFinetuneJobsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -825,8 +825,8 @@ public class FinetuneApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1FinetuneJobsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1FinetuneJobsCall(_callback);
+    private okhttp3.Call postFinetuneJobsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postFinetuneJobsCall(_callback);
 
     }
 
@@ -835,8 +835,8 @@ public class FinetuneApi {
      * Validates the request, resolves efficient defaults, persists the job, and submits a real TrainJob CR. A submit failure (e.g. no cluster wired) is surfaced honestly: the job is saved with status \&quot;failed\&quot; + the reason, never faked.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1FinetuneJobs() throws ApiException {
-        postV1FinetuneJobsWithHttpInfo();
+    public void postFinetuneJobs() throws ApiException {
+        postFinetuneJobsWithHttpInfo();
     }
 
     /**
@@ -845,8 +845,8 @@ public class FinetuneApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1FinetuneJobsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1FinetuneJobsValidateBeforeCall(null);
+    public ApiResponse<Void> postFinetuneJobsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postFinetuneJobsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -857,9 +857,9 @@ public class FinetuneApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1FinetuneJobsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postFinetuneJobsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1FinetuneJobsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postFinetuneJobsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

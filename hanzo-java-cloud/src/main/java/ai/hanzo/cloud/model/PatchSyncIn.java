@@ -152,7 +152,7 @@ public class PatchSyncIn {
   }
 
   /**
-   * Get kind
+   * Kind names a different kind of sync, and is refused, for the same reason.
    * @return kind
    */
   @javax.annotation.Nullable
@@ -171,7 +171,7 @@ public class PatchSyncIn {
   }
 
   /**
-   * Source, Target and Kind are DECLARED HERE IN ORDER TO BE REFUSED.  They are immutable by design — re-pointing a sync is a delete and a create, so a link can never silently start syncing somewhere else — but an UNDECLARED field is dropped by the binder before the handler sees it, so a request asking to repoint answered 200, changed nothing, and said nothing. The operator then believes a moved repository has been repointed and it has not.  Live: a sync still naming github.com/hanzoai/cloud after the repository moved to hanzo-inc/cloud failed every reconcile with \&quot;Repository not found\&quot;, and the PATCH that appeared to fix it did nothing at all. Declaring the fields is what lets the documented immutability actually answer.
+   * Source, Target and Kind are DECLARED HERE IN ORDER TO BE REFUSED.  They are immutable by design — re-pointing a sync is a delete and a create, so a link can never silently start syncing somewhere else — but an UNDECLARED field is dropped by the binder before the handler sees it, so a request asking to repoint answered 200, changed nothing, and said nothing. The operator then believes a moved repository has been repointed and it has not.  Live: a sync still naming github.com/hanzoai/cloud after the repository moved to hanzo-inc/cloud failed every reconcile with \&quot;Repository not found\&quot;, and the PATCH that appeared to fix it did nothing at all. Declaring the fields is what lets the documented immutability actually answer. Source names a new upstream, and is refused. Delete this sync and create the one you want.
    * @return source
    */
   @javax.annotation.Nullable
@@ -190,7 +190,7 @@ public class PatchSyncIn {
   }
 
   /**
-   * Get target
+   * Target names a new native repository, and is refused, for the same reason.
    * @return target
    */
   @javax.annotation.Nullable

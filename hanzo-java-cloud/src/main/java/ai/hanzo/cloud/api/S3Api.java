@@ -76,13 +76,13 @@ public class S3Api {
     }
 
     /**
-     * Build call for deleteV1S3BucketsByBucket
+     * Build call for deleteS3BucketsByBucket
      * @param bucket  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1S3BucketsByBucketCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteS3BucketsByBucketCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -127,13 +127,13 @@ public class S3Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1S3BucketsByBucketValidateBeforeCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteS3BucketsByBucketValidateBeforeCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'bucket' is set
         if (bucket == null) {
-            throw new ApiException("Missing the required parameter 'bucket' when calling deleteV1S3BucketsByBucket(Async)");
+            throw new ApiException("Missing the required parameter 'bucket' when calling deleteS3BucketsByBucket(Async)");
         }
 
-        return deleteV1S3BucketsByBucketCall(bucket, _callback);
+        return deleteS3BucketsByBucketCall(bucket, _callback);
 
     }
 
@@ -143,8 +143,8 @@ public class S3Api {
      * @param bucket  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1S3BucketsByBucket(@javax.annotation.Nonnull String bucket) throws ApiException {
-        deleteV1S3BucketsByBucketWithHttpInfo(bucket);
+    public void deleteS3BucketsByBucket(@javax.annotation.Nonnull String bucket) throws ApiException {
+        deleteS3BucketsByBucketWithHttpInfo(bucket);
     }
 
     /**
@@ -154,8 +154,8 @@ public class S3Api {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1S3BucketsByBucketWithHttpInfo(@javax.annotation.Nonnull String bucket) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1S3BucketsByBucketValidateBeforeCall(bucket, null);
+    public ApiResponse<Void> deleteS3BucketsByBucketWithHttpInfo(@javax.annotation.Nonnull String bucket) throws ApiException {
+        okhttp3.Call localVarCall = deleteS3BucketsByBucketValidateBeforeCall(bucket, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -167,21 +167,21 @@ public class S3Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1S3BucketsByBucketAsync(@javax.annotation.Nonnull String bucket, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteS3BucketsByBucketAsync(@javax.annotation.Nonnull String bucket, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1S3BucketsByBucketValidateBeforeCall(bucket, _callback);
+        okhttp3.Call localVarCall = deleteS3BucketsByBucketValidateBeforeCall(bucket, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1S3BucketsByBucketObjectsByWildcard1
+     * Build call for deleteS3BucketsByBucketObjectsByWildcard1
      * @param bucket  (required)
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1S3BucketsByBucketObjectsByWildcard1Call(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteS3BucketsByBucketObjectsByWildcard1Call(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -227,18 +227,18 @@ public class S3Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1S3BucketsByBucketObjectsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteS3BucketsByBucketObjectsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'bucket' is set
         if (bucket == null) {
-            throw new ApiException("Missing the required parameter 'bucket' when calling deleteV1S3BucketsByBucketObjectsByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'bucket' when calling deleteS3BucketsByBucketObjectsByWildcard1(Async)");
         }
 
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling deleteV1S3BucketsByBucketObjectsByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling deleteS3BucketsByBucketObjectsByWildcard1(Async)");
         }
 
-        return deleteV1S3BucketsByBucketObjectsByWildcard1Call(bucket, wildcard1, _callback);
+        return deleteS3BucketsByBucketObjectsByWildcard1Call(bucket, wildcard1, _callback);
 
     }
 
@@ -249,8 +249,8 @@ public class S3Api {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1S3BucketsByBucketObjectsByWildcard1(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1) throws ApiException {
-        deleteV1S3BucketsByBucketObjectsByWildcard1WithHttpInfo(bucket, wildcard1);
+    public void deleteS3BucketsByBucketObjectsByWildcard1(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1) throws ApiException {
+        deleteS3BucketsByBucketObjectsByWildcard1WithHttpInfo(bucket, wildcard1);
     }
 
     /**
@@ -261,8 +261,8 @@ public class S3Api {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1S3BucketsByBucketObjectsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1S3BucketsByBucketObjectsByWildcard1ValidateBeforeCall(bucket, wildcard1, null);
+    public ApiResponse<Void> deleteS3BucketsByBucketObjectsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = deleteS3BucketsByBucketObjectsByWildcard1ValidateBeforeCall(bucket, wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -275,14 +275,14 @@ public class S3Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1S3BucketsByBucketObjectsByWildcard1Async(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteS3BucketsByBucketObjectsByWildcard1Async(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1S3BucketsByBucketObjectsByWildcard1ValidateBeforeCall(bucket, wildcard1, _callback);
+        okhttp3.Call localVarCall = deleteS3BucketsByBucketObjectsByWildcard1ValidateBeforeCall(bucket, wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1S3ByName
+     * Build call for deleteS3ByName
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -294,7 +294,7 @@ public class S3Api {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1S3ByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteS3ByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -339,13 +339,13 @@ public class S3Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1S3ByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteS3ByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteV1S3ByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling deleteS3ByName(Async)");
         }
 
-        return deleteV1S3ByNameCall(name, _callback);
+        return deleteS3ByNameCall(name, _callback);
 
     }
 
@@ -361,8 +361,8 @@ public class S3Api {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1S3ByName(@javax.annotation.Nonnull String name) throws ApiException {
-        deleteV1S3ByNameWithHttpInfo(name);
+    public void deleteS3ByName(@javax.annotation.Nonnull String name) throws ApiException {
+        deleteS3ByNameWithHttpInfo(name);
     }
 
     /**
@@ -378,8 +378,8 @@ public class S3Api {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1S3ByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1S3ByNameValidateBeforeCall(name, null);
+    public ApiResponse<Void> deleteS3ByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteS3ByNameValidateBeforeCall(name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -397,14 +397,14 @@ public class S3Api {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1S3ByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteS3ByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1S3ByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = deleteS3ByNameValidateBeforeCall(name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1S3
+     * Build call for getS3
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -415,7 +415,7 @@ public class S3Api {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1S3Call(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getS3Call(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -460,8 +460,8 @@ public class S3Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1S3ValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1S3Call(_callback);
+    private okhttp3.Call getS3ValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getS3Call(_callback);
 
     }
 
@@ -477,8 +477,8 @@ public class S3Api {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProvisionedSummary> getV1S3() throws ApiException {
-        ApiResponse<List<ProvisionedSummary>> localVarResp = getV1S3WithHttpInfo();
+    public List<ProvisionedSummary> getS3() throws ApiException {
+        ApiResponse<List<ProvisionedSummary>> localVarResp = getS3WithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -494,8 +494,8 @@ public class S3Api {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProvisionedSummary>> getV1S3WithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1S3ValidateBeforeCall(null);
+    public ApiResponse<List<ProvisionedSummary>> getS3WithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getS3ValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -513,20 +513,20 @@ public class S3Api {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1S3Async(final ApiCallback<List<ProvisionedSummary>> _callback) throws ApiException {
+    public okhttp3.Call getS3Async(final ApiCallback<List<ProvisionedSummary>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1S3ValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getS3ValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1S3Buckets
+     * Build call for getS3Buckets
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1S3BucketsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getS3BucketsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -570,8 +570,8 @@ public class S3Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1S3BucketsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1S3BucketsCall(_callback);
+    private okhttp3.Call getS3BucketsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getS3BucketsCall(_callback);
 
     }
 
@@ -580,8 +580,8 @@ public class S3Api {
      * Returns the caller&#39;s own buckets under the friendly names they were created with, each with its creation time.  Another tenant&#39;s bucket is not refused, it is INVISIBLE — a bucket outside the caller&#39;s namespace is skipped during the listing rather than reported, so the operation cannot be used to discover that a name is taken elsewhere.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1S3Buckets() throws ApiException {
-        getV1S3BucketsWithHttpInfo();
+    public void getS3Buckets() throws ApiException {
+        getS3BucketsWithHttpInfo();
     }
 
     /**
@@ -590,8 +590,8 @@ public class S3Api {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1S3BucketsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1S3BucketsValidateBeforeCall(null);
+    public ApiResponse<Void> getS3BucketsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getS3BucketsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -602,20 +602,20 @@ public class S3Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1S3BucketsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getS3BucketsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1S3BucketsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getS3BucketsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1S3BucketsByBucketObjects
+     * Build call for getS3BucketsByBucketObjects
      * @param bucket  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1S3BucketsByBucketObjectsCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getS3BucketsByBucketObjectsCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -660,13 +660,13 @@ public class S3Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1S3BucketsByBucketObjectsValidateBeforeCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getS3BucketsByBucketObjectsValidateBeforeCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'bucket' is set
         if (bucket == null) {
-            throw new ApiException("Missing the required parameter 'bucket' when calling getV1S3BucketsByBucketObjects(Async)");
+            throw new ApiException("Missing the required parameter 'bucket' when calling getS3BucketsByBucketObjects(Async)");
         }
 
-        return getV1S3BucketsByBucketObjectsCall(bucket, _callback);
+        return getS3BucketsByBucketObjectsCall(bucket, _callback);
 
     }
 
@@ -676,8 +676,8 @@ public class S3Api {
      * @param bucket  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1S3BucketsByBucketObjects(@javax.annotation.Nonnull String bucket) throws ApiException {
-        getV1S3BucketsByBucketObjectsWithHttpInfo(bucket);
+    public void getS3BucketsByBucketObjects(@javax.annotation.Nonnull String bucket) throws ApiException {
+        getS3BucketsByBucketObjectsWithHttpInfo(bucket);
     }
 
     /**
@@ -687,8 +687,8 @@ public class S3Api {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1S3BucketsByBucketObjectsWithHttpInfo(@javax.annotation.Nonnull String bucket) throws ApiException {
-        okhttp3.Call localVarCall = getV1S3BucketsByBucketObjectsValidateBeforeCall(bucket, null);
+    public ApiResponse<Void> getS3BucketsByBucketObjectsWithHttpInfo(@javax.annotation.Nonnull String bucket) throws ApiException {
+        okhttp3.Call localVarCall = getS3BucketsByBucketObjectsValidateBeforeCall(bucket, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -700,21 +700,21 @@ public class S3Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1S3BucketsByBucketObjectsAsync(@javax.annotation.Nonnull String bucket, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getS3BucketsByBucketObjectsAsync(@javax.annotation.Nonnull String bucket, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1S3BucketsByBucketObjectsValidateBeforeCall(bucket, _callback);
+        okhttp3.Call localVarCall = getS3BucketsByBucketObjectsValidateBeforeCall(bucket, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1S3BucketsByBucketObjectsByWildcard1
+     * Build call for getS3BucketsByBucketObjectsByWildcard1
      * @param bucket  (required)
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1S3BucketsByBucketObjectsByWildcard1Call(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getS3BucketsByBucketObjectsByWildcard1Call(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -760,18 +760,18 @@ public class S3Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1S3BucketsByBucketObjectsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getS3BucketsByBucketObjectsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'bucket' is set
         if (bucket == null) {
-            throw new ApiException("Missing the required parameter 'bucket' when calling getV1S3BucketsByBucketObjectsByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'bucket' when calling getS3BucketsByBucketObjectsByWildcard1(Async)");
         }
 
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling getV1S3BucketsByBucketObjectsByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling getS3BucketsByBucketObjectsByWildcard1(Async)");
         }
 
-        return getV1S3BucketsByBucketObjectsByWildcard1Call(bucket, wildcard1, _callback);
+        return getS3BucketsByBucketObjectsByWildcard1Call(bucket, wildcard1, _callback);
 
     }
 
@@ -782,8 +782,8 @@ public class S3Api {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1S3BucketsByBucketObjectsByWildcard1(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1) throws ApiException {
-        getV1S3BucketsByBucketObjectsByWildcard1WithHttpInfo(bucket, wildcard1);
+    public void getS3BucketsByBucketObjectsByWildcard1(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1) throws ApiException {
+        getS3BucketsByBucketObjectsByWildcard1WithHttpInfo(bucket, wildcard1);
     }
 
     /**
@@ -794,8 +794,8 @@ public class S3Api {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1S3BucketsByBucketObjectsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = getV1S3BucketsByBucketObjectsByWildcard1ValidateBeforeCall(bucket, wildcard1, null);
+    public ApiResponse<Void> getS3BucketsByBucketObjectsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = getS3BucketsByBucketObjectsByWildcard1ValidateBeforeCall(bucket, wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -808,14 +808,14 @@ public class S3Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1S3BucketsByBucketObjectsByWildcard1Async(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getS3BucketsByBucketObjectsByWildcard1Async(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1S3BucketsByBucketObjectsByWildcard1ValidateBeforeCall(bucket, wildcard1, _callback);
+        okhttp3.Call localVarCall = getS3BucketsByBucketObjectsByWildcard1ValidateBeforeCall(bucket, wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1S3ByName
+     * Build call for getS3ByName
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -827,7 +827,7 @@ public class S3Api {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1S3ByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getS3ByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -873,13 +873,13 @@ public class S3Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1S3ByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getS3ByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1S3ByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getS3ByName(Async)");
         }
 
-        return getV1S3ByNameCall(name, _callback);
+        return getS3ByNameCall(name, _callback);
 
     }
 
@@ -896,8 +896,8 @@ public class S3Api {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionedResource getV1S3ByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ProvisionedResource> localVarResp = getV1S3ByNameWithHttpInfo(name);
+    public ProvisionedResource getS3ByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<ProvisionedResource> localVarResp = getS3ByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -914,8 +914,8 @@ public class S3Api {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionedResource> getV1S3ByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1S3ByNameValidateBeforeCall(name, null);
+    public ApiResponse<ProvisionedResource> getS3ByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getS3ByNameValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -934,20 +934,20 @@ public class S3Api {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1S3ByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisionedResource> _callback) throws ApiException {
+    public okhttp3.Call getS3ByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisionedResource> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1S3ByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getS3ByNameValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1S3Health
+     * Build call for getS3Health
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1S3HealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getS3HealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -991,8 +991,8 @@ public class S3Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1S3HealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1S3HealthCall(_callback);
+    private okhttp3.Call getS3HealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getS3HealthCall(_callback);
 
     }
 
@@ -1001,8 +1001,8 @@ public class S3Api {
      * A real readiness probe rather than a liveness stub: 200 only when the storage credentials are present, and it additionally reports whether presigning is available — the capability the two URL-issuing operations need and refuse without.  An unconfigured deployment answers 503 with &#x60;ready:false&#x60; and the reason, which is the same state in which every data-plane operation here refuses. Not token-gated, so the platform can probe it without a credential, and it carries no credential, bucket or tenant detail.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1S3Health() throws ApiException {
-        getV1S3HealthWithHttpInfo();
+    public void getS3Health() throws ApiException {
+        getS3HealthWithHttpInfo();
     }
 
     /**
@@ -1011,8 +1011,8 @@ public class S3Api {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1S3HealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1S3HealthValidateBeforeCall(null);
+    public ApiResponse<Void> getS3HealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getS3HealthValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1023,14 +1023,14 @@ public class S3Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1S3HealthAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getS3HealthAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1S3HealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getS3HealthValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1S3
+     * Build call for postS3
      * @param provisionRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1042,7 +1042,7 @@ public class S3Api {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1S3Call(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postS3Call(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1088,8 +1088,8 @@ public class S3Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1S3ValidateBeforeCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
-        return postV1S3Call(provisionRequest, _callback);
+    private okhttp3.Call postS3ValidateBeforeCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
+        return postS3Call(provisionRequest, _callback);
 
     }
 
@@ -1106,8 +1106,8 @@ public class S3Api {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionResult postV1S3(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
-        ApiResponse<ProvisionResult> localVarResp = postV1S3WithHttpInfo(provisionRequest);
+    public ProvisionResult postS3(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
+        ApiResponse<ProvisionResult> localVarResp = postS3WithHttpInfo(provisionRequest);
         return localVarResp.getData();
     }
 
@@ -1124,8 +1124,8 @@ public class S3Api {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionResult> postV1S3WithHttpInfo(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1S3ValidateBeforeCall(provisionRequest, null);
+    public ApiResponse<ProvisionResult> postS3WithHttpInfo(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
+        okhttp3.Call localVarCall = postS3ValidateBeforeCall(provisionRequest, null);
         Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1144,20 +1144,20 @@ public class S3Api {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1S3Async(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback<ProvisionResult> _callback) throws ApiException {
+    public okhttp3.Call postS3Async(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback<ProvisionResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1S3ValidateBeforeCall(provisionRequest, _callback);
+        okhttp3.Call localVarCall = postS3ValidateBeforeCall(provisionRequest, _callback);
         Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1S3Buckets
+     * Build call for postS3Buckets
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1S3BucketsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postS3BucketsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1201,8 +1201,8 @@ public class S3Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1S3BucketsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1S3BucketsCall(_callback);
+    private okhttp3.Call postS3BucketsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postS3BucketsCall(_callback);
 
     }
 
@@ -1211,8 +1211,8 @@ public class S3Api {
      * Creates a new bucket in the caller&#39;s own namespace and answers 201 with its friendly name and creation time.  The name is validated exactly as sent and never quietly normalised: it must match &#x60;^[a-z0-9]([a-z0-9-]{0,38}[a-z0-9])?$&#x60;, so a mixed-case name is a clean 400 rather than a bucket created as &#x60;photos&#x60; that the caller keeps asking for as &#x60;Photos&#x60;. A name already in use in the caller&#39;s own namespace is 409.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1S3Buckets() throws ApiException {
-        postV1S3BucketsWithHttpInfo();
+    public void postS3Buckets() throws ApiException {
+        postS3BucketsWithHttpInfo();
     }
 
     /**
@@ -1221,8 +1221,8 @@ public class S3Api {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1S3BucketsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1S3BucketsValidateBeforeCall(null);
+    public ApiResponse<Void> postS3BucketsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postS3BucketsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1233,20 +1233,20 @@ public class S3Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1S3BucketsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postS3BucketsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1S3BucketsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postS3BucketsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1S3BucketsByBucketObjects
+     * Build call for postS3BucketsByBucketObjects
      * @param bucket  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1S3BucketsByBucketObjectsCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postS3BucketsByBucketObjectsCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1291,13 +1291,13 @@ public class S3Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1S3BucketsByBucketObjectsValidateBeforeCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postS3BucketsByBucketObjectsValidateBeforeCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'bucket' is set
         if (bucket == null) {
-            throw new ApiException("Missing the required parameter 'bucket' when calling postV1S3BucketsByBucketObjects(Async)");
+            throw new ApiException("Missing the required parameter 'bucket' when calling postS3BucketsByBucketObjects(Async)");
         }
 
-        return postV1S3BucketsByBucketObjectsCall(bucket, _callback);
+        return postS3BucketsByBucketObjectsCall(bucket, _callback);
 
     }
 
@@ -1307,8 +1307,8 @@ public class S3Api {
      * @param bucket  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1S3BucketsByBucketObjects(@javax.annotation.Nonnull String bucket) throws ApiException {
-        postV1S3BucketsByBucketObjectsWithHttpInfo(bucket);
+    public void postS3BucketsByBucketObjects(@javax.annotation.Nonnull String bucket) throws ApiException {
+        postS3BucketsByBucketObjectsWithHttpInfo(bucket);
     }
 
     /**
@@ -1318,8 +1318,8 @@ public class S3Api {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1S3BucketsByBucketObjectsWithHttpInfo(@javax.annotation.Nonnull String bucket) throws ApiException {
-        okhttp3.Call localVarCall = postV1S3BucketsByBucketObjectsValidateBeforeCall(bucket, null);
+    public ApiResponse<Void> postS3BucketsByBucketObjectsWithHttpInfo(@javax.annotation.Nonnull String bucket) throws ApiException {
+        okhttp3.Call localVarCall = postS3BucketsByBucketObjectsValidateBeforeCall(bucket, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1331,9 +1331,9 @@ public class S3Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1S3BucketsByBucketObjectsAsync(@javax.annotation.Nonnull String bucket, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postS3BucketsByBucketObjectsAsync(@javax.annotation.Nonnull String bucket, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1S3BucketsByBucketObjectsValidateBeforeCall(bucket, _callback);
+        okhttp3.Call localVarCall = postS3BucketsByBucketObjectsValidateBeforeCall(bucket, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

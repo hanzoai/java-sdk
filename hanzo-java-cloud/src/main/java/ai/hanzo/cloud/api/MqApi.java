@@ -84,7 +84,7 @@ public class MqApi {
     }
 
     /**
-     * Build call for deleteV1MqStreamsByName
+     * Build call for deleteMqStreamsByName
      * @param name Name is the stream name, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -96,7 +96,7 @@ public class MqApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1MqStreamsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteMqStreamsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -141,13 +141,13 @@ public class MqApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1MqStreamsByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteMqStreamsByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteV1MqStreamsByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling deleteMqStreamsByName(Async)");
         }
 
-        return deleteV1MqStreamsByNameCall(name, _callback);
+        return deleteMqStreamsByNameCall(name, _callback);
 
     }
 
@@ -163,8 +163,8 @@ public class MqApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1MqStreamsByName(@javax.annotation.Nonnull String name) throws ApiException {
-        deleteV1MqStreamsByNameWithHttpInfo(name);
+    public void deleteMqStreamsByName(@javax.annotation.Nonnull String name) throws ApiException {
+        deleteMqStreamsByNameWithHttpInfo(name);
     }
 
     /**
@@ -180,8 +180,8 @@ public class MqApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1MqStreamsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1MqStreamsByNameValidateBeforeCall(name, null);
+    public ApiResponse<Void> deleteMqStreamsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteMqStreamsByNameValidateBeforeCall(name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -199,14 +199,14 @@ public class MqApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1MqStreamsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteMqStreamsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1MqStreamsByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = deleteMqStreamsByNameValidateBeforeCall(name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1MqStreamsByNameMessagesBySeq
+     * Build call for deleteMqStreamsByNameMessagesBySeq
      * @param name Name is the stream name, from the path. (required)
      * @param seq Seq is the message&#39;s stream sequence, from the path. (required)
      * @param _callback Callback for upload/download progress
@@ -219,7 +219,7 @@ public class MqApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1MqStreamsByNameMessagesBySeqCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer seq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteMqStreamsByNameMessagesBySeqCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer seq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -265,18 +265,18 @@ public class MqApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1MqStreamsByNameMessagesBySeqValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer seq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteMqStreamsByNameMessagesBySeqValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer seq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteV1MqStreamsByNameMessagesBySeq(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling deleteMqStreamsByNameMessagesBySeq(Async)");
         }
 
         // verify the required parameter 'seq' is set
         if (seq == null) {
-            throw new ApiException("Missing the required parameter 'seq' when calling deleteV1MqStreamsByNameMessagesBySeq(Async)");
+            throw new ApiException("Missing the required parameter 'seq' when calling deleteMqStreamsByNameMessagesBySeq(Async)");
         }
 
-        return deleteV1MqStreamsByNameMessagesBySeqCall(name, seq, _callback);
+        return deleteMqStreamsByNameMessagesBySeqCall(name, seq, _callback);
 
     }
 
@@ -293,8 +293,8 @@ public class MqApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1MqStreamsByNameMessagesBySeq(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer seq) throws ApiException {
-        deleteV1MqStreamsByNameMessagesBySeqWithHttpInfo(name, seq);
+    public void deleteMqStreamsByNameMessagesBySeq(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer seq) throws ApiException {
+        deleteMqStreamsByNameMessagesBySeqWithHttpInfo(name, seq);
     }
 
     /**
@@ -311,8 +311,8 @@ public class MqApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1MqStreamsByNameMessagesBySeqWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer seq) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1MqStreamsByNameMessagesBySeqValidateBeforeCall(name, seq, null);
+    public ApiResponse<Void> deleteMqStreamsByNameMessagesBySeqWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer seq) throws ApiException {
+        okhttp3.Call localVarCall = deleteMqStreamsByNameMessagesBySeqValidateBeforeCall(name, seq, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -331,14 +331,14 @@ public class MqApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1MqStreamsByNameMessagesBySeqAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer seq, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteMqStreamsByNameMessagesBySeqAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer seq, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1MqStreamsByNameMessagesBySeqValidateBeforeCall(name, seq, _callback);
+        okhttp3.Call localVarCall = deleteMqStreamsByNameMessagesBySeqValidateBeforeCall(name, seq, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1MqStreamsByStreamConsumersByName
+     * Build call for deleteMqStreamsByStreamConsumersByName
      * @param stream Stream is the stream name, from the path. (required)
      * @param name Name is the consumer name, from the path. (required)
      * @param _callback Callback for upload/download progress
@@ -351,7 +351,7 @@ public class MqApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1MqStreamsByStreamConsumersByNameCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteMqStreamsByStreamConsumersByNameCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -397,18 +397,18 @@ public class MqApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1MqStreamsByStreamConsumersByNameValidateBeforeCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteMqStreamsByStreamConsumersByNameValidateBeforeCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'stream' is set
         if (stream == null) {
-            throw new ApiException("Missing the required parameter 'stream' when calling deleteV1MqStreamsByStreamConsumersByName(Async)");
+            throw new ApiException("Missing the required parameter 'stream' when calling deleteMqStreamsByStreamConsumersByName(Async)");
         }
 
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteV1MqStreamsByStreamConsumersByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling deleteMqStreamsByStreamConsumersByName(Async)");
         }
 
-        return deleteV1MqStreamsByStreamConsumersByNameCall(stream, name, _callback);
+        return deleteMqStreamsByStreamConsumersByNameCall(stream, name, _callback);
 
     }
 
@@ -425,8 +425,8 @@ public class MqApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1MqStreamsByStreamConsumersByName(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name) throws ApiException {
-        deleteV1MqStreamsByStreamConsumersByNameWithHttpInfo(stream, name);
+    public void deleteMqStreamsByStreamConsumersByName(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name) throws ApiException {
+        deleteMqStreamsByStreamConsumersByNameWithHttpInfo(stream, name);
     }
 
     /**
@@ -443,8 +443,8 @@ public class MqApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1MqStreamsByStreamConsumersByNameWithHttpInfo(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1MqStreamsByStreamConsumersByNameValidateBeforeCall(stream, name, null);
+    public ApiResponse<Void> deleteMqStreamsByStreamConsumersByNameWithHttpInfo(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteMqStreamsByStreamConsumersByNameValidateBeforeCall(stream, name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -463,14 +463,14 @@ public class MqApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1MqStreamsByStreamConsumersByNameAsync(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteMqStreamsByStreamConsumersByNameAsync(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1MqStreamsByStreamConsumersByNameValidateBeforeCall(stream, name, _callback);
+        okhttp3.Call localVarCall = deleteMqStreamsByStreamConsumersByNameValidateBeforeCall(stream, name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MqHealth
+     * Build call for getMqHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -481,7 +481,7 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MqHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMqHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -526,8 +526,8 @@ public class MqApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MqHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1MqHealthCall(_callback);
+    private okhttp3.Call getMqHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMqHealthCall(_callback);
 
     }
 
@@ -543,8 +543,8 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Health getV1MqHealth() throws ApiException {
-        ApiResponse<Health> localVarResp = getV1MqHealthWithHttpInfo();
+    public Health getMqHealth() throws ApiException {
+        ApiResponse<Health> localVarResp = getMqHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -560,8 +560,8 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Health> getV1MqHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1MqHealthValidateBeforeCall(null);
+    public ApiResponse<Health> getMqHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMqHealthValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Health>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -579,15 +579,15 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MqHealthAsync(final ApiCallback<Health> _callback) throws ApiException {
+    public okhttp3.Call getMqHealthAsync(final ApiCallback<Health> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MqHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getMqHealthValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Health>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MqInfo
+     * Build call for getMqInfo
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -598,7 +598,7 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MqInfoCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMqInfoCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -643,8 +643,8 @@ public class MqApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MqInfoValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1MqInfoCall(_callback);
+    private okhttp3.Call getMqInfoValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMqInfoCall(_callback);
 
     }
 
@@ -660,8 +660,8 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public InfoOut getV1MqInfo() throws ApiException {
-        ApiResponse<InfoOut> localVarResp = getV1MqInfoWithHttpInfo();
+    public InfoOut getMqInfo() throws ApiException {
+        ApiResponse<InfoOut> localVarResp = getMqInfoWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -677,8 +677,8 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InfoOut> getV1MqInfoWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1MqInfoValidateBeforeCall(null);
+    public ApiResponse<InfoOut> getMqInfoWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMqInfoValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<InfoOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -696,15 +696,15 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MqInfoAsync(final ApiCallback<InfoOut> _callback) throws ApiException {
+    public okhttp3.Call getMqInfoAsync(final ApiCallback<InfoOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MqInfoValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getMqInfoValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<InfoOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MqStreams
+     * Build call for getMqStreams
      * @param limit Limit caps the streams returned (1–1000, default 100). (optional)
      * @param offset Offset skips that many streams, name-ordered. (optional)
      * @param _callback Callback for upload/download progress
@@ -717,7 +717,7 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MqStreamsCall(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMqStreamsCall(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -770,8 +770,8 @@ public class MqApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MqStreamsValidateBeforeCall(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
-        return getV1MqStreamsCall(limit, offset, _callback);
+    private okhttp3.Call getMqStreamsValidateBeforeCall(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
+        return getMqStreamsCall(limit, offset, _callback);
 
     }
 
@@ -789,8 +789,8 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Streams getV1MqStreams(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
-        ApiResponse<Streams> localVarResp = getV1MqStreamsWithHttpInfo(limit, offset);
+    public Streams getMqStreams(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
+        ApiResponse<Streams> localVarResp = getMqStreamsWithHttpInfo(limit, offset);
         return localVarResp.getData();
     }
 
@@ -808,8 +808,8 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Streams> getV1MqStreamsWithHttpInfo(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
-        okhttp3.Call localVarCall = getV1MqStreamsValidateBeforeCall(limit, offset, null);
+    public ApiResponse<Streams> getMqStreamsWithHttpInfo(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = getMqStreamsValidateBeforeCall(limit, offset, null);
         Type localVarReturnType = new TypeToken<Streams>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -829,15 +829,15 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MqStreamsAsync(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback<Streams> _callback) throws ApiException {
+    public okhttp3.Call getMqStreamsAsync(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback<Streams> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MqStreamsValidateBeforeCall(limit, offset, _callback);
+        okhttp3.Call localVarCall = getMqStreamsValidateBeforeCall(limit, offset, _callback);
         Type localVarReturnType = new TypeToken<Streams>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MqStreamsByName
+     * Build call for getMqStreamsByName
      * @param name Name is the stream name, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -849,7 +849,7 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MqStreamsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMqStreamsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -895,13 +895,13 @@ public class MqApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MqStreamsByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMqStreamsByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1MqStreamsByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getMqStreamsByName(Async)");
         }
 
-        return getV1MqStreamsByNameCall(name, _callback);
+        return getMqStreamsByNameCall(name, _callback);
 
     }
 
@@ -918,8 +918,8 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Stream getV1MqStreamsByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<Stream> localVarResp = getV1MqStreamsByNameWithHttpInfo(name);
+    public Stream getMqStreamsByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<Stream> localVarResp = getMqStreamsByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -936,8 +936,8 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Stream> getV1MqStreamsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1MqStreamsByNameValidateBeforeCall(name, null);
+    public ApiResponse<Stream> getMqStreamsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getMqStreamsByNameValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<Stream>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -956,15 +956,15 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MqStreamsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Stream> _callback) throws ApiException {
+    public okhttp3.Call getMqStreamsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Stream> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MqStreamsByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getMqStreamsByNameValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<Stream>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MqStreamsByNameMessages
+     * Build call for getMqStreamsByNameMessages
      * @param name Name is the stream name, from the path. (required)
      * @param seq Seq reads the message at this sequence (with next_by_subject: the walk&#39;s start). (optional)
      * @param lastBySubject LastBySubject reads the newest message on this org-relative subject. (optional)
@@ -980,7 +980,7 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MqStreamsByNameMessagesCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer seq, @javax.annotation.Nullable String lastBySubject, @javax.annotation.Nullable String nextBySubject, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMqStreamsByNameMessagesCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer seq, @javax.annotation.Nullable String lastBySubject, @javax.annotation.Nullable String nextBySubject, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1042,13 +1042,13 @@ public class MqApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MqStreamsByNameMessagesValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer seq, @javax.annotation.Nullable String lastBySubject, @javax.annotation.Nullable String nextBySubject, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMqStreamsByNameMessagesValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer seq, @javax.annotation.Nullable String lastBySubject, @javax.annotation.Nullable String nextBySubject, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1MqStreamsByNameMessages(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getMqStreamsByNameMessages(Async)");
         }
 
-        return getV1MqStreamsByNameMessagesCall(name, seq, lastBySubject, nextBySubject, limit, _callback);
+        return getMqStreamsByNameMessagesCall(name, seq, lastBySubject, nextBySubject, limit, _callback);
 
     }
 
@@ -1069,8 +1069,8 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ReadOut getV1MqStreamsByNameMessages(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer seq, @javax.annotation.Nullable String lastBySubject, @javax.annotation.Nullable String nextBySubject, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<ReadOut> localVarResp = getV1MqStreamsByNameMessagesWithHttpInfo(name, seq, lastBySubject, nextBySubject, limit);
+    public ReadOut getMqStreamsByNameMessages(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer seq, @javax.annotation.Nullable String lastBySubject, @javax.annotation.Nullable String nextBySubject, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<ReadOut> localVarResp = getMqStreamsByNameMessagesWithHttpInfo(name, seq, lastBySubject, nextBySubject, limit);
         return localVarResp.getData();
     }
 
@@ -1091,8 +1091,8 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ReadOut> getV1MqStreamsByNameMessagesWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer seq, @javax.annotation.Nullable String lastBySubject, @javax.annotation.Nullable String nextBySubject, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1MqStreamsByNameMessagesValidateBeforeCall(name, seq, lastBySubject, nextBySubject, limit, null);
+    public ApiResponse<ReadOut> getMqStreamsByNameMessagesWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer seq, @javax.annotation.Nullable String lastBySubject, @javax.annotation.Nullable String nextBySubject, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getMqStreamsByNameMessagesValidateBeforeCall(name, seq, lastBySubject, nextBySubject, limit, null);
         Type localVarReturnType = new TypeToken<ReadOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1115,15 +1115,15 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MqStreamsByNameMessagesAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer seq, @javax.annotation.Nullable String lastBySubject, @javax.annotation.Nullable String nextBySubject, @javax.annotation.Nullable Integer limit, final ApiCallback<ReadOut> _callback) throws ApiException {
+    public okhttp3.Call getMqStreamsByNameMessagesAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer seq, @javax.annotation.Nullable String lastBySubject, @javax.annotation.Nullable String nextBySubject, @javax.annotation.Nullable Integer limit, final ApiCallback<ReadOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MqStreamsByNameMessagesValidateBeforeCall(name, seq, lastBySubject, nextBySubject, limit, _callback);
+        okhttp3.Call localVarCall = getMqStreamsByNameMessagesValidateBeforeCall(name, seq, lastBySubject, nextBySubject, limit, _callback);
         Type localVarReturnType = new TypeToken<ReadOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MqStreamsByStreamConsumers
+     * Build call for getMqStreamsByStreamConsumers
      * @param stream Stream is the stream name, from the path. (required)
      * @param limit Limit caps the consumers returned (1–1000, default 100). (optional)
      * @param offset Offset skips that many consumers, name-ordered. (optional)
@@ -1137,7 +1137,7 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MqStreamsByStreamConsumersCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMqStreamsByStreamConsumersCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1191,13 +1191,13 @@ public class MqApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MqStreamsByStreamConsumersValidateBeforeCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMqStreamsByStreamConsumersValidateBeforeCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'stream' is set
         if (stream == null) {
-            throw new ApiException("Missing the required parameter 'stream' when calling getV1MqStreamsByStreamConsumers(Async)");
+            throw new ApiException("Missing the required parameter 'stream' when calling getMqStreamsByStreamConsumers(Async)");
         }
 
-        return getV1MqStreamsByStreamConsumersCall(stream, limit, offset, _callback);
+        return getMqStreamsByStreamConsumersCall(stream, limit, offset, _callback);
 
     }
 
@@ -1216,8 +1216,8 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PickOut getV1MqStreamsByStreamConsumers(@javax.annotation.Nonnull String stream, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
-        ApiResponse<PickOut> localVarResp = getV1MqStreamsByStreamConsumersWithHttpInfo(stream, limit, offset);
+    public PickOut getMqStreamsByStreamConsumers(@javax.annotation.Nonnull String stream, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
+        ApiResponse<PickOut> localVarResp = getMqStreamsByStreamConsumersWithHttpInfo(stream, limit, offset);
         return localVarResp.getData();
     }
 
@@ -1236,8 +1236,8 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PickOut> getV1MqStreamsByStreamConsumersWithHttpInfo(@javax.annotation.Nonnull String stream, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
-        okhttp3.Call localVarCall = getV1MqStreamsByStreamConsumersValidateBeforeCall(stream, limit, offset, null);
+    public ApiResponse<PickOut> getMqStreamsByStreamConsumersWithHttpInfo(@javax.annotation.Nonnull String stream, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = getMqStreamsByStreamConsumersValidateBeforeCall(stream, limit, offset, null);
         Type localVarReturnType = new TypeToken<PickOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1258,15 +1258,15 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MqStreamsByStreamConsumersAsync(@javax.annotation.Nonnull String stream, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback<PickOut> _callback) throws ApiException {
+    public okhttp3.Call getMqStreamsByStreamConsumersAsync(@javax.annotation.Nonnull String stream, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback<PickOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MqStreamsByStreamConsumersValidateBeforeCall(stream, limit, offset, _callback);
+        okhttp3.Call localVarCall = getMqStreamsByStreamConsumersValidateBeforeCall(stream, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<PickOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MqStreamsByStreamConsumersByName
+     * Build call for getMqStreamsByStreamConsumersByName
      * @param stream Stream is the stream name, from the path. (required)
      * @param name Name is the consumer name, from the path. (required)
      * @param _callback Callback for upload/download progress
@@ -1279,7 +1279,7 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MqStreamsByStreamConsumersByNameCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMqStreamsByStreamConsumersByNameCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1326,18 +1326,18 @@ public class MqApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MqStreamsByStreamConsumersByNameValidateBeforeCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMqStreamsByStreamConsumersByNameValidateBeforeCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'stream' is set
         if (stream == null) {
-            throw new ApiException("Missing the required parameter 'stream' when calling getV1MqStreamsByStreamConsumersByName(Async)");
+            throw new ApiException("Missing the required parameter 'stream' when calling getMqStreamsByStreamConsumersByName(Async)");
         }
 
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1MqStreamsByStreamConsumersByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getMqStreamsByStreamConsumersByName(Async)");
         }
 
-        return getV1MqStreamsByStreamConsumersByNameCall(stream, name, _callback);
+        return getMqStreamsByStreamConsumersByNameCall(stream, name, _callback);
 
     }
 
@@ -1355,8 +1355,8 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Consumer getV1MqStreamsByStreamConsumersByName(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<Consumer> localVarResp = getV1MqStreamsByStreamConsumersByNameWithHttpInfo(stream, name);
+    public Consumer getMqStreamsByStreamConsumersByName(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<Consumer> localVarResp = getMqStreamsByStreamConsumersByNameWithHttpInfo(stream, name);
         return localVarResp.getData();
     }
 
@@ -1374,8 +1374,8 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Consumer> getV1MqStreamsByStreamConsumersByNameWithHttpInfo(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1MqStreamsByStreamConsumersByNameValidateBeforeCall(stream, name, null);
+    public ApiResponse<Consumer> getMqStreamsByStreamConsumersByNameWithHttpInfo(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getMqStreamsByStreamConsumersByNameValidateBeforeCall(stream, name, null);
         Type localVarReturnType = new TypeToken<Consumer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1395,15 +1395,15 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MqStreamsByStreamConsumersByNameAsync(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback<Consumer> _callback) throws ApiException {
+    public okhttp3.Call getMqStreamsByStreamConsumersByNameAsync(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback<Consumer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MqStreamsByStreamConsumersByNameValidateBeforeCall(stream, name, _callback);
+        okhttp3.Call localVarCall = getMqStreamsByStreamConsumersByNameValidateBeforeCall(stream, name, _callback);
         Type localVarReturnType = new TypeToken<Consumer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MqStreams
+     * Build call for postMqStreams
      * @param config  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1415,7 +1415,7 @@ public class MqApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MqStreamsCall(@javax.annotation.Nonnull Config config, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMqStreamsCall(@javax.annotation.Nonnull Config config, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1461,13 +1461,13 @@ public class MqApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MqStreamsValidateBeforeCall(@javax.annotation.Nonnull Config config, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMqStreamsValidateBeforeCall(@javax.annotation.Nonnull Config config, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'config' is set
         if (config == null) {
-            throw new ApiException("Missing the required parameter 'config' when calling postV1MqStreams(Async)");
+            throw new ApiException("Missing the required parameter 'config' when calling postMqStreams(Async)");
         }
 
-        return postV1MqStreamsCall(config, _callback);
+        return postMqStreamsCall(config, _callback);
 
     }
 
@@ -1484,8 +1484,8 @@ public class MqApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public Stream postV1MqStreams(@javax.annotation.Nonnull Config config) throws ApiException {
-        ApiResponse<Stream> localVarResp = postV1MqStreamsWithHttpInfo(config);
+    public Stream postMqStreams(@javax.annotation.Nonnull Config config) throws ApiException {
+        ApiResponse<Stream> localVarResp = postMqStreamsWithHttpInfo(config);
         return localVarResp.getData();
     }
 
@@ -1502,8 +1502,8 @@ public class MqApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Stream> postV1MqStreamsWithHttpInfo(@javax.annotation.Nonnull Config config) throws ApiException {
-        okhttp3.Call localVarCall = postV1MqStreamsValidateBeforeCall(config, null);
+    public ApiResponse<Stream> postMqStreamsWithHttpInfo(@javax.annotation.Nonnull Config config) throws ApiException {
+        okhttp3.Call localVarCall = postMqStreamsValidateBeforeCall(config, null);
         Type localVarReturnType = new TypeToken<Stream>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1522,15 +1522,15 @@ public class MqApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MqStreamsAsync(@javax.annotation.Nonnull Config config, final ApiCallback<Stream> _callback) throws ApiException {
+    public okhttp3.Call postMqStreamsAsync(@javax.annotation.Nonnull Config config, final ApiCallback<Stream> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MqStreamsValidateBeforeCall(config, _callback);
+        okhttp3.Call localVarCall = postMqStreamsValidateBeforeCall(config, _callback);
         Type localVarReturnType = new TypeToken<Stream>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MqStreamsByNamePurge
+     * Build call for postMqStreamsByNamePurge
      * @param name Name is the stream name, from the path. (required)
      * @param purge  (required)
      * @param _callback Callback for upload/download progress
@@ -1543,7 +1543,7 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MqStreamsByNamePurgeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Purge purge, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMqStreamsByNamePurgeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Purge purge, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1590,18 +1590,18 @@ public class MqApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MqStreamsByNamePurgeValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Purge purge, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMqStreamsByNamePurgeValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Purge purge, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling postV1MqStreamsByNamePurge(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling postMqStreamsByNamePurge(Async)");
         }
 
         // verify the required parameter 'purge' is set
         if (purge == null) {
-            throw new ApiException("Missing the required parameter 'purge' when calling postV1MqStreamsByNamePurge(Async)");
+            throw new ApiException("Missing the required parameter 'purge' when calling postMqStreamsByNamePurge(Async)");
         }
 
-        return postV1MqStreamsByNamePurgeCall(name, purge, _callback);
+        return postMqStreamsByNamePurgeCall(name, purge, _callback);
 
     }
 
@@ -1619,8 +1619,8 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PurgeOut postV1MqStreamsByNamePurge(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Purge purge) throws ApiException {
-        ApiResponse<PurgeOut> localVarResp = postV1MqStreamsByNamePurgeWithHttpInfo(name, purge);
+    public PurgeOut postMqStreamsByNamePurge(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Purge purge) throws ApiException {
+        ApiResponse<PurgeOut> localVarResp = postMqStreamsByNamePurgeWithHttpInfo(name, purge);
         return localVarResp.getData();
     }
 
@@ -1638,8 +1638,8 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PurgeOut> postV1MqStreamsByNamePurgeWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Purge purge) throws ApiException {
-        okhttp3.Call localVarCall = postV1MqStreamsByNamePurgeValidateBeforeCall(name, purge, null);
+    public ApiResponse<PurgeOut> postMqStreamsByNamePurgeWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Purge purge) throws ApiException {
+        okhttp3.Call localVarCall = postMqStreamsByNamePurgeValidateBeforeCall(name, purge, null);
         Type localVarReturnType = new TypeToken<PurgeOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1659,15 +1659,15 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MqStreamsByNamePurgeAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Purge purge, final ApiCallback<PurgeOut> _callback) throws ApiException {
+    public okhttp3.Call postMqStreamsByNamePurgeAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Purge purge, final ApiCallback<PurgeOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MqStreamsByNamePurgeValidateBeforeCall(name, purge, _callback);
+        okhttp3.Call localVarCall = postMqStreamsByNamePurgeValidateBeforeCall(name, purge, _callback);
         Type localVarReturnType = new TypeToken<PurgeOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MqStreamsByStreamConsumers
+     * Build call for postMqStreamsByStreamConsumers
      * @param stream Stream is the stream name, from the path. (required)
      * @param makeIn  (required)
      * @param _callback Callback for upload/download progress
@@ -1680,7 +1680,7 @@ public class MqApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MqStreamsByStreamConsumersCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull MakeIn makeIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMqStreamsByStreamConsumersCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull MakeIn makeIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1727,18 +1727,18 @@ public class MqApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MqStreamsByStreamConsumersValidateBeforeCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull MakeIn makeIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMqStreamsByStreamConsumersValidateBeforeCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull MakeIn makeIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'stream' is set
         if (stream == null) {
-            throw new ApiException("Missing the required parameter 'stream' when calling postV1MqStreamsByStreamConsumers(Async)");
+            throw new ApiException("Missing the required parameter 'stream' when calling postMqStreamsByStreamConsumers(Async)");
         }
 
         // verify the required parameter 'makeIn' is set
         if (makeIn == null) {
-            throw new ApiException("Missing the required parameter 'makeIn' when calling postV1MqStreamsByStreamConsumers(Async)");
+            throw new ApiException("Missing the required parameter 'makeIn' when calling postMqStreamsByStreamConsumers(Async)");
         }
 
-        return postV1MqStreamsByStreamConsumersCall(stream, makeIn, _callback);
+        return postMqStreamsByStreamConsumersCall(stream, makeIn, _callback);
 
     }
 
@@ -1756,8 +1756,8 @@ public class MqApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public Consumer postV1MqStreamsByStreamConsumers(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull MakeIn makeIn) throws ApiException {
-        ApiResponse<Consumer> localVarResp = postV1MqStreamsByStreamConsumersWithHttpInfo(stream, makeIn);
+    public Consumer postMqStreamsByStreamConsumers(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull MakeIn makeIn) throws ApiException {
+        ApiResponse<Consumer> localVarResp = postMqStreamsByStreamConsumersWithHttpInfo(stream, makeIn);
         return localVarResp.getData();
     }
 
@@ -1775,8 +1775,8 @@ public class MqApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Consumer> postV1MqStreamsByStreamConsumersWithHttpInfo(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull MakeIn makeIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1MqStreamsByStreamConsumersValidateBeforeCall(stream, makeIn, null);
+    public ApiResponse<Consumer> postMqStreamsByStreamConsumersWithHttpInfo(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull MakeIn makeIn) throws ApiException {
+        okhttp3.Call localVarCall = postMqStreamsByStreamConsumersValidateBeforeCall(stream, makeIn, null);
         Type localVarReturnType = new TypeToken<Consumer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1796,15 +1796,15 @@ public class MqApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MqStreamsByStreamConsumersAsync(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull MakeIn makeIn, final ApiCallback<Consumer> _callback) throws ApiException {
+    public okhttp3.Call postMqStreamsByStreamConsumersAsync(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull MakeIn makeIn, final ApiCallback<Consumer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MqStreamsByStreamConsumersValidateBeforeCall(stream, makeIn, _callback);
+        okhttp3.Call localVarCall = postMqStreamsByStreamConsumersValidateBeforeCall(stream, makeIn, _callback);
         Type localVarReturnType = new TypeToken<Consumer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MqStreamsByStreamConsumersByNameNext
+     * Build call for postMqStreamsByStreamConsumersByNameNext
      * @param stream Stream is the stream name, from the path. (required)
      * @param name Name is the consumer name, from the path. (required)
      * @param nextIn  (required)
@@ -1818,7 +1818,7 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MqStreamsByStreamConsumersByNameNextCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull NextIn nextIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMqStreamsByStreamConsumersByNameNextCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull NextIn nextIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1866,23 +1866,23 @@ public class MqApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MqStreamsByStreamConsumersByNameNextValidateBeforeCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull NextIn nextIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMqStreamsByStreamConsumersByNameNextValidateBeforeCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull NextIn nextIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'stream' is set
         if (stream == null) {
-            throw new ApiException("Missing the required parameter 'stream' when calling postV1MqStreamsByStreamConsumersByNameNext(Async)");
+            throw new ApiException("Missing the required parameter 'stream' when calling postMqStreamsByStreamConsumersByNameNext(Async)");
         }
 
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling postV1MqStreamsByStreamConsumersByNameNext(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling postMqStreamsByStreamConsumersByNameNext(Async)");
         }
 
         // verify the required parameter 'nextIn' is set
         if (nextIn == null) {
-            throw new ApiException("Missing the required parameter 'nextIn' when calling postV1MqStreamsByStreamConsumersByNameNext(Async)");
+            throw new ApiException("Missing the required parameter 'nextIn' when calling postMqStreamsByStreamConsumersByNameNext(Async)");
         }
 
-        return postV1MqStreamsByStreamConsumersByNameNextCall(stream, name, nextIn, _callback);
+        return postMqStreamsByStreamConsumersByNameNextCall(stream, name, nextIn, _callback);
 
     }
 
@@ -1901,8 +1901,8 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ReadOut postV1MqStreamsByStreamConsumersByNameNext(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull NextIn nextIn) throws ApiException {
-        ApiResponse<ReadOut> localVarResp = postV1MqStreamsByStreamConsumersByNameNextWithHttpInfo(stream, name, nextIn);
+    public ReadOut postMqStreamsByStreamConsumersByNameNext(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull NextIn nextIn) throws ApiException {
+        ApiResponse<ReadOut> localVarResp = postMqStreamsByStreamConsumersByNameNextWithHttpInfo(stream, name, nextIn);
         return localVarResp.getData();
     }
 
@@ -1921,8 +1921,8 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ReadOut> postV1MqStreamsByStreamConsumersByNameNextWithHttpInfo(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull NextIn nextIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1MqStreamsByStreamConsumersByNameNextValidateBeforeCall(stream, name, nextIn, null);
+    public ApiResponse<ReadOut> postMqStreamsByStreamConsumersByNameNextWithHttpInfo(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull NextIn nextIn) throws ApiException {
+        okhttp3.Call localVarCall = postMqStreamsByStreamConsumersByNameNextValidateBeforeCall(stream, name, nextIn, null);
         Type localVarReturnType = new TypeToken<ReadOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1943,15 +1943,15 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MqStreamsByStreamConsumersByNameNextAsync(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull NextIn nextIn, final ApiCallback<ReadOut> _callback) throws ApiException {
+    public okhttp3.Call postMqStreamsByStreamConsumersByNameNextAsync(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull NextIn nextIn, final ApiCallback<ReadOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MqStreamsByStreamConsumersByNameNextValidateBeforeCall(stream, name, nextIn, _callback);
+        okhttp3.Call localVarCall = postMqStreamsByStreamConsumersByNameNextValidateBeforeCall(stream, name, nextIn, _callback);
         Type localVarReturnType = new TypeToken<ReadOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1MqStreamsByName
+     * Build call for putMqStreamsByName
      * @param name Name is the stream name, unique within the org (alphanumeric, hyphens, underscores). (required)
      * @param config  (required)
      * @param _callback Callback for upload/download progress
@@ -1964,7 +1964,7 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1MqStreamsByNameCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Config config, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putMqStreamsByNameCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Config config, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2011,18 +2011,18 @@ public class MqApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1MqStreamsByNameValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Config config, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putMqStreamsByNameValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Config config, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling putV1MqStreamsByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling putMqStreamsByName(Async)");
         }
 
         // verify the required parameter 'config' is set
         if (config == null) {
-            throw new ApiException("Missing the required parameter 'config' when calling putV1MqStreamsByName(Async)");
+            throw new ApiException("Missing the required parameter 'config' when calling putMqStreamsByName(Async)");
         }
 
-        return putV1MqStreamsByNameCall(name, config, _callback);
+        return putMqStreamsByNameCall(name, config, _callback);
 
     }
 
@@ -2040,8 +2040,8 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Stream putV1MqStreamsByName(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Config config) throws ApiException {
-        ApiResponse<Stream> localVarResp = putV1MqStreamsByNameWithHttpInfo(name, config);
+    public Stream putMqStreamsByName(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Config config) throws ApiException {
+        ApiResponse<Stream> localVarResp = putMqStreamsByNameWithHttpInfo(name, config);
         return localVarResp.getData();
     }
 
@@ -2059,8 +2059,8 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Stream> putV1MqStreamsByNameWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Config config) throws ApiException {
-        okhttp3.Call localVarCall = putV1MqStreamsByNameValidateBeforeCall(name, config, null);
+    public ApiResponse<Stream> putMqStreamsByNameWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Config config) throws ApiException {
+        okhttp3.Call localVarCall = putMqStreamsByNameValidateBeforeCall(name, config, null);
         Type localVarReturnType = new TypeToken<Stream>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2080,9 +2080,9 @@ public class MqApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1MqStreamsByNameAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Config config, final ApiCallback<Stream> _callback) throws ApiException {
+    public okhttp3.Call putMqStreamsByNameAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Config config, final ApiCallback<Stream> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1MqStreamsByNameValidateBeforeCall(name, config, _callback);
+        okhttp3.Call localVarCall = putMqStreamsByNameValidateBeforeCall(name, config, _callback);
         Type localVarReturnType = new TypeToken<Stream>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

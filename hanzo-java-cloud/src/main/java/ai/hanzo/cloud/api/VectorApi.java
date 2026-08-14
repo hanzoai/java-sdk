@@ -78,7 +78,7 @@ public class VectorApi {
     }
 
     /**
-     * Build call for deleteV1VectorByName
+     * Build call for deleteVectorByName
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -90,7 +90,7 @@ public class VectorApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1VectorByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteVectorByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -135,13 +135,13 @@ public class VectorApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1VectorByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteVectorByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteV1VectorByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling deleteVectorByName(Async)");
         }
 
-        return deleteV1VectorByNameCall(name, _callback);
+        return deleteVectorByNameCall(name, _callback);
 
     }
 
@@ -157,8 +157,8 @@ public class VectorApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1VectorByName(@javax.annotation.Nonnull String name) throws ApiException {
-        deleteV1VectorByNameWithHttpInfo(name);
+    public void deleteVectorByName(@javax.annotation.Nonnull String name) throws ApiException {
+        deleteVectorByNameWithHttpInfo(name);
     }
 
     /**
@@ -174,8 +174,8 @@ public class VectorApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1VectorByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1VectorByNameValidateBeforeCall(name, null);
+    public ApiResponse<Void> deleteVectorByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteVectorByNameValidateBeforeCall(name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -193,14 +193,14 @@ public class VectorApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1VectorByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteVectorByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1VectorByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = deleteVectorByNameValidateBeforeCall(name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Vector
+     * Build call for getVector
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -211,7 +211,7 @@ public class VectorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1VectorCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getVectorCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -256,8 +256,8 @@ public class VectorApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1VectorValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1VectorCall(_callback);
+    private okhttp3.Call getVectorValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getVectorCall(_callback);
 
     }
 
@@ -273,8 +273,8 @@ public class VectorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProvisionedSummary> getV1Vector() throws ApiException {
-        ApiResponse<List<ProvisionedSummary>> localVarResp = getV1VectorWithHttpInfo();
+    public List<ProvisionedSummary> getVector() throws ApiException {
+        ApiResponse<List<ProvisionedSummary>> localVarResp = getVectorWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -290,8 +290,8 @@ public class VectorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProvisionedSummary>> getV1VectorWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1VectorValidateBeforeCall(null);
+    public ApiResponse<List<ProvisionedSummary>> getVectorWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getVectorValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -309,15 +309,15 @@ public class VectorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1VectorAsync(final ApiCallback<List<ProvisionedSummary>> _callback) throws ApiException {
+    public okhttp3.Call getVectorAsync(final ApiCallback<List<ProvisionedSummary>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1VectorValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getVectorValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1VectorByName
+     * Build call for getVectorByName
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -329,7 +329,7 @@ public class VectorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1VectorByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getVectorByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -375,13 +375,13 @@ public class VectorApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1VectorByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getVectorByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1VectorByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getVectorByName(Async)");
         }
 
-        return getV1VectorByNameCall(name, _callback);
+        return getVectorByNameCall(name, _callback);
 
     }
 
@@ -398,8 +398,8 @@ public class VectorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionedResource getV1VectorByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ProvisionedResource> localVarResp = getV1VectorByNameWithHttpInfo(name);
+    public ProvisionedResource getVectorByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<ProvisionedResource> localVarResp = getVectorByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -416,8 +416,8 @@ public class VectorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionedResource> getV1VectorByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1VectorByNameValidateBeforeCall(name, null);
+    public ApiResponse<ProvisionedResource> getVectorByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getVectorByNameValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -436,15 +436,15 @@ public class VectorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1VectorByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisionedResource> _callback) throws ApiException {
+    public okhttp3.Call getVectorByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisionedResource> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1VectorByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getVectorByNameValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1VectorCollections
+     * Build call for getVectorCollections
      * @param authorization Authorization carries the surface&#39;s bearer key (&#x60;Bearer &lt;key&gt;&#x60;); the bare key is accepted too. Search and vector are two surfaces with two keys. It is not &#x60;validate:\&quot;required\&quot;&#x60; on purpose: requireKey answers absence itself, so an unconfigured surface 503s and a missing bearer 401s — a validation refusal would rewrite both statuses. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -456,7 +456,7 @@ public class VectorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1VectorCollectionsCall(@javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getVectorCollectionsCall(@javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -506,8 +506,8 @@ public class VectorApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1VectorCollectionsValidateBeforeCall(@javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
-        return getV1VectorCollectionsCall(authorization, _callback);
+    private okhttp3.Call getVectorCollectionsValidateBeforeCall(@javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
+        return getVectorCollectionsCall(authorization, _callback);
 
     }
 
@@ -524,8 +524,8 @@ public class VectorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public VectorCollectionList getV1VectorCollections(@javax.annotation.Nullable String authorization) throws ApiException {
-        ApiResponse<VectorCollectionList> localVarResp = getV1VectorCollectionsWithHttpInfo(authorization);
+    public VectorCollectionList getVectorCollections(@javax.annotation.Nullable String authorization) throws ApiException {
+        ApiResponse<VectorCollectionList> localVarResp = getVectorCollectionsWithHttpInfo(authorization);
         return localVarResp.getData();
     }
 
@@ -542,8 +542,8 @@ public class VectorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VectorCollectionList> getV1VectorCollectionsWithHttpInfo(@javax.annotation.Nullable String authorization) throws ApiException {
-        okhttp3.Call localVarCall = getV1VectorCollectionsValidateBeforeCall(authorization, null);
+    public ApiResponse<VectorCollectionList> getVectorCollectionsWithHttpInfo(@javax.annotation.Nullable String authorization) throws ApiException {
+        okhttp3.Call localVarCall = getVectorCollectionsValidateBeforeCall(authorization, null);
         Type localVarReturnType = new TypeToken<VectorCollectionList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -562,15 +562,15 @@ public class VectorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1VectorCollectionsAsync(@javax.annotation.Nullable String authorization, final ApiCallback<VectorCollectionList> _callback) throws ApiException {
+    public okhttp3.Call getVectorCollectionsAsync(@javax.annotation.Nullable String authorization, final ApiCallback<VectorCollectionList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1VectorCollectionsValidateBeforeCall(authorization, _callback);
+        okhttp3.Call localVarCall = getVectorCollectionsValidateBeforeCall(authorization, _callback);
         Type localVarReturnType = new TypeToken<VectorCollectionList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1VectorStats
+     * Build call for getVectorStats
      * @param authorization Authorization carries the surface&#39;s bearer key (&#x60;Bearer &lt;key&gt;&#x60;); the bare key is accepted too. Search and vector are two surfaces with two keys. It is not &#x60;validate:\&quot;required\&quot;&#x60; on purpose: requireKey answers absence itself, so an unconfigured surface 503s and a missing bearer 401s — a validation refusal would rewrite both statuses. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -582,7 +582,7 @@ public class VectorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1VectorStatsCall(@javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getVectorStatsCall(@javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -632,8 +632,8 @@ public class VectorApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1VectorStatsValidateBeforeCall(@javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
-        return getV1VectorStatsCall(authorization, _callback);
+    private okhttp3.Call getVectorStatsValidateBeforeCall(@javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
+        return getVectorStatsCall(authorization, _callback);
 
     }
 
@@ -650,8 +650,8 @@ public class VectorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public VectorStats getV1VectorStats(@javax.annotation.Nullable String authorization) throws ApiException {
-        ApiResponse<VectorStats> localVarResp = getV1VectorStatsWithHttpInfo(authorization);
+    public VectorStats getVectorStats(@javax.annotation.Nullable String authorization) throws ApiException {
+        ApiResponse<VectorStats> localVarResp = getVectorStatsWithHttpInfo(authorization);
         return localVarResp.getData();
     }
 
@@ -668,8 +668,8 @@ public class VectorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VectorStats> getV1VectorStatsWithHttpInfo(@javax.annotation.Nullable String authorization) throws ApiException {
-        okhttp3.Call localVarCall = getV1VectorStatsValidateBeforeCall(authorization, null);
+    public ApiResponse<VectorStats> getVectorStatsWithHttpInfo(@javax.annotation.Nullable String authorization) throws ApiException {
+        okhttp3.Call localVarCall = getVectorStatsValidateBeforeCall(authorization, null);
         Type localVarReturnType = new TypeToken<VectorStats>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -688,15 +688,15 @@ public class VectorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1VectorStatsAsync(@javax.annotation.Nullable String authorization, final ApiCallback<VectorStats> _callback) throws ApiException {
+    public okhttp3.Call getVectorStatsAsync(@javax.annotation.Nullable String authorization, final ApiCallback<VectorStats> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1VectorStatsValidateBeforeCall(authorization, _callback);
+        okhttp3.Call localVarCall = getVectorStatsValidateBeforeCall(authorization, _callback);
         Type localVarReturnType = new TypeToken<VectorStats>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Vector
+     * Build call for postVector
      * @param provisionRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -708,7 +708,7 @@ public class VectorApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1VectorCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postVectorCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -754,8 +754,8 @@ public class VectorApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1VectorValidateBeforeCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
-        return postV1VectorCall(provisionRequest, _callback);
+    private okhttp3.Call postVectorValidateBeforeCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
+        return postVectorCall(provisionRequest, _callback);
 
     }
 
@@ -772,8 +772,8 @@ public class VectorApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionResult postV1Vector(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
-        ApiResponse<ProvisionResult> localVarResp = postV1VectorWithHttpInfo(provisionRequest);
+    public ProvisionResult postVector(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
+        ApiResponse<ProvisionResult> localVarResp = postVectorWithHttpInfo(provisionRequest);
         return localVarResp.getData();
     }
 
@@ -790,8 +790,8 @@ public class VectorApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionResult> postV1VectorWithHttpInfo(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1VectorValidateBeforeCall(provisionRequest, null);
+    public ApiResponse<ProvisionResult> postVectorWithHttpInfo(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
+        okhttp3.Call localVarCall = postVectorValidateBeforeCall(provisionRequest, null);
         Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -810,9 +810,9 @@ public class VectorApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1VectorAsync(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback<ProvisionResult> _callback) throws ApiException {
+    public okhttp3.Call postVectorAsync(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback<ProvisionResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1VectorValidateBeforeCall(provisionRequest, _callback);
+        okhttp3.Call localVarCall = postVectorValidateBeforeCall(provisionRequest, _callback);
         Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

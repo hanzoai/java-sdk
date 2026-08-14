@@ -72,12 +72,12 @@ public class MessagesApi {
     }
 
     /**
-     * Build call for postV1Messages
+     * Build call for postMessages
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1MessagesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMessagesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class MessagesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MessagesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1MessagesCall(_callback);
+    private okhttp3.Call postMessagesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postMessagesCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class MessagesApi {
      * Implements the Anthropic Messages API.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1Messages() throws ApiException {
-        postV1MessagesWithHttpInfo();
+    public void postMessages() throws ApiException {
+        postMessagesWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class MessagesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1MessagesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1MessagesValidateBeforeCall(null);
+    public ApiResponse<Void> postMessagesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postMessagesValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,19 +153,19 @@ public class MessagesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1MessagesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postMessagesAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MessagesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postMessagesValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MessagesCountTokens
+     * Build call for postMessagesCountTokens
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1MessagesCountTokensCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMessagesCountTokensCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -209,8 +209,8 @@ public class MessagesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MessagesCountTokensValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1MessagesCountTokensCall(_callback);
+    private okhttp3.Call postMessagesCountTokensValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postMessagesCountTokensCall(_callback);
 
     }
 
@@ -219,8 +219,8 @@ public class MessagesApi {
      * Implements POST /v1/messages/count_tokens. Claude Code calls it before a request; it returns {\&quot;input_tokens\&quot;: N} for the given model + messages + tools.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1MessagesCountTokens() throws ApiException {
-        postV1MessagesCountTokensWithHttpInfo();
+    public void postMessagesCountTokens() throws ApiException {
+        postMessagesCountTokensWithHttpInfo();
     }
 
     /**
@@ -229,8 +229,8 @@ public class MessagesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1MessagesCountTokensWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1MessagesCountTokensValidateBeforeCall(null);
+    public ApiResponse<Void> postMessagesCountTokensWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postMessagesCountTokensValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -241,9 +241,9 @@ public class MessagesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1MessagesCountTokensAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postMessagesCountTokensAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MessagesCountTokensValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postMessagesCountTokensValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

@@ -77,7 +77,7 @@ public class PluginsApi {
     }
 
     /**
-     * Build call for deleteV1PluginsAuthoredById
+     * Build call for deletePluginsAuthoredById
      * @param id ID is the plugin to remove, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -89,7 +89,7 @@ public class PluginsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1PluginsAuthoredByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deletePluginsAuthoredByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -135,13 +135,13 @@ public class PluginsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1PluginsAuthoredByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePluginsAuthoredByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1PluginsAuthoredById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deletePluginsAuthoredById(Async)");
         }
 
-        return deleteV1PluginsAuthoredByIdCall(id, _callback);
+        return deletePluginsAuthoredByIdCall(id, _callback);
 
     }
 
@@ -158,8 +158,8 @@ public class PluginsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PluginDeleted deleteV1PluginsAuthoredById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<PluginDeleted> localVarResp = deleteV1PluginsAuthoredByIdWithHttpInfo(id);
+    public PluginDeleted deletePluginsAuthoredById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<PluginDeleted> localVarResp = deletePluginsAuthoredByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -176,8 +176,8 @@ public class PluginsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PluginDeleted> deleteV1PluginsAuthoredByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1PluginsAuthoredByIdValidateBeforeCall(id, null);
+    public ApiResponse<PluginDeleted> deletePluginsAuthoredByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deletePluginsAuthoredByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<PluginDeleted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -196,15 +196,15 @@ public class PluginsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1PluginsAuthoredByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<PluginDeleted> _callback) throws ApiException {
+    public okhttp3.Call deletePluginsAuthoredByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<PluginDeleted> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1PluginsAuthoredByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deletePluginsAuthoredByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<PluginDeleted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Plugins
+     * Build call for getPlugins
      * @param all All includes the configured-but-disabled subsystems too, but only when it is exactly the string \&quot;true\&quot;. Otherwise only the running ones are reported. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -216,7 +216,7 @@ public class PluginsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PluginsCall(@javax.annotation.Nullable String all, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPluginsCall(@javax.annotation.Nullable String all, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -265,8 +265,8 @@ public class PluginsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PluginsValidateBeforeCall(@javax.annotation.Nullable String all, final ApiCallback _callback) throws ApiException {
-        return getV1PluginsCall(all, _callback);
+    private okhttp3.Call getPluginsValidateBeforeCall(@javax.annotation.Nullable String all, final ApiCallback _callback) throws ApiException {
+        return getPluginsCall(all, _callback);
 
     }
 
@@ -283,8 +283,8 @@ public class PluginsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PluginMountList getV1Plugins(@javax.annotation.Nullable String all) throws ApiException {
-        ApiResponse<PluginMountList> localVarResp = getV1PluginsWithHttpInfo(all);
+    public PluginMountList getPlugins(@javax.annotation.Nullable String all) throws ApiException {
+        ApiResponse<PluginMountList> localVarResp = getPluginsWithHttpInfo(all);
         return localVarResp.getData();
     }
 
@@ -301,8 +301,8 @@ public class PluginsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PluginMountList> getV1PluginsWithHttpInfo(@javax.annotation.Nullable String all) throws ApiException {
-        okhttp3.Call localVarCall = getV1PluginsValidateBeforeCall(all, null);
+    public ApiResponse<PluginMountList> getPluginsWithHttpInfo(@javax.annotation.Nullable String all) throws ApiException {
+        okhttp3.Call localVarCall = getPluginsValidateBeforeCall(all, null);
         Type localVarReturnType = new TypeToken<PluginMountList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -321,15 +321,15 @@ public class PluginsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PluginsAsync(@javax.annotation.Nullable String all, final ApiCallback<PluginMountList> _callback) throws ApiException {
+    public okhttp3.Call getPluginsAsync(@javax.annotation.Nullable String all, final ApiCallback<PluginMountList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PluginsValidateBeforeCall(all, _callback);
+        okhttp3.Call localVarCall = getPluginsValidateBeforeCall(all, _callback);
         Type localVarReturnType = new TypeToken<PluginMountList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PluginsAuthored
+     * Build call for getPluginsAuthored
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -340,7 +340,7 @@ public class PluginsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PluginsAuthoredCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPluginsAuthoredCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -385,8 +385,8 @@ public class PluginsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PluginsAuthoredValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PluginsAuthoredCall(_callback);
+    private okhttp3.Call getPluginsAuthoredValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPluginsAuthoredCall(_callback);
 
     }
 
@@ -402,8 +402,8 @@ public class PluginsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AuthoredPluginList getV1PluginsAuthored() throws ApiException {
-        ApiResponse<AuthoredPluginList> localVarResp = getV1PluginsAuthoredWithHttpInfo();
+    public AuthoredPluginList getPluginsAuthored() throws ApiException {
+        ApiResponse<AuthoredPluginList> localVarResp = getPluginsAuthoredWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -419,8 +419,8 @@ public class PluginsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AuthoredPluginList> getV1PluginsAuthoredWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PluginsAuthoredValidateBeforeCall(null);
+    public ApiResponse<AuthoredPluginList> getPluginsAuthoredWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPluginsAuthoredValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<AuthoredPluginList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -438,15 +438,15 @@ public class PluginsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PluginsAuthoredAsync(final ApiCallback<AuthoredPluginList> _callback) throws ApiException {
+    public okhttp3.Call getPluginsAuthoredAsync(final ApiCallback<AuthoredPluginList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PluginsAuthoredValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPluginsAuthoredValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AuthoredPluginList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PluginsBuild
+     * Build call for postPluginsBuild
      * @param buildRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -458,7 +458,7 @@ public class PluginsApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PluginsBuildCall(@javax.annotation.Nullable BuildRequest buildRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPluginsBuildCall(@javax.annotation.Nullable BuildRequest buildRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -504,8 +504,8 @@ public class PluginsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PluginsBuildValidateBeforeCall(@javax.annotation.Nullable BuildRequest buildRequest, final ApiCallback _callback) throws ApiException {
-        return postV1PluginsBuildCall(buildRequest, _callback);
+    private okhttp3.Call postPluginsBuildValidateBeforeCall(@javax.annotation.Nullable BuildRequest buildRequest, final ApiCallback _callback) throws ApiException {
+        return postPluginsBuildCall(buildRequest, _callback);
 
     }
 
@@ -522,8 +522,8 @@ public class PluginsApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public BuildOut postV1PluginsBuild(@javax.annotation.Nullable BuildRequest buildRequest) throws ApiException {
-        ApiResponse<BuildOut> localVarResp = postV1PluginsBuildWithHttpInfo(buildRequest);
+    public BuildOut postPluginsBuild(@javax.annotation.Nullable BuildRequest buildRequest) throws ApiException {
+        ApiResponse<BuildOut> localVarResp = postPluginsBuildWithHttpInfo(buildRequest);
         return localVarResp.getData();
     }
 
@@ -540,8 +540,8 @@ public class PluginsApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BuildOut> postV1PluginsBuildWithHttpInfo(@javax.annotation.Nullable BuildRequest buildRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1PluginsBuildValidateBeforeCall(buildRequest, null);
+    public ApiResponse<BuildOut> postPluginsBuildWithHttpInfo(@javax.annotation.Nullable BuildRequest buildRequest) throws ApiException {
+        okhttp3.Call localVarCall = postPluginsBuildValidateBeforeCall(buildRequest, null);
         Type localVarReturnType = new TypeToken<BuildOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -560,9 +560,9 @@ public class PluginsApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PluginsBuildAsync(@javax.annotation.Nullable BuildRequest buildRequest, final ApiCallback<BuildOut> _callback) throws ApiException {
+    public okhttp3.Call postPluginsBuildAsync(@javax.annotation.Nullable BuildRequest buildRequest, final ApiCallback<BuildOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PluginsBuildValidateBeforeCall(buildRequest, _callback);
+        okhttp3.Call localVarCall = postPluginsBuildValidateBeforeCall(buildRequest, _callback);
         Type localVarReturnType = new TypeToken<BuildOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

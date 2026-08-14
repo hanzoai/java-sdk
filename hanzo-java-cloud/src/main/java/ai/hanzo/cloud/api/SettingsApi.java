@@ -74,7 +74,7 @@ public class SettingsApi {
     }
 
     /**
-     * Build call for getV1SettingsByProduct
+     * Build call for getSettingsByProduct
      * @param product Product is the catalog slug, from the path. Must match ^[a-z0-9][a-z0-9._-]{0,62}$. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -86,7 +86,7 @@ public class SettingsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SettingsByProductCall(@javax.annotation.Nonnull String product, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSettingsByProductCall(@javax.annotation.Nonnull String product, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -132,13 +132,13 @@ public class SettingsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SettingsByProductValidateBeforeCall(@javax.annotation.Nonnull String product, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSettingsByProductValidateBeforeCall(@javax.annotation.Nonnull String product, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'product' is set
         if (product == null) {
-            throw new ApiException("Missing the required parameter 'product' when calling getV1SettingsByProduct(Async)");
+            throw new ApiException("Missing the required parameter 'product' when calling getSettingsByProduct(Async)");
         }
 
-        return getV1SettingsByProductCall(product, _callback);
+        return getSettingsByProductCall(product, _callback);
 
     }
 
@@ -155,8 +155,8 @@ public class SettingsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SettingsView getV1SettingsByProduct(@javax.annotation.Nonnull String product) throws ApiException {
-        ApiResponse<SettingsView> localVarResp = getV1SettingsByProductWithHttpInfo(product);
+    public SettingsView getSettingsByProduct(@javax.annotation.Nonnull String product) throws ApiException {
+        ApiResponse<SettingsView> localVarResp = getSettingsByProductWithHttpInfo(product);
         return localVarResp.getData();
     }
 
@@ -173,8 +173,8 @@ public class SettingsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SettingsView> getV1SettingsByProductWithHttpInfo(@javax.annotation.Nonnull String product) throws ApiException {
-        okhttp3.Call localVarCall = getV1SettingsByProductValidateBeforeCall(product, null);
+    public ApiResponse<SettingsView> getSettingsByProductWithHttpInfo(@javax.annotation.Nonnull String product) throws ApiException {
+        okhttp3.Call localVarCall = getSettingsByProductValidateBeforeCall(product, null);
         Type localVarReturnType = new TypeToken<SettingsView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -193,15 +193,15 @@ public class SettingsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SettingsByProductAsync(@javax.annotation.Nonnull String product, final ApiCallback<SettingsView> _callback) throws ApiException {
+    public okhttp3.Call getSettingsByProductAsync(@javax.annotation.Nonnull String product, final ApiCallback<SettingsView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SettingsByProductValidateBeforeCall(product, _callback);
+        okhttp3.Call localVarCall = getSettingsByProductValidateBeforeCall(product, _callback);
         Type localVarReturnType = new TypeToken<SettingsView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1SettingsByProduct
+     * Build call for putSettingsByProduct
      * @param product Product is the catalog slug, from the PATH. zip binds the path last, so the URL names the product being written whatever a body field claims. (required)
      * @param settingsReq  (required)
      * @param _callback Callback for upload/download progress
@@ -214,7 +214,7 @@ public class SettingsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1SettingsByProductCall(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull SettingsReq settingsReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putSettingsByProductCall(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull SettingsReq settingsReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -261,18 +261,18 @@ public class SettingsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1SettingsByProductValidateBeforeCall(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull SettingsReq settingsReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putSettingsByProductValidateBeforeCall(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull SettingsReq settingsReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'product' is set
         if (product == null) {
-            throw new ApiException("Missing the required parameter 'product' when calling putV1SettingsByProduct(Async)");
+            throw new ApiException("Missing the required parameter 'product' when calling putSettingsByProduct(Async)");
         }
 
         // verify the required parameter 'settingsReq' is set
         if (settingsReq == null) {
-            throw new ApiException("Missing the required parameter 'settingsReq' when calling putV1SettingsByProduct(Async)");
+            throw new ApiException("Missing the required parameter 'settingsReq' when calling putSettingsByProduct(Async)");
         }
 
-        return putV1SettingsByProductCall(product, settingsReq, _callback);
+        return putSettingsByProductCall(product, settingsReq, _callback);
 
     }
 
@@ -290,8 +290,8 @@ public class SettingsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SettingsView putV1SettingsByProduct(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull SettingsReq settingsReq) throws ApiException {
-        ApiResponse<SettingsView> localVarResp = putV1SettingsByProductWithHttpInfo(product, settingsReq);
+    public SettingsView putSettingsByProduct(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull SettingsReq settingsReq) throws ApiException {
+        ApiResponse<SettingsView> localVarResp = putSettingsByProductWithHttpInfo(product, settingsReq);
         return localVarResp.getData();
     }
 
@@ -309,8 +309,8 @@ public class SettingsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SettingsView> putV1SettingsByProductWithHttpInfo(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull SettingsReq settingsReq) throws ApiException {
-        okhttp3.Call localVarCall = putV1SettingsByProductValidateBeforeCall(product, settingsReq, null);
+    public ApiResponse<SettingsView> putSettingsByProductWithHttpInfo(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull SettingsReq settingsReq) throws ApiException {
+        okhttp3.Call localVarCall = putSettingsByProductValidateBeforeCall(product, settingsReq, null);
         Type localVarReturnType = new TypeToken<SettingsView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -330,9 +330,9 @@ public class SettingsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1SettingsByProductAsync(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull SettingsReq settingsReq, final ApiCallback<SettingsView> _callback) throws ApiException {
+    public okhttp3.Call putSettingsByProductAsync(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull SettingsReq settingsReq, final ApiCallback<SettingsView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1SettingsByProductValidateBeforeCall(product, settingsReq, _callback);
+        okhttp3.Call localVarCall = putSettingsByProductValidateBeforeCall(product, settingsReq, _callback);
         Type localVarReturnType = new TypeToken<SettingsView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

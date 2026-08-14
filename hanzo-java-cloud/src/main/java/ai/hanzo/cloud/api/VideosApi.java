@@ -72,12 +72,12 @@ public class VideosApi {
     }
 
     /**
-     * Build call for getV1VideosById
+     * Build call for getVideosById
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1VideosByIdCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getVideosByIdCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class VideosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1VideosByIdValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1VideosByIdCall(_callback);
+    private okhttp3.Call getVideosByIdValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getVideosByIdCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class VideosApi {
      * Implements GET /v1/videos/{id} — poll a job&#39;s status.  It authenticates the caller, verifies they OWN the job (the caller&#39;s billing subject must equal the job&#39;s), performs ONE upstream status poll, and — the first time the job is observed completed — settles the reservation with the actual cost and records the billable usage event (exactly once). Returns the OpenAI-shaped video object.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1VideosById() throws ApiException {
-        getV1VideosByIdWithHttpInfo();
+    public void getVideosById() throws ApiException {
+        getVideosByIdWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class VideosApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1VideosByIdWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1VideosByIdValidateBeforeCall(null);
+    public ApiResponse<Void> getVideosByIdWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getVideosByIdValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,19 +153,19 @@ public class VideosApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1VideosByIdAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getVideosByIdAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1VideosByIdValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getVideosByIdValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1VideosByIdContent
+     * Build call for getVideosByIdContent
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1VideosByIdContentCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getVideosByIdContentCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -209,8 +209,8 @@ public class VideosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1VideosByIdContentValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1VideosByIdContentCall(_callback);
+    private okhttp3.Call getVideosByIdContentValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getVideosByIdContentCall(_callback);
 
     }
 
@@ -219,8 +219,8 @@ public class VideosApi {
      * Implements GET /v1/videos/{id}/content — download the finished MP4.  It authenticates + ownership-checks the caller, then proxies the upstream /content endpoint (bounded by the download concurrency ceiling) and streams the raw video bytes back inline. A successful download also bills the job once (for the client that downloads without first polling to completion) — idempotent with the poll path via job.markCompleted.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1VideosByIdContent() throws ApiException {
-        getV1VideosByIdContentWithHttpInfo();
+    public void getVideosByIdContent() throws ApiException {
+        getVideosByIdContentWithHttpInfo();
     }
 
     /**
@@ -229,8 +229,8 @@ public class VideosApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1VideosByIdContentWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1VideosByIdContentValidateBeforeCall(null);
+    public ApiResponse<Void> getVideosByIdContentWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getVideosByIdContentValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -241,19 +241,19 @@ public class VideosApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1VideosByIdContentAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getVideosByIdContentAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1VideosByIdContentValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getVideosByIdContentValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1VideosGenerations
+     * Build call for postVideosGenerations
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1VideosGenerationsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postVideosGenerationsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -297,8 +297,8 @@ public class VideosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1VideosGenerationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1VideosGenerationsCall(_callback);
+    private okhttp3.Call postVideosGenerationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postVideosGenerationsCall(_callback);
 
     }
 
@@ -307,8 +307,8 @@ public class VideosApi {
      * Implements POST /v1/videos/generations — the ASYNC create.  Body: {\&quot;model\&quot;: \&quot;...\&quot;, \&quot;prompt\&quot;: \&quot;...\&quot;, \&quot;size\&quot;?: \&quot;1280x720\&quot;, \&quot;seconds\&quot;?: int}  It authenticates the caller, resolves the model to its upstream provider via the shared routing table (zen3-video* / wan2-2-t2v-a14b → the spark-video backend), reserves the per-video budget (the balance gate), creates ONE upstream job, registers it in the in-pod store, and returns the OpenAI-shaped video object with status \&quot;queued\&quot; IMMEDIATELY. The client then polls GET /v1/videos/{id} and downloads GET /v1/videos/{id}/content. Nothing is billed here — the debit lands on completion.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1VideosGenerations() throws ApiException {
-        postV1VideosGenerationsWithHttpInfo();
+    public void postVideosGenerations() throws ApiException {
+        postVideosGenerationsWithHttpInfo();
     }
 
     /**
@@ -317,8 +317,8 @@ public class VideosApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1VideosGenerationsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1VideosGenerationsValidateBeforeCall(null);
+    public ApiResponse<Void> postVideosGenerationsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postVideosGenerationsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -329,9 +329,9 @@ public class VideosApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1VideosGenerationsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postVideosGenerationsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1VideosGenerationsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postVideosGenerationsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

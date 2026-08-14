@@ -73,13 +73,13 @@ public class BotApi {
     }
 
     /**
-     * Build call for deleteV1BotByWildcard1
+     * Build call for deleteBotByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1BotByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteBotByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -124,13 +124,13 @@ public class BotApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1BotByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteBotByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling deleteV1BotByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling deleteBotByWildcard1(Async)");
         }
 
-        return deleteV1BotByWildcard1Call(wildcard1, _callback);
+        return deleteBotByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -140,8 +140,8 @@ public class BotApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1BotByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        deleteV1BotByWildcard1WithHttpInfo(wildcard1);
+    public void deleteBotByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        deleteBotByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -151,8 +151,8 @@ public class BotApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1BotByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1BotByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> deleteBotByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = deleteBotByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -164,20 +164,20 @@ public class BotApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1BotByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteBotByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1BotByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = deleteBotByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BotByWildcard1
+     * Build call for getBotByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1BotByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBotByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -222,13 +222,13 @@ public class BotApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BotByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getBotByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling getV1BotByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling getBotByWildcard1(Async)");
         }
 
-        return getV1BotByWildcard1Call(wildcard1, _callback);
+        return getBotByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -238,8 +238,8 @@ public class BotApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1BotByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        getV1BotByWildcard1WithHttpInfo(wildcard1);
+    public void getBotByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        getBotByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -249,8 +249,8 @@ public class BotApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1BotByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = getV1BotByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> getBotByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = getBotByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -262,19 +262,19 @@ public class BotApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1BotByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getBotByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BotByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = getBotByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BotConnect
+     * Build call for getBotConnect
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1BotConnectCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBotConnectCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -318,8 +318,8 @@ public class BotApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BotConnectValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1BotConnectCall(_callback);
+    private okhttp3.Call getBotConnectValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getBotConnectCall(_callback);
 
     }
 
@@ -328,8 +328,8 @@ public class BotApi {
      * Upgrades to a WebSocket and keeps it for the life of the node. cloud writes a challenge frame immediately; the node answers with a connect frame naming the protocol range it speaks, the role &#x60;node&#x60;, its own node id, and the display name, platform, agent version, capabilities and commands it reports for itself. On acceptance the session is registered, the node appears in this org&#39;s node list, and invocations begin arriving as frames on the same connection.  The upgrade needs a validated principal and answers 403 without one. The org is the gateway&#39;s verdict — injected after IAM validation and after any client copy is stripped — and is never read from the request itself, because a caller that could name an org could attach a machine into someone else&#39;s tenant.  A request carrying an Origin header is refused outright. A node is a daemon and a browser has no business here; since no same-origin policy applies to WebSockets, a page could otherwise ride a signed-in viewer&#39;s session into registering a node. Removing the whole category is the gate, not an allowlist of brand domains. The handshake deadline is one fixed instant rather than a per-read timer, so a peer cannot hold a pre-handshake socket open indefinitely by sending frames this endpoint ignores.  Two things to get right. Everything the node declares about itself — capabilities, commands, platform — is a SELF-REPORT: it is useful to show and never load-bearing, because what the node may actually be asked to run is decided at this socket against the deployment&#39;s allowlist. And a node can only ever answer calls placed on its own connection: correlation ids are minted under the connection id and checked against it, so naming another node&#39;s in-flight call resolves nothing.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1BotConnect() throws ApiException {
-        getV1BotConnectWithHttpInfo();
+    public void getBotConnect() throws ApiException {
+        getBotConnectWithHttpInfo();
     }
 
     /**
@@ -338,8 +338,8 @@ public class BotApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1BotConnectWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1BotConnectValidateBeforeCall(null);
+    public ApiResponse<Void> getBotConnectWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getBotConnectValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -350,14 +350,14 @@ public class BotApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1BotConnectAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getBotConnectAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BotConnectValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getBotConnectValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BotNodes
+     * Build call for getBotNodes
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -368,7 +368,7 @@ public class BotApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BotNodesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBotNodesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -413,8 +413,8 @@ public class BotApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BotNodesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1BotNodesCall(_callback);
+    private okhttp3.Call getBotNodesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getBotNodesCall(_callback);
 
     }
 
@@ -430,8 +430,8 @@ public class BotApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public NodesView getV1BotNodes() throws ApiException {
-        ApiResponse<NodesView> localVarResp = getV1BotNodesWithHttpInfo();
+    public NodesView getBotNodes() throws ApiException {
+        ApiResponse<NodesView> localVarResp = getBotNodesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -447,8 +447,8 @@ public class BotApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<NodesView> getV1BotNodesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1BotNodesValidateBeforeCall(null);
+    public ApiResponse<NodesView> getBotNodesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getBotNodesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<NodesView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -466,21 +466,21 @@ public class BotApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BotNodesAsync(final ApiCallback<NodesView> _callback) throws ApiException {
+    public okhttp3.Call getBotNodesAsync(final ApiCallback<NodesView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BotNodesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getBotNodesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<NodesView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1BotByWildcard1
+     * Build call for patchBotByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1BotByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchBotByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -525,13 +525,13 @@ public class BotApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1BotByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchBotByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling patchV1BotByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling patchBotByWildcard1(Async)");
         }
 
-        return patchV1BotByWildcard1Call(wildcard1, _callback);
+        return patchBotByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -541,8 +541,8 @@ public class BotApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1BotByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        patchV1BotByWildcard1WithHttpInfo(wildcard1);
+    public void patchBotByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        patchBotByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -552,8 +552,8 @@ public class BotApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1BotByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = patchV1BotByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> patchBotByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = patchBotByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -565,20 +565,20 @@ public class BotApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1BotByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchBotByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1BotByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = patchBotByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1BotByWildcard1
+     * Build call for postBotByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1BotByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBotByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -623,13 +623,13 @@ public class BotApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1BotByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postBotByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling postV1BotByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling postBotByWildcard1(Async)");
         }
 
-        return postV1BotByWildcard1Call(wildcard1, _callback);
+        return postBotByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -639,8 +639,8 @@ public class BotApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1BotByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        postV1BotByWildcard1WithHttpInfo(wildcard1);
+    public void postBotByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        postBotByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -650,8 +650,8 @@ public class BotApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1BotByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = postV1BotByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> postBotByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = postBotByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -663,20 +663,20 @@ public class BotApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1BotByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postBotByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1BotByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = postBotByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1BotNodesByIdInvoke
+     * Build call for postBotNodesByIdInvoke
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1BotNodesByIdInvokeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBotNodesByIdInvokeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -721,13 +721,13 @@ public class BotApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1BotNodesByIdInvokeValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postBotNodesByIdInvokeValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1BotNodesByIdInvoke(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postBotNodesByIdInvoke(Async)");
         }
 
-        return postV1BotNodesByIdInvokeCall(id, _callback);
+        return postBotNodesByIdInvokeCall(id, _callback);
 
     }
 
@@ -737,8 +737,8 @@ public class BotApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1BotNodesByIdInvoke(@javax.annotation.Nonnull String id) throws ApiException {
-        postV1BotNodesByIdInvokeWithHttpInfo(id);
+    public void postBotNodesByIdInvoke(@javax.annotation.Nonnull String id) throws ApiException {
+        postBotNodesByIdInvokeWithHttpInfo(id);
     }
 
     /**
@@ -748,8 +748,8 @@ public class BotApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1BotNodesByIdInvokeWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1BotNodesByIdInvokeValidateBeforeCall(id, null);
+    public ApiResponse<Void> postBotNodesByIdInvokeWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postBotNodesByIdInvokeValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -761,19 +761,19 @@ public class BotApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1BotNodesByIdInvokeAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postBotNodesByIdInvokeAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1BotNodesByIdInvokeValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postBotNodesByIdInvokeValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1BotPeerInvoke
+     * Build call for postBotPeerInvoke
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1BotPeerInvokeCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBotPeerInvokeCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -817,8 +817,8 @@ public class BotApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1BotPeerInvokeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1BotPeerInvokeCall(_callback);
+    private okhttp3.Call postBotPeerInvokeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postBotPeerInvokeCall(_callback);
 
     }
 
@@ -827,8 +827,8 @@ public class BotApi {
      * A machine hop, not a caller-facing route. A node&#39;s socket lands on one replica while invocations land on any, so the replica that took the request forwards it here to the one that actually holds the node, and returns that answer as its own.  It authenticates with the shared peer token, compared in constant time, and carries no user identity at all. That is why the org arrives IN THE BODY here: the forwarding replica already derived it from a gateway-validated header, so the value is a fact being relayed rather than a claim being made. On any caller-facing route the same field would be a cross-tenant invoke primitive.  It fails closed on its own configuration: with no peer token set, or a half-wired cluster that has presence but no way to forward, it serves 503 and forwards nothing — an unauthenticated endpoint that takes an org from a body is precisely the hole. A missing or wrong token is 403, and the forwarded body is bounded on read.  Two things to get right. Its refusals are text/plain rather than the JSON every zip error uses, so a client decoding them as JSON will fail on the error path only. And an invocation that RAN but was denied still answers 200 here, carrying a stable error token in the JSON body — no such node, timeout, node gone, denied, failed — which the calling replica maps back onto the status codes a caller sees. Authorization already ran on this replica at the socket and is deliberately not repeated.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1BotPeerInvoke() throws ApiException {
-        postV1BotPeerInvokeWithHttpInfo();
+    public void postBotPeerInvoke() throws ApiException {
+        postBotPeerInvokeWithHttpInfo();
     }
 
     /**
@@ -837,8 +837,8 @@ public class BotApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1BotPeerInvokeWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1BotPeerInvokeValidateBeforeCall(null);
+    public ApiResponse<Void> postBotPeerInvokeWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postBotPeerInvokeValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -849,20 +849,20 @@ public class BotApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1BotPeerInvokeAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postBotPeerInvokeAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1BotPeerInvokeValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postBotPeerInvokeValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1BotByWildcard1
+     * Build call for putBotByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1BotByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putBotByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -907,13 +907,13 @@ public class BotApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1BotByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putBotByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling putV1BotByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling putBotByWildcard1(Async)");
         }
 
-        return putV1BotByWildcard1Call(wildcard1, _callback);
+        return putBotByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -923,8 +923,8 @@ public class BotApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1BotByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        putV1BotByWildcard1WithHttpInfo(wildcard1);
+    public void putBotByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        putBotByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -934,8 +934,8 @@ public class BotApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1BotByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = putV1BotByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> putBotByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = putBotByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -947,9 +947,9 @@ public class BotApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1BotByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putBotByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1BotByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = putBotByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

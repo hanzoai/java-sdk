@@ -76,7 +76,7 @@ public class OrgsApi {
     }
 
     /**
-     * Build call for getV1OrgsByOrgEntitlements
+     * Build call for getOrgsByOrgEntitlements
      * @param org  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -88,7 +88,7 @@ public class OrgsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1OrgsByOrgEntitlementsCall(@javax.annotation.Nonnull String org, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getOrgsByOrgEntitlementsCall(@javax.annotation.Nonnull String org, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,13 +134,13 @@ public class OrgsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1OrgsByOrgEntitlementsValidateBeforeCall(@javax.annotation.Nonnull String org, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getOrgsByOrgEntitlementsValidateBeforeCall(@javax.annotation.Nonnull String org, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'org' is set
         if (org == null) {
-            throw new ApiException("Missing the required parameter 'org' when calling getV1OrgsByOrgEntitlements(Async)");
+            throw new ApiException("Missing the required parameter 'org' when calling getOrgsByOrgEntitlements(Async)");
         }
 
-        return getV1OrgsByOrgEntitlementsCall(org, _callback);
+        return getOrgsByOrgEntitlementsCall(org, _callback);
 
     }
 
@@ -157,8 +157,8 @@ public class OrgsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public EntitlementsView getV1OrgsByOrgEntitlements(@javax.annotation.Nonnull String org) throws ApiException {
-        ApiResponse<EntitlementsView> localVarResp = getV1OrgsByOrgEntitlementsWithHttpInfo(org);
+    public EntitlementsView getOrgsByOrgEntitlements(@javax.annotation.Nonnull String org) throws ApiException {
+        ApiResponse<EntitlementsView> localVarResp = getOrgsByOrgEntitlementsWithHttpInfo(org);
         return localVarResp.getData();
     }
 
@@ -175,8 +175,8 @@ public class OrgsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntitlementsView> getV1OrgsByOrgEntitlementsWithHttpInfo(@javax.annotation.Nonnull String org) throws ApiException {
-        okhttp3.Call localVarCall = getV1OrgsByOrgEntitlementsValidateBeforeCall(org, null);
+    public ApiResponse<EntitlementsView> getOrgsByOrgEntitlementsWithHttpInfo(@javax.annotation.Nonnull String org) throws ApiException {
+        okhttp3.Call localVarCall = getOrgsByOrgEntitlementsValidateBeforeCall(org, null);
         Type localVarReturnType = new TypeToken<EntitlementsView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -195,15 +195,15 @@ public class OrgsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1OrgsByOrgEntitlementsAsync(@javax.annotation.Nonnull String org, final ApiCallback<EntitlementsView> _callback) throws ApiException {
+    public okhttp3.Call getOrgsByOrgEntitlementsAsync(@javax.annotation.Nonnull String org, final ApiCallback<EntitlementsView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1OrgsByOrgEntitlementsValidateBeforeCall(org, _callback);
+        okhttp3.Call localVarCall = getOrgsByOrgEntitlementsValidateBeforeCall(org, _callback);
         Type localVarReturnType = new TypeToken<EntitlementsView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Orgs
+     * Build call for postOrgs
      * @param onboardReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -215,7 +215,7 @@ public class OrgsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1OrgsCall(@javax.annotation.Nonnull OnboardReq onboardReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postOrgsCall(@javax.annotation.Nonnull OnboardReq onboardReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -261,13 +261,13 @@ public class OrgsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1OrgsValidateBeforeCall(@javax.annotation.Nonnull OnboardReq onboardReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postOrgsValidateBeforeCall(@javax.annotation.Nonnull OnboardReq onboardReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'onboardReq' is set
         if (onboardReq == null) {
-            throw new ApiException("Missing the required parameter 'onboardReq' when calling postV1Orgs(Async)");
+            throw new ApiException("Missing the required parameter 'onboardReq' when calling postOrgs(Async)");
         }
 
-        return postV1OrgsCall(onboardReq, _callback);
+        return postOrgsCall(onboardReq, _callback);
 
     }
 
@@ -284,8 +284,8 @@ public class OrgsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public OnboardResp postV1Orgs(@javax.annotation.Nonnull OnboardReq onboardReq) throws ApiException {
-        ApiResponse<OnboardResp> localVarResp = postV1OrgsWithHttpInfo(onboardReq);
+    public OnboardResp postOrgs(@javax.annotation.Nonnull OnboardReq onboardReq) throws ApiException {
+        ApiResponse<OnboardResp> localVarResp = postOrgsWithHttpInfo(onboardReq);
         return localVarResp.getData();
     }
 
@@ -302,8 +302,8 @@ public class OrgsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OnboardResp> postV1OrgsWithHttpInfo(@javax.annotation.Nonnull OnboardReq onboardReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1OrgsValidateBeforeCall(onboardReq, null);
+    public ApiResponse<OnboardResp> postOrgsWithHttpInfo(@javax.annotation.Nonnull OnboardReq onboardReq) throws ApiException {
+        okhttp3.Call localVarCall = postOrgsValidateBeforeCall(onboardReq, null);
         Type localVarReturnType = new TypeToken<OnboardResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -322,15 +322,15 @@ public class OrgsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1OrgsAsync(@javax.annotation.Nonnull OnboardReq onboardReq, final ApiCallback<OnboardResp> _callback) throws ApiException {
+    public okhttp3.Call postOrgsAsync(@javax.annotation.Nonnull OnboardReq onboardReq, final ApiCallback<OnboardResp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1OrgsValidateBeforeCall(onboardReq, _callback);
+        okhttp3.Call localVarCall = postOrgsValidateBeforeCall(onboardReq, _callback);
         Type localVarReturnType = new TypeToken<OnboardResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1OrgsByOrgEntitlements
+     * Build call for postOrgsByOrgEntitlements
      * @param org  (required)
      * @param mutateReq  (required)
      * @param _callback Callback for upload/download progress
@@ -343,7 +343,7 @@ public class OrgsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1OrgsByOrgEntitlementsCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull MutateReq mutateReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postOrgsByOrgEntitlementsCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull MutateReq mutateReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -390,18 +390,18 @@ public class OrgsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1OrgsByOrgEntitlementsValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull MutateReq mutateReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postOrgsByOrgEntitlementsValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull MutateReq mutateReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'org' is set
         if (org == null) {
-            throw new ApiException("Missing the required parameter 'org' when calling postV1OrgsByOrgEntitlements(Async)");
+            throw new ApiException("Missing the required parameter 'org' when calling postOrgsByOrgEntitlements(Async)");
         }
 
         // verify the required parameter 'mutateReq' is set
         if (mutateReq == null) {
-            throw new ApiException("Missing the required parameter 'mutateReq' when calling postV1OrgsByOrgEntitlements(Async)");
+            throw new ApiException("Missing the required parameter 'mutateReq' when calling postOrgsByOrgEntitlements(Async)");
         }
 
-        return postV1OrgsByOrgEntitlementsCall(org, mutateReq, _callback);
+        return postOrgsByOrgEntitlementsCall(org, mutateReq, _callback);
 
     }
 
@@ -419,8 +419,8 @@ public class OrgsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public EntitlementsView postV1OrgsByOrgEntitlements(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull MutateReq mutateReq) throws ApiException {
-        ApiResponse<EntitlementsView> localVarResp = postV1OrgsByOrgEntitlementsWithHttpInfo(org, mutateReq);
+    public EntitlementsView postOrgsByOrgEntitlements(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull MutateReq mutateReq) throws ApiException {
+        ApiResponse<EntitlementsView> localVarResp = postOrgsByOrgEntitlementsWithHttpInfo(org, mutateReq);
         return localVarResp.getData();
     }
 
@@ -438,8 +438,8 @@ public class OrgsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntitlementsView> postV1OrgsByOrgEntitlementsWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull MutateReq mutateReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1OrgsByOrgEntitlementsValidateBeforeCall(org, mutateReq, null);
+    public ApiResponse<EntitlementsView> postOrgsByOrgEntitlementsWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull MutateReq mutateReq) throws ApiException {
+        okhttp3.Call localVarCall = postOrgsByOrgEntitlementsValidateBeforeCall(org, mutateReq, null);
         Type localVarReturnType = new TypeToken<EntitlementsView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -459,9 +459,9 @@ public class OrgsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1OrgsByOrgEntitlementsAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull MutateReq mutateReq, final ApiCallback<EntitlementsView> _callback) throws ApiException {
+    public okhttp3.Call postOrgsByOrgEntitlementsAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull MutateReq mutateReq, final ApiCallback<EntitlementsView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1OrgsByOrgEntitlementsValidateBeforeCall(org, mutateReq, _callback);
+        okhttp3.Call localVarCall = postOrgsByOrgEntitlementsValidateBeforeCall(org, mutateReq, _callback);
         Type localVarReturnType = new TypeToken<EntitlementsView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

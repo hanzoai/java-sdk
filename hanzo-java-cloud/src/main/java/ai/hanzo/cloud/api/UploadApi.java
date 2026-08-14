@@ -72,12 +72,12 @@ public class UploadApi {
     }
 
     /**
-     * Build call for postV1Upload
+     * Build call for postUpload
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1UploadCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postUploadCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class UploadApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1UploadValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1UploadCall(_callback);
+    private okhttp3.Call postUploadValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postUploadCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class UploadApi {
      * Takes a multipart upload and writes the file into the session&#39;s sandbox, so a later run can read it. Answers the session id and the identifier the file is addressed by; &#x60;session_id&#x60; in the form joins an existing session instead of opening one.  The body is multipart/form-data, which is why this is not a typed operation: every non-empty typed body is decoded as JSON.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1Upload() throws ApiException {
-        postV1UploadWithHttpInfo();
+    public void postUpload() throws ApiException {
+        postUploadWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class UploadApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1UploadWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1UploadValidateBeforeCall(null);
+    public ApiResponse<Void> postUploadWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postUploadValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,9 +153,9 @@ public class UploadApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1UploadAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postUploadAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1UploadValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postUploadValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

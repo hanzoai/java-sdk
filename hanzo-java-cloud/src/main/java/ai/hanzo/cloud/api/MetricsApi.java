@@ -72,12 +72,12 @@ public class MetricsApi {
     }
 
     /**
-     * Build call for getV1MetricsHealth
+     * Build call for getMetricsHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1MetricsHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMetricsHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class MetricsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MetricsHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1MetricsHealthCall(_callback);
+    private okhttp3.Call getMetricsHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMetricsHealthCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class MetricsApi {
      * Reports the native metrics store&#39;s live state for the calling tenant: the subsystem version, the resolved &#x60;org&#x60;, and &#x60;series&#x60; — the number of distinct series actually held right now, read out of the store rather than a constant. It is not a dependency probe and has nothing downstream to fail on: the store is in-process, so this answers 200 whenever the process is up.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;. This surface trusts the edge rather than re-deriving the org from a validated claim of its own, so it belongs behind the gateway and nowhere else.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1MetricsHealth() throws ApiException {
-        getV1MetricsHealthWithHttpInfo();
+    public void getMetricsHealth() throws ApiException {
+        getMetricsHealthWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class MetricsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1MetricsHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1MetricsHealthValidateBeforeCall(null);
+    public ApiResponse<Void> getMetricsHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMetricsHealthValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,19 +153,19 @@ public class MetricsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1MetricsHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getMetricsHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MetricsHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getMetricsHealthValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MetricsQuery
+     * Build call for getMetricsQuery
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1MetricsQueryCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMetricsQueryCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -209,8 +209,8 @@ public class MetricsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MetricsQueryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1MetricsQueryCall(_callback);
+    private okhttp3.Call getMetricsQueryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMetricsQueryCall(_callback);
 
     }
 
@@ -219,8 +219,8 @@ public class MetricsApi {
      * Answers &#x60;{count, series}&#x60;, where &#x60;count&#x60; is the number of matching SERIES and each series carries the samples that fall inside the window. &#x60;name&#x60; selects one series name, and an absent or empty &#x60;name&#x60; returns every series the org holds. &#x60;match&#x60; is a &#x60;k&#x3D;v,k2&#x3D;v2&#x60; label matcher applied as a SUPERSET test: a series matches when it carries all the named labels with those values, extra labels and all.  &#x60;start&#x60; and &#x60;end&#x60; are nanoseconds since the Unix epoch, and here is the rule worth knowing: a bound that is absent, empty or unparseable becomes 0, which this store reads as UNBOUNDED. A malformed &#x60;start&#x60; therefore silently widens the query instead of failing it. There is no limit parameter — the window and the matcher are the whole of what bounds the answer.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;, so a query can only ever read the org the edge asserted.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1MetricsQuery() throws ApiException {
-        getV1MetricsQueryWithHttpInfo();
+    public void getMetricsQuery() throws ApiException {
+        getMetricsQueryWithHttpInfo();
     }
 
     /**
@@ -229,8 +229,8 @@ public class MetricsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1MetricsQueryWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1MetricsQueryValidateBeforeCall(null);
+    public ApiResponse<Void> getMetricsQueryWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMetricsQueryValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -241,19 +241,19 @@ public class MetricsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1MetricsQueryAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getMetricsQueryAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MetricsQueryValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getMetricsQueryValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MetricsBatch
+     * Build call for postMetricsBatch
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1MetricsBatchCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMetricsBatchCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -297,8 +297,8 @@ public class MetricsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MetricsBatchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1MetricsBatchCall(_callback);
+    private okhttp3.Call postMetricsBatchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postMetricsBatchCall(_callback);
 
     }
 
@@ -307,8 +307,8 @@ public class MetricsApi {
      * Writes every sample in a luxfi/metric &#x60;MetricBatch&#x60; into the calling org&#39;s store and answers &#x60;{written}&#x60;: the number of SAMPLES stored, not families and not metrics. This is the exact wire shape the ZAP &#x60;MsgMetricBatch&#x60; transport carries, so the HTTP door and the optional ZAP push receiver share one code path and one meaning — the transport is an optimisation, never a different contract.  A counter or gauge lands as one sample. A histogram or summary contributes DERIVED &#x60;&lt;name&gt;_sum&#x60; and &#x60;&lt;name&gt;_count&#x60; series, so one metric can write more than one sample and &#x60;written&#x60; can exceed the number of metrics you sent. The batch&#39;s own &#x60;TimestampNs&#x60; stamps every sample it carries.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;; each org gets its own store, WAL-durable under the deployment&#39;s data dir. A body that does not decode is 400.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1MetricsBatch() throws ApiException {
-        postV1MetricsBatchWithHttpInfo();
+    public void postMetricsBatch() throws ApiException {
+        postMetricsBatchWithHttpInfo();
     }
 
     /**
@@ -317,8 +317,8 @@ public class MetricsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1MetricsBatchWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1MetricsBatchValidateBeforeCall(null);
+    public ApiResponse<Void> postMetricsBatchWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postMetricsBatchValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -329,19 +329,19 @@ public class MetricsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1MetricsBatchAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postMetricsBatchAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MetricsBatchValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postMetricsBatchValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MetricsWrite
+     * Build call for postMetricsWrite
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1MetricsWriteCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMetricsWriteCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -385,8 +385,8 @@ public class MetricsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MetricsWriteValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1MetricsWriteCall(_callback);
+    private okhttp3.Call postMetricsWriteValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postMetricsWriteCall(_callback);
 
     }
 
@@ -395,8 +395,8 @@ public class MetricsApi {
      * Takes &#x60;{series:[{name, labels, samples:[{t, v}]}]}&#x60;, appends every sample, creating each series on first write, and answers &#x60;{written}&#x60; — again counting SAMPLES, so three series of ten samples is 30.  A series is identified by its name PLUS its whole label set, so adding one label makes a different series rather than annotating an existing one. Timestamps &#x60;t&#x60; are NANOSECONDS since the Unix epoch; a sample sent without one is stored at 0 and is then excluded by any query that sets a lower bound, which is the usual reason a write that reported success does not read back. Retention is per series and bounded — past 65536 samples the oldest are evicted.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;. A body that does not decode is 400; nothing else is validated or rejected.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1MetricsWrite() throws ApiException {
-        postV1MetricsWriteWithHttpInfo();
+    public void postMetricsWrite() throws ApiException {
+        postMetricsWriteWithHttpInfo();
     }
 
     /**
@@ -405,8 +405,8 @@ public class MetricsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1MetricsWriteWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1MetricsWriteValidateBeforeCall(null);
+    public ApiResponse<Void> postMetricsWriteWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postMetricsWriteValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -417,9 +417,9 @@ public class MetricsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1MetricsWriteAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postMetricsWriteAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MetricsWriteValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postMetricsWriteValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

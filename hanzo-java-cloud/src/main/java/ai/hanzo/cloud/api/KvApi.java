@@ -76,7 +76,7 @@ public class KvApi {
     }
 
     /**
-     * Build call for deleteV1KvByName
+     * Build call for deleteKvByName
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -88,7 +88,7 @@ public class KvApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1KvByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteKvByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -133,13 +133,13 @@ public class KvApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1KvByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteKvByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteV1KvByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling deleteKvByName(Async)");
         }
 
-        return deleteV1KvByNameCall(name, _callback);
+        return deleteKvByNameCall(name, _callback);
 
     }
 
@@ -155,8 +155,8 @@ public class KvApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1KvByName(@javax.annotation.Nonnull String name) throws ApiException {
-        deleteV1KvByNameWithHttpInfo(name);
+    public void deleteKvByName(@javax.annotation.Nonnull String name) throws ApiException {
+        deleteKvByNameWithHttpInfo(name);
     }
 
     /**
@@ -172,8 +172,8 @@ public class KvApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1KvByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1KvByNameValidateBeforeCall(name, null);
+    public ApiResponse<Void> deleteKvByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteKvByNameValidateBeforeCall(name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -191,14 +191,14 @@ public class KvApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1KvByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteKvByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1KvByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = deleteKvByNameValidateBeforeCall(name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Kv
+     * Build call for getKv
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -209,7 +209,7 @@ public class KvApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1KvCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getKvCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -254,8 +254,8 @@ public class KvApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1KvValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1KvCall(_callback);
+    private okhttp3.Call getKvValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getKvCall(_callback);
 
     }
 
@@ -271,8 +271,8 @@ public class KvApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProvisionedSummary> getV1Kv() throws ApiException {
-        ApiResponse<List<ProvisionedSummary>> localVarResp = getV1KvWithHttpInfo();
+    public List<ProvisionedSummary> getKv() throws ApiException {
+        ApiResponse<List<ProvisionedSummary>> localVarResp = getKvWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -288,8 +288,8 @@ public class KvApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProvisionedSummary>> getV1KvWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1KvValidateBeforeCall(null);
+    public ApiResponse<List<ProvisionedSummary>> getKvWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getKvValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -307,15 +307,15 @@ public class KvApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1KvAsync(final ApiCallback<List<ProvisionedSummary>> _callback) throws ApiException {
+    public okhttp3.Call getKvAsync(final ApiCallback<List<ProvisionedSummary>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1KvValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getKvValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1KvByName
+     * Build call for getKvByName
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -327,7 +327,7 @@ public class KvApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1KvByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getKvByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -373,13 +373,13 @@ public class KvApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1KvByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getKvByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1KvByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getKvByName(Async)");
         }
 
-        return getV1KvByNameCall(name, _callback);
+        return getKvByNameCall(name, _callback);
 
     }
 
@@ -396,8 +396,8 @@ public class KvApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionedResource getV1KvByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ProvisionedResource> localVarResp = getV1KvByNameWithHttpInfo(name);
+    public ProvisionedResource getKvByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<ProvisionedResource> localVarResp = getKvByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -414,8 +414,8 @@ public class KvApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionedResource> getV1KvByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1KvByNameValidateBeforeCall(name, null);
+    public ApiResponse<ProvisionedResource> getKvByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getKvByNameValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -434,15 +434,15 @@ public class KvApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1KvByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisionedResource> _callback) throws ApiException {
+    public okhttp3.Call getKvByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisionedResource> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1KvByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getKvByNameValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Kv
+     * Build call for postKv
      * @param provisionRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -454,7 +454,7 @@ public class KvApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1KvCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postKvCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -500,8 +500,8 @@ public class KvApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1KvValidateBeforeCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
-        return postV1KvCall(provisionRequest, _callback);
+    private okhttp3.Call postKvValidateBeforeCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
+        return postKvCall(provisionRequest, _callback);
 
     }
 
@@ -518,8 +518,8 @@ public class KvApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionResult postV1Kv(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
-        ApiResponse<ProvisionResult> localVarResp = postV1KvWithHttpInfo(provisionRequest);
+    public ProvisionResult postKv(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
+        ApiResponse<ProvisionResult> localVarResp = postKvWithHttpInfo(provisionRequest);
         return localVarResp.getData();
     }
 
@@ -536,8 +536,8 @@ public class KvApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionResult> postV1KvWithHttpInfo(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1KvValidateBeforeCall(provisionRequest, null);
+    public ApiResponse<ProvisionResult> postKvWithHttpInfo(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
+        okhttp3.Call localVarCall = postKvValidateBeforeCall(provisionRequest, null);
         Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -556,9 +556,9 @@ public class KvApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1KvAsync(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback<ProvisionResult> _callback) throws ApiException {
+    public okhttp3.Call postKvAsync(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback<ProvisionResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1KvValidateBeforeCall(provisionRequest, _callback);
+        okhttp3.Call localVarCall = postKvValidateBeforeCall(provisionRequest, _callback);
         Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

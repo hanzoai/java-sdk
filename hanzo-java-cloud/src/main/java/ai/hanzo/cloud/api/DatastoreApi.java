@@ -76,7 +76,7 @@ public class DatastoreApi {
     }
 
     /**
-     * Build call for deleteV1DatastoreByName
+     * Build call for deleteDatastoreByName
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -88,7 +88,7 @@ public class DatastoreApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1DatastoreByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteDatastoreByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -133,13 +133,13 @@ public class DatastoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1DatastoreByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteDatastoreByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteV1DatastoreByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling deleteDatastoreByName(Async)");
         }
 
-        return deleteV1DatastoreByNameCall(name, _callback);
+        return deleteDatastoreByNameCall(name, _callback);
 
     }
 
@@ -155,8 +155,8 @@ public class DatastoreApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1DatastoreByName(@javax.annotation.Nonnull String name) throws ApiException {
-        deleteV1DatastoreByNameWithHttpInfo(name);
+    public void deleteDatastoreByName(@javax.annotation.Nonnull String name) throws ApiException {
+        deleteDatastoreByNameWithHttpInfo(name);
     }
 
     /**
@@ -172,8 +172,8 @@ public class DatastoreApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1DatastoreByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1DatastoreByNameValidateBeforeCall(name, null);
+    public ApiResponse<Void> deleteDatastoreByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteDatastoreByNameValidateBeforeCall(name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -191,14 +191,14 @@ public class DatastoreApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1DatastoreByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteDatastoreByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1DatastoreByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = deleteDatastoreByNameValidateBeforeCall(name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Datastore
+     * Build call for getDatastore
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -209,7 +209,7 @@ public class DatastoreApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DatastoreCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDatastoreCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -254,8 +254,8 @@ public class DatastoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DatastoreValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DatastoreCall(_callback);
+    private okhttp3.Call getDatastoreValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDatastoreCall(_callback);
 
     }
 
@@ -271,8 +271,8 @@ public class DatastoreApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProvisionedSummary> getV1Datastore() throws ApiException {
-        ApiResponse<List<ProvisionedSummary>> localVarResp = getV1DatastoreWithHttpInfo();
+    public List<ProvisionedSummary> getDatastore() throws ApiException {
+        ApiResponse<List<ProvisionedSummary>> localVarResp = getDatastoreWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -288,8 +288,8 @@ public class DatastoreApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProvisionedSummary>> getV1DatastoreWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DatastoreValidateBeforeCall(null);
+    public ApiResponse<List<ProvisionedSummary>> getDatastoreWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDatastoreValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -307,15 +307,15 @@ public class DatastoreApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DatastoreAsync(final ApiCallback<List<ProvisionedSummary>> _callback) throws ApiException {
+    public okhttp3.Call getDatastoreAsync(final ApiCallback<List<ProvisionedSummary>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DatastoreValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDatastoreValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DatastoreByName
+     * Build call for getDatastoreByName
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -327,7 +327,7 @@ public class DatastoreApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DatastoreByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDatastoreByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -373,13 +373,13 @@ public class DatastoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DatastoreByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDatastoreByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1DatastoreByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getDatastoreByName(Async)");
         }
 
-        return getV1DatastoreByNameCall(name, _callback);
+        return getDatastoreByNameCall(name, _callback);
 
     }
 
@@ -396,8 +396,8 @@ public class DatastoreApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionedResource getV1DatastoreByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ProvisionedResource> localVarResp = getV1DatastoreByNameWithHttpInfo(name);
+    public ProvisionedResource getDatastoreByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<ProvisionedResource> localVarResp = getDatastoreByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -414,8 +414,8 @@ public class DatastoreApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionedResource> getV1DatastoreByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1DatastoreByNameValidateBeforeCall(name, null);
+    public ApiResponse<ProvisionedResource> getDatastoreByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getDatastoreByNameValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -434,15 +434,15 @@ public class DatastoreApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DatastoreByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisionedResource> _callback) throws ApiException {
+    public okhttp3.Call getDatastoreByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisionedResource> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DatastoreByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getDatastoreByNameValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Datastore
+     * Build call for postDatastore
      * @param provisionRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -454,7 +454,7 @@ public class DatastoreApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1DatastoreCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDatastoreCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -500,8 +500,8 @@ public class DatastoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1DatastoreValidateBeforeCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
-        return postV1DatastoreCall(provisionRequest, _callback);
+    private okhttp3.Call postDatastoreValidateBeforeCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
+        return postDatastoreCall(provisionRequest, _callback);
 
     }
 
@@ -518,8 +518,8 @@ public class DatastoreApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionResult postV1Datastore(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
-        ApiResponse<ProvisionResult> localVarResp = postV1DatastoreWithHttpInfo(provisionRequest);
+    public ProvisionResult postDatastore(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
+        ApiResponse<ProvisionResult> localVarResp = postDatastoreWithHttpInfo(provisionRequest);
         return localVarResp.getData();
     }
 
@@ -536,8 +536,8 @@ public class DatastoreApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionResult> postV1DatastoreWithHttpInfo(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1DatastoreValidateBeforeCall(provisionRequest, null);
+    public ApiResponse<ProvisionResult> postDatastoreWithHttpInfo(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
+        okhttp3.Call localVarCall = postDatastoreValidateBeforeCall(provisionRequest, null);
         Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -556,9 +556,9 @@ public class DatastoreApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1DatastoreAsync(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback<ProvisionResult> _callback) throws ApiException {
+    public okhttp3.Call postDatastoreAsync(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback<ProvisionResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1DatastoreValidateBeforeCall(provisionRequest, _callback);
+        okhttp3.Call localVarCall = postDatastoreValidateBeforeCall(provisionRequest, _callback);
         Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

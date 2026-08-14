@@ -77,7 +77,7 @@ public class AdsApi {
     }
 
     /**
-     * Build call for deleteV1AdsCampaignsById
+     * Build call for deleteAdsCampaignsById
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -89,7 +89,7 @@ public class AdsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1AdsCampaignsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteAdsCampaignsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,13 +134,13 @@ public class AdsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1AdsCampaignsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteAdsCampaignsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1AdsCampaignsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteAdsCampaignsById(Async)");
         }
 
-        return deleteV1AdsCampaignsByIdCall(id, _callback);
+        return deleteAdsCampaignsByIdCall(id, _callback);
 
     }
 
@@ -156,8 +156,8 @@ public class AdsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1AdsCampaignsById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1AdsCampaignsByIdWithHttpInfo(id);
+    public void deleteAdsCampaignsById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteAdsCampaignsByIdWithHttpInfo(id);
     }
 
     /**
@@ -173,8 +173,8 @@ public class AdsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1AdsCampaignsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1AdsCampaignsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteAdsCampaignsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteAdsCampaignsByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -192,14 +192,14 @@ public class AdsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1AdsCampaignsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteAdsCampaignsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1AdsCampaignsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteAdsCampaignsByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AdsCampaigns
+     * Build call for getAdsCampaigns
      * @param status Status filters to one lifecycle state (draft, active, paused, completed). Empty returns every campaign the org has. (optional)
      * @param limit Limit caps how many campaigns come back: default 200, maximum 1000. A value that is not a positive integer reads as the default. (optional)
      * @param _callback Callback for upload/download progress
@@ -212,7 +212,7 @@ public class AdsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdsCampaignsCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAdsCampaignsCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -265,8 +265,8 @@ public class AdsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AdsCampaignsValidateBeforeCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1AdsCampaignsCall(status, limit, _callback);
+    private okhttp3.Call getAdsCampaignsValidateBeforeCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getAdsCampaignsCall(status, limit, _callback);
 
     }
 
@@ -284,8 +284,8 @@ public class AdsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CampaignList getV1AdsCampaigns(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<CampaignList> localVarResp = getV1AdsCampaignsWithHttpInfo(status, limit);
+    public CampaignList getAdsCampaigns(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<CampaignList> localVarResp = getAdsCampaignsWithHttpInfo(status, limit);
         return localVarResp.getData();
     }
 
@@ -303,8 +303,8 @@ public class AdsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CampaignList> getV1AdsCampaignsWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1AdsCampaignsValidateBeforeCall(status, limit, null);
+    public ApiResponse<CampaignList> getAdsCampaignsWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getAdsCampaignsValidateBeforeCall(status, limit, null);
         Type localVarReturnType = new TypeToken<CampaignList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -324,15 +324,15 @@ public class AdsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdsCampaignsAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit, final ApiCallback<CampaignList> _callback) throws ApiException {
+    public okhttp3.Call getAdsCampaignsAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit, final ApiCallback<CampaignList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AdsCampaignsValidateBeforeCall(status, limit, _callback);
+        okhttp3.Call localVarCall = getAdsCampaignsValidateBeforeCall(status, limit, _callback);
         Type localVarReturnType = new TypeToken<CampaignList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AdsCampaignsById
+     * Build call for getAdsCampaignsById
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -344,7 +344,7 @@ public class AdsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdsCampaignsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAdsCampaignsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -390,13 +390,13 @@ public class AdsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AdsCampaignsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAdsCampaignsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1AdsCampaignsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getAdsCampaignsById(Async)");
         }
 
-        return getV1AdsCampaignsByIdCall(id, _callback);
+        return getAdsCampaignsByIdCall(id, _callback);
 
     }
 
@@ -413,8 +413,8 @@ public class AdsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AdCampaign getV1AdsCampaignsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<AdCampaign> localVarResp = getV1AdsCampaignsByIdWithHttpInfo(id);
+    public AdCampaign getAdsCampaignsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<AdCampaign> localVarResp = getAdsCampaignsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -431,8 +431,8 @@ public class AdsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdCampaign> getV1AdsCampaignsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1AdsCampaignsByIdValidateBeforeCall(id, null);
+    public ApiResponse<AdCampaign> getAdsCampaignsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getAdsCampaignsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<AdCampaign>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -451,15 +451,15 @@ public class AdsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdsCampaignsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<AdCampaign> _callback) throws ApiException {
+    public okhttp3.Call getAdsCampaignsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<AdCampaign> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AdsCampaignsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getAdsCampaignsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<AdCampaign>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AdsSummary
+     * Build call for getAdsSummary
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -470,7 +470,7 @@ public class AdsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdsSummaryCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAdsSummaryCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -515,8 +515,8 @@ public class AdsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AdsSummaryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1AdsSummaryCall(_callback);
+    private okhttp3.Call getAdsSummaryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAdsSummaryCall(_callback);
 
     }
 
@@ -532,8 +532,8 @@ public class AdsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AdSummary getV1AdsSummary() throws ApiException {
-        ApiResponse<AdSummary> localVarResp = getV1AdsSummaryWithHttpInfo();
+    public AdSummary getAdsSummary() throws ApiException {
+        ApiResponse<AdSummary> localVarResp = getAdsSummaryWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -549,8 +549,8 @@ public class AdsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdSummary> getV1AdsSummaryWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1AdsSummaryValidateBeforeCall(null);
+    public ApiResponse<AdSummary> getAdsSummaryWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAdsSummaryValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<AdSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -568,15 +568,15 @@ public class AdsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdsSummaryAsync(final ApiCallback<AdSummary> _callback) throws ApiException {
+    public okhttp3.Call getAdsSummaryAsync(final ApiCallback<AdSummary> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AdsSummaryValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAdsSummaryValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AdSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AdsCampaigns
+     * Build call for postAdsCampaigns
      * @param campaignInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -588,7 +588,7 @@ public class AdsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdsCampaignsCall(@javax.annotation.Nonnull CampaignInput campaignInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAdsCampaignsCall(@javax.annotation.Nonnull CampaignInput campaignInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -634,13 +634,13 @@ public class AdsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AdsCampaignsValidateBeforeCall(@javax.annotation.Nonnull CampaignInput campaignInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAdsCampaignsValidateBeforeCall(@javax.annotation.Nonnull CampaignInput campaignInput, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'campaignInput' is set
         if (campaignInput == null) {
-            throw new ApiException("Missing the required parameter 'campaignInput' when calling postV1AdsCampaigns(Async)");
+            throw new ApiException("Missing the required parameter 'campaignInput' when calling postAdsCampaigns(Async)");
         }
 
-        return postV1AdsCampaignsCall(campaignInput, _callback);
+        return postAdsCampaignsCall(campaignInput, _callback);
 
     }
 
@@ -657,8 +657,8 @@ public class AdsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public AdCampaign postV1AdsCampaigns(@javax.annotation.Nonnull CampaignInput campaignInput) throws ApiException {
-        ApiResponse<AdCampaign> localVarResp = postV1AdsCampaignsWithHttpInfo(campaignInput);
+    public AdCampaign postAdsCampaigns(@javax.annotation.Nonnull CampaignInput campaignInput) throws ApiException {
+        ApiResponse<AdCampaign> localVarResp = postAdsCampaignsWithHttpInfo(campaignInput);
         return localVarResp.getData();
     }
 
@@ -675,8 +675,8 @@ public class AdsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdCampaign> postV1AdsCampaignsWithHttpInfo(@javax.annotation.Nonnull CampaignInput campaignInput) throws ApiException {
-        okhttp3.Call localVarCall = postV1AdsCampaignsValidateBeforeCall(campaignInput, null);
+    public ApiResponse<AdCampaign> postAdsCampaignsWithHttpInfo(@javax.annotation.Nonnull CampaignInput campaignInput) throws ApiException {
+        okhttp3.Call localVarCall = postAdsCampaignsValidateBeforeCall(campaignInput, null);
         Type localVarReturnType = new TypeToken<AdCampaign>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -695,21 +695,21 @@ public class AdsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdsCampaignsAsync(@javax.annotation.Nonnull CampaignInput campaignInput, final ApiCallback<AdCampaign> _callback) throws ApiException {
+    public okhttp3.Call postAdsCampaignsAsync(@javax.annotation.Nonnull CampaignInput campaignInput, final ApiCallback<AdCampaign> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AdsCampaignsValidateBeforeCall(campaignInput, _callback);
+        okhttp3.Call localVarCall = postAdsCampaignsValidateBeforeCall(campaignInput, _callback);
         Type localVarReturnType = new TypeToken<AdCampaign>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AdsCampaignsByIdLaunch
+     * Build call for postAdsCampaignsByIdLaunch
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1AdsCampaignsByIdLaunchCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAdsCampaignsByIdLaunchCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -754,13 +754,13 @@ public class AdsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AdsCampaignsByIdLaunchValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAdsCampaignsByIdLaunchValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1AdsCampaignsByIdLaunch(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAdsCampaignsByIdLaunch(Async)");
         }
 
-        return postV1AdsCampaignsByIdLaunchCall(id, _callback);
+        return postAdsCampaignsByIdLaunchCall(id, _callback);
 
     }
 
@@ -770,8 +770,8 @@ public class AdsApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1AdsCampaignsByIdLaunch(@javax.annotation.Nonnull String id) throws ApiException {
-        postV1AdsCampaignsByIdLaunchWithHttpInfo(id);
+    public void postAdsCampaignsByIdLaunch(@javax.annotation.Nonnull String id) throws ApiException {
+        postAdsCampaignsByIdLaunchWithHttpInfo(id);
     }
 
     /**
@@ -781,8 +781,8 @@ public class AdsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1AdsCampaignsByIdLaunchWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1AdsCampaignsByIdLaunchValidateBeforeCall(id, null);
+    public ApiResponse<Void> postAdsCampaignsByIdLaunchWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postAdsCampaignsByIdLaunchValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -794,14 +794,14 @@ public class AdsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1AdsCampaignsByIdLaunchAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postAdsCampaignsByIdLaunchAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AdsCampaignsByIdLaunchValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postAdsCampaignsByIdLaunchValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1AdsCampaignsById
+     * Build call for putAdsCampaignsById
      * @param id  (required)
      * @param updateCampaignIn  (required)
      * @param _callback Callback for upload/download progress
@@ -814,7 +814,7 @@ public class AdsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1AdsCampaignsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateCampaignIn updateCampaignIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putAdsCampaignsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateCampaignIn updateCampaignIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -861,18 +861,18 @@ public class AdsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1AdsCampaignsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateCampaignIn updateCampaignIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putAdsCampaignsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateCampaignIn updateCampaignIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling putV1AdsCampaignsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling putAdsCampaignsById(Async)");
         }
 
         // verify the required parameter 'updateCampaignIn' is set
         if (updateCampaignIn == null) {
-            throw new ApiException("Missing the required parameter 'updateCampaignIn' when calling putV1AdsCampaignsById(Async)");
+            throw new ApiException("Missing the required parameter 'updateCampaignIn' when calling putAdsCampaignsById(Async)");
         }
 
-        return putV1AdsCampaignsByIdCall(id, updateCampaignIn, _callback);
+        return putAdsCampaignsByIdCall(id, updateCampaignIn, _callback);
 
     }
 
@@ -890,8 +890,8 @@ public class AdsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AdCampaign putV1AdsCampaignsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateCampaignIn updateCampaignIn) throws ApiException {
-        ApiResponse<AdCampaign> localVarResp = putV1AdsCampaignsByIdWithHttpInfo(id, updateCampaignIn);
+    public AdCampaign putAdsCampaignsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateCampaignIn updateCampaignIn) throws ApiException {
+        ApiResponse<AdCampaign> localVarResp = putAdsCampaignsByIdWithHttpInfo(id, updateCampaignIn);
         return localVarResp.getData();
     }
 
@@ -909,8 +909,8 @@ public class AdsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdCampaign> putV1AdsCampaignsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateCampaignIn updateCampaignIn) throws ApiException {
-        okhttp3.Call localVarCall = putV1AdsCampaignsByIdValidateBeforeCall(id, updateCampaignIn, null);
+    public ApiResponse<AdCampaign> putAdsCampaignsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateCampaignIn updateCampaignIn) throws ApiException {
+        okhttp3.Call localVarCall = putAdsCampaignsByIdValidateBeforeCall(id, updateCampaignIn, null);
         Type localVarReturnType = new TypeToken<AdCampaign>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -930,9 +930,9 @@ public class AdsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1AdsCampaignsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateCampaignIn updateCampaignIn, final ApiCallback<AdCampaign> _callback) throws ApiException {
+    public okhttp3.Call putAdsCampaignsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateCampaignIn updateCampaignIn, final ApiCallback<AdCampaign> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1AdsCampaignsByIdValidateBeforeCall(id, updateCampaignIn, _callback);
+        okhttp3.Call localVarCall = putAdsCampaignsByIdValidateBeforeCall(id, updateCampaignIn, _callback);
         Type localVarReturnType = new TypeToken<AdCampaign>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

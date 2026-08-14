@@ -73,7 +73,7 @@ public class ErrorsApi {
     }
 
     /**
-     * Build call for getV1Errors
+     * Build call for getErrors
      * @param limit Limit is how many rows to return, newest first. Default 50, maximum 200; a value at or below zero, or one that is not a number, takes the default. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -85,7 +85,7 @@ public class ErrorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ErrorsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getErrorsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,8 +134,8 @@ public class ErrorsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ErrorsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1ErrorsCall(limit, _callback);
+    private okhttp3.Call getErrorsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getErrorsCall(limit, _callback);
 
     }
 
@@ -152,8 +152,8 @@ public class ErrorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ErrorList getV1Errors(@javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<ErrorList> localVarResp = getV1ErrorsWithHttpInfo(limit);
+    public ErrorList getErrors(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<ErrorList> localVarResp = getErrorsWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -170,8 +170,8 @@ public class ErrorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ErrorList> getV1ErrorsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1ErrorsValidateBeforeCall(limit, null);
+    public ApiResponse<ErrorList> getErrorsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getErrorsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<ErrorList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -190,9 +190,9 @@ public class ErrorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ErrorsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<ErrorList> _callback) throws ApiException {
+    public okhttp3.Call getErrorsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<ErrorList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ErrorsValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getErrorsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<ErrorList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

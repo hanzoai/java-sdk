@@ -72,12 +72,12 @@ public class RagApi {
     }
 
     /**
-     * Build call for getV1RagContext
+     * Build call for getRagContext
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1RagContextCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRagContextCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class RagApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1RagContextValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1RagContextCall(_callback);
+    private okhttp3.Call getRagContextValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getRagContextCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class RagApi {
      * Return every stored chunk of one file_id (full document context). Consolidates the retired chat-rag-api GET /documents/{id}/context.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1RagContext() throws ApiException {
-        getV1RagContextWithHttpInfo();
+    public void getRagContext() throws ApiException {
+        getRagContextWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class RagApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1RagContextWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1RagContextValidateBeforeCall(null);
+    public ApiResponse<Void> getRagContextWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getRagContextValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,19 +153,19 @@ public class RagApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1RagContextAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getRagContextAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1RagContextValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getRagContextValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1RagDelete
+     * Build call for postRagDelete
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1RagDeleteCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postRagDeleteCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -209,8 +209,8 @@ public class RagApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1RagDeleteValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1RagDeleteCall(_callback);
+    private okhttp3.Call postRagDeleteValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postRagDeleteCall(_callback);
 
     }
 
@@ -219,8 +219,8 @@ public class RagApi {
      * Delete all chunks of one or more uploaded files (by file_id) from the owner&#39;s Search+Vector index. Consolidates the retired chat-rag-api DELETE /documents.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1RagDelete() throws ApiException {
-        postV1RagDeleteWithHttpInfo();
+    public void postRagDelete() throws ApiException {
+        postRagDeleteWithHttpInfo();
     }
 
     /**
@@ -229,8 +229,8 @@ public class RagApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1RagDeleteWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1RagDeleteValidateBeforeCall(null);
+    public ApiResponse<Void> postRagDeleteWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postRagDeleteValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -241,19 +241,19 @@ public class RagApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1RagDeleteAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postRagDeleteAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1RagDeleteValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postRagDeleteValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1RagEmbed
+     * Build call for postRagEmbed
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1RagEmbedCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postRagEmbedCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -297,8 +297,8 @@ public class RagApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1RagEmbedValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1RagEmbedCall(_callback);
+    private okhttp3.Call postRagEmbedValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postRagEmbedCall(_callback);
 
     }
 
@@ -307,8 +307,8 @@ public class RagApi {
      * Parse, chunk, and embed one uploaded file under its file_id into the unified Search+Vector index, scoped to the authenticated owner. Provide inline &#x60;content&#x60; or a &#x60;url&#x60; to fetch+parse (PDF/CSV/XLSX/PPTX/…). Re-embedding the same file_id replaces its chunks. Consolidates the retired chat-rag-api POST /embed and /local/embed.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1RagEmbed() throws ApiException {
-        postV1RagEmbedWithHttpInfo();
+    public void postRagEmbed() throws ApiException {
+        postRagEmbedWithHttpInfo();
     }
 
     /**
@@ -317,8 +317,8 @@ public class RagApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1RagEmbedWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1RagEmbedValidateBeforeCall(null);
+    public ApiResponse<Void> postRagEmbedWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postRagEmbedValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -329,19 +329,19 @@ public class RagApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1RagEmbedAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postRagEmbedAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1RagEmbedValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postRagEmbedValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1RagQuery
+     * Build call for postRagQuery
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1RagQueryCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postRagQueryCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -385,8 +385,8 @@ public class RagApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1RagQueryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1RagQueryCall(_callback);
+    private okhttp3.Call postRagQueryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postRagQueryCall(_callback);
 
     }
 
@@ -395,8 +395,8 @@ public class RagApi {
      * Retrieve the top-K chunks relevant to a query, scoped to a single uploaded file (&#x60;file_id&#x60;). Hybrid keyword+vector retrieval over the same index. Consolidates the retired chat-rag-api POST /query.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1RagQuery() throws ApiException {
-        postV1RagQueryWithHttpInfo();
+    public void postRagQuery() throws ApiException {
+        postRagQueryWithHttpInfo();
     }
 
     /**
@@ -405,8 +405,8 @@ public class RagApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1RagQueryWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1RagQueryValidateBeforeCall(null);
+    public ApiResponse<Void> postRagQueryWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postRagQueryValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -417,19 +417,19 @@ public class RagApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1RagQueryAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postRagQueryAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1RagQueryValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postRagQueryValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1RagQueryMultiple
+     * Build call for postRagQueryMultiple
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1RagQueryMultipleCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postRagQueryMultipleCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -473,8 +473,8 @@ public class RagApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1RagQueryMultipleValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1RagQueryMultipleCall(_callback);
+    private okhttp3.Call postRagQueryMultipleValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postRagQueryMultipleCall(_callback);
 
     }
 
@@ -483,8 +483,8 @@ public class RagApi {
      * Retrieve the top-K chunks relevant to a query, scoped to a SET of uploaded files (&#x60;file_ids&#x60;). Consolidates the retired chat-rag-api POST /query_multiple. Shares one retrieval path with /rag/query.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1RagQueryMultiple() throws ApiException {
-        postV1RagQueryMultipleWithHttpInfo();
+    public void postRagQueryMultiple() throws ApiException {
+        postRagQueryMultipleWithHttpInfo();
     }
 
     /**
@@ -493,8 +493,8 @@ public class RagApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1RagQueryMultipleWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1RagQueryMultipleValidateBeforeCall(null);
+    public ApiResponse<Void> postRagQueryMultipleWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postRagQueryMultipleValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -505,9 +505,9 @@ public class RagApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1RagQueryMultipleAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postRagQueryMultipleAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1RagQueryMultipleValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postRagQueryMultipleValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

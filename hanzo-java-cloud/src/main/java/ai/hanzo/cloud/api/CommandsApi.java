@@ -72,12 +72,12 @@ public class CommandsApi {
     }
 
     /**
-     * Build call for getV1Commands
+     * Build call for getCommands
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommandsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommandsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class CommandsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommandsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommandsCall(_callback);
+    private okhttp3.Call getCommandsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommandsCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class CommandsApi {
      * The command projection of the OpenAPI document at /v1/openapi.json — each operation reduced to what running it by name needs: its service and command token, its method and path, the prose lifted from the handler, its path parameters as positional arguments and its remaining inputs as typed flags.  It is a separate address for one measured reason: the fleet document is megabytes and a command palette cannot load it, while this projection of the same operations is several times smaller because it carries no schemas, responses or components.  Unauthenticated by design, exactly as the document it derives from: a client has to be able to read the contract before it holds a credential, and a list of operation names grants nothing. The list is TOTAL and is never filtered by caller — what you may run is decided per request by the authorizer, on the decoded input, so a filtered list would be a second claim about permission that is free to be wrong.  Rendered once and served as bytes thereafter, under a strong ETag.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1Commands() throws ApiException {
-        getV1CommandsWithHttpInfo();
+    public void getCommands() throws ApiException {
+        getCommandsWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class CommandsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommandsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommandsValidateBeforeCall(null);
+    public ApiResponse<Void> getCommandsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommandsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,9 +153,9 @@ public class CommandsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommandsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommandsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommandsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommandsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

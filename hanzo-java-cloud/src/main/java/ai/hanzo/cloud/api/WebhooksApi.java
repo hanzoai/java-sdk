@@ -78,7 +78,7 @@ public class WebhooksApi {
     }
 
     /**
-     * Build call for deleteV1WebhooksById
+     * Build call for deleteWebhooksById
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -90,7 +90,7 @@ public class WebhooksApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1WebhooksByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteWebhooksByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -135,13 +135,13 @@ public class WebhooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1WebhooksByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteWebhooksByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1WebhooksById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteWebhooksById(Async)");
         }
 
-        return deleteV1WebhooksByIdCall(id, _callback);
+        return deleteWebhooksByIdCall(id, _callback);
 
     }
 
@@ -157,8 +157,8 @@ public class WebhooksApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1WebhooksById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1WebhooksByIdWithHttpInfo(id);
+    public void deleteWebhooksById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteWebhooksByIdWithHttpInfo(id);
     }
 
     /**
@@ -174,8 +174,8 @@ public class WebhooksApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1WebhooksByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1WebhooksByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteWebhooksByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteWebhooksByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -193,14 +193,14 @@ public class WebhooksApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1WebhooksByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteWebhooksByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1WebhooksByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteWebhooksByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Webhooks
+     * Build call for getWebhooks
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -211,7 +211,7 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1WebhooksCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getWebhooksCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -256,8 +256,8 @@ public class WebhooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1WebhooksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1WebhooksCall(_callback);
+    private okhttp3.Call getWebhooksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getWebhooksCall(_callback);
 
     }
 
@@ -273,8 +273,8 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public EndpointList getV1Webhooks() throws ApiException {
-        ApiResponse<EndpointList> localVarResp = getV1WebhooksWithHttpInfo();
+    public EndpointList getWebhooks() throws ApiException {
+        ApiResponse<EndpointList> localVarResp = getWebhooksWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -290,8 +290,8 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EndpointList> getV1WebhooksWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1WebhooksValidateBeforeCall(null);
+    public ApiResponse<EndpointList> getWebhooksWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getWebhooksValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<EndpointList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -309,15 +309,15 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1WebhooksAsync(final ApiCallback<EndpointList> _callback) throws ApiException {
+    public okhttp3.Call getWebhooksAsync(final ApiCallback<EndpointList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1WebhooksValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getWebhooksValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<EndpointList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1WebhooksById
+     * Build call for getWebhooksById
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -329,7 +329,7 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1WebhooksByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getWebhooksByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -375,13 +375,13 @@ public class WebhooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1WebhooksByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getWebhooksByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1WebhooksById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getWebhooksById(Async)");
         }
 
-        return getV1WebhooksByIdCall(id, _callback);
+        return getWebhooksByIdCall(id, _callback);
 
     }
 
@@ -398,8 +398,8 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Endpoint getV1WebhooksById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Endpoint> localVarResp = getV1WebhooksByIdWithHttpInfo(id);
+    public Endpoint getWebhooksById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Endpoint> localVarResp = getWebhooksByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -416,8 +416,8 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Endpoint> getV1WebhooksByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1WebhooksByIdValidateBeforeCall(id, null);
+    public ApiResponse<Endpoint> getWebhooksByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getWebhooksByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<Endpoint>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -436,15 +436,15 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1WebhooksByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Endpoint> _callback) throws ApiException {
+    public okhttp3.Call getWebhooksByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Endpoint> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1WebhooksByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getWebhooksByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<Endpoint>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1WebhooksByIdDeliveries
+     * Build call for getWebhooksByIdDeliveries
      * @param id  (required)
      * @param limit Limit caps how many attempts come back: default 50, maximum 200. A value that is not a positive integer reads as the default. (optional)
      * @param status Status narrows the log to one outcome: \&quot;ok\&quot;, \&quot;retrying\&quot; or \&quot;failed\&quot;. Empty returns every attempt. (optional)
@@ -458,7 +458,7 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1WebhooksByIdDeliveriesCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String status, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getWebhooksByIdDeliveriesCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String status, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -512,13 +512,13 @@ public class WebhooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1WebhooksByIdDeliveriesValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String status, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getWebhooksByIdDeliveriesValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String status, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1WebhooksByIdDeliveries(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getWebhooksByIdDeliveries(Async)");
         }
 
-        return getV1WebhooksByIdDeliveriesCall(id, limit, status, _callback);
+        return getWebhooksByIdDeliveriesCall(id, limit, status, _callback);
 
     }
 
@@ -537,8 +537,8 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DeliveryList getV1WebhooksByIdDeliveries(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String status) throws ApiException {
-        ApiResponse<DeliveryList> localVarResp = getV1WebhooksByIdDeliveriesWithHttpInfo(id, limit, status);
+    public DeliveryList getWebhooksByIdDeliveries(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String status) throws ApiException {
+        ApiResponse<DeliveryList> localVarResp = getWebhooksByIdDeliveriesWithHttpInfo(id, limit, status);
         return localVarResp.getData();
     }
 
@@ -557,8 +557,8 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeliveryList> getV1WebhooksByIdDeliveriesWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String status) throws ApiException {
-        okhttp3.Call localVarCall = getV1WebhooksByIdDeliveriesValidateBeforeCall(id, limit, status, null);
+    public ApiResponse<DeliveryList> getWebhooksByIdDeliveriesWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String status) throws ApiException {
+        okhttp3.Call localVarCall = getWebhooksByIdDeliveriesValidateBeforeCall(id, limit, status, null);
         Type localVarReturnType = new TypeToken<DeliveryList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -579,15 +579,15 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1WebhooksByIdDeliveriesAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String status, final ApiCallback<DeliveryList> _callback) throws ApiException {
+    public okhttp3.Call getWebhooksByIdDeliveriesAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String status, final ApiCallback<DeliveryList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1WebhooksByIdDeliveriesValidateBeforeCall(id, limit, status, _callback);
+        okhttp3.Call localVarCall = getWebhooksByIdDeliveriesValidateBeforeCall(id, limit, status, _callback);
         Type localVarReturnType = new TypeToken<DeliveryList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Webhooks
+     * Build call for postWebhooks
      * @param createEndpointIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -599,7 +599,7 @@ public class WebhooksApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1WebhooksCall(@javax.annotation.Nonnull CreateEndpointIn createEndpointIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postWebhooksCall(@javax.annotation.Nonnull CreateEndpointIn createEndpointIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -645,13 +645,13 @@ public class WebhooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1WebhooksValidateBeforeCall(@javax.annotation.Nonnull CreateEndpointIn createEndpointIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postWebhooksValidateBeforeCall(@javax.annotation.Nonnull CreateEndpointIn createEndpointIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'createEndpointIn' is set
         if (createEndpointIn == null) {
-            throw new ApiException("Missing the required parameter 'createEndpointIn' when calling postV1Webhooks(Async)");
+            throw new ApiException("Missing the required parameter 'createEndpointIn' when calling postWebhooks(Async)");
         }
 
-        return postV1WebhooksCall(createEndpointIn, _callback);
+        return postWebhooksCall(createEndpointIn, _callback);
 
     }
 
@@ -668,8 +668,8 @@ public class WebhooksApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public Endpoint postV1Webhooks(@javax.annotation.Nonnull CreateEndpointIn createEndpointIn) throws ApiException {
-        ApiResponse<Endpoint> localVarResp = postV1WebhooksWithHttpInfo(createEndpointIn);
+    public Endpoint postWebhooks(@javax.annotation.Nonnull CreateEndpointIn createEndpointIn) throws ApiException {
+        ApiResponse<Endpoint> localVarResp = postWebhooksWithHttpInfo(createEndpointIn);
         return localVarResp.getData();
     }
 
@@ -686,8 +686,8 @@ public class WebhooksApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Endpoint> postV1WebhooksWithHttpInfo(@javax.annotation.Nonnull CreateEndpointIn createEndpointIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1WebhooksValidateBeforeCall(createEndpointIn, null);
+    public ApiResponse<Endpoint> postWebhooksWithHttpInfo(@javax.annotation.Nonnull CreateEndpointIn createEndpointIn) throws ApiException {
+        okhttp3.Call localVarCall = postWebhooksValidateBeforeCall(createEndpointIn, null);
         Type localVarReturnType = new TypeToken<Endpoint>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -706,15 +706,15 @@ public class WebhooksApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1WebhooksAsync(@javax.annotation.Nonnull CreateEndpointIn createEndpointIn, final ApiCallback<Endpoint> _callback) throws ApiException {
+    public okhttp3.Call postWebhooksAsync(@javax.annotation.Nonnull CreateEndpointIn createEndpointIn, final ApiCallback<Endpoint> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1WebhooksValidateBeforeCall(createEndpointIn, _callback);
+        okhttp3.Call localVarCall = postWebhooksValidateBeforeCall(createEndpointIn, _callback);
         Type localVarReturnType = new TypeToken<Endpoint>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1WebhooksByIdSecret
+     * Build call for postWebhooksByIdSecret
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -726,7 +726,7 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1WebhooksByIdSecretCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postWebhooksByIdSecretCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -772,13 +772,13 @@ public class WebhooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1WebhooksByIdSecretValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postWebhooksByIdSecretValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1WebhooksByIdSecret(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postWebhooksByIdSecret(Async)");
         }
 
-        return postV1WebhooksByIdSecretCall(id, _callback);
+        return postWebhooksByIdSecretCall(id, _callback);
 
     }
 
@@ -795,8 +795,8 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Endpoint postV1WebhooksByIdSecret(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Endpoint> localVarResp = postV1WebhooksByIdSecretWithHttpInfo(id);
+    public Endpoint postWebhooksByIdSecret(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Endpoint> localVarResp = postWebhooksByIdSecretWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -813,8 +813,8 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Endpoint> postV1WebhooksByIdSecretWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1WebhooksByIdSecretValidateBeforeCall(id, null);
+    public ApiResponse<Endpoint> postWebhooksByIdSecretWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postWebhooksByIdSecretValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<Endpoint>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -833,15 +833,15 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1WebhooksByIdSecretAsync(@javax.annotation.Nonnull String id, final ApiCallback<Endpoint> _callback) throws ApiException {
+    public okhttp3.Call postWebhooksByIdSecretAsync(@javax.annotation.Nonnull String id, final ApiCallback<Endpoint> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1WebhooksByIdSecretValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postWebhooksByIdSecretValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<Endpoint>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1WebhooksByIdTest
+     * Build call for postWebhooksByIdTest
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -853,7 +853,7 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1WebhooksByIdTestCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postWebhooksByIdTestCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -899,13 +899,13 @@ public class WebhooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1WebhooksByIdTestValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postWebhooksByIdTestValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1WebhooksByIdTest(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postWebhooksByIdTest(Async)");
         }
 
-        return postV1WebhooksByIdTestCall(id, _callback);
+        return postWebhooksByIdTestCall(id, _callback);
 
     }
 
@@ -922,8 +922,8 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public TestResult postV1WebhooksByIdTest(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<TestResult> localVarResp = postV1WebhooksByIdTestWithHttpInfo(id);
+    public TestResult postWebhooksByIdTest(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<TestResult> localVarResp = postWebhooksByIdTestWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -940,8 +940,8 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TestResult> postV1WebhooksByIdTestWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1WebhooksByIdTestValidateBeforeCall(id, null);
+    public ApiResponse<TestResult> postWebhooksByIdTestWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postWebhooksByIdTestValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<TestResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -960,15 +960,15 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1WebhooksByIdTestAsync(@javax.annotation.Nonnull String id, final ApiCallback<TestResult> _callback) throws ApiException {
+    public okhttp3.Call postWebhooksByIdTestAsync(@javax.annotation.Nonnull String id, final ApiCallback<TestResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1WebhooksByIdTestValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postWebhooksByIdTestValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<TestResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1WebhooksById
+     * Build call for putWebhooksById
      * @param id  (required)
      * @param updateEndpointIn  (required)
      * @param _callback Callback for upload/download progress
@@ -981,7 +981,7 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1WebhooksByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateEndpointIn updateEndpointIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putWebhooksByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateEndpointIn updateEndpointIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1028,18 +1028,18 @@ public class WebhooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1WebhooksByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateEndpointIn updateEndpointIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putWebhooksByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateEndpointIn updateEndpointIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling putV1WebhooksById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling putWebhooksById(Async)");
         }
 
         // verify the required parameter 'updateEndpointIn' is set
         if (updateEndpointIn == null) {
-            throw new ApiException("Missing the required parameter 'updateEndpointIn' when calling putV1WebhooksById(Async)");
+            throw new ApiException("Missing the required parameter 'updateEndpointIn' when calling putWebhooksById(Async)");
         }
 
-        return putV1WebhooksByIdCall(id, updateEndpointIn, _callback);
+        return putWebhooksByIdCall(id, updateEndpointIn, _callback);
 
     }
 
@@ -1057,8 +1057,8 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Endpoint putV1WebhooksById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateEndpointIn updateEndpointIn) throws ApiException {
-        ApiResponse<Endpoint> localVarResp = putV1WebhooksByIdWithHttpInfo(id, updateEndpointIn);
+    public Endpoint putWebhooksById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateEndpointIn updateEndpointIn) throws ApiException {
+        ApiResponse<Endpoint> localVarResp = putWebhooksByIdWithHttpInfo(id, updateEndpointIn);
         return localVarResp.getData();
     }
 
@@ -1076,8 +1076,8 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Endpoint> putV1WebhooksByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateEndpointIn updateEndpointIn) throws ApiException {
-        okhttp3.Call localVarCall = putV1WebhooksByIdValidateBeforeCall(id, updateEndpointIn, null);
+    public ApiResponse<Endpoint> putWebhooksByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateEndpointIn updateEndpointIn) throws ApiException {
+        okhttp3.Call localVarCall = putWebhooksByIdValidateBeforeCall(id, updateEndpointIn, null);
         Type localVarReturnType = new TypeToken<Endpoint>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1097,9 +1097,9 @@ public class WebhooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1WebhooksByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateEndpointIn updateEndpointIn, final ApiCallback<Endpoint> _callback) throws ApiException {
+    public okhttp3.Call putWebhooksByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateEndpointIn updateEndpointIn, final ApiCallback<Endpoint> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1WebhooksByIdValidateBeforeCall(id, updateEndpointIn, _callback);
+        okhttp3.Call localVarCall = putWebhooksByIdValidateBeforeCall(id, updateEndpointIn, _callback);
         Type localVarReturnType = new TypeToken<Endpoint>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

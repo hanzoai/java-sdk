@@ -50,102 +50,78 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class Summary {
-  public static final String SERIALIZED_NAME_ACTIVE = "active";
-  @SerializedName(SERIALIZED_NAME_ACTIVE)
+  public static final String SERIALIZED_NAME_CALLS = "calls";
+  @SerializedName(SERIALIZED_NAME_CALLS)
   @javax.annotation.Nullable
-  private Integer active;
+  private Integer calls;
 
-  public static final String SERIALIZED_NAME_BUDGET = "budget";
-  @SerializedName(SERIALIZED_NAME_BUDGET)
+  public static final String SERIALIZED_NAME_MESSAGES = "messages";
+  @SerializedName(SERIALIZED_NAME_MESSAGES)
   @javax.annotation.Nullable
-  private Integer budget;
+  private Integer messages;
 
-  public static final String SERIALIZED_NAME_CAMPAIGNS = "campaigns";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGNS)
+  public static final String SERIALIZED_NAME_NUMBERS = "numbers";
+  @SerializedName(SERIALIZED_NAME_NUMBERS)
   @javax.annotation.Nullable
-  private Integer campaigns;
-
-  public static final String SERIALIZED_NAME_SPEND = "spend";
-  @SerializedName(SERIALIZED_NAME_SPEND)
-  @javax.annotation.Nullable
-  private Integer spend;
+  private Integer numbers;
 
   public Summary() {
   }
 
-  public Summary active(@javax.annotation.Nullable Integer active) {
-    this.active = active;
+  public Summary calls(@javax.annotation.Nullable Integer calls) {
+    this.calls = calls;
     return this;
   }
 
   /**
-   * Get active
-   * @return active
+   * Get calls
+   * @return calls
    */
   @javax.annotation.Nullable
-  public Integer getActive() {
-    return active;
+  public Integer getCalls() {
+    return calls;
   }
 
-  public void setActive(@javax.annotation.Nullable Integer active) {
-    this.active = active;
+  public void setCalls(@javax.annotation.Nullable Integer calls) {
+    this.calls = calls;
   }
 
 
-  public Summary budget(@javax.annotation.Nullable Integer budget) {
-    this.budget = budget;
+  public Summary messages(@javax.annotation.Nullable Integer messages) {
+    this.messages = messages;
     return this;
   }
 
   /**
-   * Budget and Spend are the summed campaign budget and spend, in cents.
-   * @return budget
+   * Get messages
+   * @return messages
    */
   @javax.annotation.Nullable
-  public Integer getBudget() {
-    return budget;
+  public Integer getMessages() {
+    return messages;
   }
 
-  public void setBudget(@javax.annotation.Nullable Integer budget) {
-    this.budget = budget;
+  public void setMessages(@javax.annotation.Nullable Integer messages) {
+    this.messages = messages;
   }
 
 
-  public Summary campaigns(@javax.annotation.Nullable Integer campaigns) {
-    this.campaigns = campaigns;
+  public Summary numbers(@javax.annotation.Nullable Integer numbers) {
+    this.numbers = numbers;
     return this;
   }
 
   /**
-   * Campaigns is how many campaigns the org has, Active how many are running.
-   * @return campaigns
+   * Get numbers
+   * @return numbers
    */
   @javax.annotation.Nullable
-  public Integer getCampaigns() {
-    return campaigns;
+  public Integer getNumbers() {
+    return numbers;
   }
 
-  public void setCampaigns(@javax.annotation.Nullable Integer campaigns) {
-    this.campaigns = campaigns;
-  }
-
-
-  public Summary spend(@javax.annotation.Nullable Integer spend) {
-    this.spend = spend;
-    return this;
-  }
-
-  /**
-   * Get spend
-   * @return spend
-   */
-  @javax.annotation.Nullable
-  public Integer getSpend() {
-    return spend;
-  }
-
-  public void setSpend(@javax.annotation.Nullable Integer spend) {
-    this.spend = spend;
+  public void setNumbers(@javax.annotation.Nullable Integer numbers) {
+    this.numbers = numbers;
   }
 
 
@@ -159,25 +135,23 @@ public class Summary {
       return false;
     }
     Summary summary = (Summary) o;
-    return Objects.equals(this.active, summary.active) &&
-        Objects.equals(this.budget, summary.budget) &&
-        Objects.equals(this.campaigns, summary.campaigns) &&
-        Objects.equals(this.spend, summary.spend);
+    return Objects.equals(this.calls, summary.calls) &&
+        Objects.equals(this.messages, summary.messages) &&
+        Objects.equals(this.numbers, summary.numbers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(active, budget, campaigns, spend);
+    return Objects.hash(calls, messages, numbers);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Summary {\n");
-    sb.append("    active: ").append(toIndentedString(active)).append("\n");
-    sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
-    sb.append("    campaigns: ").append(toIndentedString(campaigns)).append("\n");
-    sb.append("    spend: ").append(toIndentedString(spend)).append("\n");
+    sb.append("    calls: ").append(toIndentedString(calls)).append("\n");
+    sb.append("    messages: ").append(toIndentedString(messages)).append("\n");
+    sb.append("    numbers: ").append(toIndentedString(numbers)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -199,7 +173,7 @@ public class Summary {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("active", "budget", "campaigns", "spend"));
+    openapiFields = new HashSet<String>(Arrays.asList("calls", "messages", "numbers"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

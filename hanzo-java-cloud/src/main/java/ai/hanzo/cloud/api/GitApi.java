@@ -101,7 +101,7 @@ public class GitApi {
     }
 
     /**
-     * Build call for deleteV1GitKeysById
+     * Build call for deleteGitKeysById
      * @param id ID is the key&#39;s identifier (\&quot;gitkey_…\&quot;), from the :id path segment. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -113,7 +113,7 @@ public class GitApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1GitKeysByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteGitKeysByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -158,13 +158,13 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1GitKeysByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteGitKeysByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1GitKeysById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteGitKeysById(Async)");
         }
 
-        return deleteV1GitKeysByIdCall(id, _callback);
+        return deleteGitKeysByIdCall(id, _callback);
 
     }
 
@@ -180,8 +180,8 @@ public class GitApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1GitKeysById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1GitKeysByIdWithHttpInfo(id);
+    public void deleteGitKeysById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteGitKeysByIdWithHttpInfo(id);
     }
 
     /**
@@ -197,8 +197,8 @@ public class GitApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1GitKeysByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1GitKeysByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteGitKeysByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteGitKeysByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -216,14 +216,14 @@ public class GitApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1GitKeysByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteGitKeysByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1GitKeysByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteGitKeysByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1GitReposByName
+     * Build call for deleteGitReposByName
      * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -235,7 +235,7 @@ public class GitApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1GitReposByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteGitReposByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -280,13 +280,13 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1GitReposByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteGitReposByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteV1GitReposByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling deleteGitReposByName(Async)");
         }
 
-        return deleteV1GitReposByNameCall(name, _callback);
+        return deleteGitReposByNameCall(name, _callback);
 
     }
 
@@ -302,8 +302,8 @@ public class GitApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1GitReposByName(@javax.annotation.Nonnull String name) throws ApiException {
-        deleteV1GitReposByNameWithHttpInfo(name);
+    public void deleteGitReposByName(@javax.annotation.Nonnull String name) throws ApiException {
+        deleteGitReposByNameWithHttpInfo(name);
     }
 
     /**
@@ -319,8 +319,8 @@ public class GitApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1GitReposByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1GitReposByNameValidateBeforeCall(name, null);
+    public ApiResponse<Void> deleteGitReposByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteGitReposByNameValidateBeforeCall(name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -338,14 +338,14 @@ public class GitApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1GitReposByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteGitReposByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1GitReposByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = deleteGitReposByNameValidateBeforeCall(name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1GitReposByNameMirrorsById
+     * Build call for deleteGitReposByNameMirrorsById
      * @param name Name is the repo, from the :name path segment. (required)
      * @param id ID is the row to remove, from the :id path segment. (required)
      * @param _callback Callback for upload/download progress
@@ -358,7 +358,7 @@ public class GitApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1GitReposByNameMirrorsByIdCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteGitReposByNameMirrorsByIdCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -404,18 +404,18 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1GitReposByNameMirrorsByIdValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteGitReposByNameMirrorsByIdValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteV1GitReposByNameMirrorsById(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling deleteGitReposByNameMirrorsById(Async)");
         }
 
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1GitReposByNameMirrorsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteGitReposByNameMirrorsById(Async)");
         }
 
-        return deleteV1GitReposByNameMirrorsByIdCall(name, id, _callback);
+        return deleteGitReposByNameMirrorsByIdCall(name, id, _callback);
 
     }
 
@@ -432,8 +432,8 @@ public class GitApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1GitReposByNameMirrorsById(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1GitReposByNameMirrorsByIdWithHttpInfo(name, id);
+    public void deleteGitReposByNameMirrorsById(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id) throws ApiException {
+        deleteGitReposByNameMirrorsByIdWithHttpInfo(name, id);
     }
 
     /**
@@ -450,8 +450,8 @@ public class GitApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1GitReposByNameMirrorsByIdWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1GitReposByNameMirrorsByIdValidateBeforeCall(name, id, null);
+    public ApiResponse<Void> deleteGitReposByNameMirrorsByIdWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteGitReposByNameMirrorsByIdValidateBeforeCall(name, id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -470,14 +470,14 @@ public class GitApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1GitReposByNameMirrorsByIdAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteGitReposByNameMirrorsByIdAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1GitReposByNameMirrorsByIdValidateBeforeCall(name, id, _callback);
+        okhttp3.Call localVarCall = deleteGitReposByNameMirrorsByIdValidateBeforeCall(name, id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1GitReposByNameSubscriptionsById
+     * Build call for deleteGitReposByNameSubscriptionsById
      * @param name Name is the repo, from the :name path segment. (required)
      * @param id ID is the row to remove, from the :id path segment. (required)
      * @param _callback Callback for upload/download progress
@@ -490,7 +490,7 @@ public class GitApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1GitReposByNameSubscriptionsByIdCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteGitReposByNameSubscriptionsByIdCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -536,18 +536,18 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1GitReposByNameSubscriptionsByIdValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteGitReposByNameSubscriptionsByIdValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteV1GitReposByNameSubscriptionsById(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling deleteGitReposByNameSubscriptionsById(Async)");
         }
 
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1GitReposByNameSubscriptionsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteGitReposByNameSubscriptionsById(Async)");
         }
 
-        return deleteV1GitReposByNameSubscriptionsByIdCall(name, id, _callback);
+        return deleteGitReposByNameSubscriptionsByIdCall(name, id, _callback);
 
     }
 
@@ -564,8 +564,8 @@ public class GitApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1GitReposByNameSubscriptionsById(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1GitReposByNameSubscriptionsByIdWithHttpInfo(name, id);
+    public void deleteGitReposByNameSubscriptionsById(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id) throws ApiException {
+        deleteGitReposByNameSubscriptionsByIdWithHttpInfo(name, id);
     }
 
     /**
@@ -582,8 +582,8 @@ public class GitApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1GitReposByNameSubscriptionsByIdWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1GitReposByNameSubscriptionsByIdValidateBeforeCall(name, id, null);
+    public ApiResponse<Void> deleteGitReposByNameSubscriptionsByIdWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteGitReposByNameSubscriptionsByIdValidateBeforeCall(name, id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -602,14 +602,14 @@ public class GitApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1GitReposByNameSubscriptionsByIdAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteGitReposByNameSubscriptionsByIdAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1GitReposByNameSubscriptionsByIdValidateBeforeCall(name, id, _callback);
+        okhttp3.Call localVarCall = deleteGitReposByNameSubscriptionsByIdValidateBeforeCall(name, id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GitByOrgByProjectByRepoInfoRefs
+     * Build call for getGitByOrgByProjectByRepoInfoRefs
      * @param org  (required)
      * @param project  (required)
      * @param repo  (required)
@@ -617,7 +617,7 @@ public class GitApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1GitByOrgByProjectByRepoInfoRefsCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGitByOrgByProjectByRepoInfoRefsCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -664,23 +664,23 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GitByOrgByProjectByRepoInfoRefsValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getGitByOrgByProjectByRepoInfoRefsValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'org' is set
         if (org == null) {
-            throw new ApiException("Missing the required parameter 'org' when calling getV1GitByOrgByProjectByRepoInfoRefs(Async)");
+            throw new ApiException("Missing the required parameter 'org' when calling getGitByOrgByProjectByRepoInfoRefs(Async)");
         }
 
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling getV1GitByOrgByProjectByRepoInfoRefs(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling getGitByOrgByProjectByRepoInfoRefs(Async)");
         }
 
         // verify the required parameter 'repo' is set
         if (repo == null) {
-            throw new ApiException("Missing the required parameter 'repo' when calling getV1GitByOrgByProjectByRepoInfoRefs(Async)");
+            throw new ApiException("Missing the required parameter 'repo' when calling getGitByOrgByProjectByRepoInfoRefs(Async)");
         }
 
-        return getV1GitByOrgByProjectByRepoInfoRefsCall(org, project, repo, _callback);
+        return getGitByOrgByProjectByRepoInfoRefsCall(org, project, repo, _callback);
 
     }
 
@@ -692,8 +692,8 @@ public class GitApi {
      * @param repo  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1GitByOrgByProjectByRepoInfoRefs(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo) throws ApiException {
-        getV1GitByOrgByProjectByRepoInfoRefsWithHttpInfo(org, project, repo);
+    public void getGitByOrgByProjectByRepoInfoRefs(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo) throws ApiException {
+        getGitByOrgByProjectByRepoInfoRefsWithHttpInfo(org, project, repo);
     }
 
     /**
@@ -705,8 +705,8 @@ public class GitApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1GitByOrgByProjectByRepoInfoRefsWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo) throws ApiException {
-        okhttp3.Call localVarCall = getV1GitByOrgByProjectByRepoInfoRefsValidateBeforeCall(org, project, repo, null);
+    public ApiResponse<Void> getGitByOrgByProjectByRepoInfoRefsWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo) throws ApiException {
+        okhttp3.Call localVarCall = getGitByOrgByProjectByRepoInfoRefsValidateBeforeCall(org, project, repo, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -720,21 +720,21 @@ public class GitApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1GitByOrgByProjectByRepoInfoRefsAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getGitByOrgByProjectByRepoInfoRefsAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GitByOrgByProjectByRepoInfoRefsValidateBeforeCall(org, project, repo, _callback);
+        okhttp3.Call localVarCall = getGitByOrgByProjectByRepoInfoRefsValidateBeforeCall(org, project, repo, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GitByOrgByRepoInfoRefs
+     * Build call for getGitByOrgByRepoInfoRefs
      * @param org  (required)
      * @param repo  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1GitByOrgByRepoInfoRefsCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGitByOrgByRepoInfoRefsCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -780,18 +780,18 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GitByOrgByRepoInfoRefsValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getGitByOrgByRepoInfoRefsValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'org' is set
         if (org == null) {
-            throw new ApiException("Missing the required parameter 'org' when calling getV1GitByOrgByRepoInfoRefs(Async)");
+            throw new ApiException("Missing the required parameter 'org' when calling getGitByOrgByRepoInfoRefs(Async)");
         }
 
         // verify the required parameter 'repo' is set
         if (repo == null) {
-            throw new ApiException("Missing the required parameter 'repo' when calling getV1GitByOrgByRepoInfoRefs(Async)");
+            throw new ApiException("Missing the required parameter 'repo' when calling getGitByOrgByRepoInfoRefs(Async)");
         }
 
-        return getV1GitByOrgByRepoInfoRefsCall(org, repo, _callback);
+        return getGitByOrgByRepoInfoRefsCall(org, repo, _callback);
 
     }
 
@@ -802,8 +802,8 @@ public class GitApi {
      * @param repo  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1GitByOrgByRepoInfoRefs(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo) throws ApiException {
-        getV1GitByOrgByRepoInfoRefsWithHttpInfo(org, repo);
+    public void getGitByOrgByRepoInfoRefs(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo) throws ApiException {
+        getGitByOrgByRepoInfoRefsWithHttpInfo(org, repo);
     }
 
     /**
@@ -814,8 +814,8 @@ public class GitApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1GitByOrgByRepoInfoRefsWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo) throws ApiException {
-        okhttp3.Call localVarCall = getV1GitByOrgByRepoInfoRefsValidateBeforeCall(org, repo, null);
+    public ApiResponse<Void> getGitByOrgByRepoInfoRefsWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo) throws ApiException {
+        okhttp3.Call localVarCall = getGitByOrgByRepoInfoRefsValidateBeforeCall(org, repo, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -828,14 +828,14 @@ public class GitApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1GitByOrgByRepoInfoRefsAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getGitByOrgByRepoInfoRefsAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GitByOrgByRepoInfoRefsValidateBeforeCall(org, repo, _callback);
+        okhttp3.Call localVarCall = getGitByOrgByRepoInfoRefsValidateBeforeCall(org, repo, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GitKeys
+     * Build call for getGitKeys
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -846,7 +846,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitKeysCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGitKeysCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -891,8 +891,8 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GitKeysValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1GitKeysCall(_callback);
+    private okhttp3.Call getGitKeysValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getGitKeysCall(_callback);
 
     }
 
@@ -908,8 +908,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public KeyList getV1GitKeys() throws ApiException {
-        ApiResponse<KeyList> localVarResp = getV1GitKeysWithHttpInfo();
+    public KeyList getGitKeys() throws ApiException {
+        ApiResponse<KeyList> localVarResp = getGitKeysWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -925,8 +925,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KeyList> getV1GitKeysWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1GitKeysValidateBeforeCall(null);
+    public ApiResponse<KeyList> getGitKeysWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getGitKeysValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<KeyList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -944,15 +944,15 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitKeysAsync(final ApiCallback<KeyList> _callback) throws ApiException {
+    public okhttp3.Call getGitKeysAsync(final ApiCallback<KeyList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GitKeysValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getGitKeysValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<KeyList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GitRepos
+     * Build call for getGitRepos
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -963,7 +963,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGitReposCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1008,8 +1008,8 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GitReposValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1GitReposCall(_callback);
+    private okhttp3.Call getGitReposValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getGitReposCall(_callback);
 
     }
 
@@ -1025,8 +1025,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RepoList getV1GitRepos() throws ApiException {
-        ApiResponse<RepoList> localVarResp = getV1GitReposWithHttpInfo();
+    public RepoList getGitRepos() throws ApiException {
+        ApiResponse<RepoList> localVarResp = getGitReposWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1042,8 +1042,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RepoList> getV1GitReposWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1GitReposValidateBeforeCall(null);
+    public ApiResponse<RepoList> getGitReposWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getGitReposValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<RepoList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1061,15 +1061,15 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposAsync(final ApiCallback<RepoList> _callback) throws ApiException {
+    public okhttp3.Call getGitReposAsync(final ApiCallback<RepoList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GitReposValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getGitReposValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<RepoList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GitReposByName
+     * Build call for getGitReposByName
      * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1081,7 +1081,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1127,13 +1127,13 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GitReposByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getGitReposByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1GitReposByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getGitReposByName(Async)");
         }
 
-        return getV1GitReposByNameCall(name, _callback);
+        return getGitReposByNameCall(name, _callback);
 
     }
 
@@ -1150,8 +1150,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RepoView getV1GitReposByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<RepoView> localVarResp = getV1GitReposByNameWithHttpInfo(name);
+    public RepoView getGitReposByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<RepoView> localVarResp = getGitReposByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -1168,8 +1168,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RepoView> getV1GitReposByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1GitReposByNameValidateBeforeCall(name, null);
+    public ApiResponse<RepoView> getGitReposByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getGitReposByNameValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<RepoView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1188,15 +1188,15 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<RepoView> _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<RepoView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GitReposByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getGitReposByNameValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<RepoView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GitReposByNameBlob
+     * Build call for getGitReposByNameBlob
      * @param name Name is the repo to read, from the :name path segment. (required)
      * @param ref Ref is a branch, tag or commit; empty means the repo&#39;s HEAD. (optional)
      * @param path Path is repo-relative; empty is the tree root. Traversal is stripped. (optional)
@@ -1210,7 +1210,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNameBlobCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNameBlobCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1264,13 +1264,13 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GitReposByNameBlobValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getGitReposByNameBlobValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1GitReposByNameBlob(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getGitReposByNameBlob(Async)");
         }
 
-        return getV1GitReposByNameBlobCall(name, ref, path, _callback);
+        return getGitReposByNameBlobCall(name, ref, path, _callback);
 
     }
 
@@ -1289,8 +1289,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BlobJSON getV1GitReposByNameBlob(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path) throws ApiException {
-        ApiResponse<BlobJSON> localVarResp = getV1GitReposByNameBlobWithHttpInfo(name, ref, path);
+    public BlobJSON getGitReposByNameBlob(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path) throws ApiException {
+        ApiResponse<BlobJSON> localVarResp = getGitReposByNameBlobWithHttpInfo(name, ref, path);
         return localVarResp.getData();
     }
 
@@ -1309,8 +1309,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BlobJSON> getV1GitReposByNameBlobWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path) throws ApiException {
-        okhttp3.Call localVarCall = getV1GitReposByNameBlobValidateBeforeCall(name, ref, path, null);
+    public ApiResponse<BlobJSON> getGitReposByNameBlobWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path) throws ApiException {
+        okhttp3.Call localVarCall = getGitReposByNameBlobValidateBeforeCall(name, ref, path, null);
         Type localVarReturnType = new TypeToken<BlobJSON>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1331,15 +1331,15 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNameBlobAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, final ApiCallback<BlobJSON> _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNameBlobAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, final ApiCallback<BlobJSON> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GitReposByNameBlobValidateBeforeCall(name, ref, path, _callback);
+        okhttp3.Call localVarCall = getGitReposByNameBlobValidateBeforeCall(name, ref, path, _callback);
         Type localVarReturnType = new TypeToken<BlobJSON>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GitReposByNameCommits
+     * Build call for getGitReposByNameCommits
      * @param name Name is the repo to read, from the :name path segment. (required)
      * @param ref Ref is the branch, tag or commit to walk back from; empty means HEAD. (optional)
      * @param path Path narrows the history to commits touching it; empty walks the whole ref. (optional)
@@ -1354,7 +1354,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNameCommitsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNameCommitsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1412,13 +1412,13 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GitReposByNameCommitsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getGitReposByNameCommitsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1GitReposByNameCommits(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getGitReposByNameCommits(Async)");
         }
 
-        return getV1GitReposByNameCommitsCall(name, ref, path, limit, _callback);
+        return getGitReposByNameCommitsCall(name, ref, path, limit, _callback);
 
     }
 
@@ -1438,8 +1438,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CommitsJSON getV1GitReposByNameCommits(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<CommitsJSON> localVarResp = getV1GitReposByNameCommitsWithHttpInfo(name, ref, path, limit);
+    public CommitsJSON getGitReposByNameCommits(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<CommitsJSON> localVarResp = getGitReposByNameCommitsWithHttpInfo(name, ref, path, limit);
         return localVarResp.getData();
     }
 
@@ -1459,8 +1459,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CommitsJSON> getV1GitReposByNameCommitsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1GitReposByNameCommitsValidateBeforeCall(name, ref, path, limit, null);
+    public ApiResponse<CommitsJSON> getGitReposByNameCommitsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getGitReposByNameCommitsValidateBeforeCall(name, ref, path, limit, null);
         Type localVarReturnType = new TypeToken<CommitsJSON>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1482,15 +1482,15 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNameCommitsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, @javax.annotation.Nullable Integer limit, final ApiCallback<CommitsJSON> _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNameCommitsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, @javax.annotation.Nullable Integer limit, final ApiCallback<CommitsJSON> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GitReposByNameCommitsValidateBeforeCall(name, ref, path, limit, _callback);
+        okhttp3.Call localVarCall = getGitReposByNameCommitsValidateBeforeCall(name, ref, path, limit, _callback);
         Type localVarReturnType = new TypeToken<CommitsJSON>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GitReposByNameFiles
+     * Build call for getGitReposByNameFiles
      * @param name Name is the repo to read, from the :name path segment. (required)
      * @param ref Ref is a branch, tag or commit; empty means the repo&#39;s HEAD. (optional)
      * @param glob Glob selects files, matched segment by segment so &#x60;*&#x60; never crosses a &#x60;/&#x60;. &#x60;**&#x60; matches zero or more whole segments. (optional)
@@ -1504,7 +1504,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNameFilesCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String glob, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNameFilesCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String glob, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1558,13 +1558,13 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GitReposByNameFilesValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String glob, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getGitReposByNameFilesValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String glob, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1GitReposByNameFiles(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getGitReposByNameFiles(Async)");
         }
 
-        return getV1GitReposByNameFilesCall(name, ref, glob, _callback);
+        return getGitReposByNameFilesCall(name, ref, glob, _callback);
 
     }
 
@@ -1583,8 +1583,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FilesJSON getV1GitReposByNameFiles(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String glob) throws ApiException {
-        ApiResponse<FilesJSON> localVarResp = getV1GitReposByNameFilesWithHttpInfo(name, ref, glob);
+    public FilesJSON getGitReposByNameFiles(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String glob) throws ApiException {
+        ApiResponse<FilesJSON> localVarResp = getGitReposByNameFilesWithHttpInfo(name, ref, glob);
         return localVarResp.getData();
     }
 
@@ -1603,8 +1603,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FilesJSON> getV1GitReposByNameFilesWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String glob) throws ApiException {
-        okhttp3.Call localVarCall = getV1GitReposByNameFilesValidateBeforeCall(name, ref, glob, null);
+    public ApiResponse<FilesJSON> getGitReposByNameFilesWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String glob) throws ApiException {
+        okhttp3.Call localVarCall = getGitReposByNameFilesValidateBeforeCall(name, ref, glob, null);
         Type localVarReturnType = new TypeToken<FilesJSON>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1625,15 +1625,15 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNameFilesAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String glob, final ApiCallback<FilesJSON> _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNameFilesAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String glob, final ApiCallback<FilesJSON> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GitReposByNameFilesValidateBeforeCall(name, ref, glob, _callback);
+        okhttp3.Call localVarCall = getGitReposByNameFilesValidateBeforeCall(name, ref, glob, _callback);
         Type localVarReturnType = new TypeToken<FilesJSON>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GitReposByNameMirrors
+     * Build call for getGitReposByNameMirrors
      * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1645,7 +1645,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNameMirrorsCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNameMirrorsCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1691,13 +1691,13 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GitReposByNameMirrorsValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getGitReposByNameMirrorsValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1GitReposByNameMirrors(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getGitReposByNameMirrors(Async)");
         }
 
-        return getV1GitReposByNameMirrorsCall(name, _callback);
+        return getGitReposByNameMirrorsCall(name, _callback);
 
     }
 
@@ -1714,8 +1714,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public MirrorList getV1GitReposByNameMirrors(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<MirrorList> localVarResp = getV1GitReposByNameMirrorsWithHttpInfo(name);
+    public MirrorList getGitReposByNameMirrors(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<MirrorList> localVarResp = getGitReposByNameMirrorsWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -1732,8 +1732,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MirrorList> getV1GitReposByNameMirrorsWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1GitReposByNameMirrorsValidateBeforeCall(name, null);
+    public ApiResponse<MirrorList> getGitReposByNameMirrorsWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getGitReposByNameMirrorsValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<MirrorList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1752,15 +1752,15 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNameMirrorsAsync(@javax.annotation.Nonnull String name, final ApiCallback<MirrorList> _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNameMirrorsAsync(@javax.annotation.Nonnull String name, final ApiCallback<MirrorList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GitReposByNameMirrorsValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getGitReposByNameMirrorsValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<MirrorList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GitReposByNamePulls
+     * Build call for getGitReposByNamePulls
      * @param name Name is the repo, from the :name path segment. (required)
      * @param state State narrows the list to \&quot;open\&quot; or \&quot;merged\&quot;. Omit it for every proposal. (optional)
      * @param _callback Callback for upload/download progress
@@ -1773,7 +1773,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNamePullsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String state, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNamePullsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String state, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1823,13 +1823,13 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GitReposByNamePullsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String state, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getGitReposByNamePullsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String state, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1GitReposByNamePulls(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getGitReposByNamePulls(Async)");
         }
 
-        return getV1GitReposByNamePullsCall(name, state, _callback);
+        return getGitReposByNamePullsCall(name, state, _callback);
 
     }
 
@@ -1847,8 +1847,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PullList getV1GitReposByNamePulls(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String state) throws ApiException {
-        ApiResponse<PullList> localVarResp = getV1GitReposByNamePullsWithHttpInfo(name, state);
+    public PullList getGitReposByNamePulls(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String state) throws ApiException {
+        ApiResponse<PullList> localVarResp = getGitReposByNamePullsWithHttpInfo(name, state);
         return localVarResp.getData();
     }
 
@@ -1866,8 +1866,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PullList> getV1GitReposByNamePullsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String state) throws ApiException {
-        okhttp3.Call localVarCall = getV1GitReposByNamePullsValidateBeforeCall(name, state, null);
+    public ApiResponse<PullList> getGitReposByNamePullsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String state) throws ApiException {
+        okhttp3.Call localVarCall = getGitReposByNamePullsValidateBeforeCall(name, state, null);
         Type localVarReturnType = new TypeToken<PullList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1887,15 +1887,15 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNamePullsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String state, final ApiCallback<PullList> _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNamePullsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String state, final ApiCallback<PullList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GitReposByNamePullsValidateBeforeCall(name, state, _callback);
+        okhttp3.Call localVarCall = getGitReposByNamePullsValidateBeforeCall(name, state, _callback);
         Type localVarReturnType = new TypeToken<PullList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GitReposByNamePullsByNumber
+     * Build call for getGitReposByNamePullsByNumber
      * @param name Name is the repo, from the :name path segment. (required)
      * @param number Number is the proposal&#39;s per-repo number, from the :number path segment. (required)
      * @param _callback Callback for upload/download progress
@@ -1908,7 +1908,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNamePullsByNumberCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNamePullsByNumberCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1955,18 +1955,18 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GitReposByNamePullsByNumberValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getGitReposByNamePullsByNumberValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1GitReposByNamePullsByNumber(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getGitReposByNamePullsByNumber(Async)");
         }
 
         // verify the required parameter 'number' is set
         if (number == null) {
-            throw new ApiException("Missing the required parameter 'number' when calling getV1GitReposByNamePullsByNumber(Async)");
+            throw new ApiException("Missing the required parameter 'number' when calling getGitReposByNamePullsByNumber(Async)");
         }
 
-        return getV1GitReposByNamePullsByNumberCall(name, number, _callback);
+        return getGitReposByNamePullsByNumberCall(name, number, _callback);
 
     }
 
@@ -1984,8 +1984,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PullView getV1GitReposByNamePullsByNumber(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number) throws ApiException {
-        ApiResponse<PullView> localVarResp = getV1GitReposByNamePullsByNumberWithHttpInfo(name, number);
+    public PullView getGitReposByNamePullsByNumber(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number) throws ApiException {
+        ApiResponse<PullView> localVarResp = getGitReposByNamePullsByNumberWithHttpInfo(name, number);
         return localVarResp.getData();
     }
 
@@ -2003,8 +2003,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PullView> getV1GitReposByNamePullsByNumberWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number) throws ApiException {
-        okhttp3.Call localVarCall = getV1GitReposByNamePullsByNumberValidateBeforeCall(name, number, null);
+    public ApiResponse<PullView> getGitReposByNamePullsByNumberWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number) throws ApiException {
+        okhttp3.Call localVarCall = getGitReposByNamePullsByNumberValidateBeforeCall(name, number, null);
         Type localVarReturnType = new TypeToken<PullView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2024,15 +2024,15 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNamePullsByNumberAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number, final ApiCallback<PullView> _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNamePullsByNumberAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number, final ApiCallback<PullView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GitReposByNamePullsByNumberValidateBeforeCall(name, number, _callback);
+        okhttp3.Call localVarCall = getGitReposByNamePullsByNumberValidateBeforeCall(name, number, _callback);
         Type localVarReturnType = new TypeToken<PullView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GitReposByNameReadme
+     * Build call for getGitReposByNameReadme
      * @param name Name is the repo to read, from the :name path segment. (required)
      * @param ref Ref is a branch, tag or commit; empty means the repo&#39;s HEAD. (optional)
      * @param _callback Callback for upload/download progress
@@ -2045,7 +2045,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNameReadmeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNameReadmeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2095,13 +2095,13 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GitReposByNameReadmeValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getGitReposByNameReadmeValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1GitReposByNameReadme(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getGitReposByNameReadme(Async)");
         }
 
-        return getV1GitReposByNameReadmeCall(name, ref, _callback);
+        return getGitReposByNameReadmeCall(name, ref, _callback);
 
     }
 
@@ -2119,8 +2119,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ReadmeJSON getV1GitReposByNameReadme(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref) throws ApiException {
-        ApiResponse<ReadmeJSON> localVarResp = getV1GitReposByNameReadmeWithHttpInfo(name, ref);
+    public ReadmeJSON getGitReposByNameReadme(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref) throws ApiException {
+        ApiResponse<ReadmeJSON> localVarResp = getGitReposByNameReadmeWithHttpInfo(name, ref);
         return localVarResp.getData();
     }
 
@@ -2138,8 +2138,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ReadmeJSON> getV1GitReposByNameReadmeWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref) throws ApiException {
-        okhttp3.Call localVarCall = getV1GitReposByNameReadmeValidateBeforeCall(name, ref, null);
+    public ApiResponse<ReadmeJSON> getGitReposByNameReadmeWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref) throws ApiException {
+        okhttp3.Call localVarCall = getGitReposByNameReadmeValidateBeforeCall(name, ref, null);
         Type localVarReturnType = new TypeToken<ReadmeJSON>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2159,15 +2159,15 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNameReadmeAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, final ApiCallback<ReadmeJSON> _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNameReadmeAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, final ApiCallback<ReadmeJSON> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GitReposByNameReadmeValidateBeforeCall(name, ref, _callback);
+        okhttp3.Call localVarCall = getGitReposByNameReadmeValidateBeforeCall(name, ref, _callback);
         Type localVarReturnType = new TypeToken<ReadmeJSON>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GitReposByNameRefs
+     * Build call for getGitReposByNameRefs
      * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2179,7 +2179,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNameRefsCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNameRefsCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2225,13 +2225,13 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GitReposByNameRefsValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getGitReposByNameRefsValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1GitReposByNameRefs(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getGitReposByNameRefs(Async)");
         }
 
-        return getV1GitReposByNameRefsCall(name, _callback);
+        return getGitReposByNameRefsCall(name, _callback);
 
     }
 
@@ -2248,8 +2248,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RefsJSON getV1GitReposByNameRefs(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<RefsJSON> localVarResp = getV1GitReposByNameRefsWithHttpInfo(name);
+    public RefsJSON getGitReposByNameRefs(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<RefsJSON> localVarResp = getGitReposByNameRefsWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -2266,8 +2266,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RefsJSON> getV1GitReposByNameRefsWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1GitReposByNameRefsValidateBeforeCall(name, null);
+    public ApiResponse<RefsJSON> getGitReposByNameRefsWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getGitReposByNameRefsValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<RefsJSON>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2286,15 +2286,15 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNameRefsAsync(@javax.annotation.Nonnull String name, final ApiCallback<RefsJSON> _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNameRefsAsync(@javax.annotation.Nonnull String name, final ApiCallback<RefsJSON> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GitReposByNameRefsValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getGitReposByNameRefsValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<RefsJSON>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GitReposByNameSubscriptions
+     * Build call for getGitReposByNameSubscriptions
      * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2306,7 +2306,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNameSubscriptionsCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNameSubscriptionsCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2352,13 +2352,13 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GitReposByNameSubscriptionsValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getGitReposByNameSubscriptionsValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1GitReposByNameSubscriptions(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getGitReposByNameSubscriptions(Async)");
         }
 
-        return getV1GitReposByNameSubscriptionsCall(name, _callback);
+        return getGitReposByNameSubscriptionsCall(name, _callback);
 
     }
 
@@ -2375,8 +2375,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SubscriptionList getV1GitReposByNameSubscriptions(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<SubscriptionList> localVarResp = getV1GitReposByNameSubscriptionsWithHttpInfo(name);
+    public SubscriptionList getGitReposByNameSubscriptions(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<SubscriptionList> localVarResp = getGitReposByNameSubscriptionsWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -2393,8 +2393,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SubscriptionList> getV1GitReposByNameSubscriptionsWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1GitReposByNameSubscriptionsValidateBeforeCall(name, null);
+    public ApiResponse<SubscriptionList> getGitReposByNameSubscriptionsWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getGitReposByNameSubscriptionsValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<SubscriptionList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2413,15 +2413,15 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNameSubscriptionsAsync(@javax.annotation.Nonnull String name, final ApiCallback<SubscriptionList> _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNameSubscriptionsAsync(@javax.annotation.Nonnull String name, final ApiCallback<SubscriptionList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GitReposByNameSubscriptionsValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getGitReposByNameSubscriptionsValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<SubscriptionList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GitReposByNameTree
+     * Build call for getGitReposByNameTree
      * @param name Name is the repo to read, from the :name path segment. (required)
      * @param ref Ref is a branch, tag or commit; empty means the repo&#39;s HEAD. (optional)
      * @param path Path is repo-relative; empty is the tree root. Traversal is stripped. (optional)
@@ -2435,7 +2435,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNameTreeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNameTreeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2489,13 +2489,13 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GitReposByNameTreeValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getGitReposByNameTreeValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1GitReposByNameTree(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getGitReposByNameTree(Async)");
         }
 
-        return getV1GitReposByNameTreeCall(name, ref, path, _callback);
+        return getGitReposByNameTreeCall(name, ref, path, _callback);
 
     }
 
@@ -2514,8 +2514,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public TreeJSON getV1GitReposByNameTree(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path) throws ApiException {
-        ApiResponse<TreeJSON> localVarResp = getV1GitReposByNameTreeWithHttpInfo(name, ref, path);
+    public TreeJSON getGitReposByNameTree(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path) throws ApiException {
+        ApiResponse<TreeJSON> localVarResp = getGitReposByNameTreeWithHttpInfo(name, ref, path);
         return localVarResp.getData();
     }
 
@@ -2534,8 +2534,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TreeJSON> getV1GitReposByNameTreeWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path) throws ApiException {
-        okhttp3.Call localVarCall = getV1GitReposByNameTreeValidateBeforeCall(name, ref, path, null);
+    public ApiResponse<TreeJSON> getGitReposByNameTreeWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path) throws ApiException {
+        okhttp3.Call localVarCall = getGitReposByNameTreeValidateBeforeCall(name, ref, path, null);
         Type localVarReturnType = new TypeToken<TreeJSON>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2556,15 +2556,15 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitReposByNameTreeAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, final ApiCallback<TreeJSON> _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNameTreeAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, final ApiCallback<TreeJSON> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GitReposByNameTreeValidateBeforeCall(name, ref, path, _callback);
+        okhttp3.Call localVarCall = getGitReposByNameTreeValidateBeforeCall(name, ref, path, _callback);
         Type localVarReturnType = new TypeToken<TreeJSON>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GitUsage
+     * Build call for getGitUsage
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2575,7 +2575,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitUsageCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGitUsageCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2620,8 +2620,8 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GitUsageValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1GitUsageCall(_callback);
+    private okhttp3.Call getGitUsageValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getGitUsageCall(_callback);
 
     }
 
@@ -2637,8 +2637,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public UsageView getV1GitUsage() throws ApiException {
-        ApiResponse<UsageView> localVarResp = getV1GitUsageWithHttpInfo();
+    public UsageView getGitUsage() throws ApiException {
+        ApiResponse<UsageView> localVarResp = getGitUsageWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -2654,8 +2654,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UsageView> getV1GitUsageWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1GitUsageValidateBeforeCall(null);
+    public ApiResponse<UsageView> getGitUsageWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getGitUsageValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<UsageView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2673,15 +2673,15 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GitUsageAsync(final ApiCallback<UsageView> _callback) throws ApiException {
+    public okhttp3.Call getGitUsageAsync(final ApiCallback<UsageView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GitUsageValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getGitUsageValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<UsageView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1GitReposByName
+     * Build call for patchGitReposByName
      * @param name Name is the repo to update, from the :name path segment. (required)
      * @param patchIn  (required)
      * @param _callback Callback for upload/download progress
@@ -2694,7 +2694,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchV1GitReposByNameCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull PatchIn patchIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchGitReposByNameCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull PatchIn patchIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2741,18 +2741,18 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1GitReposByNameValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull PatchIn patchIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchGitReposByNameValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull PatchIn patchIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling patchV1GitReposByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling patchGitReposByName(Async)");
         }
 
         // verify the required parameter 'patchIn' is set
         if (patchIn == null) {
-            throw new ApiException("Missing the required parameter 'patchIn' when calling patchV1GitReposByName(Async)");
+            throw new ApiException("Missing the required parameter 'patchIn' when calling patchGitReposByName(Async)");
         }
 
-        return patchV1GitReposByNameCall(name, patchIn, _callback);
+        return patchGitReposByNameCall(name, patchIn, _callback);
 
     }
 
@@ -2770,8 +2770,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RepoView patchV1GitReposByName(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull PatchIn patchIn) throws ApiException {
-        ApiResponse<RepoView> localVarResp = patchV1GitReposByNameWithHttpInfo(name, patchIn);
+    public RepoView patchGitReposByName(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull PatchIn patchIn) throws ApiException {
+        ApiResponse<RepoView> localVarResp = patchGitReposByNameWithHttpInfo(name, patchIn);
         return localVarResp.getData();
     }
 
@@ -2789,8 +2789,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RepoView> patchV1GitReposByNameWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull PatchIn patchIn) throws ApiException {
-        okhttp3.Call localVarCall = patchV1GitReposByNameValidateBeforeCall(name, patchIn, null);
+    public ApiResponse<RepoView> patchGitReposByNameWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull PatchIn patchIn) throws ApiException {
+        okhttp3.Call localVarCall = patchGitReposByNameValidateBeforeCall(name, patchIn, null);
         Type localVarReturnType = new TypeToken<RepoView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2810,15 +2810,15 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchV1GitReposByNameAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull PatchIn patchIn, final ApiCallback<RepoView> _callback) throws ApiException {
+    public okhttp3.Call patchGitReposByNameAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull PatchIn patchIn, final ApiCallback<RepoView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1GitReposByNameValidateBeforeCall(name, patchIn, _callback);
+        okhttp3.Call localVarCall = patchGitReposByNameValidateBeforeCall(name, patchIn, _callback);
         Type localVarReturnType = new TypeToken<RepoView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GitByOrgByProjectByRepoGitReceivePack
+     * Build call for postGitByOrgByProjectByRepoGitReceivePack
      * @param org  (required)
      * @param project  (required)
      * @param repo  (required)
@@ -2827,7 +2827,7 @@ public class GitApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1GitByOrgByProjectByRepoGitReceivePackCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitByOrgByProjectByRepoGitReceivePackCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2875,23 +2875,23 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GitByOrgByProjectByRepoGitReceivePackValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postGitByOrgByProjectByRepoGitReceivePackValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'org' is set
         if (org == null) {
-            throw new ApiException("Missing the required parameter 'org' when calling postV1GitByOrgByProjectByRepoGitReceivePack(Async)");
+            throw new ApiException("Missing the required parameter 'org' when calling postGitByOrgByProjectByRepoGitReceivePack(Async)");
         }
 
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling postV1GitByOrgByProjectByRepoGitReceivePack(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling postGitByOrgByProjectByRepoGitReceivePack(Async)");
         }
 
         // verify the required parameter 'repo' is set
         if (repo == null) {
-            throw new ApiException("Missing the required parameter 'repo' when calling postV1GitByOrgByProjectByRepoGitReceivePack(Async)");
+            throw new ApiException("Missing the required parameter 'repo' when calling postGitByOrgByProjectByRepoGitReceivePack(Async)");
         }
 
-        return postV1GitByOrgByProjectByRepoGitReceivePackCall(org, project, repo, body, _callback);
+        return postGitByOrgByProjectByRepoGitReceivePackCall(org, project, repo, body, _callback);
 
     }
 
@@ -2904,8 +2904,8 @@ public class GitApi {
      * @param body  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1GitByOrgByProjectByRepoGitReceivePack(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
-        postV1GitByOrgByProjectByRepoGitReceivePackWithHttpInfo(org, project, repo, body);
+    public void postGitByOrgByProjectByRepoGitReceivePack(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
+        postGitByOrgByProjectByRepoGitReceivePackWithHttpInfo(org, project, repo, body);
     }
 
     /**
@@ -2918,8 +2918,8 @@ public class GitApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1GitByOrgByProjectByRepoGitReceivePackWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
-        okhttp3.Call localVarCall = postV1GitByOrgByProjectByRepoGitReceivePackValidateBeforeCall(org, project, repo, body, null);
+    public ApiResponse<Void> postGitByOrgByProjectByRepoGitReceivePackWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
+        okhttp3.Call localVarCall = postGitByOrgByProjectByRepoGitReceivePackValidateBeforeCall(org, project, repo, body, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2934,14 +2934,14 @@ public class GitApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1GitByOrgByProjectByRepoGitReceivePackAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postGitByOrgByProjectByRepoGitReceivePackAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GitByOrgByProjectByRepoGitReceivePackValidateBeforeCall(org, project, repo, body, _callback);
+        okhttp3.Call localVarCall = postGitByOrgByProjectByRepoGitReceivePackValidateBeforeCall(org, project, repo, body, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GitByOrgByProjectByRepoGitUploadPack
+     * Build call for postGitByOrgByProjectByRepoGitUploadPack
      * @param org  (required)
      * @param project  (required)
      * @param repo  (required)
@@ -2950,7 +2950,7 @@ public class GitApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1GitByOrgByProjectByRepoGitUploadPackCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitByOrgByProjectByRepoGitUploadPackCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2998,23 +2998,23 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GitByOrgByProjectByRepoGitUploadPackValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postGitByOrgByProjectByRepoGitUploadPackValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'org' is set
         if (org == null) {
-            throw new ApiException("Missing the required parameter 'org' when calling postV1GitByOrgByProjectByRepoGitUploadPack(Async)");
+            throw new ApiException("Missing the required parameter 'org' when calling postGitByOrgByProjectByRepoGitUploadPack(Async)");
         }
 
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling postV1GitByOrgByProjectByRepoGitUploadPack(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling postGitByOrgByProjectByRepoGitUploadPack(Async)");
         }
 
         // verify the required parameter 'repo' is set
         if (repo == null) {
-            throw new ApiException("Missing the required parameter 'repo' when calling postV1GitByOrgByProjectByRepoGitUploadPack(Async)");
+            throw new ApiException("Missing the required parameter 'repo' when calling postGitByOrgByProjectByRepoGitUploadPack(Async)");
         }
 
-        return postV1GitByOrgByProjectByRepoGitUploadPackCall(org, project, repo, body, _callback);
+        return postGitByOrgByProjectByRepoGitUploadPackCall(org, project, repo, body, _callback);
 
     }
 
@@ -3027,8 +3027,8 @@ public class GitApi {
      * @param body  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1GitByOrgByProjectByRepoGitUploadPack(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
-        postV1GitByOrgByProjectByRepoGitUploadPackWithHttpInfo(org, project, repo, body);
+    public void postGitByOrgByProjectByRepoGitUploadPack(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
+        postGitByOrgByProjectByRepoGitUploadPackWithHttpInfo(org, project, repo, body);
     }
 
     /**
@@ -3041,8 +3041,8 @@ public class GitApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1GitByOrgByProjectByRepoGitUploadPackWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
-        okhttp3.Call localVarCall = postV1GitByOrgByProjectByRepoGitUploadPackValidateBeforeCall(org, project, repo, body, null);
+    public ApiResponse<Void> postGitByOrgByProjectByRepoGitUploadPackWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
+        okhttp3.Call localVarCall = postGitByOrgByProjectByRepoGitUploadPackValidateBeforeCall(org, project, repo, body, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3057,14 +3057,14 @@ public class GitApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1GitByOrgByProjectByRepoGitUploadPackAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postGitByOrgByProjectByRepoGitUploadPackAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GitByOrgByProjectByRepoGitUploadPackValidateBeforeCall(org, project, repo, body, _callback);
+        okhttp3.Call localVarCall = postGitByOrgByProjectByRepoGitUploadPackValidateBeforeCall(org, project, repo, body, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GitByOrgByRepoGitReceivePack
+     * Build call for postGitByOrgByRepoGitReceivePack
      * @param org  (required)
      * @param repo  (required)
      * @param body  (optional)
@@ -3072,7 +3072,7 @@ public class GitApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1GitByOrgByRepoGitReceivePackCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitByOrgByRepoGitReceivePackCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3119,18 +3119,18 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GitByOrgByRepoGitReceivePackValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postGitByOrgByRepoGitReceivePackValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'org' is set
         if (org == null) {
-            throw new ApiException("Missing the required parameter 'org' when calling postV1GitByOrgByRepoGitReceivePack(Async)");
+            throw new ApiException("Missing the required parameter 'org' when calling postGitByOrgByRepoGitReceivePack(Async)");
         }
 
         // verify the required parameter 'repo' is set
         if (repo == null) {
-            throw new ApiException("Missing the required parameter 'repo' when calling postV1GitByOrgByRepoGitReceivePack(Async)");
+            throw new ApiException("Missing the required parameter 'repo' when calling postGitByOrgByRepoGitReceivePack(Async)");
         }
 
-        return postV1GitByOrgByRepoGitReceivePackCall(org, repo, body, _callback);
+        return postGitByOrgByRepoGitReceivePackCall(org, repo, body, _callback);
 
     }
 
@@ -3142,8 +3142,8 @@ public class GitApi {
      * @param body  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1GitByOrgByRepoGitReceivePack(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
-        postV1GitByOrgByRepoGitReceivePackWithHttpInfo(org, repo, body);
+    public void postGitByOrgByRepoGitReceivePack(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
+        postGitByOrgByRepoGitReceivePackWithHttpInfo(org, repo, body);
     }
 
     /**
@@ -3155,8 +3155,8 @@ public class GitApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1GitByOrgByRepoGitReceivePackWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
-        okhttp3.Call localVarCall = postV1GitByOrgByRepoGitReceivePackValidateBeforeCall(org, repo, body, null);
+    public ApiResponse<Void> postGitByOrgByRepoGitReceivePackWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
+        okhttp3.Call localVarCall = postGitByOrgByRepoGitReceivePackValidateBeforeCall(org, repo, body, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3170,14 +3170,14 @@ public class GitApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1GitByOrgByRepoGitReceivePackAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postGitByOrgByRepoGitReceivePackAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GitByOrgByRepoGitReceivePackValidateBeforeCall(org, repo, body, _callback);
+        okhttp3.Call localVarCall = postGitByOrgByRepoGitReceivePackValidateBeforeCall(org, repo, body, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GitByOrgByRepoGitUploadPack
+     * Build call for postGitByOrgByRepoGitUploadPack
      * @param org  (required)
      * @param repo  (required)
      * @param body  (optional)
@@ -3185,7 +3185,7 @@ public class GitApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1GitByOrgByRepoGitUploadPackCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitByOrgByRepoGitUploadPackCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3232,18 +3232,18 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GitByOrgByRepoGitUploadPackValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postGitByOrgByRepoGitUploadPackValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'org' is set
         if (org == null) {
-            throw new ApiException("Missing the required parameter 'org' when calling postV1GitByOrgByRepoGitUploadPack(Async)");
+            throw new ApiException("Missing the required parameter 'org' when calling postGitByOrgByRepoGitUploadPack(Async)");
         }
 
         // verify the required parameter 'repo' is set
         if (repo == null) {
-            throw new ApiException("Missing the required parameter 'repo' when calling postV1GitByOrgByRepoGitUploadPack(Async)");
+            throw new ApiException("Missing the required parameter 'repo' when calling postGitByOrgByRepoGitUploadPack(Async)");
         }
 
-        return postV1GitByOrgByRepoGitUploadPackCall(org, repo, body, _callback);
+        return postGitByOrgByRepoGitUploadPackCall(org, repo, body, _callback);
 
     }
 
@@ -3255,8 +3255,8 @@ public class GitApi {
      * @param body  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1GitByOrgByRepoGitUploadPack(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
-        postV1GitByOrgByRepoGitUploadPackWithHttpInfo(org, repo, body);
+    public void postGitByOrgByRepoGitUploadPack(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
+        postGitByOrgByRepoGitUploadPackWithHttpInfo(org, repo, body);
     }
 
     /**
@@ -3268,8 +3268,8 @@ public class GitApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1GitByOrgByRepoGitUploadPackWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
-        okhttp3.Call localVarCall = postV1GitByOrgByRepoGitUploadPackValidateBeforeCall(org, repo, body, null);
+    public ApiResponse<Void> postGitByOrgByRepoGitUploadPackWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body) throws ApiException {
+        okhttp3.Call localVarCall = postGitByOrgByRepoGitUploadPackValidateBeforeCall(org, repo, body, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3283,14 +3283,14 @@ public class GitApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1GitByOrgByRepoGitUploadPackAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postGitByOrgByRepoGitUploadPackAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String repo, @javax.annotation.Nullable File body, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GitByOrgByRepoGitUploadPackValidateBeforeCall(org, repo, body, _callback);
+        okhttp3.Call localVarCall = postGitByOrgByRepoGitUploadPackValidateBeforeCall(org, repo, body, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GitKeys
+     * Build call for postGitKeys
      * @param registerKeyReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3302,7 +3302,7 @@ public class GitApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GitKeysCall(@javax.annotation.Nonnull RegisterKeyReq registerKeyReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitKeysCall(@javax.annotation.Nonnull RegisterKeyReq registerKeyReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3348,13 +3348,13 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GitKeysValidateBeforeCall(@javax.annotation.Nonnull RegisterKeyReq registerKeyReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postGitKeysValidateBeforeCall(@javax.annotation.Nonnull RegisterKeyReq registerKeyReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'registerKeyReq' is set
         if (registerKeyReq == null) {
-            throw new ApiException("Missing the required parameter 'registerKeyReq' when calling postV1GitKeys(Async)");
+            throw new ApiException("Missing the required parameter 'registerKeyReq' when calling postGitKeys(Async)");
         }
 
-        return postV1GitKeysCall(registerKeyReq, _callback);
+        return postGitKeysCall(registerKeyReq, _callback);
 
     }
 
@@ -3371,8 +3371,8 @@ public class GitApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public KeyView postV1GitKeys(@javax.annotation.Nonnull RegisterKeyReq registerKeyReq) throws ApiException {
-        ApiResponse<KeyView> localVarResp = postV1GitKeysWithHttpInfo(registerKeyReq);
+    public KeyView postGitKeys(@javax.annotation.Nonnull RegisterKeyReq registerKeyReq) throws ApiException {
+        ApiResponse<KeyView> localVarResp = postGitKeysWithHttpInfo(registerKeyReq);
         return localVarResp.getData();
     }
 
@@ -3389,8 +3389,8 @@ public class GitApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KeyView> postV1GitKeysWithHttpInfo(@javax.annotation.Nonnull RegisterKeyReq registerKeyReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1GitKeysValidateBeforeCall(registerKeyReq, null);
+    public ApiResponse<KeyView> postGitKeysWithHttpInfo(@javax.annotation.Nonnull RegisterKeyReq registerKeyReq) throws ApiException {
+        okhttp3.Call localVarCall = postGitKeysValidateBeforeCall(registerKeyReq, null);
         Type localVarReturnType = new TypeToken<KeyView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3409,15 +3409,15 @@ public class GitApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GitKeysAsync(@javax.annotation.Nonnull RegisterKeyReq registerKeyReq, final ApiCallback<KeyView> _callback) throws ApiException {
+    public okhttp3.Call postGitKeysAsync(@javax.annotation.Nonnull RegisterKeyReq registerKeyReq, final ApiCallback<KeyView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GitKeysValidateBeforeCall(registerKeyReq, _callback);
+        okhttp3.Call localVarCall = postGitKeysValidateBeforeCall(registerKeyReq, _callback);
         Type localVarReturnType = new TypeToken<KeyView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GitRepos
+     * Build call for postGitRepos
      * @param createReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3429,7 +3429,7 @@ public class GitApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GitReposCall(@javax.annotation.Nonnull CreateReq createReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitReposCall(@javax.annotation.Nonnull CreateReq createReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3475,13 +3475,13 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GitReposValidateBeforeCall(@javax.annotation.Nonnull CreateReq createReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postGitReposValidateBeforeCall(@javax.annotation.Nonnull CreateReq createReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'createReq' is set
         if (createReq == null) {
-            throw new ApiException("Missing the required parameter 'createReq' when calling postV1GitRepos(Async)");
+            throw new ApiException("Missing the required parameter 'createReq' when calling postGitRepos(Async)");
         }
 
-        return postV1GitReposCall(createReq, _callback);
+        return postGitReposCall(createReq, _callback);
 
     }
 
@@ -3498,8 +3498,8 @@ public class GitApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public RepoView postV1GitRepos(@javax.annotation.Nonnull CreateReq createReq) throws ApiException {
-        ApiResponse<RepoView> localVarResp = postV1GitReposWithHttpInfo(createReq);
+    public RepoView postGitRepos(@javax.annotation.Nonnull CreateReq createReq) throws ApiException {
+        ApiResponse<RepoView> localVarResp = postGitReposWithHttpInfo(createReq);
         return localVarResp.getData();
     }
 
@@ -3516,8 +3516,8 @@ public class GitApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RepoView> postV1GitReposWithHttpInfo(@javax.annotation.Nonnull CreateReq createReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1GitReposValidateBeforeCall(createReq, null);
+    public ApiResponse<RepoView> postGitReposWithHttpInfo(@javax.annotation.Nonnull CreateReq createReq) throws ApiException {
+        okhttp3.Call localVarCall = postGitReposValidateBeforeCall(createReq, null);
         Type localVarReturnType = new TypeToken<RepoView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3536,15 +3536,15 @@ public class GitApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GitReposAsync(@javax.annotation.Nonnull CreateReq createReq, final ApiCallback<RepoView> _callback) throws ApiException {
+    public okhttp3.Call postGitReposAsync(@javax.annotation.Nonnull CreateReq createReq, final ApiCallback<RepoView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GitReposValidateBeforeCall(createReq, _callback);
+        okhttp3.Call localVarCall = postGitReposValidateBeforeCall(createReq, _callback);
         Type localVarReturnType = new TypeToken<RepoView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GitReposByNameGc
+     * Build call for postGitReposByNameGc
      * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3556,7 +3556,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GitReposByNameGcCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitReposByNameGcCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3602,13 +3602,13 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GitReposByNameGcValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postGitReposByNameGcValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling postV1GitReposByNameGc(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling postGitReposByNameGc(Async)");
         }
 
-        return postV1GitReposByNameGcCall(name, _callback);
+        return postGitReposByNameGcCall(name, _callback);
 
     }
 
@@ -3625,8 +3625,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public GcOut postV1GitReposByNameGc(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<GcOut> localVarResp = postV1GitReposByNameGcWithHttpInfo(name);
+    public GcOut postGitReposByNameGc(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<GcOut> localVarResp = postGitReposByNameGcWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -3643,8 +3643,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GcOut> postV1GitReposByNameGcWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = postV1GitReposByNameGcValidateBeforeCall(name, null);
+    public ApiResponse<GcOut> postGitReposByNameGcWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = postGitReposByNameGcValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<GcOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3663,15 +3663,15 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GitReposByNameGcAsync(@javax.annotation.Nonnull String name, final ApiCallback<GcOut> _callback) throws ApiException {
+    public okhttp3.Call postGitReposByNameGcAsync(@javax.annotation.Nonnull String name, final ApiCallback<GcOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GitReposByNameGcValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = postGitReposByNameGcValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<GcOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GitReposByNameMirror
+     * Build call for postGitReposByNameMirror
      * @param name Name is the local repo to mirror into, from the :name path segment. It is CREATED on first use. (required)
      * @param mirrorReq  (required)
      * @param _callback Callback for upload/download progress
@@ -3684,7 +3684,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GitReposByNameMirrorCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorReq mirrorReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitReposByNameMirrorCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorReq mirrorReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3731,18 +3731,18 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GitReposByNameMirrorValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorReq mirrorReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postGitReposByNameMirrorValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorReq mirrorReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling postV1GitReposByNameMirror(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling postGitReposByNameMirror(Async)");
         }
 
         // verify the required parameter 'mirrorReq' is set
         if (mirrorReq == null) {
-            throw new ApiException("Missing the required parameter 'mirrorReq' when calling postV1GitReposByNameMirror(Async)");
+            throw new ApiException("Missing the required parameter 'mirrorReq' when calling postGitReposByNameMirror(Async)");
         }
 
-        return postV1GitReposByNameMirrorCall(name, mirrorReq, _callback);
+        return postGitReposByNameMirrorCall(name, mirrorReq, _callback);
 
     }
 
@@ -3760,8 +3760,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RepoView postV1GitReposByNameMirror(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorReq mirrorReq) throws ApiException {
-        ApiResponse<RepoView> localVarResp = postV1GitReposByNameMirrorWithHttpInfo(name, mirrorReq);
+    public RepoView postGitReposByNameMirror(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorReq mirrorReq) throws ApiException {
+        ApiResponse<RepoView> localVarResp = postGitReposByNameMirrorWithHttpInfo(name, mirrorReq);
         return localVarResp.getData();
     }
 
@@ -3779,8 +3779,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RepoView> postV1GitReposByNameMirrorWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorReq mirrorReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1GitReposByNameMirrorValidateBeforeCall(name, mirrorReq, null);
+    public ApiResponse<RepoView> postGitReposByNameMirrorWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorReq mirrorReq) throws ApiException {
+        okhttp3.Call localVarCall = postGitReposByNameMirrorValidateBeforeCall(name, mirrorReq, null);
         Type localVarReturnType = new TypeToken<RepoView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3800,15 +3800,15 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GitReposByNameMirrorAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorReq mirrorReq, final ApiCallback<RepoView> _callback) throws ApiException {
+    public okhttp3.Call postGitReposByNameMirrorAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorReq mirrorReq, final ApiCallback<RepoView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GitReposByNameMirrorValidateBeforeCall(name, mirrorReq, _callback);
+        okhttp3.Call localVarCall = postGitReposByNameMirrorValidateBeforeCall(name, mirrorReq, _callback);
         Type localVarReturnType = new TypeToken<RepoView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GitReposByNameMirrors
+     * Build call for postGitReposByNameMirrors
      * @param name Name is the repo whose advanced refs are pushed downstream, from the :name path segment. (required)
      * @param mirrorTargetReq  (required)
      * @param _callback Callback for upload/download progress
@@ -3821,7 +3821,7 @@ public class GitApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GitReposByNameMirrorsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorTargetReq mirrorTargetReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitReposByNameMirrorsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorTargetReq mirrorTargetReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3868,18 +3868,18 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GitReposByNameMirrorsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorTargetReq mirrorTargetReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postGitReposByNameMirrorsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorTargetReq mirrorTargetReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling postV1GitReposByNameMirrors(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling postGitReposByNameMirrors(Async)");
         }
 
         // verify the required parameter 'mirrorTargetReq' is set
         if (mirrorTargetReq == null) {
-            throw new ApiException("Missing the required parameter 'mirrorTargetReq' when calling postV1GitReposByNameMirrors(Async)");
+            throw new ApiException("Missing the required parameter 'mirrorTargetReq' when calling postGitReposByNameMirrors(Async)");
         }
 
-        return postV1GitReposByNameMirrorsCall(name, mirrorTargetReq, _callback);
+        return postGitReposByNameMirrorsCall(name, mirrorTargetReq, _callback);
 
     }
 
@@ -3897,8 +3897,8 @@ public class GitApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public MirrorTargetView postV1GitReposByNameMirrors(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorTargetReq mirrorTargetReq) throws ApiException {
-        ApiResponse<MirrorTargetView> localVarResp = postV1GitReposByNameMirrorsWithHttpInfo(name, mirrorTargetReq);
+    public MirrorTargetView postGitReposByNameMirrors(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorTargetReq mirrorTargetReq) throws ApiException {
+        ApiResponse<MirrorTargetView> localVarResp = postGitReposByNameMirrorsWithHttpInfo(name, mirrorTargetReq);
         return localVarResp.getData();
     }
 
@@ -3916,8 +3916,8 @@ public class GitApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MirrorTargetView> postV1GitReposByNameMirrorsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorTargetReq mirrorTargetReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1GitReposByNameMirrorsValidateBeforeCall(name, mirrorTargetReq, null);
+    public ApiResponse<MirrorTargetView> postGitReposByNameMirrorsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorTargetReq mirrorTargetReq) throws ApiException {
+        okhttp3.Call localVarCall = postGitReposByNameMirrorsValidateBeforeCall(name, mirrorTargetReq, null);
         Type localVarReturnType = new TypeToken<MirrorTargetView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3937,15 +3937,15 @@ public class GitApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GitReposByNameMirrorsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorTargetReq mirrorTargetReq, final ApiCallback<MirrorTargetView> _callback) throws ApiException {
+    public okhttp3.Call postGitReposByNameMirrorsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorTargetReq mirrorTargetReq, final ApiCallback<MirrorTargetView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GitReposByNameMirrorsValidateBeforeCall(name, mirrorTargetReq, _callback);
+        okhttp3.Call localVarCall = postGitReposByNameMirrorsValidateBeforeCall(name, mirrorTargetReq, _callback);
         Type localVarReturnType = new TypeToken<MirrorTargetView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GitReposByNamePulls
+     * Build call for postGitReposByNamePulls
      * @param name Name is the repo the proposal belongs to, from the :name path segment. (required)
      * @param openReq  (required)
      * @param _callback Callback for upload/download progress
@@ -3958,7 +3958,7 @@ public class GitApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GitReposByNamePullsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull OpenReq openReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitReposByNamePullsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull OpenReq openReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4005,18 +4005,18 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GitReposByNamePullsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull OpenReq openReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postGitReposByNamePullsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull OpenReq openReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling postV1GitReposByNamePulls(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling postGitReposByNamePulls(Async)");
         }
 
         // verify the required parameter 'openReq' is set
         if (openReq == null) {
-            throw new ApiException("Missing the required parameter 'openReq' when calling postV1GitReposByNamePulls(Async)");
+            throw new ApiException("Missing the required parameter 'openReq' when calling postGitReposByNamePulls(Async)");
         }
 
-        return postV1GitReposByNamePullsCall(name, openReq, _callback);
+        return postGitReposByNamePullsCall(name, openReq, _callback);
 
     }
 
@@ -4034,8 +4034,8 @@ public class GitApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public PullView postV1GitReposByNamePulls(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull OpenReq openReq) throws ApiException {
-        ApiResponse<PullView> localVarResp = postV1GitReposByNamePullsWithHttpInfo(name, openReq);
+    public PullView postGitReposByNamePulls(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull OpenReq openReq) throws ApiException {
+        ApiResponse<PullView> localVarResp = postGitReposByNamePullsWithHttpInfo(name, openReq);
         return localVarResp.getData();
     }
 
@@ -4053,8 +4053,8 @@ public class GitApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PullView> postV1GitReposByNamePullsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull OpenReq openReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1GitReposByNamePullsValidateBeforeCall(name, openReq, null);
+    public ApiResponse<PullView> postGitReposByNamePullsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull OpenReq openReq) throws ApiException {
+        okhttp3.Call localVarCall = postGitReposByNamePullsValidateBeforeCall(name, openReq, null);
         Type localVarReturnType = new TypeToken<PullView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4074,15 +4074,15 @@ public class GitApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GitReposByNamePullsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull OpenReq openReq, final ApiCallback<PullView> _callback) throws ApiException {
+    public okhttp3.Call postGitReposByNamePullsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull OpenReq openReq, final ApiCallback<PullView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GitReposByNamePullsValidateBeforeCall(name, openReq, _callback);
+        okhttp3.Call localVarCall = postGitReposByNamePullsValidateBeforeCall(name, openReq, _callback);
         Type localVarReturnType = new TypeToken<PullView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GitReposByNamePullsByNumberMerge
+     * Build call for postGitReposByNamePullsByNumberMerge
      * @param name Name is the repo, from the :name path segment. (required)
      * @param number Number is the proposal&#39;s per-repo number, from the :number path segment. (required)
      * @param _callback Callback for upload/download progress
@@ -4095,7 +4095,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GitReposByNamePullsByNumberMergeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitReposByNamePullsByNumberMergeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4142,18 +4142,18 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GitReposByNamePullsByNumberMergeValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postGitReposByNamePullsByNumberMergeValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling postV1GitReposByNamePullsByNumberMerge(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling postGitReposByNamePullsByNumberMerge(Async)");
         }
 
         // verify the required parameter 'number' is set
         if (number == null) {
-            throw new ApiException("Missing the required parameter 'number' when calling postV1GitReposByNamePullsByNumberMerge(Async)");
+            throw new ApiException("Missing the required parameter 'number' when calling postGitReposByNamePullsByNumberMerge(Async)");
         }
 
-        return postV1GitReposByNamePullsByNumberMergeCall(name, number, _callback);
+        return postGitReposByNamePullsByNumberMergeCall(name, number, _callback);
 
     }
 
@@ -4171,8 +4171,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PullView postV1GitReposByNamePullsByNumberMerge(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number) throws ApiException {
-        ApiResponse<PullView> localVarResp = postV1GitReposByNamePullsByNumberMergeWithHttpInfo(name, number);
+    public PullView postGitReposByNamePullsByNumberMerge(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number) throws ApiException {
+        ApiResponse<PullView> localVarResp = postGitReposByNamePullsByNumberMergeWithHttpInfo(name, number);
         return localVarResp.getData();
     }
 
@@ -4190,8 +4190,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PullView> postV1GitReposByNamePullsByNumberMergeWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number) throws ApiException {
-        okhttp3.Call localVarCall = postV1GitReposByNamePullsByNumberMergeValidateBeforeCall(name, number, null);
+    public ApiResponse<PullView> postGitReposByNamePullsByNumberMergeWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number) throws ApiException {
+        okhttp3.Call localVarCall = postGitReposByNamePullsByNumberMergeValidateBeforeCall(name, number, null);
         Type localVarReturnType = new TypeToken<PullView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4211,15 +4211,15 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GitReposByNamePullsByNumberMergeAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number, final ApiCallback<PullView> _callback) throws ApiException {
+    public okhttp3.Call postGitReposByNamePullsByNumberMergeAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number, final ApiCallback<PullView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GitReposByNamePullsByNumberMergeValidateBeforeCall(name, number, _callback);
+        okhttp3.Call localVarCall = postGitReposByNamePullsByNumberMergeValidateBeforeCall(name, number, _callback);
         Type localVarReturnType = new TypeToken<PullView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GitReposByNamePush
+     * Build call for postGitReposByNamePush
      * @param name Name is the repo to push into, from the :name path segment. It is CREATED on first push if it does not exist. (required)
      * @param pushReq  (required)
      * @param _callback Callback for upload/download progress
@@ -4232,7 +4232,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GitReposByNamePushCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull PushReq pushReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitReposByNamePushCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull PushReq pushReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4279,18 +4279,18 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GitReposByNamePushValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull PushReq pushReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postGitReposByNamePushValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull PushReq pushReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling postV1GitReposByNamePush(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling postGitReposByNamePush(Async)");
         }
 
         // verify the required parameter 'pushReq' is set
         if (pushReq == null) {
-            throw new ApiException("Missing the required parameter 'pushReq' when calling postV1GitReposByNamePush(Async)");
+            throw new ApiException("Missing the required parameter 'pushReq' when calling postGitReposByNamePush(Async)");
         }
 
-        return postV1GitReposByNamePushCall(name, pushReq, _callback);
+        return postGitReposByNamePushCall(name, pushReq, _callback);
 
     }
 
@@ -4308,8 +4308,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PushResp postV1GitReposByNamePush(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull PushReq pushReq) throws ApiException {
-        ApiResponse<PushResp> localVarResp = postV1GitReposByNamePushWithHttpInfo(name, pushReq);
+    public PushResp postGitReposByNamePush(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull PushReq pushReq) throws ApiException {
+        ApiResponse<PushResp> localVarResp = postGitReposByNamePushWithHttpInfo(name, pushReq);
         return localVarResp.getData();
     }
 
@@ -4327,8 +4327,8 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PushResp> postV1GitReposByNamePushWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull PushReq pushReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1GitReposByNamePushValidateBeforeCall(name, pushReq, null);
+    public ApiResponse<PushResp> postGitReposByNamePushWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull PushReq pushReq) throws ApiException {
+        okhttp3.Call localVarCall = postGitReposByNamePushValidateBeforeCall(name, pushReq, null);
         Type localVarReturnType = new TypeToken<PushResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4348,15 +4348,15 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GitReposByNamePushAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull PushReq pushReq, final ApiCallback<PushResp> _callback) throws ApiException {
+    public okhttp3.Call postGitReposByNamePushAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull PushReq pushReq, final ApiCallback<PushResp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GitReposByNamePushValidateBeforeCall(name, pushReq, _callback);
+        okhttp3.Call localVarCall = postGitReposByNamePushValidateBeforeCall(name, pushReq, _callback);
         Type localVarReturnType = new TypeToken<PushResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GitReposByNameSubscriptions
+     * Build call for postGitReposByNameSubscriptions
      * @param name Name is the repo to subscribe, from the :name path segment. (required)
      * @param subscribeReq  (required)
      * @param _callback Callback for upload/download progress
@@ -4369,7 +4369,7 @@ public class GitApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GitReposByNameSubscriptionsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull SubscribeReq subscribeReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitReposByNameSubscriptionsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull SubscribeReq subscribeReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4416,18 +4416,18 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GitReposByNameSubscriptionsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull SubscribeReq subscribeReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postGitReposByNameSubscriptionsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull SubscribeReq subscribeReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling postV1GitReposByNameSubscriptions(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling postGitReposByNameSubscriptions(Async)");
         }
 
         // verify the required parameter 'subscribeReq' is set
         if (subscribeReq == null) {
-            throw new ApiException("Missing the required parameter 'subscribeReq' when calling postV1GitReposByNameSubscriptions(Async)");
+            throw new ApiException("Missing the required parameter 'subscribeReq' when calling postGitReposByNameSubscriptions(Async)");
         }
 
-        return postV1GitReposByNameSubscriptionsCall(name, subscribeReq, _callback);
+        return postGitReposByNameSubscriptionsCall(name, subscribeReq, _callback);
 
     }
 
@@ -4445,8 +4445,8 @@ public class GitApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public SubscriptionView postV1GitReposByNameSubscriptions(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull SubscribeReq subscribeReq) throws ApiException {
-        ApiResponse<SubscriptionView> localVarResp = postV1GitReposByNameSubscriptionsWithHttpInfo(name, subscribeReq);
+    public SubscriptionView postGitReposByNameSubscriptions(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull SubscribeReq subscribeReq) throws ApiException {
+        ApiResponse<SubscriptionView> localVarResp = postGitReposByNameSubscriptionsWithHttpInfo(name, subscribeReq);
         return localVarResp.getData();
     }
 
@@ -4464,8 +4464,8 @@ public class GitApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SubscriptionView> postV1GitReposByNameSubscriptionsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull SubscribeReq subscribeReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1GitReposByNameSubscriptionsValidateBeforeCall(name, subscribeReq, null);
+    public ApiResponse<SubscriptionView> postGitReposByNameSubscriptionsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull SubscribeReq subscribeReq) throws ApiException {
+        okhttp3.Call localVarCall = postGitReposByNameSubscriptionsValidateBeforeCall(name, subscribeReq, null);
         Type localVarReturnType = new TypeToken<SubscriptionView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4485,20 +4485,20 @@ public class GitApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GitReposByNameSubscriptionsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull SubscribeReq subscribeReq, final ApiCallback<SubscriptionView> _callback) throws ApiException {
+    public okhttp3.Call postGitReposByNameSubscriptionsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull SubscribeReq subscribeReq, final ApiCallback<SubscriptionView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GitReposByNameSubscriptionsValidateBeforeCall(name, subscribeReq, _callback);
+        okhttp3.Call localVarCall = postGitReposByNameSubscriptionsValidateBeforeCall(name, subscribeReq, _callback);
         Type localVarReturnType = new TypeToken<SubscriptionView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GitWebhook
+     * Build call for postGitWebhook
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1GitWebhookCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitWebhookCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4542,8 +4542,8 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GitWebhookValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1GitWebhookCall(_callback);
+    private okhttp3.Call postGitWebhookValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postGitWebhookCall(_callback);
 
     }
 
@@ -4552,8 +4552,8 @@ public class GitApi {
      * GONE (410). This was the canonical forge&#39;s push-to-deploy door, and it never dispatched a build in its life.  It handed each verified push to cloud.OnGitPush, a single-registrant seam whose only registrant lives in apps/platform. cloud runs each app as its own OS process, so in the git process that builder is nil forever — and this handler answered 204 either way. Delivered, signature valid, green on the forge&#39;s hook page, and nothing built.  Push-to-deploy now belongs to POST https://platform.hanzo.ai/v1/git-webhook, which owns the build system-of-record and dispatches BuildKit Jobs. git.hanzo.ai delivers there through ONE forge-wide system webhook covering every repository; a repo opts in by committing hanzo.yml, not by owning a hook of its own.  The route is kept, and answers 410 naming that address, precisely so a misdirected delivery says what is wrong. Deleting it would 404, and a 404 here reads as &#39;the API is switched off&#39; — the wrong conclusion this estate has already drawn twice.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1GitWebhook() throws ApiException {
-        postV1GitWebhookWithHttpInfo();
+    public void postGitWebhook() throws ApiException {
+        postGitWebhookWithHttpInfo();
     }
 
     /**
@@ -4562,8 +4562,8 @@ public class GitApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1GitWebhookWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1GitWebhookValidateBeforeCall(null);
+    public ApiResponse<Void> postGitWebhookWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postGitWebhookValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -4574,20 +4574,20 @@ public class GitApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1GitWebhookAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postGitWebhookAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GitWebhookValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postGitWebhookValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GitZapCreaterepo
+     * Build call for postGitZapCreaterepo
      * @param zapProcReq  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1GitZapCreaterepoCall(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitZapCreaterepoCall(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4632,8 +4632,8 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GitZapCreaterepoValidateBeforeCall(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback _callback) throws ApiException {
-        return postV1GitZapCreaterepoCall(zapProcReq, _callback);
+    private okhttp3.Call postGitZapCreaterepoValidateBeforeCall(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback _callback) throws ApiException {
+        return postGitZapCreaterepoCall(zapProcReq, _callback);
 
     }
 
@@ -4643,8 +4643,8 @@ public class GitApi {
      * @param zapProcReq  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1GitZapCreaterepo(@javax.annotation.Nullable ZapProcReq zapProcReq) throws ApiException {
-        postV1GitZapCreaterepoWithHttpInfo(zapProcReq);
+    public void postGitZapCreaterepo(@javax.annotation.Nullable ZapProcReq zapProcReq) throws ApiException {
+        postGitZapCreaterepoWithHttpInfo(zapProcReq);
     }
 
     /**
@@ -4654,8 +4654,8 @@ public class GitApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1GitZapCreaterepoWithHttpInfo(@javax.annotation.Nullable ZapProcReq zapProcReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1GitZapCreaterepoValidateBeforeCall(zapProcReq, null);
+    public ApiResponse<Void> postGitZapCreaterepoWithHttpInfo(@javax.annotation.Nullable ZapProcReq zapProcReq) throws ApiException {
+        okhttp3.Call localVarCall = postGitZapCreaterepoValidateBeforeCall(zapProcReq, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -4667,20 +4667,20 @@ public class GitApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1GitZapCreaterepoAsync(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postGitZapCreaterepoAsync(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GitZapCreaterepoValidateBeforeCall(zapProcReq, _callback);
+        okhttp3.Call localVarCall = postGitZapCreaterepoValidateBeforeCall(zapProcReq, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GitZapDeleterepo
+     * Build call for postGitZapDeleterepo
      * @param zapProcReq  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1GitZapDeleterepoCall(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitZapDeleterepoCall(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4725,8 +4725,8 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GitZapDeleterepoValidateBeforeCall(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback _callback) throws ApiException {
-        return postV1GitZapDeleterepoCall(zapProcReq, _callback);
+    private okhttp3.Call postGitZapDeleterepoValidateBeforeCall(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback _callback) throws ApiException {
+        return postGitZapDeleterepoCall(zapProcReq, _callback);
 
     }
 
@@ -4736,8 +4736,8 @@ public class GitApi {
      * @param zapProcReq  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1GitZapDeleterepo(@javax.annotation.Nullable ZapProcReq zapProcReq) throws ApiException {
-        postV1GitZapDeleterepoWithHttpInfo(zapProcReq);
+    public void postGitZapDeleterepo(@javax.annotation.Nullable ZapProcReq zapProcReq) throws ApiException {
+        postGitZapDeleterepoWithHttpInfo(zapProcReq);
     }
 
     /**
@@ -4747,8 +4747,8 @@ public class GitApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1GitZapDeleterepoWithHttpInfo(@javax.annotation.Nullable ZapProcReq zapProcReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1GitZapDeleterepoValidateBeforeCall(zapProcReq, null);
+    public ApiResponse<Void> postGitZapDeleterepoWithHttpInfo(@javax.annotation.Nullable ZapProcReq zapProcReq) throws ApiException {
+        okhttp3.Call localVarCall = postGitZapDeleterepoValidateBeforeCall(zapProcReq, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -4760,20 +4760,20 @@ public class GitApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1GitZapDeleterepoAsync(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postGitZapDeleterepoAsync(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GitZapDeleterepoValidateBeforeCall(zapProcReq, _callback);
+        okhttp3.Call localVarCall = postGitZapDeleterepoValidateBeforeCall(zapProcReq, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GitZapGetrepo
+     * Build call for postGitZapGetrepo
      * @param zapProcReq  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1GitZapGetrepoCall(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitZapGetrepoCall(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4818,8 +4818,8 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GitZapGetrepoValidateBeforeCall(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback _callback) throws ApiException {
-        return postV1GitZapGetrepoCall(zapProcReq, _callback);
+    private okhttp3.Call postGitZapGetrepoValidateBeforeCall(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback _callback) throws ApiException {
+        return postGitZapGetrepoCall(zapProcReq, _callback);
 
     }
 
@@ -4829,8 +4829,8 @@ public class GitApi {
      * @param zapProcReq  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1GitZapGetrepo(@javax.annotation.Nullable ZapProcReq zapProcReq) throws ApiException {
-        postV1GitZapGetrepoWithHttpInfo(zapProcReq);
+    public void postGitZapGetrepo(@javax.annotation.Nullable ZapProcReq zapProcReq) throws ApiException {
+        postGitZapGetrepoWithHttpInfo(zapProcReq);
     }
 
     /**
@@ -4840,8 +4840,8 @@ public class GitApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1GitZapGetrepoWithHttpInfo(@javax.annotation.Nullable ZapProcReq zapProcReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1GitZapGetrepoValidateBeforeCall(zapProcReq, null);
+    public ApiResponse<Void> postGitZapGetrepoWithHttpInfo(@javax.annotation.Nullable ZapProcReq zapProcReq) throws ApiException {
+        okhttp3.Call localVarCall = postGitZapGetrepoValidateBeforeCall(zapProcReq, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -4853,19 +4853,19 @@ public class GitApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1GitZapGetrepoAsync(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postGitZapGetrepoAsync(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GitZapGetrepoValidateBeforeCall(zapProcReq, _callback);
+        okhttp3.Call localVarCall = postGitZapGetrepoValidateBeforeCall(zapProcReq, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GitZapListrepos
+     * Build call for postGitZapListrepos
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1GitZapListreposCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitZapListreposCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4909,8 +4909,8 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GitZapListreposValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1GitZapListreposCall(_callback);
+    private okhttp3.Call postGitZapListreposValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postGitZapListreposCall(_callback);
 
     }
 
@@ -4919,8 +4919,8 @@ public class GitApi {
      * Answers every repository in the caller&#39;s org and project scope. It reads NO body — the scope is entirely the caller&#39;s identity — so a request with an empty object is correct.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1GitZapListrepos() throws ApiException {
-        postV1GitZapListreposWithHttpInfo();
+    public void postGitZapListrepos() throws ApiException {
+        postGitZapListreposWithHttpInfo();
     }
 
     /**
@@ -4929,8 +4929,8 @@ public class GitApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1GitZapListreposWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1GitZapListreposValidateBeforeCall(null);
+    public ApiResponse<Void> postGitZapListreposWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postGitZapListreposValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -4941,19 +4941,19 @@ public class GitApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1GitZapListreposAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postGitZapListreposAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GitZapListreposValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postGitZapListreposValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GitZapUsage
+     * Build call for postGitZapUsage
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1GitZapUsageCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitZapUsageCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4997,8 +4997,8 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GitZapUsageValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1GitZapUsageCall(_callback);
+    private okhttp3.Call postGitZapUsageValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postGitZapUsageCall(_callback);
 
     }
 
@@ -5007,8 +5007,8 @@ public class GitApi {
      * Answers every repository in the caller&#39;s org with its size in bytes, plus the org&#39;s total — what git storage is actually being used, and by which repository. It reads NO body, and it is scoped to the caller&#39;s own org, so it is that org&#39;s footprint and never the fleet&#39;s.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1GitZapUsage() throws ApiException {
-        postV1GitZapUsageWithHttpInfo();
+    public void postGitZapUsage() throws ApiException {
+        postGitZapUsageWithHttpInfo();
     }
 
     /**
@@ -5017,8 +5017,8 @@ public class GitApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1GitZapUsageWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1GitZapUsageValidateBeforeCall(null);
+    public ApiResponse<Void> postGitZapUsageWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postGitZapUsageValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -5029,9 +5029,9 @@ public class GitApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1GitZapUsageAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postGitZapUsageAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GitZapUsageValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postGitZapUsageValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

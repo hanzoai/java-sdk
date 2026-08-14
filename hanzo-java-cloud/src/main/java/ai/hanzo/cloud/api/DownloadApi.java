@@ -72,13 +72,13 @@ public class DownloadApi {
     }
 
     /**
-     * Build call for getV1DownloadByWildcard1
+     * Build call for getDownloadByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1DownloadByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDownloadByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -123,13 +123,13 @@ public class DownloadApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DownloadByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDownloadByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling getV1DownloadByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling getDownloadByWildcard1(Async)");
         }
 
-        return getV1DownloadByWildcard1Call(wildcard1, _callback);
+        return getDownloadByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -139,8 +139,8 @@ public class DownloadApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1DownloadByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        getV1DownloadByWildcard1WithHttpInfo(wildcard1);
+    public void getDownloadByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        getDownloadByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -150,8 +150,8 @@ public class DownloadApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1DownloadByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = getV1DownloadByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> getDownloadByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = getDownloadByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -163,9 +163,9 @@ public class DownloadApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1DownloadByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getDownloadByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DownloadByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = getDownloadByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

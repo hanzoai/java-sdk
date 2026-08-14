@@ -77,7 +77,7 @@ public class HelpApi {
     }
 
     /**
-     * Build call for getV1HelpArticles
+     * Build call for getHelpArticles
      * @param category Category narrows the list to one knowledge-base section, matched against the article&#39;s category by exact name. Empty lists every section. (optional)
      * @param limit Limit caps how many articles are returned. Anything that is not a positive integer uses 50, and values above 200 are clamped to 200. (optional)
      * @param _callback Callback for upload/download progress
@@ -90,7 +90,7 @@ public class HelpApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1HelpArticlesCall(@javax.annotation.Nullable String category, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getHelpArticlesCall(@javax.annotation.Nullable String category, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -143,8 +143,8 @@ public class HelpApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1HelpArticlesValidateBeforeCall(@javax.annotation.Nullable String category, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1HelpArticlesCall(category, limit, _callback);
+    private okhttp3.Call getHelpArticlesValidateBeforeCall(@javax.annotation.Nullable String category, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getHelpArticlesCall(category, limit, _callback);
 
     }
 
@@ -162,8 +162,8 @@ public class HelpApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public HelpArticleList getV1HelpArticles(@javax.annotation.Nullable String category, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<HelpArticleList> localVarResp = getV1HelpArticlesWithHttpInfo(category, limit);
+    public HelpArticleList getHelpArticles(@javax.annotation.Nullable String category, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<HelpArticleList> localVarResp = getHelpArticlesWithHttpInfo(category, limit);
         return localVarResp.getData();
     }
 
@@ -181,8 +181,8 @@ public class HelpApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<HelpArticleList> getV1HelpArticlesWithHttpInfo(@javax.annotation.Nullable String category, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1HelpArticlesValidateBeforeCall(category, limit, null);
+    public ApiResponse<HelpArticleList> getHelpArticlesWithHttpInfo(@javax.annotation.Nullable String category, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getHelpArticlesValidateBeforeCall(category, limit, null);
         Type localVarReturnType = new TypeToken<HelpArticleList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -202,15 +202,15 @@ public class HelpApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1HelpArticlesAsync(@javax.annotation.Nullable String category, @javax.annotation.Nullable Integer limit, final ApiCallback<HelpArticleList> _callback) throws ApiException {
+    public okhttp3.Call getHelpArticlesAsync(@javax.annotation.Nullable String category, @javax.annotation.Nullable Integer limit, final ApiCallback<HelpArticleList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1HelpArticlesValidateBeforeCall(category, limit, _callback);
+        okhttp3.Call localVarCall = getHelpArticlesValidateBeforeCall(category, limit, _callback);
         Type localVarReturnType = new TypeToken<HelpArticleList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1HelpArticlesBySlug
+     * Build call for getHelpArticlesBySlug
      * @param slug Slug is the article&#39;s public identifier, from the path. It IS the document name in the help center&#39;s store. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -222,7 +222,7 @@ public class HelpApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1HelpArticlesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getHelpArticlesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -268,13 +268,13 @@ public class HelpApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1HelpArticlesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getHelpArticlesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling getV1HelpArticlesBySlug(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling getHelpArticlesBySlug(Async)");
         }
 
-        return getV1HelpArticlesBySlugCall(slug, _callback);
+        return getHelpArticlesBySlugCall(slug, _callback);
 
     }
 
@@ -291,8 +291,8 @@ public class HelpApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public HelpArticle getV1HelpArticlesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
-        ApiResponse<HelpArticle> localVarResp = getV1HelpArticlesBySlugWithHttpInfo(slug);
+    public HelpArticle getHelpArticlesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
+        ApiResponse<HelpArticle> localVarResp = getHelpArticlesBySlugWithHttpInfo(slug);
         return localVarResp.getData();
     }
 
@@ -309,8 +309,8 @@ public class HelpApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<HelpArticle> getV1HelpArticlesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
-        okhttp3.Call localVarCall = getV1HelpArticlesBySlugValidateBeforeCall(slug, null);
+    public ApiResponse<HelpArticle> getHelpArticlesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = getHelpArticlesBySlugValidateBeforeCall(slug, null);
         Type localVarReturnType = new TypeToken<HelpArticle>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -329,15 +329,15 @@ public class HelpApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1HelpArticlesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<HelpArticle> _callback) throws ApiException {
+    public okhttp3.Call getHelpArticlesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<HelpArticle> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1HelpArticlesBySlugValidateBeforeCall(slug, _callback);
+        okhttp3.Call localVarCall = getHelpArticlesBySlugValidateBeforeCall(slug, _callback);
         Type localVarReturnType = new TypeToken<HelpArticle>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1HelpCategories
+     * Build call for getHelpCategories
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -348,7 +348,7 @@ public class HelpApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1HelpCategoriesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getHelpCategoriesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -393,8 +393,8 @@ public class HelpApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1HelpCategoriesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1HelpCategoriesCall(_callback);
+    private okhttp3.Call getHelpCategoriesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getHelpCategoriesCall(_callback);
 
     }
 
@@ -410,8 +410,8 @@ public class HelpApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public HelpCategoryList getV1HelpCategories() throws ApiException {
-        ApiResponse<HelpCategoryList> localVarResp = getV1HelpCategoriesWithHttpInfo();
+    public HelpCategoryList getHelpCategories() throws ApiException {
+        ApiResponse<HelpCategoryList> localVarResp = getHelpCategoriesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -427,8 +427,8 @@ public class HelpApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<HelpCategoryList> getV1HelpCategoriesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1HelpCategoriesValidateBeforeCall(null);
+    public ApiResponse<HelpCategoryList> getHelpCategoriesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getHelpCategoriesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<HelpCategoryList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -446,15 +446,15 @@ public class HelpApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1HelpCategoriesAsync(final ApiCallback<HelpCategoryList> _callback) throws ApiException {
+    public okhttp3.Call getHelpCategoriesAsync(final ApiCallback<HelpCategoryList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1HelpCategoriesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getHelpCategoriesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<HelpCategoryList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1HelpTickets
+     * Build call for postHelpTickets
      * @param helpTicketIntake  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -466,7 +466,7 @@ public class HelpApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1HelpTicketsCall(@javax.annotation.Nonnull HelpTicketIntake helpTicketIntake, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postHelpTicketsCall(@javax.annotation.Nonnull HelpTicketIntake helpTicketIntake, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -512,13 +512,13 @@ public class HelpApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1HelpTicketsValidateBeforeCall(@javax.annotation.Nonnull HelpTicketIntake helpTicketIntake, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postHelpTicketsValidateBeforeCall(@javax.annotation.Nonnull HelpTicketIntake helpTicketIntake, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'helpTicketIntake' is set
         if (helpTicketIntake == null) {
-            throw new ApiException("Missing the required parameter 'helpTicketIntake' when calling postV1HelpTickets(Async)");
+            throw new ApiException("Missing the required parameter 'helpTicketIntake' when calling postHelpTickets(Async)");
         }
 
-        return postV1HelpTicketsCall(helpTicketIntake, _callback);
+        return postHelpTicketsCall(helpTicketIntake, _callback);
 
     }
 
@@ -535,8 +535,8 @@ public class HelpApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public HelpTicketFiled postV1HelpTickets(@javax.annotation.Nonnull HelpTicketIntake helpTicketIntake) throws ApiException {
-        ApiResponse<HelpTicketFiled> localVarResp = postV1HelpTicketsWithHttpInfo(helpTicketIntake);
+    public HelpTicketFiled postHelpTickets(@javax.annotation.Nonnull HelpTicketIntake helpTicketIntake) throws ApiException {
+        ApiResponse<HelpTicketFiled> localVarResp = postHelpTicketsWithHttpInfo(helpTicketIntake);
         return localVarResp.getData();
     }
 
@@ -553,8 +553,8 @@ public class HelpApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<HelpTicketFiled> postV1HelpTicketsWithHttpInfo(@javax.annotation.Nonnull HelpTicketIntake helpTicketIntake) throws ApiException {
-        okhttp3.Call localVarCall = postV1HelpTicketsValidateBeforeCall(helpTicketIntake, null);
+    public ApiResponse<HelpTicketFiled> postHelpTicketsWithHttpInfo(@javax.annotation.Nonnull HelpTicketIntake helpTicketIntake) throws ApiException {
+        okhttp3.Call localVarCall = postHelpTicketsValidateBeforeCall(helpTicketIntake, null);
         Type localVarReturnType = new TypeToken<HelpTicketFiled>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -573,9 +573,9 @@ public class HelpApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1HelpTicketsAsync(@javax.annotation.Nonnull HelpTicketIntake helpTicketIntake, final ApiCallback<HelpTicketFiled> _callback) throws ApiException {
+    public okhttp3.Call postHelpTicketsAsync(@javax.annotation.Nonnull HelpTicketIntake helpTicketIntake, final ApiCallback<HelpTicketFiled> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1HelpTicketsValidateBeforeCall(helpTicketIntake, _callback);
+        okhttp3.Call localVarCall = postHelpTicketsValidateBeforeCall(helpTicketIntake, _callback);
         Type localVarReturnType = new TypeToken<HelpTicketFiled>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

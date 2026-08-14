@@ -78,7 +78,7 @@ public class AuthorsApi {
     }
 
     /**
-     * Build call for getV1Authors
+     * Build call for getAuthors
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -89,7 +89,7 @@ public class AuthorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AuthorsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAuthorsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,8 +134,8 @@ public class AuthorsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AuthorsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1AuthorsCall(_callback);
+    private okhttp3.Call getAuthorsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAuthorsCall(_callback);
 
     }
 
@@ -151,8 +151,8 @@ public class AuthorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Map<String, Object> getV1Authors() throws ApiException {
-        ApiResponse<Map<String, Object>> localVarResp = getV1AuthorsWithHttpInfo();
+    public Map<String, Object> getAuthors() throws ApiException {
+        ApiResponse<Map<String, Object>> localVarResp = getAuthorsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -168,8 +168,8 @@ public class AuthorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Map<String, Object>> getV1AuthorsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1AuthorsValidateBeforeCall(null);
+    public ApiResponse<Map<String, Object>> getAuthorsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAuthorsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -187,15 +187,15 @@ public class AuthorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AuthorsAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
+    public okhttp3.Call getAuthorsAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AuthorsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAuthorsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AuthorsBasis
+     * Build call for getAuthorsBasis
      * @param period Period is the UTC accrual month, YYYY-MM. Empty means every period; any other shape is refused with 400, because the period is echoed back and used as a SQL filter and is only ever accepted in the one form the accrual latch mints. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -207,7 +207,7 @@ public class AuthorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AuthorsBasisCall(@javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAuthorsBasisCall(@javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -256,8 +256,8 @@ public class AuthorsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AuthorsBasisValidateBeforeCall(@javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
-        return getV1AuthorsBasisCall(period, _callback);
+    private okhttp3.Call getAuthorsBasisValidateBeforeCall(@javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
+        return getAuthorsBasisCall(period, _callback);
 
     }
 
@@ -274,8 +274,8 @@ public class AuthorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Map<String, Object> getV1AuthorsBasis(@javax.annotation.Nullable String period) throws ApiException {
-        ApiResponse<Map<String, Object>> localVarResp = getV1AuthorsBasisWithHttpInfo(period);
+    public Map<String, Object> getAuthorsBasis(@javax.annotation.Nullable String period) throws ApiException {
+        ApiResponse<Map<String, Object>> localVarResp = getAuthorsBasisWithHttpInfo(period);
         return localVarResp.getData();
     }
 
@@ -292,8 +292,8 @@ public class AuthorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Map<String, Object>> getV1AuthorsBasisWithHttpInfo(@javax.annotation.Nullable String period) throws ApiException {
-        okhttp3.Call localVarCall = getV1AuthorsBasisValidateBeforeCall(period, null);
+    public ApiResponse<Map<String, Object>> getAuthorsBasisWithHttpInfo(@javax.annotation.Nullable String period) throws ApiException {
+        okhttp3.Call localVarCall = getAuthorsBasisValidateBeforeCall(period, null);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -312,15 +312,15 @@ public class AuthorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AuthorsBasisAsync(@javax.annotation.Nullable String period, final ApiCallback<Map<String, Object>> _callback) throws ApiException {
+    public okhttp3.Call getAuthorsBasisAsync(@javax.annotation.Nullable String period, final ApiCallback<Map<String, Object>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AuthorsBasisValidateBeforeCall(period, _callback);
+        okhttp3.Call localVarCall = getAuthorsBasisValidateBeforeCall(period, _callback);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AuthorsConnect
+     * Build call for postAuthorsConnect
      * @param connectRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -332,7 +332,7 @@ public class AuthorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AuthorsConnectCall(@javax.annotation.Nonnull ConnectRequest connectRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAuthorsConnectCall(@javax.annotation.Nonnull ConnectRequest connectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -378,13 +378,13 @@ public class AuthorsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AuthorsConnectValidateBeforeCall(@javax.annotation.Nonnull ConnectRequest connectRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAuthorsConnectValidateBeforeCall(@javax.annotation.Nonnull ConnectRequest connectRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'connectRequest' is set
         if (connectRequest == null) {
-            throw new ApiException("Missing the required parameter 'connectRequest' when calling postV1AuthorsConnect(Async)");
+            throw new ApiException("Missing the required parameter 'connectRequest' when calling postAuthorsConnect(Async)");
         }
 
-        return postV1AuthorsConnectCall(connectRequest, _callback);
+        return postAuthorsConnectCall(connectRequest, _callback);
 
     }
 
@@ -401,8 +401,8 @@ public class AuthorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Enrolment postV1AuthorsConnect(@javax.annotation.Nonnull ConnectRequest connectRequest) throws ApiException {
-        ApiResponse<Enrolment> localVarResp = postV1AuthorsConnectWithHttpInfo(connectRequest);
+    public Enrolment postAuthorsConnect(@javax.annotation.Nonnull ConnectRequest connectRequest) throws ApiException {
+        ApiResponse<Enrolment> localVarResp = postAuthorsConnectWithHttpInfo(connectRequest);
         return localVarResp.getData();
     }
 
@@ -419,8 +419,8 @@ public class AuthorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Enrolment> postV1AuthorsConnectWithHttpInfo(@javax.annotation.Nonnull ConnectRequest connectRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1AuthorsConnectValidateBeforeCall(connectRequest, null);
+    public ApiResponse<Enrolment> postAuthorsConnectWithHttpInfo(@javax.annotation.Nonnull ConnectRequest connectRequest) throws ApiException {
+        okhttp3.Call localVarCall = postAuthorsConnectValidateBeforeCall(connectRequest, null);
         Type localVarReturnType = new TypeToken<Enrolment>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -439,15 +439,15 @@ public class AuthorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AuthorsConnectAsync(@javax.annotation.Nonnull ConnectRequest connectRequest, final ApiCallback<Enrolment> _callback) throws ApiException {
+    public okhttp3.Call postAuthorsConnectAsync(@javax.annotation.Nonnull ConnectRequest connectRequest, final ApiCallback<Enrolment> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AuthorsConnectValidateBeforeCall(connectRequest, _callback);
+        okhttp3.Call localVarCall = postAuthorsConnectValidateBeforeCall(connectRequest, _callback);
         Type localVarReturnType = new TypeToken<Enrolment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AuthorsDeploysRecord
+     * Build call for postAuthorsDeploysRecord
      * @param deployRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -459,7 +459,7 @@ public class AuthorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AuthorsDeploysRecordCall(@javax.annotation.Nonnull DeployRequest deployRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAuthorsDeploysRecordCall(@javax.annotation.Nonnull DeployRequest deployRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -505,13 +505,13 @@ public class AuthorsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AuthorsDeploysRecordValidateBeforeCall(@javax.annotation.Nonnull DeployRequest deployRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAuthorsDeploysRecordValidateBeforeCall(@javax.annotation.Nonnull DeployRequest deployRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'deployRequest' is set
         if (deployRequest == null) {
-            throw new ApiException("Missing the required parameter 'deployRequest' when calling postV1AuthorsDeploysRecord(Async)");
+            throw new ApiException("Missing the required parameter 'deployRequest' when calling postAuthorsDeploysRecord(Async)");
         }
 
-        return postV1AuthorsDeploysRecordCall(deployRequest, _callback);
+        return postAuthorsDeploysRecordCall(deployRequest, _callback);
 
     }
 
@@ -528,8 +528,8 @@ public class AuthorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DeployRecord postV1AuthorsDeploysRecord(@javax.annotation.Nonnull DeployRequest deployRequest) throws ApiException {
-        ApiResponse<DeployRecord> localVarResp = postV1AuthorsDeploysRecordWithHttpInfo(deployRequest);
+    public DeployRecord postAuthorsDeploysRecord(@javax.annotation.Nonnull DeployRequest deployRequest) throws ApiException {
+        ApiResponse<DeployRecord> localVarResp = postAuthorsDeploysRecordWithHttpInfo(deployRequest);
         return localVarResp.getData();
     }
 
@@ -546,8 +546,8 @@ public class AuthorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeployRecord> postV1AuthorsDeploysRecordWithHttpInfo(@javax.annotation.Nonnull DeployRequest deployRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1AuthorsDeploysRecordValidateBeforeCall(deployRequest, null);
+    public ApiResponse<DeployRecord> postAuthorsDeploysRecordWithHttpInfo(@javax.annotation.Nonnull DeployRequest deployRequest) throws ApiException {
+        okhttp3.Call localVarCall = postAuthorsDeploysRecordValidateBeforeCall(deployRequest, null);
         Type localVarReturnType = new TypeToken<DeployRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -566,15 +566,15 @@ public class AuthorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AuthorsDeploysRecordAsync(@javax.annotation.Nonnull DeployRequest deployRequest, final ApiCallback<DeployRecord> _callback) throws ApiException {
+    public okhttp3.Call postAuthorsDeploysRecordAsync(@javax.annotation.Nonnull DeployRequest deployRequest, final ApiCallback<DeployRecord> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AuthorsDeploysRecordValidateBeforeCall(deployRequest, _callback);
+        okhttp3.Call localVarCall = postAuthorsDeploysRecordValidateBeforeCall(deployRequest, _callback);
         Type localVarReturnType = new TypeToken<DeployRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AuthorsReposVerify
+     * Build call for postAuthorsReposVerify
      * @param verifyRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -586,7 +586,7 @@ public class AuthorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AuthorsReposVerifyCall(@javax.annotation.Nonnull VerifyRequest verifyRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAuthorsReposVerifyCall(@javax.annotation.Nonnull VerifyRequest verifyRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -632,13 +632,13 @@ public class AuthorsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AuthorsReposVerifyValidateBeforeCall(@javax.annotation.Nonnull VerifyRequest verifyRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAuthorsReposVerifyValidateBeforeCall(@javax.annotation.Nonnull VerifyRequest verifyRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'verifyRequest' is set
         if (verifyRequest == null) {
-            throw new ApiException("Missing the required parameter 'verifyRequest' when calling postV1AuthorsReposVerify(Async)");
+            throw new ApiException("Missing the required parameter 'verifyRequest' when calling postAuthorsReposVerify(Async)");
         }
 
-        return postV1AuthorsReposVerifyCall(verifyRequest, _callback);
+        return postAuthorsReposVerifyCall(verifyRequest, _callback);
 
     }
 
@@ -655,8 +655,8 @@ public class AuthorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Claim postV1AuthorsReposVerify(@javax.annotation.Nonnull VerifyRequest verifyRequest) throws ApiException {
-        ApiResponse<Claim> localVarResp = postV1AuthorsReposVerifyWithHttpInfo(verifyRequest);
+    public Claim postAuthorsReposVerify(@javax.annotation.Nonnull VerifyRequest verifyRequest) throws ApiException {
+        ApiResponse<Claim> localVarResp = postAuthorsReposVerifyWithHttpInfo(verifyRequest);
         return localVarResp.getData();
     }
 
@@ -673,8 +673,8 @@ public class AuthorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Claim> postV1AuthorsReposVerifyWithHttpInfo(@javax.annotation.Nonnull VerifyRequest verifyRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1AuthorsReposVerifyValidateBeforeCall(verifyRequest, null);
+    public ApiResponse<Claim> postAuthorsReposVerifyWithHttpInfo(@javax.annotation.Nonnull VerifyRequest verifyRequest) throws ApiException {
+        okhttp3.Call localVarCall = postAuthorsReposVerifyValidateBeforeCall(verifyRequest, null);
         Type localVarReturnType = new TypeToken<Claim>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -693,9 +693,9 @@ public class AuthorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AuthorsReposVerifyAsync(@javax.annotation.Nonnull VerifyRequest verifyRequest, final ApiCallback<Claim> _callback) throws ApiException {
+    public okhttp3.Call postAuthorsReposVerifyAsync(@javax.annotation.Nonnull VerifyRequest verifyRequest, final ApiCallback<Claim> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AuthorsReposVerifyValidateBeforeCall(verifyRequest, _callback);
+        okhttp3.Call localVarCall = postAuthorsReposVerifyValidateBeforeCall(verifyRequest, _callback);
         Type localVarReturnType = new TypeToken<Claim>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

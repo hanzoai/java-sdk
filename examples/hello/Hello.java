@@ -29,7 +29,7 @@ public final class Hello {
     public static void main(String[] args) {
         KeysApi keys = new KeysApi(Hanzo.client());
         try {
-            ApiKeyList mine = keys.getV1Keys();
+            ApiKeyList mine = keys.getKeys();
             List<ApiKey> owned = mine.getKeys();
             if (owned == null || owned.isEmpty()) {
                 System.out.println("the key is good, and it owns no keys of its own");

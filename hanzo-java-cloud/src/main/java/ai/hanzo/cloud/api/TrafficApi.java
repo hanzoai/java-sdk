@@ -72,12 +72,12 @@ public class TrafficApi {
     }
 
     /**
-     * Build call for getV1TrafficGlobe
+     * Build call for getTrafficGlobe
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1TrafficGlobeCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTrafficGlobeCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class TrafficApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TrafficGlobeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1TrafficGlobeCall(_callback);
+    private okhttp3.Call getTrafficGlobeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getTrafficGlobeCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class TrafficApi {
      * Returns the PUBLIC live request-geo aggregate for the world.hanzo.ai \&quot;Hanzo mode\&quot; globe: WHERE requests to api.hanzo.ai are coming from, as country/region points with per-service-class counts, plus headline throughput rates.  It is AUTH-exempt and BALANCE-exempt exactly like /v1/router/stats?scope&#x3D;platform:   - auth: the controller name \&quot;traffic/globe\&quot; is neither a get-/update- CRUD name     nor a super-admin/present-credential endpoint, so the authz filter passes it     through, and this handler requires no principal.   - balance: isBalanceExempt(\&quot;/v1/traffic/...\&quot;) returns true.  It exposes ONLY aggregates — counts, rates, and country/region centroids — and NEVER any IP, per-request row, org, or user dimension (see object/traffic.go). Marketing telemetry; nothing sensitive.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1TrafficGlobe() throws ApiException {
-        getV1TrafficGlobeWithHttpInfo();
+    public void getTrafficGlobe() throws ApiException {
+        getTrafficGlobeWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class TrafficApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1TrafficGlobeWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1TrafficGlobeValidateBeforeCall(null);
+    public ApiResponse<Void> getTrafficGlobeWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getTrafficGlobeValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,9 +153,9 @@ public class TrafficApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1TrafficGlobeAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getTrafficGlobeAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TrafficGlobeValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getTrafficGlobeValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

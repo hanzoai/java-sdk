@@ -97,7 +97,7 @@ public class BooksApi {
     }
 
     /**
-     * Build call for getV1BooksAccounts
+     * Build call for getBooksAccounts
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;; anything else reads the live one. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -109,7 +109,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksAccountsCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBooksAccountsCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -158,8 +158,8 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BooksAccountsValidateBeforeCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
-        return getV1BooksAccountsCall(sandbox, _callback);
+    private okhttp3.Call getBooksAccountsValidateBeforeCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
+        return getBooksAccountsCall(sandbox, _callback);
 
     }
 
@@ -176,8 +176,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<Account> getV1BooksAccounts(@javax.annotation.Nullable String sandbox) throws ApiException {
-        ApiResponse<List<Account>> localVarResp = getV1BooksAccountsWithHttpInfo(sandbox);
+    public List<Account> getBooksAccounts(@javax.annotation.Nullable String sandbox) throws ApiException {
+        ApiResponse<List<Account>> localVarResp = getBooksAccountsWithHttpInfo(sandbox);
         return localVarResp.getData();
     }
 
@@ -194,8 +194,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<Account>> getV1BooksAccountsWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
-        okhttp3.Call localVarCall = getV1BooksAccountsValidateBeforeCall(sandbox, null);
+    public ApiResponse<List<Account>> getBooksAccountsWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
+        okhttp3.Call localVarCall = getBooksAccountsValidateBeforeCall(sandbox, null);
         Type localVarReturnType = new TypeToken<List<Account>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -214,15 +214,15 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksAccountsAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<List<Account>> _callback) throws ApiException {
+    public okhttp3.Call getBooksAccountsAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<List<Account>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BooksAccountsValidateBeforeCall(sandbox, _callback);
+        okhttp3.Call localVarCall = getBooksAccountsValidateBeforeCall(sandbox, _callback);
         Type localVarReturnType = new TypeToken<List<Account>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BooksBankTransactions
+     * Build call for getBooksBankTransactions
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param limit Limit caps how many rows come back; 500 when absent or not positive. (optional)
      * @param _callback Callback for upload/download progress
@@ -235,7 +235,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksBankTransactionsCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBooksBankTransactionsCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -288,8 +288,8 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BooksBankTransactionsValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1BooksBankTransactionsCall(sandbox, limit, _callback);
+    private okhttp3.Call getBooksBankTransactionsValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getBooksBankTransactionsCall(sandbox, limit, _callback);
 
     }
 
@@ -307,8 +307,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<BankTxnRow> getV1BooksBankTransactions(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<List<BankTxnRow>> localVarResp = getV1BooksBankTransactionsWithHttpInfo(sandbox, limit);
+    public List<BankTxnRow> getBooksBankTransactions(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<List<BankTxnRow>> localVarResp = getBooksBankTransactionsWithHttpInfo(sandbox, limit);
         return localVarResp.getData();
     }
 
@@ -326,8 +326,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<BankTxnRow>> getV1BooksBankTransactionsWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1BooksBankTransactionsValidateBeforeCall(sandbox, limit, null);
+    public ApiResponse<List<BankTxnRow>> getBooksBankTransactionsWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getBooksBankTransactionsValidateBeforeCall(sandbox, limit, null);
         Type localVarReturnType = new TypeToken<List<BankTxnRow>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -347,15 +347,15 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksBankTransactionsAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit, final ApiCallback<List<BankTxnRow>> _callback) throws ApiException {
+    public okhttp3.Call getBooksBankTransactionsAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit, final ApiCallback<List<BankTxnRow>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BooksBankTransactionsValidateBeforeCall(sandbox, limit, _callback);
+        okhttp3.Call localVarCall = getBooksBankTransactionsValidateBeforeCall(sandbox, limit, _callback);
         Type localVarReturnType = new TypeToken<List<BankTxnRow>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BooksBankUnreconciled
+     * Build call for getBooksBankUnreconciled
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;; anything else reads the live one. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -367,7 +367,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksBankUnreconciledCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBooksBankUnreconciledCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -416,8 +416,8 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BooksBankUnreconciledValidateBeforeCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
-        return getV1BooksBankUnreconciledCall(sandbox, _callback);
+    private okhttp3.Call getBooksBankUnreconciledValidateBeforeCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
+        return getBooksBankUnreconciledCall(sandbox, _callback);
 
     }
 
@@ -434,8 +434,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public UnreconciledOut getV1BooksBankUnreconciled(@javax.annotation.Nullable String sandbox) throws ApiException {
-        ApiResponse<UnreconciledOut> localVarResp = getV1BooksBankUnreconciledWithHttpInfo(sandbox);
+    public UnreconciledOut getBooksBankUnreconciled(@javax.annotation.Nullable String sandbox) throws ApiException {
+        ApiResponse<UnreconciledOut> localVarResp = getBooksBankUnreconciledWithHttpInfo(sandbox);
         return localVarResp.getData();
     }
 
@@ -452,8 +452,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UnreconciledOut> getV1BooksBankUnreconciledWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
-        okhttp3.Call localVarCall = getV1BooksBankUnreconciledValidateBeforeCall(sandbox, null);
+    public ApiResponse<UnreconciledOut> getBooksBankUnreconciledWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
+        okhttp3.Call localVarCall = getBooksBankUnreconciledValidateBeforeCall(sandbox, null);
         Type localVarReturnType = new TypeToken<UnreconciledOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -472,15 +472,15 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksBankUnreconciledAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<UnreconciledOut> _callback) throws ApiException {
+    public okhttp3.Call getBooksBankUnreconciledAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<UnreconciledOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BooksBankUnreconciledValidateBeforeCall(sandbox, _callback);
+        okhttp3.Call localVarCall = getBooksBankUnreconciledValidateBeforeCall(sandbox, _callback);
         Type localVarReturnType = new TypeToken<UnreconciledOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BooksExport
+     * Build call for getBooksExport
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param from From is the RFC3339 start of the window, exclusive. Empty means all time. (optional)
      * @param to To is the RFC3339 end of the window, inclusive. Empty means up to now. (optional)
@@ -496,7 +496,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksExportCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBooksExportCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -561,8 +561,8 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BooksExportValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1BooksExportCall(sandbox, from, to, format, limit, _callback);
+    private okhttp3.Call getBooksExportValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getBooksExportCall(sandbox, from, to, format, limit, _callback);
 
     }
 
@@ -583,8 +583,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FinancialPackage getV1BooksExport(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<FinancialPackage> localVarResp = getV1BooksExportWithHttpInfo(sandbox, from, to, format, limit);
+    public FinancialPackage getBooksExport(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<FinancialPackage> localVarResp = getBooksExportWithHttpInfo(sandbox, from, to, format, limit);
         return localVarResp.getData();
     }
 
@@ -605,8 +605,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FinancialPackage> getV1BooksExportWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1BooksExportValidateBeforeCall(sandbox, from, to, format, limit, null);
+    public ApiResponse<FinancialPackage> getBooksExportWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getBooksExportValidateBeforeCall(sandbox, from, to, format, limit, null);
         Type localVarReturnType = new TypeToken<FinancialPackage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -629,15 +629,15 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksExportAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Integer limit, final ApiCallback<FinancialPackage> _callback) throws ApiException {
+    public okhttp3.Call getBooksExportAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Integer limit, final ApiCallback<FinancialPackage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BooksExportValidateBeforeCall(sandbox, from, to, format, limit, _callback);
+        okhttp3.Call localVarCall = getBooksExportValidateBeforeCall(sandbox, from, to, format, limit, _callback);
         Type localVarReturnType = new TypeToken<FinancialPackage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BooksGl
+     * Build call for getBooksGl
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param limit Limit caps how many rows come back; 500 when absent or not positive. (optional)
      * @param _callback Callback for upload/download progress
@@ -650,7 +650,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksGlCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBooksGlCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -703,8 +703,8 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BooksGlValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1BooksGlCall(sandbox, limit, _callback);
+    private okhttp3.Call getBooksGlValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getBooksGlCall(sandbox, limit, _callback);
 
     }
 
@@ -722,8 +722,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<GLRow> getV1BooksGl(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<List<GLRow>> localVarResp = getV1BooksGlWithHttpInfo(sandbox, limit);
+    public List<GLRow> getBooksGl(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<List<GLRow>> localVarResp = getBooksGlWithHttpInfo(sandbox, limit);
         return localVarResp.getData();
     }
 
@@ -741,8 +741,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<GLRow>> getV1BooksGlWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1BooksGlValidateBeforeCall(sandbox, limit, null);
+    public ApiResponse<List<GLRow>> getBooksGlWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getBooksGlValidateBeforeCall(sandbox, limit, null);
         Type localVarReturnType = new TypeToken<List<GLRow>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -762,15 +762,15 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksGlAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit, final ApiCallback<List<GLRow>> _callback) throws ApiException {
+    public okhttp3.Call getBooksGlAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit, final ApiCallback<List<GLRow>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BooksGlValidateBeforeCall(sandbox, limit, _callback);
+        okhttp3.Call localVarCall = getBooksGlValidateBeforeCall(sandbox, limit, _callback);
         Type localVarReturnType = new TypeToken<List<GLRow>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BooksInbox
+     * Build call for getBooksInbox
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;; anything else reads the live one. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -782,7 +782,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksInboxCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBooksInboxCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -831,8 +831,8 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BooksInboxValidateBeforeCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
-        return getV1BooksInboxCall(sandbox, _callback);
+    private okhttp3.Call getBooksInboxValidateBeforeCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
+        return getBooksInboxCall(sandbox, _callback);
 
     }
 
@@ -849,8 +849,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public InboxOut getV1BooksInbox(@javax.annotation.Nullable String sandbox) throws ApiException {
-        ApiResponse<InboxOut> localVarResp = getV1BooksInboxWithHttpInfo(sandbox);
+    public InboxOut getBooksInbox(@javax.annotation.Nullable String sandbox) throws ApiException {
+        ApiResponse<InboxOut> localVarResp = getBooksInboxWithHttpInfo(sandbox);
         return localVarResp.getData();
     }
 
@@ -867,8 +867,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InboxOut> getV1BooksInboxWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
-        okhttp3.Call localVarCall = getV1BooksInboxValidateBeforeCall(sandbox, null);
+    public ApiResponse<InboxOut> getBooksInboxWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
+        okhttp3.Call localVarCall = getBooksInboxValidateBeforeCall(sandbox, null);
         Type localVarReturnType = new TypeToken<InboxOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -887,15 +887,15 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksInboxAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<InboxOut> _callback) throws ApiException {
+    public okhttp3.Call getBooksInboxAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<InboxOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BooksInboxValidateBeforeCall(sandbox, _callback);
+        okhttp3.Call localVarCall = getBooksInboxValidateBeforeCall(sandbox, _callback);
         Type localVarReturnType = new TypeToken<InboxOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BooksMetrics
+     * Build call for getBooksMetrics
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param from From is the RFC3339 start of the window, exclusive. Empty means all time. (optional)
      * @param to To is the RFC3339 end of the window, inclusive. Empty means up to now. (optional)
@@ -909,7 +909,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksMetricsCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBooksMetricsCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -966,8 +966,8 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BooksMetricsValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
-        return getV1BooksMetricsCall(sandbox, from, to, _callback);
+    private okhttp3.Call getBooksMetricsValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
+        return getBooksMetricsCall(sandbox, from, to, _callback);
 
     }
 
@@ -986,8 +986,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public MetricsResponse getV1BooksMetrics(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
-        ApiResponse<MetricsResponse> localVarResp = getV1BooksMetricsWithHttpInfo(sandbox, from, to);
+    public MetricsResponse getBooksMetrics(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
+        ApiResponse<MetricsResponse> localVarResp = getBooksMetricsWithHttpInfo(sandbox, from, to);
         return localVarResp.getData();
     }
 
@@ -1006,8 +1006,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MetricsResponse> getV1BooksMetricsWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
-        okhttp3.Call localVarCall = getV1BooksMetricsValidateBeforeCall(sandbox, from, to, null);
+    public ApiResponse<MetricsResponse> getBooksMetricsWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
+        okhttp3.Call localVarCall = getBooksMetricsValidateBeforeCall(sandbox, from, to, null);
         Type localVarReturnType = new TypeToken<MetricsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1028,15 +1028,15 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksMetricsAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback<MetricsResponse> _callback) throws ApiException {
+    public okhttp3.Call getBooksMetricsAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback<MetricsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BooksMetricsValidateBeforeCall(sandbox, from, to, _callback);
+        okhttp3.Call localVarCall = getBooksMetricsValidateBeforeCall(sandbox, from, to, _callback);
         Type localVarReturnType = new TypeToken<MetricsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BooksPnl
+     * Build call for getBooksPnl
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param from From is the RFC3339 start of the window, exclusive. Empty means all time. (optional)
      * @param to To is the RFC3339 end of the window, inclusive. Empty means up to now. (optional)
@@ -1050,7 +1050,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksPnlCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBooksPnlCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1107,8 +1107,8 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BooksPnlValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
-        return getV1BooksPnlCall(sandbox, from, to, _callback);
+    private okhttp3.Call getBooksPnlValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
+        return getBooksPnlCall(sandbox, from, to, _callback);
 
     }
 
@@ -1127,8 +1127,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PnL getV1BooksPnl(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
-        ApiResponse<PnL> localVarResp = getV1BooksPnlWithHttpInfo(sandbox, from, to);
+    public PnL getBooksPnl(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
+        ApiResponse<PnL> localVarResp = getBooksPnlWithHttpInfo(sandbox, from, to);
         return localVarResp.getData();
     }
 
@@ -1147,8 +1147,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PnL> getV1BooksPnlWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
-        okhttp3.Call localVarCall = getV1BooksPnlValidateBeforeCall(sandbox, from, to, null);
+    public ApiResponse<PnL> getBooksPnlWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
+        okhttp3.Call localVarCall = getBooksPnlValidateBeforeCall(sandbox, from, to, null);
         Type localVarReturnType = new TypeToken<PnL>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1169,15 +1169,15 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksPnlAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback<PnL> _callback) throws ApiException {
+    public okhttp3.Call getBooksPnlAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback<PnL> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BooksPnlValidateBeforeCall(sandbox, from, to, _callback);
+        okhttp3.Call localVarCall = getBooksPnlValidateBeforeCall(sandbox, from, to, _callback);
         Type localVarReturnType = new TypeToken<PnL>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BooksPosition
+     * Build call for getBooksPosition
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param to To is the RFC3339 instant the statement is struck as of. Empty means all time. (optional)
      * @param _callback Callback for upload/download progress
@@ -1190,7 +1190,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksPositionCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBooksPositionCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1243,8 +1243,8 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BooksPositionValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
-        return getV1BooksPositionCall(sandbox, to, _callback);
+    private okhttp3.Call getBooksPositionValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
+        return getBooksPositionCall(sandbox, to, _callback);
 
     }
 
@@ -1262,8 +1262,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BalanceSheet getV1BooksPosition(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String to) throws ApiException {
-        ApiResponse<BalanceSheet> localVarResp = getV1BooksPositionWithHttpInfo(sandbox, to);
+    public BalanceSheet getBooksPosition(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String to) throws ApiException {
+        ApiResponse<BalanceSheet> localVarResp = getBooksPositionWithHttpInfo(sandbox, to);
         return localVarResp.getData();
     }
 
@@ -1281,8 +1281,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BalanceSheet> getV1BooksPositionWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String to) throws ApiException {
-        okhttp3.Call localVarCall = getV1BooksPositionValidateBeforeCall(sandbox, to, null);
+    public ApiResponse<BalanceSheet> getBooksPositionWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String to) throws ApiException {
+        okhttp3.Call localVarCall = getBooksPositionValidateBeforeCall(sandbox, to, null);
         Type localVarReturnType = new TypeToken<BalanceSheet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1302,15 +1302,15 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksPositionAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String to, final ApiCallback<BalanceSheet> _callback) throws ApiException {
+    public okhttp3.Call getBooksPositionAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String to, final ApiCallback<BalanceSheet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BooksPositionValidateBeforeCall(sandbox, to, _callback);
+        okhttp3.Call localVarCall = getBooksPositionValidateBeforeCall(sandbox, to, _callback);
         Type localVarReturnType = new TypeToken<BalanceSheet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BooksQuestions
+     * Build call for getBooksQuestions
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;; anything else reads the live one. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1322,7 +1322,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksQuestionsCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBooksQuestionsCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1371,8 +1371,8 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BooksQuestionsValidateBeforeCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
-        return getV1BooksQuestionsCall(sandbox, _callback);
+    private okhttp3.Call getBooksQuestionsValidateBeforeCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
+        return getBooksQuestionsCall(sandbox, _callback);
 
     }
 
@@ -1389,8 +1389,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public QuestionsResponse getV1BooksQuestions(@javax.annotation.Nullable String sandbox) throws ApiException {
-        ApiResponse<QuestionsResponse> localVarResp = getV1BooksQuestionsWithHttpInfo(sandbox);
+    public QuestionsResponse getBooksQuestions(@javax.annotation.Nullable String sandbox) throws ApiException {
+        ApiResponse<QuestionsResponse> localVarResp = getBooksQuestionsWithHttpInfo(sandbox);
         return localVarResp.getData();
     }
 
@@ -1407,8 +1407,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<QuestionsResponse> getV1BooksQuestionsWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
-        okhttp3.Call localVarCall = getV1BooksQuestionsValidateBeforeCall(sandbox, null);
+    public ApiResponse<QuestionsResponse> getBooksQuestionsWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
+        okhttp3.Call localVarCall = getBooksQuestionsValidateBeforeCall(sandbox, null);
         Type localVarReturnType = new TypeToken<QuestionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1427,15 +1427,15 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksQuestionsAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<QuestionsResponse> _callback) throws ApiException {
+    public okhttp3.Call getBooksQuestionsAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<QuestionsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BooksQuestionsValidateBeforeCall(sandbox, _callback);
+        okhttp3.Call localVarCall = getBooksQuestionsValidateBeforeCall(sandbox, _callback);
         Type localVarReturnType = new TypeToken<QuestionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BooksRules
+     * Build call for getBooksRules
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;; anything else reads the live one. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1447,7 +1447,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksRulesCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBooksRulesCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1496,8 +1496,8 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BooksRulesValidateBeforeCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
-        return getV1BooksRulesCall(sandbox, _callback);
+    private okhttp3.Call getBooksRulesValidateBeforeCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
+        return getBooksRulesCall(sandbox, _callback);
 
     }
 
@@ -1514,8 +1514,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RulesOut getV1BooksRules(@javax.annotation.Nullable String sandbox) throws ApiException {
-        ApiResponse<RulesOut> localVarResp = getV1BooksRulesWithHttpInfo(sandbox);
+    public RulesOut getBooksRules(@javax.annotation.Nullable String sandbox) throws ApiException {
+        ApiResponse<RulesOut> localVarResp = getBooksRulesWithHttpInfo(sandbox);
         return localVarResp.getData();
     }
 
@@ -1532,8 +1532,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RulesOut> getV1BooksRulesWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
-        okhttp3.Call localVarCall = getV1BooksRulesValidateBeforeCall(sandbox, null);
+    public ApiResponse<RulesOut> getBooksRulesWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
+        okhttp3.Call localVarCall = getBooksRulesValidateBeforeCall(sandbox, null);
         Type localVarReturnType = new TypeToken<RulesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1552,15 +1552,15 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksRulesAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<RulesOut> _callback) throws ApiException {
+    public okhttp3.Call getBooksRulesAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<RulesOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BooksRulesValidateBeforeCall(sandbox, _callback);
+        okhttp3.Call localVarCall = getBooksRulesValidateBeforeCall(sandbox, _callback);
         Type localVarReturnType = new TypeToken<RulesOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BooksTransactions
+     * Build call for getBooksTransactions
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param from From is the RFC3339 start of the posting-time window, inclusive. (optional)
      * @param to To is the RFC3339 end of the posting-time window, inclusive. (optional)
@@ -1577,7 +1577,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksTransactionsCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBooksTransactionsCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1646,8 +1646,8 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BooksTransactionsValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1BooksTransactionsCall(sandbox, from, to, category, vendor, limit, _callback);
+    private okhttp3.Call getBooksTransactionsValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getBooksTransactionsCall(sandbox, from, to, category, vendor, limit, _callback);
 
     }
 
@@ -1669,8 +1669,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public TransactionsOut getV1BooksTransactions(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<TransactionsOut> localVarResp = getV1BooksTransactionsWithHttpInfo(sandbox, from, to, category, vendor, limit);
+    public TransactionsOut getBooksTransactions(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<TransactionsOut> localVarResp = getBooksTransactionsWithHttpInfo(sandbox, from, to, category, vendor, limit);
         return localVarResp.getData();
     }
 
@@ -1692,8 +1692,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TransactionsOut> getV1BooksTransactionsWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1BooksTransactionsValidateBeforeCall(sandbox, from, to, category, vendor, limit, null);
+    public ApiResponse<TransactionsOut> getBooksTransactionsWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getBooksTransactionsValidateBeforeCall(sandbox, from, to, category, vendor, limit, null);
         Type localVarReturnType = new TypeToken<TransactionsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1717,15 +1717,15 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksTransactionsAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Integer limit, final ApiCallback<TransactionsOut> _callback) throws ApiException {
+    public okhttp3.Call getBooksTransactionsAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Integer limit, final ApiCallback<TransactionsOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BooksTransactionsValidateBeforeCall(sandbox, from, to, category, vendor, limit, _callback);
+        okhttp3.Call localVarCall = getBooksTransactionsValidateBeforeCall(sandbox, from, to, category, vendor, limit, _callback);
         Type localVarReturnType = new TypeToken<TransactionsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BooksTrial
+     * Build call for getBooksTrial
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param from From is the RFC3339 start of the window, exclusive. Empty means all time. (optional)
      * @param to To is the RFC3339 end of the window, inclusive. Empty means up to now. (optional)
@@ -1739,7 +1739,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksTrialCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBooksTrialCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1796,8 +1796,8 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BooksTrialValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
-        return getV1BooksTrialCall(sandbox, from, to, _callback);
+    private okhttp3.Call getBooksTrialValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
+        return getBooksTrialCall(sandbox, from, to, _callback);
 
     }
 
@@ -1816,8 +1816,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public TrialBalance getV1BooksTrial(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
-        ApiResponse<TrialBalance> localVarResp = getV1BooksTrialWithHttpInfo(sandbox, from, to);
+    public TrialBalance getBooksTrial(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
+        ApiResponse<TrialBalance> localVarResp = getBooksTrialWithHttpInfo(sandbox, from, to);
         return localVarResp.getData();
     }
 
@@ -1836,8 +1836,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TrialBalance> getV1BooksTrialWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
-        okhttp3.Call localVarCall = getV1BooksTrialValidateBeforeCall(sandbox, from, to, null);
+    public ApiResponse<TrialBalance> getBooksTrialWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
+        okhttp3.Call localVarCall = getBooksTrialValidateBeforeCall(sandbox, from, to, null);
         Type localVarReturnType = new TypeToken<TrialBalance>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1858,15 +1858,15 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksTrialAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback<TrialBalance> _callback) throws ApiException {
+    public okhttp3.Call getBooksTrialAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback<TrialBalance> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BooksTrialValidateBeforeCall(sandbox, from, to, _callback);
+        okhttp3.Call localVarCall = getBooksTrialValidateBeforeCall(sandbox, from, to, _callback);
         Type localVarReturnType = new TypeToken<TrialBalance>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BooksVendors
+     * Build call for getBooksVendors
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;; anything else reads the live one. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1878,7 +1878,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksVendorsCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBooksVendorsCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1927,8 +1927,8 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BooksVendorsValidateBeforeCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
-        return getV1BooksVendorsCall(sandbox, _callback);
+    private okhttp3.Call getBooksVendorsValidateBeforeCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
+        return getBooksVendorsCall(sandbox, _callback);
 
     }
 
@@ -1945,8 +1945,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public VendorsOut getV1BooksVendors(@javax.annotation.Nullable String sandbox) throws ApiException {
-        ApiResponse<VendorsOut> localVarResp = getV1BooksVendorsWithHttpInfo(sandbox);
+    public VendorsOut getBooksVendors(@javax.annotation.Nullable String sandbox) throws ApiException {
+        ApiResponse<VendorsOut> localVarResp = getBooksVendorsWithHttpInfo(sandbox);
         return localVarResp.getData();
     }
 
@@ -1963,8 +1963,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VendorsOut> getV1BooksVendorsWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
-        okhttp3.Call localVarCall = getV1BooksVendorsValidateBeforeCall(sandbox, null);
+    public ApiResponse<VendorsOut> getBooksVendorsWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
+        okhttp3.Call localVarCall = getBooksVendorsValidateBeforeCall(sandbox, null);
         Type localVarReturnType = new TypeToken<VendorsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1983,15 +1983,15 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BooksVendorsAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<VendorsOut> _callback) throws ApiException {
+    public okhttp3.Call getBooksVendorsAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<VendorsOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BooksVendorsValidateBeforeCall(sandbox, _callback);
+        okhttp3.Call localVarCall = getBooksVendorsValidateBeforeCall(sandbox, _callback);
         Type localVarReturnType = new TypeToken<VendorsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1BooksAsk
+     * Build call for postBooksAsk
      * @param askRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2003,7 +2003,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BooksAskCall(@javax.annotation.Nonnull AskRequest askRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBooksAskCall(@javax.annotation.Nonnull AskRequest askRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2049,13 +2049,13 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1BooksAskValidateBeforeCall(@javax.annotation.Nonnull AskRequest askRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postBooksAskValidateBeforeCall(@javax.annotation.Nonnull AskRequest askRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'askRequest' is set
         if (askRequest == null) {
-            throw new ApiException("Missing the required parameter 'askRequest' when calling postV1BooksAsk(Async)");
+            throw new ApiException("Missing the required parameter 'askRequest' when calling postBooksAsk(Async)");
         }
 
-        return postV1BooksAskCall(askRequest, _callback);
+        return postBooksAskCall(askRequest, _callback);
 
     }
 
@@ -2072,8 +2072,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AskResponse postV1BooksAsk(@javax.annotation.Nonnull AskRequest askRequest) throws ApiException {
-        ApiResponse<AskResponse> localVarResp = postV1BooksAskWithHttpInfo(askRequest);
+    public AskResponse postBooksAsk(@javax.annotation.Nonnull AskRequest askRequest) throws ApiException {
+        ApiResponse<AskResponse> localVarResp = postBooksAskWithHttpInfo(askRequest);
         return localVarResp.getData();
     }
 
@@ -2090,8 +2090,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AskResponse> postV1BooksAskWithHttpInfo(@javax.annotation.Nonnull AskRequest askRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1BooksAskValidateBeforeCall(askRequest, null);
+    public ApiResponse<AskResponse> postBooksAskWithHttpInfo(@javax.annotation.Nonnull AskRequest askRequest) throws ApiException {
+        okhttp3.Call localVarCall = postBooksAskValidateBeforeCall(askRequest, null);
         Type localVarReturnType = new TypeToken<AskResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2110,20 +2110,20 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BooksAskAsync(@javax.annotation.Nonnull AskRequest askRequest, final ApiCallback<AskResponse> _callback) throws ApiException {
+    public okhttp3.Call postBooksAskAsync(@javax.annotation.Nonnull AskRequest askRequest, final ApiCallback<AskResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1BooksAskValidateBeforeCall(askRequest, _callback);
+        okhttp3.Call localVarCall = postBooksAskValidateBeforeCall(askRequest, _callback);
         Type localVarReturnType = new TypeToken<AskResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1BooksBankExchange
+     * Build call for postBooksBankExchange
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1BooksBankExchangeCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBooksBankExchangeCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2167,8 +2167,8 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1BooksBankExchangeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1BooksBankExchangeCall(_callback);
+    private okhttp3.Call postBooksBankExchangeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postBooksBankExchangeCall(_callback);
 
     }
 
@@ -2177,8 +2177,8 @@ public class BooksApi {
      * ANSWERS 501 UNCONDITIONALLY. It is the intended second hop of the bank-linking handshake — trade the provider&#39;s short-lived public token for the durable access credential and seal that credential into KMS — and nothing on the HTTP path reaches an implementation today.  The durable bank credential is the reason this hop exists: it is meant to be sealed server-side and never handed back to the caller. Since the route never succeeds, no credential is stored by it and no bank is connected through it.  Documented as refusing rather than declared with a success body, for the same reason as the first hop: it has never sent one, and stating a shape it has never produced would put a return type in every SDK for a call that always fails. A caller with no principal gets 401 before the 501.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1BooksBankExchange() throws ApiException {
-        postV1BooksBankExchangeWithHttpInfo();
+    public void postBooksBankExchange() throws ApiException {
+        postBooksBankExchangeWithHttpInfo();
     }
 
     /**
@@ -2187,8 +2187,8 @@ public class BooksApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1BooksBankExchangeWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1BooksBankExchangeValidateBeforeCall(null);
+    public ApiResponse<Void> postBooksBankExchangeWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postBooksBankExchangeValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2199,14 +2199,14 @@ public class BooksApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1BooksBankExchangeAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postBooksBankExchangeAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1BooksBankExchangeValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postBooksBankExchangeValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1BooksBankImport
+     * Build call for postBooksBankImport
      * @param body  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2218,7 +2218,7 @@ public class BooksApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BooksBankImportCall(@javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBooksBankImportCall(@javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2264,8 +2264,8 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1BooksBankImportValidateBeforeCall(@javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
-        return postV1BooksBankImportCall(body, _callback);
+    private okhttp3.Call postBooksBankImportValidateBeforeCall(@javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+        return postBooksBankImportCall(body, _callback);
 
     }
 
@@ -2282,8 +2282,8 @@ public class BooksApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public BankTally postV1BooksBankImport(@javax.annotation.Nullable File body) throws ApiException {
-        ApiResponse<BankTally> localVarResp = postV1BooksBankImportWithHttpInfo(body);
+    public BankTally postBooksBankImport(@javax.annotation.Nullable File body) throws ApiException {
+        ApiResponse<BankTally> localVarResp = postBooksBankImportWithHttpInfo(body);
         return localVarResp.getData();
     }
 
@@ -2300,8 +2300,8 @@ public class BooksApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BankTally> postV1BooksBankImportWithHttpInfo(@javax.annotation.Nullable File body) throws ApiException {
-        okhttp3.Call localVarCall = postV1BooksBankImportValidateBeforeCall(body, null);
+    public ApiResponse<BankTally> postBooksBankImportWithHttpInfo(@javax.annotation.Nullable File body) throws ApiException {
+        okhttp3.Call localVarCall = postBooksBankImportValidateBeforeCall(body, null);
         Type localVarReturnType = new TypeToken<BankTally>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2320,15 +2320,15 @@ public class BooksApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BooksBankImportAsync(@javax.annotation.Nullable File body, final ApiCallback<BankTally> _callback) throws ApiException {
+    public okhttp3.Call postBooksBankImportAsync(@javax.annotation.Nullable File body, final ApiCallback<BankTally> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1BooksBankImportValidateBeforeCall(body, _callback);
+        okhttp3.Call localVarCall = postBooksBankImportValidateBeforeCall(body, _callback);
         Type localVarReturnType = new TypeToken<BankTally>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1BooksBankSync
+     * Build call for postBooksBankSync
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2339,7 +2339,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BooksBankSyncCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBooksBankSyncCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2384,8 +2384,8 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1BooksBankSyncValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1BooksBankSyncCall(_callback);
+    private okhttp3.Call postBooksBankSyncValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postBooksBankSyncCall(_callback);
 
     }
 
@@ -2401,8 +2401,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BankTally postV1BooksBankSync() throws ApiException {
-        ApiResponse<BankTally> localVarResp = postV1BooksBankSyncWithHttpInfo();
+    public BankTally postBooksBankSync() throws ApiException {
+        ApiResponse<BankTally> localVarResp = postBooksBankSyncWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -2418,8 +2418,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BankTally> postV1BooksBankSyncWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1BooksBankSyncValidateBeforeCall(null);
+    public ApiResponse<BankTally> postBooksBankSyncWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postBooksBankSyncValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<BankTally>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2437,20 +2437,20 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BooksBankSyncAsync(final ApiCallback<BankTally> _callback) throws ApiException {
+    public okhttp3.Call postBooksBankSyncAsync(final ApiCallback<BankTally> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1BooksBankSyncValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postBooksBankSyncValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<BankTally>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1BooksBankToken
+     * Build call for postBooksBankToken
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1BooksBankTokenCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBooksBankTokenCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2494,8 +2494,8 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1BooksBankTokenValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1BooksBankTokenCall(_callback);
+    private okhttp3.Call postBooksBankTokenValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postBooksBankTokenCall(_callback);
 
     }
 
@@ -2504,8 +2504,8 @@ public class BooksApi {
      * ANSWERS 501 UNCONDITIONALLY. It is the intended first hop of the bank-linking handshake — mint the short-lived session token a browser hands to the provider&#39;s link widget — and nothing on the HTTP path reaches an implementation today.  The connectors behind it are written and tested; only the wiring is missing, so an org cannot connect a bank through the API at all. Until that lands, bank data reaches the books by statement import.  It is documented as refusing rather than declared with a success body precisely because it has never sent one. A response schema here would be invention: every generated SDK would carry a return type for a call that has only ever failed. A caller with no principal gets 401 before the 501.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1BooksBankToken() throws ApiException {
-        postV1BooksBankTokenWithHttpInfo();
+    public void postBooksBankToken() throws ApiException {
+        postBooksBankTokenWithHttpInfo();
     }
 
     /**
@@ -2514,8 +2514,8 @@ public class BooksApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1BooksBankTokenWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1BooksBankTokenValidateBeforeCall(null);
+    public ApiResponse<Void> postBooksBankTokenWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postBooksBankTokenValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2526,14 +2526,14 @@ public class BooksApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1BooksBankTokenAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postBooksBankTokenAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1BooksBankTokenValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postBooksBankTokenValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1BooksInbox
+     * Build call for postBooksInbox
      * @param body  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2545,7 +2545,7 @@ public class BooksApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BooksInboxCall(@javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBooksInboxCall(@javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2591,8 +2591,8 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1BooksInboxValidateBeforeCall(@javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
-        return postV1BooksInboxCall(body, _callback);
+    private okhttp3.Call postBooksInboxValidateBeforeCall(@javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+        return postBooksInboxCall(body, _callback);
 
     }
 
@@ -2609,8 +2609,8 @@ public class BooksApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public InboxItem postV1BooksInbox(@javax.annotation.Nullable File body) throws ApiException {
-        ApiResponse<InboxItem> localVarResp = postV1BooksInboxWithHttpInfo(body);
+    public InboxItem postBooksInbox(@javax.annotation.Nullable File body) throws ApiException {
+        ApiResponse<InboxItem> localVarResp = postBooksInboxWithHttpInfo(body);
         return localVarResp.getData();
     }
 
@@ -2627,8 +2627,8 @@ public class BooksApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InboxItem> postV1BooksInboxWithHttpInfo(@javax.annotation.Nullable File body) throws ApiException {
-        okhttp3.Call localVarCall = postV1BooksInboxValidateBeforeCall(body, null);
+    public ApiResponse<InboxItem> postBooksInboxWithHttpInfo(@javax.annotation.Nullable File body) throws ApiException {
+        okhttp3.Call localVarCall = postBooksInboxValidateBeforeCall(body, null);
         Type localVarReturnType = new TypeToken<InboxItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2647,15 +2647,15 @@ public class BooksApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BooksInboxAsync(@javax.annotation.Nullable File body, final ApiCallback<InboxItem> _callback) throws ApiException {
+    public okhttp3.Call postBooksInboxAsync(@javax.annotation.Nullable File body, final ApiCallback<InboxItem> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1BooksInboxValidateBeforeCall(body, _callback);
+        okhttp3.Call localVarCall = postBooksInboxValidateBeforeCall(body, _callback);
         Type localVarReturnType = new TypeToken<InboxItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1BooksRules
+     * Build call for postBooksRules
      * @param rule  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2667,7 +2667,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BooksRulesCall(@javax.annotation.Nonnull Rule rule, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBooksRulesCall(@javax.annotation.Nonnull Rule rule, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2713,13 +2713,13 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1BooksRulesValidateBeforeCall(@javax.annotation.Nonnull Rule rule, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postBooksRulesValidateBeforeCall(@javax.annotation.Nonnull Rule rule, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'rule' is set
         if (rule == null) {
-            throw new ApiException("Missing the required parameter 'rule' when calling postV1BooksRules(Async)");
+            throw new ApiException("Missing the required parameter 'rule' when calling postBooksRules(Async)");
         }
 
-        return postV1BooksRulesCall(rule, _callback);
+        return postBooksRulesCall(rule, _callback);
 
     }
 
@@ -2736,8 +2736,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Rule postV1BooksRules(@javax.annotation.Nonnull Rule rule) throws ApiException {
-        ApiResponse<Rule> localVarResp = postV1BooksRulesWithHttpInfo(rule);
+    public Rule postBooksRules(@javax.annotation.Nonnull Rule rule) throws ApiException {
+        ApiResponse<Rule> localVarResp = postBooksRulesWithHttpInfo(rule);
         return localVarResp.getData();
     }
 
@@ -2754,8 +2754,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Rule> postV1BooksRulesWithHttpInfo(@javax.annotation.Nonnull Rule rule) throws ApiException {
-        okhttp3.Call localVarCall = postV1BooksRulesValidateBeforeCall(rule, null);
+    public ApiResponse<Rule> postBooksRulesWithHttpInfo(@javax.annotation.Nonnull Rule rule) throws ApiException {
+        okhttp3.Call localVarCall = postBooksRulesValidateBeforeCall(rule, null);
         Type localVarReturnType = new TypeToken<Rule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2774,15 +2774,15 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BooksRulesAsync(@javax.annotation.Nonnull Rule rule, final ApiCallback<Rule> _callback) throws ApiException {
+    public okhttp3.Call postBooksRulesAsync(@javax.annotation.Nonnull Rule rule, final ApiCallback<Rule> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1BooksRulesValidateBeforeCall(rule, _callback);
+        okhttp3.Call localVarCall = postBooksRulesValidateBeforeCall(rule, _callback);
         Type localVarReturnType = new TypeToken<Rule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1BooksScan
+     * Build call for postBooksScan
      * @param body  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2794,7 +2794,7 @@ public class BooksApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BooksScanCall(@javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBooksScanCall(@javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2840,8 +2840,8 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1BooksScanValidateBeforeCall(@javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
-        return postV1BooksScanCall(body, _callback);
+    private okhttp3.Call postBooksScanValidateBeforeCall(@javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+        return postBooksScanCall(body, _callback);
 
     }
 
@@ -2858,8 +2858,8 @@ public class BooksApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ScanDraft postV1BooksScan(@javax.annotation.Nullable File body) throws ApiException {
-        ApiResponse<ScanDraft> localVarResp = postV1BooksScanWithHttpInfo(body);
+    public ScanDraft postBooksScan(@javax.annotation.Nullable File body) throws ApiException {
+        ApiResponse<ScanDraft> localVarResp = postBooksScanWithHttpInfo(body);
         return localVarResp.getData();
     }
 
@@ -2876,8 +2876,8 @@ public class BooksApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ScanDraft> postV1BooksScanWithHttpInfo(@javax.annotation.Nullable File body) throws ApiException {
-        okhttp3.Call localVarCall = postV1BooksScanValidateBeforeCall(body, null);
+    public ApiResponse<ScanDraft> postBooksScanWithHttpInfo(@javax.annotation.Nullable File body) throws ApiException {
+        okhttp3.Call localVarCall = postBooksScanValidateBeforeCall(body, null);
         Type localVarReturnType = new TypeToken<ScanDraft>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2896,15 +2896,15 @@ public class BooksApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BooksScanAsync(@javax.annotation.Nullable File body, final ApiCallback<ScanDraft> _callback) throws ApiException {
+    public okhttp3.Call postBooksScanAsync(@javax.annotation.Nullable File body, final ApiCallback<ScanDraft> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1BooksScanValidateBeforeCall(body, _callback);
+        okhttp3.Call localVarCall = postBooksScanValidateBeforeCall(body, _callback);
         Type localVarReturnType = new TypeToken<ScanDraft>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1BooksScanBook
+     * Build call for postBooksScanBook
      * @param bookRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2916,7 +2916,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BooksScanBookCall(@javax.annotation.Nonnull BookRequest bookRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBooksScanBookCall(@javax.annotation.Nonnull BookRequest bookRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2962,13 +2962,13 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1BooksScanBookValidateBeforeCall(@javax.annotation.Nonnull BookRequest bookRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postBooksScanBookValidateBeforeCall(@javax.annotation.Nonnull BookRequest bookRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'bookRequest' is set
         if (bookRequest == null) {
-            throw new ApiException("Missing the required parameter 'bookRequest' when calling postV1BooksScanBook(Async)");
+            throw new ApiException("Missing the required parameter 'bookRequest' when calling postBooksScanBook(Async)");
         }
 
-        return postV1BooksScanBookCall(bookRequest, _callback);
+        return postBooksScanBookCall(bookRequest, _callback);
 
     }
 
@@ -2985,8 +2985,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BookResponse postV1BooksScanBook(@javax.annotation.Nonnull BookRequest bookRequest) throws ApiException {
-        ApiResponse<BookResponse> localVarResp = postV1BooksScanBookWithHttpInfo(bookRequest);
+    public BookResponse postBooksScanBook(@javax.annotation.Nonnull BookRequest bookRequest) throws ApiException {
+        ApiResponse<BookResponse> localVarResp = postBooksScanBookWithHttpInfo(bookRequest);
         return localVarResp.getData();
     }
 
@@ -3003,8 +3003,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BookResponse> postV1BooksScanBookWithHttpInfo(@javax.annotation.Nonnull BookRequest bookRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1BooksScanBookValidateBeforeCall(bookRequest, null);
+    public ApiResponse<BookResponse> postBooksScanBookWithHttpInfo(@javax.annotation.Nonnull BookRequest bookRequest) throws ApiException {
+        okhttp3.Call localVarCall = postBooksScanBookValidateBeforeCall(bookRequest, null);
         Type localVarReturnType = new TypeToken<BookResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3023,15 +3023,15 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BooksScanBookAsync(@javax.annotation.Nonnull BookRequest bookRequest, final ApiCallback<BookResponse> _callback) throws ApiException {
+    public okhttp3.Call postBooksScanBookAsync(@javax.annotation.Nonnull BookRequest bookRequest, final ApiCallback<BookResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1BooksScanBookValidateBeforeCall(bookRequest, _callback);
+        okhttp3.Call localVarCall = postBooksScanBookValidateBeforeCall(bookRequest, _callback);
         Type localVarReturnType = new TypeToken<BookResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1BooksSync
+     * Build call for postBooksSync
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3042,7 +3042,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BooksSyncCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBooksSyncCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3087,8 +3087,8 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1BooksSyncValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1BooksSyncCall(_callback);
+    private okhttp3.Call postBooksSyncValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postBooksSyncCall(_callback);
 
     }
 
@@ -3104,8 +3104,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SyncTally postV1BooksSync() throws ApiException {
-        ApiResponse<SyncTally> localVarResp = postV1BooksSyncWithHttpInfo();
+    public SyncTally postBooksSync() throws ApiException {
+        ApiResponse<SyncTally> localVarResp = postBooksSyncWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -3121,8 +3121,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SyncTally> postV1BooksSyncWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1BooksSyncValidateBeforeCall(null);
+    public ApiResponse<SyncTally> postBooksSyncWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postBooksSyncValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<SyncTally>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3140,15 +3140,15 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BooksSyncAsync(final ApiCallback<SyncTally> _callback) throws ApiException {
+    public okhttp3.Call postBooksSyncAsync(final ApiCallback<SyncTally> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1BooksSyncValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postBooksSyncValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<SyncTally>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1BooksVendors
+     * Build call for postBooksVendors
      * @param vendorRow  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3160,7 +3160,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BooksVendorsCall(@javax.annotation.Nonnull VendorRow vendorRow, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBooksVendorsCall(@javax.annotation.Nonnull VendorRow vendorRow, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3206,13 +3206,13 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1BooksVendorsValidateBeforeCall(@javax.annotation.Nonnull VendorRow vendorRow, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postBooksVendorsValidateBeforeCall(@javax.annotation.Nonnull VendorRow vendorRow, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'vendorRow' is set
         if (vendorRow == null) {
-            throw new ApiException("Missing the required parameter 'vendorRow' when calling postV1BooksVendors(Async)");
+            throw new ApiException("Missing the required parameter 'vendorRow' when calling postBooksVendors(Async)");
         }
 
-        return postV1BooksVendorsCall(vendorRow, _callback);
+        return postBooksVendorsCall(vendorRow, _callback);
 
     }
 
@@ -3229,8 +3229,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public VendorRow postV1BooksVendors(@javax.annotation.Nonnull VendorRow vendorRow) throws ApiException {
-        ApiResponse<VendorRow> localVarResp = postV1BooksVendorsWithHttpInfo(vendorRow);
+    public VendorRow postBooksVendors(@javax.annotation.Nonnull VendorRow vendorRow) throws ApiException {
+        ApiResponse<VendorRow> localVarResp = postBooksVendorsWithHttpInfo(vendorRow);
         return localVarResp.getData();
     }
 
@@ -3247,8 +3247,8 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VendorRow> postV1BooksVendorsWithHttpInfo(@javax.annotation.Nonnull VendorRow vendorRow) throws ApiException {
-        okhttp3.Call localVarCall = postV1BooksVendorsValidateBeforeCall(vendorRow, null);
+    public ApiResponse<VendorRow> postBooksVendorsWithHttpInfo(@javax.annotation.Nonnull VendorRow vendorRow) throws ApiException {
+        okhttp3.Call localVarCall = postBooksVendorsValidateBeforeCall(vendorRow, null);
         Type localVarReturnType = new TypeToken<VendorRow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3267,9 +3267,9 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BooksVendorsAsync(@javax.annotation.Nonnull VendorRow vendorRow, final ApiCallback<VendorRow> _callback) throws ApiException {
+    public okhttp3.Call postBooksVendorsAsync(@javax.annotation.Nonnull VendorRow vendorRow, final ApiCallback<VendorRow> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1BooksVendorsValidateBeforeCall(vendorRow, _callback);
+        okhttp3.Call localVarCall = postBooksVendorsValidateBeforeCall(vendorRow, _callback);
         Type localVarReturnType = new TypeToken<VendorRow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

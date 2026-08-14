@@ -73,7 +73,7 @@ public class BaseApi {
     }
 
     /**
-     * Build call for getV1BaseHealth
+     * Build call for getBaseHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -84,7 +84,7 @@ public class BaseApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BaseHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBaseHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -129,8 +129,8 @@ public class BaseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BaseHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1BaseHealthCall(_callback);
+    private okhttp3.Call getBaseHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getBaseHealthCall(_callback);
 
     }
 
@@ -146,8 +146,8 @@ public class BaseApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BaseHealth getV1BaseHealth() throws ApiException {
-        ApiResponse<BaseHealth> localVarResp = getV1BaseHealthWithHttpInfo();
+    public BaseHealth getBaseHealth() throws ApiException {
+        ApiResponse<BaseHealth> localVarResp = getBaseHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -163,8 +163,8 @@ public class BaseApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BaseHealth> getV1BaseHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1BaseHealthValidateBeforeCall(null);
+    public ApiResponse<BaseHealth> getBaseHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getBaseHealthValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<BaseHealth>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -182,9 +182,9 @@ public class BaseApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BaseHealthAsync(final ApiCallback<BaseHealth> _callback) throws ApiException {
+    public okhttp3.Call getBaseHealthAsync(final ApiCallback<BaseHealth> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BaseHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getBaseHealthValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<BaseHealth>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

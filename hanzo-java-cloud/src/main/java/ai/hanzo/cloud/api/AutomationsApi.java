@@ -85,7 +85,7 @@ public class AutomationsApi {
     }
 
     /**
-     * Build call for deleteV1AutomationsFlowsById
+     * Build call for deleteAutomationsFlowsById
      * @param id ID is the flow to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -97,7 +97,7 @@ public class AutomationsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1AutomationsFlowsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteAutomationsFlowsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -142,13 +142,13 @@ public class AutomationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1AutomationsFlowsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteAutomationsFlowsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1AutomationsFlowsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteAutomationsFlowsById(Async)");
         }
 
-        return deleteV1AutomationsFlowsByIdCall(id, _callback);
+        return deleteAutomationsFlowsByIdCall(id, _callback);
 
     }
 
@@ -164,8 +164,8 @@ public class AutomationsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1AutomationsFlowsById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1AutomationsFlowsByIdWithHttpInfo(id);
+    public void deleteAutomationsFlowsById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteAutomationsFlowsByIdWithHttpInfo(id);
     }
 
     /**
@@ -181,8 +181,8 @@ public class AutomationsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1AutomationsFlowsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1AutomationsFlowsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteAutomationsFlowsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteAutomationsFlowsByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -200,14 +200,14 @@ public class AutomationsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1AutomationsFlowsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteAutomationsFlowsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1AutomationsFlowsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteAutomationsFlowsByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AutomationsConnectors
+     * Build call for getAutomationsConnectors
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -218,7 +218,7 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutomationsConnectorsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAutomationsConnectorsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -263,8 +263,8 @@ public class AutomationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AutomationsConnectorsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1AutomationsConnectorsCall(_callback);
+    private okhttp3.Call getAutomationsConnectorsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAutomationsConnectorsCall(_callback);
 
     }
 
@@ -280,8 +280,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Catalog getV1AutomationsConnectors() throws ApiException {
-        ApiResponse<Catalog> localVarResp = getV1AutomationsConnectorsWithHttpInfo();
+    public Catalog getAutomationsConnectors() throws ApiException {
+        ApiResponse<Catalog> localVarResp = getAutomationsConnectorsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -297,8 +297,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Catalog> getV1AutomationsConnectorsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1AutomationsConnectorsValidateBeforeCall(null);
+    public ApiResponse<Catalog> getAutomationsConnectorsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAutomationsConnectorsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Catalog>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -316,15 +316,15 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutomationsConnectorsAsync(final ApiCallback<Catalog> _callback) throws ApiException {
+    public okhttp3.Call getAutomationsConnectorsAsync(final ApiCallback<Catalog> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AutomationsConnectorsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAutomationsConnectorsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Catalog>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AutomationsFlows
+     * Build call for getAutomationsFlows
      * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -336,7 +336,7 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutomationsFlowsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAutomationsFlowsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -385,8 +385,8 @@ public class AutomationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AutomationsFlowsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1AutomationsFlowsCall(limit, _callback);
+    private okhttp3.Call getAutomationsFlowsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getAutomationsFlowsCall(limit, _callback);
 
     }
 
@@ -403,8 +403,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FlowPage getV1AutomationsFlows(@javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<FlowPage> localVarResp = getV1AutomationsFlowsWithHttpInfo(limit);
+    public FlowPage getAutomationsFlows(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<FlowPage> localVarResp = getAutomationsFlowsWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -421,8 +421,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FlowPage> getV1AutomationsFlowsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1AutomationsFlowsValidateBeforeCall(limit, null);
+    public ApiResponse<FlowPage> getAutomationsFlowsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getAutomationsFlowsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<FlowPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -441,15 +441,15 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutomationsFlowsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<FlowPage> _callback) throws ApiException {
+    public okhttp3.Call getAutomationsFlowsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<FlowPage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AutomationsFlowsValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getAutomationsFlowsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<FlowPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AutomationsFlowsById
+     * Build call for getAutomationsFlowsById
      * @param id ID is the flow to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -461,7 +461,7 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutomationsFlowsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAutomationsFlowsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -507,13 +507,13 @@ public class AutomationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AutomationsFlowsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAutomationsFlowsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1AutomationsFlowsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getAutomationsFlowsById(Async)");
         }
 
-        return getV1AutomationsFlowsByIdCall(id, _callback);
+        return getAutomationsFlowsByIdCall(id, _callback);
 
     }
 
@@ -530,8 +530,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PopulatedFlow getV1AutomationsFlowsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<PopulatedFlow> localVarResp = getV1AutomationsFlowsByIdWithHttpInfo(id);
+    public PopulatedFlow getAutomationsFlowsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<PopulatedFlow> localVarResp = getAutomationsFlowsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -548,8 +548,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PopulatedFlow> getV1AutomationsFlowsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1AutomationsFlowsByIdValidateBeforeCall(id, null);
+    public ApiResponse<PopulatedFlow> getAutomationsFlowsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getAutomationsFlowsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<PopulatedFlow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -568,15 +568,15 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutomationsFlowsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<PopulatedFlow> _callback) throws ApiException {
+    public okhttp3.Call getAutomationsFlowsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<PopulatedFlow> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AutomationsFlowsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getAutomationsFlowsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<PopulatedFlow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AutomationsFlowsByIdVersions
+     * Build call for getAutomationsFlowsByIdVersions
      * @param id ID is the flow whose versions to list, from the path. (required)
      * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
      * @param _callback Callback for upload/download progress
@@ -589,7 +589,7 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutomationsFlowsByIdVersionsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAutomationsFlowsByIdVersionsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -639,13 +639,13 @@ public class AutomationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AutomationsFlowsByIdVersionsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAutomationsFlowsByIdVersionsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1AutomationsFlowsByIdVersions(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getAutomationsFlowsByIdVersions(Async)");
         }
 
-        return getV1AutomationsFlowsByIdVersionsCall(id, limit, _callback);
+        return getAutomationsFlowsByIdVersionsCall(id, limit, _callback);
 
     }
 
@@ -663,8 +663,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public VersionPage getV1AutomationsFlowsByIdVersions(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<VersionPage> localVarResp = getV1AutomationsFlowsByIdVersionsWithHttpInfo(id, limit);
+    public VersionPage getAutomationsFlowsByIdVersions(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<VersionPage> localVarResp = getAutomationsFlowsByIdVersionsWithHttpInfo(id, limit);
         return localVarResp.getData();
     }
 
@@ -682,8 +682,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VersionPage> getV1AutomationsFlowsByIdVersionsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1AutomationsFlowsByIdVersionsValidateBeforeCall(id, limit, null);
+    public ApiResponse<VersionPage> getAutomationsFlowsByIdVersionsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getAutomationsFlowsByIdVersionsValidateBeforeCall(id, limit, null);
         Type localVarReturnType = new TypeToken<VersionPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -703,15 +703,15 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutomationsFlowsByIdVersionsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, final ApiCallback<VersionPage> _callback) throws ApiException {
+    public okhttp3.Call getAutomationsFlowsByIdVersionsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, final ApiCallback<VersionPage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AutomationsFlowsByIdVersionsValidateBeforeCall(id, limit, _callback);
+        okhttp3.Call localVarCall = getAutomationsFlowsByIdVersionsValidateBeforeCall(id, limit, _callback);
         Type localVarReturnType = new TypeToken<VersionPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AutomationsPieces
+     * Build call for getAutomationsPieces
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -722,7 +722,7 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutomationsPiecesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAutomationsPiecesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -767,8 +767,8 @@ public class AutomationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AutomationsPiecesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1AutomationsPiecesCall(_callback);
+    private okhttp3.Call getAutomationsPiecesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAutomationsPiecesCall(_callback);
 
     }
 
@@ -784,8 +784,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Catalog getV1AutomationsPieces() throws ApiException {
-        ApiResponse<Catalog> localVarResp = getV1AutomationsPiecesWithHttpInfo();
+    public Catalog getAutomationsPieces() throws ApiException {
+        ApiResponse<Catalog> localVarResp = getAutomationsPiecesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -801,8 +801,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Catalog> getV1AutomationsPiecesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1AutomationsPiecesValidateBeforeCall(null);
+    public ApiResponse<Catalog> getAutomationsPiecesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAutomationsPiecesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Catalog>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -820,15 +820,15 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutomationsPiecesAsync(final ApiCallback<Catalog> _callback) throws ApiException {
+    public okhttp3.Call getAutomationsPiecesAsync(final ApiCallback<Catalog> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AutomationsPiecesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAutomationsPiecesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Catalog>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AutomationsRuns
+     * Build call for getAutomationsRuns
      * @param flowId FlowID narrows the history to one flow. Omit it for the whole org&#39;s runs. (optional)
      * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
      * @param _callback Callback for upload/download progress
@@ -841,7 +841,7 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutomationsRunsCall(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAutomationsRunsCall(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -894,8 +894,8 @@ public class AutomationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AutomationsRunsValidateBeforeCall(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1AutomationsRunsCall(flowId, limit, _callback);
+    private okhttp3.Call getAutomationsRunsValidateBeforeCall(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getAutomationsRunsCall(flowId, limit, _callback);
 
     }
 
@@ -913,8 +913,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RunPage getV1AutomationsRuns(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<RunPage> localVarResp = getV1AutomationsRunsWithHttpInfo(flowId, limit);
+    public RunPage getAutomationsRuns(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<RunPage> localVarResp = getAutomationsRunsWithHttpInfo(flowId, limit);
         return localVarResp.getData();
     }
 
@@ -932,8 +932,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RunPage> getV1AutomationsRunsWithHttpInfo(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1AutomationsRunsValidateBeforeCall(flowId, limit, null);
+    public ApiResponse<RunPage> getAutomationsRunsWithHttpInfo(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getAutomationsRunsValidateBeforeCall(flowId, limit, null);
         Type localVarReturnType = new TypeToken<RunPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -953,15 +953,15 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutomationsRunsAsync(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Integer limit, final ApiCallback<RunPage> _callback) throws ApiException {
+    public okhttp3.Call getAutomationsRunsAsync(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Integer limit, final ApiCallback<RunPage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AutomationsRunsValidateBeforeCall(flowId, limit, _callback);
+        okhttp3.Call localVarCall = getAutomationsRunsValidateBeforeCall(flowId, limit, _callback);
         Type localVarReturnType = new TypeToken<RunPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AutomationsRunsById
+     * Build call for getAutomationsRunsById
      * @param id ID is the run to read, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -973,7 +973,7 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutomationsRunsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAutomationsRunsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1019,13 +1019,13 @@ public class AutomationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AutomationsRunsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAutomationsRunsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1AutomationsRunsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getAutomationsRunsById(Async)");
         }
 
-        return getV1AutomationsRunsByIdCall(id, _callback);
+        return getAutomationsRunsByIdCall(id, _callback);
 
     }
 
@@ -1042,8 +1042,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FlowRun getV1AutomationsRunsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<FlowRun> localVarResp = getV1AutomationsRunsByIdWithHttpInfo(id);
+    public FlowRun getAutomationsRunsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<FlowRun> localVarResp = getAutomationsRunsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1060,8 +1060,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FlowRun> getV1AutomationsRunsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1AutomationsRunsByIdValidateBeforeCall(id, null);
+    public ApiResponse<FlowRun> getAutomationsRunsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getAutomationsRunsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<FlowRun>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1080,15 +1080,15 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutomationsRunsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<FlowRun> _callback) throws ApiException {
+    public okhttp3.Call getAutomationsRunsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<FlowRun> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AutomationsRunsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getAutomationsRunsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<FlowRun>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1AutomationsFlowsById
+     * Build call for patchAutomationsFlowsById
      * @param id ID is the flow to update, from the path. (required)
      * @param patchFlowIn  (required)
      * @param _callback Callback for upload/download progress
@@ -1101,7 +1101,7 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchV1AutomationsFlowsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchFlowIn patchFlowIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchAutomationsFlowsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchFlowIn patchFlowIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1148,18 +1148,18 @@ public class AutomationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1AutomationsFlowsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchFlowIn patchFlowIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchAutomationsFlowsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchFlowIn patchFlowIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling patchV1AutomationsFlowsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling patchAutomationsFlowsById(Async)");
         }
 
         // verify the required parameter 'patchFlowIn' is set
         if (patchFlowIn == null) {
-            throw new ApiException("Missing the required parameter 'patchFlowIn' when calling patchV1AutomationsFlowsById(Async)");
+            throw new ApiException("Missing the required parameter 'patchFlowIn' when calling patchAutomationsFlowsById(Async)");
         }
 
-        return patchV1AutomationsFlowsByIdCall(id, patchFlowIn, _callback);
+        return patchAutomationsFlowsByIdCall(id, patchFlowIn, _callback);
 
     }
 
@@ -1177,8 +1177,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Flow patchV1AutomationsFlowsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchFlowIn patchFlowIn) throws ApiException {
-        ApiResponse<Flow> localVarResp = patchV1AutomationsFlowsByIdWithHttpInfo(id, patchFlowIn);
+    public Flow patchAutomationsFlowsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchFlowIn patchFlowIn) throws ApiException {
+        ApiResponse<Flow> localVarResp = patchAutomationsFlowsByIdWithHttpInfo(id, patchFlowIn);
         return localVarResp.getData();
     }
 
@@ -1196,8 +1196,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Flow> patchV1AutomationsFlowsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchFlowIn patchFlowIn) throws ApiException {
-        okhttp3.Call localVarCall = patchV1AutomationsFlowsByIdValidateBeforeCall(id, patchFlowIn, null);
+    public ApiResponse<Flow> patchAutomationsFlowsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchFlowIn patchFlowIn) throws ApiException {
+        okhttp3.Call localVarCall = patchAutomationsFlowsByIdValidateBeforeCall(id, patchFlowIn, null);
         Type localVarReturnType = new TypeToken<Flow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1217,15 +1217,15 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchV1AutomationsFlowsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchFlowIn patchFlowIn, final ApiCallback<Flow> _callback) throws ApiException {
+    public okhttp3.Call patchAutomationsFlowsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchFlowIn patchFlowIn, final ApiCallback<Flow> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1AutomationsFlowsByIdValidateBeforeCall(id, patchFlowIn, _callback);
+        okhttp3.Call localVarCall = patchAutomationsFlowsByIdValidateBeforeCall(id, patchFlowIn, _callback);
         Type localVarReturnType = new TypeToken<Flow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AutomationsConnectorsByIdRun
+     * Build call for postAutomationsConnectorsByIdRun
      * @param id ID is the connector to run, from the path. (required)
      * @param runIn  (required)
      * @param _callback Callback for upload/download progress
@@ -1238,7 +1238,7 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AutomationsConnectorsByIdRunCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RunIn runIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAutomationsConnectorsByIdRunCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RunIn runIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1285,18 +1285,18 @@ public class AutomationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AutomationsConnectorsByIdRunValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RunIn runIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAutomationsConnectorsByIdRunValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RunIn runIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1AutomationsConnectorsByIdRun(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAutomationsConnectorsByIdRun(Async)");
         }
 
         // verify the required parameter 'runIn' is set
         if (runIn == null) {
-            throw new ApiException("Missing the required parameter 'runIn' when calling postV1AutomationsConnectorsByIdRun(Async)");
+            throw new ApiException("Missing the required parameter 'runIn' when calling postAutomationsConnectorsByIdRun(Async)");
         }
 
-        return postV1AutomationsConnectorsByIdRunCall(id, runIn, _callback);
+        return postAutomationsConnectorsByIdRunCall(id, runIn, _callback);
 
     }
 
@@ -1314,8 +1314,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RunResp postV1AutomationsConnectorsByIdRun(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RunIn runIn) throws ApiException {
-        ApiResponse<RunResp> localVarResp = postV1AutomationsConnectorsByIdRunWithHttpInfo(id, runIn);
+    public RunResp postAutomationsConnectorsByIdRun(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RunIn runIn) throws ApiException {
+        ApiResponse<RunResp> localVarResp = postAutomationsConnectorsByIdRunWithHttpInfo(id, runIn);
         return localVarResp.getData();
     }
 
@@ -1333,8 +1333,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RunResp> postV1AutomationsConnectorsByIdRunWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RunIn runIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1AutomationsConnectorsByIdRunValidateBeforeCall(id, runIn, null);
+    public ApiResponse<RunResp> postAutomationsConnectorsByIdRunWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RunIn runIn) throws ApiException {
+        okhttp3.Call localVarCall = postAutomationsConnectorsByIdRunValidateBeforeCall(id, runIn, null);
         Type localVarReturnType = new TypeToken<RunResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1354,15 +1354,15 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AutomationsConnectorsByIdRunAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RunIn runIn, final ApiCallback<RunResp> _callback) throws ApiException {
+    public okhttp3.Call postAutomationsConnectorsByIdRunAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RunIn runIn, final ApiCallback<RunResp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AutomationsConnectorsByIdRunValidateBeforeCall(id, runIn, _callback);
+        okhttp3.Call localVarCall = postAutomationsConnectorsByIdRunValidateBeforeCall(id, runIn, _callback);
         Type localVarReturnType = new TypeToken<RunResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AutomationsFlows
+     * Build call for postAutomationsFlows
      * @param createFlowReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1374,7 +1374,7 @@ public class AutomationsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AutomationsFlowsCall(@javax.annotation.Nonnull CreateFlowReq createFlowReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAutomationsFlowsCall(@javax.annotation.Nonnull CreateFlowReq createFlowReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1420,13 +1420,13 @@ public class AutomationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AutomationsFlowsValidateBeforeCall(@javax.annotation.Nonnull CreateFlowReq createFlowReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAutomationsFlowsValidateBeforeCall(@javax.annotation.Nonnull CreateFlowReq createFlowReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'createFlowReq' is set
         if (createFlowReq == null) {
-            throw new ApiException("Missing the required parameter 'createFlowReq' when calling postV1AutomationsFlows(Async)");
+            throw new ApiException("Missing the required parameter 'createFlowReq' when calling postAutomationsFlows(Async)");
         }
 
-        return postV1AutomationsFlowsCall(createFlowReq, _callback);
+        return postAutomationsFlowsCall(createFlowReq, _callback);
 
     }
 
@@ -1443,8 +1443,8 @@ public class AutomationsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public PopulatedFlow postV1AutomationsFlows(@javax.annotation.Nonnull CreateFlowReq createFlowReq) throws ApiException {
-        ApiResponse<PopulatedFlow> localVarResp = postV1AutomationsFlowsWithHttpInfo(createFlowReq);
+    public PopulatedFlow postAutomationsFlows(@javax.annotation.Nonnull CreateFlowReq createFlowReq) throws ApiException {
+        ApiResponse<PopulatedFlow> localVarResp = postAutomationsFlowsWithHttpInfo(createFlowReq);
         return localVarResp.getData();
     }
 
@@ -1461,8 +1461,8 @@ public class AutomationsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PopulatedFlow> postV1AutomationsFlowsWithHttpInfo(@javax.annotation.Nonnull CreateFlowReq createFlowReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1AutomationsFlowsValidateBeforeCall(createFlowReq, null);
+    public ApiResponse<PopulatedFlow> postAutomationsFlowsWithHttpInfo(@javax.annotation.Nonnull CreateFlowReq createFlowReq) throws ApiException {
+        okhttp3.Call localVarCall = postAutomationsFlowsValidateBeforeCall(createFlowReq, null);
         Type localVarReturnType = new TypeToken<PopulatedFlow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1481,15 +1481,15 @@ public class AutomationsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AutomationsFlowsAsync(@javax.annotation.Nonnull CreateFlowReq createFlowReq, final ApiCallback<PopulatedFlow> _callback) throws ApiException {
+    public okhttp3.Call postAutomationsFlowsAsync(@javax.annotation.Nonnull CreateFlowReq createFlowReq, final ApiCallback<PopulatedFlow> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AutomationsFlowsValidateBeforeCall(createFlowReq, _callback);
+        okhttp3.Call localVarCall = postAutomationsFlowsValidateBeforeCall(createFlowReq, _callback);
         Type localVarReturnType = new TypeToken<PopulatedFlow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AutomationsFlowsByIdDisable
+     * Build call for postAutomationsFlowsByIdDisable
      * @param id ID is the flow to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1501,7 +1501,7 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AutomationsFlowsByIdDisableCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAutomationsFlowsByIdDisableCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1547,13 +1547,13 @@ public class AutomationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AutomationsFlowsByIdDisableValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAutomationsFlowsByIdDisableValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1AutomationsFlowsByIdDisable(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAutomationsFlowsByIdDisable(Async)");
         }
 
-        return postV1AutomationsFlowsByIdDisableCall(id, _callback);
+        return postAutomationsFlowsByIdDisableCall(id, _callback);
 
     }
 
@@ -1570,8 +1570,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Flow postV1AutomationsFlowsByIdDisable(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Flow> localVarResp = postV1AutomationsFlowsByIdDisableWithHttpInfo(id);
+    public Flow postAutomationsFlowsByIdDisable(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Flow> localVarResp = postAutomationsFlowsByIdDisableWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1588,8 +1588,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Flow> postV1AutomationsFlowsByIdDisableWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1AutomationsFlowsByIdDisableValidateBeforeCall(id, null);
+    public ApiResponse<Flow> postAutomationsFlowsByIdDisableWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postAutomationsFlowsByIdDisableValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<Flow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1608,15 +1608,15 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AutomationsFlowsByIdDisableAsync(@javax.annotation.Nonnull String id, final ApiCallback<Flow> _callback) throws ApiException {
+    public okhttp3.Call postAutomationsFlowsByIdDisableAsync(@javax.annotation.Nonnull String id, final ApiCallback<Flow> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AutomationsFlowsByIdDisableValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postAutomationsFlowsByIdDisableValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<Flow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AutomationsFlowsByIdEnable
+     * Build call for postAutomationsFlowsByIdEnable
      * @param id ID is the flow to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1628,7 +1628,7 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AutomationsFlowsByIdEnableCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAutomationsFlowsByIdEnableCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1674,13 +1674,13 @@ public class AutomationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AutomationsFlowsByIdEnableValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAutomationsFlowsByIdEnableValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1AutomationsFlowsByIdEnable(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAutomationsFlowsByIdEnable(Async)");
         }
 
-        return postV1AutomationsFlowsByIdEnableCall(id, _callback);
+        return postAutomationsFlowsByIdEnableCall(id, _callback);
 
     }
 
@@ -1697,8 +1697,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Flow postV1AutomationsFlowsByIdEnable(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Flow> localVarResp = postV1AutomationsFlowsByIdEnableWithHttpInfo(id);
+    public Flow postAutomationsFlowsByIdEnable(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Flow> localVarResp = postAutomationsFlowsByIdEnableWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1715,8 +1715,8 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Flow> postV1AutomationsFlowsByIdEnableWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1AutomationsFlowsByIdEnableValidateBeforeCall(id, null);
+    public ApiResponse<Flow> postAutomationsFlowsByIdEnableWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postAutomationsFlowsByIdEnableValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<Flow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1735,21 +1735,21 @@ public class AutomationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AutomationsFlowsByIdEnableAsync(@javax.annotation.Nonnull String id, final ApiCallback<Flow> _callback) throws ApiException {
+    public okhttp3.Call postAutomationsFlowsByIdEnableAsync(@javax.annotation.Nonnull String id, final ApiCallback<Flow> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AutomationsFlowsByIdEnableValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postAutomationsFlowsByIdEnableValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<Flow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AutomationsFlowsByIdOperations
+     * Build call for postAutomationsFlowsByIdOperations
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1AutomationsFlowsByIdOperationsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAutomationsFlowsByIdOperationsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1794,13 +1794,13 @@ public class AutomationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AutomationsFlowsByIdOperationsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAutomationsFlowsByIdOperationsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1AutomationsFlowsByIdOperations(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAutomationsFlowsByIdOperations(Async)");
         }
 
-        return postV1AutomationsFlowsByIdOperationsCall(id, _callback);
+        return postAutomationsFlowsByIdOperationsCall(id, _callback);
 
     }
 
@@ -1810,8 +1810,8 @@ public class AutomationsApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1AutomationsFlowsByIdOperations(@javax.annotation.Nonnull String id) throws ApiException {
-        postV1AutomationsFlowsByIdOperationsWithHttpInfo(id);
+    public void postAutomationsFlowsByIdOperations(@javax.annotation.Nonnull String id) throws ApiException {
+        postAutomationsFlowsByIdOperationsWithHttpInfo(id);
     }
 
     /**
@@ -1821,8 +1821,8 @@ public class AutomationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1AutomationsFlowsByIdOperationsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1AutomationsFlowsByIdOperationsValidateBeforeCall(id, null);
+    public ApiResponse<Void> postAutomationsFlowsByIdOperationsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postAutomationsFlowsByIdOperationsValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1834,14 +1834,14 @@ public class AutomationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1AutomationsFlowsByIdOperationsAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postAutomationsFlowsByIdOperationsAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AutomationsFlowsByIdOperationsValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postAutomationsFlowsByIdOperationsValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AutomationsFlowsByIdRun
+     * Build call for postAutomationsFlowsByIdRun
      * @param id ID is the flow to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1853,7 +1853,7 @@ public class AutomationsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AutomationsFlowsByIdRunCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAutomationsFlowsByIdRunCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1899,13 +1899,13 @@ public class AutomationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AutomationsFlowsByIdRunValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAutomationsFlowsByIdRunValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1AutomationsFlowsByIdRun(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAutomationsFlowsByIdRun(Async)");
         }
 
-        return postV1AutomationsFlowsByIdRunCall(id, _callback);
+        return postAutomationsFlowsByIdRunCall(id, _callback);
 
     }
 
@@ -1922,8 +1922,8 @@ public class AutomationsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public FlowRun postV1AutomationsFlowsByIdRun(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<FlowRun> localVarResp = postV1AutomationsFlowsByIdRunWithHttpInfo(id);
+    public FlowRun postAutomationsFlowsByIdRun(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<FlowRun> localVarResp = postAutomationsFlowsByIdRunWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1940,8 +1940,8 @@ public class AutomationsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FlowRun> postV1AutomationsFlowsByIdRunWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1AutomationsFlowsByIdRunValidateBeforeCall(id, null);
+    public ApiResponse<FlowRun> postAutomationsFlowsByIdRunWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postAutomationsFlowsByIdRunValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<FlowRun>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1960,15 +1960,15 @@ public class AutomationsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AutomationsFlowsByIdRunAsync(@javax.annotation.Nonnull String id, final ApiCallback<FlowRun> _callback) throws ApiException {
+    public okhttp3.Call postAutomationsFlowsByIdRunAsync(@javax.annotation.Nonnull String id, final ApiCallback<FlowRun> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AutomationsFlowsByIdRunValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postAutomationsFlowsByIdRunValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<FlowRun>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AutomationsFlowsByIdVersions
+     * Build call for postAutomationsFlowsByIdVersions
      * @param id ID is the flow to add a version to, from the path. (required)
      * @param createVersionIn  (required)
      * @param _callback Callback for upload/download progress
@@ -1981,7 +1981,7 @@ public class AutomationsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AutomationsFlowsByIdVersionsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateVersionIn createVersionIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAutomationsFlowsByIdVersionsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateVersionIn createVersionIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2028,18 +2028,18 @@ public class AutomationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AutomationsFlowsByIdVersionsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateVersionIn createVersionIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAutomationsFlowsByIdVersionsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateVersionIn createVersionIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1AutomationsFlowsByIdVersions(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAutomationsFlowsByIdVersions(Async)");
         }
 
         // verify the required parameter 'createVersionIn' is set
         if (createVersionIn == null) {
-            throw new ApiException("Missing the required parameter 'createVersionIn' when calling postV1AutomationsFlowsByIdVersions(Async)");
+            throw new ApiException("Missing the required parameter 'createVersionIn' when calling postAutomationsFlowsByIdVersions(Async)");
         }
 
-        return postV1AutomationsFlowsByIdVersionsCall(id, createVersionIn, _callback);
+        return postAutomationsFlowsByIdVersionsCall(id, createVersionIn, _callback);
 
     }
 
@@ -2057,8 +2057,8 @@ public class AutomationsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public FlowVersion postV1AutomationsFlowsByIdVersions(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateVersionIn createVersionIn) throws ApiException {
-        ApiResponse<FlowVersion> localVarResp = postV1AutomationsFlowsByIdVersionsWithHttpInfo(id, createVersionIn);
+    public FlowVersion postAutomationsFlowsByIdVersions(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateVersionIn createVersionIn) throws ApiException {
+        ApiResponse<FlowVersion> localVarResp = postAutomationsFlowsByIdVersionsWithHttpInfo(id, createVersionIn);
         return localVarResp.getData();
     }
 
@@ -2076,8 +2076,8 @@ public class AutomationsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FlowVersion> postV1AutomationsFlowsByIdVersionsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateVersionIn createVersionIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1AutomationsFlowsByIdVersionsValidateBeforeCall(id, createVersionIn, null);
+    public ApiResponse<FlowVersion> postAutomationsFlowsByIdVersionsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateVersionIn createVersionIn) throws ApiException {
+        okhttp3.Call localVarCall = postAutomationsFlowsByIdVersionsValidateBeforeCall(id, createVersionIn, null);
         Type localVarReturnType = new TypeToken<FlowVersion>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2097,22 +2097,22 @@ public class AutomationsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AutomationsFlowsByIdVersionsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateVersionIn createVersionIn, final ApiCallback<FlowVersion> _callback) throws ApiException {
+    public okhttp3.Call postAutomationsFlowsByIdVersionsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateVersionIn createVersionIn, final ApiCallback<FlowVersion> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AutomationsFlowsByIdVersionsValidateBeforeCall(id, createVersionIn, _callback);
+        okhttp3.Call localVarCall = postAutomationsFlowsByIdVersionsValidateBeforeCall(id, createVersionIn, _callback);
         Type localVarReturnType = new TypeToken<FlowVersion>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AutomationsHooksBySourceByEvent
+     * Build call for postAutomationsHooksBySourceByEvent
      * @param source  (required)
      * @param event  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1AutomationsHooksBySourceByEventCall(@javax.annotation.Nonnull String source, @javax.annotation.Nonnull String event, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAutomationsHooksBySourceByEventCall(@javax.annotation.Nonnull String source, @javax.annotation.Nonnull String event, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2158,18 +2158,18 @@ public class AutomationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AutomationsHooksBySourceByEventValidateBeforeCall(@javax.annotation.Nonnull String source, @javax.annotation.Nonnull String event, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAutomationsHooksBySourceByEventValidateBeforeCall(@javax.annotation.Nonnull String source, @javax.annotation.Nonnull String event, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'source' is set
         if (source == null) {
-            throw new ApiException("Missing the required parameter 'source' when calling postV1AutomationsHooksBySourceByEvent(Async)");
+            throw new ApiException("Missing the required parameter 'source' when calling postAutomationsHooksBySourceByEvent(Async)");
         }
 
         // verify the required parameter 'event' is set
         if (event == null) {
-            throw new ApiException("Missing the required parameter 'event' when calling postV1AutomationsHooksBySourceByEvent(Async)");
+            throw new ApiException("Missing the required parameter 'event' when calling postAutomationsHooksBySourceByEvent(Async)");
         }
 
-        return postV1AutomationsHooksBySourceByEventCall(source, event, _callback);
+        return postAutomationsHooksBySourceByEventCall(source, event, _callback);
 
     }
 
@@ -2180,8 +2180,8 @@ public class AutomationsApi {
      * @param event  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1AutomationsHooksBySourceByEvent(@javax.annotation.Nonnull String source, @javax.annotation.Nonnull String event) throws ApiException {
-        postV1AutomationsHooksBySourceByEventWithHttpInfo(source, event);
+    public void postAutomationsHooksBySourceByEvent(@javax.annotation.Nonnull String source, @javax.annotation.Nonnull String event) throws ApiException {
+        postAutomationsHooksBySourceByEventWithHttpInfo(source, event);
     }
 
     /**
@@ -2192,8 +2192,8 @@ public class AutomationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1AutomationsHooksBySourceByEventWithHttpInfo(@javax.annotation.Nonnull String source, @javax.annotation.Nonnull String event) throws ApiException {
-        okhttp3.Call localVarCall = postV1AutomationsHooksBySourceByEventValidateBeforeCall(source, event, null);
+    public ApiResponse<Void> postAutomationsHooksBySourceByEventWithHttpInfo(@javax.annotation.Nonnull String source, @javax.annotation.Nonnull String event) throws ApiException {
+        okhttp3.Call localVarCall = postAutomationsHooksBySourceByEventValidateBeforeCall(source, event, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2206,20 +2206,20 @@ public class AutomationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1AutomationsHooksBySourceByEventAsync(@javax.annotation.Nonnull String source, @javax.annotation.Nonnull String event, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postAutomationsHooksBySourceByEventAsync(@javax.annotation.Nonnull String source, @javax.annotation.Nonnull String event, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AutomationsHooksBySourceByEventValidateBeforeCall(source, event, _callback);
+        okhttp3.Call localVarCall = postAutomationsHooksBySourceByEventValidateBeforeCall(source, event, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AutomationsRunsByIdResume
+     * Build call for postAutomationsRunsByIdResume
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1AutomationsRunsByIdResumeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAutomationsRunsByIdResumeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2264,13 +2264,13 @@ public class AutomationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AutomationsRunsByIdResumeValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAutomationsRunsByIdResumeValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1AutomationsRunsByIdResume(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAutomationsRunsByIdResume(Async)");
         }
 
-        return postV1AutomationsRunsByIdResumeCall(id, _callback);
+        return postAutomationsRunsByIdResumeCall(id, _callback);
 
     }
 
@@ -2280,8 +2280,8 @@ public class AutomationsApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1AutomationsRunsByIdResume(@javax.annotation.Nonnull String id) throws ApiException {
-        postV1AutomationsRunsByIdResumeWithHttpInfo(id);
+    public void postAutomationsRunsByIdResume(@javax.annotation.Nonnull String id) throws ApiException {
+        postAutomationsRunsByIdResumeWithHttpInfo(id);
     }
 
     /**
@@ -2291,8 +2291,8 @@ public class AutomationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1AutomationsRunsByIdResumeWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1AutomationsRunsByIdResumeValidateBeforeCall(id, null);
+    public ApiResponse<Void> postAutomationsRunsByIdResumeWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postAutomationsRunsByIdResumeValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2304,9 +2304,9 @@ public class AutomationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1AutomationsRunsByIdResumeAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postAutomationsRunsByIdResumeAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AutomationsRunsByIdResumeValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postAutomationsRunsByIdResumeValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

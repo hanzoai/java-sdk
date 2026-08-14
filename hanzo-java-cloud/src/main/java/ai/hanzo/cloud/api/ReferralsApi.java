@@ -75,7 +75,7 @@ public class ReferralsApi {
     }
 
     /**
-     * Build call for getV1Referrals
+     * Build call for getReferrals
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -86,7 +86,7 @@ public class ReferralsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ReferralsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getReferralsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -131,8 +131,8 @@ public class ReferralsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ReferralsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1ReferralsCall(_callback);
+    private okhttp3.Call getReferralsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getReferralsCall(_callback);
 
     }
 
@@ -148,8 +148,8 @@ public class ReferralsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public MyReferrals getV1Referrals() throws ApiException {
-        ApiResponse<MyReferrals> localVarResp = getV1ReferralsWithHttpInfo();
+    public MyReferrals getReferrals() throws ApiException {
+        ApiResponse<MyReferrals> localVarResp = getReferralsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -165,8 +165,8 @@ public class ReferralsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MyReferrals> getV1ReferralsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1ReferralsValidateBeforeCall(null);
+    public ApiResponse<MyReferrals> getReferralsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getReferralsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<MyReferrals>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -184,15 +184,15 @@ public class ReferralsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ReferralsAsync(final ApiCallback<MyReferrals> _callback) throws ApiException {
+    public okhttp3.Call getReferralsAsync(final ApiCallback<MyReferrals> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ReferralsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getReferralsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<MyReferrals>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ReferralsClaim
+     * Build call for postReferralsClaim
      * @param claimRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -204,7 +204,7 @@ public class ReferralsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ReferralsClaimCall(@javax.annotation.Nonnull ClaimRequest claimRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postReferralsClaimCall(@javax.annotation.Nonnull ClaimRequest claimRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -250,13 +250,13 @@ public class ReferralsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ReferralsClaimValidateBeforeCall(@javax.annotation.Nonnull ClaimRequest claimRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postReferralsClaimValidateBeforeCall(@javax.annotation.Nonnull ClaimRequest claimRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'claimRequest' is set
         if (claimRequest == null) {
-            throw new ApiException("Missing the required parameter 'claimRequest' when calling postV1ReferralsClaim(Async)");
+            throw new ApiException("Missing the required parameter 'claimRequest' when calling postReferralsClaim(Async)");
         }
 
-        return postV1ReferralsClaimCall(claimRequest, _callback);
+        return postReferralsClaimCall(claimRequest, _callback);
 
     }
 
@@ -273,8 +273,8 @@ public class ReferralsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ClaimView postV1ReferralsClaim(@javax.annotation.Nonnull ClaimRequest claimRequest) throws ApiException {
-        ApiResponse<ClaimView> localVarResp = postV1ReferralsClaimWithHttpInfo(claimRequest);
+    public ClaimView postReferralsClaim(@javax.annotation.Nonnull ClaimRequest claimRequest) throws ApiException {
+        ApiResponse<ClaimView> localVarResp = postReferralsClaimWithHttpInfo(claimRequest);
         return localVarResp.getData();
     }
 
@@ -291,8 +291,8 @@ public class ReferralsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ClaimView> postV1ReferralsClaimWithHttpInfo(@javax.annotation.Nonnull ClaimRequest claimRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1ReferralsClaimValidateBeforeCall(claimRequest, null);
+    public ApiResponse<ClaimView> postReferralsClaimWithHttpInfo(@javax.annotation.Nonnull ClaimRequest claimRequest) throws ApiException {
+        okhttp3.Call localVarCall = postReferralsClaimValidateBeforeCall(claimRequest, null);
         Type localVarReturnType = new TypeToken<ClaimView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -311,9 +311,9 @@ public class ReferralsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ReferralsClaimAsync(@javax.annotation.Nonnull ClaimRequest claimRequest, final ApiCallback<ClaimView> _callback) throws ApiException {
+    public okhttp3.Call postReferralsClaimAsync(@javax.annotation.Nonnull ClaimRequest claimRequest, final ApiCallback<ClaimView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ReferralsClaimValidateBeforeCall(claimRequest, _callback);
+        okhttp3.Call localVarCall = postReferralsClaimValidateBeforeCall(claimRequest, _callback);
         Type localVarReturnType = new TypeToken<ClaimView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

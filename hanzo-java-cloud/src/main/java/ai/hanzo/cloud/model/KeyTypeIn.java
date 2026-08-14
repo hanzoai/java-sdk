@@ -20,7 +20,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,6 +52,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class KeyTypeIn {
+  public static final String SERIALIZED_NAME_LIMIT = "limit";
+  @SerializedName(SERIALIZED_NAME_LIMIT)
+  @javax.annotation.Nullable
+  private List<String> limit = new ArrayList<>();
+
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   @javax.annotation.Nullable
@@ -57,6 +64,33 @@ public class KeyTypeIn {
 
   public KeyTypeIn() {
   }
+
+  public KeyTypeIn limit(@javax.annotation.Nullable List<String> limit) {
+    this.limit = limit;
+    return this;
+  }
+
+  public KeyTypeIn addLimitItem(String limitItem) {
+    if (this.limit == null) {
+      this.limit = new ArrayList<>();
+    }
+    this.limit.add(limitItem);
+    return this;
+  }
+
+  /**
+   * Limit narrows what the minted key may reach, as &#x60;kind:name&#x60; entries: &#x60;model:zen5&#x60;, &#x60;project:acme&#x60;, &#x60;product:commerce&#x60;, or &#x60;model:*&#x60; for a whole kind. It only ever NARROWS — a key can never reach further than the person who minted it — so an unrecognised kind costs availability, never privilege.  Omitted mints an unrestricted key, because that is what every key in the estate is today and a default that restricted would revoke all of them.  Example: {\&quot;type\&quot;: \&quot;secret\&quot;, \&quot;limit\&quot;: [\&quot;model:zen5\&quot;, \&quot;project:acme\&quot;]}
+   * @return limit
+   */
+  @javax.annotation.Nullable
+  public List<String> getLimit() {
+    return limit;
+  }
+
+  public void setLimit(@javax.annotation.Nullable List<String> limit) {
+    this.limit = limit;
+  }
+
 
   public KeyTypeIn type(@javax.annotation.Nullable String type) {
     this.type = type;
@@ -87,18 +121,20 @@ public class KeyTypeIn {
       return false;
     }
     KeyTypeIn keyTypeIn = (KeyTypeIn) o;
-    return Objects.equals(this.type, keyTypeIn.type);
+    return Objects.equals(this.limit, keyTypeIn.limit) &&
+        Objects.equals(this.type, keyTypeIn.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type);
+    return Objects.hash(limit, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class KeyTypeIn {\n");
+    sb.append("    limit: ").append(toIndentedString(limit)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -121,7 +157,7 @@ public class KeyTypeIn {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("type"));
+    openapiFields = new HashSet<String>(Arrays.asList("limit", "type"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -148,6 +184,10 @@ public class KeyTypeIn {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("limit") != null && !jsonObj.get("limit").isJsonNull() && !jsonObj.get("limit").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `limit` to be an array in the JSON string but got `%s`", jsonObj.get("limit").toString()));
+      }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }

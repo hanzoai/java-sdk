@@ -91,7 +91,7 @@ public class PubsubApi {
     }
 
     /**
-     * Build call for deleteV1PubsubJetstreamStreamsByStream
+     * Build call for deletePubsubJetstreamStreamsByStream
      * @param stream Stream is the stream&#39;s name, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -103,7 +103,7 @@ public class PubsubApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1PubsubJetstreamStreamsByStreamCall(@javax.annotation.Nonnull String stream, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deletePubsubJetstreamStreamsByStreamCall(@javax.annotation.Nonnull String stream, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -148,13 +148,13 @@ public class PubsubApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1PubsubJetstreamStreamsByStreamValidateBeforeCall(@javax.annotation.Nonnull String stream, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePubsubJetstreamStreamsByStreamValidateBeforeCall(@javax.annotation.Nonnull String stream, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'stream' is set
         if (stream == null) {
-            throw new ApiException("Missing the required parameter 'stream' when calling deleteV1PubsubJetstreamStreamsByStream(Async)");
+            throw new ApiException("Missing the required parameter 'stream' when calling deletePubsubJetstreamStreamsByStream(Async)");
         }
 
-        return deleteV1PubsubJetstreamStreamsByStreamCall(stream, _callback);
+        return deletePubsubJetstreamStreamsByStreamCall(stream, _callback);
 
     }
 
@@ -170,8 +170,8 @@ public class PubsubApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1PubsubJetstreamStreamsByStream(@javax.annotation.Nonnull String stream) throws ApiException {
-        deleteV1PubsubJetstreamStreamsByStreamWithHttpInfo(stream);
+    public void deletePubsubJetstreamStreamsByStream(@javax.annotation.Nonnull String stream) throws ApiException {
+        deletePubsubJetstreamStreamsByStreamWithHttpInfo(stream);
     }
 
     /**
@@ -187,8 +187,8 @@ public class PubsubApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1PubsubJetstreamStreamsByStreamWithHttpInfo(@javax.annotation.Nonnull String stream) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1PubsubJetstreamStreamsByStreamValidateBeforeCall(stream, null);
+    public ApiResponse<Void> deletePubsubJetstreamStreamsByStreamWithHttpInfo(@javax.annotation.Nonnull String stream) throws ApiException {
+        okhttp3.Call localVarCall = deletePubsubJetstreamStreamsByStreamValidateBeforeCall(stream, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -206,14 +206,14 @@ public class PubsubApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1PubsubJetstreamStreamsByStreamAsync(@javax.annotation.Nonnull String stream, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deletePubsubJetstreamStreamsByStreamAsync(@javax.annotation.Nonnull String stream, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1PubsubJetstreamStreamsByStreamValidateBeforeCall(stream, _callback);
+        okhttp3.Call localVarCall = deletePubsubJetstreamStreamsByStreamValidateBeforeCall(stream, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1PubsubJetstreamStreamsByStreamConsumersByName
+     * Build call for deletePubsubJetstreamStreamsByStreamConsumersByName
      * @param stream Stream is the stream, from the path. (required)
      * @param name Name is the consumer, from the path. (required)
      * @param _callback Callback for upload/download progress
@@ -226,7 +226,7 @@ public class PubsubApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1PubsubJetstreamStreamsByStreamConsumersByNameCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deletePubsubJetstreamStreamsByStreamConsumersByNameCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -272,18 +272,18 @@ public class PubsubApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1PubsubJetstreamStreamsByStreamConsumersByNameValidateBeforeCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePubsubJetstreamStreamsByStreamConsumersByNameValidateBeforeCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'stream' is set
         if (stream == null) {
-            throw new ApiException("Missing the required parameter 'stream' when calling deleteV1PubsubJetstreamStreamsByStreamConsumersByName(Async)");
+            throw new ApiException("Missing the required parameter 'stream' when calling deletePubsubJetstreamStreamsByStreamConsumersByName(Async)");
         }
 
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteV1PubsubJetstreamStreamsByStreamConsumersByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling deletePubsubJetstreamStreamsByStreamConsumersByName(Async)");
         }
 
-        return deleteV1PubsubJetstreamStreamsByStreamConsumersByNameCall(stream, name, _callback);
+        return deletePubsubJetstreamStreamsByStreamConsumersByNameCall(stream, name, _callback);
 
     }
 
@@ -300,8 +300,8 @@ public class PubsubApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1PubsubJetstreamStreamsByStreamConsumersByName(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name) throws ApiException {
-        deleteV1PubsubJetstreamStreamsByStreamConsumersByNameWithHttpInfo(stream, name);
+    public void deletePubsubJetstreamStreamsByStreamConsumersByName(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name) throws ApiException {
+        deletePubsubJetstreamStreamsByStreamConsumersByNameWithHttpInfo(stream, name);
     }
 
     /**
@@ -318,8 +318,8 @@ public class PubsubApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1PubsubJetstreamStreamsByStreamConsumersByNameWithHttpInfo(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1PubsubJetstreamStreamsByStreamConsumersByNameValidateBeforeCall(stream, name, null);
+    public ApiResponse<Void> deletePubsubJetstreamStreamsByStreamConsumersByNameWithHttpInfo(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deletePubsubJetstreamStreamsByStreamConsumersByNameValidateBeforeCall(stream, name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -338,14 +338,14 @@ public class PubsubApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1PubsubJetstreamStreamsByStreamConsumersByNameAsync(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deletePubsubJetstreamStreamsByStreamConsumersByNameAsync(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1PubsubJetstreamStreamsByStreamConsumersByNameValidateBeforeCall(stream, name, _callback);
+        okhttp3.Call localVarCall = deletePubsubJetstreamStreamsByStreamConsumersByNameValidateBeforeCall(stream, name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1PubsubKvByBucket
+     * Build call for deletePubsubKvByBucket
      * @param bucket Bucket is the bucket&#39;s name, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -357,7 +357,7 @@ public class PubsubApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1PubsubKvByBucketCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deletePubsubKvByBucketCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -402,13 +402,13 @@ public class PubsubApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1PubsubKvByBucketValidateBeforeCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePubsubKvByBucketValidateBeforeCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'bucket' is set
         if (bucket == null) {
-            throw new ApiException("Missing the required parameter 'bucket' when calling deleteV1PubsubKvByBucket(Async)");
+            throw new ApiException("Missing the required parameter 'bucket' when calling deletePubsubKvByBucket(Async)");
         }
 
-        return deleteV1PubsubKvByBucketCall(bucket, _callback);
+        return deletePubsubKvByBucketCall(bucket, _callback);
 
     }
 
@@ -424,8 +424,8 @@ public class PubsubApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1PubsubKvByBucket(@javax.annotation.Nonnull String bucket) throws ApiException {
-        deleteV1PubsubKvByBucketWithHttpInfo(bucket);
+    public void deletePubsubKvByBucket(@javax.annotation.Nonnull String bucket) throws ApiException {
+        deletePubsubKvByBucketWithHttpInfo(bucket);
     }
 
     /**
@@ -441,8 +441,8 @@ public class PubsubApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1PubsubKvByBucketWithHttpInfo(@javax.annotation.Nonnull String bucket) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1PubsubKvByBucketValidateBeforeCall(bucket, null);
+    public ApiResponse<Void> deletePubsubKvByBucketWithHttpInfo(@javax.annotation.Nonnull String bucket) throws ApiException {
+        okhttp3.Call localVarCall = deletePubsubKvByBucketValidateBeforeCall(bucket, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -460,14 +460,14 @@ public class PubsubApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1PubsubKvByBucketAsync(@javax.annotation.Nonnull String bucket, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deletePubsubKvByBucketAsync(@javax.annotation.Nonnull String bucket, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1PubsubKvByBucketValidateBeforeCall(bucket, _callback);
+        okhttp3.Call localVarCall = deletePubsubKvByBucketValidateBeforeCall(bucket, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1PubsubKvByBucketByKey
+     * Build call for deletePubsubKvByBucketByKey
      * @param bucket Bucket is the bucket, from the path. (required)
      * @param key Key is the key, from the path. (required)
      * @param _callback Callback for upload/download progress
@@ -480,7 +480,7 @@ public class PubsubApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1PubsubKvByBucketByKeyCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deletePubsubKvByBucketByKeyCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -526,18 +526,18 @@ public class PubsubApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1PubsubKvByBucketByKeyValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePubsubKvByBucketByKeyValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'bucket' is set
         if (bucket == null) {
-            throw new ApiException("Missing the required parameter 'bucket' when calling deleteV1PubsubKvByBucketByKey(Async)");
+            throw new ApiException("Missing the required parameter 'bucket' when calling deletePubsubKvByBucketByKey(Async)");
         }
 
         // verify the required parameter 'key' is set
         if (key == null) {
-            throw new ApiException("Missing the required parameter 'key' when calling deleteV1PubsubKvByBucketByKey(Async)");
+            throw new ApiException("Missing the required parameter 'key' when calling deletePubsubKvByBucketByKey(Async)");
         }
 
-        return deleteV1PubsubKvByBucketByKeyCall(bucket, key, _callback);
+        return deletePubsubKvByBucketByKeyCall(bucket, key, _callback);
 
     }
 
@@ -554,8 +554,8 @@ public class PubsubApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1PubsubKvByBucketByKey(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
-        deleteV1PubsubKvByBucketByKeyWithHttpInfo(bucket, key);
+    public void deletePubsubKvByBucketByKey(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
+        deletePubsubKvByBucketByKeyWithHttpInfo(bucket, key);
     }
 
     /**
@@ -572,8 +572,8 @@ public class PubsubApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1PubsubKvByBucketByKeyWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1PubsubKvByBucketByKeyValidateBeforeCall(bucket, key, null);
+    public ApiResponse<Void> deletePubsubKvByBucketByKeyWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = deletePubsubKvByBucketByKeyValidateBeforeCall(bucket, key, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -592,14 +592,14 @@ public class PubsubApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1PubsubKvByBucketByKeyAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deletePubsubKvByBucketByKeyAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1PubsubKvByBucketByKeyValidateBeforeCall(bucket, key, _callback);
+        okhttp3.Call localVarCall = deletePubsubKvByBucketByKeyValidateBeforeCall(bucket, key, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PubsubJetstreamStreams
+     * Build call for getPubsubJetstreamStreams
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -610,7 +610,7 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PubsubJetstreamStreamsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPubsubJetstreamStreamsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -655,8 +655,8 @@ public class PubsubApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PubsubJetstreamStreamsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PubsubJetstreamStreamsCall(_callback);
+    private okhttp3.Call getPubsubJetstreamStreamsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPubsubJetstreamStreamsCall(_callback);
 
     }
 
@@ -672,8 +672,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public StreamPage getV1PubsubJetstreamStreams() throws ApiException {
-        ApiResponse<StreamPage> localVarResp = getV1PubsubJetstreamStreamsWithHttpInfo();
+    public StreamPage getPubsubJetstreamStreams() throws ApiException {
+        ApiResponse<StreamPage> localVarResp = getPubsubJetstreamStreamsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -689,8 +689,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<StreamPage> getV1PubsubJetstreamStreamsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PubsubJetstreamStreamsValidateBeforeCall(null);
+    public ApiResponse<StreamPage> getPubsubJetstreamStreamsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPubsubJetstreamStreamsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<StreamPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -708,15 +708,15 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PubsubJetstreamStreamsAsync(final ApiCallback<StreamPage> _callback) throws ApiException {
+    public okhttp3.Call getPubsubJetstreamStreamsAsync(final ApiCallback<StreamPage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PubsubJetstreamStreamsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPubsubJetstreamStreamsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<StreamPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PubsubJetstreamStreamsByStream
+     * Build call for getPubsubJetstreamStreamsByStream
      * @param stream Stream is the stream&#39;s name, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -728,7 +728,7 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PubsubJetstreamStreamsByStreamCall(@javax.annotation.Nonnull String stream, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPubsubJetstreamStreamsByStreamCall(@javax.annotation.Nonnull String stream, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -774,13 +774,13 @@ public class PubsubApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PubsubJetstreamStreamsByStreamValidateBeforeCall(@javax.annotation.Nonnull String stream, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPubsubJetstreamStreamsByStreamValidateBeforeCall(@javax.annotation.Nonnull String stream, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'stream' is set
         if (stream == null) {
-            throw new ApiException("Missing the required parameter 'stream' when calling getV1PubsubJetstreamStreamsByStream(Async)");
+            throw new ApiException("Missing the required parameter 'stream' when calling getPubsubJetstreamStreamsByStream(Async)");
         }
 
-        return getV1PubsubJetstreamStreamsByStreamCall(stream, _callback);
+        return getPubsubJetstreamStreamsByStreamCall(stream, _callback);
 
     }
 
@@ -797,8 +797,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public StreamRecord getV1PubsubJetstreamStreamsByStream(@javax.annotation.Nonnull String stream) throws ApiException {
-        ApiResponse<StreamRecord> localVarResp = getV1PubsubJetstreamStreamsByStreamWithHttpInfo(stream);
+    public StreamRecord getPubsubJetstreamStreamsByStream(@javax.annotation.Nonnull String stream) throws ApiException {
+        ApiResponse<StreamRecord> localVarResp = getPubsubJetstreamStreamsByStreamWithHttpInfo(stream);
         return localVarResp.getData();
     }
 
@@ -815,8 +815,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<StreamRecord> getV1PubsubJetstreamStreamsByStreamWithHttpInfo(@javax.annotation.Nonnull String stream) throws ApiException {
-        okhttp3.Call localVarCall = getV1PubsubJetstreamStreamsByStreamValidateBeforeCall(stream, null);
+    public ApiResponse<StreamRecord> getPubsubJetstreamStreamsByStreamWithHttpInfo(@javax.annotation.Nonnull String stream) throws ApiException {
+        okhttp3.Call localVarCall = getPubsubJetstreamStreamsByStreamValidateBeforeCall(stream, null);
         Type localVarReturnType = new TypeToken<StreamRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -835,15 +835,15 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PubsubJetstreamStreamsByStreamAsync(@javax.annotation.Nonnull String stream, final ApiCallback<StreamRecord> _callback) throws ApiException {
+    public okhttp3.Call getPubsubJetstreamStreamsByStreamAsync(@javax.annotation.Nonnull String stream, final ApiCallback<StreamRecord> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PubsubJetstreamStreamsByStreamValidateBeforeCall(stream, _callback);
+        okhttp3.Call localVarCall = getPubsubJetstreamStreamsByStreamValidateBeforeCall(stream, _callback);
         Type localVarReturnType = new TypeToken<StreamRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PubsubJetstreamStreamsByStreamConsumers
+     * Build call for getPubsubJetstreamStreamsByStreamConsumers
      * @param stream Stream is the stream&#39;s name, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -855,7 +855,7 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PubsubJetstreamStreamsByStreamConsumersCall(@javax.annotation.Nonnull String stream, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPubsubJetstreamStreamsByStreamConsumersCall(@javax.annotation.Nonnull String stream, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -901,13 +901,13 @@ public class PubsubApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PubsubJetstreamStreamsByStreamConsumersValidateBeforeCall(@javax.annotation.Nonnull String stream, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPubsubJetstreamStreamsByStreamConsumersValidateBeforeCall(@javax.annotation.Nonnull String stream, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'stream' is set
         if (stream == null) {
-            throw new ApiException("Missing the required parameter 'stream' when calling getV1PubsubJetstreamStreamsByStreamConsumers(Async)");
+            throw new ApiException("Missing the required parameter 'stream' when calling getPubsubJetstreamStreamsByStreamConsumers(Async)");
         }
 
-        return getV1PubsubJetstreamStreamsByStreamConsumersCall(stream, _callback);
+        return getPubsubJetstreamStreamsByStreamConsumersCall(stream, _callback);
 
     }
 
@@ -924,8 +924,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ConsumerPage getV1PubsubJetstreamStreamsByStreamConsumers(@javax.annotation.Nonnull String stream) throws ApiException {
-        ApiResponse<ConsumerPage> localVarResp = getV1PubsubJetstreamStreamsByStreamConsumersWithHttpInfo(stream);
+    public ConsumerPage getPubsubJetstreamStreamsByStreamConsumers(@javax.annotation.Nonnull String stream) throws ApiException {
+        ApiResponse<ConsumerPage> localVarResp = getPubsubJetstreamStreamsByStreamConsumersWithHttpInfo(stream);
         return localVarResp.getData();
     }
 
@@ -942,8 +942,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConsumerPage> getV1PubsubJetstreamStreamsByStreamConsumersWithHttpInfo(@javax.annotation.Nonnull String stream) throws ApiException {
-        okhttp3.Call localVarCall = getV1PubsubJetstreamStreamsByStreamConsumersValidateBeforeCall(stream, null);
+    public ApiResponse<ConsumerPage> getPubsubJetstreamStreamsByStreamConsumersWithHttpInfo(@javax.annotation.Nonnull String stream) throws ApiException {
+        okhttp3.Call localVarCall = getPubsubJetstreamStreamsByStreamConsumersValidateBeforeCall(stream, null);
         Type localVarReturnType = new TypeToken<ConsumerPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -962,15 +962,15 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PubsubJetstreamStreamsByStreamConsumersAsync(@javax.annotation.Nonnull String stream, final ApiCallback<ConsumerPage> _callback) throws ApiException {
+    public okhttp3.Call getPubsubJetstreamStreamsByStreamConsumersAsync(@javax.annotation.Nonnull String stream, final ApiCallback<ConsumerPage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PubsubJetstreamStreamsByStreamConsumersValidateBeforeCall(stream, _callback);
+        okhttp3.Call localVarCall = getPubsubJetstreamStreamsByStreamConsumersValidateBeforeCall(stream, _callback);
         Type localVarReturnType = new TypeToken<ConsumerPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PubsubJetstreamStreamsByStreamConsumersByName
+     * Build call for getPubsubJetstreamStreamsByStreamConsumersByName
      * @param stream Stream is the stream, from the path. (required)
      * @param name Name is the consumer, from the path. (required)
      * @param _callback Callback for upload/download progress
@@ -983,7 +983,7 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PubsubJetstreamStreamsByStreamConsumersByNameCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPubsubJetstreamStreamsByStreamConsumersByNameCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1030,18 +1030,18 @@ public class PubsubApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PubsubJetstreamStreamsByStreamConsumersByNameValidateBeforeCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPubsubJetstreamStreamsByStreamConsumersByNameValidateBeforeCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'stream' is set
         if (stream == null) {
-            throw new ApiException("Missing the required parameter 'stream' when calling getV1PubsubJetstreamStreamsByStreamConsumersByName(Async)");
+            throw new ApiException("Missing the required parameter 'stream' when calling getPubsubJetstreamStreamsByStreamConsumersByName(Async)");
         }
 
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1PubsubJetstreamStreamsByStreamConsumersByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getPubsubJetstreamStreamsByStreamConsumersByName(Async)");
         }
 
-        return getV1PubsubJetstreamStreamsByStreamConsumersByNameCall(stream, name, _callback);
+        return getPubsubJetstreamStreamsByStreamConsumersByNameCall(stream, name, _callback);
 
     }
 
@@ -1059,8 +1059,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ConsumerRecord getV1PubsubJetstreamStreamsByStreamConsumersByName(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ConsumerRecord> localVarResp = getV1PubsubJetstreamStreamsByStreamConsumersByNameWithHttpInfo(stream, name);
+    public ConsumerRecord getPubsubJetstreamStreamsByStreamConsumersByName(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<ConsumerRecord> localVarResp = getPubsubJetstreamStreamsByStreamConsumersByNameWithHttpInfo(stream, name);
         return localVarResp.getData();
     }
 
@@ -1078,8 +1078,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConsumerRecord> getV1PubsubJetstreamStreamsByStreamConsumersByNameWithHttpInfo(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1PubsubJetstreamStreamsByStreamConsumersByNameValidateBeforeCall(stream, name, null);
+    public ApiResponse<ConsumerRecord> getPubsubJetstreamStreamsByStreamConsumersByNameWithHttpInfo(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getPubsubJetstreamStreamsByStreamConsumersByNameValidateBeforeCall(stream, name, null);
         Type localVarReturnType = new TypeToken<ConsumerRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1099,15 +1099,15 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PubsubJetstreamStreamsByStreamConsumersByNameAsync(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback<ConsumerRecord> _callback) throws ApiException {
+    public okhttp3.Call getPubsubJetstreamStreamsByStreamConsumersByNameAsync(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, final ApiCallback<ConsumerRecord> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PubsubJetstreamStreamsByStreamConsumersByNameValidateBeforeCall(stream, name, _callback);
+        okhttp3.Call localVarCall = getPubsubJetstreamStreamsByStreamConsumersByNameValidateBeforeCall(stream, name, _callback);
         Type localVarReturnType = new TypeToken<ConsumerRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PubsubKvByBucketByKey
+     * Build call for getPubsubKvByBucketByKey
      * @param bucket Bucket is the bucket, from the path. (required)
      * @param key Key is the key, from the path. (required)
      * @param _callback Callback for upload/download progress
@@ -1120,7 +1120,7 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PubsubKvByBucketByKeyCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPubsubKvByBucketByKeyCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1167,18 +1167,18 @@ public class PubsubApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PubsubKvByBucketByKeyValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPubsubKvByBucketByKeyValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'bucket' is set
         if (bucket == null) {
-            throw new ApiException("Missing the required parameter 'bucket' when calling getV1PubsubKvByBucketByKey(Async)");
+            throw new ApiException("Missing the required parameter 'bucket' when calling getPubsubKvByBucketByKey(Async)");
         }
 
         // verify the required parameter 'key' is set
         if (key == null) {
-            throw new ApiException("Missing the required parameter 'key' when calling getV1PubsubKvByBucketByKey(Async)");
+            throw new ApiException("Missing the required parameter 'key' when calling getPubsubKvByBucketByKey(Async)");
         }
 
-        return getV1PubsubKvByBucketByKeyCall(bucket, key, _callback);
+        return getPubsubKvByBucketByKeyCall(bucket, key, _callback);
 
     }
 
@@ -1196,8 +1196,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public KvEntry getV1PubsubKvByBucketByKey(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
-        ApiResponse<KvEntry> localVarResp = getV1PubsubKvByBucketByKeyWithHttpInfo(bucket, key);
+    public KvEntry getPubsubKvByBucketByKey(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
+        ApiResponse<KvEntry> localVarResp = getPubsubKvByBucketByKeyWithHttpInfo(bucket, key);
         return localVarResp.getData();
     }
 
@@ -1215,8 +1215,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KvEntry> getV1PubsubKvByBucketByKeyWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
-        okhttp3.Call localVarCall = getV1PubsubKvByBucketByKeyValidateBeforeCall(bucket, key, null);
+    public ApiResponse<KvEntry> getPubsubKvByBucketByKeyWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = getPubsubKvByBucketByKeyValidateBeforeCall(bucket, key, null);
         Type localVarReturnType = new TypeToken<KvEntry>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1236,15 +1236,15 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PubsubKvByBucketByKeyAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback<KvEntry> _callback) throws ApiException {
+    public okhttp3.Call getPubsubKvByBucketByKeyAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback<KvEntry> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PubsubKvByBucketByKeyValidateBeforeCall(bucket, key, _callback);
+        okhttp3.Call localVarCall = getPubsubKvByBucketByKeyValidateBeforeCall(bucket, key, _callback);
         Type localVarReturnType = new TypeToken<KvEntry>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PubsubKvByBucketByKeyHistory
+     * Build call for getPubsubKvByBucketByKeyHistory
      * @param bucket Bucket is the bucket, from the path. (required)
      * @param key Key is the key, from the path. (required)
      * @param _callback Callback for upload/download progress
@@ -1257,7 +1257,7 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PubsubKvByBucketByKeyHistoryCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPubsubKvByBucketByKeyHistoryCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1304,18 +1304,18 @@ public class PubsubApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PubsubKvByBucketByKeyHistoryValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPubsubKvByBucketByKeyHistoryValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'bucket' is set
         if (bucket == null) {
-            throw new ApiException("Missing the required parameter 'bucket' when calling getV1PubsubKvByBucketByKeyHistory(Async)");
+            throw new ApiException("Missing the required parameter 'bucket' when calling getPubsubKvByBucketByKeyHistory(Async)");
         }
 
         // verify the required parameter 'key' is set
         if (key == null) {
-            throw new ApiException("Missing the required parameter 'key' when calling getV1PubsubKvByBucketByKeyHistory(Async)");
+            throw new ApiException("Missing the required parameter 'key' when calling getPubsubKvByBucketByKeyHistory(Async)");
         }
 
-        return getV1PubsubKvByBucketByKeyHistoryCall(bucket, key, _callback);
+        return getPubsubKvByBucketByKeyHistoryCall(bucket, key, _callback);
 
     }
 
@@ -1333,8 +1333,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public KvPage getV1PubsubKvByBucketByKeyHistory(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
-        ApiResponse<KvPage> localVarResp = getV1PubsubKvByBucketByKeyHistoryWithHttpInfo(bucket, key);
+    public KvPage getPubsubKvByBucketByKeyHistory(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
+        ApiResponse<KvPage> localVarResp = getPubsubKvByBucketByKeyHistoryWithHttpInfo(bucket, key);
         return localVarResp.getData();
     }
 
@@ -1352,8 +1352,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KvPage> getV1PubsubKvByBucketByKeyHistoryWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
-        okhttp3.Call localVarCall = getV1PubsubKvByBucketByKeyHistoryValidateBeforeCall(bucket, key, null);
+    public ApiResponse<KvPage> getPubsubKvByBucketByKeyHistoryWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = getPubsubKvByBucketByKeyHistoryValidateBeforeCall(bucket, key, null);
         Type localVarReturnType = new TypeToken<KvPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1373,15 +1373,15 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PubsubKvByBucketByKeyHistoryAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback<KvPage> _callback) throws ApiException {
+    public okhttp3.Call getPubsubKvByBucketByKeyHistoryAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback<KvPage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PubsubKvByBucketByKeyHistoryValidateBeforeCall(bucket, key, _callback);
+        okhttp3.Call localVarCall = getPubsubKvByBucketByKeyHistoryValidateBeforeCall(bucket, key, _callback);
         Type localVarReturnType = new TypeToken<KvPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PubsubJetstreamStreams
+     * Build call for postPubsubJetstreamStreams
      * @param streamWrite  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1393,7 +1393,7 @@ public class PubsubApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PubsubJetstreamStreamsCall(@javax.annotation.Nonnull StreamWrite streamWrite, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPubsubJetstreamStreamsCall(@javax.annotation.Nonnull StreamWrite streamWrite, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1439,13 +1439,13 @@ public class PubsubApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PubsubJetstreamStreamsValidateBeforeCall(@javax.annotation.Nonnull StreamWrite streamWrite, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPubsubJetstreamStreamsValidateBeforeCall(@javax.annotation.Nonnull StreamWrite streamWrite, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'streamWrite' is set
         if (streamWrite == null) {
-            throw new ApiException("Missing the required parameter 'streamWrite' when calling postV1PubsubJetstreamStreams(Async)");
+            throw new ApiException("Missing the required parameter 'streamWrite' when calling postPubsubJetstreamStreams(Async)");
         }
 
-        return postV1PubsubJetstreamStreamsCall(streamWrite, _callback);
+        return postPubsubJetstreamStreamsCall(streamWrite, _callback);
 
     }
 
@@ -1462,8 +1462,8 @@ public class PubsubApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public StreamRecord postV1PubsubJetstreamStreams(@javax.annotation.Nonnull StreamWrite streamWrite) throws ApiException {
-        ApiResponse<StreamRecord> localVarResp = postV1PubsubJetstreamStreamsWithHttpInfo(streamWrite);
+    public StreamRecord postPubsubJetstreamStreams(@javax.annotation.Nonnull StreamWrite streamWrite) throws ApiException {
+        ApiResponse<StreamRecord> localVarResp = postPubsubJetstreamStreamsWithHttpInfo(streamWrite);
         return localVarResp.getData();
     }
 
@@ -1480,8 +1480,8 @@ public class PubsubApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<StreamRecord> postV1PubsubJetstreamStreamsWithHttpInfo(@javax.annotation.Nonnull StreamWrite streamWrite) throws ApiException {
-        okhttp3.Call localVarCall = postV1PubsubJetstreamStreamsValidateBeforeCall(streamWrite, null);
+    public ApiResponse<StreamRecord> postPubsubJetstreamStreamsWithHttpInfo(@javax.annotation.Nonnull StreamWrite streamWrite) throws ApiException {
+        okhttp3.Call localVarCall = postPubsubJetstreamStreamsValidateBeforeCall(streamWrite, null);
         Type localVarReturnType = new TypeToken<StreamRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1500,15 +1500,15 @@ public class PubsubApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PubsubJetstreamStreamsAsync(@javax.annotation.Nonnull StreamWrite streamWrite, final ApiCallback<StreamRecord> _callback) throws ApiException {
+    public okhttp3.Call postPubsubJetstreamStreamsAsync(@javax.annotation.Nonnull StreamWrite streamWrite, final ApiCallback<StreamRecord> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PubsubJetstreamStreamsValidateBeforeCall(streamWrite, _callback);
+        okhttp3.Call localVarCall = postPubsubJetstreamStreamsValidateBeforeCall(streamWrite, _callback);
         Type localVarReturnType = new TypeToken<StreamRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PubsubJetstreamStreamsByStreamConsumers
+     * Build call for postPubsubJetstreamStreamsByStreamConsumers
      * @param stream Stream is the stream to consume, from the path. (required)
      * @param consumerWrite  (required)
      * @param _callback Callback for upload/download progress
@@ -1521,7 +1521,7 @@ public class PubsubApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PubsubJetstreamStreamsByStreamConsumersCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull ConsumerWrite consumerWrite, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPubsubJetstreamStreamsByStreamConsumersCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull ConsumerWrite consumerWrite, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1568,18 +1568,18 @@ public class PubsubApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PubsubJetstreamStreamsByStreamConsumersValidateBeforeCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull ConsumerWrite consumerWrite, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPubsubJetstreamStreamsByStreamConsumersValidateBeforeCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull ConsumerWrite consumerWrite, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'stream' is set
         if (stream == null) {
-            throw new ApiException("Missing the required parameter 'stream' when calling postV1PubsubJetstreamStreamsByStreamConsumers(Async)");
+            throw new ApiException("Missing the required parameter 'stream' when calling postPubsubJetstreamStreamsByStreamConsumers(Async)");
         }
 
         // verify the required parameter 'consumerWrite' is set
         if (consumerWrite == null) {
-            throw new ApiException("Missing the required parameter 'consumerWrite' when calling postV1PubsubJetstreamStreamsByStreamConsumers(Async)");
+            throw new ApiException("Missing the required parameter 'consumerWrite' when calling postPubsubJetstreamStreamsByStreamConsumers(Async)");
         }
 
-        return postV1PubsubJetstreamStreamsByStreamConsumersCall(stream, consumerWrite, _callback);
+        return postPubsubJetstreamStreamsByStreamConsumersCall(stream, consumerWrite, _callback);
 
     }
 
@@ -1597,8 +1597,8 @@ public class PubsubApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ConsumerRecord postV1PubsubJetstreamStreamsByStreamConsumers(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull ConsumerWrite consumerWrite) throws ApiException {
-        ApiResponse<ConsumerRecord> localVarResp = postV1PubsubJetstreamStreamsByStreamConsumersWithHttpInfo(stream, consumerWrite);
+    public ConsumerRecord postPubsubJetstreamStreamsByStreamConsumers(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull ConsumerWrite consumerWrite) throws ApiException {
+        ApiResponse<ConsumerRecord> localVarResp = postPubsubJetstreamStreamsByStreamConsumersWithHttpInfo(stream, consumerWrite);
         return localVarResp.getData();
     }
 
@@ -1616,8 +1616,8 @@ public class PubsubApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConsumerRecord> postV1PubsubJetstreamStreamsByStreamConsumersWithHttpInfo(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull ConsumerWrite consumerWrite) throws ApiException {
-        okhttp3.Call localVarCall = postV1PubsubJetstreamStreamsByStreamConsumersValidateBeforeCall(stream, consumerWrite, null);
+    public ApiResponse<ConsumerRecord> postPubsubJetstreamStreamsByStreamConsumersWithHttpInfo(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull ConsumerWrite consumerWrite) throws ApiException {
+        okhttp3.Call localVarCall = postPubsubJetstreamStreamsByStreamConsumersValidateBeforeCall(stream, consumerWrite, null);
         Type localVarReturnType = new TypeToken<ConsumerRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1637,15 +1637,15 @@ public class PubsubApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PubsubJetstreamStreamsByStreamConsumersAsync(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull ConsumerWrite consumerWrite, final ApiCallback<ConsumerRecord> _callback) throws ApiException {
+    public okhttp3.Call postPubsubJetstreamStreamsByStreamConsumersAsync(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull ConsumerWrite consumerWrite, final ApiCallback<ConsumerRecord> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PubsubJetstreamStreamsByStreamConsumersValidateBeforeCall(stream, consumerWrite, _callback);
+        okhttp3.Call localVarCall = postPubsubJetstreamStreamsByStreamConsumersValidateBeforeCall(stream, consumerWrite, _callback);
         Type localVarReturnType = new TypeToken<ConsumerRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PubsubJetstreamStreamsByStreamConsumersByNameNext
+     * Build call for postPubsubJetstreamStreamsByStreamConsumersByNameNext
      * @param stream Stream is the stream, from the path. (required)
      * @param name Name is the consumer, from the path. (required)
      * @param fetchQuery  (required)
@@ -1659,7 +1659,7 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PubsubJetstreamStreamsByStreamConsumersByNameNextCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull FetchQuery fetchQuery, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPubsubJetstreamStreamsByStreamConsumersByNameNextCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull FetchQuery fetchQuery, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1707,23 +1707,23 @@ public class PubsubApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PubsubJetstreamStreamsByStreamConsumersByNameNextValidateBeforeCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull FetchQuery fetchQuery, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPubsubJetstreamStreamsByStreamConsumersByNameNextValidateBeforeCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull FetchQuery fetchQuery, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'stream' is set
         if (stream == null) {
-            throw new ApiException("Missing the required parameter 'stream' when calling postV1PubsubJetstreamStreamsByStreamConsumersByNameNext(Async)");
+            throw new ApiException("Missing the required parameter 'stream' when calling postPubsubJetstreamStreamsByStreamConsumersByNameNext(Async)");
         }
 
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling postV1PubsubJetstreamStreamsByStreamConsumersByNameNext(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling postPubsubJetstreamStreamsByStreamConsumersByNameNext(Async)");
         }
 
         // verify the required parameter 'fetchQuery' is set
         if (fetchQuery == null) {
-            throw new ApiException("Missing the required parameter 'fetchQuery' when calling postV1PubsubJetstreamStreamsByStreamConsumersByNameNext(Async)");
+            throw new ApiException("Missing the required parameter 'fetchQuery' when calling postPubsubJetstreamStreamsByStreamConsumersByNameNext(Async)");
         }
 
-        return postV1PubsubJetstreamStreamsByStreamConsumersByNameNextCall(stream, name, fetchQuery, _callback);
+        return postPubsubJetstreamStreamsByStreamConsumersByNameNextCall(stream, name, fetchQuery, _callback);
 
     }
 
@@ -1742,8 +1742,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public MessagePage postV1PubsubJetstreamStreamsByStreamConsumersByNameNext(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull FetchQuery fetchQuery) throws ApiException {
-        ApiResponse<MessagePage> localVarResp = postV1PubsubJetstreamStreamsByStreamConsumersByNameNextWithHttpInfo(stream, name, fetchQuery);
+    public MessagePage postPubsubJetstreamStreamsByStreamConsumersByNameNext(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull FetchQuery fetchQuery) throws ApiException {
+        ApiResponse<MessagePage> localVarResp = postPubsubJetstreamStreamsByStreamConsumersByNameNextWithHttpInfo(stream, name, fetchQuery);
         return localVarResp.getData();
     }
 
@@ -1762,8 +1762,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MessagePage> postV1PubsubJetstreamStreamsByStreamConsumersByNameNextWithHttpInfo(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull FetchQuery fetchQuery) throws ApiException {
-        okhttp3.Call localVarCall = postV1PubsubJetstreamStreamsByStreamConsumersByNameNextValidateBeforeCall(stream, name, fetchQuery, null);
+    public ApiResponse<MessagePage> postPubsubJetstreamStreamsByStreamConsumersByNameNextWithHttpInfo(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull FetchQuery fetchQuery) throws ApiException {
+        okhttp3.Call localVarCall = postPubsubJetstreamStreamsByStreamConsumersByNameNextValidateBeforeCall(stream, name, fetchQuery, null);
         Type localVarReturnType = new TypeToken<MessagePage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1784,15 +1784,15 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PubsubJetstreamStreamsByStreamConsumersByNameNextAsync(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull FetchQuery fetchQuery, final ApiCallback<MessagePage> _callback) throws ApiException {
+    public okhttp3.Call postPubsubJetstreamStreamsByStreamConsumersByNameNextAsync(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull FetchQuery fetchQuery, final ApiCallback<MessagePage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PubsubJetstreamStreamsByStreamConsumersByNameNextValidateBeforeCall(stream, name, fetchQuery, _callback);
+        okhttp3.Call localVarCall = postPubsubJetstreamStreamsByStreamConsumersByNameNextValidateBeforeCall(stream, name, fetchQuery, _callback);
         Type localVarReturnType = new TypeToken<MessagePage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PubsubKvByBucket
+     * Build call for postPubsubKvByBucket
      * @param bucket Bucket is the bucket&#39;s name within the org, from the path: 1–64 of [A-Za-z0-9_], no dash. (required)
      * @param bucketWrite  (required)
      * @param _callback Callback for upload/download progress
@@ -1805,7 +1805,7 @@ public class PubsubApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PubsubKvByBucketCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull BucketWrite bucketWrite, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPubsubKvByBucketCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull BucketWrite bucketWrite, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1852,18 +1852,18 @@ public class PubsubApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PubsubKvByBucketValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull BucketWrite bucketWrite, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPubsubKvByBucketValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull BucketWrite bucketWrite, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'bucket' is set
         if (bucket == null) {
-            throw new ApiException("Missing the required parameter 'bucket' when calling postV1PubsubKvByBucket(Async)");
+            throw new ApiException("Missing the required parameter 'bucket' when calling postPubsubKvByBucket(Async)");
         }
 
         // verify the required parameter 'bucketWrite' is set
         if (bucketWrite == null) {
-            throw new ApiException("Missing the required parameter 'bucketWrite' when calling postV1PubsubKvByBucket(Async)");
+            throw new ApiException("Missing the required parameter 'bucketWrite' when calling postPubsubKvByBucket(Async)");
         }
 
-        return postV1PubsubKvByBucketCall(bucket, bucketWrite, _callback);
+        return postPubsubKvByBucketCall(bucket, bucketWrite, _callback);
 
     }
 
@@ -1881,8 +1881,8 @@ public class PubsubApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public BucketRecord postV1PubsubKvByBucket(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull BucketWrite bucketWrite) throws ApiException {
-        ApiResponse<BucketRecord> localVarResp = postV1PubsubKvByBucketWithHttpInfo(bucket, bucketWrite);
+    public BucketRecord postPubsubKvByBucket(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull BucketWrite bucketWrite) throws ApiException {
+        ApiResponse<BucketRecord> localVarResp = postPubsubKvByBucketWithHttpInfo(bucket, bucketWrite);
         return localVarResp.getData();
     }
 
@@ -1900,8 +1900,8 @@ public class PubsubApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BucketRecord> postV1PubsubKvByBucketWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull BucketWrite bucketWrite) throws ApiException {
-        okhttp3.Call localVarCall = postV1PubsubKvByBucketValidateBeforeCall(bucket, bucketWrite, null);
+    public ApiResponse<BucketRecord> postPubsubKvByBucketWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull BucketWrite bucketWrite) throws ApiException {
+        okhttp3.Call localVarCall = postPubsubKvByBucketValidateBeforeCall(bucket, bucketWrite, null);
         Type localVarReturnType = new TypeToken<BucketRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1921,15 +1921,15 @@ public class PubsubApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PubsubKvByBucketAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull BucketWrite bucketWrite, final ApiCallback<BucketRecord> _callback) throws ApiException {
+    public okhttp3.Call postPubsubKvByBucketAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull BucketWrite bucketWrite, final ApiCallback<BucketRecord> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PubsubKvByBucketValidateBeforeCall(bucket, bucketWrite, _callback);
+        okhttp3.Call localVarCall = postPubsubKvByBucketValidateBeforeCall(bucket, bucketWrite, _callback);
         Type localVarReturnType = new TypeToken<BucketRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PubsubPublish
+     * Build call for postPubsubPublish
      * @param busPublish  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1941,7 +1941,7 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PubsubPublishCall(@javax.annotation.Nonnull BusPublish busPublish, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPubsubPublishCall(@javax.annotation.Nonnull BusPublish busPublish, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1987,13 +1987,13 @@ public class PubsubApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PubsubPublishValidateBeforeCall(@javax.annotation.Nonnull BusPublish busPublish, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPubsubPublishValidateBeforeCall(@javax.annotation.Nonnull BusPublish busPublish, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'busPublish' is set
         if (busPublish == null) {
-            throw new ApiException("Missing the required parameter 'busPublish' when calling postV1PubsubPublish(Async)");
+            throw new ApiException("Missing the required parameter 'busPublish' when calling postPubsubPublish(Async)");
         }
 
-        return postV1PubsubPublishCall(busPublish, _callback);
+        return postPubsubPublishCall(busPublish, _callback);
 
     }
 
@@ -2010,8 +2010,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BusAck postV1PubsubPublish(@javax.annotation.Nonnull BusPublish busPublish) throws ApiException {
-        ApiResponse<BusAck> localVarResp = postV1PubsubPublishWithHttpInfo(busPublish);
+    public BusAck postPubsubPublish(@javax.annotation.Nonnull BusPublish busPublish) throws ApiException {
+        ApiResponse<BusAck> localVarResp = postPubsubPublishWithHttpInfo(busPublish);
         return localVarResp.getData();
     }
 
@@ -2028,8 +2028,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BusAck> postV1PubsubPublishWithHttpInfo(@javax.annotation.Nonnull BusPublish busPublish) throws ApiException {
-        okhttp3.Call localVarCall = postV1PubsubPublishValidateBeforeCall(busPublish, null);
+    public ApiResponse<BusAck> postPubsubPublishWithHttpInfo(@javax.annotation.Nonnull BusPublish busPublish) throws ApiException {
+        okhttp3.Call localVarCall = postPubsubPublishValidateBeforeCall(busPublish, null);
         Type localVarReturnType = new TypeToken<BusAck>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2048,15 +2048,15 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PubsubPublishAsync(@javax.annotation.Nonnull BusPublish busPublish, final ApiCallback<BusAck> _callback) throws ApiException {
+    public okhttp3.Call postPubsubPublishAsync(@javax.annotation.Nonnull BusPublish busPublish, final ApiCallback<BusAck> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PubsubPublishValidateBeforeCall(busPublish, _callback);
+        okhttp3.Call localVarCall = postPubsubPublishValidateBeforeCall(busPublish, _callback);
         Type localVarReturnType = new TypeToken<BusAck>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PubsubRequest
+     * Build call for postPubsubRequest
      * @param busRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2068,7 +2068,7 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PubsubRequestCall(@javax.annotation.Nonnull BusRequest busRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPubsubRequestCall(@javax.annotation.Nonnull BusRequest busRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2114,13 +2114,13 @@ public class PubsubApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PubsubRequestValidateBeforeCall(@javax.annotation.Nonnull BusRequest busRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPubsubRequestValidateBeforeCall(@javax.annotation.Nonnull BusRequest busRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'busRequest' is set
         if (busRequest == null) {
-            throw new ApiException("Missing the required parameter 'busRequest' when calling postV1PubsubRequest(Async)");
+            throw new ApiException("Missing the required parameter 'busRequest' when calling postPubsubRequest(Async)");
         }
 
-        return postV1PubsubRequestCall(busRequest, _callback);
+        return postPubsubRequestCall(busRequest, _callback);
 
     }
 
@@ -2137,8 +2137,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BusMessage postV1PubsubRequest(@javax.annotation.Nonnull BusRequest busRequest) throws ApiException {
-        ApiResponse<BusMessage> localVarResp = postV1PubsubRequestWithHttpInfo(busRequest);
+    public BusMessage postPubsubRequest(@javax.annotation.Nonnull BusRequest busRequest) throws ApiException {
+        ApiResponse<BusMessage> localVarResp = postPubsubRequestWithHttpInfo(busRequest);
         return localVarResp.getData();
     }
 
@@ -2155,8 +2155,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BusMessage> postV1PubsubRequestWithHttpInfo(@javax.annotation.Nonnull BusRequest busRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1PubsubRequestValidateBeforeCall(busRequest, null);
+    public ApiResponse<BusMessage> postPubsubRequestWithHttpInfo(@javax.annotation.Nonnull BusRequest busRequest) throws ApiException {
+        okhttp3.Call localVarCall = postPubsubRequestValidateBeforeCall(busRequest, null);
         Type localVarReturnType = new TypeToken<BusMessage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2175,15 +2175,15 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PubsubRequestAsync(@javax.annotation.Nonnull BusRequest busRequest, final ApiCallback<BusMessage> _callback) throws ApiException {
+    public okhttp3.Call postPubsubRequestAsync(@javax.annotation.Nonnull BusRequest busRequest, final ApiCallback<BusMessage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PubsubRequestValidateBeforeCall(busRequest, _callback);
+        okhttp3.Call localVarCall = postPubsubRequestValidateBeforeCall(busRequest, _callback);
         Type localVarReturnType = new TypeToken<BusMessage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1PubsubJetstreamStreamsByStream
+     * Build call for putPubsubJetstreamStreamsByStream
      * @param stream Stream is the stream to update, from the path. (required)
      * @param streamUpdate  (required)
      * @param _callback Callback for upload/download progress
@@ -2196,7 +2196,7 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1PubsubJetstreamStreamsByStreamCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull StreamUpdate streamUpdate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putPubsubJetstreamStreamsByStreamCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull StreamUpdate streamUpdate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2243,18 +2243,18 @@ public class PubsubApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1PubsubJetstreamStreamsByStreamValidateBeforeCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull StreamUpdate streamUpdate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putPubsubJetstreamStreamsByStreamValidateBeforeCall(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull StreamUpdate streamUpdate, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'stream' is set
         if (stream == null) {
-            throw new ApiException("Missing the required parameter 'stream' when calling putV1PubsubJetstreamStreamsByStream(Async)");
+            throw new ApiException("Missing the required parameter 'stream' when calling putPubsubJetstreamStreamsByStream(Async)");
         }
 
         // verify the required parameter 'streamUpdate' is set
         if (streamUpdate == null) {
-            throw new ApiException("Missing the required parameter 'streamUpdate' when calling putV1PubsubJetstreamStreamsByStream(Async)");
+            throw new ApiException("Missing the required parameter 'streamUpdate' when calling putPubsubJetstreamStreamsByStream(Async)");
         }
 
-        return putV1PubsubJetstreamStreamsByStreamCall(stream, streamUpdate, _callback);
+        return putPubsubJetstreamStreamsByStreamCall(stream, streamUpdate, _callback);
 
     }
 
@@ -2272,8 +2272,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public StreamRecord putV1PubsubJetstreamStreamsByStream(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull StreamUpdate streamUpdate) throws ApiException {
-        ApiResponse<StreamRecord> localVarResp = putV1PubsubJetstreamStreamsByStreamWithHttpInfo(stream, streamUpdate);
+    public StreamRecord putPubsubJetstreamStreamsByStream(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull StreamUpdate streamUpdate) throws ApiException {
+        ApiResponse<StreamRecord> localVarResp = putPubsubJetstreamStreamsByStreamWithHttpInfo(stream, streamUpdate);
         return localVarResp.getData();
     }
 
@@ -2291,8 +2291,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<StreamRecord> putV1PubsubJetstreamStreamsByStreamWithHttpInfo(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull StreamUpdate streamUpdate) throws ApiException {
-        okhttp3.Call localVarCall = putV1PubsubJetstreamStreamsByStreamValidateBeforeCall(stream, streamUpdate, null);
+    public ApiResponse<StreamRecord> putPubsubJetstreamStreamsByStreamWithHttpInfo(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull StreamUpdate streamUpdate) throws ApiException {
+        okhttp3.Call localVarCall = putPubsubJetstreamStreamsByStreamValidateBeforeCall(stream, streamUpdate, null);
         Type localVarReturnType = new TypeToken<StreamRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2312,15 +2312,15 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1PubsubJetstreamStreamsByStreamAsync(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull StreamUpdate streamUpdate, final ApiCallback<StreamRecord> _callback) throws ApiException {
+    public okhttp3.Call putPubsubJetstreamStreamsByStreamAsync(@javax.annotation.Nonnull String stream, @javax.annotation.Nonnull StreamUpdate streamUpdate, final ApiCallback<StreamRecord> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1PubsubJetstreamStreamsByStreamValidateBeforeCall(stream, streamUpdate, _callback);
+        okhttp3.Call localVarCall = putPubsubJetstreamStreamsByStreamValidateBeforeCall(stream, streamUpdate, _callback);
         Type localVarReturnType = new TypeToken<StreamRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1PubsubKvByBucketByKey
+     * Build call for putPubsubKvByBucketByKey
      * @param bucket Bucket is the bucket, from the path. (required)
      * @param key Key is the key, from the path. (required)
      * @param kvWrite  (required)
@@ -2334,7 +2334,7 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1PubsubKvByBucketByKeyCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull KvWrite kvWrite, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putPubsubKvByBucketByKeyCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull KvWrite kvWrite, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2382,23 +2382,23 @@ public class PubsubApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1PubsubKvByBucketByKeyValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull KvWrite kvWrite, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putPubsubKvByBucketByKeyValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull KvWrite kvWrite, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'bucket' is set
         if (bucket == null) {
-            throw new ApiException("Missing the required parameter 'bucket' when calling putV1PubsubKvByBucketByKey(Async)");
+            throw new ApiException("Missing the required parameter 'bucket' when calling putPubsubKvByBucketByKey(Async)");
         }
 
         // verify the required parameter 'key' is set
         if (key == null) {
-            throw new ApiException("Missing the required parameter 'key' when calling putV1PubsubKvByBucketByKey(Async)");
+            throw new ApiException("Missing the required parameter 'key' when calling putPubsubKvByBucketByKey(Async)");
         }
 
         // verify the required parameter 'kvWrite' is set
         if (kvWrite == null) {
-            throw new ApiException("Missing the required parameter 'kvWrite' when calling putV1PubsubKvByBucketByKey(Async)");
+            throw new ApiException("Missing the required parameter 'kvWrite' when calling putPubsubKvByBucketByKey(Async)");
         }
 
-        return putV1PubsubKvByBucketByKeyCall(bucket, key, kvWrite, _callback);
+        return putPubsubKvByBucketByKeyCall(bucket, key, kvWrite, _callback);
 
     }
 
@@ -2417,8 +2417,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public KvAck putV1PubsubKvByBucketByKey(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull KvWrite kvWrite) throws ApiException {
-        ApiResponse<KvAck> localVarResp = putV1PubsubKvByBucketByKeyWithHttpInfo(bucket, key, kvWrite);
+    public KvAck putPubsubKvByBucketByKey(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull KvWrite kvWrite) throws ApiException {
+        ApiResponse<KvAck> localVarResp = putPubsubKvByBucketByKeyWithHttpInfo(bucket, key, kvWrite);
         return localVarResp.getData();
     }
 
@@ -2437,8 +2437,8 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KvAck> putV1PubsubKvByBucketByKeyWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull KvWrite kvWrite) throws ApiException {
-        okhttp3.Call localVarCall = putV1PubsubKvByBucketByKeyValidateBeforeCall(bucket, key, kvWrite, null);
+    public ApiResponse<KvAck> putPubsubKvByBucketByKeyWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull KvWrite kvWrite) throws ApiException {
+        okhttp3.Call localVarCall = putPubsubKvByBucketByKeyValidateBeforeCall(bucket, key, kvWrite, null);
         Type localVarReturnType = new TypeToken<KvAck>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2459,9 +2459,9 @@ public class PubsubApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1PubsubKvByBucketByKeyAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull KvWrite kvWrite, final ApiCallback<KvAck> _callback) throws ApiException {
+    public okhttp3.Call putPubsubKvByBucketByKeyAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull KvWrite kvWrite, final ApiCallback<KvAck> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1PubsubKvByBucketByKeyValidateBeforeCall(bucket, key, kvWrite, _callback);
+        okhttp3.Call localVarCall = putPubsubKvByBucketByKeyValidateBeforeCall(bucket, key, kvWrite, _callback);
         Type localVarReturnType = new TypeToken<KvAck>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

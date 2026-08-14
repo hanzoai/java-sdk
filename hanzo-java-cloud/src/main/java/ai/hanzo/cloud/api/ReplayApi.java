@@ -74,7 +74,7 @@ public class ReplayApi {
     }
 
     /**
-     * Build call for postV1Replay
+     * Build call for postReplay
      * @param replayBody  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -86,7 +86,7 @@ public class ReplayApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ReplayCall(@javax.annotation.Nullable ReplayBody replayBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postReplayCall(@javax.annotation.Nullable ReplayBody replayBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -132,8 +132,8 @@ public class ReplayApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ReplayValidateBeforeCall(@javax.annotation.Nullable ReplayBody replayBody, final ApiCallback _callback) throws ApiException {
-        return postV1ReplayCall(replayBody, _callback);
+    private okhttp3.Call postReplayValidateBeforeCall(@javax.annotation.Nullable ReplayBody replayBody, final ApiCallback _callback) throws ApiException {
+        return postReplayCall(replayBody, _callback);
 
     }
 
@@ -150,8 +150,8 @@ public class ReplayApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public CaptureResult postV1Replay(@javax.annotation.Nullable ReplayBody replayBody) throws ApiException {
-        ApiResponse<CaptureResult> localVarResp = postV1ReplayWithHttpInfo(replayBody);
+    public CaptureResult postReplay(@javax.annotation.Nullable ReplayBody replayBody) throws ApiException {
+        ApiResponse<CaptureResult> localVarResp = postReplayWithHttpInfo(replayBody);
         return localVarResp.getData();
     }
 
@@ -168,8 +168,8 @@ public class ReplayApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptureResult> postV1ReplayWithHttpInfo(@javax.annotation.Nullable ReplayBody replayBody) throws ApiException {
-        okhttp3.Call localVarCall = postV1ReplayValidateBeforeCall(replayBody, null);
+    public ApiResponse<CaptureResult> postReplayWithHttpInfo(@javax.annotation.Nullable ReplayBody replayBody) throws ApiException {
+        okhttp3.Call localVarCall = postReplayValidateBeforeCall(replayBody, null);
         Type localVarReturnType = new TypeToken<CaptureResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -188,9 +188,9 @@ public class ReplayApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ReplayAsync(@javax.annotation.Nullable ReplayBody replayBody, final ApiCallback<CaptureResult> _callback) throws ApiException {
+    public okhttp3.Call postReplayAsync(@javax.annotation.Nullable ReplayBody replayBody, final ApiCallback<CaptureResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ReplayValidateBeforeCall(replayBody, _callback);
+        okhttp3.Call localVarCall = postReplayValidateBeforeCall(replayBody, _callback);
         Type localVarReturnType = new TypeToken<CaptureResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

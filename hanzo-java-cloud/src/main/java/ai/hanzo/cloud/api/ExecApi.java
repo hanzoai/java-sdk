@@ -74,7 +74,7 @@ public class ExecApi {
     }
 
     /**
-     * Build call for postV1Exec
+     * Build call for postExec
      * @param codeRun  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -86,7 +86,7 @@ public class ExecApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ExecCall(@javax.annotation.Nonnull CodeRun codeRun, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postExecCall(@javax.annotation.Nonnull CodeRun codeRun, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -132,13 +132,13 @@ public class ExecApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ExecValidateBeforeCall(@javax.annotation.Nonnull CodeRun codeRun, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postExecValidateBeforeCall(@javax.annotation.Nonnull CodeRun codeRun, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'codeRun' is set
         if (codeRun == null) {
-            throw new ApiException("Missing the required parameter 'codeRun' when calling postV1Exec(Async)");
+            throw new ApiException("Missing the required parameter 'codeRun' when calling postExec(Async)");
         }
 
-        return postV1ExecCall(codeRun, _callback);
+        return postExecCall(codeRun, _callback);
 
     }
 
@@ -155,8 +155,8 @@ public class ExecApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CodeResult postV1Exec(@javax.annotation.Nonnull CodeRun codeRun) throws ApiException {
-        ApiResponse<CodeResult> localVarResp = postV1ExecWithHttpInfo(codeRun);
+    public CodeResult postExec(@javax.annotation.Nonnull CodeRun codeRun) throws ApiException {
+        ApiResponse<CodeResult> localVarResp = postExecWithHttpInfo(codeRun);
         return localVarResp.getData();
     }
 
@@ -173,8 +173,8 @@ public class ExecApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CodeResult> postV1ExecWithHttpInfo(@javax.annotation.Nonnull CodeRun codeRun) throws ApiException {
-        okhttp3.Call localVarCall = postV1ExecValidateBeforeCall(codeRun, null);
+    public ApiResponse<CodeResult> postExecWithHttpInfo(@javax.annotation.Nonnull CodeRun codeRun) throws ApiException {
+        okhttp3.Call localVarCall = postExecValidateBeforeCall(codeRun, null);
         Type localVarReturnType = new TypeToken<CodeResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -193,20 +193,20 @@ public class ExecApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ExecAsync(@javax.annotation.Nonnull CodeRun codeRun, final ApiCallback<CodeResult> _callback) throws ApiException {
+    public okhttp3.Call postExecAsync(@javax.annotation.Nonnull CodeRun codeRun, final ApiCallback<CodeResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ExecValidateBeforeCall(codeRun, _callback);
+        okhttp3.Call localVarCall = postExecValidateBeforeCall(codeRun, _callback);
         Type localVarReturnType = new TypeToken<CodeResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ExecProgrammatic
+     * Build call for postExecProgrammatic
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1ExecProgrammaticCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postExecProgrammaticCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -250,8 +250,8 @@ public class ExecApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ExecProgrammaticValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1ExecProgrammaticCall(_callback);
+    private okhttp3.Call postExecProgrammaticValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postExecProgrammaticCall(_callback);
 
     }
 
@@ -260,8 +260,8 @@ public class ExecApi {
      * Answers 501. This address belongs to a DIFFERENT protocol from /v1/exec: the server suspends a program on each tool call, returns the pending calls with a continuation token, and resumes when the client posts results back. Serving it means implementing suspension and resumption, so it refuses in the open rather than answering with a shape the caller&#39;s parser cannot read.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1ExecProgrammatic() throws ApiException {
-        postV1ExecProgrammaticWithHttpInfo();
+    public void postExecProgrammatic() throws ApiException {
+        postExecProgrammaticWithHttpInfo();
     }
 
     /**
@@ -270,8 +270,8 @@ public class ExecApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1ExecProgrammaticWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1ExecProgrammaticValidateBeforeCall(null);
+    public ApiResponse<Void> postExecProgrammaticWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postExecProgrammaticValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -282,9 +282,9 @@ public class ExecApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1ExecProgrammaticAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postExecProgrammaticAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ExecProgrammaticValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postExecProgrammaticValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

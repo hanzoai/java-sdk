@@ -84,7 +84,7 @@ public class LegalApi {
     }
 
     /**
-     * Build call for getV1LegalDocuments
+     * Build call for getLegalDocuments
      * @param limit Limit bounds the page. Absent or unparseable means the store&#39;s own default. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -96,7 +96,7 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LegalDocumentsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLegalDocumentsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -145,8 +145,8 @@ public class LegalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1LegalDocumentsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1LegalDocumentsCall(limit, _callback);
+    private okhttp3.Call getLegalDocumentsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getLegalDocumentsCall(limit, _callback);
 
     }
 
@@ -163,8 +163,8 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DocumentPage getV1LegalDocuments(@javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<DocumentPage> localVarResp = getV1LegalDocumentsWithHttpInfo(limit);
+    public DocumentPage getLegalDocuments(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<DocumentPage> localVarResp = getLegalDocumentsWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -181,8 +181,8 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DocumentPage> getV1LegalDocumentsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1LegalDocumentsValidateBeforeCall(limit, null);
+    public ApiResponse<DocumentPage> getLegalDocumentsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getLegalDocumentsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<DocumentPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -201,15 +201,15 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LegalDocumentsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<DocumentPage> _callback) throws ApiException {
+    public okhttp3.Call getLegalDocumentsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<DocumentPage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1LegalDocumentsValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getLegalDocumentsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<DocumentPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1LegalDocumentsById
+     * Build call for getLegalDocumentsById
      * @param id ID is the document&#39;s server-minted handle, \&quot;doc_\&quot;-prefixed. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -221,7 +221,7 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LegalDocumentsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLegalDocumentsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -267,13 +267,13 @@ public class LegalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1LegalDocumentsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLegalDocumentsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1LegalDocumentsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getLegalDocumentsById(Async)");
         }
 
-        return getV1LegalDocumentsByIdCall(id, _callback);
+        return getLegalDocumentsByIdCall(id, _callback);
 
     }
 
@@ -290,8 +290,8 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DocumentReply getV1LegalDocumentsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<DocumentReply> localVarResp = getV1LegalDocumentsByIdWithHttpInfo(id);
+    public DocumentReply getLegalDocumentsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<DocumentReply> localVarResp = getLegalDocumentsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -308,8 +308,8 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DocumentReply> getV1LegalDocumentsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1LegalDocumentsByIdValidateBeforeCall(id, null);
+    public ApiResponse<DocumentReply> getLegalDocumentsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getLegalDocumentsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<DocumentReply>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -328,15 +328,15 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LegalDocumentsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<DocumentReply> _callback) throws ApiException {
+    public okhttp3.Call getLegalDocumentsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<DocumentReply> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1LegalDocumentsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getLegalDocumentsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<DocumentReply>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1LegalFilings
+     * Build call for getLegalFilings
      * @param limit Limit bounds the page. Absent or unparseable means the store&#39;s own default. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -348,7 +348,7 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LegalFilingsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLegalFilingsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -397,8 +397,8 @@ public class LegalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1LegalFilingsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1LegalFilingsCall(limit, _callback);
+    private okhttp3.Call getLegalFilingsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getLegalFilingsCall(limit, _callback);
 
     }
 
@@ -415,8 +415,8 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FilingPage getV1LegalFilings(@javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<FilingPage> localVarResp = getV1LegalFilingsWithHttpInfo(limit);
+    public FilingPage getLegalFilings(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<FilingPage> localVarResp = getLegalFilingsWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -433,8 +433,8 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FilingPage> getV1LegalFilingsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1LegalFilingsValidateBeforeCall(limit, null);
+    public ApiResponse<FilingPage> getLegalFilingsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getLegalFilingsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<FilingPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -453,15 +453,15 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LegalFilingsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<FilingPage> _callback) throws ApiException {
+    public okhttp3.Call getLegalFilingsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<FilingPage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1LegalFilingsValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getLegalFilingsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<FilingPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1LegalHealth
+     * Build call for getLegalHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -472,7 +472,7 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LegalHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLegalHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -517,8 +517,8 @@ public class LegalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1LegalHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1LegalHealthCall(_callback);
+    private okhttp3.Call getLegalHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getLegalHealthCall(_callback);
 
     }
 
@@ -534,8 +534,8 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public LegalHealth getV1LegalHealth() throws ApiException {
-        ApiResponse<LegalHealth> localVarResp = getV1LegalHealthWithHttpInfo();
+    public LegalHealth getLegalHealth() throws ApiException {
+        ApiResponse<LegalHealth> localVarResp = getLegalHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -551,8 +551,8 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LegalHealth> getV1LegalHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1LegalHealthValidateBeforeCall(null);
+    public ApiResponse<LegalHealth> getLegalHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getLegalHealthValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<LegalHealth>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -570,15 +570,15 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LegalHealthAsync(final ApiCallback<LegalHealth> _callback) throws ApiException {
+    public okhttp3.Call getLegalHealthAsync(final ApiCallback<LegalHealth> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1LegalHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getLegalHealthValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<LegalHealth>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1LegalTemplates
+     * Build call for getLegalTemplates
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -589,7 +589,7 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LegalTemplatesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLegalTemplatesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -634,8 +634,8 @@ public class LegalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1LegalTemplatesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1LegalTemplatesCall(_callback);
+    private okhttp3.Call getLegalTemplatesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getLegalTemplatesCall(_callback);
 
     }
 
@@ -651,8 +651,8 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public TemplateCatalog getV1LegalTemplates() throws ApiException {
-        ApiResponse<TemplateCatalog> localVarResp = getV1LegalTemplatesWithHttpInfo();
+    public TemplateCatalog getLegalTemplates() throws ApiException {
+        ApiResponse<TemplateCatalog> localVarResp = getLegalTemplatesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -668,8 +668,8 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TemplateCatalog> getV1LegalTemplatesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1LegalTemplatesValidateBeforeCall(null);
+    public ApiResponse<TemplateCatalog> getLegalTemplatesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getLegalTemplatesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<TemplateCatalog>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -687,15 +687,15 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LegalTemplatesAsync(final ApiCallback<TemplateCatalog> _callback) throws ApiException {
+    public okhttp3.Call getLegalTemplatesAsync(final ApiCallback<TemplateCatalog> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1LegalTemplatesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getLegalTemplatesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<TemplateCatalog>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1LegalTemplatesById
+     * Build call for getLegalTemplatesById
      * @param id ID is the template&#39;s stable id, e.g. \&quot;nda\&quot; or \&quot;safe\&quot;. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -707,7 +707,7 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LegalTemplatesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLegalTemplatesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -753,13 +753,13 @@ public class LegalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1LegalTemplatesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLegalTemplatesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1LegalTemplatesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getLegalTemplatesById(Async)");
         }
 
-        return getV1LegalTemplatesByIdCall(id, _callback);
+        return getLegalTemplatesByIdCall(id, _callback);
 
     }
 
@@ -776,8 +776,8 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public TemplateReply getV1LegalTemplatesById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<TemplateReply> localVarResp = getV1LegalTemplatesByIdWithHttpInfo(id);
+    public TemplateReply getLegalTemplatesById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<TemplateReply> localVarResp = getLegalTemplatesByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -794,8 +794,8 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TemplateReply> getV1LegalTemplatesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1LegalTemplatesByIdValidateBeforeCall(id, null);
+    public ApiResponse<TemplateReply> getLegalTemplatesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getLegalTemplatesByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<TemplateReply>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -814,15 +814,15 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LegalTemplatesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<TemplateReply> _callback) throws ApiException {
+    public okhttp3.Call getLegalTemplatesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<TemplateReply> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1LegalTemplatesByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getLegalTemplatesByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<TemplateReply>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1LegalDocuments
+     * Build call for postLegalDocuments
      * @param generateRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -834,7 +834,7 @@ public class LegalApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1LegalDocumentsCall(@javax.annotation.Nonnull GenerateRequest generateRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postLegalDocumentsCall(@javax.annotation.Nonnull GenerateRequest generateRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -880,13 +880,13 @@ public class LegalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1LegalDocumentsValidateBeforeCall(@javax.annotation.Nonnull GenerateRequest generateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postLegalDocumentsValidateBeforeCall(@javax.annotation.Nonnull GenerateRequest generateRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'generateRequest' is set
         if (generateRequest == null) {
-            throw new ApiException("Missing the required parameter 'generateRequest' when calling postV1LegalDocuments(Async)");
+            throw new ApiException("Missing the required parameter 'generateRequest' when calling postLegalDocuments(Async)");
         }
 
-        return postV1LegalDocumentsCall(generateRequest, _callback);
+        return postLegalDocumentsCall(generateRequest, _callback);
 
     }
 
@@ -903,8 +903,8 @@ public class LegalApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public DocumentReply postV1LegalDocuments(@javax.annotation.Nonnull GenerateRequest generateRequest) throws ApiException {
-        ApiResponse<DocumentReply> localVarResp = postV1LegalDocumentsWithHttpInfo(generateRequest);
+    public DocumentReply postLegalDocuments(@javax.annotation.Nonnull GenerateRequest generateRequest) throws ApiException {
+        ApiResponse<DocumentReply> localVarResp = postLegalDocumentsWithHttpInfo(generateRequest);
         return localVarResp.getData();
     }
 
@@ -921,8 +921,8 @@ public class LegalApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DocumentReply> postV1LegalDocumentsWithHttpInfo(@javax.annotation.Nonnull GenerateRequest generateRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1LegalDocumentsValidateBeforeCall(generateRequest, null);
+    public ApiResponse<DocumentReply> postLegalDocumentsWithHttpInfo(@javax.annotation.Nonnull GenerateRequest generateRequest) throws ApiException {
+        okhttp3.Call localVarCall = postLegalDocumentsValidateBeforeCall(generateRequest, null);
         Type localVarReturnType = new TypeToken<DocumentReply>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -941,15 +941,15 @@ public class LegalApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1LegalDocumentsAsync(@javax.annotation.Nonnull GenerateRequest generateRequest, final ApiCallback<DocumentReply> _callback) throws ApiException {
+    public okhttp3.Call postLegalDocumentsAsync(@javax.annotation.Nonnull GenerateRequest generateRequest, final ApiCallback<DocumentReply> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1LegalDocumentsValidateBeforeCall(generateRequest, _callback);
+        okhttp3.Call localVarCall = postLegalDocumentsValidateBeforeCall(generateRequest, _callback);
         Type localVarReturnType = new TypeToken<DocumentReply>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1LegalDocumentsByIdSign
+     * Build call for postLegalDocumentsByIdSign
      * @param id ID is the document to send for signature, from the path. (required)
      * @param signRequest  (required)
      * @param _callback Callback for upload/download progress
@@ -962,7 +962,7 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1LegalDocumentsByIdSignCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignRequest signRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postLegalDocumentsByIdSignCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignRequest signRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1009,18 +1009,18 @@ public class LegalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1LegalDocumentsByIdSignValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignRequest signRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postLegalDocumentsByIdSignValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignRequest signRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1LegalDocumentsByIdSign(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postLegalDocumentsByIdSign(Async)");
         }
 
         // verify the required parameter 'signRequest' is set
         if (signRequest == null) {
-            throw new ApiException("Missing the required parameter 'signRequest' when calling postV1LegalDocumentsByIdSign(Async)");
+            throw new ApiException("Missing the required parameter 'signRequest' when calling postLegalDocumentsByIdSign(Async)");
         }
 
-        return postV1LegalDocumentsByIdSignCall(id, signRequest, _callback);
+        return postLegalDocumentsByIdSignCall(id, signRequest, _callback);
 
     }
 
@@ -1038,8 +1038,8 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SignReply postV1LegalDocumentsByIdSign(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignRequest signRequest) throws ApiException {
-        ApiResponse<SignReply> localVarResp = postV1LegalDocumentsByIdSignWithHttpInfo(id, signRequest);
+    public SignReply postLegalDocumentsByIdSign(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignRequest signRequest) throws ApiException {
+        ApiResponse<SignReply> localVarResp = postLegalDocumentsByIdSignWithHttpInfo(id, signRequest);
         return localVarResp.getData();
     }
 
@@ -1057,8 +1057,8 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SignReply> postV1LegalDocumentsByIdSignWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignRequest signRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1LegalDocumentsByIdSignValidateBeforeCall(id, signRequest, null);
+    public ApiResponse<SignReply> postLegalDocumentsByIdSignWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignRequest signRequest) throws ApiException {
+        okhttp3.Call localVarCall = postLegalDocumentsByIdSignValidateBeforeCall(id, signRequest, null);
         Type localVarReturnType = new TypeToken<SignReply>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1078,21 +1078,21 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1LegalDocumentsByIdSignAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignRequest signRequest, final ApiCallback<SignReply> _callback) throws ApiException {
+    public okhttp3.Call postLegalDocumentsByIdSignAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignRequest signRequest, final ApiCallback<SignReply> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1LegalDocumentsByIdSignValidateBeforeCall(id, signRequest, _callback);
+        okhttp3.Call localVarCall = postLegalDocumentsByIdSignValidateBeforeCall(id, signRequest, _callback);
         Type localVarReturnType = new TypeToken<SignReply>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1LegalDocumentsByIdSignComplete
+     * Build call for postLegalDocumentsByIdSignComplete
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1LegalDocumentsByIdSignCompleteCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postLegalDocumentsByIdSignCompleteCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1137,13 +1137,13 @@ public class LegalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1LegalDocumentsByIdSignCompleteValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postLegalDocumentsByIdSignCompleteValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1LegalDocumentsByIdSignComplete(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postLegalDocumentsByIdSignComplete(Async)");
         }
 
-        return postV1LegalDocumentsByIdSignCompleteCall(id, _callback);
+        return postLegalDocumentsByIdSignCompleteCall(id, _callback);
 
     }
 
@@ -1153,8 +1153,8 @@ public class LegalApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1LegalDocumentsByIdSignComplete(@javax.annotation.Nonnull String id) throws ApiException {
-        postV1LegalDocumentsByIdSignCompleteWithHttpInfo(id);
+    public void postLegalDocumentsByIdSignComplete(@javax.annotation.Nonnull String id) throws ApiException {
+        postLegalDocumentsByIdSignCompleteWithHttpInfo(id);
     }
 
     /**
@@ -1164,8 +1164,8 @@ public class LegalApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1LegalDocumentsByIdSignCompleteWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1LegalDocumentsByIdSignCompleteValidateBeforeCall(id, null);
+    public ApiResponse<Void> postLegalDocumentsByIdSignCompleteWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postLegalDocumentsByIdSignCompleteValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1177,14 +1177,14 @@ public class LegalApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1LegalDocumentsByIdSignCompleteAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postLegalDocumentsByIdSignCompleteAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1LegalDocumentsByIdSignCompleteValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postLegalDocumentsByIdSignCompleteValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1LegalFilings
+     * Build call for postLegalFilings
      * @param filingRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1196,7 +1196,7 @@ public class LegalApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1LegalFilingsCall(@javax.annotation.Nonnull FilingRequest filingRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postLegalFilingsCall(@javax.annotation.Nonnull FilingRequest filingRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1242,13 +1242,13 @@ public class LegalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1LegalFilingsValidateBeforeCall(@javax.annotation.Nonnull FilingRequest filingRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postLegalFilingsValidateBeforeCall(@javax.annotation.Nonnull FilingRequest filingRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'filingRequest' is set
         if (filingRequest == null) {
-            throw new ApiException("Missing the required parameter 'filingRequest' when calling postV1LegalFilings(Async)");
+            throw new ApiException("Missing the required parameter 'filingRequest' when calling postLegalFilings(Async)");
         }
 
-        return postV1LegalFilingsCall(filingRequest, _callback);
+        return postLegalFilingsCall(filingRequest, _callback);
 
     }
 
@@ -1265,8 +1265,8 @@ public class LegalApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public FilingReply postV1LegalFilings(@javax.annotation.Nonnull FilingRequest filingRequest) throws ApiException {
-        ApiResponse<FilingReply> localVarResp = postV1LegalFilingsWithHttpInfo(filingRequest);
+    public FilingReply postLegalFilings(@javax.annotation.Nonnull FilingRequest filingRequest) throws ApiException {
+        ApiResponse<FilingReply> localVarResp = postLegalFilingsWithHttpInfo(filingRequest);
         return localVarResp.getData();
     }
 
@@ -1283,8 +1283,8 @@ public class LegalApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FilingReply> postV1LegalFilingsWithHttpInfo(@javax.annotation.Nonnull FilingRequest filingRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1LegalFilingsValidateBeforeCall(filingRequest, null);
+    public ApiResponse<FilingReply> postLegalFilingsWithHttpInfo(@javax.annotation.Nonnull FilingRequest filingRequest) throws ApiException {
+        okhttp3.Call localVarCall = postLegalFilingsValidateBeforeCall(filingRequest, null);
         Type localVarReturnType = new TypeToken<FilingReply>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1303,15 +1303,15 @@ public class LegalApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1LegalFilingsAsync(@javax.annotation.Nonnull FilingRequest filingRequest, final ApiCallback<FilingReply> _callback) throws ApiException {
+    public okhttp3.Call postLegalFilingsAsync(@javax.annotation.Nonnull FilingRequest filingRequest, final ApiCallback<FilingReply> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1LegalFilingsValidateBeforeCall(filingRequest, _callback);
+        okhttp3.Call localVarCall = postLegalFilingsValidateBeforeCall(filingRequest, _callback);
         Type localVarReturnType = new TypeToken<FilingReply>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1LegalTemplatesById
+     * Build call for putLegalTemplatesById
      * @param id ID is the template to override, from the path. Overriding a built-in id inherits that built-in&#39;s category, title and counsel-review posture. (required)
      * @param templateOverride  (required)
      * @param _callback Callback for upload/download progress
@@ -1324,7 +1324,7 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1LegalTemplatesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TemplateOverride templateOverride, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putLegalTemplatesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TemplateOverride templateOverride, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1371,18 +1371,18 @@ public class LegalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1LegalTemplatesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TemplateOverride templateOverride, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putLegalTemplatesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TemplateOverride templateOverride, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling putV1LegalTemplatesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling putLegalTemplatesById(Async)");
         }
 
         // verify the required parameter 'templateOverride' is set
         if (templateOverride == null) {
-            throw new ApiException("Missing the required parameter 'templateOverride' when calling putV1LegalTemplatesById(Async)");
+            throw new ApiException("Missing the required parameter 'templateOverride' when calling putLegalTemplatesById(Async)");
         }
 
-        return putV1LegalTemplatesByIdCall(id, templateOverride, _callback);
+        return putLegalTemplatesByIdCall(id, templateOverride, _callback);
 
     }
 
@@ -1400,8 +1400,8 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public TemplateReply putV1LegalTemplatesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TemplateOverride templateOverride) throws ApiException {
-        ApiResponse<TemplateReply> localVarResp = putV1LegalTemplatesByIdWithHttpInfo(id, templateOverride);
+    public TemplateReply putLegalTemplatesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TemplateOverride templateOverride) throws ApiException {
+        ApiResponse<TemplateReply> localVarResp = putLegalTemplatesByIdWithHttpInfo(id, templateOverride);
         return localVarResp.getData();
     }
 
@@ -1419,8 +1419,8 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TemplateReply> putV1LegalTemplatesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TemplateOverride templateOverride) throws ApiException {
-        okhttp3.Call localVarCall = putV1LegalTemplatesByIdValidateBeforeCall(id, templateOverride, null);
+    public ApiResponse<TemplateReply> putLegalTemplatesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TemplateOverride templateOverride) throws ApiException {
+        okhttp3.Call localVarCall = putLegalTemplatesByIdValidateBeforeCall(id, templateOverride, null);
         Type localVarReturnType = new TypeToken<TemplateReply>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1440,9 +1440,9 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1LegalTemplatesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TemplateOverride templateOverride, final ApiCallback<TemplateReply> _callback) throws ApiException {
+    public okhttp3.Call putLegalTemplatesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TemplateOverride templateOverride, final ApiCallback<TemplateReply> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1LegalTemplatesByIdValidateBeforeCall(id, templateOverride, _callback);
+        okhttp3.Call localVarCall = putLegalTemplatesByIdValidateBeforeCall(id, templateOverride, _callback);
         Type localVarReturnType = new TypeToken<TemplateReply>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

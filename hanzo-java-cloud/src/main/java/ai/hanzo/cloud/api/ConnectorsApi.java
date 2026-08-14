@@ -82,7 +82,7 @@ public class ConnectorsApi {
     }
 
     /**
-     * Build call for deleteV1ConnectorsById
+     * Build call for deleteConnectorsById
      * @param id ID is the connector id, provider + \&quot;:\&quot; + label (\&quot;openai:default\&quot;) — the auth-profile-id shape. Another user&#39;s id is simply no row, so 404. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -94,7 +94,7 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1ConnectorsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteConnectorsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -140,13 +140,13 @@ public class ConnectorsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1ConnectorsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteConnectorsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1ConnectorsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteConnectorsById(Async)");
         }
 
-        return deleteV1ConnectorsByIdCall(id, _callback);
+        return deleteConnectorsByIdCall(id, _callback);
 
     }
 
@@ -163,8 +163,8 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DisconnectOut deleteV1ConnectorsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<DisconnectOut> localVarResp = deleteV1ConnectorsByIdWithHttpInfo(id);
+    public DisconnectOut deleteConnectorsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<DisconnectOut> localVarResp = deleteConnectorsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -181,8 +181,8 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DisconnectOut> deleteV1ConnectorsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1ConnectorsByIdValidateBeforeCall(id, null);
+    public ApiResponse<DisconnectOut> deleteConnectorsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteConnectorsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<DisconnectOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -201,15 +201,15 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1ConnectorsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<DisconnectOut> _callback) throws ApiException {
+    public okhttp3.Call deleteConnectorsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<DisconnectOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1ConnectorsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteConnectorsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<DisconnectOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Connectors
+     * Build call for getConnectors
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -220,7 +220,7 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ConnectorsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getConnectorsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -265,8 +265,8 @@ public class ConnectorsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ConnectorsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1ConnectorsCall(_callback);
+    private okhttp3.Call getConnectorsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getConnectorsCall(_callback);
 
     }
 
@@ -282,8 +282,8 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ConnectorsOut getV1Connectors() throws ApiException {
-        ApiResponse<ConnectorsOut> localVarResp = getV1ConnectorsWithHttpInfo();
+    public ConnectorsOut getConnectors() throws ApiException {
+        ApiResponse<ConnectorsOut> localVarResp = getConnectorsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -299,8 +299,8 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConnectorsOut> getV1ConnectorsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1ConnectorsValidateBeforeCall(null);
+    public ApiResponse<ConnectorsOut> getConnectorsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getConnectorsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ConnectorsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -318,15 +318,15 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ConnectorsAsync(final ApiCallback<ConnectorsOut> _callback) throws ApiException {
+    public okhttp3.Call getConnectorsAsync(final ApiCallback<ConnectorsOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ConnectorsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getConnectorsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ConnectorsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ConnectorsByIdToken
+     * Build call for getConnectorsByIdToken
      * @param id ID is the connector id, provider + \&quot;:\&quot; + label (\&quot;openai:default\&quot;) — the auth-profile-id shape. Another user&#39;s id is simply no row, so 404. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -338,7 +338,7 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ConnectorsByIdTokenCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getConnectorsByIdTokenCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -384,13 +384,13 @@ public class ConnectorsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ConnectorsByIdTokenValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getConnectorsByIdTokenValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1ConnectorsByIdToken(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getConnectorsByIdToken(Async)");
         }
 
-        return getV1ConnectorsByIdTokenCall(id, _callback);
+        return getConnectorsByIdTokenCall(id, _callback);
 
     }
 
@@ -407,8 +407,8 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ConnectorTokenOut getV1ConnectorsByIdToken(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<ConnectorTokenOut> localVarResp = getV1ConnectorsByIdTokenWithHttpInfo(id);
+    public ConnectorTokenOut getConnectorsByIdToken(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<ConnectorTokenOut> localVarResp = getConnectorsByIdTokenWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -425,8 +425,8 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConnectorTokenOut> getV1ConnectorsByIdTokenWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1ConnectorsByIdTokenValidateBeforeCall(id, null);
+    public ApiResponse<ConnectorTokenOut> getConnectorsByIdTokenWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getConnectorsByIdTokenValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<ConnectorTokenOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -445,15 +445,15 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ConnectorsByIdTokenAsync(@javax.annotation.Nonnull String id, final ApiCallback<ConnectorTokenOut> _callback) throws ApiException {
+    public okhttp3.Call getConnectorsByIdTokenAsync(@javax.annotation.Nonnull String id, final ApiCallback<ConnectorTokenOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ConnectorsByIdTokenValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getConnectorsByIdTokenValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<ConnectorTokenOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ConnectorsProviders
+     * Build call for getConnectorsProviders
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -464,7 +464,7 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ConnectorsProvidersCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getConnectorsProvidersCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -509,8 +509,8 @@ public class ConnectorsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ConnectorsProvidersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1ConnectorsProvidersCall(_callback);
+    private okhttp3.Call getConnectorsProvidersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getConnectorsProvidersCall(_callback);
 
     }
 
@@ -526,8 +526,8 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ConnectorProvidersOut getV1ConnectorsProviders() throws ApiException {
-        ApiResponse<ConnectorProvidersOut> localVarResp = getV1ConnectorsProvidersWithHttpInfo();
+    public ConnectorProvidersOut getConnectorsProviders() throws ApiException {
+        ApiResponse<ConnectorProvidersOut> localVarResp = getConnectorsProvidersWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -543,8 +543,8 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConnectorProvidersOut> getV1ConnectorsProvidersWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1ConnectorsProvidersValidateBeforeCall(null);
+    public ApiResponse<ConnectorProvidersOut> getConnectorsProvidersWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getConnectorsProvidersValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ConnectorProvidersOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -562,15 +562,15 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ConnectorsProvidersAsync(final ApiCallback<ConnectorProvidersOut> _callback) throws ApiException {
+    public okhttp3.Call getConnectorsProvidersAsync(final ApiCallback<ConnectorProvidersOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ConnectorsProvidersValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getConnectorsProvidersValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ConnectorProvidersOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ConnectorsByIdRefresh
+     * Build call for postConnectorsByIdRefresh
      * @param id ID is the connector id, provider + \&quot;:\&quot; + label (\&quot;openai:default\&quot;) — the auth-profile-id shape. Another user&#39;s id is simply no row, so 404. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -582,7 +582,7 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ConnectorsByIdRefreshCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postConnectorsByIdRefreshCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -628,13 +628,13 @@ public class ConnectorsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ConnectorsByIdRefreshValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postConnectorsByIdRefreshValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1ConnectorsByIdRefresh(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postConnectorsByIdRefresh(Async)");
         }
 
-        return postV1ConnectorsByIdRefreshCall(id, _callback);
+        return postConnectorsByIdRefreshCall(id, _callback);
 
     }
 
@@ -651,8 +651,8 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RefreshOut postV1ConnectorsByIdRefresh(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<RefreshOut> localVarResp = postV1ConnectorsByIdRefreshWithHttpInfo(id);
+    public RefreshOut postConnectorsByIdRefresh(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<RefreshOut> localVarResp = postConnectorsByIdRefreshWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -669,8 +669,8 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RefreshOut> postV1ConnectorsByIdRefreshWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1ConnectorsByIdRefreshValidateBeforeCall(id, null);
+    public ApiResponse<RefreshOut> postConnectorsByIdRefreshWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postConnectorsByIdRefreshValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<RefreshOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -689,15 +689,15 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ConnectorsByIdRefreshAsync(@javax.annotation.Nonnull String id, final ApiCallback<RefreshOut> _callback) throws ApiException {
+    public okhttp3.Call postConnectorsByIdRefreshAsync(@javax.annotation.Nonnull String id, final ApiCallback<RefreshOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ConnectorsByIdRefreshValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postConnectorsByIdRefreshValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<RefreshOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ConnectorsByProviderCredential
+     * Build call for postConnectorsByProviderCredential
      * @param provider Provider is the user-scoped provider&#39;s registry id, from the path. (required)
      * @param credentialIn  (required)
      * @param _callback Callback for upload/download progress
@@ -710,7 +710,7 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ConnectorsByProviderCredentialCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull CredentialIn credentialIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postConnectorsByProviderCredentialCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull CredentialIn credentialIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -757,18 +757,18 @@ public class ConnectorsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ConnectorsByProviderCredentialValidateBeforeCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull CredentialIn credentialIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postConnectorsByProviderCredentialValidateBeforeCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull CredentialIn credentialIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'provider' is set
         if (provider == null) {
-            throw new ApiException("Missing the required parameter 'provider' when calling postV1ConnectorsByProviderCredential(Async)");
+            throw new ApiException("Missing the required parameter 'provider' when calling postConnectorsByProviderCredential(Async)");
         }
 
         // verify the required parameter 'credentialIn' is set
         if (credentialIn == null) {
-            throw new ApiException("Missing the required parameter 'credentialIn' when calling postV1ConnectorsByProviderCredential(Async)");
+            throw new ApiException("Missing the required parameter 'credentialIn' when calling postConnectorsByProviderCredential(Async)");
         }
 
-        return postV1ConnectorsByProviderCredentialCall(provider, credentialIn, _callback);
+        return postConnectorsByProviderCredentialCall(provider, credentialIn, _callback);
 
     }
 
@@ -786,8 +786,8 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CredentialOut postV1ConnectorsByProviderCredential(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull CredentialIn credentialIn) throws ApiException {
-        ApiResponse<CredentialOut> localVarResp = postV1ConnectorsByProviderCredentialWithHttpInfo(provider, credentialIn);
+    public CredentialOut postConnectorsByProviderCredential(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull CredentialIn credentialIn) throws ApiException {
+        ApiResponse<CredentialOut> localVarResp = postConnectorsByProviderCredentialWithHttpInfo(provider, credentialIn);
         return localVarResp.getData();
     }
 
@@ -805,8 +805,8 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CredentialOut> postV1ConnectorsByProviderCredentialWithHttpInfo(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull CredentialIn credentialIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1ConnectorsByProviderCredentialValidateBeforeCall(provider, credentialIn, null);
+    public ApiResponse<CredentialOut> postConnectorsByProviderCredentialWithHttpInfo(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull CredentialIn credentialIn) throws ApiException {
+        okhttp3.Call localVarCall = postConnectorsByProviderCredentialValidateBeforeCall(provider, credentialIn, null);
         Type localVarReturnType = new TypeToken<CredentialOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -826,15 +826,15 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ConnectorsByProviderCredentialAsync(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull CredentialIn credentialIn, final ApiCallback<CredentialOut> _callback) throws ApiException {
+    public okhttp3.Call postConnectorsByProviderCredentialAsync(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull CredentialIn credentialIn, final ApiCallback<CredentialOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ConnectorsByProviderCredentialValidateBeforeCall(provider, credentialIn, _callback);
+        okhttp3.Call localVarCall = postConnectorsByProviderCredentialValidateBeforeCall(provider, credentialIn, _callback);
         Type localVarReturnType = new TypeToken<CredentialOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ConnectorsByProviderDevice
+     * Build call for postConnectorsByProviderDevice
      * @param provider Provider is the user-scoped provider&#39;s registry id, from the path. (required)
      * @param deviceStartIn  (required)
      * @param _callback Callback for upload/download progress
@@ -847,7 +847,7 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ConnectorsByProviderDeviceCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull DeviceStartIn deviceStartIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postConnectorsByProviderDeviceCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull DeviceStartIn deviceStartIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -894,18 +894,18 @@ public class ConnectorsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ConnectorsByProviderDeviceValidateBeforeCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull DeviceStartIn deviceStartIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postConnectorsByProviderDeviceValidateBeforeCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull DeviceStartIn deviceStartIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'provider' is set
         if (provider == null) {
-            throw new ApiException("Missing the required parameter 'provider' when calling postV1ConnectorsByProviderDevice(Async)");
+            throw new ApiException("Missing the required parameter 'provider' when calling postConnectorsByProviderDevice(Async)");
         }
 
         // verify the required parameter 'deviceStartIn' is set
         if (deviceStartIn == null) {
-            throw new ApiException("Missing the required parameter 'deviceStartIn' when calling postV1ConnectorsByProviderDevice(Async)");
+            throw new ApiException("Missing the required parameter 'deviceStartIn' when calling postConnectorsByProviderDevice(Async)");
         }
 
-        return postV1ConnectorsByProviderDeviceCall(provider, deviceStartIn, _callback);
+        return postConnectorsByProviderDeviceCall(provider, deviceStartIn, _callback);
 
     }
 
@@ -923,8 +923,8 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DeviceStartOut postV1ConnectorsByProviderDevice(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull DeviceStartIn deviceStartIn) throws ApiException {
-        ApiResponse<DeviceStartOut> localVarResp = postV1ConnectorsByProviderDeviceWithHttpInfo(provider, deviceStartIn);
+    public DeviceStartOut postConnectorsByProviderDevice(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull DeviceStartIn deviceStartIn) throws ApiException {
+        ApiResponse<DeviceStartOut> localVarResp = postConnectorsByProviderDeviceWithHttpInfo(provider, deviceStartIn);
         return localVarResp.getData();
     }
 
@@ -942,8 +942,8 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeviceStartOut> postV1ConnectorsByProviderDeviceWithHttpInfo(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull DeviceStartIn deviceStartIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1ConnectorsByProviderDeviceValidateBeforeCall(provider, deviceStartIn, null);
+    public ApiResponse<DeviceStartOut> postConnectorsByProviderDeviceWithHttpInfo(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull DeviceStartIn deviceStartIn) throws ApiException {
+        okhttp3.Call localVarCall = postConnectorsByProviderDeviceValidateBeforeCall(provider, deviceStartIn, null);
         Type localVarReturnType = new TypeToken<DeviceStartOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -963,15 +963,15 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ConnectorsByProviderDeviceAsync(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull DeviceStartIn deviceStartIn, final ApiCallback<DeviceStartOut> _callback) throws ApiException {
+    public okhttp3.Call postConnectorsByProviderDeviceAsync(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull DeviceStartIn deviceStartIn, final ApiCallback<DeviceStartOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ConnectorsByProviderDeviceValidateBeforeCall(provider, deviceStartIn, _callback);
+        okhttp3.Call localVarCall = postConnectorsByProviderDeviceValidateBeforeCall(provider, deviceStartIn, _callback);
         Type localVarReturnType = new TypeToken<DeviceStartOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ConnectorsByProviderDeviceByFlowPoll
+     * Build call for postConnectorsByProviderDeviceByFlowPoll
      * @param provider Provider is the user-scoped provider&#39;s registry id, from the path. (required)
      * @param flow Flow is the id deviceStartOut returned. Expired or another user&#39;s flow is indistinguishable from an unknown one: 404. (required)
      * @param _callback Callback for upload/download progress
@@ -984,7 +984,7 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ConnectorsByProviderDeviceByFlowPollCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String flow, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postConnectorsByProviderDeviceByFlowPollCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String flow, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1031,18 +1031,18 @@ public class ConnectorsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ConnectorsByProviderDeviceByFlowPollValidateBeforeCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String flow, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postConnectorsByProviderDeviceByFlowPollValidateBeforeCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String flow, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'provider' is set
         if (provider == null) {
-            throw new ApiException("Missing the required parameter 'provider' when calling postV1ConnectorsByProviderDeviceByFlowPoll(Async)");
+            throw new ApiException("Missing the required parameter 'provider' when calling postConnectorsByProviderDeviceByFlowPoll(Async)");
         }
 
         // verify the required parameter 'flow' is set
         if (flow == null) {
-            throw new ApiException("Missing the required parameter 'flow' when calling postV1ConnectorsByProviderDeviceByFlowPoll(Async)");
+            throw new ApiException("Missing the required parameter 'flow' when calling postConnectorsByProviderDeviceByFlowPoll(Async)");
         }
 
-        return postV1ConnectorsByProviderDeviceByFlowPollCall(provider, flow, _callback);
+        return postConnectorsByProviderDeviceByFlowPollCall(provider, flow, _callback);
 
     }
 
@@ -1060,8 +1060,8 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DevicePollOut postV1ConnectorsByProviderDeviceByFlowPoll(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String flow) throws ApiException {
-        ApiResponse<DevicePollOut> localVarResp = postV1ConnectorsByProviderDeviceByFlowPollWithHttpInfo(provider, flow);
+    public DevicePollOut postConnectorsByProviderDeviceByFlowPoll(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String flow) throws ApiException {
+        ApiResponse<DevicePollOut> localVarResp = postConnectorsByProviderDeviceByFlowPollWithHttpInfo(provider, flow);
         return localVarResp.getData();
     }
 
@@ -1079,8 +1079,8 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DevicePollOut> postV1ConnectorsByProviderDeviceByFlowPollWithHttpInfo(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String flow) throws ApiException {
-        okhttp3.Call localVarCall = postV1ConnectorsByProviderDeviceByFlowPollValidateBeforeCall(provider, flow, null);
+    public ApiResponse<DevicePollOut> postConnectorsByProviderDeviceByFlowPollWithHttpInfo(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String flow) throws ApiException {
+        okhttp3.Call localVarCall = postConnectorsByProviderDeviceByFlowPollValidateBeforeCall(provider, flow, null);
         Type localVarReturnType = new TypeToken<DevicePollOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1100,9 +1100,9 @@ public class ConnectorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ConnectorsByProviderDeviceByFlowPollAsync(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String flow, final ApiCallback<DevicePollOut> _callback) throws ApiException {
+    public okhttp3.Call postConnectorsByProviderDeviceByFlowPollAsync(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String flow, final ApiCallback<DevicePollOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ConnectorsByProviderDeviceByFlowPollValidateBeforeCall(provider, flow, _callback);
+        okhttp3.Call localVarCall = postConnectorsByProviderDeviceByFlowPollValidateBeforeCall(provider, flow, _callback);
         Type localVarReturnType = new TypeToken<DevicePollOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

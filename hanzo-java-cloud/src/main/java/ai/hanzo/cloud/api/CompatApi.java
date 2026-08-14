@@ -86,7 +86,7 @@ public class CompatApi {
     }
 
     /**
-     * Build call for deleteV1IamApplication
+     * Build call for deleteIamApplication
      * @param owner  (required)
      * @param name  (required)
      * @param _callback Callback for upload/download progress
@@ -99,7 +99,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1IamApplicationCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteIamApplicationCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -152,18 +152,18 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1IamApplicationValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteIamApplicationValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'owner' is set
         if (owner == null) {
-            throw new ApiException("Missing the required parameter 'owner' when calling deleteV1IamApplication(Async)");
+            throw new ApiException("Missing the required parameter 'owner' when calling deleteIamApplication(Async)");
         }
 
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteV1IamApplication(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling deleteIamApplication(Async)");
         }
 
-        return deleteV1IamApplicationCall(owner, name, _callback);
+        return deleteIamApplicationCall(owner, name, _callback);
 
     }
 
@@ -181,8 +181,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamDeleteResult deleteV1IamApplication(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<IamDeleteResult> localVarResp = deleteV1IamApplicationWithHttpInfo(owner, name);
+    public IamDeleteResult deleteIamApplication(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamDeleteResult> localVarResp = deleteIamApplicationWithHttpInfo(owner, name);
         return localVarResp.getData();
     }
 
@@ -200,8 +200,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamDeleteResult> deleteV1IamApplicationWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1IamApplicationValidateBeforeCall(owner, name, null);
+    public ApiResponse<IamDeleteResult> deleteIamApplicationWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteIamApplicationValidateBeforeCall(owner, name, null);
         Type localVarReturnType = new TypeToken<IamDeleteResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -221,15 +221,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1IamApplicationAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamDeleteResult> _callback) throws ApiException {
+    public okhttp3.Call deleteIamApplicationAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamDeleteResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1IamApplicationValidateBeforeCall(owner, name, _callback);
+        okhttp3.Call localVarCall = deleteIamApplicationValidateBeforeCall(owner, name, _callback);
         Type localVarReturnType = new TypeToken<IamDeleteResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IamApplication
+     * Build call for getIamApplication
      * @param owner  (required)
      * @param name  (required)
      * @param _callback Callback for upload/download progress
@@ -242,7 +242,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IamApplicationCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIamApplicationCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -295,18 +295,18 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IamApplicationValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIamApplicationValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'owner' is set
         if (owner == null) {
-            throw new ApiException("Missing the required parameter 'owner' when calling getV1IamApplication(Async)");
+            throw new ApiException("Missing the required parameter 'owner' when calling getIamApplication(Async)");
         }
 
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1IamApplication(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getIamApplication(Async)");
         }
 
-        return getV1IamApplicationCall(owner, name, _callback);
+        return getIamApplicationCall(owner, name, _callback);
 
     }
 
@@ -324,8 +324,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamApplication getV1IamApplication(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<IamApplication> localVarResp = getV1IamApplicationWithHttpInfo(owner, name);
+    public IamApplication getIamApplication(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamApplication> localVarResp = getIamApplicationWithHttpInfo(owner, name);
         return localVarResp.getData();
     }
 
@@ -343,8 +343,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamApplication> getV1IamApplicationWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1IamApplicationValidateBeforeCall(owner, name, null);
+    public ApiResponse<IamApplication> getIamApplicationWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getIamApplicationValidateBeforeCall(owner, name, null);
         Type localVarReturnType = new TypeToken<IamApplication>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -364,15 +364,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IamApplicationAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamApplication> _callback) throws ApiException {
+    public okhttp3.Call getIamApplicationAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamApplication> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IamApplicationValidateBeforeCall(owner, name, _callback);
+        okhttp3.Call localVarCall = getIamApplicationValidateBeforeCall(owner, name, _callback);
         Type localVarReturnType = new TypeToken<IamApplication>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IamAddApplication
+     * Build call for postIamAddApplication
      * @param iamApplication  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -384,7 +384,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamAddApplicationCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamAddApplicationCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -430,13 +430,13 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IamAddApplicationValidateBeforeCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIamAddApplicationValidateBeforeCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamApplication' is set
         if (iamApplication == null) {
-            throw new ApiException("Missing the required parameter 'iamApplication' when calling postV1IamAddApplication(Async)");
+            throw new ApiException("Missing the required parameter 'iamApplication' when calling postIamAddApplication(Async)");
         }
 
-        return postV1IamAddApplicationCall(iamApplication, _callback);
+        return postIamAddApplicationCall(iamApplication, _callback);
 
     }
 
@@ -453,8 +453,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamResponse postV1IamAddApplication(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postV1IamAddApplicationWithHttpInfo(iamApplication);
+    public IamResponse postIamAddApplication(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
+        ApiResponse<IamResponse> localVarResp = postIamAddApplicationWithHttpInfo(iamApplication);
         return localVarResp.getData();
     }
 
@@ -471,8 +471,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamResponse> postV1IamAddApplicationWithHttpInfo(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        okhttp3.Call localVarCall = postV1IamAddApplicationValidateBeforeCall(iamApplication, null);
+    public ApiResponse<IamResponse> postIamAddApplicationWithHttpInfo(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
+        okhttp3.Call localVarCall = postIamAddApplicationValidateBeforeCall(iamApplication, null);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -491,15 +491,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamAddApplicationAsync(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback<IamResponse> _callback) throws ApiException {
+    public okhttp3.Call postIamAddApplicationAsync(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback<IamResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IamAddApplicationValidateBeforeCall(iamApplication, _callback);
+        okhttp3.Call localVarCall = postIamAddApplicationValidateBeforeCall(iamApplication, _callback);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IamAddOrganization
+     * Build call for postIamAddOrganization
      * @param iamCreateOrganizationInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -511,7 +511,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamAddOrganizationCall(@javax.annotation.Nonnull IamCreateOrganizationInput iamCreateOrganizationInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamAddOrganizationCall(@javax.annotation.Nonnull IamCreateOrganizationInput iamCreateOrganizationInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -557,13 +557,13 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IamAddOrganizationValidateBeforeCall(@javax.annotation.Nonnull IamCreateOrganizationInput iamCreateOrganizationInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIamAddOrganizationValidateBeforeCall(@javax.annotation.Nonnull IamCreateOrganizationInput iamCreateOrganizationInput, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamCreateOrganizationInput' is set
         if (iamCreateOrganizationInput == null) {
-            throw new ApiException("Missing the required parameter 'iamCreateOrganizationInput' when calling postV1IamAddOrganization(Async)");
+            throw new ApiException("Missing the required parameter 'iamCreateOrganizationInput' when calling postIamAddOrganization(Async)");
         }
 
-        return postV1IamAddOrganizationCall(iamCreateOrganizationInput, _callback);
+        return postIamAddOrganizationCall(iamCreateOrganizationInput, _callback);
 
     }
 
@@ -580,8 +580,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamResponse postV1IamAddOrganization(@javax.annotation.Nonnull IamCreateOrganizationInput iamCreateOrganizationInput) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postV1IamAddOrganizationWithHttpInfo(iamCreateOrganizationInput);
+    public IamResponse postIamAddOrganization(@javax.annotation.Nonnull IamCreateOrganizationInput iamCreateOrganizationInput) throws ApiException {
+        ApiResponse<IamResponse> localVarResp = postIamAddOrganizationWithHttpInfo(iamCreateOrganizationInput);
         return localVarResp.getData();
     }
 
@@ -598,8 +598,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamResponse> postV1IamAddOrganizationWithHttpInfo(@javax.annotation.Nonnull IamCreateOrganizationInput iamCreateOrganizationInput) throws ApiException {
-        okhttp3.Call localVarCall = postV1IamAddOrganizationValidateBeforeCall(iamCreateOrganizationInput, null);
+    public ApiResponse<IamResponse> postIamAddOrganizationWithHttpInfo(@javax.annotation.Nonnull IamCreateOrganizationInput iamCreateOrganizationInput) throws ApiException {
+        okhttp3.Call localVarCall = postIamAddOrganizationValidateBeforeCall(iamCreateOrganizationInput, null);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -618,15 +618,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamAddOrganizationAsync(@javax.annotation.Nonnull IamCreateOrganizationInput iamCreateOrganizationInput, final ApiCallback<IamResponse> _callback) throws ApiException {
+    public okhttp3.Call postIamAddOrganizationAsync(@javax.annotation.Nonnull IamCreateOrganizationInput iamCreateOrganizationInput, final ApiCallback<IamResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IamAddOrganizationValidateBeforeCall(iamCreateOrganizationInput, _callback);
+        okhttp3.Call localVarCall = postIamAddOrganizationValidateBeforeCall(iamCreateOrganizationInput, _callback);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IamAddProject
+     * Build call for postIamAddProject
      * @param iamInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -638,7 +638,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamAddProjectCall(@javax.annotation.Nonnull IamInput iamInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamAddProjectCall(@javax.annotation.Nonnull IamInput iamInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -684,13 +684,13 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IamAddProjectValidateBeforeCall(@javax.annotation.Nonnull IamInput iamInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIamAddProjectValidateBeforeCall(@javax.annotation.Nonnull IamInput iamInput, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamInput' is set
         if (iamInput == null) {
-            throw new ApiException("Missing the required parameter 'iamInput' when calling postV1IamAddProject(Async)");
+            throw new ApiException("Missing the required parameter 'iamInput' when calling postIamAddProject(Async)");
         }
 
-        return postV1IamAddProjectCall(iamInput, _callback);
+        return postIamAddProjectCall(iamInput, _callback);
 
     }
 
@@ -707,8 +707,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamResponse postV1IamAddProject(@javax.annotation.Nonnull IamInput iamInput) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postV1IamAddProjectWithHttpInfo(iamInput);
+    public IamResponse postIamAddProject(@javax.annotation.Nonnull IamInput iamInput) throws ApiException {
+        ApiResponse<IamResponse> localVarResp = postIamAddProjectWithHttpInfo(iamInput);
         return localVarResp.getData();
     }
 
@@ -725,8 +725,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamResponse> postV1IamAddProjectWithHttpInfo(@javax.annotation.Nonnull IamInput iamInput) throws ApiException {
-        okhttp3.Call localVarCall = postV1IamAddProjectValidateBeforeCall(iamInput, null);
+    public ApiResponse<IamResponse> postIamAddProjectWithHttpInfo(@javax.annotation.Nonnull IamInput iamInput) throws ApiException {
+        okhttp3.Call localVarCall = postIamAddProjectValidateBeforeCall(iamInput, null);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -745,15 +745,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamAddProjectAsync(@javax.annotation.Nonnull IamInput iamInput, final ApiCallback<IamResponse> _callback) throws ApiException {
+    public okhttp3.Call postIamAddProjectAsync(@javax.annotation.Nonnull IamInput iamInput, final ApiCallback<IamResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IamAddProjectValidateBeforeCall(iamInput, _callback);
+        okhttp3.Call localVarCall = postIamAddProjectValidateBeforeCall(iamInput, _callback);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IamAddProvider
+     * Build call for postIamAddProvider
      * @param iamProvider  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -765,7 +765,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamAddProviderCall(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamAddProviderCall(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -811,13 +811,13 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IamAddProviderValidateBeforeCall(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIamAddProviderValidateBeforeCall(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamProvider' is set
         if (iamProvider == null) {
-            throw new ApiException("Missing the required parameter 'iamProvider' when calling postV1IamAddProvider(Async)");
+            throw new ApiException("Missing the required parameter 'iamProvider' when calling postIamAddProvider(Async)");
         }
 
-        return postV1IamAddProviderCall(iamProvider, _callback);
+        return postIamAddProviderCall(iamProvider, _callback);
 
     }
 
@@ -834,8 +834,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamResponse postV1IamAddProvider(@javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postV1IamAddProviderWithHttpInfo(iamProvider);
+    public IamResponse postIamAddProvider(@javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
+        ApiResponse<IamResponse> localVarResp = postIamAddProviderWithHttpInfo(iamProvider);
         return localVarResp.getData();
     }
 
@@ -852,8 +852,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamResponse> postV1IamAddProviderWithHttpInfo(@javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
-        okhttp3.Call localVarCall = postV1IamAddProviderValidateBeforeCall(iamProvider, null);
+    public ApiResponse<IamResponse> postIamAddProviderWithHttpInfo(@javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
+        okhttp3.Call localVarCall = postIamAddProviderValidateBeforeCall(iamProvider, null);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -872,15 +872,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamAddProviderAsync(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback<IamResponse> _callback) throws ApiException {
+    public okhttp3.Call postIamAddProviderAsync(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback<IamResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IamAddProviderValidateBeforeCall(iamProvider, _callback);
+        okhttp3.Call localVarCall = postIamAddProviderValidateBeforeCall(iamProvider, _callback);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IamAddRole
+     * Build call for postIamAddRole
      * @param iamRolesInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -892,7 +892,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamAddRoleCall(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamAddRoleCall(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -938,13 +938,13 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IamAddRoleValidateBeforeCall(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIamAddRoleValidateBeforeCall(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamRolesInput' is set
         if (iamRolesInput == null) {
-            throw new ApiException("Missing the required parameter 'iamRolesInput' when calling postV1IamAddRole(Async)");
+            throw new ApiException("Missing the required parameter 'iamRolesInput' when calling postIamAddRole(Async)");
         }
 
-        return postV1IamAddRoleCall(iamRolesInput, _callback);
+        return postIamAddRoleCall(iamRolesInput, _callback);
 
     }
 
@@ -961,8 +961,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamResponse postV1IamAddRole(@javax.annotation.Nonnull IamRolesInput iamRolesInput) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postV1IamAddRoleWithHttpInfo(iamRolesInput);
+    public IamResponse postIamAddRole(@javax.annotation.Nonnull IamRolesInput iamRolesInput) throws ApiException {
+        ApiResponse<IamResponse> localVarResp = postIamAddRoleWithHttpInfo(iamRolesInput);
         return localVarResp.getData();
     }
 
@@ -979,8 +979,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamResponse> postV1IamAddRoleWithHttpInfo(@javax.annotation.Nonnull IamRolesInput iamRolesInput) throws ApiException {
-        okhttp3.Call localVarCall = postV1IamAddRoleValidateBeforeCall(iamRolesInput, null);
+    public ApiResponse<IamResponse> postIamAddRoleWithHttpInfo(@javax.annotation.Nonnull IamRolesInput iamRolesInput) throws ApiException {
+        okhttp3.Call localVarCall = postIamAddRoleValidateBeforeCall(iamRolesInput, null);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -999,15 +999,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamAddRoleAsync(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback<IamResponse> _callback) throws ApiException {
+    public okhttp3.Call postIamAddRoleAsync(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback<IamResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IamAddRoleValidateBeforeCall(iamRolesInput, _callback);
+        okhttp3.Call localVarCall = postIamAddRoleValidateBeforeCall(iamRolesInput, _callback);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IamAddUser
+     * Build call for postIamAddUser
      * @param iamUserBody  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1019,7 +1019,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamAddUserCall(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamAddUserCall(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1065,13 +1065,13 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IamAddUserValidateBeforeCall(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIamAddUserValidateBeforeCall(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamUserBody' is set
         if (iamUserBody == null) {
-            throw new ApiException("Missing the required parameter 'iamUserBody' when calling postV1IamAddUser(Async)");
+            throw new ApiException("Missing the required parameter 'iamUserBody' when calling postIamAddUser(Async)");
         }
 
-        return postV1IamAddUserCall(iamUserBody, _callback);
+        return postIamAddUserCall(iamUserBody, _callback);
 
     }
 
@@ -1088,8 +1088,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamResponse postV1IamAddUser(@javax.annotation.Nonnull IamUserBody iamUserBody) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postV1IamAddUserWithHttpInfo(iamUserBody);
+    public IamResponse postIamAddUser(@javax.annotation.Nonnull IamUserBody iamUserBody) throws ApiException {
+        ApiResponse<IamResponse> localVarResp = postIamAddUserWithHttpInfo(iamUserBody);
         return localVarResp.getData();
     }
 
@@ -1106,8 +1106,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamResponse> postV1IamAddUserWithHttpInfo(@javax.annotation.Nonnull IamUserBody iamUserBody) throws ApiException {
-        okhttp3.Call localVarCall = postV1IamAddUserValidateBeforeCall(iamUserBody, null);
+    public ApiResponse<IamResponse> postIamAddUserWithHttpInfo(@javax.annotation.Nonnull IamUserBody iamUserBody) throws ApiException {
+        okhttp3.Call localVarCall = postIamAddUserValidateBeforeCall(iamUserBody, null);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1126,15 +1126,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamAddUserAsync(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback<IamResponse> _callback) throws ApiException {
+    public okhttp3.Call postIamAddUserAsync(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback<IamResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IamAddUserValidateBeforeCall(iamUserBody, _callback);
+        okhttp3.Call localVarCall = postIamAddUserValidateBeforeCall(iamUserBody, _callback);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IamAddWorkspace
+     * Build call for postIamAddWorkspace
      * @param iamWorkspacesInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1146,7 +1146,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamAddWorkspaceCall(@javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamAddWorkspaceCall(@javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1192,13 +1192,13 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IamAddWorkspaceValidateBeforeCall(@javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIamAddWorkspaceValidateBeforeCall(@javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamWorkspacesInput' is set
         if (iamWorkspacesInput == null) {
-            throw new ApiException("Missing the required parameter 'iamWorkspacesInput' when calling postV1IamAddWorkspace(Async)");
+            throw new ApiException("Missing the required parameter 'iamWorkspacesInput' when calling postIamAddWorkspace(Async)");
         }
 
-        return postV1IamAddWorkspaceCall(iamWorkspacesInput, _callback);
+        return postIamAddWorkspaceCall(iamWorkspacesInput, _callback);
 
     }
 
@@ -1215,8 +1215,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamResponse postV1IamAddWorkspace(@javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postV1IamAddWorkspaceWithHttpInfo(iamWorkspacesInput);
+    public IamResponse postIamAddWorkspace(@javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput) throws ApiException {
+        ApiResponse<IamResponse> localVarResp = postIamAddWorkspaceWithHttpInfo(iamWorkspacesInput);
         return localVarResp.getData();
     }
 
@@ -1233,8 +1233,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamResponse> postV1IamAddWorkspaceWithHttpInfo(@javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput) throws ApiException {
-        okhttp3.Call localVarCall = postV1IamAddWorkspaceValidateBeforeCall(iamWorkspacesInput, null);
+    public ApiResponse<IamResponse> postIamAddWorkspaceWithHttpInfo(@javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput) throws ApiException {
+        okhttp3.Call localVarCall = postIamAddWorkspaceValidateBeforeCall(iamWorkspacesInput, null);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1253,15 +1253,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamAddWorkspaceAsync(@javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput, final ApiCallback<IamResponse> _callback) throws ApiException {
+    public okhttp3.Call postIamAddWorkspaceAsync(@javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput, final ApiCallback<IamResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IamAddWorkspaceValidateBeforeCall(iamWorkspacesInput, _callback);
+        okhttp3.Call localVarCall = postIamAddWorkspaceValidateBeforeCall(iamWorkspacesInput, _callback);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IamApplication
+     * Build call for postIamApplication
      * @param iamApplication  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1273,7 +1273,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamApplicationCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamApplicationCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1319,13 +1319,13 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IamApplicationValidateBeforeCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIamApplicationValidateBeforeCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamApplication' is set
         if (iamApplication == null) {
-            throw new ApiException("Missing the required parameter 'iamApplication' when calling postV1IamApplication(Async)");
+            throw new ApiException("Missing the required parameter 'iamApplication' when calling postIamApplication(Async)");
         }
 
-        return postV1IamApplicationCall(iamApplication, _callback);
+        return postIamApplicationCall(iamApplication, _callback);
 
     }
 
@@ -1342,8 +1342,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamApplication postV1IamApplication(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        ApiResponse<IamApplication> localVarResp = postV1IamApplicationWithHttpInfo(iamApplication);
+    public IamApplication postIamApplication(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
+        ApiResponse<IamApplication> localVarResp = postIamApplicationWithHttpInfo(iamApplication);
         return localVarResp.getData();
     }
 
@@ -1360,8 +1360,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamApplication> postV1IamApplicationWithHttpInfo(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        okhttp3.Call localVarCall = postV1IamApplicationValidateBeforeCall(iamApplication, null);
+    public ApiResponse<IamApplication> postIamApplicationWithHttpInfo(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
+        okhttp3.Call localVarCall = postIamApplicationValidateBeforeCall(iamApplication, null);
         Type localVarReturnType = new TypeToken<IamApplication>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1380,15 +1380,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamApplicationAsync(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback<IamApplication> _callback) throws ApiException {
+    public okhttp3.Call postIamApplicationAsync(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback<IamApplication> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IamApplicationValidateBeforeCall(iamApplication, _callback);
+        okhttp3.Call localVarCall = postIamApplicationValidateBeforeCall(iamApplication, _callback);
         Type localVarReturnType = new TypeToken<IamApplication>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IamDeleteApplication
+     * Build call for postIamDeleteApplication
      * @param iamApplication  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1400,7 +1400,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamDeleteApplicationCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamDeleteApplicationCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1446,13 +1446,13 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IamDeleteApplicationValidateBeforeCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIamDeleteApplicationValidateBeforeCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamApplication' is set
         if (iamApplication == null) {
-            throw new ApiException("Missing the required parameter 'iamApplication' when calling postV1IamDeleteApplication(Async)");
+            throw new ApiException("Missing the required parameter 'iamApplication' when calling postIamDeleteApplication(Async)");
         }
 
-        return postV1IamDeleteApplicationCall(iamApplication, _callback);
+        return postIamDeleteApplicationCall(iamApplication, _callback);
 
     }
 
@@ -1469,8 +1469,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamResponse postV1IamDeleteApplication(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postV1IamDeleteApplicationWithHttpInfo(iamApplication);
+    public IamResponse postIamDeleteApplication(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
+        ApiResponse<IamResponse> localVarResp = postIamDeleteApplicationWithHttpInfo(iamApplication);
         return localVarResp.getData();
     }
 
@@ -1487,8 +1487,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamResponse> postV1IamDeleteApplicationWithHttpInfo(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        okhttp3.Call localVarCall = postV1IamDeleteApplicationValidateBeforeCall(iamApplication, null);
+    public ApiResponse<IamResponse> postIamDeleteApplicationWithHttpInfo(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
+        okhttp3.Call localVarCall = postIamDeleteApplicationValidateBeforeCall(iamApplication, null);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1507,15 +1507,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamDeleteApplicationAsync(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback<IamResponse> _callback) throws ApiException {
+    public okhttp3.Call postIamDeleteApplicationAsync(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback<IamResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IamDeleteApplicationValidateBeforeCall(iamApplication, _callback);
+        okhttp3.Call localVarCall = postIamDeleteApplicationValidateBeforeCall(iamApplication, _callback);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IamDeleteOrganization
+     * Build call for postIamDeleteOrganization
      * @param iamDeleteOrganizationInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1527,7 +1527,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamDeleteOrganizationCall(@javax.annotation.Nonnull IamDeleteOrganizationInput iamDeleteOrganizationInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamDeleteOrganizationCall(@javax.annotation.Nonnull IamDeleteOrganizationInput iamDeleteOrganizationInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1573,13 +1573,13 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IamDeleteOrganizationValidateBeforeCall(@javax.annotation.Nonnull IamDeleteOrganizationInput iamDeleteOrganizationInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIamDeleteOrganizationValidateBeforeCall(@javax.annotation.Nonnull IamDeleteOrganizationInput iamDeleteOrganizationInput, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamDeleteOrganizationInput' is set
         if (iamDeleteOrganizationInput == null) {
-            throw new ApiException("Missing the required parameter 'iamDeleteOrganizationInput' when calling postV1IamDeleteOrganization(Async)");
+            throw new ApiException("Missing the required parameter 'iamDeleteOrganizationInput' when calling postIamDeleteOrganization(Async)");
         }
 
-        return postV1IamDeleteOrganizationCall(iamDeleteOrganizationInput, _callback);
+        return postIamDeleteOrganizationCall(iamDeleteOrganizationInput, _callback);
 
     }
 
@@ -1596,8 +1596,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamResponse postV1IamDeleteOrganization(@javax.annotation.Nonnull IamDeleteOrganizationInput iamDeleteOrganizationInput) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postV1IamDeleteOrganizationWithHttpInfo(iamDeleteOrganizationInput);
+    public IamResponse postIamDeleteOrganization(@javax.annotation.Nonnull IamDeleteOrganizationInput iamDeleteOrganizationInput) throws ApiException {
+        ApiResponse<IamResponse> localVarResp = postIamDeleteOrganizationWithHttpInfo(iamDeleteOrganizationInput);
         return localVarResp.getData();
     }
 
@@ -1614,8 +1614,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamResponse> postV1IamDeleteOrganizationWithHttpInfo(@javax.annotation.Nonnull IamDeleteOrganizationInput iamDeleteOrganizationInput) throws ApiException {
-        okhttp3.Call localVarCall = postV1IamDeleteOrganizationValidateBeforeCall(iamDeleteOrganizationInput, null);
+    public ApiResponse<IamResponse> postIamDeleteOrganizationWithHttpInfo(@javax.annotation.Nonnull IamDeleteOrganizationInput iamDeleteOrganizationInput) throws ApiException {
+        okhttp3.Call localVarCall = postIamDeleteOrganizationValidateBeforeCall(iamDeleteOrganizationInput, null);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1634,15 +1634,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamDeleteOrganizationAsync(@javax.annotation.Nonnull IamDeleteOrganizationInput iamDeleteOrganizationInput, final ApiCallback<IamResponse> _callback) throws ApiException {
+    public okhttp3.Call postIamDeleteOrganizationAsync(@javax.annotation.Nonnull IamDeleteOrganizationInput iamDeleteOrganizationInput, final ApiCallback<IamResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IamDeleteOrganizationValidateBeforeCall(iamDeleteOrganizationInput, _callback);
+        okhttp3.Call localVarCall = postIamDeleteOrganizationValidateBeforeCall(iamDeleteOrganizationInput, _callback);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IamDeleteProject
+     * Build call for postIamDeleteProject
      * @param iamProjectsRef  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1654,7 +1654,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamDeleteProjectCall(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamDeleteProjectCall(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1700,13 +1700,13 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IamDeleteProjectValidateBeforeCall(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIamDeleteProjectValidateBeforeCall(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamProjectsRef' is set
         if (iamProjectsRef == null) {
-            throw new ApiException("Missing the required parameter 'iamProjectsRef' when calling postV1IamDeleteProject(Async)");
+            throw new ApiException("Missing the required parameter 'iamProjectsRef' when calling postIamDeleteProject(Async)");
         }
 
-        return postV1IamDeleteProjectCall(iamProjectsRef, _callback);
+        return postIamDeleteProjectCall(iamProjectsRef, _callback);
 
     }
 
@@ -1723,8 +1723,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamResponse postV1IamDeleteProject(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postV1IamDeleteProjectWithHttpInfo(iamProjectsRef);
+    public IamResponse postIamDeleteProject(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef) throws ApiException {
+        ApiResponse<IamResponse> localVarResp = postIamDeleteProjectWithHttpInfo(iamProjectsRef);
         return localVarResp.getData();
     }
 
@@ -1741,8 +1741,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamResponse> postV1IamDeleteProjectWithHttpInfo(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef) throws ApiException {
-        okhttp3.Call localVarCall = postV1IamDeleteProjectValidateBeforeCall(iamProjectsRef, null);
+    public ApiResponse<IamResponse> postIamDeleteProjectWithHttpInfo(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef) throws ApiException {
+        okhttp3.Call localVarCall = postIamDeleteProjectValidateBeforeCall(iamProjectsRef, null);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1761,15 +1761,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamDeleteProjectAsync(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef, final ApiCallback<IamResponse> _callback) throws ApiException {
+    public okhttp3.Call postIamDeleteProjectAsync(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef, final ApiCallback<IamResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IamDeleteProjectValidateBeforeCall(iamProjectsRef, _callback);
+        okhttp3.Call localVarCall = postIamDeleteProjectValidateBeforeCall(iamProjectsRef, _callback);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IamDeleteProvider
+     * Build call for postIamDeleteProvider
      * @param iamProvider  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1781,7 +1781,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamDeleteProviderCall(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamDeleteProviderCall(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1827,13 +1827,13 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IamDeleteProviderValidateBeforeCall(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIamDeleteProviderValidateBeforeCall(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamProvider' is set
         if (iamProvider == null) {
-            throw new ApiException("Missing the required parameter 'iamProvider' when calling postV1IamDeleteProvider(Async)");
+            throw new ApiException("Missing the required parameter 'iamProvider' when calling postIamDeleteProvider(Async)");
         }
 
-        return postV1IamDeleteProviderCall(iamProvider, _callback);
+        return postIamDeleteProviderCall(iamProvider, _callback);
 
     }
 
@@ -1850,8 +1850,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamResponse postV1IamDeleteProvider(@javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postV1IamDeleteProviderWithHttpInfo(iamProvider);
+    public IamResponse postIamDeleteProvider(@javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
+        ApiResponse<IamResponse> localVarResp = postIamDeleteProviderWithHttpInfo(iamProvider);
         return localVarResp.getData();
     }
 
@@ -1868,8 +1868,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamResponse> postV1IamDeleteProviderWithHttpInfo(@javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
-        okhttp3.Call localVarCall = postV1IamDeleteProviderValidateBeforeCall(iamProvider, null);
+    public ApiResponse<IamResponse> postIamDeleteProviderWithHttpInfo(@javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
+        okhttp3.Call localVarCall = postIamDeleteProviderValidateBeforeCall(iamProvider, null);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1888,15 +1888,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamDeleteProviderAsync(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback<IamResponse> _callback) throws ApiException {
+    public okhttp3.Call postIamDeleteProviderAsync(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback<IamResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IamDeleteProviderValidateBeforeCall(iamProvider, _callback);
+        okhttp3.Call localVarCall = postIamDeleteProviderValidateBeforeCall(iamProvider, _callback);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IamDeleteRole
+     * Build call for postIamDeleteRole
      * @param iamRolesRef  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1908,7 +1908,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamDeleteRoleCall(@javax.annotation.Nonnull IamRolesRef iamRolesRef, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamDeleteRoleCall(@javax.annotation.Nonnull IamRolesRef iamRolesRef, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1954,13 +1954,13 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IamDeleteRoleValidateBeforeCall(@javax.annotation.Nonnull IamRolesRef iamRolesRef, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIamDeleteRoleValidateBeforeCall(@javax.annotation.Nonnull IamRolesRef iamRolesRef, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamRolesRef' is set
         if (iamRolesRef == null) {
-            throw new ApiException("Missing the required parameter 'iamRolesRef' when calling postV1IamDeleteRole(Async)");
+            throw new ApiException("Missing the required parameter 'iamRolesRef' when calling postIamDeleteRole(Async)");
         }
 
-        return postV1IamDeleteRoleCall(iamRolesRef, _callback);
+        return postIamDeleteRoleCall(iamRolesRef, _callback);
 
     }
 
@@ -1977,8 +1977,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamResponse postV1IamDeleteRole(@javax.annotation.Nonnull IamRolesRef iamRolesRef) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postV1IamDeleteRoleWithHttpInfo(iamRolesRef);
+    public IamResponse postIamDeleteRole(@javax.annotation.Nonnull IamRolesRef iamRolesRef) throws ApiException {
+        ApiResponse<IamResponse> localVarResp = postIamDeleteRoleWithHttpInfo(iamRolesRef);
         return localVarResp.getData();
     }
 
@@ -1995,8 +1995,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamResponse> postV1IamDeleteRoleWithHttpInfo(@javax.annotation.Nonnull IamRolesRef iamRolesRef) throws ApiException {
-        okhttp3.Call localVarCall = postV1IamDeleteRoleValidateBeforeCall(iamRolesRef, null);
+    public ApiResponse<IamResponse> postIamDeleteRoleWithHttpInfo(@javax.annotation.Nonnull IamRolesRef iamRolesRef) throws ApiException {
+        okhttp3.Call localVarCall = postIamDeleteRoleValidateBeforeCall(iamRolesRef, null);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2015,15 +2015,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamDeleteRoleAsync(@javax.annotation.Nonnull IamRolesRef iamRolesRef, final ApiCallback<IamResponse> _callback) throws ApiException {
+    public okhttp3.Call postIamDeleteRoleAsync(@javax.annotation.Nonnull IamRolesRef iamRolesRef, final ApiCallback<IamResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IamDeleteRoleValidateBeforeCall(iamRolesRef, _callback);
+        okhttp3.Call localVarCall = postIamDeleteRoleValidateBeforeCall(iamRolesRef, _callback);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IamDeleteUser
+     * Build call for postIamDeleteUser
      * @param iamUserBody  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2035,7 +2035,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamDeleteUserCall(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamDeleteUserCall(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2081,13 +2081,13 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IamDeleteUserValidateBeforeCall(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIamDeleteUserValidateBeforeCall(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamUserBody' is set
         if (iamUserBody == null) {
-            throw new ApiException("Missing the required parameter 'iamUserBody' when calling postV1IamDeleteUser(Async)");
+            throw new ApiException("Missing the required parameter 'iamUserBody' when calling postIamDeleteUser(Async)");
         }
 
-        return postV1IamDeleteUserCall(iamUserBody, _callback);
+        return postIamDeleteUserCall(iamUserBody, _callback);
 
     }
 
@@ -2104,8 +2104,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamResponse postV1IamDeleteUser(@javax.annotation.Nonnull IamUserBody iamUserBody) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postV1IamDeleteUserWithHttpInfo(iamUserBody);
+    public IamResponse postIamDeleteUser(@javax.annotation.Nonnull IamUserBody iamUserBody) throws ApiException {
+        ApiResponse<IamResponse> localVarResp = postIamDeleteUserWithHttpInfo(iamUserBody);
         return localVarResp.getData();
     }
 
@@ -2122,8 +2122,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamResponse> postV1IamDeleteUserWithHttpInfo(@javax.annotation.Nonnull IamUserBody iamUserBody) throws ApiException {
-        okhttp3.Call localVarCall = postV1IamDeleteUserValidateBeforeCall(iamUserBody, null);
+    public ApiResponse<IamResponse> postIamDeleteUserWithHttpInfo(@javax.annotation.Nonnull IamUserBody iamUserBody) throws ApiException {
+        okhttp3.Call localVarCall = postIamDeleteUserValidateBeforeCall(iamUserBody, null);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2142,15 +2142,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamDeleteUserAsync(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback<IamResponse> _callback) throws ApiException {
+    public okhttp3.Call postIamDeleteUserAsync(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback<IamResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IamDeleteUserValidateBeforeCall(iamUserBody, _callback);
+        okhttp3.Call localVarCall = postIamDeleteUserValidateBeforeCall(iamUserBody, _callback);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IamDeleteWorkspace
+     * Build call for postIamDeleteWorkspace
      * @param iamWorkspacesRef  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2162,7 +2162,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamDeleteWorkspaceCall(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamDeleteWorkspaceCall(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2208,13 +2208,13 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IamDeleteWorkspaceValidateBeforeCall(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIamDeleteWorkspaceValidateBeforeCall(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamWorkspacesRef' is set
         if (iamWorkspacesRef == null) {
-            throw new ApiException("Missing the required parameter 'iamWorkspacesRef' when calling postV1IamDeleteWorkspace(Async)");
+            throw new ApiException("Missing the required parameter 'iamWorkspacesRef' when calling postIamDeleteWorkspace(Async)");
         }
 
-        return postV1IamDeleteWorkspaceCall(iamWorkspacesRef, _callback);
+        return postIamDeleteWorkspaceCall(iamWorkspacesRef, _callback);
 
     }
 
@@ -2231,8 +2231,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamResponse postV1IamDeleteWorkspace(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postV1IamDeleteWorkspaceWithHttpInfo(iamWorkspacesRef);
+    public IamResponse postIamDeleteWorkspace(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef) throws ApiException {
+        ApiResponse<IamResponse> localVarResp = postIamDeleteWorkspaceWithHttpInfo(iamWorkspacesRef);
         return localVarResp.getData();
     }
 
@@ -2249,8 +2249,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamResponse> postV1IamDeleteWorkspaceWithHttpInfo(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef) throws ApiException {
-        okhttp3.Call localVarCall = postV1IamDeleteWorkspaceValidateBeforeCall(iamWorkspacesRef, null);
+    public ApiResponse<IamResponse> postIamDeleteWorkspaceWithHttpInfo(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef) throws ApiException {
+        okhttp3.Call localVarCall = postIamDeleteWorkspaceValidateBeforeCall(iamWorkspacesRef, null);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2269,15 +2269,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamDeleteWorkspaceAsync(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef, final ApiCallback<IamResponse> _callback) throws ApiException {
+    public okhttp3.Call postIamDeleteWorkspaceAsync(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef, final ApiCallback<IamResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IamDeleteWorkspaceValidateBeforeCall(iamWorkspacesRef, _callback);
+        okhttp3.Call localVarCall = postIamDeleteWorkspaceValidateBeforeCall(iamWorkspacesRef, _callback);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IamUpdateApplication
+     * Build call for postIamUpdateApplication
      * @param iamApplication  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2289,7 +2289,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamUpdateApplicationCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamUpdateApplicationCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2335,13 +2335,13 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IamUpdateApplicationValidateBeforeCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIamUpdateApplicationValidateBeforeCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamApplication' is set
         if (iamApplication == null) {
-            throw new ApiException("Missing the required parameter 'iamApplication' when calling postV1IamUpdateApplication(Async)");
+            throw new ApiException("Missing the required parameter 'iamApplication' when calling postIamUpdateApplication(Async)");
         }
 
-        return postV1IamUpdateApplicationCall(iamApplication, _callback);
+        return postIamUpdateApplicationCall(iamApplication, _callback);
 
     }
 
@@ -2358,8 +2358,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamResponse postV1IamUpdateApplication(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postV1IamUpdateApplicationWithHttpInfo(iamApplication);
+    public IamResponse postIamUpdateApplication(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
+        ApiResponse<IamResponse> localVarResp = postIamUpdateApplicationWithHttpInfo(iamApplication);
         return localVarResp.getData();
     }
 
@@ -2376,8 +2376,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamResponse> postV1IamUpdateApplicationWithHttpInfo(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        okhttp3.Call localVarCall = postV1IamUpdateApplicationValidateBeforeCall(iamApplication, null);
+    public ApiResponse<IamResponse> postIamUpdateApplicationWithHttpInfo(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
+        okhttp3.Call localVarCall = postIamUpdateApplicationValidateBeforeCall(iamApplication, null);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2396,15 +2396,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamUpdateApplicationAsync(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback<IamResponse> _callback) throws ApiException {
+    public okhttp3.Call postIamUpdateApplicationAsync(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback<IamResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IamUpdateApplicationValidateBeforeCall(iamApplication, _callback);
+        okhttp3.Call localVarCall = postIamUpdateApplicationValidateBeforeCall(iamApplication, _callback);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IamUpdateOrganization
+     * Build call for postIamUpdateOrganization
      * @param iamUpdateOrganizationInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2416,7 +2416,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamUpdateOrganizationCall(@javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamUpdateOrganizationCall(@javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2462,13 +2462,13 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IamUpdateOrganizationValidateBeforeCall(@javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIamUpdateOrganizationValidateBeforeCall(@javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamUpdateOrganizationInput' is set
         if (iamUpdateOrganizationInput == null) {
-            throw new ApiException("Missing the required parameter 'iamUpdateOrganizationInput' when calling postV1IamUpdateOrganization(Async)");
+            throw new ApiException("Missing the required parameter 'iamUpdateOrganizationInput' when calling postIamUpdateOrganization(Async)");
         }
 
-        return postV1IamUpdateOrganizationCall(iamUpdateOrganizationInput, _callback);
+        return postIamUpdateOrganizationCall(iamUpdateOrganizationInput, _callback);
 
     }
 
@@ -2485,8 +2485,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamResponse postV1IamUpdateOrganization(@javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postV1IamUpdateOrganizationWithHttpInfo(iamUpdateOrganizationInput);
+    public IamResponse postIamUpdateOrganization(@javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput) throws ApiException {
+        ApiResponse<IamResponse> localVarResp = postIamUpdateOrganizationWithHttpInfo(iamUpdateOrganizationInput);
         return localVarResp.getData();
     }
 
@@ -2503,8 +2503,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamResponse> postV1IamUpdateOrganizationWithHttpInfo(@javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput) throws ApiException {
-        okhttp3.Call localVarCall = postV1IamUpdateOrganizationValidateBeforeCall(iamUpdateOrganizationInput, null);
+    public ApiResponse<IamResponse> postIamUpdateOrganizationWithHttpInfo(@javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput) throws ApiException {
+        okhttp3.Call localVarCall = postIamUpdateOrganizationValidateBeforeCall(iamUpdateOrganizationInput, null);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2523,15 +2523,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamUpdateOrganizationAsync(@javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput, final ApiCallback<IamResponse> _callback) throws ApiException {
+    public okhttp3.Call postIamUpdateOrganizationAsync(@javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput, final ApiCallback<IamResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IamUpdateOrganizationValidateBeforeCall(iamUpdateOrganizationInput, _callback);
+        okhttp3.Call localVarCall = postIamUpdateOrganizationValidateBeforeCall(iamUpdateOrganizationInput, _callback);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IamUpdateProvider
+     * Build call for postIamUpdateProvider
      * @param iamProvider  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2543,7 +2543,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamUpdateProviderCall(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamUpdateProviderCall(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2589,13 +2589,13 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IamUpdateProviderValidateBeforeCall(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIamUpdateProviderValidateBeforeCall(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamProvider' is set
         if (iamProvider == null) {
-            throw new ApiException("Missing the required parameter 'iamProvider' when calling postV1IamUpdateProvider(Async)");
+            throw new ApiException("Missing the required parameter 'iamProvider' when calling postIamUpdateProvider(Async)");
         }
 
-        return postV1IamUpdateProviderCall(iamProvider, _callback);
+        return postIamUpdateProviderCall(iamProvider, _callback);
 
     }
 
@@ -2612,8 +2612,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamResponse postV1IamUpdateProvider(@javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postV1IamUpdateProviderWithHttpInfo(iamProvider);
+    public IamResponse postIamUpdateProvider(@javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
+        ApiResponse<IamResponse> localVarResp = postIamUpdateProviderWithHttpInfo(iamProvider);
         return localVarResp.getData();
     }
 
@@ -2630,8 +2630,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamResponse> postV1IamUpdateProviderWithHttpInfo(@javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
-        okhttp3.Call localVarCall = postV1IamUpdateProviderValidateBeforeCall(iamProvider, null);
+    public ApiResponse<IamResponse> postIamUpdateProviderWithHttpInfo(@javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
+        okhttp3.Call localVarCall = postIamUpdateProviderValidateBeforeCall(iamProvider, null);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2650,15 +2650,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamUpdateProviderAsync(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback<IamResponse> _callback) throws ApiException {
+    public okhttp3.Call postIamUpdateProviderAsync(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback<IamResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IamUpdateProviderValidateBeforeCall(iamProvider, _callback);
+        okhttp3.Call localVarCall = postIamUpdateProviderValidateBeforeCall(iamProvider, _callback);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IamUpdateRole
+     * Build call for postIamUpdateRole
      * @param iamRolesInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2670,7 +2670,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamUpdateRoleCall(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamUpdateRoleCall(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2716,13 +2716,13 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IamUpdateRoleValidateBeforeCall(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIamUpdateRoleValidateBeforeCall(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamRolesInput' is set
         if (iamRolesInput == null) {
-            throw new ApiException("Missing the required parameter 'iamRolesInput' when calling postV1IamUpdateRole(Async)");
+            throw new ApiException("Missing the required parameter 'iamRolesInput' when calling postIamUpdateRole(Async)");
         }
 
-        return postV1IamUpdateRoleCall(iamRolesInput, _callback);
+        return postIamUpdateRoleCall(iamRolesInput, _callback);
 
     }
 
@@ -2739,8 +2739,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamResponse postV1IamUpdateRole(@javax.annotation.Nonnull IamRolesInput iamRolesInput) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postV1IamUpdateRoleWithHttpInfo(iamRolesInput);
+    public IamResponse postIamUpdateRole(@javax.annotation.Nonnull IamRolesInput iamRolesInput) throws ApiException {
+        ApiResponse<IamResponse> localVarResp = postIamUpdateRoleWithHttpInfo(iamRolesInput);
         return localVarResp.getData();
     }
 
@@ -2757,8 +2757,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamResponse> postV1IamUpdateRoleWithHttpInfo(@javax.annotation.Nonnull IamRolesInput iamRolesInput) throws ApiException {
-        okhttp3.Call localVarCall = postV1IamUpdateRoleValidateBeforeCall(iamRolesInput, null);
+    public ApiResponse<IamResponse> postIamUpdateRoleWithHttpInfo(@javax.annotation.Nonnull IamRolesInput iamRolesInput) throws ApiException {
+        okhttp3.Call localVarCall = postIamUpdateRoleValidateBeforeCall(iamRolesInput, null);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2777,15 +2777,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamUpdateRoleAsync(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback<IamResponse> _callback) throws ApiException {
+    public okhttp3.Call postIamUpdateRoleAsync(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback<IamResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IamUpdateRoleValidateBeforeCall(iamRolesInput, _callback);
+        okhttp3.Call localVarCall = postIamUpdateRoleValidateBeforeCall(iamRolesInput, _callback);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IamUpdateUser
+     * Build call for postIamUpdateUser
      * @param iamUserBody  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2797,7 +2797,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamUpdateUserCall(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamUpdateUserCall(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2843,13 +2843,13 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IamUpdateUserValidateBeforeCall(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIamUpdateUserValidateBeforeCall(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamUserBody' is set
         if (iamUserBody == null) {
-            throw new ApiException("Missing the required parameter 'iamUserBody' when calling postV1IamUpdateUser(Async)");
+            throw new ApiException("Missing the required parameter 'iamUserBody' when calling postIamUpdateUser(Async)");
         }
 
-        return postV1IamUpdateUserCall(iamUserBody, _callback);
+        return postIamUpdateUserCall(iamUserBody, _callback);
 
     }
 
@@ -2866,8 +2866,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamResponse postV1IamUpdateUser(@javax.annotation.Nonnull IamUserBody iamUserBody) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postV1IamUpdateUserWithHttpInfo(iamUserBody);
+    public IamResponse postIamUpdateUser(@javax.annotation.Nonnull IamUserBody iamUserBody) throws ApiException {
+        ApiResponse<IamResponse> localVarResp = postIamUpdateUserWithHttpInfo(iamUserBody);
         return localVarResp.getData();
     }
 
@@ -2884,8 +2884,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamResponse> postV1IamUpdateUserWithHttpInfo(@javax.annotation.Nonnull IamUserBody iamUserBody) throws ApiException {
-        okhttp3.Call localVarCall = postV1IamUpdateUserValidateBeforeCall(iamUserBody, null);
+    public ApiResponse<IamResponse> postIamUpdateUserWithHttpInfo(@javax.annotation.Nonnull IamUserBody iamUserBody) throws ApiException {
+        okhttp3.Call localVarCall = postIamUpdateUserValidateBeforeCall(iamUserBody, null);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2904,15 +2904,15 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IamUpdateUserAsync(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback<IamResponse> _callback) throws ApiException {
+    public okhttp3.Call postIamUpdateUserAsync(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback<IamResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IamUpdateUserValidateBeforeCall(iamUserBody, _callback);
+        okhttp3.Call localVarCall = postIamUpdateUserValidateBeforeCall(iamUserBody, _callback);
         Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1IamApplication
+     * Build call for putIamApplication
      * @param iamApplication  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2924,7 +2924,7 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1IamApplicationCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putIamApplicationCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2970,13 +2970,13 @@ public class CompatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1IamApplicationValidateBeforeCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putIamApplicationValidateBeforeCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamApplication' is set
         if (iamApplication == null) {
-            throw new ApiException("Missing the required parameter 'iamApplication' when calling putV1IamApplication(Async)");
+            throw new ApiException("Missing the required parameter 'iamApplication' when calling putIamApplication(Async)");
         }
 
-        return putV1IamApplicationCall(iamApplication, _callback);
+        return putIamApplicationCall(iamApplication, _callback);
 
     }
 
@@ -2993,8 +2993,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamApplication putV1IamApplication(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        ApiResponse<IamApplication> localVarResp = putV1IamApplicationWithHttpInfo(iamApplication);
+    public IamApplication putIamApplication(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
+        ApiResponse<IamApplication> localVarResp = putIamApplicationWithHttpInfo(iamApplication);
         return localVarResp.getData();
     }
 
@@ -3011,8 +3011,8 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamApplication> putV1IamApplicationWithHttpInfo(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        okhttp3.Call localVarCall = putV1IamApplicationValidateBeforeCall(iamApplication, null);
+    public ApiResponse<IamApplication> putIamApplicationWithHttpInfo(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
+        okhttp3.Call localVarCall = putIamApplicationValidateBeforeCall(iamApplication, null);
         Type localVarReturnType = new TypeToken<IamApplication>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3031,9 +3031,9 @@ public class CompatApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1IamApplicationAsync(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback<IamApplication> _callback) throws ApiException {
+    public okhttp3.Call putIamApplicationAsync(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback<IamApplication> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1IamApplicationValidateBeforeCall(iamApplication, _callback);
+        okhttp3.Call localVarCall = putIamApplicationValidateBeforeCall(iamApplication, _callback);
         Type localVarReturnType = new TypeToken<IamApplication>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

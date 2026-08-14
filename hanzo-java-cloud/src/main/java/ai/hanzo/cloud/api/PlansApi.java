@@ -81,13 +81,13 @@ public class PlansApi {
     }
 
     /**
-     * Build call for deleteV1PlansEntriesBySlug
+     * Build call for deletePlansEntriesBySlug
      * @param slug  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1PlansEntriesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deletePlansEntriesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -132,13 +132,13 @@ public class PlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1PlansEntriesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePlansEntriesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling deleteV1PlansEntriesBySlug(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling deletePlansEntriesBySlug(Async)");
         }
 
-        return deleteV1PlansEntriesBySlugCall(slug, _callback);
+        return deletePlansEntriesBySlugCall(slug, _callback);
 
     }
 
@@ -148,8 +148,8 @@ public class PlansApi {
      * @param slug  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1PlansEntriesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
-        deleteV1PlansEntriesBySlugWithHttpInfo(slug);
+    public void deletePlansEntriesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
+        deletePlansEntriesBySlugWithHttpInfo(slug);
     }
 
     /**
@@ -159,8 +159,8 @@ public class PlansApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1PlansEntriesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1PlansEntriesBySlugValidateBeforeCall(slug, null);
+    public ApiResponse<Void> deletePlansEntriesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = deletePlansEntriesBySlugValidateBeforeCall(slug, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -172,14 +172,14 @@ public class PlansApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1PlansEntriesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deletePlansEntriesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1PlansEntriesBySlugValidateBeforeCall(slug, _callback);
+        okhttp3.Call localVarCall = deletePlansEntriesBySlugValidateBeforeCall(slug, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Plans
+     * Build call for getPlans
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -190,7 +190,7 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlansCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -235,8 +235,8 @@ public class PlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlansValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PlansCall(_callback);
+    private okhttp3.Call getPlansValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPlansCall(_callback);
 
     }
 
@@ -252,8 +252,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PlanList getV1Plans() throws ApiException {
-        ApiResponse<PlanList> localVarResp = getV1PlansWithHttpInfo();
+    public PlanList getPlans() throws ApiException {
+        ApiResponse<PlanList> localVarResp = getPlansWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -269,8 +269,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanList> getV1PlansWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PlansValidateBeforeCall(null);
+    public ApiResponse<PlanList> getPlansWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPlansValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -288,15 +288,15 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansAsync(final ApiCallback<PlanList> _callback) throws ApiException {
+    public okhttp3.Call getPlansAsync(final ApiCallback<PlanList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlansValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPlansValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlansBlockchain
+     * Build call for getPlansBlockchain
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -307,7 +307,7 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansBlockchainCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlansBlockchainCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -352,8 +352,8 @@ public class PlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlansBlockchainValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PlansBlockchainCall(_callback);
+    private okhttp3.Call getPlansBlockchainValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPlansBlockchainCall(_callback);
 
     }
 
@@ -369,8 +369,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PlanList getV1PlansBlockchain() throws ApiException {
-        ApiResponse<PlanList> localVarResp = getV1PlansBlockchainWithHttpInfo();
+    public PlanList getPlansBlockchain() throws ApiException {
+        ApiResponse<PlanList> localVarResp = getPlansBlockchainWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -386,8 +386,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanList> getV1PlansBlockchainWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PlansBlockchainValidateBeforeCall(null);
+    public ApiResponse<PlanList> getPlansBlockchainWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPlansBlockchainValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -405,15 +405,15 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansBlockchainAsync(final ApiCallback<PlanList> _callback) throws ApiException {
+    public okhttp3.Call getPlansBlockchainAsync(final ApiCallback<PlanList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlansBlockchainValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPlansBlockchainValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlansCloud
+     * Build call for getPlansCloud
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -424,7 +424,7 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansCloudCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlansCloudCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -469,8 +469,8 @@ public class PlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlansCloudValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PlansCloudCall(_callback);
+    private okhttp3.Call getPlansCloudValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPlansCloudCall(_callback);
 
     }
 
@@ -486,8 +486,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PlanList getV1PlansCloud() throws ApiException {
-        ApiResponse<PlanList> localVarResp = getV1PlansCloudWithHttpInfo();
+    public PlanList getPlansCloud() throws ApiException {
+        ApiResponse<PlanList> localVarResp = getPlansCloudWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -503,8 +503,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanList> getV1PlansCloudWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PlansCloudValidateBeforeCall(null);
+    public ApiResponse<PlanList> getPlansCloudWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPlansCloudValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -522,15 +522,15 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansCloudAsync(final ApiCallback<PlanList> _callback) throws ApiException {
+    public okhttp3.Call getPlansCloudAsync(final ApiCallback<PlanList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlansCloudValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPlansCloudValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlansDns
+     * Build call for getPlansDns
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -541,7 +541,7 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansDnsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlansDnsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -586,8 +586,8 @@ public class PlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlansDnsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PlansDnsCall(_callback);
+    private okhttp3.Call getPlansDnsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPlansDnsCall(_callback);
 
     }
 
@@ -603,8 +603,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PlanList getV1PlansDns() throws ApiException {
-        ApiResponse<PlanList> localVarResp = getV1PlansDnsWithHttpInfo();
+    public PlanList getPlansDns() throws ApiException {
+        ApiResponse<PlanList> localVarResp = getPlansDnsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -620,8 +620,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanList> getV1PlansDnsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PlansDnsValidateBeforeCall(null);
+    public ApiResponse<PlanList> getPlansDnsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPlansDnsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -639,15 +639,15 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansDnsAsync(final ApiCallback<PlanList> _callback) throws ApiException {
+    public okhttp3.Call getPlansDnsAsync(final ApiCallback<PlanList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlansDnsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPlansDnsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlansEntitlementsById
+     * Build call for getPlansEntitlementsById
      * @param id ID is the plan&#39;s catalog id or slug — \&quot;pro\&quot;, \&quot;team\&quot;, \&quot;world-enterprise\&quot;, \&quot;rpc-growth\&quot;. Both are matched, so a slug resolves the plan it names. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -659,7 +659,7 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansEntitlementsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlansEntitlementsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -705,13 +705,13 @@ public class PlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlansEntitlementsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPlansEntitlementsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1PlansEntitlementsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getPlansEntitlementsById(Async)");
         }
 
-        return getV1PlansEntitlementsByIdCall(id, _callback);
+        return getPlansEntitlementsByIdCall(id, _callback);
 
     }
 
@@ -728,8 +728,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PlanEntitlements getV1PlansEntitlementsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<PlanEntitlements> localVarResp = getV1PlansEntitlementsByIdWithHttpInfo(id);
+    public PlanEntitlements getPlansEntitlementsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<PlanEntitlements> localVarResp = getPlansEntitlementsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -746,8 +746,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanEntitlements> getV1PlansEntitlementsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1PlansEntitlementsByIdValidateBeforeCall(id, null);
+    public ApiResponse<PlanEntitlements> getPlansEntitlementsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getPlansEntitlementsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<PlanEntitlements>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -766,20 +766,20 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansEntitlementsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<PlanEntitlements> _callback) throws ApiException {
+    public okhttp3.Call getPlansEntitlementsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<PlanEntitlements> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlansEntitlementsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getPlansEntitlementsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<PlanEntitlements>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlansEntries
+     * Build call for getPlansEntries
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1PlansEntriesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlansEntriesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -823,8 +823,8 @@ public class PlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlansEntriesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PlansEntriesCall(_callback);
+    private okhttp3.Call getPlansEntriesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPlansEntriesCall(_callback);
 
     }
 
@@ -833,8 +833,8 @@ public class PlansApi {
      * Returns every plan row as stored — the administrative view behind the public plan catalog. The plan authority is cross-tenant pricing data, so the gate is a PLATFORM admin enforced by the handler itself: an org-level admin is refused 403 no matter what they may do inside their own org.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1PlansEntries() throws ApiException {
-        getV1PlansEntriesWithHttpInfo();
+    public void getPlansEntries() throws ApiException {
+        getPlansEntriesWithHttpInfo();
     }
 
     /**
@@ -843,8 +843,8 @@ public class PlansApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1PlansEntriesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PlansEntriesValidateBeforeCall(null);
+    public ApiResponse<Void> getPlansEntriesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPlansEntriesValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -855,14 +855,14 @@ public class PlansApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1PlansEntriesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getPlansEntriesAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlansEntriesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPlansEntriesValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlansGpu
+     * Build call for getPlansGpu
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -873,7 +873,7 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansGpuCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlansGpuCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -918,8 +918,8 @@ public class PlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlansGpuValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PlansGpuCall(_callback);
+    private okhttp3.Call getPlansGpuValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPlansGpuCall(_callback);
 
     }
 
@@ -935,8 +935,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PlanTierList getV1PlansGpu() throws ApiException {
-        ApiResponse<PlanTierList> localVarResp = getV1PlansGpuWithHttpInfo();
+    public PlanTierList getPlansGpu() throws ApiException {
+        ApiResponse<PlanTierList> localVarResp = getPlansGpuWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -952,8 +952,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanTierList> getV1PlansGpuWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PlansGpuValidateBeforeCall(null);
+    public ApiResponse<PlanTierList> getPlansGpuWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPlansGpuValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PlanTierList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -971,15 +971,15 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansGpuAsync(final ApiCallback<PlanTierList> _callback) throws ApiException {
+    public okhttp3.Call getPlansGpuAsync(final ApiCallback<PlanTierList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlansGpuValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPlansGpuValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PlanTierList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlansHealth
+     * Build call for getPlansHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -990,7 +990,7 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlansHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1035,8 +1035,8 @@ public class PlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlansHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PlansHealthCall(_callback);
+    private okhttp3.Call getPlansHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPlansHealthCall(_callback);
 
     }
 
@@ -1052,8 +1052,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PlanHealth getV1PlansHealth() throws ApiException {
-        ApiResponse<PlanHealth> localVarResp = getV1PlansHealthWithHttpInfo();
+    public PlanHealth getPlansHealth() throws ApiException {
+        ApiResponse<PlanHealth> localVarResp = getPlansHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1069,8 +1069,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanHealth> getV1PlansHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PlansHealthValidateBeforeCall(null);
+    public ApiResponse<PlanHealth> getPlansHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPlansHealthValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PlanHealth>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1088,15 +1088,15 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansHealthAsync(final ApiCallback<PlanHealth> _callback) throws ApiException {
+    public okhttp3.Call getPlansHealthAsync(final ApiCallback<PlanHealth> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlansHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPlansHealthValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PlanHealth>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlansPolicy
+     * Build call for getPlansPolicy
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1107,7 +1107,7 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansPolicyCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlansPolicyCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1152,8 +1152,8 @@ public class PlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlansPolicyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PlansPolicyCall(_callback);
+    private okhttp3.Call getPlansPolicyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPlansPolicyCall(_callback);
 
     }
 
@@ -1169,8 +1169,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Map<String, Object> getV1PlansPolicy() throws ApiException {
-        ApiResponse<Map<String, Object>> localVarResp = getV1PlansPolicyWithHttpInfo();
+    public Map<String, Object> getPlansPolicy() throws ApiException {
+        ApiResponse<Map<String, Object>> localVarResp = getPlansPolicyWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1186,8 +1186,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Map<String, Object>> getV1PlansPolicyWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PlansPolicyValidateBeforeCall(null);
+    public ApiResponse<Map<String, Object>> getPlansPolicyWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPlansPolicyValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1205,15 +1205,15 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansPolicyAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
+    public okhttp3.Call getPlansPolicyAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlansPolicyValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPlansPolicyValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlansRegions
+     * Build call for getPlansRegions
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1224,7 +1224,7 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansRegionsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlansRegionsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1269,8 +1269,8 @@ public class PlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlansRegionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PlansRegionsCall(_callback);
+    private okhttp3.Call getPlansRegionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPlansRegionsCall(_callback);
 
     }
 
@@ -1286,8 +1286,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PlanRegionList getV1PlansRegions() throws ApiException {
-        ApiResponse<PlanRegionList> localVarResp = getV1PlansRegionsWithHttpInfo();
+    public PlanRegionList getPlansRegions() throws ApiException {
+        ApiResponse<PlanRegionList> localVarResp = getPlansRegionsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1303,8 +1303,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanRegionList> getV1PlansRegionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PlansRegionsValidateBeforeCall(null);
+    public ApiResponse<PlanRegionList> getPlansRegionsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPlansRegionsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PlanRegionList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1322,15 +1322,15 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansRegionsAsync(final ApiCallback<PlanRegionList> _callback) throws ApiException {
+    public okhttp3.Call getPlansRegionsAsync(final ApiCallback<PlanRegionList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlansRegionsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPlansRegionsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PlanRegionList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlansResolveById
+     * Build call for getPlansResolveById
      * @param id ID is the plan&#39;s catalog id or slug — \&quot;pro\&quot;, \&quot;team\&quot;, \&quot;world-enterprise\&quot;, \&quot;rpc-growth\&quot;. Both are matched, so a slug resolves the plan it names. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1342,7 +1342,7 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansResolveByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlansResolveByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1388,13 +1388,13 @@ public class PlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlansResolveByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPlansResolveByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1PlansResolveById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getPlansResolveById(Async)");
         }
 
-        return getV1PlansResolveByIdCall(id, _callback);
+        return getPlansResolveByIdCall(id, _callback);
 
     }
 
@@ -1411,8 +1411,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PlanResolution getV1PlansResolveById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<PlanResolution> localVarResp = getV1PlansResolveByIdWithHttpInfo(id);
+    public PlanResolution getPlansResolveById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<PlanResolution> localVarResp = getPlansResolveByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1429,8 +1429,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanResolution> getV1PlansResolveByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1PlansResolveByIdValidateBeforeCall(id, null);
+    public ApiResponse<PlanResolution> getPlansResolveByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getPlansResolveByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<PlanResolution>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1449,15 +1449,15 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansResolveByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<PlanResolution> _callback) throws ApiException {
+    public okhttp3.Call getPlansResolveByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<PlanResolution> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlansResolveByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getPlansResolveByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<PlanResolution>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlansSchema
+     * Build call for getPlansSchema
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1468,7 +1468,7 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansSchemaCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlansSchemaCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1513,8 +1513,8 @@ public class PlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlansSchemaValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PlansSchemaCall(_callback);
+    private okhttp3.Call getPlansSchemaValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPlansSchemaCall(_callback);
 
     }
 
@@ -1530,8 +1530,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PlanSchemas getV1PlansSchema() throws ApiException {
-        ApiResponse<PlanSchemas> localVarResp = getV1PlansSchemaWithHttpInfo();
+    public PlanSchemas getPlansSchema() throws ApiException {
+        ApiResponse<PlanSchemas> localVarResp = getPlansSchemaWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1547,8 +1547,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanSchemas> getV1PlansSchemaWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PlansSchemaValidateBeforeCall(null);
+    public ApiResponse<PlanSchemas> getPlansSchemaWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPlansSchemaValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PlanSchemas>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1566,15 +1566,15 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansSchemaAsync(final ApiCallback<PlanSchemas> _callback) throws ApiException {
+    public okhttp3.Call getPlansSchemaAsync(final ApiCallback<PlanSchemas> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlansSchemaValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPlansSchemaValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PlanSchemas>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlansStorage
+     * Build call for getPlansStorage
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1585,7 +1585,7 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansStorageCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlansStorageCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1630,8 +1630,8 @@ public class PlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlansStorageValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PlansStorageCall(_callback);
+    private okhttp3.Call getPlansStorageValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPlansStorageCall(_callback);
 
     }
 
@@ -1647,8 +1647,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Map<String, Object> getV1PlansStorage() throws ApiException {
-        ApiResponse<Map<String, Object>> localVarResp = getV1PlansStorageWithHttpInfo();
+    public Map<String, Object> getPlansStorage() throws ApiException {
+        ApiResponse<Map<String, Object>> localVarResp = getPlansStorageWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1664,8 +1664,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Map<String, Object>> getV1PlansStorageWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PlansStorageValidateBeforeCall(null);
+    public ApiResponse<Map<String, Object>> getPlansStorageWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPlansStorageValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1683,15 +1683,15 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansStorageAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
+    public okhttp3.Call getPlansStorageAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlansStorageValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPlansStorageValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlansSubscriptions
+     * Build call for getPlansSubscriptions
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1702,7 +1702,7 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansSubscriptionsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlansSubscriptionsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1747,8 +1747,8 @@ public class PlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlansSubscriptionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PlansSubscriptionsCall(_callback);
+    private okhttp3.Call getPlansSubscriptionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPlansSubscriptionsCall(_callback);
 
     }
 
@@ -1764,8 +1764,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PlanList getV1PlansSubscriptions() throws ApiException {
-        ApiResponse<PlanList> localVarResp = getV1PlansSubscriptionsWithHttpInfo();
+    public PlanList getPlansSubscriptions() throws ApiException {
+        ApiResponse<PlanList> localVarResp = getPlansSubscriptionsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1781,8 +1781,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanList> getV1PlansSubscriptionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PlansSubscriptionsValidateBeforeCall(null);
+    public ApiResponse<PlanList> getPlansSubscriptionsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPlansSubscriptionsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1800,15 +1800,15 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansSubscriptionsAsync(final ApiCallback<PlanList> _callback) throws ApiException {
+    public okhttp3.Call getPlansSubscriptionsAsync(final ApiCallback<PlanList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlansSubscriptionsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPlansSubscriptionsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlansTools
+     * Build call for getPlansTools
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1819,7 +1819,7 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansToolsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlansToolsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1864,8 +1864,8 @@ public class PlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlansToolsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PlansToolsCall(_callback);
+    private okhttp3.Call getPlansToolsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPlansToolsCall(_callback);
 
     }
 
@@ -1881,8 +1881,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PlanToolList getV1PlansTools() throws ApiException {
-        ApiResponse<PlanToolList> localVarResp = getV1PlansToolsWithHttpInfo();
+    public PlanToolList getPlansTools() throws ApiException {
+        ApiResponse<PlanToolList> localVarResp = getPlansToolsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1898,8 +1898,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanToolList> getV1PlansToolsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PlansToolsValidateBeforeCall(null);
+    public ApiResponse<PlanToolList> getPlansToolsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPlansToolsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PlanToolList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1917,15 +1917,15 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansToolsAsync(final ApiCallback<PlanToolList> _callback) throws ApiException {
+    public okhttp3.Call getPlansToolsAsync(final ApiCallback<PlanToolList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlansToolsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPlansToolsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PlanToolList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlansVocab
+     * Build call for getPlansVocab
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1936,7 +1936,7 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansVocabCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlansVocabCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1981,8 +1981,8 @@ public class PlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlansVocabValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PlansVocabCall(_callback);
+    private okhttp3.Call getPlansVocabValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPlansVocabCall(_callback);
 
     }
 
@@ -1998,8 +1998,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PlanVocab getV1PlansVocab() throws ApiException {
-        ApiResponse<PlanVocab> localVarResp = getV1PlansVocabWithHttpInfo();
+    public PlanVocab getPlansVocab() throws ApiException {
+        ApiResponse<PlanVocab> localVarResp = getPlansVocabWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -2015,8 +2015,8 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanVocab> getV1PlansVocabWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PlansVocabValidateBeforeCall(null);
+    public ApiResponse<PlanVocab> getPlansVocabWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPlansVocabValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PlanVocab>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2034,20 +2034,20 @@ public class PlansApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlansVocabAsync(final ApiCallback<PlanVocab> _callback) throws ApiException {
+    public okhttp3.Call getPlansVocabAsync(final ApiCallback<PlanVocab> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlansVocabValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPlansVocabValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PlanVocab>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PlansEntries
+     * Build call for postPlansEntries
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1PlansEntriesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlansEntriesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2091,8 +2091,8 @@ public class PlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PlansEntriesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1PlansEntriesCall(_callback);
+    private okhttp3.Call postPlansEntriesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postPlansEntriesCall(_callback);
 
     }
 
@@ -2101,8 +2101,8 @@ public class PlansApi {
      * Creates a plan from the body and answers it at 201. The slug is required and globally unique — a duplicate is 409 — and the row is marked authoritative on creation, so the corrective seed will leave it alone. Price, annual price and the contact-sales flag are stored exactly as sent, never coerced, so the difference between a free plan and a quote-only plan survives. PLATFORM admin only.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1PlansEntries() throws ApiException {
-        postV1PlansEntriesWithHttpInfo();
+    public void postPlansEntries() throws ApiException {
+        postPlansEntriesWithHttpInfo();
     }
 
     /**
@@ -2111,8 +2111,8 @@ public class PlansApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1PlansEntriesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1PlansEntriesValidateBeforeCall(null);
+    public ApiResponse<Void> postPlansEntriesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postPlansEntriesValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2123,19 +2123,19 @@ public class PlansApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1PlansEntriesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postPlansEntriesAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PlansEntriesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postPlansEntriesValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PlansSeed
+     * Build call for postPlansSeed
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1PlansSeedCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlansSeedCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2179,8 +2179,8 @@ public class PlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PlansSeedValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1PlansSeedCall(_callback);
+    private okhttp3.Call postPlansSeedValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postPlansSeedCall(_callback);
 
     }
 
@@ -2189,8 +2189,8 @@ public class PlansApi {
      * Upserts the shipped plan rows and answers how many were created and how many corrected. It is idempotent and non-destructive — a row an administrator authored or edited is left as it stands — so it is safe against a live authority and fills only what is missing or has drifted. PLATFORM admin only, and a deployment with no seed source wired answers 500 rather than quietly seeding nothing.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1PlansSeed() throws ApiException {
-        postV1PlansSeedWithHttpInfo();
+    public void postPlansSeed() throws ApiException {
+        postPlansSeedWithHttpInfo();
     }
 
     /**
@@ -2199,8 +2199,8 @@ public class PlansApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1PlansSeedWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1PlansSeedValidateBeforeCall(null);
+    public ApiResponse<Void> postPlansSeedWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postPlansSeedValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2211,20 +2211,20 @@ public class PlansApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1PlansSeedAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postPlansSeedAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PlansSeedValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postPlansSeedValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1PlansEntriesBySlug
+     * Build call for putPlansEntriesBySlug
      * @param slug  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1PlansEntriesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putPlansEntriesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2269,13 +2269,13 @@ public class PlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1PlansEntriesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putPlansEntriesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling putV1PlansEntriesBySlug(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling putPlansEntriesBySlug(Async)");
         }
 
-        return putV1PlansEntriesBySlugCall(slug, _callback);
+        return putPlansEntriesBySlugCall(slug, _callback);
 
     }
 
@@ -2285,8 +2285,8 @@ public class PlansApi {
      * @param slug  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1PlansEntriesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
-        putV1PlansEntriesBySlugWithHttpInfo(slug);
+    public void putPlansEntriesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
+        putPlansEntriesBySlugWithHttpInfo(slug);
     }
 
     /**
@@ -2296,8 +2296,8 @@ public class PlansApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1PlansEntriesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
-        okhttp3.Call localVarCall = putV1PlansEntriesBySlugValidateBeforeCall(slug, null);
+    public ApiResponse<Void> putPlansEntriesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = putPlansEntriesBySlugValidateBeforeCall(slug, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2309,9 +2309,9 @@ public class PlansApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1PlansEntriesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putPlansEntriesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1PlansEntriesBySlugValidateBeforeCall(slug, _callback);
+        okhttp3.Call localVarCall = putPlansEntriesBySlugValidateBeforeCall(slug, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

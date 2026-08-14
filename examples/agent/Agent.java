@@ -49,19 +49,19 @@ public final class Agent {
         String name = "sdk-example-" + UUID.randomUUID().toString().substring(0, 8);
 
         try {
-            AgentView created = agents.postV1Agents(new CreateAgentIn()
+            AgentView created = agents.postAgents(new CreateAgentIn()
                     .name(name)
                     .model(Hanzo.model())
                     .instructions("Answer in exactly one sentence: what is the capital of Japan?"));
             System.out.printf("created  %s (%s)%n", created.getName(), created.getId());
 
-            Set<String> before = runIds(agents.getV1AgentsByRefRuns(name, 100));
+            Set<String> before = runIds(agents.getAgentsByRefRuns(name, 100));
 
-            agents.postV1AgentsByRefRun(name);
+            agents.postAgentsByRefRun(name);
             System.out.printf("ran      %s%n", name);
 
             for (int attempt = 0; attempt < POLL_ATTEMPTS; attempt++) {
-                AgentRunView run = started(agents.getV1AgentsByRefRuns(name, 100), before);
+                AgentRunView run = started(agents.getAgentsByRefRuns(name, 100), before);
                 if (run != null && !RUNNING.contains(String.valueOf(run.getStatus()))) {
                     System.out.printf("run      %s %s%n", run.getId(), run.getStatus());
                     System.out.printf("output   %s%n", run.getOutput());

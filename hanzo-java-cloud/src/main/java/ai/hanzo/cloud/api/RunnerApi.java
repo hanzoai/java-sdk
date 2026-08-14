@@ -76,7 +76,7 @@ public class RunnerApi {
     }
 
     /**
-     * Build call for getV1RunnerReleases
+     * Build call for getRunnerReleases
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -87,7 +87,7 @@ public class RunnerApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1RunnerReleasesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRunnerReleasesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -132,8 +132,8 @@ public class RunnerApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1RunnerReleasesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1RunnerReleasesCall(_callback);
+    private okhttp3.Call getRunnerReleasesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getRunnerReleasesCall(_callback);
 
     }
 
@@ -149,8 +149,8 @@ public class RunnerApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SelfReleaseList getV1RunnerReleases() throws ApiException {
-        ApiResponse<SelfReleaseList> localVarResp = getV1RunnerReleasesWithHttpInfo();
+    public SelfReleaseList getRunnerReleases() throws ApiException {
+        ApiResponse<SelfReleaseList> localVarResp = getRunnerReleasesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -166,8 +166,8 @@ public class RunnerApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SelfReleaseList> getV1RunnerReleasesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1RunnerReleasesValidateBeforeCall(null);
+    public ApiResponse<SelfReleaseList> getRunnerReleasesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getRunnerReleasesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<SelfReleaseList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -185,15 +185,15 @@ public class RunnerApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1RunnerReleasesAsync(final ApiCallback<SelfReleaseList> _callback) throws ApiException {
+    public okhttp3.Call getRunnerReleasesAsync(final ApiCallback<SelfReleaseList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1RunnerReleasesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getRunnerReleasesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<SelfReleaseList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1RunnerReleasesById
+     * Build call for getRunnerReleasesById
      * @param id ID is the build id the release trigger answered with, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -205,7 +205,7 @@ public class RunnerApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1RunnerReleasesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRunnerReleasesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -251,13 +251,13 @@ public class RunnerApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1RunnerReleasesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getRunnerReleasesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1RunnerReleasesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getRunnerReleasesById(Async)");
         }
 
-        return getV1RunnerReleasesByIdCall(id, _callback);
+        return getRunnerReleasesByIdCall(id, _callback);
 
     }
 
@@ -274,8 +274,8 @@ public class RunnerApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ReleaseState getV1RunnerReleasesById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<ReleaseState> localVarResp = getV1RunnerReleasesByIdWithHttpInfo(id);
+    public ReleaseState getRunnerReleasesById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<ReleaseState> localVarResp = getRunnerReleasesByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -292,8 +292,8 @@ public class RunnerApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ReleaseState> getV1RunnerReleasesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1RunnerReleasesByIdValidateBeforeCall(id, null);
+    public ApiResponse<ReleaseState> getRunnerReleasesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getRunnerReleasesByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<ReleaseState>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -312,15 +312,15 @@ public class RunnerApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1RunnerReleasesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<ReleaseState> _callback) throws ApiException {
+    public okhttp3.Call getRunnerReleasesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<ReleaseState> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1RunnerReleasesByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getRunnerReleasesByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<ReleaseState>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Runner
+     * Build call for postRunner
      * @param runnerBuildReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -332,7 +332,7 @@ public class RunnerApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1RunnerCall(@javax.annotation.Nonnull RunnerBuildReq runnerBuildReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postRunnerCall(@javax.annotation.Nonnull RunnerBuildReq runnerBuildReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -378,13 +378,13 @@ public class RunnerApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1RunnerValidateBeforeCall(@javax.annotation.Nonnull RunnerBuildReq runnerBuildReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postRunnerValidateBeforeCall(@javax.annotation.Nonnull RunnerBuildReq runnerBuildReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'runnerBuildReq' is set
         if (runnerBuildReq == null) {
-            throw new ApiException("Missing the required parameter 'runnerBuildReq' when calling postV1Runner(Async)");
+            throw new ApiException("Missing the required parameter 'runnerBuildReq' when calling postRunner(Async)");
         }
 
-        return postV1RunnerCall(runnerBuildReq, _callback);
+        return postRunnerCall(runnerBuildReq, _callback);
 
     }
 
@@ -401,8 +401,8 @@ public class RunnerApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public RunnerBuildResp postV1Runner(@javax.annotation.Nonnull RunnerBuildReq runnerBuildReq) throws ApiException {
-        ApiResponse<RunnerBuildResp> localVarResp = postV1RunnerWithHttpInfo(runnerBuildReq);
+    public RunnerBuildResp postRunner(@javax.annotation.Nonnull RunnerBuildReq runnerBuildReq) throws ApiException {
+        ApiResponse<RunnerBuildResp> localVarResp = postRunnerWithHttpInfo(runnerBuildReq);
         return localVarResp.getData();
     }
 
@@ -419,8 +419,8 @@ public class RunnerApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RunnerBuildResp> postV1RunnerWithHttpInfo(@javax.annotation.Nonnull RunnerBuildReq runnerBuildReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1RunnerValidateBeforeCall(runnerBuildReq, null);
+    public ApiResponse<RunnerBuildResp> postRunnerWithHttpInfo(@javax.annotation.Nonnull RunnerBuildReq runnerBuildReq) throws ApiException {
+        okhttp3.Call localVarCall = postRunnerValidateBeforeCall(runnerBuildReq, null);
         Type localVarReturnType = new TypeToken<RunnerBuildResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -439,9 +439,9 @@ public class RunnerApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1RunnerAsync(@javax.annotation.Nonnull RunnerBuildReq runnerBuildReq, final ApiCallback<RunnerBuildResp> _callback) throws ApiException {
+    public okhttp3.Call postRunnerAsync(@javax.annotation.Nonnull RunnerBuildReq runnerBuildReq, final ApiCallback<RunnerBuildResp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1RunnerValidateBeforeCall(runnerBuildReq, _callback);
+        okhttp3.Call localVarCall = postRunnerValidateBeforeCall(runnerBuildReq, _callback);
         Type localVarReturnType = new TypeToken<RunnerBuildResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

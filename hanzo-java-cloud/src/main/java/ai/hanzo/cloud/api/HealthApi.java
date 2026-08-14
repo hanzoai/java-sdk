@@ -72,12 +72,12 @@ public class HealthApi {
     }
 
     /**
-     * Build call for getV1Health
+     * Build call for getHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1HealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class HealthApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1HealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1HealthCall(_callback);
+    private okhttp3.Call getHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getHealthCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class HealthApi {
      * Check if the system is live
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1Health() throws ApiException {
-        getV1HealthWithHttpInfo();
+    public void getHealth() throws ApiException {
+        getHealthWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class HealthApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1HealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1HealthValidateBeforeCall(null);
+    public ApiResponse<Void> getHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getHealthValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,9 +153,9 @@ public class HealthApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1HealthAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1HealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getHealthValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

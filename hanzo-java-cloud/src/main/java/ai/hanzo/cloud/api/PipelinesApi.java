@@ -73,7 +73,7 @@ public class PipelinesApi {
     }
 
     /**
-     * Build call for getV1Pipelines
+     * Build call for getPipelines
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -84,7 +84,7 @@ public class PipelinesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PipelinesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPipelinesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -129,8 +129,8 @@ public class PipelinesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PipelinesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PipelinesCall(_callback);
+    private okhttp3.Call getPipelinesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPipelinesCall(_callback);
 
     }
 
@@ -146,8 +146,8 @@ public class PipelinesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PipelineBoard getV1Pipelines() throws ApiException {
-        ApiResponse<PipelineBoard> localVarResp = getV1PipelinesWithHttpInfo();
+    public PipelineBoard getPipelines() throws ApiException {
+        ApiResponse<PipelineBoard> localVarResp = getPipelinesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -163,8 +163,8 @@ public class PipelinesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PipelineBoard> getV1PipelinesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PipelinesValidateBeforeCall(null);
+    public ApiResponse<PipelineBoard> getPipelinesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPipelinesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PipelineBoard>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -182,9 +182,9 @@ public class PipelinesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PipelinesAsync(final ApiCallback<PipelineBoard> _callback) throws ApiException {
+    public okhttp3.Call getPipelinesAsync(final ApiCallback<PipelineBoard> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PipelinesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPipelinesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PipelineBoard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

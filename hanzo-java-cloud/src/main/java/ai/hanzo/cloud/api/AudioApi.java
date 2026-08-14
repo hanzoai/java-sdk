@@ -72,12 +72,12 @@ public class AudioApi {
     }
 
     /**
-     * Build call for postV1AudioFoley
+     * Build call for postAudioFoley
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1AudioFoleyCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAudioFoleyCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class AudioApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AudioFoleyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1AudioFoleyCall(_callback);
+    private okhttp3.Call postAudioFoleyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postAudioFoleyCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class AudioApi {
      * Serves the generative audio verbs — /v1/audio/voice (TTS), /music, /foley — that the Zen family serves natively. It resolves the SKU and, for a Zen model, forwards to zen&#39;s matching verb billed per call at the discovered price. These verbs are Zen-native; a non-Zen model is rejected.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1AudioFoley() throws ApiException {
-        postV1AudioFoleyWithHttpInfo();
+    public void postAudioFoley() throws ApiException {
+        postAudioFoleyWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class AudioApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1AudioFoleyWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1AudioFoleyValidateBeforeCall(null);
+    public ApiResponse<Void> postAudioFoleyWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postAudioFoleyValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,19 +153,19 @@ public class AudioApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1AudioFoleyAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postAudioFoleyAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AudioFoleyValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postAudioFoleyValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AudioMusic
+     * Build call for postAudioMusic
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1AudioMusicCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAudioMusicCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -209,8 +209,8 @@ public class AudioApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AudioMusicValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1AudioMusicCall(_callback);
+    private okhttp3.Call postAudioMusicValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postAudioMusicCall(_callback);
 
     }
 
@@ -219,8 +219,8 @@ public class AudioApi {
      * Serves the generative audio verbs — /v1/audio/voice (TTS), /music, /foley — that the Zen family serves natively. It resolves the SKU and, for a Zen model, forwards to zen&#39;s matching verb billed per call at the discovered price. These verbs are Zen-native; a non-Zen model is rejected.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1AudioMusic() throws ApiException {
-        postV1AudioMusicWithHttpInfo();
+    public void postAudioMusic() throws ApiException {
+        postAudioMusicWithHttpInfo();
     }
 
     /**
@@ -229,8 +229,8 @@ public class AudioApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1AudioMusicWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1AudioMusicValidateBeforeCall(null);
+    public ApiResponse<Void> postAudioMusicWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postAudioMusicValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -241,19 +241,19 @@ public class AudioApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1AudioMusicAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postAudioMusicAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AudioMusicValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postAudioMusicValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AudioSpeech
+     * Build call for postAudioSpeech
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1AudioSpeechCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAudioSpeechCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -297,8 +297,8 @@ public class AudioApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AudioSpeechValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1AudioSpeechCall(_callback);
+    private okhttp3.Call postAudioSpeechValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postAudioSpeechCall(_callback);
 
     }
 
@@ -307,8 +307,8 @@ public class AudioApi {
      * The OpenAI-compatible TTS endpoint (POST /v1/audio/speech). It authenticates the caller, resolves &#x60;model&#x60; to its TTS provider (the SAME model-route resolution the chat/images/video endpoints use — so a BYO node registered as a TTS provider works transparently), synthesizes the audio, and streams the bytes back. One code path, OpenAI-shaped, no store/message coupling (unlike the legacy /v1/generate-text-to-speech-audio which is bound to a chat store).
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1AudioSpeech() throws ApiException {
-        postV1AudioSpeechWithHttpInfo();
+    public void postAudioSpeech() throws ApiException {
+        postAudioSpeechWithHttpInfo();
     }
 
     /**
@@ -317,8 +317,8 @@ public class AudioApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1AudioSpeechWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1AudioSpeechValidateBeforeCall(null);
+    public ApiResponse<Void> postAudioSpeechWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postAudioSpeechValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -329,19 +329,19 @@ public class AudioApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1AudioSpeechAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postAudioSpeechAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AudioSpeechValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postAudioSpeechValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AudioTranscriptions
+     * Build call for postAudioTranscriptions
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1AudioTranscriptionsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAudioTranscriptionsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -385,8 +385,8 @@ public class AudioApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AudioTranscriptionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1AudioTranscriptionsCall(_callback);
+    private okhttp3.Call postAudioTranscriptionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postAudioTranscriptionsCall(_callback);
 
     }
 
@@ -395,8 +395,8 @@ public class AudioApi {
      * The OpenAI-compatible STT endpoint (POST /v1/audio/transcriptions, multipart: file + model [+ language + response_format]). It mirrors AudioSpeech exactly: authenticate the caller, resolve &#x60;model&#x60; to its STT provider through the SAME model-route resolution (so the in-cluster speech service — or any BYO node registered as an STT provider — works transparently), transcribe, and return the OpenAI body. One code path, OpenAI-shaped, no store coupling (unlike the legacy /v1/process-speech-to-text, which is bound to a chat store).
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1AudioTranscriptions() throws ApiException {
-        postV1AudioTranscriptionsWithHttpInfo();
+    public void postAudioTranscriptions() throws ApiException {
+        postAudioTranscriptionsWithHttpInfo();
     }
 
     /**
@@ -405,8 +405,8 @@ public class AudioApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1AudioTranscriptionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1AudioTranscriptionsValidateBeforeCall(null);
+    public ApiResponse<Void> postAudioTranscriptionsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postAudioTranscriptionsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -417,19 +417,19 @@ public class AudioApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1AudioTranscriptionsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postAudioTranscriptionsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AudioTranscriptionsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postAudioTranscriptionsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AudioVoice
+     * Build call for postAudioVoice
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1AudioVoiceCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAudioVoiceCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -473,8 +473,8 @@ public class AudioApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AudioVoiceValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1AudioVoiceCall(_callback);
+    private okhttp3.Call postAudioVoiceValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postAudioVoiceCall(_callback);
 
     }
 
@@ -483,8 +483,8 @@ public class AudioApi {
      * Serves the generative audio verbs — /v1/audio/voice (TTS), /music, /foley — that the Zen family serves natively. It resolves the SKU and, for a Zen model, forwards to zen&#39;s matching verb billed per call at the discovered price. These verbs are Zen-native; a non-Zen model is rejected.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1AudioVoice() throws ApiException {
-        postV1AudioVoiceWithHttpInfo();
+    public void postAudioVoice() throws ApiException {
+        postAudioVoiceWithHttpInfo();
     }
 
     /**
@@ -493,8 +493,8 @@ public class AudioApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1AudioVoiceWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1AudioVoiceValidateBeforeCall(null);
+    public ApiResponse<Void> postAudioVoiceWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postAudioVoiceValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -505,9 +505,9 @@ public class AudioApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1AudioVoiceAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postAudioVoiceAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AudioVoiceValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postAudioVoiceValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

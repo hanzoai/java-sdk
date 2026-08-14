@@ -78,7 +78,7 @@ public class SearchApi {
     }
 
     /**
-     * Build call for deleteV1SearchByName
+     * Build call for deleteSearchByName
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -90,7 +90,7 @@ public class SearchApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1SearchByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteSearchByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -135,13 +135,13 @@ public class SearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1SearchByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteSearchByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteV1SearchByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling deleteSearchByName(Async)");
         }
 
-        return deleteV1SearchByNameCall(name, _callback);
+        return deleteSearchByNameCall(name, _callback);
 
     }
 
@@ -157,8 +157,8 @@ public class SearchApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1SearchByName(@javax.annotation.Nonnull String name) throws ApiException {
-        deleteV1SearchByNameWithHttpInfo(name);
+    public void deleteSearchByName(@javax.annotation.Nonnull String name) throws ApiException {
+        deleteSearchByNameWithHttpInfo(name);
     }
 
     /**
@@ -174,8 +174,8 @@ public class SearchApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1SearchByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1SearchByNameValidateBeforeCall(name, null);
+    public ApiResponse<Void> deleteSearchByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteSearchByNameValidateBeforeCall(name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -193,14 +193,14 @@ public class SearchApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1SearchByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteSearchByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1SearchByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = deleteSearchByNameValidateBeforeCall(name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Search
+     * Build call for getSearch
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -211,7 +211,7 @@ public class SearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SearchCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSearchCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -256,8 +256,8 @@ public class SearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SearchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1SearchCall(_callback);
+    private okhttp3.Call getSearchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getSearchCall(_callback);
 
     }
 
@@ -273,8 +273,8 @@ public class SearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProvisionedSummary> getV1Search() throws ApiException {
-        ApiResponse<List<ProvisionedSummary>> localVarResp = getV1SearchWithHttpInfo();
+    public List<ProvisionedSummary> getSearch() throws ApiException {
+        ApiResponse<List<ProvisionedSummary>> localVarResp = getSearchWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -290,8 +290,8 @@ public class SearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProvisionedSummary>> getV1SearchWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1SearchValidateBeforeCall(null);
+    public ApiResponse<List<ProvisionedSummary>> getSearchWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getSearchValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -309,15 +309,15 @@ public class SearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SearchAsync(final ApiCallback<List<ProvisionedSummary>> _callback) throws ApiException {
+    public okhttp3.Call getSearchAsync(final ApiCallback<List<ProvisionedSummary>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SearchValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getSearchValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SearchByName
+     * Build call for getSearchByName
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -329,7 +329,7 @@ public class SearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SearchByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSearchByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -375,13 +375,13 @@ public class SearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SearchByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSearchByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1SearchByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getSearchByName(Async)");
         }
 
-        return getV1SearchByNameCall(name, _callback);
+        return getSearchByNameCall(name, _callback);
 
     }
 
@@ -398,8 +398,8 @@ public class SearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionedResource getV1SearchByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ProvisionedResource> localVarResp = getV1SearchByNameWithHttpInfo(name);
+    public ProvisionedResource getSearchByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<ProvisionedResource> localVarResp = getSearchByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -416,8 +416,8 @@ public class SearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionedResource> getV1SearchByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1SearchByNameValidateBeforeCall(name, null);
+    public ApiResponse<ProvisionedResource> getSearchByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getSearchByNameValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -436,15 +436,15 @@ public class SearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SearchByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisionedResource> _callback) throws ApiException {
+    public okhttp3.Call getSearchByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisionedResource> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SearchByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getSearchByNameValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SearchIndexes
+     * Build call for getSearchIndexes
      * @param authorization Authorization carries the surface&#39;s bearer key (&#x60;Bearer &lt;key&gt;&#x60;); the bare key is accepted too. Search and vector are two surfaces with two keys. It is not &#x60;validate:\&quot;required\&quot;&#x60; on purpose: requireKey answers absence itself, so an unconfigured surface 503s and a missing bearer 401s — a validation refusal would rewrite both statuses. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -456,7 +456,7 @@ public class SearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SearchIndexesCall(@javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSearchIndexesCall(@javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -506,8 +506,8 @@ public class SearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SearchIndexesValidateBeforeCall(@javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
-        return getV1SearchIndexesCall(authorization, _callback);
+    private okhttp3.Call getSearchIndexesValidateBeforeCall(@javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
+        return getSearchIndexesCall(authorization, _callback);
 
     }
 
@@ -524,8 +524,8 @@ public class SearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SearchIndexList getV1SearchIndexes(@javax.annotation.Nullable String authorization) throws ApiException {
-        ApiResponse<SearchIndexList> localVarResp = getV1SearchIndexesWithHttpInfo(authorization);
+    public SearchIndexList getSearchIndexes(@javax.annotation.Nullable String authorization) throws ApiException {
+        ApiResponse<SearchIndexList> localVarResp = getSearchIndexesWithHttpInfo(authorization);
         return localVarResp.getData();
     }
 
@@ -542,8 +542,8 @@ public class SearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SearchIndexList> getV1SearchIndexesWithHttpInfo(@javax.annotation.Nullable String authorization) throws ApiException {
-        okhttp3.Call localVarCall = getV1SearchIndexesValidateBeforeCall(authorization, null);
+    public ApiResponse<SearchIndexList> getSearchIndexesWithHttpInfo(@javax.annotation.Nullable String authorization) throws ApiException {
+        okhttp3.Call localVarCall = getSearchIndexesValidateBeforeCall(authorization, null);
         Type localVarReturnType = new TypeToken<SearchIndexList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -562,15 +562,15 @@ public class SearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SearchIndexesAsync(@javax.annotation.Nullable String authorization, final ApiCallback<SearchIndexList> _callback) throws ApiException {
+    public okhttp3.Call getSearchIndexesAsync(@javax.annotation.Nullable String authorization, final ApiCallback<SearchIndexList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SearchIndexesValidateBeforeCall(authorization, _callback);
+        okhttp3.Call localVarCall = getSearchIndexesValidateBeforeCall(authorization, _callback);
         Type localVarReturnType = new TypeToken<SearchIndexList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SearchStats
+     * Build call for getSearchStats
      * @param authorization Authorization carries the surface&#39;s bearer key (&#x60;Bearer &lt;key&gt;&#x60;); the bare key is accepted too. Search and vector are two surfaces with two keys. It is not &#x60;validate:\&quot;required\&quot;&#x60; on purpose: requireKey answers absence itself, so an unconfigured surface 503s and a missing bearer 401s — a validation refusal would rewrite both statuses. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -582,7 +582,7 @@ public class SearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SearchStatsCall(@javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSearchStatsCall(@javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -632,8 +632,8 @@ public class SearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SearchStatsValidateBeforeCall(@javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
-        return getV1SearchStatsCall(authorization, _callback);
+    private okhttp3.Call getSearchStatsValidateBeforeCall(@javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
+        return getSearchStatsCall(authorization, _callback);
 
     }
 
@@ -650,8 +650,8 @@ public class SearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SearchStats getV1SearchStats(@javax.annotation.Nullable String authorization) throws ApiException {
-        ApiResponse<SearchStats> localVarResp = getV1SearchStatsWithHttpInfo(authorization);
+    public SearchStats getSearchStats(@javax.annotation.Nullable String authorization) throws ApiException {
+        ApiResponse<SearchStats> localVarResp = getSearchStatsWithHttpInfo(authorization);
         return localVarResp.getData();
     }
 
@@ -668,8 +668,8 @@ public class SearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SearchStats> getV1SearchStatsWithHttpInfo(@javax.annotation.Nullable String authorization) throws ApiException {
-        okhttp3.Call localVarCall = getV1SearchStatsValidateBeforeCall(authorization, null);
+    public ApiResponse<SearchStats> getSearchStatsWithHttpInfo(@javax.annotation.Nullable String authorization) throws ApiException {
+        okhttp3.Call localVarCall = getSearchStatsValidateBeforeCall(authorization, null);
         Type localVarReturnType = new TypeToken<SearchStats>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -688,15 +688,15 @@ public class SearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SearchStatsAsync(@javax.annotation.Nullable String authorization, final ApiCallback<SearchStats> _callback) throws ApiException {
+    public okhttp3.Call getSearchStatsAsync(@javax.annotation.Nullable String authorization, final ApiCallback<SearchStats> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SearchStatsValidateBeforeCall(authorization, _callback);
+        okhttp3.Call localVarCall = getSearchStatsValidateBeforeCall(authorization, _callback);
         Type localVarReturnType = new TypeToken<SearchStats>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Search
+     * Build call for postSearch
      * @param provisionRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -708,7 +708,7 @@ public class SearchApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SearchCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSearchCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -754,8 +754,8 @@ public class SearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SearchValidateBeforeCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
-        return postV1SearchCall(provisionRequest, _callback);
+    private okhttp3.Call postSearchValidateBeforeCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
+        return postSearchCall(provisionRequest, _callback);
 
     }
 
@@ -772,8 +772,8 @@ public class SearchApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionResult postV1Search(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
-        ApiResponse<ProvisionResult> localVarResp = postV1SearchWithHttpInfo(provisionRequest);
+    public ProvisionResult postSearch(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
+        ApiResponse<ProvisionResult> localVarResp = postSearchWithHttpInfo(provisionRequest);
         return localVarResp.getData();
     }
 
@@ -790,8 +790,8 @@ public class SearchApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionResult> postV1SearchWithHttpInfo(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1SearchValidateBeforeCall(provisionRequest, null);
+    public ApiResponse<ProvisionResult> postSearchWithHttpInfo(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
+        okhttp3.Call localVarCall = postSearchValidateBeforeCall(provisionRequest, null);
         Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -810,9 +810,9 @@ public class SearchApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SearchAsync(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback<ProvisionResult> _callback) throws ApiException {
+    public okhttp3.Call postSearchAsync(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback<ProvisionResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SearchValidateBeforeCall(provisionRequest, _callback);
+        okhttp3.Call localVarCall = postSearchValidateBeforeCall(provisionRequest, _callback);
         Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

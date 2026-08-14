@@ -77,7 +77,7 @@ public class WorldApi {
     }
 
     /**
-     * Build call for getV1World
+     * Build call for getWorld
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -88,7 +88,7 @@ public class WorldApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1WorldCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getWorldCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -133,8 +133,8 @@ public class WorldApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1WorldValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1WorldCall(_callback);
+    private okhttp3.Call getWorldValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getWorldCall(_callback);
 
     }
 
@@ -150,8 +150,8 @@ public class WorldApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public WorldIndex getV1World() throws ApiException {
-        ApiResponse<WorldIndex> localVarResp = getV1WorldWithHttpInfo();
+    public WorldIndex getWorld() throws ApiException {
+        ApiResponse<WorldIndex> localVarResp = getWorldWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -167,8 +167,8 @@ public class WorldApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<WorldIndex> getV1WorldWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1WorldValidateBeforeCall(null);
+    public ApiResponse<WorldIndex> getWorldWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getWorldValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<WorldIndex>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -186,15 +186,15 @@ public class WorldApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1WorldAsync(final ApiCallback<WorldIndex> _callback) throws ApiException {
+    public okhttp3.Call getWorldAsync(final ApiCallback<WorldIndex> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1WorldValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getWorldValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<WorldIndex>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1WorldLimits
+     * Build call for getWorldLimits
      * @param plan Plan is a World plan id from the live @hanzo/plans catalog, e.g. world-pro. Empty means world-free, and so does an id the catalog does not know — this never fails on an unknown plan. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -206,7 +206,7 @@ public class WorldApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1WorldLimitsCall(@javax.annotation.Nullable String plan, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getWorldLimitsCall(@javax.annotation.Nullable String plan, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -255,8 +255,8 @@ public class WorldApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1WorldLimitsValidateBeforeCall(@javax.annotation.Nullable String plan, final ApiCallback _callback) throws ApiException {
-        return getV1WorldLimitsCall(plan, _callback);
+    private okhttp3.Call getWorldLimitsValidateBeforeCall(@javax.annotation.Nullable String plan, final ApiCallback _callback) throws ApiException {
+        return getWorldLimitsCall(plan, _callback);
 
     }
 
@@ -273,8 +273,8 @@ public class WorldApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public LimitsView getV1WorldLimits(@javax.annotation.Nullable String plan) throws ApiException {
-        ApiResponse<LimitsView> localVarResp = getV1WorldLimitsWithHttpInfo(plan);
+    public LimitsView getWorldLimits(@javax.annotation.Nullable String plan) throws ApiException {
+        ApiResponse<LimitsView> localVarResp = getWorldLimitsWithHttpInfo(plan);
         return localVarResp.getData();
     }
 
@@ -291,8 +291,8 @@ public class WorldApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LimitsView> getV1WorldLimitsWithHttpInfo(@javax.annotation.Nullable String plan) throws ApiException {
-        okhttp3.Call localVarCall = getV1WorldLimitsValidateBeforeCall(plan, null);
+    public ApiResponse<LimitsView> getWorldLimitsWithHttpInfo(@javax.annotation.Nullable String plan) throws ApiException {
+        okhttp3.Call localVarCall = getWorldLimitsValidateBeforeCall(plan, null);
         Type localVarReturnType = new TypeToken<LimitsView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -311,15 +311,15 @@ public class WorldApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1WorldLimitsAsync(@javax.annotation.Nullable String plan, final ApiCallback<LimitsView> _callback) throws ApiException {
+    public okhttp3.Call getWorldLimitsAsync(@javax.annotation.Nullable String plan, final ApiCallback<LimitsView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1WorldLimitsValidateBeforeCall(plan, _callback);
+        okhttp3.Call localVarCall = getWorldLimitsValidateBeforeCall(plan, _callback);
         Type localVarReturnType = new TypeToken<LimitsView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1WorldNews
+     * Build call for getWorldNews
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -330,7 +330,7 @@ public class WorldApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1WorldNewsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getWorldNewsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -375,8 +375,8 @@ public class WorldApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1WorldNewsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1WorldNewsCall(_callback);
+    private okhttp3.Call getWorldNewsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getWorldNewsCall(_callback);
 
     }
 
@@ -392,8 +392,8 @@ public class WorldApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public NewsResponse getV1WorldNews() throws ApiException {
-        ApiResponse<NewsResponse> localVarResp = getV1WorldNewsWithHttpInfo();
+    public NewsResponse getWorldNews() throws ApiException {
+        ApiResponse<NewsResponse> localVarResp = getWorldNewsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -409,8 +409,8 @@ public class WorldApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<NewsResponse> getV1WorldNewsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1WorldNewsValidateBeforeCall(null);
+    public ApiResponse<NewsResponse> getWorldNewsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getWorldNewsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<NewsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -428,15 +428,15 @@ public class WorldApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1WorldNewsAsync(final ApiCallback<NewsResponse> _callback) throws ApiException {
+    public okhttp3.Call getWorldNewsAsync(final ApiCallback<NewsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1WorldNewsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getWorldNewsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<NewsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1WorldPipeline
+     * Build call for getWorldPipeline
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -447,7 +447,7 @@ public class WorldApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1WorldPipelineCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getWorldPipelineCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -492,8 +492,8 @@ public class WorldApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1WorldPipelineValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1WorldPipelineCall(_callback);
+    private okhttp3.Call getWorldPipelineValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getWorldPipelineCall(_callback);
 
     }
 
@@ -509,8 +509,8 @@ public class WorldApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PipelineView getV1WorldPipeline() throws ApiException {
-        ApiResponse<PipelineView> localVarResp = getV1WorldPipelineWithHttpInfo();
+    public PipelineView getWorldPipeline() throws ApiException {
+        ApiResponse<PipelineView> localVarResp = getWorldPipelineWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -526,8 +526,8 @@ public class WorldApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PipelineView> getV1WorldPipelineWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1WorldPipelineValidateBeforeCall(null);
+    public ApiResponse<PipelineView> getWorldPipelineWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getWorldPipelineValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PipelineView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -545,20 +545,20 @@ public class WorldApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1WorldPipelineAsync(final ApiCallback<PipelineView> _callback) throws ApiException {
+    public okhttp3.Call getWorldPipelineAsync(final ApiCallback<PipelineView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1WorldPipelineValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getWorldPipelineValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PipelineView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1WorldStream
+     * Build call for getWorldStream
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1WorldStreamCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getWorldStreamCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -602,8 +602,8 @@ public class WorldApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1WorldStreamValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1WorldStreamCall(_callback);
+    private okhttp3.Call getWorldStreamValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getWorldStreamCall(_callback);
 
     }
 
@@ -612,8 +612,8 @@ public class WorldApi {
      * Holds the connection open as text/event-stream and pushes a &#x60;news&#x60; event — the same {items:[…]} body GET /v1/world/news answers — each time the caller&#39;s (org, project) feed refreshes, with a &#x60;: ping&#x60; heartbeat comment every 25s. Delivery is best-effort: a slow consumer is dropped on buffer overrun and reconnects, re-fetching GET /v1/world/news, which stays the source of truth. Requires a validated principal; 403 without one.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1WorldStream() throws ApiException {
-        getV1WorldStreamWithHttpInfo();
+    public void getWorldStream() throws ApiException {
+        getWorldStreamWithHttpInfo();
     }
 
     /**
@@ -622,8 +622,8 @@ public class WorldApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1WorldStreamWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1WorldStreamValidateBeforeCall(null);
+    public ApiResponse<Void> getWorldStreamWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getWorldStreamValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -634,14 +634,14 @@ public class WorldApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1WorldStreamAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getWorldStreamAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1WorldStreamValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getWorldStreamValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1WorldPipeline
+     * Build call for putWorldPipeline
      * @param pipelineReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -653,7 +653,7 @@ public class WorldApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1WorldPipelineCall(@javax.annotation.Nonnull PipelineReq pipelineReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putWorldPipelineCall(@javax.annotation.Nonnull PipelineReq pipelineReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -699,13 +699,13 @@ public class WorldApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1WorldPipelineValidateBeforeCall(@javax.annotation.Nonnull PipelineReq pipelineReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putWorldPipelineValidateBeforeCall(@javax.annotation.Nonnull PipelineReq pipelineReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'pipelineReq' is set
         if (pipelineReq == null) {
-            throw new ApiException("Missing the required parameter 'pipelineReq' when calling putV1WorldPipeline(Async)");
+            throw new ApiException("Missing the required parameter 'pipelineReq' when calling putWorldPipeline(Async)");
         }
 
-        return putV1WorldPipelineCall(pipelineReq, _callback);
+        return putWorldPipelineCall(pipelineReq, _callback);
 
     }
 
@@ -722,8 +722,8 @@ public class WorldApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PipelineView putV1WorldPipeline(@javax.annotation.Nonnull PipelineReq pipelineReq) throws ApiException {
-        ApiResponse<PipelineView> localVarResp = putV1WorldPipelineWithHttpInfo(pipelineReq);
+    public PipelineView putWorldPipeline(@javax.annotation.Nonnull PipelineReq pipelineReq) throws ApiException {
+        ApiResponse<PipelineView> localVarResp = putWorldPipelineWithHttpInfo(pipelineReq);
         return localVarResp.getData();
     }
 
@@ -740,8 +740,8 @@ public class WorldApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PipelineView> putV1WorldPipelineWithHttpInfo(@javax.annotation.Nonnull PipelineReq pipelineReq) throws ApiException {
-        okhttp3.Call localVarCall = putV1WorldPipelineValidateBeforeCall(pipelineReq, null);
+    public ApiResponse<PipelineView> putWorldPipelineWithHttpInfo(@javax.annotation.Nonnull PipelineReq pipelineReq) throws ApiException {
+        okhttp3.Call localVarCall = putWorldPipelineValidateBeforeCall(pipelineReq, null);
         Type localVarReturnType = new TypeToken<PipelineView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -760,9 +760,9 @@ public class WorldApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1WorldPipelineAsync(@javax.annotation.Nonnull PipelineReq pipelineReq, final ApiCallback<PipelineView> _callback) throws ApiException {
+    public okhttp3.Call putWorldPipelineAsync(@javax.annotation.Nonnull PipelineReq pipelineReq, final ApiCallback<PipelineView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1WorldPipelineValidateBeforeCall(pipelineReq, _callback);
+        okhttp3.Call localVarCall = putWorldPipelineValidateBeforeCall(pipelineReq, _callback);
         Type localVarReturnType = new TypeToken<PipelineView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

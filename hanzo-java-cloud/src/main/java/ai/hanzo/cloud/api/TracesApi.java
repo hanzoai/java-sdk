@@ -72,12 +72,12 @@ public class TracesApi {
     }
 
     /**
-     * Build call for getV1TracesHealth
+     * Build call for getTracesHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1TracesHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTracesHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class TracesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TracesHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1TracesHealthCall(_callback);
+    private okhttp3.Call getTracesHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getTracesHealthCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class TracesApi {
      * Reports the native trace store&#39;s live state for the calling tenant: the subsystem version and &#x60;spans&#x60;, the count actually held right now. Not a dependency probe — the store is in-process, so this answers 200 whenever the process is up.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1TracesHealth() throws ApiException {
-        getV1TracesHealthWithHttpInfo();
+    public void getTracesHealth() throws ApiException {
+        getTracesHealthWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class TracesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1TracesHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1TracesHealthValidateBeforeCall(null);
+    public ApiResponse<Void> getTracesHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getTracesHealthValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,19 +153,19 @@ public class TracesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1TracesHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getTracesHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TracesHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getTracesHealthValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1TracesQuery
+     * Build call for getTracesQuery
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1TracesQueryCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTracesQueryCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -209,8 +209,8 @@ public class TracesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TracesQueryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1TracesQueryCall(_callback);
+    private okhttp3.Call getTracesQueryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getTracesQueryCall(_callback);
 
     }
 
@@ -219,8 +219,8 @@ public class TracesApi {
      * Answers &#x60;{count, spans}&#x60;, newest first, filtered on each span&#39;s START time. &#x60;start&#x60; and &#x60;end&#x60; are nanosecond bounds where 0 — which is what an absent, empty or unparseable value becomes — means UNBOUNDED, so a malformed bound widens the listing instead of failing it. &#x60;limit&#x60; defaults to 100 when absent or non-positive.  It lists SPANS, not traces: several spans of one trace each count separately and each take a slot against &#x60;limit&#x60;. Assembling one trace is /v1/traces/trace. The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1TracesQuery() throws ApiException {
-        getV1TracesQueryWithHttpInfo();
+    public void getTracesQuery() throws ApiException {
+        getTracesQueryWithHttpInfo();
     }
 
     /**
@@ -229,8 +229,8 @@ public class TracesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1TracesQueryWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1TracesQueryValidateBeforeCall(null);
+    public ApiResponse<Void> getTracesQueryWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getTracesQueryValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -241,19 +241,19 @@ public class TracesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1TracesQueryAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getTracesQueryAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TracesQueryValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getTracesQueryValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1TracesTrace
+     * Build call for getTracesTrace
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1TracesTraceCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTracesTraceCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -297,8 +297,8 @@ public class TracesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TracesTraceValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1TracesTraceCall(_callback);
+    private okhttp3.Call getTracesTraceValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getTracesTraceCall(_callback);
 
     }
 
@@ -307,8 +307,8 @@ public class TracesApi {
      * Answers &#x60;{spans}&#x60;: every span the org holds for the trace id in &#x60;id&#x60;, in the order they were appended, which is what a waterfall view renders. Unlike the other reads there is no count, no time range and no limit — a trace is addressed by id or not at all.  An id with no spans answers an EMPTY list, never a 404: the store cannot tell a trace that never existed from one whose spans retention has already dropped, so it does not pretend to. The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;, and a trace id belonging to another org is simply not in this org&#39;s store.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1TracesTrace() throws ApiException {
-        getV1TracesTraceWithHttpInfo();
+    public void getTracesTrace() throws ApiException {
+        getTracesTraceWithHttpInfo();
     }
 
     /**
@@ -317,8 +317,8 @@ public class TracesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1TracesTraceWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1TracesTraceValidateBeforeCall(null);
+    public ApiResponse<Void> getTracesTraceWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getTracesTraceValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -329,19 +329,19 @@ public class TracesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1TracesTraceAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getTracesTraceAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TracesTraceValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getTracesTraceValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1TracesWrite
+     * Build call for postTracesWrite
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1TracesWriteCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postTracesWriteCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -385,8 +385,8 @@ public class TracesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1TracesWriteValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1TracesWriteCall(_callback);
+    private okhttp3.Call postTracesWriteValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postTracesWriteCall(_callback);
 
     }
 
@@ -395,8 +395,8 @@ public class TracesApi {
      * Takes &#x60;{spans:[{traceId, spanId, parentId, name, startNs, endNs, attrs}]}&#x60;, appends each, and answers &#x60;{written}&#x60; — the number of spans sent. Every span is indexed by its trace id as it lands, which is what makes the waterfall read possible without a second store.  Times are NANOSECONDS since the Unix epoch. Retention is a bounded ring of 1048576 spans per org: past that the OLDEST are evicted to keep the newest 1048576, and the trace index is rebuilt — so a long-lived trace can lose its early spans while its later ones survive, and a waterfall read is best-effort against retention, not a guarantee.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;. A body that does not decode is 400.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1TracesWrite() throws ApiException {
-        postV1TracesWriteWithHttpInfo();
+    public void postTracesWrite() throws ApiException {
+        postTracesWriteWithHttpInfo();
     }
 
     /**
@@ -405,8 +405,8 @@ public class TracesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1TracesWriteWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1TracesWriteValidateBeforeCall(null);
+    public ApiResponse<Void> postTracesWriteWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postTracesWriteValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -417,9 +417,9 @@ public class TracesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1TracesWriteAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postTracesWriteAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1TracesWriteValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postTracesWriteValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

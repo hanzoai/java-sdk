@@ -75,13 +75,13 @@ public class SbomApi {
     }
 
     /**
-     * Build call for getV1SbomByWildcard1
+     * Build call for getSbomByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1SbomByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSbomByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -126,13 +126,13 @@ public class SbomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SbomByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSbomByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling getV1SbomByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling getSbomByWildcard1(Async)");
         }
 
-        return getV1SbomByWildcard1Call(wildcard1, _callback);
+        return getSbomByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -142,8 +142,8 @@ public class SbomApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1SbomByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        getV1SbomByWildcard1WithHttpInfo(wildcard1);
+    public void getSbomByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        getSbomByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -153,8 +153,8 @@ public class SbomApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1SbomByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = getV1SbomByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> getSbomByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = getSbomByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -166,14 +166,14 @@ public class SbomApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1SbomByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getSbomByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SbomByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = getSbomByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SbomHealth
+     * Build call for getSbomHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -184,7 +184,7 @@ public class SbomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SbomHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSbomHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -229,8 +229,8 @@ public class SbomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SbomHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1SbomHealthCall(_callback);
+    private okhttp3.Call getSbomHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getSbomHealthCall(_callback);
 
     }
 
@@ -246,8 +246,8 @@ public class SbomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SbomHealth getV1SbomHealth() throws ApiException {
-        ApiResponse<SbomHealth> localVarResp = getV1SbomHealthWithHttpInfo();
+    public SbomHealth getSbomHealth() throws ApiException {
+        ApiResponse<SbomHealth> localVarResp = getSbomHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -263,8 +263,8 @@ public class SbomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SbomHealth> getV1SbomHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1SbomHealthValidateBeforeCall(null);
+    public ApiResponse<SbomHealth> getSbomHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getSbomHealthValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<SbomHealth>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -282,15 +282,15 @@ public class SbomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SbomHealthAsync(final ApiCallback<SbomHealth> _callback) throws ApiException {
+    public okhttp3.Call getSbomHealthAsync(final ApiCallback<SbomHealth> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SbomHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getSbomHealthValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<SbomHealth>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Sbom
+     * Build call for postSbom
      * @param sbomIngest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -302,7 +302,7 @@ public class SbomApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SbomCall(@javax.annotation.Nonnull SbomIngest sbomIngest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSbomCall(@javax.annotation.Nonnull SbomIngest sbomIngest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -348,13 +348,13 @@ public class SbomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SbomValidateBeforeCall(@javax.annotation.Nonnull SbomIngest sbomIngest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSbomValidateBeforeCall(@javax.annotation.Nonnull SbomIngest sbomIngest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'sbomIngest' is set
         if (sbomIngest == null) {
-            throw new ApiException("Missing the required parameter 'sbomIngest' when calling postV1Sbom(Async)");
+            throw new ApiException("Missing the required parameter 'sbomIngest' when calling postSbom(Async)");
         }
 
-        return postV1SbomCall(sbomIngest, _callback);
+        return postSbomCall(sbomIngest, _callback);
 
     }
 
@@ -371,8 +371,8 @@ public class SbomApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public SbomIngested postV1Sbom(@javax.annotation.Nonnull SbomIngest sbomIngest) throws ApiException {
-        ApiResponse<SbomIngested> localVarResp = postV1SbomWithHttpInfo(sbomIngest);
+    public SbomIngested postSbom(@javax.annotation.Nonnull SbomIngest sbomIngest) throws ApiException {
+        ApiResponse<SbomIngested> localVarResp = postSbomWithHttpInfo(sbomIngest);
         return localVarResp.getData();
     }
 
@@ -389,8 +389,8 @@ public class SbomApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SbomIngested> postV1SbomWithHttpInfo(@javax.annotation.Nonnull SbomIngest sbomIngest) throws ApiException {
-        okhttp3.Call localVarCall = postV1SbomValidateBeforeCall(sbomIngest, null);
+    public ApiResponse<SbomIngested> postSbomWithHttpInfo(@javax.annotation.Nonnull SbomIngest sbomIngest) throws ApiException {
+        okhttp3.Call localVarCall = postSbomValidateBeforeCall(sbomIngest, null);
         Type localVarReturnType = new TypeToken<SbomIngested>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -409,9 +409,9 @@ public class SbomApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SbomAsync(@javax.annotation.Nonnull SbomIngest sbomIngest, final ApiCallback<SbomIngested> _callback) throws ApiException {
+    public okhttp3.Call postSbomAsync(@javax.annotation.Nonnull SbomIngest sbomIngest, final ApiCallback<SbomIngested> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SbomValidateBeforeCall(sbomIngest, _callback);
+        okhttp3.Call localVarCall = postSbomValidateBeforeCall(sbomIngest, _callback);
         Type localVarReturnType = new TypeToken<SbomIngested>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -77,7 +77,7 @@ public class SyncApi {
     }
 
     /**
-     * Build call for deleteV1SyncById
+     * Build call for deleteSyncById
      * @param id ID is the sync to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -89,7 +89,7 @@ public class SyncApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1SyncByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteSyncByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,13 +134,13 @@ public class SyncApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1SyncByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteSyncByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1SyncById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteSyncById(Async)");
         }
 
-        return deleteV1SyncByIdCall(id, _callback);
+        return deleteSyncByIdCall(id, _callback);
 
     }
 
@@ -156,8 +156,8 @@ public class SyncApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1SyncById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1SyncByIdWithHttpInfo(id);
+    public void deleteSyncById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteSyncByIdWithHttpInfo(id);
     }
 
     /**
@@ -173,8 +173,8 @@ public class SyncApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1SyncByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1SyncByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteSyncByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteSyncByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -192,14 +192,14 @@ public class SyncApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1SyncByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteSyncByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1SyncByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteSyncByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Sync
+     * Build call for getSync
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -210,7 +210,7 @@ public class SyncApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SyncCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSyncCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -255,8 +255,8 @@ public class SyncApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SyncValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1SyncCall(_callback);
+    private okhttp3.Call getSyncValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getSyncCall(_callback);
 
     }
 
@@ -272,8 +272,8 @@ public class SyncApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SyncList getV1Sync() throws ApiException {
-        ApiResponse<SyncList> localVarResp = getV1SyncWithHttpInfo();
+    public SyncList getSync() throws ApiException {
+        ApiResponse<SyncList> localVarResp = getSyncWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -289,8 +289,8 @@ public class SyncApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SyncList> getV1SyncWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1SyncValidateBeforeCall(null);
+    public ApiResponse<SyncList> getSyncWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getSyncValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<SyncList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -308,15 +308,15 @@ public class SyncApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SyncAsync(final ApiCallback<SyncList> _callback) throws ApiException {
+    public okhttp3.Call getSyncAsync(final ApiCallback<SyncList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SyncValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getSyncValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<SyncList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SyncById
+     * Build call for getSyncById
      * @param id ID is the sync to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -328,7 +328,7 @@ public class SyncApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SyncByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSyncByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -374,13 +374,13 @@ public class SyncApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SyncByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSyncByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1SyncById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getSyncById(Async)");
         }
 
-        return getV1SyncByIdCall(id, _callback);
+        return getSyncByIdCall(id, _callback);
 
     }
 
@@ -397,8 +397,8 @@ public class SyncApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SyncView getV1SyncById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<SyncView> localVarResp = getV1SyncByIdWithHttpInfo(id);
+    public SyncView getSyncById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SyncView> localVarResp = getSyncByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -415,8 +415,8 @@ public class SyncApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SyncView> getV1SyncByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1SyncByIdValidateBeforeCall(id, null);
+    public ApiResponse<SyncView> getSyncByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getSyncByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<SyncView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -435,15 +435,15 @@ public class SyncApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SyncByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<SyncView> _callback) throws ApiException {
+    public okhttp3.Call getSyncByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<SyncView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SyncByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getSyncByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<SyncView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1SyncById
+     * Build call for patchSyncById
      * @param id ID is the sync to update, from the path. (required)
      * @param patchSyncIn  (required)
      * @param _callback Callback for upload/download progress
@@ -456,7 +456,7 @@ public class SyncApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchV1SyncByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSyncIn patchSyncIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchSyncByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSyncIn patchSyncIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -503,18 +503,18 @@ public class SyncApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1SyncByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSyncIn patchSyncIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchSyncByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSyncIn patchSyncIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling patchV1SyncById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling patchSyncById(Async)");
         }
 
         // verify the required parameter 'patchSyncIn' is set
         if (patchSyncIn == null) {
-            throw new ApiException("Missing the required parameter 'patchSyncIn' when calling patchV1SyncById(Async)");
+            throw new ApiException("Missing the required parameter 'patchSyncIn' when calling patchSyncById(Async)");
         }
 
-        return patchV1SyncByIdCall(id, patchSyncIn, _callback);
+        return patchSyncByIdCall(id, patchSyncIn, _callback);
 
     }
 
@@ -532,8 +532,8 @@ public class SyncApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SyncView patchV1SyncById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSyncIn patchSyncIn) throws ApiException {
-        ApiResponse<SyncView> localVarResp = patchV1SyncByIdWithHttpInfo(id, patchSyncIn);
+    public SyncView patchSyncById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSyncIn patchSyncIn) throws ApiException {
+        ApiResponse<SyncView> localVarResp = patchSyncByIdWithHttpInfo(id, patchSyncIn);
         return localVarResp.getData();
     }
 
@@ -551,8 +551,8 @@ public class SyncApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SyncView> patchV1SyncByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSyncIn patchSyncIn) throws ApiException {
-        okhttp3.Call localVarCall = patchV1SyncByIdValidateBeforeCall(id, patchSyncIn, null);
+    public ApiResponse<SyncView> patchSyncByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSyncIn patchSyncIn) throws ApiException {
+        okhttp3.Call localVarCall = patchSyncByIdValidateBeforeCall(id, patchSyncIn, null);
         Type localVarReturnType = new TypeToken<SyncView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -572,15 +572,15 @@ public class SyncApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchV1SyncByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSyncIn patchSyncIn, final ApiCallback<SyncView> _callback) throws ApiException {
+    public okhttp3.Call patchSyncByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSyncIn patchSyncIn, final ApiCallback<SyncView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1SyncByIdValidateBeforeCall(id, patchSyncIn, _callback);
+        okhttp3.Call localVarCall = patchSyncByIdValidateBeforeCall(id, patchSyncIn, _callback);
         Type localVarReturnType = new TypeToken<SyncView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Sync
+     * Build call for postSync
      * @param syncReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -592,7 +592,7 @@ public class SyncApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SyncCall(@javax.annotation.Nonnull SyncReq syncReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSyncCall(@javax.annotation.Nonnull SyncReq syncReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -638,13 +638,13 @@ public class SyncApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SyncValidateBeforeCall(@javax.annotation.Nonnull SyncReq syncReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSyncValidateBeforeCall(@javax.annotation.Nonnull SyncReq syncReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'syncReq' is set
         if (syncReq == null) {
-            throw new ApiException("Missing the required parameter 'syncReq' when calling postV1Sync(Async)");
+            throw new ApiException("Missing the required parameter 'syncReq' when calling postSync(Async)");
         }
 
-        return postV1SyncCall(syncReq, _callback);
+        return postSyncCall(syncReq, _callback);
 
     }
 
@@ -661,8 +661,8 @@ public class SyncApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SyncView postV1Sync(@javax.annotation.Nonnull SyncReq syncReq) throws ApiException {
-        ApiResponse<SyncView> localVarResp = postV1SyncWithHttpInfo(syncReq);
+    public SyncView postSync(@javax.annotation.Nonnull SyncReq syncReq) throws ApiException {
+        ApiResponse<SyncView> localVarResp = postSyncWithHttpInfo(syncReq);
         return localVarResp.getData();
     }
 
@@ -679,8 +679,8 @@ public class SyncApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SyncView> postV1SyncWithHttpInfo(@javax.annotation.Nonnull SyncReq syncReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1SyncValidateBeforeCall(syncReq, null);
+    public ApiResponse<SyncView> postSyncWithHttpInfo(@javax.annotation.Nonnull SyncReq syncReq) throws ApiException {
+        okhttp3.Call localVarCall = postSyncValidateBeforeCall(syncReq, null);
         Type localVarReturnType = new TypeToken<SyncView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -699,15 +699,15 @@ public class SyncApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SyncAsync(@javax.annotation.Nonnull SyncReq syncReq, final ApiCallback<SyncView> _callback) throws ApiException {
+    public okhttp3.Call postSyncAsync(@javax.annotation.Nonnull SyncReq syncReq, final ApiCallback<SyncView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SyncValidateBeforeCall(syncReq, _callback);
+        okhttp3.Call localVarCall = postSyncValidateBeforeCall(syncReq, _callback);
         Type localVarReturnType = new TypeToken<SyncView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1SyncByIdRun
+     * Build call for postSyncByIdRun
      * @param id ID is the sync to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -719,7 +719,7 @@ public class SyncApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SyncByIdRunCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSyncByIdRunCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -765,13 +765,13 @@ public class SyncApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SyncByIdRunValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSyncByIdRunValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1SyncByIdRun(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postSyncByIdRun(Async)");
         }
 
-        return postV1SyncByIdRunCall(id, _callback);
+        return postSyncByIdRunCall(id, _callback);
 
     }
 
@@ -788,8 +788,8 @@ public class SyncApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public SyncQueued postV1SyncByIdRun(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<SyncQueued> localVarResp = postV1SyncByIdRunWithHttpInfo(id);
+    public SyncQueued postSyncByIdRun(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SyncQueued> localVarResp = postSyncByIdRunWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -806,8 +806,8 @@ public class SyncApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SyncQueued> postV1SyncByIdRunWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1SyncByIdRunValidateBeforeCall(id, null);
+    public ApiResponse<SyncQueued> postSyncByIdRunWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postSyncByIdRunValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<SyncQueued>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -826,9 +826,9 @@ public class SyncApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SyncByIdRunAsync(@javax.annotation.Nonnull String id, final ApiCallback<SyncQueued> _callback) throws ApiException {
+    public okhttp3.Call postSyncByIdRunAsync(@javax.annotation.Nonnull String id, final ApiCallback<SyncQueued> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SyncByIdRunValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postSyncByIdRunValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<SyncQueued>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

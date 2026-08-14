@@ -81,7 +81,7 @@ public class ContentApi {
     }
 
     /**
-     * Build call for getV1ContentBoard
+     * Build call for getContentBoard
      * @param status Status keeps only items in one lifecycle state (draft, in_review, approved, queued, published, archived). An undefined state is refused. (optional)
      * @param project Project keeps only items in one brand/site sub-scope. (optional)
      * @param doctype DocType keeps only one content type; omitted, the board spans every publishable type. An unknown type is refused. (optional)
@@ -96,7 +96,7 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ContentBoardCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getContentBoardCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -157,8 +157,8 @@ public class ContentApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ContentBoardValidateBeforeCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1ContentBoardCall(status, project, doctype, limit, _callback);
+    private okhttp3.Call getContentBoardValidateBeforeCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getContentBoardCall(status, project, doctype, limit, _callback);
 
     }
 
@@ -178,8 +178,8 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BoardPage getV1ContentBoard(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<BoardPage> localVarResp = getV1ContentBoardWithHttpInfo(status, project, doctype, limit);
+    public BoardPage getContentBoard(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<BoardPage> localVarResp = getContentBoardWithHttpInfo(status, project, doctype, limit);
         return localVarResp.getData();
     }
 
@@ -199,8 +199,8 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BoardPage> getV1ContentBoardWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1ContentBoardValidateBeforeCall(status, project, doctype, limit, null);
+    public ApiResponse<BoardPage> getContentBoardWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getContentBoardValidateBeforeCall(status, project, doctype, limit, null);
         Type localVarReturnType = new TypeToken<BoardPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -222,15 +222,15 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ContentBoardAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Integer limit, final ApiCallback<BoardPage> _callback) throws ApiException {
+    public okhttp3.Call getContentBoardAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Integer limit, final ApiCallback<BoardPage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ContentBoardValidateBeforeCall(status, project, doctype, limit, _callback);
+        okhttp3.Call localVarCall = getContentBoardValidateBeforeCall(status, project, doctype, limit, _callback);
         Type localVarReturnType = new TypeToken<BoardPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ContentChannels
+     * Build call for getContentChannels
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -241,7 +241,7 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ContentChannelsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getContentChannelsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -286,8 +286,8 @@ public class ContentApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ContentChannelsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1ContentChannelsCall(_callback);
+    private okhttp3.Call getContentChannelsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getContentChannelsCall(_callback);
 
     }
 
@@ -303,8 +303,8 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ChannelList getV1ContentChannels() throws ApiException {
-        ApiResponse<ChannelList> localVarResp = getV1ContentChannelsWithHttpInfo();
+    public ChannelList getContentChannels() throws ApiException {
+        ApiResponse<ChannelList> localVarResp = getContentChannelsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -320,8 +320,8 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ChannelList> getV1ContentChannelsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1ContentChannelsValidateBeforeCall(null);
+    public ApiResponse<ChannelList> getContentChannelsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getContentChannelsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ChannelList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -339,15 +339,15 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ContentChannelsAsync(final ApiCallback<ChannelList> _callback) throws ApiException {
+    public okhttp3.Call getContentChannelsAsync(final ApiCallback<ChannelList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ContentChannelsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getContentChannelsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ChannelList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ContentLifecycle
+     * Build call for getContentLifecycle
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -358,7 +358,7 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ContentLifecycleCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getContentLifecycleCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -403,8 +403,8 @@ public class ContentApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ContentLifecycleValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1ContentLifecycleCall(_callback);
+    private okhttp3.Call getContentLifecycleValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getContentLifecycleCall(_callback);
 
     }
 
@@ -420,8 +420,8 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public StateGraph getV1ContentLifecycle() throws ApiException {
-        ApiResponse<StateGraph> localVarResp = getV1ContentLifecycleWithHttpInfo();
+    public StateGraph getContentLifecycle() throws ApiException {
+        ApiResponse<StateGraph> localVarResp = getContentLifecycleWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -437,8 +437,8 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<StateGraph> getV1ContentLifecycleWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1ContentLifecycleValidateBeforeCall(null);
+    public ApiResponse<StateGraph> getContentLifecycleWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getContentLifecycleValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<StateGraph>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -456,15 +456,15 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ContentLifecycleAsync(final ApiCallback<StateGraph> _callback) throws ApiException {
+    public okhttp3.Call getContentLifecycleAsync(final ApiCallback<StateGraph> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ContentLifecycleValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getContentLifecycleValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<StateGraph>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ContentByDoctypeByNameTransition
+     * Build call for postContentByDoctypeByNameTransition
      * @param doctype DocType is the content type to act on, from the path. (required)
      * @param name Name is the document to act on, from the path. (required)
      * @param transitionIn  (required)
@@ -478,7 +478,7 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ContentByDoctypeByNameTransitionCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull TransitionIn transitionIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postContentByDoctypeByNameTransitionCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull TransitionIn transitionIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -526,23 +526,23 @@ public class ContentApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ContentByDoctypeByNameTransitionValidateBeforeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull TransitionIn transitionIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postContentByDoctypeByNameTransitionValidateBeforeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull TransitionIn transitionIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'doctype' is set
         if (doctype == null) {
-            throw new ApiException("Missing the required parameter 'doctype' when calling postV1ContentByDoctypeByNameTransition(Async)");
+            throw new ApiException("Missing the required parameter 'doctype' when calling postContentByDoctypeByNameTransition(Async)");
         }
 
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling postV1ContentByDoctypeByNameTransition(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling postContentByDoctypeByNameTransition(Async)");
         }
 
         // verify the required parameter 'transitionIn' is set
         if (transitionIn == null) {
-            throw new ApiException("Missing the required parameter 'transitionIn' when calling postV1ContentByDoctypeByNameTransition(Async)");
+            throw new ApiException("Missing the required parameter 'transitionIn' when calling postContentByDoctypeByNameTransition(Async)");
         }
 
-        return postV1ContentByDoctypeByNameTransitionCall(doctype, name, transitionIn, _callback);
+        return postContentByDoctypeByNameTransitionCall(doctype, name, transitionIn, _callback);
 
     }
 
@@ -561,8 +561,8 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public TransitionResult postV1ContentByDoctypeByNameTransition(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull TransitionIn transitionIn) throws ApiException {
-        ApiResponse<TransitionResult> localVarResp = postV1ContentByDoctypeByNameTransitionWithHttpInfo(doctype, name, transitionIn);
+    public TransitionResult postContentByDoctypeByNameTransition(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull TransitionIn transitionIn) throws ApiException {
+        ApiResponse<TransitionResult> localVarResp = postContentByDoctypeByNameTransitionWithHttpInfo(doctype, name, transitionIn);
         return localVarResp.getData();
     }
 
@@ -581,8 +581,8 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TransitionResult> postV1ContentByDoctypeByNameTransitionWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull TransitionIn transitionIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1ContentByDoctypeByNameTransitionValidateBeforeCall(doctype, name, transitionIn, null);
+    public ApiResponse<TransitionResult> postContentByDoctypeByNameTransitionWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull TransitionIn transitionIn) throws ApiException {
+        okhttp3.Call localVarCall = postContentByDoctypeByNameTransitionValidateBeforeCall(doctype, name, transitionIn, null);
         Type localVarReturnType = new TypeToken<TransitionResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -603,15 +603,15 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ContentByDoctypeByNameTransitionAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull TransitionIn transitionIn, final ApiCallback<TransitionResult> _callback) throws ApiException {
+    public okhttp3.Call postContentByDoctypeByNameTransitionAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull TransitionIn transitionIn, final ApiCallback<TransitionResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ContentByDoctypeByNameTransitionValidateBeforeCall(doctype, name, transitionIn, _callback);
+        okhttp3.Call localVarCall = postContentByDoctypeByNameTransitionValidateBeforeCall(doctype, name, transitionIn, _callback);
         Type localVarReturnType = new TypeToken<TransitionResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ContentGenerate
+     * Build call for postContentGenerate
      * @param generateInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -624,7 +624,7 @@ public class ContentApi {
         <tr><td> 402 </td><td> payment required </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ContentGenerateCall(@javax.annotation.Nonnull GenerateInput generateInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postContentGenerateCall(@javax.annotation.Nonnull GenerateInput generateInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -670,13 +670,13 @@ public class ContentApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ContentGenerateValidateBeforeCall(@javax.annotation.Nonnull GenerateInput generateInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postContentGenerateValidateBeforeCall(@javax.annotation.Nonnull GenerateInput generateInput, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'generateInput' is set
         if (generateInput == null) {
-            throw new ApiException("Missing the required parameter 'generateInput' when calling postV1ContentGenerate(Async)");
+            throw new ApiException("Missing the required parameter 'generateInput' when calling postContentGenerate(Async)");
         }
 
-        return postV1ContentGenerateCall(generateInput, _callback);
+        return postContentGenerateCall(generateInput, _callback);
 
     }
 
@@ -694,8 +694,8 @@ public class ContentApi {
         <tr><td> 402 </td><td> payment required </td><td>  -  </td></tr>
      </table>
      */
-    public GenerateResult postV1ContentGenerate(@javax.annotation.Nonnull GenerateInput generateInput) throws ApiException {
-        ApiResponse<GenerateResult> localVarResp = postV1ContentGenerateWithHttpInfo(generateInput);
+    public GenerateResult postContentGenerate(@javax.annotation.Nonnull GenerateInput generateInput) throws ApiException {
+        ApiResponse<GenerateResult> localVarResp = postContentGenerateWithHttpInfo(generateInput);
         return localVarResp.getData();
     }
 
@@ -713,8 +713,8 @@ public class ContentApi {
         <tr><td> 402 </td><td> payment required </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GenerateResult> postV1ContentGenerateWithHttpInfo(@javax.annotation.Nonnull GenerateInput generateInput) throws ApiException {
-        okhttp3.Call localVarCall = postV1ContentGenerateValidateBeforeCall(generateInput, null);
+    public ApiResponse<GenerateResult> postContentGenerateWithHttpInfo(@javax.annotation.Nonnull GenerateInput generateInput) throws ApiException {
+        okhttp3.Call localVarCall = postContentGenerateValidateBeforeCall(generateInput, null);
         Type localVarReturnType = new TypeToken<GenerateResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -734,15 +734,15 @@ public class ContentApi {
         <tr><td> 402 </td><td> payment required </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ContentGenerateAsync(@javax.annotation.Nonnull GenerateInput generateInput, final ApiCallback<GenerateResult> _callback) throws ApiException {
+    public okhttp3.Call postContentGenerateAsync(@javax.annotation.Nonnull GenerateInput generateInput, final ApiCallback<GenerateResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ContentGenerateValidateBeforeCall(generateInput, _callback);
+        okhttp3.Call localVarCall = postContentGenerateValidateBeforeCall(generateInput, _callback);
         Type localVarReturnType = new TypeToken<GenerateResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ContentPublish
+     * Build call for postContentPublish
      * @param publishInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -754,7 +754,7 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ContentPublishCall(@javax.annotation.Nonnull PublishInput publishInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postContentPublishCall(@javax.annotation.Nonnull PublishInput publishInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -800,13 +800,13 @@ public class ContentApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ContentPublishValidateBeforeCall(@javax.annotation.Nonnull PublishInput publishInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postContentPublishValidateBeforeCall(@javax.annotation.Nonnull PublishInput publishInput, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'publishInput' is set
         if (publishInput == null) {
-            throw new ApiException("Missing the required parameter 'publishInput' when calling postV1ContentPublish(Async)");
+            throw new ApiException("Missing the required parameter 'publishInput' when calling postContentPublish(Async)");
         }
 
-        return postV1ContentPublishCall(publishInput, _callback);
+        return postContentPublishCall(publishInput, _callback);
 
     }
 
@@ -823,8 +823,8 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PublishResult postV1ContentPublish(@javax.annotation.Nonnull PublishInput publishInput) throws ApiException {
-        ApiResponse<PublishResult> localVarResp = postV1ContentPublishWithHttpInfo(publishInput);
+    public PublishResult postContentPublish(@javax.annotation.Nonnull PublishInput publishInput) throws ApiException {
+        ApiResponse<PublishResult> localVarResp = postContentPublishWithHttpInfo(publishInput);
         return localVarResp.getData();
     }
 
@@ -841,8 +841,8 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PublishResult> postV1ContentPublishWithHttpInfo(@javax.annotation.Nonnull PublishInput publishInput) throws ApiException {
-        okhttp3.Call localVarCall = postV1ContentPublishValidateBeforeCall(publishInput, null);
+    public ApiResponse<PublishResult> postContentPublishWithHttpInfo(@javax.annotation.Nonnull PublishInput publishInput) throws ApiException {
+        okhttp3.Call localVarCall = postContentPublishValidateBeforeCall(publishInput, null);
         Type localVarReturnType = new TypeToken<PublishResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -861,9 +861,9 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ContentPublishAsync(@javax.annotation.Nonnull PublishInput publishInput, final ApiCallback<PublishResult> _callback) throws ApiException {
+    public okhttp3.Call postContentPublishAsync(@javax.annotation.Nonnull PublishInput publishInput, final ApiCallback<PublishResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ContentPublishValidateBeforeCall(publishInput, _callback);
+        okhttp3.Call localVarCall = postContentPublishValidateBeforeCall(publishInput, _callback);
         Type localVarReturnType = new TypeToken<PublishResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -35,11 +35,14 @@ import ai.hanzo.cloud.model.DeployReq;
 import ai.hanzo.cloud.model.DeploymentView;
 import ai.hanzo.cloud.model.DomainView;
 import ai.hanzo.cloud.model.DriftBoard;
+import java.io.File;
 import ai.hanzo.cloud.model.PreviewReq;
 import ai.hanzo.cloud.model.PreviewView;
 import ai.hanzo.cloud.model.ProjectView;
 import ai.hanzo.cloud.model.ProjectsBoundDomains;
+import ai.hanzo.cloud.model.ProjectsComplete;
 import ai.hanzo.cloud.model.ProjectsCreate;
+import ai.hanzo.cloud.model.ProjectsDeployStart;
 import ai.hanzo.cloud.model.ProjectsDeployment;
 import ai.hanzo.cloud.model.ProjectsDomain;
 import ai.hanzo.cloud.model.ProjectsDomains;
@@ -99,7 +102,7 @@ public class PlatformApi {
     }
 
     /**
-     * Build call for deleteV1PlatformProjectsByProjectAppsByApp
+     * Build call for deletePlatformProjectsByProjectAppsByApp
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param _callback Callback for upload/download progress
@@ -112,7 +115,7 @@ public class PlatformApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1PlatformProjectsByProjectAppsByAppCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deletePlatformProjectsByProjectAppsByAppCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -158,18 +161,18 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1PlatformProjectsByProjectAppsByAppValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePlatformProjectsByProjectAppsByAppValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling deleteV1PlatformProjectsByProjectAppsByApp(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling deletePlatformProjectsByProjectAppsByApp(Async)");
         }
 
         // verify the required parameter 'app' is set
         if (app == null) {
-            throw new ApiException("Missing the required parameter 'app' when calling deleteV1PlatformProjectsByProjectAppsByApp(Async)");
+            throw new ApiException("Missing the required parameter 'app' when calling deletePlatformProjectsByProjectAppsByApp(Async)");
         }
 
-        return deleteV1PlatformProjectsByProjectAppsByAppCall(project, app, _callback);
+        return deletePlatformProjectsByProjectAppsByAppCall(project, app, _callback);
 
     }
 
@@ -186,8 +189,8 @@ public class PlatformApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1PlatformProjectsByProjectAppsByApp(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
-        deleteV1PlatformProjectsByProjectAppsByAppWithHttpInfo(project, app);
+    public void deletePlatformProjectsByProjectAppsByApp(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+        deletePlatformProjectsByProjectAppsByAppWithHttpInfo(project, app);
     }
 
     /**
@@ -204,8 +207,8 @@ public class PlatformApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1PlatformProjectsByProjectAppsByAppWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1PlatformProjectsByProjectAppsByAppValidateBeforeCall(project, app, null);
+    public ApiResponse<Void> deletePlatformProjectsByProjectAppsByAppWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+        okhttp3.Call localVarCall = deletePlatformProjectsByProjectAppsByAppValidateBeforeCall(project, app, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -224,14 +227,14 @@ public class PlatformApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1PlatformProjectsByProjectAppsByAppAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deletePlatformProjectsByProjectAppsByAppAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1PlatformProjectsByProjectAppsByAppValidateBeforeCall(project, app, _callback);
+        okhttp3.Call localVarCall = deletePlatformProjectsByProjectAppsByAppValidateBeforeCall(project, app, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1PlatformProjectsByProjectAppsByAppDomainsByHost
+     * Build call for deletePlatformProjectsByProjectAppsByAppDomainsByHost
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param host Host is the hostname, from the path. (required)
@@ -245,7 +248,7 @@ public class PlatformApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1PlatformProjectsByProjectAppsByAppDomainsByHostCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deletePlatformProjectsByProjectAppsByAppDomainsByHostCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -292,23 +295,23 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1PlatformProjectsByProjectAppsByAppDomainsByHostValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePlatformProjectsByProjectAppsByAppDomainsByHostValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling deleteV1PlatformProjectsByProjectAppsByAppDomainsByHost(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling deletePlatformProjectsByProjectAppsByAppDomainsByHost(Async)");
         }
 
         // verify the required parameter 'app' is set
         if (app == null) {
-            throw new ApiException("Missing the required parameter 'app' when calling deleteV1PlatformProjectsByProjectAppsByAppDomainsByHost(Async)");
+            throw new ApiException("Missing the required parameter 'app' when calling deletePlatformProjectsByProjectAppsByAppDomainsByHost(Async)");
         }
 
         // verify the required parameter 'host' is set
         if (host == null) {
-            throw new ApiException("Missing the required parameter 'host' when calling deleteV1PlatformProjectsByProjectAppsByAppDomainsByHost(Async)");
+            throw new ApiException("Missing the required parameter 'host' when calling deletePlatformProjectsByProjectAppsByAppDomainsByHost(Async)");
         }
 
-        return deleteV1PlatformProjectsByProjectAppsByAppDomainsByHostCall(project, app, host, _callback);
+        return deletePlatformProjectsByProjectAppsByAppDomainsByHostCall(project, app, host, _callback);
 
     }
 
@@ -326,8 +329,8 @@ public class PlatformApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1PlatformProjectsByProjectAppsByAppDomainsByHost(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host) throws ApiException {
-        deleteV1PlatformProjectsByProjectAppsByAppDomainsByHostWithHttpInfo(project, app, host);
+    public void deletePlatformProjectsByProjectAppsByAppDomainsByHost(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host) throws ApiException {
+        deletePlatformProjectsByProjectAppsByAppDomainsByHostWithHttpInfo(project, app, host);
     }
 
     /**
@@ -345,8 +348,8 @@ public class PlatformApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1PlatformProjectsByProjectAppsByAppDomainsByHostWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1PlatformProjectsByProjectAppsByAppDomainsByHostValidateBeforeCall(project, app, host, null);
+    public ApiResponse<Void> deletePlatformProjectsByProjectAppsByAppDomainsByHostWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host) throws ApiException {
+        okhttp3.Call localVarCall = deletePlatformProjectsByProjectAppsByAppDomainsByHostValidateBeforeCall(project, app, host, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -366,14 +369,14 @@ public class PlatformApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1PlatformProjectsByProjectAppsByAppDomainsByHostAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deletePlatformProjectsByProjectAppsByAppDomainsByHostAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1PlatformProjectsByProjectAppsByAppDomainsByHostValidateBeforeCall(project, app, host, _callback);
+        okhttp3.Call localVarCall = deletePlatformProjectsByProjectAppsByAppDomainsByHostValidateBeforeCall(project, app, host, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1PlatformSitesBySlug
+     * Build call for deletePlatformSitesBySlug
      * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -385,7 +388,7 @@ public class PlatformApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1PlatformSitesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deletePlatformSitesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -430,19 +433,19 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1PlatformSitesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePlatformSitesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling deleteV1PlatformSitesBySlug(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling deletePlatformSitesBySlug(Async)");
         }
 
-        return deleteV1PlatformSitesBySlugCall(slug, _callback);
+        return deletePlatformSitesBySlugCall(slug, _callback);
 
     }
 
     /**
      * Deletes a project and takes its site off the internet.
-     * Deletes a project and takes its site off the internet.  The metadata delete is authoritative and everything after it is best-effort, in this order: the public &#x60;&lt;slug&gt;&#x60; subdomain binding is released so the slug is free to reclaim, the release rows are dropped so a reclaimed slug never inherits the previous owner&#39;s rollback menu, the S3 origin is purged under BOTH &#x60;&lt;org&gt;/&lt;slug&gt;/&#x60; and the site&#39;s sibling release space, and the edge cache-tag is flushed. A failure in any of those is logged and the delete still answers 204 — resurrecting a project because a purge missed would be worse than a leaked prefix.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404 and nothing of theirs is touched.
+     * Deletes a project and takes its site off the internet.  The metadata delete is authoritative and everything after it is best-effort, in this order: the public &#x60;&lt;slug&gt;&#x60; subdomain binding is released so the slug is free to reclaim, the release rows are dropped so a reclaimed slug never inherits the previous owner&#39;s rollback menu, the git source is retired on every copy it has so a reclaimed slug never adopts a repository left behind (visibility.go), the S3 origin is purged under BOTH &#x60;&lt;org&gt;/&lt;slug&gt;/&#x60; and the site&#39;s sibling release space, and the edge cache-tag is flushed. A failure in any of those is logged and the delete still answers 204 — resurrecting a project because a purge missed would be worse than a leaked prefix.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404 and nothing of theirs is touched.
      * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -452,13 +455,13 @@ public class PlatformApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1PlatformSitesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
-        deleteV1PlatformSitesBySlugWithHttpInfo(slug);
+    public void deletePlatformSitesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
+        deletePlatformSitesBySlugWithHttpInfo(slug);
     }
 
     /**
      * Deletes a project and takes its site off the internet.
-     * Deletes a project and takes its site off the internet.  The metadata delete is authoritative and everything after it is best-effort, in this order: the public &#x60;&lt;slug&gt;&#x60; subdomain binding is released so the slug is free to reclaim, the release rows are dropped so a reclaimed slug never inherits the previous owner&#39;s rollback menu, the S3 origin is purged under BOTH &#x60;&lt;org&gt;/&lt;slug&gt;/&#x60; and the site&#39;s sibling release space, and the edge cache-tag is flushed. A failure in any of those is logged and the delete still answers 204 — resurrecting a project because a purge missed would be worse than a leaked prefix.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404 and nothing of theirs is touched.
+     * Deletes a project and takes its site off the internet.  The metadata delete is authoritative and everything after it is best-effort, in this order: the public &#x60;&lt;slug&gt;&#x60; subdomain binding is released so the slug is free to reclaim, the release rows are dropped so a reclaimed slug never inherits the previous owner&#39;s rollback menu, the git source is retired on every copy it has so a reclaimed slug never adopts a repository left behind (visibility.go), the S3 origin is purged under BOTH &#x60;&lt;org&gt;/&lt;slug&gt;/&#x60; and the site&#39;s sibling release space, and the edge cache-tag is flushed. A failure in any of those is logged and the delete still answers 204 — resurrecting a project because a purge missed would be worse than a leaked prefix.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404 and nothing of theirs is touched.
      * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -469,14 +472,14 @@ public class PlatformApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1PlatformSitesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1PlatformSitesBySlugValidateBeforeCall(slug, null);
+    public ApiResponse<Void> deletePlatformSitesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = deletePlatformSitesBySlugValidateBeforeCall(slug, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Deletes a project and takes its site off the internet. (asynchronously)
-     * Deletes a project and takes its site off the internet.  The metadata delete is authoritative and everything after it is best-effort, in this order: the public &#x60;&lt;slug&gt;&#x60; subdomain binding is released so the slug is free to reclaim, the release rows are dropped so a reclaimed slug never inherits the previous owner&#39;s rollback menu, the S3 origin is purged under BOTH &#x60;&lt;org&gt;/&lt;slug&gt;/&#x60; and the site&#39;s sibling release space, and the edge cache-tag is flushed. A failure in any of those is logged and the delete still answers 204 — resurrecting a project because a purge missed would be worse than a leaked prefix.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404 and nothing of theirs is touched.
+     * Deletes a project and takes its site off the internet.  The metadata delete is authoritative and everything after it is best-effort, in this order: the public &#x60;&lt;slug&gt;&#x60; subdomain binding is released so the slug is free to reclaim, the release rows are dropped so a reclaimed slug never inherits the previous owner&#39;s rollback menu, the git source is retired on every copy it has so a reclaimed slug never adopts a repository left behind (visibility.go), the S3 origin is purged under BOTH &#x60;&lt;org&gt;/&lt;slug&gt;/&#x60; and the site&#39;s sibling release space, and the edge cache-tag is flushed. A failure in any of those is logged and the delete still answers 204 — resurrecting a project because a purge missed would be worse than a leaked prefix.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404 and nothing of theirs is touched.
      * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -488,14 +491,14 @@ public class PlatformApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1PlatformSitesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deletePlatformSitesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1PlatformSitesBySlugValidateBeforeCall(slug, _callback);
+        okhttp3.Call localVarCall = deletePlatformSitesBySlugValidateBeforeCall(slug, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1PlatformSitesBySlugDomainsByHost
+     * Build call for deletePlatformSitesBySlugDomainsByHost
      * @param slug Slug is the project the host is attached to, from the path. (required)
      * @param host Host is the custom hostname, from the path. It is cleaned to its canonical form (lowercased, trailing dot dropped) before anything is looked up. (required)
      * @param _callback Callback for upload/download progress
@@ -508,7 +511,7 @@ public class PlatformApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1PlatformSitesBySlugDomainsByHostCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deletePlatformSitesBySlugDomainsByHostCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -554,18 +557,18 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1PlatformSitesBySlugDomainsByHostValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePlatformSitesBySlugDomainsByHostValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling deleteV1PlatformSitesBySlugDomainsByHost(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling deletePlatformSitesBySlugDomainsByHost(Async)");
         }
 
         // verify the required parameter 'host' is set
         if (host == null) {
-            throw new ApiException("Missing the required parameter 'host' when calling deleteV1PlatformSitesBySlugDomainsByHost(Async)");
+            throw new ApiException("Missing the required parameter 'host' when calling deletePlatformSitesBySlugDomainsByHost(Async)");
         }
 
-        return deleteV1PlatformSitesBySlugDomainsByHostCall(slug, host, _callback);
+        return deletePlatformSitesBySlugDomainsByHostCall(slug, host, _callback);
 
     }
 
@@ -582,8 +585,8 @@ public class PlatformApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1PlatformSitesBySlugDomainsByHost(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host) throws ApiException {
-        deleteV1PlatformSitesBySlugDomainsByHostWithHttpInfo(slug, host);
+    public void deletePlatformSitesBySlugDomainsByHost(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host) throws ApiException {
+        deletePlatformSitesBySlugDomainsByHostWithHttpInfo(slug, host);
     }
 
     /**
@@ -600,8 +603,8 @@ public class PlatformApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1PlatformSitesBySlugDomainsByHostWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1PlatformSitesBySlugDomainsByHostValidateBeforeCall(slug, host, null);
+    public ApiResponse<Void> deletePlatformSitesBySlugDomainsByHostWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host) throws ApiException {
+        okhttp3.Call localVarCall = deletePlatformSitesBySlugDomainsByHostValidateBeforeCall(slug, host, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -620,19 +623,19 @@ public class PlatformApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1PlatformSitesBySlugDomainsByHostAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deletePlatformSitesBySlugDomainsByHostAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1PlatformSitesBySlugDomainsByHostValidateBeforeCall(slug, host, _callback);
+        okhttp3.Call localVarCall = deletePlatformSitesBySlugDomainsByHostValidateBeforeCall(slug, host, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformApps
+     * Build call for getPlatformApps
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1PlatformAppsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformAppsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -676,8 +679,8 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformAppsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PlatformAppsCall(_callback);
+    private okhttp3.Call getPlatformAppsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPlatformAppsCall(_callback);
 
     }
 
@@ -686,8 +689,8 @@ public class PlatformApi {
      * Returns the declarations in the caller&#39;s own org directory, each joined with the Hanzo CD Application reconciling it — sync verdict, health, the universe commit last applied. &#x60;cd&#x60; is null for a declaration the delivery plane has no Application for, which is the normal state of one that exists only on a branch.  If the delivery plane cannot be read, the declarations are still returned and &#x60;cdUnavailable&#x60; says why. An unreadable plane never renders as \&quot;nothing has been reconciled\&quot;.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1PlatformApps() throws ApiException {
-        getV1PlatformAppsWithHttpInfo();
+    public void getPlatformApps() throws ApiException {
+        getPlatformAppsWithHttpInfo();
     }
 
     /**
@@ -696,8 +699,8 @@ public class PlatformApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1PlatformAppsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformAppsValidateBeforeCall(null);
+    public ApiResponse<Void> getPlatformAppsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPlatformAppsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -708,20 +711,20 @@ public class PlatformApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1PlatformAppsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getPlatformAppsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformAppsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPlatformAppsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformAppsByApp
+     * Build call for getPlatformAppsByApp
      * @param app  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1PlatformAppsByAppCall(@javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformAppsByAppCall(@javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -766,13 +769,13 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformAppsByAppValidateBeforeCall(@javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPlatformAppsByAppValidateBeforeCall(@javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'app' is set
         if (app == null) {
-            throw new ApiException("Missing the required parameter 'app' when calling getV1PlatformAppsByApp(Async)");
+            throw new ApiException("Missing the required parameter 'app' when calling getPlatformAppsByApp(Async)");
         }
 
-        return getV1PlatformAppsByAppCall(app, _callback);
+        return getPlatformAppsByAppCall(app, _callback);
 
     }
 
@@ -782,8 +785,8 @@ public class PlatformApi {
      * @param app  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1PlatformAppsByApp(@javax.annotation.Nonnull String app) throws ApiException {
-        getV1PlatformAppsByAppWithHttpInfo(app);
+    public void getPlatformAppsByApp(@javax.annotation.Nonnull String app) throws ApiException {
+        getPlatformAppsByAppWithHttpInfo(app);
     }
 
     /**
@@ -793,8 +796,8 @@ public class PlatformApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1PlatformAppsByAppWithHttpInfo(@javax.annotation.Nonnull String app) throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformAppsByAppValidateBeforeCall(app, null);
+    public ApiResponse<Void> getPlatformAppsByAppWithHttpInfo(@javax.annotation.Nonnull String app) throws ApiException {
+        okhttp3.Call localVarCall = getPlatformAppsByAppValidateBeforeCall(app, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -806,20 +809,20 @@ public class PlatformApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1PlatformAppsByAppAsync(@javax.annotation.Nonnull String app, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getPlatformAppsByAppAsync(@javax.annotation.Nonnull String app, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformAppsByAppValidateBeforeCall(app, _callback);
+        okhttp3.Call localVarCall = getPlatformAppsByAppValidateBeforeCall(app, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformAppsByAppCd
+     * Build call for getPlatformAppsByAppCd
      * @param app  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1PlatformAppsByAppCdCall(@javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformAppsByAppCdCall(@javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -864,13 +867,13 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformAppsByAppCdValidateBeforeCall(@javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPlatformAppsByAppCdValidateBeforeCall(@javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'app' is set
         if (app == null) {
-            throw new ApiException("Missing the required parameter 'app' when calling getV1PlatformAppsByAppCd(Async)");
+            throw new ApiException("Missing the required parameter 'app' when calling getPlatformAppsByAppCd(Async)");
         }
 
-        return getV1PlatformAppsByAppCdCall(app, _callback);
+        return getPlatformAppsByAppCdCall(app, _callback);
 
     }
 
@@ -880,8 +883,8 @@ public class PlatformApi {
      * @param app  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1PlatformAppsByAppCd(@javax.annotation.Nonnull String app) throws ApiException {
-        getV1PlatformAppsByAppCdWithHttpInfo(app);
+    public void getPlatformAppsByAppCd(@javax.annotation.Nonnull String app) throws ApiException {
+        getPlatformAppsByAppCdWithHttpInfo(app);
     }
 
     /**
@@ -891,8 +894,8 @@ public class PlatformApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1PlatformAppsByAppCdWithHttpInfo(@javax.annotation.Nonnull String app) throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformAppsByAppCdValidateBeforeCall(app, null);
+    public ApiResponse<Void> getPlatformAppsByAppCdWithHttpInfo(@javax.annotation.Nonnull String app) throws ApiException {
+        okhttp3.Call localVarCall = getPlatformAppsByAppCdValidateBeforeCall(app, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -904,19 +907,19 @@ public class PlatformApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1PlatformAppsByAppCdAsync(@javax.annotation.Nonnull String app, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getPlatformAppsByAppCdAsync(@javax.annotation.Nonnull String app, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformAppsByAppCdValidateBeforeCall(app, _callback);
+        okhttp3.Call localVarCall = getPlatformAppsByAppCdValidateBeforeCall(app, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformCd
+     * Build call for getPlatformCd
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1PlatformCdCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformCdCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -960,8 +963,8 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformCdValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PlatformCdCall(_callback);
+    private okhttp3.Call getPlatformCdValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPlatformCdCall(_callback);
 
     }
 
@@ -970,8 +973,8 @@ public class PlatformApi {
      * Every Hanzo CD Application this caller may observe, with its sync verdict, health, the universe revision last applied, and whether automation and self-heal are on. A SuperAdmin sees the fleet; an org admin sees only Applications whose destination namespace IS its own organization, and never a reserved one.  A cluster with no CD installed answers an empty plane. A plane that cannot be READ answers 503 and says why — the two are opposite facts and never share a shape.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1PlatformCd() throws ApiException {
-        getV1PlatformCdWithHttpInfo();
+    public void getPlatformCd() throws ApiException {
+        getPlatformCdWithHttpInfo();
     }
 
     /**
@@ -980,8 +983,8 @@ public class PlatformApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1PlatformCdWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformCdValidateBeforeCall(null);
+    public ApiResponse<Void> getPlatformCdWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPlatformCdValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -992,19 +995,19 @@ public class PlatformApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1PlatformCdAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getPlatformCdAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformCdValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPlatformCdValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformCi
+     * Build call for getPlatformCi
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1PlatformCiCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformCiCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1048,8 +1051,8 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformCiValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PlatformCiCall(_callback);
+    private okhttp3.Call getPlatformCiValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPlatformCiCall(_callback);
 
     }
 
@@ -1058,8 +1061,8 @@ public class PlatformApi {
      * Answers 501. The forge&#39;s Actions runs need a Forgejo API client and this deployment has none; an empty run list would be indistinguishable from a forge with no runs.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1PlatformCi() throws ApiException {
-        getV1PlatformCiWithHttpInfo();
+    public void getPlatformCi() throws ApiException {
+        getPlatformCiWithHttpInfo();
     }
 
     /**
@@ -1068,8 +1071,8 @@ public class PlatformApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1PlatformCiWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformCiValidateBeforeCall(null);
+    public ApiResponse<Void> getPlatformCiWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPlatformCiValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1080,14 +1083,14 @@ public class PlatformApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1PlatformCiAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getPlatformCiAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformCiValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPlatformCiValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformFleet
+     * Build call for getPlatformFleet
      * @param env Env narrows to one lifecycle env: main, test or dev. (optional)
      * @param health Health narrows to one health colour: green, yellow or red. (optional)
      * @param org Org narrows to one image namespace. (optional)
@@ -1102,7 +1105,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformFleetCall(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String org, @javax.annotation.Nullable String drift, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformFleetCall(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String org, @javax.annotation.Nullable String drift, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1163,8 +1166,8 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformFleetValidateBeforeCall(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String org, @javax.annotation.Nullable String drift, final ApiCallback _callback) throws ApiException {
-        return getV1PlatformFleetCall(env, health, org, drift, _callback);
+    private okhttp3.Call getPlatformFleetValidateBeforeCall(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String org, @javax.annotation.Nullable String drift, final ApiCallback _callback) throws ApiException {
+        return getPlatformFleetCall(env, health, org, drift, _callback);
 
     }
 
@@ -1184,8 +1187,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DriftBoard getV1PlatformFleet(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String org, @javax.annotation.Nullable String drift) throws ApiException {
-        ApiResponse<DriftBoard> localVarResp = getV1PlatformFleetWithHttpInfo(env, health, org, drift);
+    public DriftBoard getPlatformFleet(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String org, @javax.annotation.Nullable String drift) throws ApiException {
+        ApiResponse<DriftBoard> localVarResp = getPlatformFleetWithHttpInfo(env, health, org, drift);
         return localVarResp.getData();
     }
 
@@ -1205,8 +1208,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DriftBoard> getV1PlatformFleetWithHttpInfo(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String org, @javax.annotation.Nullable String drift) throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformFleetValidateBeforeCall(env, health, org, drift, null);
+    public ApiResponse<DriftBoard> getPlatformFleetWithHttpInfo(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String org, @javax.annotation.Nullable String drift) throws ApiException {
+        okhttp3.Call localVarCall = getPlatformFleetValidateBeforeCall(env, health, org, drift, null);
         Type localVarReturnType = new TypeToken<DriftBoard>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1228,15 +1231,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformFleetAsync(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String org, @javax.annotation.Nullable String drift, final ApiCallback<DriftBoard> _callback) throws ApiException {
+    public okhttp3.Call getPlatformFleetAsync(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String org, @javax.annotation.Nullable String drift, final ApiCallback<DriftBoard> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformFleetValidateBeforeCall(env, health, org, drift, _callback);
+        okhttp3.Call localVarCall = getPlatformFleetValidateBeforeCall(env, health, org, drift, _callback);
         Type localVarReturnType = new TypeToken<DriftBoard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformFleetByApp
+     * Build call for getPlatformFleetByApp
      * @param app App is the service&#39;s CR name, from the path. It must be a DNS-1123 label. (required)
      * @param env Env narrows the scan to one lifecycle env: main, test or dev. Omitted, the namespaces are scanned in lifecycle order and the first match wins, so a bare name resolves to PRODUCTION. (optional)
      * @param _callback Callback for upload/download progress
@@ -1249,7 +1252,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformFleetByAppCall(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformFleetByAppCall(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1299,13 +1302,13 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformFleetByAppValidateBeforeCall(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPlatformFleetByAppValidateBeforeCall(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'app' is set
         if (app == null) {
-            throw new ApiException("Missing the required parameter 'app' when calling getV1PlatformFleetByApp(Async)");
+            throw new ApiException("Missing the required parameter 'app' when calling getPlatformFleetByApp(Async)");
         }
 
-        return getV1PlatformFleetByAppCall(app, env, _callback);
+        return getPlatformFleetByAppCall(app, env, _callback);
 
     }
 
@@ -1323,8 +1326,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AppView getV1PlatformFleetByApp(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env) throws ApiException {
-        ApiResponse<AppView> localVarResp = getV1PlatformFleetByAppWithHttpInfo(app, env);
+    public AppView getPlatformFleetByApp(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env) throws ApiException {
+        ApiResponse<AppView> localVarResp = getPlatformFleetByAppWithHttpInfo(app, env);
         return localVarResp.getData();
     }
 
@@ -1342,8 +1345,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AppView> getV1PlatformFleetByAppWithHttpInfo(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env) throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformFleetByAppValidateBeforeCall(app, env, null);
+    public ApiResponse<AppView> getPlatformFleetByAppWithHttpInfo(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env) throws ApiException {
+        okhttp3.Call localVarCall = getPlatformFleetByAppValidateBeforeCall(app, env, null);
         Type localVarReturnType = new TypeToken<AppView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1363,15 +1366,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformFleetByAppAsync(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env, final ApiCallback<AppView> _callback) throws ApiException {
+    public okhttp3.Call getPlatformFleetByAppAsync(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env, final ApiCallback<AppView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformFleetByAppValidateBeforeCall(app, env, _callback);
+        okhttp3.Call localVarCall = getPlatformFleetByAppValidateBeforeCall(app, env, _callback);
         Type localVarReturnType = new TypeToken<AppView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformHealth
+     * Build call for getPlatformHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1383,7 +1386,7 @@ public class PlatformApi {
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1428,8 +1431,8 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PlatformHealthCall(_callback);
+    private okhttp3.Call getPlatformHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPlatformHealthCall(_callback);
 
     }
 
@@ -1446,8 +1449,8 @@ public class PlatformApi {
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public Readiness getV1PlatformHealth() throws ApiException {
-        ApiResponse<Readiness> localVarResp = getV1PlatformHealthWithHttpInfo();
+    public Readiness getPlatformHealth() throws ApiException {
+        ApiResponse<Readiness> localVarResp = getPlatformHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1464,8 +1467,8 @@ public class PlatformApi {
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Readiness> getV1PlatformHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformHealthValidateBeforeCall(null);
+    public ApiResponse<Readiness> getPlatformHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPlatformHealthValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Readiness>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1484,15 +1487,15 @@ public class PlatformApi {
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformHealthAsync(final ApiCallback<Readiness> _callback) throws ApiException {
+    public okhttp3.Call getPlatformHealthAsync(final ApiCallback<Readiness> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPlatformHealthValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Readiness>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformProjects
+     * Build call for getPlatformProjects
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1503,7 +1506,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformProjectsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1548,8 +1551,8 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformProjectsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PlatformProjectsCall(_callback);
+    private okhttp3.Call getPlatformProjectsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPlatformProjectsCall(_callback);
 
     }
 
@@ -1565,8 +1568,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProjectView> getV1PlatformProjects() throws ApiException {
-        ApiResponse<List<ProjectView>> localVarResp = getV1PlatformProjectsWithHttpInfo();
+    public List<ProjectView> getPlatformProjects() throws ApiException {
+        ApiResponse<List<ProjectView>> localVarResp = getPlatformProjectsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1582,8 +1585,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProjectView>> getV1PlatformProjectsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformProjectsValidateBeforeCall(null);
+    public ApiResponse<List<ProjectView>> getPlatformProjectsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPlatformProjectsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<List<ProjectView>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1601,15 +1604,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformProjectsAsync(final ApiCallback<List<ProjectView>> _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsAsync(final ApiCallback<List<ProjectView>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformProjectsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPlatformProjectsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<List<ProjectView>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformProjectsByProject
+     * Build call for getPlatformProjectsByProject
      * @param project Project is the project&#39;s name, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1621,7 +1624,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformProjectsByProjectCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1667,13 +1670,13 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformProjectsByProjectValidateBeforeCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPlatformProjectsByProjectValidateBeforeCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling getV1PlatformProjectsByProject(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling getPlatformProjectsByProject(Async)");
         }
 
-        return getV1PlatformProjectsByProjectCall(project, _callback);
+        return getPlatformProjectsByProjectCall(project, _callback);
 
     }
 
@@ -1690,8 +1693,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectView getV1PlatformProjectsByProject(@javax.annotation.Nonnull String project) throws ApiException {
-        ApiResponse<ProjectView> localVarResp = getV1PlatformProjectsByProjectWithHttpInfo(project);
+    public ProjectView getPlatformProjectsByProject(@javax.annotation.Nonnull String project) throws ApiException {
+        ApiResponse<ProjectView> localVarResp = getPlatformProjectsByProjectWithHttpInfo(project);
         return localVarResp.getData();
     }
 
@@ -1708,8 +1711,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectView> getV1PlatformProjectsByProjectWithHttpInfo(@javax.annotation.Nonnull String project) throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformProjectsByProjectValidateBeforeCall(project, null);
+    public ApiResponse<ProjectView> getPlatformProjectsByProjectWithHttpInfo(@javax.annotation.Nonnull String project) throws ApiException {
+        okhttp3.Call localVarCall = getPlatformProjectsByProjectValidateBeforeCall(project, null);
         Type localVarReturnType = new TypeToken<ProjectView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1728,15 +1731,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformProjectsByProjectAsync(@javax.annotation.Nonnull String project, final ApiCallback<ProjectView> _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectAsync(@javax.annotation.Nonnull String project, final ApiCallback<ProjectView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformProjectsByProjectValidateBeforeCall(project, _callback);
+        okhttp3.Call localVarCall = getPlatformProjectsByProjectValidateBeforeCall(project, _callback);
         Type localVarReturnType = new TypeToken<ProjectView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformProjectsByProjectApps
+     * Build call for getPlatformProjectsByProjectApps
      * @param project Project is the project&#39;s name, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1748,7 +1751,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformProjectsByProjectAppsCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectAppsCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1794,13 +1797,13 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformProjectsByProjectAppsValidateBeforeCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPlatformProjectsByProjectAppsValidateBeforeCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling getV1PlatformProjectsByProjectApps(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling getPlatformProjectsByProjectApps(Async)");
         }
 
-        return getV1PlatformProjectsByProjectAppsCall(project, _callback);
+        return getPlatformProjectsByProjectAppsCall(project, _callback);
 
     }
 
@@ -1817,8 +1820,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<AppView> getV1PlatformProjectsByProjectApps(@javax.annotation.Nonnull String project) throws ApiException {
-        ApiResponse<List<AppView>> localVarResp = getV1PlatformProjectsByProjectAppsWithHttpInfo(project);
+    public List<AppView> getPlatformProjectsByProjectApps(@javax.annotation.Nonnull String project) throws ApiException {
+        ApiResponse<List<AppView>> localVarResp = getPlatformProjectsByProjectAppsWithHttpInfo(project);
         return localVarResp.getData();
     }
 
@@ -1835,8 +1838,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<AppView>> getV1PlatformProjectsByProjectAppsWithHttpInfo(@javax.annotation.Nonnull String project) throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformProjectsByProjectAppsValidateBeforeCall(project, null);
+    public ApiResponse<List<AppView>> getPlatformProjectsByProjectAppsWithHttpInfo(@javax.annotation.Nonnull String project) throws ApiException {
+        okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsValidateBeforeCall(project, null);
         Type localVarReturnType = new TypeToken<List<AppView>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1855,15 +1858,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformProjectsByProjectAppsAsync(@javax.annotation.Nonnull String project, final ApiCallback<List<AppView>> _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectAppsAsync(@javax.annotation.Nonnull String project, final ApiCallback<List<AppView>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformProjectsByProjectAppsValidateBeforeCall(project, _callback);
+        okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsValidateBeforeCall(project, _callback);
         Type localVarReturnType = new TypeToken<List<AppView>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformProjectsByProjectAppsByApp
+     * Build call for getPlatformProjectsByProjectAppsByApp
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param _callback Callback for upload/download progress
@@ -1876,7 +1879,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformProjectsByProjectAppsByAppCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectAppsByAppCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1923,18 +1926,18 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformProjectsByProjectAppsByAppValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPlatformProjectsByProjectAppsByAppValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling getV1PlatformProjectsByProjectAppsByApp(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling getPlatformProjectsByProjectAppsByApp(Async)");
         }
 
         // verify the required parameter 'app' is set
         if (app == null) {
-            throw new ApiException("Missing the required parameter 'app' when calling getV1PlatformProjectsByProjectAppsByApp(Async)");
+            throw new ApiException("Missing the required parameter 'app' when calling getPlatformProjectsByProjectAppsByApp(Async)");
         }
 
-        return getV1PlatformProjectsByProjectAppsByAppCall(project, app, _callback);
+        return getPlatformProjectsByProjectAppsByAppCall(project, app, _callback);
 
     }
 
@@ -1952,8 +1955,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AppView getV1PlatformProjectsByProjectAppsByApp(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
-        ApiResponse<AppView> localVarResp = getV1PlatformProjectsByProjectAppsByAppWithHttpInfo(project, app);
+    public AppView getPlatformProjectsByProjectAppsByApp(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+        ApiResponse<AppView> localVarResp = getPlatformProjectsByProjectAppsByAppWithHttpInfo(project, app);
         return localVarResp.getData();
     }
 
@@ -1971,8 +1974,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AppView> getV1PlatformProjectsByProjectAppsByAppWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformProjectsByProjectAppsByAppValidateBeforeCall(project, app, null);
+    public ApiResponse<AppView> getPlatformProjectsByProjectAppsByAppWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+        okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsByAppValidateBeforeCall(project, app, null);
         Type localVarReturnType = new TypeToken<AppView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1992,15 +1995,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformProjectsByProjectAppsByAppAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<AppView> _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectAppsByAppAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<AppView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformProjectsByProjectAppsByAppValidateBeforeCall(project, app, _callback);
+        okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsByAppValidateBeforeCall(project, app, _callback);
         Type localVarReturnType = new TypeToken<AppView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformProjectsByProjectAppsByAppDeployments
+     * Build call for getPlatformProjectsByProjectAppsByAppDeployments
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param _callback Callback for upload/download progress
@@ -2013,7 +2016,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformProjectsByProjectAppsByAppDeploymentsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectAppsByAppDeploymentsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2060,18 +2063,18 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformProjectsByProjectAppsByAppDeploymentsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPlatformProjectsByProjectAppsByAppDeploymentsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling getV1PlatformProjectsByProjectAppsByAppDeployments(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling getPlatformProjectsByProjectAppsByAppDeployments(Async)");
         }
 
         // verify the required parameter 'app' is set
         if (app == null) {
-            throw new ApiException("Missing the required parameter 'app' when calling getV1PlatformProjectsByProjectAppsByAppDeployments(Async)");
+            throw new ApiException("Missing the required parameter 'app' when calling getPlatformProjectsByProjectAppsByAppDeployments(Async)");
         }
 
-        return getV1PlatformProjectsByProjectAppsByAppDeploymentsCall(project, app, _callback);
+        return getPlatformProjectsByProjectAppsByAppDeploymentsCall(project, app, _callback);
 
     }
 
@@ -2089,8 +2092,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<DeploymentView> getV1PlatformProjectsByProjectAppsByAppDeployments(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
-        ApiResponse<List<DeploymentView>> localVarResp = getV1PlatformProjectsByProjectAppsByAppDeploymentsWithHttpInfo(project, app);
+    public List<DeploymentView> getPlatformProjectsByProjectAppsByAppDeployments(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+        ApiResponse<List<DeploymentView>> localVarResp = getPlatformProjectsByProjectAppsByAppDeploymentsWithHttpInfo(project, app);
         return localVarResp.getData();
     }
 
@@ -2108,8 +2111,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<DeploymentView>> getV1PlatformProjectsByProjectAppsByAppDeploymentsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformProjectsByProjectAppsByAppDeploymentsValidateBeforeCall(project, app, null);
+    public ApiResponse<List<DeploymentView>> getPlatformProjectsByProjectAppsByAppDeploymentsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+        okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsByAppDeploymentsValidateBeforeCall(project, app, null);
         Type localVarReturnType = new TypeToken<List<DeploymentView>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2129,15 +2132,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformProjectsByProjectAppsByAppDeploymentsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<List<DeploymentView>> _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectAppsByAppDeploymentsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<List<DeploymentView>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformProjectsByProjectAppsByAppDeploymentsValidateBeforeCall(project, app, _callback);
+        okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsByAppDeploymentsValidateBeforeCall(project, app, _callback);
         Type localVarReturnType = new TypeToken<List<DeploymentView>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformProjectsByProjectAppsByAppDeploymentsById
+     * Build call for getPlatformProjectsByProjectAppsByAppDeploymentsById
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param id ID is the deployment&#39;s id, from the path. (required)
@@ -2151,7 +2154,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformProjectsByProjectAppsByAppDeploymentsByIdCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectAppsByAppDeploymentsByIdCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2199,23 +2202,23 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformProjectsByProjectAppsByAppDeploymentsByIdValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPlatformProjectsByProjectAppsByAppDeploymentsByIdValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling getV1PlatformProjectsByProjectAppsByAppDeploymentsById(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling getPlatformProjectsByProjectAppsByAppDeploymentsById(Async)");
         }
 
         // verify the required parameter 'app' is set
         if (app == null) {
-            throw new ApiException("Missing the required parameter 'app' when calling getV1PlatformProjectsByProjectAppsByAppDeploymentsById(Async)");
+            throw new ApiException("Missing the required parameter 'app' when calling getPlatformProjectsByProjectAppsByAppDeploymentsById(Async)");
         }
 
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1PlatformProjectsByProjectAppsByAppDeploymentsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getPlatformProjectsByProjectAppsByAppDeploymentsById(Async)");
         }
 
-        return getV1PlatformProjectsByProjectAppsByAppDeploymentsByIdCall(project, app, id, _callback);
+        return getPlatformProjectsByProjectAppsByAppDeploymentsByIdCall(project, app, id, _callback);
 
     }
 
@@ -2234,8 +2237,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DeploymentView getV1PlatformProjectsByProjectAppsByAppDeploymentsById(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<DeploymentView> localVarResp = getV1PlatformProjectsByProjectAppsByAppDeploymentsByIdWithHttpInfo(project, app, id);
+    public DeploymentView getPlatformProjectsByProjectAppsByAppDeploymentsById(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<DeploymentView> localVarResp = getPlatformProjectsByProjectAppsByAppDeploymentsByIdWithHttpInfo(project, app, id);
         return localVarResp.getData();
     }
 
@@ -2254,8 +2257,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeploymentView> getV1PlatformProjectsByProjectAppsByAppDeploymentsByIdWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformProjectsByProjectAppsByAppDeploymentsByIdValidateBeforeCall(project, app, id, null);
+    public ApiResponse<DeploymentView> getPlatformProjectsByProjectAppsByAppDeploymentsByIdWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsByAppDeploymentsByIdValidateBeforeCall(project, app, id, null);
         Type localVarReturnType = new TypeToken<DeploymentView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2276,15 +2279,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformProjectsByProjectAppsByAppDeploymentsByIdAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback<DeploymentView> _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectAppsByAppDeploymentsByIdAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback<DeploymentView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformProjectsByProjectAppsByAppDeploymentsByIdValidateBeforeCall(project, app, id, _callback);
+        okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsByAppDeploymentsByIdValidateBeforeCall(project, app, id, _callback);
         Type localVarReturnType = new TypeToken<DeploymentView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformProjectsByProjectAppsByAppDeploymentsByIdLogs
+     * Build call for getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogs
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param id ID is the deployment&#39;s id, from the path. (required)
@@ -2298,7 +2301,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformProjectsByProjectAppsByAppDeploymentsByIdLogsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2346,23 +2349,23 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformProjectsByProjectAppsByAppDeploymentsByIdLogsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling getV1PlatformProjectsByProjectAppsByAppDeploymentsByIdLogs(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogs(Async)");
         }
 
         // verify the required parameter 'app' is set
         if (app == null) {
-            throw new ApiException("Missing the required parameter 'app' when calling getV1PlatformProjectsByProjectAppsByAppDeploymentsByIdLogs(Async)");
+            throw new ApiException("Missing the required parameter 'app' when calling getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogs(Async)");
         }
 
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1PlatformProjectsByProjectAppsByAppDeploymentsByIdLogs(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogs(Async)");
         }
 
-        return getV1PlatformProjectsByProjectAppsByAppDeploymentsByIdLogsCall(project, app, id, _callback);
+        return getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogsCall(project, app, id, _callback);
 
     }
 
@@ -2381,8 +2384,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DeployLogs getV1PlatformProjectsByProjectAppsByAppDeploymentsByIdLogs(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<DeployLogs> localVarResp = getV1PlatformProjectsByProjectAppsByAppDeploymentsByIdLogsWithHttpInfo(project, app, id);
+    public DeployLogs getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogs(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<DeployLogs> localVarResp = getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogsWithHttpInfo(project, app, id);
         return localVarResp.getData();
     }
 
@@ -2401,8 +2404,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeployLogs> getV1PlatformProjectsByProjectAppsByAppDeploymentsByIdLogsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformProjectsByProjectAppsByAppDeploymentsByIdLogsValidateBeforeCall(project, app, id, null);
+    public ApiResponse<DeployLogs> getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogsValidateBeforeCall(project, app, id, null);
         Type localVarReturnType = new TypeToken<DeployLogs>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2423,15 +2426,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformProjectsByProjectAppsByAppDeploymentsByIdLogsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback<DeployLogs> _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback<DeployLogs> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformProjectsByProjectAppsByAppDeploymentsByIdLogsValidateBeforeCall(project, app, id, _callback);
+        okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogsValidateBeforeCall(project, app, id, _callback);
         Type localVarReturnType = new TypeToken<DeployLogs>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformProjectsByProjectAppsByAppDomains
+     * Build call for getPlatformProjectsByProjectAppsByAppDomains
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param _callback Callback for upload/download progress
@@ -2444,7 +2447,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformProjectsByProjectAppsByAppDomainsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectAppsByAppDomainsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2491,18 +2494,18 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformProjectsByProjectAppsByAppDomainsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPlatformProjectsByProjectAppsByAppDomainsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling getV1PlatformProjectsByProjectAppsByAppDomains(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling getPlatformProjectsByProjectAppsByAppDomains(Async)");
         }
 
         // verify the required parameter 'app' is set
         if (app == null) {
-            throw new ApiException("Missing the required parameter 'app' when calling getV1PlatformProjectsByProjectAppsByAppDomains(Async)");
+            throw new ApiException("Missing the required parameter 'app' when calling getPlatformProjectsByProjectAppsByAppDomains(Async)");
         }
 
-        return getV1PlatformProjectsByProjectAppsByAppDomainsCall(project, app, _callback);
+        return getPlatformProjectsByProjectAppsByAppDomainsCall(project, app, _callback);
 
     }
 
@@ -2520,8 +2523,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<DomainView> getV1PlatformProjectsByProjectAppsByAppDomains(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
-        ApiResponse<List<DomainView>> localVarResp = getV1PlatformProjectsByProjectAppsByAppDomainsWithHttpInfo(project, app);
+    public List<DomainView> getPlatformProjectsByProjectAppsByAppDomains(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+        ApiResponse<List<DomainView>> localVarResp = getPlatformProjectsByProjectAppsByAppDomainsWithHttpInfo(project, app);
         return localVarResp.getData();
     }
 
@@ -2539,8 +2542,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<DomainView>> getV1PlatformProjectsByProjectAppsByAppDomainsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformProjectsByProjectAppsByAppDomainsValidateBeforeCall(project, app, null);
+    public ApiResponse<List<DomainView>> getPlatformProjectsByProjectAppsByAppDomainsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+        okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsByAppDomainsValidateBeforeCall(project, app, null);
         Type localVarReturnType = new TypeToken<List<DomainView>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2560,15 +2563,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformProjectsByProjectAppsByAppDomainsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<List<DomainView>> _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectAppsByAppDomainsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<List<DomainView>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformProjectsByProjectAppsByAppDomainsValidateBeforeCall(project, app, _callback);
+        okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsByAppDomainsValidateBeforeCall(project, app, _callback);
         Type localVarReturnType = new TypeToken<List<DomainView>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformSites
+     * Build call for getPlatformSites
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2579,7 +2582,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformSitesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformSitesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2624,8 +2627,8 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformSitesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PlatformSitesCall(_callback);
+    private okhttp3.Call getPlatformSitesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPlatformSitesCall(_callback);
 
     }
 
@@ -2641,8 +2644,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProjectsProject> getV1PlatformSites() throws ApiException {
-        ApiResponse<List<ProjectsProject>> localVarResp = getV1PlatformSitesWithHttpInfo();
+    public List<ProjectsProject> getPlatformSites() throws ApiException {
+        ApiResponse<List<ProjectsProject>> localVarResp = getPlatformSitesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -2658,8 +2661,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProjectsProject>> getV1PlatformSitesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformSitesValidateBeforeCall(null);
+    public ApiResponse<List<ProjectsProject>> getPlatformSitesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPlatformSitesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<List<ProjectsProject>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2677,15 +2680,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformSitesAsync(final ApiCallback<List<ProjectsProject>> _callback) throws ApiException {
+    public okhttp3.Call getPlatformSitesAsync(final ApiCallback<List<ProjectsProject>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformSitesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPlatformSitesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<List<ProjectsProject>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformSitesBySlug
+     * Build call for getPlatformSitesBySlug
      * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2697,7 +2700,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformSitesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformSitesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2743,13 +2746,13 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformSitesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPlatformSitesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling getV1PlatformSitesBySlug(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling getPlatformSitesBySlug(Async)");
         }
 
-        return getV1PlatformSitesBySlugCall(slug, _callback);
+        return getPlatformSitesBySlugCall(slug, _callback);
 
     }
 
@@ -2766,8 +2769,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectsProject getV1PlatformSitesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
-        ApiResponse<ProjectsProject> localVarResp = getV1PlatformSitesBySlugWithHttpInfo(slug);
+    public ProjectsProject getPlatformSitesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
+        ApiResponse<ProjectsProject> localVarResp = getPlatformSitesBySlugWithHttpInfo(slug);
         return localVarResp.getData();
     }
 
@@ -2784,8 +2787,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectsProject> getV1PlatformSitesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformSitesBySlugValidateBeforeCall(slug, null);
+    public ApiResponse<ProjectsProject> getPlatformSitesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = getPlatformSitesBySlugValidateBeforeCall(slug, null);
         Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2804,15 +2807,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformSitesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<ProjectsProject> _callback) throws ApiException {
+    public okhttp3.Call getPlatformSitesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<ProjectsProject> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformSitesBySlugValidateBeforeCall(slug, _callback);
+        okhttp3.Call localVarCall = getPlatformSitesBySlugValidateBeforeCall(slug, _callback);
         Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformSitesBySlugDeployments
+     * Build call for getPlatformSitesBySlugDeployments
      * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2824,7 +2827,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformSitesBySlugDeploymentsCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformSitesBySlugDeploymentsCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2870,13 +2873,13 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformSitesBySlugDeploymentsValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPlatformSitesBySlugDeploymentsValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling getV1PlatformSitesBySlugDeployments(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling getPlatformSitesBySlugDeployments(Async)");
         }
 
-        return getV1PlatformSitesBySlugDeploymentsCall(slug, _callback);
+        return getPlatformSitesBySlugDeploymentsCall(slug, _callback);
 
     }
 
@@ -2893,8 +2896,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProjectsDeployment> getV1PlatformSitesBySlugDeployments(@javax.annotation.Nonnull String slug) throws ApiException {
-        ApiResponse<List<ProjectsDeployment>> localVarResp = getV1PlatformSitesBySlugDeploymentsWithHttpInfo(slug);
+    public List<ProjectsDeployment> getPlatformSitesBySlugDeployments(@javax.annotation.Nonnull String slug) throws ApiException {
+        ApiResponse<List<ProjectsDeployment>> localVarResp = getPlatformSitesBySlugDeploymentsWithHttpInfo(slug);
         return localVarResp.getData();
     }
 
@@ -2911,8 +2914,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProjectsDeployment>> getV1PlatformSitesBySlugDeploymentsWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformSitesBySlugDeploymentsValidateBeforeCall(slug, null);
+    public ApiResponse<List<ProjectsDeployment>> getPlatformSitesBySlugDeploymentsWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = getPlatformSitesBySlugDeploymentsValidateBeforeCall(slug, null);
         Type localVarReturnType = new TypeToken<List<ProjectsDeployment>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2931,15 +2934,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformSitesBySlugDeploymentsAsync(@javax.annotation.Nonnull String slug, final ApiCallback<List<ProjectsDeployment>> _callback) throws ApiException {
+    public okhttp3.Call getPlatformSitesBySlugDeploymentsAsync(@javax.annotation.Nonnull String slug, final ApiCallback<List<ProjectsDeployment>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformSitesBySlugDeploymentsValidateBeforeCall(slug, _callback);
+        okhttp3.Call localVarCall = getPlatformSitesBySlugDeploymentsValidateBeforeCall(slug, _callback);
         Type localVarReturnType = new TypeToken<List<ProjectsDeployment>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformSitesBySlugDeploymentsById
+     * Build call for getPlatformSitesBySlugDeploymentsById
      * @param slug Slug is the project the deployment belongs to, from the path. (required)
      * @param id ID is the deployment id, from the path. A deployment of another project — or of another tenant&#39;s project — is not found. (required)
      * @param _callback Callback for upload/download progress
@@ -2952,7 +2955,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformSitesBySlugDeploymentsByIdCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformSitesBySlugDeploymentsByIdCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2999,18 +3002,18 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformSitesBySlugDeploymentsByIdValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPlatformSitesBySlugDeploymentsByIdValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling getV1PlatformSitesBySlugDeploymentsById(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling getPlatformSitesBySlugDeploymentsById(Async)");
         }
 
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1PlatformSitesBySlugDeploymentsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getPlatformSitesBySlugDeploymentsById(Async)");
         }
 
-        return getV1PlatformSitesBySlugDeploymentsByIdCall(slug, id, _callback);
+        return getPlatformSitesBySlugDeploymentsByIdCall(slug, id, _callback);
 
     }
 
@@ -3028,8 +3031,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectsDeployment getV1PlatformSitesBySlugDeploymentsById(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<ProjectsDeployment> localVarResp = getV1PlatformSitesBySlugDeploymentsByIdWithHttpInfo(slug, id);
+    public ProjectsDeployment getPlatformSitesBySlugDeploymentsById(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<ProjectsDeployment> localVarResp = getPlatformSitesBySlugDeploymentsByIdWithHttpInfo(slug, id);
         return localVarResp.getData();
     }
 
@@ -3047,8 +3050,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectsDeployment> getV1PlatformSitesBySlugDeploymentsByIdWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformSitesBySlugDeploymentsByIdValidateBeforeCall(slug, id, null);
+    public ApiResponse<ProjectsDeployment> getPlatformSitesBySlugDeploymentsByIdWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getPlatformSitesBySlugDeploymentsByIdValidateBeforeCall(slug, id, null);
         Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3068,15 +3071,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformSitesBySlugDeploymentsByIdAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, final ApiCallback<ProjectsDeployment> _callback) throws ApiException {
+    public okhttp3.Call getPlatformSitesBySlugDeploymentsByIdAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, final ApiCallback<ProjectsDeployment> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformSitesBySlugDeploymentsByIdValidateBeforeCall(slug, id, _callback);
+        okhttp3.Call localVarCall = getPlatformSitesBySlugDeploymentsByIdValidateBeforeCall(slug, id, _callback);
         Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformSitesBySlugDomains
+     * Build call for getPlatformSitesBySlugDomains
      * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3088,7 +3091,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformSitesBySlugDomainsCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformSitesBySlugDomainsCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3134,13 +3137,13 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformSitesBySlugDomainsValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPlatformSitesBySlugDomainsValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling getV1PlatformSitesBySlugDomains(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling getPlatformSitesBySlugDomains(Async)");
         }
 
-        return getV1PlatformSitesBySlugDomainsCall(slug, _callback);
+        return getPlatformSitesBySlugDomainsCall(slug, _callback);
 
     }
 
@@ -3157,8 +3160,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectsDomains getV1PlatformSitesBySlugDomains(@javax.annotation.Nonnull String slug) throws ApiException {
-        ApiResponse<ProjectsDomains> localVarResp = getV1PlatformSitesBySlugDomainsWithHttpInfo(slug);
+    public ProjectsDomains getPlatformSitesBySlugDomains(@javax.annotation.Nonnull String slug) throws ApiException {
+        ApiResponse<ProjectsDomains> localVarResp = getPlatformSitesBySlugDomainsWithHttpInfo(slug);
         return localVarResp.getData();
     }
 
@@ -3175,8 +3178,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectsDomains> getV1PlatformSitesBySlugDomainsWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformSitesBySlugDomainsValidateBeforeCall(slug, null);
+    public ApiResponse<ProjectsDomains> getPlatformSitesBySlugDomainsWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = getPlatformSitesBySlugDomainsValidateBeforeCall(slug, null);
         Type localVarReturnType = new TypeToken<ProjectsDomains>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3195,15 +3198,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformSitesBySlugDomainsAsync(@javax.annotation.Nonnull String slug, final ApiCallback<ProjectsDomains> _callback) throws ApiException {
+    public okhttp3.Call getPlatformSitesBySlugDomainsAsync(@javax.annotation.Nonnull String slug, final ApiCallback<ProjectsDomains> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformSitesBySlugDomainsValidateBeforeCall(slug, _callback);
+        okhttp3.Call localVarCall = getPlatformSitesBySlugDomainsValidateBeforeCall(slug, _callback);
         Type localVarReturnType = new TypeToken<ProjectsDomains>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PlatformSitesBySlugReleases
+     * Build call for getPlatformSitesBySlugReleases
      * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3215,7 +3218,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformSitesBySlugReleasesCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformSitesBySlugReleasesCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3261,13 +3264,13 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PlatformSitesBySlugReleasesValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPlatformSitesBySlugReleasesValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling getV1PlatformSitesBySlugReleases(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling getPlatformSitesBySlugReleases(Async)");
         }
 
-        return getV1PlatformSitesBySlugReleasesCall(slug, _callback);
+        return getPlatformSitesBySlugReleasesCall(slug, _callback);
 
     }
 
@@ -3284,8 +3287,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProjectsRelease> getV1PlatformSitesBySlugReleases(@javax.annotation.Nonnull String slug) throws ApiException {
-        ApiResponse<List<ProjectsRelease>> localVarResp = getV1PlatformSitesBySlugReleasesWithHttpInfo(slug);
+    public List<ProjectsRelease> getPlatformSitesBySlugReleases(@javax.annotation.Nonnull String slug) throws ApiException {
+        ApiResponse<List<ProjectsRelease>> localVarResp = getPlatformSitesBySlugReleasesWithHttpInfo(slug);
         return localVarResp.getData();
     }
 
@@ -3302,8 +3305,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProjectsRelease>> getV1PlatformSitesBySlugReleasesWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
-        okhttp3.Call localVarCall = getV1PlatformSitesBySlugReleasesValidateBeforeCall(slug, null);
+    public ApiResponse<List<ProjectsRelease>> getPlatformSitesBySlugReleasesWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = getPlatformSitesBySlugReleasesValidateBeforeCall(slug, null);
         Type localVarReturnType = new TypeToken<List<ProjectsRelease>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3322,15 +3325,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PlatformSitesBySlugReleasesAsync(@javax.annotation.Nonnull String slug, final ApiCallback<List<ProjectsRelease>> _callback) throws ApiException {
+    public okhttp3.Call getPlatformSitesBySlugReleasesAsync(@javax.annotation.Nonnull String slug, final ApiCallback<List<ProjectsRelease>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PlatformSitesBySlugReleasesValidateBeforeCall(slug, _callback);
+        okhttp3.Call localVarCall = getPlatformSitesBySlugReleasesValidateBeforeCall(slug, _callback);
         Type localVarReturnType = new TypeToken<List<ProjectsRelease>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1PlatformSitesBySlug
+     * Build call for patchPlatformSitesBySlug
      * @param slug Slug is the project to update, from the path. The URL is the addressing authority — a &#x60;slug&#x60; in the body cannot move the write to another project. (required)
      * @param projectsUpdate  (required)
      * @param _callback Callback for upload/download progress
@@ -3343,7 +3346,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchV1PlatformSitesBySlugCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsUpdate projectsUpdate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchPlatformSitesBySlugCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsUpdate projectsUpdate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3390,18 +3393,18 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1PlatformSitesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsUpdate projectsUpdate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchPlatformSitesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsUpdate projectsUpdate, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling patchV1PlatformSitesBySlug(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling patchPlatformSitesBySlug(Async)");
         }
 
         // verify the required parameter 'projectsUpdate' is set
         if (projectsUpdate == null) {
-            throw new ApiException("Missing the required parameter 'projectsUpdate' when calling patchV1PlatformSitesBySlug(Async)");
+            throw new ApiException("Missing the required parameter 'projectsUpdate' when calling patchPlatformSitesBySlug(Async)");
         }
 
-        return patchV1PlatformSitesBySlugCall(slug, projectsUpdate, _callback);
+        return patchPlatformSitesBySlugCall(slug, projectsUpdate, _callback);
 
     }
 
@@ -3419,8 +3422,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectsProject patchV1PlatformSitesBySlug(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsUpdate projectsUpdate) throws ApiException {
-        ApiResponse<ProjectsProject> localVarResp = patchV1PlatformSitesBySlugWithHttpInfo(slug, projectsUpdate);
+    public ProjectsProject patchPlatformSitesBySlug(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsUpdate projectsUpdate) throws ApiException {
+        ApiResponse<ProjectsProject> localVarResp = patchPlatformSitesBySlugWithHttpInfo(slug, projectsUpdate);
         return localVarResp.getData();
     }
 
@@ -3438,8 +3441,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectsProject> patchV1PlatformSitesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsUpdate projectsUpdate) throws ApiException {
-        okhttp3.Call localVarCall = patchV1PlatformSitesBySlugValidateBeforeCall(slug, projectsUpdate, null);
+    public ApiResponse<ProjectsProject> patchPlatformSitesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsUpdate projectsUpdate) throws ApiException {
+        okhttp3.Call localVarCall = patchPlatformSitesBySlugValidateBeforeCall(slug, projectsUpdate, null);
         Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3459,20 +3462,20 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchV1PlatformSitesBySlugAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsUpdate projectsUpdate, final ApiCallback<ProjectsProject> _callback) throws ApiException {
+    public okhttp3.Call patchPlatformSitesBySlugAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsUpdate projectsUpdate, final ApiCallback<ProjectsProject> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1PlatformSitesBySlugValidateBeforeCall(slug, projectsUpdate, _callback);
+        okhttp3.Call localVarCall = patchPlatformSitesBySlugValidateBeforeCall(slug, projectsUpdate, _callback);
         Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PlatformApps
+     * Build call for postPlatformApps
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1PlatformAppsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformAppsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3516,8 +3519,8 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PlatformAppsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1PlatformAppsCall(_callback);
+    private okhttp3.Call postPlatformAppsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postPlatformAppsCall(_callback);
 
     }
 
@@ -3526,8 +3529,8 @@ public class PlatformApi {
      * Builds a git repository into an image and writes the declaration that names it — a values file in &#x60;hanzoai/universe&#x60; under &#x60;charts/app/values/&lt;namespace&gt;/&lt;name&gt;.yaml&#x60;, which the &#x60;fleet&#x60; ApplicationSet renders as one Application. That file IS the deployment: nothing else has to be applied.  &#x60;mode&#x60; decides whether anything can go live. The default, &#x60;branch&#x60;, pushes to &#x60;deploy/&lt;namespace&gt;/&lt;name&gt;/&lt;tag&gt;&#x60; and returns a review URL; the generator reads main, so a branch declaration deploys NOTHING and merging the review is the deliberate act. &#x60;commit&#x60; writes main, and proves the image is pullable first — a declaration naming an image the registry cannot serve is an ImagePullBackOff with no rollback path.  Omit &#x60;tag&#x60; to build; give it to declare an image an earlier call already built, which is how a green build is released without rebuilding it.  An org is its name: the values DIRECTORY, the destination NAMESPACE and the AppProject FENCE are all &#x60;&lt;org&gt;&#x60;, and the image is &#x60;&lt;registry&gt;/&lt;org&gt;/&lt;app&gt;&#x60;. None of them is a request field — the directory decides what CD admits the sync under and the repository decides what the cluster pulls, so a caller who could name either could reach outside its own org.  &#x60;org&#x60; is an ACT-AS, not a placement field: it defaults to the caller&#39;s own, and naming another requires SuperAdmin. So does naming a RESERVED org — the platform&#39;s own namespace family (the brands and their environments, the control and delivery planes, &#x60;admin&#x60;) — even when it is the caller&#39;s own, because an IAM org named &#x60;kube-system&#x60; does not own Kubernetes. Both refuse rather than downgrade, so an escape attempt is never indistinguishable from a normal request.  A host outside the caller&#39;s org subtree is refused: claim and verify a custom domain first.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1PlatformApps() throws ApiException {
-        postV1PlatformAppsWithHttpInfo();
+    public void postPlatformApps() throws ApiException {
+        postPlatformAppsWithHttpInfo();
     }
 
     /**
@@ -3536,8 +3539,8 @@ public class PlatformApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1PlatformAppsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1PlatformAppsValidateBeforeCall(null);
+    public ApiResponse<Void> postPlatformAppsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postPlatformAppsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3548,14 +3551,14 @@ public class PlatformApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1PlatformAppsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postPlatformAppsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PlatformAppsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postPlatformAppsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PlatformFleetByAppDeploy
+     * Build call for postPlatformFleetByAppDeploy
      * @param app App is the service&#39;s CR name, from the path. It must be a DNS-1123 label. (required)
      * @param restartRef  (required)
      * @param _callback Callback for upload/download progress
@@ -3568,7 +3571,7 @@ public class PlatformApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformFleetByAppDeployCall(@javax.annotation.Nonnull String app, @javax.annotation.Nonnull RestartRef restartRef, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformFleetByAppDeployCall(@javax.annotation.Nonnull String app, @javax.annotation.Nonnull RestartRef restartRef, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3615,18 +3618,18 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PlatformFleetByAppDeployValidateBeforeCall(@javax.annotation.Nonnull String app, @javax.annotation.Nonnull RestartRef restartRef, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformFleetByAppDeployValidateBeforeCall(@javax.annotation.Nonnull String app, @javax.annotation.Nonnull RestartRef restartRef, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'app' is set
         if (app == null) {
-            throw new ApiException("Missing the required parameter 'app' when calling postV1PlatformFleetByAppDeploy(Async)");
+            throw new ApiException("Missing the required parameter 'app' when calling postPlatformFleetByAppDeploy(Async)");
         }
 
         // verify the required parameter 'restartRef' is set
         if (restartRef == null) {
-            throw new ApiException("Missing the required parameter 'restartRef' when calling postV1PlatformFleetByAppDeploy(Async)");
+            throw new ApiException("Missing the required parameter 'restartRef' when calling postPlatformFleetByAppDeploy(Async)");
         }
 
-        return postV1PlatformFleetByAppDeployCall(app, restartRef, _callback);
+        return postPlatformFleetByAppDeployCall(app, restartRef, _callback);
 
     }
 
@@ -3644,8 +3647,8 @@ public class PlatformApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public Restarted postV1PlatformFleetByAppDeploy(@javax.annotation.Nonnull String app, @javax.annotation.Nonnull RestartRef restartRef) throws ApiException {
-        ApiResponse<Restarted> localVarResp = postV1PlatformFleetByAppDeployWithHttpInfo(app, restartRef);
+    public Restarted postPlatformFleetByAppDeploy(@javax.annotation.Nonnull String app, @javax.annotation.Nonnull RestartRef restartRef) throws ApiException {
+        ApiResponse<Restarted> localVarResp = postPlatformFleetByAppDeployWithHttpInfo(app, restartRef);
         return localVarResp.getData();
     }
 
@@ -3663,8 +3666,8 @@ public class PlatformApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Restarted> postV1PlatformFleetByAppDeployWithHttpInfo(@javax.annotation.Nonnull String app, @javax.annotation.Nonnull RestartRef restartRef) throws ApiException {
-        okhttp3.Call localVarCall = postV1PlatformFleetByAppDeployValidateBeforeCall(app, restartRef, null);
+    public ApiResponse<Restarted> postPlatformFleetByAppDeployWithHttpInfo(@javax.annotation.Nonnull String app, @javax.annotation.Nonnull RestartRef restartRef) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformFleetByAppDeployValidateBeforeCall(app, restartRef, null);
         Type localVarReturnType = new TypeToken<Restarted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3684,15 +3687,15 @@ public class PlatformApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformFleetByAppDeployAsync(@javax.annotation.Nonnull String app, @javax.annotation.Nonnull RestartRef restartRef, final ApiCallback<Restarted> _callback) throws ApiException {
+    public okhttp3.Call postPlatformFleetByAppDeployAsync(@javax.annotation.Nonnull String app, @javax.annotation.Nonnull RestartRef restartRef, final ApiCallback<Restarted> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PlatformFleetByAppDeployValidateBeforeCall(app, restartRef, _callback);
+        okhttp3.Call localVarCall = postPlatformFleetByAppDeployValidateBeforeCall(app, restartRef, _callback);
         Type localVarReturnType = new TypeToken<Restarted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PlatformProjectsByProjectApps
+     * Build call for postPlatformProjectsByProjectApps
      * @param project Project is the project to create the application under, from the path. (required)
      * @param createAppReq  (required)
      * @param _callback Callback for upload/download progress
@@ -3705,7 +3708,7 @@ public class PlatformApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformProjectsByProjectAppsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull CreateAppReq createAppReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull CreateAppReq createAppReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3752,18 +3755,18 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PlatformProjectsByProjectAppsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull CreateAppReq createAppReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformProjectsByProjectAppsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull CreateAppReq createAppReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling postV1PlatformProjectsByProjectApps(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling postPlatformProjectsByProjectApps(Async)");
         }
 
         // verify the required parameter 'createAppReq' is set
         if (createAppReq == null) {
-            throw new ApiException("Missing the required parameter 'createAppReq' when calling postV1PlatformProjectsByProjectApps(Async)");
+            throw new ApiException("Missing the required parameter 'createAppReq' when calling postPlatformProjectsByProjectApps(Async)");
         }
 
-        return postV1PlatformProjectsByProjectAppsCall(project, createAppReq, _callback);
+        return postPlatformProjectsByProjectAppsCall(project, createAppReq, _callback);
 
     }
 
@@ -3781,8 +3784,8 @@ public class PlatformApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public AppView postV1PlatformProjectsByProjectApps(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull CreateAppReq createAppReq) throws ApiException {
-        ApiResponse<AppView> localVarResp = postV1PlatformProjectsByProjectAppsWithHttpInfo(project, createAppReq);
+    public AppView postPlatformProjectsByProjectApps(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull CreateAppReq createAppReq) throws ApiException {
+        ApiResponse<AppView> localVarResp = postPlatformProjectsByProjectAppsWithHttpInfo(project, createAppReq);
         return localVarResp.getData();
     }
 
@@ -3800,8 +3803,8 @@ public class PlatformApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AppView> postV1PlatformProjectsByProjectAppsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull CreateAppReq createAppReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1PlatformProjectsByProjectAppsValidateBeforeCall(project, createAppReq, null);
+    public ApiResponse<AppView> postPlatformProjectsByProjectAppsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull CreateAppReq createAppReq) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsValidateBeforeCall(project, createAppReq, null);
         Type localVarReturnType = new TypeToken<AppView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3821,15 +3824,15 @@ public class PlatformApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformProjectsByProjectAppsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull CreateAppReq createAppReq, final ApiCallback<AppView> _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull CreateAppReq createAppReq, final ApiCallback<AppView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PlatformProjectsByProjectAppsValidateBeforeCall(project, createAppReq, _callback);
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsValidateBeforeCall(project, createAppReq, _callback);
         Type localVarReturnType = new TypeToken<AppView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PlatformProjectsByProjectAppsByAppDeploy
+     * Build call for postPlatformProjectsByProjectAppsByAppDeploy
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param deployReq  (required)
@@ -3843,7 +3846,7 @@ public class PlatformApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformProjectsByProjectAppsByAppDeployCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull DeployReq deployReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppDeployCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull DeployReq deployReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3891,23 +3894,23 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PlatformProjectsByProjectAppsByAppDeployValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull DeployReq deployReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformProjectsByProjectAppsByAppDeployValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull DeployReq deployReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling postV1PlatformProjectsByProjectAppsByAppDeploy(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling postPlatformProjectsByProjectAppsByAppDeploy(Async)");
         }
 
         // verify the required parameter 'app' is set
         if (app == null) {
-            throw new ApiException("Missing the required parameter 'app' when calling postV1PlatformProjectsByProjectAppsByAppDeploy(Async)");
+            throw new ApiException("Missing the required parameter 'app' when calling postPlatformProjectsByProjectAppsByAppDeploy(Async)");
         }
 
         // verify the required parameter 'deployReq' is set
         if (deployReq == null) {
-            throw new ApiException("Missing the required parameter 'deployReq' when calling postV1PlatformProjectsByProjectAppsByAppDeploy(Async)");
+            throw new ApiException("Missing the required parameter 'deployReq' when calling postPlatformProjectsByProjectAppsByAppDeploy(Async)");
         }
 
-        return postV1PlatformProjectsByProjectAppsByAppDeployCall(project, app, deployReq, _callback);
+        return postPlatformProjectsByProjectAppsByAppDeployCall(project, app, deployReq, _callback);
 
     }
 
@@ -3926,8 +3929,8 @@ public class PlatformApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public DeploymentView postV1PlatformProjectsByProjectAppsByAppDeploy(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull DeployReq deployReq) throws ApiException {
-        ApiResponse<DeploymentView> localVarResp = postV1PlatformProjectsByProjectAppsByAppDeployWithHttpInfo(project, app, deployReq);
+    public DeploymentView postPlatformProjectsByProjectAppsByAppDeploy(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull DeployReq deployReq) throws ApiException {
+        ApiResponse<DeploymentView> localVarResp = postPlatformProjectsByProjectAppsByAppDeployWithHttpInfo(project, app, deployReq);
         return localVarResp.getData();
     }
 
@@ -3946,8 +3949,8 @@ public class PlatformApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeploymentView> postV1PlatformProjectsByProjectAppsByAppDeployWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull DeployReq deployReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1PlatformProjectsByProjectAppsByAppDeployValidateBeforeCall(project, app, deployReq, null);
+    public ApiResponse<DeploymentView> postPlatformProjectsByProjectAppsByAppDeployWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull DeployReq deployReq) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppDeployValidateBeforeCall(project, app, deployReq, null);
         Type localVarReturnType = new TypeToken<DeploymentView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3968,15 +3971,15 @@ public class PlatformApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformProjectsByProjectAppsByAppDeployAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull DeployReq deployReq, final ApiCallback<DeploymentView> _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppDeployAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull DeployReq deployReq, final ApiCallback<DeploymentView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PlatformProjectsByProjectAppsByAppDeployValidateBeforeCall(project, app, deployReq, _callback);
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppDeployValidateBeforeCall(project, app, deployReq, _callback);
         Type localVarReturnType = new TypeToken<DeploymentView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PlatformProjectsByProjectAppsByAppDomains
+     * Build call for postPlatformProjectsByProjectAppsByAppDomains
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param addDomainReq  (required)
@@ -3991,7 +3994,7 @@ public class PlatformApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformProjectsByProjectAppsByAppDomainsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull AddDomainReq addDomainReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppDomainsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull AddDomainReq addDomainReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4039,23 +4042,23 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PlatformProjectsByProjectAppsByAppDomainsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull AddDomainReq addDomainReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformProjectsByProjectAppsByAppDomainsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull AddDomainReq addDomainReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling postV1PlatformProjectsByProjectAppsByAppDomains(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling postPlatformProjectsByProjectAppsByAppDomains(Async)");
         }
 
         // verify the required parameter 'app' is set
         if (app == null) {
-            throw new ApiException("Missing the required parameter 'app' when calling postV1PlatformProjectsByProjectAppsByAppDomains(Async)");
+            throw new ApiException("Missing the required parameter 'app' when calling postPlatformProjectsByProjectAppsByAppDomains(Async)");
         }
 
         // verify the required parameter 'addDomainReq' is set
         if (addDomainReq == null) {
-            throw new ApiException("Missing the required parameter 'addDomainReq' when calling postV1PlatformProjectsByProjectAppsByAppDomains(Async)");
+            throw new ApiException("Missing the required parameter 'addDomainReq' when calling postPlatformProjectsByProjectAppsByAppDomains(Async)");
         }
 
-        return postV1PlatformProjectsByProjectAppsByAppDomainsCall(project, app, addDomainReq, _callback);
+        return postPlatformProjectsByProjectAppsByAppDomainsCall(project, app, addDomainReq, _callback);
 
     }
 
@@ -4075,8 +4078,8 @@ public class PlatformApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public DomainView postV1PlatformProjectsByProjectAppsByAppDomains(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull AddDomainReq addDomainReq) throws ApiException {
-        ApiResponse<DomainView> localVarResp = postV1PlatformProjectsByProjectAppsByAppDomainsWithHttpInfo(project, app, addDomainReq);
+    public DomainView postPlatformProjectsByProjectAppsByAppDomains(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull AddDomainReq addDomainReq) throws ApiException {
+        ApiResponse<DomainView> localVarResp = postPlatformProjectsByProjectAppsByAppDomainsWithHttpInfo(project, app, addDomainReq);
         return localVarResp.getData();
     }
 
@@ -4096,8 +4099,8 @@ public class PlatformApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DomainView> postV1PlatformProjectsByProjectAppsByAppDomainsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull AddDomainReq addDomainReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1PlatformProjectsByProjectAppsByAppDomainsValidateBeforeCall(project, app, addDomainReq, null);
+    public ApiResponse<DomainView> postPlatformProjectsByProjectAppsByAppDomainsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull AddDomainReq addDomainReq) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppDomainsValidateBeforeCall(project, app, addDomainReq, null);
         Type localVarReturnType = new TypeToken<DomainView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4119,15 +4122,15 @@ public class PlatformApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformProjectsByProjectAppsByAppDomainsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull AddDomainReq addDomainReq, final ApiCallback<DomainView> _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppDomainsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull AddDomainReq addDomainReq, final ApiCallback<DomainView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PlatformProjectsByProjectAppsByAppDomainsValidateBeforeCall(project, app, addDomainReq, _callback);
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppDomainsValidateBeforeCall(project, app, addDomainReq, _callback);
         Type localVarReturnType = new TypeToken<DomainView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PlatformProjectsByProjectAppsByAppDomainsByHostVerify
+     * Build call for postPlatformProjectsByProjectAppsByAppDomainsByHostVerify
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param host Host is the hostname, from the path. (required)
@@ -4141,7 +4144,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformProjectsByProjectAppsByAppDomainsByHostVerifyCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppDomainsByHostVerifyCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4189,23 +4192,23 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PlatformProjectsByProjectAppsByAppDomainsByHostVerifyValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformProjectsByProjectAppsByAppDomainsByHostVerifyValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling postV1PlatformProjectsByProjectAppsByAppDomainsByHostVerify(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling postPlatformProjectsByProjectAppsByAppDomainsByHostVerify(Async)");
         }
 
         // verify the required parameter 'app' is set
         if (app == null) {
-            throw new ApiException("Missing the required parameter 'app' when calling postV1PlatformProjectsByProjectAppsByAppDomainsByHostVerify(Async)");
+            throw new ApiException("Missing the required parameter 'app' when calling postPlatformProjectsByProjectAppsByAppDomainsByHostVerify(Async)");
         }
 
         // verify the required parameter 'host' is set
         if (host == null) {
-            throw new ApiException("Missing the required parameter 'host' when calling postV1PlatformProjectsByProjectAppsByAppDomainsByHostVerify(Async)");
+            throw new ApiException("Missing the required parameter 'host' when calling postPlatformProjectsByProjectAppsByAppDomainsByHostVerify(Async)");
         }
 
-        return postV1PlatformProjectsByProjectAppsByAppDomainsByHostVerifyCall(project, app, host, _callback);
+        return postPlatformProjectsByProjectAppsByAppDomainsByHostVerifyCall(project, app, host, _callback);
 
     }
 
@@ -4224,8 +4227,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DomainView postV1PlatformProjectsByProjectAppsByAppDomainsByHostVerify(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host) throws ApiException {
-        ApiResponse<DomainView> localVarResp = postV1PlatformProjectsByProjectAppsByAppDomainsByHostVerifyWithHttpInfo(project, app, host);
+    public DomainView postPlatformProjectsByProjectAppsByAppDomainsByHostVerify(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host) throws ApiException {
+        ApiResponse<DomainView> localVarResp = postPlatformProjectsByProjectAppsByAppDomainsByHostVerifyWithHttpInfo(project, app, host);
         return localVarResp.getData();
     }
 
@@ -4244,8 +4247,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DomainView> postV1PlatformProjectsByProjectAppsByAppDomainsByHostVerifyWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host) throws ApiException {
-        okhttp3.Call localVarCall = postV1PlatformProjectsByProjectAppsByAppDomainsByHostVerifyValidateBeforeCall(project, app, host, null);
+    public ApiResponse<DomainView> postPlatformProjectsByProjectAppsByAppDomainsByHostVerifyWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppDomainsByHostVerifyValidateBeforeCall(project, app, host, null);
         Type localVarReturnType = new TypeToken<DomainView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4266,15 +4269,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformProjectsByProjectAppsByAppDomainsByHostVerifyAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host, final ApiCallback<DomainView> _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppDomainsByHostVerifyAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host, final ApiCallback<DomainView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PlatformProjectsByProjectAppsByAppDomainsByHostVerifyValidateBeforeCall(project, app, host, _callback);
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppDomainsByHostVerifyValidateBeforeCall(project, app, host, _callback);
         Type localVarReturnType = new TypeToken<DomainView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PlatformProjectsByProjectAppsByAppPreview
+     * Build call for postPlatformProjectsByProjectAppsByAppPreview
      * @param project Project is the project the parent application lives under, from the path. (required)
      * @param app App is the parent application&#39;s slug, from the path. (required)
      * @param previewReq  (required)
@@ -4288,7 +4291,7 @@ public class PlatformApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformProjectsByProjectAppsByAppPreviewCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PreviewReq previewReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppPreviewCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PreviewReq previewReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4336,23 +4339,23 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PlatformProjectsByProjectAppsByAppPreviewValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PreviewReq previewReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformProjectsByProjectAppsByAppPreviewValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PreviewReq previewReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling postV1PlatformProjectsByProjectAppsByAppPreview(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling postPlatformProjectsByProjectAppsByAppPreview(Async)");
         }
 
         // verify the required parameter 'app' is set
         if (app == null) {
-            throw new ApiException("Missing the required parameter 'app' when calling postV1PlatformProjectsByProjectAppsByAppPreview(Async)");
+            throw new ApiException("Missing the required parameter 'app' when calling postPlatformProjectsByProjectAppsByAppPreview(Async)");
         }
 
         // verify the required parameter 'previewReq' is set
         if (previewReq == null) {
-            throw new ApiException("Missing the required parameter 'previewReq' when calling postV1PlatformProjectsByProjectAppsByAppPreview(Async)");
+            throw new ApiException("Missing the required parameter 'previewReq' when calling postPlatformProjectsByProjectAppsByAppPreview(Async)");
         }
 
-        return postV1PlatformProjectsByProjectAppsByAppPreviewCall(project, app, previewReq, _callback);
+        return postPlatformProjectsByProjectAppsByAppPreviewCall(project, app, previewReq, _callback);
 
     }
 
@@ -4371,8 +4374,8 @@ public class PlatformApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public PreviewView postV1PlatformProjectsByProjectAppsByAppPreview(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PreviewReq previewReq) throws ApiException {
-        ApiResponse<PreviewView> localVarResp = postV1PlatformProjectsByProjectAppsByAppPreviewWithHttpInfo(project, app, previewReq);
+    public PreviewView postPlatformProjectsByProjectAppsByAppPreview(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PreviewReq previewReq) throws ApiException {
+        ApiResponse<PreviewView> localVarResp = postPlatformProjectsByProjectAppsByAppPreviewWithHttpInfo(project, app, previewReq);
         return localVarResp.getData();
     }
 
@@ -4391,8 +4394,8 @@ public class PlatformApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PreviewView> postV1PlatformProjectsByProjectAppsByAppPreviewWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PreviewReq previewReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1PlatformProjectsByProjectAppsByAppPreviewValidateBeforeCall(project, app, previewReq, null);
+    public ApiResponse<PreviewView> postPlatformProjectsByProjectAppsByAppPreviewWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PreviewReq previewReq) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppPreviewValidateBeforeCall(project, app, previewReq, null);
         Type localVarReturnType = new TypeToken<PreviewView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4413,15 +4416,15 @@ public class PlatformApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformProjectsByProjectAppsByAppPreviewAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PreviewReq previewReq, final ApiCallback<PreviewView> _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppPreviewAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PreviewReq previewReq, final ApiCallback<PreviewView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PlatformProjectsByProjectAppsByAppPreviewValidateBeforeCall(project, app, previewReq, _callback);
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppPreviewValidateBeforeCall(project, app, previewReq, _callback);
         Type localVarReturnType = new TypeToken<PreviewView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PlatformProjectsByProjectAppsByAppPromote
+     * Build call for postPlatformProjectsByProjectAppsByAppPromote
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param promoteReq  (required)
@@ -4435,7 +4438,7 @@ public class PlatformApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformProjectsByProjectAppsByAppPromoteCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PromoteReq promoteReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppPromoteCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PromoteReq promoteReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4483,23 +4486,23 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PlatformProjectsByProjectAppsByAppPromoteValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PromoteReq promoteReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformProjectsByProjectAppsByAppPromoteValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PromoteReq promoteReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling postV1PlatformProjectsByProjectAppsByAppPromote(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling postPlatformProjectsByProjectAppsByAppPromote(Async)");
         }
 
         // verify the required parameter 'app' is set
         if (app == null) {
-            throw new ApiException("Missing the required parameter 'app' when calling postV1PlatformProjectsByProjectAppsByAppPromote(Async)");
+            throw new ApiException("Missing the required parameter 'app' when calling postPlatformProjectsByProjectAppsByAppPromote(Async)");
         }
 
         // verify the required parameter 'promoteReq' is set
         if (promoteReq == null) {
-            throw new ApiException("Missing the required parameter 'promoteReq' when calling postV1PlatformProjectsByProjectAppsByAppPromote(Async)");
+            throw new ApiException("Missing the required parameter 'promoteReq' when calling postPlatformProjectsByProjectAppsByAppPromote(Async)");
         }
 
-        return postV1PlatformProjectsByProjectAppsByAppPromoteCall(project, app, promoteReq, _callback);
+        return postPlatformProjectsByProjectAppsByAppPromoteCall(project, app, promoteReq, _callback);
 
     }
 
@@ -4518,8 +4521,8 @@ public class PlatformApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public DeploymentView postV1PlatformProjectsByProjectAppsByAppPromote(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PromoteReq promoteReq) throws ApiException {
-        ApiResponse<DeploymentView> localVarResp = postV1PlatformProjectsByProjectAppsByAppPromoteWithHttpInfo(project, app, promoteReq);
+    public DeploymentView postPlatformProjectsByProjectAppsByAppPromote(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PromoteReq promoteReq) throws ApiException {
+        ApiResponse<DeploymentView> localVarResp = postPlatformProjectsByProjectAppsByAppPromoteWithHttpInfo(project, app, promoteReq);
         return localVarResp.getData();
     }
 
@@ -4538,8 +4541,8 @@ public class PlatformApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeploymentView> postV1PlatformProjectsByProjectAppsByAppPromoteWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PromoteReq promoteReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1PlatformProjectsByProjectAppsByAppPromoteValidateBeforeCall(project, app, promoteReq, null);
+    public ApiResponse<DeploymentView> postPlatformProjectsByProjectAppsByAppPromoteWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PromoteReq promoteReq) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppPromoteValidateBeforeCall(project, app, promoteReq, null);
         Type localVarReturnType = new TypeToken<DeploymentView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4560,15 +4563,15 @@ public class PlatformApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformProjectsByProjectAppsByAppPromoteAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PromoteReq promoteReq, final ApiCallback<DeploymentView> _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppPromoteAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PromoteReq promoteReq, final ApiCallback<DeploymentView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PlatformProjectsByProjectAppsByAppPromoteValidateBeforeCall(project, app, promoteReq, _callback);
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppPromoteValidateBeforeCall(project, app, promoteReq, _callback);
         Type localVarReturnType = new TypeToken<DeploymentView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PlatformProjectsByProjectAppsByAppRollback
+     * Build call for postPlatformProjectsByProjectAppsByAppRollback
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param rollbackReq  (required)
@@ -4582,7 +4585,7 @@ public class PlatformApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformProjectsByProjectAppsByAppRollbackCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull RollbackReq rollbackReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppRollbackCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull RollbackReq rollbackReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4630,23 +4633,23 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PlatformProjectsByProjectAppsByAppRollbackValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull RollbackReq rollbackReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformProjectsByProjectAppsByAppRollbackValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull RollbackReq rollbackReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling postV1PlatformProjectsByProjectAppsByAppRollback(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling postPlatformProjectsByProjectAppsByAppRollback(Async)");
         }
 
         // verify the required parameter 'app' is set
         if (app == null) {
-            throw new ApiException("Missing the required parameter 'app' when calling postV1PlatformProjectsByProjectAppsByAppRollback(Async)");
+            throw new ApiException("Missing the required parameter 'app' when calling postPlatformProjectsByProjectAppsByAppRollback(Async)");
         }
 
         // verify the required parameter 'rollbackReq' is set
         if (rollbackReq == null) {
-            throw new ApiException("Missing the required parameter 'rollbackReq' when calling postV1PlatformProjectsByProjectAppsByAppRollback(Async)");
+            throw new ApiException("Missing the required parameter 'rollbackReq' when calling postPlatformProjectsByProjectAppsByAppRollback(Async)");
         }
 
-        return postV1PlatformProjectsByProjectAppsByAppRollbackCall(project, app, rollbackReq, _callback);
+        return postPlatformProjectsByProjectAppsByAppRollbackCall(project, app, rollbackReq, _callback);
 
     }
 
@@ -4665,8 +4668,8 @@ public class PlatformApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public DeploymentView postV1PlatformProjectsByProjectAppsByAppRollback(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull RollbackReq rollbackReq) throws ApiException {
-        ApiResponse<DeploymentView> localVarResp = postV1PlatformProjectsByProjectAppsByAppRollbackWithHttpInfo(project, app, rollbackReq);
+    public DeploymentView postPlatformProjectsByProjectAppsByAppRollback(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull RollbackReq rollbackReq) throws ApiException {
+        ApiResponse<DeploymentView> localVarResp = postPlatformProjectsByProjectAppsByAppRollbackWithHttpInfo(project, app, rollbackReq);
         return localVarResp.getData();
     }
 
@@ -4685,8 +4688,8 @@ public class PlatformApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeploymentView> postV1PlatformProjectsByProjectAppsByAppRollbackWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull RollbackReq rollbackReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1PlatformProjectsByProjectAppsByAppRollbackValidateBeforeCall(project, app, rollbackReq, null);
+    public ApiResponse<DeploymentView> postPlatformProjectsByProjectAppsByAppRollbackWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull RollbackReq rollbackReq) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppRollbackValidateBeforeCall(project, app, rollbackReq, null);
         Type localVarReturnType = new TypeToken<DeploymentView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4707,15 +4710,15 @@ public class PlatformApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformProjectsByProjectAppsByAppRollbackAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull RollbackReq rollbackReq, final ApiCallback<DeploymentView> _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppRollbackAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull RollbackReq rollbackReq, final ApiCallback<DeploymentView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PlatformProjectsByProjectAppsByAppRollbackValidateBeforeCall(project, app, rollbackReq, _callback);
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppRollbackValidateBeforeCall(project, app, rollbackReq, _callback);
         Type localVarReturnType = new TypeToken<DeploymentView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PlatformProjectsByProjectAppsByAppStart
+     * Build call for postPlatformProjectsByProjectAppsByAppStart
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param _callback Callback for upload/download progress
@@ -4728,7 +4731,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformProjectsByProjectAppsByAppStartCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppStartCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4775,18 +4778,18 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PlatformProjectsByProjectAppsByAppStartValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformProjectsByProjectAppsByAppStartValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling postV1PlatformProjectsByProjectAppsByAppStart(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling postPlatformProjectsByProjectAppsByAppStart(Async)");
         }
 
         // verify the required parameter 'app' is set
         if (app == null) {
-            throw new ApiException("Missing the required parameter 'app' when calling postV1PlatformProjectsByProjectAppsByAppStart(Async)");
+            throw new ApiException("Missing the required parameter 'app' when calling postPlatformProjectsByProjectAppsByAppStart(Async)");
         }
 
-        return postV1PlatformProjectsByProjectAppsByAppStartCall(project, app, _callback);
+        return postPlatformProjectsByProjectAppsByAppStartCall(project, app, _callback);
 
     }
 
@@ -4804,8 +4807,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AppView postV1PlatformProjectsByProjectAppsByAppStart(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
-        ApiResponse<AppView> localVarResp = postV1PlatformProjectsByProjectAppsByAppStartWithHttpInfo(project, app);
+    public AppView postPlatformProjectsByProjectAppsByAppStart(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+        ApiResponse<AppView> localVarResp = postPlatformProjectsByProjectAppsByAppStartWithHttpInfo(project, app);
         return localVarResp.getData();
     }
 
@@ -4823,8 +4826,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AppView> postV1PlatformProjectsByProjectAppsByAppStartWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
-        okhttp3.Call localVarCall = postV1PlatformProjectsByProjectAppsByAppStartValidateBeforeCall(project, app, null);
+    public ApiResponse<AppView> postPlatformProjectsByProjectAppsByAppStartWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppStartValidateBeforeCall(project, app, null);
         Type localVarReturnType = new TypeToken<AppView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4844,15 +4847,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformProjectsByProjectAppsByAppStartAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<AppView> _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppStartAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<AppView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PlatformProjectsByProjectAppsByAppStartValidateBeforeCall(project, app, _callback);
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppStartValidateBeforeCall(project, app, _callback);
         Type localVarReturnType = new TypeToken<AppView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PlatformProjectsByProjectAppsByAppStop
+     * Build call for postPlatformProjectsByProjectAppsByAppStop
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param _callback Callback for upload/download progress
@@ -4865,7 +4868,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformProjectsByProjectAppsByAppStopCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppStopCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4912,18 +4915,18 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PlatformProjectsByProjectAppsByAppStopValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformProjectsByProjectAppsByAppStopValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling postV1PlatformProjectsByProjectAppsByAppStop(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling postPlatformProjectsByProjectAppsByAppStop(Async)");
         }
 
         // verify the required parameter 'app' is set
         if (app == null) {
-            throw new ApiException("Missing the required parameter 'app' when calling postV1PlatformProjectsByProjectAppsByAppStop(Async)");
+            throw new ApiException("Missing the required parameter 'app' when calling postPlatformProjectsByProjectAppsByAppStop(Async)");
         }
 
-        return postV1PlatformProjectsByProjectAppsByAppStopCall(project, app, _callback);
+        return postPlatformProjectsByProjectAppsByAppStopCall(project, app, _callback);
 
     }
 
@@ -4941,8 +4944,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AppView postV1PlatformProjectsByProjectAppsByAppStop(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
-        ApiResponse<AppView> localVarResp = postV1PlatformProjectsByProjectAppsByAppStopWithHttpInfo(project, app);
+    public AppView postPlatformProjectsByProjectAppsByAppStop(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+        ApiResponse<AppView> localVarResp = postPlatformProjectsByProjectAppsByAppStopWithHttpInfo(project, app);
         return localVarResp.getData();
     }
 
@@ -4960,8 +4963,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AppView> postV1PlatformProjectsByProjectAppsByAppStopWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
-        okhttp3.Call localVarCall = postV1PlatformProjectsByProjectAppsByAppStopValidateBeforeCall(project, app, null);
+    public ApiResponse<AppView> postPlatformProjectsByProjectAppsByAppStopWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppStopValidateBeforeCall(project, app, null);
         Type localVarReturnType = new TypeToken<AppView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4981,15 +4984,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformProjectsByProjectAppsByAppStopAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<AppView> _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppStopAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<AppView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PlatformProjectsByProjectAppsByAppStopValidateBeforeCall(project, app, _callback);
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppStopValidateBeforeCall(project, app, _callback);
         Type localVarReturnType = new TypeToken<AppView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PlatformSites
+     * Build call for postPlatformSites
      * @param projectsCreate  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -5001,7 +5004,7 @@ public class PlatformApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformSitesCall(@javax.annotation.Nonnull ProjectsCreate projectsCreate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformSitesCall(@javax.annotation.Nonnull ProjectsCreate projectsCreate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5047,13 +5050,13 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PlatformSitesValidateBeforeCall(@javax.annotation.Nonnull ProjectsCreate projectsCreate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformSitesValidateBeforeCall(@javax.annotation.Nonnull ProjectsCreate projectsCreate, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectsCreate' is set
         if (projectsCreate == null) {
-            throw new ApiException("Missing the required parameter 'projectsCreate' when calling postV1PlatformSites(Async)");
+            throw new ApiException("Missing the required parameter 'projectsCreate' when calling postPlatformSites(Async)");
         }
 
-        return postV1PlatformSitesCall(projectsCreate, _callback);
+        return postPlatformSitesCall(projectsCreate, _callback);
 
     }
 
@@ -5070,8 +5073,8 @@ public class PlatformApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectsProject postV1PlatformSites(@javax.annotation.Nonnull ProjectsCreate projectsCreate) throws ApiException {
-        ApiResponse<ProjectsProject> localVarResp = postV1PlatformSitesWithHttpInfo(projectsCreate);
+    public ProjectsProject postPlatformSites(@javax.annotation.Nonnull ProjectsCreate projectsCreate) throws ApiException {
+        ApiResponse<ProjectsProject> localVarResp = postPlatformSitesWithHttpInfo(projectsCreate);
         return localVarResp.getData();
     }
 
@@ -5088,8 +5091,8 @@ public class PlatformApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectsProject> postV1PlatformSitesWithHttpInfo(@javax.annotation.Nonnull ProjectsCreate projectsCreate) throws ApiException {
-        okhttp3.Call localVarCall = postV1PlatformSitesValidateBeforeCall(projectsCreate, null);
+    public ApiResponse<ProjectsProject> postPlatformSitesWithHttpInfo(@javax.annotation.Nonnull ProjectsCreate projectsCreate) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformSitesValidateBeforeCall(projectsCreate, null);
         Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -5108,21 +5111,28 @@ public class PlatformApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformSitesAsync(@javax.annotation.Nonnull ProjectsCreate projectsCreate, final ApiCallback<ProjectsProject> _callback) throws ApiException {
+    public okhttp3.Call postPlatformSitesAsync(@javax.annotation.Nonnull ProjectsCreate projectsCreate, final ApiCallback<ProjectsProject> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PlatformSitesValidateBeforeCall(projectsCreate, _callback);
+        okhttp3.Call localVarCall = postPlatformSitesValidateBeforeCall(projectsCreate, _callback);
         Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PlatformSitesBySlugDeploy
+     * Build call for postPlatformSitesBySlugDeploy
      * @param slug  (required)
+     * @param body  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postV1PlatformSitesBySlugDeployCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformSitesBySlugDeployCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5136,7 +5146,7 @@ public class PlatformApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = body;
 
         // create path and map variables
         String localVarPath = "/v1/platform/sites/{slug}/deploy"
@@ -5149,6 +5159,7 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -5156,6 +5167,7 @@ public class PlatformApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/octet-stream"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -5167,54 +5179,363 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PlatformSitesBySlugDeployValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformSitesBySlugDeployValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling postV1PlatformSitesBySlugDeploy(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling postPlatformSitesBySlugDeploy(Async)");
         }
 
-        return postV1PlatformSitesBySlugDeployCall(slug, _callback);
+        return postPlatformSitesBySlugDeployCall(slug, body, _callback);
 
     }
 
     /**
-     * Upload a built site — this is where a zip goes live
-     * Takes a built site live at &#x60;https://&lt;slug&gt;.hanzo.app&#x60;. The content type decides the shape: a &#x60;zip&#x60; or &#x60;tar.gz&#x60; — raw in the body or as a multipart file part, which is what the platform&#39;s upload UI posts — is stored and served immediately, answering 200 with the finished deployment; a JSON body instead queues a build from the site&#39;s linked repo and answers 202 with a queued deployment plus, where one could be minted, a scoped upload grant for CI. The git path requires a linked repo (400 without one).  The hosting gate is fail-closed and runs first, before anything is parsed or uploaded: 402 for an unfunded org, 503 for unreachable commerce, nothing written. The debit lands only on success — a failed upload is never billed and never flips the live site — and a redeploy answers the SAME URL, because slug and apex are stable.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503); an archive that does not walk is a 400 and one over the size cap is a 413.
+     * Upload a built site as one archive and serve it
+     * Takes a built site live at &#x60;https://&lt;slug&gt;.hanzo.app&#x60; in one call. The body is the site itself — a &#x60;zip&#x60; or &#x60;tar.gz&#x60; holding &#x60;index.html&#x60; at its root (or a single wrapper directory that does), sent raw or as a multipart file part. It is unpacked to the site&#39;s own storage prefix and served immediately, answering the finished deployment.  It is bounded by the edge body limit (16 MiB by default), and that bound is the whole reason the other path exists: an oversized POST is refused by the server BEFORE any handler runs and surfaces as an opaque &#x60;400 Error when parsing request&#x60; that reads like a malformed payload rather than a size cap. A site too large for one archive opens a deployment with &#x60;POST /v1/sites/{slug}/deployments&#x60; instead and writes its files straight to storage against the scoped grant that answers with — no body limit, and no bytes through this API at all.  Billing is fail-closed and fails FIRST: the hosting gate runs before anything is parsed or uploaded, so an unfunded org is 402 and an unreachable commerce is 503 with nothing written. The debit lands only on success — a failed upload is never billed and never flips the live site — and a redeploy answers the SAME URL, because slug and apex are stable.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503); an archive that does not walk is a 400 and one over the size cap is a 413.
      * @param slug  (required)
+     * @param body  (optional)
+     * @return ProjectsDeployment
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
      */
-    public void postV1PlatformSitesBySlugDeploy(@javax.annotation.Nonnull String slug) throws ApiException {
-        postV1PlatformSitesBySlugDeployWithHttpInfo(slug);
+    public ProjectsDeployment postPlatformSitesBySlugDeploy(@javax.annotation.Nonnull String slug, @javax.annotation.Nullable File body) throws ApiException {
+        ApiResponse<ProjectsDeployment> localVarResp = postPlatformSitesBySlugDeployWithHttpInfo(slug, body);
+        return localVarResp.getData();
     }
 
     /**
-     * Upload a built site — this is where a zip goes live
-     * Takes a built site live at &#x60;https://&lt;slug&gt;.hanzo.app&#x60;. The content type decides the shape: a &#x60;zip&#x60; or &#x60;tar.gz&#x60; — raw in the body or as a multipart file part, which is what the platform&#39;s upload UI posts — is stored and served immediately, answering 200 with the finished deployment; a JSON body instead queues a build from the site&#39;s linked repo and answers 202 with a queued deployment plus, where one could be minted, a scoped upload grant for CI. The git path requires a linked repo (400 without one).  The hosting gate is fail-closed and runs first, before anything is parsed or uploaded: 402 for an unfunded org, 503 for unreachable commerce, nothing written. The debit lands only on success — a failed upload is never billed and never flips the live site — and a redeploy answers the SAME URL, because slug and apex are stable.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503); an archive that does not walk is a 400 and one over the size cap is a 413.
+     * Upload a built site as one archive and serve it
+     * Takes a built site live at &#x60;https://&lt;slug&gt;.hanzo.app&#x60; in one call. The body is the site itself — a &#x60;zip&#x60; or &#x60;tar.gz&#x60; holding &#x60;index.html&#x60; at its root (or a single wrapper directory that does), sent raw or as a multipart file part. It is unpacked to the site&#39;s own storage prefix and served immediately, answering the finished deployment.  It is bounded by the edge body limit (16 MiB by default), and that bound is the whole reason the other path exists: an oversized POST is refused by the server BEFORE any handler runs and surfaces as an opaque &#x60;400 Error when parsing request&#x60; that reads like a malformed payload rather than a size cap. A site too large for one archive opens a deployment with &#x60;POST /v1/sites/{slug}/deployments&#x60; instead and writes its files straight to storage against the scoped grant that answers with — no body limit, and no bytes through this API at all.  Billing is fail-closed and fails FIRST: the hosting gate runs before anything is parsed or uploaded, so an unfunded org is 402 and an unreachable commerce is 503 with nothing written. The debit lands only on success — a failed upload is never billed and never flips the live site — and a redeploy answers the SAME URL, because slug and apex are stable.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503); an archive that does not walk is a 400 and one over the size cap is a 413.
      * @param slug  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @param body  (optional)
+     * @return ApiResponse&lt;ProjectsDeployment&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postV1PlatformSitesBySlugDeployWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
-        okhttp3.Call localVarCall = postV1PlatformSitesBySlugDeployValidateBeforeCall(slug, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<ProjectsDeployment> postPlatformSitesBySlugDeployWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nullable File body) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformSitesBySlugDeployValidateBeforeCall(slug, body, null);
+        Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Upload a built site — this is where a zip goes live (asynchronously)
-     * Takes a built site live at &#x60;https://&lt;slug&gt;.hanzo.app&#x60;. The content type decides the shape: a &#x60;zip&#x60; or &#x60;tar.gz&#x60; — raw in the body or as a multipart file part, which is what the platform&#39;s upload UI posts — is stored and served immediately, answering 200 with the finished deployment; a JSON body instead queues a build from the site&#39;s linked repo and answers 202 with a queued deployment plus, where one could be minted, a scoped upload grant for CI. The git path requires a linked repo (400 without one).  The hosting gate is fail-closed and runs first, before anything is parsed or uploaded: 402 for an unfunded org, 503 for unreachable commerce, nothing written. The debit lands only on success — a failed upload is never billed and never flips the live site — and a redeploy answers the SAME URL, because slug and apex are stable.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503); an archive that does not walk is a 400 and one over the size cap is a 413.
+     * Upload a built site as one archive and serve it (asynchronously)
+     * Takes a built site live at &#x60;https://&lt;slug&gt;.hanzo.app&#x60; in one call. The body is the site itself — a &#x60;zip&#x60; or &#x60;tar.gz&#x60; holding &#x60;index.html&#x60; at its root (or a single wrapper directory that does), sent raw or as a multipart file part. It is unpacked to the site&#39;s own storage prefix and served immediately, answering the finished deployment.  It is bounded by the edge body limit (16 MiB by default), and that bound is the whole reason the other path exists: an oversized POST is refused by the server BEFORE any handler runs and surfaces as an opaque &#x60;400 Error when parsing request&#x60; that reads like a malformed payload rather than a size cap. A site too large for one archive opens a deployment with &#x60;POST /v1/sites/{slug}/deployments&#x60; instead and writes its files straight to storage against the scoped grant that answers with — no body limit, and no bytes through this API at all.  Billing is fail-closed and fails FIRST: the hosting gate runs before anything is parsed or uploaded, so an unfunded org is 402 and an unreachable commerce is 503 with nothing written. The debit lands only on success — a failed upload is never billed and never flips the live site — and a redeploy answers the SAME URL, because slug and apex are stable.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503); an archive that does not walk is a 400 and one over the size cap is a 413.
      * @param slug  (required)
+     * @param body  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postV1PlatformSitesBySlugDeployAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postPlatformSitesBySlugDeployAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nullable File body, final ApiCallback<ProjectsDeployment> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PlatformSitesBySlugDeployValidateBeforeCall(slug, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postPlatformSitesBySlugDeployValidateBeforeCall(slug, body, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PlatformSitesBySlugDomains
+     * Build call for postPlatformSitesBySlugDeployments
+     * @param slug Slug is the site to deploy, from the path. (required)
+     * @param projectsDeployStart  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postPlatformSitesBySlugDeploymentsCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDeployStart projectsDeployStart, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = projectsDeployStart;
+
+        // create path and map variables
+        String localVarPath = "/v1/platform/sites/{slug}/deployments"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postPlatformSitesBySlugDeploymentsValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDeployStart projectsDeployStart, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling postPlatformSitesBySlugDeployments(Async)");
+        }
+
+        // verify the required parameter 'projectsDeployStart' is set
+        if (projectsDeployStart == null) {
+            throw new ApiException("Missing the required parameter 'projectsDeployStart' when calling postPlatformSitesBySlugDeployments(Async)");
+        }
+
+        return postPlatformSitesBySlugDeploymentsCall(slug, projectsDeployStart, _callback);
+
+    }
+
+    /**
+     * Opens a deployment and hands back a short-lived, prefix-scoped grant to write its bytes straight to object storage.
+     * Opens a deployment and hands back a short-lived, prefix-scoped grant to write its bytes straight to object storage. Answers 202.  This is the path for a site too large to send as one archive: a real export is hundreds of megabytes against a 16 MiB body limit, so the bytes deliberately do NOT pass through the API. The answer carries &#x60;bucket&#x60;, &#x60;prefix&#x60; and &#x60;upload&#x60; — a presigned POST policy that S3 itself confines to this site&#39;s prefix (starts-with &#x60;&lt;org&gt;/&lt;slug&gt;/&#x60;), expires in 30 minutes and bounds each object. So a build writes its own files and holds no standing bucket credential; there is nothing to rotate and nothing that leaks between tenants. Never guess the prefix — it is server-derived, and a guessed one lands where nothing is served.  The deployment is &#x60;queued&#x60; until POST .../deployments/{id}/complete flips it live (or error). That completion is also where DELETION happens: the grant authorizes writes only, so a build cannot remove a file, and cloud reconciles the prefix against the &#x60;keys&#x60; manifest the completion carries. A build that dies before completing leaves the deployment queued rather than a half-live site.  The grant is on the 202 and NOWHERE else — it is never stored and never replayed on a later read, so it cannot outlive the build it was minted for. A deployment whose grant could not be minted is still created and still completable; it simply carries no &#x60;upload&#x60;, and a caller with no other way to write should treat that as the failure it is.  Billing: the hosting gate runs BEFORE anything is created (402 unfunded, 503 commerce unreachable), and the debit lands on the completion that goes live — never on a queued or failed build.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the site to deploy, from the path. (required)
+     * @param projectsDeployStart  (required)
+     * @return ProjectsDeployment
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProjectsDeployment postPlatformSitesBySlugDeployments(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDeployStart projectsDeployStart) throws ApiException {
+        ApiResponse<ProjectsDeployment> localVarResp = postPlatformSitesBySlugDeploymentsWithHttpInfo(slug, projectsDeployStart);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Opens a deployment and hands back a short-lived, prefix-scoped grant to write its bytes straight to object storage.
+     * Opens a deployment and hands back a short-lived, prefix-scoped grant to write its bytes straight to object storage. Answers 202.  This is the path for a site too large to send as one archive: a real export is hundreds of megabytes against a 16 MiB body limit, so the bytes deliberately do NOT pass through the API. The answer carries &#x60;bucket&#x60;, &#x60;prefix&#x60; and &#x60;upload&#x60; — a presigned POST policy that S3 itself confines to this site&#39;s prefix (starts-with &#x60;&lt;org&gt;/&lt;slug&gt;/&#x60;), expires in 30 minutes and bounds each object. So a build writes its own files and holds no standing bucket credential; there is nothing to rotate and nothing that leaks between tenants. Never guess the prefix — it is server-derived, and a guessed one lands where nothing is served.  The deployment is &#x60;queued&#x60; until POST .../deployments/{id}/complete flips it live (or error). That completion is also where DELETION happens: the grant authorizes writes only, so a build cannot remove a file, and cloud reconciles the prefix against the &#x60;keys&#x60; manifest the completion carries. A build that dies before completing leaves the deployment queued rather than a half-live site.  The grant is on the 202 and NOWHERE else — it is never stored and never replayed on a later read, so it cannot outlive the build it was minted for. A deployment whose grant could not be minted is still created and still completable; it simply carries no &#x60;upload&#x60;, and a caller with no other way to write should treat that as the failure it is.  Billing: the hosting gate runs BEFORE anything is created (402 unfunded, 503 commerce unreachable), and the debit lands on the completion that goes live — never on a queued or failed build.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the site to deploy, from the path. (required)
+     * @param projectsDeployStart  (required)
+     * @return ApiResponse&lt;ProjectsDeployment&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProjectsDeployment> postPlatformSitesBySlugDeploymentsWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDeployStart projectsDeployStart) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformSitesBySlugDeploymentsValidateBeforeCall(slug, projectsDeployStart, null);
+        Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Opens a deployment and hands back a short-lived, prefix-scoped grant to write its bytes straight to object storage. (asynchronously)
+     * Opens a deployment and hands back a short-lived, prefix-scoped grant to write its bytes straight to object storage. Answers 202.  This is the path for a site too large to send as one archive: a real export is hundreds of megabytes against a 16 MiB body limit, so the bytes deliberately do NOT pass through the API. The answer carries &#x60;bucket&#x60;, &#x60;prefix&#x60; and &#x60;upload&#x60; — a presigned POST policy that S3 itself confines to this site&#39;s prefix (starts-with &#x60;&lt;org&gt;/&lt;slug&gt;/&#x60;), expires in 30 minutes and bounds each object. So a build writes its own files and holds no standing bucket credential; there is nothing to rotate and nothing that leaks between tenants. Never guess the prefix — it is server-derived, and a guessed one lands where nothing is served.  The deployment is &#x60;queued&#x60; until POST .../deployments/{id}/complete flips it live (or error). That completion is also where DELETION happens: the grant authorizes writes only, so a build cannot remove a file, and cloud reconciles the prefix against the &#x60;keys&#x60; manifest the completion carries. A build that dies before completing leaves the deployment queued rather than a half-live site.  The grant is on the 202 and NOWHERE else — it is never stored and never replayed on a later read, so it cannot outlive the build it was minted for. A deployment whose grant could not be minted is still created and still completable; it simply carries no &#x60;upload&#x60;, and a caller with no other way to write should treat that as the failure it is.  Billing: the hosting gate runs BEFORE anything is created (402 unfunded, 503 commerce unreachable), and the debit lands on the completion that goes live — never on a queued or failed build.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the site to deploy, from the path. (required)
+     * @param projectsDeployStart  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postPlatformSitesBySlugDeploymentsAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDeployStart projectsDeployStart, final ApiCallback<ProjectsDeployment> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postPlatformSitesBySlugDeploymentsValidateBeforeCall(slug, projectsDeployStart, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postPlatformSitesBySlugDeploymentsByIdComplete
+     * @param slug Slug is the project the deployment belongs to, from the path. (required)
+     * @param id ID is the queued deployment to complete, from the path. (required)
+     * @param projectsComplete  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postPlatformSitesBySlugDeploymentsByIdCompleteCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull ProjectsComplete projectsComplete, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = projectsComplete;
+
+        // create path and map variables
+        String localVarPath = "/v1/platform/sites/{slug}/deployments/{id}/complete"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()))
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postPlatformSitesBySlugDeploymentsByIdCompleteValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull ProjectsComplete projectsComplete, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling postPlatformSitesBySlugDeploymentsByIdComplete(Async)");
+        }
+
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postPlatformSitesBySlugDeploymentsByIdComplete(Async)");
+        }
+
+        // verify the required parameter 'projectsComplete' is set
+        if (projectsComplete == null) {
+            throw new ApiException("Missing the required parameter 'projectsComplete' when calling postPlatformSitesBySlugDeploymentsByIdComplete(Async)");
+        }
+
+        return postPlatformSitesBySlugDeploymentsByIdCompleteCall(slug, id, projectsComplete, _callback);
+
+    }
+
+    /**
+     * CompleteDeployment is the CI completion hook that flips a queued git deployment to live (or error) once CI has synced the built site to S3.
+     * CompleteDeployment is the CI completion hook that flips a queued git deployment to live (or error) once CI has synced the built site to S3.  &#x60;status&#x60; must be &#x60;live&#x60; or &#x60;error&#x60;. On a LIVE completion the public host is claimed FIRST, so the deployment reports the URL it actually OWNS — a CI-supplied &#x60;liveUrl&#x60; is a hint that can refine that URL but can never assert a subdomain another tenant holds. &#x60;keys&#x60; is the manifest CI just uploaded, relative to the deployment prefix: cloud reconciles the prefix against it so a page deleted from the build actually stops serving. Omit &#x60;keys&#x60; and nothing is deleted — the prefix only grows. Reconciliation runs only on a live completion (pruning against a failed build&#39;s manifest would delete the site the last good build is still serving) and is best-effort, so a stale leftover never turns a successful deploy into a 500. A live completion is also the one billable moment on the git path; an error completion bills nothing.  Scope: a validated principal is required (403 without one). CI authenticates with an org-scoped token through the gateway, so the deployment is resolved within that principal&#39;s org and another tenant&#39;s slug or deployment id is a 404.
+     * @param slug Slug is the project the deployment belongs to, from the path. (required)
+     * @param id ID is the queued deployment to complete, from the path. (required)
+     * @param projectsComplete  (required)
+     * @return ProjectsDeployment
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProjectsDeployment postPlatformSitesBySlugDeploymentsByIdComplete(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull ProjectsComplete projectsComplete) throws ApiException {
+        ApiResponse<ProjectsDeployment> localVarResp = postPlatformSitesBySlugDeploymentsByIdCompleteWithHttpInfo(slug, id, projectsComplete);
+        return localVarResp.getData();
+    }
+
+    /**
+     * CompleteDeployment is the CI completion hook that flips a queued git deployment to live (or error) once CI has synced the built site to S3.
+     * CompleteDeployment is the CI completion hook that flips a queued git deployment to live (or error) once CI has synced the built site to S3.  &#x60;status&#x60; must be &#x60;live&#x60; or &#x60;error&#x60;. On a LIVE completion the public host is claimed FIRST, so the deployment reports the URL it actually OWNS — a CI-supplied &#x60;liveUrl&#x60; is a hint that can refine that URL but can never assert a subdomain another tenant holds. &#x60;keys&#x60; is the manifest CI just uploaded, relative to the deployment prefix: cloud reconciles the prefix against it so a page deleted from the build actually stops serving. Omit &#x60;keys&#x60; and nothing is deleted — the prefix only grows. Reconciliation runs only on a live completion (pruning against a failed build&#39;s manifest would delete the site the last good build is still serving) and is best-effort, so a stale leftover never turns a successful deploy into a 500. A live completion is also the one billable moment on the git path; an error completion bills nothing.  Scope: a validated principal is required (403 without one). CI authenticates with an org-scoped token through the gateway, so the deployment is resolved within that principal&#39;s org and another tenant&#39;s slug or deployment id is a 404.
+     * @param slug Slug is the project the deployment belongs to, from the path. (required)
+     * @param id ID is the queued deployment to complete, from the path. (required)
+     * @param projectsComplete  (required)
+     * @return ApiResponse&lt;ProjectsDeployment&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProjectsDeployment> postPlatformSitesBySlugDeploymentsByIdCompleteWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull ProjectsComplete projectsComplete) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformSitesBySlugDeploymentsByIdCompleteValidateBeforeCall(slug, id, projectsComplete, null);
+        Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * CompleteDeployment is the CI completion hook that flips a queued git deployment to live (or error) once CI has synced the built site to S3. (asynchronously)
+     * CompleteDeployment is the CI completion hook that flips a queued git deployment to live (or error) once CI has synced the built site to S3.  &#x60;status&#x60; must be &#x60;live&#x60; or &#x60;error&#x60;. On a LIVE completion the public host is claimed FIRST, so the deployment reports the URL it actually OWNS — a CI-supplied &#x60;liveUrl&#x60; is a hint that can refine that URL but can never assert a subdomain another tenant holds. &#x60;keys&#x60; is the manifest CI just uploaded, relative to the deployment prefix: cloud reconciles the prefix against it so a page deleted from the build actually stops serving. Omit &#x60;keys&#x60; and nothing is deleted — the prefix only grows. Reconciliation runs only on a live completion (pruning against a failed build&#39;s manifest would delete the site the last good build is still serving) and is best-effort, so a stale leftover never turns a successful deploy into a 500. A live completion is also the one billable moment on the git path; an error completion bills nothing.  Scope: a validated principal is required (403 without one). CI authenticates with an org-scoped token through the gateway, so the deployment is resolved within that principal&#39;s org and another tenant&#39;s slug or deployment id is a 404.
+     * @param slug Slug is the project the deployment belongs to, from the path. (required)
+     * @param id ID is the queued deployment to complete, from the path. (required)
+     * @param projectsComplete  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postPlatformSitesBySlugDeploymentsByIdCompleteAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull ProjectsComplete projectsComplete, final ApiCallback<ProjectsDeployment> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postPlatformSitesBySlugDeploymentsByIdCompleteValidateBeforeCall(slug, id, projectsComplete, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postPlatformSitesBySlugDomains
      * @param slug Slug is the site the hosts attach to, from the path. (required)
      * @param projectsDomainsBind  (required)
      * @param _callback Callback for upload/download progress
@@ -5227,7 +5548,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformSitesBySlugDomainsCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDomainsBind projectsDomainsBind, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformSitesBySlugDomainsCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDomainsBind projectsDomainsBind, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5274,18 +5595,18 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PlatformSitesBySlugDomainsValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDomainsBind projectsDomainsBind, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformSitesBySlugDomainsValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDomainsBind projectsDomainsBind, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling postV1PlatformSitesBySlugDomains(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling postPlatformSitesBySlugDomains(Async)");
         }
 
         // verify the required parameter 'projectsDomainsBind' is set
         if (projectsDomainsBind == null) {
-            throw new ApiException("Missing the required parameter 'projectsDomainsBind' when calling postV1PlatformSitesBySlugDomains(Async)");
+            throw new ApiException("Missing the required parameter 'projectsDomainsBind' when calling postPlatformSitesBySlugDomains(Async)");
         }
 
-        return postV1PlatformSitesBySlugDomainsCall(slug, projectsDomainsBind, _callback);
+        return postPlatformSitesBySlugDomainsCall(slug, projectsDomainsBind, _callback);
 
     }
 
@@ -5303,8 +5624,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectsBoundDomains postV1PlatformSitesBySlugDomains(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDomainsBind projectsDomainsBind) throws ApiException {
-        ApiResponse<ProjectsBoundDomains> localVarResp = postV1PlatformSitesBySlugDomainsWithHttpInfo(slug, projectsDomainsBind);
+    public ProjectsBoundDomains postPlatformSitesBySlugDomains(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDomainsBind projectsDomainsBind) throws ApiException {
+        ApiResponse<ProjectsBoundDomains> localVarResp = postPlatformSitesBySlugDomainsWithHttpInfo(slug, projectsDomainsBind);
         return localVarResp.getData();
     }
 
@@ -5322,8 +5643,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectsBoundDomains> postV1PlatformSitesBySlugDomainsWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDomainsBind projectsDomainsBind) throws ApiException {
-        okhttp3.Call localVarCall = postV1PlatformSitesBySlugDomainsValidateBeforeCall(slug, projectsDomainsBind, null);
+    public ApiResponse<ProjectsBoundDomains> postPlatformSitesBySlugDomainsWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDomainsBind projectsDomainsBind) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformSitesBySlugDomainsValidateBeforeCall(slug, projectsDomainsBind, null);
         Type localVarReturnType = new TypeToken<ProjectsBoundDomains>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -5343,15 +5664,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformSitesBySlugDomainsAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDomainsBind projectsDomainsBind, final ApiCallback<ProjectsBoundDomains> _callback) throws ApiException {
+    public okhttp3.Call postPlatformSitesBySlugDomainsAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDomainsBind projectsDomainsBind, final ApiCallback<ProjectsBoundDomains> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PlatformSitesBySlugDomainsValidateBeforeCall(slug, projectsDomainsBind, _callback);
+        okhttp3.Call localVarCall = postPlatformSitesBySlugDomainsValidateBeforeCall(slug, projectsDomainsBind, _callback);
         Type localVarReturnType = new TypeToken<ProjectsBoundDomains>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PlatformSitesBySlugDomainsByHostVerify
+     * Build call for postPlatformSitesBySlugDomainsByHostVerify
      * @param slug Slug is the project the host is attached to, from the path. (required)
      * @param host Host is the custom hostname, from the path. It is cleaned to its canonical form (lowercased, trailing dot dropped) before anything is looked up. (required)
      * @param _callback Callback for upload/download progress
@@ -5364,7 +5685,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformSitesBySlugDomainsByHostVerifyCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformSitesBySlugDomainsByHostVerifyCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5411,18 +5732,18 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PlatformSitesBySlugDomainsByHostVerifyValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformSitesBySlugDomainsByHostVerifyValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling postV1PlatformSitesBySlugDomainsByHostVerify(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling postPlatformSitesBySlugDomainsByHostVerify(Async)");
         }
 
         // verify the required parameter 'host' is set
         if (host == null) {
-            throw new ApiException("Missing the required parameter 'host' when calling postV1PlatformSitesBySlugDomainsByHostVerify(Async)");
+            throw new ApiException("Missing the required parameter 'host' when calling postPlatformSitesBySlugDomainsByHostVerify(Async)");
         }
 
-        return postV1PlatformSitesBySlugDomainsByHostVerifyCall(slug, host, _callback);
+        return postPlatformSitesBySlugDomainsByHostVerifyCall(slug, host, _callback);
 
     }
 
@@ -5440,8 +5761,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectsDomain postV1PlatformSitesBySlugDomainsByHostVerify(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host) throws ApiException {
-        ApiResponse<ProjectsDomain> localVarResp = postV1PlatformSitesBySlugDomainsByHostVerifyWithHttpInfo(slug, host);
+    public ProjectsDomain postPlatformSitesBySlugDomainsByHostVerify(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host) throws ApiException {
+        ApiResponse<ProjectsDomain> localVarResp = postPlatformSitesBySlugDomainsByHostVerifyWithHttpInfo(slug, host);
         return localVarResp.getData();
     }
 
@@ -5459,8 +5780,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectsDomain> postV1PlatformSitesBySlugDomainsByHostVerifyWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host) throws ApiException {
-        okhttp3.Call localVarCall = postV1PlatformSitesBySlugDomainsByHostVerifyValidateBeforeCall(slug, host, null);
+    public ApiResponse<ProjectsDomain> postPlatformSitesBySlugDomainsByHostVerifyWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformSitesBySlugDomainsByHostVerifyValidateBeforeCall(slug, host, null);
         Type localVarReturnType = new TypeToken<ProjectsDomain>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -5480,15 +5801,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformSitesBySlugDomainsByHostVerifyAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback<ProjectsDomain> _callback) throws ApiException {
+    public okhttp3.Call postPlatformSitesBySlugDomainsByHostVerifyAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback<ProjectsDomain> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PlatformSitesBySlugDomainsByHostVerifyValidateBeforeCall(slug, host, _callback);
+        okhttp3.Call localVarCall = postPlatformSitesBySlugDomainsByHostVerifyValidateBeforeCall(slug, host, _callback);
         Type localVarReturnType = new TypeToken<ProjectsDomain>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PlatformSitesBySlugPublish
+     * Build call for postPlatformSitesBySlugPublish
      * @param slug Slug is the site to publish, from the path. (required)
      * @param projectsPublish  (required)
      * @param _callback Callback for upload/download progress
@@ -5501,7 +5822,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformSitesBySlugPublishCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformSitesBySlugPublishCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5548,18 +5869,18 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PlatformSitesBySlugPublishValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformSitesBySlugPublishValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling postV1PlatformSitesBySlugPublish(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling postPlatformSitesBySlugPublish(Async)");
         }
 
         // verify the required parameter 'projectsPublish' is set
         if (projectsPublish == null) {
-            throw new ApiException("Missing the required parameter 'projectsPublish' when calling postV1PlatformSitesBySlugPublish(Async)");
+            throw new ApiException("Missing the required parameter 'projectsPublish' when calling postPlatformSitesBySlugPublish(Async)");
         }
 
-        return postV1PlatformSitesBySlugPublishCall(slug, projectsPublish, _callback);
+        return postPlatformSitesBySlugPublishCall(slug, projectsPublish, _callback);
 
     }
 
@@ -5577,8 +5898,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectsRelease postV1PlatformSitesBySlugPublish(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish) throws ApiException {
-        ApiResponse<ProjectsRelease> localVarResp = postV1PlatformSitesBySlugPublishWithHttpInfo(slug, projectsPublish);
+    public ProjectsRelease postPlatformSitesBySlugPublish(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish) throws ApiException {
+        ApiResponse<ProjectsRelease> localVarResp = postPlatformSitesBySlugPublishWithHttpInfo(slug, projectsPublish);
         return localVarResp.getData();
     }
 
@@ -5596,8 +5917,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectsRelease> postV1PlatformSitesBySlugPublishWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish) throws ApiException {
-        okhttp3.Call localVarCall = postV1PlatformSitesBySlugPublishValidateBeforeCall(slug, projectsPublish, null);
+    public ApiResponse<ProjectsRelease> postPlatformSitesBySlugPublishWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformSitesBySlugPublishValidateBeforeCall(slug, projectsPublish, null);
         Type localVarReturnType = new TypeToken<ProjectsRelease>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -5617,15 +5938,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformSitesBySlugPublishAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback<ProjectsRelease> _callback) throws ApiException {
+    public okhttp3.Call postPlatformSitesBySlugPublishAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback<ProjectsRelease> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PlatformSitesBySlugPublishValidateBeforeCall(slug, projectsPublish, _callback);
+        okhttp3.Call localVarCall = postPlatformSitesBySlugPublishValidateBeforeCall(slug, projectsPublish, _callback);
         Type localVarReturnType = new TypeToken<ProjectsRelease>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PlatformSitesBySlugPurge
+     * Build call for postPlatformSitesBySlugPurge
      * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -5637,7 +5958,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformSitesBySlugPurgeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformSitesBySlugPurgeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5683,13 +6004,13 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PlatformSitesBySlugPurgeValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformSitesBySlugPurgeValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling postV1PlatformSitesBySlugPurge(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling postPlatformSitesBySlugPurge(Async)");
         }
 
-        return postV1PlatformSitesBySlugPurgeCall(slug, _callback);
+        return postPlatformSitesBySlugPurgeCall(slug, _callback);
 
     }
 
@@ -5706,8 +6027,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectsProject postV1PlatformSitesBySlugPurge(@javax.annotation.Nonnull String slug) throws ApiException {
-        ApiResponse<ProjectsProject> localVarResp = postV1PlatformSitesBySlugPurgeWithHttpInfo(slug);
+    public ProjectsProject postPlatformSitesBySlugPurge(@javax.annotation.Nonnull String slug) throws ApiException {
+        ApiResponse<ProjectsProject> localVarResp = postPlatformSitesBySlugPurgeWithHttpInfo(slug);
         return localVarResp.getData();
     }
 
@@ -5724,8 +6045,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectsProject> postV1PlatformSitesBySlugPurgeWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
-        okhttp3.Call localVarCall = postV1PlatformSitesBySlugPurgeValidateBeforeCall(slug, null);
+    public ApiResponse<ProjectsProject> postPlatformSitesBySlugPurgeWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformSitesBySlugPurgeValidateBeforeCall(slug, null);
         Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -5744,15 +6065,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformSitesBySlugPurgeAsync(@javax.annotation.Nonnull String slug, final ApiCallback<ProjectsProject> _callback) throws ApiException {
+    public okhttp3.Call postPlatformSitesBySlugPurgeAsync(@javax.annotation.Nonnull String slug, final ApiCallback<ProjectsProject> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PlatformSitesBySlugPurgeValidateBeforeCall(slug, _callback);
+        okhttp3.Call localVarCall = postPlatformSitesBySlugPurgeValidateBeforeCall(slug, _callback);
         Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PlatformSitesBySlugReleases
+     * Build call for postPlatformSitesBySlugReleases
      * @param slug Slug is the site to publish, from the path. (required)
      * @param projectsPublish  (required)
      * @param _callback Callback for upload/download progress
@@ -5765,7 +6086,7 @@ public class PlatformApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformSitesBySlugReleasesCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformSitesBySlugReleasesCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5812,18 +6133,18 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PlatformSitesBySlugReleasesValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformSitesBySlugReleasesValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling postV1PlatformSitesBySlugReleases(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling postPlatformSitesBySlugReleases(Async)");
         }
 
         // verify the required parameter 'projectsPublish' is set
         if (projectsPublish == null) {
-            throw new ApiException("Missing the required parameter 'projectsPublish' when calling postV1PlatformSitesBySlugReleases(Async)");
+            throw new ApiException("Missing the required parameter 'projectsPublish' when calling postPlatformSitesBySlugReleases(Async)");
         }
 
-        return postV1PlatformSitesBySlugReleasesCall(slug, projectsPublish, _callback);
+        return postPlatformSitesBySlugReleasesCall(slug, projectsPublish, _callback);
 
     }
 
@@ -5841,8 +6162,8 @@ public class PlatformApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectsRelease postV1PlatformSitesBySlugReleases(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish) throws ApiException {
-        ApiResponse<ProjectsRelease> localVarResp = postV1PlatformSitesBySlugReleasesWithHttpInfo(slug, projectsPublish);
+    public ProjectsRelease postPlatformSitesBySlugReleases(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish) throws ApiException {
+        ApiResponse<ProjectsRelease> localVarResp = postPlatformSitesBySlugReleasesWithHttpInfo(slug, projectsPublish);
         return localVarResp.getData();
     }
 
@@ -5860,8 +6181,8 @@ public class PlatformApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectsRelease> postV1PlatformSitesBySlugReleasesWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish) throws ApiException {
-        okhttp3.Call localVarCall = postV1PlatformSitesBySlugReleasesValidateBeforeCall(slug, projectsPublish, null);
+    public ApiResponse<ProjectsRelease> postPlatformSitesBySlugReleasesWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformSitesBySlugReleasesValidateBeforeCall(slug, projectsPublish, null);
         Type localVarReturnType = new TypeToken<ProjectsRelease>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -5881,15 +6202,15 @@ public class PlatformApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformSitesBySlugReleasesAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback<ProjectsRelease> _callback) throws ApiException {
+    public okhttp3.Call postPlatformSitesBySlugReleasesAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback<ProjectsRelease> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PlatformSitesBySlugReleasesValidateBeforeCall(slug, projectsPublish, _callback);
+        okhttp3.Call localVarCall = postPlatformSitesBySlugReleasesValidateBeforeCall(slug, projectsPublish, _callback);
         Type localVarReturnType = new TypeToken<ProjectsRelease>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PlatformSitesBySlugReleasesByReleaseActivate
+     * Build call for postPlatformSitesBySlugReleasesByReleaseActivate
      * @param slug Slug is the site the release belongs to, from the path. (required)
      * @param release Release is the content-addressed release id (\&quot;rel_\&quot; + 32 hex chars), from the path. Anything that is not that shape is not found, rather than being interpolated into a storage prefix. (required)
      * @param _callback Callback for upload/download progress
@@ -5902,7 +6223,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformSitesBySlugReleasesByReleaseActivateCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformSitesBySlugReleasesByReleaseActivateCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5949,18 +6270,18 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PlatformSitesBySlugReleasesByReleaseActivateValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformSitesBySlugReleasesByReleaseActivateValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling postV1PlatformSitesBySlugReleasesByReleaseActivate(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling postPlatformSitesBySlugReleasesByReleaseActivate(Async)");
         }
 
         // verify the required parameter 'release' is set
         if (release == null) {
-            throw new ApiException("Missing the required parameter 'release' when calling postV1PlatformSitesBySlugReleasesByReleaseActivate(Async)");
+            throw new ApiException("Missing the required parameter 'release' when calling postPlatformSitesBySlugReleasesByReleaseActivate(Async)");
         }
 
-        return postV1PlatformSitesBySlugReleasesByReleaseActivateCall(slug, release, _callback);
+        return postPlatformSitesBySlugReleasesByReleaseActivateCall(slug, release, _callback);
 
     }
 
@@ -5978,8 +6299,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectsRelease postV1PlatformSitesBySlugReleasesByReleaseActivate(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release) throws ApiException {
-        ApiResponse<ProjectsRelease> localVarResp = postV1PlatformSitesBySlugReleasesByReleaseActivateWithHttpInfo(slug, release);
+    public ProjectsRelease postPlatformSitesBySlugReleasesByReleaseActivate(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release) throws ApiException {
+        ApiResponse<ProjectsRelease> localVarResp = postPlatformSitesBySlugReleasesByReleaseActivateWithHttpInfo(slug, release);
         return localVarResp.getData();
     }
 
@@ -5997,8 +6318,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectsRelease> postV1PlatformSitesBySlugReleasesByReleaseActivateWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release) throws ApiException {
-        okhttp3.Call localVarCall = postV1PlatformSitesBySlugReleasesByReleaseActivateValidateBeforeCall(slug, release, null);
+    public ApiResponse<ProjectsRelease> postPlatformSitesBySlugReleasesByReleaseActivateWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformSitesBySlugReleasesByReleaseActivateValidateBeforeCall(slug, release, null);
         Type localVarReturnType = new TypeToken<ProjectsRelease>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -6018,15 +6339,15 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PlatformSitesBySlugReleasesByReleaseActivateAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release, final ApiCallback<ProjectsRelease> _callback) throws ApiException {
+    public okhttp3.Call postPlatformSitesBySlugReleasesByReleaseActivateAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release, final ApiCallback<ProjectsRelease> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PlatformSitesBySlugReleasesByReleaseActivateValidateBeforeCall(slug, release, _callback);
+        okhttp3.Call localVarCall = postPlatformSitesBySlugReleasesByReleaseActivateValidateBeforeCall(slug, release, _callback);
         Type localVarReturnType = new TypeToken<ProjectsRelease>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1PlatformProjectsByProjectAppsByAppEnv
+     * Build call for putPlatformProjectsByProjectAppsByAppEnv
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param setEnvReq  (required)
@@ -6040,7 +6361,7 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1PlatformProjectsByProjectAppsByAppEnvCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull SetEnvReq setEnvReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putPlatformProjectsByProjectAppsByAppEnvCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull SetEnvReq setEnvReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6088,23 +6409,23 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1PlatformProjectsByProjectAppsByAppEnvValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull SetEnvReq setEnvReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putPlatformProjectsByProjectAppsByAppEnvValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull SetEnvReq setEnvReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling putV1PlatformProjectsByProjectAppsByAppEnv(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling putPlatformProjectsByProjectAppsByAppEnv(Async)");
         }
 
         // verify the required parameter 'app' is set
         if (app == null) {
-            throw new ApiException("Missing the required parameter 'app' when calling putV1PlatformProjectsByProjectAppsByAppEnv(Async)");
+            throw new ApiException("Missing the required parameter 'app' when calling putPlatformProjectsByProjectAppsByAppEnv(Async)");
         }
 
         // verify the required parameter 'setEnvReq' is set
         if (setEnvReq == null) {
-            throw new ApiException("Missing the required parameter 'setEnvReq' when calling putV1PlatformProjectsByProjectAppsByAppEnv(Async)");
+            throw new ApiException("Missing the required parameter 'setEnvReq' when calling putPlatformProjectsByProjectAppsByAppEnv(Async)");
         }
 
-        return putV1PlatformProjectsByProjectAppsByAppEnvCall(project, app, setEnvReq, _callback);
+        return putPlatformProjectsByProjectAppsByAppEnvCall(project, app, setEnvReq, _callback);
 
     }
 
@@ -6123,8 +6444,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AppView putV1PlatformProjectsByProjectAppsByAppEnv(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull SetEnvReq setEnvReq) throws ApiException {
-        ApiResponse<AppView> localVarResp = putV1PlatformProjectsByProjectAppsByAppEnvWithHttpInfo(project, app, setEnvReq);
+    public AppView putPlatformProjectsByProjectAppsByAppEnv(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull SetEnvReq setEnvReq) throws ApiException {
+        ApiResponse<AppView> localVarResp = putPlatformProjectsByProjectAppsByAppEnvWithHttpInfo(project, app, setEnvReq);
         return localVarResp.getData();
     }
 
@@ -6143,8 +6464,8 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AppView> putV1PlatformProjectsByProjectAppsByAppEnvWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull SetEnvReq setEnvReq) throws ApiException {
-        okhttp3.Call localVarCall = putV1PlatformProjectsByProjectAppsByAppEnvValidateBeforeCall(project, app, setEnvReq, null);
+    public ApiResponse<AppView> putPlatformProjectsByProjectAppsByAppEnvWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull SetEnvReq setEnvReq) throws ApiException {
+        okhttp3.Call localVarCall = putPlatformProjectsByProjectAppsByAppEnvValidateBeforeCall(project, app, setEnvReq, null);
         Type localVarReturnType = new TypeToken<AppView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -6165,9 +6486,9 @@ public class PlatformApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1PlatformProjectsByProjectAppsByAppEnvAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull SetEnvReq setEnvReq, final ApiCallback<AppView> _callback) throws ApiException {
+    public okhttp3.Call putPlatformProjectsByProjectAppsByAppEnvAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull SetEnvReq setEnvReq, final ApiCallback<AppView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1PlatformProjectsByProjectAppsByAppEnvValidateBeforeCall(project, app, setEnvReq, _callback);
+        okhttp3.Call localVarCall = putPlatformProjectsByProjectAppsByAppEnvValidateBeforeCall(project, app, setEnvReq, _callback);
         Type localVarReturnType = new TypeToken<AppView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -72,13 +72,13 @@ public class StoreApi {
     }
 
     /**
-     * Build call for deleteV1StoreByStoreid
+     * Build call for deleteStoreByStoreid
      * @param storeid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1StoreByStoreidCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteStoreByStoreidCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -123,13 +123,13 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1StoreByStoreidValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteStoreByStoreidValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling deleteV1StoreByStoreid(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling deleteStoreByStoreid(Async)");
         }
 
-        return deleteV1StoreByStoreidCall(storeid, _callback);
+        return deleteStoreByStoreidCall(storeid, _callback);
 
     }
 
@@ -139,8 +139,8 @@ public class StoreApi {
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1StoreByStoreid(@javax.annotation.Nonnull String storeid) throws ApiException {
-        deleteV1StoreByStoreidWithHttpInfo(storeid);
+    public void deleteStoreByStoreid(@javax.annotation.Nonnull String storeid) throws ApiException {
+        deleteStoreByStoreidWithHttpInfo(storeid);
     }
 
     /**
@@ -150,8 +150,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1StoreByStoreidWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1StoreByStoreidValidateBeforeCall(storeid, null);
+    public ApiResponse<Void> deleteStoreByStoreidWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = deleteStoreByStoreidValidateBeforeCall(storeid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -163,21 +163,21 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1StoreByStoreidAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteStoreByStoreidAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1StoreByStoreidValidateBeforeCall(storeid, _callback);
+        okhttp3.Call localVarCall = deleteStoreByStoreidValidateBeforeCall(storeid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1StoreByStoreidListingByKey
+     * Build call for deleteStoreByStoreidListingByKey
      * @param storeid  (required)
      * @param key  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1StoreByStoreidListingByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteStoreByStoreidListingByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -223,18 +223,18 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1StoreByStoreidListingByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteStoreByStoreidListingByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling deleteV1StoreByStoreidListingByKey(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling deleteStoreByStoreidListingByKey(Async)");
         }
 
         // verify the required parameter 'key' is set
         if (key == null) {
-            throw new ApiException("Missing the required parameter 'key' when calling deleteV1StoreByStoreidListingByKey(Async)");
+            throw new ApiException("Missing the required parameter 'key' when calling deleteStoreByStoreidListingByKey(Async)");
         }
 
-        return deleteV1StoreByStoreidListingByKeyCall(storeid, key, _callback);
+        return deleteStoreByStoreidListingByKeyCall(storeid, key, _callback);
 
     }
 
@@ -245,8 +245,8 @@ public class StoreApi {
      * @param key  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1StoreByStoreidListingByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
-        deleteV1StoreByStoreidListingByKeyWithHttpInfo(storeid, key);
+    public void deleteStoreByStoreidListingByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        deleteStoreByStoreidListingByKeyWithHttpInfo(storeid, key);
     }
 
     /**
@@ -257,8 +257,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1StoreByStoreidListingByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1StoreByStoreidListingByKeyValidateBeforeCall(storeid, key, null);
+    public ApiResponse<Void> deleteStoreByStoreidListingByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = deleteStoreByStoreidListingByKeyValidateBeforeCall(storeid, key, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -271,19 +271,19 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1StoreByStoreidListingByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteStoreByStoreidListingByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1StoreByStoreidListingByKeyValidateBeforeCall(storeid, key, _callback);
+        okhttp3.Call localVarCall = deleteStoreByStoreidListingByKeyValidateBeforeCall(storeid, key, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Store
+     * Build call for getStore
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1StoreCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getStoreCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -327,8 +327,8 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1StoreValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1StoreCall(_callback);
+    private okhttp3.Call getStoreValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getStoreCall(_callback);
 
     }
 
@@ -337,8 +337,8 @@ public class StoreApi {
      * Answers a pagination envelope — page, display, the rows, and a total count — read from the caller org&#39;s OWN namespaced database, so one tenant can never list another&#39;s stores. Sorting defaults to the store slug and is overridable with sort; display is the page size and page applies only alongside it, and either one that is not a positive integer is refused rather than silently ignored. The limit query overrides the reported COUNT only and never the rows returned. A request that resolves no org namespace is served an empty page, never an unscoped scan. Readable with an admin token, a store-scoped token, or the anonymous published storefront key.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1Store() throws ApiException {
-        getV1StoreWithHttpInfo();
+    public void getStore() throws ApiException {
+        getStoreWithHttpInfo();
     }
 
     /**
@@ -347,8 +347,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1StoreWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1StoreValidateBeforeCall(null);
+    public ApiResponse<Void> getStoreWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getStoreValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -359,19 +359,19 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1StoreAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getStoreAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1StoreValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getStoreValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1StoreAccess
+     * Build call for getStoreAccess
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1StoreAccessCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getStoreAccessCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -415,8 +415,8 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1StoreAccessValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1StoreAccessCall(_callback);
+    private okhttp3.Call getStoreAccessValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getStoreAccessCall(_callback);
 
     }
 
@@ -425,8 +425,8 @@ public class StoreApi {
      * Answers allowed, the store id, and a status of trial, active, payment_required, store_required or unavailable — the entitlement check a merchant surface gates on. The rule that surprises people is that entitlement is PER STORE, not per org: the store needs its own current subscription on the entry plan, either trialing with a trial end still ahead or active with a period end still ahead, so an org-wide balance or a sibling store&#39;s plan unlocks nothing here. The store comes from the X-Store-Id header and otherwise falls back to the org&#39;s first store; neither resolving is store_required with allowed false, and a backing-store failure is 503 with status unavailable — a retry signal, not a denial.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1StoreAccess() throws ApiException {
-        getV1StoreAccessWithHttpInfo();
+    public void getStoreAccess() throws ApiException {
+        getStoreAccessWithHttpInfo();
     }
 
     /**
@@ -435,8 +435,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1StoreAccessWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1StoreAccessValidateBeforeCall(null);
+    public ApiResponse<Void> getStoreAccessWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getStoreAccessValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -447,20 +447,20 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1StoreAccessAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getStoreAccessAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1StoreAccessValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getStoreAccessValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1StoreByStoreid
+     * Build call for getStoreByStoreid
      * @param storeid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1StoreByStoreidCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getStoreByStoreidCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -505,13 +505,13 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1StoreByStoreidValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getStoreByStoreidValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling getV1StoreByStoreid(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling getStoreByStoreid(Async)");
         }
 
-        return getV1StoreByStoreidCall(storeid, _callback);
+        return getStoreByStoreidCall(storeid, _callback);
 
     }
 
@@ -521,8 +521,8 @@ public class StoreApi {
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1StoreByStoreid(@javax.annotation.Nonnull String storeid) throws ApiException {
-        getV1StoreByStoreidWithHttpInfo(storeid);
+    public void getStoreByStoreid(@javax.annotation.Nonnull String storeid) throws ApiException {
+        getStoreByStoreidWithHttpInfo(storeid);
     }
 
     /**
@@ -532,8 +532,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1StoreByStoreidWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
-        okhttp3.Call localVarCall = getV1StoreByStoreidValidateBeforeCall(storeid, null);
+    public ApiResponse<Void> getStoreByStoreidWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = getStoreByStoreidValidateBeforeCall(storeid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -545,21 +545,21 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1StoreByStoreidAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getStoreByStoreidAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1StoreByStoreidValidateBeforeCall(storeid, _callback);
+        okhttp3.Call localVarCall = getStoreByStoreidValidateBeforeCall(storeid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1StoreByStoreidBundleByKey
+     * Build call for getStoreByStoreidBundleByKey
      * @param storeid  (required)
      * @param key  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1StoreByStoreidBundleByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getStoreByStoreidBundleByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -605,18 +605,18 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1StoreByStoreidBundleByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getStoreByStoreidBundleByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling getV1StoreByStoreidBundleByKey(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling getStoreByStoreidBundleByKey(Async)");
         }
 
         // verify the required parameter 'key' is set
         if (key == null) {
-            throw new ApiException("Missing the required parameter 'key' when calling getV1StoreByStoreidBundleByKey(Async)");
+            throw new ApiException("Missing the required parameter 'key' when calling getStoreByStoreidBundleByKey(Async)");
         }
 
-        return getV1StoreByStoreidBundleByKeyCall(storeid, key, _callback);
+        return getStoreByStoreidBundleByKeyCall(storeid, key, _callback);
 
     }
 
@@ -627,8 +627,8 @@ public class StoreApi {
      * @param key  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1StoreByStoreidBundleByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
-        getV1StoreByStoreidBundleByKeyWithHttpInfo(storeid, key);
+    public void getStoreByStoreidBundleByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        getStoreByStoreidBundleByKeyWithHttpInfo(storeid, key);
     }
 
     /**
@@ -639,8 +639,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1StoreByStoreidBundleByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
-        okhttp3.Call localVarCall = getV1StoreByStoreidBundleByKeyValidateBeforeCall(storeid, key, null);
+    public ApiResponse<Void> getStoreByStoreidBundleByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = getStoreByStoreidBundleByKeyValidateBeforeCall(storeid, key, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -653,20 +653,20 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1StoreByStoreidBundleByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getStoreByStoreidBundleByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1StoreByStoreidBundleByKeyValidateBeforeCall(storeid, key, _callback);
+        okhttp3.Call localVarCall = getStoreByStoreidBundleByKeyValidateBeforeCall(storeid, key, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1StoreByStoreidListing
+     * Build call for getStoreByStoreidListing
      * @param storeid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1StoreByStoreidListingCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getStoreByStoreidListingCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -711,13 +711,13 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1StoreByStoreidListingValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getStoreByStoreidListingValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling getV1StoreByStoreidListing(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling getStoreByStoreidListing(Async)");
         }
 
-        return getV1StoreByStoreidListingCall(storeid, _callback);
+        return getStoreByStoreidListingCall(storeid, _callback);
 
     }
 
@@ -727,8 +727,8 @@ public class StoreApi {
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1StoreByStoreidListing(@javax.annotation.Nonnull String storeid) throws ApiException {
-        getV1StoreByStoreidListingWithHttpInfo(storeid);
+    public void getStoreByStoreidListing(@javax.annotation.Nonnull String storeid) throws ApiException {
+        getStoreByStoreidListingWithHttpInfo(storeid);
     }
 
     /**
@@ -738,8 +738,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1StoreByStoreidListingWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
-        okhttp3.Call localVarCall = getV1StoreByStoreidListingValidateBeforeCall(storeid, null);
+    public ApiResponse<Void> getStoreByStoreidListingWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = getStoreByStoreidListingValidateBeforeCall(storeid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -751,21 +751,21 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1StoreByStoreidListingAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getStoreByStoreidListingAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1StoreByStoreidListingValidateBeforeCall(storeid, _callback);
+        okhttp3.Call localVarCall = getStoreByStoreidListingValidateBeforeCall(storeid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1StoreByStoreidListingByKey
+     * Build call for getStoreByStoreidListingByKey
      * @param storeid  (required)
      * @param key  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1StoreByStoreidListingByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getStoreByStoreidListingByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -811,18 +811,18 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1StoreByStoreidListingByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getStoreByStoreidListingByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling getV1StoreByStoreidListingByKey(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling getStoreByStoreidListingByKey(Async)");
         }
 
         // verify the required parameter 'key' is set
         if (key == null) {
-            throw new ApiException("Missing the required parameter 'key' when calling getV1StoreByStoreidListingByKey(Async)");
+            throw new ApiException("Missing the required parameter 'key' when calling getStoreByStoreidListingByKey(Async)");
         }
 
-        return getV1StoreByStoreidListingByKeyCall(storeid, key, _callback);
+        return getStoreByStoreidListingByKeyCall(storeid, key, _callback);
 
     }
 
@@ -833,8 +833,8 @@ public class StoreApi {
      * @param key  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1StoreByStoreidListingByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
-        getV1StoreByStoreidListingByKeyWithHttpInfo(storeid, key);
+    public void getStoreByStoreidListingByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        getStoreByStoreidListingByKeyWithHttpInfo(storeid, key);
     }
 
     /**
@@ -845,8 +845,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1StoreByStoreidListingByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
-        okhttp3.Call localVarCall = getV1StoreByStoreidListingByKeyValidateBeforeCall(storeid, key, null);
+    public ApiResponse<Void> getStoreByStoreidListingByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = getStoreByStoreidListingByKeyValidateBeforeCall(storeid, key, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -859,21 +859,21 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1StoreByStoreidListingByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getStoreByStoreidListingByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1StoreByStoreidListingByKeyValidateBeforeCall(storeid, key, _callback);
+        okhttp3.Call localVarCall = getStoreByStoreidListingByKeyValidateBeforeCall(storeid, key, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1StoreByStoreidProductByKey
+     * Build call for getStoreByStoreidProductByKey
      * @param storeid  (required)
      * @param key  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1StoreByStoreidProductByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getStoreByStoreidProductByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -919,18 +919,18 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1StoreByStoreidProductByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getStoreByStoreidProductByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling getV1StoreByStoreidProductByKey(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling getStoreByStoreidProductByKey(Async)");
         }
 
         // verify the required parameter 'key' is set
         if (key == null) {
-            throw new ApiException("Missing the required parameter 'key' when calling getV1StoreByStoreidProductByKey(Async)");
+            throw new ApiException("Missing the required parameter 'key' when calling getStoreByStoreidProductByKey(Async)");
         }
 
-        return getV1StoreByStoreidProductByKeyCall(storeid, key, _callback);
+        return getStoreByStoreidProductByKeyCall(storeid, key, _callback);
 
     }
 
@@ -941,8 +941,8 @@ public class StoreApi {
      * @param key  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1StoreByStoreidProductByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
-        getV1StoreByStoreidProductByKeyWithHttpInfo(storeid, key);
+    public void getStoreByStoreidProductByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        getStoreByStoreidProductByKeyWithHttpInfo(storeid, key);
     }
 
     /**
@@ -953,8 +953,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1StoreByStoreidProductByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
-        okhttp3.Call localVarCall = getV1StoreByStoreidProductByKeyValidateBeforeCall(storeid, key, null);
+    public ApiResponse<Void> getStoreByStoreidProductByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = getStoreByStoreidProductByKeyValidateBeforeCall(storeid, key, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -967,21 +967,21 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1StoreByStoreidProductByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getStoreByStoreidProductByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1StoreByStoreidProductByKeyValidateBeforeCall(storeid, key, _callback);
+        okhttp3.Call localVarCall = getStoreByStoreidProductByKeyValidateBeforeCall(storeid, key, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1StoreByStoreidVariantByKey
+     * Build call for getStoreByStoreidVariantByKey
      * @param storeid  (required)
      * @param key  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1StoreByStoreidVariantByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getStoreByStoreidVariantByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1027,18 +1027,18 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1StoreByStoreidVariantByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getStoreByStoreidVariantByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling getV1StoreByStoreidVariantByKey(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling getStoreByStoreidVariantByKey(Async)");
         }
 
         // verify the required parameter 'key' is set
         if (key == null) {
-            throw new ApiException("Missing the required parameter 'key' when calling getV1StoreByStoreidVariantByKey(Async)");
+            throw new ApiException("Missing the required parameter 'key' when calling getStoreByStoreidVariantByKey(Async)");
         }
 
-        return getV1StoreByStoreidVariantByKeyCall(storeid, key, _callback);
+        return getStoreByStoreidVariantByKeyCall(storeid, key, _callback);
 
     }
 
@@ -1049,8 +1049,8 @@ public class StoreApi {
      * @param key  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1StoreByStoreidVariantByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
-        getV1StoreByStoreidVariantByKeyWithHttpInfo(storeid, key);
+    public void getStoreByStoreidVariantByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        getStoreByStoreidVariantByKeyWithHttpInfo(storeid, key);
     }
 
     /**
@@ -1061,8 +1061,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1StoreByStoreidVariantByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
-        okhttp3.Call localVarCall = getV1StoreByStoreidVariantByKeyValidateBeforeCall(storeid, key, null);
+    public ApiResponse<Void> getStoreByStoreidVariantByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = getStoreByStoreidVariantByKeyValidateBeforeCall(storeid, key, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1075,19 +1075,19 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1StoreByStoreidVariantByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getStoreByStoreidVariantByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1StoreByStoreidVariantByKeyValidateBeforeCall(storeid, key, _callback);
+        okhttp3.Call localVarCall = getStoreByStoreidVariantByKeyValidateBeforeCall(storeid, key, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1StoreCurrent
+     * Build call for getStoreCurrent
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1StoreCurrentCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getStoreCurrentCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1131,8 +1131,8 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1StoreCurrentValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1StoreCurrentCall(_callback);
+    private okhttp3.Call getStoreCurrentValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getStoreCurrentCall(_callback);
 
     }
 
@@ -1141,8 +1141,8 @@ public class StoreApi {
      * Returns the caller org&#39;s store resolved FROM THE AUTHENTICATED ORG rather than from a path id — which is how an admin dashboard or a storefront edge learns the store id it should then read and write against. An X-Store-Id header selects a specific store, resolved only inside the caller&#39;s own namespace, so a foreign id cannot cross the tenant boundary and answers 404 instead. With no header the org&#39;s first store is returned, and an org that has none yet has its canonical default provisioned lazily and idempotently, carrying no payment credentials. Only when there is no org in context, or provisioning fails, does it fall back to a placeholder store literally named default, which a storefront edge should treat as unconfigured.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1StoreCurrent() throws ApiException {
-        getV1StoreCurrentWithHttpInfo();
+    public void getStoreCurrent() throws ApiException {
+        getStoreCurrentWithHttpInfo();
     }
 
     /**
@@ -1151,8 +1151,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1StoreCurrentWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1StoreCurrentValidateBeforeCall(null);
+    public ApiResponse<Void> getStoreCurrentWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getStoreCurrentValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1163,20 +1163,20 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1StoreCurrentAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getStoreCurrentAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1StoreCurrentValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getStoreCurrentValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1StoreByStoreid
+     * Build call for patchStoreByStoreid
      * @param storeid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1StoreByStoreidCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchStoreByStoreidCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1221,13 +1221,13 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1StoreByStoreidValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchStoreByStoreidValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling patchV1StoreByStoreid(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling patchStoreByStoreid(Async)");
         }
 
-        return patchV1StoreByStoreidCall(storeid, _callback);
+        return patchStoreByStoreidCall(storeid, _callback);
 
     }
 
@@ -1237,8 +1237,8 @@ public class StoreApi {
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1StoreByStoreid(@javax.annotation.Nonnull String storeid) throws ApiException {
-        patchV1StoreByStoreidWithHttpInfo(storeid);
+    public void patchStoreByStoreid(@javax.annotation.Nonnull String storeid) throws ApiException {
+        patchStoreByStoreidWithHttpInfo(storeid);
     }
 
     /**
@@ -1248,8 +1248,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1StoreByStoreidWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
-        okhttp3.Call localVarCall = patchV1StoreByStoreidValidateBeforeCall(storeid, null);
+    public ApiResponse<Void> patchStoreByStoreidWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = patchStoreByStoreidValidateBeforeCall(storeid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1261,21 +1261,21 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1StoreByStoreidAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchStoreByStoreidAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1StoreByStoreidValidateBeforeCall(storeid, _callback);
+        okhttp3.Call localVarCall = patchStoreByStoreidValidateBeforeCall(storeid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1StoreByStoreidListingByKey
+     * Build call for patchStoreByStoreidListingByKey
      * @param storeid  (required)
      * @param key  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1StoreByStoreidListingByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchStoreByStoreidListingByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1321,18 +1321,18 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1StoreByStoreidListingByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchStoreByStoreidListingByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling patchV1StoreByStoreidListingByKey(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling patchStoreByStoreidListingByKey(Async)");
         }
 
         // verify the required parameter 'key' is set
         if (key == null) {
-            throw new ApiException("Missing the required parameter 'key' when calling patchV1StoreByStoreidListingByKey(Async)");
+            throw new ApiException("Missing the required parameter 'key' when calling patchStoreByStoreidListingByKey(Async)");
         }
 
-        return patchV1StoreByStoreidListingByKeyCall(storeid, key, _callback);
+        return patchStoreByStoreidListingByKeyCall(storeid, key, _callback);
 
     }
 
@@ -1343,8 +1343,8 @@ public class StoreApi {
      * @param key  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1StoreByStoreidListingByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
-        patchV1StoreByStoreidListingByKeyWithHttpInfo(storeid, key);
+    public void patchStoreByStoreidListingByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        patchStoreByStoreidListingByKeyWithHttpInfo(storeid, key);
     }
 
     /**
@@ -1355,8 +1355,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1StoreByStoreidListingByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
-        okhttp3.Call localVarCall = patchV1StoreByStoreidListingByKeyValidateBeforeCall(storeid, key, null);
+    public ApiResponse<Void> patchStoreByStoreidListingByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = patchStoreByStoreidListingByKeyValidateBeforeCall(storeid, key, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1369,19 +1369,19 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1StoreByStoreidListingByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchStoreByStoreidListingByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1StoreByStoreidListingByKeyValidateBeforeCall(storeid, key, _callback);
+        okhttp3.Call localVarCall = patchStoreByStoreidListingByKeyValidateBeforeCall(storeid, key, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Store
+     * Build call for postStore
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1StoreCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postStoreCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1425,8 +1425,8 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1StoreValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1StoreCall(_callback);
+    private okhttp3.Call postStoreValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postStoreCall(_callback);
 
     }
 
@@ -1435,8 +1435,8 @@ public class StoreApi {
      * Creates a store from the body inside the caller org&#39;s own namespaced database, so the row is physically isolated to that tenant from its first write, and answers it at 201 with a Location header naming its id. Requires an admin or store-write token: the anonymous published storefront key may READ stores but never create one. A body that fails to decode is 400.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1Store() throws ApiException {
-        postV1StoreWithHttpInfo();
+    public void postStore() throws ApiException {
+        postStoreWithHttpInfo();
     }
 
     /**
@@ -1445,8 +1445,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1StoreWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1StoreValidateBeforeCall(null);
+    public ApiResponse<Void> postStoreWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postStoreValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1457,20 +1457,20 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1StoreAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postStoreAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1StoreValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postStoreValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1StoreByStoreid
+     * Build call for postStoreByStoreid
      * @param storeid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1515,13 +1515,13 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1StoreByStoreidValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postStoreByStoreidValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling postV1StoreByStoreid(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling postStoreByStoreid(Async)");
         }
 
-        return postV1StoreByStoreidCall(storeid, _callback);
+        return postStoreByStoreidCall(storeid, _callback);
 
     }
 
@@ -1531,8 +1531,8 @@ public class StoreApi {
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1StoreByStoreid(@javax.annotation.Nonnull String storeid) throws ApiException {
-        postV1StoreByStoreidWithHttpInfo(storeid);
+    public void postStoreByStoreid(@javax.annotation.Nonnull String storeid) throws ApiException {
+        postStoreByStoreidWithHttpInfo(storeid);
     }
 
     /**
@@ -1542,8 +1542,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1StoreByStoreidWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
-        okhttp3.Call localVarCall = postV1StoreByStoreidValidateBeforeCall(storeid, null);
+    public ApiResponse<Void> postStoreByStoreidWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = postStoreByStoreidValidateBeforeCall(storeid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1555,20 +1555,20 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1StoreByStoreidValidateBeforeCall(storeid, _callback);
+        okhttp3.Call localVarCall = postStoreByStoreidValidateBeforeCall(storeid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1StoreByStoreidAuthorize
+     * Build call for postStoreByStoreidAuthorize
      * @param storeid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidAuthorizeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidAuthorizeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1613,13 +1613,13 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1StoreByStoreidAuthorizeValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postStoreByStoreidAuthorizeValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling postV1StoreByStoreidAuthorize(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling postStoreByStoreidAuthorize(Async)");
         }
 
-        return postV1StoreByStoreidAuthorizeCall(storeid, _callback);
+        return postStoreByStoreidAuthorizeCall(storeid, _callback);
 
     }
 
@@ -1629,8 +1629,8 @@ public class StoreApi {
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1StoreByStoreidAuthorize(@javax.annotation.Nonnull String storeid) throws ApiException {
-        postV1StoreByStoreidAuthorizeWithHttpInfo(storeid);
+    public void postStoreByStoreidAuthorize(@javax.annotation.Nonnull String storeid) throws ApiException {
+        postStoreByStoreidAuthorizeWithHttpInfo(storeid);
     }
 
     /**
@@ -1640,8 +1640,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1StoreByStoreidAuthorizeWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
-        okhttp3.Call localVarCall = postV1StoreByStoreidAuthorizeValidateBeforeCall(storeid, null);
+    public ApiResponse<Void> postStoreByStoreidAuthorizeWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = postStoreByStoreidAuthorizeValidateBeforeCall(storeid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1653,21 +1653,21 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidAuthorizeAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidAuthorizeAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1StoreByStoreidAuthorizeValidateBeforeCall(storeid, _callback);
+        okhttp3.Call localVarCall = postStoreByStoreidAuthorizeValidateBeforeCall(storeid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1StoreByStoreidAuthorizeByOrderid
+     * Build call for postStoreByStoreidAuthorizeByOrderid
      * @param storeid  (required)
      * @param orderid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidAuthorizeByOrderidCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidAuthorizeByOrderidCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1713,18 +1713,18 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1StoreByStoreidAuthorizeByOrderidValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postStoreByStoreidAuthorizeByOrderidValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling postV1StoreByStoreidAuthorizeByOrderid(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling postStoreByStoreidAuthorizeByOrderid(Async)");
         }
 
         // verify the required parameter 'orderid' is set
         if (orderid == null) {
-            throw new ApiException("Missing the required parameter 'orderid' when calling postV1StoreByStoreidAuthorizeByOrderid(Async)");
+            throw new ApiException("Missing the required parameter 'orderid' when calling postStoreByStoreidAuthorizeByOrderid(Async)");
         }
 
-        return postV1StoreByStoreidAuthorizeByOrderidCall(storeid, orderid, _callback);
+        return postStoreByStoreidAuthorizeByOrderidCall(storeid, orderid, _callback);
 
     }
 
@@ -1735,8 +1735,8 @@ public class StoreApi {
      * @param orderid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1StoreByStoreidAuthorizeByOrderid(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
-        postV1StoreByStoreidAuthorizeByOrderidWithHttpInfo(storeid, orderid);
+    public void postStoreByStoreidAuthorizeByOrderid(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
+        postStoreByStoreidAuthorizeByOrderidWithHttpInfo(storeid, orderid);
     }
 
     /**
@@ -1747,8 +1747,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1StoreByStoreidAuthorizeByOrderidWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
-        okhttp3.Call localVarCall = postV1StoreByStoreidAuthorizeByOrderidValidateBeforeCall(storeid, orderid, null);
+    public ApiResponse<Void> postStoreByStoreidAuthorizeByOrderidWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
+        okhttp3.Call localVarCall = postStoreByStoreidAuthorizeByOrderidValidateBeforeCall(storeid, orderid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1761,21 +1761,21 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidAuthorizeByOrderidAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidAuthorizeByOrderidAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1StoreByStoreidAuthorizeByOrderidValidateBeforeCall(storeid, orderid, _callback);
+        okhttp3.Call localVarCall = postStoreByStoreidAuthorizeByOrderidValidateBeforeCall(storeid, orderid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1StoreByStoreidCaptureByOrderid
+     * Build call for postStoreByStoreidCaptureByOrderid
      * @param storeid  (required)
      * @param orderid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidCaptureByOrderidCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidCaptureByOrderidCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1821,18 +1821,18 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1StoreByStoreidCaptureByOrderidValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postStoreByStoreidCaptureByOrderidValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling postV1StoreByStoreidCaptureByOrderid(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling postStoreByStoreidCaptureByOrderid(Async)");
         }
 
         // verify the required parameter 'orderid' is set
         if (orderid == null) {
-            throw new ApiException("Missing the required parameter 'orderid' when calling postV1StoreByStoreidCaptureByOrderid(Async)");
+            throw new ApiException("Missing the required parameter 'orderid' when calling postStoreByStoreidCaptureByOrderid(Async)");
         }
 
-        return postV1StoreByStoreidCaptureByOrderidCall(storeid, orderid, _callback);
+        return postStoreByStoreidCaptureByOrderidCall(storeid, orderid, _callback);
 
     }
 
@@ -1843,8 +1843,8 @@ public class StoreApi {
      * @param orderid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1StoreByStoreidCaptureByOrderid(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
-        postV1StoreByStoreidCaptureByOrderidWithHttpInfo(storeid, orderid);
+    public void postStoreByStoreidCaptureByOrderid(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
+        postStoreByStoreidCaptureByOrderidWithHttpInfo(storeid, orderid);
     }
 
     /**
@@ -1855,8 +1855,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1StoreByStoreidCaptureByOrderidWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
-        okhttp3.Call localVarCall = postV1StoreByStoreidCaptureByOrderidValidateBeforeCall(storeid, orderid, null);
+    public ApiResponse<Void> postStoreByStoreidCaptureByOrderidWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
+        okhttp3.Call localVarCall = postStoreByStoreidCaptureByOrderidValidateBeforeCall(storeid, orderid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1869,20 +1869,20 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidCaptureByOrderidAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidCaptureByOrderidAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1StoreByStoreidCaptureByOrderidValidateBeforeCall(storeid, orderid, _callback);
+        okhttp3.Call localVarCall = postStoreByStoreidCaptureByOrderidValidateBeforeCall(storeid, orderid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1StoreByStoreidCharge
+     * Build call for postStoreByStoreidCharge
      * @param storeid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidChargeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidChargeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1927,13 +1927,13 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1StoreByStoreidChargeValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postStoreByStoreidChargeValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling postV1StoreByStoreidCharge(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling postStoreByStoreidCharge(Async)");
         }
 
-        return postV1StoreByStoreidChargeCall(storeid, _callback);
+        return postStoreByStoreidChargeCall(storeid, _callback);
 
     }
 
@@ -1943,8 +1943,8 @@ public class StoreApi {
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1StoreByStoreidCharge(@javax.annotation.Nonnull String storeid) throws ApiException {
-        postV1StoreByStoreidChargeWithHttpInfo(storeid);
+    public void postStoreByStoreidCharge(@javax.annotation.Nonnull String storeid) throws ApiException {
+        postStoreByStoreidChargeWithHttpInfo(storeid);
     }
 
     /**
@@ -1954,8 +1954,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1StoreByStoreidChargeWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
-        okhttp3.Call localVarCall = postV1StoreByStoreidChargeValidateBeforeCall(storeid, null);
+    public ApiResponse<Void> postStoreByStoreidChargeWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = postStoreByStoreidChargeValidateBeforeCall(storeid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1967,20 +1967,20 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidChargeAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidChargeAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1StoreByStoreidChargeValidateBeforeCall(storeid, _callback);
+        okhttp3.Call localVarCall = postStoreByStoreidChargeValidateBeforeCall(storeid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1StoreByStoreidCheckoutAuthorize
+     * Build call for postStoreByStoreidCheckoutAuthorize
      * @param storeid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidCheckoutAuthorizeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidCheckoutAuthorizeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2025,13 +2025,13 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1StoreByStoreidCheckoutAuthorizeValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postStoreByStoreidCheckoutAuthorizeValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling postV1StoreByStoreidCheckoutAuthorize(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling postStoreByStoreidCheckoutAuthorize(Async)");
         }
 
-        return postV1StoreByStoreidCheckoutAuthorizeCall(storeid, _callback);
+        return postStoreByStoreidCheckoutAuthorizeCall(storeid, _callback);
 
     }
 
@@ -2041,8 +2041,8 @@ public class StoreApi {
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1StoreByStoreidCheckoutAuthorize(@javax.annotation.Nonnull String storeid) throws ApiException {
-        postV1StoreByStoreidCheckoutAuthorizeWithHttpInfo(storeid);
+    public void postStoreByStoreidCheckoutAuthorize(@javax.annotation.Nonnull String storeid) throws ApiException {
+        postStoreByStoreidCheckoutAuthorizeWithHttpInfo(storeid);
     }
 
     /**
@@ -2052,8 +2052,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1StoreByStoreidCheckoutAuthorizeWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
-        okhttp3.Call localVarCall = postV1StoreByStoreidCheckoutAuthorizeValidateBeforeCall(storeid, null);
+    public ApiResponse<Void> postStoreByStoreidCheckoutAuthorizeWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = postStoreByStoreidCheckoutAuthorizeValidateBeforeCall(storeid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2065,21 +2065,21 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidCheckoutAuthorizeAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidCheckoutAuthorizeAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1StoreByStoreidCheckoutAuthorizeValidateBeforeCall(storeid, _callback);
+        okhttp3.Call localVarCall = postStoreByStoreidCheckoutAuthorizeValidateBeforeCall(storeid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1StoreByStoreidCheckoutAuthorizeByOrderid
+     * Build call for postStoreByStoreidCheckoutAuthorizeByOrderid
      * @param storeid  (required)
      * @param orderid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidCheckoutAuthorizeByOrderidCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidCheckoutAuthorizeByOrderidCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2125,18 +2125,18 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1StoreByStoreidCheckoutAuthorizeByOrderidValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postStoreByStoreidCheckoutAuthorizeByOrderidValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling postV1StoreByStoreidCheckoutAuthorizeByOrderid(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling postStoreByStoreidCheckoutAuthorizeByOrderid(Async)");
         }
 
         // verify the required parameter 'orderid' is set
         if (orderid == null) {
-            throw new ApiException("Missing the required parameter 'orderid' when calling postV1StoreByStoreidCheckoutAuthorizeByOrderid(Async)");
+            throw new ApiException("Missing the required parameter 'orderid' when calling postStoreByStoreidCheckoutAuthorizeByOrderid(Async)");
         }
 
-        return postV1StoreByStoreidCheckoutAuthorizeByOrderidCall(storeid, orderid, _callback);
+        return postStoreByStoreidCheckoutAuthorizeByOrderidCall(storeid, orderid, _callback);
 
     }
 
@@ -2147,8 +2147,8 @@ public class StoreApi {
      * @param orderid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1StoreByStoreidCheckoutAuthorizeByOrderid(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
-        postV1StoreByStoreidCheckoutAuthorizeByOrderidWithHttpInfo(storeid, orderid);
+    public void postStoreByStoreidCheckoutAuthorizeByOrderid(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
+        postStoreByStoreidCheckoutAuthorizeByOrderidWithHttpInfo(storeid, orderid);
     }
 
     /**
@@ -2159,8 +2159,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1StoreByStoreidCheckoutAuthorizeByOrderidWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
-        okhttp3.Call localVarCall = postV1StoreByStoreidCheckoutAuthorizeByOrderidValidateBeforeCall(storeid, orderid, null);
+    public ApiResponse<Void> postStoreByStoreidCheckoutAuthorizeByOrderidWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
+        okhttp3.Call localVarCall = postStoreByStoreidCheckoutAuthorizeByOrderidValidateBeforeCall(storeid, orderid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2173,21 +2173,21 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidCheckoutAuthorizeByOrderidAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidCheckoutAuthorizeByOrderidAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1StoreByStoreidCheckoutAuthorizeByOrderidValidateBeforeCall(storeid, orderid, _callback);
+        okhttp3.Call localVarCall = postStoreByStoreidCheckoutAuthorizeByOrderidValidateBeforeCall(storeid, orderid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1StoreByStoreidCheckoutCaptureByOrderid
+     * Build call for postStoreByStoreidCheckoutCaptureByOrderid
      * @param storeid  (required)
      * @param orderid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidCheckoutCaptureByOrderidCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidCheckoutCaptureByOrderidCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2233,18 +2233,18 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1StoreByStoreidCheckoutCaptureByOrderidValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postStoreByStoreidCheckoutCaptureByOrderidValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling postV1StoreByStoreidCheckoutCaptureByOrderid(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling postStoreByStoreidCheckoutCaptureByOrderid(Async)");
         }
 
         // verify the required parameter 'orderid' is set
         if (orderid == null) {
-            throw new ApiException("Missing the required parameter 'orderid' when calling postV1StoreByStoreidCheckoutCaptureByOrderid(Async)");
+            throw new ApiException("Missing the required parameter 'orderid' when calling postStoreByStoreidCheckoutCaptureByOrderid(Async)");
         }
 
-        return postV1StoreByStoreidCheckoutCaptureByOrderidCall(storeid, orderid, _callback);
+        return postStoreByStoreidCheckoutCaptureByOrderidCall(storeid, orderid, _callback);
 
     }
 
@@ -2255,8 +2255,8 @@ public class StoreApi {
      * @param orderid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1StoreByStoreidCheckoutCaptureByOrderid(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
-        postV1StoreByStoreidCheckoutCaptureByOrderidWithHttpInfo(storeid, orderid);
+    public void postStoreByStoreidCheckoutCaptureByOrderid(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
+        postStoreByStoreidCheckoutCaptureByOrderidWithHttpInfo(storeid, orderid);
     }
 
     /**
@@ -2267,8 +2267,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1StoreByStoreidCheckoutCaptureByOrderidWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
-        okhttp3.Call localVarCall = postV1StoreByStoreidCheckoutCaptureByOrderidValidateBeforeCall(storeid, orderid, null);
+    public ApiResponse<Void> postStoreByStoreidCheckoutCaptureByOrderidWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
+        okhttp3.Call localVarCall = postStoreByStoreidCheckoutCaptureByOrderidValidateBeforeCall(storeid, orderid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2281,20 +2281,20 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidCheckoutCaptureByOrderidAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidCheckoutCaptureByOrderidAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1StoreByStoreidCheckoutCaptureByOrderidValidateBeforeCall(storeid, orderid, _callback);
+        okhttp3.Call localVarCall = postStoreByStoreidCheckoutCaptureByOrderidValidateBeforeCall(storeid, orderid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1StoreByStoreidCheckoutCharge
+     * Build call for postStoreByStoreidCheckoutCharge
      * @param storeid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidCheckoutChargeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidCheckoutChargeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2339,13 +2339,13 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1StoreByStoreidCheckoutChargeValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postStoreByStoreidCheckoutChargeValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling postV1StoreByStoreidCheckoutCharge(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling postStoreByStoreidCheckoutCharge(Async)");
         }
 
-        return postV1StoreByStoreidCheckoutChargeCall(storeid, _callback);
+        return postStoreByStoreidCheckoutChargeCall(storeid, _callback);
 
     }
 
@@ -2355,8 +2355,8 @@ public class StoreApi {
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1StoreByStoreidCheckoutCharge(@javax.annotation.Nonnull String storeid) throws ApiException {
-        postV1StoreByStoreidCheckoutChargeWithHttpInfo(storeid);
+    public void postStoreByStoreidCheckoutCharge(@javax.annotation.Nonnull String storeid) throws ApiException {
+        postStoreByStoreidCheckoutChargeWithHttpInfo(storeid);
     }
 
     /**
@@ -2366,8 +2366,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1StoreByStoreidCheckoutChargeWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
-        okhttp3.Call localVarCall = postV1StoreByStoreidCheckoutChargeValidateBeforeCall(storeid, null);
+    public ApiResponse<Void> postStoreByStoreidCheckoutChargeWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = postStoreByStoreidCheckoutChargeValidateBeforeCall(storeid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2379,21 +2379,21 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidCheckoutChargeAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidCheckoutChargeAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1StoreByStoreidCheckoutChargeValidateBeforeCall(storeid, _callback);
+        okhttp3.Call localVarCall = postStoreByStoreidCheckoutChargeValidateBeforeCall(storeid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1StoreByStoreidCheckoutPaypalCancelByPaykey
+     * Build call for postStoreByStoreidCheckoutPaypalCancelByPaykey
      * @param storeid  (required)
      * @param payKey  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidCheckoutPaypalCancelByPaykeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidCheckoutPaypalCancelByPaykeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2439,18 +2439,18 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1StoreByStoreidCheckoutPaypalCancelByPaykeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postStoreByStoreidCheckoutPaypalCancelByPaykeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling postV1StoreByStoreidCheckoutPaypalCancelByPaykey(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling postStoreByStoreidCheckoutPaypalCancelByPaykey(Async)");
         }
 
         // verify the required parameter 'payKey' is set
         if (payKey == null) {
-            throw new ApiException("Missing the required parameter 'payKey' when calling postV1StoreByStoreidCheckoutPaypalCancelByPaykey(Async)");
+            throw new ApiException("Missing the required parameter 'payKey' when calling postStoreByStoreidCheckoutPaypalCancelByPaykey(Async)");
         }
 
-        return postV1StoreByStoreidCheckoutPaypalCancelByPaykeyCall(storeid, payKey, _callback);
+        return postStoreByStoreidCheckoutPaypalCancelByPaykeyCall(storeid, payKey, _callback);
 
     }
 
@@ -2461,8 +2461,8 @@ public class StoreApi {
      * @param payKey  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1StoreByStoreidCheckoutPaypalCancelByPaykey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
-        postV1StoreByStoreidCheckoutPaypalCancelByPaykeyWithHttpInfo(storeid, payKey);
+    public void postStoreByStoreidCheckoutPaypalCancelByPaykey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
+        postStoreByStoreidCheckoutPaypalCancelByPaykeyWithHttpInfo(storeid, payKey);
     }
 
     /**
@@ -2473,8 +2473,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1StoreByStoreidCheckoutPaypalCancelByPaykeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
-        okhttp3.Call localVarCall = postV1StoreByStoreidCheckoutPaypalCancelByPaykeyValidateBeforeCall(storeid, payKey, null);
+    public ApiResponse<Void> postStoreByStoreidCheckoutPaypalCancelByPaykeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
+        okhttp3.Call localVarCall = postStoreByStoreidCheckoutPaypalCancelByPaykeyValidateBeforeCall(storeid, payKey, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2487,21 +2487,21 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidCheckoutPaypalCancelByPaykeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidCheckoutPaypalCancelByPaykeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1StoreByStoreidCheckoutPaypalCancelByPaykeyValidateBeforeCall(storeid, payKey, _callback);
+        okhttp3.Call localVarCall = postStoreByStoreidCheckoutPaypalCancelByPaykeyValidateBeforeCall(storeid, payKey, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1StoreByStoreidCheckoutPaypalConfirmByPaykey
+     * Build call for postStoreByStoreidCheckoutPaypalConfirmByPaykey
      * @param storeid  (required)
      * @param payKey  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidCheckoutPaypalConfirmByPaykeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidCheckoutPaypalConfirmByPaykeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2547,18 +2547,18 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1StoreByStoreidCheckoutPaypalConfirmByPaykeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postStoreByStoreidCheckoutPaypalConfirmByPaykeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling postV1StoreByStoreidCheckoutPaypalConfirmByPaykey(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling postStoreByStoreidCheckoutPaypalConfirmByPaykey(Async)");
         }
 
         // verify the required parameter 'payKey' is set
         if (payKey == null) {
-            throw new ApiException("Missing the required parameter 'payKey' when calling postV1StoreByStoreidCheckoutPaypalConfirmByPaykey(Async)");
+            throw new ApiException("Missing the required parameter 'payKey' when calling postStoreByStoreidCheckoutPaypalConfirmByPaykey(Async)");
         }
 
-        return postV1StoreByStoreidCheckoutPaypalConfirmByPaykeyCall(storeid, payKey, _callback);
+        return postStoreByStoreidCheckoutPaypalConfirmByPaykeyCall(storeid, payKey, _callback);
 
     }
 
@@ -2569,8 +2569,8 @@ public class StoreApi {
      * @param payKey  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1StoreByStoreidCheckoutPaypalConfirmByPaykey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
-        postV1StoreByStoreidCheckoutPaypalConfirmByPaykeyWithHttpInfo(storeid, payKey);
+    public void postStoreByStoreidCheckoutPaypalConfirmByPaykey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
+        postStoreByStoreidCheckoutPaypalConfirmByPaykeyWithHttpInfo(storeid, payKey);
     }
 
     /**
@@ -2581,8 +2581,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1StoreByStoreidCheckoutPaypalConfirmByPaykeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
-        okhttp3.Call localVarCall = postV1StoreByStoreidCheckoutPaypalConfirmByPaykeyValidateBeforeCall(storeid, payKey, null);
+    public ApiResponse<Void> postStoreByStoreidCheckoutPaypalConfirmByPaykeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
+        okhttp3.Call localVarCall = postStoreByStoreidCheckoutPaypalConfirmByPaykeyValidateBeforeCall(storeid, payKey, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2595,20 +2595,20 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidCheckoutPaypalConfirmByPaykeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidCheckoutPaypalConfirmByPaykeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1StoreByStoreidCheckoutPaypalConfirmByPaykeyValidateBeforeCall(storeid, payKey, _callback);
+        okhttp3.Call localVarCall = postStoreByStoreidCheckoutPaypalConfirmByPaykeyValidateBeforeCall(storeid, payKey, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1StoreByStoreidCheckoutPaypalPay
+     * Build call for postStoreByStoreidCheckoutPaypalPay
      * @param storeid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidCheckoutPaypalPayCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidCheckoutPaypalPayCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2653,13 +2653,13 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1StoreByStoreidCheckoutPaypalPayValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postStoreByStoreidCheckoutPaypalPayValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling postV1StoreByStoreidCheckoutPaypalPay(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling postStoreByStoreidCheckoutPaypalPay(Async)");
         }
 
-        return postV1StoreByStoreidCheckoutPaypalPayCall(storeid, _callback);
+        return postStoreByStoreidCheckoutPaypalPayCall(storeid, _callback);
 
     }
 
@@ -2669,8 +2669,8 @@ public class StoreApi {
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1StoreByStoreidCheckoutPaypalPay(@javax.annotation.Nonnull String storeid) throws ApiException {
-        postV1StoreByStoreidCheckoutPaypalPayWithHttpInfo(storeid);
+    public void postStoreByStoreidCheckoutPaypalPay(@javax.annotation.Nonnull String storeid) throws ApiException {
+        postStoreByStoreidCheckoutPaypalPayWithHttpInfo(storeid);
     }
 
     /**
@@ -2680,8 +2680,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1StoreByStoreidCheckoutPaypalPayWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
-        okhttp3.Call localVarCall = postV1StoreByStoreidCheckoutPaypalPayValidateBeforeCall(storeid, null);
+    public ApiResponse<Void> postStoreByStoreidCheckoutPaypalPayWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = postStoreByStoreidCheckoutPaypalPayValidateBeforeCall(storeid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2693,21 +2693,21 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidCheckoutPaypalPayAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidCheckoutPaypalPayAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1StoreByStoreidCheckoutPaypalPayValidateBeforeCall(storeid, _callback);
+        okhttp3.Call localVarCall = postStoreByStoreidCheckoutPaypalPayValidateBeforeCall(storeid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1StoreByStoreidListingByKey
+     * Build call for postStoreByStoreidListingByKey
      * @param storeid  (required)
      * @param key  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidListingByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidListingByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2753,18 +2753,18 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1StoreByStoreidListingByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postStoreByStoreidListingByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling postV1StoreByStoreidListingByKey(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling postStoreByStoreidListingByKey(Async)");
         }
 
         // verify the required parameter 'key' is set
         if (key == null) {
-            throw new ApiException("Missing the required parameter 'key' when calling postV1StoreByStoreidListingByKey(Async)");
+            throw new ApiException("Missing the required parameter 'key' when calling postStoreByStoreidListingByKey(Async)");
         }
 
-        return postV1StoreByStoreidListingByKeyCall(storeid, key, _callback);
+        return postStoreByStoreidListingByKeyCall(storeid, key, _callback);
 
     }
 
@@ -2775,8 +2775,8 @@ public class StoreApi {
      * @param key  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1StoreByStoreidListingByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
-        postV1StoreByStoreidListingByKeyWithHttpInfo(storeid, key);
+    public void postStoreByStoreidListingByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        postStoreByStoreidListingByKeyWithHttpInfo(storeid, key);
     }
 
     /**
@@ -2787,8 +2787,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1StoreByStoreidListingByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
-        okhttp3.Call localVarCall = postV1StoreByStoreidListingByKeyValidateBeforeCall(storeid, key, null);
+    public ApiResponse<Void> postStoreByStoreidListingByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = postStoreByStoreidListingByKeyValidateBeforeCall(storeid, key, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2801,21 +2801,21 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidListingByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidListingByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1StoreByStoreidListingByKeyValidateBeforeCall(storeid, key, _callback);
+        okhttp3.Call localVarCall = postStoreByStoreidListingByKeyValidateBeforeCall(storeid, key, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1StoreByStoreidPaypalCancelByPaykey
+     * Build call for postStoreByStoreidPaypalCancelByPaykey
      * @param storeid  (required)
      * @param payKey  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidPaypalCancelByPaykeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidPaypalCancelByPaykeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2861,18 +2861,18 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1StoreByStoreidPaypalCancelByPaykeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postStoreByStoreidPaypalCancelByPaykeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling postV1StoreByStoreidPaypalCancelByPaykey(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling postStoreByStoreidPaypalCancelByPaykey(Async)");
         }
 
         // verify the required parameter 'payKey' is set
         if (payKey == null) {
-            throw new ApiException("Missing the required parameter 'payKey' when calling postV1StoreByStoreidPaypalCancelByPaykey(Async)");
+            throw new ApiException("Missing the required parameter 'payKey' when calling postStoreByStoreidPaypalCancelByPaykey(Async)");
         }
 
-        return postV1StoreByStoreidPaypalCancelByPaykeyCall(storeid, payKey, _callback);
+        return postStoreByStoreidPaypalCancelByPaykeyCall(storeid, payKey, _callback);
 
     }
 
@@ -2883,8 +2883,8 @@ public class StoreApi {
      * @param payKey  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1StoreByStoreidPaypalCancelByPaykey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
-        postV1StoreByStoreidPaypalCancelByPaykeyWithHttpInfo(storeid, payKey);
+    public void postStoreByStoreidPaypalCancelByPaykey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
+        postStoreByStoreidPaypalCancelByPaykeyWithHttpInfo(storeid, payKey);
     }
 
     /**
@@ -2895,8 +2895,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1StoreByStoreidPaypalCancelByPaykeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
-        okhttp3.Call localVarCall = postV1StoreByStoreidPaypalCancelByPaykeyValidateBeforeCall(storeid, payKey, null);
+    public ApiResponse<Void> postStoreByStoreidPaypalCancelByPaykeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
+        okhttp3.Call localVarCall = postStoreByStoreidPaypalCancelByPaykeyValidateBeforeCall(storeid, payKey, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2909,21 +2909,21 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidPaypalCancelByPaykeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidPaypalCancelByPaykeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1StoreByStoreidPaypalCancelByPaykeyValidateBeforeCall(storeid, payKey, _callback);
+        okhttp3.Call localVarCall = postStoreByStoreidPaypalCancelByPaykeyValidateBeforeCall(storeid, payKey, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1StoreByStoreidPaypalConfirmByPaykey
+     * Build call for postStoreByStoreidPaypalConfirmByPaykey
      * @param storeid  (required)
      * @param payKey  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidPaypalConfirmByPaykeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidPaypalConfirmByPaykeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2969,18 +2969,18 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1StoreByStoreidPaypalConfirmByPaykeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postStoreByStoreidPaypalConfirmByPaykeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling postV1StoreByStoreidPaypalConfirmByPaykey(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling postStoreByStoreidPaypalConfirmByPaykey(Async)");
         }
 
         // verify the required parameter 'payKey' is set
         if (payKey == null) {
-            throw new ApiException("Missing the required parameter 'payKey' when calling postV1StoreByStoreidPaypalConfirmByPaykey(Async)");
+            throw new ApiException("Missing the required parameter 'payKey' when calling postStoreByStoreidPaypalConfirmByPaykey(Async)");
         }
 
-        return postV1StoreByStoreidPaypalConfirmByPaykeyCall(storeid, payKey, _callback);
+        return postStoreByStoreidPaypalConfirmByPaykeyCall(storeid, payKey, _callback);
 
     }
 
@@ -2991,8 +2991,8 @@ public class StoreApi {
      * @param payKey  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1StoreByStoreidPaypalConfirmByPaykey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
-        postV1StoreByStoreidPaypalConfirmByPaykeyWithHttpInfo(storeid, payKey);
+    public void postStoreByStoreidPaypalConfirmByPaykey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
+        postStoreByStoreidPaypalConfirmByPaykeyWithHttpInfo(storeid, payKey);
     }
 
     /**
@@ -3003,8 +3003,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1StoreByStoreidPaypalConfirmByPaykeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
-        okhttp3.Call localVarCall = postV1StoreByStoreidPaypalConfirmByPaykeyValidateBeforeCall(storeid, payKey, null);
+    public ApiResponse<Void> postStoreByStoreidPaypalConfirmByPaykeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
+        okhttp3.Call localVarCall = postStoreByStoreidPaypalConfirmByPaykeyValidateBeforeCall(storeid, payKey, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3017,20 +3017,20 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidPaypalConfirmByPaykeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidPaypalConfirmByPaykeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1StoreByStoreidPaypalConfirmByPaykeyValidateBeforeCall(storeid, payKey, _callback);
+        okhttp3.Call localVarCall = postStoreByStoreidPaypalConfirmByPaykeyValidateBeforeCall(storeid, payKey, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1StoreByStoreidPaypalPay
+     * Build call for postStoreByStoreidPaypalPay
      * @param storeid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidPaypalPayCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidPaypalPayCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3075,13 +3075,13 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1StoreByStoreidPaypalPayValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postStoreByStoreidPaypalPayValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling postV1StoreByStoreidPaypalPay(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling postStoreByStoreidPaypalPay(Async)");
         }
 
-        return postV1StoreByStoreidPaypalPayCall(storeid, _callback);
+        return postStoreByStoreidPaypalPayCall(storeid, _callback);
 
     }
 
@@ -3091,8 +3091,8 @@ public class StoreApi {
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1StoreByStoreidPaypalPay(@javax.annotation.Nonnull String storeid) throws ApiException {
-        postV1StoreByStoreidPaypalPayWithHttpInfo(storeid);
+    public void postStoreByStoreidPaypalPay(@javax.annotation.Nonnull String storeid) throws ApiException {
+        postStoreByStoreidPaypalPayWithHttpInfo(storeid);
     }
 
     /**
@@ -3102,8 +3102,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1StoreByStoreidPaypalPayWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
-        okhttp3.Call localVarCall = postV1StoreByStoreidPaypalPayValidateBeforeCall(storeid, null);
+    public ApiResponse<Void> postStoreByStoreidPaypalPayWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = postStoreByStoreidPaypalPayValidateBeforeCall(storeid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3115,20 +3115,20 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidPaypalPayAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidPaypalPayAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1StoreByStoreidPaypalPayValidateBeforeCall(storeid, _callback);
+        okhttp3.Call localVarCall = postStoreByStoreidPaypalPayValidateBeforeCall(storeid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1StoreByStoreidTrial
+     * Build call for postStoreByStoreidTrial
      * @param storeid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidTrialCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidTrialCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3173,13 +3173,13 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1StoreByStoreidTrialValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postStoreByStoreidTrialValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling postV1StoreByStoreidTrial(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling postStoreByStoreidTrial(Async)");
         }
 
-        return postV1StoreByStoreidTrialCall(storeid, _callback);
+        return postStoreByStoreidTrialCall(storeid, _callback);
 
     }
 
@@ -3189,8 +3189,8 @@ public class StoreApi {
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1StoreByStoreidTrial(@javax.annotation.Nonnull String storeid) throws ApiException {
-        postV1StoreByStoreidTrialWithHttpInfo(storeid);
+    public void postStoreByStoreidTrial(@javax.annotation.Nonnull String storeid) throws ApiException {
+        postStoreByStoreidTrialWithHttpInfo(storeid);
     }
 
     /**
@@ -3200,8 +3200,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1StoreByStoreidTrialWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
-        okhttp3.Call localVarCall = postV1StoreByStoreidTrialValidateBeforeCall(storeid, null);
+    public ApiResponse<Void> postStoreByStoreidTrialWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = postStoreByStoreidTrialValidateBeforeCall(storeid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3213,19 +3213,19 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1StoreByStoreidTrialAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postStoreByStoreidTrialAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1StoreByStoreidTrialValidateBeforeCall(storeid, _callback);
+        okhttp3.Call localVarCall = postStoreByStoreidTrialValidateBeforeCall(storeid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1StoreToken
+     * Build call for postStoreToken
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1StoreTokenCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postStoreTokenCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3269,8 +3269,8 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1StoreTokenValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1StoreTokenCall(_callback);
+    private okhttp3.Call postStoreTokenValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postStoreTokenCall(_callback);
 
     }
 
@@ -3279,8 +3279,8 @@ public class StoreApi {
      * Answers a freshly minted token carrying ONLY the published-read permission — enough for a logged-out shopper&#39;s storefront to read your published catalog and nothing more, with no write and no admin scope. It is org-bound, signed with the org&#39;s own secret and subject to the org id, so unlike a shared service token it can never act on another tenant. Minting ROTATES rather than accumulates: the previous storefront token is dropped first and is invalid immediately, so re-minting is how you revoke. Admin is enforced by the handler as well as the route, because the route&#39;s token gate does not apply on the identity path and a plain member must not be able to mint their org&#39;s key.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1StoreToken() throws ApiException {
-        postV1StoreTokenWithHttpInfo();
+    public void postStoreToken() throws ApiException {
+        postStoreTokenWithHttpInfo();
     }
 
     /**
@@ -3289,8 +3289,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1StoreTokenWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1StoreTokenValidateBeforeCall(null);
+    public ApiResponse<Void> postStoreTokenWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postStoreTokenValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3301,20 +3301,20 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1StoreTokenAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postStoreTokenAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1StoreTokenValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postStoreTokenValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1StoreByStoreid
+     * Build call for putStoreByStoreid
      * @param storeid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1StoreByStoreidCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putStoreByStoreidCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3359,13 +3359,13 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1StoreByStoreidValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putStoreByStoreidValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling putV1StoreByStoreid(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling putStoreByStoreid(Async)");
         }
 
-        return putV1StoreByStoreidCall(storeid, _callback);
+        return putStoreByStoreidCall(storeid, _callback);
 
     }
 
@@ -3375,8 +3375,8 @@ public class StoreApi {
      * @param storeid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1StoreByStoreid(@javax.annotation.Nonnull String storeid) throws ApiException {
-        putV1StoreByStoreidWithHttpInfo(storeid);
+    public void putStoreByStoreid(@javax.annotation.Nonnull String storeid) throws ApiException {
+        putStoreByStoreidWithHttpInfo(storeid);
     }
 
     /**
@@ -3386,8 +3386,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1StoreByStoreidWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
-        okhttp3.Call localVarCall = putV1StoreByStoreidValidateBeforeCall(storeid, null);
+    public ApiResponse<Void> putStoreByStoreidWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = putStoreByStoreidValidateBeforeCall(storeid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3399,21 +3399,21 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1StoreByStoreidAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putStoreByStoreidAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1StoreByStoreidValidateBeforeCall(storeid, _callback);
+        okhttp3.Call localVarCall = putStoreByStoreidValidateBeforeCall(storeid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1StoreByStoreidListingByKey
+     * Build call for putStoreByStoreidListingByKey
      * @param storeid  (required)
      * @param key  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1StoreByStoreidListingByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putStoreByStoreidListingByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3459,18 +3459,18 @@ public class StoreApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1StoreByStoreidListingByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putStoreByStoreidListingByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'storeid' is set
         if (storeid == null) {
-            throw new ApiException("Missing the required parameter 'storeid' when calling putV1StoreByStoreidListingByKey(Async)");
+            throw new ApiException("Missing the required parameter 'storeid' when calling putStoreByStoreidListingByKey(Async)");
         }
 
         // verify the required parameter 'key' is set
         if (key == null) {
-            throw new ApiException("Missing the required parameter 'key' when calling putV1StoreByStoreidListingByKey(Async)");
+            throw new ApiException("Missing the required parameter 'key' when calling putStoreByStoreidListingByKey(Async)");
         }
 
-        return putV1StoreByStoreidListingByKeyCall(storeid, key, _callback);
+        return putStoreByStoreidListingByKeyCall(storeid, key, _callback);
 
     }
 
@@ -3481,8 +3481,8 @@ public class StoreApi {
      * @param key  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1StoreByStoreidListingByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
-        putV1StoreByStoreidListingByKeyWithHttpInfo(storeid, key);
+    public void putStoreByStoreidListingByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        putStoreByStoreidListingByKeyWithHttpInfo(storeid, key);
     }
 
     /**
@@ -3493,8 +3493,8 @@ public class StoreApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1StoreByStoreidListingByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
-        okhttp3.Call localVarCall = putV1StoreByStoreidListingByKeyValidateBeforeCall(storeid, key, null);
+    public ApiResponse<Void> putStoreByStoreidListingByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = putStoreByStoreidListingByKeyValidateBeforeCall(storeid, key, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3507,9 +3507,9 @@ public class StoreApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1StoreByStoreidListingByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putStoreByStoreidListingByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1StoreByStoreidListingByKeyValidateBeforeCall(storeid, key, _callback);
+        okhttp3.Call localVarCall = putStoreByStoreidListingByKeyValidateBeforeCall(storeid, key, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

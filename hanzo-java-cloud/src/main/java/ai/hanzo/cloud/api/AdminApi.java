@@ -4296,7 +4296,7 @@ public class AdminApi {
 
     /**
      * Is the Platform Overview tiles: how many orgs and users are in the caller&#39;s tenant window, the fleet workload counts, and month-to-date spend and credits.
-     * Is the Platform Overview tiles: how many orgs and users are in the caller&#39;s tenant window, the fleet workload counts, and month-to-date spend and credits.  It ALWAYS answers 200 — a tile board that fails as a whole because one upstream is down is useless. Instead every upstream reports itself in sources[]: ok, degraded, or not-configured. A commerce read that failed for ANY org marks that source degraded, because the spend/credits totals are then an undercount and must not read healthy.  tokens30d is 0 for the same reason /usage has no series: there is no fleet token counter to read yet.
+     * Is the Platform Overview tiles: how many orgs and users are in the caller&#39;s tenant window, the fleet workload counts, and month-to-date spend and credits.  It ALWAYS answers 200 — a tile board that fails as a whole because one upstream is down is useless. Instead every upstream reports itself in sources[]: ok, degraded, or not-configured. A commerce read that failed for ANY org marks that source degraded, because the spend/credits totals are then an undercount and must not read healthy.  The AI tiles — 30-day spend and tokens — come from the AI ledger (ledger.go), the plane that owns \&quot;what was served\&quot;. They used to come from the money plane with the token counter hardcoded to zero, so the board read $0.00 and 0 tokens over a month in which the fleet served fifteen thousand requests. Credits still come from commerce, which owns the wallet.
      * @return OverviewOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4313,7 +4313,7 @@ public class AdminApi {
 
     /**
      * Is the Platform Overview tiles: how many orgs and users are in the caller&#39;s tenant window, the fleet workload counts, and month-to-date spend and credits.
-     * Is the Platform Overview tiles: how many orgs and users are in the caller&#39;s tenant window, the fleet workload counts, and month-to-date spend and credits.  It ALWAYS answers 200 — a tile board that fails as a whole because one upstream is down is useless. Instead every upstream reports itself in sources[]: ok, degraded, or not-configured. A commerce read that failed for ANY org marks that source degraded, because the spend/credits totals are then an undercount and must not read healthy.  tokens30d is 0 for the same reason /usage has no series: there is no fleet token counter to read yet.
+     * Is the Platform Overview tiles: how many orgs and users are in the caller&#39;s tenant window, the fleet workload counts, and month-to-date spend and credits.  It ALWAYS answers 200 — a tile board that fails as a whole because one upstream is down is useless. Instead every upstream reports itself in sources[]: ok, degraded, or not-configured. A commerce read that failed for ANY org marks that source degraded, because the spend/credits totals are then an undercount and must not read healthy.  The AI tiles — 30-day spend and tokens — come from the AI ledger (ledger.go), the plane that owns \&quot;what was served\&quot;. They used to come from the money plane with the token counter hardcoded to zero, so the board read $0.00 and 0 tokens over a month in which the fleet served fifteen thousand requests. Credits still come from commerce, which owns the wallet.
      * @return ApiResponse&lt;OverviewOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4331,7 +4331,7 @@ public class AdminApi {
 
     /**
      * Is the Platform Overview tiles: how many orgs and users are in the caller&#39;s tenant window, the fleet workload counts, and month-to-date spend and credits. (asynchronously)
-     * Is the Platform Overview tiles: how many orgs and users are in the caller&#39;s tenant window, the fleet workload counts, and month-to-date spend and credits.  It ALWAYS answers 200 — a tile board that fails as a whole because one upstream is down is useless. Instead every upstream reports itself in sources[]: ok, degraded, or not-configured. A commerce read that failed for ANY org marks that source degraded, because the spend/credits totals are then an undercount and must not read healthy.  tokens30d is 0 for the same reason /usage has no series: there is no fleet token counter to read yet.
+     * Is the Platform Overview tiles: how many orgs and users are in the caller&#39;s tenant window, the fleet workload counts, and month-to-date spend and credits.  It ALWAYS answers 200 — a tile board that fails as a whole because one upstream is down is useless. Instead every upstream reports itself in sources[]: ok, degraded, or not-configured. A commerce read that failed for ANY org marks that source degraded, because the spend/credits totals are then an undercount and must not read healthy.  The AI tiles — 30-day spend and tokens — come from the AI ledger (ledger.go), the plane that owns \&quot;what was served\&quot;. They used to come from the money plane with the token counter hardcoded to zero, so the board read $0.00 and 0 tokens over a month in which the fleet served fifteen thousand requests. Credits still come from commerce, which owns the wallet.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -7223,7 +7223,7 @@ public class AdminApi {
     }
     /**
      * Build call for adminUsage
-     * @param org Org reads ONE tenant&#39;s month-to-date total instead of the fleet sum. Honoured for a SuperAdmin only — a white-label admin always reads their own org. (optional)
+     * @param org Org reads ONE tenant&#39;s trailing-30-day total instead of the fleet sum. Honoured for a SuperAdmin only — a white-label admin always reads their own org.  The window is the one core.OrgMoney returns, and it is what the operator board beside this already labelled (\&quot;Daily, last 30 days\&quot;). The wire used to say month-to-date while that UI said 30 days; they agree now. This comment is REGENERATED into plugin/admin/openapi.json and openapi.yaml as the ?org parameter description, so a stale word here ships as a contradiction inside one spec file — which is the drift this whole change set exists to remove. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -7289,9 +7289,9 @@ public class AdminApi {
     }
 
     /**
-     * Returns the month-to-date money totals: one org&#39;s when org names one, else the fleet sum across every org a SuperAdmin can see.
-     * Returns the month-to-date money totals: one org&#39;s when org names one, else the fleet sum across every org a SuperAdmin can see.  series and byProduct are ALWAYS empty. A daily trend and a per-product split are not derivable from the commerce billing API — they live in insights/datastore — so this answers with the honest empty arrays rather than fabricating a shape the console would then chart. Same reason tokens and requests are 0: there is no fleet counter to read.
-     * @param org Org reads ONE tenant&#39;s month-to-date total instead of the fleet sum. Honoured for a SuperAdmin only — a white-label admin always reads their own org. (optional)
+     * Returns the trailing 30 days of AI usage: one org&#39;s when org names one, else the whole fleet&#39;s — the spend, the tokens and the requests, the daily curve behind them, and the split by model.
+     * Returns the trailing 30 days of AI usage: one org&#39;s when org names one, else the whole fleet&#39;s — the spend, the tokens and the requests, the daily curve behind them, and the split by model.  It reads the AI ledger (ledger.go), which is the plane that owns this question. It used to ask the commerce billing API instead, once per org, and answer with a hardcoded empty series, zero tokens and zero requests, on the reasoning that a trend and a split were \&quot;not derivable from the commerce billing API\&quot;. They are not — but the question was never commerce&#39;s. hanzo.cloud_usage carries a row per served request, so all three fall out of the same window the totals do.
+     * @param org Org reads ONE tenant&#39;s trailing-30-day total instead of the fleet sum. Honoured for a SuperAdmin only — a white-label admin always reads their own org.  The window is the one core.OrgMoney returns, and it is what the operator board beside this already labelled (\&quot;Daily, last 30 days\&quot;). The wire used to say month-to-date while that UI said 30 days; they agree now. This comment is REGENERATED into plugin/admin/openapi.json and openapi.yaml as the ?org parameter description, so a stale word here ships as a contradiction inside one spec file — which is the drift this whole change set exists to remove. (optional)
      * @return UsageOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -7307,9 +7307,9 @@ public class AdminApi {
     }
 
     /**
-     * Returns the month-to-date money totals: one org&#39;s when org names one, else the fleet sum across every org a SuperAdmin can see.
-     * Returns the month-to-date money totals: one org&#39;s when org names one, else the fleet sum across every org a SuperAdmin can see.  series and byProduct are ALWAYS empty. A daily trend and a per-product split are not derivable from the commerce billing API — they live in insights/datastore — so this answers with the honest empty arrays rather than fabricating a shape the console would then chart. Same reason tokens and requests are 0: there is no fleet counter to read.
-     * @param org Org reads ONE tenant&#39;s month-to-date total instead of the fleet sum. Honoured for a SuperAdmin only — a white-label admin always reads their own org. (optional)
+     * Returns the trailing 30 days of AI usage: one org&#39;s when org names one, else the whole fleet&#39;s — the spend, the tokens and the requests, the daily curve behind them, and the split by model.
+     * Returns the trailing 30 days of AI usage: one org&#39;s when org names one, else the whole fleet&#39;s — the spend, the tokens and the requests, the daily curve behind them, and the split by model.  It reads the AI ledger (ledger.go), which is the plane that owns this question. It used to ask the commerce billing API instead, once per org, and answer with a hardcoded empty series, zero tokens and zero requests, on the reasoning that a trend and a split were \&quot;not derivable from the commerce billing API\&quot;. They are not — but the question was never commerce&#39;s. hanzo.cloud_usage carries a row per served request, so all three fall out of the same window the totals do.
+     * @param org Org reads ONE tenant&#39;s trailing-30-day total instead of the fleet sum. Honoured for a SuperAdmin only — a white-label admin always reads their own org.  The window is the one core.OrgMoney returns, and it is what the operator board beside this already labelled (\&quot;Daily, last 30 days\&quot;). The wire used to say month-to-date while that UI said 30 days; they agree now. This comment is REGENERATED into plugin/admin/openapi.json and openapi.yaml as the ?org parameter description, so a stale word here ships as a contradiction inside one spec file — which is the drift this whole change set exists to remove. (optional)
      * @return ApiResponse&lt;UsageOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -7326,9 +7326,9 @@ public class AdminApi {
     }
 
     /**
-     * Returns the month-to-date money totals: one org&#39;s when org names one, else the fleet sum across every org a SuperAdmin can see. (asynchronously)
-     * Returns the month-to-date money totals: one org&#39;s when org names one, else the fleet sum across every org a SuperAdmin can see.  series and byProduct are ALWAYS empty. A daily trend and a per-product split are not derivable from the commerce billing API — they live in insights/datastore — so this answers with the honest empty arrays rather than fabricating a shape the console would then chart. Same reason tokens and requests are 0: there is no fleet counter to read.
-     * @param org Org reads ONE tenant&#39;s month-to-date total instead of the fleet sum. Honoured for a SuperAdmin only — a white-label admin always reads their own org. (optional)
+     * Returns the trailing 30 days of AI usage: one org&#39;s when org names one, else the whole fleet&#39;s — the spend, the tokens and the requests, the daily curve behind them, and the split by model. (asynchronously)
+     * Returns the trailing 30 days of AI usage: one org&#39;s when org names one, else the whole fleet&#39;s — the spend, the tokens and the requests, the daily curve behind them, and the split by model.  It reads the AI ledger (ledger.go), which is the plane that owns this question. It used to ask the commerce billing API instead, once per org, and answer with a hardcoded empty series, zero tokens and zero requests, on the reasoning that a trend and a split were \&quot;not derivable from the commerce billing API\&quot;. They are not — but the question was never commerce&#39;s. hanzo.cloud_usage carries a row per served request, so all three fall out of the same window the totals do.
+     * @param org Org reads ONE tenant&#39;s trailing-30-day total instead of the fleet sum. Honoured for a SuperAdmin only — a white-label admin always reads their own org.  The window is the one core.OrgMoney returns, and it is what the operator board beside this already labelled (\&quot;Daily, last 30 days\&quot;). The wire used to say month-to-date while that UI said 30 days; they agree now. This comment is REGENERATED into plugin/admin/openapi.json and openapi.yaml as the ?org parameter description, so a stale word here ships as a contradiction inside one spec file — which is the drift this whole change set exists to remove. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -8014,7 +8014,7 @@ public class AdminApi {
         return localVarCall;
     }
     /**
-     * Build call for getV1AdminAffiliates
+     * Build call for getAdminAffiliates
      * @param limit Limit caps the rows returned. Absent or non-positive means the default of 500; anything above 1000 is clamped to 1000. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -8026,7 +8026,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdminAffiliatesCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAdminAffiliatesCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8075,8 +8075,8 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AdminAffiliatesValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1AdminAffiliatesCall(limit, _callback);
+    private okhttp3.Call getAdminAffiliatesValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getAdminAffiliatesCall(limit, _callback);
 
     }
 
@@ -8093,8 +8093,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DirectoryOut getV1AdminAffiliates(@javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<DirectoryOut> localVarResp = getV1AdminAffiliatesWithHttpInfo(limit);
+    public DirectoryOut getAdminAffiliates(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<DirectoryOut> localVarResp = getAdminAffiliatesWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -8111,8 +8111,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DirectoryOut> getV1AdminAffiliatesWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1AdminAffiliatesValidateBeforeCall(limit, null);
+    public ApiResponse<DirectoryOut> getAdminAffiliatesWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getAdminAffiliatesValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<DirectoryOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -8131,15 +8131,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdminAffiliatesAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<DirectoryOut> _callback) throws ApiException {
+    public okhttp3.Call getAdminAffiliatesAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<DirectoryOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AdminAffiliatesValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getAdminAffiliatesValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<DirectoryOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AdminAuthors
+     * Build call for getAdminAuthors
      * @param limit Limit bounds the page. 0 or less means the default of 500; anything above 1000 is clamped to 1000. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -8151,7 +8151,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdminAuthorsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAdminAuthorsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8200,8 +8200,8 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AdminAuthorsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1AdminAuthorsCall(limit, _callback);
+    private okhttp3.Call getAdminAuthorsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getAdminAuthorsCall(limit, _callback);
 
     }
 
@@ -8218,8 +8218,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AdminBook getV1AdminAuthors(@javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<AdminBook> localVarResp = getV1AdminAuthorsWithHttpInfo(limit);
+    public AdminBook getAdminAuthors(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<AdminBook> localVarResp = getAdminAuthorsWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -8236,8 +8236,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdminBook> getV1AdminAuthorsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1AdminAuthorsValidateBeforeCall(limit, null);
+    public ApiResponse<AdminBook> getAdminAuthorsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getAdminAuthorsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<AdminBook>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -8256,15 +8256,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdminAuthorsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<AdminBook> _callback) throws ApiException {
+    public okhttp3.Call getAdminAuthorsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<AdminBook> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AdminAuthorsValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getAdminAuthorsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<AdminBook>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AdminAuthorsByIdBasis
+     * Build call for getAdminAuthorsByIdBasis
      * @param id ID is the author record&#39;s handle, from the path. (required)
      * @param period Period is the UTC accrual month, YYYY-MM. Empty means every period; any other shape is refused with 400. (optional)
      * @param _callback Callback for upload/download progress
@@ -8277,7 +8277,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdminAuthorsByIdBasisCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAdminAuthorsByIdBasisCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8327,13 +8327,13 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AdminAuthorsByIdBasisValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAdminAuthorsByIdBasisValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1AdminAuthorsByIdBasis(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getAdminAuthorsByIdBasis(Async)");
         }
 
-        return getV1AdminAuthorsByIdBasisCall(id, period, _callback);
+        return getAdminAuthorsByIdBasisCall(id, period, _callback);
 
     }
 
@@ -8351,8 +8351,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BasisResult getV1AdminAuthorsByIdBasis(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String period) throws ApiException {
-        ApiResponse<BasisResult> localVarResp = getV1AdminAuthorsByIdBasisWithHttpInfo(id, period);
+    public BasisResult getAdminAuthorsByIdBasis(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String period) throws ApiException {
+        ApiResponse<BasisResult> localVarResp = getAdminAuthorsByIdBasisWithHttpInfo(id, period);
         return localVarResp.getData();
     }
 
@@ -8370,8 +8370,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BasisResult> getV1AdminAuthorsByIdBasisWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String period) throws ApiException {
-        okhttp3.Call localVarCall = getV1AdminAuthorsByIdBasisValidateBeforeCall(id, period, null);
+    public ApiResponse<BasisResult> getAdminAuthorsByIdBasisWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String period) throws ApiException {
+        okhttp3.Call localVarCall = getAdminAuthorsByIdBasisValidateBeforeCall(id, period, null);
         Type localVarReturnType = new TypeToken<BasisResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -8391,15 +8391,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdminAuthorsByIdBasisAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String period, final ApiCallback<BasisResult> _callback) throws ApiException {
+    public okhttp3.Call getAdminAuthorsByIdBasisAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String period, final ApiCallback<BasisResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AdminAuthorsByIdBasisValidateBeforeCall(id, period, _callback);
+        okhttp3.Call localVarCall = getAdminAuthorsByIdBasisValidateBeforeCall(id, period, _callback);
         Type localVarReturnType = new TypeToken<BasisResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AdminCatalog
+     * Build call for getAdminCatalog
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -8410,7 +8410,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdminCatalogCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAdminCatalogCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8455,8 +8455,8 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AdminCatalogValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1AdminCatalogCall(_callback);
+    private okhttp3.Call getAdminCatalogValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAdminCatalogCall(_callback);
 
     }
 
@@ -8472,8 +8472,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AdminCatalogOut getV1AdminCatalog() throws ApiException {
-        ApiResponse<AdminCatalogOut> localVarResp = getV1AdminCatalogWithHttpInfo();
+    public AdminCatalogOut getAdminCatalog() throws ApiException {
+        ApiResponse<AdminCatalogOut> localVarResp = getAdminCatalogWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -8489,8 +8489,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdminCatalogOut> getV1AdminCatalogWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1AdminCatalogValidateBeforeCall(null);
+    public ApiResponse<AdminCatalogOut> getAdminCatalogWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAdminCatalogValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<AdminCatalogOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -8508,15 +8508,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdminCatalogAsync(final ApiCallback<AdminCatalogOut> _callback) throws ApiException {
+    public okhttp3.Call getAdminCatalogAsync(final ApiCallback<AdminCatalogOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AdminCatalogValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAdminCatalogValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AdminCatalogOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AdminEnablement
+     * Build call for getAdminEnablement
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -8527,7 +8527,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdminEnablementCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAdminEnablementCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8572,8 +8572,8 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AdminEnablementValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1AdminEnablementCall(_callback);
+    private okhttp3.Call getAdminEnablementValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAdminEnablementCall(_callback);
 
     }
 
@@ -8589,8 +8589,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AdminEnablementBoard getV1AdminEnablement() throws ApiException {
-        ApiResponse<AdminEnablementBoard> localVarResp = getV1AdminEnablementWithHttpInfo();
+    public AdminEnablementBoard getAdminEnablement() throws ApiException {
+        ApiResponse<AdminEnablementBoard> localVarResp = getAdminEnablementWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -8606,8 +8606,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdminEnablementBoard> getV1AdminEnablementWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1AdminEnablementValidateBeforeCall(null);
+    public ApiResponse<AdminEnablementBoard> getAdminEnablementWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAdminEnablementValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<AdminEnablementBoard>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -8625,15 +8625,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdminEnablementAsync(final ApiCallback<AdminEnablementBoard> _callback) throws ApiException {
+    public okhttp3.Call getAdminEnablementAsync(final ApiCallback<AdminEnablementBoard> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AdminEnablementValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAdminEnablementValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AdminEnablementBoard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AdminReferrals
+     * Build call for getAdminReferrals
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -8644,7 +8644,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdminReferralsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAdminReferralsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8689,8 +8689,8 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AdminReferralsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1AdminReferralsCall(_callback);
+    private okhttp3.Call getAdminReferralsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAdminReferralsCall(_callback);
 
     }
 
@@ -8706,8 +8706,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ReferralsOut getV1AdminReferrals() throws ApiException {
-        ApiResponse<ReferralsOut> localVarResp = getV1AdminReferralsWithHttpInfo();
+    public ReferralsOut getAdminReferrals() throws ApiException {
+        ApiResponse<ReferralsOut> localVarResp = getAdminReferralsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -8723,8 +8723,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ReferralsOut> getV1AdminReferralsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1AdminReferralsValidateBeforeCall(null);
+    public ApiResponse<ReferralsOut> getAdminReferralsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAdminReferralsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ReferralsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -8742,15 +8742,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdminReferralsAsync(final ApiCallback<ReferralsOut> _callback) throws ApiException {
+    public okhttp3.Call getAdminReferralsAsync(final ApiCallback<ReferralsOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AdminReferralsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAdminReferralsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ReferralsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AdminReferralsBonuses
+     * Build call for getAdminReferralsBonuses
      * @param limit Limit is how many referrals to return, as a decimal string in the &#x60;?limit&#x3D;&#x60; query. Absent, unparseable or non-positive means 500; over 1000 is clamped to 1000. It is a string rather than a number because the parse that has always served this route trims surrounding whitespace, and one parse rule is better than two. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -8762,7 +8762,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdminReferralsBonusesCall(@javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAdminReferralsBonusesCall(@javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8811,8 +8811,8 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AdminReferralsBonusesValidateBeforeCall(@javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
-        return getV1AdminReferralsBonusesCall(limit, _callback);
+    private okhttp3.Call getAdminReferralsBonusesValidateBeforeCall(@javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
+        return getAdminReferralsBonusesCall(limit, _callback);
 
     }
 
@@ -8829,8 +8829,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AdminBonusesEnvelope getV1AdminReferralsBonuses(@javax.annotation.Nullable String limit) throws ApiException {
-        ApiResponse<AdminBonusesEnvelope> localVarResp = getV1AdminReferralsBonusesWithHttpInfo(limit);
+    public AdminBonusesEnvelope getAdminReferralsBonuses(@javax.annotation.Nullable String limit) throws ApiException {
+        ApiResponse<AdminBonusesEnvelope> localVarResp = getAdminReferralsBonusesWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -8847,8 +8847,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdminBonusesEnvelope> getV1AdminReferralsBonusesWithHttpInfo(@javax.annotation.Nullable String limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1AdminReferralsBonusesValidateBeforeCall(limit, null);
+    public ApiResponse<AdminBonusesEnvelope> getAdminReferralsBonusesWithHttpInfo(@javax.annotation.Nullable String limit) throws ApiException {
+        okhttp3.Call localVarCall = getAdminReferralsBonusesValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<AdminBonusesEnvelope>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -8867,15 +8867,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdminReferralsBonusesAsync(@javax.annotation.Nullable String limit, final ApiCallback<AdminBonusesEnvelope> _callback) throws ApiException {
+    public okhttp3.Call getAdminReferralsBonusesAsync(@javax.annotation.Nullable String limit, final ApiCallback<AdminBonusesEnvelope> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AdminReferralsBonusesValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getAdminReferralsBonusesValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<AdminBonusesEnvelope>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AdminTreasury
+     * Build call for getAdminTreasury
      * @param limit Limit caps the journal entries returned. Out of range or unparseable takes the default. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -8887,7 +8887,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdminTreasuryCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAdminTreasuryCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8936,8 +8936,8 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AdminTreasuryValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1AdminTreasuryCall(limit, _callback);
+    private okhttp3.Call getAdminTreasuryValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getAdminTreasuryCall(limit, _callback);
 
     }
 
@@ -8954,8 +8954,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AdminReportOut getV1AdminTreasury(@javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<AdminReportOut> localVarResp = getV1AdminTreasuryWithHttpInfo(limit);
+    public AdminReportOut getAdminTreasury(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<AdminReportOut> localVarResp = getAdminTreasuryWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -8972,8 +8972,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdminReportOut> getV1AdminTreasuryWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1AdminTreasuryValidateBeforeCall(limit, null);
+    public ApiResponse<AdminReportOut> getAdminTreasuryWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getAdminTreasuryValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<AdminReportOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -8992,21 +8992,21 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AdminTreasuryAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<AdminReportOut> _callback) throws ApiException {
+    public okhttp3.Call getAdminTreasuryAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<AdminReportOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AdminTreasuryValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getAdminTreasuryValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<AdminReportOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1AdminCatalogModelsByWildcard1
+     * Build call for patchAdminCatalogModelsByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1AdminCatalogModelsByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchAdminCatalogModelsByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9051,13 +9051,13 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1AdminCatalogModelsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchAdminCatalogModelsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling patchV1AdminCatalogModelsByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling patchAdminCatalogModelsByWildcard1(Async)");
         }
 
-        return patchV1AdminCatalogModelsByWildcard1Call(wildcard1, _callback);
+        return patchAdminCatalogModelsByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -9067,8 +9067,8 @@ public class AdminApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1AdminCatalogModelsByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        patchV1AdminCatalogModelsByWildcard1WithHttpInfo(wildcard1);
+    public void patchAdminCatalogModelsByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        patchAdminCatalogModelsByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -9078,8 +9078,8 @@ public class AdminApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1AdminCatalogModelsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = patchV1AdminCatalogModelsByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> patchAdminCatalogModelsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = patchAdminCatalogModelsByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -9091,14 +9091,14 @@ public class AdminApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1AdminCatalogModelsByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchAdminCatalogModelsByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1AdminCatalogModelsByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = patchAdminCatalogModelsByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1AdminCatalogProvidersByName
+     * Build call for patchAdminCatalogProvidersByName
      * @param name Name is the provider the overlay belongs to, from the URL. (required)
      * @param providerPatchIn  (required)
      * @param _callback Callback for upload/download progress
@@ -9111,7 +9111,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchV1AdminCatalogProvidersByNameCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull ProviderPatchIn providerPatchIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchAdminCatalogProvidersByNameCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull ProviderPatchIn providerPatchIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9158,18 +9158,18 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1AdminCatalogProvidersByNameValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull ProviderPatchIn providerPatchIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchAdminCatalogProvidersByNameValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull ProviderPatchIn providerPatchIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling patchV1AdminCatalogProvidersByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling patchAdminCatalogProvidersByName(Async)");
         }
 
         // verify the required parameter 'providerPatchIn' is set
         if (providerPatchIn == null) {
-            throw new ApiException("Missing the required parameter 'providerPatchIn' when calling patchV1AdminCatalogProvidersByName(Async)");
+            throw new ApiException("Missing the required parameter 'providerPatchIn' when calling patchAdminCatalogProvidersByName(Async)");
         }
 
-        return patchV1AdminCatalogProvidersByNameCall(name, providerPatchIn, _callback);
+        return patchAdminCatalogProvidersByNameCall(name, providerPatchIn, _callback);
 
     }
 
@@ -9187,8 +9187,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Overlay patchV1AdminCatalogProvidersByName(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull ProviderPatchIn providerPatchIn) throws ApiException {
-        ApiResponse<Overlay> localVarResp = patchV1AdminCatalogProvidersByNameWithHttpInfo(name, providerPatchIn);
+    public Overlay patchAdminCatalogProvidersByName(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull ProviderPatchIn providerPatchIn) throws ApiException {
+        ApiResponse<Overlay> localVarResp = patchAdminCatalogProvidersByNameWithHttpInfo(name, providerPatchIn);
         return localVarResp.getData();
     }
 
@@ -9206,8 +9206,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Overlay> patchV1AdminCatalogProvidersByNameWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull ProviderPatchIn providerPatchIn) throws ApiException {
-        okhttp3.Call localVarCall = patchV1AdminCatalogProvidersByNameValidateBeforeCall(name, providerPatchIn, null);
+    public ApiResponse<Overlay> patchAdminCatalogProvidersByNameWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull ProviderPatchIn providerPatchIn) throws ApiException {
+        okhttp3.Call localVarCall = patchAdminCatalogProvidersByNameValidateBeforeCall(name, providerPatchIn, null);
         Type localVarReturnType = new TypeToken<Overlay>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -9227,15 +9227,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchV1AdminCatalogProvidersByNameAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull ProviderPatchIn providerPatchIn, final ApiCallback<Overlay> _callback) throws ApiException {
+    public okhttp3.Call patchAdminCatalogProvidersByNameAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull ProviderPatchIn providerPatchIn, final ApiCallback<Overlay> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1AdminCatalogProvidersByNameValidateBeforeCall(name, providerPatchIn, _callback);
+        okhttp3.Call localVarCall = patchAdminCatalogProvidersByNameValidateBeforeCall(name, providerPatchIn, _callback);
         Type localVarReturnType = new TypeToken<Overlay>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AdminAffiliatesByIdApprove
+     * Build call for postAdminAffiliatesByIdApprove
      * @param id ID is the affiliate to approve, from the path. (required)
      * @param approval  (required)
      * @param _callback Callback for upload/download progress
@@ -9248,7 +9248,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminAffiliatesByIdApproveCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Approval approval, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAdminAffiliatesByIdApproveCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Approval approval, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9295,18 +9295,18 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AdminAffiliatesByIdApproveValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Approval approval, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAdminAffiliatesByIdApproveValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Approval approval, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1AdminAffiliatesByIdApprove(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAdminAffiliatesByIdApprove(Async)");
         }
 
         // verify the required parameter 'approval' is set
         if (approval == null) {
-            throw new ApiException("Missing the required parameter 'approval' when calling postV1AdminAffiliatesByIdApprove(Async)");
+            throw new ApiException("Missing the required parameter 'approval' when calling postAdminAffiliatesByIdApprove(Async)");
         }
 
-        return postV1AdminAffiliatesByIdApproveCall(id, approval, _callback);
+        return postAdminAffiliatesByIdApproveCall(id, approval, _callback);
 
     }
 
@@ -9324,8 +9324,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AffiliateOut postV1AdminAffiliatesByIdApprove(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Approval approval) throws ApiException {
-        ApiResponse<AffiliateOut> localVarResp = postV1AdminAffiliatesByIdApproveWithHttpInfo(id, approval);
+    public AffiliateOut postAdminAffiliatesByIdApprove(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Approval approval) throws ApiException {
+        ApiResponse<AffiliateOut> localVarResp = postAdminAffiliatesByIdApproveWithHttpInfo(id, approval);
         return localVarResp.getData();
     }
 
@@ -9343,8 +9343,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AffiliateOut> postV1AdminAffiliatesByIdApproveWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Approval approval) throws ApiException {
-        okhttp3.Call localVarCall = postV1AdminAffiliatesByIdApproveValidateBeforeCall(id, approval, null);
+    public ApiResponse<AffiliateOut> postAdminAffiliatesByIdApproveWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Approval approval) throws ApiException {
+        okhttp3.Call localVarCall = postAdminAffiliatesByIdApproveValidateBeforeCall(id, approval, null);
         Type localVarReturnType = new TypeToken<AffiliateOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -9364,15 +9364,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminAffiliatesByIdApproveAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Approval approval, final ApiCallback<AffiliateOut> _callback) throws ApiException {
+    public okhttp3.Call postAdminAffiliatesByIdApproveAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Approval approval, final ApiCallback<AffiliateOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AdminAffiliatesByIdApproveValidateBeforeCall(id, approval, _callback);
+        okhttp3.Call localVarCall = postAdminAffiliatesByIdApproveValidateBeforeCall(id, approval, _callback);
         Type localVarReturnType = new TypeToken<AffiliateOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AdminAffiliatesByIdPayout
+     * Build call for postAdminAffiliatesByIdPayout
      * @param id ID is the affiliate to pay, from the path. (required)
      * @param disbursal  (required)
      * @param _callback Callback for upload/download progress
@@ -9385,7 +9385,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminAffiliatesByIdPayoutCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Disbursal disbursal, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAdminAffiliatesByIdPayoutCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Disbursal disbursal, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9432,18 +9432,18 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AdminAffiliatesByIdPayoutValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Disbursal disbursal, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAdminAffiliatesByIdPayoutValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Disbursal disbursal, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1AdminAffiliatesByIdPayout(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAdminAffiliatesByIdPayout(Async)");
         }
 
         // verify the required parameter 'disbursal' is set
         if (disbursal == null) {
-            throw new ApiException("Missing the required parameter 'disbursal' when calling postV1AdminAffiliatesByIdPayout(Async)");
+            throw new ApiException("Missing the required parameter 'disbursal' when calling postAdminAffiliatesByIdPayout(Async)");
         }
 
-        return postV1AdminAffiliatesByIdPayoutCall(id, disbursal, _callback);
+        return postAdminAffiliatesByIdPayoutCall(id, disbursal, _callback);
 
     }
 
@@ -9461,8 +9461,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PayoutOut postV1AdminAffiliatesByIdPayout(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Disbursal disbursal) throws ApiException {
-        ApiResponse<PayoutOut> localVarResp = postV1AdminAffiliatesByIdPayoutWithHttpInfo(id, disbursal);
+    public PayoutOut postAdminAffiliatesByIdPayout(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Disbursal disbursal) throws ApiException {
+        ApiResponse<PayoutOut> localVarResp = postAdminAffiliatesByIdPayoutWithHttpInfo(id, disbursal);
         return localVarResp.getData();
     }
 
@@ -9480,8 +9480,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PayoutOut> postV1AdminAffiliatesByIdPayoutWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Disbursal disbursal) throws ApiException {
-        okhttp3.Call localVarCall = postV1AdminAffiliatesByIdPayoutValidateBeforeCall(id, disbursal, null);
+    public ApiResponse<PayoutOut> postAdminAffiliatesByIdPayoutWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Disbursal disbursal) throws ApiException {
+        okhttp3.Call localVarCall = postAdminAffiliatesByIdPayoutValidateBeforeCall(id, disbursal, null);
         Type localVarReturnType = new TypeToken<PayoutOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -9501,15 +9501,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminAffiliatesByIdPayoutAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Disbursal disbursal, final ApiCallback<PayoutOut> _callback) throws ApiException {
+    public okhttp3.Call postAdminAffiliatesByIdPayoutAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Disbursal disbursal, final ApiCallback<PayoutOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AdminAffiliatesByIdPayoutValidateBeforeCall(id, disbursal, _callback);
+        okhttp3.Call localVarCall = postAdminAffiliatesByIdPayoutValidateBeforeCall(id, disbursal, _callback);
         Type localVarReturnType = new TypeToken<PayoutOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AdminAffiliatesByIdRate
+     * Build call for postAdminAffiliatesByIdRate
      * @param id ID is the affiliate whose direct rate moves, from the path. (required)
      * @param rateSet  (required)
      * @param _callback Callback for upload/download progress
@@ -9522,7 +9522,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminAffiliatesByIdRateCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RateSet rateSet, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAdminAffiliatesByIdRateCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RateSet rateSet, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9569,18 +9569,18 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AdminAffiliatesByIdRateValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RateSet rateSet, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAdminAffiliatesByIdRateValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RateSet rateSet, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1AdminAffiliatesByIdRate(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAdminAffiliatesByIdRate(Async)");
         }
 
         // verify the required parameter 'rateSet' is set
         if (rateSet == null) {
-            throw new ApiException("Missing the required parameter 'rateSet' when calling postV1AdminAffiliatesByIdRate(Async)");
+            throw new ApiException("Missing the required parameter 'rateSet' when calling postAdminAffiliatesByIdRate(Async)");
         }
 
-        return postV1AdminAffiliatesByIdRateCall(id, rateSet, _callback);
+        return postAdminAffiliatesByIdRateCall(id, rateSet, _callback);
 
     }
 
@@ -9598,8 +9598,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AffiliateOut postV1AdminAffiliatesByIdRate(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RateSet rateSet) throws ApiException {
-        ApiResponse<AffiliateOut> localVarResp = postV1AdminAffiliatesByIdRateWithHttpInfo(id, rateSet);
+    public AffiliateOut postAdminAffiliatesByIdRate(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RateSet rateSet) throws ApiException {
+        ApiResponse<AffiliateOut> localVarResp = postAdminAffiliatesByIdRateWithHttpInfo(id, rateSet);
         return localVarResp.getData();
     }
 
@@ -9617,8 +9617,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AffiliateOut> postV1AdminAffiliatesByIdRateWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RateSet rateSet) throws ApiException {
-        okhttp3.Call localVarCall = postV1AdminAffiliatesByIdRateValidateBeforeCall(id, rateSet, null);
+    public ApiResponse<AffiliateOut> postAdminAffiliatesByIdRateWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RateSet rateSet) throws ApiException {
+        okhttp3.Call localVarCall = postAdminAffiliatesByIdRateValidateBeforeCall(id, rateSet, null);
         Type localVarReturnType = new TypeToken<AffiliateOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -9638,15 +9638,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminAffiliatesByIdRateAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RateSet rateSet, final ApiCallback<AffiliateOut> _callback) throws ApiException {
+    public okhttp3.Call postAdminAffiliatesByIdRateAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RateSet rateSet, final ApiCallback<AffiliateOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AdminAffiliatesByIdRateValidateBeforeCall(id, rateSet, _callback);
+        okhttp3.Call localVarCall = postAdminAffiliatesByIdRateValidateBeforeCall(id, rateSet, _callback);
         Type localVarReturnType = new TypeToken<AffiliateOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AdminAffiliatesByIdSuspend
+     * Build call for postAdminAffiliatesByIdSuspend
      * @param id ID is the affiliate&#39;s server-minted handle, \&quot;aff_\&quot;-prefixed. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -9658,7 +9658,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminAffiliatesByIdSuspendCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAdminAffiliatesByIdSuspendCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9704,13 +9704,13 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AdminAffiliatesByIdSuspendValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAdminAffiliatesByIdSuspendValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1AdminAffiliatesByIdSuspend(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAdminAffiliatesByIdSuspend(Async)");
         }
 
-        return postV1AdminAffiliatesByIdSuspendCall(id, _callback);
+        return postAdminAffiliatesByIdSuspendCall(id, _callback);
 
     }
 
@@ -9727,8 +9727,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AffiliateOut postV1AdminAffiliatesByIdSuspend(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<AffiliateOut> localVarResp = postV1AdminAffiliatesByIdSuspendWithHttpInfo(id);
+    public AffiliateOut postAdminAffiliatesByIdSuspend(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<AffiliateOut> localVarResp = postAdminAffiliatesByIdSuspendWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -9745,8 +9745,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AffiliateOut> postV1AdminAffiliatesByIdSuspendWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1AdminAffiliatesByIdSuspendValidateBeforeCall(id, null);
+    public ApiResponse<AffiliateOut> postAdminAffiliatesByIdSuspendWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postAdminAffiliatesByIdSuspendValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<AffiliateOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -9765,15 +9765,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminAffiliatesByIdSuspendAsync(@javax.annotation.Nonnull String id, final ApiCallback<AffiliateOut> _callback) throws ApiException {
+    public okhttp3.Call postAdminAffiliatesByIdSuspendAsync(@javax.annotation.Nonnull String id, final ApiCallback<AffiliateOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AdminAffiliatesByIdSuspendValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postAdminAffiliatesByIdSuspendValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<AffiliateOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AdminAffiliatesSweep
+     * Build call for postAdminAffiliatesSweep
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -9784,7 +9784,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminAffiliatesSweepCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAdminAffiliatesSweepCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9829,8 +9829,8 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AdminAffiliatesSweepValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1AdminAffiliatesSweepCall(_callback);
+    private okhttp3.Call postAdminAffiliatesSweepValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postAdminAffiliatesSweepCall(_callback);
 
     }
 
@@ -9846,8 +9846,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AccrualsOut postV1AdminAffiliatesSweep() throws ApiException {
-        ApiResponse<AccrualsOut> localVarResp = postV1AdminAffiliatesSweepWithHttpInfo();
+    public AccrualsOut postAdminAffiliatesSweep() throws ApiException {
+        ApiResponse<AccrualsOut> localVarResp = postAdminAffiliatesSweepWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -9863,8 +9863,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccrualsOut> postV1AdminAffiliatesSweepWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1AdminAffiliatesSweepValidateBeforeCall(null);
+    public ApiResponse<AccrualsOut> postAdminAffiliatesSweepWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postAdminAffiliatesSweepValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<AccrualsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -9882,15 +9882,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminAffiliatesSweepAsync(final ApiCallback<AccrualsOut> _callback) throws ApiException {
+    public okhttp3.Call postAdminAffiliatesSweepAsync(final ApiCallback<AccrualsOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AdminAffiliatesSweepValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postAdminAffiliatesSweepValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AccrualsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AdminAuthorsByIdApprove
+     * Build call for postAdminAuthorsByIdApprove
      * @param id ID is the author to approve, from the path. (required)
      * @param approveRequest  (required)
      * @param _callback Callback for upload/download progress
@@ -9903,7 +9903,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminAuthorsByIdApproveCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ApproveRequest approveRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAdminAuthorsByIdApproveCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ApproveRequest approveRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9950,18 +9950,18 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AdminAuthorsByIdApproveValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ApproveRequest approveRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAdminAuthorsByIdApproveValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ApproveRequest approveRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1AdminAuthorsByIdApprove(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAdminAuthorsByIdApprove(Async)");
         }
 
         // verify the required parameter 'approveRequest' is set
         if (approveRequest == null) {
-            throw new ApiException("Missing the required parameter 'approveRequest' when calling postV1AdminAuthorsByIdApprove(Async)");
+            throw new ApiException("Missing the required parameter 'approveRequest' when calling postAdminAuthorsByIdApprove(Async)");
         }
 
-        return postV1AdminAuthorsByIdApproveCall(id, approveRequest, _callback);
+        return postAdminAuthorsByIdApproveCall(id, approveRequest, _callback);
 
     }
 
@@ -9979,8 +9979,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AuthorResult postV1AdminAuthorsByIdApprove(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ApproveRequest approveRequest) throws ApiException {
-        ApiResponse<AuthorResult> localVarResp = postV1AdminAuthorsByIdApproveWithHttpInfo(id, approveRequest);
+    public AuthorResult postAdminAuthorsByIdApprove(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ApproveRequest approveRequest) throws ApiException {
+        ApiResponse<AuthorResult> localVarResp = postAdminAuthorsByIdApproveWithHttpInfo(id, approveRequest);
         return localVarResp.getData();
     }
 
@@ -9998,8 +9998,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AuthorResult> postV1AdminAuthorsByIdApproveWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ApproveRequest approveRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1AdminAuthorsByIdApproveValidateBeforeCall(id, approveRequest, null);
+    public ApiResponse<AuthorResult> postAdminAuthorsByIdApproveWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ApproveRequest approveRequest) throws ApiException {
+        okhttp3.Call localVarCall = postAdminAuthorsByIdApproveValidateBeforeCall(id, approveRequest, null);
         Type localVarReturnType = new TypeToken<AuthorResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -10019,15 +10019,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminAuthorsByIdApproveAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ApproveRequest approveRequest, final ApiCallback<AuthorResult> _callback) throws ApiException {
+    public okhttp3.Call postAdminAuthorsByIdApproveAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ApproveRequest approveRequest, final ApiCallback<AuthorResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AdminAuthorsByIdApproveValidateBeforeCall(id, approveRequest, _callback);
+        okhttp3.Call localVarCall = postAdminAuthorsByIdApproveValidateBeforeCall(id, approveRequest, _callback);
         Type localVarReturnType = new TypeToken<AuthorResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AdminAuthorsByIdPayout
+     * Build call for postAdminAuthorsByIdPayout
      * @param id ID is the author to pay, from the path. (required)
      * @param payoutRequest  (required)
      * @param _callback Callback for upload/download progress
@@ -10040,7 +10040,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminAuthorsByIdPayoutCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PayoutRequest payoutRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAdminAuthorsByIdPayoutCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PayoutRequest payoutRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10087,18 +10087,18 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AdminAuthorsByIdPayoutValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PayoutRequest payoutRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAdminAuthorsByIdPayoutValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PayoutRequest payoutRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1AdminAuthorsByIdPayout(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAdminAuthorsByIdPayout(Async)");
         }
 
         // verify the required parameter 'payoutRequest' is set
         if (payoutRequest == null) {
-            throw new ApiException("Missing the required parameter 'payoutRequest' when calling postV1AdminAuthorsByIdPayout(Async)");
+            throw new ApiException("Missing the required parameter 'payoutRequest' when calling postAdminAuthorsByIdPayout(Async)");
         }
 
-        return postV1AdminAuthorsByIdPayoutCall(id, payoutRequest, _callback);
+        return postAdminAuthorsByIdPayoutCall(id, payoutRequest, _callback);
 
     }
 
@@ -10116,8 +10116,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PayoutResult postV1AdminAuthorsByIdPayout(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PayoutRequest payoutRequest) throws ApiException {
-        ApiResponse<PayoutResult> localVarResp = postV1AdminAuthorsByIdPayoutWithHttpInfo(id, payoutRequest);
+    public PayoutResult postAdminAuthorsByIdPayout(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PayoutRequest payoutRequest) throws ApiException {
+        ApiResponse<PayoutResult> localVarResp = postAdminAuthorsByIdPayoutWithHttpInfo(id, payoutRequest);
         return localVarResp.getData();
     }
 
@@ -10135,8 +10135,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PayoutResult> postV1AdminAuthorsByIdPayoutWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PayoutRequest payoutRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1AdminAuthorsByIdPayoutValidateBeforeCall(id, payoutRequest, null);
+    public ApiResponse<PayoutResult> postAdminAuthorsByIdPayoutWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PayoutRequest payoutRequest) throws ApiException {
+        okhttp3.Call localVarCall = postAdminAuthorsByIdPayoutValidateBeforeCall(id, payoutRequest, null);
         Type localVarReturnType = new TypeToken<PayoutResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -10156,15 +10156,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminAuthorsByIdPayoutAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PayoutRequest payoutRequest, final ApiCallback<PayoutResult> _callback) throws ApiException {
+    public okhttp3.Call postAdminAuthorsByIdPayoutAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PayoutRequest payoutRequest, final ApiCallback<PayoutResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AdminAuthorsByIdPayoutValidateBeforeCall(id, payoutRequest, _callback);
+        okhttp3.Call localVarCall = postAdminAuthorsByIdPayoutValidateBeforeCall(id, payoutRequest, _callback);
         Type localVarReturnType = new TypeToken<PayoutResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AdminAuthorsByIdSuspend
+     * Build call for postAdminAuthorsByIdSuspend
      * @param id ID is the author record&#39;s handle, \&quot;aut_\&quot;-prefixed. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -10176,7 +10176,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminAuthorsByIdSuspendCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAdminAuthorsByIdSuspendCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10222,13 +10222,13 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AdminAuthorsByIdSuspendValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAdminAuthorsByIdSuspendValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1AdminAuthorsByIdSuspend(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAdminAuthorsByIdSuspend(Async)");
         }
 
-        return postV1AdminAuthorsByIdSuspendCall(id, _callback);
+        return postAdminAuthorsByIdSuspendCall(id, _callback);
 
     }
 
@@ -10245,8 +10245,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AuthorResult postV1AdminAuthorsByIdSuspend(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<AuthorResult> localVarResp = postV1AdminAuthorsByIdSuspendWithHttpInfo(id);
+    public AuthorResult postAdminAuthorsByIdSuspend(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<AuthorResult> localVarResp = postAdminAuthorsByIdSuspendWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -10263,8 +10263,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AuthorResult> postV1AdminAuthorsByIdSuspendWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1AdminAuthorsByIdSuspendValidateBeforeCall(id, null);
+    public ApiResponse<AuthorResult> postAdminAuthorsByIdSuspendWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postAdminAuthorsByIdSuspendValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<AuthorResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -10283,15 +10283,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminAuthorsByIdSuspendAsync(@javax.annotation.Nonnull String id, final ApiCallback<AuthorResult> _callback) throws ApiException {
+    public okhttp3.Call postAdminAuthorsByIdSuspendAsync(@javax.annotation.Nonnull String id, final ApiCallback<AuthorResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AdminAuthorsByIdSuspendValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postAdminAuthorsByIdSuspendValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<AuthorResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AdminAuthorsSweep
+     * Build call for postAdminAuthorsSweep
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -10302,7 +10302,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminAuthorsSweepCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAdminAuthorsSweepCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10347,8 +10347,8 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AdminAuthorsSweepValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1AdminAuthorsSweepCall(_callback);
+    private okhttp3.Call postAdminAuthorsSweepValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postAdminAuthorsSweepCall(_callback);
 
     }
 
@@ -10364,8 +10364,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AuthorSweepResult postV1AdminAuthorsSweep() throws ApiException {
-        ApiResponse<AuthorSweepResult> localVarResp = postV1AdminAuthorsSweepWithHttpInfo();
+    public AuthorSweepResult postAdminAuthorsSweep() throws ApiException {
+        ApiResponse<AuthorSweepResult> localVarResp = postAdminAuthorsSweepWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -10381,8 +10381,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AuthorSweepResult> postV1AdminAuthorsSweepWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1AdminAuthorsSweepValidateBeforeCall(null);
+    public ApiResponse<AuthorSweepResult> postAdminAuthorsSweepWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postAdminAuthorsSweepValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<AuthorSweepResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -10400,15 +10400,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminAuthorsSweepAsync(final ApiCallback<AuthorSweepResult> _callback) throws ApiException {
+    public okhttp3.Call postAdminAuthorsSweepAsync(final ApiCallback<AuthorSweepResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AdminAuthorsSweepValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postAdminAuthorsSweepValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AuthorSweepResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AdminReferralsSweep
+     * Build call for postAdminReferralsSweep
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -10419,7 +10419,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminReferralsSweepCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAdminReferralsSweepCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10464,8 +10464,8 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AdminReferralsSweepValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1AdminReferralsSweepCall(_callback);
+    private okhttp3.Call postAdminReferralsSweepValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postAdminReferralsSweepCall(_callback);
 
     }
 
@@ -10481,8 +10481,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SweepEnvelope postV1AdminReferralsSweep() throws ApiException {
-        ApiResponse<SweepEnvelope> localVarResp = postV1AdminReferralsSweepWithHttpInfo();
+    public SweepEnvelope postAdminReferralsSweep() throws ApiException {
+        ApiResponse<SweepEnvelope> localVarResp = postAdminReferralsSweepWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -10498,8 +10498,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SweepEnvelope> postV1AdminReferralsSweepWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1AdminReferralsSweepValidateBeforeCall(null);
+    public ApiResponse<SweepEnvelope> postAdminReferralsSweepWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postAdminReferralsSweepValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<SweepEnvelope>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -10517,15 +10517,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminReferralsSweepAsync(final ApiCallback<SweepEnvelope> _callback) throws ApiException {
+    public okhttp3.Call postAdminReferralsSweepAsync(final ApiCallback<SweepEnvelope> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AdminReferralsSweepValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postAdminReferralsSweepValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<SweepEnvelope>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AdminTreasuryAnchor
+     * Build call for postAdminTreasuryAnchor
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -10536,7 +10536,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminTreasuryAnchorCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAdminTreasuryAnchorCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10581,8 +10581,8 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AdminTreasuryAnchorValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1AdminTreasuryAnchorCall(_callback);
+    private okhttp3.Call postAdminTreasuryAnchorValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postAdminTreasuryAnchorCall(_callback);
 
     }
 
@@ -10598,8 +10598,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AnchorOut postV1AdminTreasuryAnchor() throws ApiException {
-        ApiResponse<AnchorOut> localVarResp = postV1AdminTreasuryAnchorWithHttpInfo();
+    public AnchorOut postAdminTreasuryAnchor() throws ApiException {
+        ApiResponse<AnchorOut> localVarResp = postAdminTreasuryAnchorWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -10615,8 +10615,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AnchorOut> postV1AdminTreasuryAnchorWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1AdminTreasuryAnchorValidateBeforeCall(null);
+    public ApiResponse<AnchorOut> postAdminTreasuryAnchorWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postAdminTreasuryAnchorValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<AnchorOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -10634,15 +10634,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminTreasuryAnchorAsync(final ApiCallback<AnchorOut> _callback) throws ApiException {
+    public okhttp3.Call postAdminTreasuryAnchorAsync(final ApiCallback<AnchorOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AdminTreasuryAnchorValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postAdminTreasuryAnchorValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AnchorOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AdminTreasuryPolicy
+     * Build call for postAdminTreasuryPolicy
      * @param policyRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -10654,7 +10654,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminTreasuryPolicyCall(@javax.annotation.Nonnull PolicyRequest policyRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAdminTreasuryPolicyCall(@javax.annotation.Nonnull PolicyRequest policyRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10700,13 +10700,13 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AdminTreasuryPolicyValidateBeforeCall(@javax.annotation.Nonnull PolicyRequest policyRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAdminTreasuryPolicyValidateBeforeCall(@javax.annotation.Nonnull PolicyRequest policyRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'policyRequest' is set
         if (policyRequest == null) {
-            throw new ApiException("Missing the required parameter 'policyRequest' when calling postV1AdminTreasuryPolicy(Async)");
+            throw new ApiException("Missing the required parameter 'policyRequest' when calling postAdminTreasuryPolicy(Async)");
         }
 
-        return postV1AdminTreasuryPolicyCall(policyRequest, _callback);
+        return postAdminTreasuryPolicyCall(policyRequest, _callback);
 
     }
 
@@ -10723,8 +10723,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PolicyOut postV1AdminTreasuryPolicy(@javax.annotation.Nonnull PolicyRequest policyRequest) throws ApiException {
-        ApiResponse<PolicyOut> localVarResp = postV1AdminTreasuryPolicyWithHttpInfo(policyRequest);
+    public PolicyOut postAdminTreasuryPolicy(@javax.annotation.Nonnull PolicyRequest policyRequest) throws ApiException {
+        ApiResponse<PolicyOut> localVarResp = postAdminTreasuryPolicyWithHttpInfo(policyRequest);
         return localVarResp.getData();
     }
 
@@ -10741,8 +10741,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PolicyOut> postV1AdminTreasuryPolicyWithHttpInfo(@javax.annotation.Nonnull PolicyRequest policyRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1AdminTreasuryPolicyValidateBeforeCall(policyRequest, null);
+    public ApiResponse<PolicyOut> postAdminTreasuryPolicyWithHttpInfo(@javax.annotation.Nonnull PolicyRequest policyRequest) throws ApiException {
+        okhttp3.Call localVarCall = postAdminTreasuryPolicyValidateBeforeCall(policyRequest, null);
         Type localVarReturnType = new TypeToken<PolicyOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -10761,15 +10761,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminTreasuryPolicyAsync(@javax.annotation.Nonnull PolicyRequest policyRequest, final ApiCallback<PolicyOut> _callback) throws ApiException {
+    public okhttp3.Call postAdminTreasuryPolicyAsync(@javax.annotation.Nonnull PolicyRequest policyRequest, final ApiCallback<PolicyOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AdminTreasuryPolicyValidateBeforeCall(policyRequest, _callback);
+        okhttp3.Call localVarCall = postAdminTreasuryPolicyValidateBeforeCall(policyRequest, _callback);
         Type localVarReturnType = new TypeToken<PolicyOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AdminTreasurySeed
+     * Build call for postAdminTreasurySeed
      * @param seedRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -10781,7 +10781,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminTreasurySeedCall(@javax.annotation.Nonnull SeedRequest seedRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAdminTreasurySeedCall(@javax.annotation.Nonnull SeedRequest seedRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10827,13 +10827,13 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AdminTreasurySeedValidateBeforeCall(@javax.annotation.Nonnull SeedRequest seedRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAdminTreasurySeedValidateBeforeCall(@javax.annotation.Nonnull SeedRequest seedRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'seedRequest' is set
         if (seedRequest == null) {
-            throw new ApiException("Missing the required parameter 'seedRequest' when calling postV1AdminTreasurySeed(Async)");
+            throw new ApiException("Missing the required parameter 'seedRequest' when calling postAdminTreasurySeed(Async)");
         }
 
-        return postV1AdminTreasurySeedCall(seedRequest, _callback);
+        return postAdminTreasurySeedCall(seedRequest, _callback);
 
     }
 
@@ -10850,8 +10850,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SeedOut postV1AdminTreasurySeed(@javax.annotation.Nonnull SeedRequest seedRequest) throws ApiException {
-        ApiResponse<SeedOut> localVarResp = postV1AdminTreasurySeedWithHttpInfo(seedRequest);
+    public SeedOut postAdminTreasurySeed(@javax.annotation.Nonnull SeedRequest seedRequest) throws ApiException {
+        ApiResponse<SeedOut> localVarResp = postAdminTreasurySeedWithHttpInfo(seedRequest);
         return localVarResp.getData();
     }
 
@@ -10868,8 +10868,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SeedOut> postV1AdminTreasurySeedWithHttpInfo(@javax.annotation.Nonnull SeedRequest seedRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1AdminTreasurySeedValidateBeforeCall(seedRequest, null);
+    public ApiResponse<SeedOut> postAdminTreasurySeedWithHttpInfo(@javax.annotation.Nonnull SeedRequest seedRequest) throws ApiException {
+        okhttp3.Call localVarCall = postAdminTreasurySeedValidateBeforeCall(seedRequest, null);
         Type localVarReturnType = new TypeToken<SeedOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -10888,15 +10888,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminTreasurySeedAsync(@javax.annotation.Nonnull SeedRequest seedRequest, final ApiCallback<SeedOut> _callback) throws ApiException {
+    public okhttp3.Call postAdminTreasurySeedAsync(@javax.annotation.Nonnull SeedRequest seedRequest, final ApiCallback<SeedOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AdminTreasurySeedValidateBeforeCall(seedRequest, _callback);
+        okhttp3.Call localVarCall = postAdminTreasurySeedValidateBeforeCall(seedRequest, _callback);
         Type localVarReturnType = new TypeToken<SeedOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AdminTreasurySweep
+     * Build call for postAdminTreasurySweep
      * @param sweepRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -10908,7 +10908,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminTreasurySweepCall(@javax.annotation.Nonnull SweepRequest sweepRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAdminTreasurySweepCall(@javax.annotation.Nonnull SweepRequest sweepRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10954,13 +10954,13 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AdminTreasurySweepValidateBeforeCall(@javax.annotation.Nonnull SweepRequest sweepRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAdminTreasurySweepValidateBeforeCall(@javax.annotation.Nonnull SweepRequest sweepRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'sweepRequest' is set
         if (sweepRequest == null) {
-            throw new ApiException("Missing the required parameter 'sweepRequest' when calling postV1AdminTreasurySweep(Async)");
+            throw new ApiException("Missing the required parameter 'sweepRequest' when calling postAdminTreasurySweep(Async)");
         }
 
-        return postV1AdminTreasurySweepCall(sweepRequest, _callback);
+        return postAdminTreasurySweepCall(sweepRequest, _callback);
 
     }
 
@@ -10977,8 +10977,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SweepOut postV1AdminTreasurySweep(@javax.annotation.Nonnull SweepRequest sweepRequest) throws ApiException {
-        ApiResponse<SweepOut> localVarResp = postV1AdminTreasurySweepWithHttpInfo(sweepRequest);
+    public SweepOut postAdminTreasurySweep(@javax.annotation.Nonnull SweepRequest sweepRequest) throws ApiException {
+        ApiResponse<SweepOut> localVarResp = postAdminTreasurySweepWithHttpInfo(sweepRequest);
         return localVarResp.getData();
     }
 
@@ -10995,8 +10995,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SweepOut> postV1AdminTreasurySweepWithHttpInfo(@javax.annotation.Nonnull SweepRequest sweepRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1AdminTreasurySweepValidateBeforeCall(sweepRequest, null);
+    public ApiResponse<SweepOut> postAdminTreasurySweepWithHttpInfo(@javax.annotation.Nonnull SweepRequest sweepRequest) throws ApiException {
+        okhttp3.Call localVarCall = postAdminTreasurySweepValidateBeforeCall(sweepRequest, null);
         Type localVarReturnType = new TypeToken<SweepOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -11015,15 +11015,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AdminTreasurySweepAsync(@javax.annotation.Nonnull SweepRequest sweepRequest, final ApiCallback<SweepOut> _callback) throws ApiException {
+    public okhttp3.Call postAdminTreasurySweepAsync(@javax.annotation.Nonnull SweepRequest sweepRequest, final ApiCallback<SweepOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AdminTreasurySweepValidateBeforeCall(sweepRequest, _callback);
+        okhttp3.Call localVarCall = postAdminTreasurySweepValidateBeforeCall(sweepRequest, _callback);
         Type localVarReturnType = new TypeToken<SweepOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1AdminEnablement
+     * Build call for putAdminEnablement
      * @param setEnablementBody  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -11035,7 +11035,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1AdminEnablementCall(@javax.annotation.Nonnull SetEnablementBody setEnablementBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putAdminEnablementCall(@javax.annotation.Nonnull SetEnablementBody setEnablementBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -11081,13 +11081,13 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1AdminEnablementValidateBeforeCall(@javax.annotation.Nonnull SetEnablementBody setEnablementBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putAdminEnablementValidateBeforeCall(@javax.annotation.Nonnull SetEnablementBody setEnablementBody, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'setEnablementBody' is set
         if (setEnablementBody == null) {
-            throw new ApiException("Missing the required parameter 'setEnablementBody' when calling putV1AdminEnablement(Async)");
+            throw new ApiException("Missing the required parameter 'setEnablementBody' when calling putAdminEnablement(Async)");
         }
 
-        return putV1AdminEnablementCall(setEnablementBody, _callback);
+        return putAdminEnablementCall(setEnablementBody, _callback);
 
     }
 
@@ -11104,8 +11104,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AdminEnablementItem putV1AdminEnablement(@javax.annotation.Nonnull SetEnablementBody setEnablementBody) throws ApiException {
-        ApiResponse<AdminEnablementItem> localVarResp = putV1AdminEnablementWithHttpInfo(setEnablementBody);
+    public AdminEnablementItem putAdminEnablement(@javax.annotation.Nonnull SetEnablementBody setEnablementBody) throws ApiException {
+        ApiResponse<AdminEnablementItem> localVarResp = putAdminEnablementWithHttpInfo(setEnablementBody);
         return localVarResp.getData();
     }
 
@@ -11122,8 +11122,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdminEnablementItem> putV1AdminEnablementWithHttpInfo(@javax.annotation.Nonnull SetEnablementBody setEnablementBody) throws ApiException {
-        okhttp3.Call localVarCall = putV1AdminEnablementValidateBeforeCall(setEnablementBody, null);
+    public ApiResponse<AdminEnablementItem> putAdminEnablementWithHttpInfo(@javax.annotation.Nonnull SetEnablementBody setEnablementBody) throws ApiException {
+        okhttp3.Call localVarCall = putAdminEnablementValidateBeforeCall(setEnablementBody, null);
         Type localVarReturnType = new TypeToken<AdminEnablementItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -11142,15 +11142,15 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1AdminEnablementAsync(@javax.annotation.Nonnull SetEnablementBody setEnablementBody, final ApiCallback<AdminEnablementItem> _callback) throws ApiException {
+    public okhttp3.Call putAdminEnablementAsync(@javax.annotation.Nonnull SetEnablementBody setEnablementBody, final ApiCallback<AdminEnablementItem> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1AdminEnablementValidateBeforeCall(setEnablementBody, _callback);
+        okhttp3.Call localVarCall = putAdminEnablementValidateBeforeCall(setEnablementBody, _callback);
         Type localVarReturnType = new TypeToken<AdminEnablementItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1AdminTreasuryAnchorSigner
+     * Build call for putAdminTreasuryAnchorSigner
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -11161,7 +11161,7 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1AdminTreasuryAnchorSignerCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putAdminTreasuryAnchorSignerCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -11206,8 +11206,8 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1AdminTreasuryAnchorSignerValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return putV1AdminTreasuryAnchorSignerCall(_callback);
+    private okhttp3.Call putAdminTreasuryAnchorSignerValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return putAdminTreasuryAnchorSignerCall(_callback);
 
     }
 
@@ -11223,8 +11223,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SignerOut putV1AdminTreasuryAnchorSigner() throws ApiException {
-        ApiResponse<SignerOut> localVarResp = putV1AdminTreasuryAnchorSignerWithHttpInfo();
+    public SignerOut putAdminTreasuryAnchorSigner() throws ApiException {
+        ApiResponse<SignerOut> localVarResp = putAdminTreasuryAnchorSignerWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -11240,8 +11240,8 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SignerOut> putV1AdminTreasuryAnchorSignerWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = putV1AdminTreasuryAnchorSignerValidateBeforeCall(null);
+    public ApiResponse<SignerOut> putAdminTreasuryAnchorSignerWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = putAdminTreasuryAnchorSignerValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<SignerOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -11259,9 +11259,9 @@ public class AdminApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1AdminTreasuryAnchorSignerAsync(final ApiCallback<SignerOut> _callback) throws ApiException {
+    public okhttp3.Call putAdminTreasuryAnchorSignerAsync(final ApiCallback<SignerOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1AdminTreasuryAnchorSignerValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = putAdminTreasuryAnchorSignerValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<SignerOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -74,7 +74,7 @@ public class BlueprintApi {
     }
 
     /**
-     * Build call for getV1Blueprint
+     * Build call for getBlueprint
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -85,7 +85,7 @@ public class BlueprintApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BlueprintCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBlueprintCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -130,8 +130,8 @@ public class BlueprintApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BlueprintValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1BlueprintCall(_callback);
+    private okhttp3.Call getBlueprintValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getBlueprintCall(_callback);
 
     }
 
@@ -147,8 +147,8 @@ public class BlueprintApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BlueprintIndex getV1Blueprint() throws ApiException {
-        ApiResponse<BlueprintIndex> localVarResp = getV1BlueprintWithHttpInfo();
+    public BlueprintIndex getBlueprint() throws ApiException {
+        ApiResponse<BlueprintIndex> localVarResp = getBlueprintWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -164,8 +164,8 @@ public class BlueprintApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BlueprintIndex> getV1BlueprintWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1BlueprintValidateBeforeCall(null);
+    public ApiResponse<BlueprintIndex> getBlueprintWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getBlueprintValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<BlueprintIndex>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -183,15 +183,15 @@ public class BlueprintApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BlueprintAsync(final ApiCallback<BlueprintIndex> _callback) throws ApiException {
+    public okhttp3.Call getBlueprintAsync(final ApiCallback<BlueprintIndex> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BlueprintValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getBlueprintValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<BlueprintIndex>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BlueprintHealth
+     * Build call for getBlueprintHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -202,7 +202,7 @@ public class BlueprintApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BlueprintHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBlueprintHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -247,8 +247,8 @@ public class BlueprintApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BlueprintHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1BlueprintHealthCall(_callback);
+    private okhttp3.Call getBlueprintHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getBlueprintHealthCall(_callback);
 
     }
 
@@ -264,8 +264,8 @@ public class BlueprintApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BlueprintHealth getV1BlueprintHealth() throws ApiException {
-        ApiResponse<BlueprintHealth> localVarResp = getV1BlueprintHealthWithHttpInfo();
+    public BlueprintHealth getBlueprintHealth() throws ApiException {
+        ApiResponse<BlueprintHealth> localVarResp = getBlueprintHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -281,8 +281,8 @@ public class BlueprintApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BlueprintHealth> getV1BlueprintHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1BlueprintHealthValidateBeforeCall(null);
+    public ApiResponse<BlueprintHealth> getBlueprintHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getBlueprintHealthValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<BlueprintHealth>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -300,20 +300,20 @@ public class BlueprintApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BlueprintHealthAsync(final ApiCallback<BlueprintHealth> _callback) throws ApiException {
+    public okhttp3.Call getBlueprintHealthAsync(final ApiCallback<BlueprintHealth> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BlueprintHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getBlueprintHealthValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<BlueprintHealth>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BlueprintSbom
+     * Build call for getBlueprintSbom
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1BlueprintSbomCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBlueprintSbomCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -357,8 +357,8 @@ public class BlueprintApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BlueprintSbomValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1BlueprintSbomCall(_callback);
+    private okhttp3.Call getBlueprintSbomValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getBlueprintSbomCall(_callback);
 
     }
 
@@ -367,8 +367,8 @@ public class BlueprintApi {
      * Answers a blueprint&#39;s SBOM — the container images its compose stack runs, each with the CPU/memory footprint that was applied to it — together with the compute cost that footprint prices out to on the active rate card.  ONE address, TWO shapes at 200: &#x60;?template&#x3D;&lt;id&gt;&#x60; returns that blueprint&#39;s Estimate alone (404 on an id no embedded blueprint carries), and no &#x60;template&#x60; returns &#x60;{data:[Estimate]}&#x60; for every blueprint — the batch the console&#39;s template gallery reads in one round-trip.  The blueprints are reference content embedded in the binary and validated at mount, so this read is the same for every caller and is scoped to no tenant. The per-hour figure it returns is the one the deploy path meters the deploying org on and the 20% author royalty is taken from; GET /v1/blueprint/health echoes the rate card it was priced from.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1BlueprintSbom() throws ApiException {
-        getV1BlueprintSbomWithHttpInfo();
+    public void getBlueprintSbom() throws ApiException {
+        getBlueprintSbomWithHttpInfo();
     }
 
     /**
@@ -377,8 +377,8 @@ public class BlueprintApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1BlueprintSbomWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1BlueprintSbomValidateBeforeCall(null);
+    public ApiResponse<Void> getBlueprintSbomWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getBlueprintSbomValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -389,9 +389,9 @@ public class BlueprintApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1BlueprintSbomAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getBlueprintSbomAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BlueprintSbomValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getBlueprintSbomValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

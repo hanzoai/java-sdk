@@ -73,7 +73,7 @@ public class IndexersApi {
     }
 
     /**
-     * Build call for getV1Indexers
+     * Build call for getIndexers
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -84,7 +84,7 @@ public class IndexersApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IndexersCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIndexersCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -129,8 +129,8 @@ public class IndexersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IndexersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IndexersCall(_callback);
+    private okhttp3.Call getIndexersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIndexersCall(_callback);
 
     }
 
@@ -146,8 +146,8 @@ public class IndexersApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IndexersOut getV1Indexers() throws ApiException {
-        ApiResponse<IndexersOut> localVarResp = getV1IndexersWithHttpInfo();
+    public IndexersOut getIndexers() throws ApiException {
+        ApiResponse<IndexersOut> localVarResp = getIndexersWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -163,8 +163,8 @@ public class IndexersApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IndexersOut> getV1IndexersWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IndexersValidateBeforeCall(null);
+    public ApiResponse<IndexersOut> getIndexersWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIndexersValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<IndexersOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -182,9 +182,9 @@ public class IndexersApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IndexersAsync(final ApiCallback<IndexersOut> _callback) throws ApiException {
+    public okhttp3.Call getIndexersAsync(final ApiCallback<IndexersOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IndexersValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIndexersValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<IndexersOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -77,7 +77,7 @@ public class SkillsApi {
     }
 
     /**
-     * Build call for deleteV1SkillsById
+     * Build call for deleteSkillsById
      * @param id ID is the skill to remove, from the path. It is the skill&#39;s name. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -89,7 +89,7 @@ public class SkillsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1SkillsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteSkillsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -135,13 +135,13 @@ public class SkillsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1SkillsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteSkillsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1SkillsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteSkillsById(Async)");
         }
 
-        return deleteV1SkillsByIdCall(id, _callback);
+        return deleteSkillsByIdCall(id, _callback);
 
     }
 
@@ -158,8 +158,8 @@ public class SkillsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SkillDeleted deleteV1SkillsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<SkillDeleted> localVarResp = deleteV1SkillsByIdWithHttpInfo(id);
+    public SkillDeleted deleteSkillsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SkillDeleted> localVarResp = deleteSkillsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -176,8 +176,8 @@ public class SkillsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SkillDeleted> deleteV1SkillsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1SkillsByIdValidateBeforeCall(id, null);
+    public ApiResponse<SkillDeleted> deleteSkillsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteSkillsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<SkillDeleted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -196,15 +196,15 @@ public class SkillsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1SkillsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<SkillDeleted> _callback) throws ApiException {
+    public okhttp3.Call deleteSkillsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<SkillDeleted> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1SkillsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteSkillsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<SkillDeleted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Skills
+     * Build call for getSkills
      * @param activated Activated keeps only the tools activated for the caller&#39;s org and project, and only when it is exactly the string \&quot;true\&quot;. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -216,7 +216,7 @@ public class SkillsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SkillsCall(@javax.annotation.Nullable String activated, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSkillsCall(@javax.annotation.Nullable String activated, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -265,8 +265,8 @@ public class SkillsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SkillsValidateBeforeCall(@javax.annotation.Nullable String activated, final ApiCallback _callback) throws ApiException {
-        return getV1SkillsCall(activated, _callback);
+    private okhttp3.Call getSkillsValidateBeforeCall(@javax.annotation.Nullable String activated, final ApiCallback _callback) throws ApiException {
+        return getSkillsCall(activated, _callback);
 
     }
 
@@ -283,8 +283,8 @@ public class SkillsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SourceToolList getV1Skills(@javax.annotation.Nullable String activated) throws ApiException {
-        ApiResponse<SourceToolList> localVarResp = getV1SkillsWithHttpInfo(activated);
+    public SourceToolList getSkills(@javax.annotation.Nullable String activated) throws ApiException {
+        ApiResponse<SourceToolList> localVarResp = getSkillsWithHttpInfo(activated);
         return localVarResp.getData();
     }
 
@@ -301,8 +301,8 @@ public class SkillsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SourceToolList> getV1SkillsWithHttpInfo(@javax.annotation.Nullable String activated) throws ApiException {
-        okhttp3.Call localVarCall = getV1SkillsValidateBeforeCall(activated, null);
+    public ApiResponse<SourceToolList> getSkillsWithHttpInfo(@javax.annotation.Nullable String activated) throws ApiException {
+        okhttp3.Call localVarCall = getSkillsValidateBeforeCall(activated, null);
         Type localVarReturnType = new TypeToken<SourceToolList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -321,15 +321,15 @@ public class SkillsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SkillsAsync(@javax.annotation.Nullable String activated, final ApiCallback<SourceToolList> _callback) throws ApiException {
+    public okhttp3.Call getSkillsAsync(@javax.annotation.Nullable String activated, final ApiCallback<SourceToolList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SkillsValidateBeforeCall(activated, _callback);
+        okhttp3.Call localVarCall = getSkillsValidateBeforeCall(activated, _callback);
         Type localVarReturnType = new TypeToken<SourceToolList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SkillsAuthored
+     * Build call for getSkillsAuthored
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -340,7 +340,7 @@ public class SkillsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SkillsAuthoredCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSkillsAuthoredCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -385,8 +385,8 @@ public class SkillsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SkillsAuthoredValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1SkillsAuthoredCall(_callback);
+    private okhttp3.Call getSkillsAuthoredValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getSkillsAuthoredCall(_callback);
 
     }
 
@@ -402,8 +402,8 @@ public class SkillsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AuthoredSkillList getV1SkillsAuthored() throws ApiException {
-        ApiResponse<AuthoredSkillList> localVarResp = getV1SkillsAuthoredWithHttpInfo();
+    public AuthoredSkillList getSkillsAuthored() throws ApiException {
+        ApiResponse<AuthoredSkillList> localVarResp = getSkillsAuthoredWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -419,8 +419,8 @@ public class SkillsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AuthoredSkillList> getV1SkillsAuthoredWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1SkillsAuthoredValidateBeforeCall(null);
+    public ApiResponse<AuthoredSkillList> getSkillsAuthoredWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getSkillsAuthoredValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<AuthoredSkillList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -438,15 +438,15 @@ public class SkillsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SkillsAuthoredAsync(final ApiCallback<AuthoredSkillList> _callback) throws ApiException {
+    public okhttp3.Call getSkillsAuthoredAsync(final ApiCallback<AuthoredSkillList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SkillsAuthoredValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getSkillsAuthoredValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AuthoredSkillList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Skills
+     * Build call for postSkills
      * @param skillIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -458,7 +458,7 @@ public class SkillsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SkillsCall(@javax.annotation.Nonnull SkillIn skillIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSkillsCall(@javax.annotation.Nonnull SkillIn skillIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -504,13 +504,13 @@ public class SkillsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SkillsValidateBeforeCall(@javax.annotation.Nonnull SkillIn skillIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSkillsValidateBeforeCall(@javax.annotation.Nonnull SkillIn skillIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'skillIn' is set
         if (skillIn == null) {
-            throw new ApiException("Missing the required parameter 'skillIn' when calling postV1Skills(Async)");
+            throw new ApiException("Missing the required parameter 'skillIn' when calling postSkills(Async)");
         }
 
-        return postV1SkillsCall(skillIn, _callback);
+        return postSkillsCall(skillIn, _callback);
 
     }
 
@@ -527,8 +527,8 @@ public class SkillsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public SkillWritten postV1Skills(@javax.annotation.Nonnull SkillIn skillIn) throws ApiException {
-        ApiResponse<SkillWritten> localVarResp = postV1SkillsWithHttpInfo(skillIn);
+    public SkillWritten postSkills(@javax.annotation.Nonnull SkillIn skillIn) throws ApiException {
+        ApiResponse<SkillWritten> localVarResp = postSkillsWithHttpInfo(skillIn);
         return localVarResp.getData();
     }
 
@@ -545,8 +545,8 @@ public class SkillsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SkillWritten> postV1SkillsWithHttpInfo(@javax.annotation.Nonnull SkillIn skillIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1SkillsValidateBeforeCall(skillIn, null);
+    public ApiResponse<SkillWritten> postSkillsWithHttpInfo(@javax.annotation.Nonnull SkillIn skillIn) throws ApiException {
+        okhttp3.Call localVarCall = postSkillsValidateBeforeCall(skillIn, null);
         Type localVarReturnType = new TypeToken<SkillWritten>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -565,9 +565,9 @@ public class SkillsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SkillsAsync(@javax.annotation.Nonnull SkillIn skillIn, final ApiCallback<SkillWritten> _callback) throws ApiException {
+    public okhttp3.Call postSkillsAsync(@javax.annotation.Nonnull SkillIn skillIn, final ApiCallback<SkillWritten> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SkillsValidateBeforeCall(skillIn, _callback);
+        okhttp3.Call localVarCall = postSkillsValidateBeforeCall(skillIn, _callback);
         Type localVarReturnType = new TypeToken<SkillWritten>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

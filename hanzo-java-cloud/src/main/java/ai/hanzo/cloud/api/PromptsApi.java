@@ -77,7 +77,7 @@ public class PromptsApi {
     }
 
     /**
-     * Build call for deleteV1PromptsByName
+     * Build call for deletePromptsByName
      * @param name Name is the prompt to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -89,7 +89,7 @@ public class PromptsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1PromptsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deletePromptsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,13 +134,13 @@ public class PromptsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1PromptsByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePromptsByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteV1PromptsByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling deletePromptsByName(Async)");
         }
 
-        return deleteV1PromptsByNameCall(name, _callback);
+        return deletePromptsByNameCall(name, _callback);
 
     }
 
@@ -156,8 +156,8 @@ public class PromptsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1PromptsByName(@javax.annotation.Nonnull String name) throws ApiException {
-        deleteV1PromptsByNameWithHttpInfo(name);
+    public void deletePromptsByName(@javax.annotation.Nonnull String name) throws ApiException {
+        deletePromptsByNameWithHttpInfo(name);
     }
 
     /**
@@ -173,8 +173,8 @@ public class PromptsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1PromptsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1PromptsByNameValidateBeforeCall(name, null);
+    public ApiResponse<Void> deletePromptsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deletePromptsByNameValidateBeforeCall(name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -192,14 +192,14 @@ public class PromptsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1PromptsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deletePromptsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1PromptsByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = deletePromptsByNameValidateBeforeCall(name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Prompts
+     * Build call for getPrompts
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -210,7 +210,7 @@ public class PromptsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PromptsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPromptsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -255,8 +255,8 @@ public class PromptsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PromptsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PromptsCall(_callback);
+    private okhttp3.Call getPromptsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPromptsCall(_callback);
 
     }
 
@@ -272,8 +272,8 @@ public class PromptsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PromptList getV1Prompts() throws ApiException {
-        ApiResponse<PromptList> localVarResp = getV1PromptsWithHttpInfo();
+    public PromptList getPrompts() throws ApiException {
+        ApiResponse<PromptList> localVarResp = getPromptsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -289,8 +289,8 @@ public class PromptsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PromptList> getV1PromptsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PromptsValidateBeforeCall(null);
+    public ApiResponse<PromptList> getPromptsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPromptsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PromptList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -308,15 +308,15 @@ public class PromptsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PromptsAsync(final ApiCallback<PromptList> _callback) throws ApiException {
+    public okhttp3.Call getPromptsAsync(final ApiCallback<PromptList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PromptsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPromptsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PromptList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PromptsByName
+     * Build call for getPromptsByName
      * @param name Name is the prompt to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -328,7 +328,7 @@ public class PromptsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PromptsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPromptsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -374,13 +374,13 @@ public class PromptsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PromptsByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPromptsByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1PromptsByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getPromptsByName(Async)");
         }
 
-        return getV1PromptsByNameCall(name, _callback);
+        return getPromptsByNameCall(name, _callback);
 
     }
 
@@ -397,8 +397,8 @@ public class PromptsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PromptDetail getV1PromptsByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<PromptDetail> localVarResp = getV1PromptsByNameWithHttpInfo(name);
+    public PromptDetail getPromptsByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<PromptDetail> localVarResp = getPromptsByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -415,8 +415,8 @@ public class PromptsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PromptDetail> getV1PromptsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1PromptsByNameValidateBeforeCall(name, null);
+    public ApiResponse<PromptDetail> getPromptsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getPromptsByNameValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<PromptDetail>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -435,15 +435,15 @@ public class PromptsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PromptsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<PromptDetail> _callback) throws ApiException {
+    public okhttp3.Call getPromptsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<PromptDetail> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PromptsByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getPromptsByNameValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<PromptDetail>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PromptsCatalog
+     * Build call for getPromptsCatalog
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -454,7 +454,7 @@ public class PromptsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PromptsCatalogCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPromptsCatalogCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -499,8 +499,8 @@ public class PromptsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PromptsCatalogValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PromptsCatalogCall(_callback);
+    private okhttp3.Call getPromptsCatalogValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPromptsCatalogCall(_callback);
 
     }
 
@@ -516,8 +516,8 @@ public class PromptsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogList getV1PromptsCatalog() throws ApiException {
-        ApiResponse<CatalogList> localVarResp = getV1PromptsCatalogWithHttpInfo();
+    public CatalogList getPromptsCatalog() throws ApiException {
+        ApiResponse<CatalogList> localVarResp = getPromptsCatalogWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -533,8 +533,8 @@ public class PromptsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogList> getV1PromptsCatalogWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PromptsCatalogValidateBeforeCall(null);
+    public ApiResponse<CatalogList> getPromptsCatalogWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPromptsCatalogValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<CatalogList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -552,15 +552,15 @@ public class PromptsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PromptsCatalogAsync(final ApiCallback<CatalogList> _callback) throws ApiException {
+    public okhttp3.Call getPromptsCatalogAsync(final ApiCallback<CatalogList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PromptsCatalogValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPromptsCatalogValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CatalogList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PromptsMetrics
+     * Build call for getPromptsMetrics
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -571,7 +571,7 @@ public class PromptsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PromptsMetricsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPromptsMetricsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -616,8 +616,8 @@ public class PromptsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PromptsMetricsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PromptsMetricsCall(_callback);
+    private okhttp3.Call getPromptsMetricsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPromptsMetricsCall(_callback);
 
     }
 
@@ -633,8 +633,8 @@ public class PromptsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public MetricList getV1PromptsMetrics() throws ApiException {
-        ApiResponse<MetricList> localVarResp = getV1PromptsMetricsWithHttpInfo();
+    public MetricList getPromptsMetrics() throws ApiException {
+        ApiResponse<MetricList> localVarResp = getPromptsMetricsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -650,8 +650,8 @@ public class PromptsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MetricList> getV1PromptsMetricsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PromptsMetricsValidateBeforeCall(null);
+    public ApiResponse<MetricList> getPromptsMetricsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPromptsMetricsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<MetricList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -669,15 +669,15 @@ public class PromptsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PromptsMetricsAsync(final ApiCallback<MetricList> _callback) throws ApiException {
+    public okhttp3.Call getPromptsMetricsAsync(final ApiCallback<MetricList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PromptsMetricsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPromptsMetricsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<MetricList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Prompts
+     * Build call for postPrompts
      * @param promptReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -689,7 +689,7 @@ public class PromptsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PromptsCall(@javax.annotation.Nonnull PromptReq promptReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPromptsCall(@javax.annotation.Nonnull PromptReq promptReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -735,13 +735,13 @@ public class PromptsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PromptsValidateBeforeCall(@javax.annotation.Nonnull PromptReq promptReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPromptsValidateBeforeCall(@javax.annotation.Nonnull PromptReq promptReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'promptReq' is set
         if (promptReq == null) {
-            throw new ApiException("Missing the required parameter 'promptReq' when calling postV1Prompts(Async)");
+            throw new ApiException("Missing the required parameter 'promptReq' when calling postPrompts(Async)");
         }
 
-        return postV1PromptsCall(promptReq, _callback);
+        return postPromptsCall(promptReq, _callback);
 
     }
 
@@ -758,8 +758,8 @@ public class PromptsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public PromptDetail postV1Prompts(@javax.annotation.Nonnull PromptReq promptReq) throws ApiException {
-        ApiResponse<PromptDetail> localVarResp = postV1PromptsWithHttpInfo(promptReq);
+    public PromptDetail postPrompts(@javax.annotation.Nonnull PromptReq promptReq) throws ApiException {
+        ApiResponse<PromptDetail> localVarResp = postPromptsWithHttpInfo(promptReq);
         return localVarResp.getData();
     }
 
@@ -776,8 +776,8 @@ public class PromptsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PromptDetail> postV1PromptsWithHttpInfo(@javax.annotation.Nonnull PromptReq promptReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1PromptsValidateBeforeCall(promptReq, null);
+    public ApiResponse<PromptDetail> postPromptsWithHttpInfo(@javax.annotation.Nonnull PromptReq promptReq) throws ApiException {
+        okhttp3.Call localVarCall = postPromptsValidateBeforeCall(promptReq, null);
         Type localVarReturnType = new TypeToken<PromptDetail>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -796,9 +796,9 @@ public class PromptsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PromptsAsync(@javax.annotation.Nonnull PromptReq promptReq, final ApiCallback<PromptDetail> _callback) throws ApiException {
+    public okhttp3.Call postPromptsAsync(@javax.annotation.Nonnull PromptReq promptReq, final ApiCallback<PromptDetail> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PromptsValidateBeforeCall(promptReq, _callback);
+        okhttp3.Call localVarCall = postPromptsValidateBeforeCall(promptReq, _callback);
         Type localVarReturnType = new TypeToken<PromptDetail>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

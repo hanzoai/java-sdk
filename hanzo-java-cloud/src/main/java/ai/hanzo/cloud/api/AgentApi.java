@@ -72,12 +72,12 @@ public class AgentApi {
     }
 
     /**
-     * Build call for getV1AgentConversations
+     * Build call for getAgentConversations
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1AgentConversationsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentConversationsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class AgentApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AgentConversationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1AgentConversationsCall(_callback);
+    private okhttp3.Call getAgentConversationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAgentConversationsCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class AgentApi {
      * Returns a summary of every agent conversation in the caller&#39;s org — id, derived title, and when it was last appended to — for populating a thread list.  Scoped to the caller&#39;s org and nothing else, and that isolation is structural rather than a filter: conversations are persisted in a store opened PER ORG, so there is no query in which another tenant&#39;s threads could appear. A validated principal with a non-empty org is required; 403 without one.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1AgentConversations() throws ApiException {
-        getV1AgentConversationsWithHttpInfo();
+    public void getAgentConversations() throws ApiException {
+        getAgentConversationsWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class AgentApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1AgentConversationsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1AgentConversationsValidateBeforeCall(null);
+    public ApiResponse<Void> getAgentConversationsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAgentConversationsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,20 +153,20 @@ public class AgentApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1AgentConversationsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getAgentConversationsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AgentConversationsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAgentConversationsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AgentConversationsById
+     * Build call for getAgentConversationsById
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1AgentConversationsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentConversationsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -211,13 +211,13 @@ public class AgentApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AgentConversationsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAgentConversationsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1AgentConversationsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getAgentConversationsById(Async)");
         }
 
-        return getV1AgentConversationsByIdCall(id, _callback);
+        return getAgentConversationsByIdCall(id, _callback);
 
     }
 
@@ -227,8 +227,8 @@ public class AgentApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1AgentConversationsById(@javax.annotation.Nonnull String id) throws ApiException {
-        getV1AgentConversationsByIdWithHttpInfo(id);
+    public void getAgentConversationsById(@javax.annotation.Nonnull String id) throws ApiException {
+        getAgentConversationsByIdWithHttpInfo(id);
     }
 
     /**
@@ -238,8 +238,8 @@ public class AgentApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1AgentConversationsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1AgentConversationsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> getAgentConversationsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getAgentConversationsByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -251,19 +251,19 @@ public class AgentApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1AgentConversationsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getAgentConversationsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AgentConversationsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getAgentConversationsByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AgentPresets
+     * Build call for getAgentPresets
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1AgentPresetsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentPresetsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -307,8 +307,8 @@ public class AgentApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AgentPresetsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1AgentPresetsCall(_callback);
+    private okhttp3.Call getAgentPresetsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAgentPresetsCall(_callback);
 
     }
 
@@ -317,8 +317,8 @@ public class AgentApi {
      * Returns the preset catalog: each entry&#39;s id, its description and whether it is server-executing — the flag that decides if a preset&#39;s tool calls run here or come back for the client to apply. The ids are what POST /v1/agent accepts in &#x60;preset&#x60;.  The catalog is compiled into the build, identical for every caller, and this is the one read in the group that needs no principal.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1AgentPresets() throws ApiException {
-        getV1AgentPresetsWithHttpInfo();
+    public void getAgentPresets() throws ApiException {
+        getAgentPresetsWithHttpInfo();
     }
 
     /**
@@ -327,8 +327,8 @@ public class AgentApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1AgentPresetsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1AgentPresetsValidateBeforeCall(null);
+    public ApiResponse<Void> getAgentPresetsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAgentPresetsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -339,19 +339,19 @@ public class AgentApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1AgentPresetsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getAgentPresetsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AgentPresetsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAgentPresetsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Agent
+     * Build call for postAgent
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1AgentCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAgentCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -395,8 +395,8 @@ public class AgentApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AgentValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1AgentCall(_callback);
+    private okhttp3.Call postAgentValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postAgentCall(_callback);
 
     }
 
@@ -405,8 +405,8 @@ public class AgentApi {
      * Answers one turn of a conversation with four things: the model&#39;s &#x60;reply&#x60;, the &#x60;actions&#x60; the server executed on the caller&#39;s behalf, the &#x60;ops&#x60; the client must apply itself, and the &#x60;conversationId&#x60; the turn was recorded under.  The split between actions and ops is the rule most easily got wrong. A tool call is executed HERE only when the chosen preset is server-executing AND the tool resolves in the caller&#39;s own scope; every other call is handed back as an op for the client to apply to its own graph or UI. A tool that fails still comes back as an action, carrying its error rather than failing the round.  &#x60;preset&#x60; selects the system prompt and the tool set (&#x60;capability&#x60; is a legacy alias for it); an unknown one is refused. &#x60;conversationId&#x60; continues an existing thread, and its absence starts one. A validated principal with a non-empty org is required — the org is the sole authority for both persistence and tool scope, and is NEVER read from the body.  A completion refused for the caller&#39;s own reason — 402 insufficient balance, 429, 403 — is relayed with its own status and body verbatim, so the real billing message reaches the client instead of an opaque gateway error. Only a genuine upstream fault becomes a 502.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1Agent() throws ApiException {
-        postV1AgentWithHttpInfo();
+    public void postAgent() throws ApiException {
+        postAgentWithHttpInfo();
     }
 
     /**
@@ -415,8 +415,8 @@ public class AgentApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1AgentWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1AgentValidateBeforeCall(null);
+    public ApiResponse<Void> postAgentWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postAgentValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -427,9 +427,9 @@ public class AgentApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1AgentAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postAgentAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AgentValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postAgentValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

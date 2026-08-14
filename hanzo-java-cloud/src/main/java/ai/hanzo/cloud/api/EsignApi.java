@@ -72,12 +72,12 @@ public class EsignApi {
     }
 
     /**
-     * Build call for getV1EsignDocuments
+     * Build call for getEsignDocuments
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1EsignDocumentsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getEsignDocumentsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class EsignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1EsignDocumentsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1EsignDocumentsCall(_callback);
+    private okhttp3.Call getEsignDocumentsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getEsignDocumentsCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class EsignApi {
      * Lists the caller org&#39;s documents with their status, recipients and timestamps, newest first, capped at 200 — there is no paging, so treat it as the recent window rather than a complete export. Requires a validated principal (403 without one) and reads the caller&#39;s own tenant store, so no other org&#39;s documents can appear in it.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1EsignDocuments() throws ApiException {
-        getV1EsignDocumentsWithHttpInfo();
+    public void getEsignDocuments() throws ApiException {
+        getEsignDocumentsWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class EsignApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1EsignDocumentsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1EsignDocumentsValidateBeforeCall(null);
+    public ApiResponse<Void> getEsignDocumentsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getEsignDocumentsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,20 +153,20 @@ public class EsignApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1EsignDocumentsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getEsignDocumentsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1EsignDocumentsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getEsignDocumentsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1EsignDocumentsById
+     * Build call for getEsignDocumentsById
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1EsignDocumentsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getEsignDocumentsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -211,13 +211,13 @@ public class EsignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1EsignDocumentsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getEsignDocumentsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1EsignDocumentsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getEsignDocumentsById(Async)");
         }
 
-        return getV1EsignDocumentsByIdCall(id, _callback);
+        return getEsignDocumentsByIdCall(id, _callback);
 
     }
 
@@ -227,8 +227,8 @@ public class EsignApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1EsignDocumentsById(@javax.annotation.Nonnull String id) throws ApiException {
-        getV1EsignDocumentsByIdWithHttpInfo(id);
+    public void getEsignDocumentsById(@javax.annotation.Nonnull String id) throws ApiException {
+        getEsignDocumentsByIdWithHttpInfo(id);
     }
 
     /**
@@ -238,8 +238,8 @@ public class EsignApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1EsignDocumentsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1EsignDocumentsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> getEsignDocumentsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getEsignDocumentsByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -251,20 +251,20 @@ public class EsignApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1EsignDocumentsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getEsignDocumentsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1EsignDocumentsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getEsignDocumentsByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1EsignDocumentsByIdAudit
+     * Build call for getEsignDocumentsByIdAudit
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1EsignDocumentsByIdAuditCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getEsignDocumentsByIdAuditCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -309,13 +309,13 @@ public class EsignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1EsignDocumentsByIdAuditValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getEsignDocumentsByIdAuditValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1EsignDocumentsByIdAudit(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getEsignDocumentsByIdAudit(Async)");
         }
 
-        return getV1EsignDocumentsByIdAuditCall(id, _callback);
+        return getEsignDocumentsByIdAuditCall(id, _callback);
 
     }
 
@@ -325,8 +325,8 @@ public class EsignApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1EsignDocumentsByIdAudit(@javax.annotation.Nonnull String id) throws ApiException {
-        getV1EsignDocumentsByIdAuditWithHttpInfo(id);
+    public void getEsignDocumentsByIdAudit(@javax.annotation.Nonnull String id) throws ApiException {
+        getEsignDocumentsByIdAuditWithHttpInfo(id);
     }
 
     /**
@@ -336,8 +336,8 @@ public class EsignApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1EsignDocumentsByIdAuditWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1EsignDocumentsByIdAuditValidateBeforeCall(id, null);
+    public ApiResponse<Void> getEsignDocumentsByIdAuditWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getEsignDocumentsByIdAuditValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -349,20 +349,20 @@ public class EsignApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1EsignDocumentsByIdAuditAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getEsignDocumentsByIdAuditAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1EsignDocumentsByIdAuditValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getEsignDocumentsByIdAuditValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1EsignDocumentsByIdDownload
+     * Build call for getEsignDocumentsByIdDownload
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1EsignDocumentsByIdDownloadCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getEsignDocumentsByIdDownloadCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -407,13 +407,13 @@ public class EsignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1EsignDocumentsByIdDownloadValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getEsignDocumentsByIdDownloadValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1EsignDocumentsByIdDownload(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getEsignDocumentsByIdDownload(Async)");
         }
 
-        return getV1EsignDocumentsByIdDownloadCall(id, _callback);
+        return getEsignDocumentsByIdDownloadCall(id, _callback);
 
     }
 
@@ -423,8 +423,8 @@ public class EsignApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1EsignDocumentsByIdDownload(@javax.annotation.Nonnull String id) throws ApiException {
-        getV1EsignDocumentsByIdDownloadWithHttpInfo(id);
+    public void getEsignDocumentsByIdDownload(@javax.annotation.Nonnull String id) throws ApiException {
+        getEsignDocumentsByIdDownloadWithHttpInfo(id);
     }
 
     /**
@@ -434,8 +434,8 @@ public class EsignApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1EsignDocumentsByIdDownloadWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1EsignDocumentsByIdDownloadValidateBeforeCall(id, null);
+    public ApiResponse<Void> getEsignDocumentsByIdDownloadWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getEsignDocumentsByIdDownloadValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -447,19 +447,19 @@ public class EsignApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1EsignDocumentsByIdDownloadAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getEsignDocumentsByIdDownloadAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1EsignDocumentsByIdDownloadValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getEsignDocumentsByIdDownloadValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1EsignHealth
+     * Build call for getEsignHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1EsignHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getEsignHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -503,8 +503,8 @@ public class EsignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1EsignHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1EsignHealthCall(_callback);
+    private okhttp3.Call getEsignHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getEsignHealthCall(_callback);
 
     }
 
@@ -513,8 +513,8 @@ public class EsignApi {
      * Answers ok whenever the subsystem is mounted. It is unauthenticated and takes no tenant, and it is deliberately shallow: it is registered before the document host is built, so it still answers on a deployment that came up WITHOUT object storage and therefore serves nothing else. Read it as reachability, never as a promise that documents can be stored.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1EsignHealth() throws ApiException {
-        getV1EsignHealthWithHttpInfo();
+    public void getEsignHealth() throws ApiException {
+        getEsignHealthWithHttpInfo();
     }
 
     /**
@@ -523,8 +523,8 @@ public class EsignApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1EsignHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1EsignHealthValidateBeforeCall(null);
+    public ApiResponse<Void> getEsignHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getEsignHealthValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -535,21 +535,21 @@ public class EsignApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1EsignHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getEsignHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1EsignHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getEsignHealthValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1EsignOByOrgSignByToken
+     * Build call for getEsignOByOrgSignByToken
      * @param org  (required)
      * @param token  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1EsignOByOrgSignByTokenCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getEsignOByOrgSignByTokenCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -595,18 +595,18 @@ public class EsignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1EsignOByOrgSignByTokenValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getEsignOByOrgSignByTokenValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'org' is set
         if (org == null) {
-            throw new ApiException("Missing the required parameter 'org' when calling getV1EsignOByOrgSignByToken(Async)");
+            throw new ApiException("Missing the required parameter 'org' when calling getEsignOByOrgSignByToken(Async)");
         }
 
         // verify the required parameter 'token' is set
         if (token == null) {
-            throw new ApiException("Missing the required parameter 'token' when calling getV1EsignOByOrgSignByToken(Async)");
+            throw new ApiException("Missing the required parameter 'token' when calling getEsignOByOrgSignByToken(Async)");
         }
 
-        return getV1EsignOByOrgSignByTokenCall(org, token, _callback);
+        return getEsignOByOrgSignByTokenCall(org, token, _callback);
 
     }
 
@@ -617,8 +617,8 @@ public class EsignApi {
      * @param token  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1EsignOByOrgSignByToken(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token) throws ApiException {
-        getV1EsignOByOrgSignByTokenWithHttpInfo(org, token);
+    public void getEsignOByOrgSignByToken(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token) throws ApiException {
+        getEsignOByOrgSignByTokenWithHttpInfo(org, token);
     }
 
     /**
@@ -629,8 +629,8 @@ public class EsignApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1EsignOByOrgSignByTokenWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token) throws ApiException {
-        okhttp3.Call localVarCall = getV1EsignOByOrgSignByTokenValidateBeforeCall(org, token, null);
+    public ApiResponse<Void> getEsignOByOrgSignByTokenWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token) throws ApiException {
+        okhttp3.Call localVarCall = getEsignOByOrgSignByTokenValidateBeforeCall(org, token, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -643,19 +643,19 @@ public class EsignApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1EsignOByOrgSignByTokenAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getEsignOByOrgSignByTokenAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1EsignOByOrgSignByTokenValidateBeforeCall(org, token, _callback);
+        okhttp3.Call localVarCall = getEsignOByOrgSignByTokenValidateBeforeCall(org, token, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1EsignDocuments
+     * Build call for postEsignDocuments
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1EsignDocumentsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEsignDocumentsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -699,8 +699,8 @@ public class EsignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1EsignDocumentsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1EsignDocumentsCall(_callback);
+    private okhttp3.Call postEsignDocumentsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postEsignDocumentsCall(_callback);
 
     }
 
@@ -709,8 +709,8 @@ public class EsignApi {
      * Creates a document from a base64 PDF and answers 201 with it in &#x60;DRAFT&#x60; — the state where recipients and fields may still be added, and the only state they may. &#x60;title&#x60; and &#x60;pdfBase64&#x60; are required; &#x60;signingOrder&#x60; chooses &#x60;PARALLEL&#x60; (the default, everyone may sign at once) or &#x60;SEQUENTIAL&#x60;, and that choice is fixed for the document&#39;s life.  The bytes go to object storage, not into the tenant database, and the ORIGINAL is kept under its own key so it survives sealing untouched — a completed document can always be compared against what was uploaded. Creation is recorded on the audit trail.  This is the sender&#39;s door: a validated principal is required (403 without one) and the document lands in that principal&#39;s OWN org. Isolation is physical rather than a filter — each tenant has its own store — so another org&#39;s document id is simply not there. Bodies over 32 MiB are refused with 413.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1EsignDocuments() throws ApiException {
-        postV1EsignDocumentsWithHttpInfo();
+    public void postEsignDocuments() throws ApiException {
+        postEsignDocumentsWithHttpInfo();
     }
 
     /**
@@ -719,8 +719,8 @@ public class EsignApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1EsignDocumentsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1EsignDocumentsValidateBeforeCall(null);
+    public ApiResponse<Void> postEsignDocumentsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postEsignDocumentsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -731,20 +731,20 @@ public class EsignApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1EsignDocumentsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postEsignDocumentsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1EsignDocumentsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postEsignDocumentsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1EsignDocumentsByIdFields
+     * Build call for postEsignDocumentsByIdFields
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1EsignDocumentsByIdFieldsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEsignDocumentsByIdFieldsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -789,13 +789,13 @@ public class EsignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1EsignDocumentsByIdFieldsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postEsignDocumentsByIdFieldsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1EsignDocumentsByIdFields(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postEsignDocumentsByIdFields(Async)");
         }
 
-        return postV1EsignDocumentsByIdFieldsCall(id, _callback);
+        return postEsignDocumentsByIdFieldsCall(id, _callback);
 
     }
 
@@ -805,8 +805,8 @@ public class EsignApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1EsignDocumentsByIdFields(@javax.annotation.Nonnull String id) throws ApiException {
-        postV1EsignDocumentsByIdFieldsWithHttpInfo(id);
+    public void postEsignDocumentsByIdFields(@javax.annotation.Nonnull String id) throws ApiException {
+        postEsignDocumentsByIdFieldsWithHttpInfo(id);
     }
 
     /**
@@ -816,8 +816,8 @@ public class EsignApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1EsignDocumentsByIdFieldsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1EsignDocumentsByIdFieldsValidateBeforeCall(id, null);
+    public ApiResponse<Void> postEsignDocumentsByIdFieldsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postEsignDocumentsByIdFieldsValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -829,20 +829,20 @@ public class EsignApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1EsignDocumentsByIdFieldsAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postEsignDocumentsByIdFieldsAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1EsignDocumentsByIdFieldsValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postEsignDocumentsByIdFieldsValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1EsignDocumentsByIdRecipients
+     * Build call for postEsignDocumentsByIdRecipients
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1EsignDocumentsByIdRecipientsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEsignDocumentsByIdRecipientsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -887,13 +887,13 @@ public class EsignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1EsignDocumentsByIdRecipientsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postEsignDocumentsByIdRecipientsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1EsignDocumentsByIdRecipients(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postEsignDocumentsByIdRecipients(Async)");
         }
 
-        return postV1EsignDocumentsByIdRecipientsCall(id, _callback);
+        return postEsignDocumentsByIdRecipientsCall(id, _callback);
 
     }
 
@@ -903,8 +903,8 @@ public class EsignApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1EsignDocumentsByIdRecipients(@javax.annotation.Nonnull String id) throws ApiException {
-        postV1EsignDocumentsByIdRecipientsWithHttpInfo(id);
+    public void postEsignDocumentsByIdRecipients(@javax.annotation.Nonnull String id) throws ApiException {
+        postEsignDocumentsByIdRecipientsWithHttpInfo(id);
     }
 
     /**
@@ -914,8 +914,8 @@ public class EsignApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1EsignDocumentsByIdRecipientsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1EsignDocumentsByIdRecipientsValidateBeforeCall(id, null);
+    public ApiResponse<Void> postEsignDocumentsByIdRecipientsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postEsignDocumentsByIdRecipientsValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -927,20 +927,20 @@ public class EsignApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1EsignDocumentsByIdRecipientsAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postEsignDocumentsByIdRecipientsAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1EsignDocumentsByIdRecipientsValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postEsignDocumentsByIdRecipientsValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1EsignDocumentsByIdSend
+     * Build call for postEsignDocumentsByIdSend
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1EsignDocumentsByIdSendCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEsignDocumentsByIdSendCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -985,13 +985,13 @@ public class EsignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1EsignDocumentsByIdSendValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postEsignDocumentsByIdSendValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1EsignDocumentsByIdSend(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postEsignDocumentsByIdSend(Async)");
         }
 
-        return postV1EsignDocumentsByIdSendCall(id, _callback);
+        return postEsignDocumentsByIdSendCall(id, _callback);
 
     }
 
@@ -1001,8 +1001,8 @@ public class EsignApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1EsignDocumentsByIdSend(@javax.annotation.Nonnull String id) throws ApiException {
-        postV1EsignDocumentsByIdSendWithHttpInfo(id);
+    public void postEsignDocumentsByIdSend(@javax.annotation.Nonnull String id) throws ApiException {
+        postEsignDocumentsByIdSendWithHttpInfo(id);
     }
 
     /**
@@ -1012,8 +1012,8 @@ public class EsignApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1EsignDocumentsByIdSendWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1EsignDocumentsByIdSendValidateBeforeCall(id, null);
+    public ApiResponse<Void> postEsignDocumentsByIdSendWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postEsignDocumentsByIdSendValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1025,21 +1025,21 @@ public class EsignApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1EsignDocumentsByIdSendAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postEsignDocumentsByIdSendAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1EsignDocumentsByIdSendValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postEsignDocumentsByIdSendValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1EsignOByOrgSignByTokenComplete
+     * Build call for postEsignOByOrgSignByTokenComplete
      * @param org  (required)
      * @param token  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1EsignOByOrgSignByTokenCompleteCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEsignOByOrgSignByTokenCompleteCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1085,18 +1085,18 @@ public class EsignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1EsignOByOrgSignByTokenCompleteValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postEsignOByOrgSignByTokenCompleteValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'org' is set
         if (org == null) {
-            throw new ApiException("Missing the required parameter 'org' when calling postV1EsignOByOrgSignByTokenComplete(Async)");
+            throw new ApiException("Missing the required parameter 'org' when calling postEsignOByOrgSignByTokenComplete(Async)");
         }
 
         // verify the required parameter 'token' is set
         if (token == null) {
-            throw new ApiException("Missing the required parameter 'token' when calling postV1EsignOByOrgSignByTokenComplete(Async)");
+            throw new ApiException("Missing the required parameter 'token' when calling postEsignOByOrgSignByTokenComplete(Async)");
         }
 
-        return postV1EsignOByOrgSignByTokenCompleteCall(org, token, _callback);
+        return postEsignOByOrgSignByTokenCompleteCall(org, token, _callback);
 
     }
 
@@ -1107,8 +1107,8 @@ public class EsignApi {
      * @param token  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1EsignOByOrgSignByTokenComplete(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token) throws ApiException {
-        postV1EsignOByOrgSignByTokenCompleteWithHttpInfo(org, token);
+    public void postEsignOByOrgSignByTokenComplete(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token) throws ApiException {
+        postEsignOByOrgSignByTokenCompleteWithHttpInfo(org, token);
     }
 
     /**
@@ -1119,8 +1119,8 @@ public class EsignApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1EsignOByOrgSignByTokenCompleteWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token) throws ApiException {
-        okhttp3.Call localVarCall = postV1EsignOByOrgSignByTokenCompleteValidateBeforeCall(org, token, null);
+    public ApiResponse<Void> postEsignOByOrgSignByTokenCompleteWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token) throws ApiException {
+        okhttp3.Call localVarCall = postEsignOByOrgSignByTokenCompleteValidateBeforeCall(org, token, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1133,14 +1133,14 @@ public class EsignApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1EsignOByOrgSignByTokenCompleteAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postEsignOByOrgSignByTokenCompleteAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1EsignOByOrgSignByTokenCompleteValidateBeforeCall(org, token, _callback);
+        okhttp3.Call localVarCall = postEsignOByOrgSignByTokenCompleteValidateBeforeCall(org, token, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1EsignOByOrgSignByTokenFieldsByFieldid
+     * Build call for postEsignOByOrgSignByTokenFieldsByFieldid
      * @param org  (required)
      * @param token  (required)
      * @param fieldId  (required)
@@ -1148,7 +1148,7 @@ public class EsignApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1EsignOByOrgSignByTokenFieldsByFieldidCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull String fieldId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEsignOByOrgSignByTokenFieldsByFieldidCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull String fieldId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1195,23 +1195,23 @@ public class EsignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1EsignOByOrgSignByTokenFieldsByFieldidValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull String fieldId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postEsignOByOrgSignByTokenFieldsByFieldidValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull String fieldId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'org' is set
         if (org == null) {
-            throw new ApiException("Missing the required parameter 'org' when calling postV1EsignOByOrgSignByTokenFieldsByFieldid(Async)");
+            throw new ApiException("Missing the required parameter 'org' when calling postEsignOByOrgSignByTokenFieldsByFieldid(Async)");
         }
 
         // verify the required parameter 'token' is set
         if (token == null) {
-            throw new ApiException("Missing the required parameter 'token' when calling postV1EsignOByOrgSignByTokenFieldsByFieldid(Async)");
+            throw new ApiException("Missing the required parameter 'token' when calling postEsignOByOrgSignByTokenFieldsByFieldid(Async)");
         }
 
         // verify the required parameter 'fieldId' is set
         if (fieldId == null) {
-            throw new ApiException("Missing the required parameter 'fieldId' when calling postV1EsignOByOrgSignByTokenFieldsByFieldid(Async)");
+            throw new ApiException("Missing the required parameter 'fieldId' when calling postEsignOByOrgSignByTokenFieldsByFieldid(Async)");
         }
 
-        return postV1EsignOByOrgSignByTokenFieldsByFieldidCall(org, token, fieldId, _callback);
+        return postEsignOByOrgSignByTokenFieldsByFieldidCall(org, token, fieldId, _callback);
 
     }
 
@@ -1223,8 +1223,8 @@ public class EsignApi {
      * @param fieldId  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1EsignOByOrgSignByTokenFieldsByFieldid(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull String fieldId) throws ApiException {
-        postV1EsignOByOrgSignByTokenFieldsByFieldidWithHttpInfo(org, token, fieldId);
+    public void postEsignOByOrgSignByTokenFieldsByFieldid(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull String fieldId) throws ApiException {
+        postEsignOByOrgSignByTokenFieldsByFieldidWithHttpInfo(org, token, fieldId);
     }
 
     /**
@@ -1236,8 +1236,8 @@ public class EsignApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1EsignOByOrgSignByTokenFieldsByFieldidWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull String fieldId) throws ApiException {
-        okhttp3.Call localVarCall = postV1EsignOByOrgSignByTokenFieldsByFieldidValidateBeforeCall(org, token, fieldId, null);
+    public ApiResponse<Void> postEsignOByOrgSignByTokenFieldsByFieldidWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull String fieldId) throws ApiException {
+        okhttp3.Call localVarCall = postEsignOByOrgSignByTokenFieldsByFieldidValidateBeforeCall(org, token, fieldId, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1251,21 +1251,21 @@ public class EsignApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1EsignOByOrgSignByTokenFieldsByFieldidAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull String fieldId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postEsignOByOrgSignByTokenFieldsByFieldidAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull String fieldId, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1EsignOByOrgSignByTokenFieldsByFieldidValidateBeforeCall(org, token, fieldId, _callback);
+        okhttp3.Call localVarCall = postEsignOByOrgSignByTokenFieldsByFieldidValidateBeforeCall(org, token, fieldId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1EsignOByOrgSignByTokenReject
+     * Build call for postEsignOByOrgSignByTokenReject
      * @param org  (required)
      * @param token  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1EsignOByOrgSignByTokenRejectCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEsignOByOrgSignByTokenRejectCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1311,18 +1311,18 @@ public class EsignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1EsignOByOrgSignByTokenRejectValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postEsignOByOrgSignByTokenRejectValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'org' is set
         if (org == null) {
-            throw new ApiException("Missing the required parameter 'org' when calling postV1EsignOByOrgSignByTokenReject(Async)");
+            throw new ApiException("Missing the required parameter 'org' when calling postEsignOByOrgSignByTokenReject(Async)");
         }
 
         // verify the required parameter 'token' is set
         if (token == null) {
-            throw new ApiException("Missing the required parameter 'token' when calling postV1EsignOByOrgSignByTokenReject(Async)");
+            throw new ApiException("Missing the required parameter 'token' when calling postEsignOByOrgSignByTokenReject(Async)");
         }
 
-        return postV1EsignOByOrgSignByTokenRejectCall(org, token, _callback);
+        return postEsignOByOrgSignByTokenRejectCall(org, token, _callback);
 
     }
 
@@ -1333,8 +1333,8 @@ public class EsignApi {
      * @param token  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1EsignOByOrgSignByTokenReject(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token) throws ApiException {
-        postV1EsignOByOrgSignByTokenRejectWithHttpInfo(org, token);
+    public void postEsignOByOrgSignByTokenReject(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token) throws ApiException {
+        postEsignOByOrgSignByTokenRejectWithHttpInfo(org, token);
     }
 
     /**
@@ -1345,8 +1345,8 @@ public class EsignApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1EsignOByOrgSignByTokenRejectWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token) throws ApiException {
-        okhttp3.Call localVarCall = postV1EsignOByOrgSignByTokenRejectValidateBeforeCall(org, token, null);
+    public ApiResponse<Void> postEsignOByOrgSignByTokenRejectWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token) throws ApiException {
+        okhttp3.Call localVarCall = postEsignOByOrgSignByTokenRejectValidateBeforeCall(org, token, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1359,9 +1359,9 @@ public class EsignApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1EsignOByOrgSignByTokenRejectAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postEsignOByOrgSignByTokenRejectAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1EsignOByOrgSignByTokenRejectValidateBeforeCall(org, token, _callback);
+        okhttp3.Call localVarCall = postEsignOByOrgSignByTokenRejectValidateBeforeCall(org, token, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

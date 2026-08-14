@@ -72,12 +72,12 @@ public class ChatApi {
     }
 
     /**
-     * Build call for postV1Chat
+     * Build call for postChat
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1ChatCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postChatCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class ChatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ChatValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1ChatCall(_callback);
+    private okhttp3.Call postChatValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postChatCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class ChatApi {
      * Implements the OpenAI-compatible chat completions API
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1Chat() throws ApiException {
-        postV1ChatWithHttpInfo();
+    public void postChat() throws ApiException {
+        postChatWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class ChatApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1ChatWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1ChatValidateBeforeCall(null);
+    public ApiResponse<Void> postChatWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postChatValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,19 +153,19 @@ public class ChatApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1ChatAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postChatAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ChatValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postChatValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ChatCompletions
+     * Build call for postChatCompletions
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1ChatCompletionsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postChatCompletionsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -209,8 +209,8 @@ public class ChatApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ChatCompletionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1ChatCompletionsCall(_callback);
+    private okhttp3.Call postChatCompletionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postChatCompletionsCall(_callback);
 
     }
 
@@ -219,8 +219,8 @@ public class ChatApi {
      * Implements the OpenAI-compatible chat completions API
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1ChatCompletions() throws ApiException {
-        postV1ChatCompletionsWithHttpInfo();
+    public void postChatCompletions() throws ApiException {
+        postChatCompletionsWithHttpInfo();
     }
 
     /**
@@ -229,8 +229,8 @@ public class ChatApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1ChatCompletionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1ChatCompletionsValidateBeforeCall(null);
+    public ApiResponse<Void> postChatCompletionsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postChatCompletionsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -241,9 +241,9 @@ public class ChatApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1ChatCompletionsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postChatCompletionsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ChatCompletionsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postChatCompletionsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

@@ -72,12 +72,12 @@ public class ProcessSpeechToTextApi {
     }
 
     /**
-     * Build call for postV1ProcessSpeechToText
+     * Build call for postProcessSpeechToText
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1ProcessSpeechToTextCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postProcessSpeechToTextCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class ProcessSpeechToTextApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ProcessSpeechToTextValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1ProcessSpeechToTextCall(_callback);
+    private okhttp3.Call postProcessSpeechToTextValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postProcessSpeechToTextCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class ProcessSpeechToTextApi {
      * Convert speech to text
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1ProcessSpeechToText() throws ApiException {
-        postV1ProcessSpeechToTextWithHttpInfo();
+    public void postProcessSpeechToText() throws ApiException {
+        postProcessSpeechToTextWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class ProcessSpeechToTextApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1ProcessSpeechToTextWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1ProcessSpeechToTextValidateBeforeCall(null);
+    public ApiResponse<Void> postProcessSpeechToTextWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postProcessSpeechToTextValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,9 +153,9 @@ public class ProcessSpeechToTextApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1ProcessSpeechToTextAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postProcessSpeechToTextAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ProcessSpeechToTextValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postProcessSpeechToTextValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

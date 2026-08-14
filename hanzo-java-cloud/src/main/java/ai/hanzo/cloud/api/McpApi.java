@@ -75,7 +75,7 @@ public class McpApi {
     }
 
     /**
-     * Build call for deleteV1McpServersById
+     * Build call for deleteMcpServersById
      * @param id ID is the server to deregister, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -87,7 +87,7 @@ public class McpApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1McpServersByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteMcpServersByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -132,13 +132,13 @@ public class McpApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1McpServersByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteMcpServersByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1McpServersById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteMcpServersById(Async)");
         }
 
-        return deleteV1McpServersByIdCall(id, _callback);
+        return deleteMcpServersByIdCall(id, _callback);
 
     }
 
@@ -154,8 +154,8 @@ public class McpApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1McpServersById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1McpServersByIdWithHttpInfo(id);
+    public void deleteMcpServersById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteMcpServersByIdWithHttpInfo(id);
     }
 
     /**
@@ -171,8 +171,8 @@ public class McpApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1McpServersByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1McpServersByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteMcpServersByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteMcpServersByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -190,14 +190,14 @@ public class McpApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1McpServersByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteMcpServersByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1McpServersByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteMcpServersByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1McpServers
+     * Build call for getMcpServers
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -208,7 +208,7 @@ public class McpApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1McpServersCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMcpServersCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -253,8 +253,8 @@ public class McpApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1McpServersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1McpServersCall(_callback);
+    private okhttp3.Call getMcpServersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMcpServersCall(_callback);
 
     }
 
@@ -270,8 +270,8 @@ public class McpApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public McpServerList getV1McpServers() throws ApiException {
-        ApiResponse<McpServerList> localVarResp = getV1McpServersWithHttpInfo();
+    public McpServerList getMcpServers() throws ApiException {
+        ApiResponse<McpServerList> localVarResp = getMcpServersWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -287,8 +287,8 @@ public class McpApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<McpServerList> getV1McpServersWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1McpServersValidateBeforeCall(null);
+    public ApiResponse<McpServerList> getMcpServersWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMcpServersValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<McpServerList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -306,15 +306,15 @@ public class McpApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1McpServersAsync(final ApiCallback<McpServerList> _callback) throws ApiException {
+    public okhttp3.Call getMcpServersAsync(final ApiCallback<McpServerList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1McpServersValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getMcpServersValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<McpServerList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1McpServers
+     * Build call for postMcpServers
      * @param createServerReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -326,7 +326,7 @@ public class McpApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1McpServersCall(@javax.annotation.Nonnull CreateServerReq createServerReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMcpServersCall(@javax.annotation.Nonnull CreateServerReq createServerReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -372,13 +372,13 @@ public class McpApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1McpServersValidateBeforeCall(@javax.annotation.Nonnull CreateServerReq createServerReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMcpServersValidateBeforeCall(@javax.annotation.Nonnull CreateServerReq createServerReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'createServerReq' is set
         if (createServerReq == null) {
-            throw new ApiException("Missing the required parameter 'createServerReq' when calling postV1McpServers(Async)");
+            throw new ApiException("Missing the required parameter 'createServerReq' when calling postMcpServers(Async)");
         }
 
-        return postV1McpServersCall(createServerReq, _callback);
+        return postMcpServersCall(createServerReq, _callback);
 
     }
 
@@ -395,8 +395,8 @@ public class McpApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public MCPServer postV1McpServers(@javax.annotation.Nonnull CreateServerReq createServerReq) throws ApiException {
-        ApiResponse<MCPServer> localVarResp = postV1McpServersWithHttpInfo(createServerReq);
+    public MCPServer postMcpServers(@javax.annotation.Nonnull CreateServerReq createServerReq) throws ApiException {
+        ApiResponse<MCPServer> localVarResp = postMcpServersWithHttpInfo(createServerReq);
         return localVarResp.getData();
     }
 
@@ -413,8 +413,8 @@ public class McpApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MCPServer> postV1McpServersWithHttpInfo(@javax.annotation.Nonnull CreateServerReq createServerReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1McpServersValidateBeforeCall(createServerReq, null);
+    public ApiResponse<MCPServer> postMcpServersWithHttpInfo(@javax.annotation.Nonnull CreateServerReq createServerReq) throws ApiException {
+        okhttp3.Call localVarCall = postMcpServersValidateBeforeCall(createServerReq, null);
         Type localVarReturnType = new TypeToken<MCPServer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -433,9 +433,9 @@ public class McpApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1McpServersAsync(@javax.annotation.Nonnull CreateServerReq createServerReq, final ApiCallback<MCPServer> _callback) throws ApiException {
+    public okhttp3.Call postMcpServersAsync(@javax.annotation.Nonnull CreateServerReq createServerReq, final ApiCallback<MCPServer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1McpServersValidateBeforeCall(createServerReq, _callback);
+        okhttp3.Call localVarCall = postMcpServersValidateBeforeCall(createServerReq, _callback);
         Type localVarReturnType = new TypeToken<MCPServer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

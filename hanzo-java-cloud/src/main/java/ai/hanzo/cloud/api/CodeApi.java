@@ -83,7 +83,7 @@ public class CodeApi {
     }
 
     /**
-     * Build call for getV1CodeAsk
+     * Build call for getCodeAsk
      * @param q Q is the question to answer. Required, max 4000 bytes. (optional)
      * @param repo Repo narrows retrieval to one repository. Empty searches every repo the org has indexed. (optional)
      * @param _callback Callback for upload/download progress
@@ -96,7 +96,7 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CodeAskCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String repo, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCodeAskCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String repo, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -149,8 +149,8 @@ public class CodeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CodeAskValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String repo, final ApiCallback _callback) throws ApiException {
-        return getV1CodeAskCall(q, repo, _callback);
+    private okhttp3.Call getCodeAskValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String repo, final ApiCallback _callback) throws ApiException {
+        return getCodeAskCall(q, repo, _callback);
 
     }
 
@@ -168,8 +168,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AskAnswer getV1CodeAsk(@javax.annotation.Nullable String q, @javax.annotation.Nullable String repo) throws ApiException {
-        ApiResponse<AskAnswer> localVarResp = getV1CodeAskWithHttpInfo(q, repo);
+    public AskAnswer getCodeAsk(@javax.annotation.Nullable String q, @javax.annotation.Nullable String repo) throws ApiException {
+        ApiResponse<AskAnswer> localVarResp = getCodeAskWithHttpInfo(q, repo);
         return localVarResp.getData();
     }
 
@@ -187,8 +187,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AskAnswer> getV1CodeAskWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String repo) throws ApiException {
-        okhttp3.Call localVarCall = getV1CodeAskValidateBeforeCall(q, repo, null);
+    public ApiResponse<AskAnswer> getCodeAskWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String repo) throws ApiException {
+        okhttp3.Call localVarCall = getCodeAskValidateBeforeCall(q, repo, null);
         Type localVarReturnType = new TypeToken<AskAnswer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -208,15 +208,15 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CodeAskAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String repo, final ApiCallback<AskAnswer> _callback) throws ApiException {
+    public okhttp3.Call getCodeAskAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String repo, final ApiCallback<AskAnswer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CodeAskValidateBeforeCall(q, repo, _callback);
+        okhttp3.Call localVarCall = getCodeAskValidateBeforeCall(q, repo, _callback);
         Type localVarReturnType = new TypeToken<AskAnswer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CodeFile
+     * Build call for getCodeFile
      * @param path Path is the file&#39;s repo-relative path. Required. (optional)
      * @param repo Repo is the repository the file belongs to. REQUIRED. (optional)
      * @param _callback Callback for upload/download progress
@@ -229,7 +229,7 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CodeFileCall(@javax.annotation.Nullable String path, @javax.annotation.Nullable String repo, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCodeFileCall(@javax.annotation.Nullable String path, @javax.annotation.Nullable String repo, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -282,8 +282,8 @@ public class CodeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CodeFileValidateBeforeCall(@javax.annotation.Nullable String path, @javax.annotation.Nullable String repo, final ApiCallback _callback) throws ApiException {
-        return getV1CodeFileCall(path, repo, _callback);
+    private okhttp3.Call getCodeFileValidateBeforeCall(@javax.annotation.Nullable String path, @javax.annotation.Nullable String repo, final ApiCallback _callback) throws ApiException {
+        return getCodeFileCall(path, repo, _callback);
 
     }
 
@@ -301,8 +301,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FileContent getV1CodeFile(@javax.annotation.Nullable String path, @javax.annotation.Nullable String repo) throws ApiException {
-        ApiResponse<FileContent> localVarResp = getV1CodeFileWithHttpInfo(path, repo);
+    public FileContent getCodeFile(@javax.annotation.Nullable String path, @javax.annotation.Nullable String repo) throws ApiException {
+        ApiResponse<FileContent> localVarResp = getCodeFileWithHttpInfo(path, repo);
         return localVarResp.getData();
     }
 
@@ -320,8 +320,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FileContent> getV1CodeFileWithHttpInfo(@javax.annotation.Nullable String path, @javax.annotation.Nullable String repo) throws ApiException {
-        okhttp3.Call localVarCall = getV1CodeFileValidateBeforeCall(path, repo, null);
+    public ApiResponse<FileContent> getCodeFileWithHttpInfo(@javax.annotation.Nullable String path, @javax.annotation.Nullable String repo) throws ApiException {
+        okhttp3.Call localVarCall = getCodeFileValidateBeforeCall(path, repo, null);
         Type localVarReturnType = new TypeToken<FileContent>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -341,15 +341,15 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CodeFileAsync(@javax.annotation.Nullable String path, @javax.annotation.Nullable String repo, final ApiCallback<FileContent> _callback) throws ApiException {
+    public okhttp3.Call getCodeFileAsync(@javax.annotation.Nullable String path, @javax.annotation.Nullable String repo, final ApiCallback<FileContent> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CodeFileValidateBeforeCall(path, repo, _callback);
+        okhttp3.Call localVarCall = getCodeFileValidateBeforeCall(path, repo, _callback);
         Type localVarReturnType = new TypeToken<FileContent>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CodeSearch
+     * Build call for getCodeSearch
      * @param q Q is the search query. Required, max 4000 bytes. For type&#x3D;regex it is a regular expression; for type&#x3D;symbol it is a symbol name. (optional)
      * @param type Type selects the retrieval tier: \&quot;text\&quot; (FTS5 trigram), \&quot;regex\&quot;, \&quot;symbol\&quot; (definitions), \&quot;semantic\&quot; (embeddings) or \&quot;hybrid\&quot;. Anything else — including empty — reads as hybrid. (optional)
      * @param repo Repo narrows to one repository. Empty searches every repo the org has indexed. (optional)
@@ -364,7 +364,7 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CodeSearchCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCodeSearchCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -425,8 +425,8 @@ public class CodeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CodeSearchValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1CodeSearchCall(q, type, repo, limit, _callback);
+    private okhttp3.Call getCodeSearchValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getCodeSearchCall(q, type, repo, limit, _callback);
 
     }
 
@@ -446,8 +446,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SearchResults getV1CodeSearch(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<SearchResults> localVarResp = getV1CodeSearchWithHttpInfo(q, type, repo, limit);
+    public SearchResults getCodeSearch(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<SearchResults> localVarResp = getCodeSearchWithHttpInfo(q, type, repo, limit);
         return localVarResp.getData();
     }
 
@@ -467,8 +467,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SearchResults> getV1CodeSearchWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1CodeSearchValidateBeforeCall(q, type, repo, limit, null);
+    public ApiResponse<SearchResults> getCodeSearchWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getCodeSearchValidateBeforeCall(q, type, repo, limit, null);
         Type localVarReturnType = new TypeToken<SearchResults>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -490,15 +490,15 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CodeSearchAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Integer limit, final ApiCallback<SearchResults> _callback) throws ApiException {
+    public okhttp3.Call getCodeSearchAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Integer limit, final ApiCallback<SearchResults> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CodeSearchValidateBeforeCall(q, type, repo, limit, _callback);
+        okhttp3.Call localVarCall = getCodeSearchValidateBeforeCall(q, type, repo, limit, _callback);
         Type localVarReturnType = new TypeToken<SearchResults>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CodeTree
+     * Build call for getCodeTree
      * @param repo Repo is the repository to walk. REQUIRED — a tree is repo-scoped. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -510,7 +510,7 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CodeTreeCall(@javax.annotation.Nullable String repo, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCodeTreeCall(@javax.annotation.Nullable String repo, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -559,8 +559,8 @@ public class CodeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CodeTreeValidateBeforeCall(@javax.annotation.Nullable String repo, final ApiCallback _callback) throws ApiException {
-        return getV1CodeTreeCall(repo, _callback);
+    private okhttp3.Call getCodeTreeValidateBeforeCall(@javax.annotation.Nullable String repo, final ApiCallback _callback) throws ApiException {
+        return getCodeTreeCall(repo, _callback);
 
     }
 
@@ -577,8 +577,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RepoTree getV1CodeTree(@javax.annotation.Nullable String repo) throws ApiException {
-        ApiResponse<RepoTree> localVarResp = getV1CodeTreeWithHttpInfo(repo);
+    public RepoTree getCodeTree(@javax.annotation.Nullable String repo) throws ApiException {
+        ApiResponse<RepoTree> localVarResp = getCodeTreeWithHttpInfo(repo);
         return localVarResp.getData();
     }
 
@@ -595,8 +595,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RepoTree> getV1CodeTreeWithHttpInfo(@javax.annotation.Nullable String repo) throws ApiException {
-        okhttp3.Call localVarCall = getV1CodeTreeValidateBeforeCall(repo, null);
+    public ApiResponse<RepoTree> getCodeTreeWithHttpInfo(@javax.annotation.Nullable String repo) throws ApiException {
+        okhttp3.Call localVarCall = getCodeTreeValidateBeforeCall(repo, null);
         Type localVarReturnType = new TypeToken<RepoTree>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -615,15 +615,15 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CodeTreeAsync(@javax.annotation.Nullable String repo, final ApiCallback<RepoTree> _callback) throws ApiException {
+    public okhttp3.Call getCodeTreeAsync(@javax.annotation.Nullable String repo, final ApiCallback<RepoTree> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CodeTreeValidateBeforeCall(repo, _callback);
+        okhttp3.Call localVarCall = getCodeTreeValidateBeforeCall(repo, _callback);
         Type localVarReturnType = new TypeToken<RepoTree>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CodeAsk
+     * Build call for postCodeAsk
      * @param askPostIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -635,7 +635,7 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CodeAskCall(@javax.annotation.Nonnull AskPostIn askPostIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCodeAskCall(@javax.annotation.Nonnull AskPostIn askPostIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -681,13 +681,13 @@ public class CodeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CodeAskValidateBeforeCall(@javax.annotation.Nonnull AskPostIn askPostIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCodeAskValidateBeforeCall(@javax.annotation.Nonnull AskPostIn askPostIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'askPostIn' is set
         if (askPostIn == null) {
-            throw new ApiException("Missing the required parameter 'askPostIn' when calling postV1CodeAsk(Async)");
+            throw new ApiException("Missing the required parameter 'askPostIn' when calling postCodeAsk(Async)");
         }
 
-        return postV1CodeAskCall(askPostIn, _callback);
+        return postCodeAskCall(askPostIn, _callback);
 
     }
 
@@ -704,8 +704,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AskAnswer postV1CodeAsk(@javax.annotation.Nonnull AskPostIn askPostIn) throws ApiException {
-        ApiResponse<AskAnswer> localVarResp = postV1CodeAskWithHttpInfo(askPostIn);
+    public AskAnswer postCodeAsk(@javax.annotation.Nonnull AskPostIn askPostIn) throws ApiException {
+        ApiResponse<AskAnswer> localVarResp = postCodeAskWithHttpInfo(askPostIn);
         return localVarResp.getData();
     }
 
@@ -722,8 +722,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AskAnswer> postV1CodeAskWithHttpInfo(@javax.annotation.Nonnull AskPostIn askPostIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1CodeAskValidateBeforeCall(askPostIn, null);
+    public ApiResponse<AskAnswer> postCodeAskWithHttpInfo(@javax.annotation.Nonnull AskPostIn askPostIn) throws ApiException {
+        okhttp3.Call localVarCall = postCodeAskValidateBeforeCall(askPostIn, null);
         Type localVarReturnType = new TypeToken<AskAnswer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -742,15 +742,15 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CodeAskAsync(@javax.annotation.Nonnull AskPostIn askPostIn, final ApiCallback<AskAnswer> _callback) throws ApiException {
+    public okhttp3.Call postCodeAskAsync(@javax.annotation.Nonnull AskPostIn askPostIn, final ApiCallback<AskAnswer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CodeAskValidateBeforeCall(askPostIn, _callback);
+        okhttp3.Call localVarCall = postCodeAskValidateBeforeCall(askPostIn, _callback);
         Type localVarReturnType = new TypeToken<AskAnswer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CodeContext
+     * Build call for postCodeContext
      * @param contextIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -762,7 +762,7 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CodeContextCall(@javax.annotation.Nonnull ContextIn contextIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCodeContextCall(@javax.annotation.Nonnull ContextIn contextIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -808,13 +808,13 @@ public class CodeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CodeContextValidateBeforeCall(@javax.annotation.Nonnull ContextIn contextIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCodeContextValidateBeforeCall(@javax.annotation.Nonnull ContextIn contextIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'contextIn' is set
         if (contextIn == null) {
-            throw new ApiException("Missing the required parameter 'contextIn' when calling postV1CodeContext(Async)");
+            throw new ApiException("Missing the required parameter 'contextIn' when calling postCodeContext(Async)");
         }
 
-        return postV1CodeContextCall(contextIn, _callback);
+        return postCodeContextCall(contextIn, _callback);
 
     }
 
@@ -831,8 +831,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ContextBundle postV1CodeContext(@javax.annotation.Nonnull ContextIn contextIn) throws ApiException {
-        ApiResponse<ContextBundle> localVarResp = postV1CodeContextWithHttpInfo(contextIn);
+    public ContextBundle postCodeContext(@javax.annotation.Nonnull ContextIn contextIn) throws ApiException {
+        ApiResponse<ContextBundle> localVarResp = postCodeContextWithHttpInfo(contextIn);
         return localVarResp.getData();
     }
 
@@ -849,8 +849,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ContextBundle> postV1CodeContextWithHttpInfo(@javax.annotation.Nonnull ContextIn contextIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1CodeContextValidateBeforeCall(contextIn, null);
+    public ApiResponse<ContextBundle> postCodeContextWithHttpInfo(@javax.annotation.Nonnull ContextIn contextIn) throws ApiException {
+        okhttp3.Call localVarCall = postCodeContextValidateBeforeCall(contextIn, null);
         Type localVarReturnType = new TypeToken<ContextBundle>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -869,15 +869,15 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CodeContextAsync(@javax.annotation.Nonnull ContextIn contextIn, final ApiCallback<ContextBundle> _callback) throws ApiException {
+    public okhttp3.Call postCodeContextAsync(@javax.annotation.Nonnull ContextIn contextIn, final ApiCallback<ContextBundle> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CodeContextValidateBeforeCall(contextIn, _callback);
+        okhttp3.Call localVarCall = postCodeContextValidateBeforeCall(contextIn, _callback);
         Type localVarReturnType = new TypeToken<ContextBundle>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CodeIndex
+     * Build call for postCodeIndex
      * @param indexIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -889,7 +889,7 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CodeIndexCall(@javax.annotation.Nonnull IndexIn indexIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCodeIndexCall(@javax.annotation.Nonnull IndexIn indexIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -935,13 +935,13 @@ public class CodeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CodeIndexValidateBeforeCall(@javax.annotation.Nonnull IndexIn indexIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCodeIndexValidateBeforeCall(@javax.annotation.Nonnull IndexIn indexIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'indexIn' is set
         if (indexIn == null) {
-            throw new ApiException("Missing the required parameter 'indexIn' when calling postV1CodeIndex(Async)");
+            throw new ApiException("Missing the required parameter 'indexIn' when calling postCodeIndex(Async)");
         }
 
-        return postV1CodeIndexCall(indexIn, _callback);
+        return postCodeIndexCall(indexIn, _callback);
 
     }
 
@@ -958,8 +958,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IndexResult postV1CodeIndex(@javax.annotation.Nonnull IndexIn indexIn) throws ApiException {
-        ApiResponse<IndexResult> localVarResp = postV1CodeIndexWithHttpInfo(indexIn);
+    public IndexResult postCodeIndex(@javax.annotation.Nonnull IndexIn indexIn) throws ApiException {
+        ApiResponse<IndexResult> localVarResp = postCodeIndexWithHttpInfo(indexIn);
         return localVarResp.getData();
     }
 
@@ -976,8 +976,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IndexResult> postV1CodeIndexWithHttpInfo(@javax.annotation.Nonnull IndexIn indexIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1CodeIndexValidateBeforeCall(indexIn, null);
+    public ApiResponse<IndexResult> postCodeIndexWithHttpInfo(@javax.annotation.Nonnull IndexIn indexIn) throws ApiException {
+        okhttp3.Call localVarCall = postCodeIndexValidateBeforeCall(indexIn, null);
         Type localVarReturnType = new TypeToken<IndexResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -996,15 +996,15 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CodeIndexAsync(@javax.annotation.Nonnull IndexIn indexIn, final ApiCallback<IndexResult> _callback) throws ApiException {
+    public okhttp3.Call postCodeIndexAsync(@javax.annotation.Nonnull IndexIn indexIn, final ApiCallback<IndexResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CodeIndexValidateBeforeCall(indexIn, _callback);
+        okhttp3.Call localVarCall = postCodeIndexValidateBeforeCall(indexIn, _callback);
         Type localVarReturnType = new TypeToken<IndexResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CodeLspComplete
+     * Build call for postCodeLspComplete
      * @param query  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1016,7 +1016,7 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CodeLspCompleteCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCodeLspCompleteCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1062,13 +1062,13 @@ public class CodeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CodeLspCompleteValidateBeforeCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCodeLspCompleteValidateBeforeCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'query' is set
         if (query == null) {
-            throw new ApiException("Missing the required parameter 'query' when calling postV1CodeLspComplete(Async)");
+            throw new ApiException("Missing the required parameter 'query' when calling postCodeLspComplete(Async)");
         }
 
-        return postV1CodeLspCompleteCall(query, _callback);
+        return postCodeLspCompleteCall(query, _callback);
 
     }
 
@@ -1085,8 +1085,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Answer postV1CodeLspComplete(@javax.annotation.Nonnull Query query) throws ApiException {
-        ApiResponse<Answer> localVarResp = postV1CodeLspCompleteWithHttpInfo(query);
+    public Answer postCodeLspComplete(@javax.annotation.Nonnull Query query) throws ApiException {
+        ApiResponse<Answer> localVarResp = postCodeLspCompleteWithHttpInfo(query);
         return localVarResp.getData();
     }
 
@@ -1103,8 +1103,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Answer> postV1CodeLspCompleteWithHttpInfo(@javax.annotation.Nonnull Query query) throws ApiException {
-        okhttp3.Call localVarCall = postV1CodeLspCompleteValidateBeforeCall(query, null);
+    public ApiResponse<Answer> postCodeLspCompleteWithHttpInfo(@javax.annotation.Nonnull Query query) throws ApiException {
+        okhttp3.Call localVarCall = postCodeLspCompleteValidateBeforeCall(query, null);
         Type localVarReturnType = new TypeToken<Answer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1123,15 +1123,15 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CodeLspCompleteAsync(@javax.annotation.Nonnull Query query, final ApiCallback<Answer> _callback) throws ApiException {
+    public okhttp3.Call postCodeLspCompleteAsync(@javax.annotation.Nonnull Query query, final ApiCallback<Answer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CodeLspCompleteValidateBeforeCall(query, _callback);
+        okhttp3.Call localVarCall = postCodeLspCompleteValidateBeforeCall(query, _callback);
         Type localVarReturnType = new TypeToken<Answer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CodeLspDiagnostics
+     * Build call for postCodeLspDiagnostics
      * @param query  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1143,7 +1143,7 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CodeLspDiagnosticsCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCodeLspDiagnosticsCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1189,13 +1189,13 @@ public class CodeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CodeLspDiagnosticsValidateBeforeCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCodeLspDiagnosticsValidateBeforeCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'query' is set
         if (query == null) {
-            throw new ApiException("Missing the required parameter 'query' when calling postV1CodeLspDiagnostics(Async)");
+            throw new ApiException("Missing the required parameter 'query' when calling postCodeLspDiagnostics(Async)");
         }
 
-        return postV1CodeLspDiagnosticsCall(query, _callback);
+        return postCodeLspDiagnosticsCall(query, _callback);
 
     }
 
@@ -1212,8 +1212,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Answer postV1CodeLspDiagnostics(@javax.annotation.Nonnull Query query) throws ApiException {
-        ApiResponse<Answer> localVarResp = postV1CodeLspDiagnosticsWithHttpInfo(query);
+    public Answer postCodeLspDiagnostics(@javax.annotation.Nonnull Query query) throws ApiException {
+        ApiResponse<Answer> localVarResp = postCodeLspDiagnosticsWithHttpInfo(query);
         return localVarResp.getData();
     }
 
@@ -1230,8 +1230,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Answer> postV1CodeLspDiagnosticsWithHttpInfo(@javax.annotation.Nonnull Query query) throws ApiException {
-        okhttp3.Call localVarCall = postV1CodeLspDiagnosticsValidateBeforeCall(query, null);
+    public ApiResponse<Answer> postCodeLspDiagnosticsWithHttpInfo(@javax.annotation.Nonnull Query query) throws ApiException {
+        okhttp3.Call localVarCall = postCodeLspDiagnosticsValidateBeforeCall(query, null);
         Type localVarReturnType = new TypeToken<Answer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1250,15 +1250,15 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CodeLspDiagnosticsAsync(@javax.annotation.Nonnull Query query, final ApiCallback<Answer> _callback) throws ApiException {
+    public okhttp3.Call postCodeLspDiagnosticsAsync(@javax.annotation.Nonnull Query query, final ApiCallback<Answer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CodeLspDiagnosticsValidateBeforeCall(query, _callback);
+        okhttp3.Call localVarCall = postCodeLspDiagnosticsValidateBeforeCall(query, _callback);
         Type localVarReturnType = new TypeToken<Answer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CodeLspHover
+     * Build call for postCodeLspHover
      * @param query  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1270,7 +1270,7 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CodeLspHoverCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCodeLspHoverCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1316,13 +1316,13 @@ public class CodeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CodeLspHoverValidateBeforeCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCodeLspHoverValidateBeforeCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'query' is set
         if (query == null) {
-            throw new ApiException("Missing the required parameter 'query' when calling postV1CodeLspHover(Async)");
+            throw new ApiException("Missing the required parameter 'query' when calling postCodeLspHover(Async)");
         }
 
-        return postV1CodeLspHoverCall(query, _callback);
+        return postCodeLspHoverCall(query, _callback);
 
     }
 
@@ -1339,8 +1339,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Answer postV1CodeLspHover(@javax.annotation.Nonnull Query query) throws ApiException {
-        ApiResponse<Answer> localVarResp = postV1CodeLspHoverWithHttpInfo(query);
+    public Answer postCodeLspHover(@javax.annotation.Nonnull Query query) throws ApiException {
+        ApiResponse<Answer> localVarResp = postCodeLspHoverWithHttpInfo(query);
         return localVarResp.getData();
     }
 
@@ -1357,8 +1357,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Answer> postV1CodeLspHoverWithHttpInfo(@javax.annotation.Nonnull Query query) throws ApiException {
-        okhttp3.Call localVarCall = postV1CodeLspHoverValidateBeforeCall(query, null);
+    public ApiResponse<Answer> postCodeLspHoverWithHttpInfo(@javax.annotation.Nonnull Query query) throws ApiException {
+        okhttp3.Call localVarCall = postCodeLspHoverValidateBeforeCall(query, null);
         Type localVarReturnType = new TypeToken<Answer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1377,15 +1377,15 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CodeLspHoverAsync(@javax.annotation.Nonnull Query query, final ApiCallback<Answer> _callback) throws ApiException {
+    public okhttp3.Call postCodeLspHoverAsync(@javax.annotation.Nonnull Query query, final ApiCallback<Answer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CodeLspHoverValidateBeforeCall(query, _callback);
+        okhttp3.Call localVarCall = postCodeLspHoverValidateBeforeCall(query, _callback);
         Type localVarReturnType = new TypeToken<Answer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CodeLspLocate
+     * Build call for postCodeLspLocate
      * @param query  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1397,7 +1397,7 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CodeLspLocateCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCodeLspLocateCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1443,13 +1443,13 @@ public class CodeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CodeLspLocateValidateBeforeCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCodeLspLocateValidateBeforeCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'query' is set
         if (query == null) {
-            throw new ApiException("Missing the required parameter 'query' when calling postV1CodeLspLocate(Async)");
+            throw new ApiException("Missing the required parameter 'query' when calling postCodeLspLocate(Async)");
         }
 
-        return postV1CodeLspLocateCall(query, _callback);
+        return postCodeLspLocateCall(query, _callback);
 
     }
 
@@ -1466,8 +1466,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Answer postV1CodeLspLocate(@javax.annotation.Nonnull Query query) throws ApiException {
-        ApiResponse<Answer> localVarResp = postV1CodeLspLocateWithHttpInfo(query);
+    public Answer postCodeLspLocate(@javax.annotation.Nonnull Query query) throws ApiException {
+        ApiResponse<Answer> localVarResp = postCodeLspLocateWithHttpInfo(query);
         return localVarResp.getData();
     }
 
@@ -1484,8 +1484,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Answer> postV1CodeLspLocateWithHttpInfo(@javax.annotation.Nonnull Query query) throws ApiException {
-        okhttp3.Call localVarCall = postV1CodeLspLocateValidateBeforeCall(query, null);
+    public ApiResponse<Answer> postCodeLspLocateWithHttpInfo(@javax.annotation.Nonnull Query query) throws ApiException {
+        okhttp3.Call localVarCall = postCodeLspLocateValidateBeforeCall(query, null);
         Type localVarReturnType = new TypeToken<Answer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1504,15 +1504,15 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CodeLspLocateAsync(@javax.annotation.Nonnull Query query, final ApiCallback<Answer> _callback) throws ApiException {
+    public okhttp3.Call postCodeLspLocateAsync(@javax.annotation.Nonnull Query query, final ApiCallback<Answer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CodeLspLocateValidateBeforeCall(query, _callback);
+        okhttp3.Call localVarCall = postCodeLspLocateValidateBeforeCall(query, _callback);
         Type localVarReturnType = new TypeToken<Answer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CodeLspSymbols
+     * Build call for postCodeLspSymbols
      * @param query  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1524,7 +1524,7 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CodeLspSymbolsCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCodeLspSymbolsCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1570,13 +1570,13 @@ public class CodeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CodeLspSymbolsValidateBeforeCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCodeLspSymbolsValidateBeforeCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'query' is set
         if (query == null) {
-            throw new ApiException("Missing the required parameter 'query' when calling postV1CodeLspSymbols(Async)");
+            throw new ApiException("Missing the required parameter 'query' when calling postCodeLspSymbols(Async)");
         }
 
-        return postV1CodeLspSymbolsCall(query, _callback);
+        return postCodeLspSymbolsCall(query, _callback);
 
     }
 
@@ -1593,8 +1593,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Answer postV1CodeLspSymbols(@javax.annotation.Nonnull Query query) throws ApiException {
-        ApiResponse<Answer> localVarResp = postV1CodeLspSymbolsWithHttpInfo(query);
+    public Answer postCodeLspSymbols(@javax.annotation.Nonnull Query query) throws ApiException {
+        ApiResponse<Answer> localVarResp = postCodeLspSymbolsWithHttpInfo(query);
         return localVarResp.getData();
     }
 
@@ -1611,8 +1611,8 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Answer> postV1CodeLspSymbolsWithHttpInfo(@javax.annotation.Nonnull Query query) throws ApiException {
-        okhttp3.Call localVarCall = postV1CodeLspSymbolsValidateBeforeCall(query, null);
+    public ApiResponse<Answer> postCodeLspSymbolsWithHttpInfo(@javax.annotation.Nonnull Query query) throws ApiException {
+        okhttp3.Call localVarCall = postCodeLspSymbolsValidateBeforeCall(query, null);
         Type localVarReturnType = new TypeToken<Answer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1631,9 +1631,9 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CodeLspSymbolsAsync(@javax.annotation.Nonnull Query query, final ApiCallback<Answer> _callback) throws ApiException {
+    public okhttp3.Call postCodeLspSymbolsAsync(@javax.annotation.Nonnull Query query, final ApiCallback<Answer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CodeLspSymbolsValidateBeforeCall(query, _callback);
+        okhttp3.Call localVarCall = postCodeLspSymbolsValidateBeforeCall(query, _callback);
         Type localVarReturnType = new TypeToken<Answer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -79,7 +79,7 @@ public class FlagsApi {
     }
 
     /**
-     * Build call for deleteV1FlagsDefsByKey
+     * Build call for deleteFlagsDefsByKey
      * @param key Key is the flag key to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -91,7 +91,7 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1FlagsDefsByKeyCall(@javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteFlagsDefsByKeyCall(@javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -137,13 +137,13 @@ public class FlagsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1FlagsDefsByKeyValidateBeforeCall(@javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteFlagsDefsByKeyValidateBeforeCall(@javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'key' is set
         if (key == null) {
-            throw new ApiException("Missing the required parameter 'key' when calling deleteV1FlagsDefsByKey(Async)");
+            throw new ApiException("Missing the required parameter 'key' when calling deleteFlagsDefsByKey(Async)");
         }
 
-        return deleteV1FlagsDefsByKeyCall(key, _callback);
+        return deleteFlagsDefsByKeyCall(key, _callback);
 
     }
 
@@ -160,8 +160,8 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DeletedOut deleteV1FlagsDefsByKey(@javax.annotation.Nonnull String key) throws ApiException {
-        ApiResponse<DeletedOut> localVarResp = deleteV1FlagsDefsByKeyWithHttpInfo(key);
+    public DeletedOut deleteFlagsDefsByKey(@javax.annotation.Nonnull String key) throws ApiException {
+        ApiResponse<DeletedOut> localVarResp = deleteFlagsDefsByKeyWithHttpInfo(key);
         return localVarResp.getData();
     }
 
@@ -178,8 +178,8 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeletedOut> deleteV1FlagsDefsByKeyWithHttpInfo(@javax.annotation.Nonnull String key) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1FlagsDefsByKeyValidateBeforeCall(key, null);
+    public ApiResponse<DeletedOut> deleteFlagsDefsByKeyWithHttpInfo(@javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = deleteFlagsDefsByKeyValidateBeforeCall(key, null);
         Type localVarReturnType = new TypeToken<DeletedOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -198,15 +198,15 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1FlagsDefsByKeyAsync(@javax.annotation.Nonnull String key, final ApiCallback<DeletedOut> _callback) throws ApiException {
+    public okhttp3.Call deleteFlagsDefsByKeyAsync(@javax.annotation.Nonnull String key, final ApiCallback<DeletedOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1FlagsDefsByKeyValidateBeforeCall(key, _callback);
+        okhttp3.Call localVarCall = deleteFlagsDefsByKeyValidateBeforeCall(key, _callback);
         Type localVarReturnType = new TypeToken<DeletedOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FlagsActivity
+     * Build call for getFlagsActivity
      * @param limit Limit caps the rows returned. 1–500; anything else takes the default 100. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -218,7 +218,7 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FlagsActivityCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFlagsActivityCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -267,8 +267,8 @@ public class FlagsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FlagsActivityValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1FlagsActivityCall(limit, _callback);
+    private okhttp3.Call getFlagsActivityValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getFlagsActivityCall(limit, _callback);
 
     }
 
@@ -285,8 +285,8 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ActivityOut getV1FlagsActivity(@javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<ActivityOut> localVarResp = getV1FlagsActivityWithHttpInfo(limit);
+    public ActivityOut getFlagsActivity(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<ActivityOut> localVarResp = getFlagsActivityWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -303,8 +303,8 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ActivityOut> getV1FlagsActivityWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1FlagsActivityValidateBeforeCall(limit, null);
+    public ApiResponse<ActivityOut> getFlagsActivityWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getFlagsActivityValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<ActivityOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -323,15 +323,15 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FlagsActivityAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<ActivityOut> _callback) throws ApiException {
+    public okhttp3.Call getFlagsActivityAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<ActivityOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FlagsActivityValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getFlagsActivityValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<ActivityOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FlagsDefs
+     * Build call for getFlagsDefs
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -342,7 +342,7 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FlagsDefsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFlagsDefsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -387,8 +387,8 @@ public class FlagsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FlagsDefsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1FlagsDefsCall(_callback);
+    private okhttp3.Call getFlagsDefsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFlagsDefsCall(_callback);
 
     }
 
@@ -404,8 +404,8 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DefsOut getV1FlagsDefs() throws ApiException {
-        ApiResponse<DefsOut> localVarResp = getV1FlagsDefsWithHttpInfo();
+    public DefsOut getFlagsDefs() throws ApiException {
+        ApiResponse<DefsOut> localVarResp = getFlagsDefsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -421,8 +421,8 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DefsOut> getV1FlagsDefsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1FlagsDefsValidateBeforeCall(null);
+    public ApiResponse<DefsOut> getFlagsDefsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFlagsDefsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<DefsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -440,15 +440,15 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FlagsDefsAsync(final ApiCallback<DefsOut> _callback) throws ApiException {
+    public okhttp3.Call getFlagsDefsAsync(final ApiCallback<DefsOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FlagsDefsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFlagsDefsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<DefsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FlagsDefsByKey
+     * Build call for getFlagsDefsByKey
      * @param key Key is the flag key to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -460,7 +460,7 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FlagsDefsByKeyCall(@javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFlagsDefsByKeyCall(@javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -506,13 +506,13 @@ public class FlagsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FlagsDefsByKeyValidateBeforeCall(@javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getFlagsDefsByKeyValidateBeforeCall(@javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'key' is set
         if (key == null) {
-            throw new ApiException("Missing the required parameter 'key' when calling getV1FlagsDefsByKey(Async)");
+            throw new ApiException("Missing the required parameter 'key' when calling getFlagsDefsByKey(Async)");
         }
 
-        return getV1FlagsDefsByKeyCall(key, _callback);
+        return getFlagsDefsByKeyCall(key, _callback);
 
     }
 
@@ -529,8 +529,8 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DefRow getV1FlagsDefsByKey(@javax.annotation.Nonnull String key) throws ApiException {
-        ApiResponse<DefRow> localVarResp = getV1FlagsDefsByKeyWithHttpInfo(key);
+    public DefRow getFlagsDefsByKey(@javax.annotation.Nonnull String key) throws ApiException {
+        ApiResponse<DefRow> localVarResp = getFlagsDefsByKeyWithHttpInfo(key);
         return localVarResp.getData();
     }
 
@@ -547,8 +547,8 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DefRow> getV1FlagsDefsByKeyWithHttpInfo(@javax.annotation.Nonnull String key) throws ApiException {
-        okhttp3.Call localVarCall = getV1FlagsDefsByKeyValidateBeforeCall(key, null);
+    public ApiResponse<DefRow> getFlagsDefsByKeyWithHttpInfo(@javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = getFlagsDefsByKeyValidateBeforeCall(key, null);
         Type localVarReturnType = new TypeToken<DefRow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -567,15 +567,15 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FlagsDefsByKeyAsync(@javax.annotation.Nonnull String key, final ApiCallback<DefRow> _callback) throws ApiException {
+    public okhttp3.Call getFlagsDefsByKeyAsync(@javax.annotation.Nonnull String key, final ApiCallback<DefRow> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FlagsDefsByKeyValidateBeforeCall(key, _callback);
+        okhttp3.Call localVarCall = getFlagsDefsByKeyValidateBeforeCall(key, _callback);
         Type localVarReturnType = new TypeToken<DefRow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FlagsHealth
+     * Build call for getFlagsHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -586,7 +586,7 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FlagsHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFlagsHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -631,8 +631,8 @@ public class FlagsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FlagsHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1FlagsHealthCall(_callback);
+    private okhttp3.Call getFlagsHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFlagsHealthCall(_callback);
 
     }
 
@@ -648,8 +648,8 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public HealthOut getV1FlagsHealth() throws ApiException {
-        ApiResponse<HealthOut> localVarResp = getV1FlagsHealthWithHttpInfo();
+    public HealthOut getFlagsHealth() throws ApiException {
+        ApiResponse<HealthOut> localVarResp = getFlagsHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -665,8 +665,8 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<HealthOut> getV1FlagsHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1FlagsHealthValidateBeforeCall(null);
+    public ApiResponse<HealthOut> getFlagsHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFlagsHealthValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<HealthOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -684,15 +684,15 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FlagsHealthAsync(final ApiCallback<HealthOut> _callback) throws ApiException {
+    public okhttp3.Call getFlagsHealthAsync(final ApiCallback<HealthOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FlagsHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFlagsHealthValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<HealthOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FlagsWaitlist
+     * Build call for getFlagsWaitlist
      * @param host Host is the host to resolve, e.g. \&quot;chat.hanzo.ai\&quot;. Defaults to the request&#39;s own Host header when omitted, which is what lets a guard running on the governed host ask about itself with no argument. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -704,7 +704,7 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FlagsWaitlistCall(@javax.annotation.Nullable String host, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFlagsWaitlistCall(@javax.annotation.Nullable String host, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -753,8 +753,8 @@ public class FlagsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FlagsWaitlistValidateBeforeCall(@javax.annotation.Nullable String host, final ApiCallback _callback) throws ApiException {
-        return getV1FlagsWaitlistCall(host, _callback);
+    private okhttp3.Call getFlagsWaitlistValidateBeforeCall(@javax.annotation.Nullable String host, final ApiCallback _callback) throws ApiException {
+        return getFlagsWaitlistCall(host, _callback);
 
     }
 
@@ -771,8 +771,8 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public WaitlistModeView getV1FlagsWaitlist(@javax.annotation.Nullable String host) throws ApiException {
-        ApiResponse<WaitlistModeView> localVarResp = getV1FlagsWaitlistWithHttpInfo(host);
+    public WaitlistModeView getFlagsWaitlist(@javax.annotation.Nullable String host) throws ApiException {
+        ApiResponse<WaitlistModeView> localVarResp = getFlagsWaitlistWithHttpInfo(host);
         return localVarResp.getData();
     }
 
@@ -789,8 +789,8 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<WaitlistModeView> getV1FlagsWaitlistWithHttpInfo(@javax.annotation.Nullable String host) throws ApiException {
-        okhttp3.Call localVarCall = getV1FlagsWaitlistValidateBeforeCall(host, null);
+    public ApiResponse<WaitlistModeView> getFlagsWaitlistWithHttpInfo(@javax.annotation.Nullable String host) throws ApiException {
+        okhttp3.Call localVarCall = getFlagsWaitlistValidateBeforeCall(host, null);
         Type localVarReturnType = new TypeToken<WaitlistModeView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -809,15 +809,15 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FlagsWaitlistAsync(@javax.annotation.Nullable String host, final ApiCallback<WaitlistModeView> _callback) throws ApiException {
+    public okhttp3.Call getFlagsWaitlistAsync(@javax.annotation.Nullable String host, final ApiCallback<WaitlistModeView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FlagsWaitlistValidateBeforeCall(host, _callback);
+        okhttp3.Call localVarCall = getFlagsWaitlistValidateBeforeCall(host, _callback);
         Type localVarReturnType = new TypeToken<WaitlistModeView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Flags
+     * Build call for postFlags
      * @param evaluateIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -829,7 +829,7 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1FlagsCall(@javax.annotation.Nonnull EvaluateIn evaluateIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFlagsCall(@javax.annotation.Nonnull EvaluateIn evaluateIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -875,13 +875,13 @@ public class FlagsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1FlagsValidateBeforeCall(@javax.annotation.Nonnull EvaluateIn evaluateIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postFlagsValidateBeforeCall(@javax.annotation.Nonnull EvaluateIn evaluateIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'evaluateIn' is set
         if (evaluateIn == null) {
-            throw new ApiException("Missing the required parameter 'evaluateIn' when calling postV1Flags(Async)");
+            throw new ApiException("Missing the required parameter 'evaluateIn' when calling postFlags(Async)");
         }
 
-        return postV1FlagsCall(evaluateIn, _callback);
+        return postFlagsCall(evaluateIn, _callback);
 
     }
 
@@ -898,8 +898,8 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object postV1Flags(@javax.annotation.Nonnull EvaluateIn evaluateIn) throws ApiException {
-        ApiResponse<Object> localVarResp = postV1FlagsWithHttpInfo(evaluateIn);
+    public Object postFlags(@javax.annotation.Nonnull EvaluateIn evaluateIn) throws ApiException {
+        ApiResponse<Object> localVarResp = postFlagsWithHttpInfo(evaluateIn);
         return localVarResp.getData();
     }
 
@@ -916,8 +916,8 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postV1FlagsWithHttpInfo(@javax.annotation.Nonnull EvaluateIn evaluateIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1FlagsValidateBeforeCall(evaluateIn, null);
+    public ApiResponse<Object> postFlagsWithHttpInfo(@javax.annotation.Nonnull EvaluateIn evaluateIn) throws ApiException {
+        okhttp3.Call localVarCall = postFlagsValidateBeforeCall(evaluateIn, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -936,15 +936,15 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1FlagsAsync(@javax.annotation.Nonnull EvaluateIn evaluateIn, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postFlagsAsync(@javax.annotation.Nonnull EvaluateIn evaluateIn, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1FlagsValidateBeforeCall(evaluateIn, _callback);
+        okhttp3.Call localVarCall = postFlagsValidateBeforeCall(evaluateIn, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1FlagsDecide
+     * Build call for postFlagsDecide
      * @param evaluateIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -956,7 +956,7 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1FlagsDecideCall(@javax.annotation.Nonnull EvaluateIn evaluateIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFlagsDecideCall(@javax.annotation.Nonnull EvaluateIn evaluateIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1002,13 +1002,13 @@ public class FlagsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1FlagsDecideValidateBeforeCall(@javax.annotation.Nonnull EvaluateIn evaluateIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postFlagsDecideValidateBeforeCall(@javax.annotation.Nonnull EvaluateIn evaluateIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'evaluateIn' is set
         if (evaluateIn == null) {
-            throw new ApiException("Missing the required parameter 'evaluateIn' when calling postV1FlagsDecide(Async)");
+            throw new ApiException("Missing the required parameter 'evaluateIn' when calling postFlagsDecide(Async)");
         }
 
-        return postV1FlagsDecideCall(evaluateIn, _callback);
+        return postFlagsDecideCall(evaluateIn, _callback);
 
     }
 
@@ -1025,8 +1025,8 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object postV1FlagsDecide(@javax.annotation.Nonnull EvaluateIn evaluateIn) throws ApiException {
-        ApiResponse<Object> localVarResp = postV1FlagsDecideWithHttpInfo(evaluateIn);
+    public Object postFlagsDecide(@javax.annotation.Nonnull EvaluateIn evaluateIn) throws ApiException {
+        ApiResponse<Object> localVarResp = postFlagsDecideWithHttpInfo(evaluateIn);
         return localVarResp.getData();
     }
 
@@ -1043,8 +1043,8 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postV1FlagsDecideWithHttpInfo(@javax.annotation.Nonnull EvaluateIn evaluateIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1FlagsDecideValidateBeforeCall(evaluateIn, null);
+    public ApiResponse<Object> postFlagsDecideWithHttpInfo(@javax.annotation.Nonnull EvaluateIn evaluateIn) throws ApiException {
+        okhttp3.Call localVarCall = postFlagsDecideValidateBeforeCall(evaluateIn, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1063,15 +1063,15 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1FlagsDecideAsync(@javax.annotation.Nonnull EvaluateIn evaluateIn, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postFlagsDecideAsync(@javax.annotation.Nonnull EvaluateIn evaluateIn, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1FlagsDecideValidateBeforeCall(evaluateIn, _callback);
+        okhttp3.Call localVarCall = postFlagsDecideValidateBeforeCall(evaluateIn, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1FlagsDefsByKey
+     * Build call for putFlagsDefsByKey
      * @param key Key is the flag key to write, from the path. (required)
      * @param body  (required)
      * @param _callback Callback for upload/download progress
@@ -1084,7 +1084,7 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1FlagsDefsByKeyCall(@javax.annotation.Nonnull String key, @javax.annotation.Nullable Object body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putFlagsDefsByKeyCall(@javax.annotation.Nonnull String key, @javax.annotation.Nullable Object body, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1131,18 +1131,18 @@ public class FlagsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1FlagsDefsByKeyValidateBeforeCall(@javax.annotation.Nonnull String key, @javax.annotation.Nullable Object body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putFlagsDefsByKeyValidateBeforeCall(@javax.annotation.Nonnull String key, @javax.annotation.Nullable Object body, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'key' is set
         if (key == null) {
-            throw new ApiException("Missing the required parameter 'key' when calling putV1FlagsDefsByKey(Async)");
+            throw new ApiException("Missing the required parameter 'key' when calling putFlagsDefsByKey(Async)");
         }
 
         // verify the required parameter 'body' is set
         if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling putV1FlagsDefsByKey(Async)");
+            throw new ApiException("Missing the required parameter 'body' when calling putFlagsDefsByKey(Async)");
         }
 
-        return putV1FlagsDefsByKeyCall(key, body, _callback);
+        return putFlagsDefsByKeyCall(key, body, _callback);
 
     }
 
@@ -1160,8 +1160,8 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DefRow putV1FlagsDefsByKey(@javax.annotation.Nonnull String key, @javax.annotation.Nullable Object body) throws ApiException {
-        ApiResponse<DefRow> localVarResp = putV1FlagsDefsByKeyWithHttpInfo(key, body);
+    public DefRow putFlagsDefsByKey(@javax.annotation.Nonnull String key, @javax.annotation.Nullable Object body) throws ApiException {
+        ApiResponse<DefRow> localVarResp = putFlagsDefsByKeyWithHttpInfo(key, body);
         return localVarResp.getData();
     }
 
@@ -1179,8 +1179,8 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DefRow> putV1FlagsDefsByKeyWithHttpInfo(@javax.annotation.Nonnull String key, @javax.annotation.Nullable Object body) throws ApiException {
-        okhttp3.Call localVarCall = putV1FlagsDefsByKeyValidateBeforeCall(key, body, null);
+    public ApiResponse<DefRow> putFlagsDefsByKeyWithHttpInfo(@javax.annotation.Nonnull String key, @javax.annotation.Nullable Object body) throws ApiException {
+        okhttp3.Call localVarCall = putFlagsDefsByKeyValidateBeforeCall(key, body, null);
         Type localVarReturnType = new TypeToken<DefRow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1200,9 +1200,9 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1FlagsDefsByKeyAsync(@javax.annotation.Nonnull String key, @javax.annotation.Nullable Object body, final ApiCallback<DefRow> _callback) throws ApiException {
+    public okhttp3.Call putFlagsDefsByKeyAsync(@javax.annotation.Nonnull String key, @javax.annotation.Nullable Object body, final ApiCallback<DefRow> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1FlagsDefsByKeyValidateBeforeCall(key, body, _callback);
+        okhttp3.Call localVarCall = putFlagsDefsByKeyValidateBeforeCall(key, body, _callback);
         Type localVarReturnType = new TypeToken<DefRow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

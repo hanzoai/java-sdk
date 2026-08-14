@@ -72,13 +72,13 @@ public class CommerceApi {
     }
 
     /**
-     * Build call for deleteV1CommerceCollectionByCollectionid
+     * Build call for deleteCommerceCollectionByCollectionid
      * @param collectionid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1CommerceCollectionByCollectionidCall(@javax.annotation.Nonnull String collectionid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceCollectionByCollectionidCall(@javax.annotation.Nonnull String collectionid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -123,13 +123,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CommerceCollectionByCollectionidValidateBeforeCall(@javax.annotation.Nonnull String collectionid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCommerceCollectionByCollectionidValidateBeforeCall(@javax.annotation.Nonnull String collectionid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'collectionid' is set
         if (collectionid == null) {
-            throw new ApiException("Missing the required parameter 'collectionid' when calling deleteV1CommerceCollectionByCollectionid(Async)");
+            throw new ApiException("Missing the required parameter 'collectionid' when calling deleteCommerceCollectionByCollectionid(Async)");
         }
 
-        return deleteV1CommerceCollectionByCollectionidCall(collectionid, _callback);
+        return deleteCommerceCollectionByCollectionidCall(collectionid, _callback);
 
     }
 
@@ -139,8 +139,8 @@ public class CommerceApi {
      * @param collectionid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1CommerceCollectionByCollectionid(@javax.annotation.Nonnull String collectionid) throws ApiException {
-        deleteV1CommerceCollectionByCollectionidWithHttpInfo(collectionid);
+    public void deleteCommerceCollectionByCollectionid(@javax.annotation.Nonnull String collectionid) throws ApiException {
+        deleteCommerceCollectionByCollectionidWithHttpInfo(collectionid);
     }
 
     /**
@@ -150,8 +150,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1CommerceCollectionByCollectionidWithHttpInfo(@javax.annotation.Nonnull String collectionid) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CommerceCollectionByCollectionidValidateBeforeCall(collectionid, null);
+    public ApiResponse<Void> deleteCommerceCollectionByCollectionidWithHttpInfo(@javax.annotation.Nonnull String collectionid) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommerceCollectionByCollectionidValidateBeforeCall(collectionid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -163,20 +163,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1CommerceCollectionByCollectionidAsync(@javax.annotation.Nonnull String collectionid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceCollectionByCollectionidAsync(@javax.annotation.Nonnull String collectionid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CommerceCollectionByCollectionidValidateBeforeCall(collectionid, _callback);
+        okhttp3.Call localVarCall = deleteCommerceCollectionByCollectionidValidateBeforeCall(collectionid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CommerceDisclosureByDisclosureid
+     * Build call for deleteCommerceDisclosureByDisclosureid
      * @param disclosureid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1CommerceDisclosureByDisclosureidCall(@javax.annotation.Nonnull String disclosureid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceDisclosureByDisclosureidCall(@javax.annotation.Nonnull String disclosureid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -221,13 +221,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CommerceDisclosureByDisclosureidValidateBeforeCall(@javax.annotation.Nonnull String disclosureid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCommerceDisclosureByDisclosureidValidateBeforeCall(@javax.annotation.Nonnull String disclosureid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'disclosureid' is set
         if (disclosureid == null) {
-            throw new ApiException("Missing the required parameter 'disclosureid' when calling deleteV1CommerceDisclosureByDisclosureid(Async)");
+            throw new ApiException("Missing the required parameter 'disclosureid' when calling deleteCommerceDisclosureByDisclosureid(Async)");
         }
 
-        return deleteV1CommerceDisclosureByDisclosureidCall(disclosureid, _callback);
+        return deleteCommerceDisclosureByDisclosureidCall(disclosureid, _callback);
 
     }
 
@@ -237,8 +237,8 @@ public class CommerceApi {
      * @param disclosureid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1CommerceDisclosureByDisclosureid(@javax.annotation.Nonnull String disclosureid) throws ApiException {
-        deleteV1CommerceDisclosureByDisclosureidWithHttpInfo(disclosureid);
+    public void deleteCommerceDisclosureByDisclosureid(@javax.annotation.Nonnull String disclosureid) throws ApiException {
+        deleteCommerceDisclosureByDisclosureidWithHttpInfo(disclosureid);
     }
 
     /**
@@ -248,8 +248,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1CommerceDisclosureByDisclosureidWithHttpInfo(@javax.annotation.Nonnull String disclosureid) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CommerceDisclosureByDisclosureidValidateBeforeCall(disclosureid, null);
+    public ApiResponse<Void> deleteCommerceDisclosureByDisclosureidWithHttpInfo(@javax.annotation.Nonnull String disclosureid) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommerceDisclosureByDisclosureidValidateBeforeCall(disclosureid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -261,20 +261,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1CommerceDisclosureByDisclosureidAsync(@javax.annotation.Nonnull String disclosureid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceDisclosureByDisclosureidAsync(@javax.annotation.Nonnull String disclosureid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CommerceDisclosureByDisclosureidValidateBeforeCall(disclosureid, _callback);
+        okhttp3.Call localVarCall = deleteCommerceDisclosureByDisclosureidValidateBeforeCall(disclosureid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CommerceDiscountByDiscountid
+     * Build call for deleteCommerceDiscountByDiscountid
      * @param discountid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1CommerceDiscountByDiscountidCall(@javax.annotation.Nonnull String discountid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceDiscountByDiscountidCall(@javax.annotation.Nonnull String discountid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -319,13 +319,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CommerceDiscountByDiscountidValidateBeforeCall(@javax.annotation.Nonnull String discountid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCommerceDiscountByDiscountidValidateBeforeCall(@javax.annotation.Nonnull String discountid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'discountid' is set
         if (discountid == null) {
-            throw new ApiException("Missing the required parameter 'discountid' when calling deleteV1CommerceDiscountByDiscountid(Async)");
+            throw new ApiException("Missing the required parameter 'discountid' when calling deleteCommerceDiscountByDiscountid(Async)");
         }
 
-        return deleteV1CommerceDiscountByDiscountidCall(discountid, _callback);
+        return deleteCommerceDiscountByDiscountidCall(discountid, _callback);
 
     }
 
@@ -335,8 +335,8 @@ public class CommerceApi {
      * @param discountid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1CommerceDiscountByDiscountid(@javax.annotation.Nonnull String discountid) throws ApiException {
-        deleteV1CommerceDiscountByDiscountidWithHttpInfo(discountid);
+    public void deleteCommerceDiscountByDiscountid(@javax.annotation.Nonnull String discountid) throws ApiException {
+        deleteCommerceDiscountByDiscountidWithHttpInfo(discountid);
     }
 
     /**
@@ -346,8 +346,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1CommerceDiscountByDiscountidWithHttpInfo(@javax.annotation.Nonnull String discountid) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CommerceDiscountByDiscountidValidateBeforeCall(discountid, null);
+    public ApiResponse<Void> deleteCommerceDiscountByDiscountidWithHttpInfo(@javax.annotation.Nonnull String discountid) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommerceDiscountByDiscountidValidateBeforeCall(discountid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -359,20 +359,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1CommerceDiscountByDiscountidAsync(@javax.annotation.Nonnull String discountid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceDiscountByDiscountidAsync(@javax.annotation.Nonnull String discountid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CommerceDiscountByDiscountidValidateBeforeCall(discountid, _callback);
+        okhttp3.Call localVarCall = deleteCommerceDiscountByDiscountidValidateBeforeCall(discountid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CommerceMovieByMovieid
+     * Build call for deleteCommerceMovieByMovieid
      * @param movieid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1CommerceMovieByMovieidCall(@javax.annotation.Nonnull String movieid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceMovieByMovieidCall(@javax.annotation.Nonnull String movieid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -417,13 +417,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CommerceMovieByMovieidValidateBeforeCall(@javax.annotation.Nonnull String movieid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCommerceMovieByMovieidValidateBeforeCall(@javax.annotation.Nonnull String movieid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'movieid' is set
         if (movieid == null) {
-            throw new ApiException("Missing the required parameter 'movieid' when calling deleteV1CommerceMovieByMovieid(Async)");
+            throw new ApiException("Missing the required parameter 'movieid' when calling deleteCommerceMovieByMovieid(Async)");
         }
 
-        return deleteV1CommerceMovieByMovieidCall(movieid, _callback);
+        return deleteCommerceMovieByMovieidCall(movieid, _callback);
 
     }
 
@@ -433,8 +433,8 @@ public class CommerceApi {
      * @param movieid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1CommerceMovieByMovieid(@javax.annotation.Nonnull String movieid) throws ApiException {
-        deleteV1CommerceMovieByMovieidWithHttpInfo(movieid);
+    public void deleteCommerceMovieByMovieid(@javax.annotation.Nonnull String movieid) throws ApiException {
+        deleteCommerceMovieByMovieidWithHttpInfo(movieid);
     }
 
     /**
@@ -444,8 +444,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1CommerceMovieByMovieidWithHttpInfo(@javax.annotation.Nonnull String movieid) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CommerceMovieByMovieidValidateBeforeCall(movieid, null);
+    public ApiResponse<Void> deleteCommerceMovieByMovieidWithHttpInfo(@javax.annotation.Nonnull String movieid) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommerceMovieByMovieidValidateBeforeCall(movieid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -457,20 +457,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1CommerceMovieByMovieidAsync(@javax.annotation.Nonnull String movieid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceMovieByMovieidAsync(@javax.annotation.Nonnull String movieid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CommerceMovieByMovieidValidateBeforeCall(movieid, _callback);
+        okhttp3.Call localVarCall = deleteCommerceMovieByMovieidValidateBeforeCall(movieid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CommerceNoteByNoteid
+     * Build call for deleteCommerceNoteByNoteid
      * @param noteid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1CommerceNoteByNoteidCall(@javax.annotation.Nonnull String noteid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceNoteByNoteidCall(@javax.annotation.Nonnull String noteid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -515,13 +515,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CommerceNoteByNoteidValidateBeforeCall(@javax.annotation.Nonnull String noteid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCommerceNoteByNoteidValidateBeforeCall(@javax.annotation.Nonnull String noteid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'noteid' is set
         if (noteid == null) {
-            throw new ApiException("Missing the required parameter 'noteid' when calling deleteV1CommerceNoteByNoteid(Async)");
+            throw new ApiException("Missing the required parameter 'noteid' when calling deleteCommerceNoteByNoteid(Async)");
         }
 
-        return deleteV1CommerceNoteByNoteidCall(noteid, _callback);
+        return deleteCommerceNoteByNoteidCall(noteid, _callback);
 
     }
 
@@ -531,8 +531,8 @@ public class CommerceApi {
      * @param noteid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1CommerceNoteByNoteid(@javax.annotation.Nonnull String noteid) throws ApiException {
-        deleteV1CommerceNoteByNoteidWithHttpInfo(noteid);
+    public void deleteCommerceNoteByNoteid(@javax.annotation.Nonnull String noteid) throws ApiException {
+        deleteCommerceNoteByNoteidWithHttpInfo(noteid);
     }
 
     /**
@@ -542,8 +542,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1CommerceNoteByNoteidWithHttpInfo(@javax.annotation.Nonnull String noteid) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CommerceNoteByNoteidValidateBeforeCall(noteid, null);
+    public ApiResponse<Void> deleteCommerceNoteByNoteidWithHttpInfo(@javax.annotation.Nonnull String noteid) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommerceNoteByNoteidValidateBeforeCall(noteid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -555,20 +555,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1CommerceNoteByNoteidAsync(@javax.annotation.Nonnull String noteid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceNoteByNoteidAsync(@javax.annotation.Nonnull String noteid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CommerceNoteByNoteidValidateBeforeCall(noteid, _callback);
+        okhttp3.Call localVarCall = deleteCommerceNoteByNoteidValidateBeforeCall(noteid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CommerceProductByProductid
+     * Build call for deleteCommerceProductByProductid
      * @param productid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1CommerceProductByProductidCall(@javax.annotation.Nonnull String productid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceProductByProductidCall(@javax.annotation.Nonnull String productid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -613,13 +613,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CommerceProductByProductidValidateBeforeCall(@javax.annotation.Nonnull String productid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCommerceProductByProductidValidateBeforeCall(@javax.annotation.Nonnull String productid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'productid' is set
         if (productid == null) {
-            throw new ApiException("Missing the required parameter 'productid' when calling deleteV1CommerceProductByProductid(Async)");
+            throw new ApiException("Missing the required parameter 'productid' when calling deleteCommerceProductByProductid(Async)");
         }
 
-        return deleteV1CommerceProductByProductidCall(productid, _callback);
+        return deleteCommerceProductByProductidCall(productid, _callback);
 
     }
 
@@ -629,8 +629,8 @@ public class CommerceApi {
      * @param productid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1CommerceProductByProductid(@javax.annotation.Nonnull String productid) throws ApiException {
-        deleteV1CommerceProductByProductidWithHttpInfo(productid);
+    public void deleteCommerceProductByProductid(@javax.annotation.Nonnull String productid) throws ApiException {
+        deleteCommerceProductByProductidWithHttpInfo(productid);
     }
 
     /**
@@ -640,8 +640,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1CommerceProductByProductidWithHttpInfo(@javax.annotation.Nonnull String productid) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CommerceProductByProductidValidateBeforeCall(productid, null);
+    public ApiResponse<Void> deleteCommerceProductByProductidWithHttpInfo(@javax.annotation.Nonnull String productid) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommerceProductByProductidValidateBeforeCall(productid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -653,20 +653,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1CommerceProductByProductidAsync(@javax.annotation.Nonnull String productid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceProductByProductidAsync(@javax.annotation.Nonnull String productid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CommerceProductByProductidValidateBeforeCall(productid, _callback);
+        okhttp3.Call localVarCall = deleteCommerceProductByProductidValidateBeforeCall(productid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CommerceReturnByReturnid
+     * Build call for deleteCommerceReturnByReturnid
      * @param returnid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1CommerceReturnByReturnidCall(@javax.annotation.Nonnull String returnid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceReturnByReturnidCall(@javax.annotation.Nonnull String returnid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -711,13 +711,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CommerceReturnByReturnidValidateBeforeCall(@javax.annotation.Nonnull String returnid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCommerceReturnByReturnidValidateBeforeCall(@javax.annotation.Nonnull String returnid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'returnid' is set
         if (returnid == null) {
-            throw new ApiException("Missing the required parameter 'returnid' when calling deleteV1CommerceReturnByReturnid(Async)");
+            throw new ApiException("Missing the required parameter 'returnid' when calling deleteCommerceReturnByReturnid(Async)");
         }
 
-        return deleteV1CommerceReturnByReturnidCall(returnid, _callback);
+        return deleteCommerceReturnByReturnidCall(returnid, _callback);
 
     }
 
@@ -727,8 +727,8 @@ public class CommerceApi {
      * @param returnid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1CommerceReturnByReturnid(@javax.annotation.Nonnull String returnid) throws ApiException {
-        deleteV1CommerceReturnByReturnidWithHttpInfo(returnid);
+    public void deleteCommerceReturnByReturnid(@javax.annotation.Nonnull String returnid) throws ApiException {
+        deleteCommerceReturnByReturnidWithHttpInfo(returnid);
     }
 
     /**
@@ -738,8 +738,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1CommerceReturnByReturnidWithHttpInfo(@javax.annotation.Nonnull String returnid) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CommerceReturnByReturnidValidateBeforeCall(returnid, null);
+    public ApiResponse<Void> deleteCommerceReturnByReturnidWithHttpInfo(@javax.annotation.Nonnull String returnid) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommerceReturnByReturnidValidateBeforeCall(returnid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -751,20 +751,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1CommerceReturnByReturnidAsync(@javax.annotation.Nonnull String returnid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceReturnByReturnidAsync(@javax.annotation.Nonnull String returnid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CommerceReturnByReturnidValidateBeforeCall(returnid, _callback);
+        okhttp3.Call localVarCall = deleteCommerceReturnByReturnidValidateBeforeCall(returnid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CommerceSaleschannelBySaleschannelid
+     * Build call for deleteCommerceSaleschannelBySaleschannelid
      * @param saleschannelid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1CommerceSaleschannelBySaleschannelidCall(@javax.annotation.Nonnull String saleschannelid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceSaleschannelBySaleschannelidCall(@javax.annotation.Nonnull String saleschannelid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -809,13 +809,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CommerceSaleschannelBySaleschannelidValidateBeforeCall(@javax.annotation.Nonnull String saleschannelid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCommerceSaleschannelBySaleschannelidValidateBeforeCall(@javax.annotation.Nonnull String saleschannelid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'saleschannelid' is set
         if (saleschannelid == null) {
-            throw new ApiException("Missing the required parameter 'saleschannelid' when calling deleteV1CommerceSaleschannelBySaleschannelid(Async)");
+            throw new ApiException("Missing the required parameter 'saleschannelid' when calling deleteCommerceSaleschannelBySaleschannelid(Async)");
         }
 
-        return deleteV1CommerceSaleschannelBySaleschannelidCall(saleschannelid, _callback);
+        return deleteCommerceSaleschannelBySaleschannelidCall(saleschannelid, _callback);
 
     }
 
@@ -825,8 +825,8 @@ public class CommerceApi {
      * @param saleschannelid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1CommerceSaleschannelBySaleschannelid(@javax.annotation.Nonnull String saleschannelid) throws ApiException {
-        deleteV1CommerceSaleschannelBySaleschannelidWithHttpInfo(saleschannelid);
+    public void deleteCommerceSaleschannelBySaleschannelid(@javax.annotation.Nonnull String saleschannelid) throws ApiException {
+        deleteCommerceSaleschannelBySaleschannelidWithHttpInfo(saleschannelid);
     }
 
     /**
@@ -836,8 +836,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1CommerceSaleschannelBySaleschannelidWithHttpInfo(@javax.annotation.Nonnull String saleschannelid) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CommerceSaleschannelBySaleschannelidValidateBeforeCall(saleschannelid, null);
+    public ApiResponse<Void> deleteCommerceSaleschannelBySaleschannelidWithHttpInfo(@javax.annotation.Nonnull String saleschannelid) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommerceSaleschannelBySaleschannelidValidateBeforeCall(saleschannelid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -849,20 +849,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1CommerceSaleschannelBySaleschannelidAsync(@javax.annotation.Nonnull String saleschannelid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceSaleschannelBySaleschannelidAsync(@javax.annotation.Nonnull String saleschannelid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CommerceSaleschannelBySaleschannelidValidateBeforeCall(saleschannelid, _callback);
+        okhttp3.Call localVarCall = deleteCommerceSaleschannelBySaleschannelidValidateBeforeCall(saleschannelid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CommerceStocklocationByStocklocationid
+     * Build call for deleteCommerceStocklocationByStocklocationid
      * @param stocklocationid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1CommerceStocklocationByStocklocationidCall(@javax.annotation.Nonnull String stocklocationid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceStocklocationByStocklocationidCall(@javax.annotation.Nonnull String stocklocationid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -907,13 +907,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CommerceStocklocationByStocklocationidValidateBeforeCall(@javax.annotation.Nonnull String stocklocationid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCommerceStocklocationByStocklocationidValidateBeforeCall(@javax.annotation.Nonnull String stocklocationid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'stocklocationid' is set
         if (stocklocationid == null) {
-            throw new ApiException("Missing the required parameter 'stocklocationid' when calling deleteV1CommerceStocklocationByStocklocationid(Async)");
+            throw new ApiException("Missing the required parameter 'stocklocationid' when calling deleteCommerceStocklocationByStocklocationid(Async)");
         }
 
-        return deleteV1CommerceStocklocationByStocklocationidCall(stocklocationid, _callback);
+        return deleteCommerceStocklocationByStocklocationidCall(stocklocationid, _callback);
 
     }
 
@@ -923,8 +923,8 @@ public class CommerceApi {
      * @param stocklocationid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1CommerceStocklocationByStocklocationid(@javax.annotation.Nonnull String stocklocationid) throws ApiException {
-        deleteV1CommerceStocklocationByStocklocationidWithHttpInfo(stocklocationid);
+    public void deleteCommerceStocklocationByStocklocationid(@javax.annotation.Nonnull String stocklocationid) throws ApiException {
+        deleteCommerceStocklocationByStocklocationidWithHttpInfo(stocklocationid);
     }
 
     /**
@@ -934,8 +934,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1CommerceStocklocationByStocklocationidWithHttpInfo(@javax.annotation.Nonnull String stocklocationid) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, null);
+    public ApiResponse<Void> deleteCommerceStocklocationByStocklocationidWithHttpInfo(@javax.annotation.Nonnull String stocklocationid) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -947,20 +947,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1CommerceStocklocationByStocklocationidAsync(@javax.annotation.Nonnull String stocklocationid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceStocklocationByStocklocationidAsync(@javax.annotation.Nonnull String stocklocationid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, _callback);
+        okhttp3.Call localVarCall = deleteCommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CommerceSubmissionBySubmissionid
+     * Build call for deleteCommerceSubmissionBySubmissionid
      * @param submissionid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1CommerceSubmissionBySubmissionidCall(@javax.annotation.Nonnull String submissionid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceSubmissionBySubmissionidCall(@javax.annotation.Nonnull String submissionid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1005,13 +1005,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CommerceSubmissionBySubmissionidValidateBeforeCall(@javax.annotation.Nonnull String submissionid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCommerceSubmissionBySubmissionidValidateBeforeCall(@javax.annotation.Nonnull String submissionid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'submissionid' is set
         if (submissionid == null) {
-            throw new ApiException("Missing the required parameter 'submissionid' when calling deleteV1CommerceSubmissionBySubmissionid(Async)");
+            throw new ApiException("Missing the required parameter 'submissionid' when calling deleteCommerceSubmissionBySubmissionid(Async)");
         }
 
-        return deleteV1CommerceSubmissionBySubmissionidCall(submissionid, _callback);
+        return deleteCommerceSubmissionBySubmissionidCall(submissionid, _callback);
 
     }
 
@@ -1021,8 +1021,8 @@ public class CommerceApi {
      * @param submissionid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1CommerceSubmissionBySubmissionid(@javax.annotation.Nonnull String submissionid) throws ApiException {
-        deleteV1CommerceSubmissionBySubmissionidWithHttpInfo(submissionid);
+    public void deleteCommerceSubmissionBySubmissionid(@javax.annotation.Nonnull String submissionid) throws ApiException {
+        deleteCommerceSubmissionBySubmissionidWithHttpInfo(submissionid);
     }
 
     /**
@@ -1032,8 +1032,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1CommerceSubmissionBySubmissionidWithHttpInfo(@javax.annotation.Nonnull String submissionid) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CommerceSubmissionBySubmissionidValidateBeforeCall(submissionid, null);
+    public ApiResponse<Void> deleteCommerceSubmissionBySubmissionidWithHttpInfo(@javax.annotation.Nonnull String submissionid) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommerceSubmissionBySubmissionidValidateBeforeCall(submissionid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1045,20 +1045,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1CommerceSubmissionBySubmissionidAsync(@javax.annotation.Nonnull String submissionid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceSubmissionBySubmissionidAsync(@javax.annotation.Nonnull String submissionid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CommerceSubmissionBySubmissionidValidateBeforeCall(submissionid, _callback);
+        okhttp3.Call localVarCall = deleteCommerceSubmissionBySubmissionidValidateBeforeCall(submissionid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CommerceSubscriberBySubscriberid
+     * Build call for deleteCommerceSubscriberBySubscriberid
      * @param subscriberid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1CommerceSubscriberBySubscriberidCall(@javax.annotation.Nonnull String subscriberid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceSubscriberBySubscriberidCall(@javax.annotation.Nonnull String subscriberid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1103,13 +1103,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CommerceSubscriberBySubscriberidValidateBeforeCall(@javax.annotation.Nonnull String subscriberid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCommerceSubscriberBySubscriberidValidateBeforeCall(@javax.annotation.Nonnull String subscriberid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'subscriberid' is set
         if (subscriberid == null) {
-            throw new ApiException("Missing the required parameter 'subscriberid' when calling deleteV1CommerceSubscriberBySubscriberid(Async)");
+            throw new ApiException("Missing the required parameter 'subscriberid' when calling deleteCommerceSubscriberBySubscriberid(Async)");
         }
 
-        return deleteV1CommerceSubscriberBySubscriberidCall(subscriberid, _callback);
+        return deleteCommerceSubscriberBySubscriberidCall(subscriberid, _callback);
 
     }
 
@@ -1119,8 +1119,8 @@ public class CommerceApi {
      * @param subscriberid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1CommerceSubscriberBySubscriberid(@javax.annotation.Nonnull String subscriberid) throws ApiException {
-        deleteV1CommerceSubscriberBySubscriberidWithHttpInfo(subscriberid);
+    public void deleteCommerceSubscriberBySubscriberid(@javax.annotation.Nonnull String subscriberid) throws ApiException {
+        deleteCommerceSubscriberBySubscriberidWithHttpInfo(subscriberid);
     }
 
     /**
@@ -1130,8 +1130,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1CommerceSubscriberBySubscriberidWithHttpInfo(@javax.annotation.Nonnull String subscriberid) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CommerceSubscriberBySubscriberidValidateBeforeCall(subscriberid, null);
+    public ApiResponse<Void> deleteCommerceSubscriberBySubscriberidWithHttpInfo(@javax.annotation.Nonnull String subscriberid) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommerceSubscriberBySubscriberidValidateBeforeCall(subscriberid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1143,20 +1143,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1CommerceSubscriberBySubscriberidAsync(@javax.annotation.Nonnull String subscriberid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceSubscriberBySubscriberidAsync(@javax.annotation.Nonnull String subscriberid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CommerceSubscriberBySubscriberidValidateBeforeCall(subscriberid, _callback);
+        okhttp3.Call localVarCall = deleteCommerceSubscriberBySubscriberidValidateBeforeCall(subscriberid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CommerceTokentransactionByTokentransactionid
+     * Build call for deleteCommerceTokentransactionByTokentransactionid
      * @param tokentransactionid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1CommerceTokentransactionByTokentransactionidCall(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceTokentransactionByTokentransactionidCall(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1201,13 +1201,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CommerceTokentransactionByTokentransactionidValidateBeforeCall(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCommerceTokentransactionByTokentransactionidValidateBeforeCall(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'tokentransactionid' is set
         if (tokentransactionid == null) {
-            throw new ApiException("Missing the required parameter 'tokentransactionid' when calling deleteV1CommerceTokentransactionByTokentransactionid(Async)");
+            throw new ApiException("Missing the required parameter 'tokentransactionid' when calling deleteCommerceTokentransactionByTokentransactionid(Async)");
         }
 
-        return deleteV1CommerceTokentransactionByTokentransactionidCall(tokentransactionid, _callback);
+        return deleteCommerceTokentransactionByTokentransactionidCall(tokentransactionid, _callback);
 
     }
 
@@ -1217,8 +1217,8 @@ public class CommerceApi {
      * @param tokentransactionid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1CommerceTokentransactionByTokentransactionid(@javax.annotation.Nonnull String tokentransactionid) throws ApiException {
-        deleteV1CommerceTokentransactionByTokentransactionidWithHttpInfo(tokentransactionid);
+    public void deleteCommerceTokentransactionByTokentransactionid(@javax.annotation.Nonnull String tokentransactionid) throws ApiException {
+        deleteCommerceTokentransactionByTokentransactionidWithHttpInfo(tokentransactionid);
     }
 
     /**
@@ -1228,8 +1228,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1CommerceTokentransactionByTokentransactionidWithHttpInfo(@javax.annotation.Nonnull String tokentransactionid) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CommerceTokentransactionByTokentransactionidValidateBeforeCall(tokentransactionid, null);
+    public ApiResponse<Void> deleteCommerceTokentransactionByTokentransactionidWithHttpInfo(@javax.annotation.Nonnull String tokentransactionid) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommerceTokentransactionByTokentransactionidValidateBeforeCall(tokentransactionid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1241,20 +1241,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1CommerceTokentransactionByTokentransactionidAsync(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceTokentransactionByTokentransactionidAsync(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CommerceTokentransactionByTokentransactionidValidateBeforeCall(tokentransactionid, _callback);
+        okhttp3.Call localVarCall = deleteCommerceTokentransactionByTokentransactionidValidateBeforeCall(tokentransactionid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CommerceTransferByTransferid
+     * Build call for deleteCommerceTransferByTransferid
      * @param transferid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1CommerceTransferByTransferidCall(@javax.annotation.Nonnull String transferid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceTransferByTransferidCall(@javax.annotation.Nonnull String transferid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1299,13 +1299,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CommerceTransferByTransferidValidateBeforeCall(@javax.annotation.Nonnull String transferid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCommerceTransferByTransferidValidateBeforeCall(@javax.annotation.Nonnull String transferid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'transferid' is set
         if (transferid == null) {
-            throw new ApiException("Missing the required parameter 'transferid' when calling deleteV1CommerceTransferByTransferid(Async)");
+            throw new ApiException("Missing the required parameter 'transferid' when calling deleteCommerceTransferByTransferid(Async)");
         }
 
-        return deleteV1CommerceTransferByTransferidCall(transferid, _callback);
+        return deleteCommerceTransferByTransferidCall(transferid, _callback);
 
     }
 
@@ -1315,8 +1315,8 @@ public class CommerceApi {
      * @param transferid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1CommerceTransferByTransferid(@javax.annotation.Nonnull String transferid) throws ApiException {
-        deleteV1CommerceTransferByTransferidWithHttpInfo(transferid);
+    public void deleteCommerceTransferByTransferid(@javax.annotation.Nonnull String transferid) throws ApiException {
+        deleteCommerceTransferByTransferidWithHttpInfo(transferid);
     }
 
     /**
@@ -1326,8 +1326,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1CommerceTransferByTransferidWithHttpInfo(@javax.annotation.Nonnull String transferid) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CommerceTransferByTransferidValidateBeforeCall(transferid, null);
+    public ApiResponse<Void> deleteCommerceTransferByTransferidWithHttpInfo(@javax.annotation.Nonnull String transferid) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommerceTransferByTransferidValidateBeforeCall(transferid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1339,20 +1339,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1CommerceTransferByTransferidAsync(@javax.annotation.Nonnull String transferid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceTransferByTransferidAsync(@javax.annotation.Nonnull String transferid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CommerceTransferByTransferidValidateBeforeCall(transferid, _callback);
+        okhttp3.Call localVarCall = deleteCommerceTransferByTransferidValidateBeforeCall(transferid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CommerceVariantByVariantid
+     * Build call for deleteCommerceVariantByVariantid
      * @param variantid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1CommerceVariantByVariantidCall(@javax.annotation.Nonnull String variantid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceVariantByVariantidCall(@javax.annotation.Nonnull String variantid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1397,13 +1397,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CommerceVariantByVariantidValidateBeforeCall(@javax.annotation.Nonnull String variantid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCommerceVariantByVariantidValidateBeforeCall(@javax.annotation.Nonnull String variantid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'variantid' is set
         if (variantid == null) {
-            throw new ApiException("Missing the required parameter 'variantid' when calling deleteV1CommerceVariantByVariantid(Async)");
+            throw new ApiException("Missing the required parameter 'variantid' when calling deleteCommerceVariantByVariantid(Async)");
         }
 
-        return deleteV1CommerceVariantByVariantidCall(variantid, _callback);
+        return deleteCommerceVariantByVariantidCall(variantid, _callback);
 
     }
 
@@ -1413,8 +1413,8 @@ public class CommerceApi {
      * @param variantid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1CommerceVariantByVariantid(@javax.annotation.Nonnull String variantid) throws ApiException {
-        deleteV1CommerceVariantByVariantidWithHttpInfo(variantid);
+    public void deleteCommerceVariantByVariantid(@javax.annotation.Nonnull String variantid) throws ApiException {
+        deleteCommerceVariantByVariantidWithHttpInfo(variantid);
     }
 
     /**
@@ -1424,8 +1424,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1CommerceVariantByVariantidWithHttpInfo(@javax.annotation.Nonnull String variantid) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CommerceVariantByVariantidValidateBeforeCall(variantid, null);
+    public ApiResponse<Void> deleteCommerceVariantByVariantidWithHttpInfo(@javax.annotation.Nonnull String variantid) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommerceVariantByVariantidValidateBeforeCall(variantid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1437,20 +1437,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1CommerceVariantByVariantidAsync(@javax.annotation.Nonnull String variantid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceVariantByVariantidAsync(@javax.annotation.Nonnull String variantid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CommerceVariantByVariantidValidateBeforeCall(variantid, _callback);
+        okhttp3.Call localVarCall = deleteCommerceVariantByVariantidValidateBeforeCall(variantid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CommerceWalletByWalletid
+     * Build call for deleteCommerceWalletByWalletid
      * @param walletid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1CommerceWalletByWalletidCall(@javax.annotation.Nonnull String walletid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceWalletByWalletidCall(@javax.annotation.Nonnull String walletid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1495,13 +1495,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CommerceWalletByWalletidValidateBeforeCall(@javax.annotation.Nonnull String walletid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCommerceWalletByWalletidValidateBeforeCall(@javax.annotation.Nonnull String walletid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'walletid' is set
         if (walletid == null) {
-            throw new ApiException("Missing the required parameter 'walletid' when calling deleteV1CommerceWalletByWalletid(Async)");
+            throw new ApiException("Missing the required parameter 'walletid' when calling deleteCommerceWalletByWalletid(Async)");
         }
 
-        return deleteV1CommerceWalletByWalletidCall(walletid, _callback);
+        return deleteCommerceWalletByWalletidCall(walletid, _callback);
 
     }
 
@@ -1511,8 +1511,8 @@ public class CommerceApi {
      * @param walletid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1CommerceWalletByWalletid(@javax.annotation.Nonnull String walletid) throws ApiException {
-        deleteV1CommerceWalletByWalletidWithHttpInfo(walletid);
+    public void deleteCommerceWalletByWalletid(@javax.annotation.Nonnull String walletid) throws ApiException {
+        deleteCommerceWalletByWalletidWithHttpInfo(walletid);
     }
 
     /**
@@ -1522,8 +1522,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1CommerceWalletByWalletidWithHttpInfo(@javax.annotation.Nonnull String walletid) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CommerceWalletByWalletidValidateBeforeCall(walletid, null);
+    public ApiResponse<Void> deleteCommerceWalletByWalletidWithHttpInfo(@javax.annotation.Nonnull String walletid) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommerceWalletByWalletidValidateBeforeCall(walletid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1535,20 +1535,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1CommerceWalletByWalletidAsync(@javax.annotation.Nonnull String walletid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceWalletByWalletidAsync(@javax.annotation.Nonnull String walletid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CommerceWalletByWalletidValidateBeforeCall(walletid, _callback);
+        okhttp3.Call localVarCall = deleteCommerceWalletByWalletidValidateBeforeCall(walletid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CommerceWatchlistByWatchlistid
+     * Build call for deleteCommerceWatchlistByWatchlistid
      * @param watchlistid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1CommerceWatchlistByWatchlistidCall(@javax.annotation.Nonnull String watchlistid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceWatchlistByWatchlistidCall(@javax.annotation.Nonnull String watchlistid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1593,13 +1593,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CommerceWatchlistByWatchlistidValidateBeforeCall(@javax.annotation.Nonnull String watchlistid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCommerceWatchlistByWatchlistidValidateBeforeCall(@javax.annotation.Nonnull String watchlistid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'watchlistid' is set
         if (watchlistid == null) {
-            throw new ApiException("Missing the required parameter 'watchlistid' when calling deleteV1CommerceWatchlistByWatchlistid(Async)");
+            throw new ApiException("Missing the required parameter 'watchlistid' when calling deleteCommerceWatchlistByWatchlistid(Async)");
         }
 
-        return deleteV1CommerceWatchlistByWatchlistidCall(watchlistid, _callback);
+        return deleteCommerceWatchlistByWatchlistidCall(watchlistid, _callback);
 
     }
 
@@ -1609,8 +1609,8 @@ public class CommerceApi {
      * @param watchlistid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1CommerceWatchlistByWatchlistid(@javax.annotation.Nonnull String watchlistid) throws ApiException {
-        deleteV1CommerceWatchlistByWatchlistidWithHttpInfo(watchlistid);
+    public void deleteCommerceWatchlistByWatchlistid(@javax.annotation.Nonnull String watchlistid) throws ApiException {
+        deleteCommerceWatchlistByWatchlistidWithHttpInfo(watchlistid);
     }
 
     /**
@@ -1620,8 +1620,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1CommerceWatchlistByWatchlistidWithHttpInfo(@javax.annotation.Nonnull String watchlistid) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CommerceWatchlistByWatchlistidValidateBeforeCall(watchlistid, null);
+    public ApiResponse<Void> deleteCommerceWatchlistByWatchlistidWithHttpInfo(@javax.annotation.Nonnull String watchlistid) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommerceWatchlistByWatchlistidValidateBeforeCall(watchlistid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1633,20 +1633,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1CommerceWatchlistByWatchlistidAsync(@javax.annotation.Nonnull String watchlistid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceWatchlistByWatchlistidAsync(@javax.annotation.Nonnull String watchlistid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CommerceWatchlistByWatchlistidValidateBeforeCall(watchlistid, _callback);
+        okhttp3.Call localVarCall = deleteCommerceWatchlistByWatchlistidValidateBeforeCall(watchlistid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CommerceWebhookByWebhookid
+     * Build call for deleteCommerceWebhookByWebhookid
      * @param webhookid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1CommerceWebhookByWebhookidCall(@javax.annotation.Nonnull String webhookid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceWebhookByWebhookidCall(@javax.annotation.Nonnull String webhookid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1691,13 +1691,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CommerceWebhookByWebhookidValidateBeforeCall(@javax.annotation.Nonnull String webhookid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCommerceWebhookByWebhookidValidateBeforeCall(@javax.annotation.Nonnull String webhookid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'webhookid' is set
         if (webhookid == null) {
-            throw new ApiException("Missing the required parameter 'webhookid' when calling deleteV1CommerceWebhookByWebhookid(Async)");
+            throw new ApiException("Missing the required parameter 'webhookid' when calling deleteCommerceWebhookByWebhookid(Async)");
         }
 
-        return deleteV1CommerceWebhookByWebhookidCall(webhookid, _callback);
+        return deleteCommerceWebhookByWebhookidCall(webhookid, _callback);
 
     }
 
@@ -1707,8 +1707,8 @@ public class CommerceApi {
      * @param webhookid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1CommerceWebhookByWebhookid(@javax.annotation.Nonnull String webhookid) throws ApiException {
-        deleteV1CommerceWebhookByWebhookidWithHttpInfo(webhookid);
+    public void deleteCommerceWebhookByWebhookid(@javax.annotation.Nonnull String webhookid) throws ApiException {
+        deleteCommerceWebhookByWebhookidWithHttpInfo(webhookid);
     }
 
     /**
@@ -1718,8 +1718,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1CommerceWebhookByWebhookidWithHttpInfo(@javax.annotation.Nonnull String webhookid) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CommerceWebhookByWebhookidValidateBeforeCall(webhookid, null);
+    public ApiResponse<Void> deleteCommerceWebhookByWebhookidWithHttpInfo(@javax.annotation.Nonnull String webhookid) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommerceWebhookByWebhookidValidateBeforeCall(webhookid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1731,19 +1731,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1CommerceWebhookByWebhookidAsync(@javax.annotation.Nonnull String webhookid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceWebhookByWebhookidAsync(@javax.annotation.Nonnull String webhookid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CommerceWebhookByWebhookidValidateBeforeCall(webhookid, _callback);
+        okhttp3.Call localVarCall = deleteCommerceWebhookByWebhookidValidateBeforeCall(webhookid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceAdminCatalog
+     * Build call for getCommerceAdminCatalog
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceAdminCatalogCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceAdminCatalogCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1787,8 +1787,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceAdminCatalogValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommerceAdminCatalogCall(_callback);
+    private okhttp3.Call getCommerceAdminCatalogValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceAdminCatalogCall(_callback);
 
     }
 
@@ -1797,8 +1797,8 @@ public class CommerceApi {
      * Returns the brand-scoped catalog carrying the administrative economics the public projection withholds — upstream cost and margin percentage — for the margin surface the platform console administrates. The brand comes from the query and defaults to hanzo. PLATFORM admin only, enforced by the handler on top of the route&#39;s IAM gate: an ORG-level admin is refused 403 precisely so upstream cost and margin never reach a tenant.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceAdminCatalog() throws ApiException {
-        getV1CommerceAdminCatalogWithHttpInfo();
+    public void getCommerceAdminCatalog() throws ApiException {
+        getCommerceAdminCatalogWithHttpInfo();
     }
 
     /**
@@ -1807,8 +1807,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceAdminCatalogWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceAdminCatalogValidateBeforeCall(null);
+    public ApiResponse<Void> getCommerceAdminCatalogWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceAdminCatalogValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1819,19 +1819,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceAdminCatalogAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceAdminCatalogAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceAdminCatalogValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommerceAdminCatalogValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceCatalog
+     * Build call for getCommerceCatalog
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceCatalogCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceCatalogCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1875,8 +1875,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceCatalogValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommerceCatalogCall(_callback);
+    private okhttp3.Call getCommerceCatalogValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceCatalogCall(_callback);
 
     }
 
@@ -1885,8 +1885,8 @@ public class CommerceApi {
      * Returns the brand&#39;s published catalog — the shared source docs, the console sidebar and the pricing pages all read — with the brand taken from the query and defaulting to hanzo. It is public and cacheable, and it is the projection that deliberately omits cost and margin; those live only on the platform-admin projection.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceCatalog() throws ApiException {
-        getV1CommerceCatalogWithHttpInfo();
+    public void getCommerceCatalog() throws ApiException {
+        getCommerceCatalogWithHttpInfo();
     }
 
     /**
@@ -1895,8 +1895,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceCatalogWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceCatalogValidateBeforeCall(null);
+    public ApiResponse<Void> getCommerceCatalogWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceCatalogValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1907,19 +1907,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceCatalogAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceCatalogAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceCatalogValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommerceCatalogValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceCollection
+     * Build call for getCommerceCollection
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceCollectionCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceCollectionCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1963,8 +1963,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceCollectionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommerceCollectionCall(_callback);
+    private okhttp3.Call getCommerceCollectionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceCollectionCall(_callback);
 
     }
 
@@ -1973,8 +1973,8 @@ public class CommerceApi {
      * A collection is a merchandising group a storefront renders — a slug and name, copy and media, flat lists of the product and variant ids it holds, published, preorder and out-of-stock flags, and an availability window. Membership lives on the collection as those id lists rather than as a join, so putting a product into a collection is a write here and not on the product. Answers a pagination envelope — the page and display echoed back, the rows under models, a total count and a facets array — read from the caller org&#39;s own namespaced store, so one tenant can never list another&#39;s. Sorting defaults to the slug and is overridable with sort. display is the page size and page applies only alongside it; either one that is not a positive integer is refused with 500 rather than silently ignored, and the limit query overrides the reported COUNT only, never the rows returned. No search backend is wired, so the datastore is the one and only list path and facets is always empty. A request resolving no org namespace is served an EMPTY page rather than an unscoped scan: the namespace IS the tenant filter, so without one there is nothing safe to return. Any valid access token reaches it. The org must also be entitled to the commerce admin: the paywall answers 402 subscription_required unless the org holds an active or trialing pro subscription, a live trial credit or a redeemed invite, and 503 when that entitlement cannot be read rather than admitting on an unknown. The internal service token and a platform superadmin pass straight through. The token must also carry Admin or the Collection list scope.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceCollection() throws ApiException {
-        getV1CommerceCollectionWithHttpInfo();
+    public void getCommerceCollection() throws ApiException {
+        getCommerceCollectionWithHttpInfo();
     }
 
     /**
@@ -1983,8 +1983,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceCollectionWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceCollectionValidateBeforeCall(null);
+    public ApiResponse<Void> getCommerceCollectionWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceCollectionValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1995,20 +1995,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceCollectionAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceCollectionAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceCollectionValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommerceCollectionValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceCollectionByCollectionid
+     * Build call for getCommerceCollectionByCollectionid
      * @param collectionid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceCollectionByCollectionidCall(@javax.annotation.Nonnull String collectionid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceCollectionByCollectionidCall(@javax.annotation.Nonnull String collectionid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2053,13 +2053,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceCollectionByCollectionidValidateBeforeCall(@javax.annotation.Nonnull String collectionid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCommerceCollectionByCollectionidValidateBeforeCall(@javax.annotation.Nonnull String collectionid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'collectionid' is set
         if (collectionid == null) {
-            throw new ApiException("Missing the required parameter 'collectionid' when calling getV1CommerceCollectionByCollectionid(Async)");
+            throw new ApiException("Missing the required parameter 'collectionid' when calling getCommerceCollectionByCollectionid(Async)");
         }
 
-        return getV1CommerceCollectionByCollectionidCall(collectionid, _callback);
+        return getCommerceCollectionByCollectionidCall(collectionid, _callback);
 
     }
 
@@ -2069,8 +2069,8 @@ public class CommerceApi {
      * @param collectionid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceCollectionByCollectionid(@javax.annotation.Nonnull String collectionid) throws ApiException {
-        getV1CommerceCollectionByCollectionidWithHttpInfo(collectionid);
+    public void getCommerceCollectionByCollectionid(@javax.annotation.Nonnull String collectionid) throws ApiException {
+        getCommerceCollectionByCollectionidWithHttpInfo(collectionid);
     }
 
     /**
@@ -2080,8 +2080,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceCollectionByCollectionidWithHttpInfo(@javax.annotation.Nonnull String collectionid) throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceCollectionByCollectionidValidateBeforeCall(collectionid, null);
+    public ApiResponse<Void> getCommerceCollectionByCollectionidWithHttpInfo(@javax.annotation.Nonnull String collectionid) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceCollectionByCollectionidValidateBeforeCall(collectionid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2093,19 +2093,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceCollectionByCollectionidAsync(@javax.annotation.Nonnull String collectionid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceCollectionByCollectionidAsync(@javax.annotation.Nonnull String collectionid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceCollectionByCollectionidValidateBeforeCall(collectionid, _callback);
+        okhttp3.Call localVarCall = getCommerceCollectionByCollectionidValidateBeforeCall(collectionid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceCurrencies
+     * Build call for getCommerceCurrencies
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceCurrenciesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceCurrenciesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2149,8 +2149,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceCurrenciesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommerceCurrenciesCall(_callback);
+    private okhttp3.Call getCommerceCurrenciesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceCurrenciesCall(_callback);
 
     }
 
@@ -2159,8 +2159,8 @@ public class CommerceApi {
      * Returns every reference currency as one global list, so a store settings form or a product price picker binds real rows instead of a hardcoded array. It is a default-namespace read shared by every tenant rather than per-org data, and it is public and cacheable.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceCurrencies() throws ApiException {
-        getV1CommerceCurrenciesWithHttpInfo();
+    public void getCommerceCurrencies() throws ApiException {
+        getCommerceCurrenciesWithHttpInfo();
     }
 
     /**
@@ -2169,8 +2169,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceCurrenciesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceCurrenciesValidateBeforeCall(null);
+    public ApiResponse<Void> getCommerceCurrenciesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceCurrenciesValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2181,19 +2181,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceCurrenciesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceCurrenciesAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceCurrenciesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommerceCurrenciesValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceDisclosure
+     * Build call for getCommerceDisclosure
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceDisclosureCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceDisclosureCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2237,8 +2237,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceDisclosureValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommerceDisclosureCall(_callback);
+    private okhttp3.Call getCommerceDisclosureValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceDisclosureCall(_callback);
 
     }
 
@@ -2247,8 +2247,8 @@ public class CommerceApi {
      * A disclosure is a published-document record — a publication body, a content hash, a type and a named receiver. The hash LOOKS like a field you set and is in fact derived, but only on update: a freshly created disclosure keeps whatever hash the caller sent until the first replace or patch recomputes it, so a new row&#39;s hash attests to nothing. This kind lives in commerce&#39;s demo tree — a live writable resource in your tenant&#39;s real store that nothing else in commerce reads. Answers a pagination envelope — the page and display echoed back, the rows under models, a total count and a facets array — read from the caller org&#39;s own namespaced store, so one tenant can never list another&#39;s. Sorting defaults to the last-updated time and is overridable with sort. display is the page size and page applies only alongside it; either one that is not a positive integer is refused with 500 rather than silently ignored, and the limit query overrides the reported COUNT only, never the rows returned. No search backend is wired, so the datastore is the one and only list path and facets is always empty. A request resolving no org namespace is served an EMPTY page rather than an unscoped scan: the namespace IS the tenant filter, so without one there is nothing safe to return. Any valid access token reaches it. The per-kind permission table has no entry for disclosure, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceDisclosure() throws ApiException {
-        getV1CommerceDisclosureWithHttpInfo();
+    public void getCommerceDisclosure() throws ApiException {
+        getCommerceDisclosureWithHttpInfo();
     }
 
     /**
@@ -2257,8 +2257,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceDisclosureWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceDisclosureValidateBeforeCall(null);
+    public ApiResponse<Void> getCommerceDisclosureWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceDisclosureValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2269,20 +2269,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceDisclosureAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceDisclosureAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceDisclosureValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommerceDisclosureValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceDisclosureByDisclosureid
+     * Build call for getCommerceDisclosureByDisclosureid
      * @param disclosureid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceDisclosureByDisclosureidCall(@javax.annotation.Nonnull String disclosureid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceDisclosureByDisclosureidCall(@javax.annotation.Nonnull String disclosureid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2327,13 +2327,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceDisclosureByDisclosureidValidateBeforeCall(@javax.annotation.Nonnull String disclosureid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCommerceDisclosureByDisclosureidValidateBeforeCall(@javax.annotation.Nonnull String disclosureid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'disclosureid' is set
         if (disclosureid == null) {
-            throw new ApiException("Missing the required parameter 'disclosureid' when calling getV1CommerceDisclosureByDisclosureid(Async)");
+            throw new ApiException("Missing the required parameter 'disclosureid' when calling getCommerceDisclosureByDisclosureid(Async)");
         }
 
-        return getV1CommerceDisclosureByDisclosureidCall(disclosureid, _callback);
+        return getCommerceDisclosureByDisclosureidCall(disclosureid, _callback);
 
     }
 
@@ -2343,8 +2343,8 @@ public class CommerceApi {
      * @param disclosureid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceDisclosureByDisclosureid(@javax.annotation.Nonnull String disclosureid) throws ApiException {
-        getV1CommerceDisclosureByDisclosureidWithHttpInfo(disclosureid);
+    public void getCommerceDisclosureByDisclosureid(@javax.annotation.Nonnull String disclosureid) throws ApiException {
+        getCommerceDisclosureByDisclosureidWithHttpInfo(disclosureid);
     }
 
     /**
@@ -2354,8 +2354,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceDisclosureByDisclosureidWithHttpInfo(@javax.annotation.Nonnull String disclosureid) throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceDisclosureByDisclosureidValidateBeforeCall(disclosureid, null);
+    public ApiResponse<Void> getCommerceDisclosureByDisclosureidWithHttpInfo(@javax.annotation.Nonnull String disclosureid) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceDisclosureByDisclosureidValidateBeforeCall(disclosureid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2367,19 +2367,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceDisclosureByDisclosureidAsync(@javax.annotation.Nonnull String disclosureid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceDisclosureByDisclosureidAsync(@javax.annotation.Nonnull String disclosureid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceDisclosureByDisclosureidValidateBeforeCall(disclosureid, _callback);
+        okhttp3.Call localVarCall = getCommerceDisclosureByDisclosureidValidateBeforeCall(disclosureid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceDiscount
+     * Build call for getCommerceDiscount
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceDiscountCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceDiscountCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2423,8 +2423,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceDiscountValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommerceDiscountCall(_callback);
+    private okhttp3.Call getCommerceDiscountValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceDiscountCall(_callback);
 
     }
 
@@ -2433,8 +2433,8 @@ public class CommerceApi {
      * A discount is a price rule: a type (flat, percent, free-shipping, free-item or bulk), a window, a scope naming the store, collection, product or variant it applies to, a target, and rules pairing a trigger — a price or quantity threshold — with an action, an amount off or a percentage. It is ENABLED BY DEFAULT, so a bare create makes a live discount rather than a draft. The rule engine caches per replica for about thirty seconds, so a discount switched off here can keep applying briefly on other replicas. Answers a pagination envelope — the page and display echoed back, the rows under models, a total count and a facets array — read from the caller org&#39;s own namespaced store, so one tenant can never list another&#39;s. Sorting defaults to the last-updated time and is overridable with sort. display is the page size and page applies only alongside it; either one that is not a positive integer is refused with 500 rather than silently ignored, and the limit query overrides the reported COUNT only, never the rows returned. No search backend is wired, so the datastore is the one and only list path and facets is always empty. A request resolving no org namespace is served an EMPTY page rather than an unscoped scan: the namespace IS the tenant filter, so without one there is nothing safe to return. Any valid access token reaches it. The org must also be entitled to the commerce admin: the paywall answers 402 subscription_required unless the org holds an active or trialing pro subscription, a live trial credit or a redeemed invite, and 503 when that entitlement cannot be read rather than admitting on an unknown. The internal service token and a platform superadmin pass straight through. The per-kind permission table has no entry for discount, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceDiscount() throws ApiException {
-        getV1CommerceDiscountWithHttpInfo();
+    public void getCommerceDiscount() throws ApiException {
+        getCommerceDiscountWithHttpInfo();
     }
 
     /**
@@ -2443,8 +2443,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceDiscountWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceDiscountValidateBeforeCall(null);
+    public ApiResponse<Void> getCommerceDiscountWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceDiscountValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2455,20 +2455,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceDiscountAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceDiscountAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceDiscountValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommerceDiscountValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceDiscountByDiscountid
+     * Build call for getCommerceDiscountByDiscountid
      * @param discountid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceDiscountByDiscountidCall(@javax.annotation.Nonnull String discountid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceDiscountByDiscountidCall(@javax.annotation.Nonnull String discountid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2513,13 +2513,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceDiscountByDiscountidValidateBeforeCall(@javax.annotation.Nonnull String discountid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCommerceDiscountByDiscountidValidateBeforeCall(@javax.annotation.Nonnull String discountid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'discountid' is set
         if (discountid == null) {
-            throw new ApiException("Missing the required parameter 'discountid' when calling getV1CommerceDiscountByDiscountid(Async)");
+            throw new ApiException("Missing the required parameter 'discountid' when calling getCommerceDiscountByDiscountid(Async)");
         }
 
-        return getV1CommerceDiscountByDiscountidCall(discountid, _callback);
+        return getCommerceDiscountByDiscountidCall(discountid, _callback);
 
     }
 
@@ -2529,8 +2529,8 @@ public class CommerceApi {
      * @param discountid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceDiscountByDiscountid(@javax.annotation.Nonnull String discountid) throws ApiException {
-        getV1CommerceDiscountByDiscountidWithHttpInfo(discountid);
+    public void getCommerceDiscountByDiscountid(@javax.annotation.Nonnull String discountid) throws ApiException {
+        getCommerceDiscountByDiscountidWithHttpInfo(discountid);
     }
 
     /**
@@ -2540,8 +2540,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceDiscountByDiscountidWithHttpInfo(@javax.annotation.Nonnull String discountid) throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceDiscountByDiscountidValidateBeforeCall(discountid, null);
+    public ApiResponse<Void> getCommerceDiscountByDiscountidWithHttpInfo(@javax.annotation.Nonnull String discountid) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceDiscountByDiscountidValidateBeforeCall(discountid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2553,19 +2553,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceDiscountByDiscountidAsync(@javax.annotation.Nonnull String discountid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceDiscountByDiscountidAsync(@javax.annotation.Nonnull String discountid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceDiscountByDiscountidValidateBeforeCall(discountid, _callback);
+        okhttp3.Call localVarCall = getCommerceDiscountByDiscountidValidateBeforeCall(discountid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceMovie
+     * Build call for getCommerceMovie
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceMovieCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceMovieCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2609,8 +2609,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceMovieValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommerceMovieCall(_callback);
+    private okhttp3.Call getCommerceMovieValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceMovieCall(_callback);
 
     }
 
@@ -2619,8 +2619,8 @@ public class CommerceApi {
      * A movie is a film catalog record — a slug plus EIDR and IMDB ids, all three required, with title and synopsis copy, artwork, screenshots, trailers, cast and crew, and available and hidden flags. It carries NO price: the money for a film lives on the product that sells it. Answers a pagination envelope — the page and display echoed back, the rows under models, a total count and a facets array — read from the caller org&#39;s own namespaced store, so one tenant can never list another&#39;s. Sorting defaults to the slug and is overridable with sort. display is the page size and page applies only alongside it; either one that is not a positive integer is refused with 500 rather than silently ignored, and the limit query overrides the reported COUNT only, never the rows returned. No search backend is wired, so the datastore is the one and only list path and facets is always empty. A request resolving no org namespace is served an EMPTY page rather than an unscoped scan: the namespace IS the tenant filter, so without one there is nothing safe to return. Any valid access token reaches it. The per-kind permission table has no entry for movie, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceMovie() throws ApiException {
-        getV1CommerceMovieWithHttpInfo();
+    public void getCommerceMovie() throws ApiException {
+        getCommerceMovieWithHttpInfo();
     }
 
     /**
@@ -2629,8 +2629,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceMovieWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceMovieValidateBeforeCall(null);
+    public ApiResponse<Void> getCommerceMovieWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceMovieValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2641,20 +2641,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceMovieAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceMovieAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceMovieValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommerceMovieValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceMovieByMovieid
+     * Build call for getCommerceMovieByMovieid
      * @param movieid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceMovieByMovieidCall(@javax.annotation.Nonnull String movieid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceMovieByMovieidCall(@javax.annotation.Nonnull String movieid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2699,13 +2699,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceMovieByMovieidValidateBeforeCall(@javax.annotation.Nonnull String movieid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCommerceMovieByMovieidValidateBeforeCall(@javax.annotation.Nonnull String movieid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'movieid' is set
         if (movieid == null) {
-            throw new ApiException("Missing the required parameter 'movieid' when calling getV1CommerceMovieByMovieid(Async)");
+            throw new ApiException("Missing the required parameter 'movieid' when calling getCommerceMovieByMovieid(Async)");
         }
 
-        return getV1CommerceMovieByMovieidCall(movieid, _callback);
+        return getCommerceMovieByMovieidCall(movieid, _callback);
 
     }
 
@@ -2715,8 +2715,8 @@ public class CommerceApi {
      * @param movieid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceMovieByMovieid(@javax.annotation.Nonnull String movieid) throws ApiException {
-        getV1CommerceMovieByMovieidWithHttpInfo(movieid);
+    public void getCommerceMovieByMovieid(@javax.annotation.Nonnull String movieid) throws ApiException {
+        getCommerceMovieByMovieidWithHttpInfo(movieid);
     }
 
     /**
@@ -2726,8 +2726,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceMovieByMovieidWithHttpInfo(@javax.annotation.Nonnull String movieid) throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceMovieByMovieidValidateBeforeCall(movieid, null);
+    public ApiResponse<Void> getCommerceMovieByMovieidWithHttpInfo(@javax.annotation.Nonnull String movieid) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceMovieByMovieidValidateBeforeCall(movieid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2739,19 +2739,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceMovieByMovieidAsync(@javax.annotation.Nonnull String movieid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceMovieByMovieidAsync(@javax.annotation.Nonnull String movieid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceMovieByMovieidValidateBeforeCall(movieid, _callback);
+        okhttp3.Call localVarCall = getCommerceMovieByMovieidValidateBeforeCall(movieid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceNote
+     * Build call for getCommerceNote
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceNoteCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceNoteCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2795,8 +2795,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceNoteValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommerceNoteCall(_callback);
+    private okhttp3.Call getCommerceNoteValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceNoteCall(_callback);
 
     }
 
@@ -2805,8 +2805,8 @@ public class CommerceApi {
      * A note is a timestamped free-text log line — a caller-supplied time, a source, a message and an enabled flag. That time is the caller&#39;s own field and is distinct from the row&#39;s creation stamp; the note search filters on it, so a note written without one is a zero-time note the ops log will never surface. Answers a pagination envelope — the page and display echoed back, the rows under models, a total count and a facets array — read from the caller org&#39;s own namespaced store, so one tenant can never list another&#39;s. Sorting defaults to the last-updated time and is overridable with sort. display is the page size and page applies only alongside it; either one that is not a positive integer is refused with 500 rather than silently ignored, and the limit query overrides the reported COUNT only, never the rows returned. No search backend is wired, so the datastore is the one and only list path and facets is always empty. A request resolving no org namespace is served an EMPTY page rather than an unscoped scan: the namespace IS the tenant filter, so without one there is nothing safe to return. Any valid access token reaches it. The per-kind permission table has no entry for note, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceNote() throws ApiException {
-        getV1CommerceNoteWithHttpInfo();
+    public void getCommerceNote() throws ApiException {
+        getCommerceNoteWithHttpInfo();
     }
 
     /**
@@ -2815,8 +2815,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceNoteWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceNoteValidateBeforeCall(null);
+    public ApiResponse<Void> getCommerceNoteWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceNoteValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2827,20 +2827,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceNoteAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceNoteAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceNoteValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommerceNoteValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceNoteByNoteid
+     * Build call for getCommerceNoteByNoteid
      * @param noteid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceNoteByNoteidCall(@javax.annotation.Nonnull String noteid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceNoteByNoteidCall(@javax.annotation.Nonnull String noteid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2885,13 +2885,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceNoteByNoteidValidateBeforeCall(@javax.annotation.Nonnull String noteid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCommerceNoteByNoteidValidateBeforeCall(@javax.annotation.Nonnull String noteid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'noteid' is set
         if (noteid == null) {
-            throw new ApiException("Missing the required parameter 'noteid' when calling getV1CommerceNoteByNoteid(Async)");
+            throw new ApiException("Missing the required parameter 'noteid' when calling getCommerceNoteByNoteid(Async)");
         }
 
-        return getV1CommerceNoteByNoteidCall(noteid, _callback);
+        return getCommerceNoteByNoteidCall(noteid, _callback);
 
     }
 
@@ -2901,8 +2901,8 @@ public class CommerceApi {
      * @param noteid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceNoteByNoteid(@javax.annotation.Nonnull String noteid) throws ApiException {
-        getV1CommerceNoteByNoteidWithHttpInfo(noteid);
+    public void getCommerceNoteByNoteid(@javax.annotation.Nonnull String noteid) throws ApiException {
+        getCommerceNoteByNoteidWithHttpInfo(noteid);
     }
 
     /**
@@ -2912,8 +2912,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceNoteByNoteidWithHttpInfo(@javax.annotation.Nonnull String noteid) throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceNoteByNoteidValidateBeforeCall(noteid, null);
+    public ApiResponse<Void> getCommerceNoteByNoteidWithHttpInfo(@javax.annotation.Nonnull String noteid) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceNoteByNoteidValidateBeforeCall(noteid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2925,19 +2925,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceNoteByNoteidAsync(@javax.annotation.Nonnull String noteid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceNoteByNoteidAsync(@javax.annotation.Nonnull String noteid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceNoteByNoteidValidateBeforeCall(noteid, _callback);
+        okhttp3.Call localVarCall = getCommerceNoteByNoteidValidateBeforeCall(noteid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceOrg
+     * Build call for getCommerceOrg
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceOrgCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceOrgCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2981,8 +2981,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceOrgValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommerceOrgCall(_callback);
+    private okhttp3.Call getCommerceOrgValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceOrgCall(_callback);
 
     }
 
@@ -2991,8 +2991,8 @@ public class CommerceApi {
      * Answers the branding, identity issuer and client id, identity-verification config, enabled payment providers, return-URL allowlist and public payment application config for the org the request HOST resolves to. It is genuinely public and unauthenticated — a checkout page calls it before anyone has signed in — and it carries the same public payment config the authenticated config read does, so the card iframe can never initialize against a different application than the one that will be charged. Only ENABLED providers are listed and no credential path is ever projected. An unresolvable host answers a constant 404 that does not echo the host, so the endpoint cannot be used to enumerate orgs; a successful answer is cacheable for a minute.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceOrg() throws ApiException {
-        getV1CommerceOrgWithHttpInfo();
+    public void getCommerceOrg() throws ApiException {
+        getCommerceOrgWithHttpInfo();
     }
 
     /**
@@ -3001,8 +3001,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceOrgWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceOrgValidateBeforeCall(null);
+    public ApiResponse<Void> getCommerceOrgWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceOrgValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3013,19 +3013,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceOrgAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceOrgAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceOrgValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommerceOrgValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceProduct
+     * Build call for getCommerceProduct
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceProductCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceProductCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3069,8 +3069,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceProductValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommerceProductCall(_callback);
+    private okhttp3.Call getCommerceProductValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceProductCall(_callback);
 
     }
 
@@ -3079,8 +3079,8 @@ public class CommerceApi {
      * A product is a sellable catalog item: slug, SKU and UPC, name and copy, media, availability and preorder flags, a reservation block, and its money — currency, price, MSRP, list price and inventory cost in minor units, inventory count, taxability, and the subscription interval when it is subscribeable. Its variants and options are carried as a denormalized JSON snapshot inside the product, separate from the standalone variant rows, and nothing keeps the two in step for you. Answers a pagination envelope — the page and display echoed back, the rows under models, a total count and a facets array — read from the caller org&#39;s own namespaced store, so one tenant can never list another&#39;s. Sorting defaults to the slug and is overridable with sort. display is the page size and page applies only alongside it; either one that is not a positive integer is refused with 500 rather than silently ignored, and the limit query overrides the reported COUNT only, never the rows returned. No search backend is wired, so the datastore is the one and only list path and facets is always empty. A request resolving no org namespace is served an EMPTY page rather than an unscoped scan: the namespace IS the tenant filter, so without one there is nothing safe to return. Any valid access token reaches it. The org must also be entitled to the commerce admin: the paywall answers 402 subscription_required unless the org holds an active or trialing pro subscription, a live trial credit or a redeemed invite, and 503 when that entitlement cannot be read rather than admitting on an unknown. The internal service token and a platform superadmin pass straight through. The token must also carry Admin or the Product list scope.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceProduct() throws ApiException {
-        getV1CommerceProductWithHttpInfo();
+    public void getCommerceProduct() throws ApiException {
+        getCommerceProductWithHttpInfo();
     }
 
     /**
@@ -3089,8 +3089,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceProductWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceProductValidateBeforeCall(null);
+    public ApiResponse<Void> getCommerceProductWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceProductValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3101,20 +3101,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceProductAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceProductAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceProductValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommerceProductValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceProductByProductid
+     * Build call for getCommerceProductByProductid
      * @param productid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceProductByProductidCall(@javax.annotation.Nonnull String productid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceProductByProductidCall(@javax.annotation.Nonnull String productid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3159,13 +3159,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceProductByProductidValidateBeforeCall(@javax.annotation.Nonnull String productid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCommerceProductByProductidValidateBeforeCall(@javax.annotation.Nonnull String productid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'productid' is set
         if (productid == null) {
-            throw new ApiException("Missing the required parameter 'productid' when calling getV1CommerceProductByProductid(Async)");
+            throw new ApiException("Missing the required parameter 'productid' when calling getCommerceProductByProductid(Async)");
         }
 
-        return getV1CommerceProductByProductidCall(productid, _callback);
+        return getCommerceProductByProductidCall(productid, _callback);
 
     }
 
@@ -3175,8 +3175,8 @@ public class CommerceApi {
      * @param productid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceProductByProductid(@javax.annotation.Nonnull String productid) throws ApiException {
-        getV1CommerceProductByProductidWithHttpInfo(productid);
+    public void getCommerceProductByProductid(@javax.annotation.Nonnull String productid) throws ApiException {
+        getCommerceProductByProductidWithHttpInfo(productid);
     }
 
     /**
@@ -3186,8 +3186,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceProductByProductidWithHttpInfo(@javax.annotation.Nonnull String productid) throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceProductByProductidValidateBeforeCall(productid, null);
+    public ApiResponse<Void> getCommerceProductByProductidWithHttpInfo(@javax.annotation.Nonnull String productid) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceProductByProductidValidateBeforeCall(productid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3199,19 +3199,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceProductByProductidAsync(@javax.annotation.Nonnull String productid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceProductByProductidAsync(@javax.annotation.Nonnull String productid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceProductByProductidValidateBeforeCall(productid, _callback);
+        okhttp3.Call localVarCall = getCommerceProductByProductidValidateBeforeCall(productid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceReturn
+     * Build call for getCommerceReturn
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceReturnCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceReturnCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3255,8 +3255,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceReturnValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommerceReturnCall(_callback);
+    private okhttp3.Call getCommerceReturnValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceReturnCall(_callback);
 
     }
 
@@ -3265,8 +3265,8 @@ public class CommerceApi {
      * A return is an RMA — the store, user and order it belongs to, the line items coming back, a fulfillment block carrying its own type, status and pricing, a summary, and eight lifecycle timestamps from submitted through delivered and processed. Its status is a FREE STRING with no enumeration behind it, and there is no refund amount on the return itself: the money sits inside the line items and the fulfillment pricing. Answers a pagination envelope — the page and display echoed back, the rows under models, a total count and a facets array — read from the caller org&#39;s own namespaced store, so one tenant can never list another&#39;s. Sorting defaults to the last-updated time and is overridable with sort. display is the page size and page applies only alongside it; either one that is not a positive integer is refused with 500 rather than silently ignored, and the limit query overrides the reported COUNT only, never the rows returned. No search backend is wired, so the datastore is the one and only list path and facets is always empty. A request resolving no org namespace is served an EMPTY page rather than an unscoped scan: the namespace IS the tenant filter, so without one there is nothing safe to return. Any valid access token reaches it. The token must also carry Admin or the Return list scope.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceReturn() throws ApiException {
-        getV1CommerceReturnWithHttpInfo();
+    public void getCommerceReturn() throws ApiException {
+        getCommerceReturnWithHttpInfo();
     }
 
     /**
@@ -3275,8 +3275,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceReturnWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceReturnValidateBeforeCall(null);
+    public ApiResponse<Void> getCommerceReturnWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceReturnValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3287,20 +3287,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceReturnAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceReturnAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceReturnValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommerceReturnValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceReturnByReturnid
+     * Build call for getCommerceReturnByReturnid
      * @param returnid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceReturnByReturnidCall(@javax.annotation.Nonnull String returnid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceReturnByReturnidCall(@javax.annotation.Nonnull String returnid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3345,13 +3345,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceReturnByReturnidValidateBeforeCall(@javax.annotation.Nonnull String returnid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCommerceReturnByReturnidValidateBeforeCall(@javax.annotation.Nonnull String returnid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'returnid' is set
         if (returnid == null) {
-            throw new ApiException("Missing the required parameter 'returnid' when calling getV1CommerceReturnByReturnid(Async)");
+            throw new ApiException("Missing the required parameter 'returnid' when calling getCommerceReturnByReturnid(Async)");
         }
 
-        return getV1CommerceReturnByReturnidCall(returnid, _callback);
+        return getCommerceReturnByReturnidCall(returnid, _callback);
 
     }
 
@@ -3361,8 +3361,8 @@ public class CommerceApi {
      * @param returnid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceReturnByReturnid(@javax.annotation.Nonnull String returnid) throws ApiException {
-        getV1CommerceReturnByReturnidWithHttpInfo(returnid);
+    public void getCommerceReturnByReturnid(@javax.annotation.Nonnull String returnid) throws ApiException {
+        getCommerceReturnByReturnidWithHttpInfo(returnid);
     }
 
     /**
@@ -3372,8 +3372,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceReturnByReturnidWithHttpInfo(@javax.annotation.Nonnull String returnid) throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceReturnByReturnidValidateBeforeCall(returnid, null);
+    public ApiResponse<Void> getCommerceReturnByReturnidWithHttpInfo(@javax.annotation.Nonnull String returnid) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceReturnByReturnidValidateBeforeCall(returnid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3385,19 +3385,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceReturnByReturnidAsync(@javax.annotation.Nonnull String returnid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceReturnByReturnidAsync(@javax.annotation.Nonnull String returnid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceReturnByReturnidValidateBeforeCall(returnid, _callback);
+        okhttp3.Call localVarCall = getCommerceReturnByReturnidValidateBeforeCall(returnid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceSaleschannel
+     * Build call for getCommerceSaleschannel
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceSaleschannelCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceSaleschannelCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3441,8 +3441,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceSaleschannelValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommerceSaleschannelCall(_callback);
+    private okhttp3.Call getCommerceSaleschannelValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceSaleschannelCall(_callback);
 
     }
 
@@ -3451,8 +3451,8 @@ public class CommerceApi {
      * A sales channel is a named selling surface — a name, a description, a disabled flag and metadata. The flag is NEGATIVE, so a channel created from an empty body is enabled. Nothing on this row links products, prices or stock to the channel; here it is a label other surfaces scope themselves by. Answers a pagination envelope — the page and display echoed back, the rows under models, a total count and a facets array — read from the caller org&#39;s own namespaced store, so one tenant can never list another&#39;s. Sorting defaults to the last-updated time and is overridable with sort. display is the page size and page applies only alongside it; either one that is not a positive integer is refused with 500 rather than silently ignored, and the limit query overrides the reported COUNT only, never the rows returned. No search backend is wired, so the datastore is the one and only list path and facets is always empty. A request resolving no org namespace is served an EMPTY page rather than an unscoped scan: the namespace IS the tenant filter, so without one there is nothing safe to return. Any valid access token reaches it. The org must also be entitled to the commerce admin: the paywall answers 402 subscription_required unless the org holds an active or trialing pro subscription, a live trial credit or a redeemed invite, and 503 when that entitlement cannot be read rather than admitting on an unknown. The internal service token and a platform superadmin pass straight through. The per-kind permission table has no entry for saleschannel, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceSaleschannel() throws ApiException {
-        getV1CommerceSaleschannelWithHttpInfo();
+    public void getCommerceSaleschannel() throws ApiException {
+        getCommerceSaleschannelWithHttpInfo();
     }
 
     /**
@@ -3461,8 +3461,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceSaleschannelWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceSaleschannelValidateBeforeCall(null);
+    public ApiResponse<Void> getCommerceSaleschannelWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceSaleschannelValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3473,20 +3473,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceSaleschannelAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceSaleschannelAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceSaleschannelValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommerceSaleschannelValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceSaleschannelBySaleschannelid
+     * Build call for getCommerceSaleschannelBySaleschannelid
      * @param saleschannelid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceSaleschannelBySaleschannelidCall(@javax.annotation.Nonnull String saleschannelid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceSaleschannelBySaleschannelidCall(@javax.annotation.Nonnull String saleschannelid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3531,13 +3531,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceSaleschannelBySaleschannelidValidateBeforeCall(@javax.annotation.Nonnull String saleschannelid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCommerceSaleschannelBySaleschannelidValidateBeforeCall(@javax.annotation.Nonnull String saleschannelid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'saleschannelid' is set
         if (saleschannelid == null) {
-            throw new ApiException("Missing the required parameter 'saleschannelid' when calling getV1CommerceSaleschannelBySaleschannelid(Async)");
+            throw new ApiException("Missing the required parameter 'saleschannelid' when calling getCommerceSaleschannelBySaleschannelid(Async)");
         }
 
-        return getV1CommerceSaleschannelBySaleschannelidCall(saleschannelid, _callback);
+        return getCommerceSaleschannelBySaleschannelidCall(saleschannelid, _callback);
 
     }
 
@@ -3547,8 +3547,8 @@ public class CommerceApi {
      * @param saleschannelid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceSaleschannelBySaleschannelid(@javax.annotation.Nonnull String saleschannelid) throws ApiException {
-        getV1CommerceSaleschannelBySaleschannelidWithHttpInfo(saleschannelid);
+    public void getCommerceSaleschannelBySaleschannelid(@javax.annotation.Nonnull String saleschannelid) throws ApiException {
+        getCommerceSaleschannelBySaleschannelidWithHttpInfo(saleschannelid);
     }
 
     /**
@@ -3558,8 +3558,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceSaleschannelBySaleschannelidWithHttpInfo(@javax.annotation.Nonnull String saleschannelid) throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceSaleschannelBySaleschannelidValidateBeforeCall(saleschannelid, null);
+    public ApiResponse<Void> getCommerceSaleschannelBySaleschannelidWithHttpInfo(@javax.annotation.Nonnull String saleschannelid) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceSaleschannelBySaleschannelidValidateBeforeCall(saleschannelid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3571,19 +3571,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceSaleschannelBySaleschannelidAsync(@javax.annotation.Nonnull String saleschannelid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceSaleschannelBySaleschannelidAsync(@javax.annotation.Nonnull String saleschannelid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceSaleschannelBySaleschannelidValidateBeforeCall(saleschannelid, _callback);
+        okhttp3.Call localVarCall = getCommerceSaleschannelBySaleschannelidValidateBeforeCall(saleschannelid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceStocklocation
+     * Build call for getCommerceStocklocation
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceStocklocationCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceStocklocationCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3627,8 +3627,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceStocklocationValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommerceStocklocationCall(_callback);
+    private okhttp3.Call getCommerceStocklocationValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceStocklocationCall(_callback);
 
     }
 
@@ -3637,8 +3637,8 @@ public class CommerceApi {
      * A stock location is a physical address inventory can be held at — a name, street lines, city, province, country, postal code and a phone. None of it is validated, there are no coordinates, and the row carries no enabled flag and no inventory link, so deleting it is the only way to retire one. Answers a pagination envelope — the page and display echoed back, the rows under models, a total count and a facets array — read from the caller org&#39;s own namespaced store, so one tenant can never list another&#39;s. Sorting defaults to the last-updated time and is overridable with sort. display is the page size and page applies only alongside it; either one that is not a positive integer is refused with 500 rather than silently ignored, and the limit query overrides the reported COUNT only, never the rows returned. No search backend is wired, so the datastore is the one and only list path and facets is always empty. A request resolving no org namespace is served an EMPTY page rather than an unscoped scan: the namespace IS the tenant filter, so without one there is nothing safe to return. Any valid access token reaches it. The org must also be entitled to the commerce admin: the paywall answers 402 subscription_required unless the org holds an active or trialing pro subscription, a live trial credit or a redeemed invite, and 503 when that entitlement cannot be read rather than admitting on an unknown. The internal service token and a platform superadmin pass straight through. The per-kind permission table has no entry for stocklocation, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceStocklocation() throws ApiException {
-        getV1CommerceStocklocationWithHttpInfo();
+    public void getCommerceStocklocation() throws ApiException {
+        getCommerceStocklocationWithHttpInfo();
     }
 
     /**
@@ -3647,8 +3647,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceStocklocationWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceStocklocationValidateBeforeCall(null);
+    public ApiResponse<Void> getCommerceStocklocationWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceStocklocationValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3659,20 +3659,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceStocklocationAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceStocklocationAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceStocklocationValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommerceStocklocationValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceStocklocationByStocklocationid
+     * Build call for getCommerceStocklocationByStocklocationid
      * @param stocklocationid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceStocklocationByStocklocationidCall(@javax.annotation.Nonnull String stocklocationid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceStocklocationByStocklocationidCall(@javax.annotation.Nonnull String stocklocationid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3717,13 +3717,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceStocklocationByStocklocationidValidateBeforeCall(@javax.annotation.Nonnull String stocklocationid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCommerceStocklocationByStocklocationidValidateBeforeCall(@javax.annotation.Nonnull String stocklocationid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'stocklocationid' is set
         if (stocklocationid == null) {
-            throw new ApiException("Missing the required parameter 'stocklocationid' when calling getV1CommerceStocklocationByStocklocationid(Async)");
+            throw new ApiException("Missing the required parameter 'stocklocationid' when calling getCommerceStocklocationByStocklocationid(Async)");
         }
 
-        return getV1CommerceStocklocationByStocklocationidCall(stocklocationid, _callback);
+        return getCommerceStocklocationByStocklocationidCall(stocklocationid, _callback);
 
     }
 
@@ -3733,8 +3733,8 @@ public class CommerceApi {
      * @param stocklocationid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceStocklocationByStocklocationid(@javax.annotation.Nonnull String stocklocationid) throws ApiException {
-        getV1CommerceStocklocationByStocklocationidWithHttpInfo(stocklocationid);
+    public void getCommerceStocklocationByStocklocationid(@javax.annotation.Nonnull String stocklocationid) throws ApiException {
+        getCommerceStocklocationByStocklocationidWithHttpInfo(stocklocationid);
     }
 
     /**
@@ -3744,8 +3744,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceStocklocationByStocklocationidWithHttpInfo(@javax.annotation.Nonnull String stocklocationid) throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, null);
+    public ApiResponse<Void> getCommerceStocklocationByStocklocationidWithHttpInfo(@javax.annotation.Nonnull String stocklocationid) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3757,19 +3757,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceStocklocationByStocklocationidAsync(@javax.annotation.Nonnull String stocklocationid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceStocklocationByStocklocationidAsync(@javax.annotation.Nonnull String stocklocationid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, _callback);
+        okhttp3.Call localVarCall = getCommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceSubmission
+     * Build call for getCommerceSubmission
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceSubmissionCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceSubmissionCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3813,8 +3813,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceSubmissionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommerceSubmissionCall(_callback);
+    private okhttp3.Call getCommerceSubmissionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceSubmissionCall(_callback);
 
     }
 
@@ -3823,8 +3823,8 @@ public class CommerceApi {
      * A submission is one filled-in form from a site visitor — an email, an optional user id, the client details the server observed (user agent, referer, geography) and the form&#39;s own fields as free metadata. It carries no form id, so the link back to the form that produced it is not stored on the row. Answers a pagination envelope — the page and display echoed back, the rows under models, a total count and a facets array — read from the caller org&#39;s own namespaced store, so one tenant can never list another&#39;s. Sorting defaults to the last-updated time and is overridable with sort. display is the page size and page applies only alongside it; either one that is not a positive integer is refused with 500 rather than silently ignored, and the limit query overrides the reported COUNT only, never the rows returned. No search backend is wired, so the datastore is the one and only list path and facets is always empty. A request resolving no org namespace is served an EMPTY page rather than an unscoped scan: the namespace IS the tenant filter, so without one there is nothing safe to return. Any valid access token reaches it. The per-kind permission table has no entry for submission, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceSubmission() throws ApiException {
-        getV1CommerceSubmissionWithHttpInfo();
+    public void getCommerceSubmission() throws ApiException {
+        getCommerceSubmissionWithHttpInfo();
     }
 
     /**
@@ -3833,8 +3833,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceSubmissionWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceSubmissionValidateBeforeCall(null);
+    public ApiResponse<Void> getCommerceSubmissionWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceSubmissionValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3845,20 +3845,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceSubmissionAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceSubmissionAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceSubmissionValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommerceSubmissionValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceSubmissionBySubmissionid
+     * Build call for getCommerceSubmissionBySubmissionid
      * @param submissionid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceSubmissionBySubmissionidCall(@javax.annotation.Nonnull String submissionid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceSubmissionBySubmissionidCall(@javax.annotation.Nonnull String submissionid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3903,13 +3903,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceSubmissionBySubmissionidValidateBeforeCall(@javax.annotation.Nonnull String submissionid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCommerceSubmissionBySubmissionidValidateBeforeCall(@javax.annotation.Nonnull String submissionid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'submissionid' is set
         if (submissionid == null) {
-            throw new ApiException("Missing the required parameter 'submissionid' when calling getV1CommerceSubmissionBySubmissionid(Async)");
+            throw new ApiException("Missing the required parameter 'submissionid' when calling getCommerceSubmissionBySubmissionid(Async)");
         }
 
-        return getV1CommerceSubmissionBySubmissionidCall(submissionid, _callback);
+        return getCommerceSubmissionBySubmissionidCall(submissionid, _callback);
 
     }
 
@@ -3919,8 +3919,8 @@ public class CommerceApi {
      * @param submissionid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceSubmissionBySubmissionid(@javax.annotation.Nonnull String submissionid) throws ApiException {
-        getV1CommerceSubmissionBySubmissionidWithHttpInfo(submissionid);
+    public void getCommerceSubmissionBySubmissionid(@javax.annotation.Nonnull String submissionid) throws ApiException {
+        getCommerceSubmissionBySubmissionidWithHttpInfo(submissionid);
     }
 
     /**
@@ -3930,8 +3930,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceSubmissionBySubmissionidWithHttpInfo(@javax.annotation.Nonnull String submissionid) throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceSubmissionBySubmissionidValidateBeforeCall(submissionid, null);
+    public ApiResponse<Void> getCommerceSubmissionBySubmissionidWithHttpInfo(@javax.annotation.Nonnull String submissionid) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceSubmissionBySubmissionidValidateBeforeCall(submissionid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3943,19 +3943,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceSubmissionBySubmissionidAsync(@javax.annotation.Nonnull String submissionid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceSubmissionBySubmissionidAsync(@javax.annotation.Nonnull String submissionid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceSubmissionBySubmissionidValidateBeforeCall(submissionid, _callback);
+        okhttp3.Call localVarCall = getCommerceSubmissionBySubmissionidValidateBeforeCall(submissionid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceSubscriber
+     * Build call for getCommerceSubscriber
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceSubscriberCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceSubscriberCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3999,8 +3999,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceSubscriberValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommerceSubscriberCall(_callback);
+    private okhttp3.Call getCommerceSubscriberValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceSubscriberCall(_callback);
 
     }
 
@@ -4009,8 +4009,8 @@ public class CommerceApi {
      * A subscriber is a mailing-list member — name, email, the form id that captured them, unsubscribed state and date, client details, tags and metadata. Writing one FIRES A WEBHOOK: subscriber.created on create and subscriber.updated on replace or patch, emitted BEFORE the write is known to have succeeded and carrying the row as sent, so the payload holds the raw email rather than the normalized one that gets stored. Answers a pagination envelope — the page and display echoed back, the rows under models, a total count and a facets array — read from the caller org&#39;s own namespaced store, so one tenant can never list another&#39;s. Sorting defaults to the last-updated time and is overridable with sort. display is the page size and page applies only alongside it; either one that is not a positive integer is refused with 500 rather than silently ignored, and the limit query overrides the reported COUNT only, never the rows returned. No search backend is wired, so the datastore is the one and only list path and facets is always empty. A request resolving no org namespace is served an EMPTY page rather than an unscoped scan: the namespace IS the tenant filter, so without one there is nothing safe to return. Any valid access token reaches it. The token must also carry Admin or the Subscriber list scope.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceSubscriber() throws ApiException {
-        getV1CommerceSubscriberWithHttpInfo();
+    public void getCommerceSubscriber() throws ApiException {
+        getCommerceSubscriberWithHttpInfo();
     }
 
     /**
@@ -4019,8 +4019,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceSubscriberWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceSubscriberValidateBeforeCall(null);
+    public ApiResponse<Void> getCommerceSubscriberWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceSubscriberValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -4031,20 +4031,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceSubscriberAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceSubscriberAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceSubscriberValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommerceSubscriberValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceSubscriberBySubscriberid
+     * Build call for getCommerceSubscriberBySubscriberid
      * @param subscriberid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceSubscriberBySubscriberidCall(@javax.annotation.Nonnull String subscriberid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceSubscriberBySubscriberidCall(@javax.annotation.Nonnull String subscriberid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4089,13 +4089,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceSubscriberBySubscriberidValidateBeforeCall(@javax.annotation.Nonnull String subscriberid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCommerceSubscriberBySubscriberidValidateBeforeCall(@javax.annotation.Nonnull String subscriberid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'subscriberid' is set
         if (subscriberid == null) {
-            throw new ApiException("Missing the required parameter 'subscriberid' when calling getV1CommerceSubscriberBySubscriberid(Async)");
+            throw new ApiException("Missing the required parameter 'subscriberid' when calling getCommerceSubscriberBySubscriberid(Async)");
         }
 
-        return getV1CommerceSubscriberBySubscriberidCall(subscriberid, _callback);
+        return getCommerceSubscriberBySubscriberidCall(subscriberid, _callback);
 
     }
 
@@ -4105,8 +4105,8 @@ public class CommerceApi {
      * @param subscriberid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceSubscriberBySubscriberid(@javax.annotation.Nonnull String subscriberid) throws ApiException {
-        getV1CommerceSubscriberBySubscriberidWithHttpInfo(subscriberid);
+    public void getCommerceSubscriberBySubscriberid(@javax.annotation.Nonnull String subscriberid) throws ApiException {
+        getCommerceSubscriberBySubscriberidWithHttpInfo(subscriberid);
     }
 
     /**
@@ -4116,8 +4116,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceSubscriberBySubscriberidWithHttpInfo(@javax.annotation.Nonnull String subscriberid) throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceSubscriberBySubscriberidValidateBeforeCall(subscriberid, null);
+    public ApiResponse<Void> getCommerceSubscriberBySubscriberidWithHttpInfo(@javax.annotation.Nonnull String subscriberid) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceSubscriberBySubscriberidValidateBeforeCall(subscriberid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -4129,19 +4129,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceSubscriberBySubscriberidAsync(@javax.annotation.Nonnull String subscriberid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceSubscriberBySubscriberidAsync(@javax.annotation.Nonnull String subscriberid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceSubscriberBySubscriberidValidateBeforeCall(subscriberid, _callback);
+        okhttp3.Call localVarCall = getCommerceSubscriberBySubscriberidValidateBeforeCall(subscriberid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceTokentransaction
+     * Build call for getCommerceTokentransaction
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceTokentransactionCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceTokentransactionCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4185,8 +4185,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceTokentransactionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommerceTokentransactionCall(_callback);
+    private okhttp3.Call getCommerceTokentransactionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceTokentransactionCall(_callback);
 
     }
 
@@ -4195,8 +4195,8 @@ public class CommerceApi {
      * A token transaction records a transfer between two identified parties — amount and fees, a timestamp, sending and receiving addresses, names, user ids, states and countries, a flag per side, a protocol name and a transaction hash. Nothing here touches a chain: the hash is an unvalidated string and the flags are plain writable booleans with no screening behind them. Amounts are floating-point rather than the exact minor units every real money field in commerce uses, and there is no currency field at all — this kind lives in commerce&#39;s demo tree, so it is a live writable resource in your tenant&#39;s store that nothing else in commerce reads, and it must never carry real money. Answers a pagination envelope — the page and display echoed back, the rows under models, a total count and a facets array — read from the caller org&#39;s own namespaced store, so one tenant can never list another&#39;s. Sorting defaults to the last-updated time and is overridable with sort. display is the page size and page applies only alongside it; either one that is not a positive integer is refused with 500 rather than silently ignored, and the limit query overrides the reported COUNT only, never the rows returned. No search backend is wired, so the datastore is the one and only list path and facets is always empty. A request resolving no org namespace is served an EMPTY page rather than an unscoped scan: the namespace IS the tenant filter, so without one there is nothing safe to return. Any valid access token reaches it. The per-kind permission table has no entry for tokentransaction, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceTokentransaction() throws ApiException {
-        getV1CommerceTokentransactionWithHttpInfo();
+    public void getCommerceTokentransaction() throws ApiException {
+        getCommerceTokentransactionWithHttpInfo();
     }
 
     /**
@@ -4205,8 +4205,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceTokentransactionWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceTokentransactionValidateBeforeCall(null);
+    public ApiResponse<Void> getCommerceTokentransactionWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceTokentransactionValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -4217,20 +4217,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceTokentransactionAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceTokentransactionAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceTokentransactionValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommerceTokentransactionValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceTokentransactionByTokentransactionid
+     * Build call for getCommerceTokentransactionByTokentransactionid
      * @param tokentransactionid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceTokentransactionByTokentransactionidCall(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceTokentransactionByTokentransactionidCall(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4275,13 +4275,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceTokentransactionByTokentransactionidValidateBeforeCall(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCommerceTokentransactionByTokentransactionidValidateBeforeCall(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'tokentransactionid' is set
         if (tokentransactionid == null) {
-            throw new ApiException("Missing the required parameter 'tokentransactionid' when calling getV1CommerceTokentransactionByTokentransactionid(Async)");
+            throw new ApiException("Missing the required parameter 'tokentransactionid' when calling getCommerceTokentransactionByTokentransactionid(Async)");
         }
 
-        return getV1CommerceTokentransactionByTokentransactionidCall(tokentransactionid, _callback);
+        return getCommerceTokentransactionByTokentransactionidCall(tokentransactionid, _callback);
 
     }
 
@@ -4291,8 +4291,8 @@ public class CommerceApi {
      * @param tokentransactionid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceTokentransactionByTokentransactionid(@javax.annotation.Nonnull String tokentransactionid) throws ApiException {
-        getV1CommerceTokentransactionByTokentransactionidWithHttpInfo(tokentransactionid);
+    public void getCommerceTokentransactionByTokentransactionid(@javax.annotation.Nonnull String tokentransactionid) throws ApiException {
+        getCommerceTokentransactionByTokentransactionidWithHttpInfo(tokentransactionid);
     }
 
     /**
@@ -4302,8 +4302,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceTokentransactionByTokentransactionidWithHttpInfo(@javax.annotation.Nonnull String tokentransactionid) throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceTokentransactionByTokentransactionidValidateBeforeCall(tokentransactionid, null);
+    public ApiResponse<Void> getCommerceTokentransactionByTokentransactionidWithHttpInfo(@javax.annotation.Nonnull String tokentransactionid) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceTokentransactionByTokentransactionidValidateBeforeCall(tokentransactionid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -4315,19 +4315,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceTokentransactionByTokentransactionidAsync(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceTokentransactionByTokentransactionidAsync(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceTokentransactionByTokentransactionidValidateBeforeCall(tokentransactionid, _callback);
+        okhttp3.Call localVarCall = getCommerceTokentransactionByTokentransactionidValidateBeforeCall(tokentransactionid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceTransfer
+     * Build call for getCommerceTransfer
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceTransferCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceTransferCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4371,8 +4371,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceTransferValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommerceTransferCall(_callback);
+    private okhttp3.Call getCommerceTransferValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceTransferCall(_callback);
 
     }
 
@@ -4381,8 +4381,8 @@ public class CommerceApi {
      * A transfer records that a payable WAS PAID — the annotation a human writes after paying out of band. Commerce executes no payout: creating one moves no money, and it marks the referenced payable settled. It carries the payable and payee ids, the amount it settles and the amount actually sent (which may be a different asset), a type of eth, wire or other, the transaction hash or wire reference, when it was paid and who recorded it; amounts are exact decimal strings with an asset, not cents. It is admin-gated because writing one settles money we owe, and nothing enforces uniqueness on the reference — so posting the same transfer twice settles the payable twice. Answers a pagination envelope — the page and display echoed back, the rows under models, a total count and a facets array — read from the caller org&#39;s own namespaced store, so one tenant can never list another&#39;s. Sorting defaults to the last-updated time and is overridable with sort. display is the page size and page applies only alongside it; either one that is not a positive integer is refused with 500 rather than silently ignored, and the limit query overrides the reported COUNT only, never the rows returned. No search backend is wired, so the datastore is the one and only list path and facets is always empty. A request resolving no org namespace is served an EMPTY page rather than an unscoped scan: the namespace IS the tenant filter, so without one there is nothing safe to return. The token must carry the ADMIN permission; an ordinary access token is refused. The per-kind permission table has no entry for transfer, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceTransfer() throws ApiException {
-        getV1CommerceTransferWithHttpInfo();
+    public void getCommerceTransfer() throws ApiException {
+        getCommerceTransferWithHttpInfo();
     }
 
     /**
@@ -4391,8 +4391,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceTransferWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceTransferValidateBeforeCall(null);
+    public ApiResponse<Void> getCommerceTransferWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceTransferValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -4403,20 +4403,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceTransferAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceTransferAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceTransferValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommerceTransferValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceTransferByTransferid
+     * Build call for getCommerceTransferByTransferid
      * @param transferid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceTransferByTransferidCall(@javax.annotation.Nonnull String transferid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceTransferByTransferidCall(@javax.annotation.Nonnull String transferid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4461,13 +4461,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceTransferByTransferidValidateBeforeCall(@javax.annotation.Nonnull String transferid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCommerceTransferByTransferidValidateBeforeCall(@javax.annotation.Nonnull String transferid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'transferid' is set
         if (transferid == null) {
-            throw new ApiException("Missing the required parameter 'transferid' when calling getV1CommerceTransferByTransferid(Async)");
+            throw new ApiException("Missing the required parameter 'transferid' when calling getCommerceTransferByTransferid(Async)");
         }
 
-        return getV1CommerceTransferByTransferidCall(transferid, _callback);
+        return getCommerceTransferByTransferidCall(transferid, _callback);
 
     }
 
@@ -4477,8 +4477,8 @@ public class CommerceApi {
      * @param transferid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceTransferByTransferid(@javax.annotation.Nonnull String transferid) throws ApiException {
-        getV1CommerceTransferByTransferidWithHttpInfo(transferid);
+    public void getCommerceTransferByTransferid(@javax.annotation.Nonnull String transferid) throws ApiException {
+        getCommerceTransferByTransferidWithHttpInfo(transferid);
     }
 
     /**
@@ -4488,8 +4488,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceTransferByTransferidWithHttpInfo(@javax.annotation.Nonnull String transferid) throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceTransferByTransferidValidateBeforeCall(transferid, null);
+    public ApiResponse<Void> getCommerceTransferByTransferidWithHttpInfo(@javax.annotation.Nonnull String transferid) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceTransferByTransferidValidateBeforeCall(transferid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -4501,19 +4501,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceTransferByTransferidAsync(@javax.annotation.Nonnull String transferid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceTransferByTransferidAsync(@javax.annotation.Nonnull String transferid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceTransferByTransferidValidateBeforeCall(transferid, _callback);
+        okhttp3.Call localVarCall = getCommerceTransferByTransferidValidateBeforeCall(transferid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceVariant
+     * Build call for getCommerceVariant
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceVariantCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceVariantCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4557,8 +4557,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceVariantValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommerceVariantCall(_callback);
+    private okhttp3.Call getCommerceVariantValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceVariantCall(_callback);
 
     }
 
@@ -4567,8 +4567,8 @@ public class CommerceApi {
      * A variant is one purchasable SKU of a product — its product id, SKU and UPC, name, media, availability, the option name and value pairs that distinguish it, a sold counter, and its own money and stock: currency, price, MSRP, inventory cost, inventory count and taxability. Inventory and sold are plain writable numbers with no decrement logic behind them here. The same variant also exists as a JSON copy inside its product, and writing one does not update the other. Answers a pagination envelope — the page and display echoed back, the rows under models, a total count and a facets array — read from the caller org&#39;s own namespaced store, so one tenant can never list another&#39;s. Sorting defaults to the SKU and is overridable with sort. display is the page size and page applies only alongside it; either one that is not a positive integer is refused with 500 rather than silently ignored, and the limit query overrides the reported COUNT only, never the rows returned. No search backend is wired, so the datastore is the one and only list path and facets is always empty. A request resolving no org namespace is served an EMPTY page rather than an unscoped scan: the namespace IS the tenant filter, so without one there is nothing safe to return. Any valid access token reaches it. The org must also be entitled to the commerce admin: the paywall answers 402 subscription_required unless the org holds an active or trialing pro subscription, a live trial credit or a redeemed invite, and 503 when that entitlement cannot be read rather than admitting on an unknown. The internal service token and a platform superadmin pass straight through. The token must also carry Admin or the Variant list scope.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceVariant() throws ApiException {
-        getV1CommerceVariantWithHttpInfo();
+    public void getCommerceVariant() throws ApiException {
+        getCommerceVariantWithHttpInfo();
     }
 
     /**
@@ -4577,8 +4577,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceVariantWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceVariantValidateBeforeCall(null);
+    public ApiResponse<Void> getCommerceVariantWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceVariantValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -4589,20 +4589,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceVariantAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceVariantAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceVariantValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommerceVariantValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceVariantByVariantid
+     * Build call for getCommerceVariantByVariantid
      * @param variantid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceVariantByVariantidCall(@javax.annotation.Nonnull String variantid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceVariantByVariantidCall(@javax.annotation.Nonnull String variantid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4647,13 +4647,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceVariantByVariantidValidateBeforeCall(@javax.annotation.Nonnull String variantid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCommerceVariantByVariantidValidateBeforeCall(@javax.annotation.Nonnull String variantid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'variantid' is set
         if (variantid == null) {
-            throw new ApiException("Missing the required parameter 'variantid' when calling getV1CommerceVariantByVariantid(Async)");
+            throw new ApiException("Missing the required parameter 'variantid' when calling getCommerceVariantByVariantid(Async)");
         }
 
-        return getV1CommerceVariantByVariantidCall(variantid, _callback);
+        return getCommerceVariantByVariantidCall(variantid, _callback);
 
     }
 
@@ -4663,8 +4663,8 @@ public class CommerceApi {
      * @param variantid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceVariantByVariantid(@javax.annotation.Nonnull String variantid) throws ApiException {
-        getV1CommerceVariantByVariantidWithHttpInfo(variantid);
+    public void getCommerceVariantByVariantid(@javax.annotation.Nonnull String variantid) throws ApiException {
+        getCommerceVariantByVariantidWithHttpInfo(variantid);
     }
 
     /**
@@ -4674,8 +4674,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceVariantByVariantidWithHttpInfo(@javax.annotation.Nonnull String variantid) throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceVariantByVariantidValidateBeforeCall(variantid, null);
+    public ApiResponse<Void> getCommerceVariantByVariantidWithHttpInfo(@javax.annotation.Nonnull String variantid) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceVariantByVariantidValidateBeforeCall(variantid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -4687,19 +4687,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceVariantByVariantidAsync(@javax.annotation.Nonnull String variantid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceVariantByVariantidAsync(@javax.annotation.Nonnull String variantid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceVariantByVariantidValidateBeforeCall(variantid, _callback);
+        okhttp3.Call localVarCall = getCommerceVariantByVariantidValidateBeforeCall(variantid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceWallet
+     * Build call for getCommerceWallet
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceWalletCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceWalletCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4743,8 +4743,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceWalletValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommerceWalletCall(_callback);
+    private okhttp3.Call getCommerceWalletValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceWalletCall(_callback);
 
     }
 
@@ -4753,8 +4753,8 @@ public class CommerceApi {
      * A wallet is a container of custodial blockchain accounts, and its only field is that account list — each account carrying a name, an address, a chain type, and the ENCRYPTED private key with its salt. Creating a wallet through this table generates NO KEYS: key generation lives on the account routes, so a wallet made here is an empty shell and an account posted into one is stored exactly as sent, with no key generation and no validation behind it. Know what a read renders: the plaintext private key is never marshalled and never stored, but the encrypted blob and its salt ARE returned, so whoever can read a wallet can attack it offline down to the strength of the owner&#39;s passphrase. That is why this kind is admin-gated. Answers a pagination envelope — the page and display echoed back, the rows under models, a total count and a facets array — read from the caller org&#39;s own namespaced store, so one tenant can never list another&#39;s. Sorting defaults to the last-updated time and is overridable with sort. display is the page size and page applies only alongside it; either one that is not a positive integer is refused with 500 rather than silently ignored, and the limit query overrides the reported COUNT only, never the rows returned. No search backend is wired, so the datastore is the one and only list path and facets is always empty. A request resolving no org namespace is served an EMPTY page rather than an unscoped scan: the namespace IS the tenant filter, so without one there is nothing safe to return. The token must carry the ADMIN permission; an ordinary access token is refused. The per-kind permission table has no entry for wallet, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceWallet() throws ApiException {
-        getV1CommerceWalletWithHttpInfo();
+    public void getCommerceWallet() throws ApiException {
+        getCommerceWalletWithHttpInfo();
     }
 
     /**
@@ -4763,8 +4763,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceWalletWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceWalletValidateBeforeCall(null);
+    public ApiResponse<Void> getCommerceWalletWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceWalletValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -4775,20 +4775,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceWalletAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceWalletAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceWalletValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommerceWalletValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceWalletByWalletid
+     * Build call for getCommerceWalletByWalletid
      * @param walletid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceWalletByWalletidCall(@javax.annotation.Nonnull String walletid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceWalletByWalletidCall(@javax.annotation.Nonnull String walletid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4833,13 +4833,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceWalletByWalletidValidateBeforeCall(@javax.annotation.Nonnull String walletid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCommerceWalletByWalletidValidateBeforeCall(@javax.annotation.Nonnull String walletid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'walletid' is set
         if (walletid == null) {
-            throw new ApiException("Missing the required parameter 'walletid' when calling getV1CommerceWalletByWalletid(Async)");
+            throw new ApiException("Missing the required parameter 'walletid' when calling getCommerceWalletByWalletid(Async)");
         }
 
-        return getV1CommerceWalletByWalletidCall(walletid, _callback);
+        return getCommerceWalletByWalletidCall(walletid, _callback);
 
     }
 
@@ -4849,8 +4849,8 @@ public class CommerceApi {
      * @param walletid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceWalletByWalletid(@javax.annotation.Nonnull String walletid) throws ApiException {
-        getV1CommerceWalletByWalletidWithHttpInfo(walletid);
+    public void getCommerceWalletByWalletid(@javax.annotation.Nonnull String walletid) throws ApiException {
+        getCommerceWalletByWalletidWithHttpInfo(walletid);
     }
 
     /**
@@ -4860,8 +4860,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceWalletByWalletidWithHttpInfo(@javax.annotation.Nonnull String walletid) throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceWalletByWalletidValidateBeforeCall(walletid, null);
+    public ApiResponse<Void> getCommerceWalletByWalletidWithHttpInfo(@javax.annotation.Nonnull String walletid) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceWalletByWalletidValidateBeforeCall(walletid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -4873,19 +4873,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceWalletByWalletidAsync(@javax.annotation.Nonnull String walletid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceWalletByWalletidAsync(@javax.annotation.Nonnull String walletid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceWalletByWalletidValidateBeforeCall(walletid, _callback);
+        okhttp3.Call localVarCall = getCommerceWalletByWalletidValidateBeforeCall(walletid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceWatchlist
+     * Build call for getCommerceWatchlist
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceWatchlistCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceWatchlistCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4929,8 +4929,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceWatchlistValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommerceWatchlistCall(_callback);
+    private okhttp3.Call getCommerceWatchlistValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceWatchlistCall(_callback);
 
     }
 
@@ -4939,8 +4939,8 @@ public class CommerceApi {
      * A watchlist is a viewer&#39;s saved list of movies — a user id, an email, and the movies themselves. It stores WHOLE MOVIE SNAPSHOTS rather than movie ids, so a list goes stale the moment a film record changes and grows without bound as it fills. Answers a pagination envelope — the page and display echoed back, the rows under models, a total count and a facets array — read from the caller org&#39;s own namespaced store, so one tenant can never list another&#39;s. Sorting defaults to the last-updated time and is overridable with sort. display is the page size and page applies only alongside it; either one that is not a positive integer is refused with 500 rather than silently ignored, and the limit query overrides the reported COUNT only, never the rows returned. No search backend is wired, so the datastore is the one and only list path and facets is always empty. A request resolving no org namespace is served an EMPTY page rather than an unscoped scan: the namespace IS the tenant filter, so without one there is nothing safe to return. Any valid access token reaches it. The per-kind permission table has no entry for watchlist, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceWatchlist() throws ApiException {
-        getV1CommerceWatchlistWithHttpInfo();
+    public void getCommerceWatchlist() throws ApiException {
+        getCommerceWatchlistWithHttpInfo();
     }
 
     /**
@@ -4949,8 +4949,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceWatchlistWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceWatchlistValidateBeforeCall(null);
+    public ApiResponse<Void> getCommerceWatchlistWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceWatchlistValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -4961,20 +4961,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceWatchlistAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceWatchlistAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceWatchlistValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommerceWatchlistValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceWatchlistByWatchlistid
+     * Build call for getCommerceWatchlistByWatchlistid
      * @param watchlistid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceWatchlistByWatchlistidCall(@javax.annotation.Nonnull String watchlistid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceWatchlistByWatchlistidCall(@javax.annotation.Nonnull String watchlistid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5019,13 +5019,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceWatchlistByWatchlistidValidateBeforeCall(@javax.annotation.Nonnull String watchlistid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCommerceWatchlistByWatchlistidValidateBeforeCall(@javax.annotation.Nonnull String watchlistid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'watchlistid' is set
         if (watchlistid == null) {
-            throw new ApiException("Missing the required parameter 'watchlistid' when calling getV1CommerceWatchlistByWatchlistid(Async)");
+            throw new ApiException("Missing the required parameter 'watchlistid' when calling getCommerceWatchlistByWatchlistid(Async)");
         }
 
-        return getV1CommerceWatchlistByWatchlistidCall(watchlistid, _callback);
+        return getCommerceWatchlistByWatchlistidCall(watchlistid, _callback);
 
     }
 
@@ -5035,8 +5035,8 @@ public class CommerceApi {
      * @param watchlistid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceWatchlistByWatchlistid(@javax.annotation.Nonnull String watchlistid) throws ApiException {
-        getV1CommerceWatchlistByWatchlistidWithHttpInfo(watchlistid);
+    public void getCommerceWatchlistByWatchlistid(@javax.annotation.Nonnull String watchlistid) throws ApiException {
+        getCommerceWatchlistByWatchlistidWithHttpInfo(watchlistid);
     }
 
     /**
@@ -5046,8 +5046,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceWatchlistByWatchlistidWithHttpInfo(@javax.annotation.Nonnull String watchlistid) throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceWatchlistByWatchlistidValidateBeforeCall(watchlistid, null);
+    public ApiResponse<Void> getCommerceWatchlistByWatchlistidWithHttpInfo(@javax.annotation.Nonnull String watchlistid) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceWatchlistByWatchlistidValidateBeforeCall(watchlistid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -5059,19 +5059,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceWatchlistByWatchlistidAsync(@javax.annotation.Nonnull String watchlistid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceWatchlistByWatchlistidAsync(@javax.annotation.Nonnull String watchlistid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceWatchlistByWatchlistidValidateBeforeCall(watchlistid, _callback);
+        okhttp3.Call localVarCall = getCommerceWatchlistByWatchlistidValidateBeforeCall(watchlistid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceWebhook
+     * Build call for getCommerceWebhook
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceWebhookCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceWebhookCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5115,8 +5115,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceWebhookValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CommerceWebhookCall(_callback);
+    private okhttp3.Call getCommerceWebhookValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceWebhookCall(_callback);
 
     }
 
@@ -5125,8 +5125,8 @@ public class CommerceApi {
      * A webhook is a merchant-registered endpoint that receives commerce event callbacks — a name, a URL, live and all flags, a per-event map, an enabled flag, and the shared access token each delivery posts IN THE BODY. Two things to know before registering one: that token is a plainly readable field, so anyone who may read webhooks reads every endpoint&#39;s secret, and delivery consults only the all flag and the event map — it does NOT consult enabled or live, so setting enabled false does not stop delivery and deleting the row is the only thing that does. Delivery is a single POST with a twenty-second timeout and no retry. Answers a pagination envelope — the page and display echoed back, the rows under models, a total count and a facets array — read from the caller org&#39;s own namespaced store, so one tenant can never list another&#39;s. Sorting defaults to the last-updated time and is overridable with sort. display is the page size and page applies only alongside it; either one that is not a positive integer is refused with 500 rather than silently ignored, and the limit query overrides the reported COUNT only, never the rows returned. No search backend is wired, so the datastore is the one and only list path and facets is always empty. A request resolving no org namespace is served an EMPTY page rather than an unscoped scan: the namespace IS the tenant filter, so without one there is nothing safe to return. The token must carry the ADMIN permission; an ordinary access token is refused. The per-kind permission table has no entry for webhook, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceWebhook() throws ApiException {
-        getV1CommerceWebhookWithHttpInfo();
+    public void getCommerceWebhook() throws ApiException {
+        getCommerceWebhookWithHttpInfo();
     }
 
     /**
@@ -5135,8 +5135,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceWebhookWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceWebhookValidateBeforeCall(null);
+    public ApiResponse<Void> getCommerceWebhookWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceWebhookValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -5147,20 +5147,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceWebhookAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceWebhookAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceWebhookValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCommerceWebhookValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CommerceWebhookByWebhookid
+     * Build call for getCommerceWebhookByWebhookid
      * @param webhookid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CommerceWebhookByWebhookidCall(@javax.annotation.Nonnull String webhookid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCommerceWebhookByWebhookidCall(@javax.annotation.Nonnull String webhookid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5205,13 +5205,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CommerceWebhookByWebhookidValidateBeforeCall(@javax.annotation.Nonnull String webhookid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCommerceWebhookByWebhookidValidateBeforeCall(@javax.annotation.Nonnull String webhookid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'webhookid' is set
         if (webhookid == null) {
-            throw new ApiException("Missing the required parameter 'webhookid' when calling getV1CommerceWebhookByWebhookid(Async)");
+            throw new ApiException("Missing the required parameter 'webhookid' when calling getCommerceWebhookByWebhookid(Async)");
         }
 
-        return getV1CommerceWebhookByWebhookidCall(webhookid, _callback);
+        return getCommerceWebhookByWebhookidCall(webhookid, _callback);
 
     }
 
@@ -5221,8 +5221,8 @@ public class CommerceApi {
      * @param webhookid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CommerceWebhookByWebhookid(@javax.annotation.Nonnull String webhookid) throws ApiException {
-        getV1CommerceWebhookByWebhookidWithHttpInfo(webhookid);
+    public void getCommerceWebhookByWebhookid(@javax.annotation.Nonnull String webhookid) throws ApiException {
+        getCommerceWebhookByWebhookidWithHttpInfo(webhookid);
     }
 
     /**
@@ -5232,8 +5232,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CommerceWebhookByWebhookidWithHttpInfo(@javax.annotation.Nonnull String webhookid) throws ApiException {
-        okhttp3.Call localVarCall = getV1CommerceWebhookByWebhookidValidateBeforeCall(webhookid, null);
+    public ApiResponse<Void> getCommerceWebhookByWebhookidWithHttpInfo(@javax.annotation.Nonnull String webhookid) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceWebhookByWebhookidValidateBeforeCall(webhookid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -5245,20 +5245,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CommerceWebhookByWebhookidAsync(@javax.annotation.Nonnull String webhookid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCommerceWebhookByWebhookidAsync(@javax.annotation.Nonnull String webhookid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CommerceWebhookByWebhookidValidateBeforeCall(webhookid, _callback);
+        okhttp3.Call localVarCall = getCommerceWebhookByWebhookidValidateBeforeCall(webhookid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1CommerceCollectionByCollectionid
+     * Build call for patchCommerceCollectionByCollectionid
      * @param collectionid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1CommerceCollectionByCollectionidCall(@javax.annotation.Nonnull String collectionid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCommerceCollectionByCollectionidCall(@javax.annotation.Nonnull String collectionid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5303,13 +5303,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1CommerceCollectionByCollectionidValidateBeforeCall(@javax.annotation.Nonnull String collectionid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCommerceCollectionByCollectionidValidateBeforeCall(@javax.annotation.Nonnull String collectionid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'collectionid' is set
         if (collectionid == null) {
-            throw new ApiException("Missing the required parameter 'collectionid' when calling patchV1CommerceCollectionByCollectionid(Async)");
+            throw new ApiException("Missing the required parameter 'collectionid' when calling patchCommerceCollectionByCollectionid(Async)");
         }
 
-        return patchV1CommerceCollectionByCollectionidCall(collectionid, _callback);
+        return patchCommerceCollectionByCollectionidCall(collectionid, _callback);
 
     }
 
@@ -5319,8 +5319,8 @@ public class CommerceApi {
      * @param collectionid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1CommerceCollectionByCollectionid(@javax.annotation.Nonnull String collectionid) throws ApiException {
-        patchV1CommerceCollectionByCollectionidWithHttpInfo(collectionid);
+    public void patchCommerceCollectionByCollectionid(@javax.annotation.Nonnull String collectionid) throws ApiException {
+        patchCommerceCollectionByCollectionidWithHttpInfo(collectionid);
     }
 
     /**
@@ -5330,8 +5330,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1CommerceCollectionByCollectionidWithHttpInfo(@javax.annotation.Nonnull String collectionid) throws ApiException {
-        okhttp3.Call localVarCall = patchV1CommerceCollectionByCollectionidValidateBeforeCall(collectionid, null);
+    public ApiResponse<Void> patchCommerceCollectionByCollectionidWithHttpInfo(@javax.annotation.Nonnull String collectionid) throws ApiException {
+        okhttp3.Call localVarCall = patchCommerceCollectionByCollectionidValidateBeforeCall(collectionid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -5343,20 +5343,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1CommerceCollectionByCollectionidAsync(@javax.annotation.Nonnull String collectionid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchCommerceCollectionByCollectionidAsync(@javax.annotation.Nonnull String collectionid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1CommerceCollectionByCollectionidValidateBeforeCall(collectionid, _callback);
+        okhttp3.Call localVarCall = patchCommerceCollectionByCollectionidValidateBeforeCall(collectionid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1CommerceDisclosureByDisclosureid
+     * Build call for patchCommerceDisclosureByDisclosureid
      * @param disclosureid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1CommerceDisclosureByDisclosureidCall(@javax.annotation.Nonnull String disclosureid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCommerceDisclosureByDisclosureidCall(@javax.annotation.Nonnull String disclosureid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5401,13 +5401,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1CommerceDisclosureByDisclosureidValidateBeforeCall(@javax.annotation.Nonnull String disclosureid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCommerceDisclosureByDisclosureidValidateBeforeCall(@javax.annotation.Nonnull String disclosureid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'disclosureid' is set
         if (disclosureid == null) {
-            throw new ApiException("Missing the required parameter 'disclosureid' when calling patchV1CommerceDisclosureByDisclosureid(Async)");
+            throw new ApiException("Missing the required parameter 'disclosureid' when calling patchCommerceDisclosureByDisclosureid(Async)");
         }
 
-        return patchV1CommerceDisclosureByDisclosureidCall(disclosureid, _callback);
+        return patchCommerceDisclosureByDisclosureidCall(disclosureid, _callback);
 
     }
 
@@ -5417,8 +5417,8 @@ public class CommerceApi {
      * @param disclosureid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1CommerceDisclosureByDisclosureid(@javax.annotation.Nonnull String disclosureid) throws ApiException {
-        patchV1CommerceDisclosureByDisclosureidWithHttpInfo(disclosureid);
+    public void patchCommerceDisclosureByDisclosureid(@javax.annotation.Nonnull String disclosureid) throws ApiException {
+        patchCommerceDisclosureByDisclosureidWithHttpInfo(disclosureid);
     }
 
     /**
@@ -5428,8 +5428,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1CommerceDisclosureByDisclosureidWithHttpInfo(@javax.annotation.Nonnull String disclosureid) throws ApiException {
-        okhttp3.Call localVarCall = patchV1CommerceDisclosureByDisclosureidValidateBeforeCall(disclosureid, null);
+    public ApiResponse<Void> patchCommerceDisclosureByDisclosureidWithHttpInfo(@javax.annotation.Nonnull String disclosureid) throws ApiException {
+        okhttp3.Call localVarCall = patchCommerceDisclosureByDisclosureidValidateBeforeCall(disclosureid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -5441,20 +5441,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1CommerceDisclosureByDisclosureidAsync(@javax.annotation.Nonnull String disclosureid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchCommerceDisclosureByDisclosureidAsync(@javax.annotation.Nonnull String disclosureid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1CommerceDisclosureByDisclosureidValidateBeforeCall(disclosureid, _callback);
+        okhttp3.Call localVarCall = patchCommerceDisclosureByDisclosureidValidateBeforeCall(disclosureid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1CommerceDiscountByDiscountid
+     * Build call for patchCommerceDiscountByDiscountid
      * @param discountid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1CommerceDiscountByDiscountidCall(@javax.annotation.Nonnull String discountid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCommerceDiscountByDiscountidCall(@javax.annotation.Nonnull String discountid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5499,13 +5499,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1CommerceDiscountByDiscountidValidateBeforeCall(@javax.annotation.Nonnull String discountid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCommerceDiscountByDiscountidValidateBeforeCall(@javax.annotation.Nonnull String discountid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'discountid' is set
         if (discountid == null) {
-            throw new ApiException("Missing the required parameter 'discountid' when calling patchV1CommerceDiscountByDiscountid(Async)");
+            throw new ApiException("Missing the required parameter 'discountid' when calling patchCommerceDiscountByDiscountid(Async)");
         }
 
-        return patchV1CommerceDiscountByDiscountidCall(discountid, _callback);
+        return patchCommerceDiscountByDiscountidCall(discountid, _callback);
 
     }
 
@@ -5515,8 +5515,8 @@ public class CommerceApi {
      * @param discountid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1CommerceDiscountByDiscountid(@javax.annotation.Nonnull String discountid) throws ApiException {
-        patchV1CommerceDiscountByDiscountidWithHttpInfo(discountid);
+    public void patchCommerceDiscountByDiscountid(@javax.annotation.Nonnull String discountid) throws ApiException {
+        patchCommerceDiscountByDiscountidWithHttpInfo(discountid);
     }
 
     /**
@@ -5526,8 +5526,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1CommerceDiscountByDiscountidWithHttpInfo(@javax.annotation.Nonnull String discountid) throws ApiException {
-        okhttp3.Call localVarCall = patchV1CommerceDiscountByDiscountidValidateBeforeCall(discountid, null);
+    public ApiResponse<Void> patchCommerceDiscountByDiscountidWithHttpInfo(@javax.annotation.Nonnull String discountid) throws ApiException {
+        okhttp3.Call localVarCall = patchCommerceDiscountByDiscountidValidateBeforeCall(discountid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -5539,20 +5539,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1CommerceDiscountByDiscountidAsync(@javax.annotation.Nonnull String discountid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchCommerceDiscountByDiscountidAsync(@javax.annotation.Nonnull String discountid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1CommerceDiscountByDiscountidValidateBeforeCall(discountid, _callback);
+        okhttp3.Call localVarCall = patchCommerceDiscountByDiscountidValidateBeforeCall(discountid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1CommerceMovieByMovieid
+     * Build call for patchCommerceMovieByMovieid
      * @param movieid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1CommerceMovieByMovieidCall(@javax.annotation.Nonnull String movieid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCommerceMovieByMovieidCall(@javax.annotation.Nonnull String movieid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5597,13 +5597,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1CommerceMovieByMovieidValidateBeforeCall(@javax.annotation.Nonnull String movieid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCommerceMovieByMovieidValidateBeforeCall(@javax.annotation.Nonnull String movieid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'movieid' is set
         if (movieid == null) {
-            throw new ApiException("Missing the required parameter 'movieid' when calling patchV1CommerceMovieByMovieid(Async)");
+            throw new ApiException("Missing the required parameter 'movieid' when calling patchCommerceMovieByMovieid(Async)");
         }
 
-        return patchV1CommerceMovieByMovieidCall(movieid, _callback);
+        return patchCommerceMovieByMovieidCall(movieid, _callback);
 
     }
 
@@ -5613,8 +5613,8 @@ public class CommerceApi {
      * @param movieid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1CommerceMovieByMovieid(@javax.annotation.Nonnull String movieid) throws ApiException {
-        patchV1CommerceMovieByMovieidWithHttpInfo(movieid);
+    public void patchCommerceMovieByMovieid(@javax.annotation.Nonnull String movieid) throws ApiException {
+        patchCommerceMovieByMovieidWithHttpInfo(movieid);
     }
 
     /**
@@ -5624,8 +5624,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1CommerceMovieByMovieidWithHttpInfo(@javax.annotation.Nonnull String movieid) throws ApiException {
-        okhttp3.Call localVarCall = patchV1CommerceMovieByMovieidValidateBeforeCall(movieid, null);
+    public ApiResponse<Void> patchCommerceMovieByMovieidWithHttpInfo(@javax.annotation.Nonnull String movieid) throws ApiException {
+        okhttp3.Call localVarCall = patchCommerceMovieByMovieidValidateBeforeCall(movieid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -5637,20 +5637,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1CommerceMovieByMovieidAsync(@javax.annotation.Nonnull String movieid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchCommerceMovieByMovieidAsync(@javax.annotation.Nonnull String movieid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1CommerceMovieByMovieidValidateBeforeCall(movieid, _callback);
+        okhttp3.Call localVarCall = patchCommerceMovieByMovieidValidateBeforeCall(movieid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1CommerceNoteByNoteid
+     * Build call for patchCommerceNoteByNoteid
      * @param noteid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1CommerceNoteByNoteidCall(@javax.annotation.Nonnull String noteid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCommerceNoteByNoteidCall(@javax.annotation.Nonnull String noteid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5695,13 +5695,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1CommerceNoteByNoteidValidateBeforeCall(@javax.annotation.Nonnull String noteid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCommerceNoteByNoteidValidateBeforeCall(@javax.annotation.Nonnull String noteid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'noteid' is set
         if (noteid == null) {
-            throw new ApiException("Missing the required parameter 'noteid' when calling patchV1CommerceNoteByNoteid(Async)");
+            throw new ApiException("Missing the required parameter 'noteid' when calling patchCommerceNoteByNoteid(Async)");
         }
 
-        return patchV1CommerceNoteByNoteidCall(noteid, _callback);
+        return patchCommerceNoteByNoteidCall(noteid, _callback);
 
     }
 
@@ -5711,8 +5711,8 @@ public class CommerceApi {
      * @param noteid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1CommerceNoteByNoteid(@javax.annotation.Nonnull String noteid) throws ApiException {
-        patchV1CommerceNoteByNoteidWithHttpInfo(noteid);
+    public void patchCommerceNoteByNoteid(@javax.annotation.Nonnull String noteid) throws ApiException {
+        patchCommerceNoteByNoteidWithHttpInfo(noteid);
     }
 
     /**
@@ -5722,8 +5722,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1CommerceNoteByNoteidWithHttpInfo(@javax.annotation.Nonnull String noteid) throws ApiException {
-        okhttp3.Call localVarCall = patchV1CommerceNoteByNoteidValidateBeforeCall(noteid, null);
+    public ApiResponse<Void> patchCommerceNoteByNoteidWithHttpInfo(@javax.annotation.Nonnull String noteid) throws ApiException {
+        okhttp3.Call localVarCall = patchCommerceNoteByNoteidValidateBeforeCall(noteid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -5735,20 +5735,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1CommerceNoteByNoteidAsync(@javax.annotation.Nonnull String noteid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchCommerceNoteByNoteidAsync(@javax.annotation.Nonnull String noteid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1CommerceNoteByNoteidValidateBeforeCall(noteid, _callback);
+        okhttp3.Call localVarCall = patchCommerceNoteByNoteidValidateBeforeCall(noteid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1CommerceProductByProductid
+     * Build call for patchCommerceProductByProductid
      * @param productid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1CommerceProductByProductidCall(@javax.annotation.Nonnull String productid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCommerceProductByProductidCall(@javax.annotation.Nonnull String productid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5793,13 +5793,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1CommerceProductByProductidValidateBeforeCall(@javax.annotation.Nonnull String productid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCommerceProductByProductidValidateBeforeCall(@javax.annotation.Nonnull String productid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'productid' is set
         if (productid == null) {
-            throw new ApiException("Missing the required parameter 'productid' when calling patchV1CommerceProductByProductid(Async)");
+            throw new ApiException("Missing the required parameter 'productid' when calling patchCommerceProductByProductid(Async)");
         }
 
-        return patchV1CommerceProductByProductidCall(productid, _callback);
+        return patchCommerceProductByProductidCall(productid, _callback);
 
     }
 
@@ -5809,8 +5809,8 @@ public class CommerceApi {
      * @param productid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1CommerceProductByProductid(@javax.annotation.Nonnull String productid) throws ApiException {
-        patchV1CommerceProductByProductidWithHttpInfo(productid);
+    public void patchCommerceProductByProductid(@javax.annotation.Nonnull String productid) throws ApiException {
+        patchCommerceProductByProductidWithHttpInfo(productid);
     }
 
     /**
@@ -5820,8 +5820,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1CommerceProductByProductidWithHttpInfo(@javax.annotation.Nonnull String productid) throws ApiException {
-        okhttp3.Call localVarCall = patchV1CommerceProductByProductidValidateBeforeCall(productid, null);
+    public ApiResponse<Void> patchCommerceProductByProductidWithHttpInfo(@javax.annotation.Nonnull String productid) throws ApiException {
+        okhttp3.Call localVarCall = patchCommerceProductByProductidValidateBeforeCall(productid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -5833,20 +5833,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1CommerceProductByProductidAsync(@javax.annotation.Nonnull String productid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchCommerceProductByProductidAsync(@javax.annotation.Nonnull String productid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1CommerceProductByProductidValidateBeforeCall(productid, _callback);
+        okhttp3.Call localVarCall = patchCommerceProductByProductidValidateBeforeCall(productid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1CommerceReturnByReturnid
+     * Build call for patchCommerceReturnByReturnid
      * @param returnid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1CommerceReturnByReturnidCall(@javax.annotation.Nonnull String returnid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCommerceReturnByReturnidCall(@javax.annotation.Nonnull String returnid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5891,13 +5891,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1CommerceReturnByReturnidValidateBeforeCall(@javax.annotation.Nonnull String returnid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCommerceReturnByReturnidValidateBeforeCall(@javax.annotation.Nonnull String returnid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'returnid' is set
         if (returnid == null) {
-            throw new ApiException("Missing the required parameter 'returnid' when calling patchV1CommerceReturnByReturnid(Async)");
+            throw new ApiException("Missing the required parameter 'returnid' when calling patchCommerceReturnByReturnid(Async)");
         }
 
-        return patchV1CommerceReturnByReturnidCall(returnid, _callback);
+        return patchCommerceReturnByReturnidCall(returnid, _callback);
 
     }
 
@@ -5907,8 +5907,8 @@ public class CommerceApi {
      * @param returnid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1CommerceReturnByReturnid(@javax.annotation.Nonnull String returnid) throws ApiException {
-        patchV1CommerceReturnByReturnidWithHttpInfo(returnid);
+    public void patchCommerceReturnByReturnid(@javax.annotation.Nonnull String returnid) throws ApiException {
+        patchCommerceReturnByReturnidWithHttpInfo(returnid);
     }
 
     /**
@@ -5918,8 +5918,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1CommerceReturnByReturnidWithHttpInfo(@javax.annotation.Nonnull String returnid) throws ApiException {
-        okhttp3.Call localVarCall = patchV1CommerceReturnByReturnidValidateBeforeCall(returnid, null);
+    public ApiResponse<Void> patchCommerceReturnByReturnidWithHttpInfo(@javax.annotation.Nonnull String returnid) throws ApiException {
+        okhttp3.Call localVarCall = patchCommerceReturnByReturnidValidateBeforeCall(returnid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -5931,20 +5931,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1CommerceReturnByReturnidAsync(@javax.annotation.Nonnull String returnid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchCommerceReturnByReturnidAsync(@javax.annotation.Nonnull String returnid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1CommerceReturnByReturnidValidateBeforeCall(returnid, _callback);
+        okhttp3.Call localVarCall = patchCommerceReturnByReturnidValidateBeforeCall(returnid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1CommerceSaleschannelBySaleschannelid
+     * Build call for patchCommerceSaleschannelBySaleschannelid
      * @param saleschannelid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1CommerceSaleschannelBySaleschannelidCall(@javax.annotation.Nonnull String saleschannelid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCommerceSaleschannelBySaleschannelidCall(@javax.annotation.Nonnull String saleschannelid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5989,13 +5989,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1CommerceSaleschannelBySaleschannelidValidateBeforeCall(@javax.annotation.Nonnull String saleschannelid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCommerceSaleschannelBySaleschannelidValidateBeforeCall(@javax.annotation.Nonnull String saleschannelid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'saleschannelid' is set
         if (saleschannelid == null) {
-            throw new ApiException("Missing the required parameter 'saleschannelid' when calling patchV1CommerceSaleschannelBySaleschannelid(Async)");
+            throw new ApiException("Missing the required parameter 'saleschannelid' when calling patchCommerceSaleschannelBySaleschannelid(Async)");
         }
 
-        return patchV1CommerceSaleschannelBySaleschannelidCall(saleschannelid, _callback);
+        return patchCommerceSaleschannelBySaleschannelidCall(saleschannelid, _callback);
 
     }
 
@@ -6005,8 +6005,8 @@ public class CommerceApi {
      * @param saleschannelid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1CommerceSaleschannelBySaleschannelid(@javax.annotation.Nonnull String saleschannelid) throws ApiException {
-        patchV1CommerceSaleschannelBySaleschannelidWithHttpInfo(saleschannelid);
+    public void patchCommerceSaleschannelBySaleschannelid(@javax.annotation.Nonnull String saleschannelid) throws ApiException {
+        patchCommerceSaleschannelBySaleschannelidWithHttpInfo(saleschannelid);
     }
 
     /**
@@ -6016,8 +6016,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1CommerceSaleschannelBySaleschannelidWithHttpInfo(@javax.annotation.Nonnull String saleschannelid) throws ApiException {
-        okhttp3.Call localVarCall = patchV1CommerceSaleschannelBySaleschannelidValidateBeforeCall(saleschannelid, null);
+    public ApiResponse<Void> patchCommerceSaleschannelBySaleschannelidWithHttpInfo(@javax.annotation.Nonnull String saleschannelid) throws ApiException {
+        okhttp3.Call localVarCall = patchCommerceSaleschannelBySaleschannelidValidateBeforeCall(saleschannelid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -6029,20 +6029,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1CommerceSaleschannelBySaleschannelidAsync(@javax.annotation.Nonnull String saleschannelid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchCommerceSaleschannelBySaleschannelidAsync(@javax.annotation.Nonnull String saleschannelid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1CommerceSaleschannelBySaleschannelidValidateBeforeCall(saleschannelid, _callback);
+        okhttp3.Call localVarCall = patchCommerceSaleschannelBySaleschannelidValidateBeforeCall(saleschannelid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1CommerceStocklocationByStocklocationid
+     * Build call for patchCommerceStocklocationByStocklocationid
      * @param stocklocationid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1CommerceStocklocationByStocklocationidCall(@javax.annotation.Nonnull String stocklocationid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCommerceStocklocationByStocklocationidCall(@javax.annotation.Nonnull String stocklocationid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6087,13 +6087,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1CommerceStocklocationByStocklocationidValidateBeforeCall(@javax.annotation.Nonnull String stocklocationid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCommerceStocklocationByStocklocationidValidateBeforeCall(@javax.annotation.Nonnull String stocklocationid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'stocklocationid' is set
         if (stocklocationid == null) {
-            throw new ApiException("Missing the required parameter 'stocklocationid' when calling patchV1CommerceStocklocationByStocklocationid(Async)");
+            throw new ApiException("Missing the required parameter 'stocklocationid' when calling patchCommerceStocklocationByStocklocationid(Async)");
         }
 
-        return patchV1CommerceStocklocationByStocklocationidCall(stocklocationid, _callback);
+        return patchCommerceStocklocationByStocklocationidCall(stocklocationid, _callback);
 
     }
 
@@ -6103,8 +6103,8 @@ public class CommerceApi {
      * @param stocklocationid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1CommerceStocklocationByStocklocationid(@javax.annotation.Nonnull String stocklocationid) throws ApiException {
-        patchV1CommerceStocklocationByStocklocationidWithHttpInfo(stocklocationid);
+    public void patchCommerceStocklocationByStocklocationid(@javax.annotation.Nonnull String stocklocationid) throws ApiException {
+        patchCommerceStocklocationByStocklocationidWithHttpInfo(stocklocationid);
     }
 
     /**
@@ -6114,8 +6114,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1CommerceStocklocationByStocklocationidWithHttpInfo(@javax.annotation.Nonnull String stocklocationid) throws ApiException {
-        okhttp3.Call localVarCall = patchV1CommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, null);
+    public ApiResponse<Void> patchCommerceStocklocationByStocklocationidWithHttpInfo(@javax.annotation.Nonnull String stocklocationid) throws ApiException {
+        okhttp3.Call localVarCall = patchCommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -6127,20 +6127,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1CommerceStocklocationByStocklocationidAsync(@javax.annotation.Nonnull String stocklocationid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchCommerceStocklocationByStocklocationidAsync(@javax.annotation.Nonnull String stocklocationid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1CommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, _callback);
+        okhttp3.Call localVarCall = patchCommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1CommerceSubmissionBySubmissionid
+     * Build call for patchCommerceSubmissionBySubmissionid
      * @param submissionid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1CommerceSubmissionBySubmissionidCall(@javax.annotation.Nonnull String submissionid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCommerceSubmissionBySubmissionidCall(@javax.annotation.Nonnull String submissionid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6185,13 +6185,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1CommerceSubmissionBySubmissionidValidateBeforeCall(@javax.annotation.Nonnull String submissionid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCommerceSubmissionBySubmissionidValidateBeforeCall(@javax.annotation.Nonnull String submissionid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'submissionid' is set
         if (submissionid == null) {
-            throw new ApiException("Missing the required parameter 'submissionid' when calling patchV1CommerceSubmissionBySubmissionid(Async)");
+            throw new ApiException("Missing the required parameter 'submissionid' when calling patchCommerceSubmissionBySubmissionid(Async)");
         }
 
-        return patchV1CommerceSubmissionBySubmissionidCall(submissionid, _callback);
+        return patchCommerceSubmissionBySubmissionidCall(submissionid, _callback);
 
     }
 
@@ -6201,8 +6201,8 @@ public class CommerceApi {
      * @param submissionid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1CommerceSubmissionBySubmissionid(@javax.annotation.Nonnull String submissionid) throws ApiException {
-        patchV1CommerceSubmissionBySubmissionidWithHttpInfo(submissionid);
+    public void patchCommerceSubmissionBySubmissionid(@javax.annotation.Nonnull String submissionid) throws ApiException {
+        patchCommerceSubmissionBySubmissionidWithHttpInfo(submissionid);
     }
 
     /**
@@ -6212,8 +6212,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1CommerceSubmissionBySubmissionidWithHttpInfo(@javax.annotation.Nonnull String submissionid) throws ApiException {
-        okhttp3.Call localVarCall = patchV1CommerceSubmissionBySubmissionidValidateBeforeCall(submissionid, null);
+    public ApiResponse<Void> patchCommerceSubmissionBySubmissionidWithHttpInfo(@javax.annotation.Nonnull String submissionid) throws ApiException {
+        okhttp3.Call localVarCall = patchCommerceSubmissionBySubmissionidValidateBeforeCall(submissionid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -6225,20 +6225,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1CommerceSubmissionBySubmissionidAsync(@javax.annotation.Nonnull String submissionid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchCommerceSubmissionBySubmissionidAsync(@javax.annotation.Nonnull String submissionid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1CommerceSubmissionBySubmissionidValidateBeforeCall(submissionid, _callback);
+        okhttp3.Call localVarCall = patchCommerceSubmissionBySubmissionidValidateBeforeCall(submissionid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1CommerceSubscriberBySubscriberid
+     * Build call for patchCommerceSubscriberBySubscriberid
      * @param subscriberid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1CommerceSubscriberBySubscriberidCall(@javax.annotation.Nonnull String subscriberid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCommerceSubscriberBySubscriberidCall(@javax.annotation.Nonnull String subscriberid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6283,13 +6283,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1CommerceSubscriberBySubscriberidValidateBeforeCall(@javax.annotation.Nonnull String subscriberid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCommerceSubscriberBySubscriberidValidateBeforeCall(@javax.annotation.Nonnull String subscriberid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'subscriberid' is set
         if (subscriberid == null) {
-            throw new ApiException("Missing the required parameter 'subscriberid' when calling patchV1CommerceSubscriberBySubscriberid(Async)");
+            throw new ApiException("Missing the required parameter 'subscriberid' when calling patchCommerceSubscriberBySubscriberid(Async)");
         }
 
-        return patchV1CommerceSubscriberBySubscriberidCall(subscriberid, _callback);
+        return patchCommerceSubscriberBySubscriberidCall(subscriberid, _callback);
 
     }
 
@@ -6299,8 +6299,8 @@ public class CommerceApi {
      * @param subscriberid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1CommerceSubscriberBySubscriberid(@javax.annotation.Nonnull String subscriberid) throws ApiException {
-        patchV1CommerceSubscriberBySubscriberidWithHttpInfo(subscriberid);
+    public void patchCommerceSubscriberBySubscriberid(@javax.annotation.Nonnull String subscriberid) throws ApiException {
+        patchCommerceSubscriberBySubscriberidWithHttpInfo(subscriberid);
     }
 
     /**
@@ -6310,8 +6310,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1CommerceSubscriberBySubscriberidWithHttpInfo(@javax.annotation.Nonnull String subscriberid) throws ApiException {
-        okhttp3.Call localVarCall = patchV1CommerceSubscriberBySubscriberidValidateBeforeCall(subscriberid, null);
+    public ApiResponse<Void> patchCommerceSubscriberBySubscriberidWithHttpInfo(@javax.annotation.Nonnull String subscriberid) throws ApiException {
+        okhttp3.Call localVarCall = patchCommerceSubscriberBySubscriberidValidateBeforeCall(subscriberid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -6323,20 +6323,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1CommerceSubscriberBySubscriberidAsync(@javax.annotation.Nonnull String subscriberid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchCommerceSubscriberBySubscriberidAsync(@javax.annotation.Nonnull String subscriberid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1CommerceSubscriberBySubscriberidValidateBeforeCall(subscriberid, _callback);
+        okhttp3.Call localVarCall = patchCommerceSubscriberBySubscriberidValidateBeforeCall(subscriberid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1CommerceTokentransactionByTokentransactionid
+     * Build call for patchCommerceTokentransactionByTokentransactionid
      * @param tokentransactionid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1CommerceTokentransactionByTokentransactionidCall(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCommerceTokentransactionByTokentransactionidCall(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6381,13 +6381,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1CommerceTokentransactionByTokentransactionidValidateBeforeCall(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCommerceTokentransactionByTokentransactionidValidateBeforeCall(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'tokentransactionid' is set
         if (tokentransactionid == null) {
-            throw new ApiException("Missing the required parameter 'tokentransactionid' when calling patchV1CommerceTokentransactionByTokentransactionid(Async)");
+            throw new ApiException("Missing the required parameter 'tokentransactionid' when calling patchCommerceTokentransactionByTokentransactionid(Async)");
         }
 
-        return patchV1CommerceTokentransactionByTokentransactionidCall(tokentransactionid, _callback);
+        return patchCommerceTokentransactionByTokentransactionidCall(tokentransactionid, _callback);
 
     }
 
@@ -6397,8 +6397,8 @@ public class CommerceApi {
      * @param tokentransactionid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1CommerceTokentransactionByTokentransactionid(@javax.annotation.Nonnull String tokentransactionid) throws ApiException {
-        patchV1CommerceTokentransactionByTokentransactionidWithHttpInfo(tokentransactionid);
+    public void patchCommerceTokentransactionByTokentransactionid(@javax.annotation.Nonnull String tokentransactionid) throws ApiException {
+        patchCommerceTokentransactionByTokentransactionidWithHttpInfo(tokentransactionid);
     }
 
     /**
@@ -6408,8 +6408,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1CommerceTokentransactionByTokentransactionidWithHttpInfo(@javax.annotation.Nonnull String tokentransactionid) throws ApiException {
-        okhttp3.Call localVarCall = patchV1CommerceTokentransactionByTokentransactionidValidateBeforeCall(tokentransactionid, null);
+    public ApiResponse<Void> patchCommerceTokentransactionByTokentransactionidWithHttpInfo(@javax.annotation.Nonnull String tokentransactionid) throws ApiException {
+        okhttp3.Call localVarCall = patchCommerceTokentransactionByTokentransactionidValidateBeforeCall(tokentransactionid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -6421,20 +6421,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1CommerceTokentransactionByTokentransactionidAsync(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchCommerceTokentransactionByTokentransactionidAsync(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1CommerceTokentransactionByTokentransactionidValidateBeforeCall(tokentransactionid, _callback);
+        okhttp3.Call localVarCall = patchCommerceTokentransactionByTokentransactionidValidateBeforeCall(tokentransactionid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1CommerceTransferByTransferid
+     * Build call for patchCommerceTransferByTransferid
      * @param transferid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1CommerceTransferByTransferidCall(@javax.annotation.Nonnull String transferid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCommerceTransferByTransferidCall(@javax.annotation.Nonnull String transferid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6479,13 +6479,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1CommerceTransferByTransferidValidateBeforeCall(@javax.annotation.Nonnull String transferid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCommerceTransferByTransferidValidateBeforeCall(@javax.annotation.Nonnull String transferid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'transferid' is set
         if (transferid == null) {
-            throw new ApiException("Missing the required parameter 'transferid' when calling patchV1CommerceTransferByTransferid(Async)");
+            throw new ApiException("Missing the required parameter 'transferid' when calling patchCommerceTransferByTransferid(Async)");
         }
 
-        return patchV1CommerceTransferByTransferidCall(transferid, _callback);
+        return patchCommerceTransferByTransferidCall(transferid, _callback);
 
     }
 
@@ -6495,8 +6495,8 @@ public class CommerceApi {
      * @param transferid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1CommerceTransferByTransferid(@javax.annotation.Nonnull String transferid) throws ApiException {
-        patchV1CommerceTransferByTransferidWithHttpInfo(transferid);
+    public void patchCommerceTransferByTransferid(@javax.annotation.Nonnull String transferid) throws ApiException {
+        patchCommerceTransferByTransferidWithHttpInfo(transferid);
     }
 
     /**
@@ -6506,8 +6506,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1CommerceTransferByTransferidWithHttpInfo(@javax.annotation.Nonnull String transferid) throws ApiException {
-        okhttp3.Call localVarCall = patchV1CommerceTransferByTransferidValidateBeforeCall(transferid, null);
+    public ApiResponse<Void> patchCommerceTransferByTransferidWithHttpInfo(@javax.annotation.Nonnull String transferid) throws ApiException {
+        okhttp3.Call localVarCall = patchCommerceTransferByTransferidValidateBeforeCall(transferid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -6519,20 +6519,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1CommerceTransferByTransferidAsync(@javax.annotation.Nonnull String transferid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchCommerceTransferByTransferidAsync(@javax.annotation.Nonnull String transferid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1CommerceTransferByTransferidValidateBeforeCall(transferid, _callback);
+        okhttp3.Call localVarCall = patchCommerceTransferByTransferidValidateBeforeCall(transferid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1CommerceVariantByVariantid
+     * Build call for patchCommerceVariantByVariantid
      * @param variantid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1CommerceVariantByVariantidCall(@javax.annotation.Nonnull String variantid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCommerceVariantByVariantidCall(@javax.annotation.Nonnull String variantid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6577,13 +6577,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1CommerceVariantByVariantidValidateBeforeCall(@javax.annotation.Nonnull String variantid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCommerceVariantByVariantidValidateBeforeCall(@javax.annotation.Nonnull String variantid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'variantid' is set
         if (variantid == null) {
-            throw new ApiException("Missing the required parameter 'variantid' when calling patchV1CommerceVariantByVariantid(Async)");
+            throw new ApiException("Missing the required parameter 'variantid' when calling patchCommerceVariantByVariantid(Async)");
         }
 
-        return patchV1CommerceVariantByVariantidCall(variantid, _callback);
+        return patchCommerceVariantByVariantidCall(variantid, _callback);
 
     }
 
@@ -6593,8 +6593,8 @@ public class CommerceApi {
      * @param variantid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1CommerceVariantByVariantid(@javax.annotation.Nonnull String variantid) throws ApiException {
-        patchV1CommerceVariantByVariantidWithHttpInfo(variantid);
+    public void patchCommerceVariantByVariantid(@javax.annotation.Nonnull String variantid) throws ApiException {
+        patchCommerceVariantByVariantidWithHttpInfo(variantid);
     }
 
     /**
@@ -6604,8 +6604,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1CommerceVariantByVariantidWithHttpInfo(@javax.annotation.Nonnull String variantid) throws ApiException {
-        okhttp3.Call localVarCall = patchV1CommerceVariantByVariantidValidateBeforeCall(variantid, null);
+    public ApiResponse<Void> patchCommerceVariantByVariantidWithHttpInfo(@javax.annotation.Nonnull String variantid) throws ApiException {
+        okhttp3.Call localVarCall = patchCommerceVariantByVariantidValidateBeforeCall(variantid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -6617,20 +6617,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1CommerceVariantByVariantidAsync(@javax.annotation.Nonnull String variantid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchCommerceVariantByVariantidAsync(@javax.annotation.Nonnull String variantid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1CommerceVariantByVariantidValidateBeforeCall(variantid, _callback);
+        okhttp3.Call localVarCall = patchCommerceVariantByVariantidValidateBeforeCall(variantid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1CommerceWalletByWalletid
+     * Build call for patchCommerceWalletByWalletid
      * @param walletid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1CommerceWalletByWalletidCall(@javax.annotation.Nonnull String walletid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCommerceWalletByWalletidCall(@javax.annotation.Nonnull String walletid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6675,13 +6675,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1CommerceWalletByWalletidValidateBeforeCall(@javax.annotation.Nonnull String walletid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCommerceWalletByWalletidValidateBeforeCall(@javax.annotation.Nonnull String walletid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'walletid' is set
         if (walletid == null) {
-            throw new ApiException("Missing the required parameter 'walletid' when calling patchV1CommerceWalletByWalletid(Async)");
+            throw new ApiException("Missing the required parameter 'walletid' when calling patchCommerceWalletByWalletid(Async)");
         }
 
-        return patchV1CommerceWalletByWalletidCall(walletid, _callback);
+        return patchCommerceWalletByWalletidCall(walletid, _callback);
 
     }
 
@@ -6691,8 +6691,8 @@ public class CommerceApi {
      * @param walletid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1CommerceWalletByWalletid(@javax.annotation.Nonnull String walletid) throws ApiException {
-        patchV1CommerceWalletByWalletidWithHttpInfo(walletid);
+    public void patchCommerceWalletByWalletid(@javax.annotation.Nonnull String walletid) throws ApiException {
+        patchCommerceWalletByWalletidWithHttpInfo(walletid);
     }
 
     /**
@@ -6702,8 +6702,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1CommerceWalletByWalletidWithHttpInfo(@javax.annotation.Nonnull String walletid) throws ApiException {
-        okhttp3.Call localVarCall = patchV1CommerceWalletByWalletidValidateBeforeCall(walletid, null);
+    public ApiResponse<Void> patchCommerceWalletByWalletidWithHttpInfo(@javax.annotation.Nonnull String walletid) throws ApiException {
+        okhttp3.Call localVarCall = patchCommerceWalletByWalletidValidateBeforeCall(walletid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -6715,20 +6715,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1CommerceWalletByWalletidAsync(@javax.annotation.Nonnull String walletid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchCommerceWalletByWalletidAsync(@javax.annotation.Nonnull String walletid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1CommerceWalletByWalletidValidateBeforeCall(walletid, _callback);
+        okhttp3.Call localVarCall = patchCommerceWalletByWalletidValidateBeforeCall(walletid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1CommerceWatchlistByWatchlistid
+     * Build call for patchCommerceWatchlistByWatchlistid
      * @param watchlistid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1CommerceWatchlistByWatchlistidCall(@javax.annotation.Nonnull String watchlistid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCommerceWatchlistByWatchlistidCall(@javax.annotation.Nonnull String watchlistid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6773,13 +6773,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1CommerceWatchlistByWatchlistidValidateBeforeCall(@javax.annotation.Nonnull String watchlistid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCommerceWatchlistByWatchlistidValidateBeforeCall(@javax.annotation.Nonnull String watchlistid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'watchlistid' is set
         if (watchlistid == null) {
-            throw new ApiException("Missing the required parameter 'watchlistid' when calling patchV1CommerceWatchlistByWatchlistid(Async)");
+            throw new ApiException("Missing the required parameter 'watchlistid' when calling patchCommerceWatchlistByWatchlistid(Async)");
         }
 
-        return patchV1CommerceWatchlistByWatchlistidCall(watchlistid, _callback);
+        return patchCommerceWatchlistByWatchlistidCall(watchlistid, _callback);
 
     }
 
@@ -6789,8 +6789,8 @@ public class CommerceApi {
      * @param watchlistid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1CommerceWatchlistByWatchlistid(@javax.annotation.Nonnull String watchlistid) throws ApiException {
-        patchV1CommerceWatchlistByWatchlistidWithHttpInfo(watchlistid);
+    public void patchCommerceWatchlistByWatchlistid(@javax.annotation.Nonnull String watchlistid) throws ApiException {
+        patchCommerceWatchlistByWatchlistidWithHttpInfo(watchlistid);
     }
 
     /**
@@ -6800,8 +6800,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1CommerceWatchlistByWatchlistidWithHttpInfo(@javax.annotation.Nonnull String watchlistid) throws ApiException {
-        okhttp3.Call localVarCall = patchV1CommerceWatchlistByWatchlistidValidateBeforeCall(watchlistid, null);
+    public ApiResponse<Void> patchCommerceWatchlistByWatchlistidWithHttpInfo(@javax.annotation.Nonnull String watchlistid) throws ApiException {
+        okhttp3.Call localVarCall = patchCommerceWatchlistByWatchlistidValidateBeforeCall(watchlistid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -6813,20 +6813,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1CommerceWatchlistByWatchlistidAsync(@javax.annotation.Nonnull String watchlistid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchCommerceWatchlistByWatchlistidAsync(@javax.annotation.Nonnull String watchlistid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1CommerceWatchlistByWatchlistidValidateBeforeCall(watchlistid, _callback);
+        okhttp3.Call localVarCall = patchCommerceWatchlistByWatchlistidValidateBeforeCall(watchlistid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1CommerceWebhookByWebhookid
+     * Build call for patchCommerceWebhookByWebhookid
      * @param webhookid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1CommerceWebhookByWebhookidCall(@javax.annotation.Nonnull String webhookid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCommerceWebhookByWebhookidCall(@javax.annotation.Nonnull String webhookid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6871,13 +6871,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1CommerceWebhookByWebhookidValidateBeforeCall(@javax.annotation.Nonnull String webhookid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCommerceWebhookByWebhookidValidateBeforeCall(@javax.annotation.Nonnull String webhookid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'webhookid' is set
         if (webhookid == null) {
-            throw new ApiException("Missing the required parameter 'webhookid' when calling patchV1CommerceWebhookByWebhookid(Async)");
+            throw new ApiException("Missing the required parameter 'webhookid' when calling patchCommerceWebhookByWebhookid(Async)");
         }
 
-        return patchV1CommerceWebhookByWebhookidCall(webhookid, _callback);
+        return patchCommerceWebhookByWebhookidCall(webhookid, _callback);
 
     }
 
@@ -6887,8 +6887,8 @@ public class CommerceApi {
      * @param webhookid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1CommerceWebhookByWebhookid(@javax.annotation.Nonnull String webhookid) throws ApiException {
-        patchV1CommerceWebhookByWebhookidWithHttpInfo(webhookid);
+    public void patchCommerceWebhookByWebhookid(@javax.annotation.Nonnull String webhookid) throws ApiException {
+        patchCommerceWebhookByWebhookidWithHttpInfo(webhookid);
     }
 
     /**
@@ -6898,8 +6898,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1CommerceWebhookByWebhookidWithHttpInfo(@javax.annotation.Nonnull String webhookid) throws ApiException {
-        okhttp3.Call localVarCall = patchV1CommerceWebhookByWebhookidValidateBeforeCall(webhookid, null);
+    public ApiResponse<Void> patchCommerceWebhookByWebhookidWithHttpInfo(@javax.annotation.Nonnull String webhookid) throws ApiException {
+        okhttp3.Call localVarCall = patchCommerceWebhookByWebhookidValidateBeforeCall(webhookid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -6911,19 +6911,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1CommerceWebhookByWebhookidAsync(@javax.annotation.Nonnull String webhookid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchCommerceWebhookByWebhookidAsync(@javax.annotation.Nonnull String webhookid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1CommerceWebhookByWebhookidValidateBeforeCall(webhookid, _callback);
+        okhttp3.Call localVarCall = patchCommerceWebhookByWebhookidValidateBeforeCall(webhookid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceCollection
+     * Build call for postCommerceCollection
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceCollectionCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceCollectionCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6967,8 +6967,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceCollectionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CommerceCollectionCall(_callback);
+    private okhttp3.Call postCommerceCollectionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceCollectionCall(_callback);
 
     }
 
@@ -6977,8 +6977,8 @@ public class CommerceApi {
      * A collection is a merchandising group a storefront renders — a slug and name, copy and media, flat lists of the product and variant ids it holds, published, preorder and out-of-stock flags, and an availability window. Membership lives on the collection as those id lists rather than as a join, so putting a product into a collection is a write here and not on the product. Decodes the body into a new row in the caller org&#39;s own namespaced store — isolated to that tenant from its first write — and answers the stored row at 201 with a Location header naming its id. The id is assigned by the store, not taken from the body. A body that fails to decode is 400 and a store that refuses the write is 500. Any valid access token reaches it. The org must also be entitled to the commerce admin: the paywall answers 402 subscription_required unless the org holds an active or trialing pro subscription, a live trial credit or a redeemed invite, and 503 when that entitlement cannot be read rather than admitting on an unknown. The internal service token and a platform superadmin pass straight through. The token must also carry Admin or WriteCollection.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceCollection() throws ApiException {
-        postV1CommerceCollectionWithHttpInfo();
+    public void postCommerceCollection() throws ApiException {
+        postCommerceCollectionWithHttpInfo();
     }
 
     /**
@@ -6987,8 +6987,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceCollectionWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceCollectionValidateBeforeCall(null);
+    public ApiResponse<Void> postCommerceCollectionWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceCollectionValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -6999,20 +6999,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceCollectionAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceCollectionAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceCollectionValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCommerceCollectionValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceCollectionByCollectionid
+     * Build call for postCommerceCollectionByCollectionid
      * @param collectionid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceCollectionByCollectionidCall(@javax.annotation.Nonnull String collectionid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceCollectionByCollectionidCall(@javax.annotation.Nonnull String collectionid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7057,13 +7057,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceCollectionByCollectionidValidateBeforeCall(@javax.annotation.Nonnull String collectionid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCommerceCollectionByCollectionidValidateBeforeCall(@javax.annotation.Nonnull String collectionid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'collectionid' is set
         if (collectionid == null) {
-            throw new ApiException("Missing the required parameter 'collectionid' when calling postV1CommerceCollectionByCollectionid(Async)");
+            throw new ApiException("Missing the required parameter 'collectionid' when calling postCommerceCollectionByCollectionid(Async)");
         }
 
-        return postV1CommerceCollectionByCollectionidCall(collectionid, _callback);
+        return postCommerceCollectionByCollectionidCall(collectionid, _callback);
 
     }
 
@@ -7073,8 +7073,8 @@ public class CommerceApi {
      * @param collectionid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceCollectionByCollectionid(@javax.annotation.Nonnull String collectionid) throws ApiException {
-        postV1CommerceCollectionByCollectionidWithHttpInfo(collectionid);
+    public void postCommerceCollectionByCollectionid(@javax.annotation.Nonnull String collectionid) throws ApiException {
+        postCommerceCollectionByCollectionidWithHttpInfo(collectionid);
     }
 
     /**
@@ -7084,8 +7084,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceCollectionByCollectionidWithHttpInfo(@javax.annotation.Nonnull String collectionid) throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceCollectionByCollectionidValidateBeforeCall(collectionid, null);
+    public ApiResponse<Void> postCommerceCollectionByCollectionidWithHttpInfo(@javax.annotation.Nonnull String collectionid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceCollectionByCollectionidValidateBeforeCall(collectionid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -7097,19 +7097,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceCollectionByCollectionidAsync(@javax.annotation.Nonnull String collectionid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceCollectionByCollectionidAsync(@javax.annotation.Nonnull String collectionid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceCollectionByCollectionidValidateBeforeCall(collectionid, _callback);
+        okhttp3.Call localVarCall = postCommerceCollectionByCollectionidValidateBeforeCall(collectionid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceDisclosure
+     * Build call for postCommerceDisclosure
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceDisclosureCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceDisclosureCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7153,8 +7153,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceDisclosureValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CommerceDisclosureCall(_callback);
+    private okhttp3.Call postCommerceDisclosureValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceDisclosureCall(_callback);
 
     }
 
@@ -7163,8 +7163,8 @@ public class CommerceApi {
      * A disclosure is a published-document record — a publication body, a content hash, a type and a named receiver. The hash LOOKS like a field you set and is in fact derived, but only on update: a freshly created disclosure keeps whatever hash the caller sent until the first replace or patch recomputes it, so a new row&#39;s hash attests to nothing. This kind lives in commerce&#39;s demo tree — a live writable resource in your tenant&#39;s real store that nothing else in commerce reads. Decodes the body into a new row in the caller org&#39;s own namespaced store — isolated to that tenant from its first write — and answers the stored row at 201 with a Location header naming its id. The id is assigned by the store, not taken from the body. A body that fails to decode is 400 and a store that refuses the write is 500. Any valid access token reaches it. The per-kind permission table has no entry for disclosure, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceDisclosure() throws ApiException {
-        postV1CommerceDisclosureWithHttpInfo();
+    public void postCommerceDisclosure() throws ApiException {
+        postCommerceDisclosureWithHttpInfo();
     }
 
     /**
@@ -7173,8 +7173,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceDisclosureWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceDisclosureValidateBeforeCall(null);
+    public ApiResponse<Void> postCommerceDisclosureWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceDisclosureValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -7185,20 +7185,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceDisclosureAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceDisclosureAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceDisclosureValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCommerceDisclosureValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceDisclosureByDisclosureid
+     * Build call for postCommerceDisclosureByDisclosureid
      * @param disclosureid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceDisclosureByDisclosureidCall(@javax.annotation.Nonnull String disclosureid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceDisclosureByDisclosureidCall(@javax.annotation.Nonnull String disclosureid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7243,13 +7243,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceDisclosureByDisclosureidValidateBeforeCall(@javax.annotation.Nonnull String disclosureid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCommerceDisclosureByDisclosureidValidateBeforeCall(@javax.annotation.Nonnull String disclosureid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'disclosureid' is set
         if (disclosureid == null) {
-            throw new ApiException("Missing the required parameter 'disclosureid' when calling postV1CommerceDisclosureByDisclosureid(Async)");
+            throw new ApiException("Missing the required parameter 'disclosureid' when calling postCommerceDisclosureByDisclosureid(Async)");
         }
 
-        return postV1CommerceDisclosureByDisclosureidCall(disclosureid, _callback);
+        return postCommerceDisclosureByDisclosureidCall(disclosureid, _callback);
 
     }
 
@@ -7259,8 +7259,8 @@ public class CommerceApi {
      * @param disclosureid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceDisclosureByDisclosureid(@javax.annotation.Nonnull String disclosureid) throws ApiException {
-        postV1CommerceDisclosureByDisclosureidWithHttpInfo(disclosureid);
+    public void postCommerceDisclosureByDisclosureid(@javax.annotation.Nonnull String disclosureid) throws ApiException {
+        postCommerceDisclosureByDisclosureidWithHttpInfo(disclosureid);
     }
 
     /**
@@ -7270,8 +7270,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceDisclosureByDisclosureidWithHttpInfo(@javax.annotation.Nonnull String disclosureid) throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceDisclosureByDisclosureidValidateBeforeCall(disclosureid, null);
+    public ApiResponse<Void> postCommerceDisclosureByDisclosureidWithHttpInfo(@javax.annotation.Nonnull String disclosureid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceDisclosureByDisclosureidValidateBeforeCall(disclosureid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -7283,19 +7283,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceDisclosureByDisclosureidAsync(@javax.annotation.Nonnull String disclosureid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceDisclosureByDisclosureidAsync(@javax.annotation.Nonnull String disclosureid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceDisclosureByDisclosureidValidateBeforeCall(disclosureid, _callback);
+        okhttp3.Call localVarCall = postCommerceDisclosureByDisclosureidValidateBeforeCall(disclosureid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceDiscount
+     * Build call for postCommerceDiscount
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceDiscountCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceDiscountCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7339,8 +7339,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceDiscountValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CommerceDiscountCall(_callback);
+    private okhttp3.Call postCommerceDiscountValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceDiscountCall(_callback);
 
     }
 
@@ -7349,8 +7349,8 @@ public class CommerceApi {
      * A discount is a price rule: a type (flat, percent, free-shipping, free-item or bulk), a window, a scope naming the store, collection, product or variant it applies to, a target, and rules pairing a trigger — a price or quantity threshold — with an action, an amount off or a percentage. It is ENABLED BY DEFAULT, so a bare create makes a live discount rather than a draft. The rule engine caches per replica for about thirty seconds, so a discount switched off here can keep applying briefly on other replicas. Decodes the body into a new row in the caller org&#39;s own namespaced store — isolated to that tenant from its first write — and answers the stored row at 201 with a Location header naming its id. The id is assigned by the store, not taken from the body. A body that fails to decode is 400 and a store that refuses the write is 500. Any valid access token reaches it. The org must also be entitled to the commerce admin: the paywall answers 402 subscription_required unless the org holds an active or trialing pro subscription, a live trial credit or a redeemed invite, and 503 when that entitlement cannot be read rather than admitting on an unknown. The internal service token and a platform superadmin pass straight through. The per-kind permission table has no entry for discount, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceDiscount() throws ApiException {
-        postV1CommerceDiscountWithHttpInfo();
+    public void postCommerceDiscount() throws ApiException {
+        postCommerceDiscountWithHttpInfo();
     }
 
     /**
@@ -7359,8 +7359,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceDiscountWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceDiscountValidateBeforeCall(null);
+    public ApiResponse<Void> postCommerceDiscountWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceDiscountValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -7371,20 +7371,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceDiscountAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceDiscountAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceDiscountValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCommerceDiscountValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceDiscountByDiscountid
+     * Build call for postCommerceDiscountByDiscountid
      * @param discountid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceDiscountByDiscountidCall(@javax.annotation.Nonnull String discountid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceDiscountByDiscountidCall(@javax.annotation.Nonnull String discountid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7429,13 +7429,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceDiscountByDiscountidValidateBeforeCall(@javax.annotation.Nonnull String discountid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCommerceDiscountByDiscountidValidateBeforeCall(@javax.annotation.Nonnull String discountid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'discountid' is set
         if (discountid == null) {
-            throw new ApiException("Missing the required parameter 'discountid' when calling postV1CommerceDiscountByDiscountid(Async)");
+            throw new ApiException("Missing the required parameter 'discountid' when calling postCommerceDiscountByDiscountid(Async)");
         }
 
-        return postV1CommerceDiscountByDiscountidCall(discountid, _callback);
+        return postCommerceDiscountByDiscountidCall(discountid, _callback);
 
     }
 
@@ -7445,8 +7445,8 @@ public class CommerceApi {
      * @param discountid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceDiscountByDiscountid(@javax.annotation.Nonnull String discountid) throws ApiException {
-        postV1CommerceDiscountByDiscountidWithHttpInfo(discountid);
+    public void postCommerceDiscountByDiscountid(@javax.annotation.Nonnull String discountid) throws ApiException {
+        postCommerceDiscountByDiscountidWithHttpInfo(discountid);
     }
 
     /**
@@ -7456,8 +7456,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceDiscountByDiscountidWithHttpInfo(@javax.annotation.Nonnull String discountid) throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceDiscountByDiscountidValidateBeforeCall(discountid, null);
+    public ApiResponse<Void> postCommerceDiscountByDiscountidWithHttpInfo(@javax.annotation.Nonnull String discountid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceDiscountByDiscountidValidateBeforeCall(discountid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -7469,19 +7469,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceDiscountByDiscountidAsync(@javax.annotation.Nonnull String discountid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceDiscountByDiscountidAsync(@javax.annotation.Nonnull String discountid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceDiscountByDiscountidValidateBeforeCall(discountid, _callback);
+        okhttp3.Call localVarCall = postCommerceDiscountByDiscountidValidateBeforeCall(discountid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceMovie
+     * Build call for postCommerceMovie
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceMovieCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceMovieCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7525,8 +7525,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceMovieValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CommerceMovieCall(_callback);
+    private okhttp3.Call postCommerceMovieValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceMovieCall(_callback);
 
     }
 
@@ -7535,8 +7535,8 @@ public class CommerceApi {
      * A movie is a film catalog record — a slug plus EIDR and IMDB ids, all three required, with title and synopsis copy, artwork, screenshots, trailers, cast and crew, and available and hidden flags. It carries NO price: the money for a film lives on the product that sells it. Decodes the body into a new row in the caller org&#39;s own namespaced store — isolated to that tenant from its first write — and answers the stored row at 201 with a Location header naming its id. The id is assigned by the store, not taken from the body. A body that fails to decode is 400 and a store that refuses the write is 500. Any valid access token reaches it. The per-kind permission table has no entry for movie, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceMovie() throws ApiException {
-        postV1CommerceMovieWithHttpInfo();
+    public void postCommerceMovie() throws ApiException {
+        postCommerceMovieWithHttpInfo();
     }
 
     /**
@@ -7545,8 +7545,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceMovieWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceMovieValidateBeforeCall(null);
+    public ApiResponse<Void> postCommerceMovieWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceMovieValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -7557,20 +7557,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceMovieAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceMovieAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceMovieValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCommerceMovieValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceMovieByMovieid
+     * Build call for postCommerceMovieByMovieid
      * @param movieid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceMovieByMovieidCall(@javax.annotation.Nonnull String movieid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceMovieByMovieidCall(@javax.annotation.Nonnull String movieid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7615,13 +7615,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceMovieByMovieidValidateBeforeCall(@javax.annotation.Nonnull String movieid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCommerceMovieByMovieidValidateBeforeCall(@javax.annotation.Nonnull String movieid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'movieid' is set
         if (movieid == null) {
-            throw new ApiException("Missing the required parameter 'movieid' when calling postV1CommerceMovieByMovieid(Async)");
+            throw new ApiException("Missing the required parameter 'movieid' when calling postCommerceMovieByMovieid(Async)");
         }
 
-        return postV1CommerceMovieByMovieidCall(movieid, _callback);
+        return postCommerceMovieByMovieidCall(movieid, _callback);
 
     }
 
@@ -7631,8 +7631,8 @@ public class CommerceApi {
      * @param movieid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceMovieByMovieid(@javax.annotation.Nonnull String movieid) throws ApiException {
-        postV1CommerceMovieByMovieidWithHttpInfo(movieid);
+    public void postCommerceMovieByMovieid(@javax.annotation.Nonnull String movieid) throws ApiException {
+        postCommerceMovieByMovieidWithHttpInfo(movieid);
     }
 
     /**
@@ -7642,8 +7642,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceMovieByMovieidWithHttpInfo(@javax.annotation.Nonnull String movieid) throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceMovieByMovieidValidateBeforeCall(movieid, null);
+    public ApiResponse<Void> postCommerceMovieByMovieidWithHttpInfo(@javax.annotation.Nonnull String movieid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceMovieByMovieidValidateBeforeCall(movieid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -7655,19 +7655,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceMovieByMovieidAsync(@javax.annotation.Nonnull String movieid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceMovieByMovieidAsync(@javax.annotation.Nonnull String movieid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceMovieByMovieidValidateBeforeCall(movieid, _callback);
+        okhttp3.Call localVarCall = postCommerceMovieByMovieidValidateBeforeCall(movieid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceNote
+     * Build call for postCommerceNote
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceNoteCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceNoteCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7711,8 +7711,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceNoteValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CommerceNoteCall(_callback);
+    private okhttp3.Call postCommerceNoteValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceNoteCall(_callback);
 
     }
 
@@ -7721,8 +7721,8 @@ public class CommerceApi {
      * A note is a timestamped free-text log line — a caller-supplied time, a source, a message and an enabled flag. That time is the caller&#39;s own field and is distinct from the row&#39;s creation stamp; the note search filters on it, so a note written without one is a zero-time note the ops log will never surface. Decodes the body into a new row in the caller org&#39;s own namespaced store — isolated to that tenant from its first write — and answers the stored row at 201 with a Location header naming its id. The id is assigned by the store, not taken from the body. A body that fails to decode is 400 and a store that refuses the write is 500. Any valid access token reaches it. The per-kind permission table has no entry for note, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceNote() throws ApiException {
-        postV1CommerceNoteWithHttpInfo();
+    public void postCommerceNote() throws ApiException {
+        postCommerceNoteWithHttpInfo();
     }
 
     /**
@@ -7731,8 +7731,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceNoteWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceNoteValidateBeforeCall(null);
+    public ApiResponse<Void> postCommerceNoteWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceNoteValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -7743,20 +7743,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceNoteAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceNoteAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceNoteValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCommerceNoteValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceNoteByNoteid
+     * Build call for postCommerceNoteByNoteid
      * @param noteid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceNoteByNoteidCall(@javax.annotation.Nonnull String noteid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceNoteByNoteidCall(@javax.annotation.Nonnull String noteid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7801,13 +7801,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceNoteByNoteidValidateBeforeCall(@javax.annotation.Nonnull String noteid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCommerceNoteByNoteidValidateBeforeCall(@javax.annotation.Nonnull String noteid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'noteid' is set
         if (noteid == null) {
-            throw new ApiException("Missing the required parameter 'noteid' when calling postV1CommerceNoteByNoteid(Async)");
+            throw new ApiException("Missing the required parameter 'noteid' when calling postCommerceNoteByNoteid(Async)");
         }
 
-        return postV1CommerceNoteByNoteidCall(noteid, _callback);
+        return postCommerceNoteByNoteidCall(noteid, _callback);
 
     }
 
@@ -7817,8 +7817,8 @@ public class CommerceApi {
      * @param noteid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceNoteByNoteid(@javax.annotation.Nonnull String noteid) throws ApiException {
-        postV1CommerceNoteByNoteidWithHttpInfo(noteid);
+    public void postCommerceNoteByNoteid(@javax.annotation.Nonnull String noteid) throws ApiException {
+        postCommerceNoteByNoteidWithHttpInfo(noteid);
     }
 
     /**
@@ -7828,8 +7828,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceNoteByNoteidWithHttpInfo(@javax.annotation.Nonnull String noteid) throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceNoteByNoteidValidateBeforeCall(noteid, null);
+    public ApiResponse<Void> postCommerceNoteByNoteidWithHttpInfo(@javax.annotation.Nonnull String noteid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceNoteByNoteidValidateBeforeCall(noteid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -7841,19 +7841,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceNoteByNoteidAsync(@javax.annotation.Nonnull String noteid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceNoteByNoteidAsync(@javax.annotation.Nonnull String noteid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceNoteByNoteidValidateBeforeCall(noteid, _callback);
+        okhttp3.Call localVarCall = postCommerceNoteByNoteidValidateBeforeCall(noteid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceProduct
+     * Build call for postCommerceProduct
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceProductCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceProductCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7897,8 +7897,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceProductValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CommerceProductCall(_callback);
+    private okhttp3.Call postCommerceProductValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceProductCall(_callback);
 
     }
 
@@ -7907,8 +7907,8 @@ public class CommerceApi {
      * A product is a sellable catalog item: slug, SKU and UPC, name and copy, media, availability and preorder flags, a reservation block, and its money — currency, price, MSRP, list price and inventory cost in minor units, inventory count, taxability, and the subscription interval when it is subscribeable. Its variants and options are carried as a denormalized JSON snapshot inside the product, separate from the standalone variant rows, and nothing keeps the two in step for you. Decodes the body into a new row in the caller org&#39;s own namespaced store — isolated to that tenant from its first write — and answers the stored row at 201 with a Location header naming its id. The id is assigned by the store, not taken from the body. A body that fails to decode is 400 and a store that refuses the write is 500. Any valid access token reaches it. The org must also be entitled to the commerce admin: the paywall answers 402 subscription_required unless the org holds an active or trialing pro subscription, a live trial credit or a redeemed invite, and 503 when that entitlement cannot be read rather than admitting on an unknown. The internal service token and a platform superadmin pass straight through. The token must also carry Admin or WriteProduct.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceProduct() throws ApiException {
-        postV1CommerceProductWithHttpInfo();
+    public void postCommerceProduct() throws ApiException {
+        postCommerceProductWithHttpInfo();
     }
 
     /**
@@ -7917,8 +7917,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceProductWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceProductValidateBeforeCall(null);
+    public ApiResponse<Void> postCommerceProductWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceProductValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -7929,20 +7929,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceProductAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceProductAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceProductValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCommerceProductValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceProductByProductid
+     * Build call for postCommerceProductByProductid
      * @param productid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceProductByProductidCall(@javax.annotation.Nonnull String productid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceProductByProductidCall(@javax.annotation.Nonnull String productid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7987,13 +7987,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceProductByProductidValidateBeforeCall(@javax.annotation.Nonnull String productid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCommerceProductByProductidValidateBeforeCall(@javax.annotation.Nonnull String productid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'productid' is set
         if (productid == null) {
-            throw new ApiException("Missing the required parameter 'productid' when calling postV1CommerceProductByProductid(Async)");
+            throw new ApiException("Missing the required parameter 'productid' when calling postCommerceProductByProductid(Async)");
         }
 
-        return postV1CommerceProductByProductidCall(productid, _callback);
+        return postCommerceProductByProductidCall(productid, _callback);
 
     }
 
@@ -8003,8 +8003,8 @@ public class CommerceApi {
      * @param productid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceProductByProductid(@javax.annotation.Nonnull String productid) throws ApiException {
-        postV1CommerceProductByProductidWithHttpInfo(productid);
+    public void postCommerceProductByProductid(@javax.annotation.Nonnull String productid) throws ApiException {
+        postCommerceProductByProductidWithHttpInfo(productid);
     }
 
     /**
@@ -8014,8 +8014,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceProductByProductidWithHttpInfo(@javax.annotation.Nonnull String productid) throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceProductByProductidValidateBeforeCall(productid, null);
+    public ApiResponse<Void> postCommerceProductByProductidWithHttpInfo(@javax.annotation.Nonnull String productid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceProductByProductidValidateBeforeCall(productid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -8027,19 +8027,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceProductByProductidAsync(@javax.annotation.Nonnull String productid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceProductByProductidAsync(@javax.annotation.Nonnull String productid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceProductByProductidValidateBeforeCall(productid, _callback);
+        okhttp3.Call localVarCall = postCommerceProductByProductidValidateBeforeCall(productid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceReturn
+     * Build call for postCommerceReturn
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceReturnCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceReturnCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8083,8 +8083,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceReturnValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CommerceReturnCall(_callback);
+    private okhttp3.Call postCommerceReturnValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceReturnCall(_callback);
 
     }
 
@@ -8093,8 +8093,8 @@ public class CommerceApi {
      * A return is an RMA — the store, user and order it belongs to, the line items coming back, a fulfillment block carrying its own type, status and pricing, a summary, and eight lifecycle timestamps from submitted through delivered and processed. Its status is a FREE STRING with no enumeration behind it, and there is no refund amount on the return itself: the money sits inside the line items and the fulfillment pricing. Decodes the body into a new row in the caller org&#39;s own namespaced store — isolated to that tenant from its first write — and answers the stored row at 201 with a Location header naming its id. The id is assigned by the store, not taken from the body. A body that fails to decode is 400 and a store that refuses the write is 500. Any valid access token reaches it. The token must also carry Admin or WriteReturn.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceReturn() throws ApiException {
-        postV1CommerceReturnWithHttpInfo();
+    public void postCommerceReturn() throws ApiException {
+        postCommerceReturnWithHttpInfo();
     }
 
     /**
@@ -8103,8 +8103,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceReturnWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceReturnValidateBeforeCall(null);
+    public ApiResponse<Void> postCommerceReturnWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceReturnValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -8115,20 +8115,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceReturnAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceReturnAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceReturnValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCommerceReturnValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceReturnByReturnid
+     * Build call for postCommerceReturnByReturnid
      * @param returnid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceReturnByReturnidCall(@javax.annotation.Nonnull String returnid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceReturnByReturnidCall(@javax.annotation.Nonnull String returnid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8173,13 +8173,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceReturnByReturnidValidateBeforeCall(@javax.annotation.Nonnull String returnid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCommerceReturnByReturnidValidateBeforeCall(@javax.annotation.Nonnull String returnid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'returnid' is set
         if (returnid == null) {
-            throw new ApiException("Missing the required parameter 'returnid' when calling postV1CommerceReturnByReturnid(Async)");
+            throw new ApiException("Missing the required parameter 'returnid' when calling postCommerceReturnByReturnid(Async)");
         }
 
-        return postV1CommerceReturnByReturnidCall(returnid, _callback);
+        return postCommerceReturnByReturnidCall(returnid, _callback);
 
     }
 
@@ -8189,8 +8189,8 @@ public class CommerceApi {
      * @param returnid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceReturnByReturnid(@javax.annotation.Nonnull String returnid) throws ApiException {
-        postV1CommerceReturnByReturnidWithHttpInfo(returnid);
+    public void postCommerceReturnByReturnid(@javax.annotation.Nonnull String returnid) throws ApiException {
+        postCommerceReturnByReturnidWithHttpInfo(returnid);
     }
 
     /**
@@ -8200,8 +8200,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceReturnByReturnidWithHttpInfo(@javax.annotation.Nonnull String returnid) throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceReturnByReturnidValidateBeforeCall(returnid, null);
+    public ApiResponse<Void> postCommerceReturnByReturnidWithHttpInfo(@javax.annotation.Nonnull String returnid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceReturnByReturnidValidateBeforeCall(returnid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -8213,19 +8213,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceReturnByReturnidAsync(@javax.annotation.Nonnull String returnid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceReturnByReturnidAsync(@javax.annotation.Nonnull String returnid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceReturnByReturnidValidateBeforeCall(returnid, _callback);
+        okhttp3.Call localVarCall = postCommerceReturnByReturnidValidateBeforeCall(returnid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceSaleschannel
+     * Build call for postCommerceSaleschannel
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceSaleschannelCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceSaleschannelCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8269,8 +8269,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceSaleschannelValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CommerceSaleschannelCall(_callback);
+    private okhttp3.Call postCommerceSaleschannelValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceSaleschannelCall(_callback);
 
     }
 
@@ -8279,8 +8279,8 @@ public class CommerceApi {
      * A sales channel is a named selling surface — a name, a description, a disabled flag and metadata. The flag is NEGATIVE, so a channel created from an empty body is enabled. Nothing on this row links products, prices or stock to the channel; here it is a label other surfaces scope themselves by. Decodes the body into a new row in the caller org&#39;s own namespaced store — isolated to that tenant from its first write — and answers the stored row at 201 with a Location header naming its id. The id is assigned by the store, not taken from the body. A body that fails to decode is 400 and a store that refuses the write is 500. Any valid access token reaches it. The org must also be entitled to the commerce admin: the paywall answers 402 subscription_required unless the org holds an active or trialing pro subscription, a live trial credit or a redeemed invite, and 503 when that entitlement cannot be read rather than admitting on an unknown. The internal service token and a platform superadmin pass straight through. The per-kind permission table has no entry for saleschannel, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceSaleschannel() throws ApiException {
-        postV1CommerceSaleschannelWithHttpInfo();
+    public void postCommerceSaleschannel() throws ApiException {
+        postCommerceSaleschannelWithHttpInfo();
     }
 
     /**
@@ -8289,8 +8289,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceSaleschannelWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceSaleschannelValidateBeforeCall(null);
+    public ApiResponse<Void> postCommerceSaleschannelWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceSaleschannelValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -8301,20 +8301,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceSaleschannelAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceSaleschannelAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceSaleschannelValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCommerceSaleschannelValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceSaleschannelBySaleschannelid
+     * Build call for postCommerceSaleschannelBySaleschannelid
      * @param saleschannelid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceSaleschannelBySaleschannelidCall(@javax.annotation.Nonnull String saleschannelid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceSaleschannelBySaleschannelidCall(@javax.annotation.Nonnull String saleschannelid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8359,13 +8359,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceSaleschannelBySaleschannelidValidateBeforeCall(@javax.annotation.Nonnull String saleschannelid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCommerceSaleschannelBySaleschannelidValidateBeforeCall(@javax.annotation.Nonnull String saleschannelid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'saleschannelid' is set
         if (saleschannelid == null) {
-            throw new ApiException("Missing the required parameter 'saleschannelid' when calling postV1CommerceSaleschannelBySaleschannelid(Async)");
+            throw new ApiException("Missing the required parameter 'saleschannelid' when calling postCommerceSaleschannelBySaleschannelid(Async)");
         }
 
-        return postV1CommerceSaleschannelBySaleschannelidCall(saleschannelid, _callback);
+        return postCommerceSaleschannelBySaleschannelidCall(saleschannelid, _callback);
 
     }
 
@@ -8375,8 +8375,8 @@ public class CommerceApi {
      * @param saleschannelid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceSaleschannelBySaleschannelid(@javax.annotation.Nonnull String saleschannelid) throws ApiException {
-        postV1CommerceSaleschannelBySaleschannelidWithHttpInfo(saleschannelid);
+    public void postCommerceSaleschannelBySaleschannelid(@javax.annotation.Nonnull String saleschannelid) throws ApiException {
+        postCommerceSaleschannelBySaleschannelidWithHttpInfo(saleschannelid);
     }
 
     /**
@@ -8386,8 +8386,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceSaleschannelBySaleschannelidWithHttpInfo(@javax.annotation.Nonnull String saleschannelid) throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceSaleschannelBySaleschannelidValidateBeforeCall(saleschannelid, null);
+    public ApiResponse<Void> postCommerceSaleschannelBySaleschannelidWithHttpInfo(@javax.annotation.Nonnull String saleschannelid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceSaleschannelBySaleschannelidValidateBeforeCall(saleschannelid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -8399,19 +8399,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceSaleschannelBySaleschannelidAsync(@javax.annotation.Nonnull String saleschannelid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceSaleschannelBySaleschannelidAsync(@javax.annotation.Nonnull String saleschannelid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceSaleschannelBySaleschannelidValidateBeforeCall(saleschannelid, _callback);
+        okhttp3.Call localVarCall = postCommerceSaleschannelBySaleschannelidValidateBeforeCall(saleschannelid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceStocklocation
+     * Build call for postCommerceStocklocation
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceStocklocationCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceStocklocationCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8455,8 +8455,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceStocklocationValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CommerceStocklocationCall(_callback);
+    private okhttp3.Call postCommerceStocklocationValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceStocklocationCall(_callback);
 
     }
 
@@ -8465,8 +8465,8 @@ public class CommerceApi {
      * A stock location is a physical address inventory can be held at — a name, street lines, city, province, country, postal code and a phone. None of it is validated, there are no coordinates, and the row carries no enabled flag and no inventory link, so deleting it is the only way to retire one. Decodes the body into a new row in the caller org&#39;s own namespaced store — isolated to that tenant from its first write — and answers the stored row at 201 with a Location header naming its id. The id is assigned by the store, not taken from the body. A body that fails to decode is 400 and a store that refuses the write is 500. Any valid access token reaches it. The org must also be entitled to the commerce admin: the paywall answers 402 subscription_required unless the org holds an active or trialing pro subscription, a live trial credit or a redeemed invite, and 503 when that entitlement cannot be read rather than admitting on an unknown. The internal service token and a platform superadmin pass straight through. The per-kind permission table has no entry for stocklocation, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceStocklocation() throws ApiException {
-        postV1CommerceStocklocationWithHttpInfo();
+    public void postCommerceStocklocation() throws ApiException {
+        postCommerceStocklocationWithHttpInfo();
     }
 
     /**
@@ -8475,8 +8475,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceStocklocationWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceStocklocationValidateBeforeCall(null);
+    public ApiResponse<Void> postCommerceStocklocationWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceStocklocationValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -8487,20 +8487,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceStocklocationAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceStocklocationAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceStocklocationValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCommerceStocklocationValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceStocklocationByStocklocationid
+     * Build call for postCommerceStocklocationByStocklocationid
      * @param stocklocationid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceStocklocationByStocklocationidCall(@javax.annotation.Nonnull String stocklocationid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceStocklocationByStocklocationidCall(@javax.annotation.Nonnull String stocklocationid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8545,13 +8545,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceStocklocationByStocklocationidValidateBeforeCall(@javax.annotation.Nonnull String stocklocationid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCommerceStocklocationByStocklocationidValidateBeforeCall(@javax.annotation.Nonnull String stocklocationid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'stocklocationid' is set
         if (stocklocationid == null) {
-            throw new ApiException("Missing the required parameter 'stocklocationid' when calling postV1CommerceStocklocationByStocklocationid(Async)");
+            throw new ApiException("Missing the required parameter 'stocklocationid' when calling postCommerceStocklocationByStocklocationid(Async)");
         }
 
-        return postV1CommerceStocklocationByStocklocationidCall(stocklocationid, _callback);
+        return postCommerceStocklocationByStocklocationidCall(stocklocationid, _callback);
 
     }
 
@@ -8561,8 +8561,8 @@ public class CommerceApi {
      * @param stocklocationid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceStocklocationByStocklocationid(@javax.annotation.Nonnull String stocklocationid) throws ApiException {
-        postV1CommerceStocklocationByStocklocationidWithHttpInfo(stocklocationid);
+    public void postCommerceStocklocationByStocklocationid(@javax.annotation.Nonnull String stocklocationid) throws ApiException {
+        postCommerceStocklocationByStocklocationidWithHttpInfo(stocklocationid);
     }
 
     /**
@@ -8572,8 +8572,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceStocklocationByStocklocationidWithHttpInfo(@javax.annotation.Nonnull String stocklocationid) throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, null);
+    public ApiResponse<Void> postCommerceStocklocationByStocklocationidWithHttpInfo(@javax.annotation.Nonnull String stocklocationid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -8585,19 +8585,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceStocklocationByStocklocationidAsync(@javax.annotation.Nonnull String stocklocationid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceStocklocationByStocklocationidAsync(@javax.annotation.Nonnull String stocklocationid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, _callback);
+        okhttp3.Call localVarCall = postCommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceSubmission
+     * Build call for postCommerceSubmission
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceSubmissionCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceSubmissionCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8641,8 +8641,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceSubmissionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CommerceSubmissionCall(_callback);
+    private okhttp3.Call postCommerceSubmissionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceSubmissionCall(_callback);
 
     }
 
@@ -8651,8 +8651,8 @@ public class CommerceApi {
      * A submission is one filled-in form from a site visitor — an email, an optional user id, the client details the server observed (user agent, referer, geography) and the form&#39;s own fields as free metadata. It carries no form id, so the link back to the form that produced it is not stored on the row. Decodes the body into a new row in the caller org&#39;s own namespaced store — isolated to that tenant from its first write — and answers the stored row at 201 with a Location header naming its id. The id is assigned by the store, not taken from the body. A body that fails to decode is 400 and a store that refuses the write is 500. Any valid access token reaches it. The per-kind permission table has no entry for submission, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceSubmission() throws ApiException {
-        postV1CommerceSubmissionWithHttpInfo();
+    public void postCommerceSubmission() throws ApiException {
+        postCommerceSubmissionWithHttpInfo();
     }
 
     /**
@@ -8661,8 +8661,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceSubmissionWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceSubmissionValidateBeforeCall(null);
+    public ApiResponse<Void> postCommerceSubmissionWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceSubmissionValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -8673,20 +8673,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceSubmissionAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceSubmissionAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceSubmissionValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCommerceSubmissionValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceSubmissionBySubmissionid
+     * Build call for postCommerceSubmissionBySubmissionid
      * @param submissionid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceSubmissionBySubmissionidCall(@javax.annotation.Nonnull String submissionid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceSubmissionBySubmissionidCall(@javax.annotation.Nonnull String submissionid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8731,13 +8731,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceSubmissionBySubmissionidValidateBeforeCall(@javax.annotation.Nonnull String submissionid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCommerceSubmissionBySubmissionidValidateBeforeCall(@javax.annotation.Nonnull String submissionid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'submissionid' is set
         if (submissionid == null) {
-            throw new ApiException("Missing the required parameter 'submissionid' when calling postV1CommerceSubmissionBySubmissionid(Async)");
+            throw new ApiException("Missing the required parameter 'submissionid' when calling postCommerceSubmissionBySubmissionid(Async)");
         }
 
-        return postV1CommerceSubmissionBySubmissionidCall(submissionid, _callback);
+        return postCommerceSubmissionBySubmissionidCall(submissionid, _callback);
 
     }
 
@@ -8747,8 +8747,8 @@ public class CommerceApi {
      * @param submissionid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceSubmissionBySubmissionid(@javax.annotation.Nonnull String submissionid) throws ApiException {
-        postV1CommerceSubmissionBySubmissionidWithHttpInfo(submissionid);
+    public void postCommerceSubmissionBySubmissionid(@javax.annotation.Nonnull String submissionid) throws ApiException {
+        postCommerceSubmissionBySubmissionidWithHttpInfo(submissionid);
     }
 
     /**
@@ -8758,8 +8758,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceSubmissionBySubmissionidWithHttpInfo(@javax.annotation.Nonnull String submissionid) throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceSubmissionBySubmissionidValidateBeforeCall(submissionid, null);
+    public ApiResponse<Void> postCommerceSubmissionBySubmissionidWithHttpInfo(@javax.annotation.Nonnull String submissionid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceSubmissionBySubmissionidValidateBeforeCall(submissionid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -8771,19 +8771,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceSubmissionBySubmissionidAsync(@javax.annotation.Nonnull String submissionid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceSubmissionBySubmissionidAsync(@javax.annotation.Nonnull String submissionid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceSubmissionBySubmissionidValidateBeforeCall(submissionid, _callback);
+        okhttp3.Call localVarCall = postCommerceSubmissionBySubmissionidValidateBeforeCall(submissionid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceSubscriber
+     * Build call for postCommerceSubscriber
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceSubscriberCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceSubscriberCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8827,8 +8827,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceSubscriberValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CommerceSubscriberCall(_callback);
+    private okhttp3.Call postCommerceSubscriberValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceSubscriberCall(_callback);
 
     }
 
@@ -8837,8 +8837,8 @@ public class CommerceApi {
      * A subscriber is a mailing-list member — name, email, the form id that captured them, unsubscribed state and date, client details, tags and metadata. Writing one FIRES A WEBHOOK: subscriber.created on create and subscriber.updated on replace or patch, emitted BEFORE the write is known to have succeeded and carrying the row as sent, so the payload holds the raw email rather than the normalized one that gets stored. Decodes the body into a new row in the caller org&#39;s own namespaced store — isolated to that tenant from its first write — and answers the stored row at 201 with a Location header naming its id. The id is assigned by the store, not taken from the body. A body that fails to decode is 400 and a store that refuses the write is 500. Any valid access token reaches it. The token must also carry Admin or WriteSubscriber.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceSubscriber() throws ApiException {
-        postV1CommerceSubscriberWithHttpInfo();
+    public void postCommerceSubscriber() throws ApiException {
+        postCommerceSubscriberWithHttpInfo();
     }
 
     /**
@@ -8847,8 +8847,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceSubscriberWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceSubscriberValidateBeforeCall(null);
+    public ApiResponse<Void> postCommerceSubscriberWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceSubscriberValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -8859,20 +8859,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceSubscriberAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceSubscriberAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceSubscriberValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCommerceSubscriberValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceSubscriberBySubscriberid
+     * Build call for postCommerceSubscriberBySubscriberid
      * @param subscriberid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceSubscriberBySubscriberidCall(@javax.annotation.Nonnull String subscriberid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceSubscriberBySubscriberidCall(@javax.annotation.Nonnull String subscriberid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8917,13 +8917,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceSubscriberBySubscriberidValidateBeforeCall(@javax.annotation.Nonnull String subscriberid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCommerceSubscriberBySubscriberidValidateBeforeCall(@javax.annotation.Nonnull String subscriberid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'subscriberid' is set
         if (subscriberid == null) {
-            throw new ApiException("Missing the required parameter 'subscriberid' when calling postV1CommerceSubscriberBySubscriberid(Async)");
+            throw new ApiException("Missing the required parameter 'subscriberid' when calling postCommerceSubscriberBySubscriberid(Async)");
         }
 
-        return postV1CommerceSubscriberBySubscriberidCall(subscriberid, _callback);
+        return postCommerceSubscriberBySubscriberidCall(subscriberid, _callback);
 
     }
 
@@ -8933,8 +8933,8 @@ public class CommerceApi {
      * @param subscriberid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceSubscriberBySubscriberid(@javax.annotation.Nonnull String subscriberid) throws ApiException {
-        postV1CommerceSubscriberBySubscriberidWithHttpInfo(subscriberid);
+    public void postCommerceSubscriberBySubscriberid(@javax.annotation.Nonnull String subscriberid) throws ApiException {
+        postCommerceSubscriberBySubscriberidWithHttpInfo(subscriberid);
     }
 
     /**
@@ -8944,8 +8944,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceSubscriberBySubscriberidWithHttpInfo(@javax.annotation.Nonnull String subscriberid) throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceSubscriberBySubscriberidValidateBeforeCall(subscriberid, null);
+    public ApiResponse<Void> postCommerceSubscriberBySubscriberidWithHttpInfo(@javax.annotation.Nonnull String subscriberid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceSubscriberBySubscriberidValidateBeforeCall(subscriberid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -8957,19 +8957,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceSubscriberBySubscriberidAsync(@javax.annotation.Nonnull String subscriberid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceSubscriberBySubscriberidAsync(@javax.annotation.Nonnull String subscriberid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceSubscriberBySubscriberidValidateBeforeCall(subscriberid, _callback);
+        okhttp3.Call localVarCall = postCommerceSubscriberBySubscriberidValidateBeforeCall(subscriberid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceTokentransaction
+     * Build call for postCommerceTokentransaction
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceTokentransactionCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceTokentransactionCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9013,8 +9013,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceTokentransactionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CommerceTokentransactionCall(_callback);
+    private okhttp3.Call postCommerceTokentransactionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceTokentransactionCall(_callback);
 
     }
 
@@ -9023,8 +9023,8 @@ public class CommerceApi {
      * A token transaction records a transfer between two identified parties — amount and fees, a timestamp, sending and receiving addresses, names, user ids, states and countries, a flag per side, a protocol name and a transaction hash. Nothing here touches a chain: the hash is an unvalidated string and the flags are plain writable booleans with no screening behind them. Amounts are floating-point rather than the exact minor units every real money field in commerce uses, and there is no currency field at all — this kind lives in commerce&#39;s demo tree, so it is a live writable resource in your tenant&#39;s store that nothing else in commerce reads, and it must never carry real money. Decodes the body into a new row in the caller org&#39;s own namespaced store — isolated to that tenant from its first write — and answers the stored row at 201 with a Location header naming its id. The id is assigned by the store, not taken from the body. A body that fails to decode is 400 and a store that refuses the write is 500. Any valid access token reaches it. The per-kind permission table has no entry for tokentransaction, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceTokentransaction() throws ApiException {
-        postV1CommerceTokentransactionWithHttpInfo();
+    public void postCommerceTokentransaction() throws ApiException {
+        postCommerceTokentransactionWithHttpInfo();
     }
 
     /**
@@ -9033,8 +9033,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceTokentransactionWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceTokentransactionValidateBeforeCall(null);
+    public ApiResponse<Void> postCommerceTokentransactionWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceTokentransactionValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -9045,20 +9045,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceTokentransactionAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceTokentransactionAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceTokentransactionValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCommerceTokentransactionValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceTokentransactionByTokentransactionid
+     * Build call for postCommerceTokentransactionByTokentransactionid
      * @param tokentransactionid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceTokentransactionByTokentransactionidCall(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceTokentransactionByTokentransactionidCall(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9103,13 +9103,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceTokentransactionByTokentransactionidValidateBeforeCall(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCommerceTokentransactionByTokentransactionidValidateBeforeCall(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'tokentransactionid' is set
         if (tokentransactionid == null) {
-            throw new ApiException("Missing the required parameter 'tokentransactionid' when calling postV1CommerceTokentransactionByTokentransactionid(Async)");
+            throw new ApiException("Missing the required parameter 'tokentransactionid' when calling postCommerceTokentransactionByTokentransactionid(Async)");
         }
 
-        return postV1CommerceTokentransactionByTokentransactionidCall(tokentransactionid, _callback);
+        return postCommerceTokentransactionByTokentransactionidCall(tokentransactionid, _callback);
 
     }
 
@@ -9119,8 +9119,8 @@ public class CommerceApi {
      * @param tokentransactionid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceTokentransactionByTokentransactionid(@javax.annotation.Nonnull String tokentransactionid) throws ApiException {
-        postV1CommerceTokentransactionByTokentransactionidWithHttpInfo(tokentransactionid);
+    public void postCommerceTokentransactionByTokentransactionid(@javax.annotation.Nonnull String tokentransactionid) throws ApiException {
+        postCommerceTokentransactionByTokentransactionidWithHttpInfo(tokentransactionid);
     }
 
     /**
@@ -9130,8 +9130,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceTokentransactionByTokentransactionidWithHttpInfo(@javax.annotation.Nonnull String tokentransactionid) throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceTokentransactionByTokentransactionidValidateBeforeCall(tokentransactionid, null);
+    public ApiResponse<Void> postCommerceTokentransactionByTokentransactionidWithHttpInfo(@javax.annotation.Nonnull String tokentransactionid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceTokentransactionByTokentransactionidValidateBeforeCall(tokentransactionid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -9143,19 +9143,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceTokentransactionByTokentransactionidAsync(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceTokentransactionByTokentransactionidAsync(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceTokentransactionByTokentransactionidValidateBeforeCall(tokentransactionid, _callback);
+        okhttp3.Call localVarCall = postCommerceTokentransactionByTokentransactionidValidateBeforeCall(tokentransactionid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceTransfer
+     * Build call for postCommerceTransfer
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceTransferCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceTransferCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9199,8 +9199,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceTransferValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CommerceTransferCall(_callback);
+    private okhttp3.Call postCommerceTransferValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceTransferCall(_callback);
 
     }
 
@@ -9209,8 +9209,8 @@ public class CommerceApi {
      * A transfer records that a payable WAS PAID — the annotation a human writes after paying out of band. Commerce executes no payout: creating one moves no money, and it marks the referenced payable settled. It carries the payable and payee ids, the amount it settles and the amount actually sent (which may be a different asset), a type of eth, wire or other, the transaction hash or wire reference, when it was paid and who recorded it; amounts are exact decimal strings with an asset, not cents. It is admin-gated because writing one settles money we owe, and nothing enforces uniqueness on the reference — so posting the same transfer twice settles the payable twice. Decodes the body into a new row in the caller org&#39;s own namespaced store — isolated to that tenant from its first write — and answers the stored row at 201 with a Location header naming its id. The id is assigned by the store, not taken from the body. A body that fails to decode is 400 and a store that refuses the write is 500. The token must carry the ADMIN permission; an ordinary access token is refused. The per-kind permission table has no entry for transfer, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceTransfer() throws ApiException {
-        postV1CommerceTransferWithHttpInfo();
+    public void postCommerceTransfer() throws ApiException {
+        postCommerceTransferWithHttpInfo();
     }
 
     /**
@@ -9219,8 +9219,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceTransferWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceTransferValidateBeforeCall(null);
+    public ApiResponse<Void> postCommerceTransferWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceTransferValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -9231,20 +9231,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceTransferAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceTransferAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceTransferValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCommerceTransferValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceTransferByTransferid
+     * Build call for postCommerceTransferByTransferid
      * @param transferid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceTransferByTransferidCall(@javax.annotation.Nonnull String transferid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceTransferByTransferidCall(@javax.annotation.Nonnull String transferid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9289,13 +9289,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceTransferByTransferidValidateBeforeCall(@javax.annotation.Nonnull String transferid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCommerceTransferByTransferidValidateBeforeCall(@javax.annotation.Nonnull String transferid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'transferid' is set
         if (transferid == null) {
-            throw new ApiException("Missing the required parameter 'transferid' when calling postV1CommerceTransferByTransferid(Async)");
+            throw new ApiException("Missing the required parameter 'transferid' when calling postCommerceTransferByTransferid(Async)");
         }
 
-        return postV1CommerceTransferByTransferidCall(transferid, _callback);
+        return postCommerceTransferByTransferidCall(transferid, _callback);
 
     }
 
@@ -9305,8 +9305,8 @@ public class CommerceApi {
      * @param transferid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceTransferByTransferid(@javax.annotation.Nonnull String transferid) throws ApiException {
-        postV1CommerceTransferByTransferidWithHttpInfo(transferid);
+    public void postCommerceTransferByTransferid(@javax.annotation.Nonnull String transferid) throws ApiException {
+        postCommerceTransferByTransferidWithHttpInfo(transferid);
     }
 
     /**
@@ -9316,8 +9316,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceTransferByTransferidWithHttpInfo(@javax.annotation.Nonnull String transferid) throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceTransferByTransferidValidateBeforeCall(transferid, null);
+    public ApiResponse<Void> postCommerceTransferByTransferidWithHttpInfo(@javax.annotation.Nonnull String transferid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceTransferByTransferidValidateBeforeCall(transferid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -9329,19 +9329,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceTransferByTransferidAsync(@javax.annotation.Nonnull String transferid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceTransferByTransferidAsync(@javax.annotation.Nonnull String transferid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceTransferByTransferidValidateBeforeCall(transferid, _callback);
+        okhttp3.Call localVarCall = postCommerceTransferByTransferidValidateBeforeCall(transferid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceVariant
+     * Build call for postCommerceVariant
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceVariantCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceVariantCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9385,8 +9385,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceVariantValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CommerceVariantCall(_callback);
+    private okhttp3.Call postCommerceVariantValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceVariantCall(_callback);
 
     }
 
@@ -9395,8 +9395,8 @@ public class CommerceApi {
      * A variant is one purchasable SKU of a product — its product id, SKU and UPC, name, media, availability, the option name and value pairs that distinguish it, a sold counter, and its own money and stock: currency, price, MSRP, inventory cost, inventory count and taxability. Inventory and sold are plain writable numbers with no decrement logic behind them here. The same variant also exists as a JSON copy inside its product, and writing one does not update the other. Decodes the body into a new row in the caller org&#39;s own namespaced store — isolated to that tenant from its first write — and answers the stored row at 201 with a Location header naming its id. The id is assigned by the store, not taken from the body. A body that fails to decode is 400 and a store that refuses the write is 500. Any valid access token reaches it. The org must also be entitled to the commerce admin: the paywall answers 402 subscription_required unless the org holds an active or trialing pro subscription, a live trial credit or a redeemed invite, and 503 when that entitlement cannot be read rather than admitting on an unknown. The internal service token and a platform superadmin pass straight through. The token must also carry Admin or WriteVariant.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceVariant() throws ApiException {
-        postV1CommerceVariantWithHttpInfo();
+    public void postCommerceVariant() throws ApiException {
+        postCommerceVariantWithHttpInfo();
     }
 
     /**
@@ -9405,8 +9405,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceVariantWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceVariantValidateBeforeCall(null);
+    public ApiResponse<Void> postCommerceVariantWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceVariantValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -9417,20 +9417,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceVariantAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceVariantAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceVariantValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCommerceVariantValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceVariantByVariantid
+     * Build call for postCommerceVariantByVariantid
      * @param variantid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceVariantByVariantidCall(@javax.annotation.Nonnull String variantid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceVariantByVariantidCall(@javax.annotation.Nonnull String variantid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9475,13 +9475,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceVariantByVariantidValidateBeforeCall(@javax.annotation.Nonnull String variantid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCommerceVariantByVariantidValidateBeforeCall(@javax.annotation.Nonnull String variantid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'variantid' is set
         if (variantid == null) {
-            throw new ApiException("Missing the required parameter 'variantid' when calling postV1CommerceVariantByVariantid(Async)");
+            throw new ApiException("Missing the required parameter 'variantid' when calling postCommerceVariantByVariantid(Async)");
         }
 
-        return postV1CommerceVariantByVariantidCall(variantid, _callback);
+        return postCommerceVariantByVariantidCall(variantid, _callback);
 
     }
 
@@ -9491,8 +9491,8 @@ public class CommerceApi {
      * @param variantid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceVariantByVariantid(@javax.annotation.Nonnull String variantid) throws ApiException {
-        postV1CommerceVariantByVariantidWithHttpInfo(variantid);
+    public void postCommerceVariantByVariantid(@javax.annotation.Nonnull String variantid) throws ApiException {
+        postCommerceVariantByVariantidWithHttpInfo(variantid);
     }
 
     /**
@@ -9502,8 +9502,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceVariantByVariantidWithHttpInfo(@javax.annotation.Nonnull String variantid) throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceVariantByVariantidValidateBeforeCall(variantid, null);
+    public ApiResponse<Void> postCommerceVariantByVariantidWithHttpInfo(@javax.annotation.Nonnull String variantid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceVariantByVariantidValidateBeforeCall(variantid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -9515,19 +9515,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceVariantByVariantidAsync(@javax.annotation.Nonnull String variantid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceVariantByVariantidAsync(@javax.annotation.Nonnull String variantid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceVariantByVariantidValidateBeforeCall(variantid, _callback);
+        okhttp3.Call localVarCall = postCommerceVariantByVariantidValidateBeforeCall(variantid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceWallet
+     * Build call for postCommerceWallet
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceWalletCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceWalletCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9571,8 +9571,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceWalletValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CommerceWalletCall(_callback);
+    private okhttp3.Call postCommerceWalletValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceWalletCall(_callback);
 
     }
 
@@ -9581,8 +9581,8 @@ public class CommerceApi {
      * A wallet is a container of custodial blockchain accounts, and its only field is that account list — each account carrying a name, an address, a chain type, and the ENCRYPTED private key with its salt. Creating a wallet through this table generates NO KEYS: key generation lives on the account routes, so a wallet made here is an empty shell and an account posted into one is stored exactly as sent, with no key generation and no validation behind it. Know what a read renders: the plaintext private key is never marshalled and never stored, but the encrypted blob and its salt ARE returned, so whoever can read a wallet can attack it offline down to the strength of the owner&#39;s passphrase. That is why this kind is admin-gated. Decodes the body into a new row in the caller org&#39;s own namespaced store — isolated to that tenant from its first write — and answers the stored row at 201 with a Location header naming its id. The id is assigned by the store, not taken from the body. A body that fails to decode is 400 and a store that refuses the write is 500. The token must carry the ADMIN permission; an ordinary access token is refused. The per-kind permission table has no entry for wallet, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceWallet() throws ApiException {
-        postV1CommerceWalletWithHttpInfo();
+    public void postCommerceWallet() throws ApiException {
+        postCommerceWalletWithHttpInfo();
     }
 
     /**
@@ -9591,8 +9591,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceWalletWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceWalletValidateBeforeCall(null);
+    public ApiResponse<Void> postCommerceWalletWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceWalletValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -9603,20 +9603,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceWalletAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceWalletAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceWalletValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCommerceWalletValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceWalletByWalletid
+     * Build call for postCommerceWalletByWalletid
      * @param walletid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceWalletByWalletidCall(@javax.annotation.Nonnull String walletid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceWalletByWalletidCall(@javax.annotation.Nonnull String walletid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9661,13 +9661,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceWalletByWalletidValidateBeforeCall(@javax.annotation.Nonnull String walletid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCommerceWalletByWalletidValidateBeforeCall(@javax.annotation.Nonnull String walletid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'walletid' is set
         if (walletid == null) {
-            throw new ApiException("Missing the required parameter 'walletid' when calling postV1CommerceWalletByWalletid(Async)");
+            throw new ApiException("Missing the required parameter 'walletid' when calling postCommerceWalletByWalletid(Async)");
         }
 
-        return postV1CommerceWalletByWalletidCall(walletid, _callback);
+        return postCommerceWalletByWalletidCall(walletid, _callback);
 
     }
 
@@ -9677,8 +9677,8 @@ public class CommerceApi {
      * @param walletid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceWalletByWalletid(@javax.annotation.Nonnull String walletid) throws ApiException {
-        postV1CommerceWalletByWalletidWithHttpInfo(walletid);
+    public void postCommerceWalletByWalletid(@javax.annotation.Nonnull String walletid) throws ApiException {
+        postCommerceWalletByWalletidWithHttpInfo(walletid);
     }
 
     /**
@@ -9688,8 +9688,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceWalletByWalletidWithHttpInfo(@javax.annotation.Nonnull String walletid) throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceWalletByWalletidValidateBeforeCall(walletid, null);
+    public ApiResponse<Void> postCommerceWalletByWalletidWithHttpInfo(@javax.annotation.Nonnull String walletid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceWalletByWalletidValidateBeforeCall(walletid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -9701,19 +9701,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceWalletByWalletidAsync(@javax.annotation.Nonnull String walletid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceWalletByWalletidAsync(@javax.annotation.Nonnull String walletid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceWalletByWalletidValidateBeforeCall(walletid, _callback);
+        okhttp3.Call localVarCall = postCommerceWalletByWalletidValidateBeforeCall(walletid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceWatchlist
+     * Build call for postCommerceWatchlist
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceWatchlistCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceWatchlistCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9757,8 +9757,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceWatchlistValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CommerceWatchlistCall(_callback);
+    private okhttp3.Call postCommerceWatchlistValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceWatchlistCall(_callback);
 
     }
 
@@ -9767,8 +9767,8 @@ public class CommerceApi {
      * A watchlist is a viewer&#39;s saved list of movies — a user id, an email, and the movies themselves. It stores WHOLE MOVIE SNAPSHOTS rather than movie ids, so a list goes stale the moment a film record changes and grows without bound as it fills. Decodes the body into a new row in the caller org&#39;s own namespaced store — isolated to that tenant from its first write — and answers the stored row at 201 with a Location header naming its id. The id is assigned by the store, not taken from the body. A body that fails to decode is 400 and a store that refuses the write is 500. Any valid access token reaches it. The per-kind permission table has no entry for watchlist, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceWatchlist() throws ApiException {
-        postV1CommerceWatchlistWithHttpInfo();
+    public void postCommerceWatchlist() throws ApiException {
+        postCommerceWatchlistWithHttpInfo();
     }
 
     /**
@@ -9777,8 +9777,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceWatchlistWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceWatchlistValidateBeforeCall(null);
+    public ApiResponse<Void> postCommerceWatchlistWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceWatchlistValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -9789,20 +9789,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceWatchlistAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceWatchlistAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceWatchlistValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCommerceWatchlistValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceWatchlistByWatchlistid
+     * Build call for postCommerceWatchlistByWatchlistid
      * @param watchlistid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceWatchlistByWatchlistidCall(@javax.annotation.Nonnull String watchlistid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceWatchlistByWatchlistidCall(@javax.annotation.Nonnull String watchlistid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9847,13 +9847,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceWatchlistByWatchlistidValidateBeforeCall(@javax.annotation.Nonnull String watchlistid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCommerceWatchlistByWatchlistidValidateBeforeCall(@javax.annotation.Nonnull String watchlistid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'watchlistid' is set
         if (watchlistid == null) {
-            throw new ApiException("Missing the required parameter 'watchlistid' when calling postV1CommerceWatchlistByWatchlistid(Async)");
+            throw new ApiException("Missing the required parameter 'watchlistid' when calling postCommerceWatchlistByWatchlistid(Async)");
         }
 
-        return postV1CommerceWatchlistByWatchlistidCall(watchlistid, _callback);
+        return postCommerceWatchlistByWatchlistidCall(watchlistid, _callback);
 
     }
 
@@ -9863,8 +9863,8 @@ public class CommerceApi {
      * @param watchlistid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceWatchlistByWatchlistid(@javax.annotation.Nonnull String watchlistid) throws ApiException {
-        postV1CommerceWatchlistByWatchlistidWithHttpInfo(watchlistid);
+    public void postCommerceWatchlistByWatchlistid(@javax.annotation.Nonnull String watchlistid) throws ApiException {
+        postCommerceWatchlistByWatchlistidWithHttpInfo(watchlistid);
     }
 
     /**
@@ -9874,8 +9874,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceWatchlistByWatchlistidWithHttpInfo(@javax.annotation.Nonnull String watchlistid) throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceWatchlistByWatchlistidValidateBeforeCall(watchlistid, null);
+    public ApiResponse<Void> postCommerceWatchlistByWatchlistidWithHttpInfo(@javax.annotation.Nonnull String watchlistid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceWatchlistByWatchlistidValidateBeforeCall(watchlistid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -9887,19 +9887,19 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceWatchlistByWatchlistidAsync(@javax.annotation.Nonnull String watchlistid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceWatchlistByWatchlistidAsync(@javax.annotation.Nonnull String watchlistid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceWatchlistByWatchlistidValidateBeforeCall(watchlistid, _callback);
+        okhttp3.Call localVarCall = postCommerceWatchlistByWatchlistidValidateBeforeCall(watchlistid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceWebhook
+     * Build call for postCommerceWebhook
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceWebhookCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceWebhookCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9943,8 +9943,8 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceWebhookValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CommerceWebhookCall(_callback);
+    private okhttp3.Call postCommerceWebhookValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceWebhookCall(_callback);
 
     }
 
@@ -9953,8 +9953,8 @@ public class CommerceApi {
      * A webhook is a merchant-registered endpoint that receives commerce event callbacks — a name, a URL, live and all flags, a per-event map, an enabled flag, and the shared access token each delivery posts IN THE BODY. Two things to know before registering one: that token is a plainly readable field, so anyone who may read webhooks reads every endpoint&#39;s secret, and delivery consults only the all flag and the event map — it does NOT consult enabled or live, so setting enabled false does not stop delivery and deleting the row is the only thing that does. Delivery is a single POST with a twenty-second timeout and no retry. Decodes the body into a new row in the caller org&#39;s own namespaced store — isolated to that tenant from its first write — and answers the stored row at 201 with a Location header naming its id. The id is assigned by the store, not taken from the body. A body that fails to decode is 400 and a store that refuses the write is 500. The token must carry the ADMIN permission; an ordinary access token is refused. The per-kind permission table has no entry for webhook, so the scaffold skips that second check with a warning and the gate above is the whole authorization story.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceWebhook() throws ApiException {
-        postV1CommerceWebhookWithHttpInfo();
+    public void postCommerceWebhook() throws ApiException {
+        postCommerceWebhookWithHttpInfo();
     }
 
     /**
@@ -9963,8 +9963,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceWebhookWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceWebhookValidateBeforeCall(null);
+    public ApiResponse<Void> postCommerceWebhookWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceWebhookValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -9975,20 +9975,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceWebhookAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceWebhookAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceWebhookValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCommerceWebhookValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CommerceWebhookByWebhookid
+     * Build call for postCommerceWebhookByWebhookid
      * @param webhookid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CommerceWebhookByWebhookidCall(@javax.annotation.Nonnull String webhookid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCommerceWebhookByWebhookidCall(@javax.annotation.Nonnull String webhookid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10033,13 +10033,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CommerceWebhookByWebhookidValidateBeforeCall(@javax.annotation.Nonnull String webhookid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCommerceWebhookByWebhookidValidateBeforeCall(@javax.annotation.Nonnull String webhookid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'webhookid' is set
         if (webhookid == null) {
-            throw new ApiException("Missing the required parameter 'webhookid' when calling postV1CommerceWebhookByWebhookid(Async)");
+            throw new ApiException("Missing the required parameter 'webhookid' when calling postCommerceWebhookByWebhookid(Async)");
         }
 
-        return postV1CommerceWebhookByWebhookidCall(webhookid, _callback);
+        return postCommerceWebhookByWebhookidCall(webhookid, _callback);
 
     }
 
@@ -10049,8 +10049,8 @@ public class CommerceApi {
      * @param webhookid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CommerceWebhookByWebhookid(@javax.annotation.Nonnull String webhookid) throws ApiException {
-        postV1CommerceWebhookByWebhookidWithHttpInfo(webhookid);
+    public void postCommerceWebhookByWebhookid(@javax.annotation.Nonnull String webhookid) throws ApiException {
+        postCommerceWebhookByWebhookidWithHttpInfo(webhookid);
     }
 
     /**
@@ -10060,8 +10060,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CommerceWebhookByWebhookidWithHttpInfo(@javax.annotation.Nonnull String webhookid) throws ApiException {
-        okhttp3.Call localVarCall = postV1CommerceWebhookByWebhookidValidateBeforeCall(webhookid, null);
+    public ApiResponse<Void> postCommerceWebhookByWebhookidWithHttpInfo(@javax.annotation.Nonnull String webhookid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceWebhookByWebhookidValidateBeforeCall(webhookid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -10073,20 +10073,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CommerceWebhookByWebhookidAsync(@javax.annotation.Nonnull String webhookid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCommerceWebhookByWebhookidAsync(@javax.annotation.Nonnull String webhookid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CommerceWebhookByWebhookidValidateBeforeCall(webhookid, _callback);
+        okhttp3.Call localVarCall = postCommerceWebhookByWebhookidValidateBeforeCall(webhookid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CommerceCollectionByCollectionid
+     * Build call for putCommerceCollectionByCollectionid
      * @param collectionid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1CommerceCollectionByCollectionidCall(@javax.annotation.Nonnull String collectionid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCommerceCollectionByCollectionidCall(@javax.annotation.Nonnull String collectionid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10131,13 +10131,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CommerceCollectionByCollectionidValidateBeforeCall(@javax.annotation.Nonnull String collectionid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCommerceCollectionByCollectionidValidateBeforeCall(@javax.annotation.Nonnull String collectionid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'collectionid' is set
         if (collectionid == null) {
-            throw new ApiException("Missing the required parameter 'collectionid' when calling putV1CommerceCollectionByCollectionid(Async)");
+            throw new ApiException("Missing the required parameter 'collectionid' when calling putCommerceCollectionByCollectionid(Async)");
         }
 
-        return putV1CommerceCollectionByCollectionidCall(collectionid, _callback);
+        return putCommerceCollectionByCollectionidCall(collectionid, _callback);
 
     }
 
@@ -10147,8 +10147,8 @@ public class CommerceApi {
      * @param collectionid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1CommerceCollectionByCollectionid(@javax.annotation.Nonnull String collectionid) throws ApiException {
-        putV1CommerceCollectionByCollectionidWithHttpInfo(collectionid);
+    public void putCommerceCollectionByCollectionid(@javax.annotation.Nonnull String collectionid) throws ApiException {
+        putCommerceCollectionByCollectionidWithHttpInfo(collectionid);
     }
 
     /**
@@ -10158,8 +10158,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1CommerceCollectionByCollectionidWithHttpInfo(@javax.annotation.Nonnull String collectionid) throws ApiException {
-        okhttp3.Call localVarCall = putV1CommerceCollectionByCollectionidValidateBeforeCall(collectionid, null);
+    public ApiResponse<Void> putCommerceCollectionByCollectionidWithHttpInfo(@javax.annotation.Nonnull String collectionid) throws ApiException {
+        okhttp3.Call localVarCall = putCommerceCollectionByCollectionidValidateBeforeCall(collectionid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -10171,20 +10171,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1CommerceCollectionByCollectionidAsync(@javax.annotation.Nonnull String collectionid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putCommerceCollectionByCollectionidAsync(@javax.annotation.Nonnull String collectionid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CommerceCollectionByCollectionidValidateBeforeCall(collectionid, _callback);
+        okhttp3.Call localVarCall = putCommerceCollectionByCollectionidValidateBeforeCall(collectionid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CommerceDisclosureByDisclosureid
+     * Build call for putCommerceDisclosureByDisclosureid
      * @param disclosureid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1CommerceDisclosureByDisclosureidCall(@javax.annotation.Nonnull String disclosureid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCommerceDisclosureByDisclosureidCall(@javax.annotation.Nonnull String disclosureid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10229,13 +10229,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CommerceDisclosureByDisclosureidValidateBeforeCall(@javax.annotation.Nonnull String disclosureid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCommerceDisclosureByDisclosureidValidateBeforeCall(@javax.annotation.Nonnull String disclosureid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'disclosureid' is set
         if (disclosureid == null) {
-            throw new ApiException("Missing the required parameter 'disclosureid' when calling putV1CommerceDisclosureByDisclosureid(Async)");
+            throw new ApiException("Missing the required parameter 'disclosureid' when calling putCommerceDisclosureByDisclosureid(Async)");
         }
 
-        return putV1CommerceDisclosureByDisclosureidCall(disclosureid, _callback);
+        return putCommerceDisclosureByDisclosureidCall(disclosureid, _callback);
 
     }
 
@@ -10245,8 +10245,8 @@ public class CommerceApi {
      * @param disclosureid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1CommerceDisclosureByDisclosureid(@javax.annotation.Nonnull String disclosureid) throws ApiException {
-        putV1CommerceDisclosureByDisclosureidWithHttpInfo(disclosureid);
+    public void putCommerceDisclosureByDisclosureid(@javax.annotation.Nonnull String disclosureid) throws ApiException {
+        putCommerceDisclosureByDisclosureidWithHttpInfo(disclosureid);
     }
 
     /**
@@ -10256,8 +10256,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1CommerceDisclosureByDisclosureidWithHttpInfo(@javax.annotation.Nonnull String disclosureid) throws ApiException {
-        okhttp3.Call localVarCall = putV1CommerceDisclosureByDisclosureidValidateBeforeCall(disclosureid, null);
+    public ApiResponse<Void> putCommerceDisclosureByDisclosureidWithHttpInfo(@javax.annotation.Nonnull String disclosureid) throws ApiException {
+        okhttp3.Call localVarCall = putCommerceDisclosureByDisclosureidValidateBeforeCall(disclosureid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -10269,20 +10269,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1CommerceDisclosureByDisclosureidAsync(@javax.annotation.Nonnull String disclosureid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putCommerceDisclosureByDisclosureidAsync(@javax.annotation.Nonnull String disclosureid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CommerceDisclosureByDisclosureidValidateBeforeCall(disclosureid, _callback);
+        okhttp3.Call localVarCall = putCommerceDisclosureByDisclosureidValidateBeforeCall(disclosureid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CommerceDiscountByDiscountid
+     * Build call for putCommerceDiscountByDiscountid
      * @param discountid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1CommerceDiscountByDiscountidCall(@javax.annotation.Nonnull String discountid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCommerceDiscountByDiscountidCall(@javax.annotation.Nonnull String discountid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10327,13 +10327,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CommerceDiscountByDiscountidValidateBeforeCall(@javax.annotation.Nonnull String discountid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCommerceDiscountByDiscountidValidateBeforeCall(@javax.annotation.Nonnull String discountid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'discountid' is set
         if (discountid == null) {
-            throw new ApiException("Missing the required parameter 'discountid' when calling putV1CommerceDiscountByDiscountid(Async)");
+            throw new ApiException("Missing the required parameter 'discountid' when calling putCommerceDiscountByDiscountid(Async)");
         }
 
-        return putV1CommerceDiscountByDiscountidCall(discountid, _callback);
+        return putCommerceDiscountByDiscountidCall(discountid, _callback);
 
     }
 
@@ -10343,8 +10343,8 @@ public class CommerceApi {
      * @param discountid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1CommerceDiscountByDiscountid(@javax.annotation.Nonnull String discountid) throws ApiException {
-        putV1CommerceDiscountByDiscountidWithHttpInfo(discountid);
+    public void putCommerceDiscountByDiscountid(@javax.annotation.Nonnull String discountid) throws ApiException {
+        putCommerceDiscountByDiscountidWithHttpInfo(discountid);
     }
 
     /**
@@ -10354,8 +10354,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1CommerceDiscountByDiscountidWithHttpInfo(@javax.annotation.Nonnull String discountid) throws ApiException {
-        okhttp3.Call localVarCall = putV1CommerceDiscountByDiscountidValidateBeforeCall(discountid, null);
+    public ApiResponse<Void> putCommerceDiscountByDiscountidWithHttpInfo(@javax.annotation.Nonnull String discountid) throws ApiException {
+        okhttp3.Call localVarCall = putCommerceDiscountByDiscountidValidateBeforeCall(discountid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -10367,20 +10367,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1CommerceDiscountByDiscountidAsync(@javax.annotation.Nonnull String discountid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putCommerceDiscountByDiscountidAsync(@javax.annotation.Nonnull String discountid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CommerceDiscountByDiscountidValidateBeforeCall(discountid, _callback);
+        okhttp3.Call localVarCall = putCommerceDiscountByDiscountidValidateBeforeCall(discountid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CommerceMovieByMovieid
+     * Build call for putCommerceMovieByMovieid
      * @param movieid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1CommerceMovieByMovieidCall(@javax.annotation.Nonnull String movieid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCommerceMovieByMovieidCall(@javax.annotation.Nonnull String movieid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10425,13 +10425,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CommerceMovieByMovieidValidateBeforeCall(@javax.annotation.Nonnull String movieid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCommerceMovieByMovieidValidateBeforeCall(@javax.annotation.Nonnull String movieid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'movieid' is set
         if (movieid == null) {
-            throw new ApiException("Missing the required parameter 'movieid' when calling putV1CommerceMovieByMovieid(Async)");
+            throw new ApiException("Missing the required parameter 'movieid' when calling putCommerceMovieByMovieid(Async)");
         }
 
-        return putV1CommerceMovieByMovieidCall(movieid, _callback);
+        return putCommerceMovieByMovieidCall(movieid, _callback);
 
     }
 
@@ -10441,8 +10441,8 @@ public class CommerceApi {
      * @param movieid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1CommerceMovieByMovieid(@javax.annotation.Nonnull String movieid) throws ApiException {
-        putV1CommerceMovieByMovieidWithHttpInfo(movieid);
+    public void putCommerceMovieByMovieid(@javax.annotation.Nonnull String movieid) throws ApiException {
+        putCommerceMovieByMovieidWithHttpInfo(movieid);
     }
 
     /**
@@ -10452,8 +10452,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1CommerceMovieByMovieidWithHttpInfo(@javax.annotation.Nonnull String movieid) throws ApiException {
-        okhttp3.Call localVarCall = putV1CommerceMovieByMovieidValidateBeforeCall(movieid, null);
+    public ApiResponse<Void> putCommerceMovieByMovieidWithHttpInfo(@javax.annotation.Nonnull String movieid) throws ApiException {
+        okhttp3.Call localVarCall = putCommerceMovieByMovieidValidateBeforeCall(movieid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -10465,20 +10465,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1CommerceMovieByMovieidAsync(@javax.annotation.Nonnull String movieid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putCommerceMovieByMovieidAsync(@javax.annotation.Nonnull String movieid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CommerceMovieByMovieidValidateBeforeCall(movieid, _callback);
+        okhttp3.Call localVarCall = putCommerceMovieByMovieidValidateBeforeCall(movieid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CommerceNoteByNoteid
+     * Build call for putCommerceNoteByNoteid
      * @param noteid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1CommerceNoteByNoteidCall(@javax.annotation.Nonnull String noteid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCommerceNoteByNoteidCall(@javax.annotation.Nonnull String noteid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10523,13 +10523,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CommerceNoteByNoteidValidateBeforeCall(@javax.annotation.Nonnull String noteid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCommerceNoteByNoteidValidateBeforeCall(@javax.annotation.Nonnull String noteid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'noteid' is set
         if (noteid == null) {
-            throw new ApiException("Missing the required parameter 'noteid' when calling putV1CommerceNoteByNoteid(Async)");
+            throw new ApiException("Missing the required parameter 'noteid' when calling putCommerceNoteByNoteid(Async)");
         }
 
-        return putV1CommerceNoteByNoteidCall(noteid, _callback);
+        return putCommerceNoteByNoteidCall(noteid, _callback);
 
     }
 
@@ -10539,8 +10539,8 @@ public class CommerceApi {
      * @param noteid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1CommerceNoteByNoteid(@javax.annotation.Nonnull String noteid) throws ApiException {
-        putV1CommerceNoteByNoteidWithHttpInfo(noteid);
+    public void putCommerceNoteByNoteid(@javax.annotation.Nonnull String noteid) throws ApiException {
+        putCommerceNoteByNoteidWithHttpInfo(noteid);
     }
 
     /**
@@ -10550,8 +10550,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1CommerceNoteByNoteidWithHttpInfo(@javax.annotation.Nonnull String noteid) throws ApiException {
-        okhttp3.Call localVarCall = putV1CommerceNoteByNoteidValidateBeforeCall(noteid, null);
+    public ApiResponse<Void> putCommerceNoteByNoteidWithHttpInfo(@javax.annotation.Nonnull String noteid) throws ApiException {
+        okhttp3.Call localVarCall = putCommerceNoteByNoteidValidateBeforeCall(noteid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -10563,20 +10563,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1CommerceNoteByNoteidAsync(@javax.annotation.Nonnull String noteid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putCommerceNoteByNoteidAsync(@javax.annotation.Nonnull String noteid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CommerceNoteByNoteidValidateBeforeCall(noteid, _callback);
+        okhttp3.Call localVarCall = putCommerceNoteByNoteidValidateBeforeCall(noteid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CommerceProductByProductid
+     * Build call for putCommerceProductByProductid
      * @param productid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1CommerceProductByProductidCall(@javax.annotation.Nonnull String productid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCommerceProductByProductidCall(@javax.annotation.Nonnull String productid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10621,13 +10621,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CommerceProductByProductidValidateBeforeCall(@javax.annotation.Nonnull String productid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCommerceProductByProductidValidateBeforeCall(@javax.annotation.Nonnull String productid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'productid' is set
         if (productid == null) {
-            throw new ApiException("Missing the required parameter 'productid' when calling putV1CommerceProductByProductid(Async)");
+            throw new ApiException("Missing the required parameter 'productid' when calling putCommerceProductByProductid(Async)");
         }
 
-        return putV1CommerceProductByProductidCall(productid, _callback);
+        return putCommerceProductByProductidCall(productid, _callback);
 
     }
 
@@ -10637,8 +10637,8 @@ public class CommerceApi {
      * @param productid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1CommerceProductByProductid(@javax.annotation.Nonnull String productid) throws ApiException {
-        putV1CommerceProductByProductidWithHttpInfo(productid);
+    public void putCommerceProductByProductid(@javax.annotation.Nonnull String productid) throws ApiException {
+        putCommerceProductByProductidWithHttpInfo(productid);
     }
 
     /**
@@ -10648,8 +10648,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1CommerceProductByProductidWithHttpInfo(@javax.annotation.Nonnull String productid) throws ApiException {
-        okhttp3.Call localVarCall = putV1CommerceProductByProductidValidateBeforeCall(productid, null);
+    public ApiResponse<Void> putCommerceProductByProductidWithHttpInfo(@javax.annotation.Nonnull String productid) throws ApiException {
+        okhttp3.Call localVarCall = putCommerceProductByProductidValidateBeforeCall(productid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -10661,20 +10661,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1CommerceProductByProductidAsync(@javax.annotation.Nonnull String productid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putCommerceProductByProductidAsync(@javax.annotation.Nonnull String productid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CommerceProductByProductidValidateBeforeCall(productid, _callback);
+        okhttp3.Call localVarCall = putCommerceProductByProductidValidateBeforeCall(productid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CommerceReturnByReturnid
+     * Build call for putCommerceReturnByReturnid
      * @param returnid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1CommerceReturnByReturnidCall(@javax.annotation.Nonnull String returnid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCommerceReturnByReturnidCall(@javax.annotation.Nonnull String returnid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10719,13 +10719,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CommerceReturnByReturnidValidateBeforeCall(@javax.annotation.Nonnull String returnid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCommerceReturnByReturnidValidateBeforeCall(@javax.annotation.Nonnull String returnid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'returnid' is set
         if (returnid == null) {
-            throw new ApiException("Missing the required parameter 'returnid' when calling putV1CommerceReturnByReturnid(Async)");
+            throw new ApiException("Missing the required parameter 'returnid' when calling putCommerceReturnByReturnid(Async)");
         }
 
-        return putV1CommerceReturnByReturnidCall(returnid, _callback);
+        return putCommerceReturnByReturnidCall(returnid, _callback);
 
     }
 
@@ -10735,8 +10735,8 @@ public class CommerceApi {
      * @param returnid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1CommerceReturnByReturnid(@javax.annotation.Nonnull String returnid) throws ApiException {
-        putV1CommerceReturnByReturnidWithHttpInfo(returnid);
+    public void putCommerceReturnByReturnid(@javax.annotation.Nonnull String returnid) throws ApiException {
+        putCommerceReturnByReturnidWithHttpInfo(returnid);
     }
 
     /**
@@ -10746,8 +10746,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1CommerceReturnByReturnidWithHttpInfo(@javax.annotation.Nonnull String returnid) throws ApiException {
-        okhttp3.Call localVarCall = putV1CommerceReturnByReturnidValidateBeforeCall(returnid, null);
+    public ApiResponse<Void> putCommerceReturnByReturnidWithHttpInfo(@javax.annotation.Nonnull String returnid) throws ApiException {
+        okhttp3.Call localVarCall = putCommerceReturnByReturnidValidateBeforeCall(returnid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -10759,20 +10759,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1CommerceReturnByReturnidAsync(@javax.annotation.Nonnull String returnid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putCommerceReturnByReturnidAsync(@javax.annotation.Nonnull String returnid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CommerceReturnByReturnidValidateBeforeCall(returnid, _callback);
+        okhttp3.Call localVarCall = putCommerceReturnByReturnidValidateBeforeCall(returnid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CommerceSaleschannelBySaleschannelid
+     * Build call for putCommerceSaleschannelBySaleschannelid
      * @param saleschannelid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1CommerceSaleschannelBySaleschannelidCall(@javax.annotation.Nonnull String saleschannelid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCommerceSaleschannelBySaleschannelidCall(@javax.annotation.Nonnull String saleschannelid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10817,13 +10817,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CommerceSaleschannelBySaleschannelidValidateBeforeCall(@javax.annotation.Nonnull String saleschannelid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCommerceSaleschannelBySaleschannelidValidateBeforeCall(@javax.annotation.Nonnull String saleschannelid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'saleschannelid' is set
         if (saleschannelid == null) {
-            throw new ApiException("Missing the required parameter 'saleschannelid' when calling putV1CommerceSaleschannelBySaleschannelid(Async)");
+            throw new ApiException("Missing the required parameter 'saleschannelid' when calling putCommerceSaleschannelBySaleschannelid(Async)");
         }
 
-        return putV1CommerceSaleschannelBySaleschannelidCall(saleschannelid, _callback);
+        return putCommerceSaleschannelBySaleschannelidCall(saleschannelid, _callback);
 
     }
 
@@ -10833,8 +10833,8 @@ public class CommerceApi {
      * @param saleschannelid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1CommerceSaleschannelBySaleschannelid(@javax.annotation.Nonnull String saleschannelid) throws ApiException {
-        putV1CommerceSaleschannelBySaleschannelidWithHttpInfo(saleschannelid);
+    public void putCommerceSaleschannelBySaleschannelid(@javax.annotation.Nonnull String saleschannelid) throws ApiException {
+        putCommerceSaleschannelBySaleschannelidWithHttpInfo(saleschannelid);
     }
 
     /**
@@ -10844,8 +10844,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1CommerceSaleschannelBySaleschannelidWithHttpInfo(@javax.annotation.Nonnull String saleschannelid) throws ApiException {
-        okhttp3.Call localVarCall = putV1CommerceSaleschannelBySaleschannelidValidateBeforeCall(saleschannelid, null);
+    public ApiResponse<Void> putCommerceSaleschannelBySaleschannelidWithHttpInfo(@javax.annotation.Nonnull String saleschannelid) throws ApiException {
+        okhttp3.Call localVarCall = putCommerceSaleschannelBySaleschannelidValidateBeforeCall(saleschannelid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -10857,20 +10857,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1CommerceSaleschannelBySaleschannelidAsync(@javax.annotation.Nonnull String saleschannelid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putCommerceSaleschannelBySaleschannelidAsync(@javax.annotation.Nonnull String saleschannelid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CommerceSaleschannelBySaleschannelidValidateBeforeCall(saleschannelid, _callback);
+        okhttp3.Call localVarCall = putCommerceSaleschannelBySaleschannelidValidateBeforeCall(saleschannelid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CommerceStocklocationByStocklocationid
+     * Build call for putCommerceStocklocationByStocklocationid
      * @param stocklocationid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1CommerceStocklocationByStocklocationidCall(@javax.annotation.Nonnull String stocklocationid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCommerceStocklocationByStocklocationidCall(@javax.annotation.Nonnull String stocklocationid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10915,13 +10915,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CommerceStocklocationByStocklocationidValidateBeforeCall(@javax.annotation.Nonnull String stocklocationid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCommerceStocklocationByStocklocationidValidateBeforeCall(@javax.annotation.Nonnull String stocklocationid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'stocklocationid' is set
         if (stocklocationid == null) {
-            throw new ApiException("Missing the required parameter 'stocklocationid' when calling putV1CommerceStocklocationByStocklocationid(Async)");
+            throw new ApiException("Missing the required parameter 'stocklocationid' when calling putCommerceStocklocationByStocklocationid(Async)");
         }
 
-        return putV1CommerceStocklocationByStocklocationidCall(stocklocationid, _callback);
+        return putCommerceStocklocationByStocklocationidCall(stocklocationid, _callback);
 
     }
 
@@ -10931,8 +10931,8 @@ public class CommerceApi {
      * @param stocklocationid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1CommerceStocklocationByStocklocationid(@javax.annotation.Nonnull String stocklocationid) throws ApiException {
-        putV1CommerceStocklocationByStocklocationidWithHttpInfo(stocklocationid);
+    public void putCommerceStocklocationByStocklocationid(@javax.annotation.Nonnull String stocklocationid) throws ApiException {
+        putCommerceStocklocationByStocklocationidWithHttpInfo(stocklocationid);
     }
 
     /**
@@ -10942,8 +10942,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1CommerceStocklocationByStocklocationidWithHttpInfo(@javax.annotation.Nonnull String stocklocationid) throws ApiException {
-        okhttp3.Call localVarCall = putV1CommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, null);
+    public ApiResponse<Void> putCommerceStocklocationByStocklocationidWithHttpInfo(@javax.annotation.Nonnull String stocklocationid) throws ApiException {
+        okhttp3.Call localVarCall = putCommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -10955,20 +10955,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1CommerceStocklocationByStocklocationidAsync(@javax.annotation.Nonnull String stocklocationid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putCommerceStocklocationByStocklocationidAsync(@javax.annotation.Nonnull String stocklocationid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, _callback);
+        okhttp3.Call localVarCall = putCommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CommerceSubmissionBySubmissionid
+     * Build call for putCommerceSubmissionBySubmissionid
      * @param submissionid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1CommerceSubmissionBySubmissionidCall(@javax.annotation.Nonnull String submissionid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCommerceSubmissionBySubmissionidCall(@javax.annotation.Nonnull String submissionid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -11013,13 +11013,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CommerceSubmissionBySubmissionidValidateBeforeCall(@javax.annotation.Nonnull String submissionid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCommerceSubmissionBySubmissionidValidateBeforeCall(@javax.annotation.Nonnull String submissionid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'submissionid' is set
         if (submissionid == null) {
-            throw new ApiException("Missing the required parameter 'submissionid' when calling putV1CommerceSubmissionBySubmissionid(Async)");
+            throw new ApiException("Missing the required parameter 'submissionid' when calling putCommerceSubmissionBySubmissionid(Async)");
         }
 
-        return putV1CommerceSubmissionBySubmissionidCall(submissionid, _callback);
+        return putCommerceSubmissionBySubmissionidCall(submissionid, _callback);
 
     }
 
@@ -11029,8 +11029,8 @@ public class CommerceApi {
      * @param submissionid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1CommerceSubmissionBySubmissionid(@javax.annotation.Nonnull String submissionid) throws ApiException {
-        putV1CommerceSubmissionBySubmissionidWithHttpInfo(submissionid);
+    public void putCommerceSubmissionBySubmissionid(@javax.annotation.Nonnull String submissionid) throws ApiException {
+        putCommerceSubmissionBySubmissionidWithHttpInfo(submissionid);
     }
 
     /**
@@ -11040,8 +11040,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1CommerceSubmissionBySubmissionidWithHttpInfo(@javax.annotation.Nonnull String submissionid) throws ApiException {
-        okhttp3.Call localVarCall = putV1CommerceSubmissionBySubmissionidValidateBeforeCall(submissionid, null);
+    public ApiResponse<Void> putCommerceSubmissionBySubmissionidWithHttpInfo(@javax.annotation.Nonnull String submissionid) throws ApiException {
+        okhttp3.Call localVarCall = putCommerceSubmissionBySubmissionidValidateBeforeCall(submissionid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -11053,20 +11053,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1CommerceSubmissionBySubmissionidAsync(@javax.annotation.Nonnull String submissionid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putCommerceSubmissionBySubmissionidAsync(@javax.annotation.Nonnull String submissionid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CommerceSubmissionBySubmissionidValidateBeforeCall(submissionid, _callback);
+        okhttp3.Call localVarCall = putCommerceSubmissionBySubmissionidValidateBeforeCall(submissionid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CommerceSubscriberBySubscriberid
+     * Build call for putCommerceSubscriberBySubscriberid
      * @param subscriberid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1CommerceSubscriberBySubscriberidCall(@javax.annotation.Nonnull String subscriberid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCommerceSubscriberBySubscriberidCall(@javax.annotation.Nonnull String subscriberid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -11111,13 +11111,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CommerceSubscriberBySubscriberidValidateBeforeCall(@javax.annotation.Nonnull String subscriberid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCommerceSubscriberBySubscriberidValidateBeforeCall(@javax.annotation.Nonnull String subscriberid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'subscriberid' is set
         if (subscriberid == null) {
-            throw new ApiException("Missing the required parameter 'subscriberid' when calling putV1CommerceSubscriberBySubscriberid(Async)");
+            throw new ApiException("Missing the required parameter 'subscriberid' when calling putCommerceSubscriberBySubscriberid(Async)");
         }
 
-        return putV1CommerceSubscriberBySubscriberidCall(subscriberid, _callback);
+        return putCommerceSubscriberBySubscriberidCall(subscriberid, _callback);
 
     }
 
@@ -11127,8 +11127,8 @@ public class CommerceApi {
      * @param subscriberid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1CommerceSubscriberBySubscriberid(@javax.annotation.Nonnull String subscriberid) throws ApiException {
-        putV1CommerceSubscriberBySubscriberidWithHttpInfo(subscriberid);
+    public void putCommerceSubscriberBySubscriberid(@javax.annotation.Nonnull String subscriberid) throws ApiException {
+        putCommerceSubscriberBySubscriberidWithHttpInfo(subscriberid);
     }
 
     /**
@@ -11138,8 +11138,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1CommerceSubscriberBySubscriberidWithHttpInfo(@javax.annotation.Nonnull String subscriberid) throws ApiException {
-        okhttp3.Call localVarCall = putV1CommerceSubscriberBySubscriberidValidateBeforeCall(subscriberid, null);
+    public ApiResponse<Void> putCommerceSubscriberBySubscriberidWithHttpInfo(@javax.annotation.Nonnull String subscriberid) throws ApiException {
+        okhttp3.Call localVarCall = putCommerceSubscriberBySubscriberidValidateBeforeCall(subscriberid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -11151,20 +11151,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1CommerceSubscriberBySubscriberidAsync(@javax.annotation.Nonnull String subscriberid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putCommerceSubscriberBySubscriberidAsync(@javax.annotation.Nonnull String subscriberid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CommerceSubscriberBySubscriberidValidateBeforeCall(subscriberid, _callback);
+        okhttp3.Call localVarCall = putCommerceSubscriberBySubscriberidValidateBeforeCall(subscriberid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CommerceTokentransactionByTokentransactionid
+     * Build call for putCommerceTokentransactionByTokentransactionid
      * @param tokentransactionid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1CommerceTokentransactionByTokentransactionidCall(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCommerceTokentransactionByTokentransactionidCall(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -11209,13 +11209,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CommerceTokentransactionByTokentransactionidValidateBeforeCall(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCommerceTokentransactionByTokentransactionidValidateBeforeCall(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'tokentransactionid' is set
         if (tokentransactionid == null) {
-            throw new ApiException("Missing the required parameter 'tokentransactionid' when calling putV1CommerceTokentransactionByTokentransactionid(Async)");
+            throw new ApiException("Missing the required parameter 'tokentransactionid' when calling putCommerceTokentransactionByTokentransactionid(Async)");
         }
 
-        return putV1CommerceTokentransactionByTokentransactionidCall(tokentransactionid, _callback);
+        return putCommerceTokentransactionByTokentransactionidCall(tokentransactionid, _callback);
 
     }
 
@@ -11225,8 +11225,8 @@ public class CommerceApi {
      * @param tokentransactionid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1CommerceTokentransactionByTokentransactionid(@javax.annotation.Nonnull String tokentransactionid) throws ApiException {
-        putV1CommerceTokentransactionByTokentransactionidWithHttpInfo(tokentransactionid);
+    public void putCommerceTokentransactionByTokentransactionid(@javax.annotation.Nonnull String tokentransactionid) throws ApiException {
+        putCommerceTokentransactionByTokentransactionidWithHttpInfo(tokentransactionid);
     }
 
     /**
@@ -11236,8 +11236,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1CommerceTokentransactionByTokentransactionidWithHttpInfo(@javax.annotation.Nonnull String tokentransactionid) throws ApiException {
-        okhttp3.Call localVarCall = putV1CommerceTokentransactionByTokentransactionidValidateBeforeCall(tokentransactionid, null);
+    public ApiResponse<Void> putCommerceTokentransactionByTokentransactionidWithHttpInfo(@javax.annotation.Nonnull String tokentransactionid) throws ApiException {
+        okhttp3.Call localVarCall = putCommerceTokentransactionByTokentransactionidValidateBeforeCall(tokentransactionid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -11249,20 +11249,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1CommerceTokentransactionByTokentransactionidAsync(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putCommerceTokentransactionByTokentransactionidAsync(@javax.annotation.Nonnull String tokentransactionid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CommerceTokentransactionByTokentransactionidValidateBeforeCall(tokentransactionid, _callback);
+        okhttp3.Call localVarCall = putCommerceTokentransactionByTokentransactionidValidateBeforeCall(tokentransactionid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CommerceTransferByTransferid
+     * Build call for putCommerceTransferByTransferid
      * @param transferid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1CommerceTransferByTransferidCall(@javax.annotation.Nonnull String transferid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCommerceTransferByTransferidCall(@javax.annotation.Nonnull String transferid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -11307,13 +11307,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CommerceTransferByTransferidValidateBeforeCall(@javax.annotation.Nonnull String transferid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCommerceTransferByTransferidValidateBeforeCall(@javax.annotation.Nonnull String transferid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'transferid' is set
         if (transferid == null) {
-            throw new ApiException("Missing the required parameter 'transferid' when calling putV1CommerceTransferByTransferid(Async)");
+            throw new ApiException("Missing the required parameter 'transferid' when calling putCommerceTransferByTransferid(Async)");
         }
 
-        return putV1CommerceTransferByTransferidCall(transferid, _callback);
+        return putCommerceTransferByTransferidCall(transferid, _callback);
 
     }
 
@@ -11323,8 +11323,8 @@ public class CommerceApi {
      * @param transferid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1CommerceTransferByTransferid(@javax.annotation.Nonnull String transferid) throws ApiException {
-        putV1CommerceTransferByTransferidWithHttpInfo(transferid);
+    public void putCommerceTransferByTransferid(@javax.annotation.Nonnull String transferid) throws ApiException {
+        putCommerceTransferByTransferidWithHttpInfo(transferid);
     }
 
     /**
@@ -11334,8 +11334,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1CommerceTransferByTransferidWithHttpInfo(@javax.annotation.Nonnull String transferid) throws ApiException {
-        okhttp3.Call localVarCall = putV1CommerceTransferByTransferidValidateBeforeCall(transferid, null);
+    public ApiResponse<Void> putCommerceTransferByTransferidWithHttpInfo(@javax.annotation.Nonnull String transferid) throws ApiException {
+        okhttp3.Call localVarCall = putCommerceTransferByTransferidValidateBeforeCall(transferid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -11347,20 +11347,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1CommerceTransferByTransferidAsync(@javax.annotation.Nonnull String transferid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putCommerceTransferByTransferidAsync(@javax.annotation.Nonnull String transferid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CommerceTransferByTransferidValidateBeforeCall(transferid, _callback);
+        okhttp3.Call localVarCall = putCommerceTransferByTransferidValidateBeforeCall(transferid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CommerceVariantByVariantid
+     * Build call for putCommerceVariantByVariantid
      * @param variantid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1CommerceVariantByVariantidCall(@javax.annotation.Nonnull String variantid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCommerceVariantByVariantidCall(@javax.annotation.Nonnull String variantid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -11405,13 +11405,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CommerceVariantByVariantidValidateBeforeCall(@javax.annotation.Nonnull String variantid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCommerceVariantByVariantidValidateBeforeCall(@javax.annotation.Nonnull String variantid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'variantid' is set
         if (variantid == null) {
-            throw new ApiException("Missing the required parameter 'variantid' when calling putV1CommerceVariantByVariantid(Async)");
+            throw new ApiException("Missing the required parameter 'variantid' when calling putCommerceVariantByVariantid(Async)");
         }
 
-        return putV1CommerceVariantByVariantidCall(variantid, _callback);
+        return putCommerceVariantByVariantidCall(variantid, _callback);
 
     }
 
@@ -11421,8 +11421,8 @@ public class CommerceApi {
      * @param variantid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1CommerceVariantByVariantid(@javax.annotation.Nonnull String variantid) throws ApiException {
-        putV1CommerceVariantByVariantidWithHttpInfo(variantid);
+    public void putCommerceVariantByVariantid(@javax.annotation.Nonnull String variantid) throws ApiException {
+        putCommerceVariantByVariantidWithHttpInfo(variantid);
     }
 
     /**
@@ -11432,8 +11432,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1CommerceVariantByVariantidWithHttpInfo(@javax.annotation.Nonnull String variantid) throws ApiException {
-        okhttp3.Call localVarCall = putV1CommerceVariantByVariantidValidateBeforeCall(variantid, null);
+    public ApiResponse<Void> putCommerceVariantByVariantidWithHttpInfo(@javax.annotation.Nonnull String variantid) throws ApiException {
+        okhttp3.Call localVarCall = putCommerceVariantByVariantidValidateBeforeCall(variantid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -11445,20 +11445,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1CommerceVariantByVariantidAsync(@javax.annotation.Nonnull String variantid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putCommerceVariantByVariantidAsync(@javax.annotation.Nonnull String variantid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CommerceVariantByVariantidValidateBeforeCall(variantid, _callback);
+        okhttp3.Call localVarCall = putCommerceVariantByVariantidValidateBeforeCall(variantid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CommerceWalletByWalletid
+     * Build call for putCommerceWalletByWalletid
      * @param walletid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1CommerceWalletByWalletidCall(@javax.annotation.Nonnull String walletid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCommerceWalletByWalletidCall(@javax.annotation.Nonnull String walletid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -11503,13 +11503,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CommerceWalletByWalletidValidateBeforeCall(@javax.annotation.Nonnull String walletid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCommerceWalletByWalletidValidateBeforeCall(@javax.annotation.Nonnull String walletid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'walletid' is set
         if (walletid == null) {
-            throw new ApiException("Missing the required parameter 'walletid' when calling putV1CommerceWalletByWalletid(Async)");
+            throw new ApiException("Missing the required parameter 'walletid' when calling putCommerceWalletByWalletid(Async)");
         }
 
-        return putV1CommerceWalletByWalletidCall(walletid, _callback);
+        return putCommerceWalletByWalletidCall(walletid, _callback);
 
     }
 
@@ -11519,8 +11519,8 @@ public class CommerceApi {
      * @param walletid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1CommerceWalletByWalletid(@javax.annotation.Nonnull String walletid) throws ApiException {
-        putV1CommerceWalletByWalletidWithHttpInfo(walletid);
+    public void putCommerceWalletByWalletid(@javax.annotation.Nonnull String walletid) throws ApiException {
+        putCommerceWalletByWalletidWithHttpInfo(walletid);
     }
 
     /**
@@ -11530,8 +11530,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1CommerceWalletByWalletidWithHttpInfo(@javax.annotation.Nonnull String walletid) throws ApiException {
-        okhttp3.Call localVarCall = putV1CommerceWalletByWalletidValidateBeforeCall(walletid, null);
+    public ApiResponse<Void> putCommerceWalletByWalletidWithHttpInfo(@javax.annotation.Nonnull String walletid) throws ApiException {
+        okhttp3.Call localVarCall = putCommerceWalletByWalletidValidateBeforeCall(walletid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -11543,20 +11543,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1CommerceWalletByWalletidAsync(@javax.annotation.Nonnull String walletid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putCommerceWalletByWalletidAsync(@javax.annotation.Nonnull String walletid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CommerceWalletByWalletidValidateBeforeCall(walletid, _callback);
+        okhttp3.Call localVarCall = putCommerceWalletByWalletidValidateBeforeCall(walletid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CommerceWatchlistByWatchlistid
+     * Build call for putCommerceWatchlistByWatchlistid
      * @param watchlistid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1CommerceWatchlistByWatchlistidCall(@javax.annotation.Nonnull String watchlistid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCommerceWatchlistByWatchlistidCall(@javax.annotation.Nonnull String watchlistid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -11601,13 +11601,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CommerceWatchlistByWatchlistidValidateBeforeCall(@javax.annotation.Nonnull String watchlistid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCommerceWatchlistByWatchlistidValidateBeforeCall(@javax.annotation.Nonnull String watchlistid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'watchlistid' is set
         if (watchlistid == null) {
-            throw new ApiException("Missing the required parameter 'watchlistid' when calling putV1CommerceWatchlistByWatchlistid(Async)");
+            throw new ApiException("Missing the required parameter 'watchlistid' when calling putCommerceWatchlistByWatchlistid(Async)");
         }
 
-        return putV1CommerceWatchlistByWatchlistidCall(watchlistid, _callback);
+        return putCommerceWatchlistByWatchlistidCall(watchlistid, _callback);
 
     }
 
@@ -11617,8 +11617,8 @@ public class CommerceApi {
      * @param watchlistid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1CommerceWatchlistByWatchlistid(@javax.annotation.Nonnull String watchlistid) throws ApiException {
-        putV1CommerceWatchlistByWatchlistidWithHttpInfo(watchlistid);
+    public void putCommerceWatchlistByWatchlistid(@javax.annotation.Nonnull String watchlistid) throws ApiException {
+        putCommerceWatchlistByWatchlistidWithHttpInfo(watchlistid);
     }
 
     /**
@@ -11628,8 +11628,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1CommerceWatchlistByWatchlistidWithHttpInfo(@javax.annotation.Nonnull String watchlistid) throws ApiException {
-        okhttp3.Call localVarCall = putV1CommerceWatchlistByWatchlistidValidateBeforeCall(watchlistid, null);
+    public ApiResponse<Void> putCommerceWatchlistByWatchlistidWithHttpInfo(@javax.annotation.Nonnull String watchlistid) throws ApiException {
+        okhttp3.Call localVarCall = putCommerceWatchlistByWatchlistidValidateBeforeCall(watchlistid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -11641,20 +11641,20 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1CommerceWatchlistByWatchlistidAsync(@javax.annotation.Nonnull String watchlistid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putCommerceWatchlistByWatchlistidAsync(@javax.annotation.Nonnull String watchlistid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CommerceWatchlistByWatchlistidValidateBeforeCall(watchlistid, _callback);
+        okhttp3.Call localVarCall = putCommerceWatchlistByWatchlistidValidateBeforeCall(watchlistid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CommerceWebhookByWebhookid
+     * Build call for putCommerceWebhookByWebhookid
      * @param webhookid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1CommerceWebhookByWebhookidCall(@javax.annotation.Nonnull String webhookid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCommerceWebhookByWebhookidCall(@javax.annotation.Nonnull String webhookid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -11699,13 +11699,13 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CommerceWebhookByWebhookidValidateBeforeCall(@javax.annotation.Nonnull String webhookid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCommerceWebhookByWebhookidValidateBeforeCall(@javax.annotation.Nonnull String webhookid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'webhookid' is set
         if (webhookid == null) {
-            throw new ApiException("Missing the required parameter 'webhookid' when calling putV1CommerceWebhookByWebhookid(Async)");
+            throw new ApiException("Missing the required parameter 'webhookid' when calling putCommerceWebhookByWebhookid(Async)");
         }
 
-        return putV1CommerceWebhookByWebhookidCall(webhookid, _callback);
+        return putCommerceWebhookByWebhookidCall(webhookid, _callback);
 
     }
 
@@ -11715,8 +11715,8 @@ public class CommerceApi {
      * @param webhookid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1CommerceWebhookByWebhookid(@javax.annotation.Nonnull String webhookid) throws ApiException {
-        putV1CommerceWebhookByWebhookidWithHttpInfo(webhookid);
+    public void putCommerceWebhookByWebhookid(@javax.annotation.Nonnull String webhookid) throws ApiException {
+        putCommerceWebhookByWebhookidWithHttpInfo(webhookid);
     }
 
     /**
@@ -11726,8 +11726,8 @@ public class CommerceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1CommerceWebhookByWebhookidWithHttpInfo(@javax.annotation.Nonnull String webhookid) throws ApiException {
-        okhttp3.Call localVarCall = putV1CommerceWebhookByWebhookidValidateBeforeCall(webhookid, null);
+    public ApiResponse<Void> putCommerceWebhookByWebhookidWithHttpInfo(@javax.annotation.Nonnull String webhookid) throws ApiException {
+        okhttp3.Call localVarCall = putCommerceWebhookByWebhookidValidateBeforeCall(webhookid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -11739,9 +11739,9 @@ public class CommerceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1CommerceWebhookByWebhookidAsync(@javax.annotation.Nonnull String webhookid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putCommerceWebhookByWebhookidAsync(@javax.annotation.Nonnull String webhookid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CommerceWebhookByWebhookidValidateBeforeCall(webhookid, _callback);
+        okhttp3.Call localVarCall = putCommerceWebhookByWebhookidValidateBeforeCall(webhookid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

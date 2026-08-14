@@ -72,12 +72,12 @@ public class AuthzApi {
     }
 
     /**
-     * Build call for getV1AuthzHealth
+     * Build call for getAuthzHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1AuthzHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAuthzHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class AuthzApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AuthzHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1AuthzHealthCall(_callback);
+    private okhttp3.Call getAuthzHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAuthzHealthCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class AuthzApi {
      * Reports that the authz process is up. Unauthenticated by design and never org-scoped: it answers while every tenant&#39;s enforcer is still cold, because a probe that needed a tenant would fail for reasons that have nothing to do with the process being alive.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1AuthzHealth() throws ApiException {
-        getV1AuthzHealthWithHttpInfo();
+    public void getAuthzHealth() throws ApiException {
+        getAuthzHealthWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class AuthzApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1AuthzHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1AuthzHealthValidateBeforeCall(null);
+    public ApiResponse<Void> getAuthzHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAuthzHealthValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,19 +153,19 @@ public class AuthzApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1AuthzHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getAuthzHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AuthzHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAuthzHealthValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AuthzReadyz
+     * Build call for getAuthzReadyz
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1AuthzReadyzCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAuthzReadyzCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -209,8 +209,8 @@ public class AuthzApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AuthzReadyzValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1AuthzReadyzCall(_callback);
+    private okhttp3.Call getAuthzReadyzValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAuthzReadyzCall(_callback);
 
     }
 
@@ -219,8 +219,8 @@ public class AuthzApi {
      * Reports that the authz process is ready to serve decisions. Unauthenticated and not org-scoped, for the same reason health is: readiness is a property of this process, not of any one tenant&#39;s policy set.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1AuthzReadyz() throws ApiException {
-        getV1AuthzReadyzWithHttpInfo();
+    public void getAuthzReadyz() throws ApiException {
+        getAuthzReadyzWithHttpInfo();
     }
 
     /**
@@ -229,8 +229,8 @@ public class AuthzApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1AuthzReadyzWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1AuthzReadyzValidateBeforeCall(null);
+    public ApiResponse<Void> getAuthzReadyzWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAuthzReadyzValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -241,19 +241,19 @@ public class AuthzApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1AuthzReadyzAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getAuthzReadyzAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AuthzReadyzValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAuthzReadyzValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AuthzCheck
+     * Build call for postAuthzCheck
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1AuthzCheckCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAuthzCheckCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -297,8 +297,8 @@ public class AuthzApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AuthzCheckValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1AuthzCheckCall(_callback);
+    private okhttp3.Call postAuthzCheckValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postAuthzCheckCall(_callback);
 
     }
 
@@ -307,8 +307,8 @@ public class AuthzApi {
      * Answers one policy question — may this subject take this action on this object — against the CALLER&#39;S OWN org policy set, and answers it with a bare allow/deny.  The org comes from the gateway-minted X-Org-Id and picks the per-org enforcer, so a decision is always rendered by that tenant&#39;s policies and never by another&#39;s. A request carrying no org is refused rather than answered from a shared or default set: collapsing tenants together is the one failure a policy engine must not have.  Body: {sub, obj, act}, all three required. The reply echoes them beside &#x60;allow&#x60; so a cached or logged decision carries the question it answered.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1AuthzCheck() throws ApiException {
-        postV1AuthzCheckWithHttpInfo();
+    public void postAuthzCheck() throws ApiException {
+        postAuthzCheckWithHttpInfo();
     }
 
     /**
@@ -317,8 +317,8 @@ public class AuthzApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1AuthzCheckWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1AuthzCheckValidateBeforeCall(null);
+    public ApiResponse<Void> postAuthzCheckWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postAuthzCheckValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -329,9 +329,9 @@ public class AuthzApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1AuthzCheckAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postAuthzCheckAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AuthzCheckValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postAuthzCheckValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

@@ -82,7 +82,7 @@ public class WalletsApi {
     }
 
     /**
-     * Build call for getV1Wallets
+     * Build call for getWallets
      * @param project Project narrows to wallets scoped to one project. Must be a url-safe segment. (optional)
      * @param agent Agent narrows to wallets scoped to one agent. Must be a url-safe segment. (optional)
      * @param account Account narrows to wallets under one account id. Must be a url-safe segment. (optional)
@@ -96,7 +96,7 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1WalletsCall(@javax.annotation.Nullable String project, @javax.annotation.Nullable String agent, @javax.annotation.Nullable String account, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getWalletsCall(@javax.annotation.Nullable String project, @javax.annotation.Nullable String agent, @javax.annotation.Nullable String account, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -153,8 +153,8 @@ public class WalletsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1WalletsValidateBeforeCall(@javax.annotation.Nullable String project, @javax.annotation.Nullable String agent, @javax.annotation.Nullable String account, final ApiCallback _callback) throws ApiException {
-        return getV1WalletsCall(project, agent, account, _callback);
+    private okhttp3.Call getWalletsValidateBeforeCall(@javax.annotation.Nullable String project, @javax.annotation.Nullable String agent, @javax.annotation.Nullable String account, final ApiCallback _callback) throws ApiException {
+        return getWalletsCall(project, agent, account, _callback);
 
     }
 
@@ -173,8 +173,8 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public WalletList getV1Wallets(@javax.annotation.Nullable String project, @javax.annotation.Nullable String agent, @javax.annotation.Nullable String account) throws ApiException {
-        ApiResponse<WalletList> localVarResp = getV1WalletsWithHttpInfo(project, agent, account);
+    public WalletList getWallets(@javax.annotation.Nullable String project, @javax.annotation.Nullable String agent, @javax.annotation.Nullable String account) throws ApiException {
+        ApiResponse<WalletList> localVarResp = getWalletsWithHttpInfo(project, agent, account);
         return localVarResp.getData();
     }
 
@@ -193,8 +193,8 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<WalletList> getV1WalletsWithHttpInfo(@javax.annotation.Nullable String project, @javax.annotation.Nullable String agent, @javax.annotation.Nullable String account) throws ApiException {
-        okhttp3.Call localVarCall = getV1WalletsValidateBeforeCall(project, agent, account, null);
+    public ApiResponse<WalletList> getWalletsWithHttpInfo(@javax.annotation.Nullable String project, @javax.annotation.Nullable String agent, @javax.annotation.Nullable String account) throws ApiException {
+        okhttp3.Call localVarCall = getWalletsValidateBeforeCall(project, agent, account, null);
         Type localVarReturnType = new TypeToken<WalletList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -215,15 +215,15 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1WalletsAsync(@javax.annotation.Nullable String project, @javax.annotation.Nullable String agent, @javax.annotation.Nullable String account, final ApiCallback<WalletList> _callback) throws ApiException {
+    public okhttp3.Call getWalletsAsync(@javax.annotation.Nullable String project, @javax.annotation.Nullable String agent, @javax.annotation.Nullable String account, final ApiCallback<WalletList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1WalletsValidateBeforeCall(project, agent, account, _callback);
+        okhttp3.Call localVarCall = getWalletsValidateBeforeCall(project, agent, account, _callback);
         Type localVarReturnType = new TypeToken<WalletList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1WalletsAccounts
+     * Build call for getWalletsAccounts
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -234,7 +234,7 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1WalletsAccountsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getWalletsAccountsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -279,8 +279,8 @@ public class WalletsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1WalletsAccountsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1WalletsAccountsCall(_callback);
+    private okhttp3.Call getWalletsAccountsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getWalletsAccountsCall(_callback);
 
     }
 
@@ -296,8 +296,8 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AccountList getV1WalletsAccounts() throws ApiException {
-        ApiResponse<AccountList> localVarResp = getV1WalletsAccountsWithHttpInfo();
+    public AccountList getWalletsAccounts() throws ApiException {
+        ApiResponse<AccountList> localVarResp = getWalletsAccountsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -313,8 +313,8 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccountList> getV1WalletsAccountsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1WalletsAccountsValidateBeforeCall(null);
+    public ApiResponse<AccountList> getWalletsAccountsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getWalletsAccountsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<AccountList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -332,15 +332,15 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1WalletsAccountsAsync(final ApiCallback<AccountList> _callback) throws ApiException {
+    public okhttp3.Call getWalletsAccountsAsync(final ApiCallback<AccountList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1WalletsAccountsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getWalletsAccountsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AccountList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1WalletsById
+     * Build call for getWalletsById
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -352,7 +352,7 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1WalletsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getWalletsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -398,13 +398,13 @@ public class WalletsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1WalletsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getWalletsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1WalletsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getWalletsById(Async)");
         }
 
-        return getV1WalletsByIdCall(id, _callback);
+        return getWalletsByIdCall(id, _callback);
 
     }
 
@@ -421,8 +421,8 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Wallet getV1WalletsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Wallet> localVarResp = getV1WalletsByIdWithHttpInfo(id);
+    public Wallet getWalletsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Wallet> localVarResp = getWalletsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -439,8 +439,8 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Wallet> getV1WalletsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1WalletsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Wallet> getWalletsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getWalletsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<Wallet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -459,15 +459,15 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1WalletsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Wallet> _callback) throws ApiException {
+    public okhttp3.Call getWalletsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Wallet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1WalletsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getWalletsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<Wallet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Wallets
+     * Build call for postWallets
      * @param createWalletIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -479,7 +479,7 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1WalletsCall(@javax.annotation.Nonnull CreateWalletIn createWalletIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postWalletsCall(@javax.annotation.Nonnull CreateWalletIn createWalletIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -525,13 +525,13 @@ public class WalletsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1WalletsValidateBeforeCall(@javax.annotation.Nonnull CreateWalletIn createWalletIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postWalletsValidateBeforeCall(@javax.annotation.Nonnull CreateWalletIn createWalletIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'createWalletIn' is set
         if (createWalletIn == null) {
-            throw new ApiException("Missing the required parameter 'createWalletIn' when calling postV1Wallets(Async)");
+            throw new ApiException("Missing the required parameter 'createWalletIn' when calling postWallets(Async)");
         }
 
-        return postV1WalletsCall(createWalletIn, _callback);
+        return postWalletsCall(createWalletIn, _callback);
 
     }
 
@@ -548,8 +548,8 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Wallet postV1Wallets(@javax.annotation.Nonnull CreateWalletIn createWalletIn) throws ApiException {
-        ApiResponse<Wallet> localVarResp = postV1WalletsWithHttpInfo(createWalletIn);
+    public Wallet postWallets(@javax.annotation.Nonnull CreateWalletIn createWalletIn) throws ApiException {
+        ApiResponse<Wallet> localVarResp = postWalletsWithHttpInfo(createWalletIn);
         return localVarResp.getData();
     }
 
@@ -566,8 +566,8 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Wallet> postV1WalletsWithHttpInfo(@javax.annotation.Nonnull CreateWalletIn createWalletIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1WalletsValidateBeforeCall(createWalletIn, null);
+    public ApiResponse<Wallet> postWalletsWithHttpInfo(@javax.annotation.Nonnull CreateWalletIn createWalletIn) throws ApiException {
+        okhttp3.Call localVarCall = postWalletsValidateBeforeCall(createWalletIn, null);
         Type localVarReturnType = new TypeToken<Wallet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -586,15 +586,15 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1WalletsAsync(@javax.annotation.Nonnull CreateWalletIn createWalletIn, final ApiCallback<Wallet> _callback) throws ApiException {
+    public okhttp3.Call postWalletsAsync(@javax.annotation.Nonnull CreateWalletIn createWalletIn, final ApiCallback<Wallet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1WalletsValidateBeforeCall(createWalletIn, _callback);
+        okhttp3.Call localVarCall = postWalletsValidateBeforeCall(createWalletIn, _callback);
         Type localVarReturnType = new TypeToken<Wallet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1WalletsAccounts
+     * Build call for postWalletsAccounts
      * @param createAccountIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -606,7 +606,7 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1WalletsAccountsCall(@javax.annotation.Nonnull CreateAccountIn createAccountIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postWalletsAccountsCall(@javax.annotation.Nonnull CreateAccountIn createAccountIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -652,13 +652,13 @@ public class WalletsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1WalletsAccountsValidateBeforeCall(@javax.annotation.Nonnull CreateAccountIn createAccountIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postWalletsAccountsValidateBeforeCall(@javax.annotation.Nonnull CreateAccountIn createAccountIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'createAccountIn' is set
         if (createAccountIn == null) {
-            throw new ApiException("Missing the required parameter 'createAccountIn' when calling postV1WalletsAccounts(Async)");
+            throw new ApiException("Missing the required parameter 'createAccountIn' when calling postWalletsAccounts(Async)");
         }
 
-        return postV1WalletsAccountsCall(createAccountIn, _callback);
+        return postWalletsAccountsCall(createAccountIn, _callback);
 
     }
 
@@ -675,8 +675,8 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public WalletAccount postV1WalletsAccounts(@javax.annotation.Nonnull CreateAccountIn createAccountIn) throws ApiException {
-        ApiResponse<WalletAccount> localVarResp = postV1WalletsAccountsWithHttpInfo(createAccountIn);
+    public WalletAccount postWalletsAccounts(@javax.annotation.Nonnull CreateAccountIn createAccountIn) throws ApiException {
+        ApiResponse<WalletAccount> localVarResp = postWalletsAccountsWithHttpInfo(createAccountIn);
         return localVarResp.getData();
     }
 
@@ -693,8 +693,8 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<WalletAccount> postV1WalletsAccountsWithHttpInfo(@javax.annotation.Nonnull CreateAccountIn createAccountIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1WalletsAccountsValidateBeforeCall(createAccountIn, null);
+    public ApiResponse<WalletAccount> postWalletsAccountsWithHttpInfo(@javax.annotation.Nonnull CreateAccountIn createAccountIn) throws ApiException {
+        okhttp3.Call localVarCall = postWalletsAccountsValidateBeforeCall(createAccountIn, null);
         Type localVarReturnType = new TypeToken<WalletAccount>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -713,15 +713,15 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1WalletsAccountsAsync(@javax.annotation.Nonnull CreateAccountIn createAccountIn, final ApiCallback<WalletAccount> _callback) throws ApiException {
+    public okhttp3.Call postWalletsAccountsAsync(@javax.annotation.Nonnull CreateAccountIn createAccountIn, final ApiCallback<WalletAccount> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1WalletsAccountsValidateBeforeCall(createAccountIn, _callback);
+        okhttp3.Call localVarCall = postWalletsAccountsValidateBeforeCall(createAccountIn, _callback);
         Type localVarReturnType = new TypeToken<WalletAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1WalletsByIdKeys
+     * Build call for postWalletsByIdKeys
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -733,7 +733,7 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1WalletsByIdKeysCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postWalletsByIdKeysCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -779,13 +779,13 @@ public class WalletsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1WalletsByIdKeysValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postWalletsByIdKeysValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1WalletsByIdKeys(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postWalletsByIdKeys(Async)");
         }
 
-        return postV1WalletsByIdKeysCall(id, _callback);
+        return postWalletsByIdKeysCall(id, _callback);
 
     }
 
@@ -802,8 +802,8 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Wallet postV1WalletsByIdKeys(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Wallet> localVarResp = postV1WalletsByIdKeysWithHttpInfo(id);
+    public Wallet postWalletsByIdKeys(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Wallet> localVarResp = postWalletsByIdKeysWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -820,8 +820,8 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Wallet> postV1WalletsByIdKeysWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1WalletsByIdKeysValidateBeforeCall(id, null);
+    public ApiResponse<Wallet> postWalletsByIdKeysWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postWalletsByIdKeysValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<Wallet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -840,15 +840,15 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1WalletsByIdKeysAsync(@javax.annotation.Nonnull String id, final ApiCallback<Wallet> _callback) throws ApiException {
+    public okhttp3.Call postWalletsByIdKeysAsync(@javax.annotation.Nonnull String id, final ApiCallback<Wallet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1WalletsByIdKeysValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postWalletsByIdKeysValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<Wallet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1WalletsByIdSign
+     * Build call for postWalletsByIdSign
      * @param id  (required)
      * @param signIn  (required)
      * @param _callback Callback for upload/download progress
@@ -861,7 +861,7 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1WalletsByIdSignCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignIn signIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postWalletsByIdSignCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignIn signIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -908,18 +908,18 @@ public class WalletsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1WalletsByIdSignValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignIn signIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postWalletsByIdSignValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignIn signIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1WalletsByIdSign(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postWalletsByIdSign(Async)");
         }
 
         // verify the required parameter 'signIn' is set
         if (signIn == null) {
-            throw new ApiException("Missing the required parameter 'signIn' when calling postV1WalletsByIdSign(Async)");
+            throw new ApiException("Missing the required parameter 'signIn' when calling postWalletsByIdSign(Async)");
         }
 
-        return postV1WalletsByIdSignCall(id, signIn, _callback);
+        return postWalletsByIdSignCall(id, signIn, _callback);
 
     }
 
@@ -937,8 +937,8 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Signature postV1WalletsByIdSign(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignIn signIn) throws ApiException {
-        ApiResponse<Signature> localVarResp = postV1WalletsByIdSignWithHttpInfo(id, signIn);
+    public Signature postWalletsByIdSign(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignIn signIn) throws ApiException {
+        ApiResponse<Signature> localVarResp = postWalletsByIdSignWithHttpInfo(id, signIn);
         return localVarResp.getData();
     }
 
@@ -956,8 +956,8 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Signature> postV1WalletsByIdSignWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignIn signIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1WalletsByIdSignValidateBeforeCall(id, signIn, null);
+    public ApiResponse<Signature> postWalletsByIdSignWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignIn signIn) throws ApiException {
+        okhttp3.Call localVarCall = postWalletsByIdSignValidateBeforeCall(id, signIn, null);
         Type localVarReturnType = new TypeToken<Signature>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -977,15 +977,15 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1WalletsByIdSignAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignIn signIn, final ApiCallback<Signature> _callback) throws ApiException {
+    public okhttp3.Call postWalletsByIdSignAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignIn signIn, final ApiCallback<Signature> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1WalletsByIdSignValidateBeforeCall(id, signIn, _callback);
+        okhttp3.Call localVarCall = postWalletsByIdSignValidateBeforeCall(id, signIn, _callback);
         Type localVarReturnType = new TypeToken<Signature>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1WalletsByIdTransactions
+     * Build call for postWalletsByIdTransactions
      * @param id  (required)
      * @param safeTxIn  (required)
      * @param _callback Callback for upload/download progress
@@ -998,7 +998,7 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1WalletsByIdTransactionsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SafeTxIn safeTxIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postWalletsByIdTransactionsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SafeTxIn safeTxIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1045,18 +1045,18 @@ public class WalletsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1WalletsByIdTransactionsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SafeTxIn safeTxIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postWalletsByIdTransactionsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SafeTxIn safeTxIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1WalletsByIdTransactions(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postWalletsByIdTransactions(Async)");
         }
 
         // verify the required parameter 'safeTxIn' is set
         if (safeTxIn == null) {
-            throw new ApiException("Missing the required parameter 'safeTxIn' when calling postV1WalletsByIdTransactions(Async)");
+            throw new ApiException("Missing the required parameter 'safeTxIn' when calling postWalletsByIdTransactions(Async)");
         }
 
-        return postV1WalletsByIdTransactionsCall(id, safeTxIn, _callback);
+        return postWalletsByIdTransactionsCall(id, safeTxIn, _callback);
 
     }
 
@@ -1074,8 +1074,8 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SafeProposal postV1WalletsByIdTransactions(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SafeTxIn safeTxIn) throws ApiException {
-        ApiResponse<SafeProposal> localVarResp = postV1WalletsByIdTransactionsWithHttpInfo(id, safeTxIn);
+    public SafeProposal postWalletsByIdTransactions(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SafeTxIn safeTxIn) throws ApiException {
+        ApiResponse<SafeProposal> localVarResp = postWalletsByIdTransactionsWithHttpInfo(id, safeTxIn);
         return localVarResp.getData();
     }
 
@@ -1093,8 +1093,8 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SafeProposal> postV1WalletsByIdTransactionsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SafeTxIn safeTxIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1WalletsByIdTransactionsValidateBeforeCall(id, safeTxIn, null);
+    public ApiResponse<SafeProposal> postWalletsByIdTransactionsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SafeTxIn safeTxIn) throws ApiException {
+        okhttp3.Call localVarCall = postWalletsByIdTransactionsValidateBeforeCall(id, safeTxIn, null);
         Type localVarReturnType = new TypeToken<SafeProposal>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1114,9 +1114,9 @@ public class WalletsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1WalletsByIdTransactionsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SafeTxIn safeTxIn, final ApiCallback<SafeProposal> _callback) throws ApiException {
+    public okhttp3.Call postWalletsByIdTransactionsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SafeTxIn safeTxIn, final ApiCallback<SafeProposal> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1WalletsByIdTransactionsValidateBeforeCall(id, safeTxIn, _callback);
+        okhttp3.Call localVarCall = postWalletsByIdTransactionsValidateBeforeCall(id, safeTxIn, _callback);
         Type localVarReturnType = new TypeToken<SafeProposal>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

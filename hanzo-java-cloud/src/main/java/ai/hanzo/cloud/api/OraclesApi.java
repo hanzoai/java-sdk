@@ -73,7 +73,7 @@ public class OraclesApi {
     }
 
     /**
-     * Build call for getV1Oracles
+     * Build call for getOracles
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -84,7 +84,7 @@ public class OraclesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1OraclesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getOraclesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -129,8 +129,8 @@ public class OraclesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1OraclesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1OraclesCall(_callback);
+    private okhttp3.Call getOraclesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getOraclesCall(_callback);
 
     }
 
@@ -146,8 +146,8 @@ public class OraclesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public OraclesOut getV1Oracles() throws ApiException {
-        ApiResponse<OraclesOut> localVarResp = getV1OraclesWithHttpInfo();
+    public OraclesOut getOracles() throws ApiException {
+        ApiResponse<OraclesOut> localVarResp = getOraclesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -163,8 +163,8 @@ public class OraclesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OraclesOut> getV1OraclesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1OraclesValidateBeforeCall(null);
+    public ApiResponse<OraclesOut> getOraclesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getOraclesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<OraclesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -182,9 +182,9 @@ public class OraclesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1OraclesAsync(final ApiCallback<OraclesOut> _callback) throws ApiException {
+    public okhttp3.Call getOraclesAsync(final ApiCallback<OraclesOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1OraclesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getOraclesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<OraclesOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

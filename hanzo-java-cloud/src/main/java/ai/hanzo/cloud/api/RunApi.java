@@ -74,7 +74,7 @@ public class RunApi {
     }
 
     /**
-     * Build call for postV1Run
+     * Build call for postRun
      * @param runReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -86,7 +86,7 @@ public class RunApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1RunCall(@javax.annotation.Nonnull RunReq runReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postRunCall(@javax.annotation.Nonnull RunReq runReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -132,13 +132,13 @@ public class RunApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1RunValidateBeforeCall(@javax.annotation.Nonnull RunReq runReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postRunValidateBeforeCall(@javax.annotation.Nonnull RunReq runReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'runReq' is set
         if (runReq == null) {
-            throw new ApiException("Missing the required parameter 'runReq' when calling postV1Run(Async)");
+            throw new ApiException("Missing the required parameter 'runReq' when calling postRun(Async)");
         }
 
-        return postV1RunCall(runReq, _callback);
+        return postRunCall(runReq, _callback);
 
     }
 
@@ -155,8 +155,8 @@ public class RunApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public RunView postV1Run(@javax.annotation.Nonnull RunReq runReq) throws ApiException {
-        ApiResponse<RunView> localVarResp = postV1RunWithHttpInfo(runReq);
+    public RunView postRun(@javax.annotation.Nonnull RunReq runReq) throws ApiException {
+        ApiResponse<RunView> localVarResp = postRunWithHttpInfo(runReq);
         return localVarResp.getData();
     }
 
@@ -173,8 +173,8 @@ public class RunApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RunView> postV1RunWithHttpInfo(@javax.annotation.Nonnull RunReq runReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1RunValidateBeforeCall(runReq, null);
+    public ApiResponse<RunView> postRunWithHttpInfo(@javax.annotation.Nonnull RunReq runReq) throws ApiException {
+        okhttp3.Call localVarCall = postRunValidateBeforeCall(runReq, null);
         Type localVarReturnType = new TypeToken<RunView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -193,9 +193,9 @@ public class RunApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1RunAsync(@javax.annotation.Nonnull RunReq runReq, final ApiCallback<RunView> _callback) throws ApiException {
+    public okhttp3.Call postRunAsync(@javax.annotation.Nonnull RunReq runReq, final ApiCallback<RunView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1RunValidateBeforeCall(runReq, _callback);
+        okhttp3.Call localVarCall = postRunValidateBeforeCall(runReq, _callback);
         Type localVarReturnType = new TypeToken<RunView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -87,7 +87,7 @@ public class UsageApi {
     }
 
     /**
-     * Build call for getV1UsageActivity
+     * Build call for getUsageActivity
      * @param subject Subject is what the series is about: \&quot;user\&quot; (default), \&quot;org\&quot; or \&quot;project\&quot;. (optional)
      * @param id ID names the subject within what the caller is entitled to see. Omitted (or \&quot;me\&quot;) it is the caller themselves, or their own org. Another user requires org admin and must belong to the caller&#39;s org; another org requires a SuperAdmin. (optional)
      * @param from From is the first day of the range, \&quot;2006-01-02\&quot;. Defaults to 90 days back. (optional)
@@ -102,7 +102,7 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1UsageActivityCall(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getUsageActivityCall(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -163,8 +163,8 @@ public class UsageApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1UsageActivityValidateBeforeCall(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
-        return getV1UsageActivityCall(subject, id, from, to, _callback);
+    private okhttp3.Call getUsageActivityValidateBeforeCall(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
+        return getUsageActivityCall(subject, id, from, to, _callback);
 
     }
 
@@ -184,8 +184,8 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ActivityView getV1UsageActivity(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
-        ApiResponse<ActivityView> localVarResp = getV1UsageActivityWithHttpInfo(subject, id, from, to);
+    public ActivityView getUsageActivity(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
+        ApiResponse<ActivityView> localVarResp = getUsageActivityWithHttpInfo(subject, id, from, to);
         return localVarResp.getData();
     }
 
@@ -205,8 +205,8 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ActivityView> getV1UsageActivityWithHttpInfo(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
-        okhttp3.Call localVarCall = getV1UsageActivityValidateBeforeCall(subject, id, from, to, null);
+    public ApiResponse<ActivityView> getUsageActivityWithHttpInfo(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
+        okhttp3.Call localVarCall = getUsageActivityValidateBeforeCall(subject, id, from, to, null);
         Type localVarReturnType = new TypeToken<ActivityView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -228,18 +228,18 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1UsageActivityAsync(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback<ActivityView> _callback) throws ApiException {
+    public okhttp3.Call getUsageActivityAsync(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback<ActivityView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1UsageActivityValidateBeforeCall(subject, id, from, to, _callback);
+        okhttp3.Call localVarCall = getUsageActivityValidateBeforeCall(subject, id, from, to, _callback);
         Type localVarReturnType = new TypeToken<ActivityView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1UsageAnalytics
+     * Build call for getUsageAnalytics
      * @param end End is the exclusive window end, RFC3339. Read only when Range is custom. (optional)
      * @param plan Plan is the plan id whose entitlement decides access and retention. INTERIM: cloud has no org-to-plan resolver yet, so the caller names the plan; when that resolver lands this becomes the caller org&#39;s own plan. (optional)
-     * @param range Range is the window: 24h, 7d, 30d, or custom. Empty means 24h. (optional)
+     * @param range Range is the window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all, custom. Empty means 24h. The window is then clamped forward to the plan&#39;s retention entitlement. (optional)
      * @param start Start is the inclusive window start, RFC3339. Read only when Range is custom, and clamped forward to the plan&#39;s retention floor. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -251,7 +251,7 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1UsageAnalyticsCall(@javax.annotation.Nullable String end, @javax.annotation.Nullable String plan, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getUsageAnalyticsCall(@javax.annotation.Nullable String end, @javax.annotation.Nullable String plan, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -312,8 +312,8 @@ public class UsageApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1UsageAnalyticsValidateBeforeCall(@javax.annotation.Nullable String end, @javax.annotation.Nullable String plan, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start, final ApiCallback _callback) throws ApiException {
-        return getV1UsageAnalyticsCall(end, plan, range, start, _callback);
+    private okhttp3.Call getUsageAnalyticsValidateBeforeCall(@javax.annotation.Nullable String end, @javax.annotation.Nullable String plan, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start, final ApiCallback _callback) throws ApiException {
+        return getUsageAnalyticsCall(end, plan, range, start, _callback);
 
     }
 
@@ -322,7 +322,7 @@ public class UsageApi {
      * Is the entitlement-GATED per-provider breakdown of the caller org&#39;s LLM usage — the paid lens over the same warehouse ledger GET /v1/usage/summary reads its totals from. Basic own-org usage stays ungated at /v1/usage/summary.  A plan that does not grant the analytics datastore is refused with 402, and an unresolvable plan fails closed to the free floor, which does not grant it. The window is clamped forward to the plan&#39;s retention entitlement, so a tenant can never read older than its plan allows even with a custom start. The response is marked no-store.  INTERIM (mirrors apps/world&#39;s limits echo): no org→plan resolver exists in cloud yet — the subscription lookup is owned by the billing plane and the gateway principal carries no plan claim — so the caller passes the plan and the gate resolves THAT plan&#39;s access.
      * @param end End is the exclusive window end, RFC3339. Read only when Range is custom. (optional)
      * @param plan Plan is the plan id whose entitlement decides access and retention. INTERIM: cloud has no org-to-plan resolver yet, so the caller names the plan; when that resolver lands this becomes the caller org&#39;s own plan. (optional)
-     * @param range Range is the window: 24h, 7d, 30d, or custom. Empty means 24h. (optional)
+     * @param range Range is the window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all, custom. Empty means 24h. The window is then clamped forward to the plan&#39;s retention entitlement. (optional)
      * @param start Start is the inclusive window start, RFC3339. Read only when Range is custom, and clamped forward to the plan&#39;s retention floor. (optional)
      * @return UsageAnalyticsView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -333,8 +333,8 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public UsageAnalyticsView getV1UsageAnalytics(@javax.annotation.Nullable String end, @javax.annotation.Nullable String plan, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start) throws ApiException {
-        ApiResponse<UsageAnalyticsView> localVarResp = getV1UsageAnalyticsWithHttpInfo(end, plan, range, start);
+    public UsageAnalyticsView getUsageAnalytics(@javax.annotation.Nullable String end, @javax.annotation.Nullable String plan, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start) throws ApiException {
+        ApiResponse<UsageAnalyticsView> localVarResp = getUsageAnalyticsWithHttpInfo(end, plan, range, start);
         return localVarResp.getData();
     }
 
@@ -343,7 +343,7 @@ public class UsageApi {
      * Is the entitlement-GATED per-provider breakdown of the caller org&#39;s LLM usage — the paid lens over the same warehouse ledger GET /v1/usage/summary reads its totals from. Basic own-org usage stays ungated at /v1/usage/summary.  A plan that does not grant the analytics datastore is refused with 402, and an unresolvable plan fails closed to the free floor, which does not grant it. The window is clamped forward to the plan&#39;s retention entitlement, so a tenant can never read older than its plan allows even with a custom start. The response is marked no-store.  INTERIM (mirrors apps/world&#39;s limits echo): no org→plan resolver exists in cloud yet — the subscription lookup is owned by the billing plane and the gateway principal carries no plan claim — so the caller passes the plan and the gate resolves THAT plan&#39;s access.
      * @param end End is the exclusive window end, RFC3339. Read only when Range is custom. (optional)
      * @param plan Plan is the plan id whose entitlement decides access and retention. INTERIM: cloud has no org-to-plan resolver yet, so the caller names the plan; when that resolver lands this becomes the caller org&#39;s own plan. (optional)
-     * @param range Range is the window: 24h, 7d, 30d, or custom. Empty means 24h. (optional)
+     * @param range Range is the window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all, custom. Empty means 24h. The window is then clamped forward to the plan&#39;s retention entitlement. (optional)
      * @param start Start is the inclusive window start, RFC3339. Read only when Range is custom, and clamped forward to the plan&#39;s retention floor. (optional)
      * @return ApiResponse&lt;UsageAnalyticsView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -354,8 +354,8 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UsageAnalyticsView> getV1UsageAnalyticsWithHttpInfo(@javax.annotation.Nullable String end, @javax.annotation.Nullable String plan, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start) throws ApiException {
-        okhttp3.Call localVarCall = getV1UsageAnalyticsValidateBeforeCall(end, plan, range, start, null);
+    public ApiResponse<UsageAnalyticsView> getUsageAnalyticsWithHttpInfo(@javax.annotation.Nullable String end, @javax.annotation.Nullable String plan, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start) throws ApiException {
+        okhttp3.Call localVarCall = getUsageAnalyticsValidateBeforeCall(end, plan, range, start, null);
         Type localVarReturnType = new TypeToken<UsageAnalyticsView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -365,7 +365,7 @@ public class UsageApi {
      * Is the entitlement-GATED per-provider breakdown of the caller org&#39;s LLM usage — the paid lens over the same warehouse ledger GET /v1/usage/summary reads its totals from. Basic own-org usage stays ungated at /v1/usage/summary.  A plan that does not grant the analytics datastore is refused with 402, and an unresolvable plan fails closed to the free floor, which does not grant it. The window is clamped forward to the plan&#39;s retention entitlement, so a tenant can never read older than its plan allows even with a custom start. The response is marked no-store.  INTERIM (mirrors apps/world&#39;s limits echo): no org→plan resolver exists in cloud yet — the subscription lookup is owned by the billing plane and the gateway principal carries no plan claim — so the caller passes the plan and the gate resolves THAT plan&#39;s access.
      * @param end End is the exclusive window end, RFC3339. Read only when Range is custom. (optional)
      * @param plan Plan is the plan id whose entitlement decides access and retention. INTERIM: cloud has no org-to-plan resolver yet, so the caller names the plan; when that resolver lands this becomes the caller org&#39;s own plan. (optional)
-     * @param range Range is the window: 24h, 7d, 30d, or custom. Empty means 24h. (optional)
+     * @param range Range is the window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all, custom. Empty means 24h. The window is then clamped forward to the plan&#39;s retention entitlement. (optional)
      * @param start Start is the inclusive window start, RFC3339. Read only when Range is custom, and clamped forward to the plan&#39;s retention floor. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -377,15 +377,15 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1UsageAnalyticsAsync(@javax.annotation.Nullable String end, @javax.annotation.Nullable String plan, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start, final ApiCallback<UsageAnalyticsView> _callback) throws ApiException {
+    public okhttp3.Call getUsageAnalyticsAsync(@javax.annotation.Nullable String end, @javax.annotation.Nullable String plan, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start, final ApiCallback<UsageAnalyticsView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1UsageAnalyticsValidateBeforeCall(end, plan, range, start, _callback);
+        okhttp3.Call localVarCall = getUsageAnalyticsValidateBeforeCall(end, plan, range, start, _callback);
         Type localVarReturnType = new TypeToken<UsageAnalyticsView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1UsageAnalyticsAccess
+     * Build call for getUsageAnalyticsAccess
      * @param plan Plan is a plan id from the live @hanzo/plans catalog. Empty resolves the free floor, and so does an id the catalog does not know — this never fails on an unknown plan. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -397,7 +397,7 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1UsageAnalyticsAccessCall(@javax.annotation.Nullable String plan, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getUsageAnalyticsAccessCall(@javax.annotation.Nullable String plan, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -446,8 +446,8 @@ public class UsageApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1UsageAnalyticsAccessValidateBeforeCall(@javax.annotation.Nullable String plan, final ApiCallback _callback) throws ApiException {
-        return getV1UsageAnalyticsAccessCall(plan, _callback);
+    private okhttp3.Call getUsageAnalyticsAccessValidateBeforeCall(@javax.annotation.Nullable String plan, final ApiCallback _callback) throws ApiException {
+        return getUsageAnalyticsAccessCall(plan, _callback);
 
     }
 
@@ -464,8 +464,8 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public UsageAnalyticsAccess getV1UsageAnalyticsAccess(@javax.annotation.Nullable String plan) throws ApiException {
-        ApiResponse<UsageAnalyticsAccess> localVarResp = getV1UsageAnalyticsAccessWithHttpInfo(plan);
+    public UsageAnalyticsAccess getUsageAnalyticsAccess(@javax.annotation.Nullable String plan) throws ApiException {
+        ApiResponse<UsageAnalyticsAccess> localVarResp = getUsageAnalyticsAccessWithHttpInfo(plan);
         return localVarResp.getData();
     }
 
@@ -482,8 +482,8 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UsageAnalyticsAccess> getV1UsageAnalyticsAccessWithHttpInfo(@javax.annotation.Nullable String plan) throws ApiException {
-        okhttp3.Call localVarCall = getV1UsageAnalyticsAccessValidateBeforeCall(plan, null);
+    public ApiResponse<UsageAnalyticsAccess> getUsageAnalyticsAccessWithHttpInfo(@javax.annotation.Nullable String plan) throws ApiException {
+        okhttp3.Call localVarCall = getUsageAnalyticsAccessValidateBeforeCall(plan, null);
         Type localVarReturnType = new TypeToken<UsageAnalyticsAccess>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -502,15 +502,15 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1UsageAnalyticsAccessAsync(@javax.annotation.Nullable String plan, final ApiCallback<UsageAnalyticsAccess> _callback) throws ApiException {
+    public okhttp3.Call getUsageAnalyticsAccessAsync(@javax.annotation.Nullable String plan, final ApiCallback<UsageAnalyticsAccess> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1UsageAnalyticsAccessValidateBeforeCall(plan, _callback);
+        okhttp3.Call localVarCall = getUsageAnalyticsAccessValidateBeforeCall(plan, _callback);
         Type localVarReturnType = new TypeToken<UsageAnalyticsAccess>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1UsageLeaderboard
+     * Build call for getUsageLeaderboard
      * @param scope Scope picks the board: \&quot;personal\&quot; (default) ranks the caller among their own org&#39;s users, \&quot;org\&quot; is that same org board named for an admin, \&quot;global\&quot; ranks organizations against each other. (optional)
      * @param metric Metric is the value ranked: tokens (default), requests, or cost. (optional)
      * @param period Period is the window ranked: day, week, month (default) or all. (optional)
@@ -525,7 +525,7 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1UsageLeaderboardCall(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getUsageLeaderboardCall(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -586,8 +586,8 @@ public class UsageApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1UsageLeaderboardValidateBeforeCall(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1UsageLeaderboardCall(scope, metric, period, limit, _callback);
+    private okhttp3.Call getUsageLeaderboardValidateBeforeCall(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getUsageLeaderboardCall(scope, metric, period, limit, _callback);
 
     }
 
@@ -607,8 +607,8 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public LeaderboardView getV1UsageLeaderboard(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<LeaderboardView> localVarResp = getV1UsageLeaderboardWithHttpInfo(scope, metric, period, limit);
+    public LeaderboardView getUsageLeaderboard(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<LeaderboardView> localVarResp = getUsageLeaderboardWithHttpInfo(scope, metric, period, limit);
         return localVarResp.getData();
     }
 
@@ -628,8 +628,8 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LeaderboardView> getV1UsageLeaderboardWithHttpInfo(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1UsageLeaderboardValidateBeforeCall(scope, metric, period, limit, null);
+    public ApiResponse<LeaderboardView> getUsageLeaderboardWithHttpInfo(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getUsageLeaderboardValidateBeforeCall(scope, metric, period, limit, null);
         Type localVarReturnType = new TypeToken<LeaderboardView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -651,15 +651,15 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1UsageLeaderboardAsync(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback<LeaderboardView> _callback) throws ApiException {
+    public okhttp3.Call getUsageLeaderboardAsync(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback<LeaderboardView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1UsageLeaderboardValidateBeforeCall(scope, metric, period, limit, _callback);
+        okhttp3.Call localVarCall = getUsageLeaderboardValidateBeforeCall(scope, metric, period, limit, _callback);
         Type localVarReturnType = new TypeToken<LeaderboardView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1UsageLeaderboardOptin
+     * Build call for getUsageLeaderboardOptin
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -670,7 +670,7 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1UsageLeaderboardOptinCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getUsageLeaderboardOptinCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -715,8 +715,8 @@ public class UsageApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1UsageLeaderboardOptinValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1UsageLeaderboardOptinCall(_callback);
+    private okhttp3.Call getUsageLeaderboardOptinValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getUsageLeaderboardOptinCall(_callback);
 
     }
 
@@ -732,8 +732,8 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public OptinView getV1UsageLeaderboardOptin() throws ApiException {
-        ApiResponse<OptinView> localVarResp = getV1UsageLeaderboardOptinWithHttpInfo();
+    public OptinView getUsageLeaderboardOptin() throws ApiException {
+        ApiResponse<OptinView> localVarResp = getUsageLeaderboardOptinWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -749,8 +749,8 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OptinView> getV1UsageLeaderboardOptinWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1UsageLeaderboardOptinValidateBeforeCall(null);
+    public ApiResponse<OptinView> getUsageLeaderboardOptinWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getUsageLeaderboardOptinValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<OptinView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -768,18 +768,18 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1UsageLeaderboardOptinAsync(final ApiCallback<OptinView> _callback) throws ApiException {
+    public okhttp3.Call getUsageLeaderboardOptinAsync(final ApiCallback<OptinView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1UsageLeaderboardOptinValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getUsageLeaderboardOptinValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<OptinView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1UsageSamples
+     * Build call for getUsageSamples
      * @param account Account narrows to ONE linked account of that provider. Empty covers every account the caller has linked there. (optional)
      * @param provider Provider is the upstream to read, e.g. anthropic. Required. (optional)
-     * @param range Range is the window to read: 1h, 24h, 7d or 30d. Empty means 24h, and any other label is refused rather than silently replaced. (optional)
+     * @param range Range is the window to read: a count and a unit — 1h, 24h, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Empty means 24h. A label that is not a count, or one reaching past the 730-day horizon, is refused rather than silently replaced. (optional)
      * @param window Window narrows to ONE window class: 6h, day, week or month. Empty covers every class. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -791,7 +791,7 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1UsageSamplesCall(@javax.annotation.Nullable String account, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String range, @javax.annotation.Nullable String window, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getUsageSamplesCall(@javax.annotation.Nullable String account, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String range, @javax.annotation.Nullable String window, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -852,8 +852,8 @@ public class UsageApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1UsageSamplesValidateBeforeCall(@javax.annotation.Nullable String account, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String range, @javax.annotation.Nullable String window, final ApiCallback _callback) throws ApiException {
-        return getV1UsageSamplesCall(account, provider, range, window, _callback);
+    private okhttp3.Call getUsageSamplesValidateBeforeCall(@javax.annotation.Nullable String account, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String range, @javax.annotation.Nullable String window, final ApiCallback _callback) throws ApiException {
+        return getUsageSamplesCall(account, provider, range, window, _callback);
 
     }
 
@@ -862,7 +862,7 @@ public class UsageApi {
      * Is the PER-PROVIDER view: one connected account&#39;s own consumption of its own plan — \&quot;my plan is 47% through its 6h window, resets at 14:20\&quot;.  &#x60;current&#x60; is the newest instance of each lane (the headline); &#x60;windows&#x60; is the history behind it. Both come from ONE deduped read, so they can never disagree. The rows are the caller&#39;s OWN linked accounts, scoped to the validated principal and its subject — never another user&#39;s, and never another org&#39;s.
      * @param account Account narrows to ONE linked account of that provider. Empty covers every account the caller has linked there. (optional)
      * @param provider Provider is the upstream to read, e.g. anthropic. Required. (optional)
-     * @param range Range is the window to read: 1h, 24h, 7d or 30d. Empty means 24h, and any other label is refused rather than silently replaced. (optional)
+     * @param range Range is the window to read: a count and a unit — 1h, 24h, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Empty means 24h. A label that is not a count, or one reaching past the 730-day horizon, is refused rather than silently replaced. (optional)
      * @param window Window narrows to ONE window class: 6h, day, week or month. Empty covers every class. (optional)
      * @return DashResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -873,8 +873,8 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DashResp getV1UsageSamples(@javax.annotation.Nullable String account, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String range, @javax.annotation.Nullable String window) throws ApiException {
-        ApiResponse<DashResp> localVarResp = getV1UsageSamplesWithHttpInfo(account, provider, range, window);
+    public DashResp getUsageSamples(@javax.annotation.Nullable String account, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String range, @javax.annotation.Nullable String window) throws ApiException {
+        ApiResponse<DashResp> localVarResp = getUsageSamplesWithHttpInfo(account, provider, range, window);
         return localVarResp.getData();
     }
 
@@ -883,7 +883,7 @@ public class UsageApi {
      * Is the PER-PROVIDER view: one connected account&#39;s own consumption of its own plan — \&quot;my plan is 47% through its 6h window, resets at 14:20\&quot;.  &#x60;current&#x60; is the newest instance of each lane (the headline); &#x60;windows&#x60; is the history behind it. Both come from ONE deduped read, so they can never disagree. The rows are the caller&#39;s OWN linked accounts, scoped to the validated principal and its subject — never another user&#39;s, and never another org&#39;s.
      * @param account Account narrows to ONE linked account of that provider. Empty covers every account the caller has linked there. (optional)
      * @param provider Provider is the upstream to read, e.g. anthropic. Required. (optional)
-     * @param range Range is the window to read: 1h, 24h, 7d or 30d. Empty means 24h, and any other label is refused rather than silently replaced. (optional)
+     * @param range Range is the window to read: a count and a unit — 1h, 24h, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Empty means 24h. A label that is not a count, or one reaching past the 730-day horizon, is refused rather than silently replaced. (optional)
      * @param window Window narrows to ONE window class: 6h, day, week or month. Empty covers every class. (optional)
      * @return ApiResponse&lt;DashResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -894,8 +894,8 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DashResp> getV1UsageSamplesWithHttpInfo(@javax.annotation.Nullable String account, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String range, @javax.annotation.Nullable String window) throws ApiException {
-        okhttp3.Call localVarCall = getV1UsageSamplesValidateBeforeCall(account, provider, range, window, null);
+    public ApiResponse<DashResp> getUsageSamplesWithHttpInfo(@javax.annotation.Nullable String account, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String range, @javax.annotation.Nullable String window) throws ApiException {
+        okhttp3.Call localVarCall = getUsageSamplesValidateBeforeCall(account, provider, range, window, null);
         Type localVarReturnType = new TypeToken<DashResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -905,7 +905,7 @@ public class UsageApi {
      * Is the PER-PROVIDER view: one connected account&#39;s own consumption of its own plan — \&quot;my plan is 47% through its 6h window, resets at 14:20\&quot;.  &#x60;current&#x60; is the newest instance of each lane (the headline); &#x60;windows&#x60; is the history behind it. Both come from ONE deduped read, so they can never disagree. The rows are the caller&#39;s OWN linked accounts, scoped to the validated principal and its subject — never another user&#39;s, and never another org&#39;s.
      * @param account Account narrows to ONE linked account of that provider. Empty covers every account the caller has linked there. (optional)
      * @param provider Provider is the upstream to read, e.g. anthropic. Required. (optional)
-     * @param range Range is the window to read: 1h, 24h, 7d or 30d. Empty means 24h, and any other label is refused rather than silently replaced. (optional)
+     * @param range Range is the window to read: a count and a unit — 1h, 24h, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Empty means 24h. A label that is not a count, or one reaching past the 730-day horizon, is refused rather than silently replaced. (optional)
      * @param window Window narrows to ONE window class: 6h, day, week or month. Empty covers every class. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -917,16 +917,16 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1UsageSamplesAsync(@javax.annotation.Nullable String account, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String range, @javax.annotation.Nullable String window, final ApiCallback<DashResp> _callback) throws ApiException {
+    public okhttp3.Call getUsageSamplesAsync(@javax.annotation.Nullable String account, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String range, @javax.annotation.Nullable String window, final ApiCallback<DashResp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1UsageSamplesValidateBeforeCall(account, provider, range, window, _callback);
+        okhttp3.Call localVarCall = getUsageSamplesValidateBeforeCall(account, provider, range, window, _callback);
         Type localVarReturnType = new TypeToken<DashResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1UsageSummary
-     * @param range Range is the window: 24h, 7d, 30d, or custom. Empty means 24h. A label this surface does not know is refused rather than silently replaced. (optional)
+     * Build call for getUsageSummary
+     * @param range Range is the window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all, custom. Empty means 24h. A label this surface does not know, or one reaching past the 730-day horizon, is refused rather than silently replaced. (optional)
      * @param start Start is the inclusive window start, RFC3339. Read only when Range is custom. (optional)
      * @param end End is the exclusive window end, RFC3339. Read only when Range is custom. (optional)
      * @param _callback Callback for upload/download progress
@@ -939,7 +939,7 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1UsageSummaryCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getUsageSummaryCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -996,15 +996,15 @@ public class UsageApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1UsageSummaryValidateBeforeCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback _callback) throws ApiException {
-        return getV1UsageSummaryCall(range, start, end, _callback);
+    private okhttp3.Call getUsageSummaryValidateBeforeCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback _callback) throws ApiException {
+        return getUsageSummaryCall(range, start, end, _callback);
 
     }
 
     /**
      * Answers GET /v1/usage/summary: the caller&#39;s own usage footprint over one window — the categorized spend roll-up from the commerce ledger, the org&#39;s LLM usage totals from the warehouse, and the caller&#39;s OWN linked provider accounts beside the org&#39;s Hanzo-routed usage.
      * Answers GET /v1/usage/summary: the caller&#39;s own usage footprint over one window — the categorized spend roll-up from the commerce ledger, the org&#39;s LLM usage totals from the warehouse, and the caller&#39;s OWN linked provider accounts beside the org&#39;s Hanzo-routed usage.  Every source degrades INDEPENDENTLY to honest zeros and says so in &#x60;sources&#x60; and in its own &#x60;available&#x60; flag, so a partial deploy reports \&quot;no data\&quot; rather than fabricating spend. The account rows and the Hanzo rows are concatenated and never summed: a plan&#39;s percent is not money.  The response is org-scoped from the validated principal and marked no-store — a signed-out caller is refused.
-     * @param range Range is the window: 24h, 7d, 30d, or custom. Empty means 24h. A label this surface does not know is refused rather than silently replaced. (optional)
+     * @param range Range is the window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all, custom. Empty means 24h. A label this surface does not know, or one reaching past the 730-day horizon, is refused rather than silently replaced. (optional)
      * @param start Start is the inclusive window start, RFC3339. Read only when Range is custom. (optional)
      * @param end End is the exclusive window end, RFC3339. Read only when Range is custom. (optional)
      * @return UsageSummary
@@ -1016,15 +1016,15 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public UsageSummary getV1UsageSummary(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
-        ApiResponse<UsageSummary> localVarResp = getV1UsageSummaryWithHttpInfo(range, start, end);
+    public UsageSummary getUsageSummary(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
+        ApiResponse<UsageSummary> localVarResp = getUsageSummaryWithHttpInfo(range, start, end);
         return localVarResp.getData();
     }
 
     /**
      * Answers GET /v1/usage/summary: the caller&#39;s own usage footprint over one window — the categorized spend roll-up from the commerce ledger, the org&#39;s LLM usage totals from the warehouse, and the caller&#39;s OWN linked provider accounts beside the org&#39;s Hanzo-routed usage.
      * Answers GET /v1/usage/summary: the caller&#39;s own usage footprint over one window — the categorized spend roll-up from the commerce ledger, the org&#39;s LLM usage totals from the warehouse, and the caller&#39;s OWN linked provider accounts beside the org&#39;s Hanzo-routed usage.  Every source degrades INDEPENDENTLY to honest zeros and says so in &#x60;sources&#x60; and in its own &#x60;available&#x60; flag, so a partial deploy reports \&quot;no data\&quot; rather than fabricating spend. The account rows and the Hanzo rows are concatenated and never summed: a plan&#39;s percent is not money.  The response is org-scoped from the validated principal and marked no-store — a signed-out caller is refused.
-     * @param range Range is the window: 24h, 7d, 30d, or custom. Empty means 24h. A label this surface does not know is refused rather than silently replaced. (optional)
+     * @param range Range is the window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all, custom. Empty means 24h. A label this surface does not know, or one reaching past the 730-day horizon, is refused rather than silently replaced. (optional)
      * @param start Start is the inclusive window start, RFC3339. Read only when Range is custom. (optional)
      * @param end End is the exclusive window end, RFC3339. Read only when Range is custom. (optional)
      * @return ApiResponse&lt;UsageSummary&gt;
@@ -1036,8 +1036,8 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UsageSummary> getV1UsageSummaryWithHttpInfo(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
-        okhttp3.Call localVarCall = getV1UsageSummaryValidateBeforeCall(range, start, end, null);
+    public ApiResponse<UsageSummary> getUsageSummaryWithHttpInfo(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
+        okhttp3.Call localVarCall = getUsageSummaryValidateBeforeCall(range, start, end, null);
         Type localVarReturnType = new TypeToken<UsageSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1045,7 +1045,7 @@ public class UsageApi {
     /**
      * Answers GET /v1/usage/summary: the caller&#39;s own usage footprint over one window — the categorized spend roll-up from the commerce ledger, the org&#39;s LLM usage totals from the warehouse, and the caller&#39;s OWN linked provider accounts beside the org&#39;s Hanzo-routed usage. (asynchronously)
      * Answers GET /v1/usage/summary: the caller&#39;s own usage footprint over one window — the categorized spend roll-up from the commerce ledger, the org&#39;s LLM usage totals from the warehouse, and the caller&#39;s OWN linked provider accounts beside the org&#39;s Hanzo-routed usage.  Every source degrades INDEPENDENTLY to honest zeros and says so in &#x60;sources&#x60; and in its own &#x60;available&#x60; flag, so a partial deploy reports \&quot;no data\&quot; rather than fabricating spend. The account rows and the Hanzo rows are concatenated and never summed: a plan&#39;s percent is not money.  The response is org-scoped from the validated principal and marked no-store — a signed-out caller is refused.
-     * @param range Range is the window: 24h, 7d, 30d, or custom. Empty means 24h. A label this surface does not know is refused rather than silently replaced. (optional)
+     * @param range Range is the window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all, custom. Empty means 24h. A label this surface does not know, or one reaching past the 730-day horizon, is refused rather than silently replaced. (optional)
      * @param start Start is the inclusive window start, RFC3339. Read only when Range is custom. (optional)
      * @param end End is the exclusive window end, RFC3339. Read only when Range is custom. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -1058,15 +1058,15 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1UsageSummaryAsync(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback<UsageSummary> _callback) throws ApiException {
+    public okhttp3.Call getUsageSummaryAsync(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback<UsageSummary> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1UsageSummaryValidateBeforeCall(range, start, end, _callback);
+        okhttp3.Call localVarCall = getUsageSummaryValidateBeforeCall(range, start, end, _callback);
         Type localVarReturnType = new TypeToken<UsageSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Usage
+     * Build call for postUsage
      * @param reportReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1078,7 +1078,7 @@ public class UsageApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1UsageCall(@javax.annotation.Nonnull ReportReq reportReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postUsageCall(@javax.annotation.Nonnull ReportReq reportReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1124,13 +1124,13 @@ public class UsageApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1UsageValidateBeforeCall(@javax.annotation.Nonnull ReportReq reportReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postUsageValidateBeforeCall(@javax.annotation.Nonnull ReportReq reportReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'reportReq' is set
         if (reportReq == null) {
-            throw new ApiException("Missing the required parameter 'reportReq' when calling postV1Usage(Async)");
+            throw new ApiException("Missing the required parameter 'reportReq' when calling postUsage(Async)");
         }
 
-        return postV1UsageCall(reportReq, _callback);
+        return postUsageCall(reportReq, _callback);
 
     }
 
@@ -1147,8 +1147,8 @@ public class UsageApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public ReportResp postV1Usage(@javax.annotation.Nonnull ReportReq reportReq) throws ApiException {
-        ApiResponse<ReportResp> localVarResp = postV1UsageWithHttpInfo(reportReq);
+    public ReportResp postUsage(@javax.annotation.Nonnull ReportReq reportReq) throws ApiException {
+        ApiResponse<ReportResp> localVarResp = postUsageWithHttpInfo(reportReq);
         return localVarResp.getData();
     }
 
@@ -1165,8 +1165,8 @@ public class UsageApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ReportResp> postV1UsageWithHttpInfo(@javax.annotation.Nonnull ReportReq reportReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1UsageValidateBeforeCall(reportReq, null);
+    public ApiResponse<ReportResp> postUsageWithHttpInfo(@javax.annotation.Nonnull ReportReq reportReq) throws ApiException {
+        okhttp3.Call localVarCall = postUsageValidateBeforeCall(reportReq, null);
         Type localVarReturnType = new TypeToken<ReportResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1185,15 +1185,15 @@ public class UsageApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1UsageAsync(@javax.annotation.Nonnull ReportReq reportReq, final ApiCallback<ReportResp> _callback) throws ApiException {
+    public okhttp3.Call postUsageAsync(@javax.annotation.Nonnull ReportReq reportReq, final ApiCallback<ReportResp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1UsageValidateBeforeCall(reportReq, _callback);
+        okhttp3.Call localVarCall = postUsageValidateBeforeCall(reportReq, _callback);
         Type localVarReturnType = new TypeToken<ReportResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1UsageRollupBackfill
+     * Build call for postUsageRollupBackfill
      * @param backfillQuery  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1205,7 +1205,7 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1UsageRollupBackfillCall(@javax.annotation.Nonnull BackfillQuery backfillQuery, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postUsageRollupBackfillCall(@javax.annotation.Nonnull BackfillQuery backfillQuery, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1251,13 +1251,13 @@ public class UsageApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1UsageRollupBackfillValidateBeforeCall(@javax.annotation.Nonnull BackfillQuery backfillQuery, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postUsageRollupBackfillValidateBeforeCall(@javax.annotation.Nonnull BackfillQuery backfillQuery, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'backfillQuery' is set
         if (backfillQuery == null) {
-            throw new ApiException("Missing the required parameter 'backfillQuery' when calling postV1UsageRollupBackfill(Async)");
+            throw new ApiException("Missing the required parameter 'backfillQuery' when calling postUsageRollupBackfill(Async)");
         }
 
-        return postV1UsageRollupBackfillCall(backfillQuery, _callback);
+        return postUsageRollupBackfillCall(backfillQuery, _callback);
 
     }
 
@@ -1274,8 +1274,8 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BackfillResult postV1UsageRollupBackfill(@javax.annotation.Nonnull BackfillQuery backfillQuery) throws ApiException {
-        ApiResponse<BackfillResult> localVarResp = postV1UsageRollupBackfillWithHttpInfo(backfillQuery);
+    public BackfillResult postUsageRollupBackfill(@javax.annotation.Nonnull BackfillQuery backfillQuery) throws ApiException {
+        ApiResponse<BackfillResult> localVarResp = postUsageRollupBackfillWithHttpInfo(backfillQuery);
         return localVarResp.getData();
     }
 
@@ -1292,8 +1292,8 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BackfillResult> postV1UsageRollupBackfillWithHttpInfo(@javax.annotation.Nonnull BackfillQuery backfillQuery) throws ApiException {
-        okhttp3.Call localVarCall = postV1UsageRollupBackfillValidateBeforeCall(backfillQuery, null);
+    public ApiResponse<BackfillResult> postUsageRollupBackfillWithHttpInfo(@javax.annotation.Nonnull BackfillQuery backfillQuery) throws ApiException {
+        okhttp3.Call localVarCall = postUsageRollupBackfillValidateBeforeCall(backfillQuery, null);
         Type localVarReturnType = new TypeToken<BackfillResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1312,15 +1312,15 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1UsageRollupBackfillAsync(@javax.annotation.Nonnull BackfillQuery backfillQuery, final ApiCallback<BackfillResult> _callback) throws ApiException {
+    public okhttp3.Call postUsageRollupBackfillAsync(@javax.annotation.Nonnull BackfillQuery backfillQuery, final ApiCallback<BackfillResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1UsageRollupBackfillValidateBeforeCall(backfillQuery, _callback);
+        okhttp3.Call localVarCall = postUsageRollupBackfillValidateBeforeCall(backfillQuery, _callback);
         Type localVarReturnType = new TypeToken<BackfillResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1UsageLeaderboardOptin
+     * Build call for putUsageLeaderboardOptin
      * @param userOptinReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1332,7 +1332,7 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1UsageLeaderboardOptinCall(@javax.annotation.Nonnull UserOptinReq userOptinReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putUsageLeaderboardOptinCall(@javax.annotation.Nonnull UserOptinReq userOptinReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1378,13 +1378,13 @@ public class UsageApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1UsageLeaderboardOptinValidateBeforeCall(@javax.annotation.Nonnull UserOptinReq userOptinReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putUsageLeaderboardOptinValidateBeforeCall(@javax.annotation.Nonnull UserOptinReq userOptinReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userOptinReq' is set
         if (userOptinReq == null) {
-            throw new ApiException("Missing the required parameter 'userOptinReq' when calling putV1UsageLeaderboardOptin(Async)");
+            throw new ApiException("Missing the required parameter 'userOptinReq' when calling putUsageLeaderboardOptin(Async)");
         }
 
-        return putV1UsageLeaderboardOptinCall(userOptinReq, _callback);
+        return putUsageLeaderboardOptinCall(userOptinReq, _callback);
 
     }
 
@@ -1401,8 +1401,8 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public UserOptinView putV1UsageLeaderboardOptin(@javax.annotation.Nonnull UserOptinReq userOptinReq) throws ApiException {
-        ApiResponse<UserOptinView> localVarResp = putV1UsageLeaderboardOptinWithHttpInfo(userOptinReq);
+    public UserOptinView putUsageLeaderboardOptin(@javax.annotation.Nonnull UserOptinReq userOptinReq) throws ApiException {
+        ApiResponse<UserOptinView> localVarResp = putUsageLeaderboardOptinWithHttpInfo(userOptinReq);
         return localVarResp.getData();
     }
 
@@ -1419,8 +1419,8 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UserOptinView> putV1UsageLeaderboardOptinWithHttpInfo(@javax.annotation.Nonnull UserOptinReq userOptinReq) throws ApiException {
-        okhttp3.Call localVarCall = putV1UsageLeaderboardOptinValidateBeforeCall(userOptinReq, null);
+    public ApiResponse<UserOptinView> putUsageLeaderboardOptinWithHttpInfo(@javax.annotation.Nonnull UserOptinReq userOptinReq) throws ApiException {
+        okhttp3.Call localVarCall = putUsageLeaderboardOptinValidateBeforeCall(userOptinReq, null);
         Type localVarReturnType = new TypeToken<UserOptinView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1439,15 +1439,15 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1UsageLeaderboardOptinAsync(@javax.annotation.Nonnull UserOptinReq userOptinReq, final ApiCallback<UserOptinView> _callback) throws ApiException {
+    public okhttp3.Call putUsageLeaderboardOptinAsync(@javax.annotation.Nonnull UserOptinReq userOptinReq, final ApiCallback<UserOptinView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1UsageLeaderboardOptinValidateBeforeCall(userOptinReq, _callback);
+        okhttp3.Call localVarCall = putUsageLeaderboardOptinValidateBeforeCall(userOptinReq, _callback);
         Type localVarReturnType = new TypeToken<UserOptinView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1UsageLeaderboardOptinOrg
+     * Build call for putUsageLeaderboardOptinOrg
      * @param orgOptinReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1459,7 +1459,7 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1UsageLeaderboardOptinOrgCall(@javax.annotation.Nonnull OrgOptinReq orgOptinReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putUsageLeaderboardOptinOrgCall(@javax.annotation.Nonnull OrgOptinReq orgOptinReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1505,13 +1505,13 @@ public class UsageApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1UsageLeaderboardOptinOrgValidateBeforeCall(@javax.annotation.Nonnull OrgOptinReq orgOptinReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putUsageLeaderboardOptinOrgValidateBeforeCall(@javax.annotation.Nonnull OrgOptinReq orgOptinReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'orgOptinReq' is set
         if (orgOptinReq == null) {
-            throw new ApiException("Missing the required parameter 'orgOptinReq' when calling putV1UsageLeaderboardOptinOrg(Async)");
+            throw new ApiException("Missing the required parameter 'orgOptinReq' when calling putUsageLeaderboardOptinOrg(Async)");
         }
 
-        return putV1UsageLeaderboardOptinOrgCall(orgOptinReq, _callback);
+        return putUsageLeaderboardOptinOrgCall(orgOptinReq, _callback);
 
     }
 
@@ -1528,8 +1528,8 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public OrgOptinView putV1UsageLeaderboardOptinOrg(@javax.annotation.Nonnull OrgOptinReq orgOptinReq) throws ApiException {
-        ApiResponse<OrgOptinView> localVarResp = putV1UsageLeaderboardOptinOrgWithHttpInfo(orgOptinReq);
+    public OrgOptinView putUsageLeaderboardOptinOrg(@javax.annotation.Nonnull OrgOptinReq orgOptinReq) throws ApiException {
+        ApiResponse<OrgOptinView> localVarResp = putUsageLeaderboardOptinOrgWithHttpInfo(orgOptinReq);
         return localVarResp.getData();
     }
 
@@ -1546,8 +1546,8 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OrgOptinView> putV1UsageLeaderboardOptinOrgWithHttpInfo(@javax.annotation.Nonnull OrgOptinReq orgOptinReq) throws ApiException {
-        okhttp3.Call localVarCall = putV1UsageLeaderboardOptinOrgValidateBeforeCall(orgOptinReq, null);
+    public ApiResponse<OrgOptinView> putUsageLeaderboardOptinOrgWithHttpInfo(@javax.annotation.Nonnull OrgOptinReq orgOptinReq) throws ApiException {
+        okhttp3.Call localVarCall = putUsageLeaderboardOptinOrgValidateBeforeCall(orgOptinReq, null);
         Type localVarReturnType = new TypeToken<OrgOptinView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1566,9 +1566,9 @@ public class UsageApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1UsageLeaderboardOptinOrgAsync(@javax.annotation.Nonnull OrgOptinReq orgOptinReq, final ApiCallback<OrgOptinView> _callback) throws ApiException {
+    public okhttp3.Call putUsageLeaderboardOptinOrgAsync(@javax.annotation.Nonnull OrgOptinReq orgOptinReq, final ApiCallback<OrgOptinView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1UsageLeaderboardOptinOrgValidateBeforeCall(orgOptinReq, _callback);
+        okhttp3.Call localVarCall = putUsageLeaderboardOptinOrgValidateBeforeCall(orgOptinReq, _callback);
         Type localVarReturnType = new TypeToken<OrgOptinView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

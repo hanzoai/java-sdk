@@ -74,7 +74,7 @@ public class NotifyApi {
     }
 
     /**
-     * Build call for getV1NotifyHealth
+     * Build call for getNotifyHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -85,7 +85,7 @@ public class NotifyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1NotifyHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getNotifyHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -130,8 +130,8 @@ public class NotifyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1NotifyHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1NotifyHealthCall(_callback);
+    private okhttp3.Call getNotifyHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getNotifyHealthCall(_callback);
 
     }
 
@@ -147,8 +147,8 @@ public class NotifyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public NotifyHealth getV1NotifyHealth() throws ApiException {
-        ApiResponse<NotifyHealth> localVarResp = getV1NotifyHealthWithHttpInfo();
+    public NotifyHealth getNotifyHealth() throws ApiException {
+        ApiResponse<NotifyHealth> localVarResp = getNotifyHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -164,8 +164,8 @@ public class NotifyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<NotifyHealth> getV1NotifyHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1NotifyHealthValidateBeforeCall(null);
+    public ApiResponse<NotifyHealth> getNotifyHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getNotifyHealthValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<NotifyHealth>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -183,15 +183,15 @@ public class NotifyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1NotifyHealthAsync(final ApiCallback<NotifyHealth> _callback) throws ApiException {
+    public okhttp3.Call getNotifyHealthAsync(final ApiCallback<NotifyHealth> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1NotifyHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getNotifyHealthValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<NotifyHealth>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1NotifySend
+     * Build call for postNotifySend
      * @param notifySend  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -203,7 +203,7 @@ public class NotifyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1NotifySendCall(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postNotifySendCall(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -249,13 +249,13 @@ public class NotifyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1NotifySendValidateBeforeCall(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postNotifySendValidateBeforeCall(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'notifySend' is set
         if (notifySend == null) {
-            throw new ApiException("Missing the required parameter 'notifySend' when calling postV1NotifySend(Async)");
+            throw new ApiException("Missing the required parameter 'notifySend' when calling postNotifySend(Async)");
         }
 
-        return postV1NotifySendCall(notifySend, _callback);
+        return postNotifySendCall(notifySend, _callback);
 
     }
 
@@ -272,8 +272,8 @@ public class NotifyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object postV1NotifySend(@javax.annotation.Nonnull NotifySend notifySend) throws ApiException {
-        ApiResponse<Object> localVarResp = postV1NotifySendWithHttpInfo(notifySend);
+    public Object postNotifySend(@javax.annotation.Nonnull NotifySend notifySend) throws ApiException {
+        ApiResponse<Object> localVarResp = postNotifySendWithHttpInfo(notifySend);
         return localVarResp.getData();
     }
 
@@ -290,8 +290,8 @@ public class NotifyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postV1NotifySendWithHttpInfo(@javax.annotation.Nonnull NotifySend notifySend) throws ApiException {
-        okhttp3.Call localVarCall = postV1NotifySendValidateBeforeCall(notifySend, null);
+    public ApiResponse<Object> postNotifySendWithHttpInfo(@javax.annotation.Nonnull NotifySend notifySend) throws ApiException {
+        okhttp3.Call localVarCall = postNotifySendValidateBeforeCall(notifySend, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -310,15 +310,15 @@ public class NotifyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1NotifySendAsync(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postNotifySendAsync(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1NotifySendValidateBeforeCall(notifySend, _callback);
+        okhttp3.Call localVarCall = postNotifySendValidateBeforeCall(notifySend, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1NotifySendEmail
+     * Build call for postNotifySendEmail
      * @param notifySend  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -330,7 +330,7 @@ public class NotifyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1NotifySendEmailCall(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postNotifySendEmailCall(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -376,13 +376,13 @@ public class NotifyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1NotifySendEmailValidateBeforeCall(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postNotifySendEmailValidateBeforeCall(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'notifySend' is set
         if (notifySend == null) {
-            throw new ApiException("Missing the required parameter 'notifySend' when calling postV1NotifySendEmail(Async)");
+            throw new ApiException("Missing the required parameter 'notifySend' when calling postNotifySendEmail(Async)");
         }
 
-        return postV1NotifySendEmailCall(notifySend, _callback);
+        return postNotifySendEmailCall(notifySend, _callback);
 
     }
 
@@ -399,8 +399,8 @@ public class NotifyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object postV1NotifySendEmail(@javax.annotation.Nonnull NotifySend notifySend) throws ApiException {
-        ApiResponse<Object> localVarResp = postV1NotifySendEmailWithHttpInfo(notifySend);
+    public Object postNotifySendEmail(@javax.annotation.Nonnull NotifySend notifySend) throws ApiException {
+        ApiResponse<Object> localVarResp = postNotifySendEmailWithHttpInfo(notifySend);
         return localVarResp.getData();
     }
 
@@ -417,8 +417,8 @@ public class NotifyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postV1NotifySendEmailWithHttpInfo(@javax.annotation.Nonnull NotifySend notifySend) throws ApiException {
-        okhttp3.Call localVarCall = postV1NotifySendEmailValidateBeforeCall(notifySend, null);
+    public ApiResponse<Object> postNotifySendEmailWithHttpInfo(@javax.annotation.Nonnull NotifySend notifySend) throws ApiException {
+        okhttp3.Call localVarCall = postNotifySendEmailValidateBeforeCall(notifySend, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -437,15 +437,15 @@ public class NotifyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1NotifySendEmailAsync(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postNotifySendEmailAsync(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1NotifySendEmailValidateBeforeCall(notifySend, _callback);
+        okhttp3.Call localVarCall = postNotifySendEmailValidateBeforeCall(notifySend, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1NotifySendSms
+     * Build call for postNotifySendSms
      * @param notifySend  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -457,7 +457,7 @@ public class NotifyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1NotifySendSmsCall(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postNotifySendSmsCall(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -503,13 +503,13 @@ public class NotifyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1NotifySendSmsValidateBeforeCall(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postNotifySendSmsValidateBeforeCall(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'notifySend' is set
         if (notifySend == null) {
-            throw new ApiException("Missing the required parameter 'notifySend' when calling postV1NotifySendSms(Async)");
+            throw new ApiException("Missing the required parameter 'notifySend' when calling postNotifySendSms(Async)");
         }
 
-        return postV1NotifySendSmsCall(notifySend, _callback);
+        return postNotifySendSmsCall(notifySend, _callback);
 
     }
 
@@ -526,8 +526,8 @@ public class NotifyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object postV1NotifySendSms(@javax.annotation.Nonnull NotifySend notifySend) throws ApiException {
-        ApiResponse<Object> localVarResp = postV1NotifySendSmsWithHttpInfo(notifySend);
+    public Object postNotifySendSms(@javax.annotation.Nonnull NotifySend notifySend) throws ApiException {
+        ApiResponse<Object> localVarResp = postNotifySendSmsWithHttpInfo(notifySend);
         return localVarResp.getData();
     }
 
@@ -544,8 +544,8 @@ public class NotifyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postV1NotifySendSmsWithHttpInfo(@javax.annotation.Nonnull NotifySend notifySend) throws ApiException {
-        okhttp3.Call localVarCall = postV1NotifySendSmsValidateBeforeCall(notifySend, null);
+    public ApiResponse<Object> postNotifySendSmsWithHttpInfo(@javax.annotation.Nonnull NotifySend notifySend) throws ApiException {
+        okhttp3.Call localVarCall = postNotifySendSmsValidateBeforeCall(notifySend, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -564,9 +564,9 @@ public class NotifyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1NotifySendSmsAsync(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postNotifySendSmsAsync(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1NotifySendSmsValidateBeforeCall(notifySend, _callback);
+        okhttp3.Call localVarCall = postNotifySendSmsValidateBeforeCall(notifySend, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

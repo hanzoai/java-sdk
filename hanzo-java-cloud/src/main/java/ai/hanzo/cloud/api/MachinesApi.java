@@ -824,12 +824,12 @@ public class MachinesApi {
         return localVarCall;
     }
     /**
-     * Build call for postV1Machines
+     * Build call for postMachines
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1MachinesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMachinesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -873,8 +873,8 @@ public class MachinesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MachinesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1MachinesCall(_callback);
+    private okhttp3.Call postMachinesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postMachinesCall(_callback);
 
     }
 
@@ -883,8 +883,8 @@ public class MachinesApi {
      * Provisions a machine owned by the caller&#39;s org and answers 201 with the machine. Send &#x60;dryRun: true&#x60; to get a PRICE QUOTE instead: 200 with the upstream quote passed through verbatim, nothing launched and nothing spent. Two response shapes on one address is the rule to know, and it is why this is not a typed op.  Metering is not this plane&#39;s: the launch fronts the compute provider&#39;s resell endpoint, which owns the balance gate and the per-hour meter, and cloud only forwards the tenant. Ownership is the validated principal&#39;s org and is never read from the body, so a launch always lands in the caller&#39;s OWN tenant and the machine it creates is only ever visible to that tenant. Fails closed: a validated principal is required (403 without one) and &#x60;size&#x60; (or its &#x60;instanceType&#x60; alias) is required (400).
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1Machines() throws ApiException {
-        postV1MachinesWithHttpInfo();
+    public void postMachines() throws ApiException {
+        postMachinesWithHttpInfo();
     }
 
     /**
@@ -893,8 +893,8 @@ public class MachinesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1MachinesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1MachinesValidateBeforeCall(null);
+    public ApiResponse<Void> postMachinesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postMachinesValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -905,9 +905,9 @@ public class MachinesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1MachinesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postMachinesAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MachinesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postMachinesValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

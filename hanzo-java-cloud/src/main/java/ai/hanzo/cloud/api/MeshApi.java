@@ -73,7 +73,7 @@ public class MeshApi {
     }
 
     /**
-     * Build call for getV1MeshServices
+     * Build call for getMeshServices
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -84,7 +84,7 @@ public class MeshApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MeshServicesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMeshServicesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -129,8 +129,8 @@ public class MeshApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MeshServicesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1MeshServicesCall(_callback);
+    private okhttp3.Call getMeshServicesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMeshServicesCall(_callback);
 
     }
 
@@ -146,8 +146,8 @@ public class MeshApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public MeshServiceList getV1MeshServices() throws ApiException {
-        ApiResponse<MeshServiceList> localVarResp = getV1MeshServicesWithHttpInfo();
+    public MeshServiceList getMeshServices() throws ApiException {
+        ApiResponse<MeshServiceList> localVarResp = getMeshServicesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -163,8 +163,8 @@ public class MeshApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MeshServiceList> getV1MeshServicesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1MeshServicesValidateBeforeCall(null);
+    public ApiResponse<MeshServiceList> getMeshServicesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMeshServicesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<MeshServiceList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -182,9 +182,9 @@ public class MeshApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MeshServicesAsync(final ApiCallback<MeshServiceList> _callback) throws ApiException {
+    public okhttp3.Call getMeshServicesAsync(final ApiCallback<MeshServiceList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MeshServicesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getMeshServicesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<MeshServiceList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

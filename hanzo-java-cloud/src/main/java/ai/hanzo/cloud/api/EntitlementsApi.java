@@ -73,7 +73,7 @@ public class EntitlementsApi {
     }
 
     /**
-     * Build call for getV1Entitlements
+     * Build call for getEntitlements
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -84,7 +84,7 @@ public class EntitlementsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1EntitlementsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getEntitlementsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -129,8 +129,8 @@ public class EntitlementsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1EntitlementsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1EntitlementsCall(_callback);
+    private okhttp3.Call getEntitlementsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getEntitlementsCall(_callback);
 
     }
 
@@ -146,8 +146,8 @@ public class EntitlementsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectionView getV1Entitlements() throws ApiException {
-        ApiResponse<ProjectionView> localVarResp = getV1EntitlementsWithHttpInfo();
+    public ProjectionView getEntitlements() throws ApiException {
+        ApiResponse<ProjectionView> localVarResp = getEntitlementsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -163,8 +163,8 @@ public class EntitlementsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectionView> getV1EntitlementsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1EntitlementsValidateBeforeCall(null);
+    public ApiResponse<ProjectionView> getEntitlementsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getEntitlementsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ProjectionView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -182,9 +182,9 @@ public class EntitlementsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1EntitlementsAsync(final ApiCallback<ProjectionView> _callback) throws ApiException {
+    public okhttp3.Call getEntitlementsAsync(final ApiCallback<ProjectionView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1EntitlementsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getEntitlementsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ProjectionView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

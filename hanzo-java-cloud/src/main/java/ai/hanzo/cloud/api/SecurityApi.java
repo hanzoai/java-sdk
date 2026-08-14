@@ -80,7 +80,7 @@ public class SecurityApi {
     }
 
     /**
-     * Build call for getV1SecurityFindings
+     * Build call for getSecurityFindings
      * @param scanId ScanID narrows to a single scan. (optional)
      * @param minSeverity MinSeverity drops everything below that rank: critical, high, medium or low. A value outside that set is refused rather than quietly ignored, so a filter typo cannot read as \&quot;no findings\&quot;. (optional)
      * @param limit Limit caps the page. (optional)
@@ -94,7 +94,7 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SecurityFindingsCall(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSecurityFindingsCall(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -151,8 +151,8 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SecurityFindingsValidateBeforeCall(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1SecurityFindingsCall(scanId, minSeverity, limit, _callback);
+    private okhttp3.Call getSecurityFindingsValidateBeforeCall(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getSecurityFindingsCall(scanId, minSeverity, limit, _callback);
 
     }
 
@@ -171,8 +171,8 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FindingList getV1SecurityFindings(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<FindingList> localVarResp = getV1SecurityFindingsWithHttpInfo(scanId, minSeverity, limit);
+    public FindingList getSecurityFindings(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<FindingList> localVarResp = getSecurityFindingsWithHttpInfo(scanId, minSeverity, limit);
         return localVarResp.getData();
     }
 
@@ -191,8 +191,8 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FindingList> getV1SecurityFindingsWithHttpInfo(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1SecurityFindingsValidateBeforeCall(scanId, minSeverity, limit, null);
+    public ApiResponse<FindingList> getSecurityFindingsWithHttpInfo(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getSecurityFindingsValidateBeforeCall(scanId, minSeverity, limit, null);
         Type localVarReturnType = new TypeToken<FindingList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -213,15 +213,15 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SecurityFindingsAsync(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Integer limit, final ApiCallback<FindingList> _callback) throws ApiException {
+    public okhttp3.Call getSecurityFindingsAsync(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Integer limit, final ApiCallback<FindingList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SecurityFindingsValidateBeforeCall(scanId, minSeverity, limit, _callback);
+        okhttp3.Call localVarCall = getSecurityFindingsValidateBeforeCall(scanId, minSeverity, limit, _callback);
         Type localVarReturnType = new TypeToken<FindingList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SecurityFindingsById
+     * Build call for getSecurityFindingsById
      * @param id ID is the finding the URL names. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -233,7 +233,7 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SecurityFindingsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSecurityFindingsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -279,13 +279,13 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SecurityFindingsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSecurityFindingsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1SecurityFindingsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getSecurityFindingsById(Async)");
         }
 
-        return getV1SecurityFindingsByIdCall(id, _callback);
+        return getSecurityFindingsByIdCall(id, _callback);
 
     }
 
@@ -302,8 +302,8 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FindingView getV1SecurityFindingsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<FindingView> localVarResp = getV1SecurityFindingsByIdWithHttpInfo(id);
+    public FindingView getSecurityFindingsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<FindingView> localVarResp = getSecurityFindingsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -320,8 +320,8 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FindingView> getV1SecurityFindingsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1SecurityFindingsByIdValidateBeforeCall(id, null);
+    public ApiResponse<FindingView> getSecurityFindingsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getSecurityFindingsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<FindingView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -340,15 +340,15 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SecurityFindingsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<FindingView> _callback) throws ApiException {
+    public okhttp3.Call getSecurityFindingsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<FindingView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SecurityFindingsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getSecurityFindingsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<FindingView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SecurityHealth
+     * Build call for getSecurityHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -359,7 +359,7 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SecurityHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSecurityHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -404,8 +404,8 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SecurityHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1SecurityHealthCall(_callback);
+    private okhttp3.Call getSecurityHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getSecurityHealthCall(_callback);
 
     }
 
@@ -421,8 +421,8 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Ruleset getV1SecurityHealth() throws ApiException {
-        ApiResponse<Ruleset> localVarResp = getV1SecurityHealthWithHttpInfo();
+    public Ruleset getSecurityHealth() throws ApiException {
+        ApiResponse<Ruleset> localVarResp = getSecurityHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -438,8 +438,8 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Ruleset> getV1SecurityHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1SecurityHealthValidateBeforeCall(null);
+    public ApiResponse<Ruleset> getSecurityHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getSecurityHealthValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Ruleset>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -457,15 +457,15 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SecurityHealthAsync(final ApiCallback<Ruleset> _callback) throws ApiException {
+    public okhttp3.Call getSecurityHealthAsync(final ApiCallback<Ruleset> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SecurityHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getSecurityHealthValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Ruleset>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SecurityRules
+     * Build call for getSecurityRules
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -476,7 +476,7 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SecurityRulesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSecurityRulesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -521,8 +521,8 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SecurityRulesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1SecurityRulesCall(_callback);
+    private okhttp3.Call getSecurityRulesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getSecurityRulesCall(_callback);
 
     }
 
@@ -538,8 +538,8 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RuleList getV1SecurityRules() throws ApiException {
-        ApiResponse<RuleList> localVarResp = getV1SecurityRulesWithHttpInfo();
+    public RuleList getSecurityRules() throws ApiException {
+        ApiResponse<RuleList> localVarResp = getSecurityRulesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -555,8 +555,8 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RuleList> getV1SecurityRulesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1SecurityRulesValidateBeforeCall(null);
+    public ApiResponse<RuleList> getSecurityRulesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getSecurityRulesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<RuleList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -574,15 +574,15 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SecurityRulesAsync(final ApiCallback<RuleList> _callback) throws ApiException {
+    public okhttp3.Call getSecurityRulesAsync(final ApiCallback<RuleList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SecurityRulesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getSecurityRulesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<RuleList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SecurityScans
+     * Build call for getSecurityScans
      * @param limit Limit caps the page. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -594,7 +594,7 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SecurityScansCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSecurityScansCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -643,8 +643,8 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SecurityScansValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1SecurityScansCall(limit, _callback);
+    private okhttp3.Call getSecurityScansValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getSecurityScansCall(limit, _callback);
 
     }
 
@@ -661,8 +661,8 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ScanList getV1SecurityScans(@javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<ScanList> localVarResp = getV1SecurityScansWithHttpInfo(limit);
+    public ScanList getSecurityScans(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<ScanList> localVarResp = getSecurityScansWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -679,8 +679,8 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ScanList> getV1SecurityScansWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1SecurityScansValidateBeforeCall(limit, null);
+    public ApiResponse<ScanList> getSecurityScansWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getSecurityScansValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<ScanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -699,15 +699,15 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SecurityScansAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<ScanList> _callback) throws ApiException {
+    public okhttp3.Call getSecurityScansAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<ScanList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SecurityScansValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getSecurityScansValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<ScanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SecurityScansById
+     * Build call for getSecurityScansById
      * @param id ID is the scan the URL names. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -719,7 +719,7 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SecurityScansByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSecurityScansByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -765,13 +765,13 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SecurityScansByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSecurityScansByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1SecurityScansById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getSecurityScansById(Async)");
         }
 
-        return getV1SecurityScansByIdCall(id, _callback);
+        return getSecurityScansByIdCall(id, _callback);
 
     }
 
@@ -788,8 +788,8 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ScanDetail getV1SecurityScansById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<ScanDetail> localVarResp = getV1SecurityScansByIdWithHttpInfo(id);
+    public ScanDetail getSecurityScansById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<ScanDetail> localVarResp = getSecurityScansByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -806,8 +806,8 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ScanDetail> getV1SecurityScansByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1SecurityScansByIdValidateBeforeCall(id, null);
+    public ApiResponse<ScanDetail> getSecurityScansByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getSecurityScansByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<ScanDetail>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -826,15 +826,15 @@ public class SecurityApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SecurityScansByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<ScanDetail> _callback) throws ApiException {
+    public okhttp3.Call getSecurityScansByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<ScanDetail> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SecurityScansByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getSecurityScansByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<ScanDetail>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1SecurityScans
+     * Build call for postSecurityScans
      * @param submitReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -846,7 +846,7 @@ public class SecurityApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SecurityScansCall(@javax.annotation.Nonnull SubmitReq submitReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSecurityScansCall(@javax.annotation.Nonnull SubmitReq submitReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -892,13 +892,13 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SecurityScansValidateBeforeCall(@javax.annotation.Nonnull SubmitReq submitReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSecurityScansValidateBeforeCall(@javax.annotation.Nonnull SubmitReq submitReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'submitReq' is set
         if (submitReq == null) {
-            throw new ApiException("Missing the required parameter 'submitReq' when calling postV1SecurityScans(Async)");
+            throw new ApiException("Missing the required parameter 'submitReq' when calling postSecurityScans(Async)");
         }
 
-        return postV1SecurityScansCall(submitReq, _callback);
+        return postSecurityScansCall(submitReq, _callback);
 
     }
 
@@ -915,8 +915,8 @@ public class SecurityApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ScanView postV1SecurityScans(@javax.annotation.Nonnull SubmitReq submitReq) throws ApiException {
-        ApiResponse<ScanView> localVarResp = postV1SecurityScansWithHttpInfo(submitReq);
+    public ScanView postSecurityScans(@javax.annotation.Nonnull SubmitReq submitReq) throws ApiException {
+        ApiResponse<ScanView> localVarResp = postSecurityScansWithHttpInfo(submitReq);
         return localVarResp.getData();
     }
 
@@ -933,8 +933,8 @@ public class SecurityApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ScanView> postV1SecurityScansWithHttpInfo(@javax.annotation.Nonnull SubmitReq submitReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1SecurityScansValidateBeforeCall(submitReq, null);
+    public ApiResponse<ScanView> postSecurityScansWithHttpInfo(@javax.annotation.Nonnull SubmitReq submitReq) throws ApiException {
+        okhttp3.Call localVarCall = postSecurityScansValidateBeforeCall(submitReq, null);
         Type localVarReturnType = new TypeToken<ScanView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -953,9 +953,9 @@ public class SecurityApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SecurityScansAsync(@javax.annotation.Nonnull SubmitReq submitReq, final ApiCallback<ScanView> _callback) throws ApiException {
+    public okhttp3.Call postSecurityScansAsync(@javax.annotation.Nonnull SubmitReq submitReq, final ApiCallback<ScanView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SecurityScansValidateBeforeCall(submitReq, _callback);
+        okhttp3.Call localVarCall = postSecurityScansValidateBeforeCall(submitReq, _callback);
         Type localVarReturnType = new TypeToken<ScanView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

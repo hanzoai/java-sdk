@@ -81,7 +81,7 @@ public class FrameworkApi {
     }
 
     /**
-     * Build call for deleteV1FrameworkByDoctypeByName
+     * Build call for deleteFrameworkByDoctypeByName
      * @param doctype DocType is the document&#39;s DocType, from the path. (required)
      * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @param _callback Callback for upload/download progress
@@ -94,7 +94,7 @@ public class FrameworkApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1FrameworkByDoctypeByNameCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteFrameworkByDoctypeByNameCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -140,18 +140,18 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1FrameworkByDoctypeByNameValidateBeforeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteFrameworkByDoctypeByNameValidateBeforeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'doctype' is set
         if (doctype == null) {
-            throw new ApiException("Missing the required parameter 'doctype' when calling deleteV1FrameworkByDoctypeByName(Async)");
+            throw new ApiException("Missing the required parameter 'doctype' when calling deleteFrameworkByDoctypeByName(Async)");
         }
 
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteV1FrameworkByDoctypeByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling deleteFrameworkByDoctypeByName(Async)");
         }
 
-        return deleteV1FrameworkByDoctypeByNameCall(doctype, name, _callback);
+        return deleteFrameworkByDoctypeByNameCall(doctype, name, _callback);
 
     }
 
@@ -168,8 +168,8 @@ public class FrameworkApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1FrameworkByDoctypeByName(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
-        deleteV1FrameworkByDoctypeByNameWithHttpInfo(doctype, name);
+    public void deleteFrameworkByDoctypeByName(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
+        deleteFrameworkByDoctypeByNameWithHttpInfo(doctype, name);
     }
 
     /**
@@ -186,8 +186,8 @@ public class FrameworkApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1FrameworkByDoctypeByNameWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1FrameworkByDoctypeByNameValidateBeforeCall(doctype, name, null);
+    public ApiResponse<Void> deleteFrameworkByDoctypeByNameWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteFrameworkByDoctypeByNameValidateBeforeCall(doctype, name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -206,14 +206,14 @@ public class FrameworkApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1FrameworkByDoctypeByNameAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteFrameworkByDoctypeByNameAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1FrameworkByDoctypeByNameValidateBeforeCall(doctype, name, _callback);
+        okhttp3.Call localVarCall = deleteFrameworkByDoctypeByNameValidateBeforeCall(doctype, name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1FrameworkDoctypesByName
+     * Build call for deleteFrameworkDoctypesByName
      * @param name Name is the DocType&#39;s name, from the path. A name containing a space (\&quot;Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -225,7 +225,7 @@ public class FrameworkApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1FrameworkDoctypesByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteFrameworkDoctypesByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -270,13 +270,13 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1FrameworkDoctypesByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteFrameworkDoctypesByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteV1FrameworkDoctypesByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling deleteFrameworkDoctypesByName(Async)");
         }
 
-        return deleteV1FrameworkDoctypesByNameCall(name, _callback);
+        return deleteFrameworkDoctypesByNameCall(name, _callback);
 
     }
 
@@ -292,8 +292,8 @@ public class FrameworkApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1FrameworkDoctypesByName(@javax.annotation.Nonnull String name) throws ApiException {
-        deleteV1FrameworkDoctypesByNameWithHttpInfo(name);
+    public void deleteFrameworkDoctypesByName(@javax.annotation.Nonnull String name) throws ApiException {
+        deleteFrameworkDoctypesByNameWithHttpInfo(name);
     }
 
     /**
@@ -309,8 +309,8 @@ public class FrameworkApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1FrameworkDoctypesByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1FrameworkDoctypesByNameValidateBeforeCall(name, null);
+    public ApiResponse<Void> deleteFrameworkDoctypesByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteFrameworkDoctypesByNameValidateBeforeCall(name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -328,14 +328,14 @@ public class FrameworkApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1FrameworkDoctypesByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteFrameworkDoctypesByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1FrameworkDoctypesByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = deleteFrameworkDoctypesByNameValidateBeforeCall(name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1FrameworkRolesByUserByRole
+     * Build call for deleteFrameworkRolesByUserByRole
      * @param user User is the assignee whose grant is being revoked, from the path. (required)
      * @param role Role is the role to revoke, from the path. A role name containing a space (\&quot;System Manager\&quot;) arrives percent-encoded and is decoded before it is matched against the stored assignment. (required)
      * @param _callback Callback for upload/download progress
@@ -348,7 +348,7 @@ public class FrameworkApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1FrameworkRolesByUserByRoleCall(@javax.annotation.Nonnull String user, @javax.annotation.Nonnull String role, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteFrameworkRolesByUserByRoleCall(@javax.annotation.Nonnull String user, @javax.annotation.Nonnull String role, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -394,18 +394,18 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1FrameworkRolesByUserByRoleValidateBeforeCall(@javax.annotation.Nonnull String user, @javax.annotation.Nonnull String role, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteFrameworkRolesByUserByRoleValidateBeforeCall(@javax.annotation.Nonnull String user, @javax.annotation.Nonnull String role, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'user' is set
         if (user == null) {
-            throw new ApiException("Missing the required parameter 'user' when calling deleteV1FrameworkRolesByUserByRole(Async)");
+            throw new ApiException("Missing the required parameter 'user' when calling deleteFrameworkRolesByUserByRole(Async)");
         }
 
         // verify the required parameter 'role' is set
         if (role == null) {
-            throw new ApiException("Missing the required parameter 'role' when calling deleteV1FrameworkRolesByUserByRole(Async)");
+            throw new ApiException("Missing the required parameter 'role' when calling deleteFrameworkRolesByUserByRole(Async)");
         }
 
-        return deleteV1FrameworkRolesByUserByRoleCall(user, role, _callback);
+        return deleteFrameworkRolesByUserByRoleCall(user, role, _callback);
 
     }
 
@@ -422,8 +422,8 @@ public class FrameworkApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1FrameworkRolesByUserByRole(@javax.annotation.Nonnull String user, @javax.annotation.Nonnull String role) throws ApiException {
-        deleteV1FrameworkRolesByUserByRoleWithHttpInfo(user, role);
+    public void deleteFrameworkRolesByUserByRole(@javax.annotation.Nonnull String user, @javax.annotation.Nonnull String role) throws ApiException {
+        deleteFrameworkRolesByUserByRoleWithHttpInfo(user, role);
     }
 
     /**
@@ -440,8 +440,8 @@ public class FrameworkApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1FrameworkRolesByUserByRoleWithHttpInfo(@javax.annotation.Nonnull String user, @javax.annotation.Nonnull String role) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1FrameworkRolesByUserByRoleValidateBeforeCall(user, role, null);
+    public ApiResponse<Void> deleteFrameworkRolesByUserByRoleWithHttpInfo(@javax.annotation.Nonnull String user, @javax.annotation.Nonnull String role) throws ApiException {
+        okhttp3.Call localVarCall = deleteFrameworkRolesByUserByRoleValidateBeforeCall(user, role, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -460,14 +460,14 @@ public class FrameworkApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1FrameworkRolesByUserByRoleAsync(@javax.annotation.Nonnull String user, @javax.annotation.Nonnull String role, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteFrameworkRolesByUserByRoleAsync(@javax.annotation.Nonnull String user, @javax.annotation.Nonnull String role, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1FrameworkRolesByUserByRoleValidateBeforeCall(user, role, _callback);
+        okhttp3.Call localVarCall = deleteFrameworkRolesByUserByRoleValidateBeforeCall(user, role, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FrameworkByDoctype
+     * Build call for getFrameworkByDoctype
      * @param doctype DocType is the DocType to list, from the path. (required)
      * @param filters Filters is a JSON object of equality matches, e.g. {\&quot;priority\&quot;:\&quot;High\&quot;}. Every key must be a field the DocType declares (or the managed name / docstatus); an undeclared one is refused rather than silently ignored. (optional)
      * @param fields Fields projects the response to a subset — a JSON array [\&quot;a\&quot;,\&quot;b\&quot;] or a comma list \&quot;a,b\&quot;. The envelope keys are always returned. (optional)
@@ -483,7 +483,7 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FrameworkByDoctypeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nullable String filters, @javax.annotation.Nullable String fields, @javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFrameworkByDoctypeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nullable String filters, @javax.annotation.Nullable String fields, @javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -545,13 +545,13 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FrameworkByDoctypeValidateBeforeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nullable String filters, @javax.annotation.Nullable String fields, @javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getFrameworkByDoctypeValidateBeforeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nullable String filters, @javax.annotation.Nullable String fields, @javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'doctype' is set
         if (doctype == null) {
-            throw new ApiException("Missing the required parameter 'doctype' when calling getV1FrameworkByDoctype(Async)");
+            throw new ApiException("Missing the required parameter 'doctype' when calling getFrameworkByDoctype(Async)");
         }
 
-        return getV1FrameworkByDoctypeCall(doctype, filters, fields, orderBy, limit, _callback);
+        return getFrameworkByDoctypeCall(doctype, filters, fields, orderBy, limit, _callback);
 
     }
 
@@ -572,8 +572,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DocumentList getV1FrameworkByDoctype(@javax.annotation.Nonnull String doctype, @javax.annotation.Nullable String filters, @javax.annotation.Nullable String fields, @javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String limit) throws ApiException {
-        ApiResponse<DocumentList> localVarResp = getV1FrameworkByDoctypeWithHttpInfo(doctype, filters, fields, orderBy, limit);
+    public DocumentList getFrameworkByDoctype(@javax.annotation.Nonnull String doctype, @javax.annotation.Nullable String filters, @javax.annotation.Nullable String fields, @javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String limit) throws ApiException {
+        ApiResponse<DocumentList> localVarResp = getFrameworkByDoctypeWithHttpInfo(doctype, filters, fields, orderBy, limit);
         return localVarResp.getData();
     }
 
@@ -594,8 +594,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DocumentList> getV1FrameworkByDoctypeWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nullable String filters, @javax.annotation.Nullable String fields, @javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1FrameworkByDoctypeValidateBeforeCall(doctype, filters, fields, orderBy, limit, null);
+    public ApiResponse<DocumentList> getFrameworkByDoctypeWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nullable String filters, @javax.annotation.Nullable String fields, @javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String limit) throws ApiException {
+        okhttp3.Call localVarCall = getFrameworkByDoctypeValidateBeforeCall(doctype, filters, fields, orderBy, limit, null);
         Type localVarReturnType = new TypeToken<DocumentList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -618,15 +618,15 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FrameworkByDoctypeAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nullable String filters, @javax.annotation.Nullable String fields, @javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String limit, final ApiCallback<DocumentList> _callback) throws ApiException {
+    public okhttp3.Call getFrameworkByDoctypeAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nullable String filters, @javax.annotation.Nullable String fields, @javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String limit, final ApiCallback<DocumentList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FrameworkByDoctypeValidateBeforeCall(doctype, filters, fields, orderBy, limit, _callback);
+        okhttp3.Call localVarCall = getFrameworkByDoctypeValidateBeforeCall(doctype, filters, fields, orderBy, limit, _callback);
         Type localVarReturnType = new TypeToken<DocumentList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FrameworkByDoctypeByName
+     * Build call for getFrameworkByDoctypeByName
      * @param doctype DocType is the document&#39;s DocType, from the path. (required)
      * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @param _callback Callback for upload/download progress
@@ -639,7 +639,7 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FrameworkByDoctypeByNameCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFrameworkByDoctypeByNameCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -686,18 +686,18 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FrameworkByDoctypeByNameValidateBeforeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getFrameworkByDoctypeByNameValidateBeforeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'doctype' is set
         if (doctype == null) {
-            throw new ApiException("Missing the required parameter 'doctype' when calling getV1FrameworkByDoctypeByName(Async)");
+            throw new ApiException("Missing the required parameter 'doctype' when calling getFrameworkByDoctypeByName(Async)");
         }
 
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1FrameworkByDoctypeByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getFrameworkByDoctypeByName(Async)");
         }
 
-        return getV1FrameworkByDoctypeByNameCall(doctype, name, _callback);
+        return getFrameworkByDoctypeByNameCall(doctype, name, _callback);
 
     }
 
@@ -715,8 +715,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Map<String, Object> getV1FrameworkByDoctypeByName(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<Map<String, Object>> localVarResp = getV1FrameworkByDoctypeByNameWithHttpInfo(doctype, name);
+    public Map<String, Object> getFrameworkByDoctypeByName(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<Map<String, Object>> localVarResp = getFrameworkByDoctypeByNameWithHttpInfo(doctype, name);
         return localVarResp.getData();
     }
 
@@ -734,8 +734,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Map<String, Object>> getV1FrameworkByDoctypeByNameWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1FrameworkByDoctypeByNameValidateBeforeCall(doctype, name, null);
+    public ApiResponse<Map<String, Object>> getFrameworkByDoctypeByNameWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getFrameworkByDoctypeByNameValidateBeforeCall(doctype, name, null);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -755,15 +755,15 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FrameworkByDoctypeByNameAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback<Map<String, Object>> _callback) throws ApiException {
+    public okhttp3.Call getFrameworkByDoctypeByNameAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback<Map<String, Object>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FrameworkByDoctypeByNameValidateBeforeCall(doctype, name, _callback);
+        okhttp3.Call localVarCall = getFrameworkByDoctypeByNameValidateBeforeCall(doctype, name, _callback);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FrameworkDoctypes
+     * Build call for getFrameworkDoctypes
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -774,7 +774,7 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FrameworkDoctypesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFrameworkDoctypesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -819,8 +819,8 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FrameworkDoctypesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1FrameworkDoctypesCall(_callback);
+    private okhttp3.Call getFrameworkDoctypesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFrameworkDoctypesCall(_callback);
 
     }
 
@@ -836,8 +836,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DocTypeList getV1FrameworkDoctypes() throws ApiException {
-        ApiResponse<DocTypeList> localVarResp = getV1FrameworkDoctypesWithHttpInfo();
+    public DocTypeList getFrameworkDoctypes() throws ApiException {
+        ApiResponse<DocTypeList> localVarResp = getFrameworkDoctypesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -853,8 +853,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DocTypeList> getV1FrameworkDoctypesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1FrameworkDoctypesValidateBeforeCall(null);
+    public ApiResponse<DocTypeList> getFrameworkDoctypesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFrameworkDoctypesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<DocTypeList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -872,15 +872,15 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FrameworkDoctypesAsync(final ApiCallback<DocTypeList> _callback) throws ApiException {
+    public okhttp3.Call getFrameworkDoctypesAsync(final ApiCallback<DocTypeList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FrameworkDoctypesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFrameworkDoctypesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<DocTypeList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FrameworkDoctypesByName
+     * Build call for getFrameworkDoctypesByName
      * @param name Name is the DocType&#39;s name, from the path. A name containing a space (\&quot;Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -892,7 +892,7 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FrameworkDoctypesByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFrameworkDoctypesByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -938,13 +938,13 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FrameworkDoctypesByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getFrameworkDoctypesByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1FrameworkDoctypesByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getFrameworkDoctypesByName(Async)");
         }
 
-        return getV1FrameworkDoctypesByNameCall(name, _callback);
+        return getFrameworkDoctypesByNameCall(name, _callback);
 
     }
 
@@ -961,8 +961,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DocType getV1FrameworkDoctypesByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<DocType> localVarResp = getV1FrameworkDoctypesByNameWithHttpInfo(name);
+    public DocType getFrameworkDoctypesByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<DocType> localVarResp = getFrameworkDoctypesByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -979,8 +979,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DocType> getV1FrameworkDoctypesByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1FrameworkDoctypesByNameValidateBeforeCall(name, null);
+    public ApiResponse<DocType> getFrameworkDoctypesByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getFrameworkDoctypesByNameValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<DocType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -999,15 +999,15 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FrameworkDoctypesByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<DocType> _callback) throws ApiException {
+    public okhttp3.Call getFrameworkDoctypesByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<DocType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FrameworkDoctypesByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getFrameworkDoctypesByNameValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<DocType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FrameworkModules
+     * Build call for getFrameworkModules
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1018,7 +1018,7 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FrameworkModulesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFrameworkModulesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1063,8 +1063,8 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FrameworkModulesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1FrameworkModulesCall(_callback);
+    private okhttp3.Call getFrameworkModulesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFrameworkModulesCall(_callback);
 
     }
 
@@ -1080,8 +1080,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ModuleList getV1FrameworkModules() throws ApiException {
-        ApiResponse<ModuleList> localVarResp = getV1FrameworkModulesWithHttpInfo();
+    public ModuleList getFrameworkModules() throws ApiException {
+        ApiResponse<ModuleList> localVarResp = getFrameworkModulesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1097,8 +1097,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ModuleList> getV1FrameworkModulesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1FrameworkModulesValidateBeforeCall(null);
+    public ApiResponse<ModuleList> getFrameworkModulesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFrameworkModulesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ModuleList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1116,15 +1116,15 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FrameworkModulesAsync(final ApiCallback<ModuleList> _callback) throws ApiException {
+    public okhttp3.Call getFrameworkModulesAsync(final ApiCallback<ModuleList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FrameworkModulesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFrameworkModulesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ModuleList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FrameworkModulesByModule
+     * Build call for getFrameworkModulesByModule
      * @param module Module is the lane&#39;s registered name (\&quot;cms\&quot;, \&quot;erp\&quot;), from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1136,7 +1136,7 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FrameworkModulesByModuleCall(@javax.annotation.Nonnull String module, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFrameworkModulesByModuleCall(@javax.annotation.Nonnull String module, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1182,13 +1182,13 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FrameworkModulesByModuleValidateBeforeCall(@javax.annotation.Nonnull String module, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getFrameworkModulesByModuleValidateBeforeCall(@javax.annotation.Nonnull String module, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'module' is set
         if (module == null) {
-            throw new ApiException("Missing the required parameter 'module' when calling getV1FrameworkModulesByModule(Async)");
+            throw new ApiException("Missing the required parameter 'module' when calling getFrameworkModulesByModule(Async)");
         }
 
-        return getV1FrameworkModulesByModuleCall(module, _callback);
+        return getFrameworkModulesByModuleCall(module, _callback);
 
     }
 
@@ -1205,8 +1205,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ModuleState getV1FrameworkModulesByModule(@javax.annotation.Nonnull String module) throws ApiException {
-        ApiResponse<ModuleState> localVarResp = getV1FrameworkModulesByModuleWithHttpInfo(module);
+    public ModuleState getFrameworkModulesByModule(@javax.annotation.Nonnull String module) throws ApiException {
+        ApiResponse<ModuleState> localVarResp = getFrameworkModulesByModuleWithHttpInfo(module);
         return localVarResp.getData();
     }
 
@@ -1223,8 +1223,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ModuleState> getV1FrameworkModulesByModuleWithHttpInfo(@javax.annotation.Nonnull String module) throws ApiException {
-        okhttp3.Call localVarCall = getV1FrameworkModulesByModuleValidateBeforeCall(module, null);
+    public ApiResponse<ModuleState> getFrameworkModulesByModuleWithHttpInfo(@javax.annotation.Nonnull String module) throws ApiException {
+        okhttp3.Call localVarCall = getFrameworkModulesByModuleValidateBeforeCall(module, null);
         Type localVarReturnType = new TypeToken<ModuleState>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1243,15 +1243,15 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FrameworkModulesByModuleAsync(@javax.annotation.Nonnull String module, final ApiCallback<ModuleState> _callback) throws ApiException {
+    public okhttp3.Call getFrameworkModulesByModuleAsync(@javax.annotation.Nonnull String module, final ApiCallback<ModuleState> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FrameworkModulesByModuleValidateBeforeCall(module, _callback);
+        okhttp3.Call localVarCall = getFrameworkModulesByModuleValidateBeforeCall(module, _callback);
         Type localVarReturnType = new TypeToken<ModuleState>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FrameworkRoles
+     * Build call for getFrameworkRoles
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1262,7 +1262,7 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FrameworkRolesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFrameworkRolesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1307,8 +1307,8 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FrameworkRolesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1FrameworkRolesCall(_callback);
+    private okhttp3.Call getFrameworkRolesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFrameworkRolesCall(_callback);
 
     }
 
@@ -1324,8 +1324,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RoleList getV1FrameworkRoles() throws ApiException {
-        ApiResponse<RoleList> localVarResp = getV1FrameworkRolesWithHttpInfo();
+    public RoleList getFrameworkRoles() throws ApiException {
+        ApiResponse<RoleList> localVarResp = getFrameworkRolesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1341,8 +1341,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RoleList> getV1FrameworkRolesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1FrameworkRolesValidateBeforeCall(null);
+    public ApiResponse<RoleList> getFrameworkRolesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFrameworkRolesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<RoleList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1360,15 +1360,15 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FrameworkRolesAsync(final ApiCallback<RoleList> _callback) throws ApiException {
+    public okhttp3.Call getFrameworkRolesAsync(final ApiCallback<RoleList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FrameworkRolesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFrameworkRolesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<RoleList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FrameworkSummary
+     * Build call for getFrameworkSummary
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1379,7 +1379,7 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FrameworkSummaryCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFrameworkSummaryCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1424,8 +1424,8 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FrameworkSummaryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1FrameworkSummaryCall(_callback);
+    private okhttp3.Call getFrameworkSummaryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFrameworkSummaryCall(_callback);
 
     }
 
@@ -1441,8 +1441,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SummaryView getV1FrameworkSummary() throws ApiException {
-        ApiResponse<SummaryView> localVarResp = getV1FrameworkSummaryWithHttpInfo();
+    public SummaryView getFrameworkSummary() throws ApiException {
+        ApiResponse<SummaryView> localVarResp = getFrameworkSummaryWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1458,8 +1458,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SummaryView> getV1FrameworkSummaryWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1FrameworkSummaryValidateBeforeCall(null);
+    public ApiResponse<SummaryView> getFrameworkSummaryWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFrameworkSummaryValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<SummaryView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1477,21 +1477,21 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FrameworkSummaryAsync(final ApiCallback<SummaryView> _callback) throws ApiException {
+    public okhttp3.Call getFrameworkSummaryAsync(final ApiCallback<SummaryView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FrameworkSummaryValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFrameworkSummaryValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<SummaryView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1FrameworkByDoctype
+     * Build call for postFrameworkByDoctype
      * @param doctype  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1FrameworkByDoctypeCall(@javax.annotation.Nonnull String doctype, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFrameworkByDoctypeCall(@javax.annotation.Nonnull String doctype, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1536,13 +1536,13 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1FrameworkByDoctypeValidateBeforeCall(@javax.annotation.Nonnull String doctype, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postFrameworkByDoctypeValidateBeforeCall(@javax.annotation.Nonnull String doctype, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'doctype' is set
         if (doctype == null) {
-            throw new ApiException("Missing the required parameter 'doctype' when calling postV1FrameworkByDoctype(Async)");
+            throw new ApiException("Missing the required parameter 'doctype' when calling postFrameworkByDoctype(Async)");
         }
 
-        return postV1FrameworkByDoctypeCall(doctype, _callback);
+        return postFrameworkByDoctypeCall(doctype, _callback);
 
     }
 
@@ -1552,8 +1552,8 @@ public class FrameworkApi {
      * @param doctype  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1FrameworkByDoctype(@javax.annotation.Nonnull String doctype) throws ApiException {
-        postV1FrameworkByDoctypeWithHttpInfo(doctype);
+    public void postFrameworkByDoctype(@javax.annotation.Nonnull String doctype) throws ApiException {
+        postFrameworkByDoctypeWithHttpInfo(doctype);
     }
 
     /**
@@ -1563,8 +1563,8 @@ public class FrameworkApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1FrameworkByDoctypeWithHttpInfo(@javax.annotation.Nonnull String doctype) throws ApiException {
-        okhttp3.Call localVarCall = postV1FrameworkByDoctypeValidateBeforeCall(doctype, null);
+    public ApiResponse<Void> postFrameworkByDoctypeWithHttpInfo(@javax.annotation.Nonnull String doctype) throws ApiException {
+        okhttp3.Call localVarCall = postFrameworkByDoctypeValidateBeforeCall(doctype, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1576,14 +1576,14 @@ public class FrameworkApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1FrameworkByDoctypeAsync(@javax.annotation.Nonnull String doctype, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postFrameworkByDoctypeAsync(@javax.annotation.Nonnull String doctype, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1FrameworkByDoctypeValidateBeforeCall(doctype, _callback);
+        okhttp3.Call localVarCall = postFrameworkByDoctypeValidateBeforeCall(doctype, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1FrameworkByDoctypeByNameCancel
+     * Build call for postFrameworkByDoctypeByNameCancel
      * @param doctype DocType is the document&#39;s DocType, from the path. (required)
      * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @param _callback Callback for upload/download progress
@@ -1596,7 +1596,7 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1FrameworkByDoctypeByNameCancelCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFrameworkByDoctypeByNameCancelCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1643,18 +1643,18 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1FrameworkByDoctypeByNameCancelValidateBeforeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postFrameworkByDoctypeByNameCancelValidateBeforeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'doctype' is set
         if (doctype == null) {
-            throw new ApiException("Missing the required parameter 'doctype' when calling postV1FrameworkByDoctypeByNameCancel(Async)");
+            throw new ApiException("Missing the required parameter 'doctype' when calling postFrameworkByDoctypeByNameCancel(Async)");
         }
 
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling postV1FrameworkByDoctypeByNameCancel(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling postFrameworkByDoctypeByNameCancel(Async)");
         }
 
-        return postV1FrameworkByDoctypeByNameCancelCall(doctype, name, _callback);
+        return postFrameworkByDoctypeByNameCancelCall(doctype, name, _callback);
 
     }
 
@@ -1672,8 +1672,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Map<String, Object> postV1FrameworkByDoctypeByNameCancel(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<Map<String, Object>> localVarResp = postV1FrameworkByDoctypeByNameCancelWithHttpInfo(doctype, name);
+    public Map<String, Object> postFrameworkByDoctypeByNameCancel(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<Map<String, Object>> localVarResp = postFrameworkByDoctypeByNameCancelWithHttpInfo(doctype, name);
         return localVarResp.getData();
     }
 
@@ -1691,8 +1691,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Map<String, Object>> postV1FrameworkByDoctypeByNameCancelWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = postV1FrameworkByDoctypeByNameCancelValidateBeforeCall(doctype, name, null);
+    public ApiResponse<Map<String, Object>> postFrameworkByDoctypeByNameCancelWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = postFrameworkByDoctypeByNameCancelValidateBeforeCall(doctype, name, null);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1712,15 +1712,15 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1FrameworkByDoctypeByNameCancelAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback<Map<String, Object>> _callback) throws ApiException {
+    public okhttp3.Call postFrameworkByDoctypeByNameCancelAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback<Map<String, Object>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1FrameworkByDoctypeByNameCancelValidateBeforeCall(doctype, name, _callback);
+        okhttp3.Call localVarCall = postFrameworkByDoctypeByNameCancelValidateBeforeCall(doctype, name, _callback);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1FrameworkByDoctypeByNameSubmit
+     * Build call for postFrameworkByDoctypeByNameSubmit
      * @param doctype DocType is the document&#39;s DocType, from the path. (required)
      * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @param _callback Callback for upload/download progress
@@ -1733,7 +1733,7 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1FrameworkByDoctypeByNameSubmitCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFrameworkByDoctypeByNameSubmitCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1780,18 +1780,18 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1FrameworkByDoctypeByNameSubmitValidateBeforeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postFrameworkByDoctypeByNameSubmitValidateBeforeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'doctype' is set
         if (doctype == null) {
-            throw new ApiException("Missing the required parameter 'doctype' when calling postV1FrameworkByDoctypeByNameSubmit(Async)");
+            throw new ApiException("Missing the required parameter 'doctype' when calling postFrameworkByDoctypeByNameSubmit(Async)");
         }
 
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling postV1FrameworkByDoctypeByNameSubmit(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling postFrameworkByDoctypeByNameSubmit(Async)");
         }
 
-        return postV1FrameworkByDoctypeByNameSubmitCall(doctype, name, _callback);
+        return postFrameworkByDoctypeByNameSubmitCall(doctype, name, _callback);
 
     }
 
@@ -1809,8 +1809,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Map<String, Object> postV1FrameworkByDoctypeByNameSubmit(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<Map<String, Object>> localVarResp = postV1FrameworkByDoctypeByNameSubmitWithHttpInfo(doctype, name);
+    public Map<String, Object> postFrameworkByDoctypeByNameSubmit(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<Map<String, Object>> localVarResp = postFrameworkByDoctypeByNameSubmitWithHttpInfo(doctype, name);
         return localVarResp.getData();
     }
 
@@ -1828,8 +1828,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Map<String, Object>> postV1FrameworkByDoctypeByNameSubmitWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = postV1FrameworkByDoctypeByNameSubmitValidateBeforeCall(doctype, name, null);
+    public ApiResponse<Map<String, Object>> postFrameworkByDoctypeByNameSubmitWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = postFrameworkByDoctypeByNameSubmitValidateBeforeCall(doctype, name, null);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1849,15 +1849,15 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1FrameworkByDoctypeByNameSubmitAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback<Map<String, Object>> _callback) throws ApiException {
+    public okhttp3.Call postFrameworkByDoctypeByNameSubmitAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback<Map<String, Object>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1FrameworkByDoctypeByNameSubmitValidateBeforeCall(doctype, name, _callback);
+        okhttp3.Call localVarCall = postFrameworkByDoctypeByNameSubmitValidateBeforeCall(doctype, name, _callback);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1FrameworkDoctypes
+     * Build call for postFrameworkDoctypes
      * @param docType  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1869,7 +1869,7 @@ public class FrameworkApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1FrameworkDoctypesCall(@javax.annotation.Nonnull DocType docType, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFrameworkDoctypesCall(@javax.annotation.Nonnull DocType docType, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1915,13 +1915,13 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1FrameworkDoctypesValidateBeforeCall(@javax.annotation.Nonnull DocType docType, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postFrameworkDoctypesValidateBeforeCall(@javax.annotation.Nonnull DocType docType, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'docType' is set
         if (docType == null) {
-            throw new ApiException("Missing the required parameter 'docType' when calling postV1FrameworkDoctypes(Async)");
+            throw new ApiException("Missing the required parameter 'docType' when calling postFrameworkDoctypes(Async)");
         }
 
-        return postV1FrameworkDoctypesCall(docType, _callback);
+        return postFrameworkDoctypesCall(docType, _callback);
 
     }
 
@@ -1938,8 +1938,8 @@ public class FrameworkApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public DocType postV1FrameworkDoctypes(@javax.annotation.Nonnull DocType docType) throws ApiException {
-        ApiResponse<DocType> localVarResp = postV1FrameworkDoctypesWithHttpInfo(docType);
+    public DocType postFrameworkDoctypes(@javax.annotation.Nonnull DocType docType) throws ApiException {
+        ApiResponse<DocType> localVarResp = postFrameworkDoctypesWithHttpInfo(docType);
         return localVarResp.getData();
     }
 
@@ -1956,8 +1956,8 @@ public class FrameworkApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DocType> postV1FrameworkDoctypesWithHttpInfo(@javax.annotation.Nonnull DocType docType) throws ApiException {
-        okhttp3.Call localVarCall = postV1FrameworkDoctypesValidateBeforeCall(docType, null);
+    public ApiResponse<DocType> postFrameworkDoctypesWithHttpInfo(@javax.annotation.Nonnull DocType docType) throws ApiException {
+        okhttp3.Call localVarCall = postFrameworkDoctypesValidateBeforeCall(docType, null);
         Type localVarReturnType = new TypeToken<DocType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1976,15 +1976,15 @@ public class FrameworkApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1FrameworkDoctypesAsync(@javax.annotation.Nonnull DocType docType, final ApiCallback<DocType> _callback) throws ApiException {
+    public okhttp3.Call postFrameworkDoctypesAsync(@javax.annotation.Nonnull DocType docType, final ApiCallback<DocType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1FrameworkDoctypesValidateBeforeCall(docType, _callback);
+        okhttp3.Call localVarCall = postFrameworkDoctypesValidateBeforeCall(docType, _callback);
         Type localVarReturnType = new TypeToken<DocType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1FrameworkModulesByModuleInstall
+     * Build call for postFrameworkModulesByModuleInstall
      * @param module Module is the lane&#39;s registered name (\&quot;cms\&quot;, \&quot;erp\&quot;), from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1996,7 +1996,7 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1FrameworkModulesByModuleInstallCall(@javax.annotation.Nonnull String module, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFrameworkModulesByModuleInstallCall(@javax.annotation.Nonnull String module, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2042,13 +2042,13 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1FrameworkModulesByModuleInstallValidateBeforeCall(@javax.annotation.Nonnull String module, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postFrameworkModulesByModuleInstallValidateBeforeCall(@javax.annotation.Nonnull String module, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'module' is set
         if (module == null) {
-            throw new ApiException("Missing the required parameter 'module' when calling postV1FrameworkModulesByModuleInstall(Async)");
+            throw new ApiException("Missing the required parameter 'module' when calling postFrameworkModulesByModuleInstall(Async)");
         }
 
-        return postV1FrameworkModulesByModuleInstallCall(module, _callback);
+        return postFrameworkModulesByModuleInstallCall(module, _callback);
 
     }
 
@@ -2065,8 +2065,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Install postV1FrameworkModulesByModuleInstall(@javax.annotation.Nonnull String module) throws ApiException {
-        ApiResponse<Install> localVarResp = postV1FrameworkModulesByModuleInstallWithHttpInfo(module);
+    public Install postFrameworkModulesByModuleInstall(@javax.annotation.Nonnull String module) throws ApiException {
+        ApiResponse<Install> localVarResp = postFrameworkModulesByModuleInstallWithHttpInfo(module);
         return localVarResp.getData();
     }
 
@@ -2083,8 +2083,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Install> postV1FrameworkModulesByModuleInstallWithHttpInfo(@javax.annotation.Nonnull String module) throws ApiException {
-        okhttp3.Call localVarCall = postV1FrameworkModulesByModuleInstallValidateBeforeCall(module, null);
+    public ApiResponse<Install> postFrameworkModulesByModuleInstallWithHttpInfo(@javax.annotation.Nonnull String module) throws ApiException {
+        okhttp3.Call localVarCall = postFrameworkModulesByModuleInstallValidateBeforeCall(module, null);
         Type localVarReturnType = new TypeToken<Install>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2103,15 +2103,15 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1FrameworkModulesByModuleInstallAsync(@javax.annotation.Nonnull String module, final ApiCallback<Install> _callback) throws ApiException {
+    public okhttp3.Call postFrameworkModulesByModuleInstallAsync(@javax.annotation.Nonnull String module, final ApiCallback<Install> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1FrameworkModulesByModuleInstallValidateBeforeCall(module, _callback);
+        okhttp3.Call localVarCall = postFrameworkModulesByModuleInstallValidateBeforeCall(module, _callback);
         Type localVarReturnType = new TypeToken<Install>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1FrameworkRoles
+     * Build call for postFrameworkRoles
      * @param roleAssignment  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2123,7 +2123,7 @@ public class FrameworkApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1FrameworkRolesCall(@javax.annotation.Nonnull RoleAssignment roleAssignment, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFrameworkRolesCall(@javax.annotation.Nonnull RoleAssignment roleAssignment, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2169,13 +2169,13 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1FrameworkRolesValidateBeforeCall(@javax.annotation.Nonnull RoleAssignment roleAssignment, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postFrameworkRolesValidateBeforeCall(@javax.annotation.Nonnull RoleAssignment roleAssignment, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'roleAssignment' is set
         if (roleAssignment == null) {
-            throw new ApiException("Missing the required parameter 'roleAssignment' when calling postV1FrameworkRoles(Async)");
+            throw new ApiException("Missing the required parameter 'roleAssignment' when calling postFrameworkRoles(Async)");
         }
 
-        return postV1FrameworkRolesCall(roleAssignment, _callback);
+        return postFrameworkRolesCall(roleAssignment, _callback);
 
     }
 
@@ -2192,8 +2192,8 @@ public class FrameworkApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public RoleAssignment postV1FrameworkRoles(@javax.annotation.Nonnull RoleAssignment roleAssignment) throws ApiException {
-        ApiResponse<RoleAssignment> localVarResp = postV1FrameworkRolesWithHttpInfo(roleAssignment);
+    public RoleAssignment postFrameworkRoles(@javax.annotation.Nonnull RoleAssignment roleAssignment) throws ApiException {
+        ApiResponse<RoleAssignment> localVarResp = postFrameworkRolesWithHttpInfo(roleAssignment);
         return localVarResp.getData();
     }
 
@@ -2210,8 +2210,8 @@ public class FrameworkApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RoleAssignment> postV1FrameworkRolesWithHttpInfo(@javax.annotation.Nonnull RoleAssignment roleAssignment) throws ApiException {
-        okhttp3.Call localVarCall = postV1FrameworkRolesValidateBeforeCall(roleAssignment, null);
+    public ApiResponse<RoleAssignment> postFrameworkRolesWithHttpInfo(@javax.annotation.Nonnull RoleAssignment roleAssignment) throws ApiException {
+        okhttp3.Call localVarCall = postFrameworkRolesValidateBeforeCall(roleAssignment, null);
         Type localVarReturnType = new TypeToken<RoleAssignment>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2230,22 +2230,22 @@ public class FrameworkApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1FrameworkRolesAsync(@javax.annotation.Nonnull RoleAssignment roleAssignment, final ApiCallback<RoleAssignment> _callback) throws ApiException {
+    public okhttp3.Call postFrameworkRolesAsync(@javax.annotation.Nonnull RoleAssignment roleAssignment, final ApiCallback<RoleAssignment> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1FrameworkRolesValidateBeforeCall(roleAssignment, _callback);
+        okhttp3.Call localVarCall = postFrameworkRolesValidateBeforeCall(roleAssignment, _callback);
         Type localVarReturnType = new TypeToken<RoleAssignment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1FrameworkByDoctypeByName
+     * Build call for putFrameworkByDoctypeByName
      * @param doctype  (required)
      * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1FrameworkByDoctypeByNameCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putFrameworkByDoctypeByNameCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2291,18 +2291,18 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1FrameworkByDoctypeByNameValidateBeforeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putFrameworkByDoctypeByNameValidateBeforeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'doctype' is set
         if (doctype == null) {
-            throw new ApiException("Missing the required parameter 'doctype' when calling putV1FrameworkByDoctypeByName(Async)");
+            throw new ApiException("Missing the required parameter 'doctype' when calling putFrameworkByDoctypeByName(Async)");
         }
 
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling putV1FrameworkByDoctypeByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling putFrameworkByDoctypeByName(Async)");
         }
 
-        return putV1FrameworkByDoctypeByNameCall(doctype, name, _callback);
+        return putFrameworkByDoctypeByNameCall(doctype, name, _callback);
 
     }
 
@@ -2313,8 +2313,8 @@ public class FrameworkApi {
      * @param name  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1FrameworkByDoctypeByName(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
-        putV1FrameworkByDoctypeByNameWithHttpInfo(doctype, name);
+    public void putFrameworkByDoctypeByName(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
+        putFrameworkByDoctypeByNameWithHttpInfo(doctype, name);
     }
 
     /**
@@ -2325,8 +2325,8 @@ public class FrameworkApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1FrameworkByDoctypeByNameWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = putV1FrameworkByDoctypeByNameValidateBeforeCall(doctype, name, null);
+    public ApiResponse<Void> putFrameworkByDoctypeByNameWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = putFrameworkByDoctypeByNameValidateBeforeCall(doctype, name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2339,14 +2339,14 @@ public class FrameworkApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1FrameworkByDoctypeByNameAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putFrameworkByDoctypeByNameAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1FrameworkByDoctypeByNameValidateBeforeCall(doctype, name, _callback);
+        okhttp3.Call localVarCall = putFrameworkByDoctypeByNameValidateBeforeCall(doctype, name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1FrameworkDoctypesByName
+     * Build call for putFrameworkDoctypesByName
      * @param name  (required)
      * @param docType  (required)
      * @param _callback Callback for upload/download progress
@@ -2359,7 +2359,7 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1FrameworkDoctypesByNameCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull DocType docType, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putFrameworkDoctypesByNameCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull DocType docType, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2406,18 +2406,18 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1FrameworkDoctypesByNameValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull DocType docType, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putFrameworkDoctypesByNameValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull DocType docType, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling putV1FrameworkDoctypesByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling putFrameworkDoctypesByName(Async)");
         }
 
         // verify the required parameter 'docType' is set
         if (docType == null) {
-            throw new ApiException("Missing the required parameter 'docType' when calling putV1FrameworkDoctypesByName(Async)");
+            throw new ApiException("Missing the required parameter 'docType' when calling putFrameworkDoctypesByName(Async)");
         }
 
-        return putV1FrameworkDoctypesByNameCall(name, docType, _callback);
+        return putFrameworkDoctypesByNameCall(name, docType, _callback);
 
     }
 
@@ -2435,8 +2435,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DocType putV1FrameworkDoctypesByName(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull DocType docType) throws ApiException {
-        ApiResponse<DocType> localVarResp = putV1FrameworkDoctypesByNameWithHttpInfo(name, docType);
+    public DocType putFrameworkDoctypesByName(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull DocType docType) throws ApiException {
+        ApiResponse<DocType> localVarResp = putFrameworkDoctypesByNameWithHttpInfo(name, docType);
         return localVarResp.getData();
     }
 
@@ -2454,8 +2454,8 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DocType> putV1FrameworkDoctypesByNameWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull DocType docType) throws ApiException {
-        okhttp3.Call localVarCall = putV1FrameworkDoctypesByNameValidateBeforeCall(name, docType, null);
+    public ApiResponse<DocType> putFrameworkDoctypesByNameWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull DocType docType) throws ApiException {
+        okhttp3.Call localVarCall = putFrameworkDoctypesByNameValidateBeforeCall(name, docType, null);
         Type localVarReturnType = new TypeToken<DocType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2475,9 +2475,9 @@ public class FrameworkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1FrameworkDoctypesByNameAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull DocType docType, final ApiCallback<DocType> _callback) throws ApiException {
+    public okhttp3.Call putFrameworkDoctypesByNameAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull DocType docType, final ApiCallback<DocType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1FrameworkDoctypesByNameValidateBeforeCall(name, docType, _callback);
+        okhttp3.Call localVarCall = putFrameworkDoctypesByNameValidateBeforeCall(name, docType, _callback);
         Type localVarReturnType = new TypeToken<DocType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -74,12 +74,12 @@ public class WebsearchApi {
     }
 
     /**
-     * Build call for deleteV1WebsearchSearch
+     * Build call for deleteWebsearchSearch
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1WebsearchSearchCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteWebsearchSearchCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -123,8 +123,8 @@ public class WebsearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1WebsearchSearchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return deleteV1WebsearchSearchCall(_callback);
+    private okhttp3.Call deleteWebsearchSearchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return deleteWebsearchSearchCall(_callback);
 
     }
 
@@ -133,8 +133,8 @@ public class WebsearchApi {
      * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 30. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1WebsearchSearch() throws ApiException {
-        deleteV1WebsearchSearchWithHttpInfo();
+    public void deleteWebsearchSearch() throws ApiException {
+        deleteWebsearchSearchWithHttpInfo();
     }
 
     /**
@@ -143,8 +143,8 @@ public class WebsearchApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1WebsearchSearchWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = deleteV1WebsearchSearchValidateBeforeCall(null);
+    public ApiResponse<Void> deleteWebsearchSearchWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = deleteWebsearchSearchValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -155,19 +155,19 @@ public class WebsearchApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1WebsearchSearchAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteWebsearchSearchAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1WebsearchSearchValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = deleteWebsearchSearchValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1WebsearchSearch
+     * Build call for getWebsearchSearch
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1WebsearchSearchCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getWebsearchSearchCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -211,8 +211,8 @@ public class WebsearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1WebsearchSearchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1WebsearchSearchCall(_callback);
+    private okhttp3.Call getWebsearchSearchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getWebsearchSearchCall(_callback);
 
     }
 
@@ -221,8 +221,8 @@ public class WebsearchApi {
      * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 30. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1WebsearchSearch() throws ApiException {
-        getV1WebsearchSearchWithHttpInfo();
+    public void getWebsearchSearch() throws ApiException {
+        getWebsearchSearchWithHttpInfo();
     }
 
     /**
@@ -231,8 +231,8 @@ public class WebsearchApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1WebsearchSearchWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1WebsearchSearchValidateBeforeCall(null);
+    public ApiResponse<Void> getWebsearchSearchWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getWebsearchSearchValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -243,19 +243,19 @@ public class WebsearchApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1WebsearchSearchAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getWebsearchSearchAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1WebsearchSearchValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getWebsearchSearchValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1WebsearchSearch
+     * Build call for patchWebsearchSearch
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1WebsearchSearchCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchWebsearchSearchCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -299,8 +299,8 @@ public class WebsearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1WebsearchSearchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return patchV1WebsearchSearchCall(_callback);
+    private okhttp3.Call patchWebsearchSearchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return patchWebsearchSearchCall(_callback);
 
     }
 
@@ -309,8 +309,8 @@ public class WebsearchApi {
      * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 30. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1WebsearchSearch() throws ApiException {
-        patchV1WebsearchSearchWithHttpInfo();
+    public void patchWebsearchSearch() throws ApiException {
+        patchWebsearchSearchWithHttpInfo();
     }
 
     /**
@@ -319,8 +319,8 @@ public class WebsearchApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1WebsearchSearchWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = patchV1WebsearchSearchValidateBeforeCall(null);
+    public ApiResponse<Void> patchWebsearchSearchWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = patchWebsearchSearchValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -331,19 +331,19 @@ public class WebsearchApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1WebsearchSearchAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchWebsearchSearchAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1WebsearchSearchValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = patchWebsearchSearchValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1WebsearchSearch
+     * Build call for postWebsearchSearch
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1WebsearchSearchCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postWebsearchSearchCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -387,8 +387,8 @@ public class WebsearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1WebsearchSearchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1WebsearchSearchCall(_callback);
+    private okhttp3.Call postWebsearchSearchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postWebsearchSearchCall(_callback);
 
     }
 
@@ -397,8 +397,8 @@ public class WebsearchApi {
      * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 30. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1WebsearchSearch() throws ApiException {
-        postV1WebsearchSearchWithHttpInfo();
+    public void postWebsearchSearch() throws ApiException {
+        postWebsearchSearchWithHttpInfo();
     }
 
     /**
@@ -407,8 +407,8 @@ public class WebsearchApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1WebsearchSearchWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1WebsearchSearchValidateBeforeCall(null);
+    public ApiResponse<Void> postWebsearchSearchWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postWebsearchSearchValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -419,19 +419,19 @@ public class WebsearchApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1WebsearchSearchAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postWebsearchSearchAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1WebsearchSearchValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postWebsearchSearchValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1WebsearchSearch
+     * Build call for putWebsearchSearch
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1WebsearchSearchCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putWebsearchSearchCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -475,8 +475,8 @@ public class WebsearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1WebsearchSearchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return putV1WebsearchSearchCall(_callback);
+    private okhttp3.Call putWebsearchSearchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return putWebsearchSearchCall(_callback);
 
     }
 
@@ -485,8 +485,8 @@ public class WebsearchApi {
      * Answers {query, number_of_results, results:[{url, title, content, engine}]} — the exact /search?format&#x3D;json contract a SearXNG client decodes, so an agent tool configured against SearXNG reaches this with no change. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it; both are read from the QUERY STRING.  Served in-process by a Go meta-search over keyless public engines, never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept — distinct queries are distinct results) and capped at 30. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  TWO WAYS IN, one-way equivalent, and no third: a validated principal — the same gate the whole data plane uses — passes straight through, and a caller without one must present the shared service key as X-API-Key, compared in constant time. A deployment with no key configured answers 503 rather than opening the surface to everyone, and a missing or wrong key is 401. It is never an open proxy. There is no tenant scoping beyond that gate, and there is nothing to scope: the results are public web pages, identical for every caller.  It fails SOFT on the engines and closed only on the gate. An engine that errors or is served a bot-challenge page contributes zero results and never fails the request, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  The one thing to get right: every method answers identically. This is one handler registered for all of them, and it reads only the query string, so a body sent on the write verbs is ignored rather than refused.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1WebsearchSearch() throws ApiException {
-        putV1WebsearchSearchWithHttpInfo();
+    public void putWebsearchSearch() throws ApiException {
+        putWebsearchSearchWithHttpInfo();
     }
 
     /**
@@ -495,8 +495,8 @@ public class WebsearchApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1WebsearchSearchWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = putV1WebsearchSearchValidateBeforeCall(null);
+    public ApiResponse<Void> putWebsearchSearchWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = putWebsearchSearchValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -507,9 +507,9 @@ public class WebsearchApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1WebsearchSearchAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putWebsearchSearchAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1WebsearchSearchValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = putWebsearchSearchValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
