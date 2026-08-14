@@ -70,9 +70,10 @@ not the compiler's, and 2,671 sources will not fit in the default.
 
 ## The six examples are not this repo's choice
 
-They are data in `hanzoai/openapi` `flows.yaml`, the same six in every Hanzo
-SDK, and `test_flows.py` there asserts every operation id they name exists in
-the document. Adding a seventh here breaks that.
+They are data in `hanzoai/openapi` `flows.yaml` — a closed set every Hanzo SDK
+owes — and `test_flows.py` there asserts both that the set is exactly those six
+and that every operation id they name exists in the document. Adding a seventh
+here breaks that.
 
 `chat` and `money` print a status rather than a body: those routes are published
 with no request or response schema, so the generated methods take no argument

@@ -90,7 +90,7 @@ public class Whoami {
 ```
 
 ```bash
-HANZO_API_KEY=hk-… ./gradlew run
+HANZO_API_KEY=hk-… ./gradlew :examples:hello   # the same call, in this repo
 ```
 
 `GET /v1/keys` is the call that says no — with no key, or a bad one, it answers
@@ -104,10 +104,10 @@ refusal arrives as a checked `ApiException` carrying `getCode()` and
 
 ## Examples
 
-Six flows, one per directory, each a complete program. They are the same six in
-every Hanzo SDK, so a reader who knows one language's set can find their way
-around another's. The build compiles them against the client, so they cannot
-rot.
+Six flows, one per directory, each a complete program. Which six is not this
+repo's choice: `flows.yaml` in hanzoai/openapi prescribes them for every Hanzo
+SDK, so a reader who knows one language's set can find their way around
+another's. The build compiles them against the client, so they cannot rot.
 
 | flow | what it does |
 |---|---|
