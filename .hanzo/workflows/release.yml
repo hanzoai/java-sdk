@@ -4,8 +4,9 @@ name: Release
 # credential that the shared CI does not model. Both come from KMS
 # (kms.hanzo.ai) and are injected here; neither is ever on disk or in this repo.
 #
-# Publishing is a tag. The version in hanzo-java-cloud/build.gradle is the spec's
-# own info.version, so a release is: bump the spec, regenerate, tag.
+# Publishing is a tag. The version is the artifact's own, in
+# hanzo-java-cloud/build.gradle — the document versions itself `v1` and says
+# nothing about a client — so a release is: regenerate, set it, tag.
 on:
   push:
     tags: ['v*']

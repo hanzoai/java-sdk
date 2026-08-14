@@ -9,8 +9,8 @@ subprojects {
         mavenCentral()
     }
 
-    // Java 11 is the floor: the `native` library is java.net.http, which lands
-    // in 11. Compiled with whatever JDK is present, targeted at 11.
+    // Java 11 is the floor. Compiled with whatever JDK is present, targeted at
+    // 11, so the classes come out at major version 55.
     java {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -20,8 +20,8 @@ subprojects {
         // Schema descriptions are copied into the sources as UTF-8; the
         // platform default would mangle them.
         options.encoding = 'UTF-8'
-        // 2468 operations across 2646 sources in one compile. The Gradle daemon
-        // heap in gradle.properties is not the compiler's, so fork one.
+        // 2,671 sources in one compile. The Gradle daemon heap in
+        // gradle.properties is not the compiler's, so fork one.
         options.fork = true
         options.forkOptions.jvmArgs = ['-Xmx6g']
     }
