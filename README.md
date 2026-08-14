@@ -3,7 +3,7 @@
 <!-- x-release-please-start-version -->
 
 [![Maven Central](https://img.shields.io/maven-central/v/ai.hanzo.api/hanzo-java)](https://central.sonatype.com/artifact/ai.hanzo.api/hanzo-java/0.1.0-alpha.5)
-[![javadoc](https://javadoc.io/badge2/ai.hanzo.api/hanzo-java/0.1.0-alpha.5/javadoc.svg)](https://javadoc.io/doc/ai.hanzo.api/hanzo-java/0.1.0-alpha.5)
+[![javadoc](https://javadoc.io/badge2/ai.hanzo.api/hanzo-java/javadoc.svg)](https://javadoc.io/doc/ai.hanzo.api/hanzo-java/0.1.0-alpha.5)
 
 <!-- x-release-please-end -->
 
